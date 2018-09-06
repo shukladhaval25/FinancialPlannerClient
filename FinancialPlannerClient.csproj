@@ -1,0 +1,215 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{07192D30-076F-405E-8431-A9846D67EE4C}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FinancialPlannerClient</RootNamespace>
+    <AssemblyName>FinancialPlannerClient</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FinancialPlanner.Common">
+      <HintPath>..\..\FinancialPlanner.Common\bin\Debug\FinancialPlanner.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Clients\ClientWithPlanner.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clients\ClientWithPlanner.Designer.cs">
+      <DependentUpon>ClientWithPlanner.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Clients\ClientInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clients\ClientInfo.Designer.cs">
+      <DependentUpon>ClientInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Clients\ClientList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clients\ClientList.Designer.cs">
+      <DependentUpon>ClientList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main.Designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlannerInfo\ClientContactInfo.cs" />
+    <Compile Include="PlannerInfo\ClientPersonalInfo.cs" />
+    <Compile Include="PlannerInfo\EmploymentInfo.cs" />
+    <Compile Include="PlannerInfo\ExpensesInfo.cs" />
+    <Compile Include="PlannerInfo\FamilyMemberInfo.cs" />
+    <Compile Include="PlannerInfo\GoalsInfo.cs" />
+    <Compile Include="PlannerInfo\IncomeInfo.cs" />
+    <Compile Include="PlannerInfo\LoanInfo.cs" />
+    <Compile Include="PlannerInfo\NonFinancialAssetInfo.cs" />
+    <Compile Include="PlannerInfo\PlannerAssumptionInfo.cs" />
+    <Compile Include="PlannerInfo\SessionInfo.cs" />
+    <Compile Include="ProcessWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProcessWindow.Designer.cs">
+      <DependentUpon>ProcessWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProspectCustomer\ProspectCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProspectCustomer\ProspectCustomer.Designer.cs">
+      <DependentUpon>ProspectCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProspectCustomer\ProspectCustomerConversation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProspectCustomer\ProspectCustomerConversation.Designer.cs">
+      <DependentUpon>ProspectCustomerConversation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProspectCustomer\ProspectCustomerList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProspectCustomer\ProspectCustomerList.Designer.cs">
+      <DependentUpon>ProspectCustomerList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RiskProfile\DefaultReiskProfile.cs" />
+    <Compile Include="RiskProfile\frmRiskProfiledReturnList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RiskProfile\frmRiskProfiledReturnList.Designer.cs">
+      <DependentUpon>frmRiskProfiledReturnList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RiskProfile\frmRiskProfileReturn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RiskProfile\frmRiskProfileReturn.Designer.cs">
+      <DependentUpon>frmRiskProfileReturn.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Clients\ClientWithPlanner.resx">
+      <DependentUpon>ClientWithPlanner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Clients\ClientInfo.resx">
+      <DependentUpon>ClientInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Clients\ClientList.resx">
+      <DependentUpon>ClientList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProcessWindow.resx">
+      <DependentUpon>ProcessWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="ProspectCustomer\ProspectCustomer.resx">
+      <DependentUpon>ProspectCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProspectCustomer\ProspectCustomerConversation.resx">
+      <DependentUpon>ProspectCustomerConversation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProspectCustomer\ProspectCustomerList.resx">
+      <DependentUpon>ProspectCustomerList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RiskProfile\frmRiskProfiledReturnList.resx">
+      <DependentUpon>frmRiskProfiledReturnList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RiskProfile\frmRiskProfileReturn.resx">
+      <DependentUpon>frmRiskProfileReturn.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\marguerite-daisy-beautiful-beauty.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-chat-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-reception-30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-refresh-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_run_45545.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\processing-gif-image-14.gif" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
