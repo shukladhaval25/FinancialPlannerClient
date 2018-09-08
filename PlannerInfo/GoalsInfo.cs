@@ -186,7 +186,8 @@ namespace FinancialPlannerClient.PlannerInfo
             if (dtGridGoals.SelectedRows.Count >= 1)
             {
                 int selectedRowIndex = dtGridGoals.SelectedRows[0].Index;
-                if (dtGridGoals.SelectedRows[0].Cells["ID"].Value != System.DBNull.Value)
+                if ((dtGridGoals.SelectedRows[0].Cells["ID"].Value != System.DBNull.Value) &&
+                    (dtGridGoals.SelectedRows[0].Cells["ID"].Value != null))
                 {
                     int selectedUserId = int.Parse(dtGridGoals.SelectedRows[0].Cells["ID"].Value.ToString());
                     DataRow[] rows = _dtGoals.Select("Id ='" + selectedUserId +"'");

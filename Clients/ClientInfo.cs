@@ -8,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -1336,6 +1337,7 @@ namespace FinancialPlannerClient.Clients
                 cmbGoalName.Text = goals.Name;
                 txtGoalCurrentValue.Text = goals.Amount.ToString("#,##0.00");
                 txtGoalStartYear.Text = goals.StartYear;
+                txtInflationRate.Text = goals.InflationRate.ToString("##.00");
                 txtGoalEndYear.Text = goals.EndYear;
                 if (goals.Recurrence != null)
                     txtGoalRecurrence.Text = goals.Recurrence.Value.ToString();
@@ -1380,6 +1382,7 @@ namespace FinancialPlannerClient.Clients
             Goals.Description = txtGoalDescription.Text;
             Goals.StartYear = txtGoalStartYear.Text;
             Goals.EndYear = txtGoalEndYear.Text;
+            Goals.InflationRate = decimal.Parse(txtInflationRate.Text);
             Goals.CreatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
             Goals.CreatedBy = Program.CurrentUser.Id;
             Goals.UpdatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
@@ -1411,6 +1414,12 @@ namespace FinancialPlannerClient.Clients
             Goals goals = new GoalsInfo().GetGoalsInfo(dtGridGoal,_dtGoals);
             displayGoalsData(goals);
             grpGoalsDetail.Enabled = false;
+        }
+
+        private void txtInflationRate_Validating(object sender, CancelEventArgs e)
+        {
+            Regex r = new Regex(@"^\d+\.?\d*$");
+            e.Cancel = !r.IsMatch(txtInflationRate.Text);
         }
     }
 }
