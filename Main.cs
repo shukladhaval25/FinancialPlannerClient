@@ -103,5 +103,24 @@ namespace FinancialPlannerClient
             frmriskProfileReturnList.Dock = DockStyle.Fill;
             frmriskProfileReturnList.Show();
         }
+
+        private void estimatedPlanningOptionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PlanOptions.ClientPlanOptionList frmPlanOption = new PlanOptions.ClientPlanOptionList();
+            frmPlanOption.TopLevel = false;
+            this.pnlMain.Controls.Add(frmPlanOption);
+            frmPlanOption.Dock = DockStyle.Fill;
+            frmPlanOption.Show();
+        }
+
+        private void currentInToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CurrentStatus.ClientCurrentStatusList frmClientCurrrentStatusLst =
+                new CurrentStatus.ClientCurrentStatusList();
+            frmClientCurrrentStatusLst.TopLevel = false;
+            this.pnlMain.Controls.Add(frmClientCurrrentStatusLst);
+            frmClientCurrrentStatusLst.Dock = DockStyle.Fill;
+            frmClientCurrrentStatusLst.Show();
+        }
     }
 }

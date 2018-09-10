@@ -22,3 +22,7 @@ D:\Dhaval.Shukla\My Documents\Visual Studio 2015\Projects\FinancialPlannerServer
 D:\Dhaval.Shukla\My Documents\Visual Studio 2015\Projects\FinancialPlannerServer\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.RiskProfile.frmRiskProfileReturn.resources
 D:\Dhaval.Shukla\My Documents\Visual Studio 2015\Projects\FinancialPlannerServer\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.csprojResolveAssemblyReference.cache
 D:\Dhaval.Shukla\My Documents\Visual Studio 2015\Projects\FinancialPlannerServer\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.ProcessWindow.resources
+D:\Dhaval.Shukla\My Documents\Visual Studio 2015\Projects\FinancialPlannerServer\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.ClientPlanOptionList.resources
+D:\Dhaval.Shukla\My Documents\Visual Studio 2015\Projects\FinancialPlannerServer\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.CurrentStatus.ClientCurrentStatusList.resources
+D:\Dhaval.Shukla\My Documents\Visual Studio 2015\Projects\FinancialPlannerServer\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.EstimatedPlanOptionList.resources
+D:\Dhaval.Shukla\My Documents\Visual Studio 2015\Projects\FinancialPlannerServer\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.CurrentStatus.CurrentStatus.resources

@@ -31,18 +31,20 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.menuMain = new System.Windows.Forms.MenuStrip();
+            this.riskProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.createNewRsikProfiledToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.auditTrailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlMain = new System.Windows.Forms.Panel();
             this.imglist16x16 = new System.Windows.Forms.ImageList(this.components);
             this.imgList30x30 = new System.Windows.Forms.ImageList(this.components);
-            this.riskProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.createNewRsikProfiledToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.picClientMain = new System.Windows.Forms.PictureBox();
             this.prospectedCustomerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clientsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.estimatedPlanningOptionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.currentInToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuMain.SuspendLayout();
             this.pnlMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picClientMain)).BeginInit();
@@ -62,6 +64,21 @@
             this.menuMain.Size = new System.Drawing.Size(1022, 24);
             this.menuMain.TabIndex = 0;
             this.menuMain.Text = "menuStrip1";
+            // 
+            // riskProfileToolStripMenuItem
+            // 
+            this.riskProfileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.createNewRsikProfiledToolStripMenuItem});
+            this.riskProfileToolStripMenuItem.Name = "riskProfileToolStripMenuItem";
+            this.riskProfileToolStripMenuItem.Size = new System.Drawing.Size(119, 20);
+            this.riskProfileToolStripMenuItem.Text = "RiskProfiled Return";
+            // 
+            // createNewRsikProfiledToolStripMenuItem
+            // 
+            this.createNewRsikProfiledToolStripMenuItem.Name = "createNewRsikProfiledToolStripMenuItem";
+            this.createNewRsikProfiledToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.createNewRsikProfiledToolStripMenuItem.Text = "Manage Rsik Profiled";
+            this.createNewRsikProfiledToolStripMenuItem.Click += new System.EventHandler(this.createNewRsikProfiledToolStripMenuItem_Click);
             // 
             // auditTrailToolStripMenuItem
             // 
@@ -105,21 +122,6 @@
             this.imgList30x30.TransparentColor = System.Drawing.Color.Transparent;
             this.imgList30x30.Images.SetKeyName(0, "icons8-select-users-30.png");
             // 
-            // riskProfileToolStripMenuItem
-            // 
-            this.riskProfileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.createNewRsikProfiledToolStripMenuItem});
-            this.riskProfileToolStripMenuItem.Name = "riskProfileToolStripMenuItem";
-            this.riskProfileToolStripMenuItem.Size = new System.Drawing.Size(119, 20);
-            this.riskProfileToolStripMenuItem.Text = "RiskProfiled Return";
-            // 
-            // createNewRsikProfiledToolStripMenuItem
-            // 
-            this.createNewRsikProfiledToolStripMenuItem.Name = "createNewRsikProfiledToolStripMenuItem";
-            this.createNewRsikProfiledToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
-            this.createNewRsikProfiledToolStripMenuItem.Text = "Manage Rsik Profiled";
-            this.createNewRsikProfiledToolStripMenuItem.Click += new System.EventHandler(this.createNewRsikProfiledToolStripMenuItem_Click);
-            // 
             // picClientMain
             // 
             this.picClientMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -144,7 +146,9 @@
             // clientsToolStripMenuItem
             // 
             this.clientsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.dataGaToolStripMenuItem});
+            this.dataGaToolStripMenuItem,
+            this.currentInToolStripMenuItem,
+            this.estimatedPlanningOptionToolStripMenuItem});
             this.clientsToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("clientsToolStripMenuItem.Image")));
             this.clientsToolStripMenuItem.Name = "clientsToolStripMenuItem";
             this.clientsToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
@@ -155,9 +159,23 @@
             // 
             this.dataGaToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("dataGaToolStripMenuItem.Image")));
             this.dataGaToolStripMenuItem.Name = "dataGaToolStripMenuItem";
-            this.dataGaToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.dataGaToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
             this.dataGaToolStripMenuItem.Text = "Data Gathering";
             this.dataGaToolStripMenuItem.Click += new System.EventHandler(this.dataGaToolStripMenuItem_Click);
+            // 
+            // estimatedPlanningOptionToolStripMenuItem
+            // 
+            this.estimatedPlanningOptionToolStripMenuItem.Name = "estimatedPlanningOptionToolStripMenuItem";
+            this.estimatedPlanningOptionToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.estimatedPlanningOptionToolStripMenuItem.Text = "Estimated Plan Option";
+            this.estimatedPlanningOptionToolStripMenuItem.Click += new System.EventHandler(this.estimatedPlanningOptionToolStripMenuItem_Click);
+            // 
+            // currentInToolStripMenuItem
+            // 
+            this.currentInToolStripMenuItem.Name = "currentInToolStripMenuItem";
+            this.currentInToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.currentInToolStripMenuItem.Text = "Current Status of Client";
+            this.currentInToolStripMenuItem.Click += new System.EventHandler(this.currentInToolStripMenuItem_Click);
             // 
             // Main
             // 
@@ -196,5 +214,7 @@
         private System.Windows.Forms.ImageList imgList30x30;
         private System.Windows.Forms.ToolStripMenuItem riskProfileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem createNewRsikProfiledToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem estimatedPlanningOptionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem currentInToolStripMenuItem;
     }
 }

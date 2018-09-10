@@ -68,6 +68,19 @@
     <Compile Include="Clients\ClientList.Designer.cs">
       <DependentUpon>ClientList.cs</DependentUpon>
     </Compile>
+    <Compile Include="CurrentStatus\ClientCurrentStatusList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CurrentStatus\ClientCurrentStatusList.Designer.cs">
+      <DependentUpon>ClientCurrentStatusList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CurrentStatus\CurrentStatus.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CurrentStatus\CurrentStatus.Designer.cs">
+      <DependentUpon>CurrentStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CurrentStatus\CurrentStatusInfo.cs" />
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,6 +94,13 @@
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
     <Compile Include="PlannerInfo\ClientContactInfo.cs" />
+    <Compile Include="PlannerInfo\PlannerInfo.cs" />
+    <Compile Include="PlanOptions\ClientPlanOptinList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\ClientPlanOptinList.Designer.cs">
+      <DependentUpon>ClientPlanOptinList.cs</DependentUpon>
+    </Compile>
     <Compile Include="PlannerInfo\ClientPersonalInfo.cs" />
     <Compile Include="PlannerInfo\EmploymentInfo.cs" />
     <Compile Include="PlannerInfo\ExpensesInfo.cs" />
@@ -91,6 +111,12 @@
     <Compile Include="PlannerInfo\NonFinancialAssetInfo.cs" />
     <Compile Include="PlannerInfo\PlannerAssumptionInfo.cs" />
     <Compile Include="PlannerInfo\SessionInfo.cs" />
+    <Compile Include="PlanOptions\EstimatedPlanOptionList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\EstimatedPlanOptionList.Designer.cs">
+      <DependentUpon>EstimatedPlanOptionList.cs</DependentUpon>
+    </Compile>
     <Compile Include="ProcessWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -139,11 +165,23 @@
     <EmbeddedResource Include="Clients\ClientList.resx">
       <DependentUpon>ClientList.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CurrentStatus\ClientCurrentStatusList.resx">
+      <DependentUpon>ClientCurrentStatusList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CurrentStatus\CurrentStatus.resx">
+      <DependentUpon>CurrentStatus.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\ClientPlanOptinList.resx">
+      <DependentUpon>ClientPlanOptinList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\EstimatedPlanOptionList.resx">
+      <DependentUpon>EstimatedPlanOptionList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProcessWindow.resx">
       <DependentUpon>ProcessWindow.cs</DependentUpon>
