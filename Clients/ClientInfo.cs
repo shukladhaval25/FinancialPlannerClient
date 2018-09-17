@@ -1060,7 +1060,7 @@ namespace FinancialPlannerClient.Clients
             income.Source =  cmbIncomeSource.Text;
             income.Id = int.Parse(cmbIncomeSource.Tag.ToString());
             income.Pid = PlannerId;
-            income.IncomeBy = (rdoClientIncome.Checked) ? "Client" : "Source";
+            income.IncomeBy = (rdoClientIncome.Checked) ? "Client" : "Spouse";
             income.Amount = (txtAnnualBonusAmt.Text =="000.00") ? 0 : double.Parse(txtAnnualIncome.Text);
             income.ExpectGrowthInPercentage = (txtincomeGrowthPercentage.Text =="") ? 0 : 
                 decimal.Parse( txtincomeGrowthPercentage.Text);
@@ -1404,7 +1404,8 @@ namespace FinancialPlannerClient.Clients
             {
                 GoalsInfo goalsInfo = new GoalsInfo();
                 Goals goals = goalsInfo.GetGoalsInfo(dtGridGoal, _dtGoals);
-                goalsInfo.Delete(goals);
+                if (!goalsInfo.Delete(goals))
+                    MessageBox.Show("Unable to delete selected record. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 fillupGoalsInfo();
             }
         }

@@ -29,11 +29,7 @@ namespace FinancialPlannerClient.PlanOptions
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            //ClientWithPlanner frmClient = new ClientWithPlanner();
-            //frmClient.TopLevel = false;
-            //splitContainer.Panel2.Controls.Add(frmClient);
-            //frmClient.Dock = DockStyle.Fill;
-            //frmClient.Show();
+            
         }
 
         private void ClientList_Load(object sender, EventArgs e)
@@ -79,7 +75,12 @@ namespace FinancialPlannerClient.PlanOptions
         {
             if (trvList.SelectedNode != null)
             {
-                //Client client = convertSelectedRowDataToClient();
+                Client client = convertSelectedRowDataToClient();
+                EstimatedPlanOptionList estimatedPlanOptLst = new EstimatedPlanOptionList(client);
+                estimatedPlanOptLst.TopLevel = false;
+                splitContainer.Panel2.Controls.Add(estimatedPlanOptLst);
+                estimatedPlanOptLst.Dock = DockStyle.Fill;
+                estimatedPlanOptLst.Show();
                 //ClientWithPlanner frmClient = new ClientWithPlanner(client);
                 //frmClient.TopLevel = false;
                 //splitContainer.Panel2.Controls.Add(frmClient);

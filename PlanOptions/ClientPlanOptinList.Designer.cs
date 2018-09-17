@@ -63,6 +63,7 @@
             // 
             // btnDelete
             // 
+            this.btnDelete.Enabled = false;
             this.btnDelete.ImageIndex = 1;
             this.btnDelete.ImageList = this.imgCollection;
             this.btnDelete.Location = new System.Drawing.Point(76, 10);
@@ -89,6 +90,7 @@
             // 
             // btnAdd
             // 
+            this.btnAdd.Enabled = false;
             this.btnAdd.ImageIndex = 3;
             this.btnAdd.ImageList = this.imgCollection;
             this.btnAdd.Location = new System.Drawing.Point(6, 10);

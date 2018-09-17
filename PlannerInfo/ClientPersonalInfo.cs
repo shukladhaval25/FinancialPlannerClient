@@ -12,10 +12,10 @@ namespace FinancialPlannerClient.PlannerInfo
 {
     public class ClientPersonalInfo
     {
-        public string GET_CLIENT_PERSONAL_API =  "Client/GetById?id={0}";
-        public string GET_SPOUSE_PERSONAL_API = "ClientSpouse/GetById?id={0}";
-        public string UPDATE_CLIENTPERSONAL_INFO_API ="Client/Update";
-        public string UPDATE_CLIENTSPOUSE_PERSONAL_INFO_API = "ClientSpouse/Update";
+        const string GET_CLIENT_PERSONAL_API =  "Client/GetById?id={0}";
+        const string GET_SPOUSE_PERSONAL_API = "ClientSpouse/GetById?id={0}";
+        const string UPDATE_CLIENTPERSONAL_INFO_API ="Client/Update";
+        const string UPDATE_CLIENTSPOUSE_PERSONAL_INFO_API = "ClientSpouse/Update";
         private PersonalInformation _personalInfo;
 
         public PersonalInformation Get(int clientId)

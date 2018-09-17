@@ -50,6 +50,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CashFlowManager\CashFlow.cs" />
+    <Compile Include="CashFlowManager\CashFlowService.cs" />
+    <Compile Include="CashFlowManager\Incomes.cs" />
     <Compile Include="Clients\ClientWithPlanner.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,6 +84,8 @@
       <DependentUpon>CurrentStatus.cs</DependentUpon>
     </Compile>
     <Compile Include="CurrentStatus\CurrentStatusInfo.cs" />
+    <Compile Include="CurrentStatus\GeneralInsuranceInfo.cs" />
+    <Compile Include="CurrentStatus\LifeInsuranceInfo.cs" />
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,6 +121,13 @@
     </Compile>
     <Compile Include="PlanOptions\EstimatedPlanOptionList.Designer.cs">
       <DependentUpon>EstimatedPlanOptionList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlanOptions\PlanOptionInfo.cs" />
+    <Compile Include="PlanOptions\PlanOptionMaster.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\PlanOptionMaster.Designer.cs">
+      <DependentUpon>PlanOptionMaster.cs</DependentUpon>
     </Compile>
     <Compile Include="ProcessWindow.cs">
       <SubType>Form</SubType>
@@ -182,6 +194,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\EstimatedPlanOptionList.resx">
       <DependentUpon>EstimatedPlanOptionList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\PlanOptionMaster.resx">
+      <DependentUpon>PlanOptionMaster.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProcessWindow.resx">
       <DependentUpon>ProcessWindow.cs</DependentUpon>
