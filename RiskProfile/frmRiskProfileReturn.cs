@@ -83,24 +83,7 @@ namespace FinancialPlannerClient.RiskProfile
 
         private void dtGridRiskProfileDetails_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            try
-            {
-                if (dtGridRiskProfileDetails.Rows[e.RowIndex].Cells[2].Value.ToString() != "")
-                {
-                    if (e.ColumnIndex != 0 && e.ColumnIndex != 1 & e.ColumnIndex != 2)
-                    {
-                        decimal averageReturn = getAverageReturn(e);
-                        dtGridRiskProfileDetails.Rows[e.RowIndex].Cells[9].Value = averageReturn;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                StackTrace st = new StackTrace ();
-                StackFrame sf = st.GetFrame (0);
-                MethodBase  currentMethodName = sf.GetMethod();
-                LogDebug(currentMethodName.Name, ex);
-            }
+            
         }
         private void LogDebug(string methodName, Exception ex)
         {
@@ -110,36 +93,36 @@ namespace FinancialPlannerClient.RiskProfile
             debuggerInfo.ExceptionInfo = ex;
             Logger.LogDebug(debuggerInfo);
         }
-        private decimal getAverageReturn(DataGridViewCellFormattingEventArgs e)
+        private decimal getAverageReturn(int rowIndex)
         {
             decimal foreingInv;
             decimal.TryParse(
-                dtGridRiskProfileDetails.Rows[e.RowIndex].Cells["ForeingInvestmentRatio"].Value.ToString(),
+                dtGridRiskProfileDetails.Rows[rowIndex].Cells["ForeingInvestmentRatio"].Value.ToString(),
                 out foreingInv);
 
             decimal equityInv;
             decimal.TryParse(
-                dtGridRiskProfileDetails.Rows[e.RowIndex].Cells["EquityInvestementRatio"].Value.ToString(),
+                dtGridRiskProfileDetails.Rows[rowIndex].Cells["EquityInvestementRatio"].Value.ToString(),
                 out equityInv);
 
             decimal debtInv;
             decimal.TryParse(
-                dtGridRiskProfileDetails.Rows[e.RowIndex].Cells["DebtInvestementRatio"].Value.ToString(),
+                dtGridRiskProfileDetails.Rows[rowIndex].Cells["DebtInvestementRatio"].Value.ToString(),
                 out debtInv);
 
             decimal foreingReturn;
             decimal.TryParse(
-                dtGridRiskProfileDetails.Rows[e.RowIndex].Cells["ForeingInvestementReaturn"].Value.ToString(),
+                dtGridRiskProfileDetails.Rows[rowIndex].Cells["ForeingInvestementReaturn"].Value.ToString(),
                 out foreingReturn);
 
             decimal equityReturn;
             decimal.TryParse(
-                dtGridRiskProfileDetails.Rows[e.RowIndex].Cells["EquityInvestementReturn"].Value.ToString(),
+                dtGridRiskProfileDetails.Rows[rowIndex].Cells["EquityInvestementReturn"].Value.ToString(),
                 out equityReturn);
 
             decimal debtReturn;
             decimal.TryParse(
-                dtGridRiskProfileDetails.Rows[e.RowIndex].Cells["DebtInvestementReturn"].Value.ToString(),
+                dtGridRiskProfileDetails.Rows[rowIndex].Cells["DebtInvestementReturn"].Value.ToString(),
                 out debtReturn);
 
             decimal _foreingValue =  (foreingInv * foreingReturn) / 100;
@@ -228,6 +211,28 @@ namespace FinancialPlannerClient.RiskProfile
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void dtGridRiskProfileDetails_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (dtGridRiskProfileDetails.Rows[e.RowIndex].Cells[2].Value.ToString() != "")
+                {
+                    if (e.ColumnIndex != 0 && e.ColumnIndex != 1 & e.ColumnIndex != 2)
+                    {
+                        decimal averageReturn = getAverageReturn(e.RowIndex);
+                        dtGridRiskProfileDetails.Rows[e.RowIndex].Cells[9].Value = averageReturn;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                StackTrace st = new StackTrace ();
+                StackFrame sf = st.GetFrame (0);
+                MethodBase  currentMethodName = sf.GetMethod();
+                LogDebug(currentMethodName.Name, ex);
+            }
         }
     }
 }

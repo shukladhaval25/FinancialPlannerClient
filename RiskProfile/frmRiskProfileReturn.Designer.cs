@@ -69,6 +69,7 @@
             this.dtGridRiskProfileDetails.Name = "dtGridRiskProfileDetails";
             this.dtGridRiskProfileDetails.Size = new System.Drawing.Size(910, 278);
             this.dtGridRiskProfileDetails.TabIndex = 0;
+            this.dtGridRiskProfileDetails.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtGridRiskProfileDetails_CellEndEdit);
             this.dtGridRiskProfileDetails.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dtGridRiskProfileDetails_CellFormatting);
             this.dtGridRiskProfileDetails.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dtGridRiskProfileDetails_CellValidating);
             // 
