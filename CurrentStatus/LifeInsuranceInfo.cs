@@ -82,7 +82,7 @@ namespace FinancialPlannerClient.CurrentStatus
 
         internal bool Add(LifeInsurance lifeInsurance)
         {
-            throw new NotImplementedException();
+            return false;
         }
 
         internal bool Update(LifeInsurance lifeInsurance)

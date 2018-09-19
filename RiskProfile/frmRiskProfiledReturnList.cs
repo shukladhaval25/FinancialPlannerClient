@@ -92,21 +92,31 @@ namespace FinancialPlannerClient.RiskProfile
 
         private RiskProfiledReturnMaster convertSelectedRowDataToRiskProfileMastser()
         {
-            RiskProfiledReturnMaster riskProfileMaster = new RiskProfiledReturnMaster();
+            RiskProfiledReturnMaster riskPrfile = new RiskProfiledReturnMaster();
             if (trvList.SelectedNode.Tag != null)
             {
                 DataRow dr = getSelectedDataRow(int.Parse(trvList.SelectedNode.Tag.ToString()));
                 if (dr != null)
-                {
-                    riskProfileMaster.Id = int.Parse(dr.Field<string>("ID"));
-                    riskProfileMaster.Name = dr.Field<string>("Name");
-                    riskProfileMaster.Description  = dr.Field<string>("Description");
-                    riskProfileMaster.UpdatedByUserName = Program.CurrentUser.UserName;
-                    riskProfileMaster.RiskProfileReturn = new List<RiskProfiledReturn>();
-
+                {                    
+                    riskPrfile.Id = int.Parse(dr.Field<string>("Id"));
+                    riskPrfile.Name = dr.Field<string>("Name");
+                    riskPrfile.ThresholdYear = int.Parse(dr.Field<string>("ThresholdYear"));
+                    riskPrfile.MaxYear = int.Parse(dr.Field<string>("MaxYear"));
+                    riskPrfile.PreForeingInvestmentRatio = float.Parse(dr["PreForeingInvestmentRatio"].ToString());
+                    riskPrfile.PreEquityInvestmentRatio = float.Parse(dr["PreEquityInvestmentRatio"].ToString());
+                    riskPrfile.PreDebtInvestmentRatio = float.Parse(dr["PreDebtInvestmentRatio"].ToString());
+                    riskPrfile.PostForeingInvestmentRatio = float.Parse(dr["PostForeingInvestmentRatio"].ToString());
+                    riskPrfile.PostEquityInvestmentRatio = float.Parse(dr["PostEquityInvestmentRatio"].ToString());
+                    riskPrfile.PostDebtInvestmentRatio = float.Parse(dr["PostDebtInvestmentRatio"].ToString());
+                    riskPrfile.ForeingInvestmentReturn = float.Parse(dr["ForeingInvestmentReturn"].ToString());
+                    riskPrfile.EquityInvestmentReturn = float.Parse(dr["EquityInvestmentReturn"].ToString());
+                    riskPrfile.DebtInvestmentReturn = float.Parse(dr["DebtInvestmentReturn"].ToString());
+                    riskPrfile.Description = dr.Field<string>("Description");
+                    riskPrfile.UpdatedByUserName = Program.CurrentUser.UserName;
+                    riskPrfile.RiskProfileReturn = new List<RiskProfiledReturn>();
                 }
             }
-            return riskProfileMaster;
+            return riskPrfile;
         }
 
         private DataRow getSelectedDataRow(int id)

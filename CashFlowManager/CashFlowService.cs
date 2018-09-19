@@ -83,7 +83,11 @@ namespace FinancialPlannerClient.CashFlowManager
                         dr["(" + income.IncomeBy + ") " + income.Source] = 0;
                     }
                 }
-                dr["Total"] = totalIncome;              
+                dr["Total"] = totalIncome;
+                dr["IncomeTax"] = incomeTax;
+                double taxAmount = ((totalIncome * incomeTax) / 100);
+                dr["Tax"] = taxAmount;
+                dr["Post Tax Income"] = totalIncome - taxAmount;
                 _dtCashFlow.Rows.Add(dr);
             }
         }
@@ -99,7 +103,12 @@ namespace FinancialPlannerClient.CashFlowManager
                 dr["(" + income.IncomeBy + ") " + income.Source] = income.Amount;
                 totalIncome = totalIncome + income.Amount;
             }
-            dr["Total"] = totalIncome;     
+            dr["Total"] = totalIncome;
+            dr["IncomeTax"] = incomeTax;
+
+            double taxAmount = ((totalIncome * incomeTax) / 100);
+            dr["Tax"] = taxAmount;
+            dr["Post Tax Income"] = totalIncome - taxAmount;
             _dtCashFlow.Rows.Add(dr);
         }
 
@@ -158,9 +167,15 @@ namespace FinancialPlannerClient.CashFlowManager
             DataColumn dcTotal = new DataColumn("Total",typeof(System.Double));
             dcTotal.ReadOnly = true;
             _dtCashFlow.Columns.Add(dcTotal);
+            
+            _dtCashFlow.Columns.Add("IncomeTax",typeof(System.Decimal));
 
-            _dtCashFlow.Columns.Add("Tax", typeof(System.Double), "(Total * " + incomeTax +") / 100");
-            _dtCashFlow.Columns.Add("Post Tax Income", typeof(System.Double), "Total - Tax");            
+            _dtCashFlow.Columns.Add("Tax", typeof(System.Double));
+            //_dtCashFlow.Columns["Tax"].ReadOnly = true;
+            _dtCashFlow.Columns.Add("Post Tax Income", typeof(System.Double));
+           // _dtCashFlow.Columns["Post Tax Income"].ReadOnly = true;
+            //_dtCashFlow.Columns.Add("Tax", typeof(System.Double), "(Total * IncomeTax) / 100");
+            //_dtCashFlow.Columns.Add("Post Tax Income", typeof(System.Double), "Total - Tax");            
         }
     }
 }

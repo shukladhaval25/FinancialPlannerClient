@@ -52,7 +52,6 @@
   <ItemGroup>
     <Compile Include="CashFlowManager\CashFlow.cs" />
     <Compile Include="CashFlowManager\CashFlowService.cs" />
-    <Compile Include="CashFlowManager\Incomes.cs" />
     <Compile Include="Clients\ClientWithPlanner.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -51,6 +51,7 @@ namespace FinancialPlannerClient.PlanOptions
                 if (!cmbPlanOption.Items.Contains(planoptionmaster.txtOptionName))
                 {
                     cmbPlanOption.Items.Add(planoptionmaster.txtOptionName);
+                    fillOptionData();
                 }
             }
         }
@@ -62,9 +63,9 @@ namespace FinancialPlannerClient.PlanOptions
             {
                 fllupClientAndPlanInfo();
                 _dtPlan = new PlannerInfo.PlannerInfo().GetPlanData(this.client.ID);
-                
+
                 fillPlanData();
-                
+
                 fillOptionData();
             }
         }
@@ -108,7 +109,7 @@ namespace FinancialPlannerClient.PlanOptions
         private void fllupClientAndPlanInfo()
         {
             lblclientNameVal.Text = this.client.Name;
-        }      
+        }
 
         private void cmbPlan_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -119,7 +120,7 @@ namespace FinancialPlannerClient.PlanOptions
                 cmbPlan.Tag = _planeId;
                 fillOptionData();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 StackTrace st = new StackTrace ();
                 StackFrame sf = st.GetFrame (0);
@@ -156,7 +157,11 @@ namespace FinancialPlannerClient.PlanOptions
                         column.DefaultCellStyle.Format = "#,###";
                         column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.TopRight;
                     }
-                }               
+                    if (column.Name != "IncomeTax")
+                        column.ReadOnly = true;
+                    else
+                        column.HeaderText = "Income Tax (%)";
+                }
             }
         }
 
@@ -180,6 +185,40 @@ namespace FinancialPlannerClient.PlanOptions
                 if (!cmbPlanOption.Items.Contains(planoptionmaster.txtOptionName))
                 {
                     cmbPlanOption.Items.Add(planoptionmaster.txtOptionName);
+                }
+            }
+        }
+
+        private void dtGridCashFlow_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+
+            double total = 0;
+            double.TryParse(
+                 dtGridCashFlow.Rows[e.RowIndex].Cells["Total"].Value.ToString(), out total);
+            double incomeTax = 0;
+            double.TryParse(
+                dtGridCashFlow.Rows[e.RowIndex].Cells["IncomeTax"].Value.ToString(), out incomeTax);
+            double taxAmount = ((total * incomeTax) /100);
+            dtGridCashFlow.Rows[e.RowIndex].Cells["Tax"].ReadOnly = false;
+            dtGridCashFlow.Rows[e.RowIndex].Cells["Tax"].Value = taxAmount;
+            dtGridCashFlow.Rows[e.RowIndex].Cells["Tax"].ReadOnly = true;
+            dtGridCashFlow.Rows[e.RowIndex].Cells["Post Tax Income"].ReadOnly = false;
+            dtGridCashFlow.Rows[e.RowIndex].Cells["Post Tax Income"].Value = total - taxAmount;
+            dtGridCashFlow.Rows[e.RowIndex].Cells["Post Tax Income"].ReadOnly = true;
+        }
+
+        private void dtGridCashFlow_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            if (e.ColumnIndex == dtGridCashFlow.Columns["IncomeTax"].Index)
+            {
+                dtGridCashFlow.Rows[e.RowIndex].ErrorText = "";
+                decimal newDecimal;
+                if (dtGridCashFlow.Rows[e.RowIndex].IsNewRow) { return; }
+                if (!decimal.TryParse(e.FormattedValue.ToString(),
+                    out newDecimal) || ((newDecimal < 0) || (newDecimal > 100)))
+                {
+                    e.Cancel = true;
+                    dtGridCashFlow.Rows[e.RowIndex].ErrorText = "Value must be a between 0 to 100";
                 }
             }
         }

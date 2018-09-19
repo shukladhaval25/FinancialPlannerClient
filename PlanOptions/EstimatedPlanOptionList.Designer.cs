@@ -227,6 +227,8 @@
             this.dtGridCashFlow.Name = "dtGridCashFlow";
             this.dtGridCashFlow.Size = new System.Drawing.Size(1022, 195);
             this.dtGridCashFlow.TabIndex = 1;
+            this.dtGridCashFlow.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtGridCashFlow_CellEndEdit);
+            this.dtGridCashFlow.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dtGridCashFlow_CellValidating);
             // 
             // groupBox2
             // 

@@ -39,7 +39,7 @@ namespace FinancialPlannerClient.RiskProfile
 
         private void loadRislProfileReturnDetails()
         {
-            _dtRiskProfileReturn = _defaultRiskProfile.GetRiskProfileReturnById(_riskProfileId);
+            _dtRiskProfileReturn = _defaultRiskProfile.GetDefaultRiskProfileReturn(_riskProfiledReturnMaster);
             dtGridRiskProfileDetails.DataSource = _dtRiskProfileReturn;
             setRiskProfileDetailsGrid();
         }
@@ -49,6 +49,17 @@ namespace FinancialPlannerClient.RiskProfile
             _riskProfileId = _riskProfiledReturnMaster.Id;
             txtRiskProfileName.Tag = _riskProfiledReturnMaster.Id.ToString();
             txtRiskProfileName.Text = _riskProfiledReturnMaster.Name;
+            numThresholdYear.Value = _riskProfiledReturnMaster.ThresholdYear;
+            numMaxYear.Value = _riskProfiledReturnMaster.MaxYear;
+            txtPreForeignInvRation.Text = _riskProfiledReturnMaster.PreForeingInvestmentRatio.ToString();
+            txtPreEquityInvRatio.Text = _riskProfiledReturnMaster.PreEquityInvestmentRatio.ToString();
+            txtPreDebtInvRatio.Text = _riskProfiledReturnMaster.PreDebtInvestmentRatio.ToString();
+            txtPostForeingInvRatio.Text = _riskProfiledReturnMaster.PostForeingInvestmentRatio.ToString();
+            txtPostEquityInvRatio.Text = _riskProfiledReturnMaster.PostEquityInvestmentRatio.ToString();
+            txtPostDebtInvRatio.Text = _riskProfiledReturnMaster.PostDebtInvestmentRatio.ToString();
+            txtForeingReturn.Text = _riskProfiledReturnMaster.ForeingInvestmentReturn.ToString();
+            txtEquityInvReturn.Text = _riskProfiledReturnMaster.EquityInvestmentReturn.ToString();
+            txtDebtInvReturn.Text = _riskProfiledReturnMaster.DebtInvestmentReturn.ToString();                           
             txtDescription.Text = _riskProfiledReturnMaster.Description;
         }
 
@@ -58,10 +69,17 @@ namespace FinancialPlannerClient.RiskProfile
             {
                 txtRiskProfileName.Text = "";
                 txtDescription.Text = "";
-               
-                _dtRiskProfileReturn = _defaultRiskProfile.GetDefaultRiskProfileReturn();
-                dtGridRiskProfileDetails.DataSource = _dtRiskProfileReturn;
-                setRiskProfileDetailsGrid();
+                numThresholdYear.Value = 5;
+                numMaxYear.Value = 70;
+                txtPreForeignInvRation.Text = "0";
+                txtPreEquityInvRatio.Text = "20";
+                txtPreDebtInvRatio.Text = "80";
+                txtPostForeingInvRatio.Text = "0";
+                txtPostEquityInvRatio.Text = "80";
+                txtPostDebtInvRatio.Text = "20";
+                txtForeingReturn.Text = "0";
+                txtEquityInvReturn.Text = "13";
+                txtDebtInvReturn.Text = "8";           
             }          
         }
 
@@ -72,10 +90,10 @@ namespace FinancialPlannerClient.RiskProfile
             dtGridRiskProfileDetails.Columns[2].ReadOnly = true;
             dtGridRiskProfileDetails.Columns[9].ReadOnly = true;
             dtGridRiskProfileDetails.Columns[2].HeaderText = "Reaming Year";
-            dtGridRiskProfileDetails.Columns[3].HeaderText = "Foreing Investment (%)";
+            dtGridRiskProfileDetails.Columns[3].HeaderText = "Foreign Investment (%)";
             dtGridRiskProfileDetails.Columns[4].HeaderText = "Equity Investment (%)";
             dtGridRiskProfileDetails.Columns[5].HeaderText = "Debt Investment (%)";
-            dtGridRiskProfileDetails.Columns[6].HeaderText = "Foreing Return (%)";
+            dtGridRiskProfileDetails.Columns[6].HeaderText = "Foreign Return (%)";
             dtGridRiskProfileDetails.Columns[7].HeaderText = "Equity Return (%)";
             dtGridRiskProfileDetails.Columns[8].HeaderText = "Debt Return (%)";
             dtGridRiskProfileDetails.Columns[9].HeaderText = "Average Return (%)";
@@ -135,23 +153,23 @@ namespace FinancialPlannerClient.RiskProfile
 
         private void dtGridRiskProfileDetails_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
-            if (e.ColumnIndex == dtGridRiskProfileDetails.Columns["ForeingInvestmentRatio"].Index ||
-                e.ColumnIndex == dtGridRiskProfileDetails.Columns["EquityInvestementRatio"].Index ||
-                e.ColumnIndex == dtGridRiskProfileDetails.Columns["DebtInvestementRatio"].Index ||
-                e.ColumnIndex == dtGridRiskProfileDetails.Columns["ForeingInvestementReaturn"].Index ||
-                e.ColumnIndex == dtGridRiskProfileDetails.Columns["EquityInvestementReturn"].Index ||
-                e.ColumnIndex == dtGridRiskProfileDetails.Columns["DebtInvestementReturn"].Index)
-            {
-                dtGridRiskProfileDetails.Rows[e.RowIndex].ErrorText = "";
-                decimal newDecimal;
-                if (dtGridRiskProfileDetails.Rows[e.RowIndex].IsNewRow) { return; }
-                if (!decimal.TryParse(e.FormattedValue.ToString(),
-                    out newDecimal) || ((newDecimal < 0) || (newDecimal > 100)))
-                {
-                    e.Cancel = true;
-                    dtGridRiskProfileDetails.Rows[e.RowIndex].ErrorText = "the value must be a between 0 to 100";
-                }                
-            }
+            //if (e.ColumnIndex == dtGridRiskProfileDetails.Columns["ForeingInvestmentRatio"].Index ||
+            //    e.ColumnIndex == dtGridRiskProfileDetails.Columns["EquityInvestementRatio"].Index ||
+            //    e.ColumnIndex == dtGridRiskProfileDetails.Columns["DebtInvestementRatio"].Index ||
+            //    e.ColumnIndex == dtGridRiskProfileDetails.Columns["ForeingInvestementReaturn"].Index ||
+            //    e.ColumnIndex == dtGridRiskProfileDetails.Columns["EquityInvestementReturn"].Index ||
+            //    e.ColumnIndex == dtGridRiskProfileDetails.Columns["DebtInvestementReturn"].Index)
+            //{
+            //    dtGridRiskProfileDetails.Rows[e.RowIndex].ErrorText = "";
+            //    decimal newDecimal;
+            //    if (dtGridRiskProfileDetails.Rows[e.RowIndex].IsNewRow) { return; }
+            //    if (!decimal.TryParse(e.FormattedValue.ToString(),
+            //        out newDecimal) || ((newDecimal < 0) || (newDecimal > 100)))
+            //    {
+            //        e.Cancel = true;
+            //        dtGridRiskProfileDetails.Rows[e.RowIndex].ErrorText = "the value must be a between 0 to 100";
+            //    }                
+            //}
         }
 
         private void btnPersonalDetailSave_Click(object sender, EventArgs e)
@@ -184,26 +202,42 @@ namespace FinancialPlannerClient.RiskProfile
             RiskProfiledReturnMaster rpr = new RiskProfiledReturnMaster();
             rpr.Id = _riskProfileId;
             rpr.Name = txtRiskProfileName.Text;
+            rpr.ThresholdYear = int.Parse(numThresholdYear.Value.ToString());
+            rpr.MaxYear = int.Parse(numMaxYear.Value.ToString());
+            rpr.PreForeingInvestmentRatio = float.Parse(txtPreForeignInvRation.Text);
+            rpr.PreEquityInvestmentRatio = float.Parse(txtPreEquityInvRatio.Text);
+            rpr.PreDebtInvestmentRatio = float.Parse(txtPreDebtInvRatio.Text);
+
+            rpr.PostForeingInvestmentRatio = float.Parse(txtPostForeingInvRatio.Text);
+            rpr.PostEquityInvestmentRatio = float.Parse(txtPostEquityInvRatio.Text);
+            rpr.PostDebtInvestmentRatio = float.Parse(txtPostDebtInvRatio.Text);
+
+            rpr.ForeingInvestmentReturn = float.Parse(txtForeingReturn.Text);
+            rpr.EquityInvestmentReturn = float.Parse(txtEquityInvReturn.Text);
+            rpr.DebtInvestmentReturn = float.Parse(txtDebtInvReturn.Text);
             rpr.Description = txtDescription.Text;
             rpr.UpdatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
             rpr.UpdatedBy = Program.CurrentUser.Id;
             rpr.UpdatedByUserName = Program.CurrentUser.UserName;
             rpr.MachineName = System.Environment.MachineName;
             rpr.RiskProfileReturn = new List<RiskProfiledReturn>();
-            foreach (DataRow dr in _dtRiskProfileReturn.Rows)
+            if (_dtRiskProfileReturn != null)
             {
-                RiskProfiledReturn riskProfile = new RiskProfiledReturn();
-                //riskProfile.Id = dr.Field<int>("ID");
-                riskProfile.RiskProfileId = rpr.Id;
-                riskProfile.YearRemaining = int.Parse(dr["YearRemaining"].ToString());
-                riskProfile.ForeingInvestmentRatio = decimal.Parse(dr["ForeingInvestmentRatio"].ToString());
-                riskProfile.EquityInvestementRatio = decimal.Parse(dr["EquityInvestementRatio"].ToString());
-                riskProfile.DebtInvestementRatio = decimal.Parse(dr["DebtInvestementRatio"].ToString());
+                foreach (DataRow dr in _dtRiskProfileReturn.Rows)
+                {
+                    RiskProfiledReturn riskProfile = new RiskProfiledReturn();
+                    //riskProfile.Id = dr.Field<int>("ID");
+                    riskProfile.RiskProfileId = rpr.Id;
+                    riskProfile.YearRemaining = int.Parse(dr["YearRemaining"].ToString());
+                    riskProfile.ForeingInvestmentRatio = decimal.Parse(dr["ForeignInvestmentRatio"].ToString());
+                    riskProfile.EquityInvestementRatio = decimal.Parse(dr["EquityInvestementRatio"].ToString());
+                    riskProfile.DebtInvestementRatio = decimal.Parse(dr["DebtInvestementRatio"].ToString());
 
-                riskProfile.ForeingInvestementReaturn = decimal.Parse(dr["ForeingInvestementReaturn"].ToString());
-                riskProfile.EquityInvestementReturn =decimal.Parse(dr["EquityInvestementReturn"].ToString());
-                riskProfile.DebtInvestementReturn = decimal.Parse(dr["DebtInvestementReturn"].ToString());
-                rpr.RiskProfileReturn.Add(riskProfile);
+                    riskProfile.ForeingInvestementReaturn = decimal.Parse(dr["ForeignInvestementReaturn"].ToString());
+                    riskProfile.EquityInvestementReturn = decimal.Parse(dr["EquityInvestementReturn"].ToString());
+                    riskProfile.DebtInvestementReturn = decimal.Parse(dr["DebtInvestementReturn"].ToString());
+                    rpr.RiskProfileReturn.Add(riskProfile);
+                }
             }
             return rpr;
         }
@@ -233,6 +267,33 @@ namespace FinancialPlannerClient.RiskProfile
                 MethodBase  currentMethodName = sf.GetMethod();
                 LogDebug(currentMethodName.Name, ex);
             }
+        }
+
+        private void btnShowCalculation_Click(object sender, EventArgs e)
+        {
+            if (isValidData())
+            {
+                _riskProfiledReturnMaster = getRiskProfileData();
+                loadRislProfileReturnDetails();
+            }
+        }
+
+        private bool isValidData()
+        {
+            if (string.IsNullOrEmpty(txtPreForeignInvRation.Text) ||
+                string.IsNullOrEmpty(txtPreEquityInvRatio.Text) ||
+                string.IsNullOrEmpty(txtPreDebtInvRatio.Text) ||
+                string.IsNullOrEmpty(txtPostForeingInvRatio.Text) ||
+                string.IsNullOrEmpty(txtPostEquityInvRatio.Text) ||
+                string.IsNullOrEmpty(txtPostDebtInvRatio.Text) ||
+                string.IsNullOrEmpty(txtForeingReturn.Text) ||
+                string.IsNullOrEmpty(txtEquityInvReturn.Text) ||
+                string.IsNullOrEmpty(txtDebtInvReturn.Text))
+            {
+                MessageBox.Show("Invalid value for one of the field. Please enter valid data.", "Invalid Data", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
+            return true;
         }
     }
 }
