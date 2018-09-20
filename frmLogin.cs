@@ -38,6 +38,7 @@ namespace FinancialPlannerClient
             }
             catch (Exception ex)
             {
+                MessageBox.Show("Invalid user or credential.", "Login fail", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Logger.LogDebug(ex);
             }
 

@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PlanOptionMaster));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnGenInsCancel = new System.Windows.Forms.Button();
             this.btnGenInsSave = new System.Windows.Forms.Button();
@@ -37,6 +39,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.lblclientNameVal = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.imageList16x16 = new System.Windows.Forms.ImageList(this.components);
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,6 +63,7 @@
             // 
             this.btnGenInsCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnGenInsCancel.ImageKey = "icons8-cancel-16.png";
+            this.btnGenInsCancel.ImageList = this.imageList16x16;
             this.btnGenInsCancel.Location = new System.Drawing.Point(191, 110);
             this.btnGenInsCancel.Name = "btnGenInsCancel";
             this.btnGenInsCancel.Size = new System.Drawing.Size(86, 26);
@@ -72,6 +76,7 @@
             // 
             this.btnGenInsSave.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnGenInsSave.ImageKey = "icons8-save-close-16.png";
+            this.btnGenInsSave.ImageList = this.imageList16x16;
             this.btnGenInsSave.Location = new System.Drawing.Point(99, 110);
             this.btnGenInsSave.Name = "btnGenInsSave";
             this.btnGenInsSave.Size = new System.Drawing.Size(86, 26);
@@ -139,6 +144,16 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Client :";
             // 
+            // imageList16x16
+            // 
+            this.imageList16x16.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList16x16.ImageStream")));
+            this.imageList16x16.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList16x16.Images.SetKeyName(0, "icons8-contact-details-16-2.png");
+            this.imageList16x16.Images.SetKeyName(1, "icons8-resume-16.png");
+            this.imageList16x16.Images.SetKeyName(2, "icons8-customer-16.png");
+            this.imageList16x16.Images.SetKeyName(3, "icons8-cancel-16.png");
+            this.imageList16x16.Images.SetKeyName(4, "icons8-save-close-16.png");
+            // 
             // PlanOptionMaster
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -165,5 +180,6 @@
         internal System.Windows.Forms.TextBox txtOptionName;
         internal System.Windows.Forms.Label lblclientNameVal;
         internal System.Windows.Forms.Label lblPlanVal;
+        private System.Windows.Forms.ImageList imageList16x16;
     }
 }

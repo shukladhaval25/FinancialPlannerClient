@@ -59,7 +59,7 @@ namespace FinancialPlannerClient.RiskProfile
             txtPostDebtInvRatio.Text = _riskProfiledReturnMaster.PostDebtInvestmentRatio.ToString();
             txtForeingReturn.Text = _riskProfiledReturnMaster.ForeingInvestmentReturn.ToString();
             txtEquityInvReturn.Text = _riskProfiledReturnMaster.EquityInvestmentReturn.ToString();
-            txtDebtInvReturn.Text = _riskProfiledReturnMaster.DebtInvestmentReturn.ToString();                           
+            txtDebtInvReturn.Text = _riskProfiledReturnMaster.DebtInvestmentReturn.ToString();
             txtDescription.Text = _riskProfiledReturnMaster.Description;
         }
 
@@ -79,8 +79,8 @@ namespace FinancialPlannerClient.RiskProfile
                 txtPostDebtInvRatio.Text = "20";
                 txtForeingReturn.Text = "0";
                 txtEquityInvReturn.Text = "13";
-                txtDebtInvReturn.Text = "8";           
-            }          
+                txtDebtInvReturn.Text = "8";
+            }
         }
 
         private void setRiskProfileDetailsGrid()
@@ -101,7 +101,7 @@ namespace FinancialPlannerClient.RiskProfile
 
         private void dtGridRiskProfileDetails_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            
+
         }
         private void LogDebug(string methodName, Exception ex)
         {
@@ -173,7 +173,7 @@ namespace FinancialPlannerClient.RiskProfile
         }
 
         private void btnPersonalDetailSave_Click(object sender, EventArgs e)
-        {           
+        {
             RiskProfiledReturnMaster riskProfileMaster = new RiskProfiledReturnMaster();
             riskProfileMaster = getRiskProfileData();
             try
@@ -183,12 +183,12 @@ namespace FinancialPlannerClient.RiskProfile
                 if (riskProfileMaster.Id == 0)
                     apiurl = Program.WebServiceUrl + "/" + ADD_RISKPROFILE_RETURN;
                 else
-                    apiurl = Program.WebServiceUrl +"/"+ UPDATE_RISKPROFILE_RETURN;
+                    apiurl = Program.WebServiceUrl + "/" + UPDATE_RISKPROFILE_RETURN;
 
                 RestAPIExecutor restApiExecutor = new RestAPIExecutor();
 
                 var restResult = restApiExecutor.Execute<RiskProfiledReturnMaster>(apiurl, riskProfileMaster, "POST");
-                MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);                
+                MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
@@ -294,6 +294,11 @@ namespace FinancialPlannerClient.RiskProfile
                 return false;
             }
             return true;
+        }
+
+        private void txtPreForeignInvRation_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
     }
 }

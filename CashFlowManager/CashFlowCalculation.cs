@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FinancialPlannerClient.CashFlowManager
 {
-    public class CashFlow
+    public class CashFlowCalculation
     {
         int _pid;
         int _cid;

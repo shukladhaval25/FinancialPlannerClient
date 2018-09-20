@@ -50,6 +50,9 @@
             this.txtIncomeTax = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btnCashFlowCancel = new System.Windows.Forms.Button();
+            this.btnCashFlowSave = new System.Windows.Forms.Button();
+            this.imageList16x16 = new System.Windows.Forms.ImageList(this.components);
             this.groupBox1.SuspendLayout();
             this.grpActionControls.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -232,6 +235,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnCashFlowCancel);
+            this.groupBox2.Controls.Add(this.btnCashFlowSave);
             this.groupBox2.Controls.Add(this.btnShowIncomeDetails);
             this.groupBox2.Controls.Add(this.txtIncomeTax);
             this.groupBox2.Controls.Add(this.label4);
@@ -243,7 +248,7 @@
             // 
             // btnShowIncomeDetails
             // 
-            this.btnShowIncomeDetails.Location = new System.Drawing.Point(201, 10);
+            this.btnShowIncomeDetails.Location = new System.Drawing.Point(158, 11);
             this.btnShowIncomeDetails.Name = "btnShowIncomeDetails";
             this.btnShowIncomeDetails.Size = new System.Drawing.Size(134, 23);
             this.btnShowIncomeDetails.TabIndex = 2;
@@ -255,9 +260,10 @@
             // 
             this.txtIncomeTax.Location = new System.Drawing.Point(95, 13);
             this.txtIncomeTax.Name = "txtIncomeTax";
-            this.txtIncomeTax.Size = new System.Drawing.Size(100, 20);
+            this.txtIncomeTax.Size = new System.Drawing.Size(57, 20);
             this.txtIncomeTax.TabIndex = 1;
             this.txtIncomeTax.Text = "10";
+            this.txtIncomeTax.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label4
             // 
@@ -277,6 +283,41 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // btnCashFlowCancel
+            // 
+            this.btnCashFlowCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCashFlowCancel.ImageKey = "icons8-cancel-16.png";
+            this.btnCashFlowCancel.ImageList = this.imageList16x16;
+            this.btnCashFlowCancel.Location = new System.Drawing.Point(928, 11);
+            this.btnCashFlowCancel.Name = "btnCashFlowCancel";
+            this.btnCashFlowCancel.Size = new System.Drawing.Size(86, 26);
+            this.btnCashFlowCancel.TabIndex = 12;
+            this.btnCashFlowCancel.Text = "Cancel";
+            this.btnCashFlowCancel.UseVisualStyleBackColor = true;
+            // 
+            // btnCashFlowSave
+            // 
+            this.btnCashFlowSave.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCashFlowSave.ImageKey = "icons8-save-close-16.png";
+            this.btnCashFlowSave.ImageList = this.imageList16x16;
+            this.btnCashFlowSave.Location = new System.Drawing.Point(836, 11);
+            this.btnCashFlowSave.Name = "btnCashFlowSave";
+            this.btnCashFlowSave.Size = new System.Drawing.Size(86, 26);
+            this.btnCashFlowSave.TabIndex = 11;
+            this.btnCashFlowSave.Text = "Save";
+            this.btnCashFlowSave.UseVisualStyleBackColor = true;
+            this.btnCashFlowSave.Click += new System.EventHandler(this.btnCashFlowSave_Click);
+            // 
+            // imageList16x16
+            // 
+            this.imageList16x16.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList16x16.ImageStream")));
+            this.imageList16x16.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList16x16.Images.SetKeyName(0, "icons8-contact-details-16-2.png");
+            this.imageList16x16.Images.SetKeyName(1, "icons8-resume-16.png");
+            this.imageList16x16.Images.SetKeyName(2, "icons8-customer-16.png");
+            this.imageList16x16.Images.SetKeyName(3, "icons8-cancel-16.png");
+            this.imageList16x16.Images.SetKeyName(4, "icons8-save-close-16.png");
             // 
             // EstimatedPlanOptionList
             // 
@@ -322,5 +363,8 @@
         private System.Windows.Forms.TextBox txtIncomeTax;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.Button btnCashFlowCancel;
+        private System.Windows.Forms.Button btnCashFlowSave;
+        private System.Windows.Forms.ImageList imageList16x16;
     }
 }

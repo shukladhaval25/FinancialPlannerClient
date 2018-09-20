@@ -1,9 +1,16 @@
-﻿using FinancialPlanner.Common.Model;
+﻿using FinancialPlanner.Common;
+using FinancialPlanner.Common.DataConversion;
+using FinancialPlanner.Common.Model;
+using FinancialPlanner.Common.Model.PlanOptions;
 using FinancialPlannerClient.PlannerInfo;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Net;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,11 +18,14 @@ namespace FinancialPlannerClient.CashFlowManager
 {
     public class CashFlowService
     {
-        private CashFlow _cashFlow = new CashFlow();
+        private CashFlowCalculation _cashFlow = new CashFlowCalculation();
         private int _clientId, _planId;
         DataTable  _dtCashFlow;
+        private readonly string GETALL_API= "CashFlow/Get?optionId={0}";
+        private readonly string ADD_CASHFLOW_API = "cashflow/Add";
+        private readonly string UPDATE_CASHFLOW_API = "cashflow/update";
 
-        public CashFlow GetCashFlowData(int clientId, int planId)
+        public CashFlowCalculation GetCashFlowData(int clientId, int planId)
         {
             _clientId = clientId;
             _planId = planId;
@@ -34,10 +44,36 @@ namespace FinancialPlannerClient.CashFlowManager
             return _cashFlow;
         }
 
+        public CashFlow GetCashFlow(int optionId)
+        {
+            FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
+            string apiurl = Program.WebServiceUrl +"/"+ string.Format(GETALL_API,optionId);
+
+            HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(apiurl);
+            request.Method = "GET";
+            String cashFlowJson = String.Empty;
+            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+            {
+                Stream dataStream = response.GetResponseStream();
+
+                StreamReader reader = new StreamReader(dataStream);
+                cashFlowJson = reader.ReadToEnd();
+                reader.Close();
+                dataStream.Close();
+            }
+            var cashFlowResult = jsonSerialization.DeserializeFromString<Result<CashFlow>>(cashFlowJson);
+
+            if (cashFlowResult.Value != null)
+            {
+                return cashFlowResult.Value;
+            }
+            return null;
+        }
+
         public DataTable GenerateCashFlow(int clientId, int planId, float incomeTax)
         {
             _dtCashFlow = new DataTable();
-            CashFlow cashFlow = GetCashFlowData(clientId,planId);
+            CashFlowCalculation cashFlow = GetCashFlowData(clientId,planId);
             if (cashFlow != null)
             {
                 createTableCashFlowStructure(incomeTax);
@@ -176,6 +212,37 @@ namespace FinancialPlannerClient.CashFlowManager
            // _dtCashFlow.Columns["Post Tax Income"].ReadOnly = true;
             //_dtCashFlow.Columns.Add("Tax", typeof(System.Double), "(Total * IncomeTax) / 100");
             //_dtCashFlow.Columns.Add("Post Tax Income", typeof(System.Double), "Total - Tax");            
+        }
+
+        internal bool Save(CashFlow cf)
+        {
+            try
+            {
+                FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
+                string apiurl = "";
+                apiurl = (cf.Id == 0) ? Program.WebServiceUrl + "/" + ADD_CASHFLOW_API :
+                    Program.WebServiceUrl + "/" + UPDATE_CASHFLOW_API;
+                RestAPIExecutor restApiExecutor = new RestAPIExecutor();
+                var restResult = restApiExecutor.Execute<CashFlow>(apiurl, cf, "POST");
+                return true;
+            }
+            catch (Exception ex)
+            {
+                StackTrace st = new StackTrace ();
+                StackFrame sf = st.GetFrame (0);
+                MethodBase  currentMethodName = sf.GetMethod();
+                LogDebug(currentMethodName.Name, ex);
+                return false;
+            }
+        }
+
+        private void LogDebug(string methodName, Exception ex)
+        {
+            DebuggerLogInfo debuggerInfo = new DebuggerLogInfo();
+            debuggerInfo.ClassName = this.GetType().Name;
+            debuggerInfo.Method = methodName;
+            debuggerInfo.ExceptionInfo = ex;
+            Logger.LogDebug(debuggerInfo);
         }
     }
 }

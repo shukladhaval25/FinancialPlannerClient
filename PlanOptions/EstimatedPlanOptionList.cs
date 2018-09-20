@@ -12,6 +12,7 @@ using FinancialPlannerClient.CashFlowManager;
 using System.Diagnostics;
 using System.Reflection;
 using FinancialPlanner.Common;
+using FinancialPlanner.Common.Model.PlanOptions;
 
 namespace FinancialPlannerClient.PlanOptions
 {
@@ -23,7 +24,6 @@ namespace FinancialPlannerClient.PlanOptions
         DataTable _dtcashFlow;
         private int _planeId;
         private int _optinId;
-
 
         public EstimatedPlanOptionList()
         {
@@ -140,6 +140,19 @@ namespace FinancialPlannerClient.PlanOptions
         {
             var val =  _dtOption.Select("NAME ='" + cmbPlanOption.Text + "'");
             cmbPlanOption.Tag = int.Parse(val[0][0].ToString());
+            CashFlowService cashFlowService = new CashFlowService();
+            CashFlow cf =  cashFlowService.GetCashFlow(int.Parse(val[0][0].ToString()));
+            if (cf != null)
+            {
+                txtIncomeTax.Text = cf.IncomeTax.ToString();
+                txtIncomeTax.Tag = cf.Id;
+                btnShowIncomeDetails_Click(sender, e);
+            }
+            else
+            {
+                txtIncomeTax.Text = "";
+                txtIncomeTax.Tag = "0";
+            }
         }
 
         private void btnShowIncomeDetails_Click(object sender, EventArgs e)
@@ -221,6 +234,34 @@ namespace FinancialPlannerClient.PlanOptions
                     dtGridCashFlow.Rows[e.RowIndex].ErrorText = "Value must be a between 0 to 100";
                 }
             }
+        }
+
+        private void btnCashFlowSave_Click(object sender, EventArgs e)
+        {
+            CashFlow cf = getCashFlowData();
+            CashFlowService cfService = new CashFlowService();
+
+            if (cfService.Save(cf))
+            {
+                MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);                
+            }
+            else
+                MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private CashFlow getCashFlowData()
+        {
+            CashFlow cf = new CashFlow();
+            cf.Id = int.Parse(txtIncomeTax.Tag.ToString());
+            cf.Oid = int.Parse(cmbPlanOption.Tag.ToString());
+            cf.IncomeTax = float.Parse(txtIncomeTax.Text);
+            cf.UpdatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+            cf.CreatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+            cf.UpdatedBy = Program.CurrentUser.Id;
+            cf.CreatedBy = Program.CurrentUser.Id;
+            cf.UpdatedByUserName = Program.CurrentUser.UserName;
+            cf.MachineName = System.Environment.MachineName;
+            return cf;
         }
     }
 }

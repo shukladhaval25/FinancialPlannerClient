@@ -205,7 +205,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 61.57407F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38.42593F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 93F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 94F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 95F));
             this.tableLayoutPanel1.Controls.Add(this.label6, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label7, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.label8, 3, 0);
@@ -237,7 +237,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(164, 0);
+            this.label6.Location = new System.Drawing.Point(163, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(94, 33);
             this.label6.TabIndex = 70;
@@ -250,7 +250,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(264, 0);
+            this.label7.Location = new System.Drawing.Point(263, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(87, 33);
             this.label7.TabIndex = 71;
@@ -263,9 +263,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(357, 0);
+            this.label8.Location = new System.Drawing.Point(356, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(89, 33);
+            this.label8.Size = new System.Drawing.Size(90, 33);
             this.label8.TabIndex = 72;
             this.label8.Text = "Debt Investment (%)";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -275,7 +275,7 @@
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(3, 33);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(155, 22);
+            this.label5.Size = new System.Drawing.Size(154, 22);
             this.label5.TabIndex = 69;
             this.label5.Text = "Value under threshold years:";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -285,73 +285,82 @@
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(3, 59);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(155, 23);
+            this.label10.Size = new System.Drawing.Size(154, 23);
             this.label10.TabIndex = 74;
             this.label10.Text = "Value above threshold years:";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txtPreForeignInvRation
             // 
-            this.txtPreForeignInvRation.Location = new System.Drawing.Point(164, 36);
+            this.txtPreForeignInvRation.Location = new System.Drawing.Point(163, 36);
             this.txtPreForeignInvRation.Name = "txtPreForeignInvRation";
             this.txtPreForeignInvRation.Size = new System.Drawing.Size(94, 20);
             this.txtPreForeignInvRation.TabIndex = 6;
+            this.txtPreForeignInvRation.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPreForeignInvRation_KeyPress);
             // 
             // txtPreEquityInvRatio
             // 
-            this.txtPreEquityInvRatio.Location = new System.Drawing.Point(264, 36);
+            this.txtPreEquityInvRatio.Location = new System.Drawing.Point(263, 36);
             this.txtPreEquityInvRatio.Name = "txtPreEquityInvRatio";
             this.txtPreEquityInvRatio.Size = new System.Drawing.Size(87, 20);
             this.txtPreEquityInvRatio.TabIndex = 7;
+            this.txtPreEquityInvRatio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPreForeignInvRation_KeyPress);
             // 
             // txtPreDebtInvRatio
             // 
-            this.txtPreDebtInvRatio.Location = new System.Drawing.Point(357, 36);
+            this.txtPreDebtInvRatio.Location = new System.Drawing.Point(356, 36);
             this.txtPreDebtInvRatio.Name = "txtPreDebtInvRatio";
             this.txtPreDebtInvRatio.Size = new System.Drawing.Size(88, 20);
             this.txtPreDebtInvRatio.TabIndex = 8;
+            this.txtPreDebtInvRatio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPreForeignInvRation_KeyPress);
             // 
             // txtPostForeingInvRatio
             // 
-            this.txtPostForeingInvRatio.Location = new System.Drawing.Point(164, 62);
+            this.txtPostForeingInvRatio.Location = new System.Drawing.Point(163, 62);
             this.txtPostForeingInvRatio.Name = "txtPostForeingInvRatio";
             this.txtPostForeingInvRatio.Size = new System.Drawing.Size(94, 20);
             this.txtPostForeingInvRatio.TabIndex = 9;
+            this.txtPostForeingInvRatio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPreForeignInvRation_KeyPress);
             // 
             // txtPostEquityInvRatio
             // 
-            this.txtPostEquityInvRatio.Location = new System.Drawing.Point(264, 62);
+            this.txtPostEquityInvRatio.Location = new System.Drawing.Point(263, 62);
             this.txtPostEquityInvRatio.Name = "txtPostEquityInvRatio";
             this.txtPostEquityInvRatio.Size = new System.Drawing.Size(87, 20);
             this.txtPostEquityInvRatio.TabIndex = 10;
+            this.txtPostEquityInvRatio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPreForeignInvRation_KeyPress);
             // 
             // txtPostDebtInvRatio
             // 
-            this.txtPostDebtInvRatio.Location = new System.Drawing.Point(357, 62);
+            this.txtPostDebtInvRatio.Location = new System.Drawing.Point(356, 62);
             this.txtPostDebtInvRatio.Name = "txtPostDebtInvRatio";
             this.txtPostDebtInvRatio.Size = new System.Drawing.Size(88, 20);
             this.txtPostDebtInvRatio.TabIndex = 11;
+            this.txtPostDebtInvRatio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPreForeignInvRation_KeyPress);
             // 
             // txtForeingReturn
             // 
-            this.txtForeingReturn.Location = new System.Drawing.Point(164, 88);
+            this.txtForeingReturn.Location = new System.Drawing.Point(163, 88);
             this.txtForeingReturn.Name = "txtForeingReturn";
             this.txtForeingReturn.Size = new System.Drawing.Size(94, 20);
             this.txtForeingReturn.TabIndex = 12;
+            this.txtForeingReturn.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPreForeignInvRation_KeyPress);
             // 
             // txtEquityInvReturn
             // 
-            this.txtEquityInvReturn.Location = new System.Drawing.Point(264, 88);
+            this.txtEquityInvReturn.Location = new System.Drawing.Point(263, 88);
             this.txtEquityInvReturn.Name = "txtEquityInvReturn";
             this.txtEquityInvReturn.Size = new System.Drawing.Size(87, 20);
             this.txtEquityInvReturn.TabIndex = 13;
+            this.txtEquityInvReturn.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPreForeignInvRation_KeyPress);
             // 
             // txtDebtInvReturn
             // 
-            this.txtDebtInvReturn.Location = new System.Drawing.Point(357, 88);
+            this.txtDebtInvReturn.Location = new System.Drawing.Point(356, 88);
             this.txtDebtInvReturn.Name = "txtDebtInvReturn";
             this.txtDebtInvReturn.Size = new System.Drawing.Size(88, 20);
             this.txtDebtInvReturn.TabIndex = 14;
+            this.txtDebtInvReturn.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPreForeignInvRation_KeyPress);
             // 
             // label9
             // 
@@ -359,7 +368,7 @@
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(3, 85);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(155, 23);
+            this.label9.Size = new System.Drawing.Size(154, 23);
             this.label9.TabIndex = 73;
             this.label9.Text = "Investment Return (%)";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
