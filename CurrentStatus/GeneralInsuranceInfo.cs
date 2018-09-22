@@ -128,7 +128,6 @@ namespace FinancialPlannerClient.CurrentStatus
                 string apiurl = Program.WebServiceUrl +"/"+DELETE_GENERALINSURANCE_API;
                 RestAPIExecutor restApiExecutor = new RestAPIExecutor();
                 var restResult = restApiExecutor.Execute<GeneralInsurance>(apiurl, generalInsurance, "POST");
-
                 return true;
             }
             catch (Exception ex)

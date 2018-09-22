@@ -46,7 +46,7 @@ namespace FinancialPlannerClient.PlannerInfo
         }
         public IList<FamilyMember> Get(int clientId)
         {
-            IList<FamilyMember> employmentListObj = new List<FamilyMember>();
+            IList<FamilyMember> familyMemberObj = new List<FamilyMember>();
             try
             {
                 FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
@@ -58,9 +58,9 @@ namespace FinancialPlannerClient.PlannerInfo
 
                 if (jsonSerialization.IsValidJson(restResult.ToString()))
                 {
-                    employmentListObj = jsonSerialization.DeserializeFromString<IList<FamilyMember>>(restResult.ToString());
+                    familyMemberObj = jsonSerialization.DeserializeFromString<IList<FamilyMember>>(restResult.ToString());
                 }
-                return employmentListObj;
+                return familyMemberObj;
             }
             catch (Exception ex)
             {
@@ -76,6 +76,10 @@ namespace FinancialPlannerClient.PlannerInfo
             {
                 comboboxObj.Items.Add(familyMember.Name);
             }
+            ClientPersonalInfo clientPersonalInfo = new ClientPersonalInfo();
+            PersonalInformation personalInfo = clientPersonalInfo.Get(clientId);
+            comboboxObj.Items.Add(personalInfo.Client.Name);
+            comboboxObj.Items.Add(personalInfo.Spouse.Name);
         }
         public bool Add(FamilyMember familyMember)
         {

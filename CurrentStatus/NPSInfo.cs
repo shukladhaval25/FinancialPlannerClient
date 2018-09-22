@@ -13,36 +13,35 @@ using System.Windows.Forms;
 
 namespace FinancialPlannerClient.CurrentStatus
 {
-    internal class LifeInsuranceInfo
+    public class NPSInfo
     {
-        const string GET_ALL_LIFEINSURANCE_API = "LifeInsurance/GetAll?plannerId={0}";
-        const string GET_ALL_BY_ID_API = "LifeInsurance/GetById?id={0}&plannerId={1}";
-        const string ADD_LIFEINSURANCE_API = "LifeInsurance/Add";
-        const string UPDATE_LIFEINSURANCE_API = "LifeInsurance/Update";
-        const string DELETE_LIFEINSURANCE_API = "LifeInsurance/Delete";
+        private readonly string GET_ALL = "NPS/GetAll?plannerId={0}";
+        DataTable dtNPS;
+        private readonly string DELETE_NPS_API = "NPS/Delete";
+        private readonly string UPDATE_NPS_API ="NPS/Update";
+        private readonly string ADD_NPS_API = "NPS/Add";
 
-        DataTable dtLifeInsurance;
-        internal DataTable GetLifeInsuranceInfo(int plannerId)
+        internal DataTable GetNPSInfo(int plannerId)
         {
-            IList<LifeInsurance> lifeInsuranceObj = new List<LifeInsurance>();
+            IList<NPS> NPSObj = new List<NPS>();
             try
             {
                 FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
-                string apiurl = Program.WebServiceUrl +"/"+ string.Format(GET_ALL_LIFEINSURANCE_API,plannerId);
+                string apiurl = Program.WebServiceUrl +"/"+ string.Format(GET_ALL,plannerId);
 
                 RestAPIExecutor restApiExecutor = new RestAPIExecutor();
 
-                var restResult = restApiExecutor.Execute<IList<LifeInsurance>>(apiurl, null, "GET");
+                var restResult = restApiExecutor.Execute<IList<NPS>>(apiurl, null, "GET");
 
                 if (jsonSerialization.IsValidJson(restResult.ToString()))
                 {
-                    lifeInsuranceObj = jsonSerialization.DeserializeFromString<IList<LifeInsurance>>(restResult.ToString());
+                    NPSObj = jsonSerialization.DeserializeFromString<IList<NPS>>(restResult.ToString());
                 }
-                if (lifeInsuranceObj != null)
+                if (NPSObj != null)
                 {
-                    dtLifeInsurance = ListtoDataTable.ToDataTable(lifeInsuranceObj.ToList());
+                    dtNPS = ListtoDataTable.ToDataTable(NPSObj.ToList());
                 }
-                return dtLifeInsurance;
+                return dtNPS;
             }
             catch (System.Net.WebException webException)
             {
@@ -69,28 +68,15 @@ namespace FinancialPlannerClient.CurrentStatus
             debuggerInfo.ExceptionInfo = ex;
             Logger.LogDebug(debuggerInfo);
         }
-        internal void SetGridColumn(DataGridView dtGrid)
-        {
-            for (int i = 0; i <= dtGrid.Columns.Count-1;i++)
-            {
-                dtGrid.Columns[i].Visible = false;
-            }
-            if (dtGrid.ColumnCount > 0)
-            {
-                dtGrid.Columns["Applicant"].Visible = true;
-                dtGrid.Columns["PolicyName"].Visible = true;
-                dtGrid.Columns["PolicyNo"].Visible = true;
-            }
-        }
 
-        internal bool Add(LifeInsurance lifeInsurance)
+        internal bool Add(NPS NPS)
         {
             try
             {
                 FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
-                string apiurl = Program.WebServiceUrl +"/"+ ADD_LIFEINSURANCE_API;
+                string apiurl = Program.WebServiceUrl +"/"+ ADD_NPS_API;
                 RestAPIExecutor restApiExecutor = new RestAPIExecutor();
-                var restResult = restApiExecutor.Execute<LifeInsurance>(apiurl, lifeInsurance, "POST");
+                var restResult = restApiExecutor.Execute<NPS>(apiurl, NPS, "POST");
                 return true;
             }
             catch (Exception ex)
@@ -103,14 +89,14 @@ namespace FinancialPlannerClient.CurrentStatus
             }
         }
 
-        internal bool Update(LifeInsurance lifeInsurance)
+        internal bool Update(NPS NPS)
         {
             try
             {
                 FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
-                string apiurl = Program.WebServiceUrl +"/"+ UPDATE_LIFEINSURANCE_API;
+                string apiurl = Program.WebServiceUrl +"/"+ UPDATE_NPS_API;
                 RestAPIExecutor restApiExecutor = new RestAPIExecutor();
-                var restResult = restApiExecutor.Execute<LifeInsurance>(apiurl, lifeInsurance, "POST");
+                var restResult = restApiExecutor.Execute<NPS>(apiurl, NPS, "POST");
                 return true;
             }
             catch (Exception ex)
@@ -122,14 +108,15 @@ namespace FinancialPlannerClient.CurrentStatus
                 return false;
             }
         }
-        internal bool Delete(LifeInsurance lifeInsurance)
+
+        internal bool Delete(NPS NPS)
         {
             try
             {
                 FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
-                string apiurl = Program.WebServiceUrl +"/"+ DELETE_LIFEINSURANCE_API;
+                string apiurl = Program.WebServiceUrl +"/"+DELETE_NPS_API;
                 RestAPIExecutor restApiExecutor = new RestAPIExecutor();
-                var restResult = restApiExecutor.Execute<LifeInsurance>(apiurl, lifeInsurance, "POST");
+                var restResult = restApiExecutor.Execute<NPS>(apiurl, NPS, "POST");
                 return true;
             }
             catch (Exception ex)

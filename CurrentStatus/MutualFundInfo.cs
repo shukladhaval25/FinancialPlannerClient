@@ -13,36 +13,35 @@ using System.Windows.Forms;
 
 namespace FinancialPlannerClient.CurrentStatus
 {
-    internal class LifeInsuranceInfo
+    public class MutualFundInfo
     {
-        const string GET_ALL_LIFEINSURANCE_API = "LifeInsurance/GetAll?plannerId={0}";
-        const string GET_ALL_BY_ID_API = "LifeInsurance/GetById?id={0}&plannerId={1}";
-        const string ADD_LIFEINSURANCE_API = "LifeInsurance/Add";
-        const string UPDATE_LIFEINSURANCE_API = "LifeInsurance/Update";
-        const string DELETE_LIFEINSURANCE_API = "LifeInsurance/Delete";
+        private readonly string GET_ALL = "MutualFund/GetAll?plannerId={0}";
+        DataTable dtMF;
+        private readonly string DELETE_MUTUALFUND_API = "MutualFund/Delete";
+        private readonly string UPDATE_MUTUALFUND_API ="MutualFund/Update";
+        private readonly string ADD_MUTUALFUND_API = "MutualFund/Add";
 
-        DataTable dtLifeInsurance;
-        internal DataTable GetLifeInsuranceInfo(int plannerId)
+        internal DataTable GetMutualFundInfo(int plannerId)
         {
-            IList<LifeInsurance> lifeInsuranceObj = new List<LifeInsurance>();
+            IList<MutualFund> mutualFundObj = new List<MutualFund>();
             try
             {
                 FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
-                string apiurl = Program.WebServiceUrl +"/"+ string.Format(GET_ALL_LIFEINSURANCE_API,plannerId);
+                string apiurl = Program.WebServiceUrl +"/"+ string.Format(GET_ALL,plannerId);
 
                 RestAPIExecutor restApiExecutor = new RestAPIExecutor();
 
-                var restResult = restApiExecutor.Execute<IList<LifeInsurance>>(apiurl, null, "GET");
+                var restResult = restApiExecutor.Execute<IList<MutualFund>>(apiurl, null, "GET");
 
                 if (jsonSerialization.IsValidJson(restResult.ToString()))
                 {
-                    lifeInsuranceObj = jsonSerialization.DeserializeFromString<IList<LifeInsurance>>(restResult.ToString());
+                    mutualFundObj = jsonSerialization.DeserializeFromString<IList<MutualFund>>(restResult.ToString());
                 }
-                if (lifeInsuranceObj != null)
+                if (mutualFundObj != null)
                 {
-                    dtLifeInsurance = ListtoDataTable.ToDataTable(lifeInsuranceObj.ToList());
+                    dtMF = ListtoDataTable.ToDataTable(mutualFundObj.ToList());
                 }
-                return dtLifeInsurance;
+                return dtMF;
             }
             catch (System.Net.WebException webException)
             {
@@ -69,28 +68,15 @@ namespace FinancialPlannerClient.CurrentStatus
             debuggerInfo.ExceptionInfo = ex;
             Logger.LogDebug(debuggerInfo);
         }
-        internal void SetGridColumn(DataGridView dtGrid)
-        {
-            for (int i = 0; i <= dtGrid.Columns.Count-1;i++)
-            {
-                dtGrid.Columns[i].Visible = false;
-            }
-            if (dtGrid.ColumnCount > 0)
-            {
-                dtGrid.Columns["Applicant"].Visible = true;
-                dtGrid.Columns["PolicyName"].Visible = true;
-                dtGrid.Columns["PolicyNo"].Visible = true;
-            }
-        }
 
-        internal bool Add(LifeInsurance lifeInsurance)
+        internal bool Add(MutualFund mutualFund)
         {
             try
             {
                 FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
-                string apiurl = Program.WebServiceUrl +"/"+ ADD_LIFEINSURANCE_API;
+                string apiurl = Program.WebServiceUrl +"/"+ ADD_MUTUALFUND_API;
                 RestAPIExecutor restApiExecutor = new RestAPIExecutor();
-                var restResult = restApiExecutor.Execute<LifeInsurance>(apiurl, lifeInsurance, "POST");
+                var restResult = restApiExecutor.Execute<MutualFund>(apiurl, mutualFund, "POST");
                 return true;
             }
             catch (Exception ex)
@@ -103,14 +89,14 @@ namespace FinancialPlannerClient.CurrentStatus
             }
         }
 
-        internal bool Update(LifeInsurance lifeInsurance)
+        internal bool Update(MutualFund mutualFund)
         {
             try
             {
                 FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
-                string apiurl = Program.WebServiceUrl +"/"+ UPDATE_LIFEINSURANCE_API;
+                string apiurl = Program.WebServiceUrl +"/"+ UPDATE_MUTUALFUND_API;
                 RestAPIExecutor restApiExecutor = new RestAPIExecutor();
-                var restResult = restApiExecutor.Execute<LifeInsurance>(apiurl, lifeInsurance, "POST");
+                var restResult = restApiExecutor.Execute<MutualFund>(apiurl, mutualFund, "POST");
                 return true;
             }
             catch (Exception ex)
@@ -122,14 +108,15 @@ namespace FinancialPlannerClient.CurrentStatus
                 return false;
             }
         }
-        internal bool Delete(LifeInsurance lifeInsurance)
+
+        internal bool Delete(MutualFund mutualFund)
         {
             try
             {
                 FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
-                string apiurl = Program.WebServiceUrl +"/"+ DELETE_LIFEINSURANCE_API;
+                string apiurl = Program.WebServiceUrl +"/"+DELETE_MUTUALFUND_API;
                 RestAPIExecutor restApiExecutor = new RestAPIExecutor();
-                var restResult = restApiExecutor.Execute<LifeInsurance>(apiurl, lifeInsurance, "POST");
+                var restResult = restApiExecutor.Execute<MutualFund>(apiurl, mutualFund, "POST");
                 return true;
             }
             catch (Exception ex)

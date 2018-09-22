@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CurrentStatus));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnViewStatus = new System.Windows.Forms.Button();
@@ -42,7 +41,7 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dtGridLifeInsurance = new System.Windows.Forms.DataGridView();
             this.grpActionControls = new System.Windows.Forms.GroupBox();
-            this.btnDeleteFamilyMember = new System.Windows.Forms.Button();
+            this.btnDeleteLifeInsurance = new System.Windows.Forms.Button();
             this.imgCollection = new System.Windows.Forms.ImageList(this.components);
             this.btnAddFamilyMember = new System.Windows.Forms.Button();
             this.btnEditFamilyMember = new System.Windows.Forms.Button();
@@ -154,7 +153,75 @@
             this.dtGridGeneralInsurance = new System.Windows.Forms.DataGridView();
             this.label51 = new System.Windows.Forms.Label();
             this.MutualFund = new System.Windows.Forms.TabPage();
+            this.grpMF = new System.Windows.Forms.GroupBox();
+            this.txtFolioNo = new System.Windows.Forms.TextBox();
+            this.label54 = new System.Windows.Forms.Label();
+            this.button9 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
+            this.txtRedumptionAmt = new System.Windows.Forms.TextBox();
+            this.label53 = new System.Windows.Forms.Label();
+            this.txtFreeUnits = new System.Windows.Forms.TextBox();
+            this.label50 = new System.Windows.Forms.Label();
+            this.txtSIPAmount = new System.Windows.Forms.TextBox();
+            this.label49 = new System.Windows.Forms.Label();
+            this.txtMFDebtRatio = new System.Windows.Forms.TextBox();
+            this.label48 = new System.Windows.Forms.Label();
+            this.txtMFGoldRatio = new System.Windows.Forms.TextBox();
+            this.label47 = new System.Windows.Forms.Label();
+            this.txtMFEquityRatio = new System.Windows.Forms.TextBox();
+            this.txtMFCurrentVal = new System.Windows.Forms.TextBox();
+            this.txtUnits = new System.Windows.Forms.TextBox();
+            this.txtNav = new System.Windows.Forms.TextBox();
+            this.cmbMFGoal = new System.Windows.Forms.ComboBox();
+            this.label55 = new System.Windows.Forms.Label();
+            this.cmbSchemeName = new System.Windows.Forms.ComboBox();
+            this.label56 = new System.Windows.Forms.Label();
+            this.label57 = new System.Windows.Forms.Label();
+            this.label58 = new System.Windows.Forms.Label();
+            this.label59 = new System.Windows.Forms.Label();
+            this.cmbMFInvester = new System.Windows.Forms.ComboBox();
+            this.label60 = new System.Windows.Forms.Label();
+            this.btnCancelMF = new System.Windows.Forms.Button();
+            this.btnSaveMF = new System.Windows.Forms.Button();
+            this.label61 = new System.Windows.Forms.Label();
+            this.dtGridMF = new System.Windows.Forms.DataGridView();
+            this.label62 = new System.Windows.Forms.Label();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnDeleteMF = new System.Windows.Forms.Button();
+            this.btnAddMF = new System.Windows.Forms.Button();
+            this.btnEditMF = new System.Windows.Forms.Button();
             this.NPS = new System.Windows.Forms.TabPage();
+            this.grpNPS = new System.Windows.Forms.GroupBox();
+            this.txtNPSFolioNo = new System.Windows.Forms.TextBox();
+            this.label63 = new System.Windows.Forms.Label();
+            this.txtNPSSIPAmt = new System.Windows.Forms.TextBox();
+            this.label66 = new System.Windows.Forms.Label();
+            this.txtNPSDebtRatio = new System.Windows.Forms.TextBox();
+            this.label67 = new System.Windows.Forms.Label();
+            this.txtNPSGoldRatio = new System.Windows.Forms.TextBox();
+            this.label68 = new System.Windows.Forms.Label();
+            this.txtNPSEquityRatio = new System.Windows.Forms.TextBox();
+            this.txtNPSCurrentVal = new System.Windows.Forms.TextBox();
+            this.txtNPSUnits = new System.Windows.Forms.TextBox();
+            this.txtNPSNAV = new System.Windows.Forms.TextBox();
+            this.cmbNPSGoal = new System.Windows.Forms.ComboBox();
+            this.label69 = new System.Windows.Forms.Label();
+            this.cmbNPSScheme = new System.Windows.Forms.ComboBox();
+            this.label70 = new System.Windows.Forms.Label();
+            this.label71 = new System.Windows.Forms.Label();
+            this.label72 = new System.Windows.Forms.Label();
+            this.label73 = new System.Windows.Forms.Label();
+            this.cmbNPSInvester = new System.Windows.Forms.ComboBox();
+            this.label74 = new System.Windows.Forms.Label();
+            this.btnNPSCancel = new System.Windows.Forms.Button();
+            this.btnNPSSave = new System.Windows.Forms.Button();
+            this.label75 = new System.Windows.Forms.Label();
+            this.dtGridNPS = new System.Windows.Forms.DataGridView();
+            this.label76 = new System.Windows.Forms.Label();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.btnDeleteNPS = new System.Windows.Forms.Button();
+            this.btnAddNPS = new System.Windows.Forms.Button();
+            this.btnEditNPS = new System.Windows.Forms.Button();
             this.Shares = new System.Windows.Forms.TabPage();
             this.Bonds = new System.Windows.Forms.TabPage();
             this.SavingAC = new System.Windows.Forms.TabPage();
@@ -178,6 +245,14 @@
             this.groupBox2.SuspendLayout();
             this.grpGeneralInsurance.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridGeneralInsurance)).BeginInit();
+            this.MutualFund.SuspendLayout();
+            this.grpMF.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtGridMF)).BeginInit();
+            this.groupBox4.SuspendLayout();
+            this.NPS.SuspendLayout();
+            this.grpNPS.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtGridNPS)).BeginInit();
+            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -306,14 +381,6 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dtGridLifeInsurance.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtGridLifeInsurance.DefaultCellStyle = dataGridViewCellStyle1;
             this.dtGridLifeInsurance.Location = new System.Drawing.Point(4, 3);
             this.dtGridLifeInsurance.Name = "dtGridLifeInsurance";
             this.dtGridLifeInsurance.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -324,7 +391,7 @@
             // grpActionControls
             // 
             this.grpActionControls.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.grpActionControls.Controls.Add(this.btnDeleteFamilyMember);
+            this.grpActionControls.Controls.Add(this.btnDeleteLifeInsurance);
             this.grpActionControls.Controls.Add(this.btnAddFamilyMember);
             this.grpActionControls.Controls.Add(this.btnEditFamilyMember);
             this.grpActionControls.Location = new System.Drawing.Point(156, 497);
@@ -333,15 +400,16 @@
             this.grpActionControls.TabIndex = 8;
             this.grpActionControls.TabStop = false;
             // 
-            // btnDeleteFamilyMember
+            // btnDeleteLifeInsurance
             // 
-            this.btnDeleteFamilyMember.ImageIndex = 1;
-            this.btnDeleteFamilyMember.ImageList = this.imgCollection;
-            this.btnDeleteFamilyMember.Location = new System.Drawing.Point(76, 10);
-            this.btnDeleteFamilyMember.Name = "btnDeleteFamilyMember";
-            this.btnDeleteFamilyMember.Size = new System.Drawing.Size(29, 24);
-            this.btnDeleteFamilyMember.TabIndex = 4;
-            this.btnDeleteFamilyMember.UseVisualStyleBackColor = true;
+            this.btnDeleteLifeInsurance.ImageIndex = 1;
+            this.btnDeleteLifeInsurance.ImageList = this.imgCollection;
+            this.btnDeleteLifeInsurance.Location = new System.Drawing.Point(76, 10);
+            this.btnDeleteLifeInsurance.Name = "btnDeleteLifeInsurance";
+            this.btnDeleteLifeInsurance.Size = new System.Drawing.Size(29, 24);
+            this.btnDeleteLifeInsurance.TabIndex = 4;
+            this.btnDeleteLifeInsurance.UseVisualStyleBackColor = true;
+            this.btnDeleteLifeInsurance.Click += new System.EventHandler(this.btnDeleteLifeInsurance_Click);
             // 
             // imgCollection
             // 
@@ -517,11 +585,11 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCancel.ImageKey = "icons8-cancel-16.png";
             this.btnCancel.ImageList = this.imgCollection;
-            this.btnCancel.Location = new System.Drawing.Point(276, 440);
+            this.btnCancel.Location = new System.Drawing.Point(451, 441);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(86, 26);
             this.btnCancel.TabIndex = 63;
@@ -531,11 +599,11 @@
             // 
             // btnPersonalDetailSave
             // 
-            this.btnPersonalDetailSave.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnPersonalDetailSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPersonalDetailSave.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnPersonalDetailSave.ImageKey = "icons8-save-close-16.png";
             this.btnPersonalDetailSave.ImageList = this.imgCollection;
-            this.btnPersonalDetailSave.Location = new System.Drawing.Point(184, 440);
+            this.btnPersonalDetailSave.Location = new System.Drawing.Point(359, 441);
             this.btnPersonalDetailSave.Name = "btnPersonalDetailSave";
             this.btnPersonalDetailSave.Size = new System.Drawing.Size(86, 26);
             this.btnPersonalDetailSave.TabIndex = 62;
@@ -872,7 +940,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(549, 123);
+            this.label14.Location = new System.Drawing.Point(549, 132);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(44, 15);
             this.label14.TabIndex = 24;
@@ -889,7 +957,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(277, 123);
+            this.label13.Location = new System.Drawing.Point(277, 132);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(109, 15);
             this.label13.TabIndex = 22;
@@ -1454,6 +1522,10 @@
             // 
             // MutualFund
             // 
+            this.MutualFund.Controls.Add(this.grpMF);
+            this.MutualFund.Controls.Add(this.dtGridMF);
+            this.MutualFund.Controls.Add(this.label62);
+            this.MutualFund.Controls.Add(this.groupBox4);
             this.MutualFund.ImageKey = "icons8-cash-in-hand-16.png";
             this.MutualFund.Location = new System.Drawing.Point(4, 24);
             this.MutualFund.Name = "MutualFund";
@@ -1464,14 +1536,747 @@
             this.MutualFund.ToolTipText = "Mutual Fund";
             this.MutualFund.UseVisualStyleBackColor = true;
             // 
+            // grpMF
+            // 
+            this.grpMF.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpMF.Controls.Add(this.txtFolioNo);
+            this.grpMF.Controls.Add(this.label54);
+            this.grpMF.Controls.Add(this.button9);
+            this.grpMF.Controls.Add(this.button8);
+            this.grpMF.Controls.Add(this.txtRedumptionAmt);
+            this.grpMF.Controls.Add(this.label53);
+            this.grpMF.Controls.Add(this.txtFreeUnits);
+            this.grpMF.Controls.Add(this.label50);
+            this.grpMF.Controls.Add(this.txtSIPAmount);
+            this.grpMF.Controls.Add(this.label49);
+            this.grpMF.Controls.Add(this.txtMFDebtRatio);
+            this.grpMF.Controls.Add(this.label48);
+            this.grpMF.Controls.Add(this.txtMFGoldRatio);
+            this.grpMF.Controls.Add(this.label47);
+            this.grpMF.Controls.Add(this.txtMFEquityRatio);
+            this.grpMF.Controls.Add(this.txtMFCurrentVal);
+            this.grpMF.Controls.Add(this.txtUnits);
+            this.grpMF.Controls.Add(this.txtNav);
+            this.grpMF.Controls.Add(this.cmbMFGoal);
+            this.grpMF.Controls.Add(this.label55);
+            this.grpMF.Controls.Add(this.cmbSchemeName);
+            this.grpMF.Controls.Add(this.label56);
+            this.grpMF.Controls.Add(this.label57);
+            this.grpMF.Controls.Add(this.label58);
+            this.grpMF.Controls.Add(this.label59);
+            this.grpMF.Controls.Add(this.cmbMFInvester);
+            this.grpMF.Controls.Add(this.label60);
+            this.grpMF.Controls.Add(this.btnCancelMF);
+            this.grpMF.Controls.Add(this.btnSaveMF);
+            this.grpMF.Controls.Add(this.label61);
+            this.grpMF.Enabled = false;
+            this.grpMF.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpMF.Location = new System.Drawing.Point(3, 249);
+            this.grpMF.Name = "grpMF";
+            this.grpMF.Size = new System.Drawing.Size(1317, 293);
+            this.grpMF.TabIndex = 15;
+            this.grpMF.TabStop = false;
+            this.grpMF.Text = "Mutual Fund Details";
+            // 
+            // txtFolioNo
+            // 
+            this.txtFolioNo.Location = new System.Drawing.Point(137, 59);
+            this.txtFolioNo.Name = "txtFolioNo";
+            this.txtFolioNo.Size = new System.Drawing.Size(320, 22);
+            this.txtFolioNo.TabIndex = 3;
+            // 
+            // label54
+            // 
+            this.label54.AutoSize = true;
+            this.label54.Location = new System.Drawing.Point(26, 59);
+            this.label54.Name = "label54";
+            this.label54.Size = new System.Drawing.Size(89, 16);
+            this.label54.TabIndex = 37;
+            this.label54.Text = "Folio number:";
+            // 
+            // button9
+            // 
+            this.button9.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button9.ImageKey = "(none)";
+            this.button9.ImageList = this.imgCollection;
+            this.button9.Location = new System.Drawing.Point(615, 207);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(208, 26);
+            this.button9.TabIndex = 36;
+            this.button9.Text = "Redumption Request ";
+            this.button9.UseVisualStyleBackColor = true;
+            // 
+            // button8
+            // 
+            this.button8.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button8.ImageKey = "(none)";
+            this.button8.ImageList = this.imgCollection;
+            this.button8.Location = new System.Drawing.Point(615, 175);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(208, 26);
+            this.button8.TabIndex = 35;
+            this.button8.Text = "Account Statement Request";
+            this.button8.UseVisualStyleBackColor = true;
+            // 
+            // txtRedumptionAmt
+            // 
+            this.txtRedumptionAmt.Location = new System.Drawing.Point(581, 115);
+            this.txtRedumptionAmt.Name = "txtRedumptionAmt";
+            this.txtRedumptionAmt.Size = new System.Drawing.Size(267, 22);
+            this.txtRedumptionAmt.TabIndex = 11;
+            this.txtRedumptionAmt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtRedumptionAmt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNav_KeyPress);
+            // 
+            // label53
+            // 
+            this.label53.AutoSize = true;
+            this.label53.Location = new System.Drawing.Point(471, 118);
+            this.label53.Name = "label53";
+            this.label53.Size = new System.Drawing.Size(110, 16);
+            this.label53.TabIndex = 33;
+            this.label53.Text = "Redumption Amt:";
+            // 
+            // txtFreeUnits
+            // 
+            this.txtFreeUnits.Location = new System.Drawing.Point(137, 143);
+            this.txtFreeUnits.Name = "txtFreeUnits";
+            this.txtFreeUnits.Size = new System.Drawing.Size(102, 22);
+            this.txtFreeUnits.TabIndex = 12;
+            this.txtFreeUnits.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtFreeUnits.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNav_KeyPress);
+            // 
+            // label50
+            // 
+            this.label50.AutoSize = true;
+            this.label50.Location = new System.Drawing.Point(26, 146);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(72, 16);
+            this.label50.TabIndex = 31;
+            this.label50.Text = "Free Units:";
+            // 
+            // txtSIPAmount
+            // 
+            this.txtSIPAmount.Location = new System.Drawing.Point(341, 115);
+            this.txtSIPAmount.Name = "txtSIPAmount";
+            this.txtSIPAmount.Size = new System.Drawing.Size(116, 22);
+            this.txtSIPAmount.TabIndex = 10;
+            this.txtSIPAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtSIPAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNav_KeyPress);
+            // 
+            // label49
+            // 
+            this.label49.AutoSize = true;
+            this.label49.Location = new System.Drawing.Point(248, 118);
+            this.label49.Name = "label49";
+            this.label49.Size = new System.Drawing.Size(83, 16);
+            this.label49.TabIndex = 29;
+            this.label49.Text = "SIP Amount :";
+            // 
+            // txtMFDebtRatio
+            // 
+            this.txtMFDebtRatio.Location = new System.Drawing.Point(137, 115);
+            this.txtMFDebtRatio.Name = "txtMFDebtRatio";
+            this.txtMFDebtRatio.Size = new System.Drawing.Size(102, 22);
+            this.txtMFDebtRatio.TabIndex = 9;
+            this.txtMFDebtRatio.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtMFDebtRatio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNav_KeyPress);
+            // 
+            // label48
+            // 
+            this.label48.AutoSize = true;
+            this.label48.Location = new System.Drawing.Point(26, 118);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(101, 16);
+            this.label48.TabIndex = 27;
+            this.label48.Text = "Debt Ratio (%) :";
+            // 
+            // txtMFGoldRatio
+            // 
+            this.txtMFGoldRatio.Location = new System.Drawing.Point(773, 87);
+            this.txtMFGoldRatio.Name = "txtMFGoldRatio";
+            this.txtMFGoldRatio.Size = new System.Drawing.Size(75, 22);
+            this.txtMFGoldRatio.TabIndex = 8;
+            this.txtMFGoldRatio.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtMFGoldRatio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNav_KeyPress);
+            // 
+            // label47
+            // 
+            this.label47.AutoSize = true;
+            this.label47.Location = new System.Drawing.Point(666, 90);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(101, 16);
+            this.label47.TabIndex = 25;
+            this.label47.Text = "Gold Ratio (%) :";
+            this.label47.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtMFEquityRatio
+            // 
+            this.txtMFEquityRatio.Location = new System.Drawing.Point(581, 87);
+            this.txtMFEquityRatio.Name = "txtMFEquityRatio";
+            this.txtMFEquityRatio.Size = new System.Drawing.Size(79, 22);
+            this.txtMFEquityRatio.TabIndex = 7;
+            this.txtMFEquityRatio.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtMFEquityRatio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNav_KeyPress);
+            // 
+            // txtMFCurrentVal
+            // 
+            this.txtMFCurrentVal.Enabled = false;
+            this.txtMFCurrentVal.Location = new System.Drawing.Point(581, 59);
+            this.txtMFCurrentVal.Name = "txtMFCurrentVal";
+            this.txtMFCurrentVal.Size = new System.Drawing.Size(267, 22);
+            this.txtMFCurrentVal.TabIndex = 4;
+            this.txtMFCurrentVal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtUnits
+            // 
+            this.txtUnits.Location = new System.Drawing.Point(341, 87);
+            this.txtUnits.Name = "txtUnits";
+            this.txtUnits.Size = new System.Drawing.Size(116, 22);
+            this.txtUnits.TabIndex = 6;
+            this.txtUnits.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtUnits.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNav_KeyPress);
+            this.txtUnits.Leave += new System.EventHandler(this.txtNav_Leave);
+            // 
+            // txtNav
+            // 
+            this.txtNav.Location = new System.Drawing.Point(137, 87);
+            this.txtNav.Name = "txtNav";
+            this.txtNav.Size = new System.Drawing.Size(102, 22);
+            this.txtNav.TabIndex = 5;
+            this.txtNav.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtNav.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNav_KeyPress);
+            this.txtNav.Leave += new System.EventHandler(this.txtNav_Leave);
+            // 
+            // cmbMFGoal
+            // 
+            this.cmbMFGoal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbMFGoal.FormattingEnabled = true;
+            this.cmbMFGoal.Location = new System.Drawing.Point(137, 171);
+            this.cmbMFGoal.Name = "cmbMFGoal";
+            this.cmbMFGoal.Size = new System.Drawing.Size(320, 24);
+            this.cmbMFGoal.TabIndex = 13;
+            this.cmbMFGoal.SelectedIndexChanged += new System.EventHandler(this.cmbMFGoal_SelectedIndexChanged);
+            // 
+            // label55
+            // 
+            this.label55.AutoSize = true;
+            this.label55.Location = new System.Drawing.Point(26, 174);
+            this.label55.Name = "label55";
+            this.label55.Size = new System.Drawing.Size(105, 16);
+            this.label55.TabIndex = 22;
+            this.label55.Text = "Goal (Mapped) :";
+            // 
+            // cmbSchemeName
+            // 
+            this.cmbSchemeName.FormattingEnabled = true;
+            this.cmbSchemeName.Location = new System.Drawing.Point(581, 29);
+            this.cmbSchemeName.Name = "cmbSchemeName";
+            this.cmbSchemeName.Size = new System.Drawing.Size(267, 24);
+            this.cmbSchemeName.TabIndex = 2;
+            this.cmbSchemeName.Enter += new System.EventHandler(this.cmbSchemeName_Enter);
+            // 
+            // label56
+            // 
+            this.label56.AutoSize = true;
+            this.label56.Location = new System.Drawing.Point(471, 90);
+            this.label56.Name = "label56";
+            this.label56.Size = new System.Drawing.Size(109, 16);
+            this.label56.TabIndex = 20;
+            this.label56.Text = "Equity Ratio (%) :";
+            // 
+            // label57
+            // 
+            this.label57.AutoSize = true;
+            this.label57.Location = new System.Drawing.Point(471, 59);
+            this.label57.Name = "label57";
+            this.label57.Size = new System.Drawing.Size(91, 16);
+            this.label57.TabIndex = 18;
+            this.label57.Text = "Current Value:";
+            // 
+            // label58
+            // 
+            this.label58.AutoSize = true;
+            this.label58.Location = new System.Drawing.Point(243, 90);
+            this.label58.Name = "label58";
+            this.label58.Size = new System.Drawing.Size(41, 16);
+            this.label58.TabIndex = 15;
+            this.label58.Text = "Units:";
+            // 
+            // label59
+            // 
+            this.label59.AutoSize = true;
+            this.label59.Location = new System.Drawing.Point(26, 90);
+            this.label59.Name = "label59";
+            this.label59.Size = new System.Drawing.Size(39, 16);
+            this.label59.TabIndex = 14;
+            this.label59.Text = "NAV:";
+            // 
+            // cmbMFInvester
+            // 
+            this.cmbMFInvester.FormattingEnabled = true;
+            this.cmbMFInvester.Location = new System.Drawing.Point(137, 29);
+            this.cmbMFInvester.Name = "cmbMFInvester";
+            this.cmbMFInvester.Size = new System.Drawing.Size(320, 24);
+            this.cmbMFInvester.TabIndex = 1;
+            // 
+            // label60
+            // 
+            this.label60.AutoSize = true;
+            this.label60.Location = new System.Drawing.Point(26, 32);
+            this.label60.Name = "label60";
+            this.label60.Size = new System.Drawing.Size(58, 16);
+            this.label60.TabIndex = 11;
+            this.label60.Text = "Invester:";
+            // 
+            // btnCancelMF
+            // 
+            this.btnCancelMF.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCancelMF.ImageKey = "icons8-cancel-16.png";
+            this.btnCancelMF.ImageList = this.imgCollection;
+            this.btnCancelMF.Location = new System.Drawing.Point(718, 143);
+            this.btnCancelMF.Name = "btnCancelMF";
+            this.btnCancelMF.Size = new System.Drawing.Size(86, 26);
+            this.btnCancelMF.TabIndex = 15;
+            this.btnCancelMF.Text = "Cancel";
+            this.btnCancelMF.UseVisualStyleBackColor = true;
+            this.btnCancelMF.Click += new System.EventHandler(this.btnCancelMF_Click);
+            // 
+            // btnSaveMF
+            // 
+            this.btnSaveMF.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSaveMF.ImageKey = "icons8-save-close-16.png";
+            this.btnSaveMF.ImageList = this.imgCollection;
+            this.btnSaveMF.Location = new System.Drawing.Point(626, 143);
+            this.btnSaveMF.Name = "btnSaveMF";
+            this.btnSaveMF.Size = new System.Drawing.Size(86, 26);
+            this.btnSaveMF.TabIndex = 14;
+            this.btnSaveMF.Text = "Save";
+            this.btnSaveMF.UseVisualStyleBackColor = true;
+            this.btnSaveMF.Click += new System.EventHandler(this.btnSaveMF_Click);
+            // 
+            // label61
+            // 
+            this.label61.AutoSize = true;
+            this.label61.Location = new System.Drawing.Point(471, 31);
+            this.label61.Name = "label61";
+            this.label61.Size = new System.Drawing.Size(101, 16);
+            this.label61.TabIndex = 0;
+            this.label61.Text = "Scheme Name:";
+            // 
+            // dtGridMF
+            // 
+            this.dtGridMF.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtGridMF.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtGridMF.Location = new System.Drawing.Point(3, 40);
+            this.dtGridMF.Name = "dtGridMF";
+            this.dtGridMF.ReadOnly = true;
+            this.dtGridMF.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtGridMF.Size = new System.Drawing.Size(1301, 163);
+            this.dtGridMF.TabIndex = 13;
+            this.dtGridMF.SelectionChanged += new System.EventHandler(this.dtGridMF_SelectionChanged);
+            // 
+            // label62
+            // 
+            this.label62.AutoSize = true;
+            this.label62.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label62.ForeColor = System.Drawing.Color.DarkGreen;
+            this.label62.Location = new System.Drawing.Point(3, 7);
+            this.label62.Name = "label62";
+            this.label62.Size = new System.Drawing.Size(109, 18);
+            this.label62.TabIndex = 12;
+            this.label62.Text = "Mutual Funds";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox4.Controls.Add(this.btnDeleteMF);
+            this.groupBox4.Controls.Add(this.btnAddMF);
+            this.groupBox4.Controls.Add(this.btnEditMF);
+            this.groupBox4.Location = new System.Drawing.Point(1193, 209);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(111, 38);
+            this.groupBox4.TabIndex = 14;
+            this.groupBox4.TabStop = false;
+            // 
+            // btnDeleteMF
+            // 
+            this.btnDeleteMF.ImageIndex = 1;
+            this.btnDeleteMF.ImageList = this.imgCollection;
+            this.btnDeleteMF.Location = new System.Drawing.Point(76, 10);
+            this.btnDeleteMF.Name = "btnDeleteMF";
+            this.btnDeleteMF.Size = new System.Drawing.Size(29, 24);
+            this.btnDeleteMF.TabIndex = 4;
+            this.btnDeleteMF.UseVisualStyleBackColor = true;
+            this.btnDeleteMF.Click += new System.EventHandler(this.btnDeleteMF_Click);
+            // 
+            // btnAddMF
+            // 
+            this.btnAddMF.ImageIndex = 3;
+            this.btnAddMF.ImageList = this.imgCollection;
+            this.btnAddMF.Location = new System.Drawing.Point(6, 10);
+            this.btnAddMF.Name = "btnAddMF";
+            this.btnAddMF.Size = new System.Drawing.Size(29, 24);
+            this.btnAddMF.TabIndex = 2;
+            this.btnAddMF.UseVisualStyleBackColor = true;
+            this.btnAddMF.Click += new System.EventHandler(this.btnAddMF_Click);
+            // 
+            // btnEditMF
+            // 
+            this.btnEditMF.ImageIndex = 4;
+            this.btnEditMF.ImageList = this.imgCollection;
+            this.btnEditMF.Location = new System.Drawing.Point(41, 10);
+            this.btnEditMF.Name = "btnEditMF";
+            this.btnEditMF.Size = new System.Drawing.Size(29, 24);
+            this.btnEditMF.TabIndex = 3;
+            this.btnEditMF.UseVisualStyleBackColor = true;
+            this.btnEditMF.Click += new System.EventHandler(this.btnEditMF_Click);
+            // 
             // NPS
             // 
+            this.NPS.Controls.Add(this.grpNPS);
+            this.NPS.Controls.Add(this.dtGridNPS);
+            this.NPS.Controls.Add(this.label76);
+            this.NPS.Controls.Add(this.groupBox5);
             this.NPS.Location = new System.Drawing.Point(4, 24);
             this.NPS.Name = "NPS";
             this.NPS.Size = new System.Drawing.Size(1321, 547);
             this.NPS.TabIndex = 3;
             this.NPS.Text = "NPS";
             this.NPS.UseVisualStyleBackColor = true;
+            // 
+            // grpNPS
+            // 
+            this.grpNPS.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpNPS.Controls.Add(this.txtNPSFolioNo);
+            this.grpNPS.Controls.Add(this.label63);
+            this.grpNPS.Controls.Add(this.txtNPSSIPAmt);
+            this.grpNPS.Controls.Add(this.label66);
+            this.grpNPS.Controls.Add(this.txtNPSDebtRatio);
+            this.grpNPS.Controls.Add(this.label67);
+            this.grpNPS.Controls.Add(this.txtNPSGoldRatio);
+            this.grpNPS.Controls.Add(this.label68);
+            this.grpNPS.Controls.Add(this.txtNPSEquityRatio);
+            this.grpNPS.Controls.Add(this.txtNPSCurrentVal);
+            this.grpNPS.Controls.Add(this.txtNPSUnits);
+            this.grpNPS.Controls.Add(this.txtNPSNAV);
+            this.grpNPS.Controls.Add(this.cmbNPSGoal);
+            this.grpNPS.Controls.Add(this.label69);
+            this.grpNPS.Controls.Add(this.cmbNPSScheme);
+            this.grpNPS.Controls.Add(this.label70);
+            this.grpNPS.Controls.Add(this.label71);
+            this.grpNPS.Controls.Add(this.label72);
+            this.grpNPS.Controls.Add(this.label73);
+            this.grpNPS.Controls.Add(this.cmbNPSInvester);
+            this.grpNPS.Controls.Add(this.label74);
+            this.grpNPS.Controls.Add(this.btnNPSCancel);
+            this.grpNPS.Controls.Add(this.btnNPSSave);
+            this.grpNPS.Controls.Add(this.label75);
+            this.grpNPS.Enabled = false;
+            this.grpNPS.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpNPS.Location = new System.Drawing.Point(2, 248);
+            this.grpNPS.Name = "grpNPS";
+            this.grpNPS.Size = new System.Drawing.Size(1317, 293);
+            this.grpNPS.TabIndex = 19;
+            this.grpNPS.TabStop = false;
+            this.grpNPS.Text = "NPS";
+            // 
+            // txtNPSFolioNo
+            // 
+            this.txtNPSFolioNo.Location = new System.Drawing.Point(137, 59);
+            this.txtNPSFolioNo.Name = "txtNPSFolioNo";
+            this.txtNPSFolioNo.Size = new System.Drawing.Size(320, 22);
+            this.txtNPSFolioNo.TabIndex = 3;
+            // 
+            // label63
+            // 
+            this.label63.AutoSize = true;
+            this.label63.Location = new System.Drawing.Point(26, 59);
+            this.label63.Name = "label63";
+            this.label63.Size = new System.Drawing.Size(89, 16);
+            this.label63.TabIndex = 37;
+            this.label63.Text = "Folio number:";
+            // 
+            // txtNPSSIPAmt
+            // 
+            this.txtNPSSIPAmt.Location = new System.Drawing.Point(337, 115);
+            this.txtNPSSIPAmt.Name = "txtNPSSIPAmt";
+            this.txtNPSSIPAmt.Size = new System.Drawing.Size(120, 22);
+            this.txtNPSSIPAmt.TabIndex = 10;
+            this.txtNPSSIPAmt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtNPSSIPAmt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNav_KeyPress);
+            // 
+            // label66
+            // 
+            this.label66.AutoSize = true;
+            this.label66.Location = new System.Drawing.Point(248, 118);
+            this.label66.Name = "label66";
+            this.label66.Size = new System.Drawing.Size(83, 16);
+            this.label66.TabIndex = 29;
+            this.label66.Text = "SIP Amount :";
+            // 
+            // txtNPSDebtRatio
+            // 
+            this.txtNPSDebtRatio.Location = new System.Drawing.Point(137, 115);
+            this.txtNPSDebtRatio.Name = "txtNPSDebtRatio";
+            this.txtNPSDebtRatio.Size = new System.Drawing.Size(102, 22);
+            this.txtNPSDebtRatio.TabIndex = 9;
+            this.txtNPSDebtRatio.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtNPSDebtRatio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNav_KeyPress);
+            // 
+            // label67
+            // 
+            this.label67.AutoSize = true;
+            this.label67.Location = new System.Drawing.Point(26, 118);
+            this.label67.Name = "label67";
+            this.label67.Size = new System.Drawing.Size(101, 16);
+            this.label67.TabIndex = 27;
+            this.label67.Text = "Debt Ratio (%) :";
+            // 
+            // txtNPSGoldRatio
+            // 
+            this.txtNPSGoldRatio.Location = new System.Drawing.Point(773, 87);
+            this.txtNPSGoldRatio.Name = "txtNPSGoldRatio";
+            this.txtNPSGoldRatio.Size = new System.Drawing.Size(75, 22);
+            this.txtNPSGoldRatio.TabIndex = 8;
+            this.txtNPSGoldRatio.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtNPSGoldRatio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNav_KeyPress);
+            // 
+            // label68
+            // 
+            this.label68.AutoSize = true;
+            this.label68.Location = new System.Drawing.Point(666, 90);
+            this.label68.Name = "label68";
+            this.label68.Size = new System.Drawing.Size(101, 16);
+            this.label68.TabIndex = 25;
+            this.label68.Text = "Gold Ratio (%) :";
+            this.label68.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtNPSEquityRatio
+            // 
+            this.txtNPSEquityRatio.Location = new System.Drawing.Point(581, 87);
+            this.txtNPSEquityRatio.Name = "txtNPSEquityRatio";
+            this.txtNPSEquityRatio.Size = new System.Drawing.Size(79, 22);
+            this.txtNPSEquityRatio.TabIndex = 7;
+            this.txtNPSEquityRatio.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtNPSEquityRatio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNav_KeyPress);
+            // 
+            // txtNPSCurrentVal
+            // 
+            this.txtNPSCurrentVal.Enabled = false;
+            this.txtNPSCurrentVal.Location = new System.Drawing.Point(581, 59);
+            this.txtNPSCurrentVal.Name = "txtNPSCurrentVal";
+            this.txtNPSCurrentVal.Size = new System.Drawing.Size(267, 22);
+            this.txtNPSCurrentVal.TabIndex = 4;
+            this.txtNPSCurrentVal.TabStop = false;
+            this.txtNPSCurrentVal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtNPSUnits
+            // 
+            this.txtNPSUnits.Location = new System.Drawing.Point(337, 87);
+            this.txtNPSUnits.Name = "txtNPSUnits";
+            this.txtNPSUnits.Size = new System.Drawing.Size(120, 22);
+            this.txtNPSUnits.TabIndex = 6;
+            this.txtNPSUnits.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtNPSUnits.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNav_KeyPress);
+            this.txtNPSUnits.Leave += new System.EventHandler(this.txtNPSUnits_Leave);
+            // 
+            // txtNPSNAV
+            // 
+            this.txtNPSNAV.Location = new System.Drawing.Point(137, 87);
+            this.txtNPSNAV.Name = "txtNPSNAV";
+            this.txtNPSNAV.Size = new System.Drawing.Size(102, 22);
+            this.txtNPSNAV.TabIndex = 5;
+            this.txtNPSNAV.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtNPSNAV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNav_KeyPress);
+            this.txtNPSNAV.Leave += new System.EventHandler(this.txtNPSNAV_Leave);
+            // 
+            // cmbNPSGoal
+            // 
+            this.cmbNPSGoal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbNPSGoal.FormattingEnabled = true;
+            this.cmbNPSGoal.Location = new System.Drawing.Point(581, 115);
+            this.cmbNPSGoal.Name = "cmbNPSGoal";
+            this.cmbNPSGoal.Size = new System.Drawing.Size(265, 24);
+            this.cmbNPSGoal.TabIndex = 13;
+            this.cmbNPSGoal.SelectedIndexChanged += new System.EventHandler(this.cmbNPSGoal_SelectedIndexChanged);
+            // 
+            // label69
+            // 
+            this.label69.AutoSize = true;
+            this.label69.Location = new System.Drawing.Point(470, 118);
+            this.label69.Name = "label69";
+            this.label69.Size = new System.Drawing.Size(105, 16);
+            this.label69.TabIndex = 22;
+            this.label69.Text = "Goal (Mapped) :";
+            // 
+            // cmbNPSScheme
+            // 
+            this.cmbNPSScheme.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.cmbNPSScheme.FormattingEnabled = true;
+            this.cmbNPSScheme.Location = new System.Drawing.Point(581, 29);
+            this.cmbNPSScheme.Name = "cmbNPSScheme";
+            this.cmbNPSScheme.Size = new System.Drawing.Size(267, 24);
+            this.cmbNPSScheme.TabIndex = 2;
+            // 
+            // label70
+            // 
+            this.label70.AutoSize = true;
+            this.label70.Location = new System.Drawing.Point(471, 90);
+            this.label70.Name = "label70";
+            this.label70.Size = new System.Drawing.Size(109, 16);
+            this.label70.TabIndex = 20;
+            this.label70.Text = "Equity Ratio (%) :";
+            // 
+            // label71
+            // 
+            this.label71.AutoSize = true;
+            this.label71.Location = new System.Drawing.Point(471, 59);
+            this.label71.Name = "label71";
+            this.label71.Size = new System.Drawing.Size(91, 16);
+            this.label71.TabIndex = 18;
+            this.label71.Text = "Current Value:";
+            // 
+            // label72
+            // 
+            this.label72.AutoSize = true;
+            this.label72.Location = new System.Drawing.Point(248, 90);
+            this.label72.Name = "label72";
+            this.label72.Size = new System.Drawing.Size(41, 16);
+            this.label72.TabIndex = 15;
+            this.label72.Text = "Units:";
+            // 
+            // label73
+            // 
+            this.label73.AutoSize = true;
+            this.label73.Location = new System.Drawing.Point(26, 90);
+            this.label73.Name = "label73";
+            this.label73.Size = new System.Drawing.Size(39, 16);
+            this.label73.TabIndex = 14;
+            this.label73.Text = "NAV:";
+            // 
+            // cmbNPSInvester
+            // 
+            this.cmbNPSInvester.FormattingEnabled = true;
+            this.cmbNPSInvester.Location = new System.Drawing.Point(137, 29);
+            this.cmbNPSInvester.Name = "cmbNPSInvester";
+            this.cmbNPSInvester.Size = new System.Drawing.Size(320, 24);
+            this.cmbNPSInvester.TabIndex = 1;
+            // 
+            // label74
+            // 
+            this.label74.AutoSize = true;
+            this.label74.Location = new System.Drawing.Point(26, 32);
+            this.label74.Name = "label74";
+            this.label74.Size = new System.Drawing.Size(58, 16);
+            this.label74.TabIndex = 11;
+            this.label74.Text = "Invester:";
+            // 
+            // btnNPSCancel
+            // 
+            this.btnNPSCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnNPSCancel.ImageKey = "icons8-cancel-16.png";
+            this.btnNPSCancel.ImageList = this.imgCollection;
+            this.btnNPSCancel.Location = new System.Drawing.Point(760, 155);
+            this.btnNPSCancel.Name = "btnNPSCancel";
+            this.btnNPSCancel.Size = new System.Drawing.Size(86, 26);
+            this.btnNPSCancel.TabIndex = 15;
+            this.btnNPSCancel.Text = "Cancel";
+            this.btnNPSCancel.UseVisualStyleBackColor = true;
+            this.btnNPSCancel.Click += new System.EventHandler(this.btnNPSCancel_Click);
+            // 
+            // btnNPSSave
+            // 
+            this.btnNPSSave.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnNPSSave.ImageKey = "icons8-save-close-16.png";
+            this.btnNPSSave.ImageList = this.imgCollection;
+            this.btnNPSSave.Location = new System.Drawing.Point(668, 155);
+            this.btnNPSSave.Name = "btnNPSSave";
+            this.btnNPSSave.Size = new System.Drawing.Size(86, 26);
+            this.btnNPSSave.TabIndex = 14;
+            this.btnNPSSave.Text = "Save";
+            this.btnNPSSave.UseVisualStyleBackColor = true;
+            this.btnNPSSave.Click += new System.EventHandler(this.btnNPSSave_Click);
+            // 
+            // label75
+            // 
+            this.label75.AutoSize = true;
+            this.label75.Location = new System.Drawing.Point(471, 31);
+            this.label75.Name = "label75";
+            this.label75.Size = new System.Drawing.Size(101, 16);
+            this.label75.TabIndex = 0;
+            this.label75.Text = "Scheme Name:";
+            // 
+            // dtGridNPS
+            // 
+            this.dtGridNPS.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtGridNPS.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtGridNPS.Location = new System.Drawing.Point(2, 39);
+            this.dtGridNPS.Name = "dtGridNPS";
+            this.dtGridNPS.ReadOnly = true;
+            this.dtGridNPS.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtGridNPS.Size = new System.Drawing.Size(1301, 163);
+            this.dtGridNPS.TabIndex = 17;
+            this.dtGridNPS.SelectionChanged += new System.EventHandler(this.dtGridNPS_SelectionChanged);
+            // 
+            // label76
+            // 
+            this.label76.AutoSize = true;
+            this.label76.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label76.ForeColor = System.Drawing.Color.DarkGreen;
+            this.label76.Location = new System.Drawing.Point(8, 9);
+            this.label76.Name = "label76";
+            this.label76.Size = new System.Drawing.Size(42, 18);
+            this.label76.TabIndex = 16;
+            this.label76.Text = "NPS";
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox5.Controls.Add(this.btnDeleteNPS);
+            this.groupBox5.Controls.Add(this.btnAddNPS);
+            this.groupBox5.Controls.Add(this.btnEditNPS);
+            this.groupBox5.Location = new System.Drawing.Point(1192, 208);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(111, 38);
+            this.groupBox5.TabIndex = 18;
+            this.groupBox5.TabStop = false;
+            // 
+            // btnDeleteNPS
+            // 
+            this.btnDeleteNPS.ImageIndex = 1;
+            this.btnDeleteNPS.ImageList = this.imgCollection;
+            this.btnDeleteNPS.Location = new System.Drawing.Point(76, 10);
+            this.btnDeleteNPS.Name = "btnDeleteNPS";
+            this.btnDeleteNPS.Size = new System.Drawing.Size(29, 24);
+            this.btnDeleteNPS.TabIndex = 4;
+            this.btnDeleteNPS.UseVisualStyleBackColor = true;
+            this.btnDeleteNPS.Click += new System.EventHandler(this.btnDeleteNPS_Click);
+            // 
+            // btnAddNPS
+            // 
+            this.btnAddNPS.ImageIndex = 3;
+            this.btnAddNPS.ImageList = this.imgCollection;
+            this.btnAddNPS.Location = new System.Drawing.Point(6, 10);
+            this.btnAddNPS.Name = "btnAddNPS";
+            this.btnAddNPS.Size = new System.Drawing.Size(29, 24);
+            this.btnAddNPS.TabIndex = 2;
+            this.btnAddNPS.UseVisualStyleBackColor = true;
+            this.btnAddNPS.Click += new System.EventHandler(this.btnAddNPS_Click);
+            // 
+            // btnEditNPS
+            // 
+            this.btnEditNPS.ImageIndex = 4;
+            this.btnEditNPS.ImageList = this.imgCollection;
+            this.btnEditNPS.Location = new System.Drawing.Point(41, 10);
+            this.btnEditNPS.Name = "btnEditNPS";
+            this.btnEditNPS.Size = new System.Drawing.Size(29, 24);
+            this.btnEditNPS.TabIndex = 3;
+            this.btnEditNPS.UseVisualStyleBackColor = true;
+            this.btnEditNPS.Click += new System.EventHandler(this.btnEditNPS_Click);
             // 
             // Shares
             // 
@@ -1586,6 +2391,18 @@
             this.grpGeneralInsurance.ResumeLayout(false);
             this.grpGeneralInsurance.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridGeneralInsurance)).EndInit();
+            this.MutualFund.ResumeLayout(false);
+            this.MutualFund.PerformLayout();
+            this.grpMF.ResumeLayout(false);
+            this.grpMF.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtGridMF)).EndInit();
+            this.groupBox4.ResumeLayout(false);
+            this.NPS.ResumeLayout(false);
+            this.NPS.PerformLayout();
+            this.grpNPS.ResumeLayout(false);
+            this.grpNPS.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtGridNPS)).EndInit();
+            this.groupBox5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1680,7 +2497,7 @@
         private System.Windows.Forms.Button btnPersonalDetailSave;
         private System.Windows.Forms.ImageList imgCollection;
         private System.Windows.Forms.GroupBox grpActionControls;
-        private System.Windows.Forms.Button btnDeleteFamilyMember;
+        private System.Windows.Forms.Button btnDeleteLifeInsurance;
         private System.Windows.Forms.Button btnAddFamilyMember;
         private System.Windows.Forms.Button btnEditFamilyMember;
         private System.Windows.Forms.Button button2;
@@ -1725,5 +2542,73 @@
         private System.Windows.Forms.Label label44;
         private System.Windows.Forms.ComboBox cmbGenInsType;
         private System.Windows.Forms.Label label46;
+        private System.Windows.Forms.GroupBox grpMF;
+        private System.Windows.Forms.TextBox txtMFCurrentVal;
+        private System.Windows.Forms.TextBox txtUnits;
+        private System.Windows.Forms.TextBox txtNav;
+        private System.Windows.Forms.ComboBox cmbMFGoal;
+        private System.Windows.Forms.Label label55;
+        private System.Windows.Forms.ComboBox cmbSchemeName;
+        private System.Windows.Forms.Label label56;
+        private System.Windows.Forms.Label label57;
+        private System.Windows.Forms.Label label58;
+        private System.Windows.Forms.Label label59;
+        private System.Windows.Forms.ComboBox cmbMFInvester;
+        private System.Windows.Forms.Label label60;
+        private System.Windows.Forms.Button btnCancelMF;
+        private System.Windows.Forms.Button btnSaveMF;
+        private System.Windows.Forms.Label label61;
+        private System.Windows.Forms.DataGridView dtGridMF;
+        private System.Windows.Forms.Label label62;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Button btnDeleteMF;
+        private System.Windows.Forms.Button btnAddMF;
+        private System.Windows.Forms.Button btnEditMF;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.TextBox txtRedumptionAmt;
+        private System.Windows.Forms.Label label53;
+        private System.Windows.Forms.TextBox txtFreeUnits;
+        private System.Windows.Forms.Label label50;
+        private System.Windows.Forms.TextBox txtSIPAmount;
+        private System.Windows.Forms.Label label49;
+        private System.Windows.Forms.TextBox txtMFDebtRatio;
+        private System.Windows.Forms.Label label48;
+        private System.Windows.Forms.TextBox txtMFGoldRatio;
+        private System.Windows.Forms.Label label47;
+        private System.Windows.Forms.TextBox txtMFEquityRatio;
+        private System.Windows.Forms.TextBox txtFolioNo;
+        private System.Windows.Forms.Label label54;
+        private System.Windows.Forms.GroupBox grpNPS;
+        private System.Windows.Forms.TextBox txtNPSFolioNo;
+        private System.Windows.Forms.Label label63;
+        private System.Windows.Forms.TextBox txtNPSSIPAmt;
+        private System.Windows.Forms.Label label66;
+        private System.Windows.Forms.TextBox txtNPSDebtRatio;
+        private System.Windows.Forms.Label label67;
+        private System.Windows.Forms.TextBox txtNPSGoldRatio;
+        private System.Windows.Forms.Label label68;
+        private System.Windows.Forms.TextBox txtNPSEquityRatio;
+        private System.Windows.Forms.TextBox txtNPSCurrentVal;
+        private System.Windows.Forms.TextBox txtNPSUnits;
+        private System.Windows.Forms.TextBox txtNPSNAV;
+        private System.Windows.Forms.ComboBox cmbNPSGoal;
+        private System.Windows.Forms.Label label69;
+        private System.Windows.Forms.ComboBox cmbNPSScheme;
+        private System.Windows.Forms.Label label70;
+        private System.Windows.Forms.Label label71;
+        private System.Windows.Forms.Label label72;
+        private System.Windows.Forms.Label label73;
+        private System.Windows.Forms.ComboBox cmbNPSInvester;
+        private System.Windows.Forms.Label label74;
+        private System.Windows.Forms.Button btnNPSCancel;
+        private System.Windows.Forms.Button btnNPSSave;
+        private System.Windows.Forms.Label label75;
+        private System.Windows.Forms.DataGridView dtGridNPS;
+        private System.Windows.Forms.Label label76;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Button btnDeleteNPS;
+        private System.Windows.Forms.Button btnAddNPS;
+        private System.Windows.Forms.Button btnEditNPS;
     }
 }

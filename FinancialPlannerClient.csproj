@@ -85,6 +85,8 @@
     <Compile Include="CurrentStatus\CurrentStatusInfo.cs" />
     <Compile Include="CurrentStatus\GeneralInsuranceInfo.cs" />
     <Compile Include="CurrentStatus\LifeInsuranceInfo.cs" />
+    <Compile Include="CurrentStatus\MutualFundInfo.cs" />
+    <Compile Include="CurrentStatus\NPSInfo.cs" />
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
