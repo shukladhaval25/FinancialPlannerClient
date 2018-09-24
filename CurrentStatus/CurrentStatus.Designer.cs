@@ -223,6 +223,29 @@
             this.btnAddNPS = new System.Windows.Forms.Button();
             this.btnEditNPS = new System.Windows.Forms.Button();
             this.Shares = new System.Windows.Forms.TabPage();
+            this.grpShares = new System.Windows.Forms.GroupBox();
+            this.txtSharesMarketPrice = new System.Windows.Forms.TextBox();
+            this.label64 = new System.Windows.Forms.Label();
+            this.txtSharesCurrentValue = new System.Windows.Forms.TextBox();
+            this.txtNoOfShares = new System.Windows.Forms.TextBox();
+            this.txtSharesFaceValue = new System.Windows.Forms.TextBox();
+            this.cmbSharesGoal = new System.Windows.Forms.ComboBox();
+            this.label79 = new System.Windows.Forms.Label();
+            this.cmbSharesCompnay = new System.Windows.Forms.ComboBox();
+            this.label81 = new System.Windows.Forms.Label();
+            this.label82 = new System.Windows.Forms.Label();
+            this.label83 = new System.Windows.Forms.Label();
+            this.cmbSharesInvester = new System.Windows.Forms.ComboBox();
+            this.label84 = new System.Windows.Forms.Label();
+            this.btnSharesCancel = new System.Windows.Forms.Button();
+            this.btnSharesSave = new System.Windows.Forms.Button();
+            this.label85 = new System.Windows.Forms.Label();
+            this.dtGridShares = new System.Windows.Forms.DataGridView();
+            this.label86 = new System.Windows.Forms.Label();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.btnSharesDelete = new System.Windows.Forms.Button();
+            this.btnSharesAdd = new System.Windows.Forms.Button();
+            this.btnSharesEdit = new System.Windows.Forms.Button();
             this.Bonds = new System.Windows.Forms.TabPage();
             this.SavingAC = new System.Windows.Forms.TabPage();
             this.FD = new System.Windows.Forms.TabPage();
@@ -253,6 +276,10 @@
             this.grpNPS.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridNPS)).BeginInit();
             this.groupBox5.SuspendLayout();
+            this.Shares.SuspendLayout();
+            this.grpShares.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtGridShares)).BeginInit();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -2280,12 +2307,259 @@
             // 
             // Shares
             // 
+            this.Shares.Controls.Add(this.grpShares);
+            this.Shares.Controls.Add(this.dtGridShares);
+            this.Shares.Controls.Add(this.label86);
+            this.Shares.Controls.Add(this.groupBox6);
             this.Shares.Location = new System.Drawing.Point(4, 24);
             this.Shares.Name = "Shares";
             this.Shares.Size = new System.Drawing.Size(1321, 547);
             this.Shares.TabIndex = 4;
             this.Shares.Text = "Shares";
             this.Shares.UseVisualStyleBackColor = true;
+            // 
+            // grpShares
+            // 
+            this.grpShares.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpShares.Controls.Add(this.txtSharesMarketPrice);
+            this.grpShares.Controls.Add(this.label64);
+            this.grpShares.Controls.Add(this.txtSharesCurrentValue);
+            this.grpShares.Controls.Add(this.txtNoOfShares);
+            this.grpShares.Controls.Add(this.txtSharesFaceValue);
+            this.grpShares.Controls.Add(this.cmbSharesGoal);
+            this.grpShares.Controls.Add(this.label79);
+            this.grpShares.Controls.Add(this.cmbSharesCompnay);
+            this.grpShares.Controls.Add(this.label81);
+            this.grpShares.Controls.Add(this.label82);
+            this.grpShares.Controls.Add(this.label83);
+            this.grpShares.Controls.Add(this.cmbSharesInvester);
+            this.grpShares.Controls.Add(this.label84);
+            this.grpShares.Controls.Add(this.btnSharesCancel);
+            this.grpShares.Controls.Add(this.btnSharesSave);
+            this.grpShares.Controls.Add(this.label85);
+            this.grpShares.Enabled = false;
+            this.grpShares.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpShares.Location = new System.Drawing.Point(2, 246);
+            this.grpShares.Name = "grpShares";
+            this.grpShares.Size = new System.Drawing.Size(1317, 293);
+            this.grpShares.TabIndex = 23;
+            this.grpShares.TabStop = false;
+            this.grpShares.Text = "Shares";
+            // 
+            // txtSharesMarketPrice
+            // 
+            this.txtSharesMarketPrice.Location = new System.Drawing.Point(137, 117);
+            this.txtSharesMarketPrice.Name = "txtSharesMarketPrice";
+            this.txtSharesMarketPrice.Size = new System.Drawing.Size(102, 22);
+            this.txtSharesMarketPrice.TabIndex = 5;
+            // 
+            // label64
+            // 
+            this.label64.AutoSize = true;
+            this.label64.Location = new System.Drawing.Point(27, 120);
+            this.label64.Name = "label64";
+            this.label64.Size = new System.Drawing.Size(86, 16);
+            this.label64.TabIndex = 37;
+            this.label64.Text = "Market Price:";
+            // 
+            // txtSharesCurrentValue
+            // 
+            this.txtSharesCurrentValue.Enabled = false;
+            this.txtSharesCurrentValue.Location = new System.Drawing.Point(337, 117);
+            this.txtSharesCurrentValue.Name = "txtSharesCurrentValue";
+            this.txtSharesCurrentValue.Size = new System.Drawing.Size(120, 22);
+            this.txtSharesCurrentValue.TabIndex = 6;
+            this.txtSharesCurrentValue.TabStop = false;
+            this.txtSharesCurrentValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtNoOfShares
+            // 
+            this.txtNoOfShares.Location = new System.Drawing.Point(337, 89);
+            this.txtNoOfShares.Name = "txtNoOfShares";
+            this.txtNoOfShares.Size = new System.Drawing.Size(120, 22);
+            this.txtNoOfShares.TabIndex = 4;
+            this.txtNoOfShares.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtSharesFaceValue
+            // 
+            this.txtSharesFaceValue.Location = new System.Drawing.Point(137, 89);
+            this.txtSharesFaceValue.Name = "txtSharesFaceValue";
+            this.txtSharesFaceValue.Size = new System.Drawing.Size(102, 22);
+            this.txtSharesFaceValue.TabIndex = 3;
+            this.txtSharesFaceValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // cmbSharesGoal
+            // 
+            this.cmbSharesGoal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbSharesGoal.FormattingEnabled = true;
+            this.cmbSharesGoal.Location = new System.Drawing.Point(137, 145);
+            this.cmbSharesGoal.Name = "cmbSharesGoal";
+            this.cmbSharesGoal.Size = new System.Drawing.Size(320, 24);
+            this.cmbSharesGoal.TabIndex = 7;
+            // 
+            // label79
+            // 
+            this.label79.AutoSize = true;
+            this.label79.Location = new System.Drawing.Point(26, 148);
+            this.label79.Name = "label79";
+            this.label79.Size = new System.Drawing.Size(105, 16);
+            this.label79.TabIndex = 22;
+            this.label79.Text = "Goal (Mapped) :";
+            // 
+            // cmbSharesCompnay
+            // 
+            this.cmbSharesCompnay.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.cmbSharesCompnay.FormattingEnabled = true;
+            this.cmbSharesCompnay.Location = new System.Drawing.Point(137, 59);
+            this.cmbSharesCompnay.Name = "cmbSharesCompnay";
+            this.cmbSharesCompnay.Size = new System.Drawing.Size(320, 24);
+            this.cmbSharesCompnay.TabIndex = 2;
+            // 
+            // label81
+            // 
+            this.label81.AutoSize = true;
+            this.label81.Location = new System.Drawing.Point(243, 120);
+            this.label81.Name = "label81";
+            this.label81.Size = new System.Drawing.Size(91, 16);
+            this.label81.TabIndex = 18;
+            this.label81.Text = "Current Value:";
+            // 
+            // label82
+            // 
+            this.label82.AutoSize = true;
+            this.label82.Location = new System.Drawing.Point(243, 92);
+            this.label82.Name = "label82";
+            this.label82.Size = new System.Drawing.Size(94, 16);
+            this.label82.TabIndex = 15;
+            this.label82.Text = "No. Of Shares:";
+            // 
+            // label83
+            // 
+            this.label83.AutoSize = true;
+            this.label83.Location = new System.Drawing.Point(26, 92);
+            this.label83.Name = "label83";
+            this.label83.Size = new System.Drawing.Size(80, 16);
+            this.label83.TabIndex = 14;
+            this.label83.Text = "Face Value:";
+            // 
+            // cmbSharesInvester
+            // 
+            this.cmbSharesInvester.FormattingEnabled = true;
+            this.cmbSharesInvester.Location = new System.Drawing.Point(137, 29);
+            this.cmbSharesInvester.Name = "cmbSharesInvester";
+            this.cmbSharesInvester.Size = new System.Drawing.Size(320, 24);
+            this.cmbSharesInvester.TabIndex = 1;
+            // 
+            // label84
+            // 
+            this.label84.AutoSize = true;
+            this.label84.Location = new System.Drawing.Point(26, 32);
+            this.label84.Name = "label84";
+            this.label84.Size = new System.Drawing.Size(58, 16);
+            this.label84.TabIndex = 11;
+            this.label84.Text = "Invester:";
+            // 
+            // btnSharesCancel
+            // 
+            this.btnSharesCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSharesCancel.ImageKey = "icons8-cancel-16.png";
+            this.btnSharesCancel.ImageList = this.imgCollection;
+            this.btnSharesCancel.Location = new System.Drawing.Point(371, 175);
+            this.btnSharesCancel.Name = "btnSharesCancel";
+            this.btnSharesCancel.Size = new System.Drawing.Size(86, 26);
+            this.btnSharesCancel.TabIndex = 9;
+            this.btnSharesCancel.Text = "Cancel";
+            this.btnSharesCancel.UseVisualStyleBackColor = true;
+            this.btnSharesCancel.Click += new System.EventHandler(this.btnSharesCancel_Click);
+            // 
+            // btnSharesSave
+            // 
+            this.btnSharesSave.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSharesSave.ImageKey = "icons8-save-close-16.png";
+            this.btnSharesSave.ImageList = this.imgCollection;
+            this.btnSharesSave.Location = new System.Drawing.Point(279, 175);
+            this.btnSharesSave.Name = "btnSharesSave";
+            this.btnSharesSave.Size = new System.Drawing.Size(86, 26);
+            this.btnSharesSave.TabIndex = 8;
+            this.btnSharesSave.Text = "Save";
+            this.btnSharesSave.UseVisualStyleBackColor = true;
+            this.btnSharesSave.Click += new System.EventHandler(this.btnSharesSave_Click);
+            // 
+            // label85
+            // 
+            this.label85.AutoSize = true;
+            this.label85.Location = new System.Drawing.Point(27, 61);
+            this.label85.Name = "label85";
+            this.label85.Size = new System.Drawing.Size(109, 16);
+            this.label85.TabIndex = 0;
+            this.label85.Text = "Company Name:";
+            // 
+            // dtGridShares
+            // 
+            this.dtGridShares.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtGridShares.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtGridShares.Location = new System.Drawing.Point(-9, 37);
+            this.dtGridShares.Name = "dtGridShares";
+            this.dtGridShares.ReadOnly = true;
+            this.dtGridShares.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtGridShares.Size = new System.Drawing.Size(1301, 163);
+            this.dtGridShares.TabIndex = 21;
+            this.dtGridShares.SelectionChanged += new System.EventHandler(this.dtGridShares_SelectionChanged);
+            // 
+            // label86
+            // 
+            this.label86.AutoSize = true;
+            this.label86.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label86.ForeColor = System.Drawing.Color.DarkGreen;
+            this.label86.Location = new System.Drawing.Point(8, 7);
+            this.label86.Name = "label86";
+            this.label86.Size = new System.Drawing.Size(61, 18);
+            this.label86.TabIndex = 20;
+            this.label86.Text = "Shares";
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox6.Controls.Add(this.btnSharesDelete);
+            this.groupBox6.Controls.Add(this.btnSharesAdd);
+            this.groupBox6.Controls.Add(this.btnSharesEdit);
+            this.groupBox6.Location = new System.Drawing.Point(1192, 206);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(111, 38);
+            this.groupBox6.TabIndex = 22;
+            this.groupBox6.TabStop = false;
+            // 
+            // btnSharesDelete
+            // 
+            this.btnSharesDelete.ImageIndex = 1;
+            this.btnSharesDelete.ImageList = this.imgCollection;
+            this.btnSharesDelete.Location = new System.Drawing.Point(76, 10);
+            this.btnSharesDelete.Name = "btnSharesDelete";
+            this.btnSharesDelete.Size = new System.Drawing.Size(29, 24);
+            this.btnSharesDelete.TabIndex = 4;
+            this.btnSharesDelete.UseVisualStyleBackColor = true;
+            // 
+            // btnSharesAdd
+            // 
+            this.btnSharesAdd.ImageIndex = 3;
+            this.btnSharesAdd.ImageList = this.imgCollection;
+            this.btnSharesAdd.Location = new System.Drawing.Point(6, 10);
+            this.btnSharesAdd.Name = "btnSharesAdd";
+            this.btnSharesAdd.Size = new System.Drawing.Size(29, 24);
+            this.btnSharesAdd.TabIndex = 2;
+            this.btnSharesAdd.UseVisualStyleBackColor = true;
+            // 
+            // btnSharesEdit
+            // 
+            this.btnSharesEdit.ImageIndex = 4;
+            this.btnSharesEdit.ImageList = this.imgCollection;
+            this.btnSharesEdit.Location = new System.Drawing.Point(41, 10);
+            this.btnSharesEdit.Name = "btnSharesEdit";
+            this.btnSharesEdit.Size = new System.Drawing.Size(29, 24);
+            this.btnSharesEdit.TabIndex = 3;
+            this.btnSharesEdit.UseVisualStyleBackColor = true;
             // 
             // Bonds
             // 
@@ -2403,6 +2677,12 @@
             this.grpNPS.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridNPS)).EndInit();
             this.groupBox5.ResumeLayout(false);
+            this.Shares.ResumeLayout(false);
+            this.Shares.PerformLayout();
+            this.grpShares.ResumeLayout(false);
+            this.grpShares.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtGridShares)).EndInit();
+            this.groupBox6.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -2610,5 +2890,28 @@
         private System.Windows.Forms.Button btnDeleteNPS;
         private System.Windows.Forms.Button btnAddNPS;
         private System.Windows.Forms.Button btnEditNPS;
+        private System.Windows.Forms.GroupBox grpShares;
+        private System.Windows.Forms.TextBox txtSharesMarketPrice;
+        private System.Windows.Forms.Label label64;
+        private System.Windows.Forms.TextBox txtSharesCurrentValue;
+        private System.Windows.Forms.TextBox txtNoOfShares;
+        private System.Windows.Forms.TextBox txtSharesFaceValue;
+        private System.Windows.Forms.ComboBox cmbSharesGoal;
+        private System.Windows.Forms.Label label79;
+        private System.Windows.Forms.ComboBox cmbSharesCompnay;
+        private System.Windows.Forms.Label label81;
+        private System.Windows.Forms.Label label82;
+        private System.Windows.Forms.Label label83;
+        private System.Windows.Forms.ComboBox cmbSharesInvester;
+        private System.Windows.Forms.Label label84;
+        private System.Windows.Forms.Button btnSharesCancel;
+        private System.Windows.Forms.Button btnSharesSave;
+        private System.Windows.Forms.Label label85;
+        private System.Windows.Forms.DataGridView dtGridShares;
+        private System.Windows.Forms.Label label86;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.Button btnSharesDelete;
+        private System.Windows.Forms.Button btnSharesAdd;
+        private System.Windows.Forms.Button btnSharesEdit;
     }
 }

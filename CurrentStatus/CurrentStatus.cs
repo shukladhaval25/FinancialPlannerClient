@@ -18,6 +18,7 @@ namespace FinancialPlannerClient.CurrentStatus
         DataTable _dtGeneralInsurance;
         DataTable _dtMutualFund;
         DataTable _dtNPS;
+        DataTable _dtShares;
         IList<Goals> _goals;
 
         public CurrentStatus()
@@ -69,6 +70,10 @@ namespace FinancialPlannerClient.CurrentStatus
         {
             new PlannerInfo.FamilyMemberInfo().FillFamilyMemberInCombo(this._client.ID, cmbNPSInvester);
         }
+        private void fillSharesInvesterCombobox()
+        {
+            new PlannerInfo.FamilyMemberInfo().FillFamilyMemberInCombo(this._client.ID, cmbSharesInvester);
+        }
         private void fillPlanData()
         {
             if (_dtPlan != null)
@@ -107,7 +112,19 @@ namespace FinancialPlannerClient.CurrentStatus
                 case "NPS":
                     fillupNPSInfo();
                     break;
+                case "Shares":
+                    fillupSharesInfo();
+                    break;
             }
+        }
+
+        private void fillupSharesInfo()
+        {
+            SharesInfo sharesInfo = new SharesInfo();
+            _dtShares = sharesInfo.GetSharesInfo(_planeId);
+            dtGridShares.DataSource = _dtShares;
+            fillSharesInvesterCombobox();
+            fillSharesGolsCombobox();
         }
 
         private void fillupNPSInfo()
@@ -128,6 +145,17 @@ namespace FinancialPlannerClient.CurrentStatus
                 cmbNPSGoal.Items.Add(goal.Name);
             }
             cmbNPSGoal.Items.Add("");
+        }
+
+        private void fillSharesGolsCombobox()
+        {
+            cmbSharesGoal.Items.Clear();
+            _goals = new GoalsInfo().GetAll(_planeId);
+            foreach (var goal in _goals)
+            {
+                cmbSharesGoal.Items.Add(goal.Name);
+            }
+            cmbSharesGoal.Items.Add("");
         }
 
         private void fillupMutualFundInfo()
@@ -646,7 +674,14 @@ namespace FinancialPlannerClient.CurrentStatus
             double.TryParse(txtNPSUnits.Text, out units);
             txtNPSCurrentVal.Text = (nav * units).ToString();
         }
-
+        private void calculateAndSetSharesCurrentValue()
+        {
+            float nav = 0;
+            double units = 0;
+            float.TryParse(txtSharesMarketPrice.Text, out nav);
+            double.TryParse(txtNoOfShares.Text, out units);
+            txtSharesCurrentValue.Text = (nav * units).ToString();
+        }
         private void btnCancelMF_Click(object sender, EventArgs e)
         {
             grpMF.Enabled = false;
@@ -899,6 +934,119 @@ namespace FinancialPlannerClient.CurrentStatus
                 }
             }
             return null;
+        }
+
+        private DataRow getSelectedDataRowForShares()
+        {
+            if (dtGridShares.SelectedRows.Count >= 1)
+            {
+                int selectedRowIndex = dtGridShares.SelectedRows[0].Index;
+                if (dtGridShares.SelectedRows[0].Cells["ID"].Value != System.DBNull.Value)
+                {
+                    int selectedUserId = int.Parse(dtGridShares.SelectedRows[0].Cells["ID"].Value.ToString());
+
+                    DataRow[] rows = _dtShares.Select("Id ='" + selectedUserId +"'");
+                    foreach (DataRow dr in rows)
+                    {
+                        return dr;
+                    }
+                }
+            }
+            return null;
+        }
+
+        private void dtGridShares_SelectionChanged(object sender, EventArgs e)
+        {
+            DataRow dr = getSelectedDataRowForShares();
+            if (dr != null)
+                displaySharesInfo(dr);
+            else
+                setDefaultValueShares();
+        }
+
+        private void setDefaultValueShares()
+        {
+            cmbSharesInvester.Tag = "0";
+            cmbSharesInvester.Text = "";
+            cmbSharesCompnay.Text = "";
+            txtSharesFaceValue.Text = "0";
+            txtNoOfShares.Text = "0";
+            txtSharesMarketPrice.Text = "0";
+            txtSharesCurrentValue.Text = "0";
+            calculateAndSetSharesCurrentValue();
+            cmbSharesGoal.Tag = "0";
+            cmbSharesGoal.Text = "";
+        }
+
+        private void displaySharesInfo(DataRow dr)
+        {
+            if (dr != null)
+            {
+                cmbSharesInvester.Tag = dr.Field<string>("ID");
+                cmbSharesInvester.Text = dr.Field<string>("InvesterName");
+                cmbSharesCompnay.Text = dr.Field<string>("CompanyName");
+                txtSharesFaceValue.Text = dr.Field<string>("FaceValue");
+                txtNoOfShares.Text = dr["NoOfShares"].ToString();
+                txtSharesMarketPrice.Text = dr["MarketPrice"].ToString();
+                txtSharesCurrentValue.Text = dr["CurrentValue"].ToString();
+                calculateAndSetSharesCurrentValue();             
+                if (dr["GoalID"] != null)
+                {
+                    cmbSharesGoal.Tag = dr["GoalId"].ToString();
+                    cmbSharesGoal.Text = getGoalName(int.Parse(cmbSharesGoal.Tag.ToString()));
+                }
+                else
+                {
+                    cmbSharesGoal.Tag = "0";
+                    cmbSharesGoal.Text = "";
+                }
+            }
+        }
+
+        private void btnSharesSave_Click(object sender, EventArgs e)
+        {
+            SharesInfo SharesInfo = new SharesInfo();
+            Shares shares = getSharesData();
+            bool isSaved = false;
+
+            if (shares != null && shares.Id == 0)
+                isSaved = SharesInfo.Add(shares);
+            else
+                isSaved = SharesInfo.Update(shares);
+
+            if (isSaved)
+            {
+                MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                fillupSharesInfo();
+                grpMF.Enabled = false;
+            }
+            else
+                MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private Shares getSharesData()
+        {
+            Shares  shares = new Shares();
+            shares.Id = int.Parse(cmbSharesInvester.Tag.ToString());
+            shares.Pid = _planeId;
+            shares.InvesterName = cmbSharesInvester.Text;
+            shares.CompanyName = cmbSharesCompnay.Text;
+            shares.FaceValue = float.Parse(txtSharesFaceValue.Text);
+            shares.NoOfShares = int.Parse(txtNoOfShares.Text);
+            shares.MarketPrice = float.Parse(txtSharesMarketPrice.Text);
+            shares.CurrentValue = double.Parse(txtSharesCurrentValue.Text);        
+            shares.GoalID = int.Parse(cmbSharesGoal.Tag.ToString());
+            shares.CreatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+            shares.CreatedBy = Program.CurrentUser.Id;
+            shares.UpdatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+            shares.UpdatedBy = Program.CurrentUser.Id;
+            shares.MachineName = Environment.MachineName;
+            return shares;
+        }
+
+        private void btnSharesCancel_Click(object sender, EventArgs e)
+        {
+            grpShares.Enabled = false;
         }
     }
 }
