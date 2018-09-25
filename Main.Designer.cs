@@ -31,20 +31,20 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.menuMain = new System.Windows.Forms.MenuStrip();
+            this.prospectedCustomerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.clientsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dataGaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.currentInToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.estimatedPlanningOptionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.riskProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.createNewRsikProfiledToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.auditTrailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlMain = new System.Windows.Forms.Panel();
+            this.picClientMain = new System.Windows.Forms.PictureBox();
             this.imglist16x16 = new System.Windows.Forms.ImageList(this.components);
             this.imgList30x30 = new System.Windows.Forms.ImageList(this.components);
-            this.picClientMain = new System.Windows.Forms.PictureBox();
-            this.prospectedCustomerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.clientsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dataGaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.estimatedPlanningOptionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.currentInToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuMain.SuspendLayout();
             this.pnlMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picClientMain)).BeginInit();
@@ -64,6 +64,48 @@
             this.menuMain.Size = new System.Drawing.Size(1022, 24);
             this.menuMain.TabIndex = 0;
             this.menuMain.Text = "menuStrip1";
+            // 
+            // prospectedCustomerToolStripMenuItem
+            // 
+            this.prospectedCustomerToolStripMenuItem.Image = global::FinancialPlannerClient.Properties.Resources.icons8_reception_30;
+            this.prospectedCustomerToolStripMenuItem.Name = "prospectedCustomerToolStripMenuItem";
+            this.prospectedCustomerToolStripMenuItem.Size = new System.Drawing.Size(136, 20);
+            this.prospectedCustomerToolStripMenuItem.Text = "Prospect Customer";
+            this.prospectedCustomerToolStripMenuItem.Click += new System.EventHandler(this.prospectedCustomerToolStripMenuItem_Click);
+            // 
+            // clientsToolStripMenuItem
+            // 
+            this.clientsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.dataGaToolStripMenuItem,
+            this.currentInToolStripMenuItem,
+            this.estimatedPlanningOptionToolStripMenuItem});
+            this.clientsToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("clientsToolStripMenuItem.Image")));
+            this.clientsToolStripMenuItem.Name = "clientsToolStripMenuItem";
+            this.clientsToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
+            this.clientsToolStripMenuItem.Text = "Planner";
+            this.clientsToolStripMenuItem.Click += new System.EventHandler(this.clientsToolStripMenuItem_Click);
+            // 
+            // dataGaToolStripMenuItem
+            // 
+            this.dataGaToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("dataGaToolStripMenuItem.Image")));
+            this.dataGaToolStripMenuItem.Name = "dataGaToolStripMenuItem";
+            this.dataGaToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.dataGaToolStripMenuItem.Text = "Data Gathering";
+            this.dataGaToolStripMenuItem.Click += new System.EventHandler(this.dataGaToolStripMenuItem_Click);
+            // 
+            // currentInToolStripMenuItem
+            // 
+            this.currentInToolStripMenuItem.Name = "currentInToolStripMenuItem";
+            this.currentInToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.currentInToolStripMenuItem.Text = "Current Status of Client";
+            this.currentInToolStripMenuItem.Click += new System.EventHandler(this.currentInToolStripMenuItem_Click);
+            // 
+            // estimatedPlanningOptionToolStripMenuItem
+            // 
+            this.estimatedPlanningOptionToolStripMenuItem.Name = "estimatedPlanningOptionToolStripMenuItem";
+            this.estimatedPlanningOptionToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.estimatedPlanningOptionToolStripMenuItem.Text = "Estimated Plan Option";
+            this.estimatedPlanningOptionToolStripMenuItem.Click += new System.EventHandler(this.estimatedPlanningOptionToolStripMenuItem_Click);
             // 
             // riskProfileToolStripMenuItem
             // 
@@ -109,19 +151,6 @@
             this.pnlMain.ControlAdded += new System.Windows.Forms.ControlEventHandler(this.pnlMain_ControlAdded);
             this.pnlMain.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.pnlMain_ControlRemoved);
             // 
-            // imglist16x16
-            // 
-            this.imglist16x16.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imglist16x16.ImageStream")));
-            this.imglist16x16.TransparentColor = System.Drawing.Color.Transparent;
-            this.imglist16x16.Images.SetKeyName(0, "icons8-customer-16.png");
-            this.imglist16x16.Images.SetKeyName(1, "icons8-reception-16 - Copy.png");
-            // 
-            // imgList30x30
-            // 
-            this.imgList30x30.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgList30x30.ImageStream")));
-            this.imgList30x30.TransparentColor = System.Drawing.Color.Transparent;
-            this.imgList30x30.Images.SetKeyName(0, "icons8-select-users-30.png");
-            // 
             // picClientMain
             // 
             this.picClientMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -135,47 +164,18 @@
             this.picClientMain.TabIndex = 0;
             this.picClientMain.TabStop = false;
             // 
-            // prospectedCustomerToolStripMenuItem
+            // imglist16x16
             // 
-            this.prospectedCustomerToolStripMenuItem.Image = global::FinancialPlannerClient.Properties.Resources.icons8_reception_30;
-            this.prospectedCustomerToolStripMenuItem.Name = "prospectedCustomerToolStripMenuItem";
-            this.prospectedCustomerToolStripMenuItem.Size = new System.Drawing.Size(136, 20);
-            this.prospectedCustomerToolStripMenuItem.Text = "Prospect Customer";
-            this.prospectedCustomerToolStripMenuItem.Click += new System.EventHandler(this.prospectedCustomerToolStripMenuItem_Click);
+            this.imglist16x16.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imglist16x16.ImageStream")));
+            this.imglist16x16.TransparentColor = System.Drawing.Color.Transparent;
+            this.imglist16x16.Images.SetKeyName(0, "icons8-customer-16.png");
+            this.imglist16x16.Images.SetKeyName(1, "icons8-reception-16 - Copy.png");
             // 
-            // clientsToolStripMenuItem
+            // imgList30x30
             // 
-            this.clientsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.dataGaToolStripMenuItem,
-            this.currentInToolStripMenuItem,
-            this.estimatedPlanningOptionToolStripMenuItem});
-            this.clientsToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("clientsToolStripMenuItem.Image")));
-            this.clientsToolStripMenuItem.Name = "clientsToolStripMenuItem";
-            this.clientsToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
-            this.clientsToolStripMenuItem.Text = "Planner";
-            this.clientsToolStripMenuItem.Click += new System.EventHandler(this.clientsToolStripMenuItem_Click);
-            // 
-            // dataGaToolStripMenuItem
-            // 
-            this.dataGaToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("dataGaToolStripMenuItem.Image")));
-            this.dataGaToolStripMenuItem.Name = "dataGaToolStripMenuItem";
-            this.dataGaToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
-            this.dataGaToolStripMenuItem.Text = "Data Gathering";
-            this.dataGaToolStripMenuItem.Click += new System.EventHandler(this.dataGaToolStripMenuItem_Click);
-            // 
-            // estimatedPlanningOptionToolStripMenuItem
-            // 
-            this.estimatedPlanningOptionToolStripMenuItem.Name = "estimatedPlanningOptionToolStripMenuItem";
-            this.estimatedPlanningOptionToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
-            this.estimatedPlanningOptionToolStripMenuItem.Text = "Estimated Plan Option";
-            this.estimatedPlanningOptionToolStripMenuItem.Click += new System.EventHandler(this.estimatedPlanningOptionToolStripMenuItem_Click);
-            // 
-            // currentInToolStripMenuItem
-            // 
-            this.currentInToolStripMenuItem.Name = "currentInToolStripMenuItem";
-            this.currentInToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
-            this.currentInToolStripMenuItem.Text = "Current Status of Client";
-            this.currentInToolStripMenuItem.Click += new System.EventHandler(this.currentInToolStripMenuItem_Click);
+            this.imgList30x30.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgList30x30.ImageStream")));
+            this.imgList30x30.TransparentColor = System.Drawing.Color.Transparent;
+            this.imgList30x30.Images.SetKeyName(0, "icons8-select-users-30.png");
             // 
             // Main
             // 

@@ -1,5 +1,6 @@
 ﻿using FinancialPlanner.Common;
 using FinancialPlanner.Common.Model;
+using FinancialPlanner.Common.Model.RiskProfile;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,6 +26,8 @@ namespace FinancialPlannerClient.RiskProfile
         RiskProfiledReturnMaster _riskProfiledReturnMaster;
         ReiskProfileInfo _defaultRiskProfile = new ReiskProfileInfo();
         DataTable _dtRiskProfileReturn;
+        DataTable _dtRecommendedScheme;
+        InvestmentBifercationInfo invBifurcationIno = new InvestmentBifercationInfo();
         public frmRiskProfileReturn()
         {
             InitializeComponent();
@@ -39,7 +42,7 @@ namespace FinancialPlannerClient.RiskProfile
 
         private void loadRislProfileReturnDetails()
         {
-            _dtRiskProfileReturn = _defaultRiskProfile.GetDefaultRiskProfileReturn(_riskProfiledReturnMaster);
+            _dtRiskProfileReturn = _defaultRiskProfile.GetRiskProfileReturnById(_riskProfileId);
             dtGridRiskProfileDetails.DataSource = _dtRiskProfileReturn;
             setRiskProfileDetailsGrid();
         }
@@ -229,11 +232,11 @@ namespace FinancialPlannerClient.RiskProfile
                     //riskProfile.Id = dr.Field<int>("ID");
                     riskProfile.RiskProfileId = rpr.Id;
                     riskProfile.YearRemaining = int.Parse(dr["YearRemaining"].ToString());
-                    riskProfile.ForeingInvestmentRatio = decimal.Parse(dr["ForeignInvestmentRatio"].ToString());
+                    riskProfile.ForeingInvestmentRatio = decimal.Parse(dr["ForeingInvestmentRatio"].ToString());
                     riskProfile.EquityInvestementRatio = decimal.Parse(dr["EquityInvestementRatio"].ToString());
                     riskProfile.DebtInvestementRatio = decimal.Parse(dr["DebtInvestementRatio"].ToString());
 
-                    riskProfile.ForeingInvestementReaturn = decimal.Parse(dr["ForeignInvestementReaturn"].ToString());
+                    riskProfile.ForeingInvestementReaturn = decimal.Parse(dr["ForeingInvestementReaturn"].ToString());
                     riskProfile.EquityInvestementReturn = decimal.Parse(dr["EquityInvestementReturn"].ToString());
                     riskProfile.DebtInvestementReturn = decimal.Parse(dr["DebtInvestementReturn"].ToString());
                     rpr.RiskProfileReturn.Add(riskProfile);
@@ -299,6 +302,379 @@ namespace FinancialPlannerClient.RiskProfile
         private void txtPreForeignInvRation_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void txtPreForeignInvRation_Leave(object sender, EventArgs e)
+        {
+            if (!isValidTotalRatio(
+                float.Parse(txtPreForeignInvRation.Text),
+                float.Parse(txtPreEquityInvRatio.Text),
+                float.Parse(txtPreDebtInvRatio.Text)))
+            {
+                txtPreForeignInvRation.Focus();
+            }
+
+        }
+        private bool isValidTotalRatio(float forignValue, float equityValue, float debtValue)
+        {
+            if ((forignValue + equityValue + debtValue) > 100)
+            {
+                MessageBox.Show("Total should not more then 100.", "Exceed Value", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            return true;
+        }
+
+        private void txtPreEquityInvRatio_Leave(object sender, EventArgs e)
+        {
+            if (!isValidTotalRatio(
+                float.Parse(txtPreForeignInvRation.Text),
+                float.Parse(txtPreEquityInvRatio.Text),
+                float.Parse(txtPreDebtInvRatio.Text)))
+            {
+                txtPreEquityInvRatio.Focus();
+            }
+        }
+
+        private void txtPreDebtInvRatio_Leave(object sender, EventArgs e)
+        {
+            if (!isValidTotalRatio(
+                float.Parse(txtPreForeignInvRation.Text),
+                float.Parse(txtPreEquityInvRatio.Text),
+                float.Parse(txtPreDebtInvRatio.Text)))
+            {
+                txtPreDebtInvRatio.Focus();
+            }
+        }
+
+        private void txtPostForeingInvRatio_Leave(object sender, EventArgs e)
+        {
+            if (!isValidTotalRatio(
+               float.Parse(txtPostForeingInvRatio.Text),
+               float.Parse(txtPostEquityInvRatio.Text),
+               float.Parse(txtPostDebtInvRatio.Text)))
+            {
+                txtPostForeingInvRatio.Focus();
+            }
+        }
+
+        private void txtPostEquityInvRatio_Leave(object sender, EventArgs e)
+        {
+            if (!isValidTotalRatio(
+             float.Parse(txtPostForeingInvRatio.Text),
+             float.Parse(txtPostEquityInvRatio.Text),
+             float.Parse(txtPostDebtInvRatio.Text)))
+            {
+                txtPostEquityInvRatio.Focus();
+            }
+        }
+
+        private void txtPostDebtInvRatio_Leave(object sender, EventArgs e)
+        {
+            if (!isValidTotalRatio(
+             float.Parse(txtPostForeingInvRatio.Text),
+             float.Parse(txtPostEquityInvRatio.Text),
+             float.Parse(txtPostDebtInvRatio.Text)))
+            {
+                txtPostDebtInvRatio.Focus();
+            }
+        }
+
+        private void txtForeingReturn_Leave(object sender, EventArgs e)
+        {
+            if (!isValidTotalRatio(
+             float.Parse(txtForeingReturn.Text),
+             float.Parse(txtEquityInvReturn.Text),
+             float.Parse(txtDebtInvReturn.Text)))
+            {
+                txtForeingReturn.Focus();
+            }
+        }
+
+        private void txtEquityInvReturn_Leave(object sender, EventArgs e)
+        {
+            if (!isValidTotalRatio(
+            float.Parse(txtForeingReturn.Text),
+            float.Parse(txtEquityInvReturn.Text),
+            float.Parse(txtDebtInvReturn.Text)))
+            {
+                txtEquityInvReturn.Focus();
+            }
+        }
+
+        private void txtDebtInvReturn_Leave(object sender, EventArgs e)
+        {
+            if (!isValidTotalRatio(
+            float.Parse(txtForeingReturn.Text),
+            float.Parse(txtEquityInvReturn.Text),
+            float.Parse(txtDebtInvReturn.Text)))
+            {
+                txtDebtInvReturn.Focus();
+            }
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            grpSegment.Enabled = true;
+            setDefaultValueSegment();
+        }
+    
+        private void rdoEquity_CheckedChanged(object sender, EventArgs e)
+        {
+            fillSegmentInfo();
+        }
+
+        private void fillSegmentInfo()
+        {
+            lstSchemeName.Items.Clear();
+            if (rdoEquity.Checked)
+                fillInvestmentBifurcationData(rdoEquity.Text);
+            if (rdoGold.Checked)
+                fillInvestmentBifurcationData(rdoGold.Text);
+            if (rdoDebt.Checked)
+                fillInvestmentBifurcationData(rdoDebt.Text);
+        }
+
+        private void fillInvestmentBifurcationData(string investmentType)
+        {            
+            invBifurcationIno.FillInvestmentBifurcationData(_riskProfileId, investmentType, dtGridSegment);
+        }
+
+        private void tabControlRiskProfile_Selecting(object sender, TabControlCancelEventArgs e)
+        {
+            try
+            {
+                switch (tabControlRiskProfile.SelectedTab.Name)
+                {
+                    case "tpageInvBifercation":
+                        fillSegmentInfo();
+                        break;
+                }
+            }
+            catch(Exception ex)
+            {
+                StackTrace st = new StackTrace ();
+                StackFrame sf = st.GetFrame (0);
+                MethodBase  currentMethodName = sf.GetMethod();
+                LogDebug(currentMethodName.Name, ex);
+                MessageBox.Show("Error -> " + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnEditSegment_Click(object sender, EventArgs e)
+        {
+            grpSegment.Enabled = true;           
+        }
+
+        private void dtGridSegment_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dtGridSegment.SelectedRows.Count >= 1)
+            {
+                int selectedRowIndex = dtGridSegment.SelectedRows[0].Index;
+                if (dtGridSegment.SelectedRows[0].Cells["ID"].Value != System.DBNull.Value)
+                {
+                    int selectedSegmentId = int.Parse(dtGridSegment.SelectedRows[0].Cells["ID"].Value.ToString());
+
+                    DataRow dr = invBifurcationIno.GetSelectedDataRowForSegment(selectedSegmentId);
+                    if (dr != null)
+                        displayInvestmentSegment(dr);
+                    else
+                        setDefaultValueSegment();
+                }
+            }
+        }
+
+        private void setDefaultValueSegment()
+        {
+            txtSegmentName.Tag = "0";
+            txtSegmentName.Text = "";
+            txtSegmentRatio.Text = "0";
+        }
+
+        private void displayInvestmentSegment(DataRow dr)
+        {
+            if (dr != null)
+            {
+                txtSegmentName.Tag = dr.Field<string>("ID");
+                txtSegmentName.Text = dr.Field<string>("SegmentName");
+                txtSegmentRatio.Text = dr.Field<string>("SegmentRatio");
+                fillupSchemes();
+            }                           
+        }
+
+        private void fillupSchemes()
+        {
+            lstSchemeName.Items.Clear();
+            txtSchemeName.Tag = "";
+            txtSchemeName.Text = "";
+            if (txtSegmentName.Tag != null)
+            {
+                _dtRecommendedScheme = invBifurcationIno.GetSchemes(int.Parse(txtSegmentName.Tag.ToString()));
+                if (_dtRecommendedScheme != null && _dtRecommendedScheme.Rows.Count > 0)
+                {
+                    foreach (DataRow dr in _dtRecommendedScheme.Rows)
+                    {
+                        lstSchemeName.Items.Add(dr["SchemeName"]);
+                    }
+                }
+            }
+        }
+
+        private void txtSegmentRatio_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void btnCancelSegment_Click(object sender, EventArgs e)
+        {
+            grpSegment.Enabled = false;
+        }
+
+        private void rdoGold_CheckedChanged(object sender, EventArgs e)
+        {
+            fillSegmentInfo();
+        }
+
+        private void rdoDebt_CheckedChanged(object sender, EventArgs e)
+        {
+            fillSegmentInfo();
+        }
+
+        private void btnSaveSegment_Click(object sender, EventArgs e)
+        {
+            InvestmentSegment invSegment = getInvestmentSegmentData();
+            bool isSaved = false;
+
+            if (invSegment != null && invSegment.Id == 0)
+                isSaved = invBifurcationIno.Add(invSegment);
+            else
+            
+                isSaved = invBifurcationIno.Update(invSegment);
+
+            if (isSaved)
+            {
+                MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                fillSegmentInfo();
+                grpSegment.Enabled = false;
+            }
+            else
+                MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private InvestmentSegment getInvestmentSegmentData()
+        {
+            InvestmentSegment invSeg = new InvestmentSegment();
+            invSeg.RiskProfileId = _riskProfileId;
+            invSeg.Id = int.Parse(txtSegmentName.Tag.ToString());
+            invSeg.SegmentName = txtSegmentName.Text;
+            if (rdoEquity.Checked)
+                invSeg.InvestmentType = rdoEquity.Text;
+            if (rdoGold.Checked)
+                invSeg.InvestmentType = rdoGold.Text;
+            if (rdoDebt.Checked)
+                invSeg.InvestmentType = rdoDebt.Text;            
+            invSeg.SegmentRatio = string.IsNullOrEmpty(txtSegmentRatio.Text) ? 0 : float.Parse(txtSegmentRatio.Text);
+            invSeg.CreatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+            invSeg.CreatedBy = Program.CurrentUser.Id;
+            invSeg.UpdatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+            invSeg.UpdatedBy = Program.CurrentUser.Id;
+            invSeg.MachineName = Environment.MachineName;
+            return invSeg;
+        }
+
+        private void btnDeleteSegment_Click(object sender, EventArgs e)
+        {
+            if (dtGridSegment.SelectedRows.Count > 0)
+            {
+                if (MessageBox.Show("Are you sure, you want to delete this record?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+
+                    InvestmentSegment invSegment = getInvestmentSegmentData();
+                    invBifurcationIno.Delete(invSegment);
+                    fillSegmentInfo();
+                }
+            }
+        }
+
+        private void lstSchemeName_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (lstSchemeName.SelectedItems.Count > 0)
+            {
+                txtSchemeName.Text = lstSchemeName.Text;
+                DataRow[] drs = _dtRecommendedScheme.Select("SchemeName = '" +  txtSchemeName.Text + "'");
+                if (drs.Count() > 0)
+                {
+                    txtSchemeName.Tag = drs[0]["ID"].ToString();
+                }
+            }
+        }
+
+        private void btnAddScheme_Click(object sender, EventArgs e)
+        {
+            grpScheme.Enabled = true;
+            txtSchemeName.Tag = "0";
+            txtSchemeName.Text = "";
+        }
+
+        private void btnSchemeSave_Click(object sender, EventArgs e)
+        {
+            RecommendedSchemes recommendedSchemes = getRecommendedSchemesData();
+            bool isSaved = false;
+
+            if (recommendedSchemes != null && recommendedSchemes.Id == 0)
+                isSaved = invBifurcationIno.Add(recommendedSchemes);
+            else
+                isSaved = invBifurcationIno.Update(recommendedSchemes);
+
+            if (isSaved)
+            {
+                MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                fillupSchemes();
+                grpScheme.Enabled = false;
+            }
+            else
+                MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private RecommendedSchemes getRecommendedSchemesData()
+        {
+            RecommendedSchemes recScheme = new RecommendedSchemes();
+            recScheme.Id = int.Parse(txtSchemeName.Tag.ToString());
+            recScheme.InvestmentSegmentID = int.Parse(txtSegmentName.Tag.ToString());
+            recScheme.SchemeName = txtSchemeName.Text;
+            recScheme.CreatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+            recScheme.CreatedBy = Program.CurrentUser.Id;
+            recScheme.UpdatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+            recScheme.UpdatedBy = Program.CurrentUser.Id;
+            recScheme.UpdatedByUserName = Program.CurrentUser.UserName;
+            recScheme.MachineName = System.Environment.MachineName;
+            return recScheme;
+        }
+
+        private void btnSchemeCancel_Click(object sender, EventArgs e)
+        {
+            grpScheme.Enabled = false;
+        }
+
+        private void btnEditScheme_Click(object sender, EventArgs e)
+        {
+            if (lstSchemeName.SelectedItems.Count > 0)
+            {
+                grpScheme.Enabled = true;
+            }
+        }
+
+        private void btnDeleteScheme_Click(object sender, EventArgs e)
+        {
+            if (lstSchemeName.SelectedItems.Count > 0)
+            {
+                if (MessageBox.Show("Are you sure, you want to delete this record?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    RecommendedSchemes recommendedSchemes = getRecommendedSchemesData();
+                    invBifurcationIno.Delete(recommendedSchemes);
+                    fillupSchemes();
+                }
+            }
         }
     }
 }

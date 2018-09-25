@@ -1048,5 +1048,25 @@ namespace FinancialPlannerClient.CurrentStatus
         {
             grpShares.Enabled = false;
         }
+
+        private void btnSharesEdit_Click(object sender, EventArgs e)
+        {
+            if (dtGridShares.SelectedRows.Count > 0)
+                grpShares.Enabled = true;
+        }
+
+        private void btnSharesDelete_Click(object sender, EventArgs e)
+        {
+            if (dtGridShares.SelectedRows.Count > 0)
+            {
+                if (MessageBox.Show("Are you sure, you want to delete this record?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    SharesInfo SharesInfo = new SharesInfo();
+                    Shares Shares  =  getSharesData();
+                    SharesInfo.Delete(Shares);
+                    fillupSharesInfo();
+                }
+            }
+        }
     }
 }

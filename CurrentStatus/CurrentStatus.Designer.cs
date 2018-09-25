@@ -2540,6 +2540,7 @@
             this.btnSharesDelete.Size = new System.Drawing.Size(29, 24);
             this.btnSharesDelete.TabIndex = 4;
             this.btnSharesDelete.UseVisualStyleBackColor = true;
+            this.btnSharesDelete.Click += new System.EventHandler(this.btnSharesDelete_Click);
             // 
             // btnSharesAdd
             // 
@@ -2560,6 +2561,7 @@
             this.btnSharesEdit.Size = new System.Drawing.Size(29, 24);
             this.btnSharesEdit.TabIndex = 3;
             this.btnSharesEdit.UseVisualStyleBackColor = true;
+            this.btnSharesEdit.Click += new System.EventHandler(this.btnSharesEdit_Click);
             // 
             // Bonds
             // 

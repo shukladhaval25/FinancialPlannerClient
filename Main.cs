@@ -122,5 +122,10 @@ namespace FinancialPlannerClient
             frmClientCurrrentStatusLst.Dock = DockStyle.Fill;
             frmClientCurrrentStatusLst.Show();
         }
+
+        private void investmentToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

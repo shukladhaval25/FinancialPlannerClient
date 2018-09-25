@@ -170,6 +170,7 @@
     <Compile Include="RiskProfile\frmRiskProfileReturn.Designer.cs">
       <DependentUpon>frmRiskProfileReturn.cs</DependentUpon>
     </Compile>
+    <Compile Include="RiskProfile\InvestmentBifercationInfo.cs" />
     <EmbeddedResource Include="Clients\ClientWithPlanner.resx">
       <DependentUpon>ClientWithPlanner.cs</DependentUpon>
     </EmbeddedResource>
