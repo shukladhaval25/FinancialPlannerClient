@@ -254,6 +254,79 @@
             this.Sukanya = new System.Windows.Forms.TabPage();
             this.SCSS = new System.Windows.Forms.TabPage();
             this.NSC = new System.Windows.Forms.TabPage();
+            this.grpBonds = new System.Windows.Forms.GroupBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label65 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label77 = new System.Windows.Forms.Label();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.label78 = new System.Windows.Forms.Label();
+            this.label80 = new System.Windows.Forms.Label();
+            this.label87 = new System.Windows.Forms.Label();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.label88 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.label89 = new System.Windows.Forms.Label();
+            this.dtGridBonds = new System.Windows.Forms.DataGridView();
+            this.label90 = new System.Windows.Forms.Label();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.btnDeleteBonds = new System.Windows.Forms.Button();
+            this.btnAddBonds = new System.Windows.Forms.Button();
+            this.btnEditBonds = new System.Windows.Forms.Button();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.label91 = new System.Windows.Forms.Label();
+            this.label92 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label93 = new System.Windows.Forms.Label();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.label96 = new System.Windows.Forms.Label();
+            this.comboBox5 = new System.Windows.Forms.ComboBox();
+            this.label97 = new System.Windows.Forms.Label();
+            this.label98 = new System.Windows.Forms.Label();
+            this.label99 = new System.Windows.Forms.Label();
+            this.comboBox6 = new System.Windows.Forms.ComboBox();
+            this.label100 = new System.Windows.Forms.Label();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.label101 = new System.Windows.Forms.Label();
+            this.dtGridSavingAccount = new System.Windows.Forms.DataGridView();
+            this.label102 = new System.Windows.Forms.Label();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.label94 = new System.Windows.Forms.Label();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.textBox13 = new System.Windows.Forms.TextBox();
+            this.comboBox7 = new System.Windows.Forms.ComboBox();
+            this.label95 = new System.Windows.Forms.Label();
+            this.comboBox8 = new System.Windows.Forms.ComboBox();
+            this.label103 = new System.Windows.Forms.Label();
+            this.label104 = new System.Windows.Forms.Label();
+            this.label105 = new System.Windows.Forms.Label();
+            this.comboBox9 = new System.Windows.Forms.ComboBox();
+            this.label106 = new System.Windows.Forms.Label();
+            this.button12 = new System.Windows.Forms.Button();
+            this.button13 = new System.Windows.Forms.Button();
+            this.label107 = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label108 = new System.Windows.Forms.Label();
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.button14 = new System.Windows.Forms.Button();
+            this.button15 = new System.Windows.Forms.Button();
+            this.button16 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.tabCurrenStatus.SuspendLayout();
             this.LifeInsurance.SuspendLayout();
@@ -280,6 +353,18 @@
             this.grpShares.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridShares)).BeginInit();
             this.groupBox6.SuspendLayout();
+            this.Bonds.SuspendLayout();
+            this.SavingAC.SuspendLayout();
+            this.FD.SuspendLayout();
+            this.grpBonds.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtGridBonds)).BeginInit();
+            this.groupBox7.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtGridSavingAccount)).BeginInit();
+            this.groupBox8.SuspendLayout();
+            this.groupBox9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.groupBox10.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -410,6 +495,7 @@
             this.dtGridLifeInsurance.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGridLifeInsurance.Location = new System.Drawing.Point(4, 3);
             this.dtGridLifeInsurance.Name = "dtGridLifeInsurance";
+            this.dtGridLifeInsurance.ReadOnly = true;
             this.dtGridLifeInsurance.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtGridLifeInsurance.Size = new System.Drawing.Size(263, 498);
             this.dtGridLifeInsurance.TabIndex = 0;
@@ -2353,6 +2439,8 @@
             this.txtSharesMarketPrice.Name = "txtSharesMarketPrice";
             this.txtSharesMarketPrice.Size = new System.Drawing.Size(102, 22);
             this.txtSharesMarketPrice.TabIndex = 5;
+            this.txtSharesMarketPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSharesFaceValue_KeyPress);
+            this.txtSharesMarketPrice.Leave += new System.EventHandler(this.txtSharesMarketPrice_Leave);
             // 
             // label64
             // 
@@ -2380,6 +2468,8 @@
             this.txtNoOfShares.Size = new System.Drawing.Size(120, 22);
             this.txtNoOfShares.TabIndex = 4;
             this.txtNoOfShares.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtNoOfShares.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSharesFaceValue_KeyPress);
+            this.txtNoOfShares.Leave += new System.EventHandler(this.txtNoOfShares_Leave);
             // 
             // txtSharesFaceValue
             // 
@@ -2388,6 +2478,7 @@
             this.txtSharesFaceValue.Size = new System.Drawing.Size(102, 22);
             this.txtSharesFaceValue.TabIndex = 3;
             this.txtSharesFaceValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtSharesFaceValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSharesFaceValue_KeyPress);
             // 
             // cmbSharesGoal
             // 
@@ -2551,6 +2642,7 @@
             this.btnSharesAdd.Size = new System.Drawing.Size(29, 24);
             this.btnSharesAdd.TabIndex = 2;
             this.btnSharesAdd.UseVisualStyleBackColor = true;
+            this.btnSharesAdd.Click += new System.EventHandler(this.btnSharesAdd_Click);
             // 
             // btnSharesEdit
             // 
@@ -2565,6 +2657,10 @@
             // 
             // Bonds
             // 
+            this.Bonds.Controls.Add(this.grpBonds);
+            this.Bonds.Controls.Add(this.dtGridBonds);
+            this.Bonds.Controls.Add(this.label90);
+            this.Bonds.Controls.Add(this.groupBox7);
             this.Bonds.Location = new System.Drawing.Point(4, 24);
             this.Bonds.Name = "Bonds";
             this.Bonds.Size = new System.Drawing.Size(1321, 547);
@@ -2574,6 +2670,10 @@
             // 
             // SavingAC
             // 
+            this.SavingAC.Controls.Add(this.groupBox3);
+            this.SavingAC.Controls.Add(this.dtGridSavingAccount);
+            this.SavingAC.Controls.Add(this.label102);
+            this.SavingAC.Controls.Add(this.groupBox8);
             this.SavingAC.Location = new System.Drawing.Point(4, 24);
             this.SavingAC.Name = "SavingAC";
             this.SavingAC.Size = new System.Drawing.Size(1321, 547);
@@ -2583,6 +2683,10 @@
             // 
             // FD
             // 
+            this.FD.Controls.Add(this.groupBox9);
+            this.FD.Controls.Add(this.dataGridView1);
+            this.FD.Controls.Add(this.label108);
+            this.FD.Controls.Add(this.groupBox10);
             this.FD.Location = new System.Drawing.Point(4, 24);
             this.FD.Name = "FD";
             this.FD.Size = new System.Drawing.Size(1321, 547);
@@ -2639,6 +2743,763 @@
             this.NSC.Text = "NSC / KYP";
             this.NSC.UseVisualStyleBackColor = true;
             // 
+            // grpBonds
+            // 
+            this.grpBonds.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpBonds.Controls.Add(this.label92);
+            this.grpBonds.Controls.Add(this.textBox5);
+            this.grpBonds.Controls.Add(this.label91);
+            this.grpBonds.Controls.Add(this.dateTimePicker1);
+            this.grpBonds.Controls.Add(this.textBox1);
+            this.grpBonds.Controls.Add(this.label65);
+            this.grpBonds.Controls.Add(this.textBox2);
+            this.grpBonds.Controls.Add(this.textBox3);
+            this.grpBonds.Controls.Add(this.textBox4);
+            this.grpBonds.Controls.Add(this.comboBox1);
+            this.grpBonds.Controls.Add(this.label77);
+            this.grpBonds.Controls.Add(this.comboBox2);
+            this.grpBonds.Controls.Add(this.label78);
+            this.grpBonds.Controls.Add(this.label80);
+            this.grpBonds.Controls.Add(this.label87);
+            this.grpBonds.Controls.Add(this.comboBox3);
+            this.grpBonds.Controls.Add(this.label88);
+            this.grpBonds.Controls.Add(this.button3);
+            this.grpBonds.Controls.Add(this.button4);
+            this.grpBonds.Controls.Add(this.label89);
+            this.grpBonds.Enabled = false;
+            this.grpBonds.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpBonds.Location = new System.Drawing.Point(7, 246);
+            this.grpBonds.Name = "grpBonds";
+            this.grpBonds.Size = new System.Drawing.Size(1317, 293);
+            this.grpBonds.TabIndex = 27;
+            this.grpBonds.TabStop = false;
+            this.grpBonds.Text = "Bonds";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(137, 145);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(102, 22);
+            this.textBox1.TabIndex = 7;
+            // 
+            // label65
+            // 
+            this.label65.AutoSize = true;
+            this.label65.Location = new System.Drawing.Point(27, 120);
+            this.label65.Name = "label65";
+            this.label65.Size = new System.Drawing.Size(89, 16);
+            this.label65.TabIndex = 37;
+            this.label65.Text = "Maturity Date:";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Enabled = false;
+            this.textBox2.Location = new System.Drawing.Point(337, 145);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(120, 22);
+            this.textBox2.TabIndex = 8;
+            this.textBox2.TabStop = false;
+            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(337, 89);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(120, 22);
+            this.textBox3.TabIndex = 4;
+            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(137, 89);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(148, 22);
+            this.textBox4.TabIndex = 3;
+            this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(137, 173);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(320, 24);
+            this.comboBox1.TabIndex = 9;
+            // 
+            // label77
+            // 
+            this.label77.AutoSize = true;
+            this.label77.Location = new System.Drawing.Point(26, 176);
+            this.label77.Name = "label77";
+            this.label77.Size = new System.Drawing.Size(105, 16);
+            this.label77.TabIndex = 22;
+            this.label77.Text = "Goal (Mapped) :";
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(137, 59);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(320, 24);
+            this.comboBox2.TabIndex = 2;
+            // 
+            // label78
+            // 
+            this.label78.AutoSize = true;
+            this.label78.Location = new System.Drawing.Point(243, 148);
+            this.label78.Name = "label78";
+            this.label78.Size = new System.Drawing.Size(91, 16);
+            this.label78.TabIndex = 18;
+            this.label78.Text = "Current Value:";
+            // 
+            // label80
+            // 
+            this.label80.AutoSize = true;
+            this.label80.Location = new System.Drawing.Point(291, 92);
+            this.label80.Name = "label80";
+            this.label80.Size = new System.Drawing.Size(40, 16);
+            this.label80.TabIndex = 15;
+            this.label80.Text = "Rate:";
+            // 
+            // label87
+            // 
+            this.label87.AutoSize = true;
+            this.label87.Location = new System.Drawing.Point(26, 92);
+            this.label87.Name = "label87";
+            this.label87.Size = new System.Drawing.Size(62, 16);
+            this.label87.TabIndex = 14;
+            this.label87.Text = "Folio No:";
+            // 
+            // comboBox3
+            // 
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Location = new System.Drawing.Point(137, 29);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(320, 24);
+            this.comboBox3.TabIndex = 1;
+            // 
+            // label88
+            // 
+            this.label88.AutoSize = true;
+            this.label88.Location = new System.Drawing.Point(26, 32);
+            this.label88.Name = "label88";
+            this.label88.Size = new System.Drawing.Size(58, 16);
+            this.label88.TabIndex = 11;
+            this.label88.Text = "Invester:";
+            // 
+            // button3
+            // 
+            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button3.ImageKey = "icons8-cancel-16.png";
+            this.button3.ImageList = this.imgCollection;
+            this.button3.Location = new System.Drawing.Point(371, 203);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(86, 26);
+            this.button3.TabIndex = 11;
+            this.button3.Text = "Cancel";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button4.ImageKey = "icons8-save-close-16.png";
+            this.button4.ImageList = this.imgCollection;
+            this.button4.Location = new System.Drawing.Point(279, 203);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(86, 26);
+            this.button4.TabIndex = 10;
+            this.button4.Text = "Save";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // label89
+            // 
+            this.label89.AutoSize = true;
+            this.label89.Location = new System.Drawing.Point(27, 61);
+            this.label89.Name = "label89";
+            this.label89.Size = new System.Drawing.Size(109, 16);
+            this.label89.TabIndex = 0;
+            this.label89.Text = "Company Name:";
+            // 
+            // dtGridBonds
+            // 
+            this.dtGridBonds.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtGridBonds.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtGridBonds.Location = new System.Drawing.Point(-4, 37);
+            this.dtGridBonds.Name = "dtGridBonds";
+            this.dtGridBonds.ReadOnly = true;
+            this.dtGridBonds.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtGridBonds.Size = new System.Drawing.Size(1301, 163);
+            this.dtGridBonds.TabIndex = 25;
+            // 
+            // label90
+            // 
+            this.label90.AutoSize = true;
+            this.label90.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label90.ForeColor = System.Drawing.Color.DarkGreen;
+            this.label90.Location = new System.Drawing.Point(13, 7);
+            this.label90.Name = "label90";
+            this.label90.Size = new System.Drawing.Size(56, 18);
+            this.label90.TabIndex = 24;
+            this.label90.Text = "Bonds";
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox7.Controls.Add(this.btnDeleteBonds);
+            this.groupBox7.Controls.Add(this.btnAddBonds);
+            this.groupBox7.Controls.Add(this.btnEditBonds);
+            this.groupBox7.Location = new System.Drawing.Point(1197, 206);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(111, 38);
+            this.groupBox7.TabIndex = 26;
+            this.groupBox7.TabStop = false;
+            // 
+            // btnDeleteBonds
+            // 
+            this.btnDeleteBonds.ImageIndex = 1;
+            this.btnDeleteBonds.ImageList = this.imgCollection;
+            this.btnDeleteBonds.Location = new System.Drawing.Point(76, 10);
+            this.btnDeleteBonds.Name = "btnDeleteBonds";
+            this.btnDeleteBonds.Size = new System.Drawing.Size(29, 24);
+            this.btnDeleteBonds.TabIndex = 4;
+            this.btnDeleteBonds.UseVisualStyleBackColor = true;
+            // 
+            // btnAddBonds
+            // 
+            this.btnAddBonds.ImageIndex = 3;
+            this.btnAddBonds.ImageList = this.imgCollection;
+            this.btnAddBonds.Location = new System.Drawing.Point(6, 10);
+            this.btnAddBonds.Name = "btnAddBonds";
+            this.btnAddBonds.Size = new System.Drawing.Size(29, 24);
+            this.btnAddBonds.TabIndex = 2;
+            this.btnAddBonds.UseVisualStyleBackColor = true;
+            // 
+            // btnEditBonds
+            // 
+            this.btnEditBonds.ImageIndex = 4;
+            this.btnEditBonds.ImageList = this.imgCollection;
+            this.btnEditBonds.Location = new System.Drawing.Point(41, 10);
+            this.btnEditBonds.Name = "btnEditBonds";
+            this.btnEditBonds.Size = new System.Drawing.Size(29, 24);
+            this.btnEditBonds.TabIndex = 3;
+            this.btnEditBonds.UseVisualStyleBackColor = true;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(137, 117);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(148, 22);
+            this.dateTimePicker1.TabIndex = 5;
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(337, 117);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(120, 22);
+            this.textBox5.TabIndex = 6;
+            this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label91
+            // 
+            this.label91.AutoSize = true;
+            this.label91.Location = new System.Drawing.Point(291, 120);
+            this.label91.Name = "label91";
+            this.label91.Size = new System.Drawing.Size(41, 16);
+            this.label91.TabIndex = 40;
+            this.label91.Text = "Units:";
+            // 
+            // label92
+            // 
+            this.label92.AutoSize = true;
+            this.label92.Location = new System.Drawing.Point(27, 148);
+            this.label92.Name = "label92";
+            this.label92.Size = new System.Drawing.Size(80, 16);
+            this.label92.TabIndex = 41;
+            this.label92.Text = "Face Value:";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Controls.Add(this.label93);
+            this.groupBox3.Controls.Add(this.textBox7);
+            this.groupBox3.Controls.Add(this.textBox8);
+            this.groupBox3.Controls.Add(this.textBox9);
+            this.groupBox3.Controls.Add(this.textBox10);
+            this.groupBox3.Controls.Add(this.comboBox4);
+            this.groupBox3.Controls.Add(this.label96);
+            this.groupBox3.Controls.Add(this.comboBox5);
+            this.groupBox3.Controls.Add(this.label97);
+            this.groupBox3.Controls.Add(this.label98);
+            this.groupBox3.Controls.Add(this.label99);
+            this.groupBox3.Controls.Add(this.comboBox6);
+            this.groupBox3.Controls.Add(this.label100);
+            this.groupBox3.Controls.Add(this.button5);
+            this.groupBox3.Controls.Add(this.button6);
+            this.groupBox3.Controls.Add(this.label101);
+            this.groupBox3.Enabled = false;
+            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.Location = new System.Drawing.Point(7, 246);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(1317, 293);
+            this.groupBox3.TabIndex = 31;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Saving Account";
+            // 
+            // label93
+            // 
+            this.label93.AutoSize = true;
+            this.label93.Location = new System.Drawing.Point(27, 120);
+            this.label93.Name = "label93";
+            this.label93.Size = new System.Drawing.Size(64, 16);
+            this.label93.TabIndex = 41;
+            this.label93.Text = "Balance :";
+            // 
+            // textBox7
+            // 
+            this.textBox7.Location = new System.Drawing.Point(137, 117);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(134, 22);
+            this.textBox7.TabIndex = 7;
+            // 
+            // textBox8
+            // 
+            this.textBox8.Enabled = false;
+            this.textBox8.Location = new System.Drawing.Point(337, 117);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(120, 22);
+            this.textBox8.TabIndex = 8;
+            this.textBox8.TabStop = false;
+            this.textBox8.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // textBox9
+            // 
+            this.textBox9.Location = new System.Drawing.Point(337, 89);
+            this.textBox9.Name = "textBox9";
+            this.textBox9.Size = new System.Drawing.Size(120, 22);
+            this.textBox9.TabIndex = 4;
+            this.textBox9.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // textBox10
+            // 
+            this.textBox10.Location = new System.Drawing.Point(137, 89);
+            this.textBox10.Name = "textBox10";
+            this.textBox10.Size = new System.Drawing.Size(134, 22);
+            this.textBox10.TabIndex = 3;
+            this.textBox10.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // comboBox4
+            // 
+            this.comboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox4.FormattingEnabled = true;
+            this.comboBox4.Location = new System.Drawing.Point(137, 145);
+            this.comboBox4.Name = "comboBox4";
+            this.comboBox4.Size = new System.Drawing.Size(320, 24);
+            this.comboBox4.TabIndex = 9;
+            // 
+            // label96
+            // 
+            this.label96.AutoSize = true;
+            this.label96.Location = new System.Drawing.Point(26, 148);
+            this.label96.Name = "label96";
+            this.label96.Size = new System.Drawing.Size(105, 16);
+            this.label96.TabIndex = 22;
+            this.label96.Text = "Goal (Mapped) :";
+            // 
+            // comboBox5
+            // 
+            this.comboBox5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.comboBox5.FormattingEnabled = true;
+            this.comboBox5.Location = new System.Drawing.Point(137, 59);
+            this.comboBox5.Name = "comboBox5";
+            this.comboBox5.Size = new System.Drawing.Size(320, 24);
+            this.comboBox5.TabIndex = 2;
+            // 
+            // label97
+            // 
+            this.label97.AutoSize = true;
+            this.label97.Location = new System.Drawing.Point(281, 120);
+            this.label97.Name = "label97";
+            this.label97.Size = new System.Drawing.Size(54, 16);
+            this.label97.TabIndex = 18;
+            this.label97.Text = "ROI (%)";
+            // 
+            // label98
+            // 
+            this.label98.AutoSize = true;
+            this.label98.Location = new System.Drawing.Point(281, 92);
+            this.label98.Name = "label98";
+            this.label98.Size = new System.Drawing.Size(53, 16);
+            this.label98.TabIndex = 15;
+            this.label98.Text = "Branch:";
+            // 
+            // label99
+            // 
+            this.label99.AutoSize = true;
+            this.label99.Location = new System.Drawing.Point(26, 92);
+            this.label99.Name = "label99";
+            this.label99.Size = new System.Drawing.Size(82, 16);
+            this.label99.TabIndex = 14;
+            this.label99.Text = "Bank Name:";
+            // 
+            // comboBox6
+            // 
+            this.comboBox6.FormattingEnabled = true;
+            this.comboBox6.Location = new System.Drawing.Point(137, 29);
+            this.comboBox6.Name = "comboBox6";
+            this.comboBox6.Size = new System.Drawing.Size(320, 24);
+            this.comboBox6.TabIndex = 1;
+            // 
+            // label100
+            // 
+            this.label100.AutoSize = true;
+            this.label100.Location = new System.Drawing.Point(26, 32);
+            this.label100.Name = "label100";
+            this.label100.Size = new System.Drawing.Size(58, 16);
+            this.label100.TabIndex = 11;
+            this.label100.Text = "Invester:";
+            // 
+            // button5
+            // 
+            this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button5.ImageKey = "icons8-cancel-16.png";
+            this.button5.ImageList = this.imgCollection;
+            this.button5.Location = new System.Drawing.Point(371, 175);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(86, 26);
+            this.button5.TabIndex = 11;
+            this.button5.Text = "Cancel";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // button6
+            // 
+            this.button6.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button6.ImageKey = "icons8-save-close-16.png";
+            this.button6.ImageList = this.imgCollection;
+            this.button6.Location = new System.Drawing.Point(279, 175);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(86, 26);
+            this.button6.TabIndex = 10;
+            this.button6.Text = "Save";
+            this.button6.UseVisualStyleBackColor = true;
+            // 
+            // label101
+            // 
+            this.label101.AutoSize = true;
+            this.label101.Location = new System.Drawing.Point(27, 61);
+            this.label101.Name = "label101";
+            this.label101.Size = new System.Drawing.Size(80, 16);
+            this.label101.TabIndex = 0;
+            this.label101.Text = "Account No:";
+            // 
+            // dtGridSavingAccount
+            // 
+            this.dtGridSavingAccount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtGridSavingAccount.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtGridSavingAccount.Location = new System.Drawing.Point(-4, 37);
+            this.dtGridSavingAccount.Name = "dtGridSavingAccount";
+            this.dtGridSavingAccount.ReadOnly = true;
+            this.dtGridSavingAccount.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtGridSavingAccount.Size = new System.Drawing.Size(1301, 163);
+            this.dtGridSavingAccount.TabIndex = 29;
+            // 
+            // label102
+            // 
+            this.label102.AutoSize = true;
+            this.label102.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label102.ForeColor = System.Drawing.Color.DarkGreen;
+            this.label102.Location = new System.Drawing.Point(13, 7);
+            this.label102.Name = "label102";
+            this.label102.Size = new System.Drawing.Size(124, 18);
+            this.label102.TabIndex = 28;
+            this.label102.Text = "Saving Account";
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox8.Controls.Add(this.button7);
+            this.groupBox8.Controls.Add(this.button10);
+            this.groupBox8.Controls.Add(this.button11);
+            this.groupBox8.Location = new System.Drawing.Point(1197, 206);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(111, 38);
+            this.groupBox8.TabIndex = 30;
+            this.groupBox8.TabStop = false;
+            // 
+            // button7
+            // 
+            this.button7.ImageIndex = 1;
+            this.button7.ImageList = this.imgCollection;
+            this.button7.Location = new System.Drawing.Point(76, 10);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(29, 24);
+            this.button7.TabIndex = 4;
+            this.button7.UseVisualStyleBackColor = true;
+            // 
+            // button10
+            // 
+            this.button10.ImageIndex = 3;
+            this.button10.ImageList = this.imgCollection;
+            this.button10.Location = new System.Drawing.Point(6, 10);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(29, 24);
+            this.button10.TabIndex = 2;
+            this.button10.UseVisualStyleBackColor = true;
+            // 
+            // button11
+            // 
+            this.button11.ImageIndex = 4;
+            this.button11.ImageList = this.imgCollection;
+            this.button11.Location = new System.Drawing.Point(41, 10);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(29, 24);
+            this.button11.TabIndex = 3;
+            this.button11.UseVisualStyleBackColor = true;
+            // 
+            // groupBox9
+            // 
+            this.groupBox9.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox9.Controls.Add(this.label94);
+            this.groupBox9.Controls.Add(this.textBox6);
+            this.groupBox9.Controls.Add(this.textBox11);
+            this.groupBox9.Controls.Add(this.textBox12);
+            this.groupBox9.Controls.Add(this.textBox13);
+            this.groupBox9.Controls.Add(this.comboBox7);
+            this.groupBox9.Controls.Add(this.label95);
+            this.groupBox9.Controls.Add(this.comboBox8);
+            this.groupBox9.Controls.Add(this.label103);
+            this.groupBox9.Controls.Add(this.label104);
+            this.groupBox9.Controls.Add(this.label105);
+            this.groupBox9.Controls.Add(this.comboBox9);
+            this.groupBox9.Controls.Add(this.label106);
+            this.groupBox9.Controls.Add(this.button12);
+            this.groupBox9.Controls.Add(this.button13);
+            this.groupBox9.Controls.Add(this.label107);
+            this.groupBox9.Enabled = false;
+            this.groupBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox9.Location = new System.Drawing.Point(7, 246);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(1301, 293);
+            this.groupBox9.TabIndex = 35;
+            this.groupBox9.TabStop = false;
+            this.groupBox9.Text = "Saving Account";
+            // 
+            // label94
+            // 
+            this.label94.AutoSize = true;
+            this.label94.Location = new System.Drawing.Point(27, 120);
+            this.label94.Name = "label94";
+            this.label94.Size = new System.Drawing.Size(64, 16);
+            this.label94.TabIndex = 41;
+            this.label94.Text = "Balance :";
+            // 
+            // textBox6
+            // 
+            this.textBox6.Location = new System.Drawing.Point(137, 117);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(134, 22);
+            this.textBox6.TabIndex = 7;
+            // 
+            // textBox11
+            // 
+            this.textBox11.Enabled = false;
+            this.textBox11.Location = new System.Drawing.Point(337, 117);
+            this.textBox11.Name = "textBox11";
+            this.textBox11.Size = new System.Drawing.Size(120, 22);
+            this.textBox11.TabIndex = 8;
+            this.textBox11.TabStop = false;
+            this.textBox11.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // textBox12
+            // 
+            this.textBox12.Location = new System.Drawing.Point(337, 89);
+            this.textBox12.Name = "textBox12";
+            this.textBox12.Size = new System.Drawing.Size(120, 22);
+            this.textBox12.TabIndex = 4;
+            this.textBox12.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // textBox13
+            // 
+            this.textBox13.Location = new System.Drawing.Point(137, 89);
+            this.textBox13.Name = "textBox13";
+            this.textBox13.Size = new System.Drawing.Size(134, 22);
+            this.textBox13.TabIndex = 3;
+            this.textBox13.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // comboBox7
+            // 
+            this.comboBox7.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox7.FormattingEnabled = true;
+            this.comboBox7.Location = new System.Drawing.Point(137, 145);
+            this.comboBox7.Name = "comboBox7";
+            this.comboBox7.Size = new System.Drawing.Size(320, 24);
+            this.comboBox7.TabIndex = 9;
+            // 
+            // label95
+            // 
+            this.label95.AutoSize = true;
+            this.label95.Location = new System.Drawing.Point(26, 148);
+            this.label95.Name = "label95";
+            this.label95.Size = new System.Drawing.Size(105, 16);
+            this.label95.TabIndex = 22;
+            this.label95.Text = "Goal (Mapped) :";
+            // 
+            // comboBox8
+            // 
+            this.comboBox8.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.comboBox8.FormattingEnabled = true;
+            this.comboBox8.Location = new System.Drawing.Point(137, 59);
+            this.comboBox8.Name = "comboBox8";
+            this.comboBox8.Size = new System.Drawing.Size(320, 24);
+            this.comboBox8.TabIndex = 2;
+            // 
+            // label103
+            // 
+            this.label103.AutoSize = true;
+            this.label103.Location = new System.Drawing.Point(281, 120);
+            this.label103.Name = "label103";
+            this.label103.Size = new System.Drawing.Size(54, 16);
+            this.label103.TabIndex = 18;
+            this.label103.Text = "ROI (%)";
+            // 
+            // label104
+            // 
+            this.label104.AutoSize = true;
+            this.label104.Location = new System.Drawing.Point(281, 92);
+            this.label104.Name = "label104";
+            this.label104.Size = new System.Drawing.Size(53, 16);
+            this.label104.TabIndex = 15;
+            this.label104.Text = "Branch:";
+            // 
+            // label105
+            // 
+            this.label105.AutoSize = true;
+            this.label105.Location = new System.Drawing.Point(26, 92);
+            this.label105.Name = "label105";
+            this.label105.Size = new System.Drawing.Size(82, 16);
+            this.label105.TabIndex = 14;
+            this.label105.Text = "Bank Name:";
+            // 
+            // comboBox9
+            // 
+            this.comboBox9.FormattingEnabled = true;
+            this.comboBox9.Location = new System.Drawing.Point(137, 29);
+            this.comboBox9.Name = "comboBox9";
+            this.comboBox9.Size = new System.Drawing.Size(320, 24);
+            this.comboBox9.TabIndex = 1;
+            // 
+            // label106
+            // 
+            this.label106.AutoSize = true;
+            this.label106.Location = new System.Drawing.Point(26, 32);
+            this.label106.Name = "label106";
+            this.label106.Size = new System.Drawing.Size(58, 16);
+            this.label106.TabIndex = 11;
+            this.label106.Text = "Invester:";
+            // 
+            // button12
+            // 
+            this.button12.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button12.ImageKey = "icons8-cancel-16.png";
+            this.button12.ImageList = this.imgCollection;
+            this.button12.Location = new System.Drawing.Point(371, 175);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(86, 26);
+            this.button12.TabIndex = 11;
+            this.button12.Text = "Cancel";
+            this.button12.UseVisualStyleBackColor = true;
+            // 
+            // button13
+            // 
+            this.button13.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button13.ImageKey = "icons8-save-close-16.png";
+            this.button13.ImageList = this.imgCollection;
+            this.button13.Location = new System.Drawing.Point(279, 175);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(86, 26);
+            this.button13.TabIndex = 10;
+            this.button13.Text = "Save";
+            this.button13.UseVisualStyleBackColor = true;
+            // 
+            // label107
+            // 
+            this.label107.AutoSize = true;
+            this.label107.Location = new System.Drawing.Point(27, 61);
+            this.label107.Name = "label107";
+            this.label107.Size = new System.Drawing.Size(80, 16);
+            this.label107.TabIndex = 0;
+            this.label107.Text = "Account No:";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(-4, 37);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(1312, 163);
+            this.dataGridView1.TabIndex = 33;
+            // 
+            // label108
+            // 
+            this.label108.AutoSize = true;
+            this.label108.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label108.ForeColor = System.Drawing.Color.DarkGreen;
+            this.label108.Location = new System.Drawing.Point(13, 7);
+            this.label108.Name = "label108";
+            this.label108.Size = new System.Drawing.Size(124, 18);
+            this.label108.TabIndex = 32;
+            this.label108.Text = "Saving Account";
+            // 
+            // groupBox10
+            // 
+            this.groupBox10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox10.Controls.Add(this.button14);
+            this.groupBox10.Controls.Add(this.button15);
+            this.groupBox10.Controls.Add(this.button16);
+            this.groupBox10.Location = new System.Drawing.Point(1197, 206);
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.Size = new System.Drawing.Size(111, 38);
+            this.groupBox10.TabIndex = 34;
+            this.groupBox10.TabStop = false;
+            // 
+            // button14
+            // 
+            this.button14.ImageIndex = 1;
+            this.button14.ImageList = this.imgCollection;
+            this.button14.Location = new System.Drawing.Point(76, 10);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(29, 24);
+            this.button14.TabIndex = 4;
+            this.button14.UseVisualStyleBackColor = true;
+            // 
+            // button15
+            // 
+            this.button15.ImageIndex = 3;
+            this.button15.ImageList = this.imgCollection;
+            this.button15.Location = new System.Drawing.Point(6, 10);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(29, 24);
+            this.button15.TabIndex = 2;
+            this.button15.UseVisualStyleBackColor = true;
+            // 
+            // button16
+            // 
+            this.button16.ImageIndex = 4;
+            this.button16.ImageList = this.imgCollection;
+            this.button16.Location = new System.Drawing.Point(41, 10);
+            this.button16.Name = "button16";
+            this.button16.Size = new System.Drawing.Size(29, 24);
+            this.button16.TabIndex = 3;
+            this.button16.UseVisualStyleBackColor = true;
+            // 
             // CurrentStatus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2685,6 +3546,24 @@
             this.grpShares.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridShares)).EndInit();
             this.groupBox6.ResumeLayout(false);
+            this.Bonds.ResumeLayout(false);
+            this.Bonds.PerformLayout();
+            this.SavingAC.ResumeLayout(false);
+            this.SavingAC.PerformLayout();
+            this.FD.ResumeLayout(false);
+            this.FD.PerformLayout();
+            this.grpBonds.ResumeLayout(false);
+            this.grpBonds.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtGridBonds)).EndInit();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtGridSavingAccount)).EndInit();
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox9.ResumeLayout(false);
+            this.groupBox9.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.groupBox10.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -2915,5 +3794,78 @@
         private System.Windows.Forms.Button btnSharesDelete;
         private System.Windows.Forms.Button btnSharesAdd;
         private System.Windows.Forms.Button btnSharesEdit;
+        private System.Windows.Forms.GroupBox grpBonds;
+        private System.Windows.Forms.Label label92;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.Label label91;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label65;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label77;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Label label78;
+        private System.Windows.Forms.Label label80;
+        private System.Windows.Forms.Label label87;
+        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.Label label88;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Label label89;
+        private System.Windows.Forms.DataGridView dtGridBonds;
+        private System.Windows.Forms.Label label90;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.Button btnDeleteBonds;
+        private System.Windows.Forms.Button btnAddBonds;
+        private System.Windows.Forms.Button btnEditBonds;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label label93;
+        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.Label label96;
+        private System.Windows.Forms.ComboBox comboBox5;
+        private System.Windows.Forms.Label label97;
+        private System.Windows.Forms.Label label98;
+        private System.Windows.Forms.Label label99;
+        private System.Windows.Forms.ComboBox comboBox6;
+        private System.Windows.Forms.Label label100;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Label label101;
+        private System.Windows.Forms.DataGridView dtGridSavingAccount;
+        private System.Windows.Forms.Label label102;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.GroupBox groupBox9;
+        private System.Windows.Forms.Label label94;
+        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.TextBox textBox12;
+        private System.Windows.Forms.TextBox textBox13;
+        private System.Windows.Forms.ComboBox comboBox7;
+        private System.Windows.Forms.Label label95;
+        private System.Windows.Forms.ComboBox comboBox8;
+        private System.Windows.Forms.Label label103;
+        private System.Windows.Forms.Label label104;
+        private System.Windows.Forms.Label label105;
+        private System.Windows.Forms.ComboBox comboBox9;
+        private System.Windows.Forms.Label label106;
+        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.Label label107;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label label108;
+        private System.Windows.Forms.GroupBox groupBox10;
+        private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.Button button15;
+        private System.Windows.Forms.Button button16;
     }
 }

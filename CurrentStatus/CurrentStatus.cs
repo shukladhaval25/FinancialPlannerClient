@@ -1068,5 +1068,26 @@ namespace FinancialPlannerClient.CurrentStatus
                 }
             }
         }
+
+        private void btnSharesAdd_Click(object sender, EventArgs e)
+        {
+            grpShares.Enabled = true;
+            setDefaultValueShares();
+        }
+
+        private void txtNoOfShares_Leave(object sender, EventArgs e)
+        {
+            calculateAndSetSharesCurrentValue();
+        }
+
+        private void txtSharesMarketPrice_Leave(object sender, EventArgs e)
+        {
+            calculateAndSetSharesCurrentValue();
+        }
+
+        private void txtSharesFaceValue_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
     }
 }
