@@ -19,6 +19,8 @@ namespace FinancialPlannerClient.CurrentStatus
         DataTable _dtMutualFund;
         DataTable _dtNPS;
         DataTable _dtShares;
+        DataTable _dtBond;
+        DataTable _dtSA;
         IList<Goals> _goals;
 
         public CurrentStatus()
@@ -115,7 +117,63 @@ namespace FinancialPlannerClient.CurrentStatus
                 case "Shares":
                     fillupSharesInfo();
                     break;
+                case "Bonds":
+                    fillupBondInfo();
+                    break;
+                case "SavingAC":
+                    fillupSavingAccount();
+                    break;
             }
+        }
+        private void fillupSavingAccount()
+        {
+            SavingAccountInfo savingAccountInfo = new SavingAccountInfo();
+            _dtSA = savingAccountInfo.GetSavingAccountInfo(_planeId);
+            dtGridSavingAccount.DataSource = _dtSA;
+            savingAccountInfo.SetGrid(dtGridSavingAccount);
+            fillSavingAccountInvesterCombobox();
+            fillSavngAccountGoalsCombobox();
+        }
+
+        private void fillSavngAccountGoalsCombobox()
+        {
+            cmbSAGoalId.Items.Clear();
+            _goals = new GoalsInfo().GetAll(_planeId);
+            foreach (var goal in _goals)
+            {
+                cmbSAGoalId.Items.Add(goal.Name);
+            }
+            cmbSAGoalId.Items.Add("");
+        }
+
+        private void fillSavingAccountInvesterCombobox()
+        {
+            new PlannerInfo.FamilyMemberInfo().FillFamilyMemberInCombo(this._client.ID, cmbSAInvester);
+        }
+
+        private void fillupBondInfo()
+        {
+            BondInfo bondInfo = new BondInfo();
+            _dtBond = bondInfo.GetBondsInfo(_planeId);
+            dtGridBonds.DataSource = _dtBond;
+            bondInfo.SetGrid(dtGridBonds);
+            fillBondsInvesterCombobox();
+            fillBondsGoalsCombobox();
+        }
+
+        private void fillBondsGoalsCombobox()
+        {
+            cmbBondsGoal.Items.Clear();
+            _goals = new GoalsInfo().GetAll(_planeId);
+            foreach (var goal in _goals)
+            {
+                cmbBondsGoal.Items.Add(goal.Name);
+            }
+            cmbBondsGoal.Items.Add("");
+        }
+        private void fillBondsInvesterCombobox()
+        {
+            new PlannerInfo.FamilyMemberInfo().FillFamilyMemberInCombo(this._client.ID, cmbBondsInvester);
         }
 
         private void fillupSharesInfo()
@@ -588,7 +646,7 @@ namespace FinancialPlannerClient.CurrentStatus
                 if (dr["GoalID"] != null)
                 {
                     cmbMFGoal.Tag = dr["GoalId"].ToString();
-                    cmbMFGoal.Text = getGoalName(int.Parse(cmbMFGoal.Tag.ToString()));                    
+                    cmbMFGoal.Text = getGoalName(int.Parse(cmbMFGoal.Tag.ToString()));
                 }
                 else
                 {
@@ -600,7 +658,7 @@ namespace FinancialPlannerClient.CurrentStatus
 
         private string getGoalName(int v)
         {
-            if (_goals != null && v > 0 )
+            if (_goals != null && v > 0)
                 return _goals.FirstOrDefault(i => i.Id == v).Name;
             else
                 return string.Empty;
@@ -903,7 +961,7 @@ namespace FinancialPlannerClient.CurrentStatus
                 txtNPSEquityRatio.Text = dr["EquityRatio"].ToString();
                 txtNPSGoldRatio.Text = dr["GoldRatio"].ToString();
                 txtNPSDebtRatio.Text = dr["DebtRatio"].ToString();
-                txtSIPAmount.Text = dr["SIP"].ToString();              
+                txtSIPAmount.Text = dr["SIP"].ToString();
                 if (dr["GoalID"] != null)
                 {
                     cmbNPSGoal.Tag = dr["GoalId"].ToString();
@@ -925,7 +983,7 @@ namespace FinancialPlannerClient.CurrentStatus
                 if (dtGridNPS.SelectedRows[0].Cells["ID"].Value != System.DBNull.Value)
                 {
                     int selectedUserId = int.Parse(dtGridNPS.SelectedRows[0].Cells["ID"].Value.ToString());
-                    
+
                     DataRow[] rows = _dtNPS.Select("Id ='" + selectedUserId +"'");
                     foreach (DataRow dr in rows)
                     {
@@ -938,7 +996,7 @@ namespace FinancialPlannerClient.CurrentStatus
 
         private DataRow getSelectedDataRowForShares()
         {
-            if (dtGridShares.SelectedRows.Count >= 1)
+            if (dtGridShares.SelectedRows.Count >= 1 && _dtShares != null)
             {
                 int selectedRowIndex = dtGridShares.SelectedRows[0].Index;
                 if (dtGridShares.SelectedRows[0].Cells["ID"].Value != System.DBNull.Value)
@@ -989,7 +1047,7 @@ namespace FinancialPlannerClient.CurrentStatus
                 txtNoOfShares.Text = dr["NoOfShares"].ToString();
                 txtSharesMarketPrice.Text = dr["MarketPrice"].ToString();
                 txtSharesCurrentValue.Text = dr["CurrentValue"].ToString();
-                calculateAndSetSharesCurrentValue();             
+                calculateAndSetSharesCurrentValue();
                 if (dr["GoalID"] != null)
                 {
                     cmbSharesGoal.Tag = dr["GoalId"].ToString();
@@ -1034,7 +1092,7 @@ namespace FinancialPlannerClient.CurrentStatus
             shares.FaceValue = float.Parse(txtSharesFaceValue.Text);
             shares.NoOfShares = int.Parse(txtNoOfShares.Text);
             shares.MarketPrice = float.Parse(txtSharesMarketPrice.Text);
-            shares.CurrentValue = double.Parse(txtSharesCurrentValue.Text);        
+            shares.CurrentValue = double.Parse(txtSharesCurrentValue.Text);
             shares.GoalID = int.Parse(cmbSharesGoal.Tag.ToString());
             shares.CreatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
             shares.CreatedBy = Program.CurrentUser.Id;
@@ -1088,6 +1146,302 @@ namespace FinancialPlannerClient.CurrentStatus
         private void txtSharesFaceValue_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void btnAddBonds_Click(object sender, EventArgs e)
+        {
+            grpBonds.Enabled = true;
+            setDefaultValueBonds();
+        }
+
+        private void setDefaultValueBonds()
+        {
+            cmbBondsInvester.Tag = "0";
+            cmbBondsInvester.Text = "";
+            cmbBondsCompany.Text = "";
+            txtBondsFolioNo.Text = "";
+            txtBondsFaceValue.Text = "0";
+            txtBondsRate.Text = "0";
+            txtBondsUnit.Text = "0";
+            txtBondsCurrentValue.Text = "0";
+            calculateAndSetBondsCurrentValue();
+            cmbBondsGoal.Tag = "0";
+            cmbBondsGoal.Text = "";
+        }
+
+        private void calculateAndSetBondsCurrentValue()
+        {
+            float nav = 0;
+            double units = 0;
+            float.TryParse(txtBondsRate.Text, out nav);
+            double.TryParse(txtBondsUnit.Text, out units);
+            txtBondsCurrentValue.Text = (nav * units).ToString();
+        }
+
+        private void btnEditBonds_Click(object sender, EventArgs e)
+        {
+            grpBonds.Enabled = true;
+        }
+
+        private void dtGridBonds_SelectionChanged(object sender, EventArgs e)
+        {
+            DataRow dr = getSelectedDataRow(dtGridBonds,_dtBond);
+            if (dr != null)
+                displayBondsInfo(dr);
+            else
+                setDefaultValueBonds();
+        }
+
+        private void displayBondsInfo(DataRow dr)
+        {
+            if (dr != null)
+            {
+                cmbBondsInvester.Tag = dr.Field<string>("ID");
+                cmbBondsInvester.Text = dr.Field<string>("InvesterName");
+                cmbBondsCompany.Text = dr.Field<string>("CompanyName");
+                txtBondsFolioNo.Text = dr.Field<string>("FolioNo");
+                txtBondsRate.Text = dr.Field<string>("Rate");
+                dtMaturityDate.Text = dr.Field<string>("MaturityDate");
+                txtBondsUnit.Text = dr.Field<string>("NOOFBOND");
+                txtBondsFaceValue.Text = dr.Field<string>("FaceValue");
+                dtBondsMaturityDate.Value = DateTime.Parse(dr.Field<string>("MaturityDate"));
+                calculateAndSetBondsCurrentValue();
+                if (dr["GoalID"] != null)
+                {
+                    cmbBondsGoal.Tag = dr["GoalId"].ToString();
+                    cmbBondsGoal.Text = getGoalName(int.Parse(cmbBondsGoal.Tag.ToString()));
+                }
+                else
+                {
+                    cmbBondsGoal.Tag = "0";
+                    cmbBondsGoal.Text = "";
+                }
+            }
+        }
+
+        private DataRow getSelectedDataRow(DataGridView dtGridView, DataTable dataTable)
+        {
+            if (dtGridView.SelectedRows.Count >= 1)
+            {
+                int selectedRowIndex = dtGridView.SelectedRows[0].Index;
+                if (dtGridView.SelectedRows[0].Cells["ID"].Value != System.DBNull.Value)
+                {
+                    int selectedUserId = int.Parse(dtGridView.SelectedRows[0].Cells["ID"].Value.ToString());
+
+                    DataRow[] rows = dataTable.Select("Id ='" + selectedUserId +"'");
+                    foreach (DataRow dr in rows)
+                    {
+                        return dr;
+                    }
+                }
+            }
+            return null;
+        }
+
+        private void btnDeleteBonds_Click(object sender, EventArgs e)
+        {
+            if (dtGridBonds.SelectedRows.Count > 0)
+            {
+                if (MessageBox.Show("Are you sure, you want to delete this record?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    BondInfo bondInfo = new BondInfo();
+                    Bonds bond  =  getBondsData();
+                    bondInfo.Delete(bond);
+                    fillupBondInfo();
+                }
+            }
+        }
+
+        private Bonds getBondsData()
+        {
+
+            Bonds  Bonds = new Bonds();
+            Bonds.Id = int.Parse(cmbBondsInvester.Tag.ToString());
+            Bonds.Pid = _planeId;
+            Bonds.InvesterName = cmbBondsInvester.Text;
+            Bonds.CompanyName = cmbBondsCompany.Text;
+            Bonds.FolioNo = txtBondsFolioNo.Text;
+            Bonds.FaceValue = float.Parse(txtBondsFaceValue.Text);
+            Bonds.NoOfBond = int.Parse(txtBondsUnit.Text);
+            Bonds.Rate = float.Parse(txtBondsRate.Text);
+            Bonds.CurrentValue = double.Parse(txtBondsCurrentValue.Text);
+            Bonds.MaturityDate = dtMaturityDate.Value;
+            Bonds.GoalId = int.Parse(cmbBondsGoal.Tag.ToString());
+            Bonds.CreatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+            Bonds.CreatedBy = Program.CurrentUser.Id;
+            Bonds.UpdatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+            Bonds.UpdatedBy = Program.CurrentUser.Id;
+            Bonds.MachineName = Environment.MachineName;
+            return Bonds;
+        }
+
+        private void btnBondsSave_Click(object sender, EventArgs e)
+        {
+            BondInfo BondInfo = new BondInfo();
+            Bonds bonds = getBondsData();
+            bool isSaved = false;
+
+            if (bonds != null && bonds.Id == 0)
+                isSaved = BondInfo.Add(bonds);
+            else
+                isSaved = BondInfo.Update(bonds);
+
+            if (isSaved)
+            {
+                MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                fillupBondInfo();
+                grpBonds.Enabled = false;
+            }
+            else
+                MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void btnBondsCancel_Click(object sender, EventArgs e)
+        {
+            grpBonds.Enabled = false;
+        }
+
+        private void txtBondsRate_Leave(object sender, EventArgs e)
+        {
+            calculateAndSetBondsCurrentValue();
+        }
+
+        private void txtBondsUnit_Leave(object sender, EventArgs e)
+        {
+            calculateAndSetBondsCurrentValue();
+        }
+
+        private void cmbBondsGoal_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbBondsGoal.Text != "")
+                cmbBondsGoal.Tag = _goals.FirstOrDefault(i => i.Name == cmbBondsGoal.Text).Id;
+            else
+                cmbBondsGoal.Tag = "0";
+        }
+
+        private void dtGridSavingAccount_SelectionChanged(object sender, EventArgs e)
+        {
+            DataRow dr = getSelectedDataRow(dtGridSavingAccount,_dtSA);
+            if (dr != null)
+                displaySAInfo(dr);
+            else
+                setDefaultValueSA();
+        }
+
+        private void setDefaultValueSA()
+        {
+            cmbSAInvester.Tag = "0";
+            cmbSAInvester.Text = "";
+            txtSABank.Text = "";
+            cmbSAAccountNo.Text = "";
+            txtSABranch.Text = "";
+            txtSABalance.Text = "";
+            txtSAROI.Text = "";
+            cmbSAGoalId.Tag = "0";
+            cmbSAGoalId.Text = "";
+        }
+
+        private void displaySAInfo(DataRow dr)
+        {
+            if (dr != null)
+            {
+                cmbSAInvester.Tag = dr.Field<string>("ID");
+                cmbSAInvester.Text = dr.Field<string>("InvesterName");
+                txtSABank.Text = dr.Field<string>("BankName");
+                cmbSAAccountNo.Text = dr.Field<string>("AccountNo");
+                txtSABranch.Text = dr.Field<string>("Branch");
+                txtSABalance.Text = dr.Field<string>("Balance");
+                txtSAROI.Text = dr.Field<string>("IntRate");
+                if (dr["GoalID"] != null)
+                {
+                    cmbSAGoalId.Tag = dr["GoalId"].ToString();
+                    cmbSAGoalId.Text = getGoalName(int.Parse(cmbSAGoalId.Tag.ToString()));
+                }
+                else
+                {
+                    cmbSAGoalId.Tag = "0";
+                    cmbSAGoalId.Text = "";
+                }
+            }
+        }
+
+        private void btnAddSA_Click(object sender, EventArgs e)
+        {
+            grpSa.Enabled = true;
+            setDefaultValueSA();
+        }
+
+        private void btnEditSA_Click(object sender, EventArgs e)
+        {
+            grpSa.Enabled = true;
+        }
+
+        private void btnCancelSA_Click(object sender, EventArgs e)
+        {
+            grpSa.Enabled = false;
+        }
+
+        private void btnDeleteSA_Click(object sender, EventArgs e)
+        {
+            if (dtGridSavingAccount.SelectedRows.Count > 0)
+            {
+                if (MessageBox.Show("Are you sure, you want to delete this record?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    SavingAccountInfo saInfo = new SavingAccountInfo();
+                    SavingAccount sa  =  getSA();
+                    saInfo.Delete(sa);
+                    fillupSavingAccount();
+                }
+            }
+        }
+
+        private SavingAccount getSA()
+        {
+            SavingAccount sa = new SavingAccount();
+            sa.Id = int.Parse(cmbSAInvester.Tag.ToString());
+            sa.Pid = _planeId;
+            sa.InvesterName = cmbSAInvester.Text;
+            sa.BankName = txtSABank.Text;
+            sa.AccountNo = cmbSAAccountNo.Text;
+            sa.Branch = txtSABranch.Text;
+            sa.Balance = double.Parse(txtSABalance.Text);
+            sa.IntRate = float.Parse(txtSAROI.Text);
+            sa.GoalId = int.Parse(cmbSAGoalId.Tag.ToString());
+            sa.CreatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+            sa.CreatedBy = Program.CurrentUser.Id;
+            sa.UpdatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+            sa.UpdatedBy = Program.CurrentUser.Id;
+            sa.MachineName = Environment.MachineName;
+            return sa;
+        }
+
+        private void cmbSAGoalId_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (cmbSAGoalId.Text != "")
+                cmbSAGoalId.Tag = _goals.FirstOrDefault(i => i.Name == cmbSAGoalId.Text).Id;
+            else
+                cmbSAGoalId.Tag = "0";
+        }
+
+        private void btnSaveSA_Click(object sender, EventArgs e)
+        {
+            SavingAccountInfo SavingAccountInfo = new SavingAccountInfo();
+            SavingAccount sa = getSA();
+            bool isSaved = false;
+
+            if (sa != null && sa.Id == 0)
+                isSaved = SavingAccountInfo.Add(sa);
+            else
+                isSaved = SavingAccountInfo.Update(sa);
+
+            if (isSaved)
+            {
+                MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                fillupSavingAccount();
+                grpSa.Enabled = false;
+            }
+            else
+                MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }

@@ -247,29 +247,26 @@
             this.btnSharesAdd = new System.Windows.Forms.Button();
             this.btnSharesEdit = new System.Windows.Forms.Button();
             this.Bonds = new System.Windows.Forms.TabPage();
-            this.SavingAC = new System.Windows.Forms.TabPage();
-            this.FD = new System.Windows.Forms.TabPage();
-            this.RD = new System.Windows.Forms.TabPage();
-            this.PPF = new System.Windows.Forms.TabPage();
-            this.Sukanya = new System.Windows.Forms.TabPage();
-            this.SCSS = new System.Windows.Forms.TabPage();
-            this.NSC = new System.Windows.Forms.TabPage();
             this.grpBonds = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label92 = new System.Windows.Forms.Label();
+            this.txtBondsUnit = new System.Windows.Forms.TextBox();
+            this.label91 = new System.Windows.Forms.Label();
+            this.dtBondsMaturityDate = new System.Windows.Forms.DateTimePicker();
+            this.txtBondsFaceValue = new System.Windows.Forms.TextBox();
             this.label65 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.txtBondsCurrentValue = new System.Windows.Forms.TextBox();
+            this.txtBondsRate = new System.Windows.Forms.TextBox();
+            this.txtBondsFolioNo = new System.Windows.Forms.TextBox();
+            this.cmbBondsGoal = new System.Windows.Forms.ComboBox();
             this.label77 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.cmbBondsCompany = new System.Windows.Forms.ComboBox();
             this.label78 = new System.Windows.Forms.Label();
             this.label80 = new System.Windows.Forms.Label();
             this.label87 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.cmbBondsInvester = new System.Windows.Forms.ComboBox();
             this.label88 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnBondsCancel = new System.Windows.Forms.Button();
+            this.btnBondsSave = new System.Windows.Forms.Button();
             this.label89 = new System.Windows.Forms.Label();
             this.dtGridBonds = new System.Windows.Forms.DataGridView();
             this.label90 = new System.Windows.Forms.Label();
@@ -277,33 +274,31 @@
             this.btnDeleteBonds = new System.Windows.Forms.Button();
             this.btnAddBonds = new System.Windows.Forms.Button();
             this.btnEditBonds = new System.Windows.Forms.Button();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.label91 = new System.Windows.Forms.Label();
-            this.label92 = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.SavingAC = new System.Windows.Forms.TabPage();
+            this.grpSa = new System.Windows.Forms.GroupBox();
             this.label93 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.txtSABalance = new System.Windows.Forms.TextBox();
+            this.txtSAROI = new System.Windows.Forms.TextBox();
+            this.txtSABranch = new System.Windows.Forms.TextBox();
+            this.txtSABank = new System.Windows.Forms.TextBox();
+            this.cmbSAGoalId = new System.Windows.Forms.ComboBox();
             this.label96 = new System.Windows.Forms.Label();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
+            this.cmbSAAccountNo = new System.Windows.Forms.ComboBox();
             this.label97 = new System.Windows.Forms.Label();
             this.label98 = new System.Windows.Forms.Label();
             this.label99 = new System.Windows.Forms.Label();
-            this.comboBox6 = new System.Windows.Forms.ComboBox();
+            this.cmbSAInvester = new System.Windows.Forms.ComboBox();
             this.label100 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.btnCancelSA = new System.Windows.Forms.Button();
+            this.btnSaveSA = new System.Windows.Forms.Button();
             this.label101 = new System.Windows.Forms.Label();
             this.dtGridSavingAccount = new System.Windows.Forms.DataGridView();
             this.label102 = new System.Windows.Forms.Label();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
+            this.btnDeleteSA = new System.Windows.Forms.Button();
+            this.btnAddSA = new System.Windows.Forms.Button();
+            this.btnEditSA = new System.Windows.Forms.Button();
+            this.FD = new System.Windows.Forms.TabPage();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.label94 = new System.Windows.Forms.Label();
             this.textBox6 = new System.Windows.Forms.TextBox();
@@ -327,6 +322,11 @@
             this.button14 = new System.Windows.Forms.Button();
             this.button15 = new System.Windows.Forms.Button();
             this.button16 = new System.Windows.Forms.Button();
+            this.RD = new System.Windows.Forms.TabPage();
+            this.PPF = new System.Windows.Forms.TabPage();
+            this.Sukanya = new System.Windows.Forms.TabPage();
+            this.SCSS = new System.Windows.Forms.TabPage();
+            this.NSC = new System.Windows.Forms.TabPage();
             this.groupBox1.SuspendLayout();
             this.tabCurrenStatus.SuspendLayout();
             this.LifeInsurance.SuspendLayout();
@@ -354,14 +354,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtGridShares)).BeginInit();
             this.groupBox6.SuspendLayout();
             this.Bonds.SuspendLayout();
-            this.SavingAC.SuspendLayout();
-            this.FD.SuspendLayout();
             this.grpBonds.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridBonds)).BeginInit();
             this.groupBox7.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            this.SavingAC.SuspendLayout();
+            this.grpSa.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridSavingAccount)).BeginInit();
             this.groupBox8.SuspendLayout();
+            this.FD.SuspendLayout();
             this.groupBox9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox10.SuspendLayout();
@@ -2668,104 +2668,29 @@
             this.Bonds.Text = "Bonds";
             this.Bonds.UseVisualStyleBackColor = true;
             // 
-            // SavingAC
-            // 
-            this.SavingAC.Controls.Add(this.groupBox3);
-            this.SavingAC.Controls.Add(this.dtGridSavingAccount);
-            this.SavingAC.Controls.Add(this.label102);
-            this.SavingAC.Controls.Add(this.groupBox8);
-            this.SavingAC.Location = new System.Drawing.Point(4, 24);
-            this.SavingAC.Name = "SavingAC";
-            this.SavingAC.Size = new System.Drawing.Size(1321, 547);
-            this.SavingAC.TabIndex = 6;
-            this.SavingAC.Text = "Saving A/C";
-            this.SavingAC.UseVisualStyleBackColor = true;
-            // 
-            // FD
-            // 
-            this.FD.Controls.Add(this.groupBox9);
-            this.FD.Controls.Add(this.dataGridView1);
-            this.FD.Controls.Add(this.label108);
-            this.FD.Controls.Add(this.groupBox10);
-            this.FD.Location = new System.Drawing.Point(4, 24);
-            this.FD.Name = "FD";
-            this.FD.Size = new System.Drawing.Size(1321, 547);
-            this.FD.TabIndex = 7;
-            this.FD.Text = "FD";
-            this.FD.ToolTipText = "Fixed Deposite";
-            this.FD.UseVisualStyleBackColor = true;
-            // 
-            // RD
-            // 
-            this.RD.Location = new System.Drawing.Point(4, 24);
-            this.RD.Name = "RD";
-            this.RD.Size = new System.Drawing.Size(1321, 547);
-            this.RD.TabIndex = 8;
-            this.RD.Text = "RD";
-            this.RD.ToolTipText = "Recurring Deposite";
-            this.RD.UseVisualStyleBackColor = true;
-            // 
-            // PPF
-            // 
-            this.PPF.Location = new System.Drawing.Point(4, 24);
-            this.PPF.Name = "PPF";
-            this.PPF.Size = new System.Drawing.Size(1321, 547);
-            this.PPF.TabIndex = 9;
-            this.PPF.Text = "PPF";
-            this.PPF.UseVisualStyleBackColor = true;
-            // 
-            // Sukanya
-            // 
-            this.Sukanya.Location = new System.Drawing.Point(4, 24);
-            this.Sukanya.Name = "Sukanya";
-            this.Sukanya.Padding = new System.Windows.Forms.Padding(3);
-            this.Sukanya.Size = new System.Drawing.Size(1321, 547);
-            this.Sukanya.TabIndex = 10;
-            this.Sukanya.Text = "Sukanya Samrudhi";
-            this.Sukanya.UseVisualStyleBackColor = true;
-            // 
-            // SCSS
-            // 
-            this.SCSS.Location = new System.Drawing.Point(4, 24);
-            this.SCSS.Name = "SCSS";
-            this.SCSS.Padding = new System.Windows.Forms.Padding(3);
-            this.SCSS.Size = new System.Drawing.Size(1321, 547);
-            this.SCSS.TabIndex = 11;
-            this.SCSS.Text = "SCSS Account";
-            this.SCSS.UseVisualStyleBackColor = true;
-            // 
-            // NSC
-            // 
-            this.NSC.Location = new System.Drawing.Point(4, 24);
-            this.NSC.Name = "NSC";
-            this.NSC.Size = new System.Drawing.Size(1321, 547);
-            this.NSC.TabIndex = 12;
-            this.NSC.Text = "NSC / KYP";
-            this.NSC.UseVisualStyleBackColor = true;
-            // 
             // grpBonds
             // 
             this.grpBonds.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.grpBonds.Controls.Add(this.label92);
-            this.grpBonds.Controls.Add(this.textBox5);
+            this.grpBonds.Controls.Add(this.txtBondsUnit);
             this.grpBonds.Controls.Add(this.label91);
-            this.grpBonds.Controls.Add(this.dateTimePicker1);
-            this.grpBonds.Controls.Add(this.textBox1);
+            this.grpBonds.Controls.Add(this.dtBondsMaturityDate);
+            this.grpBonds.Controls.Add(this.txtBondsFaceValue);
             this.grpBonds.Controls.Add(this.label65);
-            this.grpBonds.Controls.Add(this.textBox2);
-            this.grpBonds.Controls.Add(this.textBox3);
-            this.grpBonds.Controls.Add(this.textBox4);
-            this.grpBonds.Controls.Add(this.comboBox1);
+            this.grpBonds.Controls.Add(this.txtBondsCurrentValue);
+            this.grpBonds.Controls.Add(this.txtBondsRate);
+            this.grpBonds.Controls.Add(this.txtBondsFolioNo);
+            this.grpBonds.Controls.Add(this.cmbBondsGoal);
             this.grpBonds.Controls.Add(this.label77);
-            this.grpBonds.Controls.Add(this.comboBox2);
+            this.grpBonds.Controls.Add(this.cmbBondsCompany);
             this.grpBonds.Controls.Add(this.label78);
             this.grpBonds.Controls.Add(this.label80);
             this.grpBonds.Controls.Add(this.label87);
-            this.grpBonds.Controls.Add(this.comboBox3);
+            this.grpBonds.Controls.Add(this.cmbBondsInvester);
             this.grpBonds.Controls.Add(this.label88);
-            this.grpBonds.Controls.Add(this.button3);
-            this.grpBonds.Controls.Add(this.button4);
+            this.grpBonds.Controls.Add(this.btnBondsCancel);
+            this.grpBonds.Controls.Add(this.btnBondsSave);
             this.grpBonds.Controls.Add(this.label89);
             this.grpBonds.Enabled = false;
             this.grpBonds.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -2776,12 +2701,46 @@
             this.grpBonds.TabStop = false;
             this.grpBonds.Text = "Bonds";
             // 
-            // textBox1
+            // label92
             // 
-            this.textBox1.Location = new System.Drawing.Point(137, 145);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(102, 22);
-            this.textBox1.TabIndex = 7;
+            this.label92.AutoSize = true;
+            this.label92.Location = new System.Drawing.Point(27, 148);
+            this.label92.Name = "label92";
+            this.label92.Size = new System.Drawing.Size(80, 16);
+            this.label92.TabIndex = 41;
+            this.label92.Text = "Face Value:";
+            // 
+            // txtBondsUnit
+            // 
+            this.txtBondsUnit.Location = new System.Drawing.Point(337, 117);
+            this.txtBondsUnit.Name = "txtBondsUnit";
+            this.txtBondsUnit.Size = new System.Drawing.Size(120, 22);
+            this.txtBondsUnit.TabIndex = 6;
+            this.txtBondsUnit.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtBondsUnit.Leave += new System.EventHandler(this.txtBondsUnit_Leave);
+            // 
+            // label91
+            // 
+            this.label91.AutoSize = true;
+            this.label91.Location = new System.Drawing.Point(291, 120);
+            this.label91.Name = "label91";
+            this.label91.Size = new System.Drawing.Size(41, 16);
+            this.label91.TabIndex = 40;
+            this.label91.Text = "Units:";
+            // 
+            // dtBondsMaturityDate
+            // 
+            this.dtBondsMaturityDate.Location = new System.Drawing.Point(137, 117);
+            this.dtBondsMaturityDate.Name = "dtBondsMaturityDate";
+            this.dtBondsMaturityDate.Size = new System.Drawing.Size(148, 22);
+            this.dtBondsMaturityDate.TabIndex = 5;
+            // 
+            // txtBondsFaceValue
+            // 
+            this.txtBondsFaceValue.Location = new System.Drawing.Point(137, 145);
+            this.txtBondsFaceValue.Name = "txtBondsFaceValue";
+            this.txtBondsFaceValue.Size = new System.Drawing.Size(102, 22);
+            this.txtBondsFaceValue.TabIndex = 7;
             // 
             // label65
             // 
@@ -2792,40 +2751,42 @@
             this.label65.TabIndex = 37;
             this.label65.Text = "Maturity Date:";
             // 
-            // textBox2
+            // txtBondsCurrentValue
             // 
-            this.textBox2.Enabled = false;
-            this.textBox2.Location = new System.Drawing.Point(337, 145);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(120, 22);
-            this.textBox2.TabIndex = 8;
-            this.textBox2.TabStop = false;
-            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtBondsCurrentValue.Enabled = false;
+            this.txtBondsCurrentValue.Location = new System.Drawing.Point(337, 145);
+            this.txtBondsCurrentValue.Name = "txtBondsCurrentValue";
+            this.txtBondsCurrentValue.Size = new System.Drawing.Size(120, 22);
+            this.txtBondsCurrentValue.TabIndex = 8;
+            this.txtBondsCurrentValue.TabStop = false;
+            this.txtBondsCurrentValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // textBox3
+            // txtBondsRate
             // 
-            this.textBox3.Location = new System.Drawing.Point(337, 89);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(120, 22);
-            this.textBox3.TabIndex = 4;
-            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtBondsRate.Location = new System.Drawing.Point(337, 89);
+            this.txtBondsRate.Name = "txtBondsRate";
+            this.txtBondsRate.Size = new System.Drawing.Size(120, 22);
+            this.txtBondsRate.TabIndex = 4;
+            this.txtBondsRate.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtBondsRate.Leave += new System.EventHandler(this.txtBondsRate_Leave);
             // 
-            // textBox4
+            // txtBondsFolioNo
             // 
-            this.textBox4.Location = new System.Drawing.Point(137, 89);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(148, 22);
-            this.textBox4.TabIndex = 3;
-            this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtBondsFolioNo.Location = new System.Drawing.Point(137, 89);
+            this.txtBondsFolioNo.Name = "txtBondsFolioNo";
+            this.txtBondsFolioNo.Size = new System.Drawing.Size(148, 22);
+            this.txtBondsFolioNo.TabIndex = 3;
+            this.txtBondsFolioNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // comboBox1
+            // cmbBondsGoal
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(137, 173);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(320, 24);
-            this.comboBox1.TabIndex = 9;
+            this.cmbBondsGoal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbBondsGoal.FormattingEnabled = true;
+            this.cmbBondsGoal.Location = new System.Drawing.Point(137, 173);
+            this.cmbBondsGoal.Name = "cmbBondsGoal";
+            this.cmbBondsGoal.Size = new System.Drawing.Size(320, 24);
+            this.cmbBondsGoal.TabIndex = 9;
+            this.cmbBondsGoal.SelectedIndexChanged += new System.EventHandler(this.cmbBondsGoal_SelectedIndexChanged);
             // 
             // label77
             // 
@@ -2836,14 +2797,14 @@
             this.label77.TabIndex = 22;
             this.label77.Text = "Goal (Mapped) :";
             // 
-            // comboBox2
+            // cmbBondsCompany
             // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(137, 59);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(320, 24);
-            this.comboBox2.TabIndex = 2;
+            this.cmbBondsCompany.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.cmbBondsCompany.FormattingEnabled = true;
+            this.cmbBondsCompany.Location = new System.Drawing.Point(137, 59);
+            this.cmbBondsCompany.Name = "cmbBondsCompany";
+            this.cmbBondsCompany.Size = new System.Drawing.Size(320, 24);
+            this.cmbBondsCompany.TabIndex = 2;
             // 
             // label78
             // 
@@ -2872,13 +2833,13 @@
             this.label87.TabIndex = 14;
             this.label87.Text = "Folio No:";
             // 
-            // comboBox3
+            // cmbBondsInvester
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(137, 29);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(320, 24);
-            this.comboBox3.TabIndex = 1;
+            this.cmbBondsInvester.FormattingEnabled = true;
+            this.cmbBondsInvester.Location = new System.Drawing.Point(137, 29);
+            this.cmbBondsInvester.Name = "cmbBondsInvester";
+            this.cmbBondsInvester.Size = new System.Drawing.Size(320, 24);
+            this.cmbBondsInvester.TabIndex = 1;
             // 
             // label88
             // 
@@ -2889,29 +2850,31 @@
             this.label88.TabIndex = 11;
             this.label88.Text = "Invester:";
             // 
-            // button3
+            // btnBondsCancel
             // 
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button3.ImageKey = "icons8-cancel-16.png";
-            this.button3.ImageList = this.imgCollection;
-            this.button3.Location = new System.Drawing.Point(371, 203);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(86, 26);
-            this.button3.TabIndex = 11;
-            this.button3.Text = "Cancel";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnBondsCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnBondsCancel.ImageKey = "icons8-cancel-16.png";
+            this.btnBondsCancel.ImageList = this.imgCollection;
+            this.btnBondsCancel.Location = new System.Drawing.Point(371, 203);
+            this.btnBondsCancel.Name = "btnBondsCancel";
+            this.btnBondsCancel.Size = new System.Drawing.Size(86, 26);
+            this.btnBondsCancel.TabIndex = 11;
+            this.btnBondsCancel.Text = "Cancel";
+            this.btnBondsCancel.UseVisualStyleBackColor = true;
+            this.btnBondsCancel.Click += new System.EventHandler(this.btnBondsCancel_Click);
             // 
-            // button4
+            // btnBondsSave
             // 
-            this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button4.ImageKey = "icons8-save-close-16.png";
-            this.button4.ImageList = this.imgCollection;
-            this.button4.Location = new System.Drawing.Point(279, 203);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(86, 26);
-            this.button4.TabIndex = 10;
-            this.button4.Text = "Save";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnBondsSave.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnBondsSave.ImageKey = "icons8-save-close-16.png";
+            this.btnBondsSave.ImageList = this.imgCollection;
+            this.btnBondsSave.Location = new System.Drawing.Point(279, 203);
+            this.btnBondsSave.Name = "btnBondsSave";
+            this.btnBondsSave.Size = new System.Drawing.Size(86, 26);
+            this.btnBondsSave.TabIndex = 10;
+            this.btnBondsSave.Text = "Save";
+            this.btnBondsSave.UseVisualStyleBackColor = true;
+            this.btnBondsSave.Click += new System.EventHandler(this.btnBondsSave_Click);
             // 
             // label89
             // 
@@ -2933,6 +2896,7 @@
             this.dtGridBonds.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtGridBonds.Size = new System.Drawing.Size(1301, 163);
             this.dtGridBonds.TabIndex = 25;
+            this.dtGridBonds.SelectionChanged += new System.EventHandler(this.dtGridBonds_SelectionChanged);
             // 
             // label90
             // 
@@ -2966,6 +2930,7 @@
             this.btnDeleteBonds.Size = new System.Drawing.Size(29, 24);
             this.btnDeleteBonds.TabIndex = 4;
             this.btnDeleteBonds.UseVisualStyleBackColor = true;
+            this.btnDeleteBonds.Click += new System.EventHandler(this.btnDeleteBonds_Click);
             // 
             // btnAddBonds
             // 
@@ -2976,6 +2941,7 @@
             this.btnAddBonds.Size = new System.Drawing.Size(29, 24);
             this.btnAddBonds.TabIndex = 2;
             this.btnAddBonds.UseVisualStyleBackColor = true;
+            this.btnAddBonds.Click += new System.EventHandler(this.btnAddBonds_Click);
             // 
             // btnEditBonds
             // 
@@ -2986,68 +2952,49 @@
             this.btnEditBonds.Size = new System.Drawing.Size(29, 24);
             this.btnEditBonds.TabIndex = 3;
             this.btnEditBonds.UseVisualStyleBackColor = true;
+            this.btnEditBonds.Click += new System.EventHandler(this.btnEditBonds_Click);
             // 
-            // dateTimePicker1
+            // SavingAC
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(137, 117);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(148, 22);
-            this.dateTimePicker1.TabIndex = 5;
+            this.SavingAC.Controls.Add(this.grpSa);
+            this.SavingAC.Controls.Add(this.dtGridSavingAccount);
+            this.SavingAC.Controls.Add(this.label102);
+            this.SavingAC.Controls.Add(this.groupBox8);
+            this.SavingAC.Location = new System.Drawing.Point(4, 24);
+            this.SavingAC.Name = "SavingAC";
+            this.SavingAC.Size = new System.Drawing.Size(1321, 547);
+            this.SavingAC.TabIndex = 6;
+            this.SavingAC.Text = "Saving A/C";
+            this.SavingAC.UseVisualStyleBackColor = true;
             // 
-            // textBox5
+            // grpSa
             // 
-            this.textBox5.Location = new System.Drawing.Point(337, 117);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(120, 22);
-            this.textBox5.TabIndex = 6;
-            this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label91
-            // 
-            this.label91.AutoSize = true;
-            this.label91.Location = new System.Drawing.Point(291, 120);
-            this.label91.Name = "label91";
-            this.label91.Size = new System.Drawing.Size(41, 16);
-            this.label91.TabIndex = 40;
-            this.label91.Text = "Units:";
-            // 
-            // label92
-            // 
-            this.label92.AutoSize = true;
-            this.label92.Location = new System.Drawing.Point(27, 148);
-            this.label92.Name = "label92";
-            this.label92.Size = new System.Drawing.Size(80, 16);
-            this.label92.TabIndex = 41;
-            this.label92.Text = "Face Value:";
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.grpSa.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox3.Controls.Add(this.label93);
-            this.groupBox3.Controls.Add(this.textBox7);
-            this.groupBox3.Controls.Add(this.textBox8);
-            this.groupBox3.Controls.Add(this.textBox9);
-            this.groupBox3.Controls.Add(this.textBox10);
-            this.groupBox3.Controls.Add(this.comboBox4);
-            this.groupBox3.Controls.Add(this.label96);
-            this.groupBox3.Controls.Add(this.comboBox5);
-            this.groupBox3.Controls.Add(this.label97);
-            this.groupBox3.Controls.Add(this.label98);
-            this.groupBox3.Controls.Add(this.label99);
-            this.groupBox3.Controls.Add(this.comboBox6);
-            this.groupBox3.Controls.Add(this.label100);
-            this.groupBox3.Controls.Add(this.button5);
-            this.groupBox3.Controls.Add(this.button6);
-            this.groupBox3.Controls.Add(this.label101);
-            this.groupBox3.Enabled = false;
-            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(7, 246);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1317, 293);
-            this.groupBox3.TabIndex = 31;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Saving Account";
+            this.grpSa.Controls.Add(this.label93);
+            this.grpSa.Controls.Add(this.txtSABalance);
+            this.grpSa.Controls.Add(this.txtSAROI);
+            this.grpSa.Controls.Add(this.txtSABranch);
+            this.grpSa.Controls.Add(this.txtSABank);
+            this.grpSa.Controls.Add(this.cmbSAGoalId);
+            this.grpSa.Controls.Add(this.label96);
+            this.grpSa.Controls.Add(this.cmbSAAccountNo);
+            this.grpSa.Controls.Add(this.label97);
+            this.grpSa.Controls.Add(this.label98);
+            this.grpSa.Controls.Add(this.label99);
+            this.grpSa.Controls.Add(this.cmbSAInvester);
+            this.grpSa.Controls.Add(this.label100);
+            this.grpSa.Controls.Add(this.btnCancelSA);
+            this.grpSa.Controls.Add(this.btnSaveSA);
+            this.grpSa.Controls.Add(this.label101);
+            this.grpSa.Enabled = false;
+            this.grpSa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpSa.Location = new System.Drawing.Point(7, 246);
+            this.grpSa.Name = "grpSa";
+            this.grpSa.Size = new System.Drawing.Size(1301, 293);
+            this.grpSa.TabIndex = 31;
+            this.grpSa.TabStop = false;
+            this.grpSa.Text = "Saving Account";
             // 
             // label93
             // 
@@ -3058,47 +3005,47 @@
             this.label93.TabIndex = 41;
             this.label93.Text = "Balance :";
             // 
-            // textBox7
+            // txtSABalance
             // 
-            this.textBox7.Location = new System.Drawing.Point(137, 117);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(134, 22);
-            this.textBox7.TabIndex = 7;
+            this.txtSABalance.Location = new System.Drawing.Point(137, 117);
+            this.txtSABalance.Name = "txtSABalance";
+            this.txtSABalance.Size = new System.Drawing.Size(134, 22);
+            this.txtSABalance.TabIndex = 7;
+            this.txtSABalance.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // textBox8
+            // txtSAROI
             // 
-            this.textBox8.Enabled = false;
-            this.textBox8.Location = new System.Drawing.Point(337, 117);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(120, 22);
-            this.textBox8.TabIndex = 8;
-            this.textBox8.TabStop = false;
-            this.textBox8.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtSAROI.Enabled = false;
+            this.txtSAROI.Location = new System.Drawing.Point(337, 117);
+            this.txtSAROI.Name = "txtSAROI";
+            this.txtSAROI.Size = new System.Drawing.Size(120, 22);
+            this.txtSAROI.TabIndex = 8;
+            this.txtSAROI.TabStop = false;
+            this.txtSAROI.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // textBox9
+            // txtSABranch
             // 
-            this.textBox9.Location = new System.Drawing.Point(337, 89);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(120, 22);
-            this.textBox9.TabIndex = 4;
-            this.textBox9.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtSABranch.Location = new System.Drawing.Point(337, 89);
+            this.txtSABranch.Name = "txtSABranch";
+            this.txtSABranch.Size = new System.Drawing.Size(120, 22);
+            this.txtSABranch.TabIndex = 4;
             // 
-            // textBox10
+            // txtSABank
             // 
-            this.textBox10.Location = new System.Drawing.Point(137, 89);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(134, 22);
-            this.textBox10.TabIndex = 3;
-            this.textBox10.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtSABank.Location = new System.Drawing.Point(137, 89);
+            this.txtSABank.Name = "txtSABank";
+            this.txtSABank.Size = new System.Drawing.Size(134, 22);
+            this.txtSABank.TabIndex = 3;
             // 
-            // comboBox4
+            // cmbSAGoalId
             // 
-            this.comboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(137, 145);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(320, 24);
-            this.comboBox4.TabIndex = 9;
+            this.cmbSAGoalId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbSAGoalId.FormattingEnabled = true;
+            this.cmbSAGoalId.Location = new System.Drawing.Point(137, 145);
+            this.cmbSAGoalId.Name = "cmbSAGoalId";
+            this.cmbSAGoalId.Size = new System.Drawing.Size(320, 24);
+            this.cmbSAGoalId.TabIndex = 9;
+            this.cmbSAGoalId.SelectedValueChanged += new System.EventHandler(this.cmbSAGoalId_SelectedValueChanged);
             // 
             // label96
             // 
@@ -3109,14 +3056,14 @@
             this.label96.TabIndex = 22;
             this.label96.Text = "Goal (Mapped) :";
             // 
-            // comboBox5
+            // cmbSAAccountNo
             // 
-            this.comboBox5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(137, 59);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(320, 24);
-            this.comboBox5.TabIndex = 2;
+            this.cmbSAAccountNo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.cmbSAAccountNo.FormattingEnabled = true;
+            this.cmbSAAccountNo.Location = new System.Drawing.Point(137, 59);
+            this.cmbSAAccountNo.Name = "cmbSAAccountNo";
+            this.cmbSAAccountNo.Size = new System.Drawing.Size(320, 24);
+            this.cmbSAAccountNo.TabIndex = 2;
             // 
             // label97
             // 
@@ -3145,13 +3092,13 @@
             this.label99.TabIndex = 14;
             this.label99.Text = "Bank Name:";
             // 
-            // comboBox6
+            // cmbSAInvester
             // 
-            this.comboBox6.FormattingEnabled = true;
-            this.comboBox6.Location = new System.Drawing.Point(137, 29);
-            this.comboBox6.Name = "comboBox6";
-            this.comboBox6.Size = new System.Drawing.Size(320, 24);
-            this.comboBox6.TabIndex = 1;
+            this.cmbSAInvester.FormattingEnabled = true;
+            this.cmbSAInvester.Location = new System.Drawing.Point(137, 29);
+            this.cmbSAInvester.Name = "cmbSAInvester";
+            this.cmbSAInvester.Size = new System.Drawing.Size(320, 24);
+            this.cmbSAInvester.TabIndex = 1;
             // 
             // label100
             // 
@@ -3162,29 +3109,31 @@
             this.label100.TabIndex = 11;
             this.label100.Text = "Invester:";
             // 
-            // button5
+            // btnCancelSA
             // 
-            this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button5.ImageKey = "icons8-cancel-16.png";
-            this.button5.ImageList = this.imgCollection;
-            this.button5.Location = new System.Drawing.Point(371, 175);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(86, 26);
-            this.button5.TabIndex = 11;
-            this.button5.Text = "Cancel";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btnCancelSA.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCancelSA.ImageKey = "icons8-cancel-16.png";
+            this.btnCancelSA.ImageList = this.imgCollection;
+            this.btnCancelSA.Location = new System.Drawing.Point(371, 175);
+            this.btnCancelSA.Name = "btnCancelSA";
+            this.btnCancelSA.Size = new System.Drawing.Size(86, 26);
+            this.btnCancelSA.TabIndex = 11;
+            this.btnCancelSA.Text = "Cancel";
+            this.btnCancelSA.UseVisualStyleBackColor = true;
+            this.btnCancelSA.Click += new System.EventHandler(this.btnCancelSA_Click);
             // 
-            // button6
+            // btnSaveSA
             // 
-            this.button6.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button6.ImageKey = "icons8-save-close-16.png";
-            this.button6.ImageList = this.imgCollection;
-            this.button6.Location = new System.Drawing.Point(279, 175);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(86, 26);
-            this.button6.TabIndex = 10;
-            this.button6.Text = "Save";
-            this.button6.UseVisualStyleBackColor = true;
+            this.btnSaveSA.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSaveSA.ImageKey = "icons8-save-close-16.png";
+            this.btnSaveSA.ImageList = this.imgCollection;
+            this.btnSaveSA.Location = new System.Drawing.Point(279, 175);
+            this.btnSaveSA.Name = "btnSaveSA";
+            this.btnSaveSA.Size = new System.Drawing.Size(86, 26);
+            this.btnSaveSA.TabIndex = 10;
+            this.btnSaveSA.Text = "Save";
+            this.btnSaveSA.UseVisualStyleBackColor = true;
+            this.btnSaveSA.Click += new System.EventHandler(this.btnSaveSA_Click);
             // 
             // label101
             // 
@@ -3204,8 +3153,9 @@
             this.dtGridSavingAccount.Name = "dtGridSavingAccount";
             this.dtGridSavingAccount.ReadOnly = true;
             this.dtGridSavingAccount.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtGridSavingAccount.Size = new System.Drawing.Size(1301, 163);
+            this.dtGridSavingAccount.Size = new System.Drawing.Size(1312, 163);
             this.dtGridSavingAccount.TabIndex = 29;
+            this.dtGridSavingAccount.SelectionChanged += new System.EventHandler(this.dtGridSavingAccount_SelectionChanged);
             // 
             // label102
             // 
@@ -3221,44 +3171,61 @@
             // groupBox8
             // 
             this.groupBox8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox8.Controls.Add(this.button7);
-            this.groupBox8.Controls.Add(this.button10);
-            this.groupBox8.Controls.Add(this.button11);
+            this.groupBox8.Controls.Add(this.btnDeleteSA);
+            this.groupBox8.Controls.Add(this.btnAddSA);
+            this.groupBox8.Controls.Add(this.btnEditSA);
             this.groupBox8.Location = new System.Drawing.Point(1197, 206);
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.Size = new System.Drawing.Size(111, 38);
             this.groupBox8.TabIndex = 30;
             this.groupBox8.TabStop = false;
             // 
-            // button7
+            // btnDeleteSA
             // 
-            this.button7.ImageIndex = 1;
-            this.button7.ImageList = this.imgCollection;
-            this.button7.Location = new System.Drawing.Point(76, 10);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(29, 24);
-            this.button7.TabIndex = 4;
-            this.button7.UseVisualStyleBackColor = true;
+            this.btnDeleteSA.ImageIndex = 1;
+            this.btnDeleteSA.ImageList = this.imgCollection;
+            this.btnDeleteSA.Location = new System.Drawing.Point(76, 10);
+            this.btnDeleteSA.Name = "btnDeleteSA";
+            this.btnDeleteSA.Size = new System.Drawing.Size(29, 24);
+            this.btnDeleteSA.TabIndex = 4;
+            this.btnDeleteSA.UseVisualStyleBackColor = true;
+            this.btnDeleteSA.Click += new System.EventHandler(this.btnDeleteSA_Click);
             // 
-            // button10
+            // btnAddSA
             // 
-            this.button10.ImageIndex = 3;
-            this.button10.ImageList = this.imgCollection;
-            this.button10.Location = new System.Drawing.Point(6, 10);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(29, 24);
-            this.button10.TabIndex = 2;
-            this.button10.UseVisualStyleBackColor = true;
+            this.btnAddSA.ImageIndex = 3;
+            this.btnAddSA.ImageList = this.imgCollection;
+            this.btnAddSA.Location = new System.Drawing.Point(6, 10);
+            this.btnAddSA.Name = "btnAddSA";
+            this.btnAddSA.Size = new System.Drawing.Size(29, 24);
+            this.btnAddSA.TabIndex = 2;
+            this.btnAddSA.UseVisualStyleBackColor = true;
+            this.btnAddSA.Click += new System.EventHandler(this.btnAddSA_Click);
             // 
-            // button11
+            // btnEditSA
             // 
-            this.button11.ImageIndex = 4;
-            this.button11.ImageList = this.imgCollection;
-            this.button11.Location = new System.Drawing.Point(41, 10);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(29, 24);
-            this.button11.TabIndex = 3;
-            this.button11.UseVisualStyleBackColor = true;
+            this.btnEditSA.ImageIndex = 4;
+            this.btnEditSA.ImageList = this.imgCollection;
+            this.btnEditSA.Location = new System.Drawing.Point(41, 10);
+            this.btnEditSA.Name = "btnEditSA";
+            this.btnEditSA.Size = new System.Drawing.Size(29, 24);
+            this.btnEditSA.TabIndex = 3;
+            this.btnEditSA.UseVisualStyleBackColor = true;
+            this.btnEditSA.Click += new System.EventHandler(this.btnEditSA_Click);
+            // 
+            // FD
+            // 
+            this.FD.Controls.Add(this.groupBox9);
+            this.FD.Controls.Add(this.dataGridView1);
+            this.FD.Controls.Add(this.label108);
+            this.FD.Controls.Add(this.groupBox10);
+            this.FD.Location = new System.Drawing.Point(4, 24);
+            this.FD.Name = "FD";
+            this.FD.Size = new System.Drawing.Size(1321, 547);
+            this.FD.TabIndex = 7;
+            this.FD.Text = "FD";
+            this.FD.ToolTipText = "Fixed Deposite";
+            this.FD.UseVisualStyleBackColor = true;
             // 
             // groupBox9
             // 
@@ -3500,6 +3467,54 @@
             this.button16.TabIndex = 3;
             this.button16.UseVisualStyleBackColor = true;
             // 
+            // RD
+            // 
+            this.RD.Location = new System.Drawing.Point(4, 24);
+            this.RD.Name = "RD";
+            this.RD.Size = new System.Drawing.Size(1321, 547);
+            this.RD.TabIndex = 8;
+            this.RD.Text = "RD";
+            this.RD.ToolTipText = "Recurring Deposite";
+            this.RD.UseVisualStyleBackColor = true;
+            // 
+            // PPF
+            // 
+            this.PPF.Location = new System.Drawing.Point(4, 24);
+            this.PPF.Name = "PPF";
+            this.PPF.Size = new System.Drawing.Size(1321, 547);
+            this.PPF.TabIndex = 9;
+            this.PPF.Text = "PPF";
+            this.PPF.UseVisualStyleBackColor = true;
+            // 
+            // Sukanya
+            // 
+            this.Sukanya.Location = new System.Drawing.Point(4, 24);
+            this.Sukanya.Name = "Sukanya";
+            this.Sukanya.Padding = new System.Windows.Forms.Padding(3);
+            this.Sukanya.Size = new System.Drawing.Size(1321, 547);
+            this.Sukanya.TabIndex = 10;
+            this.Sukanya.Text = "Sukanya Samrudhi";
+            this.Sukanya.UseVisualStyleBackColor = true;
+            // 
+            // SCSS
+            // 
+            this.SCSS.Location = new System.Drawing.Point(4, 24);
+            this.SCSS.Name = "SCSS";
+            this.SCSS.Padding = new System.Windows.Forms.Padding(3);
+            this.SCSS.Size = new System.Drawing.Size(1321, 547);
+            this.SCSS.TabIndex = 11;
+            this.SCSS.Text = "SCSS Account";
+            this.SCSS.UseVisualStyleBackColor = true;
+            // 
+            // NSC
+            // 
+            this.NSC.Location = new System.Drawing.Point(4, 24);
+            this.NSC.Name = "NSC";
+            this.NSC.Size = new System.Drawing.Size(1321, 547);
+            this.NSC.TabIndex = 12;
+            this.NSC.Text = "NSC / KYP";
+            this.NSC.UseVisualStyleBackColor = true;
+            // 
             // CurrentStatus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3548,18 +3563,18 @@
             this.groupBox6.ResumeLayout(false);
             this.Bonds.ResumeLayout(false);
             this.Bonds.PerformLayout();
-            this.SavingAC.ResumeLayout(false);
-            this.SavingAC.PerformLayout();
-            this.FD.ResumeLayout(false);
-            this.FD.PerformLayout();
             this.grpBonds.ResumeLayout(false);
             this.grpBonds.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridBonds)).EndInit();
             this.groupBox7.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            this.SavingAC.ResumeLayout(false);
+            this.SavingAC.PerformLayout();
+            this.grpSa.ResumeLayout(false);
+            this.grpSa.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridSavingAccount)).EndInit();
             this.groupBox8.ResumeLayout(false);
+            this.FD.ResumeLayout(false);
+            this.FD.PerformLayout();
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -3796,24 +3811,24 @@
         private System.Windows.Forms.Button btnSharesEdit;
         private System.Windows.Forms.GroupBox grpBonds;
         private System.Windows.Forms.Label label92;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox txtBondsUnit;
         private System.Windows.Forms.Label label91;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.DateTimePicker dtBondsMaturityDate;
+        private System.Windows.Forms.TextBox txtBondsFaceValue;
         private System.Windows.Forms.Label label65;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox txtBondsCurrentValue;
+        private System.Windows.Forms.TextBox txtBondsRate;
+        private System.Windows.Forms.TextBox txtBondsFolioNo;
+        private System.Windows.Forms.ComboBox cmbBondsGoal;
         private System.Windows.Forms.Label label77;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cmbBondsCompany;
         private System.Windows.Forms.Label label78;
         private System.Windows.Forms.Label label80;
         private System.Windows.Forms.Label label87;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox cmbBondsInvester;
         private System.Windows.Forms.Label label88;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnBondsCancel;
+        private System.Windows.Forms.Button btnBondsSave;
         private System.Windows.Forms.Label label89;
         private System.Windows.Forms.DataGridView dtGridBonds;
         private System.Windows.Forms.Label label90;
@@ -3821,29 +3836,29 @@
         private System.Windows.Forms.Button btnDeleteBonds;
         private System.Windows.Forms.Button btnAddBonds;
         private System.Windows.Forms.Button btnEditBonds;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox grpSa;
         private System.Windows.Forms.Label label93;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.TextBox txtSABalance;
+        private System.Windows.Forms.TextBox txtSAROI;
+        private System.Windows.Forms.TextBox txtSABranch;
+        private System.Windows.Forms.TextBox txtSABank;
+        private System.Windows.Forms.ComboBox cmbSAGoalId;
         private System.Windows.Forms.Label label96;
-        private System.Windows.Forms.ComboBox comboBox5;
+        private System.Windows.Forms.ComboBox cmbSAAccountNo;
         private System.Windows.Forms.Label label97;
         private System.Windows.Forms.Label label98;
         private System.Windows.Forms.Label label99;
-        private System.Windows.Forms.ComboBox comboBox6;
+        private System.Windows.Forms.ComboBox cmbSAInvester;
         private System.Windows.Forms.Label label100;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button btnCancelSA;
+        private System.Windows.Forms.Button btnSaveSA;
         private System.Windows.Forms.Label label101;
         private System.Windows.Forms.DataGridView dtGridSavingAccount;
         private System.Windows.Forms.Label label102;
         private System.Windows.Forms.GroupBox groupBox8;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button btnDeleteSA;
+        private System.Windows.Forms.Button btnAddSA;
+        private System.Windows.Forms.Button btnEditSA;
         private System.Windows.Forms.GroupBox groupBox9;
         private System.Windows.Forms.Label label94;
         private System.Windows.Forms.TextBox textBox6;
