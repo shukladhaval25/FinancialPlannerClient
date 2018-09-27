@@ -22,6 +22,8 @@ namespace FinancialPlannerClient.CurrentStatus
         DataTable _dtBond;
         DataTable _dtSA;
         IList<Goals> _goals;
+        DataTable _dtFD;
+        private DataTable _dtRD;
 
         public CurrentStatus()
         {
@@ -123,8 +125,340 @@ namespace FinancialPlannerClient.CurrentStatus
                 case "SavingAC":
                     fillupSavingAccount();
                     break;
+                case "FD":
+                    fillupFDInfo();
+                    break;
+                case "RD":
+                    fillupRDInfo();
+                    break;
             }
         }
+
+        #region "FD"
+        private void fillupFDInfo()
+        {
+            FDInfo fdInfo = new FDInfo();
+            _dtFD = fdInfo.GetFixedDepositInfo(_planeId);
+            dtGridFD.DataSource = _dtFD;
+            fdInfo.SetGrid(dtGridFD);
+            fillFDInvesterCombobox();
+            fillFDGoalsCombobox();
+        }
+
+        private void fillFDGoalsCombobox()
+        {
+            cmbFDGoal.Items.Clear();
+            _goals = new GoalsInfo().GetAll(_planeId);
+            foreach (var goal in _goals)
+            {
+                cmbFDGoal.Items.Add(goal.Name);
+            }
+            cmbFDGoal.Items.Add("");
+        }
+
+        private void fillFDInvesterCombobox()
+        {
+              new PlannerInfo.FamilyMemberInfo().FillFamilyMemberInCombo(this._client.ID, cmbFDInvestor );
+        }
+
+        private void dtGridFD_SelectionChanged(object sender, EventArgs e)
+        {
+            DataRow dr = getSelectedDataRow(dtGridFD,_dtFD);
+            if (dr != null)
+                displayFDInfo(dr);
+            else
+                setDefaultValueFD();
+        }
+
+        private void setDefaultValueFD()
+        {
+            cmbFDInvestor.Tag = "0";
+            cmbFDInvestor.Text = "";
+            cmbFDAccountno.Text = "";
+            cmbFDGoal.Tag = "0";
+            cmbFDGoal.Text = "";
+            txtFDBankName.Text = "";
+            txtFDBranch.Text = "";
+            txtFDROI.Text = "0";
+            txtFDBalance.Text = "";
+            txtFDMatuirtyAmt.Text = "";
+
+        }
+
+        private void displayFDInfo(DataRow dr)
+        {
+            if (dr != null)
+            {
+                cmbFDInvestor.Tag = dr.Field<string>("ID");
+                cmbFDInvestor.Text = dr.Field<string>("InvesterName");
+                txtFDBankName.Text = dr.Field<string>("BankName");
+                cmbFDAccountno.Text = dr.Field<string>("AccountNo");
+                txtFDBranch.Text = dr.Field<string>("Branch");
+                txtFDBalance.Text = dr.Field<string>("Balance");
+                txtFDROI.Text = dr.Field<string>("IntRate");
+                txtFDMatuirtyAmt.Text = dr.Field<string>("MaturityAmt");
+                dtFDDepositDate.Text = dr.Field<string>("DepositDate");
+                dtMaturityDate.Text = dr.Field<string>("MaturityDate");
+                if (dr["GoalID"] != null)
+                {
+                    cmbFDGoal.Tag = dr["GoalId"].ToString();
+                    cmbFDGoal.Text = getGoalName(int.Parse(cmbFDGoal.Tag.ToString()));
+                }
+                else
+                {
+                    cmbSAGoalId.Tag = "0";
+                    cmbSAGoalId.Text = "";
+                }
+            }
+        }
+
+        private void btnFDAdd_Click(object sender, EventArgs e)
+        {
+            grpFD.Enabled = true;
+            setDefaultValueFD();
+        }
+
+        private void btnFDEdit_Click(object sender, EventArgs e)
+        {
+            grpFD.Enabled = true;
+        }
+
+        private void btnFDDelete_Click(object sender, EventArgs e)
+        {
+            if (dtGridFD.SelectedRows.Count > 0)
+            {
+                if (MessageBox.Show("Are you sure, you want to delete this record?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    FDInfo fdInfo = new FDInfo();
+                    FixedDeposit fd =  getFDData();
+                    fdInfo.Delete(fd);
+                    fillupFDInfo();
+                }
+            }
+        }
+
+        private FixedDeposit getFDData()
+        {
+            FixedDeposit fd = new FixedDeposit();
+            fd.Id = int.Parse(cmbFDInvestor.Tag.ToString());
+            fd.Pid = _planeId;
+            fd.InvesterName = cmbFDInvestor.Text;
+            fd.AccountNo = cmbFDAccountno.Text;
+            fd.BankName = txtFDBankName.Text;
+            fd.Branch = txtFDBranch.Text;
+            fd.Balance = double.Parse(txtFDBalance.Text);
+            fd.DepositDate = dtFDDepositDate.Value;
+            fd.MaturityAmt = double.Parse(txtFDMatuirtyAmt.Text);
+            fd.MaturityDate = dtFDMaturityDate.Value;
+            fd.GoalId = int.Parse(cmbFDGoal.Tag.ToString());
+            fd.CreatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+            fd.CreatedBy = Program.CurrentUser.Id;
+            fd.UpdatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+            fd.UpdatedBy = Program.CurrentUser.Id;
+            fd.MachineName = Environment.MachineName;
+            return fd;           
+        }
+
+        private void btnFDSave_Click(object sender, EventArgs e)
+        {
+            FDInfo FDInfo = new FDInfo();
+            FixedDeposit fd = getFDData();
+            bool isSaved = false;
+
+            if (fd != null && fd.Id == 0)
+                isSaved = FDInfo.Add(fd);
+            else
+                isSaved = FDInfo.Update(fd);
+
+            if (isSaved)
+            {
+                MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                fillupFDInfo();
+                grpFD.Enabled = false;
+            }
+            else
+                MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void btnFDCancel_Click(object sender, EventArgs e)
+        {
+            grpFD.Enabled = false;
+        }
+
+        private void cmbFDGoal_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbFDGoal.Text != "")
+                cmbFDGoal.Tag = _goals.FirstOrDefault(i => i.Name == cmbFDGoal.Text).Id;
+            else
+                cmbFDGoal.Tag = "0";
+        }
+        #endregion
+
+        #region "RD"
+
+        private void cmbRDGoal_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbRDGoalId.Text != "")
+                cmbRDGoalId.Tag = _goals.FirstOrDefault(i => i.Name == cmbRDGoalId.Text).Id;
+            else
+                cmbRDGoalId.Tag = "0";
+        }
+
+        private void fillupRDInfo()
+        {
+            RDInfo RDInfo = new RDInfo();
+            _dtRD = RDInfo.GetRecurringDepositInfo(_planeId);
+            dtGridRD.DataSource = _dtRD;
+            RDInfo.SetGrid(dtGridRD);
+            fillRDInvesterCombobox();
+            fillRDGoalsCombobox();
+        }
+
+        private void fillRDGoalsCombobox()
+        {
+            cmbRDGoalId.Items.Clear();
+            _goals = new GoalsInfo().GetAll(_planeId);
+            foreach (var goal in _goals)
+            {
+                cmbRDGoalId.Items.Add(goal.Name);
+            }
+            cmbRDGoalId.Items.Add("");
+        }
+
+        private void fillRDInvesterCombobox()
+        {
+            new PlannerInfo.FamilyMemberInfo().FillFamilyMemberInCombo(this._client.ID, cmbRDInvestor);
+        }
+
+        private void dtGridRD_SelectionChanged(object sender, EventArgs e)
+        {
+            DataRow dr = getSelectedDataRow(dtGridRD,_dtRD);
+            if (dr != null)
+                displayRDInfo(dr);
+            else
+                setDefaultValueRD();
+        }
+
+        private void setDefaultValueRD()
+        {
+            cmbRDInvestor.Tag = "0";
+            cmbRDInvestor.Text = "";
+            cmbRDAccountNo.Text = "";
+            cmbRDGoalId.Tag = "0";
+            cmbRDGoalId.Text = "";
+            txtRDBankName.Text = "";
+            txtRDBranch.Text = "";
+            txtRDROI.Text = "0";
+            txtRDBalance.Text = "";
+            txtRDMaturityAmt.Text = "";
+            txtRDMonthlyInstallment.Text = "";
+
+        }
+
+        private void displayRDInfo(DataRow dr)
+        {
+            if (dr != null)
+            {
+                cmbRDInvestor.Tag = dr.Field<string>("ID");
+                cmbRDInvestor.Text = dr.Field<string>("InvesterName");
+                txtRDBankName.Text = dr.Field<string>("BankName");
+                cmbRDAccountNo.Text = dr.Field<string>("AccountNo");
+                txtRDBranch.Text = dr.Field<string>("Branch");
+                txtRDBalance.Text = dr.Field<string>("Balance");
+                txtRDROI.Text = dr.Field<string>("IntRate");
+                txtRDMonthlyInstallment.Text = dr.Field<string>("MonthlyInstallment");
+                txtRDMaturityAmt.Text = dr.Field<string>("MaturityAmt");
+                dtRDDepositDate.Text = dr.Field<string>("DepositDate");
+                dtMaturityDate.Text = dr.Field<string>("MaturityDate");
+                if (dr["GoalID"] != null)
+                {
+                    cmbRDGoalId.Tag = dr["GoalId"].ToString();
+                    cmbRDGoalId.Text = getGoalName(int.Parse(cmbRDGoalId.Tag.ToString()));
+                }
+                else
+                {
+                    cmbRDGoalId.Tag = "0";
+                    cmbRDGoalId.Text = "";
+                }
+            }
+        }
+
+        private void btnRDAdd_Click(object sender, EventArgs e)
+        {
+            grpRD.Enabled = true;
+            setDefaultValueRD();
+        }
+
+        private void btnRDEdit_Click(object sender, EventArgs e)
+        {
+            grpRD.Enabled = true;
+        }
+
+        private void btnRDDelete_Click(object sender, EventArgs e)
+        {
+            if (dtGridRD.SelectedRows.Count > 0)
+            {
+                if (MessageBox.Show("Are you sure, you want to delete this record?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    RDInfo RDInfo = new RDInfo();
+                    RecurringDeposit RD =  getRDData();
+                    RDInfo.Delete(RD);
+                    fillupRDInfo();
+                }
+            }
+        }
+
+        private RecurringDeposit getRDData()
+        {
+            RecurringDeposit RD = new RecurringDeposit();
+            RD.Id = int.Parse(cmbRDInvestor.Tag.ToString());
+            RD.Pid = _planeId;
+            RD.InvesterName = cmbRDInvestor.Text;
+            RD.AccountNo = cmbRDAccountNo.Text;
+            RD.BankName = txtRDBankName.Text;
+            RD.Branch = txtRDBranch.Text;
+            RD.IntRate = float.Parse(txtRDROI.Text);
+            RD.Balance = double.Parse(txtRDBalance.Text);
+            RD.DepositDate = dtRDDepositDate.Value;
+            RD.MonthlyInstallment = double.Parse(txtRDMonthlyInstallment.Text);
+            RD.MaturityAmt = double.Parse(txtRDMaturityAmt.Text);
+            RD.MaturityDate = dtRDMaturityDate.Value;
+            RD.GoalId = int.Parse(cmbRDGoalId.Tag.ToString());
+            RD.CreatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+            RD.CreatedBy = Program.CurrentUser.Id;
+            RD.UpdatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+            RD.UpdatedBy = Program.CurrentUser.Id;
+            RD.MachineName = Environment.MachineName;
+            return RD;
+        }
+
+        private void btnRDSave_Click(object sender, EventArgs e)
+        {
+            RDInfo RDInfo = new RDInfo();
+            RecurringDeposit RD = getRDData();
+            bool isSaved = false;
+
+            if (RD != null && RD.Id == 0)
+                isSaved = RDInfo.Add(RD);
+            else
+                isSaved = RDInfo.Update(RD);
+
+            if (isSaved)
+            {
+                MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                fillupRDInfo();
+                grpRD.Enabled = false;
+            }
+            else
+                MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void btnRDCancel_Click(object sender, EventArgs e)
+        {
+            grpRD.Enabled = false;
+        }
+        #endregion
+
         private void fillupSavingAccount()
         {
             SavingAccountInfo savingAccountInfo = new SavingAccountInfo();
@@ -1442,6 +1776,6 @@ namespace FinancialPlannerClient.CurrentStatus
             }
             else
                 MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
+        }   
     }
 }

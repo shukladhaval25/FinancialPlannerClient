@@ -299,30 +299,67 @@
             this.btnAddSA = new System.Windows.Forms.Button();
             this.btnEditSA = new System.Windows.Forms.Button();
             this.FD = new System.Windows.Forms.TabPage();
-            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.grpFD = new System.Windows.Forms.GroupBox();
+            this.dtFDMaturityDate = new System.Windows.Forms.DateTimePicker();
+            this.label111 = new System.Windows.Forms.Label();
+            this.dtFDDepositDate = new System.Windows.Forms.DateTimePicker();
+            this.label110 = new System.Windows.Forms.Label();
+            this.txtFDMatuirtyAmt = new System.Windows.Forms.TextBox();
+            this.label109 = new System.Windows.Forms.Label();
             this.label94 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.textBox12 = new System.Windows.Forms.TextBox();
-            this.textBox13 = new System.Windows.Forms.TextBox();
-            this.comboBox7 = new System.Windows.Forms.ComboBox();
+            this.txtFDBalance = new System.Windows.Forms.TextBox();
+            this.txtFDROI = new System.Windows.Forms.TextBox();
+            this.txtFDBranch = new System.Windows.Forms.TextBox();
+            this.txtFDBankName = new System.Windows.Forms.TextBox();
+            this.cmbFDGoal = new System.Windows.Forms.ComboBox();
             this.label95 = new System.Windows.Forms.Label();
-            this.comboBox8 = new System.Windows.Forms.ComboBox();
+            this.cmbFDAccountno = new System.Windows.Forms.ComboBox();
             this.label103 = new System.Windows.Forms.Label();
             this.label104 = new System.Windows.Forms.Label();
             this.label105 = new System.Windows.Forms.Label();
-            this.comboBox9 = new System.Windows.Forms.ComboBox();
+            this.cmbFDInvestor = new System.Windows.Forms.ComboBox();
             this.label106 = new System.Windows.Forms.Label();
-            this.button12 = new System.Windows.Forms.Button();
-            this.button13 = new System.Windows.Forms.Button();
+            this.btnFDCancel = new System.Windows.Forms.Button();
+            this.btnFDSave = new System.Windows.Forms.Button();
             this.label107 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dtGridFD = new System.Windows.Forms.DataGridView();
             this.label108 = new System.Windows.Forms.Label();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
-            this.button14 = new System.Windows.Forms.Button();
-            this.button15 = new System.Windows.Forms.Button();
-            this.button16 = new System.Windows.Forms.Button();
+            this.btnFDDelete = new System.Windows.Forms.Button();
+            this.btnFDAdd = new System.Windows.Forms.Button();
+            this.btnFDEdit = new System.Windows.Forms.Button();
             this.RD = new System.Windows.Forms.TabPage();
+            this.grpRD = new System.Windows.Forms.GroupBox();
+            this.txtRDMonthlyInstallment = new System.Windows.Forms.TextBox();
+            this.label123 = new System.Windows.Forms.Label();
+            this.dtRDMaturityDate = new System.Windows.Forms.DateTimePicker();
+            this.label112 = new System.Windows.Forms.Label();
+            this.dtRDDepositDate = new System.Windows.Forms.DateTimePicker();
+            this.label113 = new System.Windows.Forms.Label();
+            this.txtRDMaturityAmt = new System.Windows.Forms.TextBox();
+            this.label114 = new System.Windows.Forms.Label();
+            this.label115 = new System.Windows.Forms.Label();
+            this.txtRDBalance = new System.Windows.Forms.TextBox();
+            this.txtRDROI = new System.Windows.Forms.TextBox();
+            this.txtRDBranch = new System.Windows.Forms.TextBox();
+            this.txtRDBankName = new System.Windows.Forms.TextBox();
+            this.cmbRDGoalId = new System.Windows.Forms.ComboBox();
+            this.label116 = new System.Windows.Forms.Label();
+            this.cmbRDAccountNo = new System.Windows.Forms.ComboBox();
+            this.label117 = new System.Windows.Forms.Label();
+            this.label118 = new System.Windows.Forms.Label();
+            this.label119 = new System.Windows.Forms.Label();
+            this.cmbRDInvestor = new System.Windows.Forms.ComboBox();
+            this.label120 = new System.Windows.Forms.Label();
+            this.btnRDCancel = new System.Windows.Forms.Button();
+            this.btnRDSave = new System.Windows.Forms.Button();
+            this.label121 = new System.Windows.Forms.Label();
+            this.dtGridRD = new System.Windows.Forms.DataGridView();
+            this.label122 = new System.Windows.Forms.Label();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.btnRDDelete = new System.Windows.Forms.Button();
+            this.btnRDAdd = new System.Windows.Forms.Button();
+            this.btnRDEdit = new System.Windows.Forms.Button();
             this.PPF = new System.Windows.Forms.TabPage();
             this.Sukanya = new System.Windows.Forms.TabPage();
             this.SCSS = new System.Windows.Forms.TabPage();
@@ -362,9 +399,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtGridSavingAccount)).BeginInit();
             this.groupBox8.SuspendLayout();
             this.FD.SuspendLayout();
-            this.groupBox9.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.grpFD.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtGridFD)).BeginInit();
             this.groupBox10.SuspendLayout();
+            this.RD.SuspendLayout();
+            this.grpRD.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtGridRD)).BeginInit();
+            this.groupBox9.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -3015,7 +3056,6 @@
             // 
             // txtSAROI
             // 
-            this.txtSAROI.Enabled = false;
             this.txtSAROI.Location = new System.Drawing.Point(337, 117);
             this.txtSAROI.Name = "txtSAROI";
             this.txtSAROI.Size = new System.Drawing.Size(120, 22);
@@ -3215,8 +3255,8 @@
             // 
             // FD
             // 
-            this.FD.Controls.Add(this.groupBox9);
-            this.FD.Controls.Add(this.dataGridView1);
+            this.FD.Controls.Add(this.grpFD);
+            this.FD.Controls.Add(this.dtGridFD);
             this.FD.Controls.Add(this.label108);
             this.FD.Controls.Add(this.groupBox10);
             this.FD.Location = new System.Drawing.Point(4, 24);
@@ -3227,34 +3267,89 @@
             this.FD.ToolTipText = "Fixed Deposite";
             this.FD.UseVisualStyleBackColor = true;
             // 
-            // groupBox9
+            // grpFD
             // 
-            this.groupBox9.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.grpFD.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox9.Controls.Add(this.label94);
-            this.groupBox9.Controls.Add(this.textBox6);
-            this.groupBox9.Controls.Add(this.textBox11);
-            this.groupBox9.Controls.Add(this.textBox12);
-            this.groupBox9.Controls.Add(this.textBox13);
-            this.groupBox9.Controls.Add(this.comboBox7);
-            this.groupBox9.Controls.Add(this.label95);
-            this.groupBox9.Controls.Add(this.comboBox8);
-            this.groupBox9.Controls.Add(this.label103);
-            this.groupBox9.Controls.Add(this.label104);
-            this.groupBox9.Controls.Add(this.label105);
-            this.groupBox9.Controls.Add(this.comboBox9);
-            this.groupBox9.Controls.Add(this.label106);
-            this.groupBox9.Controls.Add(this.button12);
-            this.groupBox9.Controls.Add(this.button13);
-            this.groupBox9.Controls.Add(this.label107);
-            this.groupBox9.Enabled = false;
-            this.groupBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox9.Location = new System.Drawing.Point(7, 246);
-            this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(1301, 293);
-            this.groupBox9.TabIndex = 35;
-            this.groupBox9.TabStop = false;
-            this.groupBox9.Text = "Saving Account";
+            this.grpFD.Controls.Add(this.dtFDMaturityDate);
+            this.grpFD.Controls.Add(this.label111);
+            this.grpFD.Controls.Add(this.dtFDDepositDate);
+            this.grpFD.Controls.Add(this.label110);
+            this.grpFD.Controls.Add(this.txtFDMatuirtyAmt);
+            this.grpFD.Controls.Add(this.label109);
+            this.grpFD.Controls.Add(this.label94);
+            this.grpFD.Controls.Add(this.txtFDBalance);
+            this.grpFD.Controls.Add(this.txtFDROI);
+            this.grpFD.Controls.Add(this.txtFDBranch);
+            this.grpFD.Controls.Add(this.txtFDBankName);
+            this.grpFD.Controls.Add(this.cmbFDGoal);
+            this.grpFD.Controls.Add(this.label95);
+            this.grpFD.Controls.Add(this.cmbFDAccountno);
+            this.grpFD.Controls.Add(this.label103);
+            this.grpFD.Controls.Add(this.label104);
+            this.grpFD.Controls.Add(this.label105);
+            this.grpFD.Controls.Add(this.cmbFDInvestor);
+            this.grpFD.Controls.Add(this.label106);
+            this.grpFD.Controls.Add(this.btnFDCancel);
+            this.grpFD.Controls.Add(this.btnFDSave);
+            this.grpFD.Controls.Add(this.label107);
+            this.grpFD.Enabled = false;
+            this.grpFD.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpFD.Location = new System.Drawing.Point(7, 235);
+            this.grpFD.Name = "grpFD";
+            this.grpFD.Size = new System.Drawing.Size(1301, 304);
+            this.grpFD.TabIndex = 35;
+            this.grpFD.TabStop = false;
+            this.grpFD.Text = "Fixed Deposit";
+            // 
+            // dtFDMaturityDate
+            // 
+            this.dtFDMaturityDate.Location = new System.Drawing.Point(279, 173);
+            this.dtFDMaturityDate.Name = "dtFDMaturityDate";
+            this.dtFDMaturityDate.Size = new System.Drawing.Size(178, 22);
+            this.dtFDMaturityDate.TabIndex = 9;
+            // 
+            // label111
+            // 
+            this.label111.AutoSize = true;
+            this.label111.Location = new System.Drawing.Point(325, 154);
+            this.label111.Name = "label111";
+            this.label111.Size = new System.Drawing.Size(89, 16);
+            this.label111.TabIndex = 46;
+            this.label111.Text = "Maturity Date:";
+            // 
+            // dtFDDepositDate
+            // 
+            this.dtFDDepositDate.Location = new System.Drawing.Point(137, 173);
+            this.dtFDDepositDate.Name = "dtFDDepositDate";
+            this.dtFDDepositDate.Size = new System.Drawing.Size(134, 22);
+            this.dtFDDepositDate.TabIndex = 8;
+            // 
+            // label110
+            // 
+            this.label110.AutoSize = true;
+            this.label110.Location = new System.Drawing.Point(27, 177);
+            this.label110.Name = "label110";
+            this.label110.Size = new System.Drawing.Size(90, 16);
+            this.label110.TabIndex = 44;
+            this.label110.Text = "Deposit Date:";
+            // 
+            // txtFDMatuirtyAmt
+            // 
+            this.txtFDMatuirtyAmt.Location = new System.Drawing.Point(137, 145);
+            this.txtFDMatuirtyAmt.Name = "txtFDMatuirtyAmt";
+            this.txtFDMatuirtyAmt.Size = new System.Drawing.Size(134, 22);
+            this.txtFDMatuirtyAmt.TabIndex = 7;
+            this.txtFDMatuirtyAmt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label109
+            // 
+            this.label109.AutoSize = true;
+            this.label109.Location = new System.Drawing.Point(27, 148);
+            this.label109.Name = "label109";
+            this.label109.Size = new System.Drawing.Size(105, 16);
+            this.label109.TabIndex = 42;
+            this.label109.Text = "Maturity Amount:";
             // 
             // label94
             // 
@@ -3265,65 +3360,64 @@
             this.label94.TabIndex = 41;
             this.label94.Text = "Balance :";
             // 
-            // textBox6
+            // txtFDBalance
             // 
-            this.textBox6.Location = new System.Drawing.Point(137, 117);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(134, 22);
-            this.textBox6.TabIndex = 7;
+            this.txtFDBalance.Location = new System.Drawing.Point(137, 117);
+            this.txtFDBalance.Name = "txtFDBalance";
+            this.txtFDBalance.Size = new System.Drawing.Size(134, 22);
+            this.txtFDBalance.TabIndex = 5;
+            this.txtFDBalance.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // textBox11
+            // txtFDROI
             // 
-            this.textBox11.Enabled = false;
-            this.textBox11.Location = new System.Drawing.Point(337, 117);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(120, 22);
-            this.textBox11.TabIndex = 8;
-            this.textBox11.TabStop = false;
-            this.textBox11.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtFDROI.Location = new System.Drawing.Point(337, 117);
+            this.txtFDROI.Name = "txtFDROI";
+            this.txtFDROI.Size = new System.Drawing.Size(120, 22);
+            this.txtFDROI.TabIndex = 6;
+            this.txtFDROI.TabStop = false;
+            this.txtFDROI.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // textBox12
+            // txtFDBranch
             // 
-            this.textBox12.Location = new System.Drawing.Point(337, 89);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(120, 22);
-            this.textBox12.TabIndex = 4;
-            this.textBox12.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtFDBranch.Location = new System.Drawing.Point(337, 89);
+            this.txtFDBranch.Name = "txtFDBranch";
+            this.txtFDBranch.Size = new System.Drawing.Size(120, 22);
+            this.txtFDBranch.TabIndex = 4;
             // 
-            // textBox13
+            // txtFDBankName
             // 
-            this.textBox13.Location = new System.Drawing.Point(137, 89);
-            this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(134, 22);
-            this.textBox13.TabIndex = 3;
-            this.textBox13.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtFDBankName.Location = new System.Drawing.Point(137, 89);
+            this.txtFDBankName.Name = "txtFDBankName";
+            this.txtFDBankName.Size = new System.Drawing.Size(134, 22);
+            this.txtFDBankName.TabIndex = 3;
             // 
-            // comboBox7
+            // cmbFDGoal
             // 
-            this.comboBox7.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox7.FormattingEnabled = true;
-            this.comboBox7.Location = new System.Drawing.Point(137, 145);
-            this.comboBox7.Name = "comboBox7";
-            this.comboBox7.Size = new System.Drawing.Size(320, 24);
-            this.comboBox7.TabIndex = 9;
+            this.cmbFDGoal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbFDGoal.FormattingEnabled = true;
+            this.cmbFDGoal.Location = new System.Drawing.Point(137, 201);
+            this.cmbFDGoal.Name = "cmbFDGoal";
+            this.cmbFDGoal.Size = new System.Drawing.Size(320, 24);
+            this.cmbFDGoal.TabIndex = 10;
+            this.cmbFDGoal.SelectedIndexChanged += new System.EventHandler(this.cmbFDGoal_SelectedIndexChanged);
             // 
             // label95
             // 
             this.label95.AutoSize = true;
-            this.label95.Location = new System.Drawing.Point(26, 148);
+            this.label95.Location = new System.Drawing.Point(26, 204);
             this.label95.Name = "label95";
             this.label95.Size = new System.Drawing.Size(105, 16);
             this.label95.TabIndex = 22;
             this.label95.Text = "Goal (Mapped) :";
             // 
-            // comboBox8
+            // cmbFDAccountno
             // 
-            this.comboBox8.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
-            this.comboBox8.FormattingEnabled = true;
-            this.comboBox8.Location = new System.Drawing.Point(137, 59);
-            this.comboBox8.Name = "comboBox8";
-            this.comboBox8.Size = new System.Drawing.Size(320, 24);
-            this.comboBox8.TabIndex = 2;
+            this.cmbFDAccountno.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.cmbFDAccountno.FormattingEnabled = true;
+            this.cmbFDAccountno.Location = new System.Drawing.Point(137, 59);
+            this.cmbFDAccountno.Name = "cmbFDAccountno";
+            this.cmbFDAccountno.Size = new System.Drawing.Size(320, 24);
+            this.cmbFDAccountno.TabIndex = 2;
             // 
             // label103
             // 
@@ -3352,13 +3446,13 @@
             this.label105.TabIndex = 14;
             this.label105.Text = "Bank Name:";
             // 
-            // comboBox9
+            // cmbFDInvestor
             // 
-            this.comboBox9.FormattingEnabled = true;
-            this.comboBox9.Location = new System.Drawing.Point(137, 29);
-            this.comboBox9.Name = "comboBox9";
-            this.comboBox9.Size = new System.Drawing.Size(320, 24);
-            this.comboBox9.TabIndex = 1;
+            this.cmbFDInvestor.FormattingEnabled = true;
+            this.cmbFDInvestor.Location = new System.Drawing.Point(137, 29);
+            this.cmbFDInvestor.Name = "cmbFDInvestor";
+            this.cmbFDInvestor.Size = new System.Drawing.Size(320, 24);
+            this.cmbFDInvestor.TabIndex = 1;
             // 
             // label106
             // 
@@ -3369,29 +3463,31 @@
             this.label106.TabIndex = 11;
             this.label106.Text = "Invester:";
             // 
-            // button12
+            // btnFDCancel
             // 
-            this.button12.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button12.ImageKey = "icons8-cancel-16.png";
-            this.button12.ImageList = this.imgCollection;
-            this.button12.Location = new System.Drawing.Point(371, 175);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(86, 26);
-            this.button12.TabIndex = 11;
-            this.button12.Text = "Cancel";
-            this.button12.UseVisualStyleBackColor = true;
+            this.btnFDCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnFDCancel.ImageKey = "icons8-cancel-16.png";
+            this.btnFDCancel.ImageList = this.imgCollection;
+            this.btnFDCancel.Location = new System.Drawing.Point(371, 231);
+            this.btnFDCancel.Name = "btnFDCancel";
+            this.btnFDCancel.Size = new System.Drawing.Size(86, 26);
+            this.btnFDCancel.TabIndex = 12;
+            this.btnFDCancel.Text = "Cancel";
+            this.btnFDCancel.UseVisualStyleBackColor = true;
+            this.btnFDCancel.Click += new System.EventHandler(this.btnFDCancel_Click);
             // 
-            // button13
+            // btnFDSave
             // 
-            this.button13.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button13.ImageKey = "icons8-save-close-16.png";
-            this.button13.ImageList = this.imgCollection;
-            this.button13.Location = new System.Drawing.Point(279, 175);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(86, 26);
-            this.button13.TabIndex = 10;
-            this.button13.Text = "Save";
-            this.button13.UseVisualStyleBackColor = true;
+            this.btnFDSave.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnFDSave.ImageKey = "icons8-save-close-16.png";
+            this.btnFDSave.ImageList = this.imgCollection;
+            this.btnFDSave.Location = new System.Drawing.Point(279, 231);
+            this.btnFDSave.Name = "btnFDSave";
+            this.btnFDSave.Size = new System.Drawing.Size(86, 26);
+            this.btnFDSave.TabIndex = 11;
+            this.btnFDSave.Text = "Save";
+            this.btnFDSave.UseVisualStyleBackColor = true;
+            this.btnFDSave.Click += new System.EventHandler(this.btnFDSave_Click);
             // 
             // label107
             // 
@@ -3402,17 +3498,18 @@
             this.label107.TabIndex = 0;
             this.label107.Text = "Account No:";
             // 
-            // dataGridView1
+            // dtGridFD
             // 
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.dtGridFD.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(-4, 37);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1312, 163);
-            this.dataGridView1.TabIndex = 33;
+            this.dtGridFD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtGridFD.Location = new System.Drawing.Point(-4, 37);
+            this.dtGridFD.Name = "dtGridFD";
+            this.dtGridFD.ReadOnly = true;
+            this.dtGridFD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtGridFD.Size = new System.Drawing.Size(1312, 152);
+            this.dtGridFD.TabIndex = 33;
+            this.dtGridFD.SelectionChanged += new System.EventHandler(this.dtGridFD_SelectionChanged);
             // 
             // label108
             // 
@@ -3421,54 +3518,61 @@
             this.label108.ForeColor = System.Drawing.Color.DarkGreen;
             this.label108.Location = new System.Drawing.Point(13, 7);
             this.label108.Name = "label108";
-            this.label108.Size = new System.Drawing.Size(124, 18);
+            this.label108.Size = new System.Drawing.Size(111, 18);
             this.label108.TabIndex = 32;
-            this.label108.Text = "Saving Account";
+            this.label108.Text = "Fixed Deposit";
             // 
             // groupBox10
             // 
             this.groupBox10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox10.Controls.Add(this.button14);
-            this.groupBox10.Controls.Add(this.button15);
-            this.groupBox10.Controls.Add(this.button16);
-            this.groupBox10.Location = new System.Drawing.Point(1197, 206);
+            this.groupBox10.Controls.Add(this.btnFDDelete);
+            this.groupBox10.Controls.Add(this.btnFDAdd);
+            this.groupBox10.Controls.Add(this.btnFDEdit);
+            this.groupBox10.Location = new System.Drawing.Point(1197, 195);
             this.groupBox10.Name = "groupBox10";
             this.groupBox10.Size = new System.Drawing.Size(111, 38);
             this.groupBox10.TabIndex = 34;
             this.groupBox10.TabStop = false;
             // 
-            // button14
+            // btnFDDelete
             // 
-            this.button14.ImageIndex = 1;
-            this.button14.ImageList = this.imgCollection;
-            this.button14.Location = new System.Drawing.Point(76, 10);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(29, 24);
-            this.button14.TabIndex = 4;
-            this.button14.UseVisualStyleBackColor = true;
+            this.btnFDDelete.ImageIndex = 1;
+            this.btnFDDelete.ImageList = this.imgCollection;
+            this.btnFDDelete.Location = new System.Drawing.Point(76, 10);
+            this.btnFDDelete.Name = "btnFDDelete";
+            this.btnFDDelete.Size = new System.Drawing.Size(29, 24);
+            this.btnFDDelete.TabIndex = 4;
+            this.btnFDDelete.UseVisualStyleBackColor = true;
+            this.btnFDDelete.Click += new System.EventHandler(this.btnFDDelete_Click);
             // 
-            // button15
+            // btnFDAdd
             // 
-            this.button15.ImageIndex = 3;
-            this.button15.ImageList = this.imgCollection;
-            this.button15.Location = new System.Drawing.Point(6, 10);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(29, 24);
-            this.button15.TabIndex = 2;
-            this.button15.UseVisualStyleBackColor = true;
+            this.btnFDAdd.ImageIndex = 3;
+            this.btnFDAdd.ImageList = this.imgCollection;
+            this.btnFDAdd.Location = new System.Drawing.Point(6, 10);
+            this.btnFDAdd.Name = "btnFDAdd";
+            this.btnFDAdd.Size = new System.Drawing.Size(29, 24);
+            this.btnFDAdd.TabIndex = 2;
+            this.btnFDAdd.UseVisualStyleBackColor = true;
+            this.btnFDAdd.Click += new System.EventHandler(this.btnFDAdd_Click);
             // 
-            // button16
+            // btnFDEdit
             // 
-            this.button16.ImageIndex = 4;
-            this.button16.ImageList = this.imgCollection;
-            this.button16.Location = new System.Drawing.Point(41, 10);
-            this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(29, 24);
-            this.button16.TabIndex = 3;
-            this.button16.UseVisualStyleBackColor = true;
+            this.btnFDEdit.ImageIndex = 4;
+            this.btnFDEdit.ImageList = this.imgCollection;
+            this.btnFDEdit.Location = new System.Drawing.Point(41, 10);
+            this.btnFDEdit.Name = "btnFDEdit";
+            this.btnFDEdit.Size = new System.Drawing.Size(29, 24);
+            this.btnFDEdit.TabIndex = 3;
+            this.btnFDEdit.UseVisualStyleBackColor = true;
+            this.btnFDEdit.Click += new System.EventHandler(this.btnFDEdit_Click);
             // 
             // RD
             // 
+            this.RD.Controls.Add(this.grpRD);
+            this.RD.Controls.Add(this.dtGridRD);
+            this.RD.Controls.Add(this.label122);
+            this.RD.Controls.Add(this.groupBox9);
             this.RD.Location = new System.Drawing.Point(4, 24);
             this.RD.Name = "RD";
             this.RD.Size = new System.Drawing.Size(1321, 547);
@@ -3476,6 +3580,324 @@
             this.RD.Text = "RD";
             this.RD.ToolTipText = "Recurring Deposite";
             this.RD.UseVisualStyleBackColor = true;
+            // 
+            // grpRD
+            // 
+            this.grpRD.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpRD.Controls.Add(this.txtRDMonthlyInstallment);
+            this.grpRD.Controls.Add(this.label123);
+            this.grpRD.Controls.Add(this.dtRDMaturityDate);
+            this.grpRD.Controls.Add(this.label112);
+            this.grpRD.Controls.Add(this.dtRDDepositDate);
+            this.grpRD.Controls.Add(this.label113);
+            this.grpRD.Controls.Add(this.txtRDMaturityAmt);
+            this.grpRD.Controls.Add(this.label114);
+            this.grpRD.Controls.Add(this.label115);
+            this.grpRD.Controls.Add(this.txtRDBalance);
+            this.grpRD.Controls.Add(this.txtRDROI);
+            this.grpRD.Controls.Add(this.txtRDBranch);
+            this.grpRD.Controls.Add(this.txtRDBankName);
+            this.grpRD.Controls.Add(this.cmbRDGoalId);
+            this.grpRD.Controls.Add(this.label116);
+            this.grpRD.Controls.Add(this.cmbRDAccountNo);
+            this.grpRD.Controls.Add(this.label117);
+            this.grpRD.Controls.Add(this.label118);
+            this.grpRD.Controls.Add(this.label119);
+            this.grpRD.Controls.Add(this.cmbRDInvestor);
+            this.grpRD.Controls.Add(this.label120);
+            this.grpRD.Controls.Add(this.btnRDCancel);
+            this.grpRD.Controls.Add(this.btnRDSave);
+            this.grpRD.Controls.Add(this.label121);
+            this.grpRD.Enabled = false;
+            this.grpRD.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpRD.Location = new System.Drawing.Point(15, 235);
+            this.grpRD.Name = "grpRD";
+            this.grpRD.Size = new System.Drawing.Size(1301, 304);
+            this.grpRD.TabIndex = 39;
+            this.grpRD.TabStop = false;
+            this.grpRD.Text = "Fixed Deposit";
+            // 
+            // txtRDMonthlyInstallment
+            // 
+            this.txtRDMonthlyInstallment.Location = new System.Drawing.Point(137, 145);
+            this.txtRDMonthlyInstallment.Name = "txtRDMonthlyInstallment";
+            this.txtRDMonthlyInstallment.Size = new System.Drawing.Size(134, 22);
+            this.txtRDMonthlyInstallment.TabIndex = 47;
+            this.txtRDMonthlyInstallment.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label123
+            // 
+            this.label123.Location = new System.Drawing.Point(26, 145);
+            this.label123.Name = "label123";
+            this.label123.Size = new System.Drawing.Size(105, 38);
+            this.label123.TabIndex = 48;
+            this.label123.Text = "Monthly Installment:";
+            // 
+            // dtRDMaturityDate
+            // 
+            this.dtRDMaturityDate.Location = new System.Drawing.Point(743, 51);
+            this.dtRDMaturityDate.Name = "dtRDMaturityDate";
+            this.dtRDMaturityDate.Size = new System.Drawing.Size(178, 22);
+            this.dtRDMaturityDate.TabIndex = 9;
+            // 
+            // label112
+            // 
+            this.label112.AutoSize = true;
+            this.label112.Location = new System.Drawing.Point(789, 32);
+            this.label112.Name = "label112";
+            this.label112.Size = new System.Drawing.Size(89, 16);
+            this.label112.TabIndex = 46;
+            this.label112.Text = "Maturity Date:";
+            // 
+            // dtRDDepositDate
+            // 
+            this.dtRDDepositDate.Location = new System.Drawing.Point(601, 51);
+            this.dtRDDepositDate.Name = "dtRDDepositDate";
+            this.dtRDDepositDate.Size = new System.Drawing.Size(134, 22);
+            this.dtRDDepositDate.TabIndex = 8;
+            // 
+            // label113
+            // 
+            this.label113.AutoSize = true;
+            this.label113.Location = new System.Drawing.Point(491, 55);
+            this.label113.Name = "label113";
+            this.label113.Size = new System.Drawing.Size(90, 16);
+            this.label113.TabIndex = 44;
+            this.label113.Text = "Deposit Date:";
+            // 
+            // txtRDMaturityAmt
+            // 
+            this.txtRDMaturityAmt.Location = new System.Drawing.Point(601, 23);
+            this.txtRDMaturityAmt.Name = "txtRDMaturityAmt";
+            this.txtRDMaturityAmt.Size = new System.Drawing.Size(134, 22);
+            this.txtRDMaturityAmt.TabIndex = 7;
+            this.txtRDMaturityAmt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label114
+            // 
+            this.label114.AutoSize = true;
+            this.label114.Location = new System.Drawing.Point(491, 26);
+            this.label114.Name = "label114";
+            this.label114.Size = new System.Drawing.Size(105, 16);
+            this.label114.TabIndex = 42;
+            this.label114.Text = "Maturity Amount:";
+            // 
+            // label115
+            // 
+            this.label115.AutoSize = true;
+            this.label115.Location = new System.Drawing.Point(27, 120);
+            this.label115.Name = "label115";
+            this.label115.Size = new System.Drawing.Size(64, 16);
+            this.label115.TabIndex = 41;
+            this.label115.Text = "Balance :";
+            // 
+            // txtRDBalance
+            // 
+            this.txtRDBalance.Location = new System.Drawing.Point(137, 117);
+            this.txtRDBalance.Name = "txtRDBalance";
+            this.txtRDBalance.Size = new System.Drawing.Size(134, 22);
+            this.txtRDBalance.TabIndex = 5;
+            this.txtRDBalance.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtRDROI
+            // 
+            this.txtRDROI.Location = new System.Drawing.Point(337, 117);
+            this.txtRDROI.Name = "txtRDROI";
+            this.txtRDROI.Size = new System.Drawing.Size(120, 22);
+            this.txtRDROI.TabIndex = 6;
+            this.txtRDROI.TabStop = false;
+            this.txtRDROI.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtRDBranch
+            // 
+            this.txtRDBranch.Location = new System.Drawing.Point(337, 89);
+            this.txtRDBranch.Name = "txtRDBranch";
+            this.txtRDBranch.Size = new System.Drawing.Size(120, 22);
+            this.txtRDBranch.TabIndex = 4;
+            // 
+            // txtRDBankName
+            // 
+            this.txtRDBankName.Location = new System.Drawing.Point(137, 89);
+            this.txtRDBankName.Name = "txtRDBankName";
+            this.txtRDBankName.Size = new System.Drawing.Size(134, 22);
+            this.txtRDBankName.TabIndex = 3;
+            // 
+            // cmbRDGoalId
+            // 
+            this.cmbRDGoalId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbRDGoalId.FormattingEnabled = true;
+            this.cmbRDGoalId.Location = new System.Drawing.Point(601, 79);
+            this.cmbRDGoalId.Name = "cmbRDGoalId";
+            this.cmbRDGoalId.Size = new System.Drawing.Size(320, 24);
+            this.cmbRDGoalId.TabIndex = 10;
+            this.cmbRDGoalId.SelectedIndexChanged += new System.EventHandler(this.cmbRDGoal_SelectedIndexChanged);
+            // 
+            // label116
+            // 
+            this.label116.AutoSize = true;
+            this.label116.Location = new System.Drawing.Point(490, 82);
+            this.label116.Name = "label116";
+            this.label116.Size = new System.Drawing.Size(105, 16);
+            this.label116.TabIndex = 22;
+            this.label116.Text = "Goal (Mapped) :";
+            // 
+            // cmbRDAccountNo
+            // 
+            this.cmbRDAccountNo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.cmbRDAccountNo.FormattingEnabled = true;
+            this.cmbRDAccountNo.Location = new System.Drawing.Point(137, 59);
+            this.cmbRDAccountNo.Name = "cmbRDAccountNo";
+            this.cmbRDAccountNo.Size = new System.Drawing.Size(320, 24);
+            this.cmbRDAccountNo.TabIndex = 2;
+            // 
+            // label117
+            // 
+            this.label117.AutoSize = true;
+            this.label117.Location = new System.Drawing.Point(281, 120);
+            this.label117.Name = "label117";
+            this.label117.Size = new System.Drawing.Size(54, 16);
+            this.label117.TabIndex = 18;
+            this.label117.Text = "ROI (%)";
+            // 
+            // label118
+            // 
+            this.label118.AutoSize = true;
+            this.label118.Location = new System.Drawing.Point(281, 92);
+            this.label118.Name = "label118";
+            this.label118.Size = new System.Drawing.Size(53, 16);
+            this.label118.TabIndex = 15;
+            this.label118.Text = "Branch:";
+            // 
+            // label119
+            // 
+            this.label119.AutoSize = true;
+            this.label119.Location = new System.Drawing.Point(26, 92);
+            this.label119.Name = "label119";
+            this.label119.Size = new System.Drawing.Size(82, 16);
+            this.label119.TabIndex = 14;
+            this.label119.Text = "Bank Name:";
+            // 
+            // cmbRDInvestor
+            // 
+            this.cmbRDInvestor.FormattingEnabled = true;
+            this.cmbRDInvestor.Location = new System.Drawing.Point(137, 29);
+            this.cmbRDInvestor.Name = "cmbRDInvestor";
+            this.cmbRDInvestor.Size = new System.Drawing.Size(320, 24);
+            this.cmbRDInvestor.TabIndex = 1;
+            // 
+            // label120
+            // 
+            this.label120.AutoSize = true;
+            this.label120.Location = new System.Drawing.Point(26, 32);
+            this.label120.Name = "label120";
+            this.label120.Size = new System.Drawing.Size(58, 16);
+            this.label120.TabIndex = 11;
+            this.label120.Text = "Invester:";
+            // 
+            // btnRDCancel
+            // 
+            this.btnRDCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnRDCancel.ImageKey = "icons8-cancel-16.png";
+            this.btnRDCancel.ImageList = this.imgCollection;
+            this.btnRDCancel.Location = new System.Drawing.Point(835, 109);
+            this.btnRDCancel.Name = "btnRDCancel";
+            this.btnRDCancel.Size = new System.Drawing.Size(86, 26);
+            this.btnRDCancel.TabIndex = 12;
+            this.btnRDCancel.Text = "Cancel";
+            this.btnRDCancel.UseVisualStyleBackColor = true;
+            this.btnRDCancel.Click += new System.EventHandler(this.btnRDCancel_Click);
+            // 
+            // btnRDSave
+            // 
+            this.btnRDSave.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnRDSave.ImageKey = "icons8-save-close-16.png";
+            this.btnRDSave.ImageList = this.imgCollection;
+            this.btnRDSave.Location = new System.Drawing.Point(743, 109);
+            this.btnRDSave.Name = "btnRDSave";
+            this.btnRDSave.Size = new System.Drawing.Size(86, 26);
+            this.btnRDSave.TabIndex = 11;
+            this.btnRDSave.Text = "Save";
+            this.btnRDSave.UseVisualStyleBackColor = true;
+            this.btnRDSave.Click += new System.EventHandler(this.btnRDSave_Click);
+            // 
+            // label121
+            // 
+            this.label121.AutoSize = true;
+            this.label121.Location = new System.Drawing.Point(27, 61);
+            this.label121.Name = "label121";
+            this.label121.Size = new System.Drawing.Size(80, 16);
+            this.label121.TabIndex = 0;
+            this.label121.Text = "Account No:";
+            // 
+            // dtGridRD
+            // 
+            this.dtGridRD.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtGridRD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtGridRD.Location = new System.Drawing.Point(4, 37);
+            this.dtGridRD.Name = "dtGridRD";
+            this.dtGridRD.ReadOnly = true;
+            this.dtGridRD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtGridRD.Size = new System.Drawing.Size(1312, 152);
+            this.dtGridRD.TabIndex = 37;
+            this.dtGridRD.SelectionChanged += new System.EventHandler(this.dtGridRD_SelectionChanged);
+            // 
+            // label122
+            // 
+            this.label122.AutoSize = true;
+            this.label122.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label122.ForeColor = System.Drawing.Color.DarkGreen;
+            this.label122.Location = new System.Drawing.Point(21, 7);
+            this.label122.Name = "label122";
+            this.label122.Size = new System.Drawing.Size(144, 18);
+            this.label122.TabIndex = 36;
+            this.label122.Text = "Recurring Deposit";
+            // 
+            // groupBox9
+            // 
+            this.groupBox9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox9.Controls.Add(this.btnRDDelete);
+            this.groupBox9.Controls.Add(this.btnRDAdd);
+            this.groupBox9.Controls.Add(this.btnRDEdit);
+            this.groupBox9.Location = new System.Drawing.Point(1205, 195);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(111, 38);
+            this.groupBox9.TabIndex = 38;
+            this.groupBox9.TabStop = false;
+            // 
+            // btnRDDelete
+            // 
+            this.btnRDDelete.ImageIndex = 1;
+            this.btnRDDelete.ImageList = this.imgCollection;
+            this.btnRDDelete.Location = new System.Drawing.Point(76, 10);
+            this.btnRDDelete.Name = "btnRDDelete";
+            this.btnRDDelete.Size = new System.Drawing.Size(29, 24);
+            this.btnRDDelete.TabIndex = 4;
+            this.btnRDDelete.UseVisualStyleBackColor = true;
+            this.btnRDDelete.Click += new System.EventHandler(this.btnRDDelete_Click);
+            // 
+            // btnRDAdd
+            // 
+            this.btnRDAdd.ImageIndex = 3;
+            this.btnRDAdd.ImageList = this.imgCollection;
+            this.btnRDAdd.Location = new System.Drawing.Point(6, 10);
+            this.btnRDAdd.Name = "btnRDAdd";
+            this.btnRDAdd.Size = new System.Drawing.Size(29, 24);
+            this.btnRDAdd.TabIndex = 2;
+            this.btnRDAdd.UseVisualStyleBackColor = true;
+            this.btnRDAdd.Click += new System.EventHandler(this.btnRDAdd_Click);
+            // 
+            // btnRDEdit
+            // 
+            this.btnRDEdit.ImageIndex = 4;
+            this.btnRDEdit.ImageList = this.imgCollection;
+            this.btnRDEdit.Location = new System.Drawing.Point(41, 10);
+            this.btnRDEdit.Name = "btnRDEdit";
+            this.btnRDEdit.Size = new System.Drawing.Size(29, 24);
+            this.btnRDEdit.TabIndex = 3;
+            this.btnRDEdit.UseVisualStyleBackColor = true;
+            this.btnRDEdit.Click += new System.EventHandler(this.btnRDEdit_Click);
             // 
             // PPF
             // 
@@ -3575,10 +3997,16 @@
             this.groupBox8.ResumeLayout(false);
             this.FD.ResumeLayout(false);
             this.FD.PerformLayout();
-            this.groupBox9.ResumeLayout(false);
-            this.groupBox9.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.grpFD.ResumeLayout(false);
+            this.grpFD.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtGridFD)).EndInit();
             this.groupBox10.ResumeLayout(false);
+            this.RD.ResumeLayout(false);
+            this.RD.PerformLayout();
+            this.grpRD.ResumeLayout(false);
+            this.grpRD.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtGridRD)).EndInit();
+            this.groupBox9.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -3859,28 +4287,65 @@
         private System.Windows.Forms.Button btnDeleteSA;
         private System.Windows.Forms.Button btnAddSA;
         private System.Windows.Forms.Button btnEditSA;
-        private System.Windows.Forms.GroupBox groupBox9;
+        private System.Windows.Forms.GroupBox grpFD;
         private System.Windows.Forms.Label label94;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox11;
-        private System.Windows.Forms.TextBox textBox12;
-        private System.Windows.Forms.TextBox textBox13;
-        private System.Windows.Forms.ComboBox comboBox7;
+        private System.Windows.Forms.TextBox txtFDBalance;
+        private System.Windows.Forms.TextBox txtFDROI;
+        private System.Windows.Forms.TextBox txtFDBranch;
+        private System.Windows.Forms.TextBox txtFDBankName;
+        private System.Windows.Forms.ComboBox cmbFDGoal;
         private System.Windows.Forms.Label label95;
-        private System.Windows.Forms.ComboBox comboBox8;
+        private System.Windows.Forms.ComboBox cmbFDAccountno;
         private System.Windows.Forms.Label label103;
         private System.Windows.Forms.Label label104;
         private System.Windows.Forms.Label label105;
-        private System.Windows.Forms.ComboBox comboBox9;
+        private System.Windows.Forms.ComboBox cmbFDInvestor;
         private System.Windows.Forms.Label label106;
-        private System.Windows.Forms.Button button12;
-        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.Button btnFDCancel;
+        private System.Windows.Forms.Button btnFDSave;
         private System.Windows.Forms.Label label107;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dtGridFD;
         private System.Windows.Forms.Label label108;
         private System.Windows.Forms.GroupBox groupBox10;
-        private System.Windows.Forms.Button button14;
-        private System.Windows.Forms.Button button15;
-        private System.Windows.Forms.Button button16;
+        private System.Windows.Forms.Button btnFDDelete;
+        private System.Windows.Forms.Button btnFDAdd;
+        private System.Windows.Forms.Button btnFDEdit;
+        private System.Windows.Forms.DateTimePicker dtFDMaturityDate;
+        private System.Windows.Forms.Label label111;
+        private System.Windows.Forms.DateTimePicker dtFDDepositDate;
+        private System.Windows.Forms.Label label110;
+        private System.Windows.Forms.TextBox txtFDMatuirtyAmt;
+        private System.Windows.Forms.Label label109;
+        private System.Windows.Forms.GroupBox grpRD;
+        private System.Windows.Forms.TextBox txtRDMonthlyInstallment;
+        private System.Windows.Forms.Label label123;
+        private System.Windows.Forms.DateTimePicker dtRDMaturityDate;
+        private System.Windows.Forms.Label label112;
+        private System.Windows.Forms.DateTimePicker dtRDDepositDate;
+        private System.Windows.Forms.Label label113;
+        private System.Windows.Forms.TextBox txtRDMaturityAmt;
+        private System.Windows.Forms.Label label114;
+        private System.Windows.Forms.Label label115;
+        private System.Windows.Forms.TextBox txtRDBalance;
+        private System.Windows.Forms.TextBox txtRDROI;
+        private System.Windows.Forms.TextBox txtRDBranch;
+        private System.Windows.Forms.TextBox txtRDBankName;
+        private System.Windows.Forms.ComboBox cmbRDGoalId;
+        private System.Windows.Forms.Label label116;
+        private System.Windows.Forms.ComboBox cmbRDAccountNo;
+        private System.Windows.Forms.Label label117;
+        private System.Windows.Forms.Label label118;
+        private System.Windows.Forms.Label label119;
+        private System.Windows.Forms.ComboBox cmbRDInvestor;
+        private System.Windows.Forms.Label label120;
+        private System.Windows.Forms.Button btnRDCancel;
+        private System.Windows.Forms.Button btnRDSave;
+        private System.Windows.Forms.Label label121;
+        private System.Windows.Forms.DataGridView dtGridRD;
+        private System.Windows.Forms.Label label122;
+        private System.Windows.Forms.GroupBox groupBox9;
+        private System.Windows.Forms.Button btnRDDelete;
+        private System.Windows.Forms.Button btnRDAdd;
+        private System.Windows.Forms.Button btnRDEdit;
     }
 }
