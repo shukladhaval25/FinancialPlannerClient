@@ -361,9 +361,107 @@
             this.btnRDAdd = new System.Windows.Forms.Button();
             this.btnRDEdit = new System.Windows.Forms.Button();
             this.PPF = new System.Windows.Forms.TabPage();
+            this.grpPPF = new System.Windows.Forms.GroupBox();
+            this.dtPPFMaturityDate = new System.Windows.Forms.DateTimePicker();
+            this.label126 = new System.Windows.Forms.Label();
+            this.dtPPFOpeningDate = new System.Windows.Forms.DateTimePicker();
+            this.label127 = new System.Windows.Forms.Label();
+            this.txtPPFCurrentValue = new System.Windows.Forms.TextBox();
+            this.label128 = new System.Windows.Forms.Label();
+            this.txtPPFBranch = new System.Windows.Forms.TextBox();
+            this.txtPPFBankName = new System.Windows.Forms.TextBox();
+            this.cmbPPFGoal = new System.Windows.Forms.ComboBox();
+            this.label130 = new System.Windows.Forms.Label();
+            this.cmbPPFAccountNo = new System.Windows.Forms.ComboBox();
+            this.label132 = new System.Windows.Forms.Label();
+            this.label133 = new System.Windows.Forms.Label();
+            this.cmbPPFInvestor = new System.Windows.Forms.ComboBox();
+            this.label134 = new System.Windows.Forms.Label();
+            this.btnPPFCancel = new System.Windows.Forms.Button();
+            this.btnPPFSave = new System.Windows.Forms.Button();
+            this.label135 = new System.Windows.Forms.Label();
+            this.dtGridPPF = new System.Windows.Forms.DataGridView();
+            this.label124 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnDeletePPF = new System.Windows.Forms.Button();
+            this.btnADDPPF = new System.Windows.Forms.Button();
+            this.btnEditPPF = new System.Windows.Forms.Button();
             this.Sukanya = new System.Windows.Forms.TabPage();
+            this.dtGridSS = new System.Windows.Forms.DataGridView();
+            this.label137 = new System.Windows.Forms.Label();
+            this.grpSS = new System.Windows.Forms.GroupBox();
+            this.dtSSMaturityDate = new System.Windows.Forms.DateTimePicker();
+            this.label125 = new System.Windows.Forms.Label();
+            this.dtSSOpeningDate = new System.Windows.Forms.DateTimePicker();
+            this.label129 = new System.Windows.Forms.Label();
+            this.txtSSCurrentValue = new System.Windows.Forms.TextBox();
+            this.label131 = new System.Windows.Forms.Label();
+            this.txtSSBankName = new System.Windows.Forms.TextBox();
+            this.cmbSSGoal = new System.Windows.Forms.ComboBox();
+            this.label136 = new System.Windows.Forms.Label();
+            this.cmbSSAccountNo = new System.Windows.Forms.ComboBox();
+            this.label138 = new System.Windows.Forms.Label();
+            this.cmbSSInvestor = new System.Windows.Forms.ComboBox();
+            this.label139 = new System.Windows.Forms.Label();
+            this.btnSSCancel = new System.Windows.Forms.Button();
+            this.btnSSSave = new System.Windows.Forms.Button();
+            this.label140 = new System.Windows.Forms.Label();
+            this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.btnDeleteSS = new System.Windows.Forms.Button();
+            this.btnAddSS = new System.Windows.Forms.Button();
+            this.btnEditSS = new System.Windows.Forms.Button();
             this.SCSS = new System.Windows.Forms.TabPage();
+            this.dtGridSCSS = new System.Windows.Forms.DataGridView();
+            this.label141 = new System.Windows.Forms.Label();
+            this.grpSCSS = new System.Windows.Forms.GroupBox();
+            this.dtSCSSMaturityDate = new System.Windows.Forms.DateTimePicker();
+            this.label142 = new System.Windows.Forms.Label();
+            this.dtSCSSOpeningDate = new System.Windows.Forms.DateTimePicker();
+            this.label143 = new System.Windows.Forms.Label();
+            this.txtSCSSCurrentValue = new System.Windows.Forms.TextBox();
+            this.label144 = new System.Windows.Forms.Label();
+            this.txtSCSSBankName = new System.Windows.Forms.TextBox();
+            this.cmbSCSSGoal = new System.Windows.Forms.ComboBox();
+            this.label145 = new System.Windows.Forms.Label();
+            this.cmbSCSSAccountNo = new System.Windows.Forms.ComboBox();
+            this.label146 = new System.Windows.Forms.Label();
+            this.cmbSCSSInvestor = new System.Windows.Forms.ComboBox();
+            this.label147 = new System.Windows.Forms.Label();
+            this.btnSCSSCancel = new System.Windows.Forms.Button();
+            this.btnSCSSSave = new System.Windows.Forms.Button();
+            this.label148 = new System.Windows.Forms.Label();
+            this.groupBox13 = new System.Windows.Forms.GroupBox();
+            this.btnSCSSDelete = new System.Windows.Forms.Button();
+            this.btnSCSSAdd = new System.Windows.Forms.Button();
+            this.btnSCSSEdit = new System.Windows.Forms.Button();
             this.NSC = new System.Windows.Forms.TabPage();
+            this.dtGridNSC = new System.Windows.Forms.DataGridView();
+            this.label149 = new System.Windows.Forms.Label();
+            this.grpNSC = new System.Windows.Forms.GroupBox();
+            this.dtNSCMaturityDate = new System.Windows.Forms.DateTimePicker();
+            this.label150 = new System.Windows.Forms.Label();
+            this.txtNSCRate = new System.Windows.Forms.TextBox();
+            this.label152 = new System.Windows.Forms.Label();
+            this.txtNSCPostOffice = new System.Windows.Forms.TextBox();
+            this.cmbNSCGoal = new System.Windows.Forms.ComboBox();
+            this.label153 = new System.Windows.Forms.Label();
+            this.cmbNSCDocumentNo = new System.Windows.Forms.ComboBox();
+            this.label154 = new System.Windows.Forms.Label();
+            this.cmbNSCInvestor = new System.Windows.Forms.ComboBox();
+            this.label155 = new System.Windows.Forms.Label();
+            this.btnNSCCancel = new System.Windows.Forms.Button();
+            this.btnNSCSave = new System.Windows.Forms.Button();
+            this.label156 = new System.Windows.Forms.Label();
+            this.groupBox14 = new System.Windows.Forms.GroupBox();
+            this.btnNSCDelete = new System.Windows.Forms.Button();
+            this.btnNSCAdd = new System.Windows.Forms.Button();
+            this.btnNSCEdit = new System.Windows.Forms.Button();
+            this.txtNSCUnits = new System.Windows.Forms.TextBox();
+            this.label157 = new System.Windows.Forms.Label();
+            this.txtNSCValueOfOne = new System.Windows.Forms.TextBox();
+            this.label158 = new System.Windows.Forms.Label();
+            this.txtNSCCurrentValue = new System.Windows.Forms.TextBox();
+            this.label151 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.tabCurrenStatus.SuspendLayout();
             this.LifeInsurance.SuspendLayout();
@@ -406,6 +504,22 @@
             this.grpRD.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridRD)).BeginInit();
             this.groupBox9.SuspendLayout();
+            this.PPF.SuspendLayout();
+            this.grpPPF.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtGridPPF)).BeginInit();
+            this.groupBox3.SuspendLayout();
+            this.Sukanya.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtGridSS)).BeginInit();
+            this.grpSS.SuspendLayout();
+            this.groupBox12.SuspendLayout();
+            this.SCSS.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtGridSCSS)).BeginInit();
+            this.grpSCSS.SuspendLayout();
+            this.groupBox13.SuspendLayout();
+            this.NSC.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtGridNSC)).BeginInit();
+            this.grpNSC.SuspendLayout();
+            this.groupBox14.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -3901,6 +4015,10 @@
             // 
             // PPF
             // 
+            this.PPF.Controls.Add(this.grpPPF);
+            this.PPF.Controls.Add(this.dtGridPPF);
+            this.PPF.Controls.Add(this.label124);
+            this.PPF.Controls.Add(this.groupBox3);
             this.PPF.Location = new System.Drawing.Point(4, 24);
             this.PPF.Name = "PPF";
             this.PPF.Size = new System.Drawing.Size(1321, 547);
@@ -3908,8 +4026,273 @@
             this.PPF.Text = "PPF";
             this.PPF.UseVisualStyleBackColor = true;
             // 
+            // grpPPF
+            // 
+            this.grpPPF.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpPPF.Controls.Add(this.dtPPFMaturityDate);
+            this.grpPPF.Controls.Add(this.label126);
+            this.grpPPF.Controls.Add(this.dtPPFOpeningDate);
+            this.grpPPF.Controls.Add(this.label127);
+            this.grpPPF.Controls.Add(this.txtPPFCurrentValue);
+            this.grpPPF.Controls.Add(this.label128);
+            this.grpPPF.Controls.Add(this.txtPPFBranch);
+            this.grpPPF.Controls.Add(this.txtPPFBankName);
+            this.grpPPF.Controls.Add(this.cmbPPFGoal);
+            this.grpPPF.Controls.Add(this.label130);
+            this.grpPPF.Controls.Add(this.cmbPPFAccountNo);
+            this.grpPPF.Controls.Add(this.label132);
+            this.grpPPF.Controls.Add(this.label133);
+            this.grpPPF.Controls.Add(this.cmbPPFInvestor);
+            this.grpPPF.Controls.Add(this.label134);
+            this.grpPPF.Controls.Add(this.btnPPFCancel);
+            this.grpPPF.Controls.Add(this.btnPPFSave);
+            this.grpPPF.Controls.Add(this.label135);
+            this.grpPPF.Enabled = false;
+            this.grpPPF.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpPPF.Location = new System.Drawing.Point(8, 237);
+            this.grpPPF.Name = "grpPPF";
+            this.grpPPF.Size = new System.Drawing.Size(1297, 304);
+            this.grpPPF.TabIndex = 42;
+            this.grpPPF.TabStop = false;
+            this.grpPPF.Text = "PPF";
+            // 
+            // dtPPFMaturityDate
+            // 
+            this.dtPPFMaturityDate.Location = new System.Drawing.Point(767, 51);
+            this.dtPPFMaturityDate.Name = "dtPPFMaturityDate";
+            this.dtPPFMaturityDate.Size = new System.Drawing.Size(154, 22);
+            this.dtPPFMaturityDate.TabIndex = 9;
+            // 
+            // label126
+            // 
+            this.label126.AutoSize = true;
+            this.label126.Location = new System.Drawing.Point(789, 32);
+            this.label126.Name = "label126";
+            this.label126.Size = new System.Drawing.Size(89, 16);
+            this.label126.TabIndex = 46;
+            this.label126.Text = "Maturity Date:";
+            // 
+            // dtPPFOpeningDate
+            // 
+            this.dtPPFOpeningDate.Location = new System.Drawing.Point(601, 51);
+            this.dtPPFOpeningDate.Name = "dtPPFOpeningDate";
+            this.dtPPFOpeningDate.Size = new System.Drawing.Size(154, 22);
+            this.dtPPFOpeningDate.TabIndex = 8;
+            // 
+            // label127
+            // 
+            this.label127.AutoSize = true;
+            this.label127.Location = new System.Drawing.Point(617, 32);
+            this.label127.Name = "label127";
+            this.label127.Size = new System.Drawing.Size(94, 16);
+            this.label127.TabIndex = 44;
+            this.label127.Text = "Opening Date:";
+            // 
+            // txtPPFCurrentValue
+            // 
+            this.txtPPFCurrentValue.Location = new System.Drawing.Point(137, 117);
+            this.txtPPFCurrentValue.Name = "txtPPFCurrentValue";
+            this.txtPPFCurrentValue.Size = new System.Drawing.Size(134, 22);
+            this.txtPPFCurrentValue.TabIndex = 7;
+            this.txtPPFCurrentValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label128
+            // 
+            this.label128.AutoSize = true;
+            this.label128.Location = new System.Drawing.Point(27, 120);
+            this.label128.Name = "label128";
+            this.label128.Size = new System.Drawing.Size(91, 16);
+            this.label128.TabIndex = 42;
+            this.label128.Text = "Current Value:";
+            // 
+            // txtPPFBranch
+            // 
+            this.txtPPFBranch.Location = new System.Drawing.Point(337, 89);
+            this.txtPPFBranch.Name = "txtPPFBranch";
+            this.txtPPFBranch.Size = new System.Drawing.Size(120, 22);
+            this.txtPPFBranch.TabIndex = 4;
+            // 
+            // txtPPFBankName
+            // 
+            this.txtPPFBankName.Location = new System.Drawing.Point(137, 89);
+            this.txtPPFBankName.Name = "txtPPFBankName";
+            this.txtPPFBankName.Size = new System.Drawing.Size(134, 22);
+            this.txtPPFBankName.TabIndex = 3;
+            // 
+            // cmbPPFGoal
+            // 
+            this.cmbPPFGoal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPPFGoal.FormattingEnabled = true;
+            this.cmbPPFGoal.Location = new System.Drawing.Point(601, 79);
+            this.cmbPPFGoal.Name = "cmbPPFGoal";
+            this.cmbPPFGoal.Size = new System.Drawing.Size(320, 24);
+            this.cmbPPFGoal.TabIndex = 10;
+            this.cmbPPFGoal.SelectedIndexChanged += new System.EventHandler(this.cmbPPFGoal_SelectedIndexChanged);
+            // 
+            // label130
+            // 
+            this.label130.AutoSize = true;
+            this.label130.Location = new System.Drawing.Point(490, 82);
+            this.label130.Name = "label130";
+            this.label130.Size = new System.Drawing.Size(105, 16);
+            this.label130.TabIndex = 22;
+            this.label130.Text = "Goal (Mapped) :";
+            // 
+            // cmbPPFAccountNo
+            // 
+            this.cmbPPFAccountNo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.cmbPPFAccountNo.FormattingEnabled = true;
+            this.cmbPPFAccountNo.Location = new System.Drawing.Point(137, 59);
+            this.cmbPPFAccountNo.Name = "cmbPPFAccountNo";
+            this.cmbPPFAccountNo.Size = new System.Drawing.Size(320, 24);
+            this.cmbPPFAccountNo.TabIndex = 2;
+            // 
+            // label132
+            // 
+            this.label132.AutoSize = true;
+            this.label132.Location = new System.Drawing.Point(281, 92);
+            this.label132.Name = "label132";
+            this.label132.Size = new System.Drawing.Size(53, 16);
+            this.label132.TabIndex = 15;
+            this.label132.Text = "Branch:";
+            // 
+            // label133
+            // 
+            this.label133.AutoSize = true;
+            this.label133.Location = new System.Drawing.Point(26, 92);
+            this.label133.Name = "label133";
+            this.label133.Size = new System.Drawing.Size(82, 16);
+            this.label133.TabIndex = 14;
+            this.label133.Text = "Bank Name:";
+            // 
+            // cmbPPFInvestor
+            // 
+            this.cmbPPFInvestor.FormattingEnabled = true;
+            this.cmbPPFInvestor.Location = new System.Drawing.Point(137, 29);
+            this.cmbPPFInvestor.Name = "cmbPPFInvestor";
+            this.cmbPPFInvestor.Size = new System.Drawing.Size(320, 24);
+            this.cmbPPFInvestor.TabIndex = 1;
+            // 
+            // label134
+            // 
+            this.label134.AutoSize = true;
+            this.label134.Location = new System.Drawing.Point(26, 32);
+            this.label134.Name = "label134";
+            this.label134.Size = new System.Drawing.Size(58, 16);
+            this.label134.TabIndex = 11;
+            this.label134.Text = "Invester:";
+            // 
+            // btnPPFCancel
+            // 
+            this.btnPPFCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnPPFCancel.ImageKey = "icons8-cancel-16.png";
+            this.btnPPFCancel.ImageList = this.imgCollection;
+            this.btnPPFCancel.Location = new System.Drawing.Point(835, 109);
+            this.btnPPFCancel.Name = "btnPPFCancel";
+            this.btnPPFCancel.Size = new System.Drawing.Size(86, 26);
+            this.btnPPFCancel.TabIndex = 12;
+            this.btnPPFCancel.Text = "Cancel";
+            this.btnPPFCancel.UseVisualStyleBackColor = true;
+            this.btnPPFCancel.Click += new System.EventHandler(this.btnPPFCancel_Click);
+            // 
+            // btnPPFSave
+            // 
+            this.btnPPFSave.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnPPFSave.ImageKey = "icons8-save-close-16.png";
+            this.btnPPFSave.ImageList = this.imgCollection;
+            this.btnPPFSave.Location = new System.Drawing.Point(743, 109);
+            this.btnPPFSave.Name = "btnPPFSave";
+            this.btnPPFSave.Size = new System.Drawing.Size(86, 26);
+            this.btnPPFSave.TabIndex = 11;
+            this.btnPPFSave.Text = "Save";
+            this.btnPPFSave.UseVisualStyleBackColor = true;
+            this.btnPPFSave.Click += new System.EventHandler(this.btnPPFSave_Click);
+            // 
+            // label135
+            // 
+            this.label135.AutoSize = true;
+            this.label135.Location = new System.Drawing.Point(27, 61);
+            this.label135.Name = "label135";
+            this.label135.Size = new System.Drawing.Size(80, 16);
+            this.label135.TabIndex = 0;
+            this.label135.Text = "Account No:";
+            // 
+            // dtGridPPF
+            // 
+            this.dtGridPPF.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtGridPPF.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtGridPPF.Location = new System.Drawing.Point(8, 41);
+            this.dtGridPPF.Name = "dtGridPPF";
+            this.dtGridPPF.ReadOnly = true;
+            this.dtGridPPF.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtGridPPF.Size = new System.Drawing.Size(1297, 152);
+            this.dtGridPPF.TabIndex = 40;
+            this.dtGridPPF.SelectionChanged += new System.EventHandler(this.dtGridPPF_SelectionChanged);
+            // 
+            // label124
+            // 
+            this.label124.AutoSize = true;
+            this.label124.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label124.ForeColor = System.Drawing.Color.DarkGreen;
+            this.label124.Location = new System.Drawing.Point(11, 10);
+            this.label124.Name = "label124";
+            this.label124.Size = new System.Drawing.Size(40, 18);
+            this.label124.TabIndex = 39;
+            this.label124.Text = "PPF";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Controls.Add(this.btnDeletePPF);
+            this.groupBox3.Controls.Add(this.btnADDPPF);
+            this.groupBox3.Controls.Add(this.btnEditPPF);
+            this.groupBox3.Location = new System.Drawing.Point(1194, 199);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(111, 38);
+            this.groupBox3.TabIndex = 41;
+            this.groupBox3.TabStop = false;
+            // 
+            // btnDeletePPF
+            // 
+            this.btnDeletePPF.ImageIndex = 1;
+            this.btnDeletePPF.ImageList = this.imgCollection;
+            this.btnDeletePPF.Location = new System.Drawing.Point(76, 10);
+            this.btnDeletePPF.Name = "btnDeletePPF";
+            this.btnDeletePPF.Size = new System.Drawing.Size(29, 24);
+            this.btnDeletePPF.TabIndex = 4;
+            this.btnDeletePPF.UseVisualStyleBackColor = true;
+            this.btnDeletePPF.Click += new System.EventHandler(this.btnPPFEdit_Click);
+            // 
+            // btnADDPPF
+            // 
+            this.btnADDPPF.ImageIndex = 3;
+            this.btnADDPPF.ImageList = this.imgCollection;
+            this.btnADDPPF.Location = new System.Drawing.Point(6, 10);
+            this.btnADDPPF.Name = "btnADDPPF";
+            this.btnADDPPF.Size = new System.Drawing.Size(29, 24);
+            this.btnADDPPF.TabIndex = 2;
+            this.btnADDPPF.UseVisualStyleBackColor = true;
+            this.btnADDPPF.Click += new System.EventHandler(this.btnPPFAdd_Click);
+            // 
+            // btnEditPPF
+            // 
+            this.btnEditPPF.ImageIndex = 4;
+            this.btnEditPPF.ImageList = this.imgCollection;
+            this.btnEditPPF.Location = new System.Drawing.Point(41, 10);
+            this.btnEditPPF.Name = "btnEditPPF";
+            this.btnEditPPF.Size = new System.Drawing.Size(29, 24);
+            this.btnEditPPF.TabIndex = 3;
+            this.btnEditPPF.UseVisualStyleBackColor = true;
+            this.btnEditPPF.Click += new System.EventHandler(this.btnPPFEdit_Click);
+            // 
             // Sukanya
             // 
+            this.Sukanya.Controls.Add(this.dtGridSS);
+            this.Sukanya.Controls.Add(this.label137);
+            this.Sukanya.Controls.Add(this.grpSS);
+            this.Sukanya.Controls.Add(this.groupBox12);
             this.Sukanya.Location = new System.Drawing.Point(4, 24);
             this.Sukanya.Name = "Sukanya";
             this.Sukanya.Padding = new System.Windows.Forms.Padding(3);
@@ -3918,8 +4301,255 @@
             this.Sukanya.Text = "Sukanya Samrudhi";
             this.Sukanya.UseVisualStyleBackColor = true;
             // 
+            // dtGridSS
+            // 
+            this.dtGridSS.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtGridSS.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtGridSS.Location = new System.Drawing.Point(8, 34);
+            this.dtGridSS.Name = "dtGridSS";
+            this.dtGridSS.ReadOnly = true;
+            this.dtGridSS.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtGridSS.Size = new System.Drawing.Size(1297, 152);
+            this.dtGridSS.TabIndex = 46;
+            this.dtGridSS.SelectionChanged += new System.EventHandler(this.dtGridSS_SelectionChanged);
+            // 
+            // label137
+            // 
+            this.label137.AutoSize = true;
+            this.label137.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label137.ForeColor = System.Drawing.Color.DarkGreen;
+            this.label137.Location = new System.Drawing.Point(11, 8);
+            this.label137.Name = "label137";
+            this.label137.Size = new System.Drawing.Size(148, 18);
+            this.label137.TabIndex = 45;
+            this.label137.Text = "Sukanya Samrudhi";
+            // 
+            // grpSS
+            // 
+            this.grpSS.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpSS.Controls.Add(this.dtSSMaturityDate);
+            this.grpSS.Controls.Add(this.label125);
+            this.grpSS.Controls.Add(this.dtSSOpeningDate);
+            this.grpSS.Controls.Add(this.label129);
+            this.grpSS.Controls.Add(this.txtSSCurrentValue);
+            this.grpSS.Controls.Add(this.label131);
+            this.grpSS.Controls.Add(this.txtSSBankName);
+            this.grpSS.Controls.Add(this.cmbSSGoal);
+            this.grpSS.Controls.Add(this.label136);
+            this.grpSS.Controls.Add(this.cmbSSAccountNo);
+            this.grpSS.Controls.Add(this.label138);
+            this.grpSS.Controls.Add(this.cmbSSInvestor);
+            this.grpSS.Controls.Add(this.label139);
+            this.grpSS.Controls.Add(this.btnSSCancel);
+            this.grpSS.Controls.Add(this.btnSSSave);
+            this.grpSS.Controls.Add(this.label140);
+            this.grpSS.Enabled = false;
+            this.grpSS.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpSS.Location = new System.Drawing.Point(14, 232);
+            this.grpSS.Name = "grpSS";
+            this.grpSS.Size = new System.Drawing.Size(1291, 240);
+            this.grpSS.TabIndex = 44;
+            this.grpSS.TabStop = false;
+            this.grpSS.Text = "Suknya Samrudhi";
+            // 
+            // dtSSMaturityDate
+            // 
+            this.dtSSMaturityDate.Location = new System.Drawing.Point(767, 51);
+            this.dtSSMaturityDate.Name = "dtSSMaturityDate";
+            this.dtSSMaturityDate.Size = new System.Drawing.Size(154, 22);
+            this.dtSSMaturityDate.TabIndex = 9;
+            // 
+            // label125
+            // 
+            this.label125.AutoSize = true;
+            this.label125.Location = new System.Drawing.Point(789, 32);
+            this.label125.Name = "label125";
+            this.label125.Size = new System.Drawing.Size(89, 16);
+            this.label125.TabIndex = 46;
+            this.label125.Text = "Maturity Date:";
+            // 
+            // dtSSOpeningDate
+            // 
+            this.dtSSOpeningDate.Location = new System.Drawing.Point(601, 51);
+            this.dtSSOpeningDate.Name = "dtSSOpeningDate";
+            this.dtSSOpeningDate.Size = new System.Drawing.Size(154, 22);
+            this.dtSSOpeningDate.TabIndex = 8;
+            // 
+            // label129
+            // 
+            this.label129.AutoSize = true;
+            this.label129.Location = new System.Drawing.Point(617, 32);
+            this.label129.Name = "label129";
+            this.label129.Size = new System.Drawing.Size(94, 16);
+            this.label129.TabIndex = 44;
+            this.label129.Text = "Opening Date:";
+            // 
+            // txtSSCurrentValue
+            // 
+            this.txtSSCurrentValue.Location = new System.Drawing.Point(137, 117);
+            this.txtSSCurrentValue.Name = "txtSSCurrentValue";
+            this.txtSSCurrentValue.Size = new System.Drawing.Size(249, 22);
+            this.txtSSCurrentValue.TabIndex = 7;
+            this.txtSSCurrentValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label131
+            // 
+            this.label131.AutoSize = true;
+            this.label131.Location = new System.Drawing.Point(27, 120);
+            this.label131.Name = "label131";
+            this.label131.Size = new System.Drawing.Size(91, 16);
+            this.label131.TabIndex = 42;
+            this.label131.Text = "Current Value:";
+            // 
+            // txtSSBankName
+            // 
+            this.txtSSBankName.Location = new System.Drawing.Point(137, 89);
+            this.txtSSBankName.Name = "txtSSBankName";
+            this.txtSSBankName.Size = new System.Drawing.Size(249, 22);
+            this.txtSSBankName.TabIndex = 3;
+            // 
+            // cmbSSGoal
+            // 
+            this.cmbSSGoal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbSSGoal.FormattingEnabled = true;
+            this.cmbSSGoal.Location = new System.Drawing.Point(601, 79);
+            this.cmbSSGoal.Name = "cmbSSGoal";
+            this.cmbSSGoal.Size = new System.Drawing.Size(320, 24);
+            this.cmbSSGoal.TabIndex = 10;
+            this.cmbSSGoal.SelectedIndexChanged += new System.EventHandler(this.cmbSSGoal_SelectedIndexChanged);
+            // 
+            // label136
+            // 
+            this.label136.AutoSize = true;
+            this.label136.Location = new System.Drawing.Point(490, 82);
+            this.label136.Name = "label136";
+            this.label136.Size = new System.Drawing.Size(105, 16);
+            this.label136.TabIndex = 22;
+            this.label136.Text = "Goal (Mapped) :";
+            // 
+            // cmbSSAccountNo
+            // 
+            this.cmbSSAccountNo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.cmbSSAccountNo.FormattingEnabled = true;
+            this.cmbSSAccountNo.Location = new System.Drawing.Point(137, 59);
+            this.cmbSSAccountNo.Name = "cmbSSAccountNo";
+            this.cmbSSAccountNo.Size = new System.Drawing.Size(249, 24);
+            this.cmbSSAccountNo.TabIndex = 2;
+            // 
+            // label138
+            // 
+            this.label138.AutoSize = true;
+            this.label138.Location = new System.Drawing.Point(26, 92);
+            this.label138.Name = "label138";
+            this.label138.Size = new System.Drawing.Size(82, 16);
+            this.label138.TabIndex = 14;
+            this.label138.Text = "Bank Name:";
+            // 
+            // cmbSSInvestor
+            // 
+            this.cmbSSInvestor.FormattingEnabled = true;
+            this.cmbSSInvestor.Location = new System.Drawing.Point(137, 29);
+            this.cmbSSInvestor.Name = "cmbSSInvestor";
+            this.cmbSSInvestor.Size = new System.Drawing.Size(249, 24);
+            this.cmbSSInvestor.TabIndex = 1;
+            // 
+            // label139
+            // 
+            this.label139.AutoSize = true;
+            this.label139.Location = new System.Drawing.Point(26, 32);
+            this.label139.Name = "label139";
+            this.label139.Size = new System.Drawing.Size(58, 16);
+            this.label139.TabIndex = 11;
+            this.label139.Text = "Invester:";
+            // 
+            // btnSSCancel
+            // 
+            this.btnSSCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSSCancel.ImageKey = "icons8-cancel-16.png";
+            this.btnSSCancel.ImageList = this.imgCollection;
+            this.btnSSCancel.Location = new System.Drawing.Point(835, 109);
+            this.btnSSCancel.Name = "btnSSCancel";
+            this.btnSSCancel.Size = new System.Drawing.Size(86, 26);
+            this.btnSSCancel.TabIndex = 12;
+            this.btnSSCancel.Text = "Cancel";
+            this.btnSSCancel.UseVisualStyleBackColor = true;
+            this.btnSSCancel.Click += new System.EventHandler(this.btnSSDelete_Click);
+            // 
+            // btnSSSave
+            // 
+            this.btnSSSave.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSSSave.ImageKey = "icons8-save-close-16.png";
+            this.btnSSSave.ImageList = this.imgCollection;
+            this.btnSSSave.Location = new System.Drawing.Point(743, 109);
+            this.btnSSSave.Name = "btnSSSave";
+            this.btnSSSave.Size = new System.Drawing.Size(86, 26);
+            this.btnSSSave.TabIndex = 11;
+            this.btnSSSave.Text = "Save";
+            this.btnSSSave.UseVisualStyleBackColor = true;
+            this.btnSSSave.Click += new System.EventHandler(this.btnSSSave_Click);
+            // 
+            // label140
+            // 
+            this.label140.AutoSize = true;
+            this.label140.Location = new System.Drawing.Point(27, 61);
+            this.label140.Name = "label140";
+            this.label140.Size = new System.Drawing.Size(80, 16);
+            this.label140.TabIndex = 0;
+            this.label140.Text = "Account No:";
+            // 
+            // groupBox12
+            // 
+            this.groupBox12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox12.Controls.Add(this.btnDeleteSS);
+            this.groupBox12.Controls.Add(this.btnAddSS);
+            this.groupBox12.Controls.Add(this.btnEditSS);
+            this.groupBox12.Location = new System.Drawing.Point(1194, 192);
+            this.groupBox12.Name = "groupBox12";
+            this.groupBox12.Size = new System.Drawing.Size(111, 38);
+            this.groupBox12.TabIndex = 43;
+            this.groupBox12.TabStop = false;
+            // 
+            // btnDeleteSS
+            // 
+            this.btnDeleteSS.ImageIndex = 1;
+            this.btnDeleteSS.ImageList = this.imgCollection;
+            this.btnDeleteSS.Location = new System.Drawing.Point(76, 10);
+            this.btnDeleteSS.Name = "btnDeleteSS";
+            this.btnDeleteSS.Size = new System.Drawing.Size(29, 24);
+            this.btnDeleteSS.TabIndex = 4;
+            this.btnDeleteSS.UseVisualStyleBackColor = true;
+            this.btnDeleteSS.Click += new System.EventHandler(this.btnSSDelete_Click);
+            // 
+            // btnAddSS
+            // 
+            this.btnAddSS.ImageIndex = 3;
+            this.btnAddSS.ImageList = this.imgCollection;
+            this.btnAddSS.Location = new System.Drawing.Point(6, 10);
+            this.btnAddSS.Name = "btnAddSS";
+            this.btnAddSS.Size = new System.Drawing.Size(29, 24);
+            this.btnAddSS.TabIndex = 2;
+            this.btnAddSS.UseVisualStyleBackColor = true;
+            this.btnAddSS.Click += new System.EventHandler(this.btnSSAdd_Click);
+            // 
+            // btnEditSS
+            // 
+            this.btnEditSS.ImageIndex = 4;
+            this.btnEditSS.ImageList = this.imgCollection;
+            this.btnEditSS.Location = new System.Drawing.Point(41, 10);
+            this.btnEditSS.Name = "btnEditSS";
+            this.btnEditSS.Size = new System.Drawing.Size(29, 24);
+            this.btnEditSS.TabIndex = 3;
+            this.btnEditSS.UseVisualStyleBackColor = true;
+            this.btnEditSS.Click += new System.EventHandler(this.btnSSEdit_Click);
+            // 
             // SCSS
             // 
+            this.SCSS.Controls.Add(this.dtGridSCSS);
+            this.SCSS.Controls.Add(this.label141);
+            this.SCSS.Controls.Add(this.grpSCSS);
+            this.SCSS.Controls.Add(this.groupBox13);
             this.SCSS.Location = new System.Drawing.Point(4, 24);
             this.SCSS.Name = "SCSS";
             this.SCSS.Padding = new System.Windows.Forms.Padding(3);
@@ -3928,14 +4558,549 @@
             this.SCSS.Text = "SCSS Account";
             this.SCSS.UseVisualStyleBackColor = true;
             // 
+            // dtGridSCSS
+            // 
+            this.dtGridSCSS.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtGridSCSS.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtGridSCSS.Location = new System.Drawing.Point(8, 39);
+            this.dtGridSCSS.Name = "dtGridSCSS";
+            this.dtGridSCSS.ReadOnly = true;
+            this.dtGridSCSS.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtGridSCSS.Size = new System.Drawing.Size(1297, 179);
+            this.dtGridSCSS.TabIndex = 50;
+            this.dtGridSCSS.SelectionChanged += new System.EventHandler(this.dtGridSCSS_SelectionChanged);
+            // 
+            // label141
+            // 
+            this.label141.AutoSize = true;
+            this.label141.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label141.ForeColor = System.Drawing.Color.DarkGreen;
+            this.label141.Location = new System.Drawing.Point(11, 13);
+            this.label141.Name = "label141";
+            this.label141.Size = new System.Drawing.Size(148, 18);
+            this.label141.TabIndex = 49;
+            this.label141.Text = "Sukanya Samrudhi";
+            // 
+            // grpSCSS
+            // 
+            this.grpSCSS.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpSCSS.Controls.Add(this.dtSCSSMaturityDate);
+            this.grpSCSS.Controls.Add(this.label142);
+            this.grpSCSS.Controls.Add(this.dtSCSSOpeningDate);
+            this.grpSCSS.Controls.Add(this.label143);
+            this.grpSCSS.Controls.Add(this.txtSCSSCurrentValue);
+            this.grpSCSS.Controls.Add(this.label144);
+            this.grpSCSS.Controls.Add(this.txtSCSSBankName);
+            this.grpSCSS.Controls.Add(this.cmbSCSSGoal);
+            this.grpSCSS.Controls.Add(this.label145);
+            this.grpSCSS.Controls.Add(this.cmbSCSSAccountNo);
+            this.grpSCSS.Controls.Add(this.label146);
+            this.grpSCSS.Controls.Add(this.cmbSCSSInvestor);
+            this.grpSCSS.Controls.Add(this.label147);
+            this.grpSCSS.Controls.Add(this.btnSCSSCancel);
+            this.grpSCSS.Controls.Add(this.btnSCSSSave);
+            this.grpSCSS.Controls.Add(this.label148);
+            this.grpSCSS.Enabled = false;
+            this.grpSCSS.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpSCSS.Location = new System.Drawing.Point(8, 268);
+            this.grpSCSS.Name = "grpSCSS";
+            this.grpSCSS.Size = new System.Drawing.Size(1297, 273);
+            this.grpSCSS.TabIndex = 48;
+            this.grpSCSS.TabStop = false;
+            this.grpSCSS.Text = "Suknya Samrudhi";
+            // 
+            // dtSCSSMaturityDate
+            // 
+            this.dtSCSSMaturityDate.Location = new System.Drawing.Point(767, 51);
+            this.dtSCSSMaturityDate.Name = "dtSCSSMaturityDate";
+            this.dtSCSSMaturityDate.Size = new System.Drawing.Size(154, 22);
+            this.dtSCSSMaturityDate.TabIndex = 9;
+            // 
+            // label142
+            // 
+            this.label142.AutoSize = true;
+            this.label142.Location = new System.Drawing.Point(789, 32);
+            this.label142.Name = "label142";
+            this.label142.Size = new System.Drawing.Size(89, 16);
+            this.label142.TabIndex = 46;
+            this.label142.Text = "Maturity Date:";
+            // 
+            // dtSCSSOpeningDate
+            // 
+            this.dtSCSSOpeningDate.Location = new System.Drawing.Point(601, 51);
+            this.dtSCSSOpeningDate.Name = "dtSCSSOpeningDate";
+            this.dtSCSSOpeningDate.Size = new System.Drawing.Size(154, 22);
+            this.dtSCSSOpeningDate.TabIndex = 8;
+            // 
+            // label143
+            // 
+            this.label143.AutoSize = true;
+            this.label143.Location = new System.Drawing.Point(617, 32);
+            this.label143.Name = "label143";
+            this.label143.Size = new System.Drawing.Size(94, 16);
+            this.label143.TabIndex = 44;
+            this.label143.Text = "Opening Date:";
+            // 
+            // txtSCSSCurrentValue
+            // 
+            this.txtSCSSCurrentValue.Location = new System.Drawing.Point(137, 117);
+            this.txtSCSSCurrentValue.Name = "txtSCSSCurrentValue";
+            this.txtSCSSCurrentValue.Size = new System.Drawing.Size(249, 22);
+            this.txtSCSSCurrentValue.TabIndex = 7;
+            this.txtSCSSCurrentValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label144
+            // 
+            this.label144.AutoSize = true;
+            this.label144.Location = new System.Drawing.Point(27, 120);
+            this.label144.Name = "label144";
+            this.label144.Size = new System.Drawing.Size(91, 16);
+            this.label144.TabIndex = 42;
+            this.label144.Text = "Current Value:";
+            // 
+            // txtSCSSBankName
+            // 
+            this.txtSCSSBankName.Location = new System.Drawing.Point(137, 89);
+            this.txtSCSSBankName.Name = "txtSCSSBankName";
+            this.txtSCSSBankName.Size = new System.Drawing.Size(249, 22);
+            this.txtSCSSBankName.TabIndex = 3;
+            // 
+            // cmbSCSSGoal
+            // 
+            this.cmbSCSSGoal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbSCSSGoal.FormattingEnabled = true;
+            this.cmbSCSSGoal.Location = new System.Drawing.Point(601, 79);
+            this.cmbSCSSGoal.Name = "cmbSCSSGoal";
+            this.cmbSCSSGoal.Size = new System.Drawing.Size(320, 24);
+            this.cmbSCSSGoal.TabIndex = 10;
+            this.cmbSCSSGoal.SelectedIndexChanged += new System.EventHandler(this.cmbSCSSGoal_SelectedIndexChanged);
+            // 
+            // label145
+            // 
+            this.label145.AutoSize = true;
+            this.label145.Location = new System.Drawing.Point(490, 82);
+            this.label145.Name = "label145";
+            this.label145.Size = new System.Drawing.Size(105, 16);
+            this.label145.TabIndex = 22;
+            this.label145.Text = "Goal (Mapped) :";
+            // 
+            // cmbSCSSAccountNo
+            // 
+            this.cmbSCSSAccountNo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.cmbSCSSAccountNo.FormattingEnabled = true;
+            this.cmbSCSSAccountNo.Location = new System.Drawing.Point(137, 59);
+            this.cmbSCSSAccountNo.Name = "cmbSCSSAccountNo";
+            this.cmbSCSSAccountNo.Size = new System.Drawing.Size(249, 24);
+            this.cmbSCSSAccountNo.TabIndex = 2;
+            // 
+            // label146
+            // 
+            this.label146.AutoSize = true;
+            this.label146.Location = new System.Drawing.Point(26, 92);
+            this.label146.Name = "label146";
+            this.label146.Size = new System.Drawing.Size(82, 16);
+            this.label146.TabIndex = 14;
+            this.label146.Text = "Bank Name:";
+            // 
+            // cmbSCSSInvestor
+            // 
+            this.cmbSCSSInvestor.FormattingEnabled = true;
+            this.cmbSCSSInvestor.Location = new System.Drawing.Point(137, 29);
+            this.cmbSCSSInvestor.Name = "cmbSCSSInvestor";
+            this.cmbSCSSInvestor.Size = new System.Drawing.Size(249, 24);
+            this.cmbSCSSInvestor.TabIndex = 1;
+            // 
+            // label147
+            // 
+            this.label147.AutoSize = true;
+            this.label147.Location = new System.Drawing.Point(26, 32);
+            this.label147.Name = "label147";
+            this.label147.Size = new System.Drawing.Size(58, 16);
+            this.label147.TabIndex = 11;
+            this.label147.Text = "Invester:";
+            // 
+            // btnSCSSCancel
+            // 
+            this.btnSCSSCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSCSSCancel.ImageKey = "icons8-cancel-16.png";
+            this.btnSCSSCancel.ImageList = this.imgCollection;
+            this.btnSCSSCancel.Location = new System.Drawing.Point(835, 109);
+            this.btnSCSSCancel.Name = "btnSCSSCancel";
+            this.btnSCSSCancel.Size = new System.Drawing.Size(86, 26);
+            this.btnSCSSCancel.TabIndex = 12;
+            this.btnSCSSCancel.Text = "Cancel";
+            this.btnSCSSCancel.UseVisualStyleBackColor = true;
+            this.btnSCSSCancel.Click += new System.EventHandler(this.btnSCSSCancel_Click);
+            // 
+            // btnSCSSSave
+            // 
+            this.btnSCSSSave.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSCSSSave.ImageKey = "icons8-save-close-16.png";
+            this.btnSCSSSave.ImageList = this.imgCollection;
+            this.btnSCSSSave.Location = new System.Drawing.Point(743, 109);
+            this.btnSCSSSave.Name = "btnSCSSSave";
+            this.btnSCSSSave.Size = new System.Drawing.Size(86, 26);
+            this.btnSCSSSave.TabIndex = 11;
+            this.btnSCSSSave.Text = "Save";
+            this.btnSCSSSave.UseVisualStyleBackColor = true;
+            this.btnSCSSSave.Click += new System.EventHandler(this.btnSCSSSave_Click);
+            // 
+            // label148
+            // 
+            this.label148.AutoSize = true;
+            this.label148.Location = new System.Drawing.Point(27, 61);
+            this.label148.Name = "label148";
+            this.label148.Size = new System.Drawing.Size(80, 16);
+            this.label148.TabIndex = 0;
+            this.label148.Text = "Account No:";
+            // 
+            // groupBox13
+            // 
+            this.groupBox13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox13.Controls.Add(this.btnSCSSDelete);
+            this.groupBox13.Controls.Add(this.btnSCSSAdd);
+            this.groupBox13.Controls.Add(this.btnSCSSEdit);
+            this.groupBox13.Location = new System.Drawing.Point(1194, 224);
+            this.groupBox13.Name = "groupBox13";
+            this.groupBox13.Size = new System.Drawing.Size(111, 38);
+            this.groupBox13.TabIndex = 47;
+            this.groupBox13.TabStop = false;
+            // 
+            // btnSCSSDelete
+            // 
+            this.btnSCSSDelete.ImageIndex = 1;
+            this.btnSCSSDelete.ImageList = this.imgCollection;
+            this.btnSCSSDelete.Location = new System.Drawing.Point(76, 10);
+            this.btnSCSSDelete.Name = "btnSCSSDelete";
+            this.btnSCSSDelete.Size = new System.Drawing.Size(29, 24);
+            this.btnSCSSDelete.TabIndex = 4;
+            this.btnSCSSDelete.UseVisualStyleBackColor = true;
+            this.btnSCSSDelete.Click += new System.EventHandler(this.btnSCSSDelete_Click);
+            // 
+            // btnSCSSAdd
+            // 
+            this.btnSCSSAdd.ImageIndex = 3;
+            this.btnSCSSAdd.ImageList = this.imgCollection;
+            this.btnSCSSAdd.Location = new System.Drawing.Point(6, 10);
+            this.btnSCSSAdd.Name = "btnSCSSAdd";
+            this.btnSCSSAdd.Size = new System.Drawing.Size(29, 24);
+            this.btnSCSSAdd.TabIndex = 2;
+            this.btnSCSSAdd.UseVisualStyleBackColor = true;
+            this.btnSCSSAdd.Click += new System.EventHandler(this.btnSCSSAdd_Click);
+            // 
+            // btnSCSSEdit
+            // 
+            this.btnSCSSEdit.ImageIndex = 4;
+            this.btnSCSSEdit.ImageList = this.imgCollection;
+            this.btnSCSSEdit.Location = new System.Drawing.Point(41, 10);
+            this.btnSCSSEdit.Name = "btnSCSSEdit";
+            this.btnSCSSEdit.Size = new System.Drawing.Size(29, 24);
+            this.btnSCSSEdit.TabIndex = 3;
+            this.btnSCSSEdit.UseVisualStyleBackColor = true;
+            this.btnSCSSEdit.Click += new System.EventHandler(this.btnSCSSEdit_Click);
+            // 
             // NSC
             // 
+            this.NSC.Controls.Add(this.dtGridNSC);
+            this.NSC.Controls.Add(this.label149);
+            this.NSC.Controls.Add(this.grpNSC);
+            this.NSC.Controls.Add(this.groupBox14);
             this.NSC.Location = new System.Drawing.Point(4, 24);
             this.NSC.Name = "NSC";
             this.NSC.Size = new System.Drawing.Size(1321, 547);
             this.NSC.TabIndex = 12;
             this.NSC.Text = "NSC / KYP";
             this.NSC.UseVisualStyleBackColor = true;
+            // 
+            // dtGridNSC
+            // 
+            this.dtGridNSC.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtGridNSC.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtGridNSC.Location = new System.Drawing.Point(12, 35);
+            this.dtGridNSC.Name = "dtGridNSC";
+            this.dtGridNSC.ReadOnly = true;
+            this.dtGridNSC.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtGridNSC.Size = new System.Drawing.Size(1297, 179);
+            this.dtGridNSC.TabIndex = 54;
+            this.dtGridNSC.SelectionChanged += new System.EventHandler(this.dtGridNSC_SelectionChanged);
+            // 
+            // label149
+            // 
+            this.label149.AutoSize = true;
+            this.label149.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label149.ForeColor = System.Drawing.Color.DarkGreen;
+            this.label149.Location = new System.Drawing.Point(15, 9);
+            this.label149.Name = "label149";
+            this.label149.Size = new System.Drawing.Size(90, 18);
+            this.label149.TabIndex = 53;
+            this.label149.Text = "NSC / KVP";
+            // 
+            // grpNSC
+            // 
+            this.grpNSC.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpNSC.Controls.Add(this.txtNSCCurrentValue);
+            this.grpNSC.Controls.Add(this.label151);
+            this.grpNSC.Controls.Add(this.txtNSCValueOfOne);
+            this.grpNSC.Controls.Add(this.label158);
+            this.grpNSC.Controls.Add(this.txtNSCUnits);
+            this.grpNSC.Controls.Add(this.label157);
+            this.grpNSC.Controls.Add(this.dtNSCMaturityDate);
+            this.grpNSC.Controls.Add(this.label150);
+            this.grpNSC.Controls.Add(this.txtNSCRate);
+            this.grpNSC.Controls.Add(this.label152);
+            this.grpNSC.Controls.Add(this.txtNSCPostOffice);
+            this.grpNSC.Controls.Add(this.cmbNSCGoal);
+            this.grpNSC.Controls.Add(this.label153);
+            this.grpNSC.Controls.Add(this.cmbNSCDocumentNo);
+            this.grpNSC.Controls.Add(this.label154);
+            this.grpNSC.Controls.Add(this.cmbNSCInvestor);
+            this.grpNSC.Controls.Add(this.label155);
+            this.grpNSC.Controls.Add(this.btnNSCCancel);
+            this.grpNSC.Controls.Add(this.btnNSCSave);
+            this.grpNSC.Controls.Add(this.label156);
+            this.grpNSC.Enabled = false;
+            this.grpNSC.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpNSC.Location = new System.Drawing.Point(12, 264);
+            this.grpNSC.Name = "grpNSC";
+            this.grpNSC.Size = new System.Drawing.Size(1297, 273);
+            this.grpNSC.TabIndex = 52;
+            this.grpNSC.TabStop = false;
+            this.grpNSC.Text = "NSC / KVP";
+            // 
+            // dtNSCMaturityDate
+            // 
+            this.dtNSCMaturityDate.Location = new System.Drawing.Point(558, 88);
+            this.dtNSCMaturityDate.Name = "dtNSCMaturityDate";
+            this.dtNSCMaturityDate.Size = new System.Drawing.Size(249, 22);
+            this.dtNSCMaturityDate.TabIndex = 7;
+            // 
+            // label150
+            // 
+            this.label150.AutoSize = true;
+            this.label150.Location = new System.Drawing.Point(447, 88);
+            this.label150.Name = "label150";
+            this.label150.Size = new System.Drawing.Size(89, 16);
+            this.label150.TabIndex = 46;
+            this.label150.Text = "Maturity Date:";
+            // 
+            // txtNSCRate
+            // 
+            this.txtNSCRate.Location = new System.Drawing.Point(137, 117);
+            this.txtNSCRate.Name = "txtNSCRate";
+            this.txtNSCRate.Size = new System.Drawing.Size(249, 22);
+            this.txtNSCRate.TabIndex = 4;
+            this.txtNSCRate.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtNSCRate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNSCRate_KeyPress);
+            this.txtNSCRate.Leave += new System.EventHandler(this.txtNSCRate_Leave);
+            // 
+            // label152
+            // 
+            this.label152.AutoSize = true;
+            this.label152.Location = new System.Drawing.Point(15, 120);
+            this.label152.Name = "label152";
+            this.label152.Size = new System.Drawing.Size(40, 16);
+            this.label152.TabIndex = 42;
+            this.label152.Text = "Rate:";
+            // 
+            // txtNSCPostOffice
+            // 
+            this.txtNSCPostOffice.Location = new System.Drawing.Point(137, 89);
+            this.txtNSCPostOffice.Name = "txtNSCPostOffice";
+            this.txtNSCPostOffice.Size = new System.Drawing.Size(249, 22);
+            this.txtNSCPostOffice.TabIndex = 3;
+            // 
+            // cmbNSCGoal
+            // 
+            this.cmbNSCGoal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbNSCGoal.FormattingEnabled = true;
+            this.cmbNSCGoal.Location = new System.Drawing.Point(558, 116);
+            this.cmbNSCGoal.Name = "cmbNSCGoal";
+            this.cmbNSCGoal.Size = new System.Drawing.Size(249, 24);
+            this.cmbNSCGoal.TabIndex = 8;
+            this.cmbNSCGoal.SelectedIndexChanged += new System.EventHandler(this.cmbNSCGoal_SelectedIndexChanged);
+            // 
+            // label153
+            // 
+            this.label153.AutoSize = true;
+            this.label153.Location = new System.Drawing.Point(447, 116);
+            this.label153.Name = "label153";
+            this.label153.Size = new System.Drawing.Size(105, 16);
+            this.label153.TabIndex = 22;
+            this.label153.Text = "Goal (Mapped) :";
+            // 
+            // cmbNSCDocumentNo
+            // 
+            this.cmbNSCDocumentNo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.cmbNSCDocumentNo.FormattingEnabled = true;
+            this.cmbNSCDocumentNo.Location = new System.Drawing.Point(137, 59);
+            this.cmbNSCDocumentNo.Name = "cmbNSCDocumentNo";
+            this.cmbNSCDocumentNo.Size = new System.Drawing.Size(249, 24);
+            this.cmbNSCDocumentNo.TabIndex = 2;
+            // 
+            // label154
+            // 
+            this.label154.AutoSize = true;
+            this.label154.Location = new System.Drawing.Point(14, 92);
+            this.label154.Name = "label154";
+            this.label154.Size = new System.Drawing.Size(120, 16);
+            this.label154.TabIndex = 14;
+            this.label154.Text = "Post Office Branch:";
+            // 
+            // cmbNSCInvestor
+            // 
+            this.cmbNSCInvestor.FormattingEnabled = true;
+            this.cmbNSCInvestor.Location = new System.Drawing.Point(137, 29);
+            this.cmbNSCInvestor.Name = "cmbNSCInvestor";
+            this.cmbNSCInvestor.Size = new System.Drawing.Size(249, 24);
+            this.cmbNSCInvestor.TabIndex = 1;
+            // 
+            // label155
+            // 
+            this.label155.AutoSize = true;
+            this.label155.Location = new System.Drawing.Point(14, 32);
+            this.label155.Name = "label155";
+            this.label155.Size = new System.Drawing.Size(58, 16);
+            this.label155.TabIndex = 11;
+            this.label155.Text = "Invester:";
+            // 
+            // btnNSCCancel
+            // 
+            this.btnNSCCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnNSCCancel.ImageKey = "icons8-cancel-16.png";
+            this.btnNSCCancel.ImageList = this.imgCollection;
+            this.btnNSCCancel.Location = new System.Drawing.Point(721, 147);
+            this.btnNSCCancel.Name = "btnNSCCancel";
+            this.btnNSCCancel.Size = new System.Drawing.Size(86, 26);
+            this.btnNSCCancel.TabIndex = 10;
+            this.btnNSCCancel.Text = "Cancel";
+            this.btnNSCCancel.UseVisualStyleBackColor = true;
+            this.btnNSCCancel.Click += new System.EventHandler(this.btnNSCCancel_Click);
+            // 
+            // btnNSCSave
+            // 
+            this.btnNSCSave.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnNSCSave.ImageKey = "icons8-save-close-16.png";
+            this.btnNSCSave.ImageList = this.imgCollection;
+            this.btnNSCSave.Location = new System.Drawing.Point(629, 147);
+            this.btnNSCSave.Name = "btnNSCSave";
+            this.btnNSCSave.Size = new System.Drawing.Size(86, 26);
+            this.btnNSCSave.TabIndex = 9;
+            this.btnNSCSave.Text = "Save";
+            this.btnNSCSave.UseVisualStyleBackColor = true;
+            this.btnNSCSave.Click += new System.EventHandler(this.btnNSCSave_Click);
+            // 
+            // label156
+            // 
+            this.label156.AutoSize = true;
+            this.label156.Location = new System.Drawing.Point(15, 61);
+            this.label156.Name = "label156";
+            this.label156.Size = new System.Drawing.Size(80, 16);
+            this.label156.TabIndex = 0;
+            this.label156.Text = "Account No:";
+            // 
+            // groupBox14
+            // 
+            this.groupBox14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox14.Controls.Add(this.btnNSCDelete);
+            this.groupBox14.Controls.Add(this.btnNSCAdd);
+            this.groupBox14.Controls.Add(this.btnNSCEdit);
+            this.groupBox14.Location = new System.Drawing.Point(1198, 220);
+            this.groupBox14.Name = "groupBox14";
+            this.groupBox14.Size = new System.Drawing.Size(111, 38);
+            this.groupBox14.TabIndex = 51;
+            this.groupBox14.TabStop = false;
+            // 
+            // btnNSCDelete
+            // 
+            this.btnNSCDelete.ImageIndex = 1;
+            this.btnNSCDelete.ImageList = this.imgCollection;
+            this.btnNSCDelete.Location = new System.Drawing.Point(76, 10);
+            this.btnNSCDelete.Name = "btnNSCDelete";
+            this.btnNSCDelete.Size = new System.Drawing.Size(29, 24);
+            this.btnNSCDelete.TabIndex = 4;
+            this.btnNSCDelete.UseVisualStyleBackColor = true;
+            this.btnNSCDelete.Click += new System.EventHandler(this.btnNSCDelete_Click);
+            // 
+            // btnNSCAdd
+            // 
+            this.btnNSCAdd.ImageIndex = 3;
+            this.btnNSCAdd.ImageList = this.imgCollection;
+            this.btnNSCAdd.Location = new System.Drawing.Point(6, 10);
+            this.btnNSCAdd.Name = "btnNSCAdd";
+            this.btnNSCAdd.Size = new System.Drawing.Size(29, 24);
+            this.btnNSCAdd.TabIndex = 2;
+            this.btnNSCAdd.UseVisualStyleBackColor = true;
+            this.btnNSCAdd.Click += new System.EventHandler(this.btnNSCAdd_Click);
+            // 
+            // btnNSCEdit
+            // 
+            this.btnNSCEdit.ImageIndex = 4;
+            this.btnNSCEdit.ImageList = this.imgCollection;
+            this.btnNSCEdit.Location = new System.Drawing.Point(41, 10);
+            this.btnNSCEdit.Name = "btnNSCEdit";
+            this.btnNSCEdit.Size = new System.Drawing.Size(29, 24);
+            this.btnNSCEdit.TabIndex = 3;
+            this.btnNSCEdit.UseVisualStyleBackColor = true;
+            this.btnNSCEdit.Click += new System.EventHandler(this.btnNSCEdit_Click);
+            // 
+            // txtNSCUnits
+            // 
+            this.txtNSCUnits.Location = new System.Drawing.Point(137, 145);
+            this.txtNSCUnits.Name = "txtNSCUnits";
+            this.txtNSCUnits.Size = new System.Drawing.Size(249, 22);
+            this.txtNSCUnits.TabIndex = 5;
+            this.txtNSCUnits.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtNSCUnits.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNSCUnits_KeyPress);
+            this.txtNSCUnits.Leave += new System.EventHandler(this.txtNSCUnits_Leave);
+            // 
+            // label157
+            // 
+            this.label157.AutoSize = true;
+            this.label157.Location = new System.Drawing.Point(15, 148);
+            this.label157.Name = "label157";
+            this.label157.Size = new System.Drawing.Size(41, 16);
+            this.label157.TabIndex = 48;
+            this.label157.Text = "Units:";
+            // 
+            // txtNSCValueOfOne
+            // 
+            this.txtNSCValueOfOne.Location = new System.Drawing.Point(558, 60);
+            this.txtNSCValueOfOne.Name = "txtNSCValueOfOne";
+            this.txtNSCValueOfOne.Size = new System.Drawing.Size(249, 22);
+            this.txtNSCValueOfOne.TabIndex = 6;
+            this.txtNSCValueOfOne.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label158
+            // 
+            this.label158.AutoSize = true;
+            this.label158.Location = new System.Drawing.Point(448, 62);
+            this.label158.Name = "label158";
+            this.label158.Size = new System.Drawing.Size(88, 16);
+            this.label158.TabIndex = 50;
+            this.label158.Text = "Value of One:";
+            // 
+            // txtNSCCurrentValue
+            // 
+            this.txtNSCCurrentValue.Location = new System.Drawing.Point(558, 32);
+            this.txtNSCCurrentValue.Name = "txtNSCCurrentValue";
+            this.txtNSCCurrentValue.ReadOnly = true;
+            this.txtNSCCurrentValue.Size = new System.Drawing.Size(249, 22);
+            this.txtNSCCurrentValue.TabIndex = 51;
+            this.txtNSCCurrentValue.TabStop = false;
+            this.txtNSCCurrentValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label151
+            // 
+            this.label151.AutoSize = true;
+            this.label151.Location = new System.Drawing.Point(448, 35);
+            this.label151.Name = "label151";
+            this.label151.Size = new System.Drawing.Size(91, 16);
+            this.label151.TabIndex = 52;
+            this.label151.Text = "Current Value:";
             // 
             // CurrentStatus
             // 
@@ -4007,6 +5172,30 @@
             this.grpRD.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridRD)).EndInit();
             this.groupBox9.ResumeLayout(false);
+            this.PPF.ResumeLayout(false);
+            this.PPF.PerformLayout();
+            this.grpPPF.ResumeLayout(false);
+            this.grpPPF.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtGridPPF)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.Sukanya.ResumeLayout(false);
+            this.Sukanya.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtGridSS)).EndInit();
+            this.grpSS.ResumeLayout(false);
+            this.grpSS.PerformLayout();
+            this.groupBox12.ResumeLayout(false);
+            this.SCSS.ResumeLayout(false);
+            this.SCSS.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtGridSCSS)).EndInit();
+            this.grpSCSS.ResumeLayout(false);
+            this.grpSCSS.PerformLayout();
+            this.groupBox13.ResumeLayout(false);
+            this.NSC.ResumeLayout(false);
+            this.NSC.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtGridNSC)).EndInit();
+            this.grpNSC.ResumeLayout(false);
+            this.grpNSC.PerformLayout();
+            this.groupBox14.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -4347,5 +5536,103 @@
         private System.Windows.Forms.Button btnRDDelete;
         private System.Windows.Forms.Button btnRDAdd;
         private System.Windows.Forms.Button btnRDEdit;
+        private System.Windows.Forms.DataGridView dtGridPPF;
+        private System.Windows.Forms.Label label124;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button btnDeletePPF;
+        private System.Windows.Forms.Button btnADDPPF;
+        private System.Windows.Forms.Button btnEditPPF;
+        private System.Windows.Forms.GroupBox grpPPF;
+        private System.Windows.Forms.DateTimePicker dtPPFMaturityDate;
+        private System.Windows.Forms.Label label126;
+        private System.Windows.Forms.DateTimePicker dtPPFOpeningDate;
+        private System.Windows.Forms.Label label127;
+        private System.Windows.Forms.TextBox txtPPFCurrentValue;
+        private System.Windows.Forms.Label label128;
+        private System.Windows.Forms.TextBox txtPPFBranch;
+        private System.Windows.Forms.TextBox txtPPFBankName;
+        private System.Windows.Forms.ComboBox cmbPPFGoal;
+        private System.Windows.Forms.Label label130;
+        private System.Windows.Forms.ComboBox cmbPPFAccountNo;
+        private System.Windows.Forms.Label label132;
+        private System.Windows.Forms.Label label133;
+        private System.Windows.Forms.ComboBox cmbPPFInvestor;
+        private System.Windows.Forms.Label label134;
+        private System.Windows.Forms.Button btnPPFCancel;
+        private System.Windows.Forms.Button btnPPFSave;
+        private System.Windows.Forms.Label label135;
+        private System.Windows.Forms.GroupBox grpSS;
+        private System.Windows.Forms.DateTimePicker dtSSMaturityDate;
+        private System.Windows.Forms.Label label125;
+        private System.Windows.Forms.DateTimePicker dtSSOpeningDate;
+        private System.Windows.Forms.Label label129;
+        private System.Windows.Forms.TextBox txtSSCurrentValue;
+        private System.Windows.Forms.Label label131;
+        private System.Windows.Forms.TextBox txtSSBankName;
+        private System.Windows.Forms.ComboBox cmbSSGoal;
+        private System.Windows.Forms.Label label136;
+        private System.Windows.Forms.ComboBox cmbSSAccountNo;
+        private System.Windows.Forms.Label label138;
+        private System.Windows.Forms.ComboBox cmbSSInvestor;
+        private System.Windows.Forms.Label label139;
+        private System.Windows.Forms.Button btnSSCancel;
+        private System.Windows.Forms.Button btnSSSave;
+        private System.Windows.Forms.Label label140;
+        private System.Windows.Forms.GroupBox groupBox12;
+        private System.Windows.Forms.Button btnDeleteSS;
+        private System.Windows.Forms.Button btnAddSS;
+        private System.Windows.Forms.Button btnEditSS;
+        private System.Windows.Forms.DataGridView dtGridSS;
+        private System.Windows.Forms.Label label137;
+        private System.Windows.Forms.DataGridView dtGridSCSS;
+        private System.Windows.Forms.Label label141;
+        private System.Windows.Forms.GroupBox grpSCSS;
+        private System.Windows.Forms.DateTimePicker dtSCSSMaturityDate;
+        private System.Windows.Forms.Label label142;
+        private System.Windows.Forms.DateTimePicker dtSCSSOpeningDate;
+        private System.Windows.Forms.Label label143;
+        private System.Windows.Forms.TextBox txtSCSSCurrentValue;
+        private System.Windows.Forms.Label label144;
+        private System.Windows.Forms.TextBox txtSCSSBankName;
+        private System.Windows.Forms.ComboBox cmbSCSSGoal;
+        private System.Windows.Forms.Label label145;
+        private System.Windows.Forms.ComboBox cmbSCSSAccountNo;
+        private System.Windows.Forms.Label label146;
+        private System.Windows.Forms.ComboBox cmbSCSSInvestor;
+        private System.Windows.Forms.Label label147;
+        private System.Windows.Forms.Button btnSCSSCancel;
+        private System.Windows.Forms.Button btnSCSSSave;
+        private System.Windows.Forms.Label label148;
+        private System.Windows.Forms.GroupBox groupBox13;
+        private System.Windows.Forms.Button btnSCSSDelete;
+        private System.Windows.Forms.Button btnSCSSAdd;
+        private System.Windows.Forms.Button btnSCSSEdit;
+        private System.Windows.Forms.DataGridView dtGridNSC;
+        private System.Windows.Forms.Label label149;
+        private System.Windows.Forms.GroupBox grpNSC;
+        private System.Windows.Forms.TextBox txtNSCValueOfOne;
+        private System.Windows.Forms.Label label158;
+        private System.Windows.Forms.TextBox txtNSCUnits;
+        private System.Windows.Forms.Label label157;
+        private System.Windows.Forms.DateTimePicker dtNSCMaturityDate;
+        private System.Windows.Forms.Label label150;
+        private System.Windows.Forms.TextBox txtNSCRate;
+        private System.Windows.Forms.Label label152;
+        private System.Windows.Forms.TextBox txtNSCPostOffice;
+        private System.Windows.Forms.ComboBox cmbNSCGoal;
+        private System.Windows.Forms.Label label153;
+        private System.Windows.Forms.ComboBox cmbNSCDocumentNo;
+        private System.Windows.Forms.Label label154;
+        private System.Windows.Forms.ComboBox cmbNSCInvestor;
+        private System.Windows.Forms.Label label155;
+        private System.Windows.Forms.Button btnNSCCancel;
+        private System.Windows.Forms.Button btnNSCSave;
+        private System.Windows.Forms.Label label156;
+        private System.Windows.Forms.GroupBox groupBox14;
+        private System.Windows.Forms.Button btnNSCDelete;
+        private System.Windows.Forms.Button btnNSCAdd;
+        private System.Windows.Forms.Button btnNSCEdit;
+        private System.Windows.Forms.TextBox txtNSCCurrentValue;
+        private System.Windows.Forms.Label label151;
     }
 }

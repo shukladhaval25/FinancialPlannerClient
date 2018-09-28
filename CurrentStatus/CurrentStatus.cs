@@ -23,7 +23,11 @@ namespace FinancialPlannerClient.CurrentStatus
         DataTable _dtSA;
         IList<Goals> _goals;
         DataTable _dtFD;
+        DataTable _dtPPF;
+        DataTable _dtSS;
+        DataTable _dtSCSS;
         private DataTable _dtRD;
+        DataTable _dtNSC;
 
         public CurrentStatus()
         {
@@ -130,6 +134,18 @@ namespace FinancialPlannerClient.CurrentStatus
                     break;
                 case "RD":
                     fillupRDInfo();
+                    break;
+                case "PPF":
+                    fillupPPFInfo();
+                    break;
+                case "Sukanya":
+                    fillupSSInfo();
+                    break;
+                case "SCSS":
+                    fillupSCSSInfo();
+                    break;
+                case "NSC":
+                    fillupNSCInfo();
                     break;
             }
         }
@@ -457,6 +473,652 @@ namespace FinancialPlannerClient.CurrentStatus
         {
             grpRD.Enabled = false;
         }
+        #endregion
+
+        #region "PPF"
+
+        private void cmbPPFGoal_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbPPFGoal.Text != "")
+                cmbPPFGoal.Tag = _goals.FirstOrDefault(i => i.Name == cmbPPFGoal.Text).Id;
+            else
+                cmbPPFGoal.Tag = "0";
+        }
+
+        private void fillupPPFInfo()
+        {
+            PPFInfo PPFInfo = new PPFInfo();
+            _dtPPF = PPFInfo.GetPPFInfo(_planeId);
+            dtGridPPF.DataSource = _dtPPF;
+            PPFInfo.SetGrid(dtGridPPF);
+            fillPPFInvesterCombobox();
+            fillPPFGoalsCombobox();
+        }
+
+        private void fillPPFGoalsCombobox()
+        {
+            cmbPPFGoal.Items.Clear();
+            _goals = new GoalsInfo().GetAll(_planeId);
+            foreach (var goal in _goals)
+            {
+                cmbPPFGoal.Items.Add(goal.Name);
+            }
+            cmbPPFGoal.Items.Add("");
+        }
+
+        private void fillPPFInvesterCombobox()
+        {
+            new PlannerInfo.FamilyMemberInfo().FillFamilyMemberInCombo(this._client.ID, cmbPPFInvestor);
+        }
+
+        private void dtGridPPF_SelectionChanged(object sender, EventArgs e)
+        {
+            DataRow dr = getSelectedDataRow(dtGridPPF,_dtPPF);
+            if (dr != null)
+                displayPPFInfo(dr);
+            else
+                setDefaultValuePPF();
+        }
+
+        private void setDefaultValuePPF()
+        {
+            cmbPPFInvestor.Tag = "0";
+            cmbPPFInvestor.Text = "";
+            cmbPPFAccountNo.Text = "";
+            cmbPPFGoal.Tag = "0";
+            cmbPPFGoal.Text = "";
+            txtPPFBankName.Text = "";
+            txtPPFBranch.Text = "";
+            txtPPFCurrentValue.Text = "";            
+        }
+
+        private void displayPPFInfo(DataRow dr)
+        {
+            if (dr != null)
+            {
+                cmbPPFInvestor.Tag = dr.Field<string>("ID");
+                cmbPPFInvestor.Text = dr.Field<string>("InvesterName");
+                txtPPFBankName.Text = dr.Field<string>("Bank");
+                cmbPPFAccountNo.Text = dr.Field<string>("AccountNo");
+                txtPPFCurrentValue.Text = dr.Field<string>("CurrentValue");                                
+                dtPPFOpeningDate.Text = dr.Field<string>("OpeningDate");
+                dtMaturityDate.Text = dr.Field<string>("MaturityDate");
+                if (dr["GoalID"] != null)
+                {
+                    cmbPPFGoal.Tag = dr["GoalId"].ToString();
+                    cmbPPFGoal.Text = getGoalName(int.Parse(cmbPPFGoal.Tag.ToString()));
+                }
+                else
+                {
+                    cmbPPFGoal.Tag = "0";
+                    cmbPPFGoal.Text = "";
+                }
+            }
+        }
+
+        private void btnPPFAdd_Click(object sender, EventArgs e)
+        {
+            grpPPF.Enabled = true;
+            setDefaultValuePPF();
+        }
+
+        private void btnPPFEdit_Click(object sender, EventArgs e)
+        {
+            grpPPF.Enabled = true;
+        }
+
+        private void btnPPFDelete_Click(object sender, EventArgs e)
+        {
+            if (dtGridPPF.SelectedRows.Count > 0)
+            {
+                if (MessageBox.Show("Are you sure, you want to delete this record?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    PPFInfo PPFInfo = new PPFInfo();
+                    PPF PPF =  getPPFData();
+                    PPFInfo.Delete(PPF);
+                    fillupPPFInfo();
+                }
+            }
+        }
+
+        private PPF getPPFData()
+        {
+            PPF PPF = new PPF();
+            PPF.Id = int.Parse(cmbPPFInvestor.Tag.ToString());
+            PPF.Pid = _planeId;
+            PPF.InvesterName = cmbPPFInvestor.Text;
+            PPF.AccountNo = cmbPPFAccountNo.Text;
+            PPF.Bank = txtPPFBankName.Text;            
+            PPF.OpeningDate = dtPPFOpeningDate.Value;           
+            PPF.MaturityDate = dtPPFMaturityDate.Value;
+            PPF.CurrentValue = double.Parse(txtPPFCurrentValue.Text);
+            PPF.GoalId = int.Parse(cmbPPFGoal.Tag.ToString());
+            PPF.CreatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+            PPF.CreatedBy = Program.CurrentUser.Id;
+            PPF.UpdatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+            PPF.UpdatedBy = Program.CurrentUser.Id;
+            PPF.MachineName = Environment.MachineName;
+            return PPF;
+        }
+
+        private void btnPPFSave_Click(object sender, EventArgs e)
+        {
+            PPFInfo PPFInfo = new PPFInfo();
+            PPF PPF = getPPFData();
+            bool isSaved = false;
+
+            if (PPF != null && PPF.Id == 0)
+                isSaved = PPFInfo.Add(PPF);
+            else
+                isSaved = PPFInfo.Update(PPF);
+
+            if (isSaved)
+            {
+                MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                fillupPPFInfo();
+                grpPPF.Enabled = false;
+            }
+            else
+                MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void btnPPFCancel_Click(object sender, EventArgs e)
+        {
+            grpPPF.Enabled = false;
+        }
+        #endregion
+
+        #region "Sukanya Samrudhi"
+
+        private void cmbSSGoal_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbSSGoal.Text != "")
+                cmbSSGoal.Tag = _goals.FirstOrDefault(i => i.Name == cmbSSGoal.Text).Id;
+            else
+                cmbSSGoal.Tag = "0";
+        }
+
+        private void fillupSSInfo()
+        {
+            SukanyaSamrudhiInfo SSInfo = new SukanyaSamrudhiInfo();
+            _dtSS = SSInfo.GetSukanyaSamrudhiInfo(_planeId);
+            dtGridSS.DataSource = _dtSS;
+            SSInfo.SetGrid(dtGridSS);
+            fillSSInvesterCombobox();
+            fillSSGoalsCombobox();
+        }
+
+        private void fillSSGoalsCombobox()
+        {
+            cmbSSGoal.Items.Clear();
+            _goals = new GoalsInfo().GetAll(_planeId);
+            foreach (var goal in _goals)
+            {
+                cmbSSGoal.Items.Add(goal.Name);
+            }
+            cmbSSGoal.Items.Add("");
+        }
+
+        private void fillSSInvesterCombobox()
+        {
+            new PlannerInfo.FamilyMemberInfo().FillFamilyMemberInCombo(this._client.ID, cmbSSInvestor);
+        }
+
+        private void dtGridSS_SelectionChanged(object sender, EventArgs e)
+        {
+            DataRow dr = getSelectedDataRow(dtGridSS,_dtSS);
+            if (dr != null)
+                displaySSInfo(dr);
+            else
+                setDefaultValueSS();
+        }
+
+        private void setDefaultValueSS()
+        {
+            cmbSSInvestor.Tag = "0";
+            cmbSSInvestor.Text = "";
+            cmbSSAccountNo.Text = "";
+            cmbSSGoal.Tag = "0";
+            cmbSSGoal.Text = "";
+            txtSSBankName.Text = "";
+            txtSSCurrentValue.Text = "";
+        }
+
+        private void displaySSInfo(DataRow dr)
+        {
+            if (dr != null)
+            {
+                cmbSSInvestor.Tag = dr.Field<string>("ID");
+                cmbSSInvestor.Text = dr.Field<string>("InvesterName");
+                txtSSBankName.Text = dr.Field<string>("Bank");
+                cmbSSAccountNo.Text = dr.Field<string>("AccountNo");
+                txtSSCurrentValue.Text = dr.Field<string>("CurrentValue");
+                dtSSOpeningDate.Text = dr.Field<string>("OpeningDate");
+                dtMaturityDate.Text = dr.Field<string>("MaturityDate");
+                if (dr["GoalID"] != null)
+                {
+                    cmbSSGoal.Tag = dr["GoalId"].ToString();
+                    cmbSSGoal.Text = getGoalName(int.Parse(cmbSSGoal.Tag.ToString()));
+                }
+                else
+                {
+                    cmbSSGoal.Tag = "0";
+                    cmbSSGoal.Text = "";
+                }
+            }
+        }
+
+        private void btnSSAdd_Click(object sender, EventArgs e)
+        {
+            grpSS.Enabled = true;
+            setDefaultValueSS();
+        }
+
+        private void btnSSEdit_Click(object sender, EventArgs e)
+        {
+            grpSS.Enabled = true;
+        }
+
+        private void btnSSDelete_Click(object sender, EventArgs e)
+        {
+            if (dtGridSS.SelectedRows.Count > 0)
+            {
+                if (MessageBox.Show("Are you sure, you want to delete this record?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    SukanyaSamrudhiInfo SSInfo = new SukanyaSamrudhiInfo();
+                    SukanyaSamrudhi SS =  getSSData();
+                    SSInfo.Delete(SS);
+                    fillupSSInfo();
+                }
+            }
+        }
+
+        private SukanyaSamrudhi getSSData()
+        {
+            SukanyaSamrudhi SS = new SukanyaSamrudhi();
+            SS.Id = int.Parse(cmbSSInvestor.Tag.ToString());
+            SS.Pid = _planeId;
+            SS.InvesterName = cmbSSInvestor.Text;
+            SS.AccountNo = cmbSSAccountNo.Text;
+            SS.Bank = txtSSBankName.Text;
+            SS.OpeningDate = dtSSOpeningDate.Value;
+            SS.MaturityDate = dtSSMaturityDate.Value;
+            SS.CurrentValue = double.Parse(txtSSCurrentValue.Text);
+            SS.GoalId = int.Parse(cmbSSGoal.Tag.ToString());
+            SS.CreatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+            SS.CreatedBy = Program.CurrentUser.Id;
+            SS.UpdatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+            SS.UpdatedBy = Program.CurrentUser.Id;
+            SS.MachineName = Environment.MachineName;
+            return SS;
+        }
+
+        private void btnSSSave_Click(object sender, EventArgs e)
+        {
+            SukanyaSamrudhiInfo SSInfo = new SukanyaSamrudhiInfo();
+            SukanyaSamrudhi SS = getSSData();
+            bool isSaved = false;
+
+            if (SS != null && SS.Id == 0)
+                isSaved = SSInfo.Add(SS);
+            else
+                isSaved = SSInfo.Update(SS);
+
+            if (isSaved)
+            {
+                MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                fillupSSInfo();
+                grpSS.Enabled = false;
+            }
+            else
+                MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void btnSSCancel_Click(object sender, EventArgs e)
+        {
+            grpSS.Enabled = false;
+        }
+        #endregion
+
+        #region "SCSS"
+
+        private void cmbSCSSGoal_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbSCSSGoal.Text != "")
+                cmbSCSSGoal.Tag = _goals.FirstOrDefault(i => i.Name == cmbSCSSGoal.Text).Id;
+            else
+                cmbSCSSGoal.Tag = "0";
+        }
+
+        private void fillupSCSSInfo()
+        {
+            SCSSInfo SCSSInfo = new SCSSInfo();
+            _dtSCSS = SCSSInfo.GetSCSSInfo(_planeId);
+            dtGridSCSS.DataSource = _dtSCSS;
+            SCSSInfo.SetGrid(dtGridSCSS);
+            fillSCSSInvesterCombobox();
+            fillSCSSGoalsCombobox();
+        }
+
+        private void fillSCSSGoalsCombobox()
+        {
+            cmbSCSSGoal.Items.Clear();
+            _goals = new GoalsInfo().GetAll(_planeId);
+            foreach (var goal in _goals)
+            {
+                cmbSCSSGoal.Items.Add(goal.Name);
+            }
+            cmbSCSSGoal.Items.Add("");
+        }
+
+        private void fillSCSSInvesterCombobox()
+        {
+            new PlannerInfo.FamilyMemberInfo().FillFamilyMemberInCombo(this._client.ID, cmbSCSSInvestor);
+        }
+
+        private void dtGridSCSS_SelectionChanged(object sender, EventArgs e)
+        {
+            DataRow dr = getSelectedDataRow(dtGridSCSS,_dtSCSS);
+            if (dr != null)
+                displaySCSSInfo(dr);
+            else
+                setDefaultValueSCSS();
+        }
+
+        private void setDefaultValueSCSS()
+        {
+            cmbSCSSInvestor.Tag = "0";
+            cmbSCSSInvestor.Text = "";
+            cmbSCSSAccountNo.Text = "";
+            cmbSCSSGoal.Tag = "0";
+            cmbSCSSGoal.Text = "";
+            txtSCSSBankName.Text = "";
+            txtSCSSCurrentValue.Text = "";
+        }
+
+        private void displaySCSSInfo(DataRow dr)
+        {
+            if (dr != null)
+            {
+                cmbSCSSInvestor.Tag = dr.Field<string>("ID");
+                cmbSCSSInvestor.Text = dr.Field<string>("InvesterName");
+                txtSCSSBankName.Text = dr.Field<string>("Bank");
+                cmbSCSSAccountNo.Text = dr.Field<string>("AccountNo");
+                txtSCSSCurrentValue.Text = dr.Field<string>("CurrentValue");
+                dtSCSSOpeningDate.Text = dr.Field<string>("OpeningDate");
+                dtMaturityDate.Text = dr.Field<string>("MaturityDate");
+                if (dr["GoalID"] != null)
+                {
+                    cmbSCSSGoal.Tag = dr["GoalId"].ToString();
+                    cmbSCSSGoal.Text = getGoalName(int.Parse(cmbSCSSGoal.Tag.ToString()));
+                }
+                else
+                {
+                    cmbSCSSGoal.Tag = "0";
+                    cmbSCSSGoal.Text = "";
+                }
+            }
+        }
+
+        private void btnSCSSAdd_Click(object sender, EventArgs e)
+        {
+            grpSCSS.Enabled = true;
+            setDefaultValueSCSS();
+        }
+
+        private void btnSCSSEdit_Click(object sender, EventArgs e)
+        {
+            grpSCSS.Enabled = true;
+        }
+
+        private void btnSCSSDelete_Click(object sender, EventArgs e)
+        {
+            if (dtGridSCSS.SelectedRows.Count > 0)
+            {
+                if (MessageBox.Show("Are you sure, you want to delete this record?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    SCSSInfo SCSSInfo = new SCSSInfo();
+                    SCSS SCSS =  getSCSSData();
+                    SCSSInfo.Delete(SCSS);
+                    fillupSCSSInfo();
+                }
+            }
+        }
+
+        private SCSS getSCSSData()
+        {
+            SCSS SCSS = new SCSS();
+            SCSS.Id = int.Parse(cmbSCSSInvestor.Tag.ToString());
+            SCSS.Pid = _planeId;
+            SCSS.InvesterName = cmbSCSSInvestor.Text;
+            SCSS.AccountNo = cmbSCSSAccountNo.Text;
+            SCSS.Bank = txtSCSSBankName.Text;
+            SCSS.OpeningDate = dtSCSSOpeningDate.Value;
+            SCSS.MaturityDate = dtSCSSMaturityDate.Value;
+            SCSS.CurrentValue = double.Parse(txtSCSSCurrentValue.Text);
+            SCSS.GoalId = int.Parse(cmbSCSSGoal.Tag.ToString());
+            SCSS.CreatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+            SCSS.CreatedBy = Program.CurrentUser.Id;
+            SCSS.UpdatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+            SCSS.UpdatedBy = Program.CurrentUser.Id;
+            SCSS.MachineName = Environment.MachineName;
+            return SCSS;
+        }
+
+        private void btnSCSSSave_Click(object sender, EventArgs e)
+        {
+            SCSSInfo SCSSInfo = new SCSSInfo();
+            SCSS SCSS = getSCSSData();
+            bool isSaved = false;
+
+            if (SCSS != null && SCSS.Id == 0)
+                isSaved = SCSSInfo.Add(SCSS);
+            else
+                isSaved = SCSSInfo.Update(SCSS);
+
+            if (isSaved)
+            {
+                MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                fillupSCSSInfo();
+                grpSCSS.Enabled = false;
+            }
+            else
+                MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void btnSCSSCancel_Click(object sender, EventArgs e)
+        {
+            grpSCSS.Enabled = false;
+        }
+        #endregion
+
+        #region "NSC"
+
+        private void cmbNSCGoal_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbNSCGoal.Text != "")
+                cmbNSCGoal.Tag = _goals.FirstOrDefault(i => i.Name == cmbNSCGoal.Text).Id;
+            else
+                cmbNSCGoal.Tag = "0";
+        }
+
+        private void fillupNSCInfo()
+        {
+            NSCInfo NSCInfo = new NSCInfo();
+            _dtNSC = NSCInfo.GetNSCInfo(_planeId);
+            dtGridNSC.DataSource = _dtNSC;
+            NSCInfo.SetGrid(dtGridNSC);
+            fillNSCInvesterCombobox();
+            fillNSCGoalsCombobox();
+        }
+
+        private void fillNSCGoalsCombobox()
+        {
+            cmbNSCGoal.Items.Clear();
+            _goals = new GoalsInfo().GetAll(_planeId);
+            foreach (var goal in _goals)
+            {
+                cmbNSCGoal.Items.Add(goal.Name);
+            }
+            cmbNSCGoal.Items.Add("");
+        }
+
+        private void fillNSCInvesterCombobox()
+        {
+            new PlannerInfo.FamilyMemberInfo().FillFamilyMemberInCombo(this._client.ID, cmbNSCInvestor);
+        }
+
+        private void dtGridNSC_SelectionChanged(object sender, EventArgs e)
+        {
+            DataRow dr = getSelectedDataRow(dtGridNSC,_dtNSC);
+            if (dr != null)
+                displayNSCInfo(dr);
+            else
+                setDefaultValueNSC();
+        }
+
+        private void setDefaultValueNSC()
+        {
+            cmbNSCInvestor.Tag = "0";
+            cmbNSCInvestor.Text = "";
+            cmbNSCDocumentNo.Text = "";
+            cmbNSCGoal.Tag = "0";
+            cmbNSCGoal.Text = "";
+            txtNSCPostOffice.Text = "";
+            txtNSCRate.Text = "0";
+            txtNSCUnits.Text = "0";
+            txtNSCValueOfOne.Text = "0";
+            txtNSCCurrentValue.Text = "";
+        }
+
+        private void displayNSCInfo(DataRow dr)
+        {
+            if (dr != null)
+            {
+                cmbNSCInvestor.Tag = dr.Field<string>("ID");
+                cmbNSCInvestor.Text = dr.Field<string>("InvesterName");
+                txtNSCPostOffice.Text = dr.Field<string>("PostOfficeBranch");
+                cmbNSCDocumentNo.Text = dr.Field<string>("DocumentNo");
+                txtNSCCurrentValue.Text = dr.Field<string>("CurrentValue");
+                txtNSCRate.Text = dr.Field<string>("Rate");
+                txtNSCUnits.Text = dr.Field<string>("Units");
+                txtNSCValueOfOne.Text = dr.Field<string>("ValueOfOne");
+                calculateAndSetNSCCurrentValue();
+                dtMaturityDate.Text = dr.Field<string>("MaturityDate");
+                if (dr["GoalID"] != null)
+                {
+                    cmbNSCGoal.Tag = dr["GoalId"].ToString();
+                    cmbNSCGoal.Text = getGoalName(int.Parse(cmbNSCGoal.Tag.ToString()));
+                }
+                else
+                {
+                    cmbNSCGoal.Tag = "0";
+                    cmbNSCGoal.Text = "";
+                }
+            }
+        }
+
+        private void btnNSCAdd_Click(object sender, EventArgs e)
+        {
+            grpNSC.Enabled = true;
+            setDefaultValueNSC();
+        }
+
+        private void btnNSCEdit_Click(object sender, EventArgs e)
+        {
+            grpNSC.Enabled = true;
+        }
+
+        private void btnNSCDelete_Click(object sender, EventArgs e)
+        {
+            if (dtGridNSC.SelectedRows.Count > 0)
+            {
+                if (MessageBox.Show("Are you sure, you want to delete this record?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    NSCInfo NSCInfo = new NSCInfo();
+                    NSC NSC =  getNSCData();
+                    NSCInfo.Delete(NSC);
+                    fillupNSCInfo();
+                }
+            }
+        }
+
+        private NSC getNSCData()
+        {
+            NSC NSC = new NSC();
+            NSC.Id = int.Parse(cmbNSCInvestor.Tag.ToString());
+            NSC.Pid = _planeId;
+            NSC.InvesterName = cmbNSCInvestor.Text;
+            NSC.DocumentNo = cmbNSCDocumentNo.Text;
+            NSC.PostOfficeBranch = txtNSCPostOffice.Text;
+            NSC.MaturityDate = dtNSCMaturityDate.Value;
+            NSC.Rate = float.Parse(txtNSCRate.Text);
+            NSC.Units = int.Parse(txtNSCUnits.Text);
+            NSC.CurrentValue = double.Parse(txtNSCCurrentValue.Text);
+            NSC.ValueOfOne = float.Parse(txtNSCValueOfOne.Text);
+            NSC.GoalId = int.Parse(cmbNSCGoal.Tag.ToString());
+            NSC.CreatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+            NSC.CreatedBy = Program.CurrentUser.Id;
+            NSC.UpdatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+            NSC.UpdatedBy = Program.CurrentUser.Id;
+            NSC.MachineName = Environment.MachineName;
+            return NSC;
+        }
+
+        private void btnNSCSave_Click(object sender, EventArgs e)
+        {
+            NSCInfo NSCInfo = new NSCInfo();
+            NSC NSC = getNSCData();
+            bool isSaved = false;
+
+            if (NSC != null && NSC.Id == 0)
+                isSaved = NSCInfo.Add(NSC);
+            else
+                isSaved = NSCInfo.Update(NSC);
+
+            if (isSaved)
+            {
+                MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                fillupNSCInfo();
+                grpNSC.Enabled = false;
+            }
+            else
+                MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void btnNSCCancel_Click(object sender, EventArgs e)
+        {
+            grpNSC.Enabled = false;
+        }
+        private void calculateAndSetNSCCurrentValue()
+        {
+            float nav = 0;
+            double units = 0;
+            float.TryParse(txtNSCRate.Text, out nav);
+            double.TryParse(txtNSCUnits.Text, out units);
+            txtNSCCurrentValue.Text = (nav * units).ToString();
+        }
+        
+        private void txtNSCRate_Leave(object sender, EventArgs e)
+        {
+            calculateAndSetNSCCurrentValue();
+        }
+
+        private void txtNSCUnits_Leave(object sender, EventArgs e)
+        {
+            calculateAndSetNSCCurrentValue();
+        }
+
+        private void txtNSCRate_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void txtNSCUnits_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+        
         #endregion
 
         private void fillupSavingAccount()
@@ -1776,6 +2438,6 @@ namespace FinancialPlannerClient.CurrentStatus
             }
             else
                 MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }   
+        }
     }
 }

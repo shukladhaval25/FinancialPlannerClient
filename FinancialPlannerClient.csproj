@@ -89,9 +89,13 @@
     <Compile Include="CurrentStatus\LifeInsuranceInfo.cs" />
     <Compile Include="CurrentStatus\MutualFundInfo.cs" />
     <Compile Include="CurrentStatus\NPSInfo.cs" />
+    <Compile Include="CurrentStatus\PPFInfo.cs" />
     <Compile Include="CurrentStatus\RDInfo.cs" />
     <Compile Include="CurrentStatus\SavingAccountInfo.cs" />
+    <Compile Include="CurrentStatus\NCSInfo.cs" />
     <Compile Include="CurrentStatus\SharesInfo.cs" />
+    <Compile Include="CurrentStatus\SCSSInfo.cs" />
+    <Compile Include="CurrentStatus\SukanyaSamrudhiInfo.cs" />
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
