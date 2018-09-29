@@ -222,18 +222,18 @@ namespace FinancialPlannerClient.PlanOptions
 
         private void dtGridCashFlow_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
-            if (e.ColumnIndex == dtGridCashFlow.Columns["IncomeTax"].Index)
-            {
-                dtGridCashFlow.Rows[e.RowIndex].ErrorText = "";
-                decimal newDecimal;
-                if (dtGridCashFlow.Rows[e.RowIndex].IsNewRow) { return; }
-                if (!decimal.TryParse(e.FormattedValue.ToString(),
-                    out newDecimal) || ((newDecimal < 0) || (newDecimal > 100)))
-                {
-                    e.Cancel = true;
-                    dtGridCashFlow.Rows[e.RowIndex].ErrorText = "Value must be a between 0 to 100";
-                }
-            }
+            //if (e.ColumnIndex == dtGridCashFlow.Columns["IncomeTax"].Index)
+            //{
+            //    dtGridCashFlow.Rows[e.RowIndex].ErrorText = "";
+            //    decimal newDecimal;
+            //    if (dtGridCashFlow.Rows[e.RowIndex].IsNewRow) { return; }
+            //    if (!decimal.TryParse(e.FormattedValue.ToString(),
+            //        out newDecimal) || ((newDecimal < 0) || (newDecimal > 100)))
+            //    {
+            //        e.Cancel = true;
+            //        dtGridCashFlow.Rows[e.RowIndex].ErrorText = "Value must be a between 0 to 100";
+            //    }
+            //}
         }
 
         private void btnCashFlowSave_Click(object sender, EventArgs e)

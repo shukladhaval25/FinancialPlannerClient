@@ -232,11 +232,11 @@ namespace FinancialPlannerClient.RiskProfile
                     //riskProfile.Id = dr.Field<int>("ID");
                     riskProfile.RiskProfileId = rpr.Id;
                     riskProfile.YearRemaining = int.Parse(dr["YearRemaining"].ToString());
-                    riskProfile.ForeingInvestmentRatio = decimal.Parse(dr["ForeingInvestmentRatio"].ToString());
+                    riskProfile.ForeingInvestmentRatio = decimal.Parse(dr["ForeignInvestmentRatio"].ToString());
                     riskProfile.EquityInvestementRatio = decimal.Parse(dr["EquityInvestementRatio"].ToString());
                     riskProfile.DebtInvestementRatio = decimal.Parse(dr["DebtInvestementRatio"].ToString());
 
-                    riskProfile.ForeingInvestementReaturn = decimal.Parse(dr["ForeingInvestementReaturn"].ToString());
+                    riskProfile.ForeingInvestementReaturn = decimal.Parse(dr["ForeignInvestementReaturn"].ToString());
                     riskProfile.EquityInvestementReturn = decimal.Parse(dr["EquityInvestementReturn"].ToString());
                     riskProfile.DebtInvestementReturn = decimal.Parse(dr["DebtInvestementReturn"].ToString());
                     rpr.RiskProfileReturn.Add(riskProfile);
@@ -277,7 +277,17 @@ namespace FinancialPlannerClient.RiskProfile
             if (isValidData())
             {
                 _riskProfiledReturnMaster = getRiskProfileData();
-                loadRislProfileReturnDetails();
+                calculateReiskProfileReturnDetails();
+            }
+        }
+
+        private void calculateReiskProfileReturnDetails()
+        {
+            if (isValidData())
+            {
+                _dtRiskProfileReturn = _defaultRiskProfile.GetDefaultRiskProfileReturn(_riskProfiledReturnMaster);
+                dtGridRiskProfileDetails.DataSource = _dtRiskProfileReturn;
+                setRiskProfileDetailsGrid();
             }
         }
 

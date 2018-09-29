@@ -108,6 +108,7 @@ namespace FinancialPlannerClient.Clients
             _dtIncome = ListtoDataTable.ToDataTable(lstIncome);
             dtGridIncome.DataSource = _dtIncome;
             incomeInfo.FillGrid(dtGridIncome);
+            new PlannerInfo.FamilyMemberInfo().FillFamilyMemberInCombo(this._client.ID, cmbIncomeBy);
         }
 
         private void fillupLoanInfo()
@@ -995,13 +996,13 @@ namespace FinancialPlannerClient.Clients
 
         private void dtGridIncome_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (dtGridIncome.Columns[e.ColumnIndex].Name == "IncomeBy")
-            {
-                if (dtGridIncome.Rows[e.RowIndex].Cells["IncomeBy"].Value != null)
-                    e.Value =
-                        (dtGridIncome.Rows[e.RowIndex].Cells["IncomeBy"].Value.ToString().Equals("Client", StringComparison.OrdinalIgnoreCase)) ?
-                        _client.Name : getSpouseName();
-            }
+            //if (dtGridIncome.Columns[e.ColumnIndex].Name == "IncomeBy")
+            //{
+            //    if (dtGridIncome.Rows[e.RowIndex].Cells["IncomeBy"].Value != null)
+            //        e.Value =
+            //            (dtGridIncome.Rows[e.RowIndex].Cells["IncomeBy"].Value.ToString().Equals("Client", StringComparison.OrdinalIgnoreCase)) ?
+            //            _client.Name : getSpouseName();
+            //}
         }
 
         private void btnAddIncome_Click(object sender, EventArgs e)
@@ -1016,6 +1017,7 @@ namespace FinancialPlannerClient.Clients
             cmbIncomeSource.Tag = "0";
             rdoClientIncome.Checked = true;
             txtAnnualIncome.Text  = "0";
+            cmbIncomeBy.Text = "";
             txtExpectedGrowthSalary.Text = "0";
             txtIncomeStartYear.Text = DateTime.Now.Year.ToString();
             txtIncomeEndYear.Text = "";
@@ -1060,7 +1062,7 @@ namespace FinancialPlannerClient.Clients
             income.Source =  cmbIncomeSource.Text;
             income.Id = int.Parse(cmbIncomeSource.Tag.ToString());
             income.Pid = PlannerId;
-            income.IncomeBy = (rdoClientIncome.Checked) ? "Client" : "Spouse";
+            income.IncomeBy = cmbIncomeBy.Text; /*(rdoClientIncome.Checked) ? "Client" : "Spouse";*/
             income.Amount = (txtAnnualBonusAmt.Text =="000.00") ? 0 : double.Parse(txtAnnualIncome.Text);
             income.ExpectGrowthInPercentage = (txtincomeGrowthPercentage.Text =="") ? 0 : 
                 decimal.Parse( txtincomeGrowthPercentage.Text);
@@ -1070,6 +1072,7 @@ namespace FinancialPlannerClient.Clients
             income.UpdatedBy = Program.CurrentUser.Id;
             income.UpdatedByUserName = Program.CurrentUser.UserName;
             income.MachineName = System.Environment.MachineName;
+            income.IncomeTax = float.Parse(txtIncomeTax.Text);
 
             SalaryDetail salaryDet = new SalaryDetail();
             salaryDet.Id = int.Parse(txtCTC.Tag.ToString());
@@ -1107,13 +1110,15 @@ namespace FinancialPlannerClient.Clients
             {
                 cmbIncomeSource.Tag = income.Id.ToString();
                 cmbIncomeSource.Text =  income.Source;
-                rdoClientIncome.Checked = income.IncomeBy.ToString().Equals("Client", StringComparison.OrdinalIgnoreCase) ? true : false;
-                rdoSpouseIncome.Checked = !rdoClientIncome.Checked;
+                cmbIncomeBy.Text = income.IncomeBy;
+                //rdoClientIncome.Checked = income.IncomeBy.ToString().Equals("Client", StringComparison.OrdinalIgnoreCase) ? true : false;
+                //rdoSpouseIncome.Checked = !rdoClientIncome.Checked;
                 txtincomeGrowthPercentage.Text = income.ExpectGrowthInPercentage.ToString();
                 txtAnnualIncome.Text = income.Amount.ToString();
                 txtIncomeStartYear.Text = income.StartYear;
                 txtIncomeEndYear.Text = income.EndYear;
                 txtIncomeDescription.Text =   income.Description;
+                txtIncomeTax.Text = income.IncomeTax.ToString();
 
                 SalaryDetail salaryDetail = income.SalaryDetail;
                 txtCTC.Tag = salaryDetail.Id.ToString();                

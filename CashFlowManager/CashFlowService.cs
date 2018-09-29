@@ -103,27 +103,42 @@ namespace FinancialPlannerClient.CashFlowManager
                 DataRow dr = _dtCashFlow.NewRow();              
                 long totalIncome = 0;
                 int incomeEndYear = 0;
+                long totalTaxAmt = 0;
+                long totalPostTaxIncome = 0;
                 foreach (Income income in _cashFlow.LstIncomes)
                 {
                     incomeEndYear = string.IsNullOrEmpty(income.EndYear) ? DateTime.Now.Year + 100 : int.Parse(income.EndYear);
                     if (int.Parse(dr["StartYear"].ToString()) >=  int.Parse(income.StartYear) &&
                         int.Parse(dr["StartYear"].ToString()) <= incomeEndYear)
                     {
-                        long amount = long.Parse(_dtCashFlow.Rows[years - 1]["(" + income.IncomeBy + ") " + income.Source].ToString());
-                        amount = amount + (long)((amount * float.Parse(income.ExpectGrowthInPercentage.ToString()) / 100));
-                        dr["(" + income.IncomeBy + ") " + income.Source] = amount;
-                        totalIncome = totalIncome + amount;
+                        try
+                        {
+                            long amount = long.Parse(_dtCashFlow.Rows[years - 1]["(" + income.IncomeBy + ") " + income.Source].ToString());
+                            amount = amount + (long)((amount * float.Parse(income.ExpectGrowthInPercentage.ToString()) / 100));
+                            dr["(" + income.IncomeBy + ") " + income.Source] = amount;
+                            totalIncome = totalIncome + amount;
+
+                            dr["(" + income.IncomeBy + ") " + income.Source + " - Income Tax"] = income.IncomeTax;
+                            long incomeTaxAmt = ((amount *  long.Parse(income.IncomeTax.ToString()) / 100));
+                            totalTaxAmt = totalTaxAmt + incomeTaxAmt;
+
+                            long postTaxAmt =(amount - incomeTaxAmt);
+                            dr["(" + income.IncomeBy + ") " + income.Source + " - Post Tax"] = postTaxAmt;
+                            totalPostTaxIncome = totalPostTaxIncome + long.Parse(postTaxAmt.ToString());
+                        }
+                        catch(Exception ex)
+                        {
+                            LogDebug("AddRowOnCalculation", ex);
+                        }
                     }
                     else
                     {
                         dr["(" + income.IncomeBy + ") " + income.Source] = 0;
                     }
                 }
-                dr["Total"] = totalIncome;
-                dr["IncomeTax"] = incomeTax;
-                double taxAmount = ((totalIncome * incomeTax) / 100);
-                dr["Tax"] = taxAmount;
-                dr["Post Tax Income"] = totalIncome - taxAmount;
+                dr["Total Income"] = totalIncome;
+                dr["Total Tax Deduction"] = totalTaxAmt;
+                dr["Total Post Tax Income"] = totalPostTaxIncome;
                 _dtCashFlow.Rows.Add(dr);
             }
         }
@@ -134,17 +149,21 @@ namespace FinancialPlannerClient.CashFlowManager
             dr["ID"] = rowId;
             dr["StartYear"] = DateTime.Now.Year + 1;
             double totalIncome = 0;
+            double totalpostTaxIncome  = 0;
+            double totalTaxAmt = 0;
             foreach (Income income in _cashFlow.LstIncomes)
             {
                 dr["(" + income.IncomeBy + ") " + income.Source] = income.Amount;
                 totalIncome = totalIncome + income.Amount;
+                dr["(" + income.IncomeBy + ") " + income.Source + " - Income Tax"] = income.IncomeTax;
+                double taxAmt = (income.Amount * income.IncomeTax) / 100;
+                totalTaxAmt = totalTaxAmt + taxAmt;                
+                dr["(" + income.IncomeBy + ") " + income.Source + " - Post Tax"] = income.Amount - taxAmt;
+                totalpostTaxIncome = totalpostTaxIncome + (income.Amount - taxAmt);
             }
-            dr["Total"] = totalIncome;
-            dr["IncomeTax"] = incomeTax;
-
-            double taxAmount = ((totalIncome * incomeTax) / 100);
-            dr["Tax"] = taxAmount;
-            dr["Post Tax Income"] = totalIncome - taxAmount;
+            dr["Total Income"] = totalIncome;
+            dr["Total Tax Deduction"] = totalTaxAmt;
+            dr["Total Post Tax Income"] = totalpostTaxIncome;
             _dtCashFlow.Rows.Add(dr);
         }
 
@@ -198,17 +217,21 @@ namespace FinancialPlannerClient.CashFlowManager
                 DataColumn dcIncome = new DataColumn("("+ income.IncomeBy + ") " + income.Source,typeof(System.Double));
                 dcIncome.ReadOnly = true;
                 _dtCashFlow.Columns.Add(dcIncome);
+                DataColumn dcIncomeTax = new DataColumn(dcIncome.ColumnName + " - Income Tax",typeof (System.Decimal));
+                _dtCashFlow.Columns.Add(dcIncomeTax);
+                DataColumn postTaxIncome = new DataColumn(dcIncome.ColumnName + " - Post Tax" ,typeof(System.Double));
+                _dtCashFlow.Columns.Add(postTaxIncome);
             }
 
-            DataColumn dcTotal = new DataColumn("Total",typeof(System.Double));
+            DataColumn dcTotal = new DataColumn("Total Income",typeof(System.Double));
             dcTotal.ReadOnly = true;
             _dtCashFlow.Columns.Add(dcTotal);
             
-            _dtCashFlow.Columns.Add("IncomeTax",typeof(System.Decimal));
+            //_dtCashFlow.Columns.Add("IncomeTax",typeof(System.Decimal));
 
-            _dtCashFlow.Columns.Add("Tax", typeof(System.Double));
+            _dtCashFlow.Columns.Add("Total Tax Deduction", typeof(System.Double));
             //_dtCashFlow.Columns["Tax"].ReadOnly = true;
-            _dtCashFlow.Columns.Add("Post Tax Income", typeof(System.Double));
+            _dtCashFlow.Columns.Add("Total Post Tax Income", typeof(System.Double));
            // _dtCashFlow.Columns["Post Tax Income"].ReadOnly = true;
             //_dtCashFlow.Columns.Add("Tax", typeof(System.Double), "(Total * IncomeTax) / 100");
             //_dtCashFlow.Columns.Add("Post Tax Income", typeof(System.Double), "Total - Tax");            
