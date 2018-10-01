@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EstimatedPlanOptionList));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.grpActionControls = new System.Windows.Forms.GroupBox();
             this.btnDeleteOption = new System.Windows.Forms.Button();
@@ -100,6 +101,9 @@
             this.label28 = new System.Windows.Forms.Label();
             this.txtDebtMFValue = new System.Windows.Forms.TextBox();
             this.lblEquityShareRatio = new System.Windows.Forms.Label();
+            this.GoalStatus = new System.Windows.Forms.TabPage();
+            this.label29 = new System.Windows.Forms.Label();
+            this.dtGridCurrentStatusGoals = new System.Windows.Forms.DataGridView();
             this.groupBox1.SuspendLayout();
             this.grpActionControls.SuspendLayout();
             this.tabEstimatedPlan.SuspendLayout();
@@ -109,6 +113,8 @@
             this.CurrentStatus.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            this.GoalStatus.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtGridCurrentStatusGoals)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -252,6 +258,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabEstimatedPlan.Controls.Add(this.CashFlow);
             this.tabEstimatedPlan.Controls.Add(this.CurrentStatus);
+            this.tabEstimatedPlan.Controls.Add(this.GoalStatus);
             this.tabEstimatedPlan.Location = new System.Drawing.Point(12, 77);
             this.tabEstimatedPlan.Name = "tabEstimatedPlan";
             this.tabEstimatedPlan.SelectedIndex = 0;
@@ -924,6 +931,51 @@
             this.lblEquityShareRatio.Text = "#Div#";
             this.lblEquityShareRatio.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // GoalStatus
+            // 
+            this.GoalStatus.Controls.Add(this.label29);
+            this.GoalStatus.Controls.Add(this.dtGridCurrentStatusGoals);
+            this.GoalStatus.Location = new System.Drawing.Point(4, 22);
+            this.GoalStatus.Name = "GoalStatus";
+            this.GoalStatus.Size = new System.Drawing.Size(1036, 546);
+            this.GoalStatus.TabIndex = 2;
+            this.GoalStatus.Text = "Goals Status";
+            this.GoalStatus.UseVisualStyleBackColor = true;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label29.ForeColor = System.Drawing.Color.Green;
+            this.label29.Location = new System.Drawing.Point(7, 16);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(230, 16);
+            this.label29.TabIndex = 3;
+            this.label29.Text = "MONEY TO BE USED IN GOALS";
+            // 
+            // dtGridCurrentStatusGoals
+            // 
+            this.dtGridCurrentStatusGoals.AllowUserToAddRows = false;
+            this.dtGridCurrentStatusGoals.AllowUserToDeleteRows = false;
+            this.dtGridCurrentStatusGoals.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtGridCurrentStatusGoals.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dtGridCurrentStatusGoals.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtGridCurrentStatusGoals.Location = new System.Drawing.Point(7, 51);
+            this.dtGridCurrentStatusGoals.MultiSelect = false;
+            this.dtGridCurrentStatusGoals.Name = "dtGridCurrentStatusGoals";
+            this.dtGridCurrentStatusGoals.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtGridCurrentStatusGoals.Size = new System.Drawing.Size(643, 489);
+            this.dtGridCurrentStatusGoals.TabIndex = 2;
+            // 
             // EstimatedPlanOptionList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -946,6 +998,9 @@
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            this.GoalStatus.ResumeLayout(false);
+            this.GoalStatus.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtGridCurrentStatusGoals)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1022,5 +1077,8 @@
         private System.Windows.Forms.TextBox txtSCSSValue;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.TextBox txtDebtMFValue;
+        private System.Windows.Forms.TabPage GoalStatus;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.DataGridView dtGridCurrentStatusGoals;
     }
 }

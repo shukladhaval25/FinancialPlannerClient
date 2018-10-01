@@ -14,38 +14,17 @@ namespace FinancialPlannerClient.CurrentStatus
     internal class CurrentStatusInfo
     {
         CurrentStatusCalculation csCal = new CurrentStatusCalculation();
-        private readonly string GET_CURRENT_STATUS_API= "CurrentStatusCalculator/Get?plannerId={0}";
-        private readonly string GET_ALL_CURRENT_STATUS_API= "CurrentStatusCalculator/Get?plannerId={0}";
+        private readonly string GET_CURRENT_STATUS_API= "CurrentStatusCalculator/Get?plannerId={0}&goalId={1}";
+        //private readonly string GET_ALL_CURRENT_STATUS_API= "CurrentStatusCalculator/Get?plannerId={0}";
 
 
-        public CurrentStatusCalculation GetCurrestStatusWithoutGoalMapped(int plannerId)
+        public CurrentStatusCalculation GetCurrestStatusWithoutGoalMapped(int plannerId,int goalId = 0)
         {
-            //FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
-            //string apiurl = Program.WebServiceUrl +"/"+ string.Format(GET_CURRENT_STATUS_API,plannerId);
-
-            //HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(apiurl);
-            //request.Method = "GET";
-            //string planerResultJson = string.Empty;
-            //using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
-            //{
-            //    Stream dataStream = response.GetResponseStream();
-
-            //    StreamReader reader = new StreamReader(dataStream);
-            //    planerResultJson = reader.ReadToEnd();
-            //    reader.Close();
-            //    dataStream.Close();
-            //}
-
-
-            //csCal = jsonSerialization.DeserializeFromString<CurrentStatusCalculation>(planerResultJson);
-
-            //return csCal;
-
-
+          
             try
             {
                 FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
-                string apiurl = Program.WebServiceUrl +"/"+ string.Format(GET_CURRENT_STATUS_API,plannerId);
+                string apiurl = Program.WebServiceUrl +"/"+ string.Format(GET_CURRENT_STATUS_API,plannerId,goalId);
 
                 RestAPIExecutor restApiExecutor = new RestAPIExecutor();
 
@@ -74,26 +53,48 @@ namespace FinancialPlannerClient.CurrentStatus
             debuggerInfo.ExceptionInfo = ex;
             Logger.LogDebug(debuggerInfo);
         }
-        public CurrentStatusCalculation GetAllCurrestStatus(int plannerId)
+               
+        //public CurrentStatusCalculation GetAllCurrestStatus(int plannerId)
+        //{
+        //    FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
+        //    string apiurl = Program.WebServiceUrl +"/"+ string.Format(GET_ALL_CURRENT_STATUS_API,plannerId);
+
+        //    HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(apiurl);
+        //    request.Method = "GET";
+        //    string planerResultJson = string.Empty;
+        //    using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+        //    {
+        //        Stream dataStream = response.GetResponseStream();
+
+        //        StreamReader reader = new StreamReader(dataStream);
+        //        planerResultJson = reader.ReadToEnd();
+        //        reader.Close();
+        //        dataStream.Close();
+        //    }
+        //    csCal = jsonSerialization.DeserializeFromString<CurrentStatusCalculation>(planerResultJson);
+
+        //    return csCal;
+        //}
+
+        public double GetFundFromCurrentStatus(int plannerId,int goalId = 0)
         {
-            FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
-            string apiurl = Program.WebServiceUrl +"/"+ string.Format(GET_ALL_CURRENT_STATUS_API,plannerId);
-
-            HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(apiurl);
-            request.Method = "GET";
-            string planerResultJson = string.Empty;
-            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+            CurrentStatusCalculation csCal =  GetCurrestStatusWithoutGoalMapped(plannerId,goalId);
+            if (csCal != null)
             {
-                Stream dataStream = response.GetResponseStream();
+                double totalEquityAmount = csCal.ShresValue +  csCal.EquityMFvalue +
+                csCal.NpsEquityValue + csCal.OtherEquityValue;
 
-                StreamReader reader = new StreamReader(dataStream);
-                planerResultJson = reader.ReadToEnd();
-                reader.Close();
-                dataStream.Close();
+                double totalDebtAmount = csCal.DebtMFValue +  csCal.FdValue +
+                csCal.RdValue + csCal.SaValue + csCal.NpsDebtValue +
+                csCal.PPFValue + csCal.EPFValue  + csCal.SSValue +
+                csCal.SCSSValue + csCal.DebtMFValue + csCal.OtherDebtValue;
+
+                double totalGoldAmount  = csCal.GoldValue + csCal.OthersGoldValue;
+
+                double totalCurrentStatusAmount = totalEquityAmount + totalDebtAmount + totalGoldAmount;
+                return totalCurrentStatusAmount;
             }
-            csCal = jsonSerialization.DeserializeFromString<CurrentStatusCalculation>(planerResultJson);
-
-            return csCal;
+            return 0; 
         }
     }
 }

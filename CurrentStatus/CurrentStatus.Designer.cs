@@ -154,6 +154,12 @@
             this.label51 = new System.Windows.Forms.Label();
             this.MutualFund = new System.Windows.Forms.TabPage();
             this.grpMF = new System.Windows.Forms.GroupBox();
+            this.txtMFNominee = new System.Windows.Forms.TextBox();
+            this.label162 = new System.Windows.Forms.Label();
+            this.txtMFSecondHolder = new System.Windows.Forms.TextBox();
+            this.label163 = new System.Windows.Forms.Label();
+            this.txtMFFirstHolder = new System.Windows.Forms.TextBox();
+            this.label164 = new System.Windows.Forms.Label();
             this.txtFolioNo = new System.Windows.Forms.TextBox();
             this.label54 = new System.Windows.Forms.Label();
             this.button9 = new System.Windows.Forms.Button();
@@ -224,6 +230,12 @@
             this.btnEditNPS = new System.Windows.Forms.Button();
             this.Shares = new System.Windows.Forms.TabPage();
             this.grpShares = new System.Windows.Forms.GroupBox();
+            this.txtSharesNominee = new System.Windows.Forms.TextBox();
+            this.label161 = new System.Windows.Forms.Label();
+            this.txtSharesSecondHolder = new System.Windows.Forms.TextBox();
+            this.label160 = new System.Windows.Forms.Label();
+            this.txtSharesFirstHolder = new System.Windows.Forms.TextBox();
+            this.label159 = new System.Windows.Forms.Label();
             this.txtSharesMarketPrice = new System.Windows.Forms.TextBox();
             this.label64 = new System.Windows.Forms.Label();
             this.txtSharesCurrentValue = new System.Windows.Forms.TextBox();
@@ -438,6 +450,12 @@
             this.dtGridNSC = new System.Windows.Forms.DataGridView();
             this.label149 = new System.Windows.Forms.Label();
             this.grpNSC = new System.Windows.Forms.GroupBox();
+            this.txtNSCCurrentValue = new System.Windows.Forms.TextBox();
+            this.label151 = new System.Windows.Forms.Label();
+            this.txtNSCValueOfOne = new System.Windows.Forms.TextBox();
+            this.label158 = new System.Windows.Forms.Label();
+            this.txtNSCUnits = new System.Windows.Forms.TextBox();
+            this.label157 = new System.Windows.Forms.Label();
             this.dtNSCMaturityDate = new System.Windows.Forms.DateTimePicker();
             this.label150 = new System.Windows.Forms.Label();
             this.txtNSCRate = new System.Windows.Forms.TextBox();
@@ -456,12 +474,48 @@
             this.btnNSCDelete = new System.Windows.Forms.Button();
             this.btnNSCAdd = new System.Windows.Forms.Button();
             this.btnNSCEdit = new System.Windows.Forms.Button();
-            this.txtNSCUnits = new System.Windows.Forms.TextBox();
-            this.label157 = new System.Windows.Forms.Label();
-            this.txtNSCValueOfOne = new System.Windows.Forms.TextBox();
-            this.label158 = new System.Windows.Forms.Label();
-            this.txtNSCCurrentValue = new System.Windows.Forms.TextBox();
-            this.label151 = new System.Windows.Forms.Label();
+            this.ULIP = new System.Windows.Forms.TabPage();
+            this.grpULIP = new System.Windows.Forms.GroupBox();
+            this.txtULIPNominee = new System.Windows.Forms.TextBox();
+            this.label165 = new System.Windows.Forms.Label();
+            this.txtULIPSecondHolder = new System.Windows.Forms.TextBox();
+            this.label166 = new System.Windows.Forms.Label();
+            this.txtULIPFirstHolder = new System.Windows.Forms.TextBox();
+            this.label167 = new System.Windows.Forms.Label();
+            this.txtULIPFolioNo = new System.Windows.Forms.TextBox();
+            this.label168 = new System.Windows.Forms.Label();
+            this.txtULIPRedemptionAmt = new System.Windows.Forms.TextBox();
+            this.label169 = new System.Windows.Forms.Label();
+            this.txtULIPFreeUnits = new System.Windows.Forms.TextBox();
+            this.label170 = new System.Windows.Forms.Label();
+            this.txtULIPSIPAmt = new System.Windows.Forms.TextBox();
+            this.label171 = new System.Windows.Forms.Label();
+            this.txtULIPDebtRatio = new System.Windows.Forms.TextBox();
+            this.label172 = new System.Windows.Forms.Label();
+            this.txtULIPGoldRatio = new System.Windows.Forms.TextBox();
+            this.label173 = new System.Windows.Forms.Label();
+            this.txtULIPEquityRatio = new System.Windows.Forms.TextBox();
+            this.txtULIPCurrentValue = new System.Windows.Forms.TextBox();
+            this.txtULIPUnits = new System.Windows.Forms.TextBox();
+            this.txtULIPNav = new System.Windows.Forms.TextBox();
+            this.cmbULIPGoal = new System.Windows.Forms.ComboBox();
+            this.label174 = new System.Windows.Forms.Label();
+            this.cmbULIPScheme = new System.Windows.Forms.ComboBox();
+            this.label175 = new System.Windows.Forms.Label();
+            this.label176 = new System.Windows.Forms.Label();
+            this.label177 = new System.Windows.Forms.Label();
+            this.label178 = new System.Windows.Forms.Label();
+            this.cmbULIPInvestor = new System.Windows.Forms.ComboBox();
+            this.label179 = new System.Windows.Forms.Label();
+            this.btnULIPCancel = new System.Windows.Forms.Button();
+            this.btnULIPSave = new System.Windows.Forms.Button();
+            this.label180 = new System.Windows.Forms.Label();
+            this.dtGridULIP = new System.Windows.Forms.DataGridView();
+            this.label181 = new System.Windows.Forms.Label();
+            this.groupBox15 = new System.Windows.Forms.GroupBox();
+            this.btnULIPDelete = new System.Windows.Forms.Button();
+            this.btnULIPAdd = new System.Windows.Forms.Button();
+            this.btnULIPEdit = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.tabCurrenStatus.SuspendLayout();
             this.LifeInsurance.SuspendLayout();
@@ -520,6 +574,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtGridNSC)).BeginInit();
             this.grpNSC.SuspendLayout();
             this.groupBox14.SuspendLayout();
+            this.ULIP.SuspendLayout();
+            this.grpULIP.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtGridULIP)).BeginInit();
+            this.groupBox15.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -603,6 +661,7 @@
             this.tabCurrenStatus.Controls.Add(this.Sukanya);
             this.tabCurrenStatus.Controls.Add(this.SCSS);
             this.tabCurrenStatus.Controls.Add(this.NSC);
+            this.tabCurrenStatus.Controls.Add(this.ULIP);
             this.tabCurrenStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabCurrenStatus.ImageList = this.imgCollection;
             this.tabCurrenStatus.Location = new System.Drawing.Point(13, 77);
@@ -1808,6 +1867,12 @@
             // 
             this.grpMF.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpMF.Controls.Add(this.txtMFNominee);
+            this.grpMF.Controls.Add(this.label162);
+            this.grpMF.Controls.Add(this.txtMFSecondHolder);
+            this.grpMF.Controls.Add(this.label163);
+            this.grpMF.Controls.Add(this.txtMFFirstHolder);
+            this.grpMF.Controls.Add(this.label164);
             this.grpMF.Controls.Add(this.txtFolioNo);
             this.grpMF.Controls.Add(this.label54);
             this.grpMF.Controls.Add(this.button9);
@@ -1842,14 +1907,62 @@
             this.grpMF.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpMF.Location = new System.Drawing.Point(3, 249);
             this.grpMF.Name = "grpMF";
-            this.grpMF.Size = new System.Drawing.Size(1317, 293);
+            this.grpMF.Size = new System.Drawing.Size(1301, 293);
             this.grpMF.TabIndex = 15;
             this.grpMF.TabStop = false;
             this.grpMF.Text = "Mutual Fund Details";
             // 
+            // txtMFNominee
+            // 
+            this.txtMFNominee.Location = new System.Drawing.Point(145, 193);
+            this.txtMFNominee.Name = "txtMFNominee";
+            this.txtMFNominee.Size = new System.Drawing.Size(320, 22);
+            this.txtMFNominee.TabIndex = 16;
+            // 
+            // label162
+            // 
+            this.label162.AutoSize = true;
+            this.label162.Location = new System.Drawing.Point(39, 195);
+            this.label162.Name = "label162";
+            this.label162.Size = new System.Drawing.Size(66, 16);
+            this.label162.TabIndex = 45;
+            this.label162.Text = "Nominee:";
+            // 
+            // txtMFSecondHolder
+            // 
+            this.txtMFSecondHolder.Location = new System.Drawing.Point(591, 167);
+            this.txtMFSecondHolder.Name = "txtMFSecondHolder";
+            this.txtMFSecondHolder.Size = new System.Drawing.Size(267, 22);
+            this.txtMFSecondHolder.TabIndex = 15;
+            // 
+            // label163
+            // 
+            this.label163.AutoSize = true;
+            this.label163.Location = new System.Drawing.Point(481, 168);
+            this.label163.Name = "label163";
+            this.label163.Size = new System.Drawing.Size(102, 16);
+            this.label163.TabIndex = 46;
+            this.label163.Text = "Second Holder:";
+            // 
+            // txtMFFirstHolder
+            // 
+            this.txtMFFirstHolder.Location = new System.Drawing.Point(145, 165);
+            this.txtMFFirstHolder.Name = "txtMFFirstHolder";
+            this.txtMFFirstHolder.Size = new System.Drawing.Size(320, 22);
+            this.txtMFFirstHolder.TabIndex = 14;
+            // 
+            // label164
+            // 
+            this.label164.AutoSize = true;
+            this.label164.Location = new System.Drawing.Point(39, 167);
+            this.label164.Name = "label164";
+            this.label164.Size = new System.Drawing.Size(80, 16);
+            this.label164.TabIndex = 44;
+            this.label164.Text = "First Holder:";
+            // 
             // txtFolioNo
             // 
-            this.txtFolioNo.Location = new System.Drawing.Point(137, 59);
+            this.txtFolioNo.Location = new System.Drawing.Point(145, 53);
             this.txtFolioNo.Name = "txtFolioNo";
             this.txtFolioNo.Size = new System.Drawing.Size(320, 22);
             this.txtFolioNo.TabIndex = 3;
@@ -1857,7 +1970,7 @@
             // label54
             // 
             this.label54.AutoSize = true;
-            this.label54.Location = new System.Drawing.Point(26, 59);
+            this.label54.Location = new System.Drawing.Point(34, 53);
             this.label54.Name = "label54";
             this.label54.Size = new System.Drawing.Size(89, 16);
             this.label54.TabIndex = 37;
@@ -1868,10 +1981,10 @@
             this.button9.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button9.ImageKey = "(none)";
             this.button9.ImageList = this.imgCollection;
-            this.button9.Location = new System.Drawing.Point(615, 207);
+            this.button9.Location = new System.Drawing.Point(874, 91);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(208, 26);
-            this.button9.TabIndex = 36;
+            this.button9.Size = new System.Drawing.Size(100, 44);
+            this.button9.TabIndex = 20;
             this.button9.Text = "Redumption Request ";
             this.button9.UseVisualStyleBackColor = true;
             // 
@@ -1880,16 +1993,16 @@
             this.button8.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button8.ImageKey = "(none)";
             this.button8.ImageList = this.imgCollection;
-            this.button8.Location = new System.Drawing.Point(615, 175);
+            this.button8.Location = new System.Drawing.Point(874, 42);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(208, 26);
-            this.button8.TabIndex = 35;
+            this.button8.Size = new System.Drawing.Size(100, 44);
+            this.button8.TabIndex = 19;
             this.button8.Text = "Account Statement Request";
             this.button8.UseVisualStyleBackColor = true;
             // 
             // txtRedumptionAmt
             // 
-            this.txtRedumptionAmt.Location = new System.Drawing.Point(581, 115);
+            this.txtRedumptionAmt.Location = new System.Drawing.Point(591, 109);
             this.txtRedumptionAmt.Name = "txtRedumptionAmt";
             this.txtRedumptionAmt.Size = new System.Drawing.Size(267, 22);
             this.txtRedumptionAmt.TabIndex = 11;
@@ -1899,7 +2012,7 @@
             // label53
             // 
             this.label53.AutoSize = true;
-            this.label53.Location = new System.Drawing.Point(471, 118);
+            this.label53.Location = new System.Drawing.Point(481, 112);
             this.label53.Name = "label53";
             this.label53.Size = new System.Drawing.Size(110, 16);
             this.label53.TabIndex = 33;
@@ -1907,7 +2020,7 @@
             // 
             // txtFreeUnits
             // 
-            this.txtFreeUnits.Location = new System.Drawing.Point(137, 143);
+            this.txtFreeUnits.Location = new System.Drawing.Point(145, 137);
             this.txtFreeUnits.Name = "txtFreeUnits";
             this.txtFreeUnits.Size = new System.Drawing.Size(102, 22);
             this.txtFreeUnits.TabIndex = 12;
@@ -1917,7 +2030,7 @@
             // label50
             // 
             this.label50.AutoSize = true;
-            this.label50.Location = new System.Drawing.Point(26, 146);
+            this.label50.Location = new System.Drawing.Point(34, 140);
             this.label50.Name = "label50";
             this.label50.Size = new System.Drawing.Size(72, 16);
             this.label50.TabIndex = 31;
@@ -1925,7 +2038,7 @@
             // 
             // txtSIPAmount
             // 
-            this.txtSIPAmount.Location = new System.Drawing.Point(341, 115);
+            this.txtSIPAmount.Location = new System.Drawing.Point(349, 109);
             this.txtSIPAmount.Name = "txtSIPAmount";
             this.txtSIPAmount.Size = new System.Drawing.Size(116, 22);
             this.txtSIPAmount.TabIndex = 10;
@@ -1935,7 +2048,7 @@
             // label49
             // 
             this.label49.AutoSize = true;
-            this.label49.Location = new System.Drawing.Point(248, 118);
+            this.label49.Location = new System.Drawing.Point(256, 112);
             this.label49.Name = "label49";
             this.label49.Size = new System.Drawing.Size(83, 16);
             this.label49.TabIndex = 29;
@@ -1943,7 +2056,7 @@
             // 
             // txtMFDebtRatio
             // 
-            this.txtMFDebtRatio.Location = new System.Drawing.Point(137, 115);
+            this.txtMFDebtRatio.Location = new System.Drawing.Point(145, 109);
             this.txtMFDebtRatio.Name = "txtMFDebtRatio";
             this.txtMFDebtRatio.Size = new System.Drawing.Size(102, 22);
             this.txtMFDebtRatio.TabIndex = 9;
@@ -1953,7 +2066,7 @@
             // label48
             // 
             this.label48.AutoSize = true;
-            this.label48.Location = new System.Drawing.Point(26, 118);
+            this.label48.Location = new System.Drawing.Point(34, 112);
             this.label48.Name = "label48";
             this.label48.Size = new System.Drawing.Size(101, 16);
             this.label48.TabIndex = 27;
@@ -1961,7 +2074,7 @@
             // 
             // txtMFGoldRatio
             // 
-            this.txtMFGoldRatio.Location = new System.Drawing.Point(773, 87);
+            this.txtMFGoldRatio.Location = new System.Drawing.Point(783, 81);
             this.txtMFGoldRatio.Name = "txtMFGoldRatio";
             this.txtMFGoldRatio.Size = new System.Drawing.Size(75, 22);
             this.txtMFGoldRatio.TabIndex = 8;
@@ -1971,7 +2084,7 @@
             // label47
             // 
             this.label47.AutoSize = true;
-            this.label47.Location = new System.Drawing.Point(666, 90);
+            this.label47.Location = new System.Drawing.Point(676, 84);
             this.label47.Name = "label47";
             this.label47.Size = new System.Drawing.Size(101, 16);
             this.label47.TabIndex = 25;
@@ -1980,7 +2093,7 @@
             // 
             // txtMFEquityRatio
             // 
-            this.txtMFEquityRatio.Location = new System.Drawing.Point(581, 87);
+            this.txtMFEquityRatio.Location = new System.Drawing.Point(591, 81);
             this.txtMFEquityRatio.Name = "txtMFEquityRatio";
             this.txtMFEquityRatio.Size = new System.Drawing.Size(79, 22);
             this.txtMFEquityRatio.TabIndex = 7;
@@ -1990,7 +2103,7 @@
             // txtMFCurrentVal
             // 
             this.txtMFCurrentVal.Enabled = false;
-            this.txtMFCurrentVal.Location = new System.Drawing.Point(581, 59);
+            this.txtMFCurrentVal.Location = new System.Drawing.Point(591, 53);
             this.txtMFCurrentVal.Name = "txtMFCurrentVal";
             this.txtMFCurrentVal.Size = new System.Drawing.Size(267, 22);
             this.txtMFCurrentVal.TabIndex = 4;
@@ -1998,7 +2111,7 @@
             // 
             // txtUnits
             // 
-            this.txtUnits.Location = new System.Drawing.Point(341, 87);
+            this.txtUnits.Location = new System.Drawing.Point(349, 81);
             this.txtUnits.Name = "txtUnits";
             this.txtUnits.Size = new System.Drawing.Size(116, 22);
             this.txtUnits.TabIndex = 6;
@@ -2008,7 +2121,7 @@
             // 
             // txtNav
             // 
-            this.txtNav.Location = new System.Drawing.Point(137, 87);
+            this.txtNav.Location = new System.Drawing.Point(145, 81);
             this.txtNav.Name = "txtNav";
             this.txtNav.Size = new System.Drawing.Size(102, 22);
             this.txtNav.TabIndex = 5;
@@ -2020,16 +2133,16 @@
             // 
             this.cmbMFGoal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbMFGoal.FormattingEnabled = true;
-            this.cmbMFGoal.Location = new System.Drawing.Point(137, 171);
+            this.cmbMFGoal.Location = new System.Drawing.Point(591, 137);
             this.cmbMFGoal.Name = "cmbMFGoal";
-            this.cmbMFGoal.Size = new System.Drawing.Size(320, 24);
+            this.cmbMFGoal.Size = new System.Drawing.Size(267, 24);
             this.cmbMFGoal.TabIndex = 13;
             this.cmbMFGoal.SelectedIndexChanged += new System.EventHandler(this.cmbMFGoal_SelectedIndexChanged);
             // 
             // label55
             // 
             this.label55.AutoSize = true;
-            this.label55.Location = new System.Drawing.Point(26, 174);
+            this.label55.Location = new System.Drawing.Point(480, 140);
             this.label55.Name = "label55";
             this.label55.Size = new System.Drawing.Size(105, 16);
             this.label55.TabIndex = 22;
@@ -2038,7 +2151,7 @@
             // cmbSchemeName
             // 
             this.cmbSchemeName.FormattingEnabled = true;
-            this.cmbSchemeName.Location = new System.Drawing.Point(581, 29);
+            this.cmbSchemeName.Location = new System.Drawing.Point(591, 23);
             this.cmbSchemeName.Name = "cmbSchemeName";
             this.cmbSchemeName.Size = new System.Drawing.Size(267, 24);
             this.cmbSchemeName.TabIndex = 2;
@@ -2047,7 +2160,7 @@
             // label56
             // 
             this.label56.AutoSize = true;
-            this.label56.Location = new System.Drawing.Point(471, 90);
+            this.label56.Location = new System.Drawing.Point(481, 84);
             this.label56.Name = "label56";
             this.label56.Size = new System.Drawing.Size(109, 16);
             this.label56.TabIndex = 20;
@@ -2056,7 +2169,7 @@
             // label57
             // 
             this.label57.AutoSize = true;
-            this.label57.Location = new System.Drawing.Point(471, 59);
+            this.label57.Location = new System.Drawing.Point(481, 53);
             this.label57.Name = "label57";
             this.label57.Size = new System.Drawing.Size(91, 16);
             this.label57.TabIndex = 18;
@@ -2065,7 +2178,7 @@
             // label58
             // 
             this.label58.AutoSize = true;
-            this.label58.Location = new System.Drawing.Point(243, 90);
+            this.label58.Location = new System.Drawing.Point(251, 84);
             this.label58.Name = "label58";
             this.label58.Size = new System.Drawing.Size(41, 16);
             this.label58.TabIndex = 15;
@@ -2074,7 +2187,7 @@
             // label59
             // 
             this.label59.AutoSize = true;
-            this.label59.Location = new System.Drawing.Point(26, 90);
+            this.label59.Location = new System.Drawing.Point(34, 84);
             this.label59.Name = "label59";
             this.label59.Size = new System.Drawing.Size(39, 16);
             this.label59.TabIndex = 14;
@@ -2083,7 +2196,7 @@
             // cmbMFInvester
             // 
             this.cmbMFInvester.FormattingEnabled = true;
-            this.cmbMFInvester.Location = new System.Drawing.Point(137, 29);
+            this.cmbMFInvester.Location = new System.Drawing.Point(145, 23);
             this.cmbMFInvester.Name = "cmbMFInvester";
             this.cmbMFInvester.Size = new System.Drawing.Size(320, 24);
             this.cmbMFInvester.TabIndex = 1;
@@ -2091,7 +2204,7 @@
             // label60
             // 
             this.label60.AutoSize = true;
-            this.label60.Location = new System.Drawing.Point(26, 32);
+            this.label60.Location = new System.Drawing.Point(34, 26);
             this.label60.Name = "label60";
             this.label60.Size = new System.Drawing.Size(58, 16);
             this.label60.TabIndex = 11;
@@ -2102,10 +2215,10 @@
             this.btnCancelMF.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCancelMF.ImageKey = "icons8-cancel-16.png";
             this.btnCancelMF.ImageList = this.imgCollection;
-            this.btnCancelMF.Location = new System.Drawing.Point(718, 143);
+            this.btnCancelMF.Location = new System.Drawing.Point(772, 195);
             this.btnCancelMF.Name = "btnCancelMF";
             this.btnCancelMF.Size = new System.Drawing.Size(86, 26);
-            this.btnCancelMF.TabIndex = 15;
+            this.btnCancelMF.TabIndex = 18;
             this.btnCancelMF.Text = "Cancel";
             this.btnCancelMF.UseVisualStyleBackColor = true;
             this.btnCancelMF.Click += new System.EventHandler(this.btnCancelMF_Click);
@@ -2115,10 +2228,10 @@
             this.btnSaveMF.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSaveMF.ImageKey = "icons8-save-close-16.png";
             this.btnSaveMF.ImageList = this.imgCollection;
-            this.btnSaveMF.Location = new System.Drawing.Point(626, 143);
+            this.btnSaveMF.Location = new System.Drawing.Point(680, 195);
             this.btnSaveMF.Name = "btnSaveMF";
             this.btnSaveMF.Size = new System.Drawing.Size(86, 26);
-            this.btnSaveMF.TabIndex = 14;
+            this.btnSaveMF.TabIndex = 17;
             this.btnSaveMF.Text = "Save";
             this.btnSaveMF.UseVisualStyleBackColor = true;
             this.btnSaveMF.Click += new System.EventHandler(this.btnSaveMF_Click);
@@ -2126,7 +2239,7 @@
             // label61
             // 
             this.label61.AutoSize = true;
-            this.label61.Location = new System.Drawing.Point(471, 31);
+            this.label61.Location = new System.Drawing.Point(481, 25);
             this.label61.Name = "label61";
             this.label61.Size = new System.Drawing.Size(101, 16);
             this.label61.TabIndex = 0;
@@ -2137,11 +2250,11 @@
             this.dtGridMF.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dtGridMF.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtGridMF.Location = new System.Drawing.Point(3, 40);
+            this.dtGridMF.Location = new System.Drawing.Point(14, 40);
             this.dtGridMF.Name = "dtGridMF";
             this.dtGridMF.ReadOnly = true;
             this.dtGridMF.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtGridMF.Size = new System.Drawing.Size(1301, 163);
+            this.dtGridMF.Size = new System.Drawing.Size(1290, 163);
             this.dtGridMF.TabIndex = 13;
             this.dtGridMF.SelectionChanged += new System.EventHandler(this.dtGridMF_SelectionChanged);
             // 
@@ -2150,7 +2263,7 @@
             this.label62.AutoSize = true;
             this.label62.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label62.ForeColor = System.Drawing.Color.DarkGreen;
-            this.label62.Location = new System.Drawing.Point(3, 7);
+            this.label62.Location = new System.Drawing.Point(15, 12);
             this.label62.Name = "label62";
             this.label62.Size = new System.Drawing.Size(109, 18);
             this.label62.TabIndex = 12;
@@ -2563,6 +2676,12 @@
             // 
             this.grpShares.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpShares.Controls.Add(this.txtSharesNominee);
+            this.grpShares.Controls.Add(this.label161);
+            this.grpShares.Controls.Add(this.txtSharesSecondHolder);
+            this.grpShares.Controls.Add(this.label160);
+            this.grpShares.Controls.Add(this.txtSharesFirstHolder);
+            this.grpShares.Controls.Add(this.label159);
             this.grpShares.Controls.Add(this.txtSharesMarketPrice);
             this.grpShares.Controls.Add(this.label64);
             this.grpShares.Controls.Add(this.txtSharesCurrentValue);
@@ -2587,6 +2706,54 @@
             this.grpShares.TabIndex = 23;
             this.grpShares.TabStop = false;
             this.grpShares.Text = "Shares";
+            // 
+            // txtSharesNominee
+            // 
+            this.txtSharesNominee.Location = new System.Drawing.Point(590, 115);
+            this.txtSharesNominee.Name = "txtSharesNominee";
+            this.txtSharesNominee.Size = new System.Drawing.Size(207, 22);
+            this.txtSharesNominee.TabIndex = 10;
+            // 
+            // label161
+            // 
+            this.label161.AutoSize = true;
+            this.label161.Location = new System.Drawing.Point(484, 117);
+            this.label161.Name = "label161";
+            this.label161.Size = new System.Drawing.Size(66, 16);
+            this.label161.TabIndex = 40;
+            this.label161.Text = "Nominee:";
+            // 
+            // txtSharesSecondHolder
+            // 
+            this.txtSharesSecondHolder.Location = new System.Drawing.Point(590, 87);
+            this.txtSharesSecondHolder.Name = "txtSharesSecondHolder";
+            this.txtSharesSecondHolder.Size = new System.Drawing.Size(207, 22);
+            this.txtSharesSecondHolder.TabIndex = 9;
+            // 
+            // label160
+            // 
+            this.label160.AutoSize = true;
+            this.label160.Location = new System.Drawing.Point(484, 89);
+            this.label160.Name = "label160";
+            this.label160.Size = new System.Drawing.Size(102, 16);
+            this.label160.TabIndex = 40;
+            this.label160.Text = "Second Holder:";
+            // 
+            // txtSharesFirstHolder
+            // 
+            this.txtSharesFirstHolder.Location = new System.Drawing.Point(590, 59);
+            this.txtSharesFirstHolder.Name = "txtSharesFirstHolder";
+            this.txtSharesFirstHolder.Size = new System.Drawing.Size(207, 22);
+            this.txtSharesFirstHolder.TabIndex = 8;
+            // 
+            // label159
+            // 
+            this.label159.AutoSize = true;
+            this.label159.Location = new System.Drawing.Point(484, 61);
+            this.label159.Name = "label159";
+            this.label159.Size = new System.Drawing.Size(80, 16);
+            this.label159.TabIndex = 38;
+            this.label159.Text = "First Holder:";
             // 
             // txtSharesMarketPrice
             // 
@@ -2711,10 +2878,10 @@
             this.btnSharesCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSharesCancel.ImageKey = "icons8-cancel-16.png";
             this.btnSharesCancel.ImageList = this.imgCollection;
-            this.btnSharesCancel.Location = new System.Drawing.Point(371, 175);
+            this.btnSharesCancel.Location = new System.Drawing.Point(711, 143);
             this.btnSharesCancel.Name = "btnSharesCancel";
             this.btnSharesCancel.Size = new System.Drawing.Size(86, 26);
-            this.btnSharesCancel.TabIndex = 9;
+            this.btnSharesCancel.TabIndex = 12;
             this.btnSharesCancel.Text = "Cancel";
             this.btnSharesCancel.UseVisualStyleBackColor = true;
             this.btnSharesCancel.Click += new System.EventHandler(this.btnSharesCancel_Click);
@@ -2724,10 +2891,10 @@
             this.btnSharesSave.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSharesSave.ImageKey = "icons8-save-close-16.png";
             this.btnSharesSave.ImageList = this.imgCollection;
-            this.btnSharesSave.Location = new System.Drawing.Point(279, 175);
+            this.btnSharesSave.Location = new System.Drawing.Point(619, 143);
             this.btnSharesSave.Name = "btnSharesSave";
             this.btnSharesSave.Size = new System.Drawing.Size(86, 26);
-            this.btnSharesSave.TabIndex = 8;
+            this.btnSharesSave.TabIndex = 11;
             this.btnSharesSave.Text = "Save";
             this.btnSharesSave.UseVisualStyleBackColor = true;
             this.btnSharesSave.Click += new System.EventHandler(this.btnSharesSave_Click);
@@ -2746,11 +2913,11 @@
             this.dtGridShares.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dtGridShares.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtGridShares.Location = new System.Drawing.Point(-9, 37);
+            this.dtGridShares.Location = new System.Drawing.Point(14, 37);
             this.dtGridShares.Name = "dtGridShares";
             this.dtGridShares.ReadOnly = true;
             this.dtGridShares.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtGridShares.Size = new System.Drawing.Size(1301, 163);
+            this.dtGridShares.Size = new System.Drawing.Size(1278, 163);
             this.dtGridShares.TabIndex = 21;
             this.dtGridShares.SelectionChanged += new System.EventHandler(this.dtGridShares_SelectionChanged);
             // 
@@ -4871,6 +5038,61 @@
             this.grpNSC.TabStop = false;
             this.grpNSC.Text = "NSC / KVP";
             // 
+            // txtNSCCurrentValue
+            // 
+            this.txtNSCCurrentValue.Location = new System.Drawing.Point(558, 32);
+            this.txtNSCCurrentValue.Name = "txtNSCCurrentValue";
+            this.txtNSCCurrentValue.ReadOnly = true;
+            this.txtNSCCurrentValue.Size = new System.Drawing.Size(249, 22);
+            this.txtNSCCurrentValue.TabIndex = 51;
+            this.txtNSCCurrentValue.TabStop = false;
+            this.txtNSCCurrentValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label151
+            // 
+            this.label151.AutoSize = true;
+            this.label151.Location = new System.Drawing.Point(448, 35);
+            this.label151.Name = "label151";
+            this.label151.Size = new System.Drawing.Size(91, 16);
+            this.label151.TabIndex = 52;
+            this.label151.Text = "Current Value:";
+            // 
+            // txtNSCValueOfOne
+            // 
+            this.txtNSCValueOfOne.Location = new System.Drawing.Point(558, 60);
+            this.txtNSCValueOfOne.Name = "txtNSCValueOfOne";
+            this.txtNSCValueOfOne.Size = new System.Drawing.Size(249, 22);
+            this.txtNSCValueOfOne.TabIndex = 6;
+            this.txtNSCValueOfOne.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label158
+            // 
+            this.label158.AutoSize = true;
+            this.label158.Location = new System.Drawing.Point(448, 62);
+            this.label158.Name = "label158";
+            this.label158.Size = new System.Drawing.Size(88, 16);
+            this.label158.TabIndex = 50;
+            this.label158.Text = "Value of One:";
+            // 
+            // txtNSCUnits
+            // 
+            this.txtNSCUnits.Location = new System.Drawing.Point(137, 145);
+            this.txtNSCUnits.Name = "txtNSCUnits";
+            this.txtNSCUnits.Size = new System.Drawing.Size(249, 22);
+            this.txtNSCUnits.TabIndex = 5;
+            this.txtNSCUnits.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtNSCUnits.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNSCUnits_KeyPress);
+            this.txtNSCUnits.Leave += new System.EventHandler(this.txtNSCUnits_Leave);
+            // 
+            // label157
+            // 
+            this.label157.AutoSize = true;
+            this.label157.Location = new System.Drawing.Point(15, 148);
+            this.label157.Name = "label157";
+            this.label157.Size = new System.Drawing.Size(41, 16);
+            this.label157.TabIndex = 48;
+            this.label157.Text = "Units:";
+            // 
             // dtNSCMaturityDate
             // 
             this.dtNSCMaturityDate.Location = new System.Drawing.Point(558, 88);
@@ -5047,60 +5269,435 @@
             this.btnNSCEdit.UseVisualStyleBackColor = true;
             this.btnNSCEdit.Click += new System.EventHandler(this.btnNSCEdit_Click);
             // 
-            // txtNSCUnits
+            // ULIP
             // 
-            this.txtNSCUnits.Location = new System.Drawing.Point(137, 145);
-            this.txtNSCUnits.Name = "txtNSCUnits";
-            this.txtNSCUnits.Size = new System.Drawing.Size(249, 22);
-            this.txtNSCUnits.TabIndex = 5;
-            this.txtNSCUnits.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtNSCUnits.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNSCUnits_KeyPress);
-            this.txtNSCUnits.Leave += new System.EventHandler(this.txtNSCUnits_Leave);
+            this.ULIP.Controls.Add(this.grpULIP);
+            this.ULIP.Controls.Add(this.dtGridULIP);
+            this.ULIP.Controls.Add(this.label181);
+            this.ULIP.Controls.Add(this.groupBox15);
+            this.ULIP.Location = new System.Drawing.Point(4, 24);
+            this.ULIP.Name = "ULIP";
+            this.ULIP.Size = new System.Drawing.Size(1321, 547);
+            this.ULIP.TabIndex = 13;
+            this.ULIP.Text = "ULIP";
+            this.ULIP.UseVisualStyleBackColor = true;
             // 
-            // label157
+            // grpULIP
             // 
-            this.label157.AutoSize = true;
-            this.label157.Location = new System.Drawing.Point(15, 148);
-            this.label157.Name = "label157";
-            this.label157.Size = new System.Drawing.Size(41, 16);
-            this.label157.TabIndex = 48;
-            this.label157.Text = "Units:";
+            this.grpULIP.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpULIP.Controls.Add(this.txtULIPNominee);
+            this.grpULIP.Controls.Add(this.label165);
+            this.grpULIP.Controls.Add(this.txtULIPSecondHolder);
+            this.grpULIP.Controls.Add(this.label166);
+            this.grpULIP.Controls.Add(this.txtULIPFirstHolder);
+            this.grpULIP.Controls.Add(this.label167);
+            this.grpULIP.Controls.Add(this.txtULIPFolioNo);
+            this.grpULIP.Controls.Add(this.label168);
+            this.grpULIP.Controls.Add(this.txtULIPRedemptionAmt);
+            this.grpULIP.Controls.Add(this.label169);
+            this.grpULIP.Controls.Add(this.txtULIPFreeUnits);
+            this.grpULIP.Controls.Add(this.label170);
+            this.grpULIP.Controls.Add(this.txtULIPSIPAmt);
+            this.grpULIP.Controls.Add(this.label171);
+            this.grpULIP.Controls.Add(this.txtULIPDebtRatio);
+            this.grpULIP.Controls.Add(this.label172);
+            this.grpULIP.Controls.Add(this.txtULIPGoldRatio);
+            this.grpULIP.Controls.Add(this.label173);
+            this.grpULIP.Controls.Add(this.txtULIPEquityRatio);
+            this.grpULIP.Controls.Add(this.txtULIPCurrentValue);
+            this.grpULIP.Controls.Add(this.txtULIPUnits);
+            this.grpULIP.Controls.Add(this.txtULIPNav);
+            this.grpULIP.Controls.Add(this.cmbULIPGoal);
+            this.grpULIP.Controls.Add(this.label174);
+            this.grpULIP.Controls.Add(this.cmbULIPScheme);
+            this.grpULIP.Controls.Add(this.label175);
+            this.grpULIP.Controls.Add(this.label176);
+            this.grpULIP.Controls.Add(this.label177);
+            this.grpULIP.Controls.Add(this.label178);
+            this.grpULIP.Controls.Add(this.cmbULIPInvestor);
+            this.grpULIP.Controls.Add(this.label179);
+            this.grpULIP.Controls.Add(this.btnULIPCancel);
+            this.grpULIP.Controls.Add(this.btnULIPSave);
+            this.grpULIP.Controls.Add(this.label180);
+            this.grpULIP.Enabled = false;
+            this.grpULIP.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpULIP.Location = new System.Drawing.Point(10, 245);
+            this.grpULIP.Name = "grpULIP";
+            this.grpULIP.Size = new System.Drawing.Size(1301, 293);
+            this.grpULIP.TabIndex = 19;
+            this.grpULIP.TabStop = false;
+            this.grpULIP.Text = "ULIP Info";
             // 
-            // txtNSCValueOfOne
+            // txtULIPNominee
             // 
-            this.txtNSCValueOfOne.Location = new System.Drawing.Point(558, 60);
-            this.txtNSCValueOfOne.Name = "txtNSCValueOfOne";
-            this.txtNSCValueOfOne.Size = new System.Drawing.Size(249, 22);
-            this.txtNSCValueOfOne.TabIndex = 6;
-            this.txtNSCValueOfOne.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtULIPNominee.Location = new System.Drawing.Point(137, 196);
+            this.txtULIPNominee.Name = "txtULIPNominee";
+            this.txtULIPNominee.Size = new System.Drawing.Size(320, 22);
+            this.txtULIPNominee.TabIndex = 16;
             // 
-            // label158
+            // label165
             // 
-            this.label158.AutoSize = true;
-            this.label158.Location = new System.Drawing.Point(448, 62);
-            this.label158.Name = "label158";
-            this.label158.Size = new System.Drawing.Size(88, 16);
-            this.label158.TabIndex = 50;
-            this.label158.Text = "Value of One:";
+            this.label165.AutoSize = true;
+            this.label165.Location = new System.Drawing.Point(31, 201);
+            this.label165.Name = "label165";
+            this.label165.Size = new System.Drawing.Size(66, 16);
+            this.label165.TabIndex = 45;
+            this.label165.Text = "Nominee:";
             // 
-            // txtNSCCurrentValue
+            // txtULIPSecondHolder
             // 
-            this.txtNSCCurrentValue.Location = new System.Drawing.Point(558, 32);
-            this.txtNSCCurrentValue.Name = "txtNSCCurrentValue";
-            this.txtNSCCurrentValue.ReadOnly = true;
-            this.txtNSCCurrentValue.Size = new System.Drawing.Size(249, 22);
-            this.txtNSCCurrentValue.TabIndex = 51;
-            this.txtNSCCurrentValue.TabStop = false;
-            this.txtNSCCurrentValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtULIPSecondHolder.Location = new System.Drawing.Point(581, 170);
+            this.txtULIPSecondHolder.Name = "txtULIPSecondHolder";
+            this.txtULIPSecondHolder.Size = new System.Drawing.Size(267, 22);
+            this.txtULIPSecondHolder.TabIndex = 15;
             // 
-            // label151
+            // label166
             // 
-            this.label151.AutoSize = true;
-            this.label151.Location = new System.Drawing.Point(448, 35);
-            this.label151.Name = "label151";
-            this.label151.Size = new System.Drawing.Size(91, 16);
-            this.label151.TabIndex = 52;
-            this.label151.Text = "Current Value:";
+            this.label166.AutoSize = true;
+            this.label166.Location = new System.Drawing.Point(471, 173);
+            this.label166.Name = "label166";
+            this.label166.Size = new System.Drawing.Size(102, 16);
+            this.label166.TabIndex = 46;
+            this.label166.Text = "Second Holder:";
+            // 
+            // txtULIPFirstHolder
+            // 
+            this.txtULIPFirstHolder.Location = new System.Drawing.Point(137, 168);
+            this.txtULIPFirstHolder.Name = "txtULIPFirstHolder";
+            this.txtULIPFirstHolder.Size = new System.Drawing.Size(320, 22);
+            this.txtULIPFirstHolder.TabIndex = 14;
+            // 
+            // label167
+            // 
+            this.label167.AutoSize = true;
+            this.label167.Location = new System.Drawing.Point(31, 170);
+            this.label167.Name = "label167";
+            this.label167.Size = new System.Drawing.Size(80, 16);
+            this.label167.TabIndex = 44;
+            this.label167.Text = "First Holder:";
+            // 
+            // txtULIPFolioNo
+            // 
+            this.txtULIPFolioNo.Location = new System.Drawing.Point(137, 56);
+            this.txtULIPFolioNo.Name = "txtULIPFolioNo";
+            this.txtULIPFolioNo.Size = new System.Drawing.Size(320, 22);
+            this.txtULIPFolioNo.TabIndex = 3;
+            // 
+            // label168
+            // 
+            this.label168.AutoSize = true;
+            this.label168.Location = new System.Drawing.Point(26, 56);
+            this.label168.Name = "label168";
+            this.label168.Size = new System.Drawing.Size(89, 16);
+            this.label168.TabIndex = 37;
+            this.label168.Text = "Folio number:";
+            // 
+            // txtULIPRedemptionAmt
+            // 
+            this.txtULIPRedemptionAmt.Location = new System.Drawing.Point(581, 112);
+            this.txtULIPRedemptionAmt.Name = "txtULIPRedemptionAmt";
+            this.txtULIPRedemptionAmt.Size = new System.Drawing.Size(267, 22);
+            this.txtULIPRedemptionAmt.TabIndex = 11;
+            this.txtULIPRedemptionAmt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label169
+            // 
+            this.label169.AutoSize = true;
+            this.label169.Location = new System.Drawing.Point(471, 115);
+            this.label169.Name = "label169";
+            this.label169.Size = new System.Drawing.Size(110, 16);
+            this.label169.TabIndex = 33;
+            this.label169.Text = "Redumption Amt:";
+            // 
+            // txtULIPFreeUnits
+            // 
+            this.txtULIPFreeUnits.Location = new System.Drawing.Point(137, 140);
+            this.txtULIPFreeUnits.Name = "txtULIPFreeUnits";
+            this.txtULIPFreeUnits.Size = new System.Drawing.Size(102, 22);
+            this.txtULIPFreeUnits.TabIndex = 12;
+            this.txtULIPFreeUnits.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label170
+            // 
+            this.label170.AutoSize = true;
+            this.label170.Location = new System.Drawing.Point(26, 143);
+            this.label170.Name = "label170";
+            this.label170.Size = new System.Drawing.Size(72, 16);
+            this.label170.TabIndex = 31;
+            this.label170.Text = "Free Units:";
+            // 
+            // txtULIPSIPAmt
+            // 
+            this.txtULIPSIPAmt.Location = new System.Drawing.Point(341, 112);
+            this.txtULIPSIPAmt.Name = "txtULIPSIPAmt";
+            this.txtULIPSIPAmt.Size = new System.Drawing.Size(116, 22);
+            this.txtULIPSIPAmt.TabIndex = 10;
+            this.txtULIPSIPAmt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label171
+            // 
+            this.label171.AutoSize = true;
+            this.label171.Location = new System.Drawing.Point(248, 115);
+            this.label171.Name = "label171";
+            this.label171.Size = new System.Drawing.Size(83, 16);
+            this.label171.TabIndex = 29;
+            this.label171.Text = "SIP Amount :";
+            // 
+            // txtULIPDebtRatio
+            // 
+            this.txtULIPDebtRatio.Location = new System.Drawing.Point(137, 112);
+            this.txtULIPDebtRatio.Name = "txtULIPDebtRatio";
+            this.txtULIPDebtRatio.Size = new System.Drawing.Size(102, 22);
+            this.txtULIPDebtRatio.TabIndex = 9;
+            this.txtULIPDebtRatio.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label172
+            // 
+            this.label172.AutoSize = true;
+            this.label172.Location = new System.Drawing.Point(26, 115);
+            this.label172.Name = "label172";
+            this.label172.Size = new System.Drawing.Size(101, 16);
+            this.label172.TabIndex = 27;
+            this.label172.Text = "Debt Ratio (%) :";
+            // 
+            // txtULIPGoldRatio
+            // 
+            this.txtULIPGoldRatio.Location = new System.Drawing.Point(773, 87);
+            this.txtULIPGoldRatio.Name = "txtULIPGoldRatio";
+            this.txtULIPGoldRatio.Size = new System.Drawing.Size(75, 22);
+            this.txtULIPGoldRatio.TabIndex = 8;
+            this.txtULIPGoldRatio.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label173
+            // 
+            this.label173.AutoSize = true;
+            this.label173.Location = new System.Drawing.Point(666, 87);
+            this.label173.Name = "label173";
+            this.label173.Size = new System.Drawing.Size(101, 16);
+            this.label173.TabIndex = 25;
+            this.label173.Text = "Gold Ratio (%) :";
+            this.label173.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtULIPEquityRatio
+            // 
+            this.txtULIPEquityRatio.Location = new System.Drawing.Point(581, 84);
+            this.txtULIPEquityRatio.Name = "txtULIPEquityRatio";
+            this.txtULIPEquityRatio.Size = new System.Drawing.Size(79, 22);
+            this.txtULIPEquityRatio.TabIndex = 7;
+            this.txtULIPEquityRatio.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtULIPCurrentValue
+            // 
+            this.txtULIPCurrentValue.Enabled = false;
+            this.txtULIPCurrentValue.Location = new System.Drawing.Point(581, 56);
+            this.txtULIPCurrentValue.Name = "txtULIPCurrentValue";
+            this.txtULIPCurrentValue.Size = new System.Drawing.Size(267, 22);
+            this.txtULIPCurrentValue.TabIndex = 4;
+            this.txtULIPCurrentValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtULIPUnits
+            // 
+            this.txtULIPUnits.Location = new System.Drawing.Point(341, 84);
+            this.txtULIPUnits.Name = "txtULIPUnits";
+            this.txtULIPUnits.Size = new System.Drawing.Size(116, 22);
+            this.txtULIPUnits.TabIndex = 6;
+            this.txtULIPUnits.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtULIPNav
+            // 
+            this.txtULIPNav.Location = new System.Drawing.Point(137, 84);
+            this.txtULIPNav.Name = "txtULIPNav";
+            this.txtULIPNav.Size = new System.Drawing.Size(102, 22);
+            this.txtULIPNav.TabIndex = 5;
+            this.txtULIPNav.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtULIPNav.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtULIPNav_KeyPress);
+            this.txtULIPNav.Leave += new System.EventHandler(this.txtULIPNav_Leave);
+            // 
+            // cmbULIPGoal
+            // 
+            this.cmbULIPGoal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbULIPGoal.FormattingEnabled = true;
+            this.cmbULIPGoal.Location = new System.Drawing.Point(581, 140);
+            this.cmbULIPGoal.Name = "cmbULIPGoal";
+            this.cmbULIPGoal.Size = new System.Drawing.Size(267, 24);
+            this.cmbULIPGoal.TabIndex = 13;
+            this.cmbULIPGoal.SelectedIndexChanged += new System.EventHandler(this.cmbULIPGoal_SelectedIndexChanged);
+            // 
+            // label174
+            // 
+            this.label174.AutoSize = true;
+            this.label174.Location = new System.Drawing.Point(471, 146);
+            this.label174.Name = "label174";
+            this.label174.Size = new System.Drawing.Size(105, 16);
+            this.label174.TabIndex = 22;
+            this.label174.Text = "Goal (Mapped) :";
+            // 
+            // cmbULIPScheme
+            // 
+            this.cmbULIPScheme.FormattingEnabled = true;
+            this.cmbULIPScheme.Location = new System.Drawing.Point(581, 26);
+            this.cmbULIPScheme.Name = "cmbULIPScheme";
+            this.cmbULIPScheme.Size = new System.Drawing.Size(267, 24);
+            this.cmbULIPScheme.TabIndex = 2;
+            // 
+            // label175
+            // 
+            this.label175.AutoSize = true;
+            this.label175.Location = new System.Drawing.Point(471, 87);
+            this.label175.Name = "label175";
+            this.label175.Size = new System.Drawing.Size(109, 16);
+            this.label175.TabIndex = 20;
+            this.label175.Text = "Equity Ratio (%) :";
+            // 
+            // label176
+            // 
+            this.label176.AutoSize = true;
+            this.label176.Location = new System.Drawing.Point(471, 56);
+            this.label176.Name = "label176";
+            this.label176.Size = new System.Drawing.Size(91, 16);
+            this.label176.TabIndex = 18;
+            this.label176.Text = "Current Value:";
+            // 
+            // label177
+            // 
+            this.label177.AutoSize = true;
+            this.label177.Location = new System.Drawing.Point(243, 87);
+            this.label177.Name = "label177";
+            this.label177.Size = new System.Drawing.Size(41, 16);
+            this.label177.TabIndex = 15;
+            this.label177.Text = "Units:";
+            // 
+            // label178
+            // 
+            this.label178.AutoSize = true;
+            this.label178.Location = new System.Drawing.Point(26, 87);
+            this.label178.Name = "label178";
+            this.label178.Size = new System.Drawing.Size(39, 16);
+            this.label178.TabIndex = 14;
+            this.label178.Text = "NAV:";
+            // 
+            // cmbULIPInvestor
+            // 
+            this.cmbULIPInvestor.FormattingEnabled = true;
+            this.cmbULIPInvestor.Location = new System.Drawing.Point(137, 26);
+            this.cmbULIPInvestor.Name = "cmbULIPInvestor";
+            this.cmbULIPInvestor.Size = new System.Drawing.Size(320, 24);
+            this.cmbULIPInvestor.TabIndex = 1;
+            this.cmbULIPInvestor.SelectedIndexChanged += new System.EventHandler(this.cmbPPFGoal_SelectedIndexChanged);
+            // 
+            // label179
+            // 
+            this.label179.AutoSize = true;
+            this.label179.Location = new System.Drawing.Point(26, 29);
+            this.label179.Name = "label179";
+            this.label179.Size = new System.Drawing.Size(58, 16);
+            this.label179.TabIndex = 11;
+            this.label179.Text = "Invester:";
+            // 
+            // btnULIPCancel
+            // 
+            this.btnULIPCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnULIPCancel.ImageKey = "icons8-cancel-16.png";
+            this.btnULIPCancel.ImageList = this.imgCollection;
+            this.btnULIPCancel.Location = new System.Drawing.Point(762, 198);
+            this.btnULIPCancel.Name = "btnULIPCancel";
+            this.btnULIPCancel.Size = new System.Drawing.Size(86, 26);
+            this.btnULIPCancel.TabIndex = 18;
+            this.btnULIPCancel.Text = "Cancel";
+            this.btnULIPCancel.UseVisualStyleBackColor = true;
+            this.btnULIPCancel.Click += new System.EventHandler(this.btnCancelULIP_Click);
+            // 
+            // btnULIPSave
+            // 
+            this.btnULIPSave.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnULIPSave.ImageKey = "icons8-save-close-16.png";
+            this.btnULIPSave.ImageList = this.imgCollection;
+            this.btnULIPSave.Location = new System.Drawing.Point(670, 198);
+            this.btnULIPSave.Name = "btnULIPSave";
+            this.btnULIPSave.Size = new System.Drawing.Size(86, 26);
+            this.btnULIPSave.TabIndex = 17;
+            this.btnULIPSave.Text = "Save";
+            this.btnULIPSave.UseVisualStyleBackColor = true;
+            this.btnULIPSave.Click += new System.EventHandler(this.btnSaveULIP_Click);
+            // 
+            // label180
+            // 
+            this.label180.AutoSize = true;
+            this.label180.Location = new System.Drawing.Point(471, 28);
+            this.label180.Name = "label180";
+            this.label180.Size = new System.Drawing.Size(101, 16);
+            this.label180.TabIndex = 0;
+            this.label180.Text = "Scheme Name:";
+            // 
+            // dtGridULIP
+            // 
+            this.dtGridULIP.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtGridULIP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtGridULIP.Location = new System.Drawing.Point(10, 36);
+            this.dtGridULIP.Name = "dtGridULIP";
+            this.dtGridULIP.ReadOnly = true;
+            this.dtGridULIP.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtGridULIP.Size = new System.Drawing.Size(1301, 163);
+            this.dtGridULIP.TabIndex = 17;
+            this.dtGridULIP.SelectionChanged += new System.EventHandler(this.dtGridULIP_SelectionChanged);
+            // 
+            // label181
+            // 
+            this.label181.AutoSize = true;
+            this.label181.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label181.ForeColor = System.Drawing.Color.DarkGreen;
+            this.label181.Location = new System.Drawing.Point(22, 8);
+            this.label181.Name = "label181";
+            this.label181.Size = new System.Drawing.Size(44, 18);
+            this.label181.TabIndex = 16;
+            this.label181.Text = "ULIP";
+            // 
+            // groupBox15
+            // 
+            this.groupBox15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox15.Controls.Add(this.btnULIPDelete);
+            this.groupBox15.Controls.Add(this.btnULIPAdd);
+            this.groupBox15.Controls.Add(this.btnULIPEdit);
+            this.groupBox15.Location = new System.Drawing.Point(1200, 205);
+            this.groupBox15.Name = "groupBox15";
+            this.groupBox15.Size = new System.Drawing.Size(111, 38);
+            this.groupBox15.TabIndex = 18;
+            this.groupBox15.TabStop = false;
+            // 
+            // btnULIPDelete
+            // 
+            this.btnULIPDelete.ImageIndex = 1;
+            this.btnULIPDelete.ImageList = this.imgCollection;
+            this.btnULIPDelete.Location = new System.Drawing.Point(76, 10);
+            this.btnULIPDelete.Name = "btnULIPDelete";
+            this.btnULIPDelete.Size = new System.Drawing.Size(29, 24);
+            this.btnULIPDelete.TabIndex = 4;
+            this.btnULIPDelete.UseVisualStyleBackColor = true;
+            this.btnULIPDelete.Click += new System.EventHandler(this.btnDeleteULIP_Click);
+            // 
+            // btnULIPAdd
+            // 
+            this.btnULIPAdd.ImageIndex = 3;
+            this.btnULIPAdd.ImageList = this.imgCollection;
+            this.btnULIPAdd.Location = new System.Drawing.Point(6, 10);
+            this.btnULIPAdd.Name = "btnULIPAdd";
+            this.btnULIPAdd.Size = new System.Drawing.Size(29, 24);
+            this.btnULIPAdd.TabIndex = 2;
+            this.btnULIPAdd.UseVisualStyleBackColor = true;
+            this.btnULIPAdd.Click += new System.EventHandler(this.btnAddULIP_Click);
+            // 
+            // btnULIPEdit
+            // 
+            this.btnULIPEdit.ImageIndex = 4;
+            this.btnULIPEdit.ImageList = this.imgCollection;
+            this.btnULIPEdit.Location = new System.Drawing.Point(41, 10);
+            this.btnULIPEdit.Name = "btnULIPEdit";
+            this.btnULIPEdit.Size = new System.Drawing.Size(29, 24);
+            this.btnULIPEdit.TabIndex = 3;
+            this.btnULIPEdit.UseVisualStyleBackColor = true;
+            this.btnULIPEdit.Click += new System.EventHandler(this.btnEditULIP_Click);
             // 
             // CurrentStatus
             // 
@@ -5196,6 +5793,12 @@
             this.grpNSC.ResumeLayout(false);
             this.grpNSC.PerformLayout();
             this.groupBox14.ResumeLayout(false);
+            this.ULIP.ResumeLayout(false);
+            this.ULIP.PerformLayout();
+            this.grpULIP.ResumeLayout(false);
+            this.grpULIP.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtGridULIP)).EndInit();
+            this.groupBox15.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -5634,5 +6237,59 @@
         private System.Windows.Forms.Button btnNSCEdit;
         private System.Windows.Forms.TextBox txtNSCCurrentValue;
         private System.Windows.Forms.Label label151;
+        private System.Windows.Forms.TextBox txtSharesNominee;
+        private System.Windows.Forms.Label label161;
+        private System.Windows.Forms.TextBox txtSharesSecondHolder;
+        private System.Windows.Forms.Label label160;
+        private System.Windows.Forms.TextBox txtSharesFirstHolder;
+        private System.Windows.Forms.Label label159;
+        private System.Windows.Forms.TabPage ULIP;
+        private System.Windows.Forms.TextBox txtMFNominee;
+        private System.Windows.Forms.Label label162;
+        private System.Windows.Forms.TextBox txtMFSecondHolder;
+        private System.Windows.Forms.Label label163;
+        private System.Windows.Forms.TextBox txtMFFirstHolder;
+        private System.Windows.Forms.Label label164;
+        private System.Windows.Forms.GroupBox grpULIP;
+        private System.Windows.Forms.TextBox txtULIPNominee;
+        private System.Windows.Forms.Label label165;
+        private System.Windows.Forms.TextBox txtULIPSecondHolder;
+        private System.Windows.Forms.Label label166;
+        private System.Windows.Forms.TextBox txtULIPFirstHolder;
+        private System.Windows.Forms.Label label167;
+        private System.Windows.Forms.TextBox txtULIPFolioNo;
+        private System.Windows.Forms.Label label168;
+        private System.Windows.Forms.TextBox txtULIPRedemptionAmt;
+        private System.Windows.Forms.Label label169;
+        private System.Windows.Forms.TextBox txtULIPFreeUnits;
+        private System.Windows.Forms.Label label170;
+        private System.Windows.Forms.TextBox txtULIPSIPAmt;
+        private System.Windows.Forms.Label label171;
+        private System.Windows.Forms.TextBox txtULIPDebtRatio;
+        private System.Windows.Forms.Label label172;
+        private System.Windows.Forms.TextBox txtULIPGoldRatio;
+        private System.Windows.Forms.Label label173;
+        private System.Windows.Forms.TextBox txtULIPEquityRatio;
+        private System.Windows.Forms.TextBox txtULIPCurrentValue;
+        private System.Windows.Forms.TextBox txtULIPUnits;
+        private System.Windows.Forms.TextBox txtULIPNav;
+        private System.Windows.Forms.ComboBox cmbULIPGoal;
+        private System.Windows.Forms.Label label174;
+        private System.Windows.Forms.ComboBox cmbULIPScheme;
+        private System.Windows.Forms.Label label175;
+        private System.Windows.Forms.Label label176;
+        private System.Windows.Forms.Label label177;
+        private System.Windows.Forms.Label label178;
+        private System.Windows.Forms.ComboBox cmbULIPInvestor;
+        private System.Windows.Forms.Label label179;
+        private System.Windows.Forms.Button btnULIPCancel;
+        private System.Windows.Forms.Button btnULIPSave;
+        private System.Windows.Forms.Label label180;
+        private System.Windows.Forms.DataGridView dtGridULIP;
+        private System.Windows.Forms.Label label181;
+        private System.Windows.Forms.GroupBox groupBox15;
+        private System.Windows.Forms.Button btnULIPDelete;
+        private System.Windows.Forms.Button btnULIPAdd;
+        private System.Windows.Forms.Button btnULIPEdit;
     }
 }

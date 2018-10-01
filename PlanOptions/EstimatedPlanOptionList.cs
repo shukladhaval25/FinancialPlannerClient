@@ -24,6 +24,7 @@ namespace FinancialPlannerClient.PlanOptions
         DataTable _dtPlan;
         DataTable _dtOption;
         DataTable _dtcashFlow;
+        DataTable _dtCurrentStatustoGoals;
         private int _planeId;
         private int _optinId;
         CurrentStatusCalculation _csCal;
@@ -277,10 +278,13 @@ namespace FinancialPlannerClient.PlanOptions
                     break;
                 case "CurrentStatus":
                     getCurrentStatus();
-                    break;                
+                    break;
+                case "GoalStatus":
+                    getGoalStatus();
+                    break;
             }
         }
-
+        
         #region "Current Status"
 
         private void getCurrentStatus()
@@ -291,53 +295,73 @@ namespace FinancialPlannerClient.PlanOptions
 
         private void fillCurrentStatusData()
         {
-            txtEquitySharesAmt.Text = _csCal.ShresValue.ToString();
-            txtMFAmt.Text = _csCal.EquityMFvalue.ToString();
-            txtEquityNPSAmt.Text = _csCal.NpsEquityValue.ToString();
-            txtEquityOtherAmt.Text = _csCal.OtherEquityValue.ToString();
+            if (_csCal != null)
+            {
+                txtEquitySharesAmt.Text = _csCal.ShresValue.ToString();
+                txtMFAmt.Text = _csCal.EquityMFvalue.ToString();
+                txtEquityNPSAmt.Text = _csCal.NpsEquityValue.ToString();
+                txtEquityOtherAmt.Text = _csCal.OtherEquityValue.ToString();
 
-            long totalEquityAmount = _csCal.ShresValue +  _csCal.EquityMFvalue +
+                double totalEquityAmount = _csCal.ShresValue +  _csCal.EquityMFvalue +
                 _csCal.NpsEquityValue + _csCal.OtherEquityValue;
 
-            txtDebtMFValue.Text = _csCal.DebtMFValue.ToString();
-            txtFDAmt.Text = _csCal.FdValue.ToString();
-            txtRDAmt.Text = _csCal.RdValue.ToString();
-            txtSAAmt.Text = _csCal.SaValue.ToString();
-            txtDebtNPSAmt.Text = _csCal.NpsDebtValue.ToString();
-            txtPPFAmt.Text = _csCal.PPFValue.ToString();
-            txtEPFAmt.Text = _csCal.EPFValue.ToString();
-            txtSSAmt.Text = _csCal.SSValue.ToString();
-            txtSCSSValue.Text = _csCal.SCSSValue.ToString();
-            txtDebtMFValue.Text = _csCal.DebtMFValue.ToString();
-            txtDebOtherAmt.Text = _csCal.OtherDebtValue.ToString();
+                txtDebtMFValue.Text = _csCal.DebtMFValue.ToString();
+                txtFDAmt.Text = _csCal.FdValue.ToString();
+                txtRDAmt.Text = _csCal.RdValue.ToString();
+                txtSAAmt.Text = _csCal.SaValue.ToString();
+                txtDebtNPSAmt.Text = _csCal.NpsDebtValue.ToString();
+                txtPPFAmt.Text = _csCal.PPFValue.ToString();
+                txtEPFAmt.Text = _csCal.EPFValue.ToString();
+                txtSSAmt.Text = _csCal.SSValue.ToString();
+                txtSCSSValue.Text = _csCal.SCSSValue.ToString();
+                txtDebtMFValue.Text = _csCal.DebtMFValue.ToString();
+                txtDebOtherAmt.Text = _csCal.OtherDebtValue.ToString();
 
-            long totalDebtAmount = _csCal.DebtMFValue +  _csCal.FdValue +
+                double totalDebtAmount = _csCal.DebtMFValue +  _csCal.FdValue +
                 _csCal.RdValue + _csCal.SaValue + _csCal.NpsDebtValue +
                 _csCal.PPFValue + _csCal.EPFValue  + _csCal.SSValue +
                 _csCal.SCSSValue + _csCal.DebtMFValue + _csCal.OtherDebtValue;
 
-            txtGoldAmt.Text = _csCal.GoldValue.ToString();
-            txtGoldOtherAmt.Text = _csCal.OthersGoldValue.ToString();
-            long totalGoldAmount  = _csCal.GoldValue + _csCal.OthersGoldValue;
+                txtGoldAmt.Text = _csCal.GoldValue.ToString();
+                txtGoldOtherAmt.Text = _csCal.OthersGoldValue.ToString();
+                double totalGoldAmount  = _csCal.GoldValue + _csCal.OthersGoldValue;
 
-            long totalCurrentStatusAmount = totalEquityAmount + totalDebtAmount + totalGoldAmount;
-            if (totalCurrentStatusAmount > 0)
-            {
-                float equityRatio = (totalEquityAmount * 100) / totalCurrentStatusAmount;
-                float debtRatio =  (totalDebtAmount * 100) / totalCurrentStatusAmount;
-                float goldRatio =  (totalGoldAmount * 100) / totalCurrentStatusAmount;
-                lblEquityShareRatio.Text = string.Format("{0} %", equityRatio.ToString());
-                lblDebtRatio.Text = string.Format("{0} %",debtRatio.ToString());
-                lblGoldRatio.Text = string.Format("{0} %", goldRatio.ToString());
-            }
-            else
-            {
-                lblEquityShareRatio.Text = string.Format("{0} %", "0");
-                lblDebtRatio.Text = string.Format("{0} %", "0");
-                lblGoldRatio.Text = string.Format("{0} %", "0");
+                double totalCurrentStatusAmount = totalEquityAmount + totalDebtAmount + totalGoldAmount;
+                if (totalCurrentStatusAmount > 0)
+                {
+                    double equityRatio = (totalEquityAmount * 100) / totalCurrentStatusAmount;
+                    double debtRatio =  (totalDebtAmount * 100) / totalCurrentStatusAmount;
+                    double goldRatio =  (totalGoldAmount * 100) / totalCurrentStatusAmount;
+                    lblEquityShareRatio.Text = string.Format("{0} %", Math.Round(equityRatio).ToString());
+                    lblDebtRatio.Text = string.Format("{0} %", Math.Round(debtRatio).ToString());
+                    lblGoldRatio.Text = string.Format("{0} %", Math.Round(goldRatio).ToString());
+                }
+                else
+                {
+                    lblEquityShareRatio.Text = string.Format("{0} %", "0");
+                    lblDebtRatio.Text = string.Format("{0} %", "0");
+                    lblGoldRatio.Text = string.Format("{0} %", "0");
+                }
             }
         }
 
+        #endregion
+
+        #region "Goal Status"
+        private void getGoalStatus()
+        {
+            CurrentStatusToGoal csGoal = new CurrentStatusToGoal();
+            _dtCurrentStatustoGoals = csGoal.CurrentStatusToGoalCalculation(_planeId);
+            dtGridCurrentStatusGoals.DataSource = _dtCurrentStatustoGoals;
+            dtGridCurrentStatusGoals.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomRight;
+            dtGridCurrentStatusGoals.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomRight;
+            dtGridCurrentStatusGoals.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomRight;
+            dtGridCurrentStatusGoals.Columns[0].Visible = false;
+            dtGridCurrentStatusGoals.Columns[1].Width = 250;
+            dtGridCurrentStatusGoals.Columns[2].HeaderText = "Current Status Fund Allocated";
+            dtGridCurrentStatusGoals.Columns[3].HeaderText = "Fund Allocation";
+            dtGridCurrentStatusGoals.Columns[4].HeaderText = "Excess Fund";
+        }
         #endregion
     }
 }

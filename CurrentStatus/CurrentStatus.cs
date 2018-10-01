@@ -28,6 +28,7 @@ namespace FinancialPlannerClient.CurrentStatus
         DataTable _dtSCSS;
         private DataTable _dtRD;
         DataTable _dtNSC;
+        DataTable _dtULIP;
 
         public CurrentStatus()
         {
@@ -59,29 +60,13 @@ namespace FinancialPlannerClient.CurrentStatus
         {
             new PlannerInfo.FamilyMemberInfo().FillFamilyMemberInCombo(this._client.ID, cmbGeneralInsuranceApplicant);
         }
-        private void fillMutualFundInvesterCombobox()
-        {
-            new PlannerInfo.FamilyMemberInfo().FillFamilyMemberInCombo(this._client.ID, cmbMFInvester);
-        }
-        private void fillMutualfundGolsCombobox()
-        {
-            cmbMFGoal.Items.Clear();
-            _goals = new GoalsInfo().GetAll(_planeId);
-            foreach (var goal in _goals)
-            {
-                cmbMFGoal.Items.Add(goal.Name);
-            }
-            cmbMFGoal.Items.Add("");
-        }
+       
 
         private void fillNPSInvesterCombobox()
         {
             new PlannerInfo.FamilyMemberInfo().FillFamilyMemberInCombo(this._client.ID, cmbNPSInvester);
         }
-        private void fillSharesInvesterCombobox()
-        {
-            new PlannerInfo.FamilyMemberInfo().FillFamilyMemberInCombo(this._client.ID, cmbSharesInvester);
-        }
+       
         private void fillPlanData()
         {
             if (_dtPlan != null)
@@ -146,6 +131,9 @@ namespace FinancialPlannerClient.CurrentStatus
                     break;
                 case "NSC":
                     fillupNSCInfo();
+                    break;
+                case "ULIP":
+                    fillupULIPInfo();
                     break;
             }
         }
@@ -1118,9 +1106,633 @@ namespace FinancialPlannerClient.CurrentStatus
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
-        
+
         #endregion
 
+        #region "Mutual Fund"
+        private void fillupMutualFundInfo()
+        {
+            MutualFundInfo mutualFundInfo = new MutualFundInfo();
+            _dtMutualFund = mutualFundInfo.GetMutualFundInfo(_planeId);
+            dtGridMF.DataSource = _dtMutualFund;
+            fillMutualFundInvesterCombobox();
+            fillMutualfundGolsCombobox();
+        }
+
+        private void fillMutualFundInvesterCombobox()
+        {
+            new PlannerInfo.FamilyMemberInfo().FillFamilyMemberInCombo(this._client.ID, cmbMFInvester);
+        }
+        private void fillMutualfundGolsCombobox()
+        {
+            cmbMFGoal.Items.Clear();
+            _goals = new GoalsInfo().GetAll(_planeId);
+            foreach (var goal in _goals)
+            {
+                cmbMFGoal.Items.Add(goal.Name);
+            }
+            cmbMFGoal.Items.Add("");
+        }
+
+        private void dtGridMF_SelectionChanged(object sender, EventArgs e)
+        {
+            DataRow dr = getSelectedDataRowForMutualFund();
+            if (dr != null)
+                displayMutualFundInfo(dr);
+            else
+                setDefaultValueMF();
+        }
+
+        private void displayMutualFundInfo(DataRow dr)
+        {
+            if (dr != null)
+            {
+                cmbMFInvester.Tag = dr.Field<string>("ID");
+                cmbMFInvester.Text = dr.Field<string>("InvesterName");
+                cmbSchemeName.Text = dr.Field<string>("SchemeName");
+                txtFolioNo.Text = dr.Field<string>("FolioNo");
+                txtNav.Text = dr["NAV"].ToString();
+                txtUnits.Text = dr["units"].ToString();
+                calculateAndSetMFCurrentValue();
+                txtMFEquityRatio.Text = dr["EquityRatio"].ToString();
+                txtMFGoldRatio.Text = dr["GoldRatio"].ToString();
+                txtMFDebtRatio.Text = dr["DebtRatio"].ToString();
+                txtSIPAmount.Text = dr["SIP"].ToString();
+                txtFreeUnits.Text = dr["FreeUnit"].ToString();
+                txtRedumptionAmt.Text = dr["RedumptionAmount"].ToString();
+                if (dr["GoalID"] != null)
+                {
+                    cmbMFGoal.Tag = dr["GoalId"].ToString();
+                    cmbMFGoal.Text = getGoalName(int.Parse(cmbMFGoal.Tag.ToString()));
+                }
+                else
+                {
+                    cmbMFGoal.Tag = "0";
+                    cmbMFGoal.Text = "";
+                }
+                txtMFFirstHolder.Text = dr["FirstHolder"].ToString();
+                txtMFSecondHolder.Text = dr["SecondHolder"].ToString();
+                txtMFNominee.Text = dr["Nominee"].ToString();
+            }
+        }
+
+        private DataRow getSelectedDataRowForMutualFund()
+        {
+            if (dtGridMF.SelectedRows.Count >= 1)
+            {
+                int selectedRowIndex = dtGridMF.SelectedRows[0].Index;
+                if (dtGridMF.SelectedRows[0].Cells["ID"].Value != System.DBNull.Value)
+                {
+                    int selectedUserId = int.Parse(dtGridMF.SelectedRows[0].Cells["ID"].Value.ToString());
+                    DataRow[] rows = _dtMutualFund.Select("Id ='" + selectedUserId +"'");
+                    foreach (DataRow dr in rows)
+                    {
+                        return dr;
+                    }
+                }
+            }
+            return null;
+        }
+
+        private void btnAddMF_Click(object sender, EventArgs e)
+        {
+            grpMF.Enabled = true;
+            setDefaultValueMF();
+        }
+
+        private void setDefaultValueMF()
+        {
+            cmbMFInvester.Tag = "0";
+            cmbMFInvester.Text = "";
+            cmbSchemeName.Text = "";
+            txtFolioNo.Text = "";
+            txtNav.Text = "";
+            txtUnits.Text = "";
+            txtMFCurrentVal.Text = "0";
+            txtMFEquityRatio.Text = "0";
+            txtMFGoldRatio.Text = "0";
+            txtMFDebtRatio.Text = "0";
+            txtFreeUnits.Text = "0";
+            txtRedumptionAmt.Text = "";
+            cmbMFGoal.Text = "";
+            cmbMFGoal.Tag = "0";
+            txtMFFirstHolder.Text = "";
+            txtMFSecondHolder.Text = "";
+            txtMFNominee.Text = "";
+        }
+
+        private void txtNav_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void txtNav_Leave(object sender, EventArgs e)
+        {
+            calculateAndSetMFCurrentValue();
+        }
+        private void calculateAndSetMFCurrentValue()
+        {
+            float nav = 0;
+            double units = 0;
+            float.TryParse(txtNav.Text, out nav);
+            double.TryParse(txtUnits.Text, out units);
+            txtMFCurrentVal.Text = (nav * units).ToString();
+        }
+
+        private void btnCancelMF_Click(object sender, EventArgs e)
+        {
+            grpMF.Enabled = false;
+        }
+
+        private void btnSaveMF_Click(object sender, EventArgs e)
+        {
+            MutualFundInfo mutualFundInfo = new MutualFundInfo();
+            MutualFund mf = getMutualFundData();
+            bool isSaved = false;
+
+            if (mf != null && mf.Id == 0)
+                isSaved = mutualFundInfo.Add(mf);
+            else
+                isSaved = mutualFundInfo.Update(mf);
+
+            if (isSaved)
+            {
+                MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                fillupMutualFundInfo();
+                grpMF.Enabled = false;
+            }
+            else
+                MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private MutualFund getMutualFundData()
+        {
+            MutualFund mf = new MutualFund();
+            mf.Id = int.Parse(cmbMFInvester.Tag.ToString());
+            mf.Pid = _planeId;
+            mf.InvesterName = cmbMFInvester.Text;
+            mf.SchemeName = cmbSchemeName.Text;
+            mf.FolioNo = txtFolioNo.Text;
+            mf.Nav = float.Parse(txtNav.Text);
+            mf.Units = int.Parse(txtUnits.Text);
+            mf.EquityRatio = float.Parse(txtMFEquityRatio.Text);
+            mf.GoldRatio = float.Parse(txtMFGoldRatio.Text);
+            mf.DebtRatio = float.Parse(txtMFDebtRatio.Text);
+            mf.FreeUnit = int.Parse(txtFreeUnits.Text);
+            mf.RedumptionAmount = double.Parse(txtRedumptionAmt.Text);
+            mf.GoalID = int.Parse(cmbMFGoal.Tag.ToString());
+            mf.CreatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+            mf.CreatedBy = Program.CurrentUser.Id;
+            mf.UpdatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+            mf.UpdatedBy = Program.CurrentUser.Id;
+            mf.MachineName = Environment.MachineName;
+            mf.FirstHolder = txtMFFirstHolder.Text;
+            mf.SecondHolder = txtMFSecondHolder.Text;
+            mf.Nominee = txtMFNominee.Text;
+            return mf;
+        }
+
+        private void cmbMFGoal_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbMFGoal.Text != "")
+                cmbMFGoal.Tag = _goals.FirstOrDefault(i => i.Name == cmbMFGoal.Text).Id;
+            else
+                cmbMFGoal.Tag = "0";
+        }
+
+        private void btnEditMF_Click(object sender, EventArgs e)
+        {
+            if (dtGridMF.SelectedRows.Count > 0)
+                grpMF.Enabled = true;
+        }
+
+        private void btnDeleteMF_Click(object sender, EventArgs e)
+        {
+            if (dtGridMF.SelectedRows.Count > 0)
+            {
+                if (MessageBox.Show("Are you sure, you want to delete this record?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    MutualFundInfo mutualFundInfo = new MutualFundInfo();
+                    MutualFund mutualFund =  getMutualFundData();
+                    mutualFundInfo.Delete(mutualFund);
+                    fillupMutualFundInfo();
+                }
+            }
+        }
+        #endregion
+
+        #region "ULIP"
+        private void fillupULIPInfo()
+        {
+            ULIPInfo ULIPInfo = new ULIPInfo();
+            _dtULIP = ULIPInfo.GetULIPInfo(_planeId);
+            dtGridULIP.DataSource = _dtULIP;
+            fillULIPInvesterCombobox();
+            fillULIPGolsCombobox();
+        }
+
+        private void fillULIPInvesterCombobox()
+        {
+            new PlannerInfo.FamilyMemberInfo().FillFamilyMemberInCombo(this._client.ID, cmbULIPInvestor);
+        }
+        private void fillULIPGolsCombobox()
+        {
+            cmbULIPGoal.Items.Clear();
+            _goals = new GoalsInfo().GetAll(_planeId);
+            foreach (var goal in _goals)
+            {
+                cmbULIPGoal.Items.Add(goal.Name);
+            }
+            cmbULIPGoal.Items.Add("");
+        }
+
+        private void dtGridULIP_SelectionChanged(object sender, EventArgs e)
+        {
+            DataRow dr = getSelectedDataRowForULIP();
+            if (dr != null)
+                displayULIPInfo(dr);
+            else
+                setDefaultValueULIP();
+        }
+
+        private void displayULIPInfo(DataRow dr)
+        {
+            if (dr != null)
+            {
+                cmbULIPInvestor.Tag = dr.Field<string>("ID");
+                cmbULIPInvestor.Text = dr.Field<string>("InvesterName");
+                cmbULIPScheme.Text = dr.Field<string>("SchemeName");
+                txtULIPFolioNo.Text = dr.Field<string>("FolioNo");
+                txtULIPNav.Text = dr["NAV"].ToString();
+                txtULIPUnits.Text = dr["units"].ToString();
+                calculateAndSetULIPCurrentValue();
+                txtULIPEquityRatio.Text = dr["EquityRatio"].ToString();
+                txtULIPGoldRatio.Text = dr["GoldRatio"].ToString();
+                txtULIPDebtRatio.Text = dr["DebtRatio"].ToString();
+                txtULIPSIPAmt.Text = dr["SIP"].ToString();
+                txtULIPFreeUnits.Text = dr["FreeUnit"].ToString();
+                txtULIPRedemptionAmt.Text = dr["RedumptionAmount"].ToString();
+                if (dr["GoalID"] != null)
+                {
+                    cmbULIPGoal.Tag = dr["GoalId"].ToString();
+                    cmbULIPGoal.Text = getGoalName(int.Parse(cmbULIPGoal.Tag.ToString()));
+                }
+                else
+                {
+                    cmbULIPGoal.Tag = "0";
+                    cmbULIPGoal.Text = "";
+                }
+                txtULIPFirstHolder.Text = dr["FirstHolder"].ToString();
+                txtULIPSecondHolder.Text = dr["SecondHolder"].ToString();
+                txtULIPNominee.Text = dr["Nominee"].ToString();
+            }
+        }
+
+        private DataRow getSelectedDataRowForULIP()
+        {
+            if (dtGridULIP.SelectedRows.Count >= 1)
+            {
+                int selectedRowIndex = dtGridULIP.SelectedRows[0].Index;
+                if (dtGridULIP.SelectedRows[0].Cells["ID"].Value != System.DBNull.Value)
+                {
+                    int selectedUserId = int.Parse(dtGridULIP.SelectedRows[0].Cells["ID"].Value.ToString());
+                    DataRow[] rows = _dtULIP.Select("Id ='" + selectedUserId +"'");
+                    foreach (DataRow dr in rows)
+                    {
+                        return dr;
+                    }
+                }
+            }
+            return null;
+        }
+
+        private void btnAddULIP_Click(object sender, EventArgs e)
+        {
+            grpULIP.Enabled = true;
+            setDefaultValueULIP();
+        }
+
+        private void setDefaultValueULIP()
+        {
+            cmbULIPInvestor.Tag = "0";
+            cmbULIPInvestor.Text = "";
+            cmbULIPScheme.Text = "";
+            txtULIPFolioNo.Text = "";
+            txtULIPNav.Text = "";
+            txtULIPUnits.Text = "";
+            txtULIPCurrentValue.Text = "0";
+            txtULIPEquityRatio.Text = "0";
+            txtULIPGoldRatio.Text = "0";
+            txtULIPDebtRatio.Text = "0";
+            txtULIPFreeUnits.Text = "0";
+            txtULIPRedemptionAmt.Text = "";
+            cmbULIPGoal.Text = "";
+            cmbULIPGoal.Tag = "0";
+            txtULIPFirstHolder.Text = "";
+            txtULIPSecondHolder.Text = "";
+            txtULIPNominee.Text = "";
+        }
+
+        private void txtULIPNav_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void txtULIPNav_Leave(object sender, EventArgs e)
+        {
+            calculateAndSetULIPCurrentValue();
+        }
+        private void calculateAndSetULIPCurrentValue()
+        {
+            float nav = 0;
+            double units = 0;
+            float.TryParse(txtULIPNav.Text, out nav);
+            double.TryParse(txtULIPUnits.Text, out units);
+            txtULIPCurrentValue.Text = (nav * units).ToString();
+        }
+
+        private void btnCancelULIP_Click(object sender, EventArgs e)
+        {
+            grpULIP.Enabled = false;
+        }
+
+        private void btnSaveULIP_Click(object sender, EventArgs e)
+        {
+            ULIPInfo ULIPInfo = new ULIPInfo();
+            ULIP ULIP = getULIPData();
+            bool isSaved = false;
+
+            if (ULIP != null && ULIP.Id == 0)
+                isSaved = ULIPInfo.Add(ULIP);
+            else
+                isSaved = ULIPInfo.Update(ULIP);
+
+            if (isSaved)
+            {
+                MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                fillupULIPInfo();
+                grpULIP.Enabled = false;
+            }
+            else
+                MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private ULIP getULIPData()
+        {
+            ULIP ULIP = new ULIP();
+            ULIP.Id = int.Parse(cmbULIPInvestor.Tag.ToString());
+            ULIP.Pid = _planeId;
+            ULIP.InvesterName = cmbULIPInvestor.Text;
+            ULIP.SchemeName = cmbULIPScheme.Text;
+            ULIP.FolioNo = txtULIPFolioNo.Text;
+            ULIP.Nav = float.Parse(txtULIPNav.Text);
+            ULIP.Units = int.Parse(txtULIPUnits.Text);
+            ULIP.EquityRatio = float.Parse(txtULIPEquityRatio.Text);
+            ULIP.GoldRatio = float.Parse(txtULIPGoldRatio.Text);
+            ULIP.DebtRatio = float.Parse(txtULIPDebtRatio.Text);
+            ULIP.FreeUnit = int.Parse(txtULIPFreeUnits.Text);
+            ULIP.RedumptionAmount = double.Parse(txtULIPRedemptionAmt.Text);
+            ULIP.GoalID = int.Parse(cmbULIPGoal.Tag.ToString());
+            ULIP.CreatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+            ULIP.CreatedBy = Program.CurrentUser.Id;
+            ULIP.UpdatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+            ULIP.UpdatedBy = Program.CurrentUser.Id;
+            ULIP.MachineName = Environment.MachineName;
+            ULIP.FirstHolder = txtULIPFirstHolder.Text;
+            ULIP.SecondHolder = txtULIPSecondHolder.Text;
+            ULIP.Nominee = txtULIPNominee.Text;
+            return ULIP;
+        }
+
+        private void cmbULIPGoal_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbULIPGoal.Text != "")
+                cmbULIPGoal.Tag = _goals.FirstOrDefault(i => i.Name == cmbULIPGoal.Text).Id;
+            else
+                cmbULIPGoal.Tag = "0";
+        }
+
+        private void btnEditULIP_Click(object sender, EventArgs e)
+        {
+            if (dtGridULIP.SelectedRows.Count > 0)
+                grpULIP.Enabled = true;
+        }
+
+        private void btnDeleteULIP_Click(object sender, EventArgs e)
+        {
+            if (dtGridULIP.SelectedRows.Count > 0)
+            {
+                if (MessageBox.Show("Are you sure, you want to delete this record?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    ULIPInfo ULIPInfo = new ULIPInfo();
+                    ULIP ULIP =  getULIPData();
+                    ULIPInfo.Delete(ULIP);
+                    fillupULIPInfo();
+                }
+            }
+        }
+        #endregion
+
+        #region "Shares"
+
+        private void fillSharesGolsCombobox()
+        {
+            cmbSharesGoal.Items.Clear();
+            _goals = new GoalsInfo().GetAll(_planeId);
+            foreach (var goal in _goals)
+            {
+                cmbSharesGoal.Items.Add(goal.Name);
+            }
+            cmbSharesGoal.Items.Add("");
+        }
+        private void fillupSharesInfo()
+        {
+            SharesInfo sharesInfo = new SharesInfo();
+            _dtShares = sharesInfo.GetSharesInfo(_planeId);
+            dtGridShares.DataSource = _dtShares;
+            fillSharesInvesterCombobox();
+            fillSharesGolsCombobox();
+        }
+        private void fillSharesInvesterCombobox()
+        {
+            new PlannerInfo.FamilyMemberInfo().FillFamilyMemberInCombo(this._client.ID, cmbSharesInvester);
+        }
+
+        private void calculateAndSetSharesCurrentValue()
+        {
+            float nav = 0;
+            double units = 0;
+            float.TryParse(txtSharesMarketPrice.Text, out nav);
+            double.TryParse(txtNoOfShares.Text, out units);
+            txtSharesCurrentValue.Text = (nav * units).ToString();
+        }
+
+        private DataRow getSelectedDataRowForShares()
+        {
+            if (dtGridShares.SelectedRows.Count >= 1 && _dtShares != null)
+            {
+                int selectedRowIndex = dtGridShares.SelectedRows[0].Index;
+                if (dtGridShares.SelectedRows[0].Cells["ID"].Value != System.DBNull.Value)
+                {
+                    int selectedUserId = int.Parse(dtGridShares.SelectedRows[0].Cells["ID"].Value.ToString());
+
+                    DataRow[] rows = _dtShares.Select("Id ='" + selectedUserId +"'");
+                    foreach (DataRow dr in rows)
+                    {
+                        return dr;
+                    }
+                }
+            }
+            return null;
+        }
+
+        private void dtGridShares_SelectionChanged(object sender, EventArgs e)
+        {
+            DataRow dr = getSelectedDataRowForShares();
+            if (dr != null)
+                displaySharesInfo(dr);
+            else
+                setDefaultValueShares();
+        }
+
+        private void setDefaultValueShares()
+        {
+            cmbSharesInvester.Tag = "0";
+            cmbSharesInvester.Text = "";
+            cmbSharesCompnay.Text = "";
+            txtSharesFaceValue.Text = "0";
+            txtNoOfShares.Text = "0";
+            txtSharesMarketPrice.Text = "0";
+            txtSharesCurrentValue.Text = "0";
+            calculateAndSetSharesCurrentValue();
+            cmbSharesGoal.Tag = "0";
+            cmbSharesGoal.Text = "";
+            txtSharesFirstHolder.Text = "";
+            txtSharesSecondHolder.Text = "";
+            txtSharesNominee.Text = "";
+        }
+
+        private void displaySharesInfo(DataRow dr)
+        {
+            if (dr != null)
+            {
+                cmbSharesInvester.Tag = dr.Field<string>("ID");
+                cmbSharesInvester.Text = dr.Field<string>("InvesterName");
+                cmbSharesCompnay.Text = dr.Field<string>("CompanyName");
+                txtSharesFaceValue.Text = dr.Field<string>("FaceValue");
+                txtNoOfShares.Text = dr["NoOfShares"].ToString();
+                txtSharesMarketPrice.Text = dr["MarketPrice"].ToString();
+                txtSharesCurrentValue.Text = dr["CurrentValue"].ToString();
+                calculateAndSetSharesCurrentValue();
+                if (dr["GoalID"] != null)
+                {
+                    cmbSharesGoal.Tag = dr["GoalId"].ToString();
+                    cmbSharesGoal.Text = getGoalName(int.Parse(cmbSharesGoal.Tag.ToString()));
+                }
+                else
+                {
+                    cmbSharesGoal.Tag = "0";
+                    cmbSharesGoal.Text = "";
+                }
+                txtSharesFirstHolder.Text = dr["FirstHolder"].ToString();
+                txtSharesSecondHolder.Text = dr["SecondHolder"].ToString();
+                txtSharesNominee.Text = dr["Nominee"].ToString();
+            }
+        }
+
+        private void btnSharesSave_Click(object sender, EventArgs e)
+        {
+            SharesInfo SharesInfo = new SharesInfo();
+            Shares shares = getSharesData();
+            bool isSaved = false;
+
+            if (shares != null && shares.Id == 0)
+                isSaved = SharesInfo.Add(shares);
+            else
+                isSaved = SharesInfo.Update(shares);
+
+            if (isSaved)
+            {
+                MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                fillupSharesInfo();
+                grpShares.Enabled = false;
+            }
+            else
+                MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private Shares getSharesData()
+        {
+            Shares  shares = new Shares();
+            shares.Id = int.Parse(cmbSharesInvester.Tag.ToString());
+            shares.Pid = _planeId;
+            shares.InvesterName = cmbSharesInvester.Text;
+            shares.CompanyName = cmbSharesCompnay.Text;
+            shares.FaceValue = float.Parse(txtSharesFaceValue.Text);
+            shares.NoOfShares = int.Parse(txtNoOfShares.Text);
+            shares.MarketPrice = float.Parse(txtSharesMarketPrice.Text);
+            shares.CurrentValue = double.Parse(txtSharesCurrentValue.Text);
+            shares.GoalID = int.Parse(cmbSharesGoal.Tag.ToString());
+            shares.CreatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+            shares.CreatedBy = Program.CurrentUser.Id;
+            shares.UpdatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+            shares.UpdatedBy = Program.CurrentUser.Id;
+            shares.MachineName = Environment.MachineName;
+            shares.FirstHolder = txtSharesFirstHolder.Text;
+            shares.SecondHolder = txtSharesSecondHolder.Text;
+            shares.Nominee = txtSharesNominee.Text;
+            return shares;
+        }
+
+        private void btnSharesCancel_Click(object sender, EventArgs e)
+        {
+            grpShares.Enabled = false;
+        }
+
+        private void btnSharesEdit_Click(object sender, EventArgs e)
+        {
+            if (dtGridShares.SelectedRows.Count > 0)
+                grpShares.Enabled = true;
+        }
+
+        private void btnSharesDelete_Click(object sender, EventArgs e)
+        {
+            if (dtGridShares.SelectedRows.Count > 0)
+            {
+                if (MessageBox.Show("Are you sure, you want to delete this record?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    SharesInfo SharesInfo = new SharesInfo();
+                    Shares Shares  =  getSharesData();
+                    SharesInfo.Delete(Shares);
+                    fillupSharesInfo();
+                }
+            }
+        }
+
+        private void btnSharesAdd_Click(object sender, EventArgs e)
+        {
+            grpShares.Enabled = true;
+            setDefaultValueShares();
+        }
+
+        private void txtNoOfShares_Leave(object sender, EventArgs e)
+        {
+            calculateAndSetSharesCurrentValue();
+        }
+
+        private void txtSharesMarketPrice_Leave(object sender, EventArgs e)
+        {
+            calculateAndSetSharesCurrentValue();
+        }
+
+        private void txtSharesFaceValue_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        #endregion
+
+        #region "Saving Account"
         private void fillupSavingAccount()
         {
             SavingAccountInfo savingAccountInfo = new SavingAccountInfo();
@@ -1147,6 +1759,135 @@ namespace FinancialPlannerClient.CurrentStatus
             new PlannerInfo.FamilyMemberInfo().FillFamilyMemberInCombo(this._client.ID, cmbSAInvester);
         }
 
+
+        private void dtGridSavingAccount_SelectionChanged(object sender, EventArgs e)
+        {
+            DataRow dr = getSelectedDataRow(dtGridSavingAccount,_dtSA);
+            if (dr != null)
+                displaySAInfo(dr);
+            else
+                setDefaultValueSA();
+        }
+
+        private void setDefaultValueSA()
+        {
+            cmbSAInvester.Tag = "0";
+            cmbSAInvester.Text = "";
+            txtSABank.Text = "";
+            cmbSAAccountNo.Text = "";
+            txtSABranch.Text = "";
+            txtSABalance.Text = "";
+            txtSAROI.Text = "";
+            cmbSAGoalId.Tag = "0";
+            cmbSAGoalId.Text = "";
+        }
+
+        private void displaySAInfo(DataRow dr)
+        {
+            if (dr != null)
+            {
+                cmbSAInvester.Tag = dr.Field<string>("ID");
+                cmbSAInvester.Text = dr.Field<string>("InvesterName");
+                txtSABank.Text = dr.Field<string>("BankName");
+                cmbSAAccountNo.Text = dr.Field<string>("AccountNo");
+                txtSABranch.Text = dr.Field<string>("Branch");
+                txtSABalance.Text = dr.Field<string>("Balance");
+                txtSAROI.Text = dr.Field<string>("IntRate");
+                if (dr["GoalID"] != null)
+                {
+                    cmbSAGoalId.Tag = dr["GoalId"].ToString();
+                    cmbSAGoalId.Text = getGoalName(int.Parse(cmbSAGoalId.Tag.ToString()));
+                }
+                else
+                {
+                    cmbSAGoalId.Tag = "0";
+                    cmbSAGoalId.Text = "";
+                }
+            }
+        }
+
+        private void btnAddSA_Click(object sender, EventArgs e)
+        {
+            grpSa.Enabled = true;
+            setDefaultValueSA();
+        }
+
+        private void btnEditSA_Click(object sender, EventArgs e)
+        {
+            grpSa.Enabled = true;
+        }
+
+        private void btnCancelSA_Click(object sender, EventArgs e)
+        {
+            grpSa.Enabled = false;
+        }
+
+        private void btnDeleteSA_Click(object sender, EventArgs e)
+        {
+            if (dtGridSavingAccount.SelectedRows.Count > 0)
+            {
+                if (MessageBox.Show("Are you sure, you want to delete this record?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    SavingAccountInfo saInfo = new SavingAccountInfo();
+                    SavingAccount sa  =  getSA();
+                    saInfo.Delete(sa);
+                    fillupSavingAccount();
+                }
+            }
+        }
+
+        private SavingAccount getSA()
+        {
+            SavingAccount sa = new SavingAccount();
+            sa.Id = int.Parse(cmbSAInvester.Tag.ToString());
+            sa.Pid = _planeId;
+            sa.InvesterName = cmbSAInvester.Text;
+            sa.BankName = txtSABank.Text;
+            sa.AccountNo = cmbSAAccountNo.Text;
+            sa.Branch = txtSABranch.Text;
+            sa.Balance = double.Parse(txtSABalance.Text);
+            sa.IntRate = float.Parse(txtSAROI.Text);
+            sa.GoalId = int.Parse(cmbSAGoalId.Tag.ToString());
+            sa.CreatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+            sa.CreatedBy = Program.CurrentUser.Id;
+            sa.UpdatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+            sa.UpdatedBy = Program.CurrentUser.Id;
+            sa.MachineName = Environment.MachineName;
+            return sa;
+        }
+
+
+        private void cmbSAGoalId_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (cmbSAGoalId.Text != "")
+                cmbSAGoalId.Tag = _goals.FirstOrDefault(i => i.Name == cmbSAGoalId.Text).Id;
+            else
+                cmbSAGoalId.Tag = "0";
+        }
+
+        private void btnSaveSA_Click(object sender, EventArgs e)
+        {
+            SavingAccountInfo SavingAccountInfo = new SavingAccountInfo();
+            SavingAccount sa = getSA();
+            bool isSaved = false;
+
+            if (sa != null && sa.Id == 0)
+                isSaved = SavingAccountInfo.Add(sa);
+            else
+                isSaved = SavingAccountInfo.Update(sa);
+
+            if (isSaved)
+            {
+                MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                fillupSavingAccount();
+                grpSa.Enabled = false;
+            }
+            else
+                MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion
+
         private void fillupBondInfo()
         {
             BondInfo bondInfo = new BondInfo();
@@ -1172,15 +1913,6 @@ namespace FinancialPlannerClient.CurrentStatus
             new PlannerInfo.FamilyMemberInfo().FillFamilyMemberInCombo(this._client.ID, cmbBondsInvester);
         }
 
-        private void fillupSharesInfo()
-        {
-            SharesInfo sharesInfo = new SharesInfo();
-            _dtShares = sharesInfo.GetSharesInfo(_planeId);
-            dtGridShares.DataSource = _dtShares;
-            fillSharesInvesterCombobox();
-            fillSharesGolsCombobox();
-        }
-
         private void fillupNPSInfo()
         {
             NPSInfo npsInfo = new NPSInfo();
@@ -1199,27 +1931,7 @@ namespace FinancialPlannerClient.CurrentStatus
                 cmbNPSGoal.Items.Add(goal.Name);
             }
             cmbNPSGoal.Items.Add("");
-        }
-
-        private void fillSharesGolsCombobox()
-        {
-            cmbSharesGoal.Items.Clear();
-            _goals = new GoalsInfo().GetAll(_planeId);
-            foreach (var goal in _goals)
-            {
-                cmbSharesGoal.Items.Add(goal.Name);
-            }
-            cmbSharesGoal.Items.Add("");
-        }
-
-        private void fillupMutualFundInfo()
-        {
-            MutualFundInfo mutualFundInfo = new MutualFundInfo();
-            _dtMutualFund = mutualFundInfo.GetMutualFundInfo(_planeId);
-            dtGridMF.DataSource = _dtMutualFund;
-            fillMutualFundInvesterCombobox();
-            fillMutualfundGolsCombobox();
-        }
+        }       
 
         private void fillupGenralInsuranceInfo()
         {
@@ -1611,46 +2323,7 @@ namespace FinancialPlannerClient.CurrentStatus
                     fillLifeInsuranceInfo();
                 }
             }
-        }
-
-        private void dtGridMF_SelectionChanged(object sender, EventArgs e)
-        {
-            DataRow dr = getSelectedDataRowForMutualFund();
-            if (dr != null)
-                displayMutualFundInfo(dr);
-            else
-                setDefaultValueMF();
-        }
-
-        private void displayMutualFundInfo(DataRow dr)
-        {
-            if (dr != null)
-            {
-                cmbMFInvester.Tag = dr.Field<string>("ID");
-                cmbMFInvester.Text = dr.Field<string>("InvesterName");
-                cmbSchemeName.Text = dr.Field<string>("SchemeName");
-                txtFolioNo.Text = dr.Field<string>("FolioNo");
-                txtNav.Text = dr["NAV"].ToString();
-                txtUnits.Text = dr["units"].ToString();
-                calculateAndSetMFCurrentValue();
-                txtMFEquityRatio.Text = dr["EquityRatio"].ToString();
-                txtMFGoldRatio.Text = dr["GoldRatio"].ToString();
-                txtMFDebtRatio.Text = dr["DebtRatio"].ToString();
-                txtSIPAmount.Text = dr["SIP"].ToString();
-                txtFreeUnits.Text = dr["FreeUnit"].ToString();
-                txtRedumptionAmt.Text = dr["RedumptionAmount"].ToString();
-                if (dr["GoalID"] != null)
-                {
-                    cmbMFGoal.Tag = dr["GoalId"].ToString();
-                    cmbMFGoal.Text = getGoalName(int.Parse(cmbMFGoal.Tag.ToString()));
-                }
-                else
-                {
-                    cmbMFGoal.Tag = "0";
-                    cmbMFGoal.Text = "";
-                }
-            }
-        }
+        }    
 
         private string getGoalName(int v)
         {
@@ -1659,67 +2332,7 @@ namespace FinancialPlannerClient.CurrentStatus
             else
                 return string.Empty;
         }
-
-        private DataRow getSelectedDataRowForMutualFund()
-        {
-            if (dtGridMF.SelectedRows.Count >= 1)
-            {
-                int selectedRowIndex = dtGridMF.SelectedRows[0].Index;
-                if (dtGridMF.SelectedRows[0].Cells["ID"].Value != System.DBNull.Value)
-                {
-                    int selectedUserId = int.Parse(dtGridMF.SelectedRows[0].Cells["ID"].Value.ToString());
-                    DataRow[] rows = _dtMutualFund.Select("Id ='" + selectedUserId +"'");
-                    foreach (DataRow dr in rows)
-                    {
-                        return dr;
-                    }
-                }
-            }
-            return null;
-        }
-
-        private void btnAddMF_Click(object sender, EventArgs e)
-        {
-            grpMF.Enabled = true;
-            setDefaultValueMF();
-        }
-
-        private void setDefaultValueMF()
-        {
-            cmbMFInvester.Tag = "0";
-            cmbMFInvester.Text = "";
-            cmbSchemeName.Text = "";
-            txtFolioNo.Text = "";
-            txtNav.Text = "";
-            txtUnits.Text = "";
-            txtMFCurrentVal.Text = "0";
-            txtMFEquityRatio.Text = "0";
-            txtMFGoldRatio.Text = "0";
-            txtMFDebtRatio.Text = "0";
-            txtFreeUnits.Text = "0";
-            txtRedumptionAmt.Text = "";
-            cmbMFGoal.Text = "";
-            cmbMFGoal.Tag = "0";
-        }
-
-        private void txtNav_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
-        }
-
-        private void txtNav_Leave(object sender, EventArgs e)
-        {
-            calculateAndSetMFCurrentValue();
-        }
-        private void calculateAndSetMFCurrentValue()
-        {
-            float nav = 0;
-            double units = 0;
-            float.TryParse(txtNav.Text, out nav);
-            double.TryParse(txtUnits.Text, out units);
-            txtMFCurrentVal.Text = (nav * units).ToString();
-        }
-
+       
         private void calculateAndSetNPSCurrentValue()
         {
             float nav = 0;
@@ -1728,64 +2341,7 @@ namespace FinancialPlannerClient.CurrentStatus
             double.TryParse(txtNPSUnits.Text, out units);
             txtNPSCurrentVal.Text = (nav * units).ToString();
         }
-        private void calculateAndSetSharesCurrentValue()
-        {
-            float nav = 0;
-            double units = 0;
-            float.TryParse(txtSharesMarketPrice.Text, out nav);
-            double.TryParse(txtNoOfShares.Text, out units);
-            txtSharesCurrentValue.Text = (nav * units).ToString();
-        }
-        private void btnCancelMF_Click(object sender, EventArgs e)
-        {
-            grpMF.Enabled = false;
-        }
-
-        private void btnSaveMF_Click(object sender, EventArgs e)
-        {
-            MutualFundInfo mutualFundInfo = new MutualFundInfo();
-            MutualFund mf = getMutualFundData();
-            bool isSaved = false;
-
-            if (mf != null && mf.Id == 0)
-                isSaved = mutualFundInfo.Add(mf);
-            else
-                isSaved = mutualFundInfo.Update(mf);
-
-            if (isSaved)
-            {
-                MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                fillupMutualFundInfo();
-                grpMF.Enabled = false;
-            }
-            else
-                MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
-
-        private MutualFund getMutualFundData()
-        {
-            MutualFund mf = new MutualFund();
-            mf.Id = int.Parse(cmbMFInvester.Tag.ToString());
-            mf.Pid = _planeId;
-            mf.InvesterName = cmbMFInvester.Text;
-            mf.SchemeName = cmbSchemeName.Text;
-            mf.FolioNo = txtFolioNo.Text;
-            mf.Nav = float.Parse(txtNav.Text);
-            mf.Units = int.Parse(txtUnits.Text);
-            mf.EquityRatio = float.Parse(txtMFEquityRatio.Text);
-            mf.GoldRatio = float.Parse(txtMFGoldRatio.Text);
-            mf.DebtRatio = float.Parse(txtMFDebtRatio.Text);
-            mf.FreeUnit = int.Parse(txtFreeUnits.Text);
-            mf.RedumptionAmount = double.Parse(txtRedumptionAmt.Text);
-            mf.GoalID = int.Parse(cmbMFGoal.Tag.ToString());
-            mf.CreatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
-            mf.CreatedBy = Program.CurrentUser.Id;
-            mf.UpdatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
-            mf.UpdatedBy = Program.CurrentUser.Id;
-            mf.MachineName = Environment.MachineName;
-            return mf;
-        }
-
+              
         private void cmbSchemeName_Enter(object sender, EventArgs e)
         {
             if (_dtMutualFund != null)
@@ -1797,35 +2353,7 @@ namespace FinancialPlannerClient.CurrentStatus
                     cmbSchemeName.Items.Add(schmeName);
                 }
             }
-        }
-
-        private void cmbMFGoal_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cmbMFGoal.Text != "")
-                cmbMFGoal.Tag = _goals.FirstOrDefault(i => i.Name == cmbMFGoal.Text).Id;
-            else
-                cmbMFGoal.Tag = "0";
-        }
-
-        private void btnEditMF_Click(object sender, EventArgs e)
-        {
-            if (dtGridMF.SelectedRows.Count > 0)
-                grpMF.Enabled = true;
-        }
-
-        private void btnDeleteMF_Click(object sender, EventArgs e)
-        {
-            if (dtGridMF.SelectedRows.Count > 0)
-            {
-                if (MessageBox.Show("Are you sure, you want to delete this record?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    MutualFundInfo mutualFundInfo = new MutualFundInfo();
-                    MutualFund mutualFund =  getMutualFundData();
-                    mutualFundInfo.Delete(mutualFund);
-                    fillupMutualFundInfo();
-                }
-            }
-        }
+        }     
 
         private void btnAddNPS_Click(object sender, EventArgs e)
         {
@@ -1990,160 +2518,7 @@ namespace FinancialPlannerClient.CurrentStatus
             return null;
         }
 
-        private DataRow getSelectedDataRowForShares()
-        {
-            if (dtGridShares.SelectedRows.Count >= 1 && _dtShares != null)
-            {
-                int selectedRowIndex = dtGridShares.SelectedRows[0].Index;
-                if (dtGridShares.SelectedRows[0].Cells["ID"].Value != System.DBNull.Value)
-                {
-                    int selectedUserId = int.Parse(dtGridShares.SelectedRows[0].Cells["ID"].Value.ToString());
-
-                    DataRow[] rows = _dtShares.Select("Id ='" + selectedUserId +"'");
-                    foreach (DataRow dr in rows)
-                    {
-                        return dr;
-                    }
-                }
-            }
-            return null;
-        }
-
-        private void dtGridShares_SelectionChanged(object sender, EventArgs e)
-        {
-            DataRow dr = getSelectedDataRowForShares();
-            if (dr != null)
-                displaySharesInfo(dr);
-            else
-                setDefaultValueShares();
-        }
-
-        private void setDefaultValueShares()
-        {
-            cmbSharesInvester.Tag = "0";
-            cmbSharesInvester.Text = "";
-            cmbSharesCompnay.Text = "";
-            txtSharesFaceValue.Text = "0";
-            txtNoOfShares.Text = "0";
-            txtSharesMarketPrice.Text = "0";
-            txtSharesCurrentValue.Text = "0";
-            calculateAndSetSharesCurrentValue();
-            cmbSharesGoal.Tag = "0";
-            cmbSharesGoal.Text = "";
-        }
-
-        private void displaySharesInfo(DataRow dr)
-        {
-            if (dr != null)
-            {
-                cmbSharesInvester.Tag = dr.Field<string>("ID");
-                cmbSharesInvester.Text = dr.Field<string>("InvesterName");
-                cmbSharesCompnay.Text = dr.Field<string>("CompanyName");
-                txtSharesFaceValue.Text = dr.Field<string>("FaceValue");
-                txtNoOfShares.Text = dr["NoOfShares"].ToString();
-                txtSharesMarketPrice.Text = dr["MarketPrice"].ToString();
-                txtSharesCurrentValue.Text = dr["CurrentValue"].ToString();
-                calculateAndSetSharesCurrentValue();
-                if (dr["GoalID"] != null)
-                {
-                    cmbSharesGoal.Tag = dr["GoalId"].ToString();
-                    cmbSharesGoal.Text = getGoalName(int.Parse(cmbSharesGoal.Tag.ToString()));
-                }
-                else
-                {
-                    cmbSharesGoal.Tag = "0";
-                    cmbSharesGoal.Text = "";
-                }
-            }
-        }
-
-        private void btnSharesSave_Click(object sender, EventArgs e)
-        {
-            SharesInfo SharesInfo = new SharesInfo();
-            Shares shares = getSharesData();
-            bool isSaved = false;
-
-            if (shares != null && shares.Id == 0)
-                isSaved = SharesInfo.Add(shares);
-            else
-                isSaved = SharesInfo.Update(shares);
-
-            if (isSaved)
-            {
-                MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                fillupSharesInfo();
-                grpMF.Enabled = false;
-            }
-            else
-                MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
-
-        private Shares getSharesData()
-        {
-            Shares  shares = new Shares();
-            shares.Id = int.Parse(cmbSharesInvester.Tag.ToString());
-            shares.Pid = _planeId;
-            shares.InvesterName = cmbSharesInvester.Text;
-            shares.CompanyName = cmbSharesCompnay.Text;
-            shares.FaceValue = float.Parse(txtSharesFaceValue.Text);
-            shares.NoOfShares = int.Parse(txtNoOfShares.Text);
-            shares.MarketPrice = float.Parse(txtSharesMarketPrice.Text);
-            shares.CurrentValue = double.Parse(txtSharesCurrentValue.Text);
-            shares.GoalID = int.Parse(cmbSharesGoal.Tag.ToString());
-            shares.CreatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
-            shares.CreatedBy = Program.CurrentUser.Id;
-            shares.UpdatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
-            shares.UpdatedBy = Program.CurrentUser.Id;
-            shares.MachineName = Environment.MachineName;
-            return shares;
-        }
-
-        private void btnSharesCancel_Click(object sender, EventArgs e)
-        {
-            grpShares.Enabled = false;
-        }
-
-        private void btnSharesEdit_Click(object sender, EventArgs e)
-        {
-            if (dtGridShares.SelectedRows.Count > 0)
-                grpShares.Enabled = true;
-        }
-
-        private void btnSharesDelete_Click(object sender, EventArgs e)
-        {
-            if (dtGridShares.SelectedRows.Count > 0)
-            {
-                if (MessageBox.Show("Are you sure, you want to delete this record?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    SharesInfo SharesInfo = new SharesInfo();
-                    Shares Shares  =  getSharesData();
-                    SharesInfo.Delete(Shares);
-                    fillupSharesInfo();
-                }
-            }
-        }
-
-        private void btnSharesAdd_Click(object sender, EventArgs e)
-        {
-            grpShares.Enabled = true;
-            setDefaultValueShares();
-        }
-
-        private void txtNoOfShares_Leave(object sender, EventArgs e)
-        {
-            calculateAndSetSharesCurrentValue();
-        }
-
-        private void txtSharesMarketPrice_Leave(object sender, EventArgs e)
-        {
-            calculateAndSetSharesCurrentValue();
-        }
-
-        private void txtSharesFaceValue_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
-        }
-
+       
         private void btnAddBonds_Click(object sender, EventArgs e)
         {
             grpBonds.Enabled = true;
@@ -2315,129 +2690,5 @@ namespace FinancialPlannerClient.CurrentStatus
                 cmbBondsGoal.Tag = "0";
         }
 
-        private void dtGridSavingAccount_SelectionChanged(object sender, EventArgs e)
-        {
-            DataRow dr = getSelectedDataRow(dtGridSavingAccount,_dtSA);
-            if (dr != null)
-                displaySAInfo(dr);
-            else
-                setDefaultValueSA();
-        }
-
-        private void setDefaultValueSA()
-        {
-            cmbSAInvester.Tag = "0";
-            cmbSAInvester.Text = "";
-            txtSABank.Text = "";
-            cmbSAAccountNo.Text = "";
-            txtSABranch.Text = "";
-            txtSABalance.Text = "";
-            txtSAROI.Text = "";
-            cmbSAGoalId.Tag = "0";
-            cmbSAGoalId.Text = "";
-        }
-
-        private void displaySAInfo(DataRow dr)
-        {
-            if (dr != null)
-            {
-                cmbSAInvester.Tag = dr.Field<string>("ID");
-                cmbSAInvester.Text = dr.Field<string>("InvesterName");
-                txtSABank.Text = dr.Field<string>("BankName");
-                cmbSAAccountNo.Text = dr.Field<string>("AccountNo");
-                txtSABranch.Text = dr.Field<string>("Branch");
-                txtSABalance.Text = dr.Field<string>("Balance");
-                txtSAROI.Text = dr.Field<string>("IntRate");
-                if (dr["GoalID"] != null)
-                {
-                    cmbSAGoalId.Tag = dr["GoalId"].ToString();
-                    cmbSAGoalId.Text = getGoalName(int.Parse(cmbSAGoalId.Tag.ToString()));
-                }
-                else
-                {
-                    cmbSAGoalId.Tag = "0";
-                    cmbSAGoalId.Text = "";
-                }
-            }
-        }
-
-        private void btnAddSA_Click(object sender, EventArgs e)
-        {
-            grpSa.Enabled = true;
-            setDefaultValueSA();
-        }
-
-        private void btnEditSA_Click(object sender, EventArgs e)
-        {
-            grpSa.Enabled = true;
-        }
-
-        private void btnCancelSA_Click(object sender, EventArgs e)
-        {
-            grpSa.Enabled = false;
-        }
-
-        private void btnDeleteSA_Click(object sender, EventArgs e)
-        {
-            if (dtGridSavingAccount.SelectedRows.Count > 0)
-            {
-                if (MessageBox.Show("Are you sure, you want to delete this record?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    SavingAccountInfo saInfo = new SavingAccountInfo();
-                    SavingAccount sa  =  getSA();
-                    saInfo.Delete(sa);
-                    fillupSavingAccount();
-                }
-            }
-        }
-
-        private SavingAccount getSA()
-        {
-            SavingAccount sa = new SavingAccount();
-            sa.Id = int.Parse(cmbSAInvester.Tag.ToString());
-            sa.Pid = _planeId;
-            sa.InvesterName = cmbSAInvester.Text;
-            sa.BankName = txtSABank.Text;
-            sa.AccountNo = cmbSAAccountNo.Text;
-            sa.Branch = txtSABranch.Text;
-            sa.Balance = double.Parse(txtSABalance.Text);
-            sa.IntRate = float.Parse(txtSAROI.Text);
-            sa.GoalId = int.Parse(cmbSAGoalId.Tag.ToString());
-            sa.CreatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
-            sa.CreatedBy = Program.CurrentUser.Id;
-            sa.UpdatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
-            sa.UpdatedBy = Program.CurrentUser.Id;
-            sa.MachineName = Environment.MachineName;
-            return sa;
-        }
-
-        private void cmbSAGoalId_SelectedValueChanged(object sender, EventArgs e)
-        {
-            if (cmbSAGoalId.Text != "")
-                cmbSAGoalId.Tag = _goals.FirstOrDefault(i => i.Name == cmbSAGoalId.Text).Id;
-            else
-                cmbSAGoalId.Tag = "0";
-        }
-
-        private void btnSaveSA_Click(object sender, EventArgs e)
-        {
-            SavingAccountInfo SavingAccountInfo = new SavingAccountInfo();
-            SavingAccount sa = getSA();
-            bool isSaved = false;
-
-            if (sa != null && sa.Id == 0)
-                isSaved = SavingAccountInfo.Add(sa);
-            else
-                isSaved = SavingAccountInfo.Update(sa);
-
-            if (isSaved)
-            {
-                MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                fillupSavingAccount();
-                grpSa.Enabled = false;
-            }
-            else
-                MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
     }
 }

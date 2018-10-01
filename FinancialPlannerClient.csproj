@@ -83,6 +83,7 @@
     <Compile Include="CurrentStatus\CurrentStatus.Designer.cs">
       <DependentUpon>CurrentStatus.cs</DependentUpon>
     </Compile>
+    <Compile Include="CurrentStatus\ULIPInfo.cs" />
     <Compile Include="PlanOptions\CurrentStatusInfo.cs" />
     <Compile Include="CurrentStatus\FDInfo.cs" />
     <Compile Include="CurrentStatus\GeneralInsuranceInfo.cs" />
@@ -126,12 +127,14 @@
     <Compile Include="PlannerInfo\NonFinancialAssetInfo.cs" />
     <Compile Include="PlannerInfo\PlannerAssumptionInfo.cs" />
     <Compile Include="PlannerInfo\SessionInfo.cs" />
+    <Compile Include="PlanOptions\CurrentStatusToGoal.cs" />
     <Compile Include="PlanOptions\EstimatedPlanOptionList.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="PlanOptions\EstimatedPlanOptionList.Designer.cs">
       <DependentUpon>EstimatedPlanOptionList.cs</DependentUpon>
     </Compile>
+    <Compile Include="PlanOptions\GoalStatusInfo.cs" />
     <Compile Include="PlanOptions\PlanOptionInfo.cs" />
     <Compile Include="PlanOptions\PlanOptionMaster.cs">
       <SubType>Form</SubType>
