@@ -83,7 +83,7 @@
     <Compile Include="CurrentStatus\CurrentStatus.Designer.cs">
       <DependentUpon>CurrentStatus.cs</DependentUpon>
     </Compile>
-    <Compile Include="CurrentStatus\CurrentStatusInfo.cs" />
+    <Compile Include="PlanOptions\CurrentStatusInfo.cs" />
     <Compile Include="CurrentStatus\FDInfo.cs" />
     <Compile Include="CurrentStatus\GeneralInsuranceInfo.cs" />
     <Compile Include="CurrentStatus\LifeInsuranceInfo.cs" />

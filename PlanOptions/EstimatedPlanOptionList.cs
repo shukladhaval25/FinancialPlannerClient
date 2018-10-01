@@ -13,6 +13,8 @@ using System.Diagnostics;
 using System.Reflection;
 using FinancialPlanner.Common;
 using FinancialPlanner.Common.Model.PlanOptions;
+using FinancialPlannerClient.CurrentStatus;
+using FinancialPlanner.Common.Model.CurrentStatus;
 
 namespace FinancialPlannerClient.PlanOptions
 {
@@ -24,6 +26,8 @@ namespace FinancialPlannerClient.PlanOptions
         DataTable _dtcashFlow;
         private int _planeId;
         private int _optinId;
+        CurrentStatusCalculation _csCal;
+        CurrentStatusInfo _csInfo = new CurrentStatusInfo();
 
         public EstimatedPlanOptionList()
         {
@@ -263,5 +267,77 @@ namespace FinancialPlannerClient.PlanOptions
             cf.MachineName = System.Environment.MachineName;
             return cf;
         }
+
+        private void tabEstimatedPlan_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (tabEstimatedPlan.SelectedTab.Name)
+            {
+                case "CashFlow":
+                    getCashFlowData();
+                    break;
+                case "CurrentStatus":
+                    getCurrentStatus();
+                    break;                
+            }
+        }
+
+        #region "Current Status"
+
+        private void getCurrentStatus()
+        {
+            _csCal = _csInfo.GetCurrestStatusWithoutGoalMapped(_planeId);
+            fillCurrentStatusData();
+        }
+
+        private void fillCurrentStatusData()
+        {
+            txtEquitySharesAmt.Text = _csCal.ShresValue.ToString();
+            txtMFAmt.Text = _csCal.EquityMFvalue.ToString();
+            txtEquityNPSAmt.Text = _csCal.NpsEquityValue.ToString();
+            txtEquityOtherAmt.Text = _csCal.OtherEquityValue.ToString();
+
+            long totalEquityAmount = _csCal.ShresValue +  _csCal.EquityMFvalue +
+                _csCal.NpsEquityValue + _csCal.OtherEquityValue;
+
+            txtDebtMFValue.Text = _csCal.DebtMFValue.ToString();
+            txtFDAmt.Text = _csCal.FdValue.ToString();
+            txtRDAmt.Text = _csCal.RdValue.ToString();
+            txtSAAmt.Text = _csCal.SaValue.ToString();
+            txtDebtNPSAmt.Text = _csCal.NpsDebtValue.ToString();
+            txtPPFAmt.Text = _csCal.PPFValue.ToString();
+            txtEPFAmt.Text = _csCal.EPFValue.ToString();
+            txtSSAmt.Text = _csCal.SSValue.ToString();
+            txtSCSSValue.Text = _csCal.SCSSValue.ToString();
+            txtDebtMFValue.Text = _csCal.DebtMFValue.ToString();
+            txtDebOtherAmt.Text = _csCal.OtherDebtValue.ToString();
+
+            long totalDebtAmount = _csCal.DebtMFValue +  _csCal.FdValue +
+                _csCal.RdValue + _csCal.SaValue + _csCal.NpsDebtValue +
+                _csCal.PPFValue + _csCal.EPFValue  + _csCal.SSValue +
+                _csCal.SCSSValue + _csCal.DebtMFValue + _csCal.OtherDebtValue;
+
+            txtGoldAmt.Text = _csCal.GoldValue.ToString();
+            txtGoldOtherAmt.Text = _csCal.OthersGoldValue.ToString();
+            long totalGoldAmount  = _csCal.GoldValue + _csCal.OthersGoldValue;
+
+            long totalCurrentStatusAmount = totalEquityAmount + totalDebtAmount + totalGoldAmount;
+            if (totalCurrentStatusAmount > 0)
+            {
+                float equityRatio = (totalEquityAmount * 100) / totalCurrentStatusAmount;
+                float debtRatio =  (totalDebtAmount * 100) / totalCurrentStatusAmount;
+                float goldRatio =  (totalGoldAmount * 100) / totalCurrentStatusAmount;
+                lblEquityShareRatio.Text = string.Format("{0} %", equityRatio.ToString());
+                lblDebtRatio.Text = string.Format("{0} %",debtRatio.ToString());
+                lblGoldRatio.Text = string.Format("{0} %", goldRatio.ToString());
+            }
+            else
+            {
+                lblEquityShareRatio.Text = string.Format("{0} %", "0");
+                lblDebtRatio.Text = string.Format("{0} %", "0");
+                lblGoldRatio.Text = string.Format("{0} %", "0");
+            }
+        }
+
+        #endregion
     }
 }
