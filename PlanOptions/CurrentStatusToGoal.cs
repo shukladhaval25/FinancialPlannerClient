@@ -57,7 +57,7 @@ namespace FinancialPlannerClient.PlanOptions
             dr["Goal"] = "Retirement Corpus";
             dr["FundAllocation"] = 0;
             dr["CurrentStatusMappedAmount"] = 0;
-            dr["ExcessFund"] = getExcessFundFromCurrentStatus();
+            dr["ExcessFund"] = double.Parse(_dtmoneyToGoals.Rows[_dtmoneyToGoals.Rows.Count - 1]["ExcessFund"].ToString());
             _dtmoneyToGoals.Rows.Add(dr);
         }
 

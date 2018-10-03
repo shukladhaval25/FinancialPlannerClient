@@ -154,6 +154,7 @@
             this.label51 = new System.Windows.Forms.Label();
             this.MutualFund = new System.Windows.Forms.TabPage();
             this.grpMF = new System.Windows.Forms.GroupBox();
+            this.btnMFViewDetails = new System.Windows.Forms.Button();
             this.txtMFNominee = new System.Windows.Forms.TextBox();
             this.label162 = new System.Windows.Forms.Label();
             this.txtMFSecondHolder = new System.Windows.Forms.TextBox();
@@ -1867,6 +1868,7 @@
             // 
             this.grpMF.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpMF.Controls.Add(this.btnMFViewDetails);
             this.grpMF.Controls.Add(this.txtMFNominee);
             this.grpMF.Controls.Add(this.label162);
             this.grpMF.Controls.Add(this.txtMFSecondHolder);
@@ -1911,6 +1913,19 @@
             this.grpMF.TabIndex = 15;
             this.grpMF.TabStop = false;
             this.grpMF.Text = "Mutual Fund Details";
+            // 
+            // btnMFViewDetails
+            // 
+            this.btnMFViewDetails.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnMFViewDetails.ImageKey = "(none)";
+            this.btnMFViewDetails.ImageList = this.imgCollection;
+            this.btnMFViewDetails.Location = new System.Drawing.Point(874, 141);
+            this.btnMFViewDetails.Name = "btnMFViewDetails";
+            this.btnMFViewDetails.Size = new System.Drawing.Size(100, 44);
+            this.btnMFViewDetails.TabIndex = 47;
+            this.btnMFViewDetails.Text = "View Transaction";
+            this.btnMFViewDetails.UseVisualStyleBackColor = true;
+            this.btnMFViewDetails.Click += new System.EventHandler(this.btnMFViewDetails_Click);
             // 
             // txtMFNominee
             // 
@@ -4226,6 +4241,7 @@
             // 
             // dtPPFMaturityDate
             // 
+            this.dtPPFMaturityDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtPPFMaturityDate.Location = new System.Drawing.Point(767, 51);
             this.dtPPFMaturityDate.Name = "dtPPFMaturityDate";
             this.dtPPFMaturityDate.Size = new System.Drawing.Size(154, 22);
@@ -4242,6 +4258,7 @@
             // 
             // dtPPFOpeningDate
             // 
+            this.dtPPFOpeningDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtPPFOpeningDate.Location = new System.Drawing.Point(601, 51);
             this.dtPPFOpeningDate.Name = "dtPPFOpeningDate";
             this.dtPPFOpeningDate.Size = new System.Drawing.Size(154, 22);
@@ -4430,7 +4447,7 @@
             this.btnDeletePPF.Size = new System.Drawing.Size(29, 24);
             this.btnDeletePPF.TabIndex = 4;
             this.btnDeletePPF.UseVisualStyleBackColor = true;
-            this.btnDeletePPF.Click += new System.EventHandler(this.btnPPFEdit_Click);
+            this.btnDeletePPF.Click += new System.EventHandler(this.btnPPFDelete_Click);
             // 
             // btnADDPPF
             // 
@@ -6291,5 +6308,6 @@
         private System.Windows.Forms.Button btnULIPDelete;
         private System.Windows.Forms.Button btnULIPAdd;
         private System.Windows.Forms.Button btnULIPEdit;
+        private System.Windows.Forms.Button btnMFViewDetails;
     }
 }

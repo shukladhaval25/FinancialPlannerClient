@@ -24,6 +24,7 @@ namespace FinancialPlannerClient.Clients
         private DataTable _dtIncome;
         private DataTable _dtExpenses;
         private DataTable _dtGoals;
+        IList<Goals> _goals;
 
         public int PlannerId
         {
@@ -137,6 +138,18 @@ namespace FinancialPlannerClient.Clients
             _dtNonFinancialAsset = ListtoDataTable.ToDataTable(lstNonFinancialAsset);
             dtGridNonFinancialAssets.DataSource = _dtNonFinancialAsset;
             nonFinancialAssetInfo.FillGrid(dtGridNonFinancialAssets);
+            fillNonFinancialAssetsGoals();
+        }
+
+        private void fillNonFinancialAssetsGoals()
+        {         
+            cmbMappingGoal.Items.Clear();
+            _goals = new GoalsInfo().GetAll(_plannerId);
+            foreach (var goal in _goals)
+            {
+                cmbMappingGoal.Items.Add(goal.Name);
+            }
+            cmbMappingGoal.Items.Add("");
         }
 
         private void fillupFamilyMemberInfo()
@@ -638,6 +651,7 @@ namespace FinancialPlannerClient.Clients
             cmbOtherHolder.Text = "";
             txtOtherShare.Text = "0";
             cmbMappingGoal.Text = "";
+            cmbMappingGoal.Tag = "0";
             txtGoalMappingShare.Text = "0";
             txtAssetRealisationYear.Text = DateTime.Now.Year.ToString();
             txtNonFinancialDesc.Text = "";
@@ -726,14 +740,36 @@ namespace FinancialPlannerClient.Clients
                 txtSecondaryHolderShare.Text = nonFinancialAsset.SecondaryHolderShare.ToString();
                 cmbOtherHolder.Text = nonFinancialAsset.OtherHolderName;
                 txtOtherShare.Text = nonFinancialAsset.OtherHolderShare.ToString();
+
+
+                if (nonFinancialAsset.MappedGoalId != 0)
+                {
+                    cmbMappingGoal.Tag = nonFinancialAsset.MappedGoalId.ToString();
+                    cmbMappingGoal.Text = getGoalName(int.Parse(cmbMappingGoal.Tag.ToString()));
+                }
+                else
+                {
+                    cmbMappingGoal.Tag = "0";
+                    cmbMappingGoal.Text = "";
+                }
+
                 cmbMappingGoal.Tag = nonFinancialAsset.MappedGoalId.ToString();
                 txtGoalMappingShare.Text = nonFinancialAsset.AssetMappingShare.ToString();
                 txtAssetRealisationYear.Text = nonFinancialAsset.AssetRealisationYear;
                 txtNonFinancialDesc.Text = nonFinancialAsset.Description;
             }
+            else
+                setDefaultNonFinancialAssetValue();
         }
 
-        
+        private string getGoalName(int v)
+        {
+            if (_goals != null && v > 0)
+                return _goals.FirstOrDefault(i => i.Id == v).Name;
+            else
+                return string.Empty;
+        }
+
         private void btnDeleteNFA_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Are you sure, you want to delete this record?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -1426,6 +1462,14 @@ namespace FinancialPlannerClient.Clients
         {
             Regex r = new Regex(@"^\d+\.?\d*$");
             e.Cancel = !r.IsMatch(txtInflationRate.Text);
+        }
+
+        private void cmbMappingGoal_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbMappingGoal.Text != "")
+                cmbMappingGoal.Tag = _goals.FirstOrDefault(i => i.Name == cmbMappingGoal.Text).Id;
+            else
+                cmbMappingGoal.Tag = "0";
         }
     }
 }

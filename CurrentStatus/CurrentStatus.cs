@@ -1319,6 +1319,16 @@ namespace FinancialPlannerClient.CurrentStatus
                 }
             }
         }
+
+        private void btnMFViewDetails_Click(object sender, EventArgs e)
+        {
+            MutualFund mf = getMutualFundData();
+            if (cmbMFInvester.Tag.ToString() != "0")
+            {
+                MFTransactionsForm mfTrans = new MFTransactionsForm(mf);
+                mfTrans.ShowDialog();
+            }
+        }
         #endregion
 
         #region "ULIP"
@@ -2688,7 +2698,6 @@ namespace FinancialPlannerClient.CurrentStatus
                 cmbBondsGoal.Tag = _goals.FirstOrDefault(i => i.Name == cmbBondsGoal.Text).Id;
             else
                 cmbBondsGoal.Tag = "0";
-        }
-
+        }      
     }
 }

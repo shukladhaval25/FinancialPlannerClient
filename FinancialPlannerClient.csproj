@@ -83,6 +83,13 @@
     <Compile Include="CurrentStatus\CurrentStatus.Designer.cs">
       <DependentUpon>CurrentStatus.cs</DependentUpon>
     </Compile>
+    <Compile Include="CurrentStatus\MFTransactionsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CurrentStatus\MFTransactionsForm.Designer.cs">
+      <DependentUpon>MFTransactionsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CurrentStatus\MFTransInfo.cs" />
     <Compile Include="CurrentStatus\ULIPInfo.cs" />
     <Compile Include="PlanOptions\CurrentStatusInfo.cs" />
     <Compile Include="CurrentStatus\FDInfo.cs" />
@@ -196,6 +203,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CurrentStatus\CurrentStatus.resx">
       <DependentUpon>CurrentStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CurrentStatus\MFTransactionsForm.resx">
+      <DependentUpon>MFTransactionsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
