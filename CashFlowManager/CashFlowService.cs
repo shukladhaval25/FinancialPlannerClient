@@ -24,6 +24,7 @@ namespace FinancialPlannerClient.CashFlowManager
         private readonly string GETALL_API= "CashFlow/Get?optionId={0}";
         private readonly string ADD_CASHFLOW_API = "cashflow/Add";
         private readonly string UPDATE_CASHFLOW_API = "cashflow/update";
+        private double _inflactionRatePercentage = 10;
 
         public CashFlowCalculation GetCashFlowData(int clientId, int planId)
         {
@@ -35,12 +36,15 @@ namespace FinancialPlannerClient.CashFlowManager
             fillPersonalData(personalInfo);
 
             PlannerAssumption plannerAssumption =  new PlannerAssumptionInfo().GetAll(_planId);
-            if (plannerAssumption != null)
+            if (plannerAssumption != null) 
                 fillCashFlowFromPlannerAssumption(plannerAssumption);
 
             IList<Income> incomes = new IncomeInfo().GetAll(_planId);
+            IList<Expenses> expenses = new ExpensesInfo().GetAll(_planId);
+            IList<Loan> loans = new LoanInfo().GetAll(_planId);
             fillCashFlowFromIncomes(incomes);
-
+            fillCashFlowFromExpenses(expenses);
+            fillCashFlowFromLoans(loans);
             return _cashFlow;
         }
 
@@ -99,48 +103,93 @@ namespace FinancialPlannerClient.CashFlowManager
             int noOfYearsForCalculation = (noOfYearsForClient >= noOfYearsForSpouse) ? noOfYearsForClient : noOfYearsForSpouse;
             for (int years = 1; years <= noOfYearsForCalculation; years++)
             {
-             
-                DataRow dr = _dtCashFlow.NewRow();              
-                long totalIncome = 0;
-                int incomeEndYear = 0;
-                long totalTaxAmt = 0;
-                long totalPostTaxIncome = 0;
-                foreach (Income income in _cashFlow.LstIncomes)
-                {
-                    incomeEndYear = string.IsNullOrEmpty(income.EndYear) ? DateTime.Now.Year + 100 : int.Parse(income.EndYear);
-                    if (int.Parse(dr["StartYear"].ToString()) >=  int.Parse(income.StartYear) &&
-                        int.Parse(dr["StartYear"].ToString()) <= incomeEndYear)
-                    {
-                        try
-                        {
-                            long amount = long.Parse(_dtCashFlow.Rows[years - 1]["(" + income.IncomeBy + ") " + income.Source].ToString());
-                            amount = amount + (long)((amount * float.Parse(income.ExpectGrowthInPercentage.ToString()) / 100));
-                            dr["(" + income.IncomeBy + ") " + income.Source] = amount;
-                            totalIncome = totalIncome + amount;
 
-                            dr["(" + income.IncomeBy + ") " + income.Source + " - Income Tax"] = income.IncomeTax;
-                            long incomeTaxAmt = ((amount *  long.Parse(income.IncomeTax.ToString()) / 100));
-                            totalTaxAmt = totalTaxAmt + incomeTaxAmt;
-
-                            long postTaxAmt =(amount - incomeTaxAmt);
-                            dr["(" + income.IncomeBy + ") " + income.Source + " - Post Tax"] = postTaxAmt;
-                            totalPostTaxIncome = totalPostTaxIncome + long.Parse(postTaxAmt.ToString());
-                        }
-                        catch(Exception ex)
-                        {
-                            LogDebug("AddRowOnCalculation", ex);
-                        }
-                    }
-                    else
-                    {
-                        dr["(" + income.IncomeBy + ") " + income.Source] = 0;
-                    }
-                }
-                dr["Total Income"] = totalIncome;
-                dr["Total Tax Deduction"] = totalTaxAmt;
-                dr["Total Post Tax Income"] = totalPostTaxIncome;
+                DataRow dr = _dtCashFlow.NewRow();
+                addIncomeCalculation(years, dr);
+                addExpenesCalculation(years, dr);
+                addLoansCalculation(years, dr);
+                serSurplusAmount(dr);
                 _dtCashFlow.Rows.Add(dr);
             }
+        }
+
+        private void serSurplusAmount(DataRow dr)
+        {
+            double totalPostTaxIncome = double.Parse(dr["Total Post Tax Income"].ToString());
+            double totalExpAmount = double.Parse(dr["Total Annual Expenses"].ToString());
+            double totalLoanAmount = double.Parse(dr["Total Annual Loans"].ToString());
+            dr["Surplus Amount"] = totalPostTaxIncome - (totalExpAmount + totalLoanAmount);     
+        }
+
+        private void addIncomeCalculation(int years, DataRow dr)
+        {
+            long totalIncome = 0;
+            int incomeEndYear = 0;
+            long totalTaxAmt = 0;
+            long totalPostTaxIncome = 0;
+            foreach (Income income in _cashFlow.LstIncomes)
+            {
+                incomeEndYear = string.IsNullOrEmpty(income.EndYear) ? DateTime.Now.Year + 100 : int.Parse(income.EndYear);
+                if (int.Parse(dr["StartYear"].ToString()) >= int.Parse(income.StartYear) &&
+                    int.Parse(dr["StartYear"].ToString()) <= incomeEndYear)
+                {
+                    try
+                    {
+                        long amount = long.Parse(_dtCashFlow.Rows[years - 1]["(" + income.IncomeBy + ") " + income.Source].ToString());
+                        amount = amount + (long)((amount * float.Parse(income.ExpectGrowthInPercentage.ToString()) / 100));
+                        dr["(" + income.IncomeBy + ") " + income.Source] = amount;
+                        totalIncome = totalIncome + amount;
+
+                        dr["(" + income.IncomeBy + ") " + income.Source + " - Income Tax"] = income.IncomeTax;
+                        long incomeTaxAmt = ((amount *  long.Parse(income.IncomeTax.ToString()) / 100));
+                        totalTaxAmt = totalTaxAmt + incomeTaxAmt;
+
+                        long postTaxAmt =(amount - incomeTaxAmt);
+                        dr["(" + income.IncomeBy + ") " + income.Source + " - Post Tax"] = postTaxAmt;
+                        totalPostTaxIncome = totalPostTaxIncome + long.Parse(postTaxAmt.ToString());
+                    }
+                    catch (Exception ex)
+                    {
+                        LogDebug("AddRowOnCalculation", ex);
+                    }
+                }
+                else
+                {
+                    dr["(" + income.IncomeBy + ") " + income.Source] = 0;
+                }
+            }
+            dr["Total Income"] = totalIncome;
+            dr["Total Tax Deduction"] = totalTaxAmt;
+            dr["Total Post Tax Income"] = totalPostTaxIncome;
+        }
+
+        private void addExpenesCalculation(int years, DataRow dr)
+        {
+            double totalExpenses = 0;
+            foreach (Expenses exp in _cashFlow.LstExpenses)
+            {
+                double expAmt = double.Parse(_dtCashFlow.Rows[years - 1][exp.Item].ToString());
+                double expWithInflaction =  expAmt + ((expAmt * _inflactionRatePercentage)/100);
+                dr[exp.Item] = expWithInflaction;
+                totalExpenses = totalExpenses + expWithInflaction;
+            }
+            dr["Total Annual Expenses"] = totalExpenses;
+        }
+
+        private void addLoansCalculation (int years, DataRow dr)
+        {
+            double totalLoans = 0;
+            foreach (Loan loan in _cashFlow.LstLoans)
+            {
+                if (int.Parse(dr["StartYear"].ToString()) <=
+                   int.Parse(_dtCashFlow.Rows[0]["StartYear"].ToString()) + (loan.TermLeftInMonths / 12))
+                {
+                    double loanAmt = double.Parse(_dtCashFlow.Rows[years - 1][loan.TypeOfLoan].ToString());
+                    dr[loan.TypeOfLoan] = loanAmt;
+                    totalLoans = totalLoans + loanAmt;
+                }
+            }
+            dr["Total Annual Loans"] = totalLoans;
         }
 
         private void addFirstRowData(float incomeTax, int rowId)
@@ -148,6 +197,8 @@ namespace FinancialPlannerClient.CashFlowManager
             DataRow dr = _dtCashFlow.NewRow();
             dr["ID"] = rowId;
             dr["StartYear"] = DateTime.Now.Year + 1;
+
+            #region "Add Incomes"
             double totalIncome = 0;
             double totalpostTaxIncome  = 0;
             double totalTaxAmt = 0;
@@ -164,12 +215,51 @@ namespace FinancialPlannerClient.CashFlowManager
             dr["Total Income"] = totalIncome;
             dr["Total Tax Deduction"] = totalTaxAmt;
             dr["Total Post Tax Income"] = totalpostTaxIncome;
+            #endregion
+
+            #region "Add Expenses"
+
+            double totalExpenses = 0;
+            foreach(Expenses exp in _cashFlow.LstExpenses)
+            {
+           
+                double expAmt = (exp.OccuranceType == ExpenseType.Monthly) ? exp.Amount * 12 : exp.Amount;
+                dr[exp.Item] = expAmt;
+                totalExpenses = totalExpenses + expAmt;
+            }
+            dr["Total Annual Expenses"] = totalExpenses;
+
+            #endregion
+
+            #region "Add Loans"
+
+            double totalLoan = 0;
+            foreach (Loan loan in _cashFlow.LstLoans)
+            {                
+                double loanAmt = loan.Emis * 12;
+                dr[loan.TypeOfLoan] = loanAmt;
+                totalLoan = totalLoan + loanAmt;
+            }
+            dr["Total Annual Loans"] = totalLoan;
+            dr["Surplus Amount"] = totalpostTaxIncome - (totalExpenses + totalLoan);
+            #endregion 
+
             _dtCashFlow.Rows.Add(dr);
         }
 
         private void fillCashFlowFromIncomes(IList<Income> incomes)
         {
             _cashFlow.LstIncomes = incomes;
+        }
+
+        private void fillCashFlowFromExpenses(IList<Expenses> expenses)
+        {
+            _cashFlow.LstExpenses = expenses;
+        }
+
+        private void fillCashFlowFromLoans(IList<Loan> loans)
+        {
+            _cashFlow.LstLoans = loans;
         }
 
         private void fillCashFlowFromPlannerAssumption(PlannerAssumption plannerAssumption)
@@ -212,6 +302,7 @@ namespace FinancialPlannerClient.CashFlowManager
             dcEndYear.ReadOnly = true;
             _dtCashFlow.Columns.Add(dcEndYear);
 
+            #region "Income Calculation"
             foreach (Income income in _cashFlow.LstIncomes)
             {
                 DataColumn dcIncome = new DataColumn("("+ income.IncomeBy + ") " + income.Source,typeof(System.Double));
@@ -227,14 +318,31 @@ namespace FinancialPlannerClient.CashFlowManager
             dcTotal.ReadOnly = true;
             _dtCashFlow.Columns.Add(dcTotal);
             
-            //_dtCashFlow.Columns.Add("IncomeTax",typeof(System.Decimal));
-
             _dtCashFlow.Columns.Add("Total Tax Deduction", typeof(System.Double));
-            //_dtCashFlow.Columns["Tax"].ReadOnly = true;
             _dtCashFlow.Columns.Add("Total Post Tax Income", typeof(System.Double));
-           // _dtCashFlow.Columns["Post Tax Income"].ReadOnly = true;
-            //_dtCashFlow.Columns.Add("Tax", typeof(System.Double), "(Total * IncomeTax) / 100");
-            //_dtCashFlow.Columns.Add("Post Tax Income", typeof(System.Double), "Total - Tax");            
+            #endregion 
+
+            #region "Expenses Calculation" 
+            foreach (Expenses exp in _cashFlow.LstExpenses)
+            {
+                DataColumn dcExp = new DataColumn(exp.Item ,typeof(System.Double));
+                dcExp.ReadOnly = true;
+                _dtCashFlow.Columns.Add(dcExp);                
+            }
+            _dtCashFlow.Columns.Add("Total Annual Expenses", typeof(System.Double));
+            #endregion
+
+            #region "Loan Calculation"
+            foreach (Loan loan in _cashFlow.LstLoans)
+            {
+                DataColumn dcloan = new DataColumn( loan.TypeOfLoan,typeof(System.Double));
+                dcloan.ReadOnly = true;
+                _dtCashFlow.Columns.Add(dcloan);
+            }
+            _dtCashFlow.Columns.Add("Total Annual Loans", typeof(System.Double));
+            #endregion
+
+            _dtCashFlow.Columns.Add("Surplus Amount", typeof(System.Double));
         }
 
         internal bool Save(CashFlow cf)

@@ -110,6 +110,7 @@
             this.btnDeleteMF.Size = new System.Drawing.Size(29, 24);
             this.btnDeleteMF.TabIndex = 4;
             this.btnDeleteMF.UseVisualStyleBackColor = true;
+            this.btnDeleteMF.Click += new System.EventHandler(this.btnDeleteMF_Click);
             // 
             // imgCollection
             // 
@@ -225,6 +226,7 @@
             this.txtUnits.TabIndex = 9;
             this.txtUnits.Text = "0";
             this.txtUnits.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtUnits.Leave += new System.EventHandler(this.txtUnits_Leave);
             // 
             // label7
             // 
@@ -243,6 +245,7 @@
             this.txtNav.TabIndex = 7;
             this.txtNav.Text = "0";
             this.txtNav.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtNav.Leave += new System.EventHandler(this.txtNav_Leave);
             // 
             // label6
             // 
@@ -330,7 +333,7 @@
             this.lblFolioNoVal.Size = new System.Drawing.Size(0, 15);
             this.lblFolioNoVal.TabIndex = 18;
             // 
-            // MFTransactions
+            // MFTransactionsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -344,7 +347,7 @@
             this.Controls.Add(this.label1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "MFTransactions";
+            this.Name = "MFTransactionsForm";
             this.Text = "Mutual Fund Transaction Details";
             this.Load += new System.EventHandler(this.MFTransactions_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtGridMFTrans)).EndInit();

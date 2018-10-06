@@ -30,19 +30,19 @@ namespace FinancialPlannerClient.CurrentStatus
 
         private void MFTransactions_Load(object sender, EventArgs e)
         {
-            if (this.mf != null)
-            {
-                lblMFNameValue.Text = mf.SchemeName;
-                lblSchemenameVal.Text = mf.SchemeName;
-                lblFolioNoVal.Text = mf.FolioNo;
-                fillMFTransData();
-            }
+            //if (this.mf != null)
+            //{
+            //    lblMFNameValue.Text = mf.SchemeName;
+            //    lblSchemenameVal.Text = mf.SchemeName;
+            //    lblFolioNoVal.Text = mf.FolioNo;
+            //    fillMFTransData();
+            //}
         }
 
         private void fillMFTransData()
         {
             MFTransInfo mfTransInfo = new MFTransInfo();
-            _dtMFTrans = mfTransInfo.GetMFTransactionsInfo(mf.Pid);
+            _dtMFTrans = mfTransInfo.GetMFTransactionsInfo(mf.Id);
             if (_dtMFTrans != null && _dtMFTrans.Rows.Count == 0)
             {
                 addBalanceCFRow();
@@ -116,19 +116,59 @@ namespace FinancialPlannerClient.CurrentStatus
         private void btnSaveMFTrans_Click(object sender, EventArgs e)
         {
             MFTransactions mfTrans = getMFTransData();
+            bool isSaved = false;
 
+            MFTransInfo mfTransInfo = new MFTransInfo();
+
+            if (mfTrans != null && mfTrans.Id == 0)
+                isSaved = mfTransInfo.Add(mfTrans);
+            else
+                isSaved = mfTransInfo.Update(mfTrans);
+
+            if (isSaved)
+            {
+                MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                fillMFTransData();
+                grpMFTransaction.Enabled = false;
+            }
+            else
+                MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private MFTransactions getMFTransData()
         {
             MFTransactions mfTrans = new MFTransactions();
             mfTrans.Id = int.Parse(lblSchemenameVal.Tag.ToString());
-            mfTrans.MFId = int.Parse(lblMFNameValue.Tag.ToString());
+            mfTrans.MFId = this.mf.Id;
             mfTrans.Nav = float.Parse(txtNav.Text);
             mfTrans.Units = int.Parse(txtUnits.Text);
             mfTrans.TransactionType = cmbTransType.Text;
             mfTrans.TransactionDate = dtTransDate.Value;
             return mfTrans;            
+        }
+
+        private void btnDeleteMF_Click(object sender, EventArgs e)
+        {
+            if (dtGridMFTrans.SelectedRows.Count > 0)
+            {
+                if (MessageBox.Show("Are you sure, you want to delete this record?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    MFTransInfo mutualFundInfo = new MFTransInfo();
+                    MFTransactions mfTrans =  getMFTransData();
+                    mutualFundInfo.Delete(mfTrans);
+                    fillMFTransData();
+                }
+            }
+        }
+
+        private void txtNav_Leave(object sender, EventArgs e)
+        {
+            calculateAndSetMFCurrentValue();
+        }
+
+        private void txtUnits_Leave(object sender, EventArgs e)
+        {
+            calculateAndSetMFCurrentValue();
         }
     }
 }

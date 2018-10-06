@@ -23,6 +23,8 @@ namespace FinancialPlannerClient.CashFlowManager
         int _clientRetirementAge;
         int _spouseRetirementAge;        
         IList<Income> lstIncomes;
+        IList<Expenses> lstExpenses;
+        IList<Loan> lstLoans;
 
         public int Pid
         {
@@ -195,6 +197,32 @@ namespace FinancialPlannerClient.CashFlowManager
             set
             {
                 _spouseRetirementAge = value;
+            }
+        }
+
+        public IList<Expenses> LstExpenses
+        {
+            get
+            {
+                return lstExpenses;
+            }
+
+            set
+            {
+                lstExpenses = value;
+            }
+        }
+
+        public IList<Loan> LstLoans
+        {
+            get
+            {
+                return lstLoans;
+            }
+
+            set
+            {
+                lstLoans = value;
             }
         }
     }

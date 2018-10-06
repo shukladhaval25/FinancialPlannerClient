@@ -15,6 +15,7 @@ using FinancialPlanner.Common;
 using FinancialPlanner.Common.Model.PlanOptions;
 using FinancialPlannerClient.CurrentStatus;
 using FinancialPlanner.Common.Model.CurrentStatus;
+using FinancialPlannerClient.PlannerInfo;
 
 namespace FinancialPlannerClient.PlanOptions
 {
@@ -25,10 +26,12 @@ namespace FinancialPlannerClient.PlanOptions
         DataTable _dtOption;
         DataTable _dtcashFlow;
         DataTable _dtCurrentStatustoGoals;
+        DataTable _dtGoalValue;
         private int _planeId;
         private int _optinId;
         CurrentStatusCalculation _csCal;
         CurrentStatusInfo _csInfo = new CurrentStatusInfo();
+        private IList<Goals> _goals;
 
         public EstimatedPlanOptionList()
         {
@@ -124,6 +127,7 @@ namespace FinancialPlannerClient.PlanOptions
                 _planeId = int.Parse(val[0][0].ToString());
                 cmbPlan.Tag = _planeId;
                 fillOptionData();
+                _goals = new GoalsInfo().GetAll(_planeId);
             }
             catch (Exception ex)
             {
@@ -151,7 +155,20 @@ namespace FinancialPlannerClient.PlanOptions
             {
                 txtIncomeTax.Text = cf.IncomeTax.ToString();
                 txtIncomeTax.Tag = cf.Id;
+                dtGridCashFlow.DataSource = null;
+               
                 btnShowIncomeDetails_Click(sender, e);
+                //try
+                //{
+                //    dtGridCashFlow.Columns["StartYear"].Frozen = true;
+                //    dtGridCashFlow.Columns["EndYear"].Frozen = true;
+                //    dtGridCashFlow.Columns["Total Post Tax Income"].Frozen = true;
+                //    dtGridCashFlow.Columns["Total Annual Expenses"].Frozen = true;
+                //    dtGridCashFlow.Columns["Total Annual Loans"].Frozen = true;
+                //}
+                //catch (Exception ex)
+                //{
+                //}
             }
             else
             {
@@ -180,6 +197,8 @@ namespace FinancialPlannerClient.PlanOptions
                     else
                         column.HeaderText = "Income Tax (%)";
                 }
+
+                
             }
         }
 
@@ -282,9 +301,13 @@ namespace FinancialPlannerClient.PlanOptions
                 case "GoalStatus":
                     getGoalStatus();
                     break;
+                case "Goals":
+                    getGoals();
+                    break;
             }
         }
-        
+
+
         #region "Current Status"
 
         private void getCurrentStatus()
@@ -361,6 +384,47 @@ namespace FinancialPlannerClient.PlanOptions
             dtGridCurrentStatusGoals.Columns[2].HeaderText = "Current Status Fund Allocated";
             dtGridCurrentStatusGoals.Columns[3].HeaderText = "Fund Allocation";
             dtGridCurrentStatusGoals.Columns[4].HeaderText = "Excess Fund";
+        }
+        #endregion
+
+        #region "Goals"
+
+       
+        private void getGoals()
+        {
+            cmbGoals.Items.Clear();
+            
+            foreach (var goal in _goals)
+            {
+                cmbGoals.Items.Add(goal.Name);
+            }            
+        }
+        
+
+        private void cmbGoals_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            setGoalId();
+            _dtGoalValue = new GoalsCalculationInfo().GetGoalValue(int.Parse(cmbGoals.Tag.ToString()), _planeId);
+            dtGridGoalValue.DataSource = _dtGoalValue;
+            dtGridGoalValue.Columns["CurrentValue"].HeaderText = "Current Value";
+            dtGridGoalValue.Columns["CurrentValue"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomRight;
+            dtGridGoalValue.Columns["CurrentValue"].DefaultCellStyle.Format = "#,###.00";
+
+            dtGridGoalValue.Columns["Inflation"].HeaderText = "Inflation (%)";
+            dtGridGoalValue.Columns["Inflation"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomRight;
+            //dtGridGoalValue.Columns["Inflation"].DefaultCellStyle.Format = "# %";
+
+            dtGridGoalValue.Columns["GoalValue"].HeaderText = "Goal Value";
+            dtGridGoalValue.Columns["GoalValue"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomRight;
+            dtGridGoalValue.Columns["GoalValue"].DefaultCellStyle.Format = "#,###.00";
+        }
+
+        private void setGoalId()
+        {
+            if (cmbGoals.Text != "")
+                cmbGoals.Tag = _goals.FirstOrDefault(i => i.Name == cmbGoals.Text).Id;
+            else
+                cmbGoals.Tag = "0";
         }
         #endregion
     }

@@ -141,6 +141,7 @@
     <Compile Include="PlanOptions\EstimatedPlanOptionList.Designer.cs">
       <DependentUpon>EstimatedPlanOptionList.cs</DependentUpon>
     </Compile>
+    <Compile Include="PlanOptions\GoalsCalculationInfo.cs" />
     <Compile Include="PlanOptions\GoalStatusInfo.cs" />
     <Compile Include="PlanOptions\PlanOptionInfo.cs" />
     <Compile Include="PlanOptions\PlanOptionMaster.cs">

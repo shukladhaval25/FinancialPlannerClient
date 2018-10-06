@@ -870,7 +870,7 @@ namespace FinancialPlannerClient.Clients
             loan.Id = int.Parse(txtTypeOfLoan.Tag.ToString());
             loan.Pid = PlannerId;
             loan.TypeOfLoan = txtTypeOfLoan.Text;
-            loan.OutstandingAmt = int.Parse(txtOutStadningLoan.Text);
+            loan.OutstandingAmt = double.Parse(txtOutStadningLoan.Text);
             loan.InterestRate = decimal.Parse(txtLoanInterestRate.Text);
             loan.Emis = int.Parse(txtEmis.Text);
             loan.TermLeftInMonths = int.Parse(txtLoanTermLeft_Months.Text);

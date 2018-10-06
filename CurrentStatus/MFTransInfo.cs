@@ -1,5 +1,6 @@
 ﻿using FinancialPlanner.Common;
 using FinancialPlanner.Common.DataConversion;
+using FinancialPlanner.Common.Model.CurrentStatus;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -23,7 +24,7 @@ namespace FinancialPlannerClient.CurrentStatus
 
         internal DataTable GetMFTransactionsInfo(int plannerId)
         {
-            IList<MFTransactionsForm> MFTransactionsObj = new List<MFTransactionsForm>();
+            IList<MFTransactions> MFTransactionsObj = new List<MFTransactions>();
             try
             {
                 FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
@@ -31,11 +32,11 @@ namespace FinancialPlannerClient.CurrentStatus
 
                 RestAPIExecutor restApiExecutor = new RestAPIExecutor();
 
-                var restResult = restApiExecutor.Execute<IList<MFTransactionsForm>>(apiurl, null, "GET");
+                var restResult = restApiExecutor.Execute<IList<MFTransactions>>(apiurl, null, "GET");
 
                 if (jsonSerialization.IsValidJson(restResult.ToString()))
                 {
-                    MFTransactionsObj = jsonSerialization.DeserializeFromString<IList<MFTransactionsForm>>(restResult.ToString());
+                    MFTransactionsObj = jsonSerialization.DeserializeFromString<IList<MFTransactions>>(restResult.ToString());
                 }
                 if (MFTransactionsObj != null)
                 {
@@ -101,14 +102,14 @@ namespace FinancialPlannerClient.CurrentStatus
             Logger.LogDebug(debuggerInfo);
         }
 
-        internal bool Add(MFTransactionsForm MFTransactions)
+        internal bool Add(MFTransactions MFTrans)
         {
             try
             {
                 FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
                 string apiurl = Program.WebServiceUrl +"/"+ ADD_MFTransactions_API;
                 RestAPIExecutor restApiExecutor = new RestAPIExecutor();
-                var restResult = restApiExecutor.Execute<MFTransactionsForm>(apiurl, MFTransactions, "POST");
+                var restResult = restApiExecutor.Execute<MFTransactions>(apiurl, MFTrans, "POST");
                 return true;
             }
             catch (Exception ex)
@@ -121,14 +122,14 @@ namespace FinancialPlannerClient.CurrentStatus
             }
         }
 
-        internal bool Update(MFTransactionsForm MFTransactions)
+        internal bool Update(MFTransactions MFTransactions)
         {
             try
             {
                 FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
                 string apiurl = Program.WebServiceUrl +"/"+ UPDATE_MFTransactions_API;
                 RestAPIExecutor restApiExecutor = new RestAPIExecutor();
-                var restResult = restApiExecutor.Execute<MFTransactionsForm>(apiurl, MFTransactions, "POST");
+                var restResult = restApiExecutor.Execute<MFTransactions>(apiurl, MFTransactions, "POST");
                 return true;
             }
             catch (Exception ex)
@@ -141,14 +142,14 @@ namespace FinancialPlannerClient.CurrentStatus
             }
         }
 
-        internal bool Delete(MFTransactionsForm MFTransactions)
+        internal bool Delete(MFTransactions MFTransactions)
         {
             try
             {
                 FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
                 string apiurl = Program.WebServiceUrl +"/"+DELETE_MFTransactions_API;
                 RestAPIExecutor restApiExecutor = new RestAPIExecutor();
-                var restResult = restApiExecutor.Execute<MFTransactionsForm>(apiurl, MFTransactions, "POST");
+                var restResult = restApiExecutor.Execute<MFTransactions>(apiurl, MFTransactions, "POST");
                 return true;
             }
             catch (Exception ex)
@@ -160,6 +161,5 @@ namespace FinancialPlannerClient.CurrentStatus
                 return false;
             }
         }
-
     }
 }
