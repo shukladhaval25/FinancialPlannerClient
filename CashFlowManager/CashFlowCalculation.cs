@@ -25,6 +25,7 @@ namespace FinancialPlannerClient.CashFlowManager
         IList<Income> lstIncomes;
         IList<Expenses> lstExpenses;
         IList<Loan> lstLoans;
+        IList<Goals> lstGoals;
 
         public int Pid
         {
@@ -223,6 +224,19 @@ namespace FinancialPlannerClient.CashFlowManager
             set
             {
                 lstLoans = value;
+            }
+        }
+
+        public IList<Goals> LstGoals
+        {
+            get
+            {
+                return lstGoals;
+            }
+
+            set
+            {
+                lstGoals = value;
             }
         }
     }

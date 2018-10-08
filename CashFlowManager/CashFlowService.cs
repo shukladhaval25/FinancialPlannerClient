@@ -42,10 +42,17 @@ namespace FinancialPlannerClient.CashFlowManager
             IList<Income> incomes = new IncomeInfo().GetAll(_planId);
             IList<Expenses> expenses = new ExpensesInfo().GetAll(_planId);
             IList<Loan> loans = new LoanInfo().GetAll(_planId);
+            IList<Goals> goals = new GoalsInfo().GetAll(_planId);
             fillCashFlowFromIncomes(incomes);
             fillCashFlowFromExpenses(expenses);
             fillCashFlowFromLoans(loans);
+            fillCashFlowFromGoals(goals);
             return _cashFlow;
+        }
+
+        private void fillCashFlowFromGoals(IList<Goals> goals)
+        {
+            _cashFlow.LstGoals = goals;
         }
 
         public CashFlow GetCashFlow(int optionId)
@@ -341,8 +348,20 @@ namespace FinancialPlannerClient.CashFlowManager
             }
             _dtCashFlow.Columns.Add("Total Annual Loans", typeof(System.Double));
             #endregion
-
+                        
             _dtCashFlow.Columns.Add("Surplus Amount", typeof(System.Double));
+
+            #region"Goals
+            _cashFlow.LstGoals.OrderBy(x => x.Priority);
+            foreach (Goals goal in _cashFlow.LstGoals)
+            {
+                DataColumn dcGoal = new DataColumn("("+ goal.Name + ")",typeof(System.Double));
+                _dtCashFlow.Columns.Add(dcGoal);                
+            }
+
+            #endregion
+
+            _dtCashFlow.Columns.Add("Additional Amount", typeof(System.Double));
         }
 
         internal bool Save(CashFlow cf)

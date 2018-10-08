@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PlanOptionMaster));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnGenInsCancel = new System.Windows.Forms.Button();
+            this.imageList16x16 = new System.Windows.Forms.ImageList(this.components);
             this.btnGenInsSave = new System.Windows.Forms.Button();
             this.txtOptionName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -39,12 +40,15 @@
             this.label3 = new System.Windows.Forms.Label();
             this.lblclientNameVal = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.imageList16x16 = new System.Windows.Forms.ImageList(this.components);
+            this.label4 = new System.Windows.Forms.Label();
+            this.cmbRiskProfile = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cmbRiskProfile);
+            this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.btnGenInsCancel);
             this.groupBox1.Controls.Add(this.btnGenInsSave);
             this.groupBox1.Controls.Add(this.txtOptionName);
@@ -55,7 +59,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 10);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(331, 154);
+            this.groupBox1.Size = new System.Drawing.Size(331, 187);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
@@ -64,7 +68,7 @@
             this.btnGenInsCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnGenInsCancel.ImageKey = "icons8-cancel-16.png";
             this.btnGenInsCancel.ImageList = this.imageList16x16;
-            this.btnGenInsCancel.Location = new System.Drawing.Point(191, 110);
+            this.btnGenInsCancel.Location = new System.Drawing.Point(196, 141);
             this.btnGenInsCancel.Name = "btnGenInsCancel";
             this.btnGenInsCancel.Size = new System.Drawing.Size(86, 26);
             this.btnGenInsCancel.TabIndex = 10;
@@ -72,12 +76,22 @@
             this.btnGenInsCancel.UseVisualStyleBackColor = true;
             this.btnGenInsCancel.Click += new System.EventHandler(this.btnGenInsCancel_Click);
             // 
+            // imageList16x16
+            // 
+            this.imageList16x16.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList16x16.ImageStream")));
+            this.imageList16x16.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList16x16.Images.SetKeyName(0, "icons8-contact-details-16-2.png");
+            this.imageList16x16.Images.SetKeyName(1, "icons8-resume-16.png");
+            this.imageList16x16.Images.SetKeyName(2, "icons8-customer-16.png");
+            this.imageList16x16.Images.SetKeyName(3, "icons8-cancel-16.png");
+            this.imageList16x16.Images.SetKeyName(4, "icons8-save-close-16.png");
+            // 
             // btnGenInsSave
             // 
             this.btnGenInsSave.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnGenInsSave.ImageKey = "icons8-save-close-16.png";
             this.btnGenInsSave.ImageList = this.imageList16x16;
-            this.btnGenInsSave.Location = new System.Drawing.Point(99, 110);
+            this.btnGenInsSave.Location = new System.Drawing.Point(104, 141);
             this.btnGenInsSave.Name = "btnGenInsSave";
             this.btnGenInsSave.Size = new System.Drawing.Size(86, 26);
             this.btnGenInsSave.TabIndex = 9;
@@ -144,25 +158,36 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Client :";
             // 
-            // imageList16x16
+            // label4
             // 
-            this.imageList16x16.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList16x16.ImageStream")));
-            this.imageList16x16.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList16x16.Images.SetKeyName(0, "icons8-contact-details-16-2.png");
-            this.imageList16x16.Images.SetKeyName(1, "icons8-resume-16.png");
-            this.imageList16x16.Images.SetKeyName(2, "icons8-customer-16.png");
-            this.imageList16x16.Images.SetKeyName(3, "icons8-cancel-16.png");
-            this.imageList16x16.Images.SetKeyName(4, "icons8-save-close-16.png");
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(12, 101);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(92, 16);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Risk Profile:";
+            // 
+            // cmbRiskProfile
+            // 
+            this.cmbRiskProfile.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbRiskProfile.FormattingEnabled = true;
+            this.cmbRiskProfile.Location = new System.Drawing.Point(124, 100);
+            this.cmbRiskProfile.Name = "cmbRiskProfile";
+            this.cmbRiskProfile.Size = new System.Drawing.Size(182, 21);
+            this.cmbRiskProfile.TabIndex = 8;
+            this.cmbRiskProfile.SelectedIndexChanged += new System.EventHandler(this.cmbRiskProfile_SelectedIndexChanged);
             // 
             // PlanOptionMaster
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(354, 175);
+            this.ClientSize = new System.Drawing.Size(354, 209);
             this.ControlBox = false;
             this.Controls.Add(this.groupBox1);
             this.Name = "PlanOptionMaster";
             this.Text = "Plan Option";
+            this.Load += new System.EventHandler(this.PlanOptionMaster_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -181,5 +206,7 @@
         internal System.Windows.Forms.Label lblclientNameVal;
         internal System.Windows.Forms.Label lblPlanVal;
         private System.Windows.Forms.ImageList imageList16x16;
+        private System.Windows.Forms.Label label4;
+        internal System.Windows.Forms.ComboBox cmbRiskProfile;
     }
 }

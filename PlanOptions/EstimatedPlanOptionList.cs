@@ -21,17 +21,21 @@ namespace FinancialPlannerClient.PlanOptions
 {
     public partial class EstimatedPlanOptionList : Form
     {
+        private const string RISKPROFILE_GETALL = "RiskProfileReturn/GetAll";
         private Client client;
         DataTable _dtPlan;
         DataTable _dtOption;
         DataTable _dtcashFlow;
         DataTable _dtCurrentStatustoGoals;
         DataTable _dtGoalValue;
+        DataTable _dtGoalCal;
         private int _planeId;
         private int _optinId;
+        private int _riskProfileId;
         CurrentStatusCalculation _csCal;
         CurrentStatusInfo _csInfo = new CurrentStatusInfo();
         private IList<Goals> _goals;
+        private List<RiskProfiledReturnMaster> _riskProfileMasters = new List<RiskProfiledReturnMaster>();
 
         public EstimatedPlanOptionList()
         {
@@ -148,7 +152,13 @@ namespace FinancialPlannerClient.PlanOptions
         private void cmbPlanOption_SelectedIndexChanged(object sender, EventArgs e)
         {
             var val =  _dtOption.Select("NAME ='" + cmbPlanOption.Text + "'");
-            cmbPlanOption.Tag = int.Parse(val[0][0].ToString());
+            if (val != null)
+                cmbPlanOption.Tag = int.Parse(val[0][0].ToString());
+
+            loadRiskProfileData();
+            RiskProfiledReturnMaster riskProfMaster = _riskProfileMasters.FirstOrDefault(i => i.Id == int.Parse(val[0]["RiskProfileID"].ToString()));
+            lblRiskProfileVal.Text = riskProfMaster.Name;
+            lblRiskProfileVal.Tag = riskProfMaster.Id;
             CashFlowService cashFlowService = new CashFlowService();
             CashFlow cf =  cashFlowService.GetCashFlow(int.Parse(val[0][0].ToString()));
             if (cf != null)
@@ -209,12 +219,14 @@ namespace FinancialPlannerClient.PlanOptions
                 MessageBox.Show("Please select valid value for plan option and try again.", "Invalid Selection", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            PlanOptionMaster planoptionmaster = new PlanOptionMaster();
+            PlanOptionMaster planoptionmaster = new PlanOptionMaster(lblRiskProfileVal.Text);
             planoptionmaster.lblclientNameVal.Text = lblclientNameVal.Text;
             planoptionmaster.lblPlanVal.Text = cmbPlan.Text;
             planoptionmaster.lblPlanVal.Tag = cmbPlan.Tag.ToString();
             planoptionmaster.txtOptionName.Text = cmbPlanOption.Text;
             planoptionmaster.txtOptionName.Tag = cmbPlanOption.Tag;
+            planoptionmaster.cmbRiskProfile.Tag = lblRiskProfileVal.Tag;
+            planoptionmaster.cmbRiskProfile.Text = lblRiskProfileVal.Text;
             planoptionmaster.StartPosition = FormStartPosition.CenterParent;
 
             if (planoptionmaster.ShowDialog() == DialogResult.OK)
@@ -307,6 +319,23 @@ namespace FinancialPlannerClient.PlanOptions
             }
         }
 
+        private void loadRiskProfileData()
+        {
+           
+            FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
+            string apiurl = Program.WebServiceUrl +"/"+ RISKPROFILE_GETALL;
+
+            RestAPIExecutor restApiExecutor = new RestAPIExecutor();
+
+            var restResult = restApiExecutor.Execute<List<RiskProfiledReturnMaster>>(apiurl, null, "GET");
+
+            if (jsonSerialization.IsValidJson(restResult.ToString()))
+            {
+                _riskProfileMasters = jsonSerialization.DeserializeFromString<List<RiskProfiledReturnMaster>>(restResult.ToString());              
+            }
+            else
+                MessageBox.Show(restResult.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
 
         #region "Current Status"
 
@@ -403,8 +432,31 @@ namespace FinancialPlannerClient.PlanOptions
 
         private void cmbGoals_SelectedIndexChanged(object sender, EventArgs e)
         {
+            GoalsCalculationInfo goalCalculationInfo =   new GoalsCalculationInfo();
             setGoalId();
-            _dtGoalValue = new GoalsCalculationInfo().GetGoalValue(int.Parse(cmbGoals.Tag.ToString()), _planeId);
+            if (cmbGoals.Tag == "0")
+            {
+                dtGridGoalValue.DataSource  = null;
+                dtGridGoalCal.DataSource = null; 
+            }
+            else
+            {
+                _dtGoalValue = goalCalculationInfo.GetGoalValue(int.Parse(cmbGoals.Tag.ToString()),
+                    _planeId,int.Parse(lblRiskProfileVal.Tag.ToString()));
+                if (_dtGoalValue != null && _dtGoalValue.Rows.Count > 0)
+                {
+                    lblGoalPeriodValue.Text = _dtGoalValue.Rows[0]["GoalYear"].ToString();
+                    txtPorfolioValue.Text = goalCalculationInfo.GetProfileValue().ToString();
+
+                    setGoalValueGrid();
+                    _dtGoalCal = goalCalculationInfo.GetGoalCalculation();
+                    dtGridGoalCal.DataSource = _dtGoalCal;
+                }                
+            }
+        }
+
+        private void setGoalValueGrid()
+        {
             dtGridGoalValue.DataSource = _dtGoalValue;
             dtGridGoalValue.Columns["CurrentValue"].HeaderText = "Current Value";
             dtGridGoalValue.Columns["CurrentValue"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomRight;
@@ -427,5 +479,30 @@ namespace FinancialPlannerClient.PlanOptions
                 cmbGoals.Tag = "0";
         }
         #endregion
+
+        private void dtGridGoalCal_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                GoalsCalculationInfo goalCalculationInfo =   new GoalsCalculationInfo();
+                
+                for (int selectedRowIndex = e.RowIndex; selectedRowIndex <= dtGridGoalCal.Rows.Count - 1;
+                    selectedRowIndex++)
+                {
+                    double portfolioValue = (double) dtGridGoalCal.Rows[selectedRowIndex - 1].Cells["Portfolio Value"].Value;
+                    double freshInvestment = (double) dtGridGoalCal.Rows[selectedRowIndex].Cells["Fresh Investment"].Value;
+                    double assetsMapping = (double) dtGridGoalCal.Rows[selectedRowIndex].Cells["Assets Mapping"].Value;
+                    double instrumentMapped = (double) dtGridGoalCal.Rows[selectedRowIndex].Cells["Instrument Mapped"].Value;
+                    decimal portfolioReturn  = (decimal) dtGridGoalCal.Rows[selectedRowIndex].Cells["Portfolio Return"].Value;
+                    double recalculatedPortfolioValue = goalCalculationInfo.ReCalculatePortFolioValue(portfolioValue,freshInvestment,
+                                assetsMapping,instrumentMapped,portfolioReturn);
+                    dtGridGoalCal.Rows[selectedRowIndex].Cells["Portfolio Value"].Value = System.Math.Round(recalculatedPortfolioValue);
+                }
+            }
+            catch(Exception ex)
+            {
+                Logger.LogDebug(ex);
+            }
+        }
     }
 }
