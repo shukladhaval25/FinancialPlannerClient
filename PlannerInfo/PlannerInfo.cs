@@ -11,10 +11,36 @@ namespace FinancialPlannerClient.PlannerInfo
     public class PlannerInfo
     {
         private const string GET_PLAN_BY_CLIENTID_API = "Planner/GetByClientId?id={0}";
+        private const string GET_PLAN_BY_PLAN_ID = "Planner/GetByPlannerId?id={0}";
 
         internal DataTable GetPlanData(int ClientId)
         {
             return loadPlanData(ClientId);
+        }
+        internal Planner GetPlanDataById(int planId)
+        {
+            FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
+            string apiurl = Program.WebServiceUrl +"/"+ string.Format(GET_PLAN_BY_PLAN_ID,planId);
+
+            HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(apiurl);
+            request.Method = "GET";
+            String planerResultJson = String.Empty;
+            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+            {
+                Stream dataStream = response.GetResponseStream();
+
+                StreamReader reader = new StreamReader(dataStream);
+                planerResultJson = reader.ReadToEnd();
+                reader.Close();
+                dataStream.Close();
+            }
+            var planner = jsonSerialization.DeserializeFromString<Result<Planner>>(planerResultJson);
+
+            if (planner.Value != null)
+            {
+                return planner.Value;
+            }
+            return null;
         }
         private DataTable loadPlanData(int ClientId)
         {

@@ -17,7 +17,7 @@ namespace FinancialPlannerClient.PlanOptions
         CurrentStatusInfo csInfo = new CurrentStatusInfo();
         int _planId;
 
-        internal void GetGoals(int planId)
+        private void loadGoals(int planId)
         {
             goals = new GoalsInfo().GetAll(planId);
         }
@@ -25,7 +25,7 @@ namespace FinancialPlannerClient.PlanOptions
         internal DataTable CurrentStatusToGoalCalculation(int planId)
         {
             _planId = planId;
-            GetGoals(planId);
+            loadGoals(planId);
             createTableStructureForMontyToGoals();
             addRowInMoneyToGoalsTable();
             return _dtmoneyToGoals;

@@ -54,12 +54,23 @@ namespace FinancialPlannerClient.PlanOptions
             dr["Inflation"] = _goal.InflationRate;
             dr["YearLeft"] = getYears(_goal.StartYear);
             dr["GoalValue"] = GetFutureValue();
+            if (_goal.LoanForGoal != null)
+            {
+                dr["Loan Amount"] = _goal.LoanForGoal.LoanAmount;
+                dr["Loan Years"] = _goal.LoanForGoal.LoanYears;
+                dr["Loan ROI"] = _goal.LoanForGoal.ROI;
+            }
             _dtGoalValue.Rows.Add(dr);
 
         }
 
         private void createTableStructure()
         {
+            if (_dtGoalValue != null)
+            {
+                _dtGoalValue.Clear();
+                _dtGoalValue.Columns.Clear();
+            }
             DataColumn dcYear = new DataColumn("Year",typeof(System.Int16));
             _dtGoalValue.Columns.Add(dcYear);
 
@@ -81,6 +92,24 @@ namespace FinancialPlannerClient.PlanOptions
             DataColumn dcGoalValue = new DataColumn("GoalValue",typeof(System.Double));
             _dtGoalValue.Columns.Add(dcGoalValue);
 
+            DataColumn dcGoalLoanAmount = new DataColumn("Loan Amount",typeof(System.Double));
+            _dtGoalValue.Columns.Add(dcGoalLoanAmount);
+
+            DataColumn dcGoalLoanEMI = new DataColumn("Loan EMI",typeof(System.Double));
+            _dtGoalValue.Columns.Add(dcGoalLoanEMI);
+
+            DataColumn dcGoalLoanROI = new DataColumn("Loan ROI",typeof(System.Double));
+            _dtGoalValue.Columns.Add(dcGoalLoanROI);
+
+            DataColumn dcGoalLoanYears = new DataColumn("Loan Years",typeof(System.Double));
+            _dtGoalValue.Columns.Add(dcGoalLoanYears);
+
+            DataColumn dcGoalLoanStartYear = new DataColumn("Start Year",typeof(System.Double));
+            _dtGoalValue.Columns.Add(dcGoalLoanStartYear);
+
+            DataColumn dcGoalLoanEndYear = new DataColumn("Loan End Year",typeof(System.Double));
+            _dtGoalValue.Columns.Add(dcGoalLoanEndYear);
+            
         }
 
         internal double GetFutureValue()
@@ -89,6 +118,18 @@ namespace FinancialPlannerClient.PlanOptions
             double currentValue = _goal.Amount;
             decimal interest_rate = _goal.InflationRate / 100;
             int years = getYears(_goal.StartYear);
+            decimal futureValue =  (decimal) currentValue *
+                ((decimal)Math.Pow((double)(1 + interest_rate), (double)years));
+
+            return Math.Round((double)futureValue);
+        }
+
+        internal double GetGoalFutureValue(Goals goal)
+        {
+            //FV = PV * (1 + I)T;
+            double currentValue = goal.Amount;
+            decimal interest_rate = goal.InflationRate / 100;
+            int years = getYears(goal.StartYear);
             decimal futureValue =  (decimal) currentValue *
                 ((decimal)Math.Pow((double)(1 + interest_rate), (double)years));
 
@@ -114,12 +155,12 @@ namespace FinancialPlannerClient.PlanOptions
 
         private void setGoalCalculationTable()
         {
-            loadRislProfileReturnDetails();
+            loadRiskProfileReturnDetails();
             setGoalCalculationTableStructure();
             addRowsInGoalCalculation();
         }
 
-        private void loadRislProfileReturnDetails()
+        private void loadRiskProfileReturnDetails()
         {
             ReiskProfileInfo _defaultRiskProfile = new ReiskProfileInfo();
             _dtRiskProfileDet = _defaultRiskProfile.GetRiskProfileReturnById(_riskprofileId);

@@ -26,6 +26,7 @@ namespace FinancialPlannerClient.CashFlowManager
         IList<Expenses> lstExpenses;
         IList<Loan> lstLoans;
         IList<Goals> lstGoals;
+        int _planStartYear;
 
         public int Pid
         {
@@ -237,6 +238,19 @@ namespace FinancialPlannerClient.CashFlowManager
             set
             {
                 lstGoals = value;
+            }
+        }
+
+        public int PlanStartYear
+        {
+            get
+            {
+                return _planStartYear;
+            }
+
+            set
+            {
+                _planStartYear = value;
             }
         }
     }

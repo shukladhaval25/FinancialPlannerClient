@@ -36,6 +36,7 @@ namespace FinancialPlannerClient.PlanOptions
         CurrentStatusInfo _csInfo = new CurrentStatusInfo();
         private IList<Goals> _goals;
         private List<RiskProfiledReturnMaster> _riskProfileMasters = new List<RiskProfiledReturnMaster>();
+        GoalsCalculationInfo _goalCalculationInfo =   new GoalsCalculationInfo();
 
         public EstimatedPlanOptionList()
         {
@@ -163,8 +164,8 @@ namespace FinancialPlannerClient.PlanOptions
             CashFlow cf =  cashFlowService.GetCashFlow(int.Parse(val[0][0].ToString()));
             if (cf != null)
             {
-                txtIncomeTax.Text = cf.IncomeTax.ToString();
-                txtIncomeTax.Tag = cf.Id;
+                //txtIncomeTax.Text = cf.IncomeTax.ToString();
+                //txtIncomeTax.Tag = cf.Id;
                 dtGridCashFlow.DataSource = null;
                
                 btnShowIncomeDetails_Click(sender, e);
@@ -180,11 +181,11 @@ namespace FinancialPlannerClient.PlanOptions
                 //{
                 //}
             }
-            else
-            {
-                txtIncomeTax.Text = "";
-                txtIncomeTax.Tag = "0";
-            }
+            //else
+            //{
+            //    txtIncomeTax.Text = "";
+            //    txtIncomeTax.Tag = "0";
+            //}
         }
 
         private void btnShowIncomeDetails_Click(object sender, EventArgs e)
@@ -192,7 +193,7 @@ namespace FinancialPlannerClient.PlanOptions
             if (!string.IsNullOrEmpty(cmbPlanOption.Text))
             {
                 CashFlowService cashFlowService = new CashFlowService();
-                _dtcashFlow = cashFlowService.GenerateCashFlow(this.client.ID, _planeId, float.Parse(txtIncomeTax.Text));
+                _dtcashFlow = cashFlowService.GenerateCashFlow(this.client.ID, _planeId);
                 dtGridCashFlow.DataSource = _dtcashFlow;
                 dtGridCashFlow.Columns["ID"].Visible = false;
                 foreach (DataGridViewColumn column in dtGridCashFlow.Columns)
@@ -272,40 +273,40 @@ namespace FinancialPlannerClient.PlanOptions
             //}
         }
 
-        private void btnCashFlowSave_Click(object sender, EventArgs e)
-        {
-            CashFlow cf = getCashFlowData();
-            CashFlowService cfService = new CashFlowService();
+        //private void btnCashFlowSave_Click(object sender, EventArgs e)
+        //{
+        //    CashFlow cf = getCashFlowData();
+        //    CashFlowService cfService = new CashFlowService();
 
-            if (cfService.Save(cf))
-            {
-                MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);                
-            }
-            else
-                MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
+        //    if (cfService.Save(cf))
+        //    {
+        //        MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);                
+        //    }
+        //    else
+        //        MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //}
 
-        private CashFlow getCashFlowData()
-        {
-            CashFlow cf = new CashFlow();
-            cf.Id = int.Parse(txtIncomeTax.Tag.ToString());
-            cf.Oid = int.Parse(cmbPlanOption.Tag.ToString());
-            cf.IncomeTax = float.Parse(txtIncomeTax.Text);
-            cf.UpdatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
-            cf.CreatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
-            cf.UpdatedBy = Program.CurrentUser.Id;
-            cf.CreatedBy = Program.CurrentUser.Id;
-            cf.UpdatedByUserName = Program.CurrentUser.UserName;
-            cf.MachineName = System.Environment.MachineName;
-            return cf;
-        }
+        //private CashFlow getCashFlowData()
+        //{
+        //    CashFlow cf = new CashFlow();
+        //    cf.Id = int.Parse(txtIncomeTax.Tag.ToString());
+        //    cf.Oid = int.Parse(cmbPlanOption.Tag.ToString());
+        //    cf.IncomeTax = float.Parse(txtIncomeTax.Text);
+        //    cf.UpdatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+        //    cf.CreatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+        //    cf.UpdatedBy = Program.CurrentUser.Id;
+        //    cf.CreatedBy = Program.CurrentUser.Id;
+        //    cf.UpdatedByUserName = Program.CurrentUser.UserName;
+        //    cf.MachineName = System.Environment.MachineName;
+        //    return cf;
+        //}
 
         private void tabEstimatedPlan_SelectedIndexChanged(object sender, EventArgs e)
         {
             switch (tabEstimatedPlan.SelectedTab.Name)
             {
                 case "CashFlow":
-                    getCashFlowData();
+                    //getCashFlowData();
                     break;
                 case "CurrentStatus":
                     getCurrentStatus();
@@ -429,10 +430,8 @@ namespace FinancialPlannerClient.PlanOptions
             }            
         }
         
-
         private void cmbGoals_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            GoalsCalculationInfo goalCalculationInfo =   new GoalsCalculationInfo();
+        {          
             setGoalId();
             if (cmbGoals.Tag == "0")
             {
@@ -441,15 +440,15 @@ namespace FinancialPlannerClient.PlanOptions
             }
             else
             {
-                _dtGoalValue = goalCalculationInfo.GetGoalValue(int.Parse(cmbGoals.Tag.ToString()),
+                _dtGoalValue = _goalCalculationInfo.GetGoalValue(int.Parse(cmbGoals.Tag.ToString()),
                     _planeId,int.Parse(lblRiskProfileVal.Tag.ToString()));
                 if (_dtGoalValue != null && _dtGoalValue.Rows.Count > 0)
                 {
                     lblGoalPeriodValue.Text = _dtGoalValue.Rows[0]["GoalYear"].ToString();
-                    txtPorfolioValue.Text = goalCalculationInfo.GetProfileValue().ToString();
+                    txtPorfolioValue.Text = _goalCalculationInfo.GetProfileValue().ToString();
 
                     setGoalValueGrid();
-                    _dtGoalCal = goalCalculationInfo.GetGoalCalculation();
+                    _dtGoalCal = _goalCalculationInfo.GetGoalCalculation();
                     dtGridGoalCal.DataSource = _dtGoalCal;
                 }                
             }
@@ -478,14 +477,11 @@ namespace FinancialPlannerClient.PlanOptions
             else
                 cmbGoals.Tag = "0";
         }
-        #endregion
-
+       
         private void dtGridGoalCal_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             try
-            {
-                GoalsCalculationInfo goalCalculationInfo =   new GoalsCalculationInfo();
-                
+            {              
                 for (int selectedRowIndex = e.RowIndex; selectedRowIndex <= dtGridGoalCal.Rows.Count - 1;
                     selectedRowIndex++)
                 {
@@ -494,7 +490,7 @@ namespace FinancialPlannerClient.PlanOptions
                     double assetsMapping = (double) dtGridGoalCal.Rows[selectedRowIndex].Cells["Assets Mapping"].Value;
                     double instrumentMapped = (double) dtGridGoalCal.Rows[selectedRowIndex].Cells["Instrument Mapped"].Value;
                     decimal portfolioReturn  = (decimal) dtGridGoalCal.Rows[selectedRowIndex].Cells["Portfolio Return"].Value;
-                    double recalculatedPortfolioValue = goalCalculationInfo.ReCalculatePortFolioValue(portfolioValue,freshInvestment,
+                    double recalculatedPortfolioValue = _goalCalculationInfo.ReCalculatePortFolioValue(portfolioValue,freshInvestment,
                                 assetsMapping,instrumentMapped,portfolioReturn);
                     dtGridGoalCal.Rows[selectedRowIndex].Cells["Portfolio Value"].Value = System.Math.Round(recalculatedPortfolioValue);
                 }
@@ -504,5 +500,6 @@ namespace FinancialPlannerClient.PlanOptions
                 Logger.LogDebug(ex);
             }
         }
+        #endregion
     }
 }

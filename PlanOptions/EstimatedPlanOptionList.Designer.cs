@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EstimatedPlanOptionList));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblRiskProfileVal = new System.Windows.Forms.Label();
             this.grpActionControls = new System.Windows.Forms.GroupBox();
@@ -47,13 +47,7 @@
             this.tabEstimatedPlan = new System.Windows.Forms.TabControl();
             this.CashFlow = new System.Windows.Forms.TabPage();
             this.dtGridCashFlow = new System.Windows.Forms.DataGridView();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnCashFlowCancel = new System.Windows.Forms.Button();
             this.imageList16x16 = new System.Windows.Forms.ImageList(this.components);
-            this.btnCashFlowSave = new System.Windows.Forms.Button();
-            this.btnShowIncomeDetails = new System.Windows.Forms.Button();
-            this.txtIncomeTax = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.CurrentStatus = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
@@ -119,7 +113,6 @@
             this.tabEstimatedPlan.SuspendLayout();
             this.CashFlow.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridCashFlow)).BeginInit();
-            this.groupBox2.SuspendLayout();
             this.CurrentStatus.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -293,7 +286,6 @@
             // CashFlow
             // 
             this.CashFlow.Controls.Add(this.dtGridCashFlow);
-            this.CashFlow.Controls.Add(this.groupBox2);
             this.CashFlow.Location = new System.Drawing.Point(4, 22);
             this.CashFlow.Name = "CashFlow";
             this.CashFlow.Padding = new System.Windows.Forms.Padding(3);
@@ -315,32 +307,6 @@
             this.dtGridCashFlow.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtGridCashFlow_CellEndEdit);
             this.dtGridCashFlow.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dtGridCashFlow_CellValidating);
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.btnCashFlowCancel);
-            this.groupBox2.Controls.Add(this.btnCashFlowSave);
-            this.groupBox2.Controls.Add(this.btnShowIncomeDetails);
-            this.groupBox2.Controls.Add(this.txtIncomeTax);
-            this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Location = new System.Drawing.Point(8, 7);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1020, 40);
-            this.groupBox2.TabIndex = 0;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Visible = false;
-            // 
-            // btnCashFlowCancel
-            // 
-            this.btnCashFlowCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCashFlowCancel.ImageKey = "icons8-cancel-16.png";
-            this.btnCashFlowCancel.ImageList = this.imageList16x16;
-            this.btnCashFlowCancel.Location = new System.Drawing.Point(928, 11);
-            this.btnCashFlowCancel.Name = "btnCashFlowCancel";
-            this.btnCashFlowCancel.Size = new System.Drawing.Size(86, 26);
-            this.btnCashFlowCancel.TabIndex = 12;
-            this.btnCashFlowCancel.Text = "Cancel";
-            this.btnCashFlowCancel.UseVisualStyleBackColor = true;
-            // 
             // imageList16x16
             // 
             this.imageList16x16.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList16x16.ImageStream")));
@@ -351,54 +317,13 @@
             this.imageList16x16.Images.SetKeyName(3, "icons8-cancel-16.png");
             this.imageList16x16.Images.SetKeyName(4, "icons8-save-close-16.png");
             // 
-            // btnCashFlowSave
-            // 
-            this.btnCashFlowSave.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCashFlowSave.ImageKey = "icons8-save-close-16.png";
-            this.btnCashFlowSave.ImageList = this.imageList16x16;
-            this.btnCashFlowSave.Location = new System.Drawing.Point(836, 11);
-            this.btnCashFlowSave.Name = "btnCashFlowSave";
-            this.btnCashFlowSave.Size = new System.Drawing.Size(86, 26);
-            this.btnCashFlowSave.TabIndex = 11;
-            this.btnCashFlowSave.Text = "Save";
-            this.btnCashFlowSave.UseVisualStyleBackColor = true;
-            this.btnCashFlowSave.Click += new System.EventHandler(this.btnCashFlowSave_Click);
-            // 
-            // btnShowIncomeDetails
-            // 
-            this.btnShowIncomeDetails.Location = new System.Drawing.Point(158, 11);
-            this.btnShowIncomeDetails.Name = "btnShowIncomeDetails";
-            this.btnShowIncomeDetails.Size = new System.Drawing.Size(134, 23);
-            this.btnShowIncomeDetails.TabIndex = 2;
-            this.btnShowIncomeDetails.Text = "Show Income Details";
-            this.btnShowIncomeDetails.UseVisualStyleBackColor = true;
-            this.btnShowIncomeDetails.Click += new System.EventHandler(this.btnShowIncomeDetails_Click);
-            // 
-            // txtIncomeTax
-            // 
-            this.txtIncomeTax.Location = new System.Drawing.Point(95, 13);
-            this.txtIncomeTax.Name = "txtIncomeTax";
-            this.txtIncomeTax.Size = new System.Drawing.Size(57, 20);
-            this.txtIncomeTax.TabIndex = 1;
-            this.txtIncomeTax.Text = "10";
-            this.txtIncomeTax.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 16);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(83, 13);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Income Tax (%):";
-            // 
             // CurrentStatus
             // 
             this.CurrentStatus.Controls.Add(this.panel1);
             this.CurrentStatus.Location = new System.Drawing.Point(4, 22);
             this.CurrentStatus.Name = "CurrentStatus";
             this.CurrentStatus.Padding = new System.Windows.Forms.Padding(3);
-            this.CurrentStatus.Size = new System.Drawing.Size(1036, 546);
+            this.CurrentStatus.Size = new System.Drawing.Size(1036, 547);
             this.CurrentStatus.TabIndex = 1;
             this.CurrentStatus.Text = "Current Status";
             this.CurrentStatus.UseVisualStyleBackColor = true;
@@ -961,7 +886,7 @@
             this.GoalStatus.Controls.Add(this.dtGridCurrentStatusGoals);
             this.GoalStatus.Location = new System.Drawing.Point(4, 22);
             this.GoalStatus.Name = "GoalStatus";
-            this.GoalStatus.Size = new System.Drawing.Size(1036, 546);
+            this.GoalStatus.Size = new System.Drawing.Size(1036, 547);
             this.GoalStatus.TabIndex = 2;
             this.GoalStatus.Text = "Goals Status";
             this.GoalStatus.UseVisualStyleBackColor = true;
@@ -984,14 +909,14 @@
             this.dtGridCurrentStatusGoals.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtGridCurrentStatusGoals.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtGridCurrentStatusGoals.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dtGridCurrentStatusGoals.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGridCurrentStatusGoals.Location = new System.Drawing.Point(7, 51);
             this.dtGridCurrentStatusGoals.MultiSelect = false;
@@ -1013,7 +938,7 @@
             this.Goals.Location = new System.Drawing.Point(4, 22);
             this.Goals.Name = "Goals";
             this.Goals.Padding = new System.Windows.Forms.Padding(3);
-            this.Goals.Size = new System.Drawing.Size(1036, 546);
+            this.Goals.Size = new System.Drawing.Size(1036, 547);
             this.Goals.TabIndex = 3;
             this.Goals.Text = "Goals";
             this.Goals.UseVisualStyleBackColor = true;
@@ -1119,8 +1044,6 @@
             this.tabEstimatedPlan.ResumeLayout(false);
             this.CashFlow.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtGridCashFlow)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.CurrentStatus.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -1153,13 +1076,7 @@
         private System.Windows.Forms.TabControl tabEstimatedPlan;
         private System.Windows.Forms.TabPage CashFlow;
         private System.Windows.Forms.DataGridView dtGridCashFlow;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button btnShowIncomeDetails;
-        private System.Windows.Forms.TextBox txtIncomeTax;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TabPage CurrentStatus;
-        private System.Windows.Forms.Button btnCashFlowCancel;
-        private System.Windows.Forms.Button btnCashFlowSave;
         private System.Windows.Forms.ImageList imageList16x16;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label7;
