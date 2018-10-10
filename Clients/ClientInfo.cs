@@ -1359,7 +1359,15 @@ namespace FinancialPlannerClient.Clients
             txtGoalEndYear.Text = "";
             txtGoalRecurrence.Text = "";
             numPriority.Text = "";
-            txtGoalDescription.Text = ""; 
+            txtGoalDescription.Text = "";
+            chkLaonForGoal.Checked = false;
+            txtLoanForGoalAmount.Text = "";
+            txtLoanForGoalAmount.Tag = "0";
+            txtLoanForGoalEMI.Text = "";
+            txtLoanForGoalROI.Text = "";
+            txtLoanForGoalYears.Text = "";
+            txtLoanForGoalStartYear.Text = "";
+            txtLoanForGoalEndYear.Text = "";
         }
 
         private void btnEditGoal_Click(object sender, EventArgs e)
@@ -1386,7 +1394,34 @@ namespace FinancialPlannerClient.Clients
                     txtGoalRecurrence.Text = "";
                 numPriority.Value = goals.Priority;
                 txtGoalDescription.Text = goals.Description;
+                if (goals.LoanForGoal != null)
+                {
+                    chkLaonForGoal.Checked = true;
+                    displayLaonForGoalData(goals);
+                }
+                else
+                {
+                    chkLaonForGoal.Checked = false;
+                    txtLoanForGoalAmount.Tag = "0";
+                    txtLoanForGoalAmount.Text = "";
+                    txtLoanForGoalEMI.Text = "";
+                    txtLoanForGoalROI.Text = "";
+                    txtLoanForGoalYears.Text = "";
+                    txtLoanForGoalStartYear.Text = "";
+                    txtLoanForGoalEndYear.Text = "";
+                }
             }
+        }
+
+        private void displayLaonForGoalData(Goals goals)
+        {
+            txtLoanForGoalAmount.Text = goals.LoanForGoal.LoanAmount.ToString("#,##0.00");
+            txtLoanForGoalAmount.Tag = goals.LoanForGoal.Id.ToString();
+            txtLoanForGoalEMI.Text = goals.LoanForGoal.EMI.ToString("#,##0.00");
+            txtLoanForGoalROI.Text = goals.LoanForGoal.ROI.ToString();
+            txtLoanForGoalYears.Text = goals.LoanForGoal.LoanYears.ToString();
+            txtLoanForGoalStartYear.Text = goals.LoanForGoal.StratYear.ToString();
+            txtLoanForGoalEndYear.Text = goals.LoanForGoal.EndYear.ToString();
         }
 
         private void btnGoalSave_Click(object sender, EventArgs e)
@@ -1430,7 +1465,31 @@ namespace FinancialPlannerClient.Clients
             Goals.UpdatedBy = Program.CurrentUser.Id;
             Goals.UpdatedByUserName = Program.CurrentUser.UserName;
             Goals.MachineName = Environment.MachineName;
+
+            if (chkLaonForGoal.Checked)
+                Goals.LoanForGoal = getLoanForGoalData();
+                        
             return Goals;
+        }
+
+        private LoanForGoal getLoanForGoalData()
+        {
+            LoanForGoal goalLoan = new LoanForGoal();
+            goalLoan.Id = int.Parse(txtLoanForGoalAmount.Tag.ToString());
+            goalLoan.GoalId = int.Parse(cmbCategory.Tag.ToString());
+            goalLoan.LoanAmount = double.Parse(txtLoanForGoalAmount.Text);
+            goalLoan.EMI = double.Parse(txtLoanForGoalEMI.Text);
+            goalLoan.ROI = decimal.Parse(txtLoanForGoalROI.Text);
+            goalLoan.LoanYears = int.Parse(txtLoanForGoalYears.Text);
+            goalLoan.StratYear = int.Parse(txtLoanForGoalStartYear.Text);
+            goalLoan.EndYear = int.Parse(txtLoanForGoalEndYear.Text);
+            goalLoan.CreatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+            goalLoan.CreatedBy = Program.CurrentUser.Id;
+            goalLoan.UpdatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+            goalLoan.UpdatedBy = Program.CurrentUser.Id;
+            goalLoan.UpdatedByUserName = Program.CurrentUser.UserName;
+            goalLoan.MachineName = Environment.MachineName;
+            return goalLoan;
         }
 
         private void dtGridGoal_SelectionChanged(object sender, EventArgs e)
@@ -1470,6 +1529,11 @@ namespace FinancialPlannerClient.Clients
                 cmbMappingGoal.Tag = _goals.FirstOrDefault(i => i.Name == cmbMappingGoal.Text).Id;
             else
                 cmbMappingGoal.Tag = "0";
+        }
+
+        private void chkLaonForGoal_CheckedChanged(object sender, EventArgs e)
+        {
+            grpLoanForGoal.Enabled = chkLaonForGoal.Checked;
         }
     }
 }

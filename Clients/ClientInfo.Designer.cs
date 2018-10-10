@@ -36,9 +36,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle49 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle50 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle51 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle43 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle44 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle45 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle52 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle53 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle54 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -48,6 +45,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle58 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle59 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle60 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle43 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle44 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle45 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle61 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle62 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle63 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -385,6 +385,21 @@
             this.Goal = new System.Windows.Forms.TabPage();
             this.label65 = new System.Windows.Forms.Label();
             this.grpGoalsDetail = new System.Windows.Forms.GroupBox();
+            this.chkLaonForGoal = new System.Windows.Forms.CheckBox();
+            this.grpLoanForGoal = new System.Windows.Forms.GroupBox();
+            this.txtLoanForGoalEndYear = new System.Windows.Forms.TextBox();
+            this.label133 = new System.Windows.Forms.Label();
+            this.txtLoanForGoalStartYear = new System.Windows.Forms.TextBox();
+            this.label132 = new System.Windows.Forms.Label();
+            this.txtLoanForGoalYears = new System.Windows.Forms.TextBox();
+            this.label131 = new System.Windows.Forms.Label();
+            this.txtLoanForGoalROI = new System.Windows.Forms.TextBox();
+            this.label130 = new System.Windows.Forms.Label();
+            this.txtLoanForGoalEMI = new System.Windows.Forms.TextBox();
+            this.label129 = new System.Windows.Forms.Label();
+            this.label128 = new System.Windows.Forms.Label();
+            this.txtLoanForGoalAmount = new System.Windows.Forms.TextBox();
+            this.label127 = new System.Windows.Forms.Label();
             this.txtInflationRate = new System.Windows.Forms.TextBox();
             this.label108 = new System.Windows.Forms.Label();
             this.btnGoalCancel = new System.Windows.Forms.Button();
@@ -460,6 +475,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtGridExpenses)).BeginInit();
             this.Goal.SuspendLayout();
             this.grpGoalsDetail.SuspendLayout();
+            this.grpLoanForGoal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numPriority)).BeginInit();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridGoal)).BeginInit();
@@ -3103,34 +3119,34 @@
             // 
             this.dtGridNonFinancialAssets.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle43.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle43.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle43.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle43.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle43.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle43.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle43.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtGridNonFinancialAssets.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle43;
+            dataGridViewCellStyle52.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle52.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle52.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle52.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle52.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle52.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle52.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtGridNonFinancialAssets.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle52;
             this.dtGridNonFinancialAssets.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle44.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle44.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle44.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle44.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle44.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle44.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle44.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtGridNonFinancialAssets.DefaultCellStyle = dataGridViewCellStyle44;
+            dataGridViewCellStyle53.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle53.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle53.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle53.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle53.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle53.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle53.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtGridNonFinancialAssets.DefaultCellStyle = dataGridViewCellStyle53;
             this.dtGridNonFinancialAssets.Location = new System.Drawing.Point(10, 54);
             this.dtGridNonFinancialAssets.Name = "dtGridNonFinancialAssets";
             this.dtGridNonFinancialAssets.ReadOnly = true;
-            dataGridViewCellStyle45.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle45.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle45.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle45.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle45.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle45.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle45.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtGridNonFinancialAssets.RowHeadersDefaultCellStyle = dataGridViewCellStyle45;
+            dataGridViewCellStyle54.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle54.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle54.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle54.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle54.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle54.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle54.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtGridNonFinancialAssets.RowHeadersDefaultCellStyle = dataGridViewCellStyle54;
             this.dtGridNonFinancialAssets.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtGridNonFinancialAssets.Size = new System.Drawing.Size(938, 208);
             this.dtGridNonFinancialAssets.TabIndex = 1;
@@ -3757,34 +3773,34 @@
             // 
             this.dtGridIncome.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle52.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle52.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle52.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle52.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle52.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle52.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle52.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtGridIncome.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle52;
+            dataGridViewCellStyle55.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle55.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle55.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle55.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle55.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle55.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle55.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtGridIncome.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle55;
             this.dtGridIncome.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle53.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle53.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle53.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle53.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle53.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle53.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle53.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtGridIncome.DefaultCellStyle = dataGridViewCellStyle53;
+            dataGridViewCellStyle56.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle56.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle56.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle56.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle56.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle56.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle56.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtGridIncome.DefaultCellStyle = dataGridViewCellStyle56;
             this.dtGridIncome.Location = new System.Drawing.Point(10, 38);
             this.dtGridIncome.Name = "dtGridIncome";
             this.dtGridIncome.ReadOnly = true;
-            dataGridViewCellStyle54.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle54.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle54.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle54.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle54.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle54.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle54.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtGridIncome.RowHeadersDefaultCellStyle = dataGridViewCellStyle54;
+            dataGridViewCellStyle57.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle57.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle57.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle57.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle57.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle57.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle57.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtGridIncome.RowHeadersDefaultCellStyle = dataGridViewCellStyle57;
             this.dtGridIncome.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtGridIncome.Size = new System.Drawing.Size(938, 121);
             this.dtGridIncome.TabIndex = 9;
@@ -4339,34 +4355,34 @@
             // 
             this.dtGridExpenses.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle55.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle55.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle55.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle55.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle55.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle55.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle55.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtGridExpenses.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle55;
+            dataGridViewCellStyle58.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle58.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle58.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle58.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle58.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle58.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle58.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtGridExpenses.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle58;
             this.dtGridExpenses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle56.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle56.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle56.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle56.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle56.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle56.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle56.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtGridExpenses.DefaultCellStyle = dataGridViewCellStyle56;
+            dataGridViewCellStyle59.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle59.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle59.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle59.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle59.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle59.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle59.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtGridExpenses.DefaultCellStyle = dataGridViewCellStyle59;
             this.dtGridExpenses.Location = new System.Drawing.Point(12, 31);
             this.dtGridExpenses.Name = "dtGridExpenses";
             this.dtGridExpenses.ReadOnly = true;
-            dataGridViewCellStyle57.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle57.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle57.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle57.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle57.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle57.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle57.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtGridExpenses.RowHeadersDefaultCellStyle = dataGridViewCellStyle57;
+            dataGridViewCellStyle60.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle60.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle60.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle60.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle60.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle60.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle60.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtGridExpenses.RowHeadersDefaultCellStyle = dataGridViewCellStyle60;
             this.dtGridExpenses.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtGridExpenses.Size = new System.Drawing.Size(938, 287);
             this.dtGridExpenses.TabIndex = 12;
@@ -4414,6 +4430,8 @@
             this.grpGoalsDetail.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpGoalsDetail.Controls.Add(this.chkLaonForGoal);
+            this.grpGoalsDetail.Controls.Add(this.grpLoanForGoal);
             this.grpGoalsDetail.Controls.Add(this.txtInflationRate);
             this.grpGoalsDetail.Controls.Add(this.label108);
             this.grpGoalsDetail.Controls.Add(this.btnGoalCancel);
@@ -4435,16 +4453,179 @@
             this.grpGoalsDetail.Controls.Add(this.txtGoalStartYear);
             this.grpGoalsDetail.Controls.Add(this.label62);
             this.grpGoalsDetail.Enabled = false;
-            this.grpGoalsDetail.Location = new System.Drawing.Point(6, 297);
+            this.grpGoalsDetail.Location = new System.Drawing.Point(6, 265);
             this.grpGoalsDetail.Name = "grpGoalsDetail";
-            this.grpGoalsDetail.Size = new System.Drawing.Size(944, 282);
+            this.grpGoalsDetail.Size = new System.Drawing.Size(944, 314);
             this.grpGoalsDetail.TabIndex = 9;
             this.grpGoalsDetail.TabStop = false;
             this.grpGoalsDetail.Text = "Goals Detail";
             // 
+            // chkLaonForGoal
+            // 
+            this.chkLaonForGoal.AutoSize = true;
+            this.chkLaonForGoal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkLaonForGoal.Location = new System.Drawing.Point(485, 28);
+            this.chkLaonForGoal.Name = "chkLaonForGoal";
+            this.chkLaonForGoal.Size = new System.Drawing.Size(221, 19);
+            this.chkLaonForGoal.TabIndex = 10;
+            this.chkLaonForGoal.Text = "Loan require to complete Goal";
+            this.chkLaonForGoal.UseVisualStyleBackColor = true;
+            this.chkLaonForGoal.CheckedChanged += new System.EventHandler(this.chkLaonForGoal_CheckedChanged);
+            // 
+            // grpLoanForGoal
+            // 
+            this.grpLoanForGoal.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpLoanForGoal.Controls.Add(this.txtLoanForGoalEndYear);
+            this.grpLoanForGoal.Controls.Add(this.label133);
+            this.grpLoanForGoal.Controls.Add(this.txtLoanForGoalStartYear);
+            this.grpLoanForGoal.Controls.Add(this.label132);
+            this.grpLoanForGoal.Controls.Add(this.txtLoanForGoalYears);
+            this.grpLoanForGoal.Controls.Add(this.label131);
+            this.grpLoanForGoal.Controls.Add(this.txtLoanForGoalROI);
+            this.grpLoanForGoal.Controls.Add(this.label130);
+            this.grpLoanForGoal.Controls.Add(this.txtLoanForGoalEMI);
+            this.grpLoanForGoal.Controls.Add(this.label129);
+            this.grpLoanForGoal.Controls.Add(this.label128);
+            this.grpLoanForGoal.Controls.Add(this.txtLoanForGoalAmount);
+            this.grpLoanForGoal.Controls.Add(this.label127);
+            this.grpLoanForGoal.Enabled = false;
+            this.grpLoanForGoal.Location = new System.Drawing.Point(485, 49);
+            this.grpLoanForGoal.Name = "grpLoanForGoal";
+            this.grpLoanForGoal.Size = new System.Drawing.Size(439, 217);
+            this.grpLoanForGoal.TabIndex = 11;
+            this.grpLoanForGoal.TabStop = false;
+            this.grpLoanForGoal.Text = "Loan Information";
+            // 
+            // txtLoanForGoalEndYear
+            // 
+            this.txtLoanForGoalEndYear.Location = new System.Drawing.Point(196, 180);
+            this.txtLoanForGoalEndYear.MaxLength = 4;
+            this.txtLoanForGoalEndYear.Name = "txtLoanForGoalEndYear";
+            this.txtLoanForGoalEndYear.Size = new System.Drawing.Size(136, 20);
+            this.txtLoanForGoalEndYear.TabIndex = 26;
+            this.txtLoanForGoalEndYear.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label133
+            // 
+            this.label133.AutoEllipsis = true;
+            this.label133.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label133.Location = new System.Drawing.Point(62, 181);
+            this.label133.Name = "label133";
+            this.label133.Size = new System.Drawing.Size(132, 17);
+            this.label133.TabIndex = 27;
+            this.label133.Text = "Loan End Year:";
+            // 
+            // txtLoanForGoalStartYear
+            // 
+            this.txtLoanForGoalStartYear.Location = new System.Drawing.Point(196, 154);
+            this.txtLoanForGoalStartYear.MaxLength = 4;
+            this.txtLoanForGoalStartYear.Name = "txtLoanForGoalStartYear";
+            this.txtLoanForGoalStartYear.Size = new System.Drawing.Size(136, 20);
+            this.txtLoanForGoalStartYear.TabIndex = 24;
+            this.txtLoanForGoalStartYear.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label132
+            // 
+            this.label132.AutoEllipsis = true;
+            this.label132.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label132.Location = new System.Drawing.Point(62, 155);
+            this.label132.Name = "label132";
+            this.label132.Size = new System.Drawing.Size(132, 17);
+            this.label132.TabIndex = 25;
+            this.label132.Text = "Loan Start Year:";
+            // 
+            // txtLoanForGoalYears
+            // 
+            this.txtLoanForGoalYears.Location = new System.Drawing.Point(196, 128);
+            this.txtLoanForGoalYears.MaxLength = 2;
+            this.txtLoanForGoalYears.Name = "txtLoanForGoalYears";
+            this.txtLoanForGoalYears.Size = new System.Drawing.Size(136, 20);
+            this.txtLoanForGoalYears.TabIndex = 22;
+            this.txtLoanForGoalYears.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label131
+            // 
+            this.label131.AutoEllipsis = true;
+            this.label131.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label131.Location = new System.Drawing.Point(62, 129);
+            this.label131.Name = "label131";
+            this.label131.Size = new System.Drawing.Size(132, 17);
+            this.label131.TabIndex = 23;
+            this.label131.Text = "Loan Taken For Years:";
+            // 
+            // txtLoanForGoalROI
+            // 
+            this.txtLoanForGoalROI.Location = new System.Drawing.Point(196, 102);
+            this.txtLoanForGoalROI.MaxLength = 5;
+            this.txtLoanForGoalROI.Name = "txtLoanForGoalROI";
+            this.txtLoanForGoalROI.Size = new System.Drawing.Size(136, 20);
+            this.txtLoanForGoalROI.TabIndex = 20;
+            this.txtLoanForGoalROI.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label130
+            // 
+            this.label130.AutoEllipsis = true;
+            this.label130.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label130.Location = new System.Drawing.Point(62, 103);
+            this.label130.Name = "label130";
+            this.label130.Size = new System.Drawing.Size(132, 17);
+            this.label130.TabIndex = 21;
+            this.label130.Text = "Rate of Interest:";
+            // 
+            // txtLoanForGoalEMI
+            // 
+            this.txtLoanForGoalEMI.Location = new System.Drawing.Point(196, 76);
+            this.txtLoanForGoalEMI.MaxLength = 9;
+            this.txtLoanForGoalEMI.Name = "txtLoanForGoalEMI";
+            this.txtLoanForGoalEMI.Size = new System.Drawing.Size(136, 20);
+            this.txtLoanForGoalEMI.TabIndex = 18;
+            this.txtLoanForGoalEMI.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label129
+            // 
+            this.label129.AutoEllipsis = true;
+            this.label129.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label129.Location = new System.Drawing.Point(62, 77);
+            this.label129.Name = "label129";
+            this.label129.Size = new System.Drawing.Size(132, 17);
+            this.label129.TabIndex = 19;
+            this.label129.Text = "EMI:";
+            // 
+            // label128
+            // 
+            this.label128.AutoEllipsis = true;
+            this.label128.BackColor = System.Drawing.Color.LightGray;
+            this.label128.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label128.ForeColor = System.Drawing.Color.DarkBlue;
+            this.label128.Location = new System.Drawing.Point(62, 24);
+            this.label128.Name = "label128";
+            this.label128.Size = new System.Drawing.Size(283, 17);
+            this.label128.TabIndex = 17;
+            this.label128.Text = "Loan details if loan require to complete goal.";
+            // 
+            // txtLoanForGoalAmount
+            // 
+            this.txtLoanForGoalAmount.Location = new System.Drawing.Point(196, 50);
+            this.txtLoanForGoalAmount.MaxLength = 10;
+            this.txtLoanForGoalAmount.Name = "txtLoanForGoalAmount";
+            this.txtLoanForGoalAmount.Size = new System.Drawing.Size(136, 20);
+            this.txtLoanForGoalAmount.TabIndex = 15;
+            this.txtLoanForGoalAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label127
+            // 
+            this.label127.AutoEllipsis = true;
+            this.label127.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label127.Location = new System.Drawing.Point(62, 51);
+            this.label127.Name = "label127";
+            this.label127.Size = new System.Drawing.Size(132, 17);
+            this.label127.TabIndex = 16;
+            this.label127.Text = "Loan Amount:";
+            // 
             // txtInflationRate
             // 
-            this.txtInflationRate.Location = new System.Drawing.Point(390, 195);
+            this.txtInflationRate.Location = new System.Drawing.Point(390, 185);
             this.txtInflationRate.MaxLength = 4;
             this.txtInflationRate.Name = "txtInflationRate";
             this.txtInflationRate.Size = new System.Drawing.Size(77, 20);
@@ -4455,7 +4636,7 @@
             // 
             this.label108.AutoSize = true;
             this.label108.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label108.Location = new System.Drawing.Point(283, 194);
+            this.label108.Location = new System.Drawing.Point(283, 184);
             this.label108.Name = "label108";
             this.label108.Size = new System.Drawing.Size(101, 15);
             this.label108.TabIndex = 28;
@@ -4467,10 +4648,10 @@
             this.btnGoalCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnGoalCancel.ImageKey = "icons8-cancel-16.png";
             this.btnGoalCancel.ImageList = this.imageList16x16;
-            this.btnGoalCancel.Location = new System.Drawing.Point(851, 194);
+            this.btnGoalCancel.Location = new System.Drawing.Point(838, 272);
             this.btnGoalCancel.Name = "btnGoalCancel";
             this.btnGoalCancel.Size = new System.Drawing.Size(86, 26);
-            this.btnGoalCancel.TabIndex = 11;
+            this.btnGoalCancel.TabIndex = 13;
             this.btnGoalCancel.Text = "Cancel";
             this.btnGoalCancel.UseVisualStyleBackColor = true;
             this.btnGoalCancel.Click += new System.EventHandler(this.btnGoalCancel_Click);
@@ -4481,10 +4662,10 @@
             this.btnGoalSave.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnGoalSave.ImageKey = "icons8-save-close-16.png";
             this.btnGoalSave.ImageList = this.imageList16x16;
-            this.btnGoalSave.Location = new System.Drawing.Point(759, 194);
+            this.btnGoalSave.Location = new System.Drawing.Point(746, 272);
             this.btnGoalSave.Name = "btnGoalSave";
             this.btnGoalSave.Size = new System.Drawing.Size(86, 26);
-            this.btnGoalSave.TabIndex = 10;
+            this.btnGoalSave.TabIndex = 12;
             this.btnGoalSave.Text = "Save";
             this.btnGoalSave.UseVisualStyleBackColor = true;
             this.btnGoalSave.Click += new System.EventHandler(this.btnGoalSave_Click);
@@ -4505,7 +4686,7 @@
             "Vacation",
             "Medical",
             "Others"});
-            this.cmbCategory.Location = new System.Drawing.Point(200, 39);
+            this.cmbCategory.Location = new System.Drawing.Point(200, 29);
             this.cmbCategory.Name = "cmbCategory";
             this.cmbCategory.Size = new System.Drawing.Size(267, 21);
             this.cmbCategory.TabIndex = 1;
@@ -4514,7 +4695,7 @@
             // 
             this.label66.AutoSize = true;
             this.label66.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label66.Location = new System.Drawing.Point(45, 38);
+            this.label66.Location = new System.Drawing.Point(45, 28);
             this.label66.Name = "label66";
             this.label66.Size = new System.Drawing.Size(58, 15);
             this.label66.TabIndex = 27;
@@ -4522,7 +4703,7 @@
             // 
             // numPriority
             // 
-            this.numPriority.Location = new System.Drawing.Point(200, 196);
+            this.numPriority.Location = new System.Drawing.Point(200, 186);
             this.numPriority.Name = "numPriority";
             this.numPriority.Size = new System.Drawing.Size(71, 20);
             this.numPriority.TabIndex = 7;
@@ -4531,7 +4712,7 @@
             // 
             this.label64.AutoSize = true;
             this.label64.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label64.Location = new System.Drawing.Point(45, 194);
+            this.label64.Location = new System.Drawing.Point(45, 184);
             this.label64.Name = "label64";
             this.label64.Size = new System.Drawing.Size(47, 15);
             this.label64.TabIndex = 25;
@@ -4541,7 +4722,7 @@
             // 
             this.label63.AutoSize = true;
             this.label63.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label63.Location = new System.Drawing.Point(45, 143);
+            this.label63.Location = new System.Drawing.Point(45, 133);
             this.label63.Name = "label63";
             this.label63.Size = new System.Drawing.Size(60, 15);
             this.label63.TabIndex = 24;
@@ -4549,33 +4730,31 @@
             // 
             // txtGoalEndYear
             // 
-            this.txtGoalEndYear.Location = new System.Drawing.Point(200, 144);
+            this.txtGoalEndYear.Location = new System.Drawing.Point(200, 134);
             this.txtGoalEndYear.Name = "txtGoalEndYear";
             this.txtGoalEndYear.Size = new System.Drawing.Size(267, 20);
             this.txtGoalEndYear.TabIndex = 5;
             // 
             // txtGoalCurrentValue
             // 
-            this.txtGoalCurrentValue.Location = new System.Drawing.Point(200, 93);
+            this.txtGoalCurrentValue.Location = new System.Drawing.Point(200, 83);
             this.txtGoalCurrentValue.Name = "txtGoalCurrentValue";
             this.txtGoalCurrentValue.Size = new System.Drawing.Size(267, 20);
             this.txtGoalCurrentValue.TabIndex = 3;
             // 
             // txtGoalDescription
             // 
-            this.txtGoalDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtGoalDescription.Location = new System.Drawing.Point(501, 63);
+            this.txtGoalDescription.Location = new System.Drawing.Point(200, 212);
             this.txtGoalDescription.Multiline = true;
             this.txtGoalDescription.Name = "txtGoalDescription";
-            this.txtGoalDescription.Size = new System.Drawing.Size(436, 123);
+            this.txtGoalDescription.Size = new System.Drawing.Size(267, 54);
             this.txtGoalDescription.TabIndex = 9;
             // 
             // label58
             // 
             this.label58.AutoSize = true;
             this.label58.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label58.Location = new System.Drawing.Point(498, 39);
+            this.label58.Location = new System.Drawing.Point(45, 213);
             this.label58.Name = "label58";
             this.label58.Size = new System.Drawing.Size(48, 15);
             this.label58.TabIndex = 20;
@@ -4583,7 +4762,7 @@
             // 
             // txtGoalRecurrence
             // 
-            this.txtGoalRecurrence.Location = new System.Drawing.Point(200, 170);
+            this.txtGoalRecurrence.Location = new System.Drawing.Point(200, 160);
             this.txtGoalRecurrence.Name = "txtGoalRecurrence";
             this.txtGoalRecurrence.Size = new System.Drawing.Size(267, 20);
             this.txtGoalRecurrence.TabIndex = 6;
@@ -4592,7 +4771,7 @@
             // 
             this.label59.AutoSize = true;
             this.label59.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label59.Location = new System.Drawing.Point(45, 169);
+            this.label59.Location = new System.Drawing.Point(45, 159);
             this.label59.Name = "label59";
             this.label59.Size = new System.Drawing.Size(150, 15);
             this.label59.TabIndex = 18;
@@ -4602,7 +4781,7 @@
             // 
             this.label60.AutoSize = true;
             this.label60.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label60.Location = new System.Drawing.Point(45, 118);
+            this.label60.Location = new System.Drawing.Point(45, 108);
             this.label60.Name = "label60";
             this.label60.Size = new System.Drawing.Size(63, 15);
             this.label60.TabIndex = 16;
@@ -4611,7 +4790,7 @@
             // cmbGoalName
             // 
             this.cmbGoalName.FormattingEnabled = true;
-            this.cmbGoalName.Location = new System.Drawing.Point(200, 66);
+            this.cmbGoalName.Location = new System.Drawing.Point(200, 56);
             this.cmbGoalName.Name = "cmbGoalName";
             this.cmbGoalName.Size = new System.Drawing.Size(267, 21);
             this.cmbGoalName.TabIndex = 2;
@@ -4620,7 +4799,7 @@
             // 
             this.label61.AutoEllipsis = true;
             this.label61.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label61.Location = new System.Drawing.Point(45, 92);
+            this.label61.Location = new System.Drawing.Point(45, 82);
             this.label61.Name = "label61";
             this.label61.Size = new System.Drawing.Size(150, 17);
             this.label61.TabIndex = 14;
@@ -4628,7 +4807,7 @@
             // 
             // txtGoalStartYear
             // 
-            this.txtGoalStartYear.Location = new System.Drawing.Point(200, 119);
+            this.txtGoalStartYear.Location = new System.Drawing.Point(200, 109);
             this.txtGoalStartYear.Name = "txtGoalStartYear";
             this.txtGoalStartYear.Size = new System.Drawing.Size(267, 20);
             this.txtGoalStartYear.TabIndex = 4;
@@ -4637,7 +4816,7 @@
             // 
             this.label62.AutoSize = true;
             this.label62.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label62.Location = new System.Drawing.Point(45, 65);
+            this.label62.Location = new System.Drawing.Point(45, 55);
             this.label62.Name = "label62";
             this.label62.Size = new System.Drawing.Size(86, 15);
             this.label62.TabIndex = 12;
@@ -4649,7 +4828,7 @@
             this.groupBox4.Controls.Add(this.btnDeleteGoal);
             this.groupBox4.Controls.Add(this.btnAddGoal);
             this.groupBox4.Controls.Add(this.btnEditGoal);
-            this.groupBox4.Location = new System.Drawing.Point(839, 253);
+            this.groupBox4.Location = new System.Drawing.Point(839, 225);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(111, 38);
             this.groupBox4.TabIndex = 8;
@@ -4692,36 +4871,36 @@
             // 
             this.dtGridGoal.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle58.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle58.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle58.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle58.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle58.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle58.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle58.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtGridGoal.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle58;
+            dataGridViewCellStyle43.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle43.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle43.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle43.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle43.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle43.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle43.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtGridGoal.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle43;
             this.dtGridGoal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle59.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle59.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle59.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle59.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle59.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle59.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle59.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtGridGoal.DefaultCellStyle = dataGridViewCellStyle59;
+            dataGridViewCellStyle44.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle44.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle44.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle44.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle44.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle44.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle44.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtGridGoal.DefaultCellStyle = dataGridViewCellStyle44;
             this.dtGridGoal.Location = new System.Drawing.Point(6, 34);
             this.dtGridGoal.Name = "dtGridGoal";
             this.dtGridGoal.ReadOnly = true;
-            dataGridViewCellStyle60.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle60.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle60.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle60.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle60.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle60.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle60.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtGridGoal.RowHeadersDefaultCellStyle = dataGridViewCellStyle60;
+            dataGridViewCellStyle45.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle45.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle45.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle45.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle45.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle45.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle45.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtGridGoal.RowHeadersDefaultCellStyle = dataGridViewCellStyle45;
             this.dtGridGoal.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtGridGoal.Size = new System.Drawing.Size(944, 213);
+            this.dtGridGoal.Size = new System.Drawing.Size(944, 185);
             this.dtGridGoal.TabIndex = 0;
             this.dtGridGoal.SelectionChanged += new System.EventHandler(this.dtGridGoal_SelectionChanged);
             // 
@@ -4874,6 +5053,8 @@
             this.Goal.PerformLayout();
             this.grpGoalsDetail.ResumeLayout(false);
             this.grpGoalsDetail.PerformLayout();
+            this.grpLoanForGoal.ResumeLayout(false);
+            this.grpLoanForGoal.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numPriority)).EndInit();
             this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtGridGoal)).EndInit();
@@ -5247,5 +5428,20 @@
         private System.Windows.Forms.Label label126;
         private System.Windows.Forms.TextBox txtIncomeTax;
         private System.Windows.Forms.ComboBox cmbIncomeBy;
+        private System.Windows.Forms.GroupBox grpLoanForGoal;
+        private System.Windows.Forms.TextBox txtLoanForGoalStartYear;
+        private System.Windows.Forms.Label label132;
+        private System.Windows.Forms.TextBox txtLoanForGoalYears;
+        private System.Windows.Forms.Label label131;
+        private System.Windows.Forms.TextBox txtLoanForGoalROI;
+        private System.Windows.Forms.Label label130;
+        private System.Windows.Forms.TextBox txtLoanForGoalEMI;
+        private System.Windows.Forms.Label label129;
+        private System.Windows.Forms.Label label128;
+        private System.Windows.Forms.TextBox txtLoanForGoalAmount;
+        private System.Windows.Forms.Label label127;
+        private System.Windows.Forms.TextBox txtLoanForGoalEndYear;
+        private System.Windows.Forms.Label label133;
+        private System.Windows.Forms.CheckBox chkLaonForGoal;
     }
 }
