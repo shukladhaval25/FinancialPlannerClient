@@ -28,3 +28,5 @@ D:\Dhaval.Shukla\My Documents\Visual Studio 2015\Projects\FinancialPlannerServer
 D:\Dhaval.Shukla\My Documents\Visual Studio 2015\Projects\FinancialPlannerServer\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.PlanOptionMaster.resources
 D:\Dhaval.Shukla\My Documents\Visual Studio 2015\Projects\FinancialPlannerServer\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.CurrentStatus.MFTransactionsForm.resources
 D:\Dhaval.Shukla\My Documents\Visual Studio 2015\Projects\FinancialPlannerServer\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.csprojResolveAssemblyReference.cache
+D:\Dhaval.Shukla\My Documents\Visual Studio 2015\Projects\FinancialPlannerServer\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.Clients.AllClientsList.resources
+D:\Dhaval.Shukla\My Documents\Visual Studio 2015\Projects\FinancialPlannerServer\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.Clients.ClientWithPrimaryDetails.resources

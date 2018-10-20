@@ -34,6 +34,13 @@ namespace FinancialPlannerClient.Clients
         {
             InitializeComponent();
         }
+        public ClientInfo(Client client)
+        {
+            InitializeComponent();
+            _plannerId = 0;
+            _client = client;
+        }
+
         public ClientInfo(int plannerId, Client client)
         {
             InitializeComponent();
@@ -134,7 +141,7 @@ namespace FinancialPlannerClient.Clients
                 _dtNonFinancialAsset.Clear();
 
             NonFinancialAssetInfo nonFinancialAssetInfo = new NonFinancialAssetInfo();
-            List<NonFinancialAsset> lstNonFinancialAsset =(List<NonFinancialAsset>) nonFinancialAssetInfo.GetAlll(PlannerId);
+            List<NonFinancialAsset> lstNonFinancialAsset =(List<NonFinancialAsset>) nonFinancialAssetInfo.GetAll(PlannerId);
             _dtNonFinancialAsset = ListtoDataTable.ToDataTable(lstNonFinancialAsset);
             dtGridNonFinancialAssets.DataSource = _dtNonFinancialAsset;
             nonFinancialAssetInfo.FillGrid(dtGridNonFinancialAssets);
@@ -655,6 +662,7 @@ namespace FinancialPlannerClient.Clients
             txtGoalMappingShare.Text = "0";
             txtAssetRealisationYear.Text = DateTime.Now.Year.ToString();
             txtNonFinancialDesc.Text = "";
+            txtNonFinancialGrowthPercentage.Text = "";
         }
 
         private void btnNonFinancialSave_Click(object sender, EventArgs e)
@@ -710,6 +718,7 @@ namespace FinancialPlannerClient.Clients
                 nonFinancialAsset.MappedGoalId = 0;
             nonFinancialAsset.AssetMappingShare = int.Parse(txtGoalMappingShare.Text);
             nonFinancialAsset.Description = txtNonFinancialDesc.Text;
+            nonFinancialAsset.GrowthPercentage = decimal.Parse(txtNonFinancialGrowthPercentage.Text);
             nonFinancialAsset.CreatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
             nonFinancialAsset.CreatedBy = Program.CurrentUser.Id;
             nonFinancialAsset.UpdatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
@@ -757,6 +766,7 @@ namespace FinancialPlannerClient.Clients
                 txtGoalMappingShare.Text = nonFinancialAsset.AssetMappingShare.ToString();
                 txtAssetRealisationYear.Text = nonFinancialAsset.AssetRealisationYear;
                 txtNonFinancialDesc.Text = nonFinancialAsset.Description;
+                txtNonFinancialGrowthPercentage.Text = nonFinancialAsset.GrowthPercentage.ToString();
             }
             else
                 setDefaultNonFinancialAssetValue();
@@ -818,10 +828,13 @@ namespace FinancialPlannerClient.Clients
 
         private void txtGoalMappingShare_TextChanged(object sender, EventArgs e)
         {
-            if (int.Parse(txtGoalMappingShare.Text) > 100)
+            if (!string.IsNullOrEmpty(txtGoalMappingShare.Text))
             {
-                MessageBox.Show("More then 100% is not allow to map with asset value.");
-                txtGoalMappingShare.Focus();
+                if (int.Parse(txtGoalMappingShare.Text) > 100)
+                {
+                    MessageBox.Show("More then 100% is not allow to map with asset value.");
+                    txtGoalMappingShare.Focus();
+                }
             }
         }
 
@@ -1301,7 +1314,16 @@ namespace FinancialPlannerClient.Clients
 
         private void ClientInfo_Load(object sender, EventArgs e)
         {
-            fillupAssumptionInfo();
+            if (_plannerId != 0)
+                fillupAssumptionInfo();
+            else
+                setAllClientsView();
+        }
+
+        private void setAllClientsView()
+        {
+            TabPage assumptionPage = tabPlannerDetails.TabPages[0];
+            tabPlannerDetails.TabPages.Remove(assumptionPage);
         }
 
         private void btnSaveAssumption_Click(object sender, EventArgs e)

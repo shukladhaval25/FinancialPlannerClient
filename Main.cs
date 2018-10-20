@@ -127,5 +127,14 @@ namespace FinancialPlannerClient
         {
 
         }
+
+        private void clientToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Clients.AllClientsList frmClientList = new Clients.AllClientsList();
+            frmClientList.TopLevel = false;
+            this.pnlMain.Controls.Add(frmClientList);
+            frmClientList.Dock = DockStyle.Fill;
+            frmClientList.Show();
+        }
     }
 }

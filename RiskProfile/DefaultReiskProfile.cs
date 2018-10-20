@@ -8,7 +8,7 @@ using System;
 
 namespace FinancialPlannerClient.RiskProfile
 {
-    public class ReiskProfileInfo
+    public class RiskProfileInfo
     {
         const string  RISKPROFILERETURN_DETAIL_GETALL ="RiskProfileReturn/GetAllDetails?id={0}";
 
@@ -17,7 +17,7 @@ namespace FinancialPlannerClient.RiskProfile
         DataTable _dtRiskProfileReturn;
         const int DEFAULT_YEARS  = 80;
 
-        public ReiskProfileInfo()
+        public RiskProfileInfo()
         {
             _dtRiskProfileMaster = new DataTable();
             _dtRiskProfileReturn = new DataTable();
@@ -104,6 +104,22 @@ namespace FinancialPlannerClient.RiskProfile
                 MessageBox.Show(restResult.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             return _dtRiskProfileReturn;
+        }
+
+        public decimal GetRiskProfileReturnRatio(int RiskProfileId,int yearRemaining)
+        {
+            if (_dtRiskProfileReturn.Rows.Count == 0)
+                GetRiskProfileReturnById(RiskProfileId);
+
+            DataRow[] drs = _dtRiskProfileReturn.Select(string.Format("RiskProfileId ='{0}' and YearRemaining = '{1}'", RiskProfileId, yearRemaining));
+            if (drs != null)
+            {
+                foreach (var dr in drs)
+                {
+                    return decimal.Parse(dr["AverageInvestemetReturn"].ToString());
+                }
+            }
+            return 0;
         }
 
         //private void setDefaultValueBasedonRemainingYears()

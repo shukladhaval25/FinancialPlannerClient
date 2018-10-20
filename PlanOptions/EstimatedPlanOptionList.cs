@@ -16,6 +16,8 @@ using FinancialPlanner.Common.Model.PlanOptions;
 using FinancialPlannerClient.CurrentStatus;
 using FinancialPlanner.Common.Model.CurrentStatus;
 using FinancialPlannerClient.PlannerInfo;
+using FinancialPlannerClient.GoalCalculations;
+using FinancialPlannerClient.RiskProfile;
 
 namespace FinancialPlannerClient.PlanOptions
 {
@@ -36,8 +38,9 @@ namespace FinancialPlannerClient.PlanOptions
         CurrentStatusInfo _csInfo = new CurrentStatusInfo();
         private IList<Goals> _goals;
         private List<RiskProfiledReturnMaster> _riskProfileMasters = new List<RiskProfiledReturnMaster>();
-        GoalsCalculationInfo _goalCalculationInfo =   new GoalsCalculationInfo();
-
+        GoalsCalculationInfo _goalCalculationInfo;
+        IList<InvestmentInGoal> _investmentToGoal;
+        CashFlowService cashFlowService = new CashFlowService();
         public EstimatedPlanOptionList()
         {
             InitializeComponent();
@@ -114,7 +117,7 @@ namespace FinancialPlannerClient.PlanOptions
                     {
                         cmbPlan.Items.Add(dr.Field<string>("Name"));
                     }
-                    cmbPlan.SelectedIndex = 0;
+                    //cmbPlan.SelectedIndex = 0;
                 }
             }
         }
@@ -160,15 +163,17 @@ namespace FinancialPlannerClient.PlanOptions
             RiskProfiledReturnMaster riskProfMaster = _riskProfileMasters.FirstOrDefault(i => i.Id == int.Parse(val[0]["RiskProfileID"].ToString()));
             lblRiskProfileVal.Text = riskProfMaster.Name;
             lblRiskProfileVal.Tag = riskProfMaster.Id;
-            CashFlowService cashFlowService = new CashFlowService();
+            _riskProfileId = riskProfMaster.Id;
+           
             CashFlow cf =  cashFlowService.GetCashFlow(int.Parse(val[0][0].ToString()));
             if (cf != null)
             {
                 //txtIncomeTax.Text = cf.IncomeTax.ToString();
                 //txtIncomeTax.Tag = cf.Id;
                 dtGridCashFlow.DataSource = null;
-               
+
                 btnShowIncomeDetails_Click(sender, e);
+                _investmentToGoal = cashFlowService.GetInvestmentToGoalData();
                 //try
                 //{
                 //    dtGridCashFlow.Columns["StartYear"].Frozen = true;
@@ -192,8 +197,8 @@ namespace FinancialPlannerClient.PlanOptions
         {
             if (!string.IsNullOrEmpty(cmbPlanOption.Text))
             {
-                CashFlowService cashFlowService = new CashFlowService();
-                _dtcashFlow = cashFlowService.GenerateCashFlow(this.client.ID, _planeId);
+                //CashFlowService cashFlowService = new CashFlowService();
+                _dtcashFlow = cashFlowService.GenerateCashFlow(this.client.ID, _planeId,_riskProfileId);
                 dtGridCashFlow.DataSource = _dtcashFlow;
                 dtGridCashFlow.Columns["ID"].Visible = false;
                 foreach (DataGridViewColumn column in dtGridCashFlow.Columns)
@@ -207,9 +212,7 @@ namespace FinancialPlannerClient.PlanOptions
                         column.ReadOnly = true;
                     else
                         column.HeaderText = "Income Tax (%)";
-                }
-
-                
+                }                
             }
         }
 
@@ -241,7 +244,31 @@ namespace FinancialPlannerClient.PlanOptions
 
         private void dtGridCashFlow_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
+            calculateIncomeTax(e);
+            calculateFundAllocation(e);
+            
+        }
 
+        private void calculateFundAllocation(DataGridViewCellEventArgs e)
+        {
+            double surplusAmt = double.Parse(
+                dtGridCashFlow.Rows[e.RowIndex].Cells["Surplus Amount"].Value.ToString());
+            
+            double totalFundAllocation = 0;
+            foreach (Goals goal in _goals)
+            {
+                double fundallocation = string.IsNullOrEmpty((dtGridCashFlow.Rows[e.RowIndex].Cells[string.Format("{0} - {1}", goal.Priority, goal.Name)].Value.ToString()))
+                    ? 0 : double.Parse(dtGridCashFlow.Rows[e.RowIndex].Cells[string.Format("{0} - {1}", goal.Priority, goal.Name)].Value.ToString());
+
+                totalFundAllocation = totalFundAllocation + fundallocation;
+            }
+            if (totalFundAllocation > surplusAmt)
+                MessageBox.Show("Fund allocation exceed then available surplus amount.","Exceed fund allocation", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        private void calculateIncomeTax(DataGridViewCellEventArgs e)
+        {
+            #region "Tax Calculation"
             double total = 0;
             double.TryParse(
                  dtGridCashFlow.Rows[e.RowIndex].Cells["Total"].Value.ToString(), out total);
@@ -255,6 +282,7 @@ namespace FinancialPlannerClient.PlanOptions
             dtGridCashFlow.Rows[e.RowIndex].Cells["Post Tax Income"].ReadOnly = false;
             dtGridCashFlow.Rows[e.RowIndex].Cells["Post Tax Income"].Value = total - taxAmount;
             dtGridCashFlow.Rows[e.RowIndex].Cells["Post Tax Income"].ReadOnly = true;
+            #endregion
         }
 
         private void dtGridCashFlow_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
@@ -322,7 +350,7 @@ namespace FinancialPlannerClient.PlanOptions
 
         private void loadRiskProfileData()
         {
-           
+            
             FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
             string apiurl = Program.WebServiceUrl +"/"+ RISKPROFILE_GETALL;
 
@@ -440,6 +468,22 @@ namespace FinancialPlannerClient.PlanOptions
             }
             else
             {
+
+                Goals goal = _goals.First(i => i.Id == int.Parse(cmbGoals.Tag.ToString()));
+                var drs = _dtPlan.Select("ID = " + _planeId);
+                Planner planner = convertToPlanner(drs[0]);
+                
+
+                RiskProfileInfo _riskProfileInfo = new RiskProfileInfo();
+                //decimal growthPercentage = _riskProfileInfo.GetRiskProfileReturnRatio(_riskProfileId, int.Parse(goal.StartYear) - planner.StartDate.Year);
+                if (_goalCalculationInfo == null)
+                {
+                    _goalCalculationInfo =
+                        new GoalsCalculationInfo(goal, planner, _riskProfileInfo, _riskProfileId);
+                        //new GoalsCalculationInfo(goal, planner, growthPercentage, planner.StartDate.Year);
+                }
+
+                _goalCalculationInfo.SetInvestmentInGoal(_investmentToGoal);
                 _dtGoalValue = _goalCalculationInfo.GetGoalValue(int.Parse(cmbGoals.Tag.ToString()),
                     _planeId,int.Parse(lblRiskProfileVal.Tag.ToString()));
                 if (_dtGoalValue != null && _dtGoalValue.Rows.Count > 0)
@@ -452,6 +496,15 @@ namespace FinancialPlannerClient.PlanOptions
                     dtGridGoalCal.DataSource = _dtGoalCal;
                 }                
             }
+        }
+
+        private Planner convertToPlanner(DataRow dataRow)
+        {
+            Planner planner = new Planner();
+            planner.ID = int.Parse(dataRow["ID"].ToString());
+            planner.StartDate = DateTime.Parse(dataRow["StartDate"].ToString());
+            planner.Name = dataRow["Name"].ToString();
+            return planner;
         }
 
         private void setGoalValueGrid()

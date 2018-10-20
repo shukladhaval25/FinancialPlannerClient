@@ -2,8 +2,10 @@
 using FinancialPlanner.Common.DataConversion;
 using FinancialPlanner.Common.Model;
 using FinancialPlanner.Common.Model.PlanOptions;
+using FinancialPlannerClient.GoalCalculations;
 using FinancialPlannerClient.PlannerInfo;
 using FinancialPlannerClient.PlanOptions;
+using FinancialPlannerClient.RiskProfile;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -20,25 +22,32 @@ namespace FinancialPlannerClient.CashFlowManager
     public class CashFlowService
     {
         private CashFlowCalculation _cashFlow = new CashFlowCalculation();
-        private int _clientId, _planId;
+        private int _clientId, _planId,_riskProfileId;
         DataTable  _dtCashFlow;
         DataTable _dtCurrentStatusToGoal;
         private readonly string GETALL_API= "CashFlow/Get?optionId={0}";
         private readonly string ADD_CASHFLOW_API = "cashflow/Add";
         private readonly string UPDATE_CASHFLOW_API = "cashflow/update";
         private double _inflactionRatePercentage = 10;
+        private InvestmentToGoalService _investmentToGoalService = new InvestmentToGoalService();
         private Planner _planner;
+        private GoalsCalculationInfo gcCalculationInfo;
+        private RiskProfileInfo _riskProfileInfo;
 
-        public CashFlowCalculation GetCashFlowData(int clientId, int planId)
+        public CashFlowCalculation GetCashFlowData(int clientId, int planId, int riskProfileId)
         {
             _clientId = clientId;
             _planId = planId;
+            _riskProfileId = riskProfileId;
 
             ClientPersonalInfo clientPersonalInfo = new ClientPersonalInfo();
+
             PersonalInformation  personalInfo =  clientPersonalInfo.Get(clientId);
             var plannerInfo = new PlannerInfo.PlannerInfo();
             _planner = plannerInfo.GetPlanDataById(_planId);
             fillPersonalData(personalInfo);
+
+            _riskProfileInfo = new RiskProfileInfo();
 
             PlannerAssumption plannerAssumption =  new PlannerAssumptionInfo().GetAll(_planId);
             if (plannerAssumption != null)
@@ -86,26 +95,39 @@ namespace FinancialPlannerClient.CashFlowManager
             return null;
         }
 
-        public DataTable GenerateCashFlow(int clientId, int planId)
+
+        public DataTable GenerateCashFlow(int clientId, int planId, int riskProfileId)
         {
             _dtCashFlow = new DataTable();
-            CashFlowCalculation cashFlow = GetCashFlowData(clientId,planId);
+            CashFlowCalculation cashFlow = GetCashFlowData(clientId,planId,riskProfileId);
             if (cashFlow != null)
             {
-                _dtCurrentStatusToGoal = new CurrentStatusToGoal().CurrentStatusToGoalCalculation(_planId);
+                //_dtCurrentStatusToGoal = new CurrentStatusToGoal().CurrentStatusToGoalCalculation(_planId);
                 createTableCashFlowStructure();
                 generateCashFlowData();
             }
             return _dtCashFlow;
         }
 
+        public IList<InvestmentInGoal> GetInvestmentToGoalData()
+        {
+            return _investmentToGoalService.GetInvestments();
+        }
+
         private void generateCashFlowData()
         {
-            int rowId = 1;
-            addFirstRowData(rowId);
-            if (_dtCashFlow.Rows.Count == 1)
+            try
             {
-                addRowsBasedOnCalculation();
+                int rowId = 1;
+                addFirstRowData(rowId);
+                if (_dtCashFlow.Rows.Count == 1)
+                {
+                    addRowsBasedOnCalculation();
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.LogDebug(ex.ToString());
             }
         }
 
@@ -122,7 +144,7 @@ namespace FinancialPlannerClient.CashFlowManager
                 addExpenesCalculation(years, dr);
                 addLoansCalculation(years, dr);
                 addGoalsCalculation(years, dr);
-                serSurplusAmount(dr);
+                setSurplusAmount(dr);
                 _dtCashFlow.Rows.Add(dr);
             }
         }
@@ -130,50 +152,148 @@ namespace FinancialPlannerClient.CashFlowManager
         private void addGoalsCalculation(int years, DataRow dr)
         {
             double totalLoanEmi = 0;
+            double totalCashAllocationForGoal = 0;
+
             foreach (Goals goal in _cashFlow.LstGoals)
             {
-                //Get Future value of Goal
-                GoalsCalculationInfo   goalCal = new GoalsCalculationInfo();
-                double goalValue = goalCal.GetGoalFutureValue(goal);
-                //1 Instrument Mapped
-                double instrumentMappedAmount = 0;
-                if (_dtCurrentStatusToGoal != null & _dtCurrentStatusToGoal.Rows.Count > 0)
-                {
-                    instrumentMappedAmount = double.Parse(_dtCurrentStatusToGoal.Select("GoalId = " + goal.Id)[0]["CurrentStatusMappedAmount"].ToString());
-                }
-                //2 Loan for Goal
+                //Add Loan EMI if loan taken for goal
+                //Loan for Goal
                 double loanForGoalValue = 0;
                 double emi = 0;
                 if (goal.LoanForGoal != null)
                 {
-                    loanForGoalValue = goal.LoanForGoal.LoanAmount;
-                    if (years >= goal.LoanForGoal.StratYear)
+                    if (int.Parse(dr["StartYear"].ToString()) >= goal.LoanForGoal.StratYear &&
+                        int.Parse(dr["StartYear"].ToString()) < goal.LoanForGoal.EndYear)
                     {
                         dr[string.Format("(Loan EMI - {0})", goal.Name)] = goal.LoanForGoal.EMI;
                         totalLoanEmi = totalLoanEmi + goal.LoanForGoal.EMI;
-                        emi = goal.LoanForGoal.EMI;
                     }
                 }
+
+
+                _riskProfileInfo = new RiskProfileInfo();
                
-                double totalPostTaxIncome = double.Parse(dr["Total Post Tax Income"].ToString());
-                double totalExpAmount = double.Parse(dr["Total Annual Expenses"].ToString());
-                double totalLoan = double.Parse(dr["Total Annual Loans"].ToString());
-                //3 Cash Flow
-                if ((totalPostTaxIncome - (totalExpAmount + totalLoan + totalLoanEmi)) > 0)
+                GoalsCalculationInfo  _goalCalculationInfo =
+                    new GoalsCalculationInfo(goal, _planner,_riskProfileInfo, _riskProfileId);
+                _goalCalculationInfo.SetInvestmentInGoal(_investmentToGoalService.GetInvestments());
+
+                double surplusAmount = getSurplusAmount(dr);
+                if (surplusAmount > 0 &&
+                     (int.Parse(dr["StartYear"].ToString()) < int.Parse(goal.StartYear)))
                 {
-                    dr[string.Format("{0} - {1}", goal.Priority, goal.Name)] = (totalPostTaxIncome - (totalExpAmount + totalLoan + totalLoanEmi));
+                    GoalCalculationManager goalCalManager = new GoalCalculationManager(_planner,_riskProfileInfo,_riskProfileId);
+                    GoalsValueCalculationInfo goalValCalInfo =    goalCalManager.GetGoalValueCalculation(goal);
+
+                    GoalPlanning goalPlanning =  goalValCalInfo.GetGoalPlanning(_planner.StartDate.Year);
+
+                    if (goalPlanning.EstimatedFreshInvestment < surplusAmount)
+                    {
+
+                        //Get Investment Require Amount Method
+                        dr[string.Format("{0} - {1}", goal.Priority, goal.Name)] = goalPlanning.EstimatedFreshInvestment;
+
+                        InvestmentInGoal investmentToGoal = new InvestmentInGoal();
+                        investmentToGoal.GoalId = goal.Id;
+                        investmentToGoal.InvestmentYear = int.Parse(dr["StartYear"].ToString());
+                        investmentToGoal.InvestmentAmount = goalPlanning.EstimatedFreshInvestment;
+                        investmentToGoal.GrowthPercentage = goalPlanning.GrowthPercentage;  //new RiskProfileInfo().GetRiskProfileReturnRatio(_riskProfileId, int.Parse(goal.StartYear) - int.Parse(dr["StartYear"].ToString()));
+                        _investmentToGoalService.AddInvestment(investmentToGoal);
+                        surplusAmount = surplusAmount - investmentToGoal.InvestmentAmount;
+                    }
+                    else
+                    {
+                        dr[string.Format("{0} - {1}", goal.Priority, goal.Name)] = surplusAmount;
+
+                        InvestmentInGoal investmentToGoal = new InvestmentInGoal();
+                        investmentToGoal.GoalId = goal.Id;
+                        investmentToGoal.InvestmentYear = int.Parse(dr["StartYear"].ToString());
+                        investmentToGoal.InvestmentAmount = surplusAmount;
+                        investmentToGoal.GrowthPercentage = new RiskProfileInfo().GetRiskProfileReturnRatio(_riskProfileId, int.Parse(goal.StartYear) - int.Parse(dr["StartYear"].ToString()));
+                        _investmentToGoalService.AddInvestment(investmentToGoal);
+                        surplusAmount = surplusAmount - investmentToGoal.InvestmentAmount;
+                    }
                 }
+
+                ////Get Future value of Goal
+                //GoalsCalculationInfo   goalCal = new GoalsCalculationInfo();
+                //double goalValue = goalCal.GetGoalFutureValue(goal);
+                ////1 Instrument Mapped
+                //double instrumentMappedAmount = 0;
+                //if (_dtCurrentStatusToGoal != null && _dtCurrentStatusToGoal.Rows.Count > 0)
+                //{
+                //    instrumentMappedAmount = double.Parse(_dtCurrentStatusToGoal.Select("GoalId = " + goal.Id)[0]["CurrentStatusMappedAmount"].ToString());
+                //}
+
+
+                //double totalPostTaxIncome = double.Parse(dr["Total Post Tax Income"].ToString());
+                //double totalExpAmount = double.Parse(dr["Total Annual Expenses"].ToString());
+                //double totalLoan = double.Parse(dr["Total Annual Loans"].ToString());
+                //double totalAmoutBeforeCashFlowAllocation = (totalPostTaxIncome - (totalExpAmount + totalLoan + totalLoanEmi + totalCashAllocationForGoal));
+
+                //3 Cash Flow
+                //if (totalAmoutBeforeCashFlowAllocation > 0)
+                //{
+
+                //if (goal.LoanForGoal != null)
+                //    totalLoanEmi = totalLoanEmi + goal.LoanForGoal.EMI;
+                //totalCashAllocationForGoal = totalCashAllocationForGoal + totalAmoutBeforeCashFlowAllocation;
+                //gcCalculationInfo = new GoalsCalculationInfo(goal.Id, _planId, _riskProfileId, _planner.StartDate.Year);
+                //if (gcCalculationInfo.IsFundRequireToAchiveGoal())
+                //{
+                //    dr[string.Format("{0} - {1}", goal.Priority, goal.Name)] = totalAmoutBeforeCashFlowAllocation;
+                //    InvestmentInGoal investmentToGoal = new InvestmentInGoal();
+                //    investmentToGoal.GoalId = goal.Id;
+                //    investmentToGoal.InvestmentYear = _planner.StartDate.Year;
+                //    investmentToGoal.InvestmentAmount = totalCashAllocationForGoal;
+                //    investmentToGoal.GrowthPercentage = new RiskProfileInfo().GetRiskProfileReturnRatio(_riskProfileId, int.Parse(goal.StartYear) - int.Parse(dr["StartYear"].ToString()));
+                //    _investmentToGoalService.AddInvestment(investmentToGoal);
+                //}
+
+                //}
+                //dr["Surplus Amount"] = totalAmoutBeforeCashFlowAllocation;
                 //4 Current Assets
             }
         }
-        private void serSurplusAmount(DataRow dr)
+        private void setSurplusAmount(DataRow dr)
         {
             double totalPostTaxIncome = double.Parse(dr["Total Post Tax Income"].ToString());
             double totalExpAmount = double.Parse(dr["Total Annual Expenses"].ToString());
             double totalLoanAmount = double.Parse(dr["Total Annual Loans"].ToString());
-            dr["Surplus Amount"] = totalPostTaxIncome - (totalExpAmount + totalLoanAmount);
+            double totalGoalLoanEMIs = 0;
+            foreach (Goals goal in _cashFlow.LstGoals)
+            {
+                if (goal.LoanForGoal != null)
+                {
+                    double emiAmt = 0;
+                    double.TryParse(dr[string.Format("(Loan EMI - {0})", goal.Name)].ToString(), out emiAmt);
+                    totalGoalLoanEMIs = totalGoalLoanEMIs + emiAmt;
+                }
+            }
+            dr["Surplus Amount"] = totalPostTaxIncome - (totalExpAmount + totalLoanAmount + totalGoalLoanEMIs);
         }
+        private double getSurplusAmount(DataRow dr)
+        {
+            double totalPostTaxIncome = double.Parse(dr["Total Post Tax Income"].ToString());
+            double totalExpAmount = double.Parse(dr["Total Annual Expenses"].ToString());
+            double totalLoanAmount = double.Parse(dr["Total Annual Loans"].ToString());
+            double totalGoalLoanEMIs = 0;
+            double totalInvestmentInGoals = 0;
+            foreach (Goals goal in _cashFlow.LstGoals)
+            {
+                if (goal.LoanForGoal != null)
+                {
+                    double emiAmt = 0;
+                    double.TryParse(dr[string.Format("(Loan EMI - {0})", goal.Name)].ToString(), out emiAmt);
+                    totalGoalLoanEMIs = totalGoalLoanEMIs + emiAmt;
+                }
+                
+                double investmentAmt = 0;
+                double.TryParse(dr[string.Format("{0} - {1}", goal.Priority, goal.Name)].ToString(), out investmentAmt);
+                totalInvestmentInGoals = totalInvestmentInGoals + investmentAmt;
 
+            }
+            return totalPostTaxIncome - (totalExpAmount + totalLoanAmount + totalGoalLoanEMIs + totalInvestmentInGoals);
+        }
         private void addIncomeCalculation(int years, DataRow dr)
         {
             long totalIncome = 0;
@@ -235,7 +355,7 @@ namespace FinancialPlannerClient.CashFlowManager
             foreach (Loan loan in _cashFlow.LstLoans)
             {
                 if (int.Parse(dr["StartYear"].ToString()) <=
-                   int.Parse(_dtCashFlow.Rows[0]["StartYear"].ToString()) + (loan.TermLeftInMonths / 12))
+                   int.Parse(_dtCashFlow.Rows[0]["StartYear"].ToString()) + (loan.TermLeftInMonths / 12) - 1)
                 {
                     double loanAmt = double.Parse(_dtCashFlow.Rows[years - 1][loan.TypeOfLoan].ToString());
                     dr[loan.TypeOfLoan] = loanAmt;
@@ -298,19 +418,25 @@ namespace FinancialPlannerClient.CashFlowManager
             #endregion
 
             #region "Add Goals"
-          
+
             double totalLoanEmi = 0;
+            double surplusCashFund = (totalpostTaxIncome - (totalExpenses + totalLoan + totalLoanEmi));
             foreach (Goals goal in _cashFlow.LstGoals)
             {
                 //Get Future value of Goal
-                GoalsCalculationInfo   goalCal = new GoalsCalculationInfo();
-                double goalValue = goalCal.GetGoalFutureValue(goal);
+                //GoalsCalculationInfo   goalCal = new GoalsCalculationInfo();
+                GoalCalculationManager goalCalManager = new GoalCalculationManager(_planner,_riskProfileInfo,_riskProfileId);
+                GoalsValueCalculationInfo goalValCalInfo =    goalCalManager.GetGoalValueCalculation(goal);
+
+                double goalValue = goalValCalInfo.FutureValueOfGoal;
                 //1 Instrument Mapped
                 double instrumentMappedAmount = 0;
-                if (_dtCurrentStatusToGoal != null & _dtCurrentStatusToGoal.Rows.Count > 0)
-                {
-                    instrumentMappedAmount = double.Parse(_dtCurrentStatusToGoal.Select("GoalId = " + goal.Id)[0]["CurrentStatusMappedAmount"].ToString());
-                }
+                instrumentMappedAmount = goalValCalInfo.FutureValueOfMappedInstruments;
+
+                //if (_dtCurrentStatusToGoal != null && _dtCurrentStatusToGoal.Rows.Count > 0)
+                //{
+                //    instrumentMappedAmount = double.Parse(_dtCurrentStatusToGoal.Select("GoalId = " + goal.Id)[0]["CurrentStatusMappedAmount"].ToString());
+                //}
                 //2 Loan for Goal
                 double loanForGoalValue = 0;
                 double emi = 0;
@@ -325,14 +451,51 @@ namespace FinancialPlannerClient.CashFlowManager
                     }
                 }
                 //3 Cash Flow
-                if ((totalpostTaxIncome - (totalExpenses + totalLoan + totalLoanEmi)) > 0)
+                if (surplusCashFund > 0)
                 {
-                    dr[string.Format("{0} - {1}", goal.Priority, goal.Name)] = (totalpostTaxIncome - (totalExpenses + totalLoan + totalLoanEmi));
+                    GoalPlanning goalPlanning =  goalValCalInfo.GetGoalPlanning(_planner.StartDate.Year);
+                    if (goalPlanning.EstimatedFreshInvestment < surplusCashFund)
+                    {
+                        dr[string.Format("{0} - {1}", goal.Priority, goal.Name)] = goalPlanning.EstimatedFreshInvestment;
+                        InvestmentInGoal investmentToGoal = new InvestmentInGoal();
+                        investmentToGoal.GoalId = goal.Id;
+                        investmentToGoal.InvestmentYear = _planner.StartDate.Year;
+                        investmentToGoal.InvestmentAmount = goalPlanning.EstimatedFreshInvestment;
+                        investmentToGoal.GrowthPercentage = goalPlanning.GrowthPercentage;
+                        _investmentToGoalService.AddInvestment(investmentToGoal);
+                        goalPlanning.ActualFreshInvestment = goalPlanning.EstimatedFreshInvestment;
+                        surplusCashFund = surplusCashFund - goalPlanning.ActualFreshInvestment;
+                    }
+                    else
+                    {
+                        dr[string.Format("{0} - {1}", goal.Priority, goal.Name)] = (totalpostTaxIncome - (totalExpenses + totalLoan + totalLoanEmi));
+                        InvestmentInGoal investmentToGoal = new InvestmentInGoal();
+                        investmentToGoal.GoalId = goal.Id;
+                        investmentToGoal.InvestmentYear = _planner.StartDate.Year;
+                        investmentToGoal.InvestmentAmount = surplusCashFund;
+                        investmentToGoal.GrowthPercentage = goalPlanning.GrowthPercentage;
+                        _investmentToGoalService.AddInvestment(investmentToGoal);
+                        goalPlanning.ActualFreshInvestment = surplusCashFund;
+                        surplusCashFund = surplusCashFund - goalPlanning.ActualFreshInvestment;
+                    }
+                    //_riskProfileInfo = new RiskProfileInfo();
+                    //decimal growthPercentage = _riskProfileInfo.GetRiskProfileReturnRatio(_riskProfileId, int.Parse(goal.StartYear) - int.Parse(dr["StartYear"].ToString()));
+                    //gcCalculationInfo = new GoalsCalculationInfo(goal, _planner, growthPercentage, _planner.StartDate.Year);
+                    //if (gcCalculationInfo.IsFundRequireToAchiveGoal())
+                    //{
+                    //    dr[string.Format("{0} - {1}", goal.Priority, goal.Name)] = (totalpostTaxIncome - (totalExpenses + totalLoan + totalLoanEmi));
+                    //    InvestmentInGoal investmentToGoal = new InvestmentInGoal();
+                    //    investmentToGoal.GoalId = goal.Id;
+                    //    investmentToGoal.InvestmentYear = _planner.StartDate.Year;
+                    //    investmentToGoal.InvestmentAmount = (totalpostTaxIncome - (totalExpenses + totalLoan + totalLoanEmi));
+                    //    investmentToGoal.GrowthPercentage = new RiskProfileInfo().GetRiskProfileReturnRatio(_riskProfileId, int.Parse(goal.StartYear) - int.Parse(dr["StartYear"].ToString()));
+                    //    _investmentToGoalService.AddInvestment(investmentToGoal);
+                    //}
                 }
                 //4 Current Assets
             }
             #endregion
-            dr["Surplus Amount"] = totalpostTaxIncome - (totalExpenses + totalLoan +  totalLoanEmi);
+            dr["Surplus Amount"] = totalpostTaxIncome - (totalExpenses + totalLoan + totalLoanEmi);
             _dtCashFlow.Rows.Add(dr);
         }
 
@@ -449,7 +612,6 @@ namespace FinancialPlannerClient.CashFlowManager
 
             #endregion
 
-            _dtCashFlow.Columns.Add("Additional Amount", typeof(System.Double));
         }
 
         internal bool Save(CashFlow cf)

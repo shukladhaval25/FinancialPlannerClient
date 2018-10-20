@@ -203,7 +203,7 @@ namespace FinancialPlannerClient.PlannerInfo
                 if (dtGridLoan.SelectedRows[0].Cells["ID"].Value != System.DBNull.Value)
                 {
                     int selectedUserId = int.Parse(dtGridLoan.SelectedRows[0].Cells["ID"].Value.ToString());
-                    DataRow[] rows = _dtLoan.Select("Id = " + selectedUserId);
+                    DataRow[] rows = _dtLoan.Select("Id ='" + selectedUserId +"'");
                     foreach (DataRow dr in rows)
                     {
                         return dr;

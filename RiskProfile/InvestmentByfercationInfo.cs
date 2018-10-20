@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace FinancialPlannerClient.RiskProfile
 {
-    internal class InvestmentBifercationInfo
+    internal class InvestmentByfercationInfo
     {
         DataTable _dtInvestmentSegment;
         private readonly string GET_ALL = "RiskProfileInvestmentSegment/GetAll?riskProfileId={0}";

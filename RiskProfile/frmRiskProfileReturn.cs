@@ -24,10 +24,10 @@ namespace FinancialPlannerClient.RiskProfile
 
         int _riskProfileId = 0;
         RiskProfiledReturnMaster _riskProfiledReturnMaster;
-        ReiskProfileInfo _defaultRiskProfile = new ReiskProfileInfo();
+        RiskProfileInfo _defaultRiskProfile = new RiskProfileInfo();
         DataTable _dtRiskProfileReturn;
         DataTable _dtRecommendedScheme;
-        InvestmentBifercationInfo invBifurcationIno = new InvestmentBifercationInfo();
+        InvestmentByfercationInfo invBifurcationIno = new InvestmentByfercationInfo();
         public frmRiskProfileReturn()
         {
             InitializeComponent();

@@ -20,7 +20,7 @@ namespace FinancialPlannerClient.PlannerInfo
         const string UPDATE_NON_FINANCIAL_API = "NonFinancialAsset/Update";
         const string DELETE_NON_FINANCIAL_API = "NonFinancialAsset/Delete";
         DataTable _dtNonFinancialAsset;
-        public IList<NonFinancialAsset> GetAlll(int plannerId)
+        public IList<NonFinancialAsset> GetAll(int plannerId)
         {
             IList<NonFinancialAsset> nonFinancialAssetObj = new List<NonFinancialAsset>();
             try
@@ -73,6 +73,15 @@ namespace FinancialPlannerClient.PlannerInfo
                 LogDebug(currentMethodName.Name, ex);
                 return null;
             }
+        }
+
+        public IEnumerable<NonFinancialAsset> GetByMappedGoalID(int goalId, int plannerID)
+        {
+            IList<NonFinancialAsset> NonFinAssets = GetAll(plannerID);
+            if (NonFinAssets != null)
+                return NonFinAssets.Where(i => i.MappedGoalId == goalId);
+            else
+                return null;                              
         }
 
         internal void FillGrid(DataGridView dtGridNonFinancialAssets)
@@ -194,6 +203,7 @@ namespace FinancialPlannerClient.PlannerInfo
                     nonFinancialAsset.AssetMappingShare = int.Parse(dr.Field<string>("AssetMappingShare"));
                     nonFinancialAsset.AssetRealisationYear = dr.Field<string>("AssetRealisationYear");
                     nonFinancialAsset.Description = dr.Field<string>("Description");
+                    nonFinancialAsset.GrowthPercentage = decimal.Parse(dr["GrowthPercentage"].ToString());
                     return nonFinancialAsset;
                 }
             }

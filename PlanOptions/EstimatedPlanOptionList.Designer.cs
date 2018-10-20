@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EstimatedPlanOptionList));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblRiskProfileVal = new System.Windows.Forms.Label();
             this.grpActionControls = new System.Windows.Forms.GroupBox();
@@ -47,7 +47,6 @@
             this.tabEstimatedPlan = new System.Windows.Forms.TabControl();
             this.CashFlow = new System.Windows.Forms.TabPage();
             this.dtGridCashFlow = new System.Windows.Forms.DataGridView();
-            this.imageList16x16 = new System.Windows.Forms.ImageList(this.components);
             this.CurrentStatus = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
@@ -108,6 +107,7 @@
             this.dtGridGoalValue = new System.Windows.Forms.DataGridView();
             this.cmbGoals = new System.Windows.Forms.ComboBox();
             this.label30 = new System.Windows.Forms.Label();
+            this.imageList16x16 = new System.Windows.Forms.ImageList(this.components);
             this.groupBox1.SuspendLayout();
             this.grpActionControls.SuspendLayout();
             this.tabEstimatedPlan.SuspendLayout();
@@ -307,23 +307,13 @@
             this.dtGridCashFlow.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtGridCashFlow_CellEndEdit);
             this.dtGridCashFlow.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dtGridCashFlow_CellValidating);
             // 
-            // imageList16x16
-            // 
-            this.imageList16x16.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList16x16.ImageStream")));
-            this.imageList16x16.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList16x16.Images.SetKeyName(0, "icons8-contact-details-16-2.png");
-            this.imageList16x16.Images.SetKeyName(1, "icons8-resume-16.png");
-            this.imageList16x16.Images.SetKeyName(2, "icons8-customer-16.png");
-            this.imageList16x16.Images.SetKeyName(3, "icons8-cancel-16.png");
-            this.imageList16x16.Images.SetKeyName(4, "icons8-save-close-16.png");
-            // 
             // CurrentStatus
             // 
             this.CurrentStatus.Controls.Add(this.panel1);
             this.CurrentStatus.Location = new System.Drawing.Point(4, 22);
             this.CurrentStatus.Name = "CurrentStatus";
             this.CurrentStatus.Padding = new System.Windows.Forms.Padding(3);
-            this.CurrentStatus.Size = new System.Drawing.Size(1036, 547);
+            this.CurrentStatus.Size = new System.Drawing.Size(1036, 546);
             this.CurrentStatus.TabIndex = 1;
             this.CurrentStatus.Text = "Current Status";
             this.CurrentStatus.UseVisualStyleBackColor = true;
@@ -886,7 +876,7 @@
             this.GoalStatus.Controls.Add(this.dtGridCurrentStatusGoals);
             this.GoalStatus.Location = new System.Drawing.Point(4, 22);
             this.GoalStatus.Name = "GoalStatus";
-            this.GoalStatus.Size = new System.Drawing.Size(1036, 547);
+            this.GoalStatus.Size = new System.Drawing.Size(1036, 546);
             this.GoalStatus.TabIndex = 2;
             this.GoalStatus.Text = "Goals Status";
             this.GoalStatus.UseVisualStyleBackColor = true;
@@ -909,14 +899,14 @@
             this.dtGridCurrentStatusGoals.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtGridCurrentStatusGoals.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtGridCurrentStatusGoals.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dtGridCurrentStatusGoals.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGridCurrentStatusGoals.Location = new System.Drawing.Point(7, 51);
             this.dtGridCurrentStatusGoals.MultiSelect = false;
@@ -938,7 +928,7 @@
             this.Goals.Location = new System.Drawing.Point(4, 22);
             this.Goals.Name = "Goals";
             this.Goals.Padding = new System.Windows.Forms.Padding(3);
-            this.Goals.Size = new System.Drawing.Size(1036, 547);
+            this.Goals.Size = new System.Drawing.Size(1036, 546);
             this.Goals.TabIndex = 3;
             this.Goals.Text = "Goals";
             this.Goals.UseVisualStyleBackColor = true;
@@ -990,9 +980,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dtGridGoalCal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtGridGoalCal.Location = new System.Drawing.Point(11, 153);
+            this.dtGridGoalCal.Location = new System.Drawing.Point(11, 150);
             this.dtGridGoalCal.Name = "dtGridGoalCal";
-            this.dtGridGoalCal.Size = new System.Drawing.Size(1012, 353);
+            this.dtGridGoalCal.Size = new System.Drawing.Size(1012, 355);
             this.dtGridGoalCal.TabIndex = 3;
             this.dtGridGoalCal.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtGridGoalCal_CellEndEdit);
             // 
@@ -1003,7 +993,7 @@
             this.dtGridGoalValue.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGridGoalValue.Location = new System.Drawing.Point(11, 45);
             this.dtGridGoalValue.Name = "dtGridGoalValue";
-            this.dtGridGoalValue.Size = new System.Drawing.Size(1012, 92);
+            this.dtGridGoalValue.Size = new System.Drawing.Size(1012, 99);
             this.dtGridGoalValue.TabIndex = 2;
             // 
             // cmbGoals
@@ -1027,6 +1017,16 @@
             this.label30.Size = new System.Drawing.Size(93, 16);
             this.label30.TabIndex = 0;
             this.label30.Text = "Select Goal:";
+            // 
+            // imageList16x16
+            // 
+            this.imageList16x16.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList16x16.ImageStream")));
+            this.imageList16x16.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList16x16.Images.SetKeyName(0, "icons8-contact-details-16-2.png");
+            this.imageList16x16.Images.SetKeyName(1, "icons8-resume-16.png");
+            this.imageList16x16.Images.SetKeyName(2, "icons8-customer-16.png");
+            this.imageList16x16.Images.SetKeyName(3, "icons8-cancel-16.png");
+            this.imageList16x16.Images.SetKeyName(4, "icons8-save-close-16.png");
             // 
             // EstimatedPlanOptionList
             // 

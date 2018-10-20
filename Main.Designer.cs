@@ -45,6 +45,7 @@
             this.picClientMain = new System.Windows.Forms.PictureBox();
             this.imglist16x16 = new System.Windows.Forms.ImageList(this.components);
             this.imgList30x30 = new System.Windows.Forms.ImageList(this.components);
+            this.clientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuMain.SuspendLayout();
             this.pnlMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picClientMain)).BeginInit();
@@ -54,6 +55,7 @@
             // 
             this.menuMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.prospectedCustomerToolStripMenuItem,
+            this.clientToolStripMenuItem,
             this.clientsToolStripMenuItem,
             this.riskProfileToolStripMenuItem,
             this.auditTrailToolStripMenuItem,
@@ -177,6 +179,13 @@
             this.imgList30x30.TransparentColor = System.Drawing.Color.Transparent;
             this.imgList30x30.Images.SetKeyName(0, "icons8-select-users-30.png");
             // 
+            // clientToolStripMenuItem
+            // 
+            this.clientToolStripMenuItem.Name = "clientToolStripMenuItem";
+            this.clientToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
+            this.clientToolStripMenuItem.Text = "Client";
+            this.clientToolStripMenuItem.Click += new System.EventHandler(this.clientToolStripMenuItem_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -216,5 +225,6 @@
         private System.Windows.Forms.ToolStripMenuItem createNewRsikProfiledToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem estimatedPlanningOptionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem currentInToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem clientToolStripMenuItem;
     }
 }

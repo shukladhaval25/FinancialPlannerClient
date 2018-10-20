@@ -52,6 +52,18 @@
   <ItemGroup>
     <Compile Include="CashFlowManager\CashFlowCalculation.cs" />
     <Compile Include="CashFlowManager\CashFlowService.cs" />
+    <Compile Include="Clients\AllClientsList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clients\AllClientsList.Designer.cs">
+      <DependentUpon>AllClientsList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Clients\ClientWithPrimaryDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clients\ClientWithPrimaryDetails.Designer.cs">
+      <DependentUpon>ClientWithPrimaryDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="Clients\ClientWithPlanner.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +103,8 @@
     </Compile>
     <Compile Include="CurrentStatus\MFTransInfo.cs" />
     <Compile Include="CurrentStatus\ULIPInfo.cs" />
+    <Compile Include="GoalCalculations\InvestmentInGoal.cs" />
+    <Compile Include="GoalCalculations\InvestmentToGoalService.cs" />
     <Compile Include="PlanOptions\CurrentStatusInfo.cs" />
     <Compile Include="CurrentStatus\FDInfo.cs" />
     <Compile Include="CurrentStatus\GeneralInsuranceInfo.cs" />
@@ -141,8 +155,11 @@
     <Compile Include="PlanOptions\EstimatedPlanOptionList.Designer.cs">
       <DependentUpon>EstimatedPlanOptionList.cs</DependentUpon>
     </Compile>
+    <Compile Include="PlanOptions\GoalCalculationManager.cs" />
+    <Compile Include="PlanOptions\GoalPlanning.cs" />
     <Compile Include="PlanOptions\GoalsCalculationInfo.cs" />
     <Compile Include="PlanOptions\GoalStatusInfo.cs" />
+    <Compile Include="PlanOptions\GoalsValueCalculationInfo.cs" />
     <Compile Include="PlanOptions\PlanOptionInfo.cs" />
     <Compile Include="PlanOptions\PlanOptionMaster.cs">
       <SubType>Form</SubType>
@@ -189,7 +206,13 @@
     <Compile Include="RiskProfile\frmRiskProfileReturn.Designer.cs">
       <DependentUpon>frmRiskProfileReturn.cs</DependentUpon>
     </Compile>
-    <Compile Include="RiskProfile\InvestmentBifercationInfo.cs" />
+    <Compile Include="RiskProfile\InvestmentByfercationInfo.cs" />
+    <EmbeddedResource Include="Clients\AllClientsList.resx">
+      <DependentUpon>AllClientsList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Clients\ClientWithPrimaryDetails.resx">
+      <DependentUpon>ClientWithPrimaryDetails.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Clients\ClientWithPlanner.resx">
       <DependentUpon>ClientWithPlanner.cs</DependentUpon>
     </EmbeddedResource>
