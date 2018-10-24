@@ -43,28 +43,18 @@ namespace FinancialPlannerClient.PlanOptions
 
         public GoalsValueCalculationInfo GetGoalValueCalculation(Goals goal)
         {
-            GoalsValueCalculationInfo goalsValueInfo = new GoalsValueCalculationInfo(goal,_planner,_riskProfileInfo,_riskProfileId);
-            _goalsValuecalculationInfo.Add(goalsValueInfo);
-            return goalsValueInfo;
+            //GoalsValueCalculationInfo goalsValueInfo = new GoalsValueCalculationInfo(goal,_planner,_riskProfileInfo,_riskProfileId);
+            //_goalsValuecalculationInfo.Add(goalsValueInfo);
+            //return goalsValueInfo;
+            var result = _goalsValuecalculationInfo.FirstOrDefault(i => i.Goal().Id == goal.Id);
+            return result;
         }
 
-        public IList<GoalPlanning> GetGoalPlanning()
+        public void AddGoalValueCalculation(GoalsValueCalculationInfo goalValueCalculationInfo)
         {
-            if (GoalsList != null)
-            {
-                foreach (Goals goal in GoalsList)
-                {
-                    GoalPlanning goalPlanning = new GoalPlanning(goal);
-                    _goalPlanning.Add(goalPlanning);
-                }
-            }
-            return _goalPlanning;
+            var result = _goalsValuecalculationInfo.FirstOrDefault(i => i.Goal().Id == goalValueCalculationInfo.Goal().Id);
+            if (result == null)
+                _goalsValuecalculationInfo.Add(goalValueCalculationInfo);
         }
-
-        private void fetchAllGols()
-        {
-            GoalsList = new GoalsInfo().GetAll(_planId);
-        }
-
     }
 }

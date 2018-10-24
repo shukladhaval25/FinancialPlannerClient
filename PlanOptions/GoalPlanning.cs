@@ -8,15 +8,9 @@ namespace FinancialPlannerClient.PlanOptions
         int _year;
         int _yearLeft;       
         double _goalFutureValue;
-        double _estimatedFreshInvestment;
         double _actualFreshInvestment;
-        double _mappedInstrumentFutureValue;
-        double _mappedNonFincialAssetsFutureValue;
-        double _totalActualInvestmentValue;
-        double _shortFallForGoalValue;
         decimal _growthPercentage;
-        decimal _goalComplitionPercentage;
-
+       
         Goals _goal;
 
         public GoalPlanning(Goals goal)
@@ -71,20 +65,6 @@ namespace FinancialPlannerClient.PlanOptions
                 _goalFutureValue = value;
             }
         }
-
-        public double EstimatedFreshInvestment
-        {
-            get
-            {
-                return _estimatedFreshInvestment;
-            }
-
-            set
-            {
-                _estimatedFreshInvestment = value;
-            }
-        }
-
         public double ActualFreshInvestment
         {
             get
@@ -98,54 +78,7 @@ namespace FinancialPlannerClient.PlanOptions
             }
         }
 
-        public double MappedInstrumentFutureValue
-        {
-            get
-            {
-                return _mappedInstrumentFutureValue;
-            }
 
-            set
-            {
-                _mappedInstrumentFutureValue = value;
-            }
-        }
-
-        public double MappedNonFincialAssetsFutureValue
-        {
-            get
-            {
-                return _mappedNonFincialAssetsFutureValue;
-            }
-
-            set
-            {
-                _mappedNonFincialAssetsFutureValue = value;
-            }
-        }
-
-        public double TotalActualInvestmentValue
-        {
-            get
-            {
-                return _totalActualInvestmentValue;
-            }
-
-            set
-            {
-                _totalActualInvestmentValue = value;
-            }
-        }
-
-        public double ShortFallForGoalValue
-        {
-            get
-            {
-                _shortFallForGoalValue = _goalFutureValue - (_totalActualInvestmentValue +
-                    _mappedInstrumentFutureValue + _mappedNonFincialAssetsFutureValue);
-                return _shortFallForGoalValue;
-            }
-        }
 
         public decimal GrowthPercentage
         {
@@ -157,14 +90,6 @@ namespace FinancialPlannerClient.PlanOptions
             set
             {
                 _growthPercentage = value;
-            }
-        }
-
-        public decimal GoalComplitionPercentage
-        {
-            get
-            {
-                return _goalComplitionPercentage;
             }
         }
     }

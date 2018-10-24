@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.menuMain = new System.Windows.Forms.MenuStrip();
             this.prospectedCustomerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.clientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clientsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.currentInToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -45,7 +46,6 @@
             this.picClientMain = new System.Windows.Forms.PictureBox();
             this.imglist16x16 = new System.Windows.Forms.ImageList(this.components);
             this.imgList30x30 = new System.Windows.Forms.ImageList(this.components);
-            this.clientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuMain.SuspendLayout();
             this.pnlMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picClientMain)).BeginInit();
@@ -74,6 +74,14 @@
             this.prospectedCustomerToolStripMenuItem.Size = new System.Drawing.Size(136, 20);
             this.prospectedCustomerToolStripMenuItem.Text = "Prospect Customer";
             this.prospectedCustomerToolStripMenuItem.Click += new System.EventHandler(this.prospectedCustomerToolStripMenuItem_Click);
+            // 
+            // clientToolStripMenuItem
+            // 
+            this.clientToolStripMenuItem.Image = global::FinancialPlannerClient.Properties.Resources.icons8_customer_30;
+            this.clientToolStripMenuItem.Name = "clientToolStripMenuItem";
+            this.clientToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
+            this.clientToolStripMenuItem.Text = "Client";
+            this.clientToolStripMenuItem.Click += new System.EventHandler(this.clientToolStripMenuItem_Click);
             // 
             // clientsToolStripMenuItem
             // 
@@ -178,13 +186,6 @@
             this.imgList30x30.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgList30x30.ImageStream")));
             this.imgList30x30.TransparentColor = System.Drawing.Color.Transparent;
             this.imgList30x30.Images.SetKeyName(0, "icons8-select-users-30.png");
-            // 
-            // clientToolStripMenuItem
-            // 
-            this.clientToolStripMenuItem.Name = "clientToolStripMenuItem";
-            this.clientToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
-            this.clientToolStripMenuItem.Text = "Client";
-            this.clientToolStripMenuItem.Click += new System.EventHandler(this.clientToolStripMenuItem_Click);
             // 
             // Main
             // 

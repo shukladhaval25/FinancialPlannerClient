@@ -1,8 +1,6 @@
 ﻿using FinancialPlanner.Common;
-using FinancialPlanner.Common.DataConversion;
 using FinancialPlanner.Common.Model;
 using FinancialPlanner.Common.Model.PlanOptions;
-using FinancialPlannerClient.GoalCalculations;
 using FinancialPlannerClient.PlannerInfo;
 using FinancialPlannerClient.PlanOptions;
 using FinancialPlannerClient.RiskProfile;
@@ -14,8 +12,6 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FinancialPlannerClient.CashFlowManager
 {
@@ -29,9 +25,8 @@ namespace FinancialPlannerClient.CashFlowManager
         private readonly string ADD_CASHFLOW_API = "cashflow/Add";
         private readonly string UPDATE_CASHFLOW_API = "cashflow/update";
         private double _inflactionRatePercentage = 10;
-        private InvestmentToGoalService _investmentToGoalService = new InvestmentToGoalService();
         private Planner _planner;
-        private GoalsCalculationInfo gcCalculationInfo;
+        public GoalCalculationManager GoalCalculationMgr;
         private RiskProfileInfo _riskProfileInfo;
 
         public CashFlowCalculation GetCashFlowData(int clientId, int planId, int riskProfileId)
@@ -43,8 +38,7 @@ namespace FinancialPlannerClient.CashFlowManager
             ClientPersonalInfo clientPersonalInfo = new ClientPersonalInfo();
 
             PersonalInformation  personalInfo =  clientPersonalInfo.Get(clientId);
-            var plannerInfo = new PlannerInfo.PlannerInfo();
-            _planner = plannerInfo.GetPlanDataById(_planId);
+                      
             fillPersonalData(personalInfo);
 
             _riskProfileInfo = new RiskProfileInfo();
@@ -95,23 +89,21 @@ namespace FinancialPlannerClient.CashFlowManager
             return null;
         }
 
-
         public DataTable GenerateCashFlow(int clientId, int planId, int riskProfileId)
         {
             _dtCashFlow = new DataTable();
+            var plannerInfo = new PlannerInfo.PlannerInfo();
+            _planId = planId;
+            _planner = plannerInfo.GetPlanDataById(planId);
+            _riskProfileInfo = new RiskProfileInfo();
+            GoalCalculationMgr = new GoalCalculationManager(_planner, _riskProfileInfo, riskProfileId);
             CashFlowCalculation cashFlow = GetCashFlowData(clientId,planId,riskProfileId);
             if (cashFlow != null)
             {
-                //_dtCurrentStatusToGoal = new CurrentStatusToGoal().CurrentStatusToGoalCalculation(_planId);
                 createTableCashFlowStructure();
                 generateCashFlowData();
             }
             return _dtCashFlow;
-        }
-
-        public IList<InvestmentInGoal> GetInvestmentToGoalData()
-        {
-            return _investmentToGoalService.GetInvestments();
         }
 
         private void generateCashFlowData()
@@ -153,7 +145,8 @@ namespace FinancialPlannerClient.CashFlowManager
         {
             double totalLoanEmi = 0;
             double totalCashAllocationForGoal = 0;
-
+            int calculationYear = int.Parse(dr["StartYear"].ToString());
+            double surplusAmount = getSurplusAmount(dr);
             foreach (Goals goal in _cashFlow.LstGoals)
             {
                 //Add Loan EMI if loan taken for goal
@@ -162,96 +155,30 @@ namespace FinancialPlannerClient.CashFlowManager
                 double emi = 0;
                 if (goal.LoanForGoal != null)
                 {
-                    if (int.Parse(dr["StartYear"].ToString()) >= goal.LoanForGoal.StratYear &&
-                        int.Parse(dr["StartYear"].ToString()) < goal.LoanForGoal.EndYear)
+                    if (calculationYear >= goal.LoanForGoal.StratYear &&
+                        calculationYear < goal.LoanForGoal.EndYear)
                     {
                         dr[string.Format("(Loan EMI - {0})", goal.Name)] = goal.LoanForGoal.EMI;
                         totalLoanEmi = totalLoanEmi + goal.LoanForGoal.EMI;
                     }
                 }
-
-
-                _riskProfileInfo = new RiskProfileInfo();
-               
-                GoalsCalculationInfo  _goalCalculationInfo =
-                    new GoalsCalculationInfo(goal, _planner,_riskProfileInfo, _riskProfileId);
-                _goalCalculationInfo.SetInvestmentInGoal(_investmentToGoalService.GetInvestments());
-
-                double surplusAmount = getSurplusAmount(dr);
+             
                 if (surplusAmount > 0 &&
-                     (int.Parse(dr["StartYear"].ToString()) < int.Parse(goal.StartYear)))
+                     (calculationYear < int.Parse(goal.StartYear)))
                 {
-                    GoalCalculationManager goalCalManager = new GoalCalculationManager(_planner,_riskProfileInfo,_riskProfileId);
-                    GoalsValueCalculationInfo goalValCalInfo =    goalCalManager.GetGoalValueCalculation(goal);
 
-                    GoalPlanning goalPlanning =  goalValCalInfo.GetGoalPlanning(_planner.StartDate.Year);
-
-                    if (goalPlanning.EstimatedFreshInvestment < surplusAmount)
+                    GoalsValueCalculationInfo goalValCalInfo = GoalCalculationMgr.GetGoalValueCalculation(goal);
+                    if (goalValCalInfo == null)
                     {
-
-                        //Get Investment Require Amount Method
-                        dr[string.Format("{0} - {1}", goal.Priority, goal.Name)] = goalPlanning.EstimatedFreshInvestment;
-
-                        InvestmentInGoal investmentToGoal = new InvestmentInGoal();
-                        investmentToGoal.GoalId = goal.Id;
-                        investmentToGoal.InvestmentYear = int.Parse(dr["StartYear"].ToString());
-                        investmentToGoal.InvestmentAmount = goalPlanning.EstimatedFreshInvestment;
-                        investmentToGoal.GrowthPercentage = goalPlanning.GrowthPercentage;  //new RiskProfileInfo().GetRiskProfileReturnRatio(_riskProfileId, int.Parse(goal.StartYear) - int.Parse(dr["StartYear"].ToString()));
-                        _investmentToGoalService.AddInvestment(investmentToGoal);
-                        surplusAmount = surplusAmount - investmentToGoal.InvestmentAmount;
+                        goalValCalInfo = new GoalsValueCalculationInfo(goal, _planner, _riskProfileInfo, _riskProfileId);
+                        GoalCalculationMgr.AddGoalValueCalculation(goalValCalInfo);
                     }
-                    else
-                    {
-                        dr[string.Format("{0} - {1}", goal.Priority, goal.Name)] = surplusAmount;
 
-                        InvestmentInGoal investmentToGoal = new InvestmentInGoal();
-                        investmentToGoal.GoalId = goal.Id;
-                        investmentToGoal.InvestmentYear = int.Parse(dr["StartYear"].ToString());
-                        investmentToGoal.InvestmentAmount = surplusAmount;
-                        investmentToGoal.GrowthPercentage = new RiskProfileInfo().GetRiskProfileReturnRatio(_riskProfileId, int.Parse(goal.StartYear) - int.Parse(dr["StartYear"].ToString()));
-                        _investmentToGoalService.AddInvestment(investmentToGoal);
-                        surplusAmount = surplusAmount - investmentToGoal.InvestmentAmount;
-                    }
+                    double  surplusAmountAfterInvestment = goalValCalInfo.SetInvestmentToAchiveGoal(calculationYear, surplusAmount);
+                    dr[string.Format("{0} - {1}", goal.Priority, goal.Name)] = surplusAmount - surplusAmountAfterInvestment;
+                    surplusAmount = surplusAmountAfterInvestment;
+                    
                 }
-
-                ////Get Future value of Goal
-                //GoalsCalculationInfo   goalCal = new GoalsCalculationInfo();
-                //double goalValue = goalCal.GetGoalFutureValue(goal);
-                ////1 Instrument Mapped
-                //double instrumentMappedAmount = 0;
-                //if (_dtCurrentStatusToGoal != null && _dtCurrentStatusToGoal.Rows.Count > 0)
-                //{
-                //    instrumentMappedAmount = double.Parse(_dtCurrentStatusToGoal.Select("GoalId = " + goal.Id)[0]["CurrentStatusMappedAmount"].ToString());
-                //}
-
-
-                //double totalPostTaxIncome = double.Parse(dr["Total Post Tax Income"].ToString());
-                //double totalExpAmount = double.Parse(dr["Total Annual Expenses"].ToString());
-                //double totalLoan = double.Parse(dr["Total Annual Loans"].ToString());
-                //double totalAmoutBeforeCashFlowAllocation = (totalPostTaxIncome - (totalExpAmount + totalLoan + totalLoanEmi + totalCashAllocationForGoal));
-
-                //3 Cash Flow
-                //if (totalAmoutBeforeCashFlowAllocation > 0)
-                //{
-
-                //if (goal.LoanForGoal != null)
-                //    totalLoanEmi = totalLoanEmi + goal.LoanForGoal.EMI;
-                //totalCashAllocationForGoal = totalCashAllocationForGoal + totalAmoutBeforeCashFlowAllocation;
-                //gcCalculationInfo = new GoalsCalculationInfo(goal.Id, _planId, _riskProfileId, _planner.StartDate.Year);
-                //if (gcCalculationInfo.IsFundRequireToAchiveGoal())
-                //{
-                //    dr[string.Format("{0} - {1}", goal.Priority, goal.Name)] = totalAmoutBeforeCashFlowAllocation;
-                //    InvestmentInGoal investmentToGoal = new InvestmentInGoal();
-                //    investmentToGoal.GoalId = goal.Id;
-                //    investmentToGoal.InvestmentYear = _planner.StartDate.Year;
-                //    investmentToGoal.InvestmentAmount = totalCashAllocationForGoal;
-                //    investmentToGoal.GrowthPercentage = new RiskProfileInfo().GetRiskProfileReturnRatio(_riskProfileId, int.Parse(goal.StartYear) - int.Parse(dr["StartYear"].ToString()));
-                //    _investmentToGoalService.AddInvestment(investmentToGoal);
-                //}
-
-                //}
-                //dr["Surplus Amount"] = totalAmoutBeforeCashFlowAllocation;
-                //4 Current Assets
             }
         }
         private void setSurplusAmount(DataRow dr)
@@ -422,22 +349,8 @@ namespace FinancialPlannerClient.CashFlowManager
             double totalLoanEmi = 0;
             double surplusCashFund = (totalpostTaxIncome - (totalExpenses + totalLoan + totalLoanEmi));
             foreach (Goals goal in _cashFlow.LstGoals)
-            {
-                //Get Future value of Goal
-                //GoalsCalculationInfo   goalCal = new GoalsCalculationInfo();
-                GoalCalculationManager goalCalManager = new GoalCalculationManager(_planner,_riskProfileInfo,_riskProfileId);
-                GoalsValueCalculationInfo goalValCalInfo =    goalCalManager.GetGoalValueCalculation(goal);
-
-                double goalValue = goalValCalInfo.FutureValueOfGoal;
-                //1 Instrument Mapped
-                double instrumentMappedAmount = 0;
-                instrumentMappedAmount = goalValCalInfo.FutureValueOfMappedInstruments;
-
-                //if (_dtCurrentStatusToGoal != null && _dtCurrentStatusToGoal.Rows.Count > 0)
-                //{
-                //    instrumentMappedAmount = double.Parse(_dtCurrentStatusToGoal.Select("GoalId = " + goal.Id)[0]["CurrentStatusMappedAmount"].ToString());
-                //}
-                //2 Loan for Goal
+            {                
+                //1 Loan for Goal
                 double loanForGoalValue = 0;
                 double emi = 0;
                 if (goal.LoanForGoal != null)
@@ -450,51 +363,20 @@ namespace FinancialPlannerClient.CashFlowManager
                         emi = goal.LoanForGoal.EMI;
                     }
                 }
-                //3 Cash Flow
+                //2 Cash Flow and fund allocation to goal
                 if (surplusCashFund > 0)
                 {
-                    GoalPlanning goalPlanning =  goalValCalInfo.GetGoalPlanning(_planner.StartDate.Year);
-                    if (goalPlanning.EstimatedFreshInvestment < surplusCashFund)
-                    {
-                        dr[string.Format("{0} - {1}", goal.Priority, goal.Name)] = goalPlanning.EstimatedFreshInvestment;
-                        InvestmentInGoal investmentToGoal = new InvestmentInGoal();
-                        investmentToGoal.GoalId = goal.Id;
-                        investmentToGoal.InvestmentYear = _planner.StartDate.Year;
-                        investmentToGoal.InvestmentAmount = goalPlanning.EstimatedFreshInvestment;
-                        investmentToGoal.GrowthPercentage = goalPlanning.GrowthPercentage;
-                        _investmentToGoalService.AddInvestment(investmentToGoal);
-                        goalPlanning.ActualFreshInvestment = goalPlanning.EstimatedFreshInvestment;
-                        surplusCashFund = surplusCashFund - goalPlanning.ActualFreshInvestment;
-                    }
-                    else
-                    {
-                        dr[string.Format("{0} - {1}", goal.Priority, goal.Name)] = (totalpostTaxIncome - (totalExpenses + totalLoan + totalLoanEmi));
-                        InvestmentInGoal investmentToGoal = new InvestmentInGoal();
-                        investmentToGoal.GoalId = goal.Id;
-                        investmentToGoal.InvestmentYear = _planner.StartDate.Year;
-                        investmentToGoal.InvestmentAmount = surplusCashFund;
-                        investmentToGoal.GrowthPercentage = goalPlanning.GrowthPercentage;
-                        _investmentToGoalService.AddInvestment(investmentToGoal);
-                        goalPlanning.ActualFreshInvestment = surplusCashFund;
-                        surplusCashFund = surplusCashFund - goalPlanning.ActualFreshInvestment;
-                    }
-                    //_riskProfileInfo = new RiskProfileInfo();
-                    //decimal growthPercentage = _riskProfileInfo.GetRiskProfileReturnRatio(_riskProfileId, int.Parse(goal.StartYear) - int.Parse(dr["StartYear"].ToString()));
-                    //gcCalculationInfo = new GoalsCalculationInfo(goal, _planner, growthPercentage, _planner.StartDate.Year);
-                    //if (gcCalculationInfo.IsFundRequireToAchiveGoal())
-                    //{
-                    //    dr[string.Format("{0} - {1}", goal.Priority, goal.Name)] = (totalpostTaxIncome - (totalExpenses + totalLoan + totalLoanEmi));
-                    //    InvestmentInGoal investmentToGoal = new InvestmentInGoal();
-                    //    investmentToGoal.GoalId = goal.Id;
-                    //    investmentToGoal.InvestmentYear = _planner.StartDate.Year;
-                    //    investmentToGoal.InvestmentAmount = (totalpostTaxIncome - (totalExpenses + totalLoan + totalLoanEmi));
-                    //    investmentToGoal.GrowthPercentage = new RiskProfileInfo().GetRiskProfileReturnRatio(_riskProfileId, int.Parse(goal.StartYear) - int.Parse(dr["StartYear"].ToString()));
-                    //    _investmentToGoalService.AddInvestment(investmentToGoal);
-                    //}
+                    _riskProfileInfo = new RiskProfileInfo();
+                    GoalsValueCalculationInfo goalValCalInfo = new GoalsValueCalculationInfo(goal, _planner,_riskProfileInfo,_riskProfileId);
+                    GoalCalculationMgr.AddGoalValueCalculation(goalValCalInfo);
+
+                    double  surplusAmountAfterInvestment = goalValCalInfo.SetInvestmentToAchiveGoal(_planner.StartDate.Year, surplusCashFund);
+                    dr[string.Format("{0} - {1}", goal.Priority, goal.Name)] = surplusCashFund - surplusAmountAfterInvestment;
+                    surplusCashFund = surplusAmountAfterInvestment;                    
                 }
-                //4 Current Assets
             }
             #endregion
+
             dr["Surplus Amount"] = totalpostTaxIncome - (totalExpenses + totalLoan + totalLoanEmi);
             _dtCashFlow.Rows.Add(dr);
         }

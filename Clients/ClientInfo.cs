@@ -149,7 +149,7 @@ namespace FinancialPlannerClient.Clients
         }
 
         private void fillNonFinancialAssetsGoals()
-        {         
+        {
             cmbMappingGoal.Items.Clear();
             _goals = new GoalsInfo().GetAll(_plannerId);
             foreach (var goal in _goals)
@@ -185,7 +185,7 @@ namespace FinancialPlannerClient.Clients
             lblSpouseTitle.Text = getSpouseName();
             PlannerAssumptionInfo plannerassumptionInfo = new PlannerAssumptionInfo();
             PlannerAssumption plannerAssumption = plannerassumptionInfo.GetAll(PlannerId);
-            displayPlannerAssumptionData(plannerAssumption);           
+            displayPlannerAssumptionData(plannerAssumption);
         }
 
         private void displayPlannerAssumptionData(PlannerAssumption plannerAssumption)
@@ -618,7 +618,7 @@ namespace FinancialPlannerClient.Clients
             txtFamilyMemberDesc.Text = "";
         }
 
-      
+
 
         private void dtGridFamilyMember_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
@@ -633,9 +633,9 @@ namespace FinancialPlannerClient.Clients
         {
             if (MessageBox.Show("Are you sure, you want to delete this record?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                
+
                 FamilyMemberInfo familyMemberInfo = new FamilyMemberInfo();
-                FamilyMember familymember = 
+                FamilyMember familymember =
                     familyMemberInfo.GetFamilyMemberInfo(dtGridFamilyMember,_dtFamilymember);
                 familyMemberInfo.Delete(familymember);
                 fillupFamilyMemberInfo();
@@ -783,7 +783,7 @@ namespace FinancialPlannerClient.Clients
         private void btnDeleteNFA_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Are you sure, you want to delete this record?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {              
+            {
                 NonFinancialAssetInfo nonFinancialAssetInfo = new NonFinancialAssetInfo();
                 NonFinancialAsset nonFinancialAsset =
                     nonFinancialAssetInfo.GetNonFinancialAssetInfo(dtGridNonFinancialAssets,_dtNonFinancialAsset);
@@ -920,7 +920,7 @@ namespace FinancialPlannerClient.Clients
                 txtLoanDescription.Text = loan.Description;
             }
         }
-             
+
 
         private void btnDeleteLoan_Click(object sender, EventArgs e)
         {
@@ -999,7 +999,7 @@ namespace FinancialPlannerClient.Clients
 
             netTakeHome = (ctc + reimbursement + pfContribution + employerPFContribution + penssion) - otherDeduction;
             txtNetTakeHome.Text = netTakeHome.ToString("#,##0.00");
-            if ((netTakeHome + bonusAmt)  > 0 )
+            if ((netTakeHome + bonusAmt) > 0)
                 txtAnnualIncome.Text = (netTakeHome + bonusAmt).ToString("#,##0.00");
         }
 
@@ -1065,7 +1065,7 @@ namespace FinancialPlannerClient.Clients
             cmbIncomeSource.Text = "";
             cmbIncomeSource.Tag = "0";
             rdoClientIncome.Checked = true;
-            txtAnnualIncome.Text  = "0";
+            txtAnnualIncome.Text = "0";
             cmbIncomeBy.Text = "";
             txtExpectedGrowthSalary.Text = "0";
             txtIncomeStartYear.Text = DateTime.Now.Year.ToString();
@@ -1108,13 +1108,13 @@ namespace FinancialPlannerClient.Clients
         private Income getIncomeData()
         {
             Income income = new Income();
-            income.Source =  cmbIncomeSource.Text;
+            income.Source = cmbIncomeSource.Text;
             income.Id = int.Parse(cmbIncomeSource.Tag.ToString());
             income.Pid = PlannerId;
             income.IncomeBy = cmbIncomeBy.Text; /*(rdoClientIncome.Checked) ? "Client" : "Spouse";*/
-            income.Amount = (txtAnnualBonusAmt.Text =="000.00") ? 0 : double.Parse(txtAnnualIncome.Text);
-            income.ExpectGrowthInPercentage = (txtincomeGrowthPercentage.Text =="") ? 0 : 
-                decimal.Parse( txtincomeGrowthPercentage.Text);
+            income.Amount = (txtAnnualBonusAmt.Text == "000.00") ? 0 : double.Parse(txtAnnualIncome.Text);
+            income.ExpectGrowthInPercentage = (txtincomeGrowthPercentage.Text == "") ? 0 :
+                decimal.Parse(txtincomeGrowthPercentage.Text);
             income.StartYear = txtIncomeStartYear.Text;
             income.EndYear = txtIncomeEndYear.Text;
             income.UpdatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
@@ -1131,11 +1131,11 @@ namespace FinancialPlannerClient.Clients
             salaryDet.Reimbursement = (txtReimbusement.Text == "") ? 0 : double.Parse(txtReimbusement.Text);
             salaryDet.EmployeePFContribution = (txtEmployeePFContribution.Text == "") ? 0 : double.Parse(txtEmployeePFContribution.Text);
             salaryDet.EmployerPFContribution = (txtEmployerPFContribution.Text == "") ? 0 : double.Parse(txtEmployerPFContribution.Text);
-            salaryDet.Superannuation = (txtSuperanuation.Text =="") ? 0 : double.Parse(txtSuperanuation.Text);
-            salaryDet.OtherDeduction  = (txtOtherDeduction.Text =="") ? 0 : double.Parse(txtOtherDeduction.Text);
-            salaryDet.NetTakeHome = (txtNetTakeHome.Text =="") ? 0 : double.Parse(txtNetTakeHome.Text);
+            salaryDet.Superannuation = (txtSuperanuation.Text == "") ? 0 : double.Parse(txtSuperanuation.Text);
+            salaryDet.OtherDeduction = (txtOtherDeduction.Text == "") ? 0 : double.Parse(txtOtherDeduction.Text);
+            salaryDet.NetTakeHome = (txtNetTakeHome.Text == "") ? 0 : double.Parse(txtNetTakeHome.Text);
             salaryDet.NextIncrementMonthYear = txtNextIncrementMonthYear.Text;
-            salaryDet.ExpectedGrowthInPercentage = (txtExpectedGrowthSalary.Text == "" ) ? 0 : decimal.Parse(txtExpectedGrowthSalary.Text);
+            salaryDet.ExpectedGrowthInPercentage = (txtExpectedGrowthSalary.Text == "") ? 0 : decimal.Parse(txtExpectedGrowthSalary.Text);
             salaryDet.BonusMonthYear = txtBonusMonthYear.Text;
             salaryDet.BonusAmt = (txtAnnualBonusAmt.Text == "") ? 0 : double.Parse(txtAnnualBonusAmt.Text);
             salaryDet.UpdatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
@@ -1158,7 +1158,7 @@ namespace FinancialPlannerClient.Clients
             if (income != null)
             {
                 cmbIncomeSource.Tag = income.Id.ToString();
-                cmbIncomeSource.Text =  income.Source;
+                cmbIncomeSource.Text = income.Source;
                 cmbIncomeBy.Text = income.IncomeBy;
                 //rdoClientIncome.Checked = income.IncomeBy.ToString().Equals("Client", StringComparison.OrdinalIgnoreCase) ? true : false;
                 //rdoSpouseIncome.Checked = !rdoClientIncome.Checked;
@@ -1166,21 +1166,21 @@ namespace FinancialPlannerClient.Clients
                 txtAnnualIncome.Text = income.Amount.ToString();
                 txtIncomeStartYear.Text = income.StartYear;
                 txtIncomeEndYear.Text = income.EndYear;
-                txtIncomeDescription.Text =   income.Description;
+                txtIncomeDescription.Text = income.Description;
                 txtIncomeTax.Text = income.IncomeTax.ToString();
 
                 SalaryDetail salaryDetail = income.SalaryDetail;
-                txtCTC.Tag = salaryDetail.Id.ToString();                
-                txtCTC.Text =   salaryDetail.Ctc.ToString("#,#00.00");
+                txtCTC.Tag = salaryDetail.Id.ToString();
+                txtCTC.Text = salaryDetail.Ctc.ToString("#,#00.00");
                 txtReimbusement.Text = salaryDetail.Reimbursement.ToString("#,###.00");
                 txtEmployeePFContribution.Text = salaryDetail.EmployeePFContribution.ToString("#,#00.00");
                 txtEmployerPFContribution.Text = salaryDetail.EmployerPFContribution.ToString("#,#00.00");
-                txtSuperanuation.Text =  salaryDetail.Superannuation.ToString("#,#00.00");
+                txtSuperanuation.Text = salaryDetail.Superannuation.ToString("#,#00.00");
                 txtOtherDeduction.Text = salaryDetail.OtherDeduction.ToString("#,#00.00");
                 txtNetTakeHome.Text = salaryDetail.NetTakeHome.ToString("#,#00.00");
                 txtNextIncrementMonthYear.Text = salaryDetail.NextIncrementMonthYear;
                 txtExpectedGrowthSalary.Text = salaryDetail.ExpectedGrowthInPercentage.ToString("#00.00");
-                txtAnnualBonusAmt.Text =  salaryDetail.BonusAmt.ToString("#,#00.00");
+                txtAnnualBonusAmt.Text = salaryDetail.BonusAmt.ToString("#,#00.00");
                 txtBonusMonthYear.Text = salaryDetail.BonusMonthYear;
                 income.SalaryDetail = salaryDetail;
                 calculateNetTakeHome();
@@ -1296,7 +1296,7 @@ namespace FinancialPlannerClient.Clients
             expenses.Pid = PlannerId;
             expenses.ItemCategory = cmbExpCategory.Text;
             expenses.Item = txtExpItem.Text;
-            expenses.OccuranceType = (ExpenseType) cmbExpType.SelectedIndex;
+            expenses.OccuranceType = (ExpenseType)cmbExpType.SelectedIndex;
             expenses.Amount = double.Parse(txtExpAmount.Text);
             expenses.UpdatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
             expenses.UpdatedBy = Program.CurrentUser.Id;
@@ -1322,8 +1322,17 @@ namespace FinancialPlannerClient.Clients
 
         private void setAllClientsView()
         {
-            TabPage assumptionPage = tabPlannerDetails.TabPages[0];
-            tabPlannerDetails.TabPages.Remove(assumptionPage);
+            List<TabPage> lstTabPages = new List<TabPage>();
+            for (int i = 0; i < tabPlannerDetails.TabPages.Count; i++)
+            {
+                lstTabPages.Add(tabPlannerDetails.TabPages[i]);
+            }
+                      
+            foreach(TabPage tpage in lstTabPages)
+            {
+                if (tpage.Name != "PersonalInfo" && tpage.Name != "FamilyInfo")
+                    tabPlannerDetails.TabPages.RemoveByKey(tpage.Name);
+            }
         }
 
         private void btnSaveAssumption_Click(object sender, EventArgs e)
@@ -1331,7 +1340,7 @@ namespace FinancialPlannerClient.Clients
             PlannerAssumptionInfo PlannerAssumptionInfo = new PlannerAssumptionInfo();
             PlannerAssumption PlannerAssumption = getPlannerAssumptionData();
             bool isSaved = false;
-                        
+
             isSaved = PlannerAssumptionInfo.Update(PlannerAssumption);
 
             if (isSaved)
@@ -1401,7 +1410,7 @@ namespace FinancialPlannerClient.Clients
 
         private void displayGoalsData(Goals goals)
         {
-           if (goals != null)
+            if (goals != null)
             {
                 cmbCategory.Tag = goals.Id;
                 cmbCategory.Text = goals.Category;
@@ -1490,7 +1499,7 @@ namespace FinancialPlannerClient.Clients
 
             if (chkLaonForGoal.Checked)
                 Goals.LoanForGoal = getLoanForGoalData();
-                        
+
             return Goals;
         }
 
