@@ -1,5 +1,7 @@
 ﻿using FinancialPlanner.Common;
+using FinancialPlanner.Common.DataConversion;
 using FinancialPlanner.Common.Model;
+using FinancialPlannerClient.CurrentStatus;
 using FinancialPlannerClient.GoalCalculations;
 using FinancialPlannerClient.PlannerInfo;
 using FinancialPlannerClient.RiskProfile;
@@ -22,23 +24,26 @@ namespace FinancialPlannerClient.PlanOptions
         DataTable _dtGoalCalculation = new DataTable();
         DataTable _dtRiskProfileDet = new DataTable();
         DataTable _dtCurrentStaus = new DataTable();
+        DataTable _dtcurrentStatusToGoal = new DataTable();
         IEnumerable<NonFinancialAsset> _nonFinancialAssets;
         IList<InvestmentInGoal> _investmentInGoal;
         private int _riskprofileId;
         private decimal _growthPercentage;
-        private Goals goal;
         private Planner planner;
         private RiskProfileInfo _riskProfileInfo;
         public GoalCalculationManager GoalCalManager;
         private  GoalsValueCalculationInfo _goalsValueCal;
+        private int _optionId;
         #region "Constructor"
-        public GoalsCalculationInfo(Goals goal, Planner planner, RiskProfileInfo _riskProfileInfo, int _riskProfileId)
+        public GoalsCalculationInfo(Goals goal, Planner planner, 
+            RiskProfileInfo riskProfileInfo, int riskProfileId,int optionId)
         {
-            this.goal = goal;
+            this._goal = goal;
             this.planner = planner;
             this._plannerId = planner.ID;
-            this._riskProfileInfo = _riskProfileInfo;
-            _riskprofileId = _riskProfileId;
+            this._riskProfileInfo = riskProfileInfo;
+            _riskprofileId = riskProfileId;
+            this._optionId = optionId;
         }
         #endregion
 
@@ -261,10 +266,11 @@ namespace FinancialPlannerClient.PlanOptions
 
         internal double GetProfileValue()
         {
-            if (_dtCurrentStaus == null || _dtCurrentStaus.Columns.Count == 0)
-                _dtCurrentStaus = _csGoal.CurrentStatusToGoalCalculation(_plannerId);
+            IList<FinancialPlanner.Common.Model.PlanOptions.CurrentStatusToGoal> currentStatusToGoals
+                = new CurrentStatusInfo().GetCurrentStatusToGoal(_optionId);
+            _dtcurrentStatusToGoal = ListtoDataTable.ToDataTable(currentStatusToGoals.ToList());
 
-            DataRow[] dr =  _dtCurrentStaus.Select(string.Format("Goal = '{0}'", _goal.Name));
+            DataRow[] dr =  _dtcurrentStatusToGoal.Select(string.Format("GoalName = '{0}'", _goal.Name));
             if (dr != null && dr.Count() > 0)
             {
                 return (string.IsNullOrEmpty(dr[0]["FundAllocation"].ToString())) ?

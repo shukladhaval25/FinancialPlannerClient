@@ -18,7 +18,7 @@ namespace FinancialPlannerClient.CashFlowManager
     public class CashFlowService
     {
         private CashFlowCalculation _cashFlow = new CashFlowCalculation();
-        private int _clientId, _planId,_riskProfileId;
+        private int _clientId, _planId,_riskProfileId,_optionId;
         DataTable  _dtCashFlow;
         DataTable _dtCurrentStatusToGoal;
         private readonly string GETALL_API= "CashFlow/Get?optionId={0}";
@@ -65,6 +65,7 @@ namespace FinancialPlannerClient.CashFlowManager
 
         public CashFlow GetCashFlow(int optionId)
         {
+            _optionId = optionId;
             FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
             string apiurl = Program.WebServiceUrl +"/"+ string.Format(GETALL_API,optionId);
 
@@ -173,7 +174,8 @@ namespace FinancialPlannerClient.CashFlowManager
                         goalValCalInfo = new GoalsValueCalculationInfo(goal, _planner, _riskProfileInfo, _riskProfileId);
                         GoalCalculationMgr.AddGoalValueCalculation(goalValCalInfo);
                     }
-
+                    GoalsCalculationInfo goalcalInfo = new GoalsCalculationInfo(goal,_planner,_riskProfileInfo,_riskProfileId,_optionId);
+                    goalValCalInfo.SetPortfolioValue(goalcalInfo.GetProfileValue());
                     double  surplusAmountAfterInvestment = goalValCalInfo.SetInvestmentToAchiveGoal(calculationYear, surplusAmount);
                     dr[string.Format("{0} - {1}", goal.Priority, goal.Name)] = surplusAmount - surplusAmountAfterInvestment;
                     surplusAmount = surplusAmountAfterInvestment;
@@ -367,7 +369,10 @@ namespace FinancialPlannerClient.CashFlowManager
                 if (surplusCashFund > 0)
                 {
                     _riskProfileInfo = new RiskProfileInfo();
+                   
                     GoalsValueCalculationInfo goalValCalInfo = new GoalsValueCalculationInfo(goal, _planner,_riskProfileInfo,_riskProfileId);
+                    GoalsCalculationInfo goalcalInfo = new GoalsCalculationInfo(goal,_planner,_riskProfileInfo,_riskProfileId,_optionId);
+                    goalValCalInfo.SetPortfolioValue(goalcalInfo.GetProfileValue());
                     GoalCalculationMgr.AddGoalValueCalculation(goalValCalInfo);
 
                     double  surplusAmountAfterInvestment = goalValCalInfo.SetInvestmentToAchiveGoal(_planner.StartDate.Year, surplusCashFund);

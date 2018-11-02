@@ -105,6 +105,7 @@
     <Compile Include="CurrentStatus\ULIPInfo.cs" />
     <Compile Include="GoalCalculations\InvestmentInGoal.cs" />
     <Compile Include="GoalCalculations\InvestmentToGoalService.cs" />
+    <Compile Include="PlannerInfo\BankAccountInfo.cs" />
     <Compile Include="PlanOptions\CurrentStatusInfo.cs" />
     <Compile Include="CurrentStatus\FDInfo.cs" />
     <Compile Include="CurrentStatus\GeneralInsuranceInfo.cs" />

@@ -36,7 +36,6 @@ namespace FinancialPlannerClient.PlanOptions
             DataRow dr = _dtmoneyToGoals.NewRow();
             dr["GoalId"] = 0;
             dr["Goal"] = "MONEY TO BE USED IN GOALS";
-            dr["FundAllocation"] = 0;
             dr["CurrentStatusMappedAmount"] = 0;
             dr["ExcessFund"] = getExcessFundFromCurrentStatus();
             _dtmoneyToGoals.Rows.Add(dr);
@@ -55,7 +54,7 @@ namespace FinancialPlannerClient.PlanOptions
             dr = _dtmoneyToGoals.NewRow();
             dr["GoalId"] = 0;
             dr["Goal"] = "Retirement Corpus";
-            dr["FundAllocation"] = 0;
+            //dr["FundAllocation"] = 0;
             dr["CurrentStatusMappedAmount"] = 0;
             dr["ExcessFund"] = double.Parse(_dtmoneyToGoals.Rows[_dtmoneyToGoals.Rows.Count - 1]["ExcessFund"].ToString());
             _dtmoneyToGoals.Rows.Add(dr);
@@ -88,9 +87,9 @@ namespace FinancialPlannerClient.PlanOptions
             dcGoal.ReadOnly = true;
             _dtmoneyToGoals.Columns.Add(dcMappedAmt);
 
-            DataColumn dcFundAllocation = new DataColumn("FundAllocation",typeof(System.Double));
-            dcGoal.ReadOnly = true;
-            _dtmoneyToGoals.Columns.Add(dcFundAllocation);
+            //DataColumn dcFundAllocation = new DataColumn("FundAllocation",typeof(System.Double));
+            //dcGoal.ReadOnly = true;
+            //_dtmoneyToGoals.Columns.Add(dcFundAllocation);
 
             DataColumn dcExceesFund = new DataColumn("ExcessFund",typeof(System.Double));
             dcGoal.ReadOnly = true;

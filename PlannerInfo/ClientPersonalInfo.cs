@@ -25,6 +25,12 @@ namespace FinancialPlannerClient.PlannerInfo
             _personalInfo.Spouse = getSpousePersonalInfo(clientId);
             return _personalInfo;
         }
+        public PersonalInformation GetClientSpouseInfo(int clientId)
+        {
+            _personalInfo = new PersonalInformation();
+            _personalInfo.Spouse = getSpousePersonalInfo(clientId);
+            return _personalInfo;
+        }
         public void Update(PersonalInformation personalInfo)
         {
             bool isUpdateClientPersonalInfo =  updateClientPersonalInfo(personalInfo.Client);

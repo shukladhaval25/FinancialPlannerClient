@@ -24,6 +24,8 @@ namespace FinancialPlannerClient.Clients
         private DataTable _dtIncome;
         private DataTable _dtExpenses;
         private DataTable _dtGoals;
+        private DataTable _dtBankAccount;
+        private PersonalInformation _personalInfo;
         IList<Goals> _goals;
 
         public int PlannerId
@@ -61,6 +63,9 @@ namespace FinancialPlannerClient.Clients
                 case "FamilyInfo":
                     fillupFamilyMemberInfo();
                     break;
+                case "BankAccount":
+                    fillupBankAccountInfo();
+                    break;
                 case "Loan":
                     fillupLoanInfo();
                     break;
@@ -85,7 +90,284 @@ namespace FinancialPlannerClient.Clients
 
         }
 
-        private void fillupSessionInfo()
+        #region "Family Member"
+        private void fillupFamilyMemberInfo()
+        {
+            if (_dtFamilymember == null)
+                _dtFamilymember = new DataTable();
+            else
+                _dtFamilymember.Clear();
+
+            FamilyMemberInfo familyMemberInfo = new FamilyMemberInfo();
+            List<FamilyMember> lstFamilyMember =(List<FamilyMember>) familyMemberInfo.Get(_client.ID);
+            _dtFamilymember = ListtoDataTable.ToDataTable(lstFamilyMember);
+            dtGridFamilyMember.DataSource = _dtFamilymember;
+            setFamilyMemberGridSetting();
+        }
+
+        private void setFamilyMemberGridSetting()
+        {
+            FamilyMemberInfo familyMemberInfo = new FamilyMemberInfo();
+            familyMemberInfo.setFamilyMemberGridSetting(dtGridFamilyMember);
+        }
+
+        private void btnAddFamilyMember_Click(object sender, EventArgs e)
+        {
+            grpFamilyMemberDetail.Enabled = true;
+            setDefaultFamilyMemberData();
+            txtFamilyMemberName.Tag = 0;
+        }
+
+        private void btnFamilyMemberCancel_Click(object sender, EventArgs e)
+        {
+            btnEditFamilyMember_Click(sender, e);
+            grpFamilyMemberDetail.Enabled = false;
+        }
+
+        private void btnFamilyMemberSave_Click(object sender, EventArgs e)
+        {
+            FamilyMemberInfo familyMemberInfo = new FamilyMemberInfo();
+            FamilyMember familyMember = getFamilyMemberData();
+            bool isSaved = false;
+
+            if (familyMember != null && familyMember.Id == 0)
+                isSaved = familyMemberInfo.Add(familyMember);
+            else
+                isSaved = familyMemberInfo.Update(familyMember);
+
+            if (isSaved)
+            {
+                MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                fillupFamilyMemberInfo();
+                grpFamilyMemberDetail.Enabled = false;
+            }
+            else
+                MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private FamilyMember getFamilyMemberData()
+        {
+            FamilyMember familymember = new FamilyMember();
+            familymember.Id = int.Parse(txtFamilyMemberName.Tag.ToString());
+            familymember.Cid = _client.ID;
+            familymember.Name = txtFamilyMemberName.Text;
+            familymember.Relationship = cmbFamilyRelationship.Text;
+            familymember.DOB = dtFamilyMemberDOB.Value;
+            familymember.IsDependent = rdoFamilyMemberDependentYes.Checked;
+            familymember.ChildrenClass = txtChildrenClass.Text;
+            familymember.Description = txtFamilyMemberDesc.Text;
+            familymember.CreatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+            familymember.CreatedBy = Program.CurrentUser.Id;
+            familymember.UpdatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+            familymember.UpdatedBy = Program.CurrentUser.Id;
+            familymember.MachineName = Environment.MachineName;
+            return familymember;
+        }
+
+        private void btnEditFamilyMember_Click(object sender, EventArgs e)
+        {
+            FamilyMember familymember = new FamilyMemberInfo().GetFamilyMemberInfo(dtGridFamilyMember,_dtFamilymember);
+            displayFamilyMemberData(familymember);
+            grpFamilyMemberDetail.Enabled = true;
+        }
+
+        private void displayFamilyMemberData(FamilyMember familymember)
+        {
+            if (familymember != null)
+            {
+                txtFamilyMemberName.Tag = familymember.Id;
+                txtFamilyMemberName.Text = familymember.Name;
+                cmbFamilyRelationship.Text = familymember.Relationship;
+                dtFamilyMemberDOB.Value = familymember.DOB;
+                rdoFamilyMemberDependentYes.Checked = familymember.IsDependent;
+                txtChildrenClass.Text = familymember.ChildrenClass;
+                txtFamilyMemberDesc.Text = familymember.Description;
+            }
+            else
+            {
+                setDefaultFamilyMemberData();
+            }
+        }
+
+        private void setDefaultFamilyMemberData()
+        {
+            txtFamilyMemberName.Tag = "";
+            txtFamilyMemberName.Text = "";
+            cmbFamilyRelationship.Text = "";
+            dtFamilyMemberDOB.Text = "";
+            rdoFamilyMemberDependentYes.Checked = false;
+            txtChildrenClass.Text = "";
+            txtFamilyMemberDesc.Text = "";
+        }
+        
+        private void dtGridFamilyMember_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dtGridFamilyMember.Columns[e.ColumnIndex].Name == "IsDependent")
+            {
+                if (dtGridFamilyMember.Rows[e.RowIndex].Cells["IsDependent"].Value != null)
+                    e.Value = (dtGridFamilyMember.Rows[e.RowIndex].Cells["IsDependent"].Value.ToString().Equals("True")) ? "Yes" : "No";
+            }
+        }
+
+        private void btnDeleteFamilyMember_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are you sure, you want to delete this record?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+
+                FamilyMemberInfo familyMemberInfo = new FamilyMemberInfo();
+                FamilyMember familymember =
+                    familyMemberInfo.GetFamilyMemberInfo(dtGridFamilyMember,_dtFamilymember);
+                familyMemberInfo.Delete(familymember);
+                fillupFamilyMemberInfo();
+            }
+        }
+
+        #endregion
+
+        #region "Bank Account"
+        private void fillupBankAccountInfo()
+        {
+            BankAccountInfo bankAccountInfo = new BankAccountInfo();
+            IList<BankAccountDetail> bankAcDetails = bankAccountInfo.GetAll(_client.ID);
+            if (bankAcDetails != null)
+            {
+                _dtBankAccount = ListtoDataTable.ToDataTable(bankAcDetails.ToList());
+                dtGridBankAccount.DataSource = _dtBankAccount;
+                bankAccountInfo.setGrid(dtGridBankAccount);                
+            }
+            fillListOfAccountHolders();
+        }
+
+        private void fillListOfAccountHolders()
+        {
+            cmbAccountHolder.Items.Clear();
+            cmbAccountHolder.Items.Add(_client.Name);
+            cmbAccountHolder.Items.Add(getSpouseName());
+        }
+
+        private void btnAddBankAcc_Click(object sender, EventArgs e)
+        {
+            grpBankAccountDetails.Enabled = true;
+            setDefaultValueForBankAccountDetails();
+        }
+
+        private void setDefaultValueForBankAccountDetails()
+        {
+            cmbAccountHolder.Text = _client.Name;
+            cmbAccountHolder.Tag = _client.ID;
+            txtBankName.Text = "";
+            txtAccountNo.Text = "";
+            txtAccountNo.Tag = "0";
+            cmbAccountType.Text = "";
+            txtBranchAddress.Text = "";
+            txtBranchContactNo.Text = "";
+            rdoNoJoinAC.Checked = true;
+            txtJoinHolderName.Text = "";
+            txtMinReqBalance.Text = "0";
+        }
+
+        private void btnEditBankAcc_Click(object sender, EventArgs e)
+        {
+            grpBankAccountDetails.Enabled = true;
+        }
+
+        private void btnDeleteBankAcc_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are you sure, you want to delete this record?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                BankAccountInfo bankAcInfo = new BankAccountInfo();
+                BankAccountDetail bankAcDetail = bankAcInfo.GetBankAccountInfo(dtGridBankAccount,_dtBankAccount);
+                bankAcInfo.Delete(bankAcDetail);
+                fillupBankAccountInfo();
+            }
+        }
+
+        private void cmbAccountHolder_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (cmbAccountHolder.Text == _client.Name)
+                cmbAccountHolder.Tag = _client.ID;
+            else if (cmbAccountHolder.Text == getSpouseName())
+                cmbAccountHolder.Tag = _personalInfo.Spouse.ID;
+        }
+        private void dtGridBankAccount_SelectionChanged(object sender, EventArgs e)
+        {
+            BankAccountDetail bankAccount = new BankAccountInfo().GetBankAccountInfo(dtGridBankAccount,_dtBankAccount);
+            displayBankAccountData(bankAccount);
+        }
+
+        private void displayBankAccountData(BankAccountDetail bankAccount)
+        {
+            if (bankAccount != null)
+            {
+                cmbAccountHolder.Tag = bankAccount.AccountHolderID.ToString();
+                cmbAccountHolder.Text = (bankAccount.AccountHolderID == _client.ID) ? _client.Name : _personalInfo.Spouse.Name;
+                txtBankName.Text = bankAccount.BankName;
+                txtAccountNo.Tag = bankAccount.Id;
+                txtAccountNo.Text = bankAccount.AccountNo;
+                cmbAccountType.Text = bankAccount.AccountType;
+                txtBranchAddress.Text = bankAccount.Address;
+                txtBranchContactNo.Text = bankAccount.ContactNo;
+                rdoYesJoinAC.Checked = bankAccount.IsJoinAccount;
+                txtJoinHolderName.Text = bankAccount.JoinHolderName;
+                txtMinReqBalance.Text = bankAccount.MinRequireBalance.ToString();
+            }
+        }
+
+        private void btnCancelBankAccount_Click(object sender, EventArgs e)
+        {
+            grpBankAccountDetails.Enabled = false;
+            BankAccountDetail bankAccount = new BankAccountInfo().GetBankAccountInfo(dtGridBankAccount,_dtBankAccount);
+            displayBankAccountData(bankAccount);
+        }
+
+        private void btnSaveBankAccount_Click(object sender, EventArgs e)
+        {
+            BankAccountInfo bankAccInfo = new BankAccountInfo();
+            BankAccountDetail bankAcDetails = getBankDetailsData();
+            bool isSaved = false;
+
+            if (bankAcDetails != null && bankAcDetails.Id == 0)
+                isSaved = bankAccInfo.Add(bankAcDetails);
+            else
+                isSaved = bankAccInfo.Update(bankAcDetails);
+
+            if (isSaved)
+            {
+                MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                fillupBankAccountInfo();
+                grpBankAccountDetails.Enabled = false;
+            }
+            else
+                MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private BankAccountDetail getBankDetailsData()
+        {
+            BankAccountDetail bankACDetails = new BankAccountDetail();
+            bankACDetails.Id = int.Parse(txtAccountNo.Tag.ToString());
+            bankACDetails.Cid = _client.ID;
+            bankACDetails.AccountHolderID = int.Parse(cmbAccountHolder.Tag.ToString());
+            bankACDetails.BankName = txtBankName.Text;
+            bankACDetails.AccountNo = txtAccountNo.Text;
+            bankACDetails.AccountType = cmbAccountType.Text;
+            bankACDetails.Address = txtBranchAddress.Text;
+            bankACDetails.ContactNo = txtBranchContactNo.Text;
+            bankACDetails.IsJoinAccount = rdoYesJoinAC.Checked;
+            bankACDetails.JoinHolderName = (rdoYesJoinAC.Checked) ? txtJoinHolderName.Text : string.Empty;
+            bankACDetails.MinRequireBalance = double.Parse(txtMinReqBalance.Text);
+            bankACDetails.CreatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+            bankACDetails.CreatedBy = Program.CurrentUser.Id;
+            bankACDetails.UpdatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+            bankACDetails.UpdatedBy = Program.CurrentUser.Id;
+            bankACDetails.UpdatedByUserName = Program.CurrentUser.UserName;
+            bankACDetails.MachineName = Environment.MachineName;
+
+            return bankACDetails;
+        }
+
+    #endregion
+
+    private void fillupSessionInfo()
         {
             SessionInfo sessionInfo = new SessionInfo();
             sessionInfo.fillSessionInfo(dtGridSession);
@@ -159,26 +441,7 @@ namespace FinancialPlannerClient.Clients
             cmbMappingGoal.Items.Add("");
         }
 
-        private void fillupFamilyMemberInfo()
-        {
-            if (_dtFamilymember == null)
-                _dtFamilymember = new DataTable();
-            else
-                _dtFamilymember.Clear();
-
-            FamilyMemberInfo familyMemberInfo = new FamilyMemberInfo();
-            List<FamilyMember> lstFamilyMember =(List<FamilyMember>) familyMemberInfo.Get(_client.ID);
-            _dtFamilymember = ListtoDataTable.ToDataTable(lstFamilyMember);
-            dtGridFamilyMember.DataSource = _dtFamilymember;
-            setFamilyMemberGridSetting();
-        }
-
-        private void setFamilyMemberGridSetting()
-        {
-            FamilyMemberInfo familyMemberInfo = new FamilyMemberInfo();
-            familyMemberInfo.setFamilyMemberGridSetting(dtGridFamilyMember);
-        }
-
+        
         private void fillupAssumptionInfo()
         {
             lblClientTiitle.Text = _client.Name;
@@ -301,11 +564,9 @@ namespace FinancialPlannerClient.Clients
         }
 
         private void fillupPersonalDetails()
-        {
-            ClientPersonalInfo clientPersonalInfo = new ClientPersonalInfo();
-            var personalInfo =  clientPersonalInfo.Get(_client.ID);
-            fillClientPersonalDetails(personalInfo.Client);
-            fillSpousePersonalDetails(personalInfo.Spouse);
+        {           
+            fillClientPersonalDetails(_personalInfo.Client);
+            fillSpousePersonalDetails(_personalInfo.Spouse);
         }
 
         private void fillSpousePersonalDetails(ClientSpouse spouse)
@@ -529,119 +790,7 @@ namespace FinancialPlannerClient.Clients
             return clientEmployment;
         }
 
-        private void btnAddFamilyMember_Click(object sender, EventArgs e)
-        {
-            grpFamilyMemberDetail.Enabled = true;
-            setDefaultFamilyMemberData();
-            txtFamilyMemberName.Tag = 0;
-        }
-
-        private void btnFamilyMemberCancel_Click(object sender, EventArgs e)
-        {
-            btnEditFamilyMember_Click(sender, e);
-            grpFamilyMemberDetail.Enabled = false;
-        }
-
-        private void btnFamilyMemberSave_Click(object sender, EventArgs e)
-        {
-            FamilyMemberInfo familyMemberInfo = new FamilyMemberInfo();
-            FamilyMember familyMember = getFamilyMemberData();
-            bool isSaved = false;
-
-            if (familyMember != null && familyMember.Id == 0)
-                isSaved = familyMemberInfo.Add(familyMember);
-            else
-                isSaved = familyMemberInfo.Update(familyMember);
-
-            if (isSaved)
-            {
-                MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                fillupFamilyMemberInfo();
-                grpFamilyMemberDetail.Enabled = false;
-            }
-            else
-                MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
-
-        private FamilyMember getFamilyMemberData()
-        {
-            FamilyMember familymember = new FamilyMember();
-            familymember.Id = int.Parse(txtFamilyMemberName.Tag.ToString());
-            familymember.Cid = _client.ID;
-            familymember.Name = txtFamilyMemberName.Text;
-            familymember.Relationship = cmbFamilyRelationship.Text;
-            familymember.DOB = dtFamilyMemberDOB.Value;
-            familymember.IsDependent = rdoFamilyMemberDependentYes.Checked;
-            familymember.ChildrenClass = txtChildrenClass.Text;
-            familymember.Description = txtFamilyMemberDesc.Text;
-            familymember.CreatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
-            familymember.CreatedBy = Program.CurrentUser.Id;
-            familymember.UpdatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
-            familymember.UpdatedBy = Program.CurrentUser.Id;
-            familymember.MachineName = Environment.MachineName;
-            return familymember;
-        }
-
-        private void btnEditFamilyMember_Click(object sender, EventArgs e)
-        {
-            FamilyMember familymember = new FamilyMemberInfo().GetFamilyMemberInfo(dtGridFamilyMember,_dtFamilymember);
-            displayFamilyMemberData(familymember);
-            grpFamilyMemberDetail.Enabled = true;
-        }
-
-        private void displayFamilyMemberData(FamilyMember familymember)
-        {
-            if (familymember != null)
-            {
-                txtFamilyMemberName.Tag = familymember.Id;
-                txtFamilyMemberName.Text = familymember.Name;
-                cmbFamilyRelationship.Text = familymember.Relationship;
-                dtFamilyMemberDOB.Value = familymember.DOB;
-                rdoFamilyMemberDependentYes.Checked = familymember.IsDependent;
-                txtChildrenClass.Text = familymember.ChildrenClass;
-                txtFamilyMemberDesc.Text = familymember.Description;
-            }
-            else
-            {
-                setDefaultFamilyMemberData();
-            }
-        }
-
-        private void setDefaultFamilyMemberData()
-        {
-            txtFamilyMemberName.Tag = "";
-            txtFamilyMemberName.Text = "";
-            cmbFamilyRelationship.Text = "";
-            dtFamilyMemberDOB.Text = "";
-            rdoFamilyMemberDependentYes.Checked = false;
-            txtChildrenClass.Text = "";
-            txtFamilyMemberDesc.Text = "";
-        }
-
-
-
-        private void dtGridFamilyMember_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            if (dtGridFamilyMember.Columns[e.ColumnIndex].Name == "IsDependent")
-            {
-                if (dtGridFamilyMember.Rows[e.RowIndex].Cells["IsDependent"].Value != null)
-                    e.Value = (dtGridFamilyMember.Rows[e.RowIndex].Cells["IsDependent"].Value.ToString().Equals("True")) ? "Yes" : "No";
-            }
-        }
-
-        private void btnDeleteFamilyMember_Click(object sender, EventArgs e)
-        {
-            if (MessageBox.Show("Are you sure, you want to delete this record?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-
-                FamilyMemberInfo familyMemberInfo = new FamilyMemberInfo();
-                FamilyMember familymember =
-                    familyMemberInfo.GetFamilyMemberInfo(dtGridFamilyMember,_dtFamilymember);
-                familyMemberInfo.Delete(familymember);
-                fillupFamilyMemberInfo();
-            }
-        }
-
+       
         private void btnAddNFA_Click(object sender, EventArgs e)
         {
             grpNonFinancialAsset.Enabled = true;
@@ -974,8 +1123,7 @@ namespace FinancialPlannerClient.Clients
                 return txtSpouseName.Text;
             else
             {
-                fillupPersonalDetails();
-                return txtSpouseName.Text;
+                return _personalInfo.Spouse.Name;
             }
         }
         private void calculateNetTakeHome()
@@ -1314,10 +1462,15 @@ namespace FinancialPlannerClient.Clients
 
         private void ClientInfo_Load(object sender, EventArgs e)
         {
+            ClientPersonalInfo clientPersonalInfo = new ClientPersonalInfo();
+            _personalInfo = clientPersonalInfo.Get(_client.ID);
+
             if (_plannerId != 0)
                 fillupAssumptionInfo();
             else
                 setAllClientsView();
+
+            
         }
 
         private void setAllClientsView()
@@ -1330,7 +1483,7 @@ namespace FinancialPlannerClient.Clients
                       
             foreach(TabPage tpage in lstTabPages)
             {
-                if (tpage.Name != "PersonalInfo" && tpage.Name != "FamilyInfo")
+                if (tpage.Name != "PersonalInfo" && tpage.Name != "FamilyInfo" && tpage.Name != "BankAccount")
                     tabPlannerDetails.TabPages.RemoveByKey(tpage.Name);
             }
         }
@@ -1566,5 +1719,6 @@ namespace FinancialPlannerClient.Clients
         {
             grpLoanForGoal.Enabled = chkLaonForGoal.Checked;
         }
+        
     }
 }

@@ -56,7 +56,7 @@ namespace FinancialPlannerClient.RiskProfile
 
                 if (riskProfileReturn.YearRemaining <= riskProfiledReturnMaster.ThresholdYear)
                 {
-                    drRiskProfRetun["ForeignInvestmentRatio"] = riskProfiledReturnMaster.PreForeingInvestmentRatio;
+                    drRiskProfRetun["ForeingInvestmentRatio"] = riskProfiledReturnMaster.PreForeingInvestmentRatio;
                     foreingInvRatio = riskProfiledReturnMaster.PreForeingInvestmentRatio;
                     drRiskProfRetun["EquityInvestementRatio"] = riskProfiledReturnMaster.PreEquityInvestmentRatio;
                     equityInvRatio = riskProfiledReturnMaster.PreEquityInvestmentRatio;
@@ -65,7 +65,7 @@ namespace FinancialPlannerClient.RiskProfile
                 }
                 else
                 {
-                    drRiskProfRetun["ForeignInvestmentRatio"] = riskProfiledReturnMaster.PostForeingInvestmentRatio;
+                    drRiskProfRetun["ForeingInvestmentRatio"] = riskProfiledReturnMaster.PostForeingInvestmentRatio;
                     foreingInvRatio = riskProfiledReturnMaster.PostForeingInvestmentRatio;
                     drRiskProfRetun["EquityInvestementRatio"] = riskProfiledReturnMaster.PostEquityInvestmentRatio;
                     equityInvRatio = riskProfiledReturnMaster.PostEquityInvestmentRatio;
@@ -73,7 +73,7 @@ namespace FinancialPlannerClient.RiskProfile
                     debtInvRatio = riskProfiledReturnMaster.PostDebtInvestmentRatio;
                 }
 
-                drRiskProfRetun["ForeignInvestementReaturn"] = riskProfiledReturnMaster.ForeingInvestmentReturn;
+                drRiskProfRetun["ForeingInvestementReaturn"] = riskProfiledReturnMaster.ForeingInvestmentReturn;
                 foreingInvReturn = riskProfiledReturnMaster.ForeingInvestmentReturn;
                 drRiskProfRetun["EquityInvestementReturn"] = riskProfiledReturnMaster.EquityInvestmentReturn;
                 equityInvReturn = riskProfiledReturnMaster.EquityInvestmentReturn;
@@ -161,7 +161,7 @@ namespace FinancialPlannerClient.RiskProfile
             DataColumn dcYearRemaining = new DataColumn("YearRemaining",typeof(System.Int16));
             _dtRiskProfileReturn.Columns.Add(dcYearRemaining);
 
-            DataColumn dcforeingInvestmentRatio = new DataColumn("ForeignInvestmentRatio",typeof(System.Decimal));
+            DataColumn dcforeingInvestmentRatio = new DataColumn("ForeingInvestmentRatio",typeof(System.Decimal));
             _dtRiskProfileReturn.Columns.Add(dcforeingInvestmentRatio);
 
             DataColumn dcEquityInvestmentRatio = new DataColumn("EquityInvestementRatio",typeof(System.Decimal));
@@ -170,7 +170,7 @@ namespace FinancialPlannerClient.RiskProfile
             DataColumn dcDebtInvestmentRatio = new DataColumn("DebtInvestementRatio",typeof(System.Decimal));
             _dtRiskProfileReturn.Columns.Add(dcDebtInvestmentRatio);
 
-            DataColumn dcforeingInvestmentReturnRatio = new DataColumn("ForeignInvestementReaturn",typeof(System.Decimal));
+            DataColumn dcforeingInvestmentReturnRatio = new DataColumn("ForeingInvestementReaturn",typeof(System.Decimal));
             _dtRiskProfileReturn.Columns.Add(dcforeingInvestmentReturnRatio);
 
             DataColumn dcEquityInvestmentReturnRatio = new DataColumn("EquityInvestementReturn",typeof(System.Decimal));
@@ -180,7 +180,7 @@ namespace FinancialPlannerClient.RiskProfile
             _dtRiskProfileReturn.Columns.Add(dcDebtInvestmentReturnRatio);
             
             DataColumn dcAvgReturn = new DataColumn("AverageInvestementReturn",typeof(System.Decimal),
-                ("((ForeignInvestmentRatio * ForeignInvestementReaturn) / 100) + " +
+                ("((ForeingInvestmentRatio * ForeingInvestementReaturn) / 100) + " +
                   "((EquityInvestementRatio * EquityInvestementReturn) / 100)  + " +
                   "((DebtInvestementRatio * DebtInvestementReturn) / 100)"));
             _dtRiskProfileReturn.Columns.Add(dcAvgReturn);

@@ -13,6 +13,7 @@ using FinancialPlannerClient.CurrentStatus;
 using FinancialPlanner.Common.Model.CurrentStatus;
 using FinancialPlannerClient.PlannerInfo;
 using FinancialPlannerClient.RiskProfile;
+using FinancialPlanner.Common.DataConversion;
 
 namespace FinancialPlannerClient.PlanOptions
 {
@@ -26,6 +27,7 @@ namespace FinancialPlannerClient.PlanOptions
         DataTable _dtCurrentStatustoGoals;
         DataTable _dtGoalValue;
         DataTable _dtGoalCal;
+        DataTable _dtCurrentStatusToGoal = new DataTable();
         private int _planeId;
         private int _optinId;
         private int _riskProfileId;
@@ -35,6 +37,8 @@ namespace FinancialPlannerClient.PlanOptions
         private List<RiskProfiledReturnMaster> _riskProfileMasters = new List<RiskProfiledReturnMaster>();
         GoalsCalculationInfo _goalCalculationInfo;
         CashFlowService cashFlowService = new CashFlowService();
+        IList<FinancialPlanner.Common.Model.PlanOptions.CurrentStatusToGoal> _currentStatusToGoal =
+            new List<FinancialPlanner.Common.Model.PlanOptions.CurrentStatusToGoal>();
 
         public EstimatedPlanOptionList(Client client)
         {
@@ -320,7 +324,10 @@ namespace FinancialPlannerClient.PlanOptions
         {
             _csCal = _csInfo.GetAllCurrestStatus(_planeId);
             fillCurrentStatusData();
+            //fillCurrentStatusToGoalData(); 
         }
+
+
 
         private void fillCurrentStatusData()
         {
@@ -374,6 +381,7 @@ namespace FinancialPlannerClient.PlanOptions
             }
         }
 
+
         #endregion
 
         #region "Goal Status"
@@ -384,12 +392,14 @@ namespace FinancialPlannerClient.PlanOptions
             dtGridCurrentStatusGoals.DataSource = _dtCurrentStatustoGoals;
             dtGridCurrentStatusGoals.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomRight;
             dtGridCurrentStatusGoals.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomRight;
-            dtGridCurrentStatusGoals.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomRight;
+            //dtGridCurrentStatusGoals.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomRight;
             dtGridCurrentStatusGoals.Columns[0].Visible = false;
-            dtGridCurrentStatusGoals.Columns[1].Width = 250;
+            dtGridCurrentStatusGoals.Columns[1].Width = 220;
             dtGridCurrentStatusGoals.Columns[2].HeaderText = "Current Status Fund Allocated";
-            dtGridCurrentStatusGoals.Columns[3].HeaderText = "Fund Allocation";
-            dtGridCurrentStatusGoals.Columns[4].HeaderText = "Excess Fund";
+            dtGridCurrentStatusGoals.Columns[3].HeaderText = "Surplus Fund";
+            //dtGridCurrentStatusGoals.Columns[4].HeaderText = "Excess Fund";
+
+            fillCurrentStatusToGoalData();
         }
 
         private void dtGridCurrentStatusGoals_CellValueChanged(object sender, DataGridViewCellEventArgs e)
@@ -418,7 +428,7 @@ namespace FinancialPlannerClient.PlanOptions
                                 if (_goalCalculationInfo == null)
                                 {
                                     _goalCalculationInfo =
-                                                          new GoalsCalculationInfo(goal, planner, _riskProfileInfo, _riskProfileId);
+                                                          new GoalsCalculationInfo(goal, planner, _riskProfileInfo, _riskProfileId, int.Parse(cmbPlanOption.Tag.ToString()));
                                     _goalCalculationInfo.GoalCalManager = cashFlowService.GoalCalculationMgr;
                                 }
                                 _goalCalculationInfo.SetGoalProfilevalue(double.Parse(dtGridCurrentStatusGoals.Rows[e.RowIndex].Cells[3].Value.ToString()));
@@ -451,6 +461,183 @@ namespace FinancialPlannerClient.PlanOptions
             }
         }
 
+
+        private void fillCurrentStatusToGoalData()
+        {
+            cmbCurrentStsatusToGoal.Items.Clear();
+
+            foreach (var goal in _goals)
+            {
+                cmbCurrentStsatusToGoal.Items.Add(goal.Name);
+            }
+
+            _currentStatusToGoal = new CurrentStatusInfo().GetCurrentStatusToGoal(int.Parse(cmbPlanOption.Tag.ToString()));
+            if (_currentStatusToGoal != null)
+            {
+                _dtCurrentStatustoGoals = ListtoDataTable.ToDataTable(_currentStatusToGoal.ToList());
+                dtGridCurrentStatusToGoal.DataSource = _dtCurrentStatustoGoals;
+                dtGridCurrentStatusToGoal.Columns[0].Visible = false;
+                dtGridCurrentStatusToGoal.Columns[1].Visible = false;
+                dtGridCurrentStatusToGoal.Columns[2].Visible = false;
+                dtGridCurrentStatusToGoal.Columns[3].Visible = false;
+                dtGridCurrentStatusToGoal.Columns[6].Visible = false;
+                dtGridCurrentStatusToGoal.Columns[7].Visible = false;
+                dtGridCurrentStatusToGoal.Columns[8].Visible = false;
+                dtGridCurrentStatusToGoal.Columns[9].Visible = false;
+                dtGridCurrentStatusToGoal.Columns[10].Visible = false;
+                dtGridCurrentStatusToGoal.Columns[11].Visible = false;
+                dtGridCurrentStatusToGoal.Columns[5].DisplayIndex = 0;
+                dtGridCurrentStatusToGoal.Columns[5].HeaderText = "Goal";
+                dtGridCurrentStatusToGoal.Columns[4].DisplayIndex = 1;
+                dtGridCurrentStatusToGoal.Columns[4].HeaderText = "Fund Allocation";
+            }
+        }
+
+        private void btnAddCurrentStatuaToGoal_Click(object sender, EventArgs e)
+        {
+            cmbCurrentStsatusToGoal.Text = "";
+            txtFundAllocation.Text = "";
+
+            cmbCurrentStsatusToGoal.Enabled = true;
+            txtFundAllocation.Enabled = true;
+        }
+
+        private void btnCancelCurrentStatusToGoal_Click(object sender, EventArgs e)
+        {
+            cmbCurrentStsatusToGoal.Text = "";
+            txtFundAllocation.Text = "";
+
+            cmbCurrentStsatusToGoal.Enabled = false;
+            txtFundAllocation.Enabled = false;
+        }
+
+        private void btnEditCurrentStatusToGoal_Click(object sender, EventArgs e)
+        {
+            cmbCurrentStsatusToGoal.Enabled = true;
+            txtFundAllocation.Enabled = true;
+        }
+
+        private void dtGridCurrentStatusToGoal_SelectionChanged(object sender, EventArgs e)
+        {
+            if (_dtCurrentStatustoGoals.Rows.Count > 0)
+            {
+                DataRow dr = getSelectedDataRow(dtGridCurrentStatusToGoal,_dtCurrentStatustoGoals);
+                if (dr != null)
+                    displayCurrenStatusToGridInfo(dr);
+                else
+                    setDefaultCurrentStatusToGoal();
+            }
+        }
+
+        private void setDefaultCurrentStatusToGoal()
+        {
+            cmbCurrentStsatusToGoal.Text = "";
+            cmbCurrentStsatusToGoal.Tag = "0";
+            txtFundAllocation.Text = "0";
+        }
+
+        private void displayCurrenStatusToGridInfo(DataRow dr)
+        {
+            cmbCurrentStsatusToGoal.Text = _goals.First(i => i.Id == int.Parse(dr["GoalId"].ToString())).Name;
+            cmbCurrentStsatusToGoal.Tag = dr["GoalId"].ToString();
+            txtFundAllocation.Text = dr["FundAllocation"].ToString();
+        }
+
+        private DataRow getSelectedDataRow(DataGridView dtGridView, DataTable dataTable)
+        {
+            if (dtGridView.SelectedRows.Count >= 1)
+            {
+                int selectedRowIndex = dtGridView.SelectedRows[0].Index;
+                if (dtGridView.SelectedRows[0].Cells["Id"].Value != System.DBNull.Value)
+                {
+                    int selectedUserId = int.Parse(dtGridView.SelectedRows[0].Cells["Id"].Value.ToString());
+
+                    DataRow[] rows = dataTable.Select("Id ='" + selectedUserId +"'");
+                    foreach (DataRow dr in rows)
+                    {
+                        return dr;
+                    }
+                }
+            }
+            return null;
+        }
+        private void cmbCurrentStsatusToGoal_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (cmbCurrentStsatusToGoal.Text != "")
+                cmbCurrentStsatusToGoal.Tag = _goals.FirstOrDefault(i => i.Name == cmbCurrentStsatusToGoal.Text).Id;
+            else
+                cmbCurrentStsatusToGoal.Tag = "0";
+        }
+
+        private void btnSaveCurrentStatusToGoal_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(cmbCurrentStsatusToGoal.Text) || string.IsNullOrEmpty(txtFundAllocation.Text))
+            {
+                MessageBox.Show("Please enter goal and fund allocation value.", "Validate Data", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            FinancialPlanner.Common.Model.PlanOptions.CurrentStatusToGoal currStatusToGoal = getCurrentStatusToGoalData();
+            var goal = _currentStatusToGoal.FirstOrDefault(i => i.GoalId == int.Parse(cmbCurrentStsatusToGoal.Tag.ToString()));
+            bool isSaved = false;
+
+            if (goal == null)
+                isSaved = new CurrentStatusInfo().AddCurrentStatuToGoal(currStatusToGoal);
+            else
+                isSaved = new CurrentStatusInfo().UpdateCurrentStatuToGoal(currStatusToGoal);
+
+            if (isSaved)
+            {
+                MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                _currentStatusToGoal.Add(currStatusToGoal);
+                fillCurrentStatusToGoalData();
+                cmbCurrentStsatusToGoal.Enabled = false;
+                txtFundAllocation.Enabled = false;
+            }
+            else
+                MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private FinancialPlanner.Common.Model.PlanOptions.CurrentStatusToGoal getCurrentStatusToGoalData()
+        {
+            FinancialPlanner.Common.Model.PlanOptions.CurrentStatusToGoal currStatusToGoal =
+                new FinancialPlanner.Common.Model.PlanOptions.CurrentStatusToGoal();
+            currStatusToGoal.PlannerId = _planeId;
+            currStatusToGoal.OptionId = int.Parse(cmbPlanOption.Tag.ToString());
+            currStatusToGoal.GoalId = int.Parse(cmbCurrentStsatusToGoal.Tag.ToString());
+            currStatusToGoal.FundAllocation = double.Parse(txtFundAllocation.Text);
+            currStatusToGoal.CreatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+            currStatusToGoal.CreatedBy = Program.CurrentUser.Id;
+            currStatusToGoal.UpdatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+            currStatusToGoal.UpdatedBy = Program.CurrentUser.Id;
+            currStatusToGoal.UpdatedByUserName = Program.CurrentUser.UserName;
+            currStatusToGoal.MachineName = System.Environment.MachineName;
+            return currStatusToGoal;
+        }
+        private void dtGridCurrentStatusToGoal_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            //if (dtGridCurrentStatusToGoal.Columns[e.ColumnIndex].Name == "GoalId")
+            //{
+            //    if (dtGridCurrentStatusToGoal.Rows[e.RowIndex].Cells["GoalId"].Value != null)
+            //        e.Value =
+            //            (dtGridIncome.Rows[e.RowIndex].Cells["IncomeBy"].Value.ToString().Equals("Client", StringComparison.OrdinalIgnoreCase)) ?
+            //            _client.Name : getSpouseName();
+            //}
+        }
+
+
+        private void btnDeleteCurrentStatusToGoal_Click(object sender, EventArgs e)
+        {
+            if (dtGridCurrentStatusToGoal.SelectedRows.Count > 0)
+            {
+                if (MessageBox.Show("Are you sure, you want to delete this record?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    FinancialPlanner.Common.Model.PlanOptions.CurrentStatusToGoal currStatusToGoal = getCurrentStatusToGoalData();
+                    bool isResult =  new CurrentStatusInfo().DeleteCurrentStatusToGoal(currStatusToGoal);
+                    fillCurrentStatusToGoalData();
+                }
+            }
+        }
         #endregion
 
         #region "Goals"
@@ -487,7 +674,7 @@ namespace FinancialPlannerClient.PlanOptions
                 if (_goalCalculationInfo == null)
                 {
                     _goalCalculationInfo =
-                        new GoalsCalculationInfo(goal, planner, _riskProfileInfo, _riskProfileId);
+                        new GoalsCalculationInfo(goal, planner, _riskProfileInfo, _riskProfileId,int.Parse(cmbPlanOption.Tag.ToString()));
                     _goalCalculationInfo.GoalCalManager = cashFlowService.GoalCalculationMgr;
                 }
 
@@ -590,5 +777,6 @@ namespace FinancialPlannerClient.PlanOptions
             //btnShowIncomeDetails_Click(sender,e);
             //cmbGoals_SelectedIndexChanged(sender, e);
         }
+
     }
 }

@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EstimatedPlanOptionList));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblRiskProfileVal = new System.Windows.Forms.Label();
@@ -96,6 +97,20 @@
             this.txtDebtMFValue = new System.Windows.Forms.TextBox();
             this.lblEquityShareRatio = new System.Windows.Forms.Label();
             this.GoalStatus = new System.Windows.Forms.TabPage();
+            this.grpCurrentStatusToGoal = new System.Windows.Forms.GroupBox();
+            this.btnSaveCurrentStatusToGoal = new System.Windows.Forms.Button();
+            this.imageList16x16 = new System.Windows.Forms.ImageList(this.components);
+            this.lblLine = new System.Windows.Forms.Label();
+            this.btnCancelCurrentStatusToGoal = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnDeleteCurrentStatusToGoal = new System.Windows.Forms.Button();
+            this.btnAddCurrentStatuaToGoal = new System.Windows.Forms.Button();
+            this.btnEditCurrentStatusToGoal = new System.Windows.Forms.Button();
+            this.txtFundAllocation = new System.Windows.Forms.TextBox();
+            this.label33 = new System.Windows.Forms.Label();
+            this.cmbCurrentStsatusToGoal = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.dtGridCurrentStatusToGoal = new System.Windows.Forms.DataGridView();
             this.label29 = new System.Windows.Forms.Label();
             this.dtGridCurrentStatusGoals = new System.Windows.Forms.DataGridView();
             this.Goals = new System.Windows.Forms.TabPage();
@@ -107,7 +122,6 @@
             this.dtGridGoalValue = new System.Windows.Forms.DataGridView();
             this.cmbGoals = new System.Windows.Forms.ComboBox();
             this.label30 = new System.Windows.Forms.Label();
-            this.imageList16x16 = new System.Windows.Forms.ImageList(this.components);
             this.groupBox1.SuspendLayout();
             this.grpActionControls.SuspendLayout();
             this.tabEstimatedPlan.SuspendLayout();
@@ -117,6 +131,9 @@
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.GoalStatus.SuspendLayout();
+            this.grpCurrentStatusToGoal.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtGridCurrentStatusToGoal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridCurrentStatusGoals)).BeginInit();
             this.Goals.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridGoalCal)).BeginInit();
@@ -872,6 +889,7 @@
             // 
             // GoalStatus
             // 
+            this.GoalStatus.Controls.Add(this.grpCurrentStatusToGoal);
             this.GoalStatus.Controls.Add(this.label29);
             this.GoalStatus.Controls.Add(this.dtGridCurrentStatusGoals);
             this.GoalStatus.Location = new System.Drawing.Point(4, 22);
@@ -880,6 +898,181 @@
             this.GoalStatus.TabIndex = 2;
             this.GoalStatus.Text = "Goals Status";
             this.GoalStatus.UseVisualStyleBackColor = true;
+            // 
+            // grpCurrentStatusToGoal
+            // 
+            this.grpCurrentStatusToGoal.Controls.Add(this.btnSaveCurrentStatusToGoal);
+            this.grpCurrentStatusToGoal.Controls.Add(this.lblLine);
+            this.grpCurrentStatusToGoal.Controls.Add(this.btnCancelCurrentStatusToGoal);
+            this.grpCurrentStatusToGoal.Controls.Add(this.groupBox3);
+            this.grpCurrentStatusToGoal.Controls.Add(this.txtFundAllocation);
+            this.grpCurrentStatusToGoal.Controls.Add(this.label33);
+            this.grpCurrentStatusToGoal.Controls.Add(this.cmbCurrentStsatusToGoal);
+            this.grpCurrentStatusToGoal.Controls.Add(this.label4);
+            this.grpCurrentStatusToGoal.Controls.Add(this.dtGridCurrentStatusToGoal);
+            this.grpCurrentStatusToGoal.Location = new System.Drawing.Point(562, 25);
+            this.grpCurrentStatusToGoal.Name = "grpCurrentStatusToGoal";
+            this.grpCurrentStatusToGoal.Size = new System.Drawing.Size(455, 335);
+            this.grpCurrentStatusToGoal.TabIndex = 4;
+            this.grpCurrentStatusToGoal.TabStop = false;
+            this.grpCurrentStatusToGoal.Text = "Fund Allocation To Goal ";
+            // 
+            // btnSaveCurrentStatusToGoal
+            // 
+            this.btnSaveCurrentStatusToGoal.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSaveCurrentStatusToGoal.ImageKey = "icons8-save-close-16.png";
+            this.btnSaveCurrentStatusToGoal.ImageList = this.imageList16x16;
+            this.btnSaveCurrentStatusToGoal.Location = new System.Drawing.Point(363, 265);
+            this.btnSaveCurrentStatusToGoal.Name = "btnSaveCurrentStatusToGoal";
+            this.btnSaveCurrentStatusToGoal.Size = new System.Drawing.Size(86, 26);
+            this.btnSaveCurrentStatusToGoal.TabIndex = 11;
+            this.btnSaveCurrentStatusToGoal.Text = "Save";
+            this.btnSaveCurrentStatusToGoal.UseVisualStyleBackColor = true;
+            this.btnSaveCurrentStatusToGoal.Click += new System.EventHandler(this.btnSaveCurrentStatusToGoal_Click);
+            // 
+            // imageList16x16
+            // 
+            this.imageList16x16.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList16x16.ImageStream")));
+            this.imageList16x16.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList16x16.Images.SetKeyName(0, "icons8-contact-details-16-2.png");
+            this.imageList16x16.Images.SetKeyName(1, "icons8-resume-16.png");
+            this.imageList16x16.Images.SetKeyName(2, "icons8-customer-16.png");
+            this.imageList16x16.Images.SetKeyName(3, "icons8-cancel-16.png");
+            this.imageList16x16.Images.SetKeyName(4, "icons8-save-close-16.png");
+            // 
+            // lblLine
+            // 
+            this.lblLine.BackColor = System.Drawing.Color.Black;
+            this.lblLine.Location = new System.Drawing.Point(5, 259);
+            this.lblLine.Name = "lblLine";
+            this.lblLine.Size = new System.Drawing.Size(446, 1);
+            this.lblLine.TabIndex = 13;
+            this.lblLine.Text = "-----------------------";
+            // 
+            // btnCancelCurrentStatusToGoal
+            // 
+            this.btnCancelCurrentStatusToGoal.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCancelCurrentStatusToGoal.ImageKey = "icons8-cancel-16.png";
+            this.btnCancelCurrentStatusToGoal.ImageList = this.imageList16x16;
+            this.btnCancelCurrentStatusToGoal.Location = new System.Drawing.Point(363, 293);
+            this.btnCancelCurrentStatusToGoal.Name = "btnCancelCurrentStatusToGoal";
+            this.btnCancelCurrentStatusToGoal.Size = new System.Drawing.Size(86, 26);
+            this.btnCancelCurrentStatusToGoal.TabIndex = 12;
+            this.btnCancelCurrentStatusToGoal.Text = "Cancel";
+            this.btnCancelCurrentStatusToGoal.UseVisualStyleBackColor = true;
+            this.btnCancelCurrentStatusToGoal.Click += new System.EventHandler(this.btnCancelCurrentStatusToGoal_Click);
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Controls.Add(this.btnDeleteCurrentStatusToGoal);
+            this.groupBox3.Controls.Add(this.btnAddCurrentStatuaToGoal);
+            this.groupBox3.Controls.Add(this.btnEditCurrentStatusToGoal);
+            this.groupBox3.Location = new System.Drawing.Point(338, 213);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(111, 38);
+            this.groupBox3.TabIndex = 8;
+            this.groupBox3.TabStop = false;
+            // 
+            // btnDeleteCurrentStatusToGoal
+            // 
+            this.btnDeleteCurrentStatusToGoal.ImageIndex = 1;
+            this.btnDeleteCurrentStatusToGoal.ImageList = this.imgCollection;
+            this.btnDeleteCurrentStatusToGoal.Location = new System.Drawing.Point(76, 10);
+            this.btnDeleteCurrentStatusToGoal.Name = "btnDeleteCurrentStatusToGoal";
+            this.btnDeleteCurrentStatusToGoal.Size = new System.Drawing.Size(29, 24);
+            this.btnDeleteCurrentStatusToGoal.TabIndex = 4;
+            this.btnDeleteCurrentStatusToGoal.UseVisualStyleBackColor = true;
+            this.btnDeleteCurrentStatusToGoal.Click += new System.EventHandler(this.btnDeleteCurrentStatusToGoal_Click);
+            // 
+            // btnAddCurrentStatuaToGoal
+            // 
+            this.btnAddCurrentStatuaToGoal.ImageIndex = 3;
+            this.btnAddCurrentStatuaToGoal.ImageList = this.imgCollection;
+            this.btnAddCurrentStatuaToGoal.Location = new System.Drawing.Point(6, 10);
+            this.btnAddCurrentStatuaToGoal.Name = "btnAddCurrentStatuaToGoal";
+            this.btnAddCurrentStatuaToGoal.Size = new System.Drawing.Size(29, 24);
+            this.btnAddCurrentStatuaToGoal.TabIndex = 2;
+            this.btnAddCurrentStatuaToGoal.TabStop = false;
+            this.btnAddCurrentStatuaToGoal.UseVisualStyleBackColor = true;
+            this.btnAddCurrentStatuaToGoal.Click += new System.EventHandler(this.btnAddCurrentStatuaToGoal_Click);
+            // 
+            // btnEditCurrentStatusToGoal
+            // 
+            this.btnEditCurrentStatusToGoal.ImageIndex = 4;
+            this.btnEditCurrentStatusToGoal.ImageList = this.imgCollection;
+            this.btnEditCurrentStatusToGoal.Location = new System.Drawing.Point(41, 10);
+            this.btnEditCurrentStatusToGoal.Name = "btnEditCurrentStatusToGoal";
+            this.btnEditCurrentStatusToGoal.Size = new System.Drawing.Size(29, 24);
+            this.btnEditCurrentStatusToGoal.TabIndex = 3;
+            this.btnEditCurrentStatusToGoal.UseVisualStyleBackColor = true;
+            this.btnEditCurrentStatusToGoal.Click += new System.EventHandler(this.btnEditCurrentStatusToGoal_Click);
+            // 
+            // txtFundAllocation
+            // 
+            this.txtFundAllocation.Enabled = false;
+            this.txtFundAllocation.Location = new System.Drawing.Point(97, 297);
+            this.txtFundAllocation.Name = "txtFundAllocation";
+            this.txtFundAllocation.Size = new System.Drawing.Size(203, 20);
+            this.txtFundAllocation.TabIndex = 7;
+            this.txtFundAllocation.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(11, 300);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(80, 13);
+            this.label33.TabIndex = 6;
+            this.label33.Text = "Fund Allocation";
+            // 
+            // cmbCurrentStsatusToGoal
+            // 
+            this.cmbCurrentStsatusToGoal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCurrentStsatusToGoal.Enabled = false;
+            this.cmbCurrentStsatusToGoal.FormattingEnabled = true;
+            this.cmbCurrentStsatusToGoal.IntegralHeight = false;
+            this.cmbCurrentStsatusToGoal.Location = new System.Drawing.Point(97, 270);
+            this.cmbCurrentStsatusToGoal.Name = "cmbCurrentStsatusToGoal";
+            this.cmbCurrentStsatusToGoal.Size = new System.Drawing.Size(203, 21);
+            this.cmbCurrentStsatusToGoal.Sorted = true;
+            this.cmbCurrentStsatusToGoal.TabIndex = 5;
+            this.cmbCurrentStsatusToGoal.SelectedValueChanged += new System.EventHandler(this.cmbCurrentStsatusToGoal_SelectedValueChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(11, 274);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(29, 13);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "Goal";
+            // 
+            // dtGridCurrentStatusToGoal
+            // 
+            this.dtGridCurrentStatusToGoal.AllowUserToAddRows = false;
+            this.dtGridCurrentStatusToGoal.AllowUserToDeleteRows = false;
+            this.dtGridCurrentStatusToGoal.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtGridCurrentStatusToGoal.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dtGridCurrentStatusToGoal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtGridCurrentStatusToGoal.Location = new System.Drawing.Point(6, 19);
+            this.dtGridCurrentStatusToGoal.MultiSelect = false;
+            this.dtGridCurrentStatusToGoal.Name = "dtGridCurrentStatusToGoal";
+            this.dtGridCurrentStatusToGoal.ReadOnly = true;
+            this.dtGridCurrentStatusToGoal.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtGridCurrentStatusToGoal.Size = new System.Drawing.Size(443, 188);
+            this.dtGridCurrentStatusToGoal.TabIndex = 3;
+            this.dtGridCurrentStatusToGoal.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dtGridCurrentStatusToGoal_CellFormatting);
+            this.dtGridCurrentStatusToGoal.SelectionChanged += new System.EventHandler(this.dtGridCurrentStatusToGoal_SelectionChanged);
             // 
             // label29
             // 
@@ -908,11 +1101,11 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dtGridCurrentStatusGoals.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dtGridCurrentStatusGoals.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtGridCurrentStatusGoals.Location = new System.Drawing.Point(7, 51);
+            this.dtGridCurrentStatusGoals.Location = new System.Drawing.Point(10, 46);
             this.dtGridCurrentStatusGoals.MultiSelect = false;
             this.dtGridCurrentStatusGoals.Name = "dtGridCurrentStatusGoals";
             this.dtGridCurrentStatusGoals.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtGridCurrentStatusGoals.Size = new System.Drawing.Size(849, 489);
+            this.dtGridCurrentStatusGoals.Size = new System.Drawing.Size(477, 325);
             this.dtGridCurrentStatusGoals.TabIndex = 2;
             this.dtGridCurrentStatusGoals.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtGridCurrentStatusGoals_CellValueChanged);
             // 
@@ -984,7 +1177,7 @@
             this.dtGridGoalCal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGridGoalCal.Location = new System.Drawing.Point(11, 150);
             this.dtGridGoalCal.Name = "dtGridGoalCal";
-            this.dtGridGoalCal.Size = new System.Drawing.Size(1012, 355);
+            this.dtGridGoalCal.Size = new System.Drawing.Size(1012, 390);
             this.dtGridGoalCal.TabIndex = 3;
             this.dtGridGoalCal.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtGridGoalCal_CellEndEdit);
             // 
@@ -1020,16 +1213,6 @@
             this.label30.TabIndex = 0;
             this.label30.Text = "Select Goal:";
             // 
-            // imageList16x16
-            // 
-            this.imageList16x16.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList16x16.ImageStream")));
-            this.imageList16x16.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList16x16.Images.SetKeyName(0, "icons8-contact-details-16-2.png");
-            this.imageList16x16.Images.SetKeyName(1, "icons8-resume-16.png");
-            this.imageList16x16.Images.SetKeyName(2, "icons8-customer-16.png");
-            this.imageList16x16.Images.SetKeyName(3, "icons8-cancel-16.png");
-            this.imageList16x16.Images.SetKeyName(4, "icons8-save-close-16.png");
-            // 
             // EstimatedPlanOptionList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1052,6 +1235,10 @@
             this.tableLayoutPanel1.PerformLayout();
             this.GoalStatus.ResumeLayout(false);
             this.GoalStatus.PerformLayout();
+            this.grpCurrentStatusToGoal.ResumeLayout(false);
+            this.grpCurrentStatusToGoal.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dtGridCurrentStatusToGoal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridCurrentStatusGoals)).EndInit();
             this.Goals.ResumeLayout(false);
             this.Goals.PerformLayout();
@@ -1140,5 +1327,18 @@
         private System.Windows.Forms.Label lblGoalPeriodValue;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Label lblRiskProfileVal;
+        private System.Windows.Forms.GroupBox grpCurrentStatusToGoal;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button btnDeleteCurrentStatusToGoal;
+        private System.Windows.Forms.Button btnAddCurrentStatuaToGoal;
+        private System.Windows.Forms.Button btnEditCurrentStatusToGoal;
+        private System.Windows.Forms.TextBox txtFundAllocation;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.ComboBox cmbCurrentStsatusToGoal;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DataGridView dtGridCurrentStatusToGoal;
+        private System.Windows.Forms.Button btnCancelCurrentStatusToGoal;
+        private System.Windows.Forms.Button btnSaveCurrentStatusToGoal;
+        private System.Windows.Forms.Label lblLine;
     }
 }
