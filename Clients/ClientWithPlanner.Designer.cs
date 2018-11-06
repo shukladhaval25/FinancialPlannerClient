@@ -398,6 +398,7 @@
             // grpPlanner
             // 
             this.grpPlanner.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.grpPlanner.BackColor = System.Drawing.SystemColors.ControlLight;
             this.grpPlanner.Controls.Add(this.lblPlanEndDateValue);
             this.grpPlanner.Controls.Add(this.label5);
             this.grpPlanner.Controls.Add(this.lblPlanStartDateVal);

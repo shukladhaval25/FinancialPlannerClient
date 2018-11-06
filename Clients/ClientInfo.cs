@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -25,6 +26,7 @@ namespace FinancialPlannerClient.Clients
         private DataTable _dtExpenses;
         private DataTable _dtGoals;
         private DataTable _dtBankAccount;
+        private DataTable _dtDocument;
         private PersonalInformation _personalInfo;
         IList<Goals> _goals;
 
@@ -84,11 +86,131 @@ namespace FinancialPlannerClient.Clients
                 case "SessionCoverd":
                     fillupSessionInfo();
                     break;
+                case "DocumentInfo":
+                    fillupDocumentInfo();
+                    break;
                 default:
                     break;
             }
 
         }
+
+        #region "Document Information"
+
+        private void fillupDocumentInfo()
+        {
+            DocumentInfo docInfo = new DocumentInfo();
+            IList<Document> documents = docInfo.GetAll(_plannerId);
+            if (documents != null)
+            {
+                _dtDocument = ListtoDataTable.ToDataTable(documents.ToList());
+                dtGridDocuments.DataSource = _dtDocument;
+                docInfo.setGrid(dtGridDocuments);
+            }
+        }
+        private void btnBrowse_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.Multiselect = false;
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                txtDocumentPath.Text = openFileDialog1.FileName;
+                txtDocumentName.Text = System.IO.Path.GetFileName(txtDocumentPath.Text);
+            }
+        }
+
+        private void btnUpload_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtDocumentPath.Text) || string.IsNullOrEmpty(txtDocumentName.Text))
+            {
+                MessageBox.Show("Please enter all require information.", "Validate Data", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            DocumentInfo docInfo = new DocumentInfo();
+            Document doc = getDocumentData();
+
+
+            bool isSaved = false;
+
+            if (doc != null && doc.Id == 0)
+                isSaved = docInfo.Add(doc);
+            
+            if (isSaved)
+            {
+                MessageBox.Show("Uploaded successfully.", "Upload", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                fillupDocumentInfo();
+                grpDocumentDetails.Enabled = false;
+            }
+            else
+                MessageBox.Show("Unable to upload file.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private Document getDocumentData()
+        {
+            Document doc = new Document();
+            doc.Id = 0;
+            doc.Name = (System.IO.Path.GetExtension(txtDocumentName.Text) ==
+                System.IO.Path.GetExtension(txtDocumentPath.Text)) ? txtDocumentName.Text :
+                txtDocumentName.Text + System.IO.Path.GetExtension(txtDocumentPath.Text);
+            doc.Path = txtDocumentPath.Text;
+            doc.Data = getStringfromFile(doc.Path);
+            doc.Cid = _client.ID;
+            doc.Pid = _plannerId;
+            doc.CreatedBy = Program.CurrentUser.Id;
+            doc.UpdatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+            doc.UpdatedBy = Program.CurrentUser.Id;
+            doc.UpdatedByUserName = Program.CurrentUser.UserName;
+            doc.MachineName = Environment.MachineName;
+            return doc;
+        }
+
+        private string getStringfromFile(string filePath)
+        {
+            if (!string.IsNullOrEmpty(filePath))
+            {
+                FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read);
+                byte[] filebytes = new byte[fs.Length];
+                fs.Read(filebytes, 0, Convert.ToInt32(fs.Length));
+                return Convert.ToBase64String(filebytes,
+                                              Base64FormattingOptions.InsertLineBreaks);
+            }
+            return null;
+        }
+
+        private void btnAddDoc_Click(object sender, EventArgs e)
+        {
+            grpDocumentDetails.Enabled = true;
+            txtDocumentName.Text = "";
+            txtDocumentPath.Text = "";
+        }
+
+        private void btnRemoveDoc_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are you sure, you want to delete this record?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                DocumentInfo docInfo = new DocumentInfo();
+                Document doc = docInfo.GetDocumentInfo(dtGridDocuments,_dtDocument);
+                docInfo.Delete(doc);
+                grpDocumentDetails.Enabled = false;
+                fillupDocumentInfo();
+            }
+        }
+
+        private void dtGridDocuments_SelectionChanged(object sender, EventArgs e)
+        {
+            Document document = new DocumentInfo().GetDocumentInfo(dtGridDocuments,_dtDocument);
+            displayDocumentInfo(document);
+        }
+
+        private void displayDocumentInfo(Document document)
+        {
+            if (document != null)
+            {
+                txtDocumentPath.Text = document.Path;
+                txtDocumentName.Text = document.Name;
+            }
+        }
+        #endregion
 
         #region "Family Member"
         private void fillupFamilyMemberInfo()
@@ -1105,19 +1227,7 @@ namespace FinancialPlannerClient.Clients
             grpSalaryDetails.Enabled = true;
         }
 
-        private void rdoClient_CheckedChanged(object sender, EventArgs e)
-        {
-            if (rdoClientIncome.Checked)
-                lblIncomeFromName.Text = _client.Name;
-        }
-
-        private void rdoSpouse_CheckedChanged(object sender, EventArgs e)
-        {
-            if (rdoSpouseIncome.Checked)
-                lblIncomeFromName.Text = getSpouseName();
-        }
-
-        private string getSpouseName()
+         private string getSpouseName()
         {
             if (!string.IsNullOrEmpty(txtSpouseName.Text))
                 return txtSpouseName.Text;
@@ -1212,7 +1322,6 @@ namespace FinancialPlannerClient.Clients
         {
             cmbIncomeSource.Text = "";
             cmbIncomeSource.Tag = "0";
-            rdoClientIncome.Checked = true;
             txtAnnualIncome.Text = "0";
             cmbIncomeBy.Text = "";
             txtExpectedGrowthSalary.Text = "0";
@@ -1719,6 +1828,7 @@ namespace FinancialPlannerClient.Clients
         {
             grpLoanForGoal.Enabled = chkLaonForGoal.Checked;
         }
-        
+
+       
     }
 }

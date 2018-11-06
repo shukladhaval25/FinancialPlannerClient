@@ -46,6 +46,7 @@
             this.picClientMain = new System.Windows.Forms.PictureBox();
             this.imglist16x16 = new System.Windows.Forms.ImageList(this.components);
             this.imgList30x30 = new System.Windows.Forms.ImageList(this.components);
+            this.testingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuMain.SuspendLayout();
             this.pnlMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picClientMain)).BeginInit();
@@ -60,7 +61,8 @@
             this.riskProfileToolStripMenuItem,
             this.auditTrailToolStripMenuItem,
             this.reportsToolStripMenuItem,
-            this.exitToolStripMenuItem});
+            this.exitToolStripMenuItem,
+            this.testingToolStripMenuItem});
             this.menuMain.Location = new System.Drawing.Point(0, 0);
             this.menuMain.Name = "menuMain";
             this.menuMain.Size = new System.Drawing.Size(1022, 24);
@@ -187,6 +189,14 @@
             this.imgList30x30.TransparentColor = System.Drawing.Color.Transparent;
             this.imgList30x30.Images.SetKeyName(0, "icons8-select-users-30.png");
             // 
+            // testingToolStripMenuItem
+            // 
+            this.testingToolStripMenuItem.Name = "testingToolStripMenuItem";
+            this.testingToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
+            this.testingToolStripMenuItem.Text = "Testing";
+            this.testingToolStripMenuItem.Visible = false;
+            this.testingToolStripMenuItem.Click += new System.EventHandler(this.testingToolStripMenuItem_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -227,5 +237,6 @@
         private System.Windows.Forms.ToolStripMenuItem estimatedPlanningOptionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem currentInToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem clientToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem testingToolStripMenuItem;
     }
 }

@@ -136,5 +136,11 @@ namespace FinancialPlannerClient
             frmClientList.Dock = DockStyle.Fill;
             frmClientList.Show();
         }
+
+        private void testingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Testing testing = new Testing();
+            testing.ShowDialog();
+        }
     }
 }

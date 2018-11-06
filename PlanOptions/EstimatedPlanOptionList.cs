@@ -296,6 +296,7 @@ namespace FinancialPlannerClient.PlanOptions
                     break;
                 case "Goals":
                     getGoals();
+                    lblGoalComplition.Text = "";
                     break;
             }
         }
@@ -690,8 +691,24 @@ namespace FinancialPlannerClient.PlanOptions
                     _dtGoalCal = _goalCalculationInfo.GetGoalCalculation();
                     dtGridGoalCal.DataSource = _dtGoalCal;
                     setGoalCalGrid();
+                    progGoalComplition.Value = getGoalComplitionPercentage();
+                    lblGoalComplition.Text = progGoalComplition.Value.ToString() + "%";
                 }
             }
+        }
+
+        private int getGoalComplitionPercentage()
+        {
+            if (_dtGoalCal != null && _dtGoalCal.Rows.Count > 0)
+            {
+                double portfolioValue = double.Parse(_dtGoalCal.Rows[_dtGoalCal.Rows.Count - 1]["Portfolio value"].ToString());
+                double cashOutFlowValue = double.Parse(_dtGoalCal.Rows[_dtGoalCal.Rows.Count - 1]["Cash outflow Goal Year"].ToString());
+                double assetsMappingValue = double.Parse(_dtGoalCal.Rows[_dtGoalCal.Rows.Count - 1]["Assets Mapping"].ToString());
+                double instrumentValue = double.Parse(_dtGoalCal.Rows[_dtGoalCal.Rows.Count - 1]["Instrument Mapped"].ToString());
+
+               return int.Parse(Math.Round((portfolioValue + assetsMappingValue + instrumentValue) * 100 / cashOutFlowValue).ToString());
+            }
+            return 0;
         }
 
         private void setGoalCalGrid()
