@@ -61,7 +61,8 @@ namespace FinancialPlannerClient.PlanOptions
         private void setGoalValueTable(GoalsValueCalculationInfo goalsValueCal)
         {
             createTableStructure();
-            addRowforGoalValue(goalsValueCal);
+            if (goalsValueCal != null)
+                addRowforGoalValue(goalsValueCal);
         }
 
         private void addRowforGoalValue(GoalsValueCalculationInfo goalsValueCal)

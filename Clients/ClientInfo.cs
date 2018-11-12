@@ -120,7 +120,8 @@ namespace FinancialPlannerClient.Clients
 
         private void btnUpload_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtDocumentPath.Text) || string.IsNullOrEmpty(txtDocumentName.Text))
+            if (string.IsNullOrEmpty(txtDocumentPath.Text) || string.IsNullOrEmpty(txtDocumentName.Text)  ||
+                string.IsNullOrEmpty(cmbDocumentCategory.Text))
             {
                 MessageBox.Show("Please enter all require information.", "Validate Data", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
@@ -153,6 +154,7 @@ namespace FinancialPlannerClient.Clients
                 System.IO.Path.GetExtension(txtDocumentPath.Text)) ? txtDocumentName.Text :
                 txtDocumentName.Text + System.IO.Path.GetExtension(txtDocumentPath.Text);
             doc.Path = txtDocumentPath.Text;
+            doc.Category = cmbDocumentCategory.Text;
             doc.Data = getStringfromFile(doc.Path);
             doc.Cid = _client.ID;
             doc.Pid = _plannerId;
@@ -208,6 +210,7 @@ namespace FinancialPlannerClient.Clients
             {
                 txtDocumentPath.Text = document.Path;
                 txtDocumentName.Text = document.Name;
+                cmbDocumentCategory.Text = document.Category;
             }
         }
         #endregion

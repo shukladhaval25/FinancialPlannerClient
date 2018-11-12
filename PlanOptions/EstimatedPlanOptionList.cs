@@ -705,8 +705,8 @@ namespace FinancialPlannerClient.PlanOptions
                 double cashOutFlowValue = double.Parse(_dtGoalCal.Rows[_dtGoalCal.Rows.Count - 1]["Cash outflow Goal Year"].ToString());
                 double assetsMappingValue = double.Parse(_dtGoalCal.Rows[_dtGoalCal.Rows.Count - 1]["Assets Mapping"].ToString());
                 double instrumentValue = double.Parse(_dtGoalCal.Rows[_dtGoalCal.Rows.Count - 1]["Instrument Mapped"].ToString());
-
-               return int.Parse(Math.Round((portfolioValue + assetsMappingValue + instrumentValue) * 100 / cashOutFlowValue).ToString());
+                double loanAmountValue = _dtGoalValue.Rows[0]["Loan Amount"].ToString() == "" ? 0: double.Parse(_dtGoalValue.Rows[0]["Loan Amount"].ToString());
+               return int.Parse(Math.Round((portfolioValue + assetsMappingValue + instrumentValue + loanAmountValue) * 100 / cashOutFlowValue).ToString());
             }
             return 0;
         }

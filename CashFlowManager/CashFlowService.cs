@@ -379,6 +379,15 @@ namespace FinancialPlannerClient.CashFlowManager
                     dr[string.Format("{0} - {1}", goal.Priority, goal.Name)] = surplusCashFund - surplusAmountAfterInvestment;
                     surplusCashFund = surplusAmountAfterInvestment;                    
                 }
+                else
+                {
+                    _riskProfileInfo = new RiskProfileInfo();
+
+                    GoalsValueCalculationInfo goalValCalInfo = new GoalsValueCalculationInfo(goal, _planner,_riskProfileInfo,_riskProfileId);
+                    GoalsCalculationInfo goalcalInfo = new GoalsCalculationInfo(goal,_planner,_riskProfileInfo,_riskProfileId,_optionId);
+                    goalValCalInfo.SetPortfolioValue(goalcalInfo.GetProfileValue());
+                    GoalCalculationMgr.AddGoalValueCalculation(goalValCalInfo);
+                }
             }
             #endregion
 

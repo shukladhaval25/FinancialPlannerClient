@@ -31,8 +31,4 @@ D:\Dhaval.Shukla\My Documents\Visual Studio 2015\Projects\FinancialPlannerServer
 D:\Dhaval.Shukla\My Documents\Visual Studio 2015\Projects\FinancialPlannerServer\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.Clients.ClientWithPrimaryDetails.resources
 D:\Dhaval.Shukla\My Documents\Visual Studio 2015\Projects\FinancialPlannerServer\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.csprojResolveAssemblyReference.cache
 D:\Dhaval.Shukla\My Documents\Visual Studio 2015\Projects\FinancialPlannerServer\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.Testing.resources
-D:\Dhaval.Shukla\My Documents\Visual Studio 2015\Projects\FinancialPlannerServer\FinancialPlannerClient\bin\Debug\Spire.License.dll
-D:\Dhaval.Shukla\My Documents\Visual Studio 2015\Projects\FinancialPlannerServer\FinancialPlannerClient\bin\Debug\Spire.Pdf.dll
-D:\Dhaval.Shukla\My Documents\Visual Studio 2015\Projects\FinancialPlannerServer\FinancialPlannerClient\bin\Debug\Microsoft.mshtml.dll
-D:\Dhaval.Shukla\My Documents\Visual Studio 2015\Projects\FinancialPlannerServer\FinancialPlannerClient\bin\Debug\Spire.License.xml
-D:\Dhaval.Shukla\My Documents\Visual Studio 2015\Projects\FinancialPlannerServer\FinancialPlannerClient\bin\Debug\Spire.Pdf.xml
+D:\Dhaval.Shukla\My Documents\Visual Studio 2015\Projects\FinancialPlannerServer\FinancialPlannerClient\bin\Debug\PDFLibNet.dll

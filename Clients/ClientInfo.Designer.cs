@@ -464,6 +464,8 @@
             this.btnRemoveDoc = new System.Windows.Forms.Button();
             this.btnAddDoc = new System.Windows.Forms.Button();
             this.grpDocumentDetails = new System.Windows.Forms.GroupBox();
+            this.cmbDocumentCategory = new System.Windows.Forms.ComboBox();
+            this.label147 = new System.Windows.Forms.Label();
             this.btnUpload = new System.Windows.Forms.Button();
             this.txtDocumentName = new System.Windows.Forms.TextBox();
             this.btnBrowse = new System.Windows.Forms.Button();
@@ -5356,6 +5358,8 @@
             // 
             // grpDocumentDetails
             // 
+            this.grpDocumentDetails.Controls.Add(this.cmbDocumentCategory);
+            this.grpDocumentDetails.Controls.Add(this.label147);
             this.grpDocumentDetails.Controls.Add(this.btnUpload);
             this.grpDocumentDetails.Controls.Add(this.txtDocumentName);
             this.grpDocumentDetails.Controls.Add(this.btnBrowse);
@@ -5365,14 +5369,39 @@
             this.grpDocumentDetails.Enabled = false;
             this.grpDocumentDetails.Location = new System.Drawing.Point(338, 45);
             this.grpDocumentDetails.Name = "grpDocumentDetails";
-            this.grpDocumentDetails.Size = new System.Drawing.Size(563, 111);
+            this.grpDocumentDetails.Size = new System.Drawing.Size(563, 138);
             this.grpDocumentDetails.TabIndex = 1;
             this.grpDocumentDetails.TabStop = false;
             this.grpDocumentDetails.Text = "Document Details";
             // 
+            // cmbDocumentCategory
+            // 
+            this.cmbDocumentCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbDocumentCategory.FormattingEnabled = true;
+            this.cmbDocumentCategory.Items.AddRange(new object[] {
+            "KYC",
+            "Investment",
+            "Insurance",
+            "ITR",
+            "Loan",
+            "Others"});
+            this.cmbDocumentCategory.Location = new System.Drawing.Point(107, 81);
+            this.cmbDocumentCategory.Name = "cmbDocumentCategory";
+            this.cmbDocumentCategory.Size = new System.Drawing.Size(204, 21);
+            this.cmbDocumentCategory.TabIndex = 7;
+            // 
+            // label147
+            // 
+            this.label147.AutoSize = true;
+            this.label147.Location = new System.Drawing.Point(17, 86);
+            this.label147.Name = "label147";
+            this.label147.Size = new System.Drawing.Size(52, 13);
+            this.label147.TabIndex = 6;
+            this.label147.Text = "Category:";
+            // 
             // btnUpload
             // 
-            this.btnUpload.Location = new System.Drawing.Point(260, 79);
+            this.btnUpload.Location = new System.Drawing.Point(258, 109);
             this.btnUpload.Name = "btnUpload";
             this.btnUpload.Size = new System.Drawing.Size(75, 23);
             this.btnUpload.TabIndex = 5;
@@ -5382,7 +5411,7 @@
             // 
             // txtDocumentName
             // 
-            this.txtDocumentName.Location = new System.Drawing.Point(107, 53);
+            this.txtDocumentName.Location = new System.Drawing.Point(107, 55);
             this.txtDocumentName.MaxLength = 50;
             this.txtDocumentName.Name = "txtDocumentName";
             this.txtDocumentName.Size = new System.Drawing.Size(367, 20);
@@ -6066,5 +6095,7 @@
         private System.Windows.Forms.Label label144;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.PrintDialog printDialog1;
+        private System.Windows.Forms.ComboBox cmbDocumentCategory;
+        private System.Windows.Forms.Label label147;
     }
 }

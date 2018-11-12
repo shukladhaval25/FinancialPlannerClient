@@ -288,6 +288,7 @@ namespace FinancialPlannerClient.Clients
                     MotherName = txtMotherName.Text,
                     DOB = dtDOB.Value,
                     PlaceOfBirth = txtPlaceOfBirth.Text,
+                    Gender = cmbGender.Text,
                     IsMarried = rdoMaritalStatusYes.Checked,
                     MarriageAnniversary =  dtMarriageAnniversary.Value,
                     PAN = txtPan.Text,

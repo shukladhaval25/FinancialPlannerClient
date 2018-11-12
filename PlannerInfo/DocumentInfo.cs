@@ -192,7 +192,8 @@ namespace FinancialPlannerClient.PlannerInfo
                     Document.Cid = int.Parse(dr.Field<string>("CID"));
                     Document.Pid = int.Parse(dr.Field<string>("PID"));
                     Document.Name = dr.Field<string>("Name");
-                    Document.Path = dr.Field<string>("Path");                    
+                    Document.Path = dr.Field<string>("Path");
+                    Document.Category = dr.Field<string>("Category");     
                     return Document;
                 }
             }
