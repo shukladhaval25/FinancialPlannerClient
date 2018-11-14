@@ -1,5 +1,6 @@
 ﻿using FinancialPlanner.Common;
 using FinancialPlanner.Common.Model;
+using FinancialPlannerClient.Master;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -141,6 +142,18 @@ namespace FinancialPlannerClient
         {
             Testing testing = new Testing();
             testing.ShowDialog();
+        }
+
+        private void festivalsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Others other = new Others("Festivals");
+            other.ShowDialog();
+        }
+
+        private void cRMGroupsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Others other = new Others("CRM Groups");
+            other.ShowDialog();
         }
     }
 }

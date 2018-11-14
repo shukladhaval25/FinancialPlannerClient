@@ -48,6 +48,11 @@ namespace FinancialPlannerClient.PlanOptions
 
         private void btnAddPlanOption_Click(object sender, EventArgs e)
         {
+            if (cmbPlan.Tag == null)
+            {
+                MessageBox.Show("Please select plan first.", "Plan require", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             PlanOptionMaster planoptionmaster = new PlanOptionMaster();
             planoptionmaster.lblclientNameVal.Text = lblclientNameVal.Text;
             planoptionmaster.lblPlanVal.Text = cmbPlan.Text;
@@ -283,6 +288,11 @@ namespace FinancialPlannerClient.PlanOptions
 
         private void tabEstimatedPlan_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if ( string.IsNullOrEmpty(cmbPlanOption.Text))
+            {
+                MessageBox.Show("Please select plan and plan option first.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             switch (tabEstimatedPlan.SelectedTab.Name)
             {
                 case "CashFlow":

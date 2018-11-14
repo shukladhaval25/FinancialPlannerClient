@@ -1,5 +1,6 @@
 ﻿using FinancialPlanner.Common.DataConversion;
 using FinancialPlanner.Common.Model;
+using FinancialPlannerClient.Master;
 using FinancialPlannerClient.PlannerInfo;
 using System;
 using System.Collections.Generic;
@@ -607,10 +608,102 @@ namespace FinancialPlannerClient.Clients
                 case "EmployerDetails":
                     fillupEmploymentDetails();
                     break;
+                case "OtherInfo":
+                    fillupOtherInfo();
+                    break;
                 default:
                     break;
             }
         }
+
+        #region "Other Information"
+        private void fillupOtherInfo()
+        {            
+            loadCRMGroups();
+            loadFestivals();
+        }
+
+        private void loadFestivals()
+        {
+            lstchkFestivals.Items.Clear();
+            FestivalsInfo festivalInfo = new FestivalsInfo();
+            IList<Festivals> festivals = festivalInfo.GetAll();
+
+            ClientFestivalInfo clientFestivalInfo = new ClientFestivalInfo();
+            var result =  clientFestivalInfo.Get(_client.ID);
+
+            int index = 0;
+            foreach(Festivals festival in festivals)
+            {
+                lstchkFestivals.Items.Add(festival.Name);
+                ClientFestivals cfs =  result.FirstOrDefault(i => i.Festival == festival.Name);
+                if (cfs != null)
+                    lstchkFestivals.SetItemChecked(index, true);
+                index++;
+            }       
+        }
+
+        private void loadCRMGroups()
+        {
+            lstchkCRMGroups.Items.Clear();
+            CRMGroupInfo crmGroupInfo = new CRMGroupInfo();
+            IList<CRMGroup> crmGroups = crmGroupInfo.GetAll();
+
+            ClientCRMGroupinfo clientCRMGroupInfo = new ClientCRMGroupinfo();
+            var result =  clientCRMGroupInfo.Get(_client.ID);
+
+            int index = 0;
+            foreach (CRMGroup crmGroup in crmGroups)
+            {
+                lstchkCRMGroups.Items.Add(crmGroup.Name);
+                ClientCRMGroup  cfs =  result.FirstOrDefault(i => i.Festival == crmGroup.Name);
+                if (cfs != null)
+                    lstchkCRMGroups.SetItemChecked(index, true);
+                index++;
+            }
+        }
+
+        private void btnSaveFestivals_Click(object sender, EventArgs e)
+        {
+            var items =   lstchkFestivals.CheckedItems;
+            IList<ClientFestivals> festivals = new List<ClientFestivals>();
+            foreach(var item in items)
+            {
+                ClientFestivals festivalsObj = new ClientFestivals();
+                festivalsObj.Cid = _client.ID;
+                festivalsObj.Festival = item.ToString();
+                festivalsObj.CreatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+                festivalsObj.CreatedBy = Program.CurrentUser.Id;
+                festivalsObj.UpdatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+                festivalsObj.UpdatedBy = Program.CurrentUser.Id;
+                festivalsObj.UpdatedByUserName = Program.CurrentUser.UserName;
+                festivalsObj.MachineName = System.Environment.MachineName;
+                festivals.Add(festivalsObj);
+            }
+            ClientFestivalInfo clientFestivalInfo = new ClientFestivalInfo();
+            clientFestivalInfo.Save(festivals);
+        }
+        private void btnSaveCRMGroups_Click(object sender, EventArgs e)
+        {
+            var items =   lstchkCRMGroups.CheckedItems;
+            IList<ClientCRMGroup> clienCRMGroups = new List<ClientCRMGroup>();
+            foreach (var item in items)
+            {
+                ClientCRMGroup clientCRGroupObj = new ClientCRMGroup();
+                clientCRGroupObj.Cid = _client.ID;
+                clientCRGroupObj.Festival = item.ToString();
+                clientCRGroupObj.CreatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+                clientCRGroupObj.CreatedBy = Program.CurrentUser.Id;
+                clientCRGroupObj.UpdatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+                clientCRGroupObj.UpdatedBy = Program.CurrentUser.Id;
+                clientCRGroupObj.UpdatedByUserName = Program.CurrentUser.UserName;
+                clientCRGroupObj.MachineName = System.Environment.MachineName;
+                clienCRMGroups.Add(clientCRGroupObj);
+            }
+            ClientCRMGroupinfo clientCRMGroupInfo = new ClientCRMGroupinfo();
+            clientCRMGroupInfo.Save(clienCRMGroups);
+        }
+        #endregion
 
         private void fillupEmploymentDetails()
         {

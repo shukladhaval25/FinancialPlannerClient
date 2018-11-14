@@ -110,8 +110,27 @@
     <Compile Include="CurrentStatus\ULIPInfo.cs" />
     <Compile Include="GoalCalculations\InvestmentInGoal.cs" />
     <Compile Include="GoalCalculations\InvestmentToGoalService.cs" />
+    <Compile Include="Master\CRMGroupInfo.cs" />
+    <Compile Include="Master\CRMGroupsImplimenter.cs" />
+    <Compile Include="Master\FestivalsImplimenter.cs" />
+    <Compile Include="Master\IOtherItems.cs" />
+    <Compile Include="Master\Others.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Master\Others.Designer.cs">
+      <DependentUpon>Others.cs</DependentUpon>
+    </Compile>
     <Compile Include="PlannerInfo\BankAccountInfo.cs" />
+    <Compile Include="PlannerInfo\ClientCRMGroupinfo.cs" />
+    <Compile Include="PlannerInfo\ClientFestivalInfo.cs" />
     <Compile Include="PlannerInfo\DocumentInfo.cs" />
+    <Compile Include="Master\FestivalsInfo.cs" />
+    <Compile Include="PlanOptions\Assumptions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\Assumptions.Designer.cs">
+      <DependentUpon>Assumptions.cs</DependentUpon>
+    </Compile>
     <Compile Include="PlanOptions\CurrentStatusInfo.cs" />
     <Compile Include="CurrentStatus\FDInfo.cs" />
     <Compile Include="CurrentStatus\GeneralInsuranceInfo.cs" />
@@ -250,6 +269,12 @@
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Master\Others.resx">
+      <DependentUpon>Others.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\Assumptions.resx">
+      <DependentUpon>Assumptions.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\ClientPlanOptinList.resx">
       <DependentUpon>ClientPlanOptinList.cs</DependentUpon>
     </EmbeddedResource>
@@ -323,6 +348,27 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8-customer-30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-master-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-city-hall-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-estimate-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-data-pending-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-protect-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-asterisk-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AuditTrail-30.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
