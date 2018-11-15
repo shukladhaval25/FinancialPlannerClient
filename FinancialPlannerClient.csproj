@@ -55,6 +55,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuditTrail\AuditTrail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AuditTrail\AuditTrail.Designer.cs">
+      <DependentUpon>AuditTrail.cs</DependentUpon>
+    </Compile>
     <Compile Include="CashFlowManager\CashFlowCalculation.cs" />
     <Compile Include="CashFlowManager\CashFlowService.cs" />
     <Compile Include="Clients\AllClientsList.cs">
@@ -239,6 +245,9 @@
     <Compile Include="Testing.Designer.cs">
       <DependentUpon>Testing.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AuditTrail\AuditTrail.resx">
+      <DependentUpon>AuditTrail.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Clients\AllClientsList.resx">
       <DependentUpon>AllClientsList.cs</DependentUpon>
     </EmbeddedResource>
@@ -369,6 +378,144 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AuditTrail-30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shutdown-30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AdministrativeTool_30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AdministrativeTool_60.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AuditTrail-301.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AuditTrail-60.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Email.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-access-30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-administrative-tools-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-calendar-plus-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-cancel-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-condo-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-customer-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-date-span-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-double-down-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-double-right-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-double-up-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-goal-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-group-message-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-group-message-30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-lock-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-museum-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-new-company-30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-new-document-30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-notification-30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-ok-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-padlock-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-reception-16 - Copy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-select-users-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-select-users-30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-send-30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-week-view-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_money_bag_45068 -16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_money_bag_45068 -30x30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_run_455451.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\marguerite-daisy-beautiful-beauty1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\notification-60.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Reports-60.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Roles - 30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Roles.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SecurityAccess-30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SecurityAccess-60.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shutdown-301.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shutdown-60.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Users.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AuditTrail-302.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shutdown-302.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

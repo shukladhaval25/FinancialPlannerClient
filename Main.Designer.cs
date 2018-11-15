@@ -31,14 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.menuMain = new System.Windows.Forms.MenuStrip();
-            this.auditTrailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.reportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.testingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pnlMain = new System.Windows.Forms.Panel();
-            this.imglist16x16 = new System.Windows.Forms.ImageList(this.components);
-            this.imgList30x30 = new System.Windows.Forms.ImageList(this.components);
-            this.picClientMain = new System.Windows.Forms.PictureBox();
             this.mastersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.festivalsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cRMGroupsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -50,6 +42,14 @@
             this.estimatedPlanningOptionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.riskProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.createNewRsikProfiledToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.auditTrailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.testingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pnlMain = new System.Windows.Forms.Panel();
+            this.picClientMain = new System.Windows.Forms.PictureBox();
+            this.imglist16x16 = new System.Windows.Forms.ImageList(this.components);
+            this.imgList30x30 = new System.Windows.Forms.ImageList(this.components);
             this.menuMain.SuspendLayout();
             this.pnlMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picClientMain)).BeginInit();
@@ -72,71 +72,6 @@
             this.menuMain.Size = new System.Drawing.Size(1022, 24);
             this.menuMain.TabIndex = 0;
             this.menuMain.Text = "menuStrip1";
-            // 
-            // auditTrailToolStripMenuItem
-            // 
-            this.auditTrailToolStripMenuItem.Image = global::FinancialPlannerClient.Properties.Resources.AuditTrail_30;
-            this.auditTrailToolStripMenuItem.Name = "auditTrailToolStripMenuItem";
-            this.auditTrailToolStripMenuItem.Size = new System.Drawing.Size(90, 20);
-            this.auditTrailToolStripMenuItem.Text = "Audit Trail";
-            // 
-            // reportsToolStripMenuItem
-            // 
-            this.reportsToolStripMenuItem.Name = "reportsToolStripMenuItem";
-            this.reportsToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
-            this.reportsToolStripMenuItem.Text = "Reports";
-            // 
-            // exitToolStripMenuItem
-            // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-            this.exitToolStripMenuItem.Text = "Exit";
-            // 
-            // testingToolStripMenuItem
-            // 
-            this.testingToolStripMenuItem.Name = "testingToolStripMenuItem";
-            this.testingToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
-            this.testingToolStripMenuItem.Text = "Testing";
-            this.testingToolStripMenuItem.Visible = false;
-            this.testingToolStripMenuItem.Click += new System.EventHandler(this.testingToolStripMenuItem_Click);
-            // 
-            // pnlMain
-            // 
-            this.pnlMain.Controls.Add(this.picClientMain);
-            this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlMain.Location = new System.Drawing.Point(0, 24);
-            this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(1022, 544);
-            this.pnlMain.TabIndex = 2;
-            this.pnlMain.ControlAdded += new System.Windows.Forms.ControlEventHandler(this.pnlMain_ControlAdded);
-            this.pnlMain.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.pnlMain_ControlRemoved);
-            // 
-            // imglist16x16
-            // 
-            this.imglist16x16.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imglist16x16.ImageStream")));
-            this.imglist16x16.TransparentColor = System.Drawing.Color.Transparent;
-            this.imglist16x16.Images.SetKeyName(0, "icons8-customer-16.png");
-            this.imglist16x16.Images.SetKeyName(1, "icons8-reception-16 - Copy.png");
-            this.imglist16x16.Images.SetKeyName(2, "icons8-master-16.png");
-            // 
-            // imgList30x30
-            // 
-            this.imgList30x30.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgList30x30.ImageStream")));
-            this.imgList30x30.TransparentColor = System.Drawing.Color.Transparent;
-            this.imgList30x30.Images.SetKeyName(0, "icons8-select-users-30.png");
-            // 
-            // picClientMain
-            // 
-            this.picClientMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.picClientMain.Image = global::FinancialPlannerClient.Properties.Resources.marguerite_daisy_beautiful_beauty;
-            this.picClientMain.Location = new System.Drawing.Point(291, 202);
-            this.picClientMain.Name = "picClientMain";
-            this.picClientMain.Size = new System.Drawing.Size(440, 141);
-            this.picClientMain.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picClientMain.TabIndex = 0;
-            this.picClientMain.TabStop = false;
             // 
             // mastersToolStripMenuItem
             // 
@@ -231,6 +166,75 @@
             this.createNewRsikProfiledToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
             this.createNewRsikProfiledToolStripMenuItem.Text = "Manage Rsik Profiled";
             this.createNewRsikProfiledToolStripMenuItem.Click += new System.EventHandler(this.createNewRsikProfiledToolStripMenuItem_Click);
+            // 
+            // auditTrailToolStripMenuItem
+            // 
+            this.auditTrailToolStripMenuItem.Image = global::FinancialPlannerClient.Properties.Resources.AuditTrail_301;
+            this.auditTrailToolStripMenuItem.Name = "auditTrailToolStripMenuItem";
+            this.auditTrailToolStripMenuItem.Size = new System.Drawing.Size(90, 20);
+            this.auditTrailToolStripMenuItem.Text = "Audit Trail";
+            this.auditTrailToolStripMenuItem.Click += new System.EventHandler(this.auditTrailToolStripMenuItem_Click);
+            // 
+            // reportsToolStripMenuItem
+            // 
+            this.reportsToolStripMenuItem.Name = "reportsToolStripMenuItem";
+            this.reportsToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
+            this.reportsToolStripMenuItem.Text = "Reports";
+            this.reportsToolStripMenuItem.Visible = false;
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Image = global::FinancialPlannerClient.Properties.Resources.shutdown_301;
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
+            // testingToolStripMenuItem
+            // 
+            this.testingToolStripMenuItem.Name = "testingToolStripMenuItem";
+            this.testingToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
+            this.testingToolStripMenuItem.Text = "Testing";
+            this.testingToolStripMenuItem.Visible = false;
+            this.testingToolStripMenuItem.Click += new System.EventHandler(this.testingToolStripMenuItem_Click);
+            // 
+            // pnlMain
+            // 
+            this.pnlMain.Controls.Add(this.picClientMain);
+            this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlMain.Location = new System.Drawing.Point(0, 24);
+            this.pnlMain.Name = "pnlMain";
+            this.pnlMain.Size = new System.Drawing.Size(1022, 544);
+            this.pnlMain.TabIndex = 2;
+            this.pnlMain.ControlAdded += new System.Windows.Forms.ControlEventHandler(this.pnlMain_ControlAdded);
+            this.pnlMain.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.pnlMain_ControlRemoved);
+            // 
+            // picClientMain
+            // 
+            this.picClientMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.picClientMain.Image = global::FinancialPlannerClient.Properties.Resources.marguerite_daisy_beautiful_beauty;
+            this.picClientMain.Location = new System.Drawing.Point(291, 202);
+            this.picClientMain.Name = "picClientMain";
+            this.picClientMain.Size = new System.Drawing.Size(440, 141);
+            this.picClientMain.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picClientMain.TabIndex = 0;
+            this.picClientMain.TabStop = false;
+            // 
+            // imglist16x16
+            // 
+            this.imglist16x16.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imglist16x16.ImageStream")));
+            this.imglist16x16.TransparentColor = System.Drawing.Color.Transparent;
+            this.imglist16x16.Images.SetKeyName(0, "icons8-customer-16.png");
+            this.imglist16x16.Images.SetKeyName(1, "icons8-reception-16 - Copy.png");
+            this.imglist16x16.Images.SetKeyName(2, "icons8-master-16.png");
+            // 
+            // imgList30x30
+            // 
+            this.imgList30x30.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgList30x30.ImageStream")));
+            this.imgList30x30.TransparentColor = System.Drawing.Color.Transparent;
+            this.imgList30x30.Images.SetKeyName(0, "icons8-select-users-30.png");
             // 
             // Main
             // 

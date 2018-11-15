@@ -51,7 +51,7 @@ namespace FinancialPlannerClient.Clients
 
         private void btnviewEditPlan_Click(object sender, EventArgs e)
         {
-            if (cmbPlan.Tag.ToString() != "0")
+            if (cmbPlan.Tag != null &&  cmbPlan.Tag.ToString() != "0")
             {
 
                 ClientInfo frmClient = new ClientInfo(int.Parse(cmbPlan.Tag.ToString()), _client);

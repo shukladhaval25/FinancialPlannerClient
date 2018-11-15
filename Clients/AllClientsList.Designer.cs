@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClientList));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AllClientsList));
             this.grpActionControls = new System.Windows.Forms.GroupBox();
             this.btnDelete = new System.Windows.Forms.Button();
             this.imgCollection = new System.Windows.Forms.ImageList(this.components);
@@ -55,7 +55,7 @@
             this.grpActionControls.Controls.Add(this.btnDelete);
             this.grpActionControls.Controls.Add(this.btnAdd);
             this.grpActionControls.Controls.Add(this.btnEdit);
-            this.grpActionControls.Location = new System.Drawing.Point(51, 445);
+            this.grpActionControls.Location = new System.Drawing.Point(35, 445);
             this.grpActionControls.Name = "grpActionControls";
             this.grpActionControls.Size = new System.Drawing.Size(111, 38);
             this.grpActionControls.TabIndex = 6;
@@ -128,8 +128,9 @@
             this.splitContainer.Panel1.Padding = global::FinancialPlannerClient.Properties.Settings.Default.Custom;
             this.splitContainer.Panel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.splitContainer.Panel1.Tag = global::FinancialPlannerClient.Properties.Settings.Default.Custom;
+            this.splitContainer.Panel1MinSize = 20;
             this.splitContainer.Size = new System.Drawing.Size(831, 489);
-            this.splitContainer.SplitterDistance = 170;
+            this.splitContainer.SplitterDistance = 154;
             this.splitContainer.TabIndex = 10;
             // 
             // btnRefresh
@@ -148,7 +149,7 @@
             this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSearch.ImageKey = "icons8-search-16.png";
             this.btnSearch.ImageList = this.imgCollection;
-            this.btnSearch.Location = new System.Drawing.Point(132, 28);
+            this.btnSearch.Location = new System.Drawing.Point(116, 28);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(30, 23);
             this.btnSearch.TabIndex = 1;
@@ -157,8 +158,8 @@
             // 
             // trvList
             // 
-            this.trvList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.trvList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.trvList.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.trvList.FullRowSelect = true;
@@ -167,18 +168,18 @@
             this.trvList.Location = new System.Drawing.Point(7, 67);
             this.trvList.Name = "trvList";
             this.trvList.SelectedImageIndex = 7;
-            this.trvList.Size = new System.Drawing.Size(155, 372);
+            this.trvList.Size = new System.Drawing.Size(139, 372);
             this.trvList.StateImageList = this.imgCollection;
             this.trvList.TabIndex = 1;
             // 
             // grpSearch
             // 
-            this.grpSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.grpSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.grpSearch.Controls.Add(this.txtSearch);
             this.grpSearch.Location = new System.Drawing.Point(7, 10);
             this.grpSearch.Name = "grpSearch";
-            this.grpSearch.Size = new System.Drawing.Size(161, 50);
+            this.grpSearch.Size = new System.Drawing.Size(145, 50);
             this.grpSearch.TabIndex = 0;
             this.grpSearch.TabStop = false;
             this.grpSearch.Tag = "t";
@@ -186,11 +187,11 @@
             // 
             // txtSearch
             // 
-            this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSearch.Location = new System.Drawing.Point(8, 20);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(115, 20);
+            this.txtSearch.Size = new System.Drawing.Size(99, 20);
             this.txtSearch.TabIndex = 0;
             // 
             // lblProsCust
@@ -203,14 +204,14 @@
             this.lblProsCust.TabIndex = 9;
             this.lblProsCust.Text = "List of Prospect Customer";
             // 
-            // ClientList
+            // AllClientsList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(831, 489);
             this.Controls.Add(this.splitContainer);
             this.Controls.Add(this.lblProsCust);
-            this.Name = "ClientList";
+            this.Name = "AllClientsList";
             this.Text = "Clients";
             this.Load += new System.EventHandler(this.ClientList_Load);
             this.grpActionControls.ResumeLayout(false);

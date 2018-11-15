@@ -58,26 +58,7 @@ namespace FinancialPlannerClient.Clients
             }
             else
                 MessageBox.Show(restResult.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            //HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(apiurl);
-            //request.Method = "GET";
-            //String prospClientResultJosn = String.Empty;
-            //using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
-            //{
-            //    Stream dataStream = response.GetResponseStream();
-
-            //    StreamReader reader = new StreamReader(dataStream);
-            //    prospClientResultJosn = reader.ReadToEnd();
-            //    reader.Close();
-            //    dataStream.Close();
-            //}
-            //var clientColleection = jsonSerialization.DeserializeFromString<Result<List<Client>>>(prospClientResultJosn);
-
-            //if (clientColleection.Value != null)
-            //{
-            //    _dtClient = ListtoDataTable.ToDataTable(clientColleection.Value);
-            //    fillTreeviewData(_dtClient);                
-            //}
+          
         }
         private void fillTreeviewData(DataTable dtProspClients)
         {

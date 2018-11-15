@@ -34,3 +34,4 @@ D:\Dhaval.Shukla\My Documents\Visual Studio 2015\Projects\FinancialPlannerServer
 D:\Dhaval.Shukla\My Documents\Visual Studio 2015\Projects\FinancialPlannerServer\FinancialPlannerClient\bin\Debug\PDFLibNet.dll
 D:\Dhaval.Shukla\My Documents\Visual Studio 2015\Projects\FinancialPlannerServer\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.Assumptions.resources
 D:\Dhaval.Shukla\My Documents\Visual Studio 2015\Projects\FinancialPlannerServer\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.Master.Others.resources
+D:\Dhaval.Shukla\My Documents\Visual Studio 2015\Projects\FinancialPlannerServer\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.AuditTrail.AuditTrail.resources

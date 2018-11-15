@@ -155,5 +155,19 @@ namespace FinancialPlannerClient
             Others other = new Others("CRM Groups");
             other.ShowDialog();
         }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void auditTrailToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AuditTrail.AuditTrail auditTrail = new AuditTrail.AuditTrail();
+            auditTrail.TopLevel = false;
+            this.pnlMain.Controls.Add(auditTrail);
+            auditTrail.Dock = DockStyle.Fill;
+            auditTrail.Show();
+        }
     }
 }

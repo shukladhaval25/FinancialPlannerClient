@@ -36,6 +36,8 @@ namespace FinancialPlannerClient.Master
                 
             }
             _otherItems.LoadData(dtGridOther);
+            if (dtGridOther.Columns.Count > 0 && this.Text != "Festivals Master")
+                dtGridOther.Columns[0].Width = 220;
         }
 
         private void setCRMGroupUI()
@@ -43,6 +45,7 @@ namespace FinancialPlannerClient.Master
             this.Text = "CRM Groups";
             lblReligion.Visible = false;
             txtReligion.Visible = false;
+            
         }
 
         private void setFestivalsUI()

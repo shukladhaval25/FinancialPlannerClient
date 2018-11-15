@@ -1669,7 +1669,7 @@ namespace FinancialPlannerClient.Clients
         {
             ClientPersonalInfo clientPersonalInfo = new ClientPersonalInfo();
             _personalInfo = clientPersonalInfo.Get(_client.ID);
-
+            this.Text = _personalInfo.Client.Name;
             if (_plannerId != 0)
                 fillupAssumptionInfo();
             else
