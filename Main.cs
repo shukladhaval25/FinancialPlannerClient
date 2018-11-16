@@ -169,5 +169,11 @@ namespace FinancialPlannerClient
             auditTrail.Dock = DockStyle.Fill;
             auditTrail.Show();
         }
+
+        private void areasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Others other = new Others("Areas");
+            other.ShowDialog();
+        }
     }
 }

@@ -753,7 +753,19 @@ namespace FinancialPlannerClient.Clients
         {
             ClientContactInfo clientContactInfo = new ClientContactInfo();
             var contactInfo = clientContactInfo.Get(_client.ID);
-            fillupContactInfo(contactInfo);
+            fillupClientAreaList();
+            fillupContactInfo(contactInfo);            
+        }
+
+        private void fillupClientAreaList()
+        {
+            cmbArea.Items.Clear();
+            AreaInfo areaInfo = new AreaInfo();
+            var areas = areaInfo.GetAll();
+            foreach (Area area in areas)
+            {
+                cmbArea.Items.Add(area.Name);
+            }
         }
 
         private void fillupContactInfo(ClientContact contactInfo)
@@ -765,6 +777,7 @@ namespace FinancialPlannerClient.Clients
                 txtCity.Text = contactInfo.City;
                 txtState.Text = contactInfo.State;
                 txtPin.Text = contactInfo.Pin;
+                cmbArea.Text = contactInfo.Area;
                 txtClientEmailId.Text = contactInfo.Email;
                 txtSpouseEmailId.Text = contactInfo.SpouseEmail;
                 txtClientMobile.Text = contactInfo.Mobile;
@@ -933,6 +946,7 @@ namespace FinancialPlannerClient.Clients
             contactInfo.Street = txtStreet.Text;
             contactInfo.City = txtCity.Text;
             contactInfo.State = txtState.Text;
+            contactInfo.Area = cmbArea.Text;
             contactInfo.Pin = txtPin.Text;
             contactInfo.Email = txtClientEmailId.Text;
             contactInfo.SpouseEmail = txtSpouseEmailId.Text;

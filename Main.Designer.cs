@@ -50,6 +50,7 @@
             this.picClientMain = new System.Windows.Forms.PictureBox();
             this.imglist16x16 = new System.Windows.Forms.ImageList(this.components);
             this.imgList30x30 = new System.Windows.Forms.ImageList(this.components);
+            this.areasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuMain.SuspendLayout();
             this.pnlMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picClientMain)).BeginInit();
@@ -77,7 +78,8 @@
             // 
             this.mastersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.festivalsToolStripMenuItem,
-            this.cRMGroupsToolStripMenuItem});
+            this.cRMGroupsToolStripMenuItem,
+            this.areasToolStripMenuItem});
             this.mastersToolStripMenuItem.Image = global::FinancialPlannerClient.Properties.Resources.icons8_master_16;
             this.mastersToolStripMenuItem.Name = "mastersToolStripMenuItem";
             this.mastersToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
@@ -87,14 +89,14 @@
             // 
             this.festivalsToolStripMenuItem.Image = global::FinancialPlannerClient.Properties.Resources.icons8_city_hall_16;
             this.festivalsToolStripMenuItem.Name = "festivalsToolStripMenuItem";
-            this.festivalsToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.festivalsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.festivalsToolStripMenuItem.Text = "Festivals";
             this.festivalsToolStripMenuItem.Click += new System.EventHandler(this.festivalsToolStripMenuItem_Click);
             // 
             // cRMGroupsToolStripMenuItem
             // 
             this.cRMGroupsToolStripMenuItem.Name = "cRMGroupsToolStripMenuItem";
-            this.cRMGroupsToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.cRMGroupsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.cRMGroupsToolStripMenuItem.Text = "CRM Groups";
             this.cRMGroupsToolStripMenuItem.Click += new System.EventHandler(this.cRMGroupsToolStripMenuItem_Click);
             // 
@@ -236,6 +238,13 @@
             this.imgList30x30.TransparentColor = System.Drawing.Color.Transparent;
             this.imgList30x30.Images.SetKeyName(0, "icons8-select-users-30.png");
             // 
+            // areasToolStripMenuItem
+            // 
+            this.areasToolStripMenuItem.Name = "areasToolStripMenuItem";
+            this.areasToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.areasToolStripMenuItem.Text = "Areas";
+            this.areasToolStripMenuItem.Click += new System.EventHandler(this.areasToolStripMenuItem_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -280,5 +289,6 @@
         private System.Windows.Forms.ToolStripMenuItem mastersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem festivalsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cRMGroupsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem areasToolStripMenuItem;
     }
 }

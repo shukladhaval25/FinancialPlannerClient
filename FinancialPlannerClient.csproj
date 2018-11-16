@@ -116,6 +116,8 @@
     <Compile Include="CurrentStatus\ULIPInfo.cs" />
     <Compile Include="GoalCalculations\InvestmentInGoal.cs" />
     <Compile Include="GoalCalculations\InvestmentToGoalService.cs" />
+    <Compile Include="Master\AreaImplimenter.cs" />
+    <Compile Include="Master\AreaInfo.cs" />
     <Compile Include="Master\CRMGroupInfo.cs" />
     <Compile Include="Master\CRMGroupsImplimenter.cs" />
     <Compile Include="Master\FestivalsImplimenter.cs" />
