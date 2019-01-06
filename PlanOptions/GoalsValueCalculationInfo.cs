@@ -67,7 +67,11 @@ namespace FinancialPlannerClient.PlanOptions
             {
                 GoalPlanning goalPlanning = GetGoalPlanning(currentYear);
                 if (goalPlanning != null)
-                    currentPortFoliovalue = currentPortFoliovalue + goalPlanning.ActualFreshInvestment + ((currentPortFoliovalue * (double)goalPlanning.GrowthPercentage) / 100);
+                {
+                    currentPortFoliovalue = currentPortFoliovalue + goalPlanning.ActualFreshInvestment;
+                    currentPortFoliovalue = currentPortFoliovalue +
+                        ((currentPortFoliovalue * (double)goalPlanning.GrowthPercentage) / 100);
+                }
             }
             _currentPortfolioValue = currentPortFoliovalue;
             return _currentPortfolioValue;
@@ -103,9 +107,10 @@ namespace FinancialPlannerClient.PlanOptions
             {
                 GoalPlanning goalPlanning = new GoalPlanning(_goal);
                 goalPlanning.Year = calculationYear;
-                goalPlanning.GoalFutureValue = futureInvestmentRequireValueForGoal;
+                goalPlanning.GoalFutureValue = investmentAmount;
                 goalPlanning.ActualFreshInvestment = (investmentAmount * 100) / (100 + (double)GetGrowthPercentage(goalPlanning.Year));
                 goalPlanning.GoalId = _goal.Id;
+                goalPlanning.GrowthPercentage = GetGrowthPercentage(goalPlanning.Year);
                 _LIFO_GoalPlannings.Add(goalPlanning);
                 investmentAmount = goalPlanning.ActualFreshInvestment;
             }
@@ -161,7 +166,7 @@ namespace FinancialPlannerClient.PlanOptions
             }
             else   // Case: Investment Amount return will cross goal future value and over access fund get allocated.
             {
-                GoalPlanning lifoGoalPlanningObj = GetLIFOGoalPlanning(investmentYear);
+                GoalPlanning lifoGoalPlanningObj = GetLIFOGoalPlanning(investmentYear + 1);
                 double currentProfileValue = GetCurrentPortfolioValue();
 
                 double estimatedDiffAmount = (lifoGoalPlanningObj.ActualFreshInvestment  - currentProfileValue);
@@ -169,20 +174,30 @@ namespace FinancialPlannerClient.PlanOptions
                 estimatedDiffAmount = estimatedDiffAmount +
                     ((estimatedDiffAmount * (double)lifoGoalPlanningObj.GrowthPercentage) / 100);
 
-                //if (estimatedDiffAmount < investmentAmount)
-                //{
-                GoalPlanning goalPlanning = new GoalPlanning(_goal);
-                goalPlanning.GoalId = _goal.Id;
-                goalPlanning.Year = investmentYear;
-                goalPlanning.GoalFutureValue = _futureValueOfGoal;
-                goalPlanning.ActualFreshInvestment = estimatedDiffAmount;
-                goalPlanning.GrowthPercentage = GetGrowthPercentage(investmentYear);
-                AddGoalPlanning(goalPlanning);
-                return investmentAmount - goalPlanning.ActualFreshInvestment;
-                //}
-                //else
-                //{
-                //}
+                if (estimatedDiffAmount < investmentAmount)
+                {
+                    GoalPlanning goalPlanning = new GoalPlanning(_goal);
+                    goalPlanning.GoalId = _goal.Id;
+                    goalPlanning.Year = investmentYear;
+                    goalPlanning.GoalFutureValue = _futureValueOfGoal;
+                    goalPlanning.ActualFreshInvestment = (estimatedDiffAmount > 0) ? estimatedDiffAmount : 0;
+                    goalPlanning.GrowthPercentage = GetGrowthPercentage(investmentYear);
+
+                    AddGoalPlanning(goalPlanning);
+                    return investmentAmount - goalPlanning.ActualFreshInvestment;
+                }
+                else
+                {
+                    GoalPlanning goalPlanning = new GoalPlanning(_goal);
+                    goalPlanning.GoalId = _goal.Id;
+                    goalPlanning.Year = investmentYear;
+                    goalPlanning.GoalFutureValue = _futureValueOfGoal;
+                    goalPlanning.ActualFreshInvestment = investmentAmount;
+                    goalPlanning.GrowthPercentage = GetGrowthPercentage(investmentYear);
+
+                    AddGoalPlanning(goalPlanning);
+                    return investmentAmount - investmentAmount;
+                }
             }
 
         }
