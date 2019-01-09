@@ -860,6 +860,7 @@
             // dtAsOnDate
             // 
             this.dtAsOnDate.Checked = false;
+            this.dtAsOnDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtAsOnDate.Location = new System.Drawing.Point(639, 238);
             this.dtAsOnDate.Name = "dtAsOnDate";
             this.dtAsOnDate.ShowCheckBox = true;
@@ -1078,6 +1079,7 @@
             // dtLoanDate
             // 
             this.dtLoanDate.Checked = false;
+            this.dtLoanDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtLoanDate.Location = new System.Drawing.Point(121, 238);
             this.dtLoanDate.Name = "dtLoanDate";
             this.dtLoanDate.ShowCheckBox = true;
@@ -1199,6 +1201,7 @@
             // dtNextPremiumDate
             // 
             this.dtNextPremiumDate.Checked = false;
+            this.dtNextPremiumDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtNextPremiumDate.Location = new System.Drawing.Point(639, 156);
             this.dtNextPremiumDate.Name = "dtNextPremiumDate";
             this.dtNextPremiumDate.ShowCheckBox = true;
@@ -1395,6 +1398,7 @@
             // dtMaturityDate
             // 
             this.dtMaturityDate.Checked = false;
+            this.dtMaturityDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtMaturityDate.Location = new System.Drawing.Point(121, 75);
             this.dtMaturityDate.Name = "dtMaturityDate";
             this.dtMaturityDate.ShowCheckBox = true;
@@ -1414,6 +1418,7 @@
             // dtDateOfIssue
             // 
             this.dtDateOfIssue.Checked = false;
+            this.dtDateOfIssue.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtDateOfIssue.Location = new System.Drawing.Point(639, 48);
             this.dtDateOfIssue.Name = "dtDateOfIssue";
             this.dtDateOfIssue.ShowCheckBox = true;
@@ -3067,6 +3072,7 @@
             // 
             // dtBondsMaturityDate
             // 
+            this.dtBondsMaturityDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtBondsMaturityDate.Location = new System.Drawing.Point(137, 117);
             this.dtBondsMaturityDate.Name = "dtBondsMaturityDate";
             this.dtBondsMaturityDate.Size = new System.Drawing.Size(148, 22);
@@ -3600,6 +3606,7 @@
             // 
             // dtFDMaturityDate
             // 
+            this.dtFDMaturityDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtFDMaturityDate.Location = new System.Drawing.Point(279, 173);
             this.dtFDMaturityDate.Name = "dtFDMaturityDate";
             this.dtFDMaturityDate.Size = new System.Drawing.Size(178, 22);
@@ -3616,6 +3623,7 @@
             // 
             // dtFDDepositDate
             // 
+            this.dtFDDepositDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtFDDepositDate.Location = new System.Drawing.Point(137, 173);
             this.dtFDDepositDate.Name = "dtFDDepositDate";
             this.dtFDDepositDate.Size = new System.Drawing.Size(134, 22);
@@ -3932,6 +3940,7 @@
             // 
             // dtRDMaturityDate
             // 
+            this.dtRDMaturityDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtRDMaturityDate.Location = new System.Drawing.Point(743, 51);
             this.dtRDMaturityDate.Name = "dtRDMaturityDate";
             this.dtRDMaturityDate.Size = new System.Drawing.Size(178, 22);
@@ -3948,6 +3957,7 @@
             // 
             // dtRDDepositDate
             // 
+            this.dtRDDepositDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtRDDepositDate.Location = new System.Drawing.Point(601, 51);
             this.dtRDDepositDate.Name = "dtRDDepositDate";
             this.dtRDDepositDate.Size = new System.Drawing.Size(134, 22);
@@ -4540,6 +4550,7 @@
             // 
             // dtSSMaturityDate
             // 
+            this.dtSSMaturityDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtSSMaturityDate.Location = new System.Drawing.Point(767, 51);
             this.dtSSMaturityDate.Name = "dtSSMaturityDate";
             this.dtSSMaturityDate.Size = new System.Drawing.Size(154, 22);
@@ -4556,6 +4567,7 @@
             // 
             // dtSSOpeningDate
             // 
+            this.dtSSOpeningDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtSSOpeningDate.Location = new System.Drawing.Point(601, 51);
             this.dtSSOpeningDate.Name = "dtSSOpeningDate";
             this.dtSSOpeningDate.Size = new System.Drawing.Size(154, 22);
@@ -4797,6 +4809,7 @@
             // 
             // dtSCSSMaturityDate
             // 
+            this.dtSCSSMaturityDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtSCSSMaturityDate.Location = new System.Drawing.Point(767, 51);
             this.dtSCSSMaturityDate.Name = "dtSCSSMaturityDate";
             this.dtSCSSMaturityDate.Size = new System.Drawing.Size(154, 22);
@@ -4813,6 +4826,7 @@
             // 
             // dtSCSSOpeningDate
             // 
+            this.dtSCSSOpeningDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtSCSSOpeningDate.Location = new System.Drawing.Point(601, 51);
             this.dtSCSSOpeningDate.Name = "dtSCSSOpeningDate";
             this.dtSCSSOpeningDate.Size = new System.Drawing.Size(154, 22);
@@ -5112,6 +5126,7 @@
             // 
             // dtNSCMaturityDate
             // 
+            this.dtNSCMaturityDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtNSCMaturityDate.Location = new System.Drawing.Point(558, 88);
             this.dtNSCMaturityDate.Name = "dtNSCMaturityDate";
             this.dtNSCMaturityDate.Size = new System.Drawing.Size(249, 22);
