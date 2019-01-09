@@ -159,8 +159,8 @@ namespace FinancialPlannerClient.CashFlowManager
                     if (calculationYear >= goal.LoanForGoal.StratYear &&
                         calculationYear < goal.LoanForGoal.EndYear)
                     {
-                        dr[string.Format("(Loan EMI - {0})", goal.Name)] = goal.LoanForGoal.EMI;
-                        totalLoanEmi = totalLoanEmi + goal.LoanForGoal.EMI;
+                        dr[string.Format("(Loan EMI - {0})", goal.Name)] = (goal.LoanForGoal.EMI * 12);
+                        totalLoanEmi = totalLoanEmi + (goal.LoanForGoal.EMI * 12);
                     }
                 }
              
@@ -272,7 +272,7 @@ namespace FinancialPlannerClient.CashFlowManager
             {
                 double expAmt = double.Parse(_dtCashFlow.Rows[years - 1][exp.Item].ToString());
                 double expWithInflaction =  expAmt + ((expAmt * _inflactionRatePercentage)/100);
-                dr[exp.Item] = expWithInflaction;
+                dr[exp.Item] = (exp.OccuranceType == ExpenseType.Monthly) ? (expWithInflaction * 12) :  expWithInflaction;
                 totalExpenses = totalExpenses + expWithInflaction;
             }
             dr["Total Annual Expenses"] = totalExpenses;

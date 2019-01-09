@@ -1223,7 +1223,7 @@ namespace FinancialPlannerClient.CurrentStatus
 
         private void txtNav_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+            e.Handled = !char.IsControl(e.KeyChar);
         }
 
         private void txtNav_Leave(object sender, EventArgs e)

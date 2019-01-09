@@ -91,7 +91,7 @@ namespace FinancialPlannerClient.RiskProfile
             dtGridRiskProfileDetails.Columns[0].Visible = false;
             dtGridRiskProfileDetails.Columns[1].Visible = false;
             dtGridRiskProfileDetails.Columns[2].ReadOnly = true;
-            dtGridRiskProfileDetails.Columns[9].ReadOnly = true;
+            dtGridRiskProfileDetails.Columns[9].ReadOnly = false;
             dtGridRiskProfileDetails.Columns[2].HeaderText = "Reaming Year";
             dtGridRiskProfileDetails.Columns[3].HeaderText = "Foreign Investment (%)";
             dtGridRiskProfileDetails.Columns[4].HeaderText = "Equity Investment (%)";
@@ -259,6 +259,7 @@ namespace FinancialPlannerClient.RiskProfile
                     if (e.ColumnIndex != 0 && e.ColumnIndex != 1 & e.ColumnIndex != 2)
                     {
                         decimal averageReturn = getAverageReturn(e.RowIndex);
+                        dtGridRiskProfileDetails.Rows[e.RowIndex].Cells[9].ReadOnly = false;
                         dtGridRiskProfileDetails.Rows[e.RowIndex].Cells[9].Value = averageReturn;
                     }
                 }

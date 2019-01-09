@@ -701,7 +701,8 @@ namespace FinancialPlannerClient.PlanOptions
                     _dtGoalCal = _goalCalculationInfo.GetGoalCalculation();
                     dtGridGoalCal.DataSource = _dtGoalCal;
                     setGoalCalGrid();
-                    progGoalComplition.Value = getGoalComplitionPercentage();
+                    int goalComplitionPercentage = getGoalComplitionPercentage();
+                    progGoalComplition.Value = (goalComplitionPercentage > 100) ? 100 : goalComplitionPercentage;
                     lblGoalComplition.Text = progGoalComplition.Value.ToString() + "%";
                 }
             }

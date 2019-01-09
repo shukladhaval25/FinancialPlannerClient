@@ -77,9 +77,6 @@ namespace FinancialPlannerClient.PlanOptions
                 _actualFreshInvestment = value;
             }
         }
-
-
-
         public decimal GrowthPercentage
         {
             get

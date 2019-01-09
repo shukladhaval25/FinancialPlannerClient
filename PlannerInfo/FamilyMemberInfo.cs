@@ -79,7 +79,8 @@ namespace FinancialPlannerClient.PlannerInfo
             ClientPersonalInfo clientPersonalInfo = new ClientPersonalInfo();
             PersonalInformation personalInfo = clientPersonalInfo.Get(clientId);
             comboboxObj.Items.Add(personalInfo.Client.Name);
-            comboboxObj.Items.Add(personalInfo.Spouse.Name);
+            if (personalInfo.Spouse.Name != null)
+                comboboxObj.Items.Add(personalInfo.Spouse.Name);
         }
         public bool Add(FamilyMember familyMember)
         {

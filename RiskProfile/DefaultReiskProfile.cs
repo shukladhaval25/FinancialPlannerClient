@@ -183,6 +183,7 @@ namespace FinancialPlannerClient.RiskProfile
                 ("((ForeingInvestmentRatio * ForeingInvestementReaturn) / 100) + " +
                   "((EquityInvestementRatio * EquityInvestementReturn) / 100)  + " +
                   "((DebtInvestementRatio * DebtInvestementReturn) / 100)"));
+            dcAvgReturn.ReadOnly = false;
             _dtRiskProfileReturn.Columns.Add(dcAvgReturn);
 
         }

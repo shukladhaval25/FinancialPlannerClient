@@ -797,7 +797,15 @@ namespace FinancialPlannerClient.Clients
         private void fillupPersonalDetails()
         {           
             fillClientPersonalDetails(_personalInfo.Client);
-            fillSpousePersonalDetails(_personalInfo.Spouse);
+            if (_personalInfo.Client.IsMarried)
+                fillSpousePersonalDetails(_personalInfo.Spouse);
+            else
+                hideSpouseDetails();
+        }
+
+        private void hideSpouseDetails()
+        {
+            tableLayoutPanel2.ColumnStyles.RemoveAt(2);
         }
 
         private void fillSpousePersonalDetails(ClientSpouse spouse)
@@ -1077,6 +1085,11 @@ namespace FinancialPlannerClient.Clients
                 int.Parse(txtOtherShare.Text)) > 100)
             {
                 MessageBox.Show("Asset sharing ration must not be more then 100%.", "Sharing Ration", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
+            else if (string.IsNullOrEmpty(txtNonFinancialGrowthPercentage.Text) )
+            {
+                MessageBox.Show("Please enter growth percentage value.", "Growth Percentage", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return false;
             }
             return true;
