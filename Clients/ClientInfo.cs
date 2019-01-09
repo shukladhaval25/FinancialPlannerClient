@@ -805,7 +805,13 @@ namespace FinancialPlannerClient.Clients
 
         private void hideSpouseDetails()
         {
-            tableLayoutPanel2.ColumnStyles.RemoveAt(2);
+            txtSpouseFatherName.Visible = false;
+            txtSpouseMotherName.Visible = false;
+            txtSpousePAN.Visible = false;
+            txtSpouseAadhar.Visible = false;
+            txtSpousePlaceOfBirth.Visible = false;
+            txtSpouseOccupation.Visible = false;
+            rdoSpouseGenderMale.Visible = false;
         }
 
         private void fillSpousePersonalDetails(ClientSpouse spouse)
