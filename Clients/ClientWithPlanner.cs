@@ -340,8 +340,21 @@ namespace FinancialPlannerClient.Clients
             {
                 cmbPlan.Tag = dr.Field<string>("ID");
                 lblPlanStartDateVal.Text = (dr["StartDate"]).ToString();
-                lblPlanEndDateValue.Text = (dr["EndDate"]).ToString();
+                lblPlanEndDateValue.Text = (dr["EndDate"]).ToString();              
+                cmbCalStartFrom.Text = System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(int.Parse(dr["PlannerStartMonth"].ToString()));
+                
             }
+        }
+
+        private void cmbCalStartFrom_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbCalStartFrom.SelectedIndex >= 0)
+            {
+                int endMonthAt = new DateTime(2000,cmbCalStartFrom.SelectedIndex + 1,1).AddMonths(-1).Month;
+                lblCalEndAt.Text = System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(endMonthAt);
+            }
+            else
+                lblCalEndAt.Text = "";
         }
     }
 }

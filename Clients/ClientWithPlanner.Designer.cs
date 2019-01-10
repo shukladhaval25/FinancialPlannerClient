@@ -70,6 +70,10 @@
             this.dtPlanStartDate = new System.Windows.Forms.DateTimePicker();
             this.btnCancelPlan = new System.Windows.Forms.Button();
             this.btnSavePlan = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cmbCalStartFrom = new System.Windows.Forms.ComboBox();
+            this.lblCalEndAt = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.grpClient.SuspendLayout();
             this.grpMaritalStatus.SuspendLayout();
             this.grpPlanner.SuspendLayout();
@@ -399,6 +403,10 @@
             // 
             this.grpPlanner.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.grpPlanner.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.grpPlanner.Controls.Add(this.lblCalEndAt);
+            this.grpPlanner.Controls.Add(this.label8);
+            this.grpPlanner.Controls.Add(this.cmbCalStartFrom);
+            this.grpPlanner.Controls.Add(this.label6);
             this.grpPlanner.Controls.Add(this.lblPlanEndDateValue);
             this.grpPlanner.Controls.Add(this.label5);
             this.grpPlanner.Controls.Add(this.lblPlanStartDateVal);
@@ -413,7 +421,7 @@
             this.grpPlanner.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpPlanner.Location = new System.Drawing.Point(330, 273);
             this.grpPlanner.Name = "grpPlanner";
-            this.grpPlanner.Size = new System.Drawing.Size(417, 186);
+            this.grpPlanner.Size = new System.Drawing.Size(417, 265);
             this.grpPlanner.TabIndex = 1;
             this.grpPlanner.TabStop = false;
             this.grpPlanner.Text = "Plan Detail";
@@ -459,7 +467,7 @@
             // 
             // btnViewEditPlan
             // 
-            this.btnViewEditPlan.Location = new System.Drawing.Point(277, 152);
+            this.btnViewEditPlan.Location = new System.Drawing.Point(277, 220);
             this.btnViewEditPlan.Name = "btnViewEditPlan";
             this.btnViewEditPlan.Size = new System.Drawing.Size(123, 23);
             this.btnViewEditPlan.TabIndex = 56;
@@ -469,7 +477,7 @@
             // 
             // btnCreateNewPlan
             // 
-            this.btnCreateNewPlan.Location = new System.Drawing.Point(147, 152);
+            this.btnCreateNewPlan.Location = new System.Drawing.Point(147, 220);
             this.btnCreateNewPlan.Name = "btnCreateNewPlan";
             this.btnCreateNewPlan.Size = new System.Drawing.Size(124, 23);
             this.btnCreateNewPlan.TabIndex = 55;
@@ -508,7 +516,7 @@
             // 
             // btnCancelPlan
             // 
-            this.btnCancelPlan.Location = new System.Drawing.Point(277, 152);
+            this.btnCancelPlan.Location = new System.Drawing.Point(277, 220);
             this.btnCancelPlan.Name = "btnCancelPlan";
             this.btnCancelPlan.Size = new System.Drawing.Size(123, 23);
             this.btnCancelPlan.TabIndex = 63;
@@ -518,13 +526,65 @@
             // 
             // btnSavePlan
             // 
-            this.btnSavePlan.Location = new System.Drawing.Point(147, 151);
+            this.btnSavePlan.Location = new System.Drawing.Point(147, 219);
             this.btnSavePlan.Name = "btnSavePlan";
             this.btnSavePlan.Size = new System.Drawing.Size(124, 23);
             this.btnSavePlan.TabIndex = 62;
             this.btnSavePlan.Text = "Save Plan";
             this.btnSavePlan.UseVisualStyleBackColor = true;
             this.btnSavePlan.Click += new System.EventHandler(this.btnSavePlan_Click);
+            // 
+            // label6
+            // 
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(24, 151);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(102, 23);
+            this.label6.TabIndex = 64;
+            this.label6.Text = "Cal. Start From";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // cmbCalStartFrom
+            // 
+            this.cmbCalStartFrom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCalStartFrom.FormattingEnabled = true;
+            this.cmbCalStartFrom.Items.AddRange(new object[] {
+            "January",
+            "Febuary",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December"});
+            this.cmbCalStartFrom.Location = new System.Drawing.Point(138, 151);
+            this.cmbCalStartFrom.Name = "cmbCalStartFrom";
+            this.cmbCalStartFrom.Size = new System.Drawing.Size(262, 23);
+            this.cmbCalStartFrom.TabIndex = 65;
+            this.cmbCalStartFrom.SelectedIndexChanged += new System.EventHandler(this.cmbCalStartFrom_SelectedIndexChanged);
+            // 
+            // lblCalEndAt
+            // 
+            this.lblCalEndAt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCalEndAt.Location = new System.Drawing.Point(135, 186);
+            this.lblCalEndAt.Name = "lblCalEndAt";
+            this.lblCalEndAt.Size = new System.Drawing.Size(265, 20);
+            this.lblCalEndAt.TabIndex = 67;
+            this.lblCalEndAt.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label8
+            // 
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(24, 186);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(102, 20);
+            this.label8.TabIndex = 66;
+            this.label8.Text = "Cal. End At";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // ClientWithPlanner
             // 
@@ -588,5 +648,9 @@
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.ImageList imgCollection;
+        private System.Windows.Forms.Label lblCalEndAt;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ComboBox cmbCalStartFrom;
+        private System.Windows.Forms.Label label6;
     }
 }
