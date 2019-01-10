@@ -166,7 +166,10 @@ namespace FinancialPlannerClient.Clients
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            if (MessageBox.Show("Are you sure, you want to delete this record?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
 
+            }
         }
     }
 }

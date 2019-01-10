@@ -132,6 +132,10 @@ namespace FinancialPlannerClient.PlanOptions
                 var val =  _dtPlan.Select("NAME ='" + cmbPlan.Text + "'");
                 _planeId = int.Parse(val[0][0].ToString());
                 cmbPlan.Tag = _planeId;
+                string startMonth = System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(int.Parse(val[0]["PlannerStartMonth"].ToString()));
+                string endMonth = System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(
+                    new DateTime(2000,int.Parse(val[0]["PlannerStartMonth"].ToString()),1).AddMonths(-1).Month);
+                lblPeriodValue.Text = string.Format("{0} - {1}", startMonth, endMonth);
                 fillOptionData();
                 _goals = new GoalsInfo().GetAll(_planeId);
             }

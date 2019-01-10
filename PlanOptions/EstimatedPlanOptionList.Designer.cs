@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EstimatedPlanOptionList));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblRiskProfileVal = new System.Windows.Forms.Label();
             this.grpActionControls = new System.Windows.Forms.GroupBox();
@@ -114,6 +114,7 @@
             this.label29 = new System.Windows.Forms.Label();
             this.dtGridCurrentStatusGoals = new System.Windows.Forms.DataGridView();
             this.Goals = new System.Windows.Forms.TabPage();
+            this.label34 = new System.Windows.Forms.Label();
             this.lblGoalComplition = new System.Windows.Forms.Label();
             this.progGoalComplition = new System.Windows.Forms.ProgressBar();
             this.txtPorfolioValue = new System.Windows.Forms.TextBox();
@@ -124,7 +125,8 @@
             this.dtGridGoalValue = new System.Windows.Forms.DataGridView();
             this.cmbGoals = new System.Windows.Forms.ComboBox();
             this.label30 = new System.Windows.Forms.Label();
-            this.label34 = new System.Windows.Forms.Label();
+            this.lblPlannerPeriod = new System.Windows.Forms.Label();
+            this.lblPeriodValue = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.grpActionControls.SuspendLayout();
             this.tabEstimatedPlan.SuspendLayout();
@@ -145,6 +147,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lblPeriodValue);
+            this.groupBox1.Controls.Add(this.lblPlannerPeriod);
             this.groupBox1.Controls.Add(this.lblRiskProfileVal);
             this.groupBox1.Controls.Add(this.grpActionControls);
             this.groupBox1.Controls.Add(this.cmbPlanOption);
@@ -155,7 +159,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1044, 58);
+            this.groupBox1.Size = new System.Drawing.Size(1055, 58);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Client With Planner Info";
@@ -164,7 +168,7 @@
             // 
             this.lblRiskProfileVal.AutoSize = true;
             this.lblRiskProfileVal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRiskProfileVal.Location = new System.Drawing.Point(824, 28);
+            this.lblRiskProfileVal.Location = new System.Drawing.Point(856, 29);
             this.lblRiskProfileVal.Name = "lblRiskProfileVal";
             this.lblRiskProfileVal.Size = new System.Drawing.Size(0, 16);
             this.lblRiskProfileVal.TabIndex = 8;
@@ -175,7 +179,7 @@
             this.grpActionControls.Controls.Add(this.btnDeleteOption);
             this.grpActionControls.Controls.Add(this.btnAddPlanOption);
             this.grpActionControls.Controls.Add(this.btnEditPlanOption);
-            this.grpActionControls.Location = new System.Drawing.Point(927, 14);
+            this.grpActionControls.Location = new System.Drawing.Point(937, 14);
             this.grpActionControls.Name = "grpActionControls";
             this.grpActionControls.Size = new System.Drawing.Size(111, 38);
             this.grpActionControls.TabIndex = 7;
@@ -232,16 +236,16 @@
             // 
             this.cmbPlanOption.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPlanOption.FormattingEnabled = true;
-            this.cmbPlanOption.Location = new System.Drawing.Point(644, 27);
+            this.cmbPlanOption.Location = new System.Drawing.Point(718, 27);
             this.cmbPlanOption.Name = "cmbPlanOption";
-            this.cmbPlanOption.Size = new System.Drawing.Size(163, 21);
+            this.cmbPlanOption.Size = new System.Drawing.Size(132, 21);
             this.cmbPlanOption.TabIndex = 5;
             this.cmbPlanOption.SelectedIndexChanged += new System.EventHandler(this.cmbPlanOption_SelectedIndexChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(573, 32);
+            this.label2.Location = new System.Drawing.Point(647, 32);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(65, 13);
             this.label2.TabIndex = 4;
@@ -251,16 +255,16 @@
             // 
             this.cmbPlan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPlan.FormattingEnabled = true;
-            this.cmbPlan.Location = new System.Drawing.Point(334, 27);
+            this.cmbPlan.Location = new System.Drawing.Point(281, 28);
             this.cmbPlan.Name = "cmbPlan";
-            this.cmbPlan.Size = new System.Drawing.Size(207, 21);
+            this.cmbPlan.Size = new System.Drawing.Size(172, 21);
             this.cmbPlan.TabIndex = 3;
             this.cmbPlan.SelectedIndexChanged += new System.EventHandler(this.cmbPlan_SelectedIndexChanged);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(276, 30);
+            this.label3.Location = new System.Drawing.Point(223, 31);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(52, 13);
             this.label3.TabIndex = 2;
@@ -299,7 +303,7 @@
             this.tabEstimatedPlan.Location = new System.Drawing.Point(12, 77);
             this.tabEstimatedPlan.Name = "tabEstimatedPlan";
             this.tabEstimatedPlan.SelectedIndex = 0;
-            this.tabEstimatedPlan.Size = new System.Drawing.Size(1044, 572);
+            this.tabEstimatedPlan.Size = new System.Drawing.Size(1055, 572);
             this.tabEstimatedPlan.TabIndex = 2;
             this.tabEstimatedPlan.SelectedIndexChanged += new System.EventHandler(this.tabEstimatedPlan_SelectedIndexChanged);
             // 
@@ -1058,14 +1062,14 @@
             this.dtGridCurrentStatusToGoal.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtGridCurrentStatusToGoal.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtGridCurrentStatusToGoal.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dtGridCurrentStatusToGoal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGridCurrentStatusToGoal.Location = new System.Drawing.Point(6, 19);
             this.dtGridCurrentStatusToGoal.MultiSelect = false;
@@ -1095,14 +1099,14 @@
             this.dtGridCurrentStatusGoals.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtGridCurrentStatusGoals.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtGridCurrentStatusGoals.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.dtGridCurrentStatusGoals.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGridCurrentStatusGoals.Location = new System.Drawing.Point(10, 46);
             this.dtGridCurrentStatusGoals.MultiSelect = false;
@@ -1128,10 +1132,20 @@
             this.Goals.Location = new System.Drawing.Point(4, 22);
             this.Goals.Name = "Goals";
             this.Goals.Padding = new System.Windows.Forms.Padding(3);
-            this.Goals.Size = new System.Drawing.Size(1036, 546);
+            this.Goals.Size = new System.Drawing.Size(1047, 546);
             this.Goals.TabIndex = 3;
             this.Goals.Text = "Goals";
             this.Goals.UseVisualStyleBackColor = true;
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label34.Location = new System.Drawing.Point(778, 18);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(85, 16);
+            this.label34.TabIndex = 10;
+            this.label34.Text = "Complition:";
             // 
             // lblGoalComplition
             // 
@@ -1200,7 +1214,7 @@
             this.dtGridGoalCal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGridGoalCal.Location = new System.Drawing.Point(11, 150);
             this.dtGridGoalCal.Name = "dtGridGoalCal";
-            this.dtGridGoalCal.Size = new System.Drawing.Size(1012, 390);
+            this.dtGridGoalCal.Size = new System.Drawing.Size(1023, 390);
             this.dtGridGoalCal.TabIndex = 3;
             this.dtGridGoalCal.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtGridGoalCal_CellEndEdit);
             // 
@@ -1211,7 +1225,7 @@
             this.dtGridGoalValue.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGridGoalValue.Location = new System.Drawing.Point(11, 45);
             this.dtGridGoalValue.Name = "dtGridGoalValue";
-            this.dtGridGoalValue.Size = new System.Drawing.Size(1012, 99);
+            this.dtGridGoalValue.Size = new System.Drawing.Size(1023, 99);
             this.dtGridGoalValue.TabIndex = 2;
             // 
             // cmbGoals
@@ -1219,7 +1233,7 @@
             this.cmbGoals.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbGoals.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbGoals.FormattingEnabled = true;
-            this.cmbGoals.Location = new System.Drawing.Point(107, 15);
+            this.cmbGoals.Location = new System.Drawing.Point(59, 15);
             this.cmbGoals.Name = "cmbGoals";
             this.cmbGoals.Size = new System.Drawing.Size(229, 24);
             this.cmbGoals.Sorted = true;
@@ -1232,25 +1246,34 @@
             this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label30.Location = new System.Drawing.Point(8, 18);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(93, 16);
+            this.label30.Size = new System.Drawing.Size(45, 16);
             this.label30.TabIndex = 0;
-            this.label30.Text = "Select Goal:";
+            this.label30.Text = "Goal:";
             // 
-            // label34
+            // lblPlannerPeriod
             // 
-            this.label34.AutoSize = true;
-            this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label34.Location = new System.Drawing.Point(778, 18);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(85, 16);
-            this.label34.TabIndex = 10;
-            this.label34.Text = "Complition:";
+            this.lblPlannerPeriod.AutoSize = true;
+            this.lblPlannerPeriod.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.lblPlannerPeriod.Location = new System.Drawing.Point(466, 29);
+            this.lblPlannerPeriod.Name = "lblPlannerPeriod";
+            this.lblPlannerPeriod.Size = new System.Drawing.Size(40, 13);
+            this.lblPlannerPeriod.TabIndex = 9;
+            this.lblPlannerPeriod.Text = "Period:";
+            // 
+            // lblPeriodValue
+            // 
+            this.lblPeriodValue.AutoSize = true;
+            this.lblPeriodValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.lblPeriodValue.Location = new System.Drawing.Point(512, 30);
+            this.lblPeriodValue.Name = "lblPeriodValue";
+            this.lblPeriodValue.Size = new System.Drawing.Size(0, 13);
+            this.lblPeriodValue.TabIndex = 10;
             // 
             // EstimatedPlanOptionList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1062, 651);
+            this.ClientSize = new System.Drawing.Size(1073, 651);
             this.Controls.Add(this.tabEstimatedPlan);
             this.Controls.Add(this.groupBox1);
             this.Name = "EstimatedPlanOptionList";
@@ -1376,5 +1399,7 @@
         private System.Windows.Forms.ProgressBar progGoalComplition;
         private System.Windows.Forms.Label lblGoalComplition;
         private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.Label lblPeriodValue;
+        private System.Windows.Forms.Label lblPlannerPeriod;
     }
 }
