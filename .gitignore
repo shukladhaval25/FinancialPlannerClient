@@ -22,3 +22,4 @@ $RECYCLE.BIN/
 # Operating System Files
 # =========================
 *.dll
+bin/Debug/FinancialPlanner.Common.dll
