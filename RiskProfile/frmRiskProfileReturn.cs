@@ -224,6 +224,10 @@ namespace FinancialPlannerClient.RiskProfile
             rpr.UpdatedByUserName = Program.CurrentUser.UserName;
             rpr.MachineName = System.Environment.MachineName;
             rpr.RiskProfileReturn = new List<RiskProfiledReturn>();
+
+            foreach (DataColumn col in _dtRiskProfileReturn.Columns)
+                col.ReadOnly = false;
+
             if (_dtRiskProfileReturn != null)
             {
                 foreach (DataRow dr in _dtRiskProfileReturn.Rows)
@@ -287,6 +291,8 @@ namespace FinancialPlannerClient.RiskProfile
             if (isValidData())
             {
                 _dtRiskProfileReturn = _defaultRiskProfile.GetDefaultRiskProfileReturn(_riskProfiledReturnMaster);
+                foreach (DataColumn col in _dtRiskProfileReturn.Columns)
+                    col.ReadOnly = false;
                 dtGridRiskProfileDetails.DataSource = _dtRiskProfileReturn;
                 setRiskProfileDetailsGrid();
             }

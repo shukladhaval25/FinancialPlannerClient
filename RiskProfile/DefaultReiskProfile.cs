@@ -178,12 +178,12 @@ namespace FinancialPlannerClient.RiskProfile
 
             DataColumn dcDebtInvestmentReturnRatio = new DataColumn("DebtInvestementReturn",typeof(System.Decimal));
             _dtRiskProfileReturn.Columns.Add(dcDebtInvestmentReturnRatio);
-            
-            DataColumn dcAvgReturn = new DataColumn("AverageInvestementReturn",typeof(System.Decimal),
-                ("((ForeingInvestmentRatio * ForeingInvestementReaturn) / 100) + " +
-                  "((EquityInvestementRatio * EquityInvestementReturn) / 100)  + " +
-                  "((DebtInvestementRatio * DebtInvestementReturn) / 100)"));
-            dcAvgReturn.ReadOnly = false;
+
+            DataColumn dcAvgReturn = new DataColumn("AverageInvestementReturn",typeof(System.Decimal));
+                //,
+                //("((ForeingInvestmentRatio * ForeingInvestementReaturn) / 100) + " +
+                //  "((EquityInvestementRatio * EquityInvestementReturn) / 100)  + " +
+                //  "((DebtInvestementRatio * DebtInvestementReturn) / 100)"));
             _dtRiskProfileReturn.Columns.Add(dcAvgReturn);
 
         }
