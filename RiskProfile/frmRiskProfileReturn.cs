@@ -225,10 +225,7 @@ namespace FinancialPlannerClient.RiskProfile
             rpr.MachineName = System.Environment.MachineName;
             rpr.RiskProfileReturn = new List<RiskProfiledReturn>();
 
-            foreach (DataColumn col in _dtRiskProfileReturn.Columns)
-                col.ReadOnly = false;
-
-            if (_dtRiskProfileReturn != null)
+             if (_dtRiskProfileReturn != null)
             {
                 foreach (DataRow dr in _dtRiskProfileReturn.Rows)
                 {
@@ -243,6 +240,7 @@ namespace FinancialPlannerClient.RiskProfile
                     riskProfile.ForeingInvestementReaturn = decimal.Parse(dr["ForeingInvestementReaturn"].ToString());
                     riskProfile.EquityInvestementReturn = decimal.Parse(dr["EquityInvestementReturn"].ToString());
                     riskProfile.DebtInvestementReturn = decimal.Parse(dr["DebtInvestementReturn"].ToString());
+                    
                     rpr.RiskProfileReturn.Add(riskProfile);
                 }
             }
@@ -262,9 +260,21 @@ namespace FinancialPlannerClient.RiskProfile
                 {
                     if (e.ColumnIndex != 0 && e.ColumnIndex != 1 & e.ColumnIndex != 2)
                     {
-                        decimal averageReturn = getAverageReturn(e.RowIndex);
-                        dtGridRiskProfileDetails.Rows[e.RowIndex].Cells[9].ReadOnly = false;
+                        decimal averageReturn = getAverageReturn(e.RowIndex);                        
                         dtGridRiskProfileDetails.Rows[e.RowIndex].Cells[9].Value = averageReturn;
+                        DataRow[] drs = _dtRiskProfileReturn.Select("YearRemaining = " + dtGridRiskProfileDetails.Rows[e.RowIndex].Cells[2].Value);
+
+                        drs[0]["ForeingInvestmentRatio"] = dtGridRiskProfileDetails.Rows[e.RowIndex].Cells["ForeingInvestmentRatio"].Value.ToString();
+                        drs[0]["EquityInvestementRatio"] = dtGridRiskProfileDetails.Rows[e.RowIndex].Cells["EquityInvestementRatio"].Value.ToString();
+                        drs[0]["DebtInvestementRatio"] = dtGridRiskProfileDetails.Rows[e.RowIndex].Cells["DebtInvestementRatio"].Value.ToString();
+
+                        drs[0]["ForeingInvestementReaturn"] = dtGridRiskProfileDetails.Rows[e.RowIndex].Cells["ForeingInvestementReaturn"].Value.ToString();
+                        drs[0]["EquityInvestementReturn"] = dtGridRiskProfileDetails.Rows[e.RowIndex].Cells["EquityInvestementReturn"].Value.ToString();
+                        drs[0]["DebtInvestementReturn"] = dtGridRiskProfileDetails.Rows[e.RowIndex].Cells["DebtInvestementReturn"].Value.ToString();
+
+                        drs[0]["AverageInvestementReturn"] = averageReturn;
+                        drs[0].AcceptChanges();
+                        //_dtRiskProfileReturn.Rows[0].AcceptChanges();
                     }
                 }
             }
@@ -291,8 +301,6 @@ namespace FinancialPlannerClient.RiskProfile
             if (isValidData())
             {
                 _dtRiskProfileReturn = _defaultRiskProfile.GetDefaultRiskProfileReturn(_riskProfiledReturnMaster);
-                foreach (DataColumn col in _dtRiskProfileReturn.Columns)
-                    col.ReadOnly = false;
                 dtGridRiskProfileDetails.DataSource = _dtRiskProfileReturn;
                 setRiskProfileDetailsGrid();
             }
