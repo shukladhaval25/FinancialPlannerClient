@@ -1,6 +1,6 @@
 ﻿namespace DXApplication1
 {
-    partial class Clientdashboard
+    partial class Form1
     {
         /// <summary>
         /// Required designer variable.

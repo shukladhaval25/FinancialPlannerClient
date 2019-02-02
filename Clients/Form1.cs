@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace DXApplication1
 {
-    public partial class Clientdashboard : DevExpress.XtraEditors.XtraForm
+    public partial class Form1 : DevExpress.XtraEditors.XtraForm
     {
-        public Clientdashboard()
+        public Form1()
         {
             InitializeComponent();
         }

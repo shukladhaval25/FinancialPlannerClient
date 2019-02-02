@@ -94,7 +94,13 @@ namespace FinancialPlannerClient.Clients
 
         private void EmployeeInfo_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
-            DashboardNavFrame.SelectedPageIndex = (int)NavigateTo.EmployeeInfo;
+            EmploymentDetails employmentDetails = new EmploymentDetails(this._client);
+            employmentDetails.TopLevel = false;
+            employmentDetails.Visible = true;
+            navigationPageEmployee.Name = employmentDetails.Name;
+            navigationPageEmployee.Controls.Add(employmentDetails);
+            showNavigationPage(employmentDetails.Name);
+            //DashboardNavFrame.SelectedPageIndex = (int)NavigateTo.EmployeeInfo;
         }
 
         private void btnViewClientInfo_Click(object sender, EventArgs e)

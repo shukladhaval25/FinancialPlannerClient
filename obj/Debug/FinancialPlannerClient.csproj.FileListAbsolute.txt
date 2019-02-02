@@ -279,7 +279,8 @@ C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\
 C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.Clients.ClientSearch.resources
 C:\Application Development\Financial Planner Project\FinancialPlannerClient\bin\Debug\DevExpress.BonusSkins.v16.2.dll
 C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.Clients.Clientdashboard.resources
-C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\Debug\DXApplication1.Clientdashboard.resources
 C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.Clients.ClientDetails.resources
 C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.Clients.Contact.resources
 C:\Application Development\Financial Planner Project\FinancialPlannerClient\bin\Debug\Newtonsoft.Json.dll
+C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.Clients.EmploymentDetails.resources
+C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\Debug\DXApplication1.Form1.resources

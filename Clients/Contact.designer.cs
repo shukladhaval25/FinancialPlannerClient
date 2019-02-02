@@ -121,7 +121,7 @@
             toolTipTitleItem1.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem1.Image")));
             toolTipTitleItem1.Text = "Cancel";
             toolTipItem1.LeftIndent = 6;
-            toolTipItem1.Text = "To close client information without saving any information click here.";
+            toolTipItem1.Text = "To close contact infromation without saving any data click here.";
             superToolTip1.Items.Add(toolTipTitleItem1);
             superToolTip1.Items.Add(toolTipItem1);
             this.btnCancelContact.SuperTip = superToolTip1;
@@ -141,7 +141,7 @@
             toolTipTitleItem2.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem2.Image")));
             toolTipTitleItem2.Text = "Save";
             toolTipItem2.LeftIndent = 6;
-            toolTipItem2.Text = "To save client infroamtion click here.";
+            toolTipItem2.Text = "To save client contact infroamtion click here.";
             superToolTip2.Items.Add(toolTipTitleItem2);
             superToolTip2.Items.Add(toolTipItem2);
             this.btnSaveContact.SuperTip = superToolTip2;
