@@ -2830,6 +2830,7 @@
             this.cmbSharesGoal.Name = "cmbSharesGoal";
             this.cmbSharesGoal.Size = new System.Drawing.Size(320, 24);
             this.cmbSharesGoal.TabIndex = 7;
+            this.cmbSharesGoal.SelectedIndexChanged += new System.EventHandler(this.cmbSharesGoal_SelectedIndexChanged);
             // 
             // label79
             // 

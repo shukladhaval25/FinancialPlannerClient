@@ -117,7 +117,8 @@ namespace FinancialPlannerClient.Clients
                     UpdatedOn =  DateTime.Parse( DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss")),
                     UpdatedBy = Program.CurrentUser.Id,
                     UpdatedByUserName = Program.CurrentUser.UserName,
-                    MachineName = System.Environment.MachineName
+                    MachineName = System.Environment.MachineName,
+                    PlannerStartMonth = cmbCalStartFrom.SelectedIndex + 1
                 };
 
                 if (cmbPlan.Tag.ToString() == "0" || cmbPlan.Tag.ToString() == "")

@@ -31,8 +31,9 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClientWithPrimaryDetails));
             this.grpClient = new System.Windows.Forms.GroupBox();
-            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnShowOtherDetails = new System.Windows.Forms.Button();
             this.imgCollection = new System.Windows.Forms.ImageList(this.components);
+            this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.grpMaritalStatus = new System.Windows.Forms.GroupBox();
             this.rdoMaritalStatusNo = new System.Windows.Forms.RadioButton();
@@ -58,7 +59,6 @@
             this.label27 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
-            this.btnShowOtherDetails = new System.Windows.Forms.Button();
             this.grpClient.SuspendLayout();
             this.grpMaritalStatus.SuspendLayout();
             this.SuspendLayout();
@@ -98,18 +98,19 @@
             this.grpClient.TabStop = false;
             this.grpClient.Text = "Client Info";
             // 
-            // btnCancel
+            // btnShowOtherDetails
             // 
-            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCancel.ImageKey = "icons8-cancel-16.png";
-            this.btnCancel.ImageList = this.imgCollection;
-            this.btnCancel.Location = new System.Drawing.Point(861, 211);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(86, 26);
-            this.btnCancel.TabIndex = 55;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnShowOtherDetails.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnShowOtherDetails.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnShowOtherDetails.ImageKey = "icons8-save-close-16.png";
+            this.btnShowOtherDetails.ImageList = this.imgCollection;
+            this.btnShowOtherDetails.Location = new System.Drawing.Point(62, 211);
+            this.btnShowOtherDetails.Name = "btnShowOtherDetails";
+            this.btnShowOtherDetails.Size = new System.Drawing.Size(178, 26);
+            this.btnShowOtherDetails.TabIndex = 56;
+            this.btnShowOtherDetails.Text = "Show Other Details";
+            this.btnShowOtherDetails.UseVisualStyleBackColor = true;
+            this.btnShowOtherDetails.Click += new System.EventHandler(this.btnShowOtherDetails_Click);
             // 
             // imgCollection
             // 
@@ -122,6 +123,19 @@
             this.imgCollection.Images.SetKeyName(4, "Edit.png");
             this.imgCollection.Images.SetKeyName(5, "icons8-cancel-16.png");
             this.imgCollection.Images.SetKeyName(6, "icons8-save-close-16.png");
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCancel.ImageKey = "icons8-cancel-16.png";
+            this.btnCancel.ImageList = this.imgCollection;
+            this.btnCancel.Location = new System.Drawing.Point(861, 211);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(86, 26);
+            this.btnCancel.TabIndex = 55;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
             // 
             // btnSave
             // 
@@ -206,6 +220,7 @@
             this.dtMarriageAnniversary.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dtMarriageAnniversary.Checked = false;
+            this.dtMarriageAnniversary.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtMarriageAnniversary.Location = new System.Drawing.Point(206, 161);
             this.dtMarriageAnniversary.Name = "dtMarriageAnniversary";
             this.dtMarriageAnniversary.ShowCheckBox = true;
@@ -226,6 +241,7 @@
             // 
             this.dtDOB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtDOB.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtDOB.Location = new System.Drawing.Point(206, 59);
             this.dtDOB.Name = "dtDOB";
             this.dtDOB.Size = new System.Drawing.Size(275, 21);
@@ -383,20 +399,6 @@
             this.label29.TabIndex = 41;
             this.label29.Text = "Mother\'s Name:";
             this.label29.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // btnShowOtherDetails
-            // 
-            this.btnShowOtherDetails.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnShowOtherDetails.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnShowOtherDetails.ImageKey = "icons8-save-close-16.png";
-            this.btnShowOtherDetails.ImageList = this.imgCollection;
-            this.btnShowOtherDetails.Location = new System.Drawing.Point(62, 211);
-            this.btnShowOtherDetails.Name = "btnShowOtherDetails";
-            this.btnShowOtherDetails.Size = new System.Drawing.Size(178, 26);
-            this.btnShowOtherDetails.TabIndex = 56;
-            this.btnShowOtherDetails.Text = "Show Other Details";
-            this.btnShowOtherDetails.UseVisualStyleBackColor = true;
-            this.btnShowOtherDetails.Click += new System.EventHandler(this.btnShowOtherDetails_Click);
             // 
             // ClientWithPrimaryDetails
             // 

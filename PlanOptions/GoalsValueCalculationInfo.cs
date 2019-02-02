@@ -184,7 +184,6 @@ namespace FinancialPlannerClient.PlanOptions
             }
 
             double profileValue = (currentProfileValue + investmentAmount);
-                //+ ((currentProfileValue + investmentAmount) * (double)GetGrowthPercentage(investmentYear)) / 100;
 
             if (profileValue < lifoGoalPlanningObj.ActualFreshInvestment)
             {                               

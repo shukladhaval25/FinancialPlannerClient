@@ -16,6 +16,7 @@ namespace FinancialPlannerClient.PlannerInfo
         const string GET_SPOUSE_PERSONAL_API = "ClientSpouse/GetById?id={0}";
         const string UPDATE_CLIENTPERSONAL_INFO_API ="Client/Update";
         const string UPDATE_CLIENTSPOUSE_PERSONAL_INFO_API = "ClientSpouse/Update";
+        private const string ADD_CLIENT_API = "Client/Add";
         private PersonalInformation _personalInfo;
 
         public PersonalInformation Get(int clientId)
@@ -72,7 +73,8 @@ namespace FinancialPlannerClient.PlannerInfo
             try
             {
                 FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
-                string apiurl = Program.WebServiceUrl +"/"+ UPDATE_CLIENTPERSONAL_INFO_API;
+                string apiurl =   (client.ID == 0) ? Program.WebServiceUrl + "/" + ADD_CLIENT_API :
+                    Program.WebServiceUrl +"/"+ UPDATE_CLIENTPERSONAL_INFO_API;
 
                 RestAPIExecutor restApiExecutor = new RestAPIExecutor();
 

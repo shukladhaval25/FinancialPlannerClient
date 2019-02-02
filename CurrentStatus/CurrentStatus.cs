@@ -1223,7 +1223,19 @@ namespace FinancialPlannerClient.CurrentStatus
 
         private void txtNav_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = !char.IsControl(e.KeyChar);
+            // allows 0-9, backspace, and decimal
+            if (((e.KeyChar < 48 || e.KeyChar > 57) && e.KeyChar != 8 && e.KeyChar != 46))
+            {
+                e.Handled = true;
+                return;
+            }
+
+            // checks to make sure only 1 decimal is allowed
+            if (e.KeyChar == 46)
+            {
+                if ((sender as TextBox).Text.IndexOf(e.KeyChar) != -1)
+                    e.Handled = true;
+            }
         }
 
         private void txtNav_Leave(object sender, EventArgs e)
@@ -1738,6 +1750,14 @@ namespace FinancialPlannerClient.CurrentStatus
         private void txtSharesFaceValue_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void cmbSharesGoal_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbSharesGoal.Text != "")
+                cmbSharesGoal.Tag = _goals.FirstOrDefault(i => i.Name == cmbSharesGoal.Text).Id;
+            else
+                cmbSharesGoal.Tag = "0";
         }
 
         #endregion
@@ -2698,6 +2718,6 @@ namespace FinancialPlannerClient.CurrentStatus
                 cmbBondsGoal.Tag = _goals.FirstOrDefault(i => i.Name == cmbBondsGoal.Text).Id;
             else
                 cmbBondsGoal.Tag = "0";
-        }      
+        }
     }
 }

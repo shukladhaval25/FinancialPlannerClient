@@ -24,7 +24,7 @@ namespace FinancialPlannerClient
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             _webServiceUrl = getWebServiceUrl();
-            Application.Run(new frmLogin());
+            Application.Run(new Login.frmXtraLogin());
         }
 
         private static string getWebServiceUrl()

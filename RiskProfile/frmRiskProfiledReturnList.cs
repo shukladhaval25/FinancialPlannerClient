@@ -121,7 +121,7 @@ namespace FinancialPlannerClient.RiskProfile
 
         private DataRow getSelectedDataRow(int id)
         {
-            DataRow[] rows = _dtRiskProfile.Select("Id = " + id);
+            DataRow[] rows = _dtRiskProfile.Select("Id = '" + Convert.ToInt64(id) + "'");
             foreach (DataRow dr in rows)
             {
                 return dr;

@@ -762,9 +762,12 @@ namespace FinancialPlannerClient.Clients
             cmbArea.Items.Clear();
             AreaInfo areaInfo = new AreaInfo();
             var areas = areaInfo.GetAll();
-            foreach (Area area in areas)
+            if (areas != null)
             {
-                cmbArea.Items.Add(area.Name);
+                foreach (Area area in areas)
+                {
+                    cmbArea.Items.Add(area.Name);
+                }
             }
         }
 
