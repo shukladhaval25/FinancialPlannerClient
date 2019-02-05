@@ -44,12 +44,6 @@
             DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem5 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip6 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem6 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem6 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip7 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem7 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem7 = new DevExpress.Utils.ToolTipItem();
             this.grpClientInfo = new DevExpress.XtraEditors.GroupControl();
             this.btnChangeImage = new DevExpress.XtraEditors.SimpleButton();
             this.grpBankDetails = new DevExpress.XtraEditors.GroupControl();
@@ -126,8 +120,6 @@
             this.label16 = new System.Windows.Forms.Label();
             this.txtSpouseName = new DevExpress.XtraEditors.TextEdit();
             this.label17 = new System.Windows.Forms.Label();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.grpClientInfo)).BeginInit();
             this.grpClientInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grpBankDetails)).BeginInit();
@@ -175,6 +167,7 @@
             // 
             // grpClientInfo
             // 
+            this.grpClientInfo.CaptionImage = ((System.Drawing.Image)(resources.GetObject("grpClientInfo.CaptionImage")));
             this.grpClientInfo.Controls.Add(this.btnChangeImage);
             this.grpClientInfo.Controls.Add(this.grpBankDetails);
             this.grpClientInfo.Controls.Add(this.grpClientOtherDetails);
@@ -628,6 +621,7 @@
             // 
             // grpSpouse
             // 
+            this.grpSpouse.CaptionImage = ((System.Drawing.Image)(resources.GetObject("grpSpouse.CaptionImage")));
             this.grpSpouse.Controls.Add(this.grpSpouseBank);
             this.grpSpouse.Controls.Add(this.grpSpouseOtherDetails);
             this.grpSpouse.Controls.Add(this.dtSpouseDOB);
@@ -653,9 +647,9 @@
             this.grpSpouseBank.CaptionImage = global::FinancialPlannerClient.Properties.Resources.icons8_museum_16;
             this.grpSpouseBank.Controls.Add(this.simpleButton4);
             this.grpSpouseBank.Controls.Add(this.grdSpouseBank);
-            this.grpSpouseBank.Location = new System.Drawing.Point(7, 333);
+            this.grpSpouseBank.Location = new System.Drawing.Point(7, 330);
             this.grpSpouseBank.Name = "grpSpouseBank";
-            this.grpSpouseBank.Size = new System.Drawing.Size(405, 184);
+            this.grpSpouseBank.Size = new System.Drawing.Size(405, 187);
             this.grpSpouseBank.TabIndex = 18;
             this.grpSpouseBank.Text = "Bank Details";
             // 
@@ -864,7 +858,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(40, 137);
+            this.label13.Location = new System.Drawing.Point(40, 140);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(74, 13);
             this.label13.TabIndex = 14;
@@ -885,7 +879,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(40, 113);
+            this.label14.Location = new System.Drawing.Point(40, 116);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(46, 13);
             this.label14.TabIndex = 12;
@@ -898,7 +892,7 @@
             this.labelControl1.Appearance.BackColor = System.Drawing.Color.Black;
             this.labelControl1.Appearance.Options.UseBackColor = true;
             this.labelControl1.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.labelControl1.Location = new System.Drawing.Point(7, 182);
+            this.labelControl1.Location = new System.Drawing.Point(7, 185);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(405, 1);
             this.labelControl1.TabIndex = 11;
@@ -913,7 +907,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(40, 87);
+            this.label15.Location = new System.Drawing.Point(40, 90);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(82, 13);
             this.label15.TabIndex = 9;
@@ -929,7 +923,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(40, 61);
+            this.label16.Location = new System.Drawing.Point(40, 64);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(80, 13);
             this.label16.TabIndex = 7;
@@ -945,59 +939,17 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(40, 35);
+            this.label17.Location = new System.Drawing.Point(40, 38);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(57, 13);
             this.label17.TabIndex = 5;
             this.label17.Text = "Full Name:";
-            // 
-            // simpleButton1
-            // 
-            this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton1.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.Image")));
-            this.simpleButton1.Location = new System.Drawing.Point(322, 539);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(62, 23);
-            toolTipTitleItem6.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image3")));
-            toolTipTitleItem6.Appearance.Options.UseImage = true;
-            toolTipTitleItem6.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem6.Image")));
-            toolTipTitleItem6.Text = "Cancel";
-            toolTipItem6.LeftIndent = 6;
-            toolTipItem6.Text = "To close client information without saving any information click here.";
-            superToolTip6.Items.Add(toolTipTitleItem6);
-            superToolTip6.Items.Add(toolTipItem6);
-            this.simpleButton1.SuperTip = superToolTip6;
-            this.simpleButton1.TabIndex = 22;
-            this.simpleButton1.Text = "Close";
-            this.simpleButton1.Visible = false;
-            // 
-            // simpleButton2
-            // 
-            this.simpleButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton2.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton2.Image")));
-            this.simpleButton2.Location = new System.Drawing.Point(259, 539);
-            this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(57, 23);
-            toolTipTitleItem7.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image4")));
-            toolTipTitleItem7.Appearance.Options.UseImage = true;
-            toolTipTitleItem7.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem7.Image")));
-            toolTipTitleItem7.Text = "Save";
-            toolTipItem7.LeftIndent = 6;
-            toolTipItem7.Text = "To save client infroamtion click here.";
-            superToolTip7.Items.Add(toolTipTitleItem7);
-            superToolTip7.Items.Add(toolTipItem7);
-            this.simpleButton2.SuperTip = superToolTip7;
-            this.simpleButton2.TabIndex = 21;
-            this.simpleButton2.Text = "Save";
-            this.simpleButton2.Visible = false;
             // 
             // ClientDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1099, 566);
-            this.Controls.Add(this.simpleButton1);
-            this.Controls.Add(this.simpleButton2);
             this.Controls.Add(this.btnCloseClientInfo);
             this.Controls.Add(this.btnSaveClient);
             this.Controls.Add(this.grpSpouse);
@@ -1106,8 +1058,6 @@
         private DevExpress.XtraEditors.TextEdit txtImagePath;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private DevExpress.XtraEditors.GroupControl grpSpouse;
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
-        private DevExpress.XtraEditors.SimpleButton simpleButton2;
         private DevExpress.XtraEditors.GroupControl grpSpouseBank;
         private DevExpress.XtraEditors.SimpleButton simpleButton4;
         private DevExpress.XtraGrid.GridControl grdSpouseBank;

@@ -1,9 +1,9 @@
-﻿using DevExpress.XtraBars.Navigation;
-using DevExpress.XtraEditors;
+﻿using DevExpress.XtraEditors;
 using FinancialPlanner.Common;
 using FinancialPlanner.Common.DataConversion;
 using FinancialPlanner.Common.Model;
 using FinancialPlannerClient.PlannerInfo;
+using FinancialPlannerClient.PlanOptions;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -28,10 +28,12 @@ namespace FinancialPlannerClient.Clients
             Client = 3,
         }
 
-        private Client _client;
+
         #region "ClientInfo variables"
+        private Client _client;
         private DataTable _dtBankAccount;
         private const string UPDATE_CLIENT_API = "Client/Update";
+        PersonalInformation personalInformation;
 
 
         #endregion
@@ -39,6 +41,7 @@ namespace FinancialPlannerClient.Clients
         #region "Planner Variables"
         private readonly string GET_PLAN_BY_CLIENTID_API = "Planner/GetByClientId?id={0}";
         private List<Planner> _planners = new List<Planner>();
+        private Planner planner;
         #endregion
 
         public Clientdashboard(Client client)
@@ -46,13 +49,21 @@ namespace FinancialPlannerClient.Clients
             if (client == null)
                 throw new InvalidOperationException("Fail to perform operation due to invalid object.");
 
-            this._client = client;
-            InitializeComponent();            
+            getPersonalDetails(client.ID);
+            InitializeComponent();
             displayClientInfo();
             loadPlanData();
             DashboardNavFrame.SelectedPageIndex = (int)NavigateTo.Dashborad;
         }
-
+        private void getPersonalDetails(int clientId)
+        {
+            ClientPersonalInfo clientPersonalInfo = new ClientPersonalInfo();
+            personalInformation = clientPersonalInfo.Get(clientId);
+            if (personalInformation != null && personalInformation.Client != null)
+            {
+                this._client = personalInformation.Client;
+            }
+        }
         private void displayClientInfo()
         {
             lblName.Text = this._client.Name;
@@ -60,7 +71,7 @@ namespace FinancialPlannerClient.Clients
             clientImage.Image = (this._client.ImageData == null) ?
                 Properties.Resources.icons8_customer_30 :
                 converToImageFromBase64String(this._client.ImageData);
-            
+
         }
 
         private Image converToImageFromBase64String(string base64String)
@@ -100,21 +111,17 @@ namespace FinancialPlannerClient.Clients
             navigationPageEmployee.Name = employmentDetails.Name;
             navigationPageEmployee.Controls.Add(employmentDetails);
             showNavigationPage(employmentDetails.Name);
-            //DashboardNavFrame.SelectedPageIndex = (int)NavigateTo.EmployeeInfo;
         }
 
         private void btnViewClientInfo_Click(object sender, EventArgs e)
         {
-            //DashboardNavFrame.SelectedPageIndex = (int)NavigateTo.Client;
-            ClientDetails clientDetails = new ClientDetails(this._client);            
+            ClientDetails clientDetails = new ClientDetails(this._client);
             clientDetails.TopLevel = false;
             clientDetails.Visible = true;
             navigationPageClient.Name = clientDetails.Name;
             navigationPageClient.Controls.Clear();
             navigationPageClient.Controls.Add(clientDetails);
             showNavigationPage(clientDetails.Name);
-            
-            //showClientInfo();
         }
 
         #region "Client Info"
@@ -205,7 +212,7 @@ namespace FinancialPlannerClient.Clients
                 };
 
                 _client = client;
-                
+
                 apiurl = Program.WebServiceUrl + "/" + UPDATE_CLIENT_API;
 
                 string DATA = jsonSerialization.SerializeToString<Client>(client);
@@ -219,8 +226,8 @@ namespace FinancialPlannerClient.Clients
                 {
                     var resultObject = jsonSerialization.DeserializeFromString<Result>(json);
                     if (resultObject.IsSuccess)
-                    {                        
-                        DevExpress.XtraEditors.XtraMessageBox.Show("Record save successfully.", "Record Saved", System.Windows.Forms.MessageBoxButtons.OK,System.Windows.Forms.MessageBoxIcon.Information);
+                    {
+                        DevExpress.XtraEditors.XtraMessageBox.Show("Record save successfully.", "Record Saved", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
                         redirectToDashboardPage();
                         displayClientInfo();
                     }
@@ -297,11 +304,25 @@ namespace FinancialPlannerClient.Clients
             cmbPlanner.Properties.Items.Clear();
             if (this._planners.Count > 0)
             {
-                foreach(Planner planner in _planners)
+                foreach (Planner planner in _planners)
                 {
                     cmbPlanner.Properties.Items.Add(planner.Name);
                 }
                 cmbPlanner.SelectedIndex = 0;
+            }
+        }
+        private void cmbPlanner_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this._planners.Count > 0)
+            {
+                foreach (Planner planner in _planners)
+                {
+                    if (planner.Name == cmbPlanner.Text)
+                    {
+                        this.planner = planner;
+                        break;
+                    }
+                }
             }
         }
         #endregion
@@ -317,12 +338,12 @@ namespace FinancialPlannerClient.Clients
 
         private void Clientdashboard_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         private void navBarItemFamily_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
-           
+
         }
         private bool addNewNavigationPage(string pagename, DevExpress.XtraEditors.XtraForm xtraForm)
         {
@@ -349,9 +370,9 @@ namespace FinancialPlannerClient.Clients
 
         private void showNavigationPage(string pageName)
         {
-            for(int index =0; index <= DashboardNavFrame.Pages.Count; index++)
+            for (int index = 0; index <= DashboardNavFrame.Pages.Count; index++)
             {
-                if(DashboardNavFrame.Pages[index].Name == pageName)
+                if (DashboardNavFrame.Pages[index].Name == pageName)
                 {
                     DashboardNavFrame.SelectedPageIndex = index;
                     break;
@@ -363,12 +384,37 @@ namespace FinancialPlannerClient.Clients
         {
             redirectToDashboardPage();
         }
-
-        private void navigationPageContactInfo_Paint(object sender, PaintEventArgs e)
+        private void navBarItemAssumptions_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
+            string spouseName = (personalInformation.Spouse != null) ?
+                personalInformation.Spouse.Name : string.Empty;
+            Assumption assumption = new Assumption(this._client, planner, spouseName);
+            assumption.TopLevel = false;
+            assumption.Visible = true;
+            navigationPageOther.Name = assumption.Name;
+            navigationPageOther.Controls.Clear();
+            navigationPageOther.Controls.Add(assumption);
+            showNavigationPage(assumption.Name);
+        }
+
+        private void navBarItemEstimatedPlan_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            EstimatedPlan estimatedPlan = new EstimatedPlan(this._client.ID, planner);
+            estimatedPlan.TopLevel = false;
+            estimatedPlan.Visible = true;
+            navigationPageOther.Name = estimatedPlan.Name;
+            navigationPageOther.Controls.Clear();
+            navigationPageOther.Controls.Add(estimatedPlan);
+            showNavigationPage(estimatedPlan.Name);
+        }
+
+        private void navBarItemReport_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+
+            PlannerMainReport plannerMainReport = new PlannerMainReport(this.personalInformation.Client,planner);
+            DevExpress.XtraReports.UI.ReportPrintTool printTool = new DevExpress.XtraReports.UI.ReportPrintTool(plannerMainReport);
+            printTool.ShowRibbonPreviewDialog();
 
         }
     }
-
-
 }

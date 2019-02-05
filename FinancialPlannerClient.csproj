@@ -37,6 +37,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevExpress.BonusSkins.v16.2, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Charts.v16.2.Core, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Dashboard.v16.2.Core, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Dashboard.v16.2.Win, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Data.v16.2, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -45,6 +46,7 @@
     <Reference Include="DevExpress.Images.v16.2, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Map.v16.2.Core, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Office.v16.2.Core, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Pdf.v16.2.Core, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.PivotGrid.v16.2.Core, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Printing.v16.2.Core, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.RichEdit.v16.2.Core, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -68,6 +70,7 @@
     <Reference Include="DevExpress.XtraPivotGrid.v16.2, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraPrinting.v16.2, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraReports.v16.2, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraReports.v16.2.Extensions, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraRichEdit.v16.2, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraRichEdit.v16.2.Extensions, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraTreeList.v16.2, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -219,12 +222,6 @@
     <Compile Include="PlannerInfo\ClientFestivalInfo.cs" />
     <Compile Include="PlannerInfo\DocumentInfo.cs" />
     <Compile Include="Master\FestivalsInfo.cs" />
-    <Compile Include="PlanOptions\Assumptions.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PlanOptions\Assumptions.Designer.cs">
-      <DependentUpon>Assumptions.cs</DependentUpon>
-    </Compile>
     <Compile Include="PlanOptions\CurrentStatusInfo.cs" />
     <Compile Include="CurrentStatus\FDInfo.cs" />
     <Compile Include="CurrentStatus\GeneralInsuranceInfo.cs" />
@@ -275,17 +272,41 @@
     <Compile Include="PlanOptions\EstimatedPlanOptionList.Designer.cs">
       <DependentUpon>EstimatedPlanOptionList.cs</DependentUpon>
     </Compile>
+    <Compile Include="PlanOptions\Assumption.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\Assumption.designer.cs">
+      <DependentUpon>Assumption.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlanOptions\EstimatedPlan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\EstimatedPlan.designer.cs">
+      <DependentUpon>EstimatedPlan.cs</DependentUpon>
+    </Compile>
     <Compile Include="PlanOptions\GoalCalculationManager.cs" />
     <Compile Include="PlanOptions\GoalPlanning.cs" />
     <Compile Include="PlanOptions\GoalsCalculationInfo.cs" />
     <Compile Include="PlanOptions\GoalStatusInfo.cs" />
     <Compile Include="PlanOptions\GoalsValueCalculationInfo.cs" />
+    <Compile Include="PlanOptions\Reports\PlannerMainReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\PlannerMainReport.Designer.cs">
+      <DependentUpon>PlannerMainReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="PlanOptions\PlanOptionInfo.cs" />
     <Compile Include="PlanOptions\PlanOptionMaster.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="PlanOptions\PlanOptionMaster.Designer.cs">
       <DependentUpon>PlanOptionMaster.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\TableOfContent.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\TableOfContent.Designer.cs">
+      <DependentUpon>TableOfContent.cs</DependentUpon>
     </Compile>
     <Compile Include="ProcessWindow.cs">
       <SubType>Form</SubType>
@@ -393,17 +414,26 @@
     <EmbeddedResource Include="Master\Others.resx">
       <DependentUpon>Others.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PlanOptions\Assumptions.resx">
-      <DependentUpon>Assumptions.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\ClientPlanOptinList.resx">
       <DependentUpon>ClientPlanOptinList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\EstimatedPlanOptionList.resx">
       <DependentUpon>EstimatedPlanOptionList.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\Assumption.resx">
+      <DependentUpon>Assumption.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\EstimatedPlan.resx">
+      <DependentUpon>EstimatedPlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\Reports\PlannerMainReport.resx">
+      <DependentUpon>PlannerMainReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\PlanOptionMaster.resx">
       <DependentUpon>PlanOptionMaster.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\Reports\TableOfContent.resx">
+      <DependentUpon>TableOfContent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProcessWindow.resx">
       <DependentUpon>ProcessWindow.cs</DependentUpon>

@@ -49,7 +49,6 @@ C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\
 C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.frmLogin.resources
 C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.Main.resources
 C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.Master.Others.resources
-C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.Assumptions.resources
 C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.ClientPlanOptionList.resources
 C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.EstimatedPlanOptionList.resources
 C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.PlanOptionMaster.resources
@@ -281,6 +280,16 @@ C:\Application Development\Financial Planner Project\FinancialPlannerClient\bin\
 C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.Clients.Clientdashboard.resources
 C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.Clients.ClientDetails.resources
 C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.Clients.Contact.resources
-C:\Application Development\Financial Planner Project\FinancialPlannerClient\bin\Debug\Newtonsoft.Json.dll
 C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.Clients.EmploymentDetails.resources
 C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\Debug\DXApplication1.Form1.resources
+C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.Assumption.resources
+C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.EstimatedPlan.resources
+C:\Application Development\Financial Planner Project\FinancialPlannerClient\bin\Debug\DevExpress.XtraReports.v16.2.Extensions.dll
+C:\Application Development\Financial Planner Project\FinancialPlannerClient\bin\Debug\DevExpress.XtraCharts.v16.2.Extensions.dll
+C:\Application Development\Financial Planner Project\FinancialPlannerClient\bin\Debug\DevExpress.XtraReports.v16.2.Extensions.xml
+C:\Application Development\Financial Planner Project\FinancialPlannerClient\bin\Debug\de\DevExpress.XtraReports.v16.2.Extensions.resources.dll
+C:\Application Development\Financial Planner Project\FinancialPlannerClient\bin\Debug\es\DevExpress.XtraReports.v16.2.Extensions.resources.dll
+C:\Application Development\Financial Planner Project\FinancialPlannerClient\bin\Debug\ja\DevExpress.XtraReports.v16.2.Extensions.resources.dll
+C:\Application Development\Financial Planner Project\FinancialPlannerClient\bin\Debug\ru\DevExpress.XtraReports.v16.2.Extensions.resources.dll
+C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.PlannerMainReport.resources
+C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.Reports.TableOfContent.resources
