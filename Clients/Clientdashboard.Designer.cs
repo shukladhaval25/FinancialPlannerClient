@@ -139,6 +139,7 @@
             this.navigationPageOther = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.navBarItemOtherInformation = new DevExpress.XtraNavBar.NavBarItem();
             ((System.ComponentModel.ISupportInitialize)(this.panelMenu)).BeginInit();
             this.panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlNavCtrl)).BeginInit();
@@ -289,7 +290,7 @@
             this.navBarGroupControlContainer1.Controls.Add(this.labelControl1);
             this.navBarGroupControlContainer1.Controls.Add(this.cmbPlanner);
             this.navBarGroupControlContainer1.Name = "navBarGroupControlContainer1";
-            this.navBarGroupControlContainer1.Size = new System.Drawing.Size(160, 246);
+            this.navBarGroupControlContainer1.Size = new System.Drawing.Size(160, 357);
             this.navBarGroupControlContainer1.TabIndex = 0;
             // 
             // navBarControlPlanner
@@ -305,11 +306,12 @@
             this.navBarItem3,
             this.navBarItem4,
             this.navBarItemEstimatedPlan,
-            this.navBarItemReport});
+            this.navBarItemReport,
+            this.navBarItemOtherInformation});
             this.navBarControlPlanner.Location = new System.Drawing.Point(-1, 81);
             this.navBarControlPlanner.Name = "navBarControlPlanner";
             this.navBarControlPlanner.OptionsNavPane.ExpandedWidth = 157;
-            this.navBarControlPlanner.Size = new System.Drawing.Size(157, 165);
+            this.navBarControlPlanner.Size = new System.Drawing.Size(157, 273);
             this.navBarControlPlanner.TabIndex = 3;
             this.navBarControlPlanner.Text = "navBarControl1";
             // 
@@ -318,6 +320,7 @@
             this.navBarGroup1.Caption = "Planner Data";
             this.navBarGroup1.Expanded = true;
             this.navBarGroup1.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemOtherInformation),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemAssumptions),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem1),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem2),
@@ -415,7 +418,7 @@
             this.navBarPlan.Caption = "Planner";
             this.navBarPlan.ControlContainer = this.navBarGroupControlContainer1;
             this.navBarPlan.Expanded = true;
-            this.navBarPlan.GroupClientHeight = 250;
+            this.navBarPlan.GroupClientHeight = 361;
             this.navBarPlan.GroupStyle = DevExpress.XtraNavBar.NavBarGroupStyle.ControlContainer;
             this.navBarPlan.Name = "navBarPlan";
             this.navBarPlan.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarPlan.SmallImage")));
@@ -574,7 +577,6 @@
             // 
             // navigationPageContactInfo
             // 
-            this.navigationPageContactInfo.Caption = "navigationPageContactInfo";
             this.navigationPageContactInfo.Name = "navigationPageContactInfo";
             this.navigationPageContactInfo.Size = new System.Drawing.Size(840, 599);
             this.navigationPageContactInfo.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.navigationPageClient_ControlRemoved);
@@ -1093,6 +1095,12 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // navBarItemOtherInformation
+            // 
+            this.navBarItemOtherInformation.Caption = "Other Information";
+            this.navBarItemOtherInformation.Name = "navBarItemOtherInformation";
+            this.navBarItemOtherInformation.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItemOtherInformation_LinkClicked);
+            // 
             // Clientdashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1239,5 +1247,6 @@
         private DevExpress.XtraBars.Navigation.NavigationPage navigationPageOther;
         private DevExpress.XtraNavBar.NavBarItem navBarItemEstimatedPlan;
         private DevExpress.XtraNavBar.NavBarItem navBarItemReport;
+        private DevExpress.XtraNavBar.NavBarItem navBarItemOtherInformation;
     }
 }

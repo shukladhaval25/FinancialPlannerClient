@@ -88,10 +88,10 @@ namespace FinancialPlannerClient.PlanOptions
             {
                 _dtcashFlow = cashFlowService.GenerateCashFlow(this._clientId, this.planner.ID, _riskProfileId);
                 grdSplitCashFlow.DataSource = _dtcashFlow;
-                grdSplitCashFlow.CreateSplitContainer();
-                grdViewCashFlow.Columns["Id"].Visible = false;
-                grdViewCashFlow.Columns["StartYear"].Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
-                foreach (DevExpress.XtraGrid.Columns.GridColumn column in grdViewCashFlow.Columns)
+                //grdSplitCashFlow.CreateSplitContainer();
+                gridSplitContainerViewCashFlow.Columns["Id"].Visible = false;
+                gridSplitContainerViewCashFlow.Columns["StartYear"].Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
+                foreach (DevExpress.XtraGrid.Columns.GridColumn column in gridSplitContainerViewCashFlow.Columns)
                 {
                     if (column.Name != "ID" && column.Name != "StartYear" && column.Name != "EndYear")
                     {
@@ -128,6 +128,7 @@ namespace FinancialPlannerClient.PlanOptions
         private void EstimatedPlan_Load(object sender, EventArgs e)
         {
             goals = new GoalsInfo().GetAll(this.planner.ID);
+            getGoals();
         }
 
         private void getGoals()
@@ -138,6 +139,6 @@ namespace FinancialPlannerClient.PlanOptions
             {
                 cmbGoals.Properties.Items.Add(goal.Name);
             }
-        }
+        }       
     }
 }

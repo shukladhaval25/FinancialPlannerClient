@@ -9,11 +9,13 @@ namespace FinancialPlannerClient.PlanOptions
     {
         Client client;
         Planner planner;
+        PersonalInformation personalInformation;
        
-        public PlannerMainReport(Client client, Planner planner)
+        public PlannerMainReport(PersonalInformation personalInformation, Planner planner)
         {
             InitializeComponent();
-            this.client = client;
+            this.personalInformation = personalInformation;
+            this.client = personalInformation.Client;
             this.planner = planner;
             this.lblClientName.Text = this.client.Name;
             this.lblPreparedFor.Text = this.client.Name;
@@ -31,12 +33,28 @@ namespace FinancialPlannerClient.PlanOptions
             TableOfContent tableOfContent = new TableOfContent(client);
             tableOfContent.CreateDocument();
 
+            Introduction introduction = new Introduction(client);
+            introduction.CreateDocument();
+
+            WhatIsPlan whatIsPlan = new WhatIsPlan(client);
+            whatIsPlan.CreateDocument();
+
+            ScopeOfPlancs scopeOfPlancs = new ScopeOfPlancs(client);
+            scopeOfPlancs.CreateDocument();
+
+            AssumptionPage assumptionPage = new AssumptionPage(personalInformation);
+            assumptionPage.CreateDocument();
+
             // Enable this property to maintain continuous page numbering 
             PrintingSystem.ContinuousPageNumbering = true;
 
-            // Add all pages of the 2nd report to the end of the 1st report. 
-            
-            this.Pages.Add(tableOfContent.Pages[0]);
+            // Add all pages of the 2nd report to the end of the 1st report.             
+            this.Pages.Add(tableOfContent.Pages.First);
+            this.Pages.Add(introduction.Pages.First);
+            this.Pages.Add(whatIsPlan.Pages.First);
+            this.Pages.Add(scopeOfPlancs.Pages.First);
+            this.Pages.Add(assumptionPage.Pages.First);
+
 
         }
     }

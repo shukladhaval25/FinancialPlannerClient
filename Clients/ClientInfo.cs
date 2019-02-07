@@ -39,18 +39,38 @@ namespace FinancialPlannerClient.Clients
         {
             InitializeComponent();
         }
-        public ClientInfo(Client client)
+        public ClientInfo(Client client,bool forNewDesing = false)
         {
             InitializeComponent();
             _plannerId = 0;
             _client = client;
+            setViewForNewDesing(forNewDesing);
         }
 
-        public ClientInfo(int plannerId, Client client)
+        public ClientInfo(int plannerId, Client client,bool forNewDesing = false)
         {
             InitializeComponent();
             _plannerId = plannerId;
             _client = client;
+            setViewForNewDesing(forNewDesing);
+        }
+        public void setViewForNewDesing(bool isNewDesing)
+        {
+            if (isNewDesing )
+            {
+                List<TabPage> lstTabPages = new List<TabPage>();
+                for (int i = 0; i < tabPlannerDetails.TabPages.Count; i++)
+                {
+                    lstTabPages.Add(tabPlannerDetails.TabPages[i]);
+                }
+
+                foreach (TabPage tpage in lstTabPages)
+                {
+                    if (tpage.Name == "Assumption" || tpage.Name == "PersonalInfo" ||
+                        tpage.Name == "BankAccount")
+                        tabPlannerDetails.TabPages.RemoveByKey(tpage.Name);
+                }
+            }
         }
 
         private void tabPlannerDetails_SelectedIndexChanged(object sender, EventArgs e)

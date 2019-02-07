@@ -293,3 +293,8 @@ C:\Application Development\Financial Planner Project\FinancialPlannerClient\bin\
 C:\Application Development\Financial Planner Project\FinancialPlannerClient\bin\Debug\ru\DevExpress.XtraReports.v16.2.Extensions.resources.dll
 C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.PlannerMainReport.resources
 C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.Reports.TableOfContent.resources
+C:\Application Development\Financial Planner Project\FinancialPlannerClient\bin\Debug\Newtonsoft.Json.dll
+C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.Reports.Introduction.resources
+C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.AssumptionPage.resources
+C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.Reports.ScopeOfPlancs.resources
+C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.Reports.WhatIsPlan.resources

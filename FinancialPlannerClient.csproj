@@ -222,6 +222,12 @@
     <Compile Include="PlannerInfo\ClientFestivalInfo.cs" />
     <Compile Include="PlannerInfo\DocumentInfo.cs" />
     <Compile Include="Master\FestivalsInfo.cs" />
+    <Compile Include="PlanOptions\Reports\AssumptionPage.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\AssumptionPage.Designer.cs">
+      <DependentUpon>AssumptionPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="PlanOptions\CurrentStatusInfo.cs" />
     <Compile Include="CurrentStatus\FDInfo.cs" />
     <Compile Include="CurrentStatus\GeneralInsuranceInfo.cs" />
@@ -289,6 +295,12 @@
     <Compile Include="PlanOptions\GoalsCalculationInfo.cs" />
     <Compile Include="PlanOptions\GoalStatusInfo.cs" />
     <Compile Include="PlanOptions\GoalsValueCalculationInfo.cs" />
+    <Compile Include="PlanOptions\Reports\Introduction.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\Introduction.Designer.cs">
+      <DependentUpon>Introduction.cs</DependentUpon>
+    </Compile>
     <Compile Include="PlanOptions\Reports\PlannerMainReport.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -302,11 +314,23 @@
     <Compile Include="PlanOptions\PlanOptionMaster.Designer.cs">
       <DependentUpon>PlanOptionMaster.cs</DependentUpon>
     </Compile>
+    <Compile Include="PlanOptions\Reports\ScopeOfPlancs.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\ScopeOfPlancs.Designer.cs">
+      <DependentUpon>ScopeOfPlancs.cs</DependentUpon>
+    </Compile>
     <Compile Include="PlanOptions\Reports\TableOfContent.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="PlanOptions\Reports\TableOfContent.Designer.cs">
       <DependentUpon>TableOfContent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\WhatIsPlan.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\WhatIsPlan.Designer.cs">
+      <DependentUpon>WhatIsPlan.cs</DependentUpon>
     </Compile>
     <Compile Include="ProcessWindow.cs">
       <SubType>Form</SubType>
@@ -414,6 +438,9 @@
     <EmbeddedResource Include="Master\Others.resx">
       <DependentUpon>Others.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\Reports\AssumptionPage.resx">
+      <DependentUpon>AssumptionPage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\ClientPlanOptinList.resx">
       <DependentUpon>ClientPlanOptinList.cs</DependentUpon>
     </EmbeddedResource>
@@ -426,14 +453,23 @@
     <EmbeddedResource Include="PlanOptions\EstimatedPlan.resx">
       <DependentUpon>EstimatedPlan.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\Reports\Introduction.resx">
+      <DependentUpon>Introduction.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\Reports\PlannerMainReport.resx">
       <DependentUpon>PlannerMainReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\PlanOptionMaster.resx">
       <DependentUpon>PlanOptionMaster.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\Reports\ScopeOfPlancs.resx">
+      <DependentUpon>ScopeOfPlancs.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\Reports\TableOfContent.resx">
       <DependentUpon>TableOfContent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\Reports\WhatIsPlan.resx">
+      <DependentUpon>WhatIsPlan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProcessWindow.resx">
       <DependentUpon>ProcessWindow.cs</DependentUpon>

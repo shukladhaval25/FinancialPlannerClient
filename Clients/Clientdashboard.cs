@@ -399,7 +399,8 @@ namespace FinancialPlannerClient.Clients
 
         private void navBarItemEstimatedPlan_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
-            EstimatedPlan estimatedPlan = new EstimatedPlan(this._client.ID, planner);
+            //EstimatedPlan estimatedPlan = new EstimatedPlan(this._client.ID, planner);
+            EstimatedPlanOptionList estimatedPlan = new EstimatedPlanOptionList(this._client);
             estimatedPlan.TopLevel = false;
             estimatedPlan.Visible = true;
             navigationPageOther.Name = estimatedPlan.Name;
@@ -411,10 +412,21 @@ namespace FinancialPlannerClient.Clients
         private void navBarItemReport_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
 
-            PlannerMainReport plannerMainReport = new PlannerMainReport(this.personalInformation.Client,planner);
+            PlannerMainReport plannerMainReport = new PlannerMainReport(this.personalInformation,planner);
             DevExpress.XtraReports.UI.ReportPrintTool printTool = new DevExpress.XtraReports.UI.ReportPrintTool(plannerMainReport);
             printTool.ShowRibbonPreviewDialog();
 
+        }
+
+        private void navBarItemOtherInformation_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            ClientInfo clientInfo = new ClientInfo(planner.ID, this._client,true);
+            clientInfo.TopLevel = false;
+            clientInfo.Visible = true;
+            navigationPageOther.Name = clientInfo.Name;
+            navigationPageOther.Controls.Clear();
+            navigationPageOther.Controls.Add(clientInfo);
+            showNavigationPage(clientInfo.Name);
         }
     }
 }

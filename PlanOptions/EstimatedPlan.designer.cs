@@ -35,13 +35,8 @@
             DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
-            this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
-            this.xtraTabEstimatedPlan = new DevExpress.XtraTab.XtraTabControl();
-            this.xtraTabPageCashFlow = new DevExpress.XtraTab.XtraTabPage();
-            this.gridSplitContainer1 = new DevExpress.XtraGrid.GridSplitContainer();
             this.grdSplitCashFlow = new DevExpress.XtraGrid.GridControl();
-            this.grdViewCashFlow = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
+            this.gridSplitContainerViewCashFlow = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.grpGoalInfo = new DevExpress.XtraEditors.GroupControl();
             this.cmbGoals = new DevExpress.XtraEditors.ComboBoxEdit();
             this.progGoalComplition = new DevExpress.XtraEditors.ProgressBarControl();
@@ -57,7 +52,6 @@
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.label2 = new System.Windows.Forms.Label();
             this.cmbPlanOption = new DevExpress.XtraEditors.ComboBoxEdit();
             this.label1 = new System.Windows.Forms.Label();
@@ -70,16 +64,8 @@
             this.btnAdd = new DevExpress.XtraEditors.SimpleButton();
             this.lblRiskProfileValue = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
-            this.groupControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.xtraTabEstimatedPlan)).BeginInit();
-            this.xtraTabEstimatedPlan.SuspendLayout();
-            this.xtraTabPageCashFlow.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridSplitContainer1)).BeginInit();
-            this.gridSplitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdSplitCashFlow)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grdViewCashFlow)).BeginInit();
-            this.xtraTabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridSplitContainerViewCashFlow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grpGoalInfo)).BeginInit();
             this.grpGoalInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cmbGoals.Properties)).BeginInit();
@@ -95,81 +81,20 @@
             this.grpPlanOption.SuspendLayout();
             this.SuspendLayout();
             // 
-            // groupControl1
-            // 
-            this.groupControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupControl1.Controls.Add(this.xtraTabEstimatedPlan);
-            this.groupControl1.Location = new System.Drawing.Point(3, 87);
-            this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(1210, 654);
-            this.groupControl1.TabIndex = 0;
-            this.groupControl1.Text = "Calculation Details";
-            // 
-            // xtraTabEstimatedPlan
-            // 
-            this.xtraTabEstimatedPlan.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xtraTabEstimatedPlan.Location = new System.Drawing.Point(2, 20);
-            this.xtraTabEstimatedPlan.Name = "xtraTabEstimatedPlan";
-            this.xtraTabEstimatedPlan.SelectedTabPage = this.xtraTabPageCashFlow;
-            this.xtraTabEstimatedPlan.Size = new System.Drawing.Size(1206, 632);
-            this.xtraTabEstimatedPlan.TabIndex = 0;
-            this.xtraTabEstimatedPlan.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
-            this.xtraTabPageCashFlow,
-            this.xtraTabPage1,
-            this.xtraTabPage2});
-            // 
-            // xtraTabPageCashFlow
-            // 
-            this.xtraTabPageCashFlow.Controls.Add(this.gridSplitContainer1);
-            this.xtraTabPageCashFlow.Name = "xtraTabPageCashFlow";
-            this.xtraTabPageCashFlow.Size = new System.Drawing.Size(1200, 601);
-            this.xtraTabPageCashFlow.Text = "Cash Flow";
-            // 
-            // gridSplitContainer1
-            // 
-            this.gridSplitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridSplitContainer1.Grid = this.grdSplitCashFlow;
-            this.gridSplitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.gridSplitContainer1.Name = "gridSplitContainer1";
-            this.gridSplitContainer1.Panel1.Controls.Add(this.grdSplitCashFlow);
-            this.gridSplitContainer1.Panel1.Text = "Panel1";
-            this.gridSplitContainer1.Panel2.Text = "Panel2";
-            this.gridSplitContainer1.Size = new System.Drawing.Size(1200, 601);
-            this.gridSplitContainer1.TabIndex = 0;
-            this.gridSplitContainer1.Text = "gridSplitContainer1";
-            // 
             // grdSplitCashFlow
             // 
-            this.grdSplitCashFlow.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.grdSplitCashFlow.Location = new System.Drawing.Point(0, 0);
-            this.grdSplitCashFlow.MainView = this.grdViewCashFlow;
+            this.grdSplitCashFlow.Location = new System.Drawing.Point(6, 87);
+            this.grdSplitCashFlow.MainView = this.gridSplitContainerViewCashFlow;
             this.grdSplitCashFlow.Name = "grdSplitCashFlow";
-            this.grdSplitCashFlow.Size = new System.Drawing.Size(1200, 604);
+            this.grdSplitCashFlow.Size = new System.Drawing.Size(728, 660);
             this.grdSplitCashFlow.TabIndex = 0;
             this.grdSplitCashFlow.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.grdViewCashFlow});
+            this.gridSplitContainerViewCashFlow});
             // 
-            // grdViewCashFlow
+            // gridSplitContainerViewCashFlow
             // 
-            this.grdViewCashFlow.GridControl = this.grdSplitCashFlow;
-            this.grdViewCashFlow.Name = "grdViewCashFlow";
-            this.grdViewCashFlow.OptionsBehavior.Editable = false;
-            this.grdViewCashFlow.OptionsView.ShowGroupedColumns = true;
-            // 
-            // xtraTabPage1
-            // 
-            this.xtraTabPage1.Controls.Add(this.grpGoalInfo);
-            this.xtraTabPage1.Controls.Add(this.gridControl2);
-            this.xtraTabPage1.Controls.Add(this.gridControl1);
-            this.xtraTabPage1.Image = global::FinancialPlannerClient.Properties.Resources.icons8_goal_16;
-            this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.ShowCloseButton = DevExpress.Utils.DefaultBoolean.True;
-            this.xtraTabPage1.Size = new System.Drawing.Size(1200, 601);
-            this.xtraTabPage1.Text = "xtraTabPage1";
+            this.gridSplitContainerViewCashFlow.GridControl = this.grdSplitCashFlow;
+            this.gridSplitContainerViewCashFlow.Name = "gridSplitContainerViewCashFlow";
             // 
             // grpGoalInfo
             // 
@@ -183,10 +108,10 @@
             this.grpGoalInfo.Controls.Add(this.label6);
             this.grpGoalInfo.Controls.Add(this.label7);
             this.grpGoalInfo.Controls.Add(this.label8);
-            this.grpGoalInfo.Location = new System.Drawing.Point(6, 10);
+            this.grpGoalInfo.Location = new System.Drawing.Point(740, 87);
             this.grpGoalInfo.Name = "grpGoalInfo";
             this.grpGoalInfo.Size = new System.Drawing.Size(245, 124);
-            this.grpGoalInfo.TabIndex = 17;
+            this.grpGoalInfo.TabIndex = 20;
             this.grpGoalInfo.Text = "Goal Info";
             // 
             // cmbGoals
@@ -195,6 +120,7 @@
             this.cmbGoals.Name = "cmbGoals";
             this.cmbGoals.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cmbGoals.Properties.ShowDropDown = DevExpress.XtraEditors.Controls.ShowDropDown.DoubleClick;
             this.cmbGoals.Size = new System.Drawing.Size(176, 20);
             this.cmbGoals.TabIndex = 17;
             // 
@@ -292,11 +218,11 @@
             this.gridControl2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gridControl2.Location = new System.Drawing.Point(5, 140);
+            this.gridControl2.Location = new System.Drawing.Point(740, 217);
             this.gridControl2.MainView = this.gridView2;
             this.gridControl2.Name = "gridControl2";
-            this.gridControl2.Size = new System.Drawing.Size(1191, 450);
-            this.gridControl2.TabIndex = 19;
+            this.gridControl2.Size = new System.Drawing.Size(466, 530);
+            this.gridControl2.TabIndex = 22;
             this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
             // 
@@ -309,11 +235,11 @@
             // 
             this.gridControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gridControl1.Location = new System.Drawing.Point(257, 10);
+            this.gridControl1.Location = new System.Drawing.Point(991, 87);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(939, 124);
-            this.gridControl1.TabIndex = 18;
+            this.gridControl1.Size = new System.Drawing.Size(215, 124);
+            this.gridControl1.TabIndex = 21;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
             // 
@@ -321,12 +247,6 @@
             // 
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
-            // 
-            // xtraTabPage2
-            // 
-            this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(1200, 601);
-            this.xtraTabPage2.Text = "xtraTabPage2";
             // 
             // label2
             // 
@@ -425,9 +345,9 @@
             toolTipTitleItem1.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
             toolTipTitleItem1.Appearance.Options.UseImage = true;
             toolTipTitleItem1.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem1.Image")));
-            toolTipTitleItem1.Text = "Edit Customer";
+            toolTipTitleItem1.Text = "Edit Plan option";
             toolTipItem1.LeftIndent = 6;
-            toolTipItem1.Text = "To modify selected client information click here.";
+            toolTipItem1.Text = "To modify selected plan option click here.";
             superToolTip1.Items.Add(toolTipTitleItem1);
             superToolTip1.Items.Add(toolTipItem1);
             this.btnEdit.SuperTip = superToolTip1;
@@ -444,9 +364,9 @@
             toolTipTitleItem2.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
             toolTipTitleItem2.Appearance.Options.UseImage = true;
             toolTipTitleItem2.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem2.Image")));
-            toolTipTitleItem2.Text = "New Client";
+            toolTipTitleItem2.Text = "New Plan options";
             toolTipItem2.LeftIndent = 6;
-            toolTipItem2.Text = "To add new client inforamtion click here.";
+            toolTipItem2.Text = "To add new plan option click here.";
             superToolTip2.Items.Add(toolTipTitleItem2);
             superToolTip2.Items.Add(toolTipItem2);
             this.btnAdd.SuperTip = superToolTip2;
@@ -479,25 +399,23 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1218, 749);
+            this.ControlBox = false;
+            this.Controls.Add(this.grdSplitCashFlow);
+            this.Controls.Add(this.gridControl2);
+            this.Controls.Add(this.grpGoalInfo);
+            this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.grpPlanOption);
             this.Controls.Add(this.grpPlanDetail);
-            this.Controls.Add(this.groupControl1);
+            this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "EstimatedPlan";
             this.Text = "Estimated Plan";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.EstimatedPlan_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
-            this.groupControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.xtraTabEstimatedPlan)).EndInit();
-            this.xtraTabEstimatedPlan.ResumeLayout(false);
-            this.xtraTabPageCashFlow.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridSplitContainer1)).EndInit();
-            this.gridSplitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdSplitCashFlow)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grdViewCashFlow)).EndInit();
-            this.xtraTabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridSplitContainerViewCashFlow)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grpGoalInfo)).EndInit();
             this.grpGoalInfo.ResumeLayout(false);
             this.grpGoalInfo.PerformLayout();
@@ -519,13 +437,6 @@
         }
 
         #endregion
-
-        private DevExpress.XtraEditors.GroupControl groupControl1;
-        private DevExpress.XtraTab.XtraTabControl xtraTabEstimatedPlan;
-        private DevExpress.XtraTab.XtraTabPage xtraTabPageCashFlow;
-        private DevExpress.XtraGrid.GridSplitContainer gridSplitContainer1;
-        private DevExpress.XtraGrid.GridControl grdSplitCashFlow;
-        private DevExpress.XtraGrid.Views.Grid.GridView grdViewCashFlow;
         private System.Windows.Forms.Label label2;
         private DevExpress.XtraEditors.ComboBoxEdit cmbPlanOption;
         private System.Windows.Forms.Label label1;
@@ -538,7 +449,6 @@
         private System.Windows.Forms.Label label3;
         private DevExpress.XtraEditors.SimpleButton btnEdit;
         private DevExpress.XtraEditors.SimpleButton btnAdd;
-        private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
         private DevExpress.XtraEditors.GroupControl grpGoalInfo;
         private DevExpress.XtraEditors.ComboBoxEdit cmbGoals;
         private DevExpress.XtraEditors.ProgressBarControl progGoalComplition;
@@ -554,7 +464,8 @@
         private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
         private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
-        private DevExpress.XtraTab.XtraTabPage xtraTabPage2;
+        private DevExpress.XtraGrid.GridControl grdSplitCashFlow;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridSplitContainerViewCashFlow;
     }
 }
 
