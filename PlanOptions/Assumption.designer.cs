@@ -29,11 +29,12 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Assumption));
-            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pnlAssumption = new System.Windows.Forms.Panel();
+            this.btnSaveAssumption = new DevExpress.XtraEditors.SimpleButton();
             this.txtOtherReturn = new DevExpress.XtraEditors.TextEdit();
             this.txtDebtReturn = new DevExpress.XtraEditors.TextEdit();
             this.txtEquityReturn = new DevExpress.XtraEditors.TextEdit();
@@ -68,7 +69,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.txtPlannerAssumptionDescription = new DevExpress.XtraEditors.MemoEdit();
-            this.btnSaveAssumption = new DevExpress.XtraEditors.SimpleButton();
             this.groupBox1.SuspendLayout();
             this.pnlAssumption.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtOtherReturn.Properties)).BeginInit();
@@ -121,8 +121,28 @@
             this.pnlAssumption.Controls.Add(this.txtPlannerAssumptionDescription);
             this.pnlAssumption.Location = new System.Drawing.Point(22, 19);
             this.pnlAssumption.Name = "pnlAssumption";
-            this.pnlAssumption.Size = new System.Drawing.Size(724, 537);
+            this.pnlAssumption.Size = new System.Drawing.Size(724, 576);
             this.pnlAssumption.TabIndex = 0;
+            // 
+            // btnSaveAssumption
+            // 
+            this.btnSaveAssumption.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnSaveAssumption.Image = ((System.Drawing.Image)(resources.GetObject("btnSaveAssumption.Image")));
+            this.btnSaveAssumption.Location = new System.Drawing.Point(330, 499);
+            this.btnSaveAssumption.Name = "btnSaveAssumption";
+            this.btnSaveAssumption.Size = new System.Drawing.Size(57, 23);
+            toolTipTitleItem1.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            toolTipTitleItem1.Appearance.Options.UseImage = true;
+            toolTipTitleItem1.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem1.Image")));
+            toolTipTitleItem1.Text = "Save";
+            toolTipItem1.LeftIndent = 6;
+            toolTipItem1.Text = "To save client contact infroamtion click here.";
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            superToolTip1.Items.Add(toolTipItem1);
+            this.btnSaveAssumption.SuperTip = superToolTip1;
+            this.btnSaveAssumption.TabIndex = 62;
+            this.btnSaveAssumption.Text = "Save";
+            this.btnSaveAssumption.Click += new System.EventHandler(this.btnSaveAssumption_Click);
             // 
             // txtOtherReturn
             // 
@@ -206,7 +226,7 @@
             this.pnlPlannerAssumption.Controls.Add(this.label4);
             this.pnlPlannerAssumption.Location = new System.Drawing.Point(30, 69);
             this.pnlPlannerAssumption.Name = "pnlPlannerAssumption";
-            this.pnlPlannerAssumption.Size = new System.Drawing.Size(604, 148);
+            this.pnlPlannerAssumption.Size = new System.Drawing.Size(633, 148);
             this.pnlPlannerAssumption.TabIndex = 0;
             // 
             // txtSpouseLifeExp
@@ -365,7 +385,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(110, 317);
+            this.label11.Location = new System.Drawing.Point(116, 317);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(117, 15);
             this.label11.TabIndex = 15;
@@ -449,31 +469,11 @@
             this.txtPlannerAssumptionDescription.Size = new System.Drawing.Size(599, 52);
             this.txtPlannerAssumptionDescription.TabIndex = 10;
             // 
-            // btnSaveAssumption
-            // 
-            this.btnSaveAssumption.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnSaveAssumption.Image = ((System.Drawing.Image)(resources.GetObject("btnSaveAssumption.Image")));
-            this.btnSaveAssumption.Location = new System.Drawing.Point(330, 499);
-            this.btnSaveAssumption.Name = "btnSaveAssumption";
-            this.btnSaveAssumption.Size = new System.Drawing.Size(57, 23);
-            toolTipTitleItem2.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
-            toolTipTitleItem2.Appearance.Options.UseImage = true;
-            toolTipTitleItem2.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem2.Image")));
-            toolTipTitleItem2.Text = "Save";
-            toolTipItem2.LeftIndent = 6;
-            toolTipItem2.Text = "To save client contact infroamtion click here.";
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            superToolTip2.Items.Add(toolTipItem2);
-            this.btnSaveAssumption.SuperTip = superToolTip2;
-            this.btnSaveAssumption.TabIndex = 62;
-            this.btnSaveAssumption.Text = "Save";
-            this.btnSaveAssumption.Click += new System.EventHandler(this.btnSaveAssumption_Click);
-            // 
             // Assumption
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(785, 587);
+            this.ClientSize = new System.Drawing.Size(785, 644);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;

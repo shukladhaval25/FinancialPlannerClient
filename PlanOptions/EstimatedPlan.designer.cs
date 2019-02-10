@@ -35,23 +35,6 @@
             DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
-            this.grdSplitCashFlow = new DevExpress.XtraGrid.GridControl();
-            this.gridSplitContainerViewCashFlow = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.grpGoalInfo = new DevExpress.XtraEditors.GroupControl();
-            this.cmbGoals = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.progGoalComplition = new DevExpress.XtraEditors.ProgressBarControl();
-            this.label9 = new System.Windows.Forms.Label();
-            this.lblPortfolioValue = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.lblGoalPeriodValue = new System.Windows.Forms.Label();
-            this.lblPriorityNo = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.gridControl2 = new DevExpress.XtraGrid.GridControl();
-            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.label2 = new System.Windows.Forms.Label();
             this.cmbPlanOption = new DevExpress.XtraEditors.ComboBoxEdit();
             this.label1 = new System.Windows.Forms.Label();
@@ -64,189 +47,19 @@
             this.btnAdd = new DevExpress.XtraEditors.SimpleButton();
             this.lblRiskProfileValue = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.grdSplitCashFlow)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridSplitContainerViewCashFlow)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grpGoalInfo)).BeginInit();
-            this.grpGoalInfo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbGoals.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.progGoalComplition.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            this.btnClose = new DevExpress.XtraEditors.SimpleButton();
+            this.tabEstimatedPlan = new DevExpress.XtraBars.Navigation.TabPane();
+            this.tabNavigationPageCashFlow = new DevExpress.XtraBars.Navigation.TabNavigationPage();
+            this.tabNavigationPageGoal = new DevExpress.XtraBars.Navigation.TabNavigationPage();
+            this.tabNavigationPageCurrentStatus = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             ((System.ComponentModel.ISupportInitialize)(this.cmbPlanOption.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grpPlanDetail)).BeginInit();
             this.grpPlanDetail.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grpPlanOption)).BeginInit();
             this.grpPlanOption.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tabEstimatedPlan)).BeginInit();
+            this.tabEstimatedPlan.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // grdSplitCashFlow
-            // 
-            this.grdSplitCashFlow.Location = new System.Drawing.Point(6, 87);
-            this.grdSplitCashFlow.MainView = this.gridSplitContainerViewCashFlow;
-            this.grdSplitCashFlow.Name = "grdSplitCashFlow";
-            this.grdSplitCashFlow.Size = new System.Drawing.Size(728, 660);
-            this.grdSplitCashFlow.TabIndex = 0;
-            this.grdSplitCashFlow.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridSplitContainerViewCashFlow});
-            // 
-            // gridSplitContainerViewCashFlow
-            // 
-            this.gridSplitContainerViewCashFlow.GridControl = this.grdSplitCashFlow;
-            this.gridSplitContainerViewCashFlow.Name = "gridSplitContainerViewCashFlow";
-            // 
-            // grpGoalInfo
-            // 
-            this.grpGoalInfo.Controls.Add(this.cmbGoals);
-            this.grpGoalInfo.Controls.Add(this.progGoalComplition);
-            this.grpGoalInfo.Controls.Add(this.label9);
-            this.grpGoalInfo.Controls.Add(this.lblPortfolioValue);
-            this.grpGoalInfo.Controls.Add(this.label5);
-            this.grpGoalInfo.Controls.Add(this.lblGoalPeriodValue);
-            this.grpGoalInfo.Controls.Add(this.lblPriorityNo);
-            this.grpGoalInfo.Controls.Add(this.label6);
-            this.grpGoalInfo.Controls.Add(this.label7);
-            this.grpGoalInfo.Controls.Add(this.label8);
-            this.grpGoalInfo.Location = new System.Drawing.Point(740, 87);
-            this.grpGoalInfo.Name = "grpGoalInfo";
-            this.grpGoalInfo.Size = new System.Drawing.Size(245, 124);
-            this.grpGoalInfo.TabIndex = 20;
-            this.grpGoalInfo.Text = "Goal Info";
-            // 
-            // cmbGoals
-            // 
-            this.cmbGoals.Location = new System.Drawing.Point(64, 23);
-            this.cmbGoals.Name = "cmbGoals";
-            this.cmbGoals.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cmbGoals.Properties.ShowDropDown = DevExpress.XtraEditors.Controls.ShowDropDown.DoubleClick;
-            this.cmbGoals.Size = new System.Drawing.Size(176, 20);
-            this.cmbGoals.TabIndex = 17;
-            // 
-            // progGoalComplition
-            // 
-            this.progGoalComplition.Location = new System.Drawing.Point(82, 100);
-            this.progGoalComplition.Name = "progGoalComplition";
-            this.progGoalComplition.Properties.ReadOnly = true;
-            this.progGoalComplition.Properties.ShowTitle = true;
-            this.progGoalComplition.Size = new System.Drawing.Size(158, 18);
-            this.progGoalComplition.TabIndex = 16;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(6, 103);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(70, 13);
-            this.label9.TabIndex = 15;
-            this.label9.Text = "Complition:";
-            // 
-            // lblPortfolioValue
-            // 
-            this.lblPortfolioValue.AutoSize = true;
-            this.lblPortfolioValue.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPortfolioValue.Location = new System.Drawing.Point(101, 78);
-            this.lblPortfolioValue.Name = "lblPortfolioValue";
-            this.lblPortfolioValue.Size = new System.Drawing.Size(60, 13);
-            this.lblPortfolioValue.TabIndex = 14;
-            this.lblPortfolioValue.Text = "#PFValue";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(6, 78);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(92, 13);
-            this.label5.TabIndex = 13;
-            this.label5.Text = "Portfolio Value:";
-            // 
-            // lblGoalPeriodValue
-            // 
-            this.lblGoalPeriodValue.AutoSize = true;
-            this.lblGoalPeriodValue.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGoalPeriodValue.Location = new System.Drawing.Point(198, 55);
-            this.lblGoalPeriodValue.Name = "lblGoalPeriodValue";
-            this.lblGoalPeriodValue.Size = new System.Drawing.Size(42, 13);
-            this.lblGoalPeriodValue.TabIndex = 12;
-            this.lblGoalPeriodValue.Text = "#Year";
-            // 
-            // lblPriorityNo
-            // 
-            this.lblPriorityNo.AutoSize = true;
-            this.lblPriorityNo.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPriorityNo.Location = new System.Drawing.Point(61, 55);
-            this.lblPriorityNo.Name = "lblPriorityNo";
-            this.lblPriorityNo.Size = new System.Drawing.Size(58, 13);
-            this.lblPriorityNo.TabIndex = 10;
-            this.lblPriorityNo.Text = "#Priority";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(6, 55);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(52, 13);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "Priority:";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(132, 55);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(64, 13);
-            this.label7.TabIndex = 8;
-            this.label7.Text = "Goal Year:";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(6, 29);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(45, 13);
-            this.label8.TabIndex = 7;
-            this.label8.Text = "Name :";
-            // 
-            // gridControl2
-            // 
-            this.gridControl2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.gridControl2.Location = new System.Drawing.Point(740, 217);
-            this.gridControl2.MainView = this.gridView2;
-            this.gridControl2.Name = "gridControl2";
-            this.gridControl2.Size = new System.Drawing.Size(466, 530);
-            this.gridControl2.TabIndex = 22;
-            this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView2});
-            // 
-            // gridView2
-            // 
-            this.gridView2.GridControl = this.gridControl2;
-            this.gridView2.Name = "gridView2";
-            // 
-            // gridControl1
-            // 
-            this.gridControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.gridControl1.Location = new System.Drawing.Point(991, 87);
-            this.gridControl1.MainView = this.gridView1;
-            this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(215, 124);
-            this.gridControl1.TabIndex = 21;
-            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
-            // 
-            // gridView1
-            // 
-            this.gridView1.GridControl = this.gridControl1;
-            this.gridView1.Name = "gridView1";
             // 
             // label2
             // 
@@ -285,7 +98,7 @@
             this.grpPlanDetail.Controls.Add(this.label4);
             this.grpPlanDetail.Controls.Add(this.lblPlanName);
             this.grpPlanDetail.Controls.Add(this.label1);
-            this.grpPlanDetail.Location = new System.Drawing.Point(6, 4);
+            this.grpPlanDetail.Location = new System.Drawing.Point(189, 4);
             this.grpPlanDetail.Name = "grpPlanDetail";
             this.grpPlanDetail.Size = new System.Drawing.Size(278, 77);
             this.grpPlanDetail.TabIndex = 8;
@@ -329,7 +142,7 @@
             this.grpPlanOption.Controls.Add(this.label3);
             this.grpPlanOption.Controls.Add(this.cmbPlanOption);
             this.grpPlanOption.Controls.Add(this.label2);
-            this.grpPlanOption.Location = new System.Drawing.Point(290, 4);
+            this.grpPlanOption.Location = new System.Drawing.Point(473, 4);
             this.grpPlanOption.Name = "grpPlanOption";
             this.grpPlanOption.Size = new System.Drawing.Size(463, 77);
             this.grpPlanOption.TabIndex = 9;
@@ -395,36 +208,77 @@
             this.label3.TabIndex = 7;
             this.label3.Text = "Risk Profile :";
             // 
+            // btnClose
+            // 
+            this.btnClose.Location = new System.Drawing.Point(942, 4);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(40, 77);
+            this.btnClose.TabIndex = 27;
+            this.btnClose.Text = "Close";
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // tabEstimatedPlan
+            // 
+            this.tabEstimatedPlan.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabEstimatedPlan.Controls.Add(this.tabNavigationPageCashFlow);
+            this.tabEstimatedPlan.Controls.Add(this.tabNavigationPageGoal);
+            this.tabEstimatedPlan.Controls.Add(this.tabNavigationPageCurrentStatus);
+            this.tabEstimatedPlan.Location = new System.Drawing.Point(6, 87);
+            this.tabEstimatedPlan.Name = "tabEstimatedPlan";
+            this.tabEstimatedPlan.PageProperties.ShowMode = DevExpress.XtraBars.Navigation.ItemShowMode.ImageAndText;
+            this.tabEstimatedPlan.Pages.AddRange(new DevExpress.XtraBars.Navigation.NavigationPageBase[] {
+            this.tabNavigationPageCashFlow,
+            this.tabNavigationPageCurrentStatus,
+            this.tabNavigationPageGoal});
+            this.tabEstimatedPlan.RegularSize = new System.Drawing.Size(1027, 650);
+            this.tabEstimatedPlan.SelectedPage = this.tabNavigationPageCashFlow;
+            this.tabEstimatedPlan.Size = new System.Drawing.Size(1027, 650);
+            this.tabEstimatedPlan.TabIndex = 29;
+            this.tabEstimatedPlan.Text = "Estimated Plan";
+            this.tabEstimatedPlan.SelectedPageChanged += new DevExpress.XtraBars.Navigation.SelectedPageChangedEventHandler(this.tabEstimatedPlan_SelectedPageChanged);
+            this.tabEstimatedPlan.SelectedPageChanging += new DevExpress.XtraBars.Navigation.SelectedPageChangingEventHandler(this.tabEstimatedPlan_SelectedPageChanging);
+            // 
+            // tabNavigationPageCashFlow
+            // 
+            this.tabNavigationPageCashFlow.AutoSize = true;
+            this.tabNavigationPageCashFlow.Caption = "Cash Flow";
+            this.tabNavigationPageCashFlow.Image = ((System.Drawing.Image)(resources.GetObject("tabNavigationPageCashFlow.Image")));
+            this.tabNavigationPageCashFlow.ItemShowMode = DevExpress.XtraBars.Navigation.ItemShowMode.ImageAndText;
+            this.tabNavigationPageCashFlow.Name = "tabNavigationPageCashFlow";
+            this.tabNavigationPageCashFlow.Properties.ShowMode = DevExpress.XtraBars.Navigation.ItemShowMode.ImageAndText;
+            this.tabNavigationPageCashFlow.Size = new System.Drawing.Size(1009, 602);
+            // 
+            // tabNavigationPageGoal
+            // 
+            this.tabNavigationPageGoal.Caption = "Goals";
+            this.tabNavigationPageGoal.Image = global::FinancialPlannerClient.Properties.Resources.icons8_goal_16;
+            this.tabNavigationPageGoal.Name = "tabNavigationPageGoal";
+            this.tabNavigationPageGoal.Size = new System.Drawing.Size(1009, 602);
+            // 
+            // tabNavigationPageCurrentStatus
+            // 
+            this.tabNavigationPageCurrentStatus.Caption = "Current Status";
+            this.tabNavigationPageCurrentStatus.Image = global::FinancialPlannerClient.Properties.Resources.icons8_date_span_16;
+            this.tabNavigationPageCurrentStatus.Name = "tabNavigationPageCurrentStatus";
+            this.tabNavigationPageCurrentStatus.Size = new System.Drawing.Size(1009, 602);
+            // 
             // EstimatedPlan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1218, 749);
-            this.ControlBox = false;
-            this.Controls.Add(this.grdSplitCashFlow);
-            this.Controls.Add(this.gridControl2);
-            this.Controls.Add(this.grpGoalInfo);
-            this.Controls.Add(this.gridControl1);
+            this.ClientSize = new System.Drawing.Size(1045, 749);
+            this.Controls.Add(this.tabEstimatedPlan);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.grpPlanOption);
             this.Controls.Add(this.grpPlanDetail);
-            this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "EstimatedPlan";
             this.Text = "Estimated Plan";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.EstimatedPlan_FormClosed);
             this.Load += new System.EventHandler(this.EstimatedPlan_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.grdSplitCashFlow)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridSplitContainerViewCashFlow)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grpGoalInfo)).EndInit();
-            this.grpGoalInfo.ResumeLayout(false);
-            this.grpGoalInfo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbGoals.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.progGoalComplition.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbPlanOption.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grpPlanDetail)).EndInit();
             this.grpPlanDetail.ResumeLayout(false);
@@ -432,6 +286,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.grpPlanOption)).EndInit();
             this.grpPlanOption.ResumeLayout(false);
             this.grpPlanOption.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tabEstimatedPlan)).EndInit();
+            this.tabEstimatedPlan.ResumeLayout(false);
+            this.tabEstimatedPlan.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -449,23 +306,11 @@
         private System.Windows.Forms.Label label3;
         private DevExpress.XtraEditors.SimpleButton btnEdit;
         private DevExpress.XtraEditors.SimpleButton btnAdd;
-        private DevExpress.XtraEditors.GroupControl grpGoalInfo;
-        private DevExpress.XtraEditors.ComboBoxEdit cmbGoals;
-        private DevExpress.XtraEditors.ProgressBarControl progGoalComplition;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label lblPortfolioValue;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label lblGoalPeriodValue;
-        private System.Windows.Forms.Label lblPriorityNo;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private DevExpress.XtraGrid.GridControl gridControl2;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
-        private DevExpress.XtraGrid.GridControl gridControl1;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
-        private DevExpress.XtraGrid.GridControl grdSplitCashFlow;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridSplitContainerViewCashFlow;
+        private DevExpress.XtraEditors.SimpleButton btnClose;
+        private DevExpress.XtraBars.Navigation.TabPane tabEstimatedPlan;
+        private DevExpress.XtraBars.Navigation.TabNavigationPage tabNavigationPageCashFlow;
+        private DevExpress.XtraBars.Navigation.TabNavigationPage tabNavigationPageGoal;
+        private DevExpress.XtraBars.Navigation.TabNavigationPage tabNavigationPageCurrentStatus;
     }
 }
 

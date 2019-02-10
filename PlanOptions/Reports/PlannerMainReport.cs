@@ -42,7 +42,7 @@ namespace FinancialPlannerClient.PlanOptions
             ScopeOfPlancs scopeOfPlancs = new ScopeOfPlancs(client);
             scopeOfPlancs.CreateDocument();
 
-            AssumptionPage assumptionPage = new AssumptionPage(personalInformation);
+            AssumptionPage assumptionPage = new AssumptionPage(personalInformation,planner.ID);
             assumptionPage.CreateDocument();
 
             // Enable this property to maintain continuous page numbering 

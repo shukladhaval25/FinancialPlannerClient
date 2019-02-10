@@ -5696,9 +5696,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(972, 632);
             this.Controls.Add(this.tabPlannerDetails);
+            this.MinimizeBox = false;
             this.Name = "ClientInfo";
             this.Text = "Planner Details";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.ClientInfo_Load);
             this.tabPlannerDetails.ResumeLayout(false);
             this.Assumption.ResumeLayout(false);

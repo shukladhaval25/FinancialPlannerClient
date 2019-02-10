@@ -66,6 +66,7 @@
             this.navBarGroupControlContainer1 = new DevExpress.XtraNavBar.NavBarGroupControlContainer();
             this.navBarControlPlanner = new DevExpress.XtraNavBar.NavBarControl();
             this.navBarGroup1 = new DevExpress.XtraNavBar.NavBarGroup();
+            this.navBarItemOtherInformation = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItemAssumptions = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItem1 = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItem2 = new DevExpress.XtraNavBar.NavBarItem();
@@ -139,7 +140,6 @@
             this.navigationPageOther = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.navBarItemOtherInformation = new DevExpress.XtraNavBar.NavBarItem();
             ((System.ComponentModel.ISupportInitialize)(this.panelMenu)).BeginInit();
             this.panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlNavCtrl)).BeginInit();
@@ -327,6 +327,12 @@
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem3),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem4)});
             this.navBarGroup1.Name = "navBarGroup1";
+            // 
+            // navBarItemOtherInformation
+            // 
+            this.navBarItemOtherInformation.Caption = "Other Information";
+            this.navBarItemOtherInformation.Name = "navBarItemOtherInformation";
+            this.navBarItemOtherInformation.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItemOtherInformation_LinkClicked);
             // 
             // navBarItemAssumptions
             // 
@@ -524,13 +530,15 @@
             // 
             // DashboardNavFrame
             // 
+            this.DashboardNavFrame.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.DashboardNavFrame.Controls.Add(this.navigationPageDashboard);
             this.DashboardNavFrame.Controls.Add(this.navigationPageContactInfo);
             this.DashboardNavFrame.Controls.Add(this.navigationPageEmployee);
             this.DashboardNavFrame.Controls.Add(this.navigationPageClient);
             this.DashboardNavFrame.Controls.Add(this.navigationPageOther);
-            this.DashboardNavFrame.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DashboardNavFrame.Location = new System.Drawing.Point(172, 0);
+            this.DashboardNavFrame.Location = new System.Drawing.Point(175, 0);
             this.DashboardNavFrame.Name = "DashboardNavFrame";
             this.DashboardNavFrame.Pages.AddRange(new DevExpress.XtraBars.Navigation.NavigationPageBase[] {
             this.navigationPageDashboard,
@@ -539,7 +547,7 @@
             this.navigationPageClient,
             this.navigationPageOther});
             this.DashboardNavFrame.SelectedPage = this.navigationPageContactInfo;
-            this.DashboardNavFrame.Size = new System.Drawing.Size(840, 599);
+            this.DashboardNavFrame.Size = new System.Drawing.Size(837, 599);
             this.DashboardNavFrame.TabIndex = 2;
             this.DashboardNavFrame.Text = "DashboardnavigationFrame";
             this.DashboardNavFrame.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.navigationPageClient_ControlRemoved);
@@ -550,7 +558,7 @@
             this.navigationPageDashboard.Controls.Add(this.lblClientDashboard);
             this.navigationPageDashboard.Controls.Add(this.groupPlanStatus);
             this.navigationPageDashboard.Name = "navigationPageDashboard";
-            this.navigationPageDashboard.Size = new System.Drawing.Size(840, 599);
+            this.navigationPageDashboard.Size = new System.Drawing.Size(837, 599);
             // 
             // lblClientDashboard
             // 
@@ -562,7 +570,7 @@
             this.lblClientDashboard.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblClientDashboard.Location = new System.Drawing.Point(0, 0);
             this.lblClientDashboard.Name = "lblClientDashboard";
-            this.lblClientDashboard.Size = new System.Drawing.Size(840, 22);
+            this.lblClientDashboard.Size = new System.Drawing.Size(837, 22);
             this.lblClientDashboard.TabIndex = 1;
             this.lblClientDashboard.Text = "Client Dashboard";
             // 
@@ -572,13 +580,15 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupPlanStatus.Location = new System.Drawing.Point(4, 27);
             this.groupPlanStatus.Name = "groupPlanStatus";
-            this.groupPlanStatus.Size = new System.Drawing.Size(833, 77);
+            this.groupPlanStatus.Size = new System.Drawing.Size(830, 77);
             this.groupPlanStatus.TabIndex = 0;
             // 
             // navigationPageContactInfo
             // 
+            this.navigationPageContactInfo.AutoScroll = true;
+            this.navigationPageContactInfo.Caption = "navigationPageContactInfo";
             this.navigationPageContactInfo.Name = "navigationPageContactInfo";
-            this.navigationPageContactInfo.Size = new System.Drawing.Size(840, 599);
+            this.navigationPageContactInfo.Size = new System.Drawing.Size(837, 599);
             this.navigationPageContactInfo.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.navigationPageClient_ControlRemoved);
             // 
             // navigationPageEmployee
@@ -586,7 +596,7 @@
             this.navigationPageEmployee.Caption = "navigationPageEmployee";
             this.navigationPageEmployee.Controls.Add(this.lblEmployeeTitle);
             this.navigationPageEmployee.Name = "navigationPageEmployee";
-            this.navigationPageEmployee.Size = new System.Drawing.Size(840, 599);
+            this.navigationPageEmployee.Size = new System.Drawing.Size(837, 599);
             toolTipTitleItem5.Text = "Employee Infomation";
             toolTipItem4.LeftIndent = 6;
             toolTipItem4.Text = "View client employee information.";
@@ -605,7 +615,7 @@
             this.lblEmployeeTitle.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblEmployeeTitle.Location = new System.Drawing.Point(0, 0);
             this.lblEmployeeTitle.Name = "lblEmployeeTitle";
-            this.lblEmployeeTitle.Size = new System.Drawing.Size(840, 22);
+            this.lblEmployeeTitle.Size = new System.Drawing.Size(837, 22);
             this.lblEmployeeTitle.TabIndex = 3;
             this.lblEmployeeTitle.Text = "Employee Details";
             // 
@@ -615,7 +625,7 @@
             this.navigationPageClient.Controls.Add(this.grpClientInfo);
             this.navigationPageClient.Controls.Add(this.labelClientTitle);
             this.navigationPageClient.Name = "navigationPageClient";
-            this.navigationPageClient.Size = new System.Drawing.Size(840, 599);
+            this.navigationPageClient.Size = new System.Drawing.Size(837, 599);
             this.navigationPageClient.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.navigationPageClient_ControlRemoved);
             // 
             // grpClientInfo
@@ -1081,7 +1091,7 @@
             this.labelClientTitle.Dock = System.Windows.Forms.DockStyle.Top;
             this.labelClientTitle.Location = new System.Drawing.Point(0, 0);
             this.labelClientTitle.Name = "labelClientTitle";
-            this.labelClientTitle.Size = new System.Drawing.Size(840, 22);
+            this.labelClientTitle.Size = new System.Drawing.Size(837, 22);
             this.labelClientTitle.TabIndex = 2;
             this.labelClientTitle.Text = "Client Information";
             // 
@@ -1089,17 +1099,12 @@
             // 
             this.navigationPageOther.Caption = "navigationPageOther";
             this.navigationPageOther.Name = "navigationPageOther";
-            this.navigationPageOther.Size = new System.Drawing.Size(840, 599);
+            this.navigationPageOther.Size = new System.Drawing.Size(837, 599);
+            this.navigationPageOther.ControlAdded += new System.Windows.Forms.ControlEventHandler(this.navigationPageOther_ControlAdded);
             // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // navBarItemOtherInformation
-            // 
-            this.navBarItemOtherInformation.Caption = "Other Information";
-            this.navBarItemOtherInformation.Name = "navBarItemOtherInformation";
-            this.navBarItemOtherInformation.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItemOtherInformation_LinkClicked);
             // 
             // Clientdashboard
             // 

@@ -28,6 +28,7 @@ namespace FinancialPlannerClient.Clients
             Client = 3,
         }
 
+        bool isControlAdded = false;
 
         #region "ClientInfo variables"
         private Client _client;
@@ -399,8 +400,8 @@ namespace FinancialPlannerClient.Clients
 
         private void navBarItemEstimatedPlan_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
-            //EstimatedPlan estimatedPlan = new EstimatedPlan(this._client.ID, planner);
-            EstimatedPlanOptionList estimatedPlan = new EstimatedPlanOptionList(this._client);
+            EstimatedPlan estimatedPlan = new EstimatedPlan(this._client.ID, planner);
+            //EstimatedPlanOptionList estimatedPlan = new EstimatedPlanOptionList(this._client);
             estimatedPlan.TopLevel = false;
             estimatedPlan.Visible = true;
             navigationPageOther.Name = estimatedPlan.Name;
@@ -420,13 +421,20 @@ namespace FinancialPlannerClient.Clients
 
         private void navBarItemOtherInformation_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
-            ClientInfo clientInfo = new ClientInfo(planner.ID, this._client,true);
+            ClientInfo clientInfo = new ClientInfo(planner.ID, this._client, true);
             clientInfo.TopLevel = false;
             clientInfo.Visible = true;
             navigationPageOther.Name = clientInfo.Name;
             navigationPageOther.Controls.Clear();
             navigationPageOther.Controls.Add(clientInfo);
             showNavigationPage(clientInfo.Name);
+            //ClientInfo clientInfo = new ClientInfo(planner.ID, this._client, true);
+            //clientInfo.ShowDialog();
+        }
+
+        private void navigationPageOther_ControlAdded(object sender, ControlEventArgs e)
+        {
+            isControlAdded = true;
         }
     }
 }

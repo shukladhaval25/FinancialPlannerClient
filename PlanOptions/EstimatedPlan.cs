@@ -1,6 +1,5 @@
 ﻿using FinancialPlanner.Common;
 using FinancialPlanner.Common.Model;
-using FinancialPlanner.Common.Model.PlanOptions;
 using FinancialPlannerClient.CashFlowManager;
 using FinancialPlannerClient.PlannerInfo;
 using System;
@@ -21,12 +20,7 @@ namespace FinancialPlannerClient.PlanOptions
 
         private List<RiskProfiledReturnMaster> _riskProfileMasters = new List<RiskProfiledReturnMaster>();
         private int _riskProfileId;
-
-        CashFlowService cashFlowService = new CashFlowService();
-        DataTable _dtcashFlow;
-
-        private IList<Goals> goals;
-
+        private CashFlowService cashFlowService;
 
         public EstimatedPlan(int clientId, Planner planner)
         {
@@ -70,43 +64,26 @@ namespace FinancialPlannerClient.PlanOptions
             lblRiskProfileValue.Text = riskProfMaster.Name;
             lblRiskProfileValue.Tag = riskProfMaster.Id;
             _riskProfileId = riskProfMaster.Id;
-
-            CashFlow cf = cashFlowService.GetCashFlow(int.Parse(val[0][0].ToString()));
-            if (cf != null)
-            {
-
-                grdSplitCashFlow.DataSource = null;
-
-                btnShowIncomeDetails_Click(sender, e);
-
-            }
-
+            tabEstimatedPlan.SelectedPage = tabNavigationPageCashFlow;
         }
-        private void btnShowIncomeDetails_Click(object sender, EventArgs e)
+
+        private void showCashFlow()
         {
             if (!string.IsNullOrEmpty(cmbPlanOption.Text))
             {
-                _dtcashFlow = cashFlowService.GenerateCashFlow(this._clientId, this.planner.ID, _riskProfileId);
-                grdSplitCashFlow.DataSource = _dtcashFlow;
-                //grdSplitCashFlow.CreateSplitContainer();
-                gridSplitContainerViewCashFlow.Columns["Id"].Visible = false;
-                gridSplitContainerViewCashFlow.Columns["StartYear"].Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
-                foreach (DevExpress.XtraGrid.Columns.GridColumn column in gridSplitContainerViewCashFlow.Columns)
-                {
-                    if (column.Name != "ID" && column.Name != "StartYear" && column.Name != "EndYear")
-                    {
-                        //    column.DefaultCellStyle.Format = "#,###";
-                        //    column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.TopRight;
-                    }
-                    if (column.Name != "IncomeTax")
-                    {
-                        //column.ReadOnly = true;
-                    }
-                    else
-                        column.Caption = "Income Tax (%)";
-                }
+                CashFlowView cashFlowView = new CashFlowView(this._clientId, this.planner.ID,
+                    _riskProfileId,
+                    int.Parse(cmbPlanOption.Tag.ToString()));
+                cashFlowView.TopLevel = false;
+                cashFlowView.Visible = true;
+                tabNavigationPageCashFlow.Controls.Clear();
+                tabNavigationPageCashFlow.Controls.Add(cashFlowView);
+                tabNavigationPageCashFlow.Controls[0].Dock = DockStyle.Fill;
+                cashFlowService = cashFlowView.GetCashFlowService();
             }
+            tabEstimatedPlan.SelectedPage = tabNavigationPageCashFlow;
         }
+
         private void loadRiskProfileData()
         {
 
@@ -127,18 +104,74 @@ namespace FinancialPlannerClient.PlanOptions
 
         private void EstimatedPlan_Load(object sender, EventArgs e)
         {
-            goals = new GoalsInfo().GetAll(this.planner.ID);
-            getGoals();
+            showCashFlow();
+            tabEstimatedPlan.SelectedPage = tabNavigationPageCashFlow;
+        }
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        private void EstimatedPlan_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (this.Parent != null)
+                this.Parent.Controls.Clear();
         }
 
-        private void getGoals()
+        private void btnGoals_Click(object sender, EventArgs e)
         {
-            cmbGoals.Properties.Items.Clear();
+           
+        }
 
-            foreach (var goal in this.goals)
+        private void btnCashFlow_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabEstimatedPlan_SelectedPageChanging(object sender, DevExpress.XtraBars.Navigation.SelectedPageChangingEventArgs e)
+        {
+        }
+        private void showGoalsView()
+        {
+            if (tabNavigationPageGoal.Controls.Count == 0)
             {
-                cmbGoals.Properties.Items.Add(goal.Name);
+                GoalCalView goalCalView = new GoalCalView(this.planner, _riskProfileId, int.Parse(cmbPlanOption.Tag.ToString()));
+                goalCalView.setCashFlowService(cashFlowService);
+                goalCalView.TopLevel = false;
+                goalCalView.Visible = true;
+                
+                tabNavigationPageGoal.Controls.Clear();
+                tabNavigationPageGoal.Controls.Add(goalCalView);
+                //tabNavigationPageGoal.Controls[0].Dock = DockStyle.Fill;               
             }
-        }       
+            tabEstimatedPlan.SelectedPage = tabNavigationPageGoal;
+        }
+
+        private void tabEstimatedPlan_SelectedPageChanged(object sender, DevExpress.XtraBars.Navigation.SelectedPageChangedEventArgs e)
+        {
+            switch(tabEstimatedPlan.SelectedPage.Caption)
+            {
+                case "Goals":
+                    showGoalsView();
+                    break;
+                case "Current Status":
+                    showCurrentStatusView();
+                    break;
+            }                
+        }
+
+        private void showCurrentStatusView()
+        {
+            if (tabNavigationPageCurrentStatus.Controls.Count == 0)
+            {
+                CurrentStatusView currentStatusView = new CurrentStatusView(this.planner.ID);
+                currentStatusView.TopLevel = false;
+                currentStatusView.Visible = true;
+
+                tabNavigationPageCurrentStatus.Controls.Clear();
+                tabNavigationPageCurrentStatus.Controls.Add(currentStatusView);
+                //tabNavigationPageGoal.Controls[0].Dock = DockStyle.Fill;               
+            }
+            tabEstimatedPlan.SelectedPage = tabNavigationPageCurrentStatus;
+        }
     }
 }

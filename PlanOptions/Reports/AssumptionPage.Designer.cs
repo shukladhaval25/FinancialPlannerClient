@@ -58,28 +58,27 @@
             this.xrTableRow7 = new DevExpress.XtraReports.UI.XRTableRow();
             this.xrTableCell19 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell20 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell21 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.lblEquityReturn = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableRow8 = new DevExpress.XtraReports.UI.XRTableRow();
             this.xrTableCell22 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell23 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell24 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.lblDebtReturn = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableRow9 = new DevExpress.XtraReports.UI.XRTableRow();
             this.xrTableCell25 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell26 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell27 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.lblRealEstateReturn = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableRow10 = new DevExpress.XtraReports.UI.XRTableRow();
-            this.xrTableCell29 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell30 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.lblExpRaise = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableRow11 = new DevExpress.XtraReports.UI.XRTableRow();
             this.xrTableCell31 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell32 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell33 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.lblClientNameForIncome = new DevExpress.XtraReports.UI.XRTableCell();
+            this.lblClientIncomeRaise = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableRow12 = new DevExpress.XtraReports.UI.XRTableRow();
             this.xrTableCell34 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell35 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell36 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.lblSpouseNameForIncome = new DevExpress.XtraReports.UI.XRTableCell();
+            this.lblSpouseIncomeRaise = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableRow13 = new DevExpress.XtraReports.UI.XRTableRow();
-            this.xrTableCell38 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.lblInsurance = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrLabel2 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrPictureBox2 = new DevExpress.XtraReports.UI.XRPictureBox();
             this.xrLabel1 = new DevExpress.XtraReports.UI.XRLabel();
@@ -104,6 +103,7 @@
             this.Detail.Name = "Detail";
             this.Detail.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.Detail.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
+            this.Detail.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.Detail_BeforePrint);
             // 
             // xrTable1
             // 
@@ -309,7 +309,7 @@
             this.xrTableRow7.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
             this.xrTableCell19,
             this.xrTableCell20,
-            this.xrTableCell21});
+            this.lblEquityReturn});
             this.xrTableRow7.Dpi = 100F;
             this.xrTableRow7.Name = "xrTableRow7";
             this.xrTableRow7.Weight = 1D;
@@ -328,19 +328,18 @@
             this.xrTableCell20.Text = "Equity";
             this.xrTableCell20.Weight = 1.5880217368972793D;
             // 
-            // xrTableCell21
+            // lblEquityReturn
             // 
-            this.xrTableCell21.Dpi = 100F;
-            this.xrTableCell21.Name = "xrTableCell21";
-            this.xrTableCell21.Text = "xrTableCell21";
-            this.xrTableCell21.Weight = 0.41197826310272068D;
+            this.lblEquityReturn.Dpi = 100F;
+            this.lblEquityReturn.Name = "lblEquityReturn";
+            this.lblEquityReturn.Weight = 0.41197826310272068D;
             // 
             // xrTableRow8
             // 
             this.xrTableRow8.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
             this.xrTableCell22,
             this.xrTableCell23,
-            this.xrTableCell24});
+            this.lblDebtReturn});
             this.xrTableRow8.Dpi = 100F;
             this.xrTableRow8.Name = "xrTableRow8";
             this.xrTableRow8.Weight = 1D;
@@ -359,19 +358,18 @@
             this.xrTableCell23.Text = "Debt";
             this.xrTableCell23.Weight = 1.5880217368972793D;
             // 
-            // xrTableCell24
+            // lblDebtReturn
             // 
-            this.xrTableCell24.Dpi = 100F;
-            this.xrTableCell24.Name = "xrTableCell24";
-            this.xrTableCell24.Text = "xrTableCell24";
-            this.xrTableCell24.Weight = 0.41197826310272068D;
+            this.lblDebtReturn.Dpi = 100F;
+            this.lblDebtReturn.Name = "lblDebtReturn";
+            this.lblDebtReturn.Weight = 0.41197826310272068D;
             // 
             // xrTableRow9
             // 
             this.xrTableRow9.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
             this.xrTableCell25,
             this.xrTableCell26,
-            this.xrTableCell27});
+            this.lblRealEstateReturn});
             this.xrTableRow9.Dpi = 100F;
             this.xrTableRow9.Name = "xrTableRow9";
             this.xrTableRow9.Weight = 1D;
@@ -389,42 +387,33 @@
             this.xrTableCell26.Text = "Real Estate";
             this.xrTableCell26.Weight = 1.5880217368972793D;
             // 
-            // xrTableCell27
+            // lblRealEstateReturn
             // 
-            this.xrTableCell27.Dpi = 100F;
-            this.xrTableCell27.Name = "xrTableCell27";
-            this.xrTableCell27.Text = "xrTableCell27";
-            this.xrTableCell27.Weight = 0.41197826310272068D;
+            this.lblRealEstateReturn.Dpi = 100F;
+            this.lblRealEstateReturn.Name = "lblRealEstateReturn";
+            this.lblRealEstateReturn.Weight = 0.41197826310272068D;
             // 
             // xrTableRow10
             // 
             this.xrTableRow10.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
-            this.xrTableCell29,
-            this.xrTableCell30});
+            this.lblExpRaise});
             this.xrTableRow10.Dpi = 100F;
             this.xrTableRow10.Name = "xrTableRow10";
             this.xrTableRow10.Weight = 1D;
             // 
-            // xrTableCell29
+            // lblExpRaise
             // 
-            this.xrTableCell29.Dpi = 100F;
-            this.xrTableCell29.Name = "xrTableCell29";
-            this.xrTableCell29.Text = "5. Regular ongoing expenses of raise by {0}% p.a till retirement.";
-            this.xrTableCell29.Weight = 2.5880217368972795D;
-            // 
-            // xrTableCell30
-            // 
-            this.xrTableCell30.Dpi = 100F;
-            this.xrTableCell30.Name = "xrTableCell30";
-            this.xrTableCell30.Text = "xrTableCell30";
-            this.xrTableCell30.Weight = 0.41197826310272068D;
+            this.lblExpRaise.Dpi = 100F;
+            this.lblExpRaise.Name = "lblExpRaise";
+            this.lblExpRaise.Text = "5. Regular ongoing expenses of raise by {0}% p.a till retirement.";
+            this.lblExpRaise.Weight = 3D;
             // 
             // xrTableRow11
             // 
             this.xrTableRow11.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
             this.xrTableCell31,
-            this.xrTableCell32,
-            this.xrTableCell33});
+            this.lblClientNameForIncome,
+            this.lblClientIncomeRaise});
             this.xrTableRow11.Dpi = 100F;
             this.xrTableRow11.Name = "xrTableRow11";
             this.xrTableRow11.Weight = 1D;
@@ -436,26 +425,24 @@
             this.xrTableCell31.Text = "6. Annual rise in income of:";
             this.xrTableCell31.Weight = 1D;
             // 
-            // xrTableCell32
+            // lblClientNameForIncome
             // 
-            this.xrTableCell32.Dpi = 100F;
-            this.xrTableCell32.Name = "xrTableCell32";
-            this.xrTableCell32.Text = "xrTableCell32";
-            this.xrTableCell32.Weight = 1.5880217368972793D;
+            this.lblClientNameForIncome.Dpi = 100F;
+            this.lblClientNameForIncome.Name = "lblClientNameForIncome";
+            this.lblClientNameForIncome.Weight = 1.5880217368972793D;
             // 
-            // xrTableCell33
+            // lblClientIncomeRaise
             // 
-            this.xrTableCell33.Dpi = 100F;
-            this.xrTableCell33.Name = "xrTableCell33";
-            this.xrTableCell33.Text = "xrTableCell33";
-            this.xrTableCell33.Weight = 0.41197826310272068D;
+            this.lblClientIncomeRaise.Dpi = 100F;
+            this.lblClientIncomeRaise.Name = "lblClientIncomeRaise";
+            this.lblClientIncomeRaise.Weight = 0.41197826310272068D;
             // 
             // xrTableRow12
             // 
             this.xrTableRow12.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
             this.xrTableCell34,
-            this.xrTableCell35,
-            this.xrTableCell36});
+            this.lblSpouseNameForIncome,
+            this.lblSpouseIncomeRaise});
             this.xrTableRow12.Dpi = 100F;
             this.xrTableRow12.Name = "xrTableRow12";
             this.xrTableRow12.Weight = 1D;
@@ -466,36 +453,34 @@
             this.xrTableCell34.Name = "xrTableCell34";
             this.xrTableCell34.Weight = 1D;
             // 
-            // xrTableCell35
+            // lblSpouseNameForIncome
             // 
-            this.xrTableCell35.Dpi = 100F;
-            this.xrTableCell35.Name = "xrTableCell35";
-            this.xrTableCell35.Text = "xrTableCell35";
-            this.xrTableCell35.Weight = 1.5880217368972793D;
+            this.lblSpouseNameForIncome.Dpi = 100F;
+            this.lblSpouseNameForIncome.Name = "lblSpouseNameForIncome";
+            this.lblSpouseNameForIncome.Weight = 1.5880217368972793D;
             // 
-            // xrTableCell36
+            // lblSpouseIncomeRaise
             // 
-            this.xrTableCell36.Dpi = 100F;
-            this.xrTableCell36.Name = "xrTableCell36";
-            this.xrTableCell36.Text = "xrTableCell36";
-            this.xrTableCell36.Weight = 0.41197826310272068D;
+            this.lblSpouseIncomeRaise.Dpi = 100F;
+            this.lblSpouseIncomeRaise.Name = "lblSpouseIncomeRaise";
+            this.lblSpouseIncomeRaise.Weight = 0.41197826310272068D;
             // 
             // xrTableRow13
             // 
             this.xrTableRow13.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
-            this.xrTableCell38});
+            this.lblInsurance});
             this.xrTableRow13.Dpi = 100F;
             this.xrTableRow13.Name = "xrTableRow13";
             this.xrTableRow13.Weight = 1.9333283315833469D;
             // 
-            // xrTableCell38
+            // lblInsurance
             // 
-            this.xrTableCell38.Dpi = 100F;
-            this.xrTableCell38.Multiline = true;
-            this.xrTableCell38.Name = "xrTableCell38";
-            this.xrTableCell38.Text = "7. In case of unfortunate event of death of {0} and/or {1} insurance proceeds wil" +
+            this.lblInsurance.Dpi = 100F;
+            this.lblInsurance.Multiline = true;
+            this.lblInsurance.Name = "lblInsurance";
+            this.lblInsurance.Text = "7. In case of unfortunate event of death of {0} and/or {1} insurance proceeds wil" +
     "l be deployed at \r\nrate of return of {2}%.";
-            this.xrTableCell38.Weight = 3D;
+            this.lblInsurance.Weight = 3D;
             // 
             // xrLabel2
             // 
@@ -643,28 +628,27 @@
         private DevExpress.XtraReports.UI.XRTableRow xrTableRow7;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell19;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell20;
-        private DevExpress.XtraReports.UI.XRTableCell xrTableCell21;
+        private DevExpress.XtraReports.UI.XRTableCell lblEquityReturn;
         private DevExpress.XtraReports.UI.XRTableRow xrTableRow8;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell22;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell23;
-        private DevExpress.XtraReports.UI.XRTableCell xrTableCell24;
+        private DevExpress.XtraReports.UI.XRTableCell lblDebtReturn;
         private DevExpress.XtraReports.UI.XRTableRow xrTableRow9;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell25;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell26;
-        private DevExpress.XtraReports.UI.XRTableCell xrTableCell27;
+        private DevExpress.XtraReports.UI.XRTableCell lblRealEstateReturn;
         private DevExpress.XtraReports.UI.XRTableRow xrTableRow10;
-        private DevExpress.XtraReports.UI.XRTableCell xrTableCell29;
-        private DevExpress.XtraReports.UI.XRTableCell xrTableCell30;
+        private DevExpress.XtraReports.UI.XRTableCell lblExpRaise;
         private DevExpress.XtraReports.UI.XRTableRow xrTableRow11;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell31;
-        private DevExpress.XtraReports.UI.XRTableCell xrTableCell32;
-        private DevExpress.XtraReports.UI.XRTableCell xrTableCell33;
+        private DevExpress.XtraReports.UI.XRTableCell lblClientNameForIncome;
+        private DevExpress.XtraReports.UI.XRTableCell lblClientIncomeRaise;
         private DevExpress.XtraReports.UI.XRTableRow xrTableRow12;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell34;
-        private DevExpress.XtraReports.UI.XRTableCell xrTableCell35;
-        private DevExpress.XtraReports.UI.XRTableCell xrTableCell36;
+        private DevExpress.XtraReports.UI.XRTableCell lblSpouseNameForIncome;
+        private DevExpress.XtraReports.UI.XRTableCell lblSpouseIncomeRaise;
         private DevExpress.XtraReports.UI.XRTableRow xrTableRow13;
-        private DevExpress.XtraReports.UI.XRTableCell xrTableCell38;
+        private DevExpress.XtraReports.UI.XRTableCell lblInsurance;
         private DevExpress.XtraReports.UI.XRLabel xrLabel2;
         private DevExpress.XtraReports.UI.XRPictureBox xrPictureBox2;
         private DevExpress.XtraReports.UI.XRLabel xrLabel1;

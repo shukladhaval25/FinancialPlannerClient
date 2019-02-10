@@ -222,6 +222,24 @@
     <Compile Include="PlannerInfo\ClientFestivalInfo.cs" />
     <Compile Include="PlannerInfo\DocumentInfo.cs" />
     <Compile Include="Master\FestivalsInfo.cs" />
+    <Compile Include="PlanOptions\CashFlowView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\CashFlowView.designer.cs">
+      <DependentUpon>CashFlowView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlanOptions\CurrentStatusView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\CurrentStatusView.designer.cs">
+      <DependentUpon>CurrentStatusView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlanOptions\GoalCalView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\GoalCalView.designer.cs">
+      <DependentUpon>GoalCalView.cs</DependentUpon>
+    </Compile>
     <Compile Include="PlanOptions\Reports\AssumptionPage.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -437,6 +455,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Master\Others.resx">
       <DependentUpon>Others.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\CashFlowView.resx">
+      <DependentUpon>CashFlowView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\CurrentStatusView.resx">
+      <DependentUpon>CurrentStatusView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\GoalCalView.resx">
+      <DependentUpon>GoalCalView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\Reports\AssumptionPage.resx">
       <DependentUpon>AssumptionPage.cs</DependentUpon>

@@ -272,7 +272,7 @@ namespace FinancialPlannerClient.CashFlowManager
             {
                 double expAmt = double.Parse(_dtCashFlow.Rows[years - 1][exp.Item].ToString());
                 double expWithInflaction =  expAmt + ((expAmt * _inflactionRatePercentage)/100);
-                dr[exp.Item] = (exp.OccuranceType == ExpenseType.Monthly) ? (expWithInflaction * 12) :  expWithInflaction;
+                dr[exp.Item] =  expWithInflaction;
                 totalExpenses = totalExpenses + expWithInflaction;
             }
             dr["Total Annual Expenses"] = totalExpenses;
@@ -281,13 +281,22 @@ namespace FinancialPlannerClient.CashFlowManager
         private void addLoansCalculation(int years, DataRow dr)
         {
             double totalLoans = 0;
+            int previousYearRowIndex = years - 1;
+            years = years + 1;
             foreach (Loan loan in _cashFlow.LstLoans)
             {
-                if (int.Parse(dr["StartYear"].ToString()) <=
-                   int.Parse(_dtCashFlow.Rows[0]["StartYear"].ToString()) + (loan.TermLeftInMonths / 12) - 1)
+                //if (int.Parse(dr["StartYear"].ToString()) <=
+                //   int.Parse(_dtCashFlow.Rows[0]["StartYear"].ToString()) + (Decimal) ((Decimal) loan.TermLeftInMonths / 12) - 1)
+                decimal totalNoOfYearsForLoan = (Decimal)((Decimal)loan.TermLeftInMonths / 12);
+                if (years  < totalNoOfYearsForLoan || (totalNoOfYearsForLoan > years -1 && totalNoOfYearsForLoan < years))
                 {
-                    double loanAmt = double.Parse(_dtCashFlow.Rows[years - 1][loan.TypeOfLoan].ToString());
-                    dr[loan.TypeOfLoan] = loanAmt;
+                    double loanAmt = double.Parse(_dtCashFlow.Rows[previousYearRowIndex][loan.TypeOfLoan].ToString());
+
+                    decimal period = 12 / (12 * ((totalNoOfYearsForLoan) - Math.Truncate(totalNoOfYearsForLoan)));
+                    dr[loan.TypeOfLoan] = (years < totalNoOfYearsForLoan) ? loanAmt : 
+                        ((loanAmt) / (double) period);
+                    loanAmt = (years < totalNoOfYearsForLoan) ? loanAmt :
+                        ((loanAmt) / (double)period);
                     totalLoans = totalLoans + loanAmt;
                 }
             }
