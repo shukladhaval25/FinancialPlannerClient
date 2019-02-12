@@ -1,13 +1,8 @@
-﻿using FinancialPlanner.Common.Model.PlanOptions;
+﻿using DevExpress.Utils;
+using FinancialPlanner.Common.Model.PlanOptions;
 using FinancialPlannerClient.CashFlowManager;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
 
 namespace FinancialPlannerClient.PlanOptions
 {
@@ -49,9 +44,10 @@ namespace FinancialPlannerClient.PlanOptions
             foreach (DevExpress.XtraGrid.Columns.GridColumn column in gridSplitContainerViewCashFlow.Columns)
             {
                 if (column.Name != "ID" && column.Name != "StartYear" && column.Name != "EndYear")
-                {                    
-                    //    column.DefaultCellStyle.Format = "#,###";
-                    //    column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.TopRight;
+                {
+                    column.DisplayFormat.FormatType = FormatType.Numeric;
+                    column.DisplayFormat.FormatString = "#,###";
+                    column.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;                 
                 }
                 if (column.Name != "IncomeTax")
                 {

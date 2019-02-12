@@ -32,9 +32,6 @@
             DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
             this.label2 = new System.Windows.Forms.Label();
             this.cmbPlanOption = new DevExpress.XtraEditors.ComboBoxEdit();
             this.label1 = new System.Windows.Forms.Label();
@@ -43,8 +40,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.lblPlanName = new System.Windows.Forms.Label();
             this.grpPlanOption = new DevExpress.XtraEditors.GroupControl();
-            this.btnEdit = new DevExpress.XtraEditors.SimpleButton();
-            this.btnAdd = new DevExpress.XtraEditors.SimpleButton();
+            this.btnPlanOptinView = new DevExpress.XtraEditors.SimpleButton();
             this.lblRiskProfileValue = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.btnClose = new DevExpress.XtraEditors.SimpleButton();
@@ -52,6 +48,8 @@
             this.tabNavigationPageCashFlow = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             this.tabNavigationPageGoal = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             this.tabNavigationPageCurrentStatus = new DevExpress.XtraBars.Navigation.TabNavigationPage();
+            this.lblStartDate = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.cmbPlanOption.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grpPlanDetail)).BeginInit();
             this.grpPlanDetail.SuspendLayout();
@@ -78,7 +76,7 @@
             this.cmbPlanOption.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cmbPlanOption.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.cmbPlanOption.Size = new System.Drawing.Size(152, 20);
+            this.cmbPlanOption.Size = new System.Drawing.Size(193, 20);
             this.cmbPlanOption.TabIndex = 6;
             this.cmbPlanOption.SelectedIndexChanged += new System.EventHandler(this.cmbPlanOption_SelectedIndexChanged);
             // 
@@ -94,13 +92,15 @@
             // 
             // grpPlanDetail
             // 
+            this.grpPlanDetail.Controls.Add(this.lblStartDate);
+            this.grpPlanDetail.Controls.Add(this.label6);
             this.grpPlanDetail.Controls.Add(this.lblPlanPeriod);
             this.grpPlanDetail.Controls.Add(this.label4);
             this.grpPlanDetail.Controls.Add(this.lblPlanName);
             this.grpPlanDetail.Controls.Add(this.label1);
-            this.grpPlanDetail.Location = new System.Drawing.Point(189, 4);
+            this.grpPlanDetail.Location = new System.Drawing.Point(6, 4);
             this.grpPlanDetail.Name = "grpPlanDetail";
-            this.grpPlanDetail.Size = new System.Drawing.Size(278, 77);
+            this.grpPlanDetail.Size = new System.Drawing.Size(461, 77);
             this.grpPlanDetail.TabIndex = 8;
             this.grpPlanDetail.Text = "Plan Details";
             // 
@@ -108,7 +108,7 @@
             // 
             this.lblPlanPeriod.AutoSize = true;
             this.lblPlanPeriod.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPlanPeriod.Location = new System.Drawing.Point(61, 51);
+            this.lblPlanPeriod.Location = new System.Drawing.Point(155, 51);
             this.lblPlanPeriod.Name = "lblPlanPeriod";
             this.lblPlanPeriod.Size = new System.Drawing.Size(42, 13);
             this.lblPlanPeriod.TabIndex = 10;
@@ -118,7 +118,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(6, 51);
+            this.label4.Location = new System.Drawing.Point(155, 29);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(49, 13);
             this.label4.TabIndex = 9;
@@ -128,7 +128,7 @@
             // 
             this.lblPlanName.AutoSize = true;
             this.lblPlanName.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPlanName.Location = new System.Drawing.Point(61, 29);
+            this.lblPlanName.Location = new System.Drawing.Point(5, 51);
             this.lblPlanName.Name = "lblPlanName";
             this.lblPlanName.Size = new System.Drawing.Size(42, 13);
             this.lblPlanName.TabIndex = 8;
@@ -136,63 +136,44 @@
             // 
             // grpPlanOption
             // 
-            this.grpPlanOption.Controls.Add(this.btnEdit);
-            this.grpPlanOption.Controls.Add(this.btnAdd);
+            this.grpPlanOption.Controls.Add(this.btnPlanOptinView);
             this.grpPlanOption.Controls.Add(this.lblRiskProfileValue);
             this.grpPlanOption.Controls.Add(this.label3);
             this.grpPlanOption.Controls.Add(this.cmbPlanOption);
             this.grpPlanOption.Controls.Add(this.label2);
             this.grpPlanOption.Location = new System.Drawing.Point(473, 4);
             this.grpPlanOption.Name = "grpPlanOption";
-            this.grpPlanOption.Size = new System.Drawing.Size(463, 77);
+            this.grpPlanOption.Size = new System.Drawing.Size(572, 77);
             this.grpPlanOption.TabIndex = 9;
             this.grpPlanOption.Text = "Plan Option Details";
             // 
-            // btnEdit
+            // btnPlanOptinView
             // 
-            this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEdit.Image = ((System.Drawing.Image)(resources.GetObject("btnEdit.Image")));
-            this.btnEdit.Location = new System.Drawing.Point(433, 29);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(25, 35);
+            this.btnPlanOptinView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPlanOptinView.Image = ((System.Drawing.Image)(resources.GetObject("btnPlanOptinView.Image")));
+            this.btnPlanOptinView.Location = new System.Drawing.Point(485, 33);
+            this.btnPlanOptinView.Name = "btnPlanOptinView";
+            this.btnPlanOptinView.Size = new System.Drawing.Size(82, 29);
             toolTipTitleItem1.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
             toolTipTitleItem1.Appearance.Options.UseImage = true;
             toolTipTitleItem1.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem1.Image")));
-            toolTipTitleItem1.Text = "Edit Plan option";
+            toolTipTitleItem1.Text = "Plan options";
             toolTipItem1.LeftIndent = 6;
-            toolTipItem1.Text = "To modify selected plan option click here.";
+            toolTipItem1.Text = "To get more details about plan option click here.";
             superToolTip1.Items.Add(toolTipTitleItem1);
             superToolTip1.Items.Add(toolTipItem1);
-            this.btnEdit.SuperTip = superToolTip1;
-            this.btnEdit.TabIndex = 10;
-            this.btnEdit.ToolTip = "Edit Client";
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
-            this.btnAdd.Location = new System.Drawing.Point(402, 29);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(25, 35);
-            toolTipTitleItem2.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
-            toolTipTitleItem2.Appearance.Options.UseImage = true;
-            toolTipTitleItem2.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem2.Image")));
-            toolTipTitleItem2.Text = "New Plan options";
-            toolTipItem2.LeftIndent = 6;
-            toolTipItem2.Text = "To add new plan option click here.";
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            superToolTip2.Items.Add(toolTipItem2);
-            this.btnAdd.SuperTip = superToolTip2;
-            this.btnAdd.TabIndex = 9;
-            this.btnAdd.ToolTip = "Add new client";
-            this.btnAdd.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Application;
-            this.btnAdd.ToolTipTitle = "New Client";
+            this.btnPlanOptinView.SuperTip = superToolTip1;
+            this.btnPlanOptinView.TabIndex = 9;
+            this.btnPlanOptinView.Text = "Get Details";
+            this.btnPlanOptinView.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Application;
+            this.btnPlanOptinView.ToolTipTitle = "New Client";
+            this.btnPlanOptinView.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // lblRiskProfileValue
             // 
             this.lblRiskProfileValue.AutoSize = true;
             this.lblRiskProfileValue.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRiskProfileValue.Location = new System.Drawing.Point(241, 45);
+            this.lblRiskProfileValue.Location = new System.Drawing.Point(258, 45);
             this.lblRiskProfileValue.Name = "lblRiskProfileValue";
             this.lblRiskProfileValue.Size = new System.Drawing.Size(116, 13);
             this.lblRiskProfileValue.TabIndex = 8;
@@ -202,7 +183,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(163, 45);
+            this.label3.Location = new System.Drawing.Point(258, 26);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(76, 13);
             this.label3.TabIndex = 7;
@@ -210,9 +191,10 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(942, 4);
+            this.btnClose.ImageUri.Uri = "Cancel";
+            this.btnClose.Location = new System.Drawing.Point(1051, 37);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(40, 77);
+            this.btnClose.Size = new System.Drawing.Size(107, 29);
             this.btnClose.TabIndex = 27;
             this.btnClose.Text = "Close";
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -232,9 +214,9 @@
             this.tabNavigationPageCashFlow,
             this.tabNavigationPageCurrentStatus,
             this.tabNavigationPageGoal});
-            this.tabEstimatedPlan.RegularSize = new System.Drawing.Size(1027, 650);
+            this.tabEstimatedPlan.RegularSize = new System.Drawing.Size(1161, 650);
             this.tabEstimatedPlan.SelectedPage = this.tabNavigationPageCashFlow;
-            this.tabEstimatedPlan.Size = new System.Drawing.Size(1027, 650);
+            this.tabEstimatedPlan.Size = new System.Drawing.Size(1161, 650);
             this.tabEstimatedPlan.TabIndex = 29;
             this.tabEstimatedPlan.Text = "Estimated Plan";
             this.tabEstimatedPlan.SelectedPageChanged += new DevExpress.XtraBars.Navigation.SelectedPageChangedEventHandler(this.tabEstimatedPlan_SelectedPageChanged);
@@ -248,7 +230,7 @@
             this.tabNavigationPageCashFlow.ItemShowMode = DevExpress.XtraBars.Navigation.ItemShowMode.ImageAndText;
             this.tabNavigationPageCashFlow.Name = "tabNavigationPageCashFlow";
             this.tabNavigationPageCashFlow.Properties.ShowMode = DevExpress.XtraBars.Navigation.ItemShowMode.ImageAndText;
-            this.tabNavigationPageCashFlow.Size = new System.Drawing.Size(1009, 602);
+            this.tabNavigationPageCashFlow.Size = new System.Drawing.Size(1143, 602);
             // 
             // tabNavigationPageGoal
             // 
@@ -264,12 +246,32 @@
             this.tabNavigationPageCurrentStatus.Name = "tabNavigationPageCurrentStatus";
             this.tabNavigationPageCurrentStatus.Size = new System.Drawing.Size(1009, 602);
             // 
+            // lblStartDate
+            // 
+            this.lblStartDate.AutoSize = true;
+            this.lblStartDate.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStartDate.Location = new System.Drawing.Point(311, 51);
+            this.lblStartDate.Name = "lblStartDate";
+            this.lblStartDate.Size = new System.Drawing.Size(72, 13);
+            this.lblStartDate.TabIndex = 12;
+            this.lblStartDate.Text = "#StartDate";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(311, 29);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(66, 13);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "Start Date";
+            // 
             // EstimatedPlan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1045, 749);
+            this.ClientSize = new System.Drawing.Size(1179, 749);
             this.Controls.Add(this.tabEstimatedPlan);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.grpPlanOption);
@@ -304,13 +306,14 @@
         private DevExpress.XtraEditors.GroupControl grpPlanOption;
         private System.Windows.Forms.Label lblRiskProfileValue;
         private System.Windows.Forms.Label label3;
-        private DevExpress.XtraEditors.SimpleButton btnEdit;
-        private DevExpress.XtraEditors.SimpleButton btnAdd;
+        private DevExpress.XtraEditors.SimpleButton btnPlanOptinView;
         private DevExpress.XtraEditors.SimpleButton btnClose;
         private DevExpress.XtraBars.Navigation.TabPane tabEstimatedPlan;
         private DevExpress.XtraBars.Navigation.TabNavigationPage tabNavigationPageCashFlow;
         private DevExpress.XtraBars.Navigation.TabNavigationPage tabNavigationPageGoal;
         private DevExpress.XtraBars.Navigation.TabNavigationPage tabNavigationPageCurrentStatus;
+        private System.Windows.Forms.Label lblStartDate;
+        private System.Windows.Forms.Label label6;
     }
 }
 

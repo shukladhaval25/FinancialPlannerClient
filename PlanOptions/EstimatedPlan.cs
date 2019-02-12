@@ -1,7 +1,7 @@
-﻿using FinancialPlanner.Common;
+﻿using DevExpress.Utils;
+using FinancialPlanner.Common;
 using FinancialPlanner.Common.Model;
 using FinancialPlannerClient.CashFlowManager;
-using FinancialPlannerClient.PlannerInfo;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -12,27 +12,35 @@ namespace FinancialPlannerClient.PlanOptions
 {
     public partial class EstimatedPlan : DevExpress.XtraEditors.XtraForm
     {
-
-        private const string RISKPROFILE_GETALL = "RiskProfileReturn/GetAll";
         Planner planner;
-        int _clientId;
+        Client client;
         DataTable _dtOption;
 
+        private const string RISKPROFILE_GETALL = "RiskProfileReturn/GetAll";       
         private List<RiskProfiledReturnMaster> _riskProfileMasters = new List<RiskProfiledReturnMaster>();
         private int _riskProfileId;
         private CashFlowService cashFlowService;
 
-        public EstimatedPlan(int clientId, Planner planner)
+        public EstimatedPlan(Client client, Planner planner)
         {
+            WaitDialogForm waitdlg = new WaitDialogForm("Loading Data...");
             InitializeComponent();
-            this._clientId = clientId;
+            this.client = client;
+            showPlannerInformation(planner);
+            fillOptionData();
+            waitdlg.Close();
+
+        }
+
+        private void showPlannerInformation(Planner planner)
+        {
             this.planner = planner;
             lblPlanName.Text = this.planner.Name;
             string startMonth = System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(this.planner.PlannerStartMonth);
             string endMonth = System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(
                 new DateTime(2000, this.planner.PlannerStartMonth, 1).AddMonths(-1).Month);
             lblPlanPeriod.Text = string.Format("{0} - {1}", startMonth, endMonth);
-            fillOptionData();
+            lblStartDate.Text = this.planner.StartDate.ToShortDateString();
         }
 
         private void fillOptionData()
@@ -64,14 +72,14 @@ namespace FinancialPlannerClient.PlanOptions
             lblRiskProfileValue.Text = riskProfMaster.Name;
             lblRiskProfileValue.Tag = riskProfMaster.Id;
             _riskProfileId = riskProfMaster.Id;
-            tabEstimatedPlan.SelectedPage = tabNavigationPageCashFlow;
+            showCashFlow();
         }
 
         private void showCashFlow()
         {
             if (!string.IsNullOrEmpty(cmbPlanOption.Text))
             {
-                CashFlowView cashFlowView = new CashFlowView(this._clientId, this.planner.ID,
+                CashFlowView cashFlowView = new CashFlowView(this.client.ID, this.planner.ID,
                     _riskProfileId,
                     int.Parse(cmbPlanOption.Tag.ToString()));
                 cashFlowView.TopLevel = false;
@@ -104,8 +112,7 @@ namespace FinancialPlannerClient.PlanOptions
 
         private void EstimatedPlan_Load(object sender, EventArgs e)
         {
-            showCashFlow();
-            tabEstimatedPlan.SelectedPage = tabNavigationPageCashFlow;
+
         }
         private void btnClose_Click(object sender, EventArgs e)
         {
@@ -117,38 +124,26 @@ namespace FinancialPlannerClient.PlanOptions
                 this.Parent.Controls.Clear();
         }
 
-        private void btnGoals_Click(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void btnCashFlow_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void tabEstimatedPlan_SelectedPageChanging(object sender, DevExpress.XtraBars.Navigation.SelectedPageChangingEventArgs e)
         {
         }
         private void showGoalsView()
         {
-            if (tabNavigationPageGoal.Controls.Count == 0)
-            {
-                GoalCalView goalCalView = new GoalCalView(this.planner, _riskProfileId, int.Parse(cmbPlanOption.Tag.ToString()));
-                goalCalView.setCashFlowService(cashFlowService);
-                goalCalView.TopLevel = false;
-                goalCalView.Visible = true;
-                
-                tabNavigationPageGoal.Controls.Clear();
-                tabNavigationPageGoal.Controls.Add(goalCalView);
-                //tabNavigationPageGoal.Controls[0].Dock = DockStyle.Fill;               
-            }
+
+            GoalCalView goalCalView = new GoalCalView(this.planner, _riskProfileId, int.Parse(cmbPlanOption.Tag.ToString()));
+            goalCalView.setCashFlowService(cashFlowService);
+            goalCalView.TopLevel = false;
+            goalCalView.Visible = true;
+
+            tabNavigationPageGoal.Controls.Clear();
+            tabNavigationPageGoal.Controls.Add(goalCalView);
+            tabNavigationPageGoal.Controls[0].Dock = DockStyle.Fill;
             tabEstimatedPlan.SelectedPage = tabNavigationPageGoal;
         }
 
         private void tabEstimatedPlan_SelectedPageChanged(object sender, DevExpress.XtraBars.Navigation.SelectedPageChangedEventArgs e)
         {
-            switch(tabEstimatedPlan.SelectedPage.Caption)
+            switch (tabEstimatedPlan.SelectedPage.Caption)
             {
                 case "Goals":
                     showGoalsView();
@@ -156,7 +151,7 @@ namespace FinancialPlannerClient.PlanOptions
                 case "Current Status":
                     showCurrentStatusView();
                     break;
-            }                
+            }
         }
 
         private void showCurrentStatusView()
@@ -169,9 +164,17 @@ namespace FinancialPlannerClient.PlanOptions
 
                 tabNavigationPageCurrentStatus.Controls.Clear();
                 tabNavigationPageCurrentStatus.Controls.Add(currentStatusView);
-                //tabNavigationPageGoal.Controls[0].Dock = DockStyle.Fill;               
             }
             tabEstimatedPlan.SelectedPage = tabNavigationPageCurrentStatus;
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            PlanOptions planOptions = new PlanOptions(this.client, this.planner);
+            if (planOptions.ShowDialog() == DialogResult.OK)
+            {
+                fillOptionData();
+            }
         }
     }
 }

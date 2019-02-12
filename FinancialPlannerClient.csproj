@@ -43,7 +43,9 @@
     <Reference Include="DevExpress.Data.v16.2, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.DataAccess.v16.2, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.DataAccess.v16.2.UI, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Images.v16.2, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Images.v16.2, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>False</Private>
+    </Reference>
     <Reference Include="DevExpress.Map.v16.2.Core, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Office.v16.2.Core, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Pdf.v16.2.Core, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -233,6 +235,12 @@
     </Compile>
     <Compile Include="PlanOptions\CurrentStatusView.designer.cs">
       <DependentUpon>CurrentStatusView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlanOptions\PlanOptions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\PlanOptions.designer.cs">
+      <DependentUpon>PlanOptions.cs</DependentUpon>
     </Compile>
     <Compile Include="PlanOptions\GoalCalView.cs">
       <SubType>Form</SubType>
@@ -461,6 +469,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\CurrentStatusView.resx">
       <DependentUpon>CurrentStatusView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\PlanOptions.resx">
+      <DependentUpon>PlanOptions.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\GoalCalView.resx">
       <DependentUpon>GoalCalView.cs</DependentUpon>

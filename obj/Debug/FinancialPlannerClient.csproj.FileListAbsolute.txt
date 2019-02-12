@@ -273,7 +273,6 @@ C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\
 C:\Application Development\Financial Planner Project\FinancialPlannerClient\bin\Debug\FinancialPlannerServer.exe
 C:\Application Development\Financial Planner Project\FinancialPlannerClient\bin\Debug\FinancialPlannerServer.pdb
 C:\Application Development\Financial Planner Project\FinancialPlannerClient\bin\Debug\FinancialPlannerServer.exe.config
-C:\Application Development\Financial Planner Project\FinancialPlannerClient\bin\Debug\DevExpress.Images.v16.2.dll
 C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.Home.frmHome.resources
 C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.Clients.ClientSearch.resources
 C:\Application Development\Financial Planner Project\FinancialPlannerClient\bin\Debug\DevExpress.BonusSkins.v16.2.dll
@@ -301,3 +300,4 @@ C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\
 C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.GoalCalView.resources
 C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.CurrentStatusView.resources
 C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\Debug\DXApplication1.Form1.resources
+C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.PlanOptions.resources

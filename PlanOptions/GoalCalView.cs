@@ -1,4 +1,6 @@
-﻿using FinancialPlanner.Common.Model;
+﻿using DevExpress.XtraEditors;
+using FinancialPlanner.Common;
+using FinancialPlanner.Common.Model;
 using FinancialPlanner.Common.Model.PlanOptions;
 using FinancialPlannerClient.CashFlowManager;
 using FinancialPlannerClient.PlannerInfo;
@@ -6,7 +8,9 @@ using FinancialPlannerClient.RiskProfile;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 
 namespace FinancialPlannerClient.PlanOptions
 {
@@ -60,60 +64,80 @@ namespace FinancialPlannerClient.PlanOptions
         }
         private void method(Goals goal)
         {
-            RiskProfileInfo _riskProfileInfo = new RiskProfileInfo();
-            //decimal growthPercentage = _riskProfileInfo.GetRiskProfileReturnRatio(_riskProfileId, int.Parse(goal.StartYear) - planner.StartDate.Year);
-            if (_goalCalculationInfo == null)
+            try
             {
-                _goalCalculationInfo =
-                    new GoalsCalculationInfo(goal, planner, _riskProfileInfo, _riskProfileId, this._planOptionId);
-                CashFlow cf = cashFlowService.GetCashFlow(this._planOptionId);
-                _goalCalculationInfo.GoalCalManager = cashFlowService.GoalCalculationMgr;
-            }
+                RiskProfileInfo _riskProfileInfo = new RiskProfileInfo();
+                if (_goalCalculationInfo == null)
+                {
+                    _goalCalculationInfo =
+                        new GoalsCalculationInfo(goal, planner, _riskProfileInfo, _riskProfileId, this._planOptionId);
+                    CashFlow cf = cashFlowService.GetCashFlow(this._planOptionId);
+                    _goalCalculationInfo.GoalCalManager = cashFlowService.GoalCalculationMgr;
+                }
 
                 _dtGoalProfile = _goalCalculationInfo.GetGoalValue(int.Parse(cmbGoals.Tag.ToString()),
                 planner.ID, _riskProfileId);
-            if (_dtGoalProfile != null && _dtGoalProfile.Rows.Count > 0)
-            {
-                lblGoalPeriodValue.Text = _dtGoalProfile.Rows[0]["GoalYear"].ToString();
-                lblPortfolioValue.Text  = _goalCalculationInfo.GetProfileValue().ToString();
+                if (_dtGoalProfile != null && _dtGoalProfile.Rows.Count > 0)
+                {
+                    lblGoalPeriodValue.Text = _dtGoalProfile.Rows[0]["GoalYear"].ToString();
+                    lblPortfolioValue.Text = _goalCalculationInfo.GetProfileValue().ToString();
 
-                setGoalProfileGrid();
-                _dtGoalValue = _goalCalculationInfo.GetGoalCalculation();
-                dtGridGoalValue.DataSource = _dtGoalValue;
-                //setGoalCalGrid();
-                int goalComplitionPercentage = getGoalComplitionPercentage();
-                progGoalComplition.EditValue = (goalComplitionPercentage > 100) ? 100 : goalComplitionPercentage;
-                //lblGoalComplition.Text = progGoalComplition.Value.ToString() + "%";
+                    setGoalProfileGrid();
+                    _dtGoalValue = _goalCalculationInfo.GetGoalCalculation();
+                    dtGridGoalValue.DataSource = _dtGoalValue;
+                    int goalComplitionPercentage = getGoalComplitionPercentage();
+                    progGoalComplition.EditValue = (goalComplitionPercentage > 100) ? 100 : goalComplitionPercentage;
+                }
             }
+            catch(Exception ex)
+            {
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
+                LogDebug(currentMethodName.Name, ex);
+                XtraMessageBox.Show("Error:" + ex.ToString(), "Error");
+            }
+        }
+
+        private void LogDebug(string methodName, Exception ex)
+        {
+            DebuggerLogInfo debuggerInfo = new DebuggerLogInfo();
+            debuggerInfo.ClassName = this.GetType().Name;
+            debuggerInfo.Method = methodName;
+            debuggerInfo.ExceptionInfo = ex;
+            Logger.LogDebug(debuggerInfo);
         }
 
         private void setGoalProfileGrid()
         {
             grdGoalProfile.DataSource = _dtGoalProfile;
             gridViewGoalProfile.Columns["CurrentValue"].Caption = "Current Value";
-            //gridViewGoalValue.Columns["CurrentValue"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomRight;
-            //gridViewGoalValue.Columns["CurrentValue"].DefaultCellStyle.Format = "#,###.00";
+            gridViewGoalProfile.Columns["CurrentValue"].AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            gridViewGoalProfile.Columns["CurrentValue"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            gridViewGoalProfile.Columns["CurrentValue"].DisplayFormat.FormatString = "#,###.00";
 
             gridViewGoalProfile.Columns["Inflation"].Caption = "Inflation (%)";
-            //gridViewGoalValue.Columns["Inflation"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomRight;
-            //dtGridGoalValue.Columns["Inflation"].DefaultCellStyle.Format = "# %";
+            gridViewGoalProfile.Columns["Inflation"].AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            gridViewGoalProfile.Columns["Inflation"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.None;
+            gridViewGoalProfile.Columns["Inflation"].DisplayFormat.FormatString = "# %";
 
             gridViewGoalProfile.Columns["GoalValue"].Caption = "Goal Value";
-            //dtGridGoalValue.Columns["GoalValue"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomRight;
-            //dtGridGoalValue.Columns["GoalValue"].DefaultCellStyle.Format = "#,###.00";
+            gridViewGoalProfile.Columns["GoalValue"].AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            gridViewGoalProfile.Columns["GoalValue"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            gridViewGoalProfile.Columns["GoalValue"].DisplayFormat.FormatString = "#,###.00";
         }
 
         private int getGoalComplitionPercentage()
         {
-            //if (dtGridGoalValue != null && _dtGoalCal.Rows.Count > 0)
-            //{
-            //    double portfolioValue = double.Parse(_dtGoalCal.Rows[_dtGoalCal.Rows.Count - 1]["Portfolio value"].ToString());
-            //    double cashOutFlowValue = double.Parse(_dtGoalCal.Rows[_dtGoalCal.Rows.Count - 1]["Cash outflow Goal Year"].ToString());
-            //    double assetsMappingValue = double.Parse(_dtGoalCal.Rows[_dtGoalCal.Rows.Count - 1]["Assets Mapping"].ToString());
-            //    double instrumentValue = double.Parse(_dtGoalCal.Rows[_dtGoalCal.Rows.Count - 1]["Instrument Mapped"].ToString());
-            //    double loanAmountValue = _dtGoalValue.Rows[0]["Loan Amount"].ToString() == "" ? 0 : double.Parse(_dtGoalValue.Rows[0]["Loan Amount"].ToString());
-            //    return int.Parse(Math.Round((portfolioValue + assetsMappingValue + instrumentValue + loanAmountValue) * 100 / cashOutFlowValue).ToString());
-            //}
+            if (_dtGoalProfile != null && _dtGoalValue.Rows.Count > 0)
+            {
+                double portfolioValue = double.Parse(_dtGoalValue.Rows[_dtGoalValue.Rows.Count - 1]["Portfolio value"].ToString());
+                double cashOutFlowValue = double.Parse(_dtGoalValue.Rows[_dtGoalValue.Rows.Count - 1]["Cash outflow Goal Year"].ToString());
+                double assetsMappingValue = double.Parse(_dtGoalValue.Rows[_dtGoalValue.Rows.Count - 1]["Assets Mapping"].ToString());
+                double instrumentValue = double.Parse(_dtGoalValue.Rows[_dtGoalValue.Rows.Count - 1]["Instrument Mapped"].ToString());
+                double loanAmountValue = _dtGoalProfile.Rows[0]["Loan Amount"].ToString() == "" ? 0 : double.Parse(_dtGoalProfile.Rows[0]["Loan Amount"].ToString());
+                return int.Parse(Math.Round((portfolioValue + assetsMappingValue + instrumentValue + loanAmountValue) * 100 / cashOutFlowValue).ToString());
+            }
             return 0;
         }
 
