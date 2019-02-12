@@ -400,7 +400,7 @@ namespace FinancialPlannerClient.Clients
 
         private void navBarItemEstimatedPlan_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
-            EstimatedPlan estimatedPlan = new EstimatedPlan(this._client, planner);
+            EstimatedPlan estimatedPlan = new EstimatedPlan(this.personalInformation, planner);
             estimatedPlan.TopLevel = false;
             estimatedPlan.Visible = true;
             navigationPageOther.Name = estimatedPlan.Name;

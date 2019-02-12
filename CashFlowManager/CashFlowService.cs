@@ -18,10 +18,10 @@ namespace FinancialPlannerClient.CashFlowManager
     public class CashFlowService
     {
         private CashFlowCalculation _cashFlow = new CashFlowCalculation();
-        private int _clientId, _planId,_riskProfileId,_optionId;
-        DataTable  _dtCashFlow;
+        private int _clientId, _planId, _riskProfileId, _optionId;
+        DataTable _dtCashFlow;
         DataTable _dtCurrentStatusToGoal;
-        private readonly string GETALL_API= "CashFlow/Get?optionId={0}";
+        private readonly string GETALL_API = "CashFlow/Get?optionId={0}";
         private readonly string ADD_CASHFLOW_API = "cashflow/Add";
         private readonly string UPDATE_CASHFLOW_API = "cashflow/update";
         private double _inflactionRatePercentage = 10;
@@ -37,13 +37,13 @@ namespace FinancialPlannerClient.CashFlowManager
 
             ClientPersonalInfo clientPersonalInfo = new ClientPersonalInfo();
 
-            PersonalInformation  personalInfo =  clientPersonalInfo.Get(clientId);
-                      
+            PersonalInformation personalInfo = clientPersonalInfo.Get(clientId);
+
             fillPersonalData(personalInfo);
 
             _riskProfileInfo = new RiskProfileInfo();
 
-            PlannerAssumption plannerAssumption =  new PlannerAssumptionInfo().GetAll(_planId);
+            PlannerAssumption plannerAssumption = new PlannerAssumptionInfo().GetAll(_planId);
             if (plannerAssumption != null)
                 fillCashFlowFromPlannerAssumption(plannerAssumption);
 
@@ -67,7 +67,7 @@ namespace FinancialPlannerClient.CashFlowManager
         {
             _optionId = optionId;
             FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
-            string apiurl = Program.WebServiceUrl +"/"+ string.Format(GETALL_API,optionId);
+            string apiurl = Program.WebServiceUrl + "/" + string.Format(GETALL_API, optionId);
 
             HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(apiurl);
             request.Method = "GET";
@@ -98,7 +98,7 @@ namespace FinancialPlannerClient.CashFlowManager
             _planner = plannerInfo.GetPlanDataById(planId);
             _riskProfileInfo = new RiskProfileInfo();
             GoalCalculationMgr = new GoalCalculationManager(_planner, _riskProfileInfo, riskProfileId);
-            CashFlowCalculation cashFlow = GetCashFlowData(clientId,planId,riskProfileId);
+            CashFlowCalculation cashFlow = GetCashFlowData(clientId, planId, riskProfileId);
             if (cashFlow != null)
             {
                 createTableCashFlowStructure();
@@ -128,12 +128,13 @@ namespace FinancialPlannerClient.CashFlowManager
         {
             int noOfYearsForClient = _cashFlow.ClientRetirementAge - _cashFlow.ClientCurrentAge;
             int noOfYearsForSpouse = _cashFlow.SpouseRetirementAge - _cashFlow.SpouseCurrentAge;
-            int noOfYearsForCalculation = (noOfYearsForClient >= noOfYearsForSpouse) ? noOfYearsForClient : noOfYearsForSpouse;
+            //int noOfYearsForCalculation = (noOfYearsForClient >= noOfYearsForSpouse) ? noOfYearsForClient : noOfYearsForSpouse;
+            int noOfYearsForCalculation = (_cashFlow.IslientRetirmentAgeForPrimaryCalculation) ? noOfYearsForClient : noOfYearsForSpouse;
             for (int years = 1; years <= noOfYearsForCalculation; years++)
             {
 
                 DataRow dr = _dtCashFlow.NewRow();
-                addIncomeCalculation(years, dr);
+                addIncomeCalculation(years, dr, noOfYearsForClient, noOfYearsForSpouse);
                 addExpenesCalculation(years, dr);
                 addLoansCalculation(years, dr);
                 addGoalsCalculation(years, dr);
@@ -145,15 +146,10 @@ namespace FinancialPlannerClient.CashFlowManager
         private void addGoalsCalculation(int years, DataRow dr)
         {
             double totalLoanEmi = 0;
-            double totalCashAllocationForGoal = 0;
             int calculationYear = int.Parse(dr["StartYear"].ToString());
             double surplusAmount = getSurplusAmount(dr);
             foreach (Goals goal in _cashFlow.LstGoals)
             {
-                //Add Loan EMI if loan taken for goal
-                //Loan for Goal
-                double loanForGoalValue = 0;
-                double emi = 0;
                 if (goal.LoanForGoal != null)
                 {
                     if (calculationYear >= goal.LoanForGoal.StratYear &&
@@ -163,7 +159,7 @@ namespace FinancialPlannerClient.CashFlowManager
                         totalLoanEmi = totalLoanEmi + (goal.LoanForGoal.EMI * 12);
                     }
                 }
-             
+
                 if (surplusAmount > 0 &&
                      (calculationYear < int.Parse(goal.StartYear)))
                 {
@@ -174,12 +170,12 @@ namespace FinancialPlannerClient.CashFlowManager
                         goalValCalInfo = new GoalsValueCalculationInfo(goal, _planner, _riskProfileInfo, _riskProfileId);
                         GoalCalculationMgr.AddGoalValueCalculation(goalValCalInfo);
                     }
-                    GoalsCalculationInfo goalcalInfo = new GoalsCalculationInfo(goal,_planner,_riskProfileInfo,_riskProfileId,_optionId);
+                    GoalsCalculationInfo goalcalInfo = new GoalsCalculationInfo(goal, _planner, _riskProfileInfo, _riskProfileId, _optionId);
                     goalValCalInfo.SetPortfolioValue(goalcalInfo.GetProfileValue());
-                    double  surplusAmountAfterInvestment = goalValCalInfo.SetInvestmentToAchiveGoal(calculationYear, surplusAmount);
+                    double surplusAmountAfterInvestment = goalValCalInfo.SetInvestmentToAchiveGoal(calculationYear, surplusAmount);
                     dr[string.Format("{0} - {1}", goal.Priority, goal.Name)] = surplusAmount - surplusAmountAfterInvestment;
                     surplusAmount = surplusAmountAfterInvestment;
-                    
+
                 }
             }
         }
@@ -215,7 +211,7 @@ namespace FinancialPlannerClient.CashFlowManager
                     double.TryParse(dr[string.Format("(Loan EMI - {0})", goal.Name)].ToString(), out emiAmt);
                     totalGoalLoanEMIs = totalGoalLoanEMIs + emiAmt;
                 }
-                
+
                 double investmentAmt = 0;
                 double.TryParse(dr[string.Format("{0} - {1}", goal.Priority, goal.Name)].ToString(), out investmentAmt);
                 totalInvestmentInGoals = totalInvestmentInGoals + investmentAmt;
@@ -223,7 +219,7 @@ namespace FinancialPlannerClient.CashFlowManager
             }
             return totalPostTaxIncome - (totalExpAmount + totalLoanAmount + totalGoalLoanEMIs + totalInvestmentInGoals);
         }
-        private void addIncomeCalculation(int years, DataRow dr)
+        private void addIncomeCalculation(int years, DataRow dr, int clientRetYear, int spouseRetYear)
         {
             long totalIncome = 0;
             int incomeEndYear = 0;
@@ -235,24 +231,31 @@ namespace FinancialPlannerClient.CashFlowManager
                 if (int.Parse(dr["StartYear"].ToString()) >= int.Parse(income.StartYear) &&
                     int.Parse(dr["StartYear"].ToString()) <= incomeEndYear)
                 {
-                    try
+                    if (isIncomeValidaForYear(income, years, clientRetYear, spouseRetYear))
                     {
-                        long amount = long.Parse(_dtCashFlow.Rows[years - 1]["(" + income.IncomeBy + ") " + income.Source].ToString());
-                        amount = amount + (long)((amount * float.Parse(income.ExpectGrowthInPercentage.ToString()) / 100));
-                        dr["(" + income.IncomeBy + ") " + income.Source] = amount;
-                        totalIncome = totalIncome + amount;
+                        try
+                        {
+                            long amount = long.Parse(_dtCashFlow.Rows[years - 1]["(" + income.IncomeBy + ") " + income.Source].ToString());
+                            amount = amount + (long)((amount * float.Parse(income.ExpectGrowthInPercentage.ToString()) / 100));
+                            dr["(" + income.IncomeBy + ") " + income.Source] = amount;
+                            totalIncome = totalIncome + amount;
 
-                        dr["(" + income.IncomeBy + ") " + income.Source + " - Income Tax"] = income.IncomeTax;
-                        long incomeTaxAmt = ((amount *  long.Parse(income.IncomeTax.ToString()) / 100));
-                        totalTaxAmt = totalTaxAmt + incomeTaxAmt;
+                            dr["(" + income.IncomeBy + ") " + income.Source + " - Income Tax"] = income.IncomeTax;
+                            long incomeTaxAmt = ((amount * long.Parse(income.IncomeTax.ToString()) / 100));
+                            totalTaxAmt = totalTaxAmt + incomeTaxAmt;
 
-                        long postTaxAmt =(amount - incomeTaxAmt);
-                        dr["(" + income.IncomeBy + ") " + income.Source + " - Post Tax"] = postTaxAmt;
-                        totalPostTaxIncome = totalPostTaxIncome + long.Parse(postTaxAmt.ToString());
+                            long postTaxAmt = (amount - incomeTaxAmt);
+                            dr["(" + income.IncomeBy + ") " + income.Source + " - Post Tax"] = postTaxAmt;
+                            totalPostTaxIncome = totalPostTaxIncome + long.Parse(postTaxAmt.ToString());
+                        }
+                        catch (Exception ex)
+                        {
+                            LogDebug("AddRowOnCalculation", ex);
+                        }
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        LogDebug("AddRowOnCalculation", ex);
+                        dr["(" + income.IncomeBy + ") " + income.Source] = 0;
                     }
                 }
                 else
@@ -265,14 +268,24 @@ namespace FinancialPlannerClient.CashFlowManager
             dr["Total Post Tax Income"] = totalPostTaxIncome;
         }
 
+        private bool isIncomeValidaForYear(Income income, int years, int clientRetYear, int spouseRetYear)
+        {
+            if (income.IncomeBy == _cashFlow.ClientName)
+                return (clientRetYear >= years) ? true : false;
+            else if (income.IncomeBy == _cashFlow.SpouseName)
+                return (spouseRetYear >= years) ? true : false;
+            else
+                return true;
+        }
+
         private void addExpenesCalculation(int years, DataRow dr)
         {
             double totalExpenses = 0;
             foreach (Expenses exp in _cashFlow.LstExpenses)
             {
                 double expAmt = double.Parse(_dtCashFlow.Rows[years - 1][exp.Item].ToString());
-                double expWithInflaction =  expAmt + ((expAmt * _inflactionRatePercentage)/100);
-                dr[exp.Item] =  expWithInflaction;
+                double expWithInflaction = expAmt + ((expAmt * _inflactionRatePercentage) / 100);
+                dr[exp.Item] = expWithInflaction;
                 totalExpenses = totalExpenses + expWithInflaction;
             }
             dr["Total Annual Expenses"] = totalExpenses;
@@ -288,13 +301,13 @@ namespace FinancialPlannerClient.CashFlowManager
                 //if (int.Parse(dr["StartYear"].ToString()) <=
                 //   int.Parse(_dtCashFlow.Rows[0]["StartYear"].ToString()) + (Decimal) ((Decimal) loan.TermLeftInMonths / 12) - 1)
                 decimal totalNoOfYearsForLoan = (Decimal)((Decimal)loan.TermLeftInMonths / 12);
-                if (years  < totalNoOfYearsForLoan || (totalNoOfYearsForLoan > years -1 && totalNoOfYearsForLoan < years))
+                if (years < totalNoOfYearsForLoan || (totalNoOfYearsForLoan > years - 1 && totalNoOfYearsForLoan < years))
                 {
                     double loanAmt = double.Parse(_dtCashFlow.Rows[previousYearRowIndex][loan.TypeOfLoan].ToString());
 
                     decimal period = 12 / (12 * ((totalNoOfYearsForLoan) - Math.Truncate(totalNoOfYearsForLoan)));
-                    dr[loan.TypeOfLoan] = (years < totalNoOfYearsForLoan) ? loanAmt : 
-                        ((loanAmt) / (double) period);
+                    dr[loan.TypeOfLoan] = (years < totalNoOfYearsForLoan) ? loanAmt :
+                        ((loanAmt) / (double)period);
                     loanAmt = (years < totalNoOfYearsForLoan) ? loanAmt :
                         ((loanAmt) / (double)period);
                     totalLoans = totalLoans + loanAmt;
@@ -311,7 +324,7 @@ namespace FinancialPlannerClient.CashFlowManager
 
             #region "Add Incomes"
             double totalIncome = 0;
-            double totalpostTaxIncome  = 0;
+            double totalpostTaxIncome = 0;
             double totalTaxAmt = 0;
             foreach (Income income in _cashFlow.LstIncomes)
             {
@@ -360,7 +373,7 @@ namespace FinancialPlannerClient.CashFlowManager
             double totalLoanEmi = 0;
             double surplusCashFund = (totalpostTaxIncome - (totalExpenses + totalLoan + totalLoanEmi));
             foreach (Goals goal in _cashFlow.LstGoals)
-            {                
+            {
                 //1 Loan for Goal
                 double loanForGoalValue = 0;
                 double emi = 0;
@@ -378,22 +391,22 @@ namespace FinancialPlannerClient.CashFlowManager
                 if (surplusCashFund > 0)
                 {
                     _riskProfileInfo = new RiskProfileInfo();
-                   
-                    GoalsValueCalculationInfo goalValCalInfo = new GoalsValueCalculationInfo(goal, _planner,_riskProfileInfo,_riskProfileId);
-                    GoalsCalculationInfo goalcalInfo = new GoalsCalculationInfo(goal,_planner,_riskProfileInfo,_riskProfileId,_optionId);
+
+                    GoalsValueCalculationInfo goalValCalInfo = new GoalsValueCalculationInfo(goal, _planner, _riskProfileInfo, _riskProfileId);
+                    GoalsCalculationInfo goalcalInfo = new GoalsCalculationInfo(goal, _planner, _riskProfileInfo, _riskProfileId, _optionId);
                     goalValCalInfo.SetPortfolioValue(goalcalInfo.GetProfileValue());
                     GoalCalculationMgr.AddGoalValueCalculation(goalValCalInfo);
 
-                    double  surplusAmountAfterInvestment = goalValCalInfo.SetInvestmentToAchiveGoal(_planner.StartDate.Year, surplusCashFund);
+                    double surplusAmountAfterInvestment = goalValCalInfo.SetInvestmentToAchiveGoal(_planner.StartDate.Year, surplusCashFund);
                     dr[string.Format("{0} - {1}", goal.Priority, goal.Name)] = surplusCashFund - surplusAmountAfterInvestment;
-                    surplusCashFund = surplusAmountAfterInvestment;                    
+                    surplusCashFund = surplusAmountAfterInvestment;
                 }
                 else
                 {
                     _riskProfileInfo = new RiskProfileInfo();
 
-                    GoalsValueCalculationInfo goalValCalInfo = new GoalsValueCalculationInfo(goal, _planner,_riskProfileInfo,_riskProfileId);
-                    GoalsCalculationInfo goalcalInfo = new GoalsCalculationInfo(goal,_planner,_riskProfileInfo,_riskProfileId,_optionId);
+                    GoalsValueCalculationInfo goalValCalInfo = new GoalsValueCalculationInfo(goal, _planner, _riskProfileInfo, _riskProfileId);
+                    GoalsCalculationInfo goalcalInfo = new GoalsCalculationInfo(goal, _planner, _riskProfileInfo, _riskProfileId, _optionId);
                     goalValCalInfo.SetPortfolioValue(goalcalInfo.GetProfileValue());
                     GoalCalculationMgr.AddGoalValueCalculation(goalValCalInfo);
                 }
@@ -425,6 +438,7 @@ namespace FinancialPlannerClient.CashFlowManager
             _cashFlow.ClientRetirementAge = plannerAssumption.ClientRetirementAge;
             _cashFlow.SpouseLifeExpected = plannerAssumption.SpouseLifeExpectancy;
             _cashFlow.SpouseRetirementAge = plannerAssumption.SpouseRetirementAge;
+            _cashFlow.IslientRetirmentAgeForPrimaryCalculation = plannerAssumption.IsClientRetirmentAgeIsPrimary;
         }
 
         private void fillPersonalData(PersonalInformation personalInfo)
@@ -444,34 +458,34 @@ namespace FinancialPlannerClient.CashFlowManager
 
         private void createTableCashFlowStructure()
         {
-            DataColumn dcId = new DataColumn("Id",typeof(System.Int16));
+            DataColumn dcId = new DataColumn("Id", typeof(System.Int16));
             dcId.AutoIncrement = true;
             dcId.ReadOnly = true;
             _dtCashFlow.Columns.Add(dcId);
 
 
-            DataColumn dcYear = new DataColumn("StartYear",typeof(System.Int16));
+            DataColumn dcYear = new DataColumn("StartYear", typeof(System.Int16));
             dcYear.AutoIncrement = true;
             dcYear.ReadOnly = true;
             _dtCashFlow.Columns.Add(dcYear);
 
-            DataColumn dcEndYear = new DataColumn("EndYear",typeof(System.Int16),"StartYear + 1");
+            DataColumn dcEndYear = new DataColumn("EndYear", typeof(System.Int16), "StartYear + 1");
             dcEndYear.ReadOnly = true;
             _dtCashFlow.Columns.Add(dcEndYear);
 
             #region "Income Calculation"
             foreach (Income income in _cashFlow.LstIncomes)
             {
-                DataColumn dcIncome = new DataColumn("("+ income.IncomeBy + ") " + income.Source,typeof(System.Double));
+                DataColumn dcIncome = new DataColumn("(" + income.IncomeBy + ") " + income.Source, typeof(System.Double));
                 dcIncome.ReadOnly = true;
                 _dtCashFlow.Columns.Add(dcIncome);
-                DataColumn dcIncomeTax = new DataColumn(dcIncome.ColumnName + " - Income Tax",typeof (System.Decimal));
+                DataColumn dcIncomeTax = new DataColumn(dcIncome.ColumnName + " - Income Tax", typeof(System.Decimal));
                 _dtCashFlow.Columns.Add(dcIncomeTax);
-                DataColumn postTaxIncome = new DataColumn(dcIncome.ColumnName + " - Post Tax" ,typeof(System.Double));
+                DataColumn postTaxIncome = new DataColumn(dcIncome.ColumnName + " - Post Tax", typeof(System.Double));
                 _dtCashFlow.Columns.Add(postTaxIncome);
             }
 
-            DataColumn dcTotal = new DataColumn("Total Income",typeof(System.Double));
+            DataColumn dcTotal = new DataColumn("Total Income", typeof(System.Double));
             dcTotal.ReadOnly = true;
             _dtCashFlow.Columns.Add(dcTotal);
 
@@ -482,7 +496,7 @@ namespace FinancialPlannerClient.CashFlowManager
             #region "Expenses Calculation" 
             foreach (Expenses exp in _cashFlow.LstExpenses)
             {
-                DataColumn dcExp = new DataColumn(exp.Item ,typeof(System.Double));
+                DataColumn dcExp = new DataColumn(exp.Item, typeof(System.Double));
                 dcExp.ReadOnly = true;
                 _dtCashFlow.Columns.Add(dcExp);
             }
@@ -492,7 +506,7 @@ namespace FinancialPlannerClient.CashFlowManager
             #region "Loan Calculation"
             foreach (Loan loan in _cashFlow.LstLoans)
             {
-                DataColumn dcloan = new DataColumn( loan.TypeOfLoan,typeof(System.Double));
+                DataColumn dcloan = new DataColumn(loan.TypeOfLoan, typeof(System.Double));
                 dcloan.ReadOnly = true;
                 _dtCashFlow.Columns.Add(dcloan);
             }
@@ -505,12 +519,12 @@ namespace FinancialPlannerClient.CashFlowManager
             _cashFlow.LstGoals.OrderBy(x => x.Priority);
             foreach (Goals goal in _cashFlow.LstGoals)
             {
-                DataColumn dcGoal = new DataColumn(string.Format("{0} - {1}",goal.Priority, goal.Name),typeof(System.Double));
+                DataColumn dcGoal = new DataColumn(string.Format("{0} - {1}", goal.Priority, goal.Name), typeof(System.Double));
                 _dtCashFlow.Columns.Add(dcGoal);
 
                 if (goal.LoanForGoal != null && goal.LoanForGoal.EMI > 0)
                 {
-                    DataColumn dtLoanForGoal = new DataColumn(string.Format("(Loan EMI - {0})",goal.Name),typeof(System.Double));
+                    DataColumn dtLoanForGoal = new DataColumn(string.Format("(Loan EMI - {0})", goal.Name), typeof(System.Double));
                     _dtCashFlow.Columns.Add(dtLoanForGoal);
                 }
             }
@@ -533,9 +547,9 @@ namespace FinancialPlannerClient.CashFlowManager
             }
             catch (Exception ex)
             {
-                StackTrace st = new StackTrace ();
-                StackFrame sf = st.GetFrame (0);
-                MethodBase  currentMethodName = sf.GetMethod();
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
                 LogDebug(currentMethodName.Name, ex);
                 return false;
             }

@@ -479,7 +479,7 @@
             this.lblInsurance.Multiline = true;
             this.lblInsurance.Name = "lblInsurance";
             this.lblInsurance.Text = "7. In case of unfortunate event of death of {0} and/or {1} insurance proceeds wil" +
-    "l be deployed at \r\nrate of return of {2}%.";
+    "l be deployed at rate of return of {2}%.";
             this.lblInsurance.Weight = 3D;
             // 
             // xrLabel2

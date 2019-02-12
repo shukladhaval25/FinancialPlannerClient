@@ -17,6 +17,7 @@ namespace FinancialPlannerClient.PlanOptions
             this.lblSpouseLifeExp.Text = personalInformation.Spouse.Name;
             lblClientNameForIncome.Text = lblClientName.Text;
             lblSpouseNameForIncome.Text = personalInformation.Spouse.Name;
+           
             lblInsurance.Text = string.Format(lblInsurance.Text, lblClientName.Text, lblSpouseNameForIncome.Text ," 8");
         }
 
@@ -33,9 +34,9 @@ namespace FinancialPlannerClient.PlanOptions
             lblEquityReturn.Text = string.Format("{0} %", plannerAssumption.EquityReturnRate);
             lblDebtReturn.Text = string.Format("{0} %", plannerAssumption.DebtReturnRate);
             lblRealEstateReturn.Text = string.Format("{0} %", plannerAssumption.OtherReturnRate);
-            lblExpRaise.Text = string.Format(lblExpRaise.Text, 10);
-            lblClientIncomeRaise.Text = string.Format("{0} %", 15);
-            lblSpouseIncomeRaise.Text = string.Format("{0} %", 10);
+            lblExpRaise.Text = string.Format(lblExpRaise.Text, plannerAssumption.OngoingExpRise);
+            lblClientIncomeRaise.Text = string.Format("{0} %", plannerAssumption.ClientIncomeRise);
+            lblSpouseIncomeRaise.Text = string.Format("{0} %", plannerAssumption.ClientIncomeRise);
         }
     }
 }

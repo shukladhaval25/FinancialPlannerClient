@@ -53,6 +53,10 @@ namespace FinancialPlannerClient.PlanOptions
                 txtDebtReturn.Text = plannerAssumption.DebtReturnRate.ToString();
                 txtOtherReturn.Text = plannerAssumption.OtherReturnRate.ToString();
                 txtPlannerAssumptionDescription.Text = plannerAssumption.Decription;
+                rdoPrimaryRetirement.SelectedIndex = (plannerAssumption.IsClientRetirmentAgeIsPrimary) ? 0 : 1;
+                txtIncomeRiseForClient.Text = plannerAssumption.ClientIncomeRise.ToString();
+                txtIncomeRiseForSpouse.Text = plannerAssumption.SpouseIncomeRise.ToString();
+                txtOngoingExpRise.Text = plannerAssumption.OngoingExpRise.ToString();
             }
         }
 
@@ -97,6 +101,11 @@ namespace FinancialPlannerClient.PlanOptions
             plannerAssumption.UpdatedBy = Program.CurrentUser.Id;
             plannerAssumption.UpdatedByUserName = Program.CurrentUser.UserName;
             plannerAssumption.MachineName = System.Environment.MachineName;
+            plannerAssumption.IsClientRetirmentAgeIsPrimary = (rdoPrimaryRetirement.SelectedIndex == 0 ? true : false);
+            plannerAssumption.ClientIncomeRise = decimal.Parse(txtIncomeRiseForClient.Text);
+            plannerAssumption.SpouseIncomeRise = decimal.Parse(txtIncomeRiseForSpouse.Text);
+            plannerAssumption.OngoingExpRise = decimal.Parse(txtOngoingExpRise.Text);
+
             return plannerAssumption;
         }
     }

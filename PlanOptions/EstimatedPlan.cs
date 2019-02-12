@@ -13,7 +13,8 @@ namespace FinancialPlannerClient.PlanOptions
     public partial class EstimatedPlan : DevExpress.XtraEditors.XtraForm
     {
         Planner planner;
-        Client client;
+        PersonalInformation personalInformation;
+        //Client client;
         DataTable _dtOption;
 
         private const string RISKPROFILE_GETALL = "RiskProfileReturn/GetAll";       
@@ -21,11 +22,11 @@ namespace FinancialPlannerClient.PlanOptions
         private int _riskProfileId;
         private CashFlowService cashFlowService;
 
-        public EstimatedPlan(Client client, Planner planner)
+        public EstimatedPlan(PersonalInformation personalInformation, Planner planner)
         {
             WaitDialogForm waitdlg = new WaitDialogForm("Loading Data...");
             InitializeComponent();
-            this.client = client;
+            this.personalInformation = personalInformation;
             showPlannerInformation(planner);
             fillOptionData();
             waitdlg.Close();
@@ -79,7 +80,7 @@ namespace FinancialPlannerClient.PlanOptions
         {
             if (!string.IsNullOrEmpty(cmbPlanOption.Text))
             {
-                CashFlowView cashFlowView = new CashFlowView(this.client.ID, this.planner.ID,
+                CashFlowView cashFlowView = new CashFlowView(this.personalInformation.Client.ID, this.planner.ID,
                     _riskProfileId,
                     int.Parse(cmbPlanOption.Tag.ToString()));
                 cashFlowView.TopLevel = false;
@@ -129,7 +130,6 @@ namespace FinancialPlannerClient.PlanOptions
         }
         private void showGoalsView()
         {
-
             GoalCalView goalCalView = new GoalCalView(this.planner, _riskProfileId, int.Parse(cmbPlanOption.Tag.ToString()));
             goalCalView.setCashFlowService(cashFlowService);
             goalCalView.TopLevel = false;
@@ -151,7 +151,24 @@ namespace FinancialPlannerClient.PlanOptions
                 case "Current Status":
                     showCurrentStatusView();
                     break;
+                case "Post Retirement Cash Flow":
+                    showPostRetirementCashFlowView();
+                    break;
             }
+        }
+
+        private void showPostRetirementCashFlowView()
+        {
+            PostRetirementCashFlow postRetirementCashFlow = 
+                new PostRetirementCashFlow(personalInformation, this.planner);
+            //postRetirementCashFlow.setCashFlowService(cashFlowService);
+            postRetirementCashFlow.TopLevel = false;
+            postRetirementCashFlow.Visible = true;
+
+            tabNavigationPagePostRetirementCashFlow.Controls.Clear();
+            tabNavigationPagePostRetirementCashFlow.Controls.Add(postRetirementCashFlow);
+            tabNavigationPagePostRetirementCashFlow.Controls[0].Dock = DockStyle.Fill;
+            tabEstimatedPlan.SelectedPage = tabNavigationPagePostRetirementCashFlow;
         }
 
         private void showCurrentStatusView()
@@ -170,7 +187,7 @@ namespace FinancialPlannerClient.PlanOptions
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            PlanOptions planOptions = new PlanOptions(this.client, this.planner);
+            PlanOptions planOptions = new PlanOptions(this.personalInformation.Client, this.planner);
             if (planOptions.ShowDialog() == DialogResult.OK)
             {
                 fillOptionData();

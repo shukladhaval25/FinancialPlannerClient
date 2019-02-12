@@ -45,6 +45,9 @@ namespace FinancialPlannerClient.PlanOptions
             AssumptionPage assumptionPage = new AssumptionPage(personalInformation,planner.ID);
             assumptionPage.CreateDocument();
 
+            FamilyInfoPage familyInfo = new FamilyInfoPage(personalInformation.Client);
+            familyInfo.CreateDocument();
+
             // Enable this property to maintain continuous page numbering 
             PrintingSystem.ContinuousPageNumbering = true;
 
@@ -54,7 +57,7 @@ namespace FinancialPlannerClient.PlanOptions
             this.Pages.Add(whatIsPlan.Pages.First);
             this.Pages.Add(scopeOfPlancs.Pages.First);
             this.Pages.Add(assumptionPage.Pages.First);
-
+            this.Pages.Add(familyInfo.Pages.First);
 
         }
     }

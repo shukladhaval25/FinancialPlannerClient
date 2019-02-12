@@ -36,6 +36,8 @@
             this.cmbPlanOption = new DevExpress.XtraEditors.ComboBoxEdit();
             this.label1 = new System.Windows.Forms.Label();
             this.grpPlanDetail = new DevExpress.XtraEditors.GroupControl();
+            this.lblStartDate = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.lblPlanPeriod = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.lblPlanName = new System.Windows.Forms.Label();
@@ -48,8 +50,7 @@
             this.tabNavigationPageCashFlow = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             this.tabNavigationPageGoal = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             this.tabNavigationPageCurrentStatus = new DevExpress.XtraBars.Navigation.TabNavigationPage();
-            this.lblStartDate = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.tabNavigationPagePostRetirementCashFlow = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             ((System.ComponentModel.ISupportInitialize)(this.cmbPlanOption.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grpPlanDetail)).BeginInit();
             this.grpPlanDetail.SuspendLayout();
@@ -103,6 +104,26 @@
             this.grpPlanDetail.Size = new System.Drawing.Size(461, 77);
             this.grpPlanDetail.TabIndex = 8;
             this.grpPlanDetail.Text = "Plan Details";
+            // 
+            // lblStartDate
+            // 
+            this.lblStartDate.AutoSize = true;
+            this.lblStartDate.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStartDate.Location = new System.Drawing.Point(311, 51);
+            this.lblStartDate.Name = "lblStartDate";
+            this.lblStartDate.Size = new System.Drawing.Size(72, 13);
+            this.lblStartDate.TabIndex = 12;
+            this.lblStartDate.Text = "#StartDate";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(311, 29);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(66, 13);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "Start Date";
             // 
             // lblPlanPeriod
             // 
@@ -207,13 +228,15 @@
             this.tabEstimatedPlan.Controls.Add(this.tabNavigationPageCashFlow);
             this.tabEstimatedPlan.Controls.Add(this.tabNavigationPageGoal);
             this.tabEstimatedPlan.Controls.Add(this.tabNavigationPageCurrentStatus);
+            this.tabEstimatedPlan.Controls.Add(this.tabNavigationPagePostRetirementCashFlow);
             this.tabEstimatedPlan.Location = new System.Drawing.Point(6, 87);
             this.tabEstimatedPlan.Name = "tabEstimatedPlan";
             this.tabEstimatedPlan.PageProperties.ShowMode = DevExpress.XtraBars.Navigation.ItemShowMode.ImageAndText;
             this.tabEstimatedPlan.Pages.AddRange(new DevExpress.XtraBars.Navigation.NavigationPageBase[] {
             this.tabNavigationPageCashFlow,
             this.tabNavigationPageCurrentStatus,
-            this.tabNavigationPageGoal});
+            this.tabNavigationPageGoal,
+            this.tabNavigationPagePostRetirementCashFlow});
             this.tabEstimatedPlan.RegularSize = new System.Drawing.Size(1161, 650);
             this.tabEstimatedPlan.SelectedPage = this.tabNavigationPageCashFlow;
             this.tabEstimatedPlan.Size = new System.Drawing.Size(1161, 650);
@@ -237,34 +260,21 @@
             this.tabNavigationPageGoal.Caption = "Goals";
             this.tabNavigationPageGoal.Image = global::FinancialPlannerClient.Properties.Resources.icons8_goal_16;
             this.tabNavigationPageGoal.Name = "tabNavigationPageGoal";
-            this.tabNavigationPageGoal.Size = new System.Drawing.Size(1009, 602);
+            this.tabNavigationPageGoal.Size = new System.Drawing.Size(1143, 602);
             // 
             // tabNavigationPageCurrentStatus
             // 
             this.tabNavigationPageCurrentStatus.Caption = "Current Status";
             this.tabNavigationPageCurrentStatus.Image = global::FinancialPlannerClient.Properties.Resources.icons8_date_span_16;
             this.tabNavigationPageCurrentStatus.Name = "tabNavigationPageCurrentStatus";
-            this.tabNavigationPageCurrentStatus.Size = new System.Drawing.Size(1009, 602);
+            this.tabNavigationPageCurrentStatus.Size = new System.Drawing.Size(1161, 650);
             // 
-            // lblStartDate
+            // tabNavigationPagePostRetirementCashFlow
             // 
-            this.lblStartDate.AutoSize = true;
-            this.lblStartDate.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStartDate.Location = new System.Drawing.Point(311, 51);
-            this.lblStartDate.Name = "lblStartDate";
-            this.lblStartDate.Size = new System.Drawing.Size(72, 13);
-            this.lblStartDate.TabIndex = 12;
-            this.lblStartDate.Text = "#StartDate";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(311, 29);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(66, 13);
-            this.label6.TabIndex = 11;
-            this.label6.Text = "Start Date";
+            this.tabNavigationPagePostRetirementCashFlow.Caption = "Post Retirement Cash Flow";
+            this.tabNavigationPagePostRetirementCashFlow.Image = ((System.Drawing.Image)(resources.GetObject("tabNavigationPagePostRetirementCashFlow.Image")));
+            this.tabNavigationPagePostRetirementCashFlow.Name = "tabNavigationPagePostRetirementCashFlow";
+            this.tabNavigationPagePostRetirementCashFlow.Size = new System.Drawing.Size(1143, 602);
             // 
             // EstimatedPlan
             // 
@@ -314,6 +324,7 @@
         private DevExpress.XtraBars.Navigation.TabNavigationPage tabNavigationPageCurrentStatus;
         private System.Windows.Forms.Label lblStartDate;
         private System.Windows.Forms.Label label6;
+        private DevExpress.XtraBars.Navigation.TabNavigationPage tabNavigationPagePostRetirementCashFlow;
     }
 }
 

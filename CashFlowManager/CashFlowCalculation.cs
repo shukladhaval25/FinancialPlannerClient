@@ -27,6 +27,7 @@ namespace FinancialPlannerClient.CashFlowManager
         IList<Loan> lstLoans;
         IList<Goals> lstGoals;
         int _planStartYear;
+        private bool _islientRetirmentAgeForPrimaryCalculation;
 
         public int Pid
         {
@@ -132,7 +133,7 @@ namespace FinancialPlannerClient.CashFlowManager
         {
             get
             {
-                _spouseCurrentAge = DateTime.Now.Year - _clientDateOfBirth.Year;
+                _spouseCurrentAge = DateTime.Now.Year - _spouseDateOfBirth.Year;
                 return _spouseCurrentAge;
             }
         }
@@ -253,5 +254,7 @@ namespace FinancialPlannerClient.CashFlowManager
                 _planStartYear = value;
             }
         }
+
+        public bool IslientRetirmentAgeForPrimaryCalculation { get => _islientRetirmentAgeForPrimaryCalculation; set => _islientRetirmentAgeForPrimaryCalculation = value; }
     }
 }

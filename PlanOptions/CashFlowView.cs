@@ -43,13 +43,13 @@ namespace FinancialPlannerClient.PlanOptions
             gridSplitContainerViewCashFlow.Columns["StartYear"].Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
             foreach (DevExpress.XtraGrid.Columns.GridColumn column in gridSplitContainerViewCashFlow.Columns)
             {
-                if (column.Name != "ID" && column.Name != "StartYear" && column.Name != "EndYear")
+                if (column.FieldName != "ID" && column.FieldName != "StartYear" && column.FieldName != "EndYear")
                 {
                     column.DisplayFormat.FormatType = FormatType.Numeric;
                     column.DisplayFormat.FormatString = "#,###";
                     column.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;                 
                 }
-                if (column.Name != "IncomeTax")
+                if (column.FieldName != "IncomeTax")
                 {
                     //column.ReadOnly = true;
                 }
