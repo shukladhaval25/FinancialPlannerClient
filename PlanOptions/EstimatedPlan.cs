@@ -160,7 +160,7 @@ namespace FinancialPlannerClient.PlanOptions
         private void showPostRetirementCashFlowView()
         {
             PostRetirementCashFlow postRetirementCashFlow = 
-                new PostRetirementCashFlow(personalInformation, this.planner);
+                new PostRetirementCashFlow(this.planner,cashFlowService);
             //postRetirementCashFlow.setCashFlowService(cashFlowService);
             postRetirementCashFlow.TopLevel = false;
             postRetirementCashFlow.Visible = true;

@@ -225,6 +225,12 @@
     <Compile Include="PlannerInfo\ClientFestivalInfo.cs" />
     <Compile Include="PlannerInfo\DocumentInfo.cs" />
     <Compile Include="Master\FestivalsInfo.cs" />
+    <Compile Include="PlanOptions\GoalsView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\GoalsView.Designer.cs">
+      <DependentUpon>GoalsView.cs</DependentUpon>
+    </Compile>
     <Compile Include="PlanOptions\PostRetirementCashFlow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -333,6 +339,18 @@
     </Compile>
     <Compile Include="PlanOptions\Reports\FamilyInfoPage.Designer.cs">
       <DependentUpon>FamilyInfoPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\FinancialClientGoal.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\FinancialClientGoal.Designer.cs">
+      <DependentUpon>FinancialClientGoal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\FinancialGoalIntro.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\FinancialGoalIntro.Designer.cs">
+      <DependentUpon>FinancialGoalIntro.cs</DependentUpon>
     </Compile>
     <Compile Include="PlanOptions\Reports\Introduction.cs">
       <SubType>Component</SubType>
@@ -477,6 +495,9 @@
     <EmbeddedResource Include="Master\Others.resx">
       <DependentUpon>Others.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\GoalsView.resx">
+      <DependentUpon>GoalsView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\PostRetirementCashFlow.resx">
       <DependentUpon>PostRetirementCashFlow.cs</DependentUpon>
     </EmbeddedResource>
@@ -509,6 +530,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\Reports\FamilyInfoPage.resx">
       <DependentUpon>FamilyInfoPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\Reports\FinancialClientGoal.resx">
+      <DependentUpon>FinancialClientGoal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\Reports\FinancialGoalIntro.resx">
+      <DependentUpon>FinancialGoalIntro.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\Reports\Introduction.resx">
       <DependentUpon>Introduction.cs</DependentUpon>

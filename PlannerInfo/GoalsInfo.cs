@@ -96,6 +96,19 @@ namespace FinancialPlannerClient.PlannerInfo
             dtGridGoals.Columns["UpdatedByUserName"].Visible = false;
             dtGridGoals.Columns["MachineName"].Visible = false;
         }
+        internal void FillGrid(DevExpress.XtraGrid.Views.Grid.GridView gridViewControl)
+        {
+            gridViewControl.Columns[0].Visible = false;
+            gridViewControl.Columns[1].Visible = false;
+            gridViewControl.Columns[2].Caption = "Goal Category";
+            gridViewControl.Columns[3].Caption = "Goal Name";
+            gridViewControl.Columns["CreatedOn"].Visible = false;
+            gridViewControl.Columns["CreatedBy"].Visible = false;
+            gridViewControl.Columns["UpdatedOn"].Visible = false;
+            gridViewControl.Columns["UpdatedBy"].Visible = false;
+            gridViewControl.Columns["UpdatedByUserName"].Visible = false;
+            gridViewControl.Columns["MachineName"].Visible = false;
+        }
         private void LogDebug(string methodName, Exception ex)
         {
             DebuggerLogInfo debuggerInfo = new DebuggerLogInfo();
@@ -167,6 +180,26 @@ namespace FinancialPlannerClient.PlannerInfo
         {
             _dtGoals = dtGoals;
             return convertSelectedRowDataToGoals(dtGridGoals);
+        }
+        internal Goals GetGoalsInfo(DevExpress.XtraGrid.Views.Grid.GridView gridViewControl,DataTable dtGoals)
+        {
+            _dtGoals = dtGoals;
+            return convertSelectedRowDataToGoals(gridViewControl);
+        }
+        private Goals convertSelectedRowDataToGoals(DevExpress.XtraGrid.Views.Grid.GridView gridViewControl)
+        {
+            if (gridViewControl.GetFocusedDataSourceRowIndex() >= 0)
+            {
+                int goalId = int.Parse(gridViewControl.GetFocusedRowCellValue("Id").ToString());
+                int planId = int.Parse(gridViewControl.GetFocusedRowCellValue("Pid").ToString()); 
+                DataRow[] dr = _dtGoals.Select("Id ='" + goalId + "'");
+                if (dr != null)
+                {
+                    Goals Goals = GetById(int.Parse(dr[0].Field<string>("ID")), int.Parse(dr[0].Field<string>("PID")));
+                    return Goals;
+                }
+            }
+            return null;
         }
         private Goals convertSelectedRowDataToGoals(DataGridView dtGridGoals)
         {

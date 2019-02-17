@@ -68,8 +68,8 @@
             this.navBarGroup1 = new DevExpress.XtraNavBar.NavBarGroup();
             this.navBarItemOtherInformation = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItemAssumptions = new DevExpress.XtraNavBar.NavBarItem();
-            this.navBarItem1 = new DevExpress.XtraNavBar.NavBarItem();
-            this.navBarItem2 = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarItemGoals = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarItemCurrentStatus = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItem3 = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItem4 = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarGroupPlanOption = new DevExpress.XtraNavBar.NavBarGroup();
@@ -279,7 +279,6 @@
             this.navBarItemFamily.Caption = "Family Members";
             this.navBarItemFamily.Name = "navBarItemFamily";
             this.navBarItemFamily.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarItemFamily.SmallImage")));
-            this.navBarItemFamily.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItemFamily_LinkClicked);
             // 
             // navBarGroupControlContainer1
             // 
@@ -301,8 +300,8 @@
             this.navBarGroupPlanOption});
             this.navBarControlPlanner.Items.AddRange(new DevExpress.XtraNavBar.NavBarItem[] {
             this.navBarItemAssumptions,
-            this.navBarItem1,
-            this.navBarItem2,
+            this.navBarItemGoals,
+            this.navBarItemCurrentStatus,
             this.navBarItem3,
             this.navBarItem4,
             this.navBarItemEstimatedPlan,
@@ -322,8 +321,8 @@
             this.navBarGroup1.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemOtherInformation),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemAssumptions),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem1),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem2),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemGoals),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemCurrentStatus),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem3),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem4)});
             this.navBarGroup1.Name = "navBarGroup1";
@@ -340,15 +339,17 @@
             this.navBarItemAssumptions.Name = "navBarItemAssumptions";
             this.navBarItemAssumptions.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItemAssumptions_LinkClicked);
             // 
-            // navBarItem1
+            // navBarItemGoals
             // 
-            this.navBarItem1.Caption = "Loans";
-            this.navBarItem1.Name = "navBarItem1";
+            this.navBarItemGoals.Caption = "Goals";
+            this.navBarItemGoals.Name = "navBarItemGoals";
+            this.navBarItemGoals.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItemGoals_LinkClicked);
             // 
-            // navBarItem2
+            // navBarItemCurrentStatus
             // 
-            this.navBarItem2.Caption = "Non-Financial Assets";
-            this.navBarItem2.Name = "navBarItem2";
+            this.navBarItemCurrentStatus.Caption = "Current Status";
+            this.navBarItemCurrentStatus.Name = "navBarItemCurrentStatus";
+            this.navBarItemCurrentStatus.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItemCurrentStatus_LinkClicked);
             // 
             // navBarItem3
             // 
@@ -1245,8 +1246,8 @@
         private DevExpress.XtraNavBar.NavBarGroup navBarGroup1;
         private DevExpress.XtraNavBar.NavBarItem navBarItemAssumptions;
         private DevExpress.XtraNavBar.NavBarGroup navBarGroupPlanOption;
-        private DevExpress.XtraNavBar.NavBarItem navBarItem1;
-        private DevExpress.XtraNavBar.NavBarItem navBarItem2;
+        private DevExpress.XtraNavBar.NavBarItem navBarItemGoals;
+        private DevExpress.XtraNavBar.NavBarItem navBarItemCurrentStatus;
         private DevExpress.XtraNavBar.NavBarItem navBarItem3;
         private DevExpress.XtraNavBar.NavBarItem navBarItem4;
         private DevExpress.XtraBars.Navigation.NavigationPage navigationPageOther;

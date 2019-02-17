@@ -48,6 +48,9 @@ namespace FinancialPlannerClient.PlanOptions
             FamilyInfoPage familyInfo = new FamilyInfoPage(personalInformation.Client);
             familyInfo.CreateDocument();
 
+            FinancialGoalIntro financialGoalIntro = new FinancialGoalIntro(client);
+            financialGoalIntro.CreateDocument();
+
             // Enable this property to maintain continuous page numbering 
             PrintingSystem.ContinuousPageNumbering = true;
 
@@ -58,6 +61,7 @@ namespace FinancialPlannerClient.PlanOptions
             this.Pages.Add(scopeOfPlancs.Pages.First);
             this.Pages.Add(assumptionPage.Pages.First);
             this.Pages.Add(familyInfo.Pages.First);
+            this.Pages.Add(financialGoalIntro.Pages.First);
 
         }
     }

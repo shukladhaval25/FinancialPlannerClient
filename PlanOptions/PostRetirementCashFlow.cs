@@ -11,32 +11,46 @@ namespace FinancialPlannerClient.PlanOptions
     {
         PostRetirementCashFlowService postRetirementCashFlowService;
         CashFlowCalculation cashFlowCalculation;
-        public PostRetirementCashFlow(PersonalInformation personalInformation, Planner planner)
+        public PostRetirementCashFlow(Planner planner,CashFlowService cashFlowService)
         {
             InitializeComponent();
-            postRetirementCashFlowService = new PostRetirementCashFlowService(personalInformation,planner);
+            postRetirementCashFlowService = new PostRetirementCashFlowService(planner,cashFlowService);
             cashFlowCalculation = postRetirementCashFlowService.GetCashFlowCalculationData();
-            displayClientAndSpouseInfo();
-            fillPostRetirementCashFlowData();
+            displayClientAndSpouseInfo(cashFlowService);
+            postRetirementCashFlowService.SetCorpusFund(double.Parse(lblCorpFundAmt.Text));
         }
-        private void displayClientAndSpouseInfo()
+        private void displayClientAndSpouseInfo(CashFlowService cashFlowService)
         {
             lblClient.Text = cashFlowCalculation.ClientName;
             lblClientDOB.Text = cashFlowCalculation.ClientDateOfBirth.ToShortDateString();
             lblClientRetirementAge.Text = string.Format("{0} Years", cashFlowCalculation.ClientRetirementAge.ToString());
             lblClientExpLife.Text = string.Format("{0} Years", cashFlowCalculation.ClientLifeExpected.ToString());
             lblClientCurrentAge.Text  = string.Format("{0} Years", cashFlowCalculation.ClientCurrentAge.ToString());
+            
 
             lblSpouse.Text = cashFlowCalculation.SpouseName;
             lblSpouseDOB.Text = cashFlowCalculation.SpouseDateOfBirth.ToShortDateString();
             lblSpouseRetirementAge.Text = string.Format("{0} Years", cashFlowCalculation.SpouseRetirementAge.ToString());
             lblSpouseLifeExp.Text = string.Format("{0} Years", cashFlowCalculation.SpouseLifeExpected.ToString());
             lblSpouseCurrentAge.Text = string.Format("{0} Years", cashFlowCalculation.SpouseCurrentAge.ToString());
+
+            //lblCashSurplusAmt.Text = cashFlowService.GetCashFlowSurplusAmount().ToString("{0,0.00}");
+            
+            lblCorpFundAmt.Text = (double.Parse(lblCashSurplusAmt.Text) + double.Parse(lblCurrentStatusAmt.Text)).ToString();
+
         }
        
         private void fillPostRetirementCashFlowData()
         {
             grdSplitCashFlow.DataSource = postRetirementCashFlowService.GetPostRetirementCashFlowData();
+            gridSplitContainerViewCashFlow.Columns["StartYear"].Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
+        }
+
+
+        private void PostRetirementCashFlow_Load(object sender, EventArgs e)
+        {
+            fillPostRetirementCashFlowData();
+            lblEstimatedCorpusFundValue.Text = postRetirementCashFlowService.GetProposeEstimatedCorpusFund().ToString();
         }
     }
 }

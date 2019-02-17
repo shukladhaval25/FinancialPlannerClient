@@ -4,6 +4,7 @@ using FinancialPlanner.Common.DataConversion;
 using FinancialPlanner.Common.Model;
 using FinancialPlannerClient.PlannerInfo;
 using FinancialPlannerClient.PlanOptions;
+using FinancialPlannerClient.CurrentStatus;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -342,32 +343,28 @@ namespace FinancialPlannerClient.Clients
 
         }
 
-        private void navBarItemFamily_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
-        {
+        //private bool addNewNavigationPage(string pagename, DevExpress.XtraEditors.XtraForm xtraForm)
+        //{
+        //    bool result = false;
+        //    if (string.IsNullOrEmpty(pagename))
+        //        throw new ArgumentNullException("Cotrol name should not be null.");
 
-        }
-        private bool addNewNavigationPage(string pagename, DevExpress.XtraEditors.XtraForm xtraForm)
-        {
-            bool result = false;
-            if (string.IsNullOrEmpty(pagename))
-                throw new ArgumentNullException("Cotrol name should not be null.");
+        //    if (xtraForm == null)
+        //        throw new ArgumentNullException("Control should not be null");
 
-            if (xtraForm == null)
-                throw new ArgumentNullException("Control should not be null");
-
-            int nameMatchCount = DashboardNavFrame.Pages.Where(i => i.Name == pagename).Count();
-            if (nameMatchCount == 0)
-            {
-                DevExpress.XtraBars.Navigation.NavigationPageBase navigationPageBase = new DevExpress.XtraBars.Navigation.NavigationPageBase
-                {
-                    Name = pagename
-                };
-                navigationPageBase.Controls.Add(xtraForm);
-                DashboardNavFrame.Pages.Add(navigationPageBase);
-                result = true;
-            }
-            return result;
-        }
+        //    int nameMatchCount = DashboardNavFrame.Pages.Where(i => i.Name == pagename).Count();
+        //    if (nameMatchCount == 0)
+        //    {
+        //        DevExpress.XtraBars.Navigation.NavigationPageBase navigationPageBase = new DevExpress.XtraBars.Navigation.NavigationPageBase
+        //        {
+        //            Name = pagename
+        //        };
+        //        navigationPageBase.Controls.Add(xtraForm);
+        //        DashboardNavFrame.Pages.Add(navigationPageBase);
+        //        result = true;
+        //    }
+        //    return result;
+        //}
 
         private void showNavigationPage(string pageName)
         {
@@ -432,6 +429,29 @@ namespace FinancialPlannerClient.Clients
         private void navigationPageOther_ControlAdded(object sender, ControlEventArgs e)
         {
             isControlAdded = true;
+        }
+
+        private void navBarItemGoals_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            GoalsView goalsView = new GoalsView(planner.ID);
+            goalsView.TopLevel = false;
+            goalsView.Visible = true;
+            navigationPageOther.Name = goalsView.Name;
+            navigationPageOther.Controls.Clear();
+            navigationPageOther.Controls.Add(goalsView);
+            showNavigationPage(goalsView.Name);
+        }
+
+        private void navBarItemCurrentStatus_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            FinancialPlannerClient.CurrentStatus.CurrentStatus currentStatus =
+                            new FinancialPlannerClient.CurrentStatus.CurrentStatus(this.personalInformation.Client);
+            currentStatus.TopLevel = false;
+            currentStatus.Visible = true;
+            navigationPageOther.Name = currentStatus.Name;
+            navigationPageOther.Controls.Clear();
+            navigationPageOther.Controls.Add(currentStatus);
+            showNavigationPage(currentStatus.Name);
         }
     }
 }

@@ -24,19 +24,20 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             lstFamilyMember = (List<FamilyMember>)familyMemberInfo.Get(client.ID);
             _dtFamilymember = ListtoDataTable.ToDataTable(lstFamilyMember);
             _ds.Tables.Add(_dtFamilymember);
+
+            this.DataSource = _ds;
+            this.DataMember = _ds.Tables[0].TableName;
+            _dtFamilymember = ListtoDataTable.ToDataTable(lstFamilyMember);
+            this.lblName.DataBindings.Add("Text", null, "FamilyMember.Name");
+            //this.lblRelationship.DataBindings.Add("Text", _dtFamilymember, "FamilyMember.Relationship");
+            lblRelationship.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null,  "FamilyMember.Relationship")});
+            //this.lblAge.DataBindings.Add("Text", _dtFamilymember, "Age");           
         }
 
         private void PageHeader_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            this.DataSource = _ds;
-            this.DataMember = "FamilyMember";
-            _dtFamilymember = ListtoDataTable.ToDataTable(lstFamilyMember);
-            this.lblName.DataBindings.Add("Text", _ds, "FamilyMember.Name");
-            //this.lblRelationship.DataBindings.Add("Text", _dtFamilymember, "FamilyMember.Relationship");
-            lblRelationship.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", _ds,  "FamilyMember.Relationship")});
-
-            //this.lblAge.DataBindings.Add("Text", _dtFamilymember, "Age");            
+            
         }
     }
 }

@@ -513,7 +513,7 @@ namespace FinancialPlannerClient.Clients
 
     #endregion
 
-    private void fillupSessionInfo()
+        private void fillupSessionInfo()
         {
             SessionInfo sessionInfo = new SessionInfo();
             sessionInfo.fillSessionInfo(dtGridSession);
