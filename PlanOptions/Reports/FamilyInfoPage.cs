@@ -32,12 +32,18 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             //this.lblRelationship.DataBindings.Add("Text", _dtFamilymember, "FamilyMember.Relationship");
             lblRelationship.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
             new DevExpress.XtraReports.UI.XRBinding("Text", null,  "FamilyMember.Relationship")});
-            //this.lblAge.DataBindings.Add("Text", _dtFamilymember, "Age");           
+            this.lblDOB.DataBindings.Add("Text", _dtFamilymember, "FamilyMember.DOB");           
         }
 
         private void PageHeader_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
             
+        }
+
+        private void lblDOB_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            ///this.lblDOB.DataBindings.Add ("Text", null, "FamilyMember.DOB");                       
+            lblAge.Text = (DateTime.Now.Year - (DateTime.Parse(lblDOB.Text).Year)).ToString();
         }
     }
 }

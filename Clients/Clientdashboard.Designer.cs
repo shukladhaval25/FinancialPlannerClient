@@ -279,6 +279,7 @@
             this.navBarItemFamily.Caption = "Family Members";
             this.navBarItemFamily.Name = "navBarItemFamily";
             this.navBarItemFamily.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarItemFamily.SmallImage")));
+            this.navBarItemFamily.Visible = false;
             // 
             // navBarGroupControlContainer1
             // 
@@ -355,11 +356,13 @@
             // 
             this.navBarItem3.Caption = "Income";
             this.navBarItem3.Name = "navBarItem3";
+            this.navBarItem3.Visible = false;
             // 
             // navBarItem4
             // 
             this.navBarItem4.Caption = "Expenses";
             this.navBarItem4.Name = "navBarItem4";
+            this.navBarItem4.Visible = false;
             // 
             // navBarGroupPlanOption
             // 
@@ -399,6 +402,7 @@
             this.btnViewPlann.SuperTip = superToolTip1;
             this.btnViewPlann.TabIndex = 2;
             this.btnViewPlann.Text = "More Details";
+            this.btnViewPlann.Click += new System.EventHandler(this.btnViewPlann_Click);
             // 
             // labelControl1
             // 

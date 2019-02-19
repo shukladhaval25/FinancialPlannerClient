@@ -28,8 +28,23 @@ namespace FinancialPlannerClient.PlanOptions
 
         private void rdoGoalType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            navigateToSelectedPage();
-
+            //navigateToSelectedPage();
+            if (rdoGoalType.SelectedIndex == 1)
+            {
+                chkLaonForGoal.Visible = false;
+                grpLoanForGoal.Visible = false;
+                cmbCategory.Text = "Retirement";
+                cmbCategory.ReadOnly = true;
+                lblAmountTitle.Text = "Annual Expense (Today's Value):";
+            }
+            else
+            {
+                chkLaonForGoal.Visible = true;
+                grpLoanForGoal.Visible = true;
+                cmbCategory.ReadOnly = false;
+                lblAmountTitle.Text = "Amount(Today's Value)";
+            }
+            
         }
 
         private void navigateToSelectedPage()
@@ -135,6 +150,8 @@ namespace FinancialPlannerClient.PlanOptions
         {
             grpGoalsDetail.Enabled = true;
             rdoGoalType.Enabled = true;
+            cmbCategory.Enabled = true;
+            cmbCategory.ReadOnly = false;
             setDefaultGoalsValue();
         }
 

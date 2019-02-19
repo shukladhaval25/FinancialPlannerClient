@@ -34,10 +34,9 @@ namespace FinancialPlannerClient.PlanOptions
             lblSpouseLifeExp.Text = string.Format("{0} Years", cashFlowCalculation.SpouseLifeExpected.ToString());
             lblSpouseCurrentAge.Text = string.Format("{0} Years", cashFlowCalculation.SpouseCurrentAge.ToString());
 
-            //lblCashSurplusAmt.Text = cashFlowService.GetCashFlowSurplusAmount().ToString("{0,0.00}");
+            lblCashSurplusAmt.Text = cashFlowService.GetCashFlowSurplusAmount().ToString("#,###.##");
             
-            lblCorpFundAmt.Text = (double.Parse(lblCashSurplusAmt.Text) + double.Parse(lblCurrentStatusAmt.Text)).ToString();
-
+            lblCorpFundAmt.Text = (double.Parse(lblCashSurplusAmt.Text) + double.Parse(lblCurrentStatusAmt.Text)).ToString("#,###.##");
         }
        
         private void fillPostRetirementCashFlowData()
@@ -50,7 +49,8 @@ namespace FinancialPlannerClient.PlanOptions
         private void PostRetirementCashFlow_Load(object sender, EventArgs e)
         {
             fillPostRetirementCashFlowData();
-            lblEstimatedCorpusFundValue.Text = postRetirementCashFlowService.GetProposeEstimatedCorpusFund().ToString();
+            lblEstimatedCorpusFundValue.Text = postRetirementCashFlowService.GetProposeEstimatedCorpusFund().ToString("##,###.##");
+            lblEstimatedCorpusFundValue.Refresh();
         }
     }
 }

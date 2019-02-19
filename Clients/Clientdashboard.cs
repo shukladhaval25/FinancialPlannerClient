@@ -453,5 +453,16 @@ namespace FinancialPlannerClient.Clients
             navigationPageOther.Controls.Add(currentStatus);
             showNavigationPage(currentStatus.Name);
         }
+
+        private void btnViewPlann_Click(object sender, EventArgs e)
+        {
+            PlannerView plannerView = new PlannerView(this.personalInformation);
+            plannerView.TopLevel = false;
+            plannerView.Visible = true;
+            navigationPageOther.Name = plannerView.Name;
+            navigationPageOther.Controls.Clear();
+            navigationPageOther.Controls.Add(plannerView);
+            showNavigationPage(plannerView.Name);
+        }
     }
 }

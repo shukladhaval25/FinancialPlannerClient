@@ -225,6 +225,12 @@
     <Compile Include="PlannerInfo\ClientFestivalInfo.cs" />
     <Compile Include="PlannerInfo\DocumentInfo.cs" />
     <Compile Include="Master\FestivalsInfo.cs" />
+    <Compile Include="PlanOptions\PlannerView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\PlannerView.Designer.cs">
+      <DependentUpon>PlannerView.cs</DependentUpon>
+    </Compile>
     <Compile Include="PlanOptions\GoalsView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -494,6 +500,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Master\Others.resx">
       <DependentUpon>Others.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\PlannerView.resx">
+      <DependentUpon>PlannerView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\GoalsView.resx">
       <DependentUpon>GoalsView.cs</DependentUpon>
