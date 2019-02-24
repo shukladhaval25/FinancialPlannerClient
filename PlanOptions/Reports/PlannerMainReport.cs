@@ -51,6 +51,12 @@ namespace FinancialPlannerClient.PlanOptions
             FinancialGoalIntro financialGoalIntro = new FinancialGoalIntro(client);
             financialGoalIntro.CreateDocument();
 
+            FinancialClientGoal financialClientGoal = new FinancialClientGoal(this.planner,this.client);
+            financialClientGoal.CreateDocument();
+
+            GoalProjectionForComplition goalProjectionForComplition = new GoalProjectionForComplition(this.client);
+            goalProjectionForComplition.CreateDocument();
+
             // Enable this property to maintain continuous page numbering 
             PrintingSystem.ContinuousPageNumbering = true;
 
@@ -62,7 +68,8 @@ namespace FinancialPlannerClient.PlanOptions
             this.Pages.Add(assumptionPage.Pages.First);
             this.Pages.Add(familyInfo.Pages.First);
             this.Pages.Add(financialGoalIntro.Pages.First);
-
+            this.Pages.Add(financialClientGoal.Pages.First);
+            this.Pages.Add(goalProjectionForComplition.Pages.First);
         }
     }
 }

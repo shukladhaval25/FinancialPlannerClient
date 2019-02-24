@@ -648,7 +648,9 @@
             this.txtTotalEquityAmount.Location = new System.Drawing.Point(140, 388);
             this.txtTotalEquityAmount.Name = "txtTotalEquityAmount";
             this.txtTotalEquityAmount.Properties.Appearance.BackColor = System.Drawing.SystemColors.Control;
+            this.txtTotalEquityAmount.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTotalEquityAmount.Properties.Appearance.Options.UseBackColor = true;
+            this.txtTotalEquityAmount.Properties.Appearance.Options.UseFont = true;
             this.txtTotalEquityAmount.Properties.Appearance.Options.UseTextOptions = true;
             this.txtTotalEquityAmount.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.txtTotalEquityAmount.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Office2003;
@@ -661,7 +663,9 @@
             this.txtTotalDebtAmount.Location = new System.Drawing.Point(410, 388);
             this.txtTotalDebtAmount.Name = "txtTotalDebtAmount";
             this.txtTotalDebtAmount.Properties.Appearance.BackColor = System.Drawing.SystemColors.Control;
+            this.txtTotalDebtAmount.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTotalDebtAmount.Properties.Appearance.Options.UseBackColor = true;
+            this.txtTotalDebtAmount.Properties.Appearance.Options.UseFont = true;
             this.txtTotalDebtAmount.Properties.Appearance.Options.UseTextOptions = true;
             this.txtTotalDebtAmount.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.txtTotalDebtAmount.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Office2003;
@@ -675,7 +679,9 @@
             this.txtTotalGoldAmount.Location = new System.Drawing.Point(689, 388);
             this.txtTotalGoldAmount.Name = "txtTotalGoldAmount";
             this.txtTotalGoldAmount.Properties.Appearance.BackColor = System.Drawing.SystemColors.Control;
+            this.txtTotalGoldAmount.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTotalGoldAmount.Properties.Appearance.Options.UseBackColor = true;
+            this.txtTotalGoldAmount.Properties.Appearance.Options.UseFont = true;
             this.txtTotalGoldAmount.Properties.Appearance.Options.UseTextOptions = true;
             this.txtTotalGoldAmount.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.txtTotalGoldAmount.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Office2003;

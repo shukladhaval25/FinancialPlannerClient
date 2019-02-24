@@ -4,7 +4,6 @@ using FinancialPlanner.Common.DataConversion;
 using FinancialPlanner.Common.Model;
 using FinancialPlannerClient.PlannerInfo;
 using FinancialPlannerClient.PlanOptions;
-using FinancialPlannerClient.CurrentStatus;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -298,6 +297,11 @@ namespace FinancialPlannerClient.Clients
                 //var newList  // ToList optional
                 this._planners = plannerCollection.Value.OrderByDescending(x => x.StartDate).ToList();
                 fillupPlannerCombobox();
+                navBarControlPlanner.Enabled = true;
+            }
+            else
+            {
+                navBarControlPlanner.Enabled = false;
             }
         }
 
@@ -312,6 +316,7 @@ namespace FinancialPlannerClient.Clients
                 }
                 cmbPlanner.SelectedIndex = 0;
             }
+
         }
         private void cmbPlanner_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -409,7 +414,7 @@ namespace FinancialPlannerClient.Clients
         private void navBarItemReport_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
 
-            PlannerMainReport plannerMainReport = new PlannerMainReport(this.personalInformation,planner);
+            PlannerMainReport plannerMainReport = new PlannerMainReport(this.personalInformation, planner);
             DevExpress.XtraReports.UI.ReportPrintTool printTool = new DevExpress.XtraReports.UI.ReportPrintTool(plannerMainReport);
             printTool.ShowRibbonPreviewDialog();
 
@@ -423,7 +428,7 @@ namespace FinancialPlannerClient.Clients
             navigationPageOther.Name = clientInfo.Name;
             navigationPageOther.Controls.Clear();
             navigationPageOther.Controls.Add(clientInfo);
-            showNavigationPage(clientInfo.Name);            
+            showNavigationPage(clientInfo.Name);
         }
 
         private void navigationPageOther_ControlAdded(object sender, ControlEventArgs e)

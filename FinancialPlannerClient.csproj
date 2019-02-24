@@ -113,6 +113,12 @@
     <Compile Include="AuditTrail\AuditTrail.Designer.cs">
       <DependentUpon>AuditTrail.cs</DependentUpon>
     </Compile>
+    <Compile Include="AuditTrail\AuditTrailView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AuditTrail\AuditTrailView.Designer.cs">
+      <DependentUpon>AuditTrailView.cs</DependentUpon>
+    </Compile>
     <Compile Include="CashFlowManager\CashFlowCalculation.cs" />
     <Compile Include="CashFlowManager\CashFlowService.cs" />
     <Compile Include="CashFlowManager\PostRetirementCashFlowService.cs" />
@@ -225,6 +231,12 @@
     <Compile Include="PlannerInfo\ClientFestivalInfo.cs" />
     <Compile Include="PlannerInfo\DocumentInfo.cs" />
     <Compile Include="Master\FestivalsInfo.cs" />
+    <Compile Include="PlanOptions\GoalStatusView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\GoalStatusView.Designer.cs">
+      <DependentUpon>GoalStatusView.cs</DependentUpon>
+    </Compile>
     <Compile Include="PlanOptions\PlannerView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -358,6 +370,12 @@
     <Compile Include="PlanOptions\Reports\FinancialGoalIntro.Designer.cs">
       <DependentUpon>FinancialGoalIntro.cs</DependentUpon>
     </Compile>
+    <Compile Include="PlanOptions\Reports\GoalProjectionForComplition.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\GoalProjectionForComplition.Designer.cs">
+      <DependentUpon>GoalProjectionForComplition.cs</DependentUpon>
+    </Compile>
     <Compile Include="PlanOptions\Reports\Introduction.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -444,6 +462,9 @@
     <EmbeddedResource Include="AuditTrail\AuditTrail.resx">
       <DependentUpon>AuditTrail.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AuditTrail\AuditTrailView.resx">
+      <DependentUpon>AuditTrailView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Clients\AllClientsList.resx">
       <DependentUpon>AllClientsList.cs</DependentUpon>
     </EmbeddedResource>
@@ -501,6 +522,9 @@
     <EmbeddedResource Include="Master\Others.resx">
       <DependentUpon>Others.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\GoalStatusView.resx">
+      <DependentUpon>GoalStatusView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\PlannerView.resx">
       <DependentUpon>PlannerView.cs</DependentUpon>
     </EmbeddedResource>
@@ -545,6 +569,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\Reports\FinancialGoalIntro.resx">
       <DependentUpon>FinancialGoalIntro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\Reports\GoalProjectionForComplition.resx">
+      <DependentUpon>GoalProjectionForComplition.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\Reports\Introduction.resx">
       <DependentUpon>Introduction.cs</DependentUpon>

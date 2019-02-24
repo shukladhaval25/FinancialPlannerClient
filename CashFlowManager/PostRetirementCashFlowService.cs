@@ -57,9 +57,10 @@ namespace FinancialPlannerClient.CashFlowManager
         }
         private int getExpectedLifeEndYear()
         {
-            int year = cashFlowCalculation.IslientRetirmentAgeForPrimaryCalculation ?
-                 DateTime.Now.Year + (cashFlowCalculation.ClientLifeExpected - cashFlowCalculation.ClientCurrentAge) :
-                 DateTime.Now.Year + (cashFlowCalculation.SpouseLifeExpected - cashFlowCalculation.SpouseCurrentAge);
+            int year = (cashFlowCalculation.ClientDateOfBirth < cashFlowCalculation.SpouseDateOfBirth) ?
+                DateTime.Now.Year + (cashFlowCalculation.SpouseLifeExpected - cashFlowCalculation.SpouseCurrentAge) :
+            DateTime.Now.Year + (cashFlowCalculation.ClientLifeExpected - cashFlowCalculation.ClientCurrentAge);
+                
             return year;
         }
         private void createRetiremtnCashFlowTable()
@@ -277,7 +278,7 @@ namespace FinancialPlannerClient.CashFlowManager
 
         private double getEstimatedCorpusFundWithReturnCalculation(double value)
         {
-            double invReturnRate = 6;            
+            double invReturnRate = 6;      
             return (value * 100) / (100 + invReturnRate);
         }
     }

@@ -42,15 +42,16 @@
             this.label4 = new System.Windows.Forms.Label();
             this.lblPlanName = new System.Windows.Forms.Label();
             this.grpPlanOption = new DevExpress.XtraEditors.GroupControl();
-            this.btnPlanOptinView = new DevExpress.XtraEditors.SimpleButton();
             this.lblRiskProfileValue = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.btnClose = new DevExpress.XtraEditors.SimpleButton();
             this.tabEstimatedPlan = new DevExpress.XtraBars.Navigation.TabPane();
             this.tabNavigationPageCashFlow = new DevExpress.XtraBars.Navigation.TabNavigationPage();
-            this.tabNavigationPageGoal = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             this.tabNavigationPageCurrentStatus = new DevExpress.XtraBars.Navigation.TabNavigationPage();
+            this.tabNavigationPageGoal = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             this.tabNavigationPagePostRetirementCashFlow = new DevExpress.XtraBars.Navigation.TabNavigationPage();
+            this.tabNavigationPageGoalStatus = new DevExpress.XtraBars.Navigation.TabNavigationPage();
+            this.btnPlanOptinView = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.cmbPlanOption.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grpPlanDetail)).BeginInit();
             this.grpPlanDetail.SuspendLayout();
@@ -168,28 +169,6 @@
             this.grpPlanOption.TabIndex = 9;
             this.grpPlanOption.Text = "Plan Option Details";
             // 
-            // btnPlanOptinView
-            // 
-            this.btnPlanOptinView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPlanOptinView.Image = ((System.Drawing.Image)(resources.GetObject("btnPlanOptinView.Image")));
-            this.btnPlanOptinView.Location = new System.Drawing.Point(485, 33);
-            this.btnPlanOptinView.Name = "btnPlanOptinView";
-            this.btnPlanOptinView.Size = new System.Drawing.Size(82, 29);
-            toolTipTitleItem1.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
-            toolTipTitleItem1.Appearance.Options.UseImage = true;
-            toolTipTitleItem1.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem1.Image")));
-            toolTipTitleItem1.Text = "Plan options";
-            toolTipItem1.LeftIndent = 6;
-            toolTipItem1.Text = "To get more details about plan option click here.";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            superToolTip1.Items.Add(toolTipItem1);
-            this.btnPlanOptinView.SuperTip = superToolTip1;
-            this.btnPlanOptinView.TabIndex = 9;
-            this.btnPlanOptinView.Text = "Get Details";
-            this.btnPlanOptinView.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Application;
-            this.btnPlanOptinView.ToolTipTitle = "New Client";
-            this.btnPlanOptinView.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
             // lblRiskProfileValue
             // 
             this.lblRiskProfileValue.AutoSize = true;
@@ -226,15 +205,17 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabEstimatedPlan.Controls.Add(this.tabNavigationPageCashFlow);
-            this.tabEstimatedPlan.Controls.Add(this.tabNavigationPageGoal);
             this.tabEstimatedPlan.Controls.Add(this.tabNavigationPageCurrentStatus);
+            this.tabEstimatedPlan.Controls.Add(this.tabNavigationPageGoal);
             this.tabEstimatedPlan.Controls.Add(this.tabNavigationPagePostRetirementCashFlow);
+            this.tabEstimatedPlan.Controls.Add(this.tabNavigationPageGoalStatus);
             this.tabEstimatedPlan.Location = new System.Drawing.Point(6, 87);
             this.tabEstimatedPlan.Name = "tabEstimatedPlan";
             this.tabEstimatedPlan.PageProperties.ShowMode = DevExpress.XtraBars.Navigation.ItemShowMode.ImageAndText;
             this.tabEstimatedPlan.Pages.AddRange(new DevExpress.XtraBars.Navigation.NavigationPageBase[] {
             this.tabNavigationPageCashFlow,
             this.tabNavigationPageCurrentStatus,
+            this.tabNavigationPageGoalStatus,
             this.tabNavigationPageGoal,
             this.tabNavigationPagePostRetirementCashFlow});
             this.tabEstimatedPlan.RegularSize = new System.Drawing.Size(1161, 650);
@@ -255,26 +236,54 @@
             this.tabNavigationPageCashFlow.Properties.ShowMode = DevExpress.XtraBars.Navigation.ItemShowMode.ImageAndText;
             this.tabNavigationPageCashFlow.Size = new System.Drawing.Size(1143, 602);
             // 
-            // tabNavigationPageGoal
-            // 
-            this.tabNavigationPageGoal.Caption = "Goals";
-            this.tabNavigationPageGoal.Image = global::FinancialPlannerClient.Properties.Resources.icons8_goal_16;
-            this.tabNavigationPageGoal.Name = "tabNavigationPageGoal";
-            this.tabNavigationPageGoal.Size = new System.Drawing.Size(1143, 602);
-            // 
             // tabNavigationPageCurrentStatus
             // 
             this.tabNavigationPageCurrentStatus.Caption = "Current Status";
             this.tabNavigationPageCurrentStatus.Image = global::FinancialPlannerClient.Properties.Resources.icons8_date_span_16;
             this.tabNavigationPageCurrentStatus.Name = "tabNavigationPageCurrentStatus";
-            this.tabNavigationPageCurrentStatus.Size = new System.Drawing.Size(1161, 650);
+            this.tabNavigationPageCurrentStatus.Size = new System.Drawing.Size(1143, 602);
+            // 
+            // tabNavigationPageGoal
+            // 
+            this.tabNavigationPageGoal.Caption = "Goals";
+            this.tabNavigationPageGoal.Image = global::FinancialPlannerClient.Properties.Resources.icons8_goal_16;
+            this.tabNavigationPageGoal.Name = "tabNavigationPageGoal";
+            this.tabNavigationPageGoal.Size = new System.Drawing.Size(1161, 650);
             // 
             // tabNavigationPagePostRetirementCashFlow
             // 
             this.tabNavigationPagePostRetirementCashFlow.Caption = "Post Retirement Cash Flow";
             this.tabNavigationPagePostRetirementCashFlow.Image = ((System.Drawing.Image)(resources.GetObject("tabNavigationPagePostRetirementCashFlow.Image")));
             this.tabNavigationPagePostRetirementCashFlow.Name = "tabNavigationPagePostRetirementCashFlow";
-            this.tabNavigationPagePostRetirementCashFlow.Size = new System.Drawing.Size(1143, 602);
+            this.tabNavigationPagePostRetirementCashFlow.Size = new System.Drawing.Size(1161, 650);
+            // 
+            // tabNavigationPageGoalStatus
+            // 
+            this.tabNavigationPageGoalStatus.Caption = "Goal Status";
+            this.tabNavigationPageGoalStatus.Name = "tabNavigationPageGoalStatus";
+            this.tabNavigationPageGoalStatus.Size = new System.Drawing.Size(1143, 602);
+            // 
+            // btnPlanOptinView
+            // 
+            this.btnPlanOptinView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPlanOptinView.Image = ((System.Drawing.Image)(resources.GetObject("btnPlanOptinView.Image")));
+            this.btnPlanOptinView.Location = new System.Drawing.Point(485, 33);
+            this.btnPlanOptinView.Name = "btnPlanOptinView";
+            this.btnPlanOptinView.Size = new System.Drawing.Size(82, 29);
+            toolTipTitleItem1.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            toolTipTitleItem1.Appearance.Options.UseImage = true;
+            toolTipTitleItem1.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem1.Image")));
+            toolTipTitleItem1.Text = "Plan options";
+            toolTipItem1.LeftIndent = 6;
+            toolTipItem1.Text = "To get more details about plan option click here.";
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            superToolTip1.Items.Add(toolTipItem1);
+            this.btnPlanOptinView.SuperTip = superToolTip1;
+            this.btnPlanOptinView.TabIndex = 9;
+            this.btnPlanOptinView.Text = "Get Details";
+            this.btnPlanOptinView.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Application;
+            this.btnPlanOptinView.ToolTipTitle = "New Client";
+            this.btnPlanOptinView.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // EstimatedPlan
             // 
@@ -325,6 +334,7 @@
         private System.Windows.Forms.Label lblStartDate;
         private System.Windows.Forms.Label label6;
         private DevExpress.XtraBars.Navigation.TabNavigationPage tabNavigationPagePostRetirementCashFlow;
+        private DevExpress.XtraBars.Navigation.TabNavigationPage tabNavigationPageGoalStatus;
     }
 }
 

@@ -23,27 +23,28 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             FamilyMemberInfo familyMemberInfo = new FamilyMemberInfo();
             lstFamilyMember = (List<FamilyMember>)familyMemberInfo.Get(client.ID);
             _dtFamilymember = ListtoDataTable.ToDataTable(lstFamilyMember);
+            addAgeColumnToDataTable();
             _ds.Tables.Add(_dtFamilymember);
+            _dtFamilymember = ListtoDataTable.ToDataTable(lstFamilyMember);
 
             this.DataSource = _ds;
             this.DataMember = _ds.Tables[0].TableName;
-            _dtFamilymember = ListtoDataTable.ToDataTable(lstFamilyMember);
-            this.lblName.DataBindings.Add("Text", null, "FamilyMember.Name");
-            //this.lblRelationship.DataBindings.Add("Text", _dtFamilymember, "FamilyMember.Relationship");
-            lblRelationship.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null,  "FamilyMember.Relationship")});
-            this.lblDOB.DataBindings.Add("Text", _dtFamilymember, "FamilyMember.DOB");           
-        }
-
-        private void PageHeader_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
-        {
             
+            this.lblName.DataBindings.Add("Text", this.DataSource, "FamilyMember.Name");
+            this.lblRelationship.DataBindings.Add("Text", this.DataSource, "FamilyMember.Relationship");
+            lblRelationship.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", this.DataSource,  "FamilyMember.Relationship")});
+            this.lblDOB.DataBindings.Add("Text", this.DataSource, "FamilyMember.DOB");
+            this.lblAge.DataBindings.Add("Text", this.DataSource, "FamilyMember.Age");
         }
 
-        private void lblDOB_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        private void addAgeColumnToDataTable()
         {
-            ///this.lblDOB.DataBindings.Add ("Text", null, "FamilyMember.DOB");                       
-            lblAge.Text = (DateTime.Now.Year - (DateTime.Parse(lblDOB.Text).Year)).ToString();
+           _dtFamilymember.Columns.Add("Age",typeof(System.Int16));
+            foreach(DataRow dr in _dtFamilymember.Rows)
+            {
+                dr["Age"] = (DateTime.Now.Year - (DateTime.Parse(dr["DOB"].ToString()).Year)).ToString();                
+            }
         }
     }
 }

@@ -1291,7 +1291,8 @@ namespace FinancialPlannerClient.CurrentStatus
             mf.GoldRatio = float.Parse(txtMFGoldRatio.Text);
             mf.DebtRatio = float.Parse(txtMFDebtRatio.Text);
             mf.FreeUnit = int.Parse(txtFreeUnits.Text);
-            mf.RedumptionAmount = double.Parse(txtRedumptionAmt.Text);
+            double redumptionAmt = 0;
+            mf.RedumptionAmount = double.TryParse(txtRedumptionAmt.Text,out redumptionAmt) ? redumptionAmt : 0;
             mf.GoalID = int.Parse(cmbMFGoal.Tag.ToString());
             mf.CreatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
             mf.CreatedBy = Program.CurrentUser.Id;

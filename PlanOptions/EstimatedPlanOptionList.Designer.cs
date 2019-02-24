@@ -37,10 +37,7 @@
             this.lblPlannerPeriod = new System.Windows.Forms.Label();
             this.lblRiskProfileVal = new System.Windows.Forms.Label();
             this.grpActionControls = new System.Windows.Forms.GroupBox();
-            this.btnDeleteOption = new System.Windows.Forms.Button();
             this.imgCollection = new System.Windows.Forms.ImageList(this.components);
-            this.btnAddPlanOption = new System.Windows.Forms.Button();
-            this.btnEditPlanOption = new System.Windows.Forms.Button();
             this.cmbPlanOption = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.cmbPlan = new System.Windows.Forms.ComboBox();
@@ -100,14 +97,9 @@
             this.lblEquityShareRatio = new System.Windows.Forms.Label();
             this.GoalStatus = new System.Windows.Forms.TabPage();
             this.grpCurrentStatusToGoal = new System.Windows.Forms.GroupBox();
-            this.btnSaveCurrentStatusToGoal = new System.Windows.Forms.Button();
             this.imageList16x16 = new System.Windows.Forms.ImageList(this.components);
             this.lblLine = new System.Windows.Forms.Label();
-            this.btnCancelCurrentStatusToGoal = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.btnDeleteCurrentStatusToGoal = new System.Windows.Forms.Button();
-            this.btnAddCurrentStatuaToGoal = new System.Windows.Forms.Button();
-            this.btnEditCurrentStatusToGoal = new System.Windows.Forms.Button();
             this.txtFundAllocation = new System.Windows.Forms.TextBox();
             this.label33 = new System.Windows.Forms.Label();
             this.cmbCurrentStsatusToGoal = new System.Windows.Forms.ComboBox();
@@ -127,6 +119,14 @@
             this.dtGridGoalValue = new System.Windows.Forms.DataGridView();
             this.cmbGoals = new System.Windows.Forms.ComboBox();
             this.label30 = new System.Windows.Forms.Label();
+            this.btnSaveCurrentStatusToGoal = new System.Windows.Forms.Button();
+            this.btnCancelCurrentStatusToGoal = new System.Windows.Forms.Button();
+            this.btnDeleteCurrentStatusToGoal = new System.Windows.Forms.Button();
+            this.btnAddCurrentStatuaToGoal = new System.Windows.Forms.Button();
+            this.btnEditCurrentStatusToGoal = new System.Windows.Forms.Button();
+            this.btnDeleteOption = new System.Windows.Forms.Button();
+            this.btnAddPlanOption = new System.Windows.Forms.Button();
+            this.btnEditPlanOption = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.grpActionControls.SuspendLayout();
             this.tabEstimatedPlan.SuspendLayout();
@@ -206,16 +206,6 @@
             this.grpActionControls.TabIndex = 7;
             this.grpActionControls.TabStop = false;
             // 
-            // btnDeleteOption
-            // 
-            this.btnDeleteOption.ImageIndex = 1;
-            this.btnDeleteOption.ImageList = this.imgCollection;
-            this.btnDeleteOption.Location = new System.Drawing.Point(76, 10);
-            this.btnDeleteOption.Name = "btnDeleteOption";
-            this.btnDeleteOption.Size = new System.Drawing.Size(29, 24);
-            this.btnDeleteOption.TabIndex = 4;
-            this.btnDeleteOption.UseVisualStyleBackColor = true;
-            // 
             // imgCollection
             // 
             this.imgCollection.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgCollection.ImageStream")));
@@ -230,28 +220,6 @@
             this.imgCollection.Images.SetKeyName(7, "icons8-circled-play-16.png");
             this.imgCollection.Images.SetKeyName(8, "icons8-search-16.png");
             this.imgCollection.Images.SetKeyName(9, "icons8-customer-16.png");
-            // 
-            // btnAddPlanOption
-            // 
-            this.btnAddPlanOption.ImageIndex = 3;
-            this.btnAddPlanOption.ImageList = this.imgCollection;
-            this.btnAddPlanOption.Location = new System.Drawing.Point(6, 10);
-            this.btnAddPlanOption.Name = "btnAddPlanOption";
-            this.btnAddPlanOption.Size = new System.Drawing.Size(29, 24);
-            this.btnAddPlanOption.TabIndex = 2;
-            this.btnAddPlanOption.UseVisualStyleBackColor = true;
-            this.btnAddPlanOption.Click += new System.EventHandler(this.btnAddPlanOption_Click);
-            // 
-            // btnEditPlanOption
-            // 
-            this.btnEditPlanOption.ImageIndex = 4;
-            this.btnEditPlanOption.ImageList = this.imgCollection;
-            this.btnEditPlanOption.Location = new System.Drawing.Point(41, 10);
-            this.btnEditPlanOption.Name = "btnEditPlanOption";
-            this.btnEditPlanOption.Size = new System.Drawing.Size(29, 24);
-            this.btnEditPlanOption.TabIndex = 3;
-            this.btnEditPlanOption.UseVisualStyleBackColor = true;
-            this.btnEditPlanOption.Click += new System.EventHandler(this.btnEditPlanOption_Click);
             // 
             // cmbPlanOption
             // 
@@ -945,19 +913,6 @@
             this.grpCurrentStatusToGoal.TabStop = false;
             this.grpCurrentStatusToGoal.Text = "Fund Allocation To Goal ";
             // 
-            // btnSaveCurrentStatusToGoal
-            // 
-            this.btnSaveCurrentStatusToGoal.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSaveCurrentStatusToGoal.ImageKey = "icons8-save-close-16.png";
-            this.btnSaveCurrentStatusToGoal.ImageList = this.imageList16x16;
-            this.btnSaveCurrentStatusToGoal.Location = new System.Drawing.Point(363, 265);
-            this.btnSaveCurrentStatusToGoal.Name = "btnSaveCurrentStatusToGoal";
-            this.btnSaveCurrentStatusToGoal.Size = new System.Drawing.Size(86, 26);
-            this.btnSaveCurrentStatusToGoal.TabIndex = 11;
-            this.btnSaveCurrentStatusToGoal.Text = "Save";
-            this.btnSaveCurrentStatusToGoal.UseVisualStyleBackColor = true;
-            this.btnSaveCurrentStatusToGoal.Click += new System.EventHandler(this.btnSaveCurrentStatusToGoal_Click);
-            // 
             // imageList16x16
             // 
             this.imageList16x16.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList16x16.ImageStream")));
@@ -977,19 +932,6 @@
             this.lblLine.TabIndex = 13;
             this.lblLine.Text = "-----------------------";
             // 
-            // btnCancelCurrentStatusToGoal
-            // 
-            this.btnCancelCurrentStatusToGoal.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCancelCurrentStatusToGoal.ImageKey = "icons8-cancel-16.png";
-            this.btnCancelCurrentStatusToGoal.ImageList = this.imageList16x16;
-            this.btnCancelCurrentStatusToGoal.Location = new System.Drawing.Point(363, 293);
-            this.btnCancelCurrentStatusToGoal.Name = "btnCancelCurrentStatusToGoal";
-            this.btnCancelCurrentStatusToGoal.Size = new System.Drawing.Size(86, 26);
-            this.btnCancelCurrentStatusToGoal.TabIndex = 12;
-            this.btnCancelCurrentStatusToGoal.Text = "Cancel";
-            this.btnCancelCurrentStatusToGoal.UseVisualStyleBackColor = true;
-            this.btnCancelCurrentStatusToGoal.Click += new System.EventHandler(this.btnCancelCurrentStatusToGoal_Click);
-            // 
             // groupBox3
             // 
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -1001,40 +943,6 @@
             this.groupBox3.Size = new System.Drawing.Size(111, 38);
             this.groupBox3.TabIndex = 8;
             this.groupBox3.TabStop = false;
-            // 
-            // btnDeleteCurrentStatusToGoal
-            // 
-            this.btnDeleteCurrentStatusToGoal.ImageIndex = 1;
-            this.btnDeleteCurrentStatusToGoal.ImageList = this.imgCollection;
-            this.btnDeleteCurrentStatusToGoal.Location = new System.Drawing.Point(76, 10);
-            this.btnDeleteCurrentStatusToGoal.Name = "btnDeleteCurrentStatusToGoal";
-            this.btnDeleteCurrentStatusToGoal.Size = new System.Drawing.Size(29, 24);
-            this.btnDeleteCurrentStatusToGoal.TabIndex = 4;
-            this.btnDeleteCurrentStatusToGoal.UseVisualStyleBackColor = true;
-            this.btnDeleteCurrentStatusToGoal.Click += new System.EventHandler(this.btnDeleteCurrentStatusToGoal_Click);
-            // 
-            // btnAddCurrentStatuaToGoal
-            // 
-            this.btnAddCurrentStatuaToGoal.ImageIndex = 3;
-            this.btnAddCurrentStatuaToGoal.ImageList = this.imgCollection;
-            this.btnAddCurrentStatuaToGoal.Location = new System.Drawing.Point(6, 10);
-            this.btnAddCurrentStatuaToGoal.Name = "btnAddCurrentStatuaToGoal";
-            this.btnAddCurrentStatuaToGoal.Size = new System.Drawing.Size(29, 24);
-            this.btnAddCurrentStatuaToGoal.TabIndex = 2;
-            this.btnAddCurrentStatuaToGoal.TabStop = false;
-            this.btnAddCurrentStatuaToGoal.UseVisualStyleBackColor = true;
-            this.btnAddCurrentStatuaToGoal.Click += new System.EventHandler(this.btnAddCurrentStatuaToGoal_Click);
-            // 
-            // btnEditCurrentStatusToGoal
-            // 
-            this.btnEditCurrentStatusToGoal.ImageIndex = 4;
-            this.btnEditCurrentStatusToGoal.ImageList = this.imgCollection;
-            this.btnEditCurrentStatusToGoal.Location = new System.Drawing.Point(41, 10);
-            this.btnEditCurrentStatusToGoal.Name = "btnEditCurrentStatusToGoal";
-            this.btnEditCurrentStatusToGoal.Size = new System.Drawing.Size(29, 24);
-            this.btnEditCurrentStatusToGoal.TabIndex = 3;
-            this.btnEditCurrentStatusToGoal.UseVisualStyleBackColor = true;
-            this.btnEditCurrentStatusToGoal.Click += new System.EventHandler(this.btnEditCurrentStatusToGoal_Click);
             // 
             // txtFundAllocation
             // 
@@ -1270,6 +1178,98 @@
             this.label30.Size = new System.Drawing.Size(45, 16);
             this.label30.TabIndex = 0;
             this.label30.Text = "Goal:";
+            // 
+            // btnSaveCurrentStatusToGoal
+            // 
+            this.btnSaveCurrentStatusToGoal.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSaveCurrentStatusToGoal.ImageKey = "icons8-save-close-16.png";
+            this.btnSaveCurrentStatusToGoal.ImageList = this.imageList16x16;
+            this.btnSaveCurrentStatusToGoal.Location = new System.Drawing.Point(363, 265);
+            this.btnSaveCurrentStatusToGoal.Name = "btnSaveCurrentStatusToGoal";
+            this.btnSaveCurrentStatusToGoal.Size = new System.Drawing.Size(86, 26);
+            this.btnSaveCurrentStatusToGoal.TabIndex = 11;
+            this.btnSaveCurrentStatusToGoal.Text = "Save";
+            this.btnSaveCurrentStatusToGoal.UseVisualStyleBackColor = true;
+            this.btnSaveCurrentStatusToGoal.Click += new System.EventHandler(this.btnSaveCurrentStatusToGoal_Click);
+            // 
+            // btnCancelCurrentStatusToGoal
+            // 
+            this.btnCancelCurrentStatusToGoal.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCancelCurrentStatusToGoal.ImageKey = "icons8-cancel-16.png";
+            this.btnCancelCurrentStatusToGoal.ImageList = this.imageList16x16;
+            this.btnCancelCurrentStatusToGoal.Location = new System.Drawing.Point(363, 293);
+            this.btnCancelCurrentStatusToGoal.Name = "btnCancelCurrentStatusToGoal";
+            this.btnCancelCurrentStatusToGoal.Size = new System.Drawing.Size(86, 26);
+            this.btnCancelCurrentStatusToGoal.TabIndex = 12;
+            this.btnCancelCurrentStatusToGoal.Text = "Cancel";
+            this.btnCancelCurrentStatusToGoal.UseVisualStyleBackColor = true;
+            this.btnCancelCurrentStatusToGoal.Click += new System.EventHandler(this.btnCancelCurrentStatusToGoal_Click);
+            // 
+            // btnDeleteCurrentStatusToGoal
+            // 
+            this.btnDeleteCurrentStatusToGoal.ImageIndex = 1;
+            this.btnDeleteCurrentStatusToGoal.ImageList = this.imgCollection;
+            this.btnDeleteCurrentStatusToGoal.Location = new System.Drawing.Point(76, 10);
+            this.btnDeleteCurrentStatusToGoal.Name = "btnDeleteCurrentStatusToGoal";
+            this.btnDeleteCurrentStatusToGoal.Size = new System.Drawing.Size(29, 24);
+            this.btnDeleteCurrentStatusToGoal.TabIndex = 4;
+            this.btnDeleteCurrentStatusToGoal.UseVisualStyleBackColor = true;
+            this.btnDeleteCurrentStatusToGoal.Click += new System.EventHandler(this.btnDeleteCurrentStatusToGoal_Click);
+            // 
+            // btnAddCurrentStatuaToGoal
+            // 
+            this.btnAddCurrentStatuaToGoal.ImageIndex = 3;
+            this.btnAddCurrentStatuaToGoal.ImageList = this.imgCollection;
+            this.btnAddCurrentStatuaToGoal.Location = new System.Drawing.Point(6, 10);
+            this.btnAddCurrentStatuaToGoal.Name = "btnAddCurrentStatuaToGoal";
+            this.btnAddCurrentStatuaToGoal.Size = new System.Drawing.Size(29, 24);
+            this.btnAddCurrentStatuaToGoal.TabIndex = 2;
+            this.btnAddCurrentStatuaToGoal.TabStop = false;
+            this.btnAddCurrentStatuaToGoal.UseVisualStyleBackColor = true;
+            this.btnAddCurrentStatuaToGoal.Click += new System.EventHandler(this.btnAddCurrentStatuaToGoal_Click);
+            // 
+            // btnEditCurrentStatusToGoal
+            // 
+            this.btnEditCurrentStatusToGoal.ImageIndex = 4;
+            this.btnEditCurrentStatusToGoal.ImageList = this.imgCollection;
+            this.btnEditCurrentStatusToGoal.Location = new System.Drawing.Point(41, 10);
+            this.btnEditCurrentStatusToGoal.Name = "btnEditCurrentStatusToGoal";
+            this.btnEditCurrentStatusToGoal.Size = new System.Drawing.Size(29, 24);
+            this.btnEditCurrentStatusToGoal.TabIndex = 3;
+            this.btnEditCurrentStatusToGoal.UseVisualStyleBackColor = true;
+            this.btnEditCurrentStatusToGoal.Click += new System.EventHandler(this.btnEditCurrentStatusToGoal_Click);
+            // 
+            // btnDeleteOption
+            // 
+            this.btnDeleteOption.ImageIndex = 1;
+            this.btnDeleteOption.ImageList = this.imgCollection;
+            this.btnDeleteOption.Location = new System.Drawing.Point(76, 10);
+            this.btnDeleteOption.Name = "btnDeleteOption";
+            this.btnDeleteOption.Size = new System.Drawing.Size(29, 24);
+            this.btnDeleteOption.TabIndex = 4;
+            this.btnDeleteOption.UseVisualStyleBackColor = true;
+            // 
+            // btnAddPlanOption
+            // 
+            this.btnAddPlanOption.ImageIndex = 3;
+            this.btnAddPlanOption.ImageList = this.imgCollection;
+            this.btnAddPlanOption.Location = new System.Drawing.Point(6, 10);
+            this.btnAddPlanOption.Name = "btnAddPlanOption";
+            this.btnAddPlanOption.Size = new System.Drawing.Size(29, 24);
+            this.btnAddPlanOption.TabIndex = 2;
+            this.btnAddPlanOption.UseVisualStyleBackColor = true;
+            this.btnAddPlanOption.Click += new System.EventHandler(this.btnAddPlanOption_Click);
+            // 
+            // btnEditPlanOption
+            // 
+            this.btnEditPlanOption.ImageIndex = 4;
+            this.btnEditPlanOption.ImageList = this.imgCollection;
+            this.btnEditPlanOption.Location = new System.Drawing.Point(41, 10);
+            this.btnEditPlanOption.Name = "btnEditPlanOption";
+            this.btnEditPlanOption.Size = new System.Drawing.Size(29, 24);
+            this.btnEditPlanOption.TabIndex = 3;
+            this.btnEditPlanOption.UseVisualStyleBackColor = true;
+            this.btnEditPlanOption.Click += new System.EventHandler(this.btnEditPlanOption_Click);
             // 
             // EstimatedPlanOptionList
             // 

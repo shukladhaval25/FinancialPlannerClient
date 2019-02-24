@@ -1,11 +1,14 @@
 ﻿using DevExpress.Utils;
+using DevExpress.XtraEditors;
 using FinancialPlanner.Common;
 using FinancialPlanner.Common.Model;
 using FinancialPlannerClient.CashFlowManager;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace FinancialPlannerClient.PlanOptions
@@ -17,7 +20,7 @@ namespace FinancialPlannerClient.PlanOptions
         //Client client;
         DataTable _dtOption;
 
-        private const string RISKPROFILE_GETALL = "RiskProfileReturn/GetAll";       
+        private const string RISKPROFILE_GETALL = "RiskProfileReturn/GetAll";
         private List<RiskProfiledReturnMaster> _riskProfileMasters = new List<RiskProfiledReturnMaster>();
         private int _riskProfileId;
         private CashFlowService cashFlowService;
@@ -26,22 +29,46 @@ namespace FinancialPlannerClient.PlanOptions
         {
             WaitDialogForm waitdlg = new WaitDialogForm("Loading Data...");
             InitializeComponent();
+            if (planner == null)
+            {
+                XtraMessageBox.Show("Please select plan first.", "Plan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                waitdlg.Close();
+                return;
+            }
             this.personalInformation = personalInformation;
             showPlannerInformation(planner);
             fillOptionData();
             waitdlg.Close();
-
         }
 
         private void showPlannerInformation(Planner planner)
         {
-            this.planner = planner;
-            lblPlanName.Text = this.planner.Name;
-            string startMonth = System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(this.planner.PlannerStartMonth);
-            string endMonth = System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(
-                new DateTime(2000, this.planner.PlannerStartMonth, 1).AddMonths(-1).Month);
-            lblPlanPeriod.Text = string.Format("{0} - {1}", startMonth, endMonth);
-            lblStartDate.Text = this.planner.StartDate.ToShortDateString();
+            try
+            {
+                this.planner = planner;
+                lblPlanName.Text = this.planner.Name;
+                string startMonth = System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(this.planner.PlannerStartMonth);
+                string endMonth = System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(
+                    new DateTime(2000, this.planner.PlannerStartMonth, 1).AddMonths(-1).Month);
+                lblPlanPeriod.Text = string.Format("{0} - {1}", startMonth, endMonth);
+                lblStartDate.Text = this.planner.StartDate.ToShortDateString();
+            }
+            catch(Exception ex)
+            {
+                DevExpress.XtraEditors.XtraMessageBox.Show(ex.StackTrace.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
+                LogDebug(currentMethodName.Name, ex);
+            }
+        }
+        private void LogDebug(string methodName, Exception ex)
+        {
+            DebuggerLogInfo debuggerInfo = new DebuggerLogInfo();
+            debuggerInfo.ClassName = this.GetType().Name;
+            debuggerInfo.Method = methodName;
+            debuggerInfo.ExceptionInfo = ex;
+            Logger.LogDebug(debuggerInfo);
         }
 
         private void fillOptionData()
@@ -151,16 +178,31 @@ namespace FinancialPlannerClient.PlanOptions
                 case "Current Status":
                     showCurrentStatusView();
                     break;
+                case "Goal Status":
+                    showGoalStatusView();
+                    break;
                 case "Post Retirement Cash Flow":
                     showPostRetirementCashFlowView();
                     break;
             }
         }
 
+        private void showGoalStatusView()
+        {
+            GoalStatusView goalStatusView = new GoalStatusView(this.planner, int.Parse(this.cmbPlanOption.Tag.ToString()));
+            goalStatusView.TopLevel = false;
+            goalStatusView.Visible = true;
+
+            tabNavigationPageGoalStatus.Controls.Clear();
+            tabNavigationPageGoalStatus.Controls.Add(goalStatusView);
+            tabNavigationPageGoalStatus.Controls[0].Dock = DockStyle.Fill;
+            tabEstimatedPlan.SelectedPage = tabNavigationPageGoalStatus;
+        }
+
         private void showPostRetirementCashFlowView()
         {
-            PostRetirementCashFlow postRetirementCashFlow = 
-                new PostRetirementCashFlow(this.planner,cashFlowService);
+            PostRetirementCashFlow postRetirementCashFlow =
+                new PostRetirementCashFlow(this.planner, cashFlowService);
             //postRetirementCashFlow.setCashFlowService(cashFlowService);
             postRetirementCashFlow.TopLevel = false;
             postRetirementCashFlow.Visible = true;

@@ -1,6 +1,7 @@
 ﻿using DevExpress.XtraEditors;
 using FinancialPlanner.Common;
 using FinancialPlanner.Common.Model;
+using FinancialPlannerClient.AuditTrail;
 using FinancialPlannerClient.Master;
 using System;
 using System.Collections.Generic;
@@ -23,7 +24,7 @@ namespace FinancialPlannerClient.Home
         private DevExpress.XtraNavBar.NavBarGroup navBarGroupClient;
         private DevExpress.XtraNavBar.NavBarControl navBarMenuGroup;
         private DevExpress.XtraBars.Navigation.NavigationFrame navigationFrame1;
-        private DevExpress.XtraBars.Navigation.NavigationPage navigationPage1;
+        private DevExpress.XtraBars.Navigation.NavigationPage homeNavigationPage1;
         private DevExpress.XtraBars.Navigation.NavigationPage navigationMasterPage;
         private SimpleButton btnLogout;
         private PanelControl panelControl2;
@@ -44,6 +45,9 @@ namespace FinancialPlannerClient.Home
         private DevExpress.XtraNavBar.NavBarItem navBarItem2;
         private DevExpress.XtraNavBar.NavBarSeparatorItem navBarSeparatorItem2;
         private DevExpress.XtraNavBar.NavBarItem navBarItemOld;
+        private DevExpress.XtraNavBar.NavBarItem navBarItemAre;
+        private DevExpress.XtraNavBar.NavBarGroup navBarGroupOthers;
+        private DevExpress.XtraNavBar.NavBarItem navBarItemAuditTrail;
         private const string AUDITLOGCONTROLLER = "Activities/Add";
 
         public frmHome()
@@ -54,30 +58,30 @@ namespace FinancialPlannerClient.Home
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmHome));
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.ToolTipSeparatorItem toolTipSeparatorItem1 = new DevExpress.Utils.ToolTipSeparatorItem();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem7 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.ToolTipSeparatorItem toolTipSeparatorItem2 = new DevExpress.Utils.ToolTipSeparatorItem();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem6 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.SuperToolTip superToolTip6 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem8 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem5 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip7 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem9 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem6 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip8 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem10 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem7 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip9 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem11 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem8 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip10 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem12 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem9 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.ToolTipSeparatorItem toolTipSeparatorItem3 = new DevExpress.Utils.ToolTipSeparatorItem();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem13 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip12 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem16 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip11 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem14 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem10 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.ToolTipSeparatorItem toolTipSeparatorItem4 = new DevExpress.Utils.ToolTipSeparatorItem();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem15 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip13 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem17 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem11 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip14 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem18 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem12 = new DevExpress.Utils.ToolTipItem();
             this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.btnLogout = new DevExpress.XtraEditors.SimpleButton();
@@ -91,6 +95,7 @@ namespace FinancialPlannerClient.Home
             this.mavBarMasterGroup = new DevExpress.XtraNavBar.NavBarGroup();
             this.navBarItem2 = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarSeparatorItem2 = new DevExpress.XtraNavBar.NavBarSeparatorItem();
+            this.navBarItemAre = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarGroupClient = new DevExpress.XtraNavBar.NavBarGroup();
             this.navBarItemClient = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItemFinancialPlanner = new DevExpress.XtraNavBar.NavBarItem();
@@ -98,7 +103,7 @@ namespace FinancialPlannerClient.Home
             this.navBarGroupSetting = new DevExpress.XtraNavBar.NavBarGroup();
             this.navBarItemOld = new DevExpress.XtraNavBar.NavBarItem();
             this.navigationFrame1 = new DevExpress.XtraBars.Navigation.NavigationFrame();
-            this.navigationPage1 = new DevExpress.XtraBars.Navigation.NavigationPage();
+            this.homeNavigationPage1 = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.navigationMasterPage = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
@@ -108,6 +113,8 @@ namespace FinancialPlannerClient.Home
             this.ribbonPage3 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage4 = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.navBarGroupOthers = new DevExpress.XtraNavBar.NavBarGroup();
+            this.navBarItemAuditTrail = new DevExpress.XtraNavBar.NavBarItem();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -134,14 +141,14 @@ namespace FinancialPlannerClient.Home
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(797, 47);
+            this.panelControl1.Size = new System.Drawing.Size(939, 47);
             this.panelControl1.TabIndex = 0;
             // 
             // btnLogout
             // 
             this.btnLogout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnLogout.Image = ((System.Drawing.Image)(resources.GetObject("btnLogout.Image")));
-            this.btnLogout.Location = new System.Drawing.Point(771, 6);
+            this.btnLogout.Location = new System.Drawing.Point(913, 6);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(25, 22);
             this.btnLogout.TabIndex = 1;
@@ -178,7 +185,7 @@ namespace FinancialPlannerClient.Home
             this.ribbonControl1.QuickToolbarItemLinks.Add(this.skinRibbonGalleryBarItem1);
             this.ribbonControl1.ShowQatLocationSelector = false;
             this.ribbonControl1.ShowToolbarCustomizeItem = false;
-            this.ribbonControl1.Size = new System.Drawing.Size(653, 47);
+            this.ribbonControl1.Size = new System.Drawing.Size(809, 47);
             this.ribbonControl1.Toolbar.ShowCustomizeItem = false;
             // 
             // skinRibbonGalleryBarItem1
@@ -193,18 +200,18 @@ namespace FinancialPlannerClient.Home
             this.navBarItemCRMGroup.LargeImage = ((System.Drawing.Image)(resources.GetObject("navBarItemCRMGroup.LargeImage")));
             this.navBarItemCRMGroup.Name = "navBarItemCRMGroup";
             this.navBarItemCRMGroup.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarItemCRMGroup.SmallImage")));
-            toolTipTitleItem1.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
-            toolTipTitleItem1.Appearance.Options.UseImage = true;
-            toolTipTitleItem1.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem1.Image")));
-            toolTipTitleItem1.Text = "CRM Group";
-            toolTipItem1.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
-            toolTipItem1.Appearance.Options.UseImage = true;
-            toolTipItem1.Image = ((System.Drawing.Image)(resources.GetObject("toolTipItem1.Image")));
-            toolTipItem1.LeftIndent = 6;
-            toolTipItem1.Text = "To view or modify CRM Group click here.";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            superToolTip1.Items.Add(toolTipItem1);
-            this.navBarItemCRMGroup.SuperTip = superToolTip1;
+            toolTipTitleItem10.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            toolTipTitleItem10.Appearance.Options.UseImage = true;
+            toolTipTitleItem10.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem10.Image")));
+            toolTipTitleItem10.Text = "CRM Group";
+            toolTipItem7.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
+            toolTipItem7.Appearance.Options.UseImage = true;
+            toolTipItem7.Image = ((System.Drawing.Image)(resources.GetObject("toolTipItem7.Image")));
+            toolTipItem7.LeftIndent = 6;
+            toolTipItem7.Text = "To view or modify CRM Group click here.";
+            superToolTip8.Items.Add(toolTipTitleItem10);
+            superToolTip8.Items.Add(toolTipItem7);
+            this.navBarItemCRMGroup.SuperTip = superToolTip8;
             this.navBarItemCRMGroup.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItemCRMGroup_LinkClicked);
             // 
             // navBarItemFestivals
@@ -213,15 +220,15 @@ namespace FinancialPlannerClient.Home
             this.navBarItemFestivals.LargeImage = ((System.Drawing.Image)(resources.GetObject("navBarItemFestivals.LargeImage")));
             this.navBarItemFestivals.Name = "navBarItemFestivals";
             this.navBarItemFestivals.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarItemFestivals.SmallImage")));
-            toolTipTitleItem2.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
-            toolTipTitleItem2.Appearance.Options.UseImage = true;
-            toolTipTitleItem2.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem2.Image")));
-            toolTipTitleItem2.Text = "Festivals";
-            toolTipItem2.LeftIndent = 6;
-            toolTipItem2.Text = "To view or modify festivals click here.";
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            superToolTip2.Items.Add(toolTipItem2);
-            this.navBarItemFestivals.SuperTip = superToolTip2;
+            toolTipTitleItem11.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
+            toolTipTitleItem11.Appearance.Options.UseImage = true;
+            toolTipTitleItem11.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem11.Image")));
+            toolTipTitleItem11.Text = "Festivals";
+            toolTipItem8.LeftIndent = 6;
+            toolTipItem8.Text = "To view or modify festivals click here.";
+            superToolTip9.Items.Add(toolTipTitleItem11);
+            superToolTip9.Items.Add(toolTipItem8);
+            this.navBarItemFestivals.SuperTip = superToolTip9;
             this.navBarItemFestivals.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItemFestivals_LinkClicked);
             // 
             // navItemProcessAction
@@ -229,19 +236,19 @@ namespace FinancialPlannerClient.Home
             this.navItemProcessAction.Caption = "Process Name";
             this.navItemProcessAction.LargeImage = ((System.Drawing.Image)(resources.GetObject("navItemProcessAction.LargeImage")));
             this.navItemProcessAction.Name = "navItemProcessAction";
-            toolTipTitleItem3.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image3")));
-            toolTipTitleItem3.Appearance.Options.UseImage = true;
-            toolTipTitleItem3.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem3.Image")));
-            toolTipTitleItem3.Text = "Process";
-            toolTipItem3.LeftIndent = 6;
-            toolTipItem3.Text = "To view or modify process click here.";
-            toolTipTitleItem4.LeftIndent = 6;
-            toolTipTitleItem4.Text = "You can define process name and later it can be assign to sequence of process.";
-            superToolTip3.Items.Add(toolTipTitleItem3);
-            superToolTip3.Items.Add(toolTipItem3);
-            superToolTip3.Items.Add(toolTipSeparatorItem1);
-            superToolTip3.Items.Add(toolTipTitleItem4);
-            this.navItemProcessAction.SuperTip = superToolTip3;
+            toolTipTitleItem12.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image3")));
+            toolTipTitleItem12.Appearance.Options.UseImage = true;
+            toolTipTitleItem12.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem12.Image")));
+            toolTipTitleItem12.Text = "Process";
+            toolTipItem9.LeftIndent = 6;
+            toolTipItem9.Text = "To view or modify process click here.";
+            toolTipTitleItem13.LeftIndent = 6;
+            toolTipTitleItem13.Text = "You can define process name and later it can be assign to sequence of process.";
+            superToolTip10.Items.Add(toolTipTitleItem12);
+            superToolTip10.Items.Add(toolTipItem9);
+            superToolTip10.Items.Add(toolTipSeparatorItem3);
+            superToolTip10.Items.Add(toolTipTitleItem13);
+            this.navItemProcessAction.SuperTip = superToolTip10;
             // 
             // navBarSeparatorItem1
             // 
@@ -264,34 +271,35 @@ namespace FinancialPlannerClient.Home
             new DevExpress.XtraNavBar.NavBarItemLink(this.navItemProcessAction),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarSeparatorItem1),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem2),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarSeparatorItem2)});
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarSeparatorItem2),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemAre)});
             this.mavBarMasterGroup.LargeImage = ((System.Drawing.Image)(resources.GetObject("mavBarMasterGroup.LargeImage")));
             this.mavBarMasterGroup.Name = "mavBarMasterGroup";
             this.mavBarMasterGroup.SmallImage = ((System.Drawing.Image)(resources.GetObject("mavBarMasterGroup.SmallImage")));
-            toolTipTitleItem7.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image5")));
-            toolTipTitleItem7.Appearance.Options.UseImage = true;
-            toolTipTitleItem7.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem7.Image")));
-            superToolTip5.Items.Add(toolTipTitleItem7);
-            this.mavBarMasterGroup.SuperTip = superToolTip5;
+            toolTipTitleItem16.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image5")));
+            toolTipTitleItem16.Appearance.Options.UseImage = true;
+            toolTipTitleItem16.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem16.Image")));
+            superToolTip12.Items.Add(toolTipTitleItem16);
+            this.mavBarMasterGroup.SuperTip = superToolTip12;
             // 
             // navBarItem2
             // 
             this.navBarItem2.Caption = "Complete Process";
             this.navBarItem2.LargeImage = ((System.Drawing.Image)(resources.GetObject("navBarItem2.LargeImage")));
             this.navBarItem2.Name = "navBarItem2";
-            toolTipTitleItem5.Text = "Complete Process";
-            toolTipItem4.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image4")));
-            toolTipItem4.Appearance.Options.UseImage = true;
-            toolTipItem4.Image = ((System.Drawing.Image)(resources.GetObject("toolTipItem4.Image")));
-            toolTipItem4.LeftIndent = 6;
-            toolTipItem4.Text = "To create or modify complete process infromation click here.";
-            toolTipTitleItem6.LeftIndent = 6;
-            toolTipTitleItem6.Text = "You can define one process and add sequence of action to complete on process.";
-            superToolTip4.Items.Add(toolTipTitleItem5);
-            superToolTip4.Items.Add(toolTipItem4);
-            superToolTip4.Items.Add(toolTipSeparatorItem2);
-            superToolTip4.Items.Add(toolTipTitleItem6);
-            this.navBarItem2.SuperTip = superToolTip4;
+            toolTipTitleItem14.Text = "Complete Process";
+            toolTipItem10.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image4")));
+            toolTipItem10.Appearance.Options.UseImage = true;
+            toolTipItem10.Image = ((System.Drawing.Image)(resources.GetObject("toolTipItem10.Image")));
+            toolTipItem10.LeftIndent = 6;
+            toolTipItem10.Text = "To create or modify complete process infromation click here.";
+            toolTipTitleItem15.LeftIndent = 6;
+            toolTipTitleItem15.Text = "You can define one process and add sequence of action to complete on process.";
+            superToolTip11.Items.Add(toolTipTitleItem14);
+            superToolTip11.Items.Add(toolTipItem10);
+            superToolTip11.Items.Add(toolTipSeparatorItem4);
+            superToolTip11.Items.Add(toolTipTitleItem15);
+            this.navBarItem2.SuperTip = superToolTip11;
             // 
             // navBarSeparatorItem2
             // 
@@ -303,6 +311,13 @@ namespace FinancialPlannerClient.Home
             this.navBarSeparatorItem2.Name = "navBarSeparatorItem2";
             this.navBarSeparatorItem2.SmallImageIndex = 0;
             this.navBarSeparatorItem2.SmallImageSize = new System.Drawing.Size(0, 0);
+            // 
+            // navBarItemAre
+            // 
+            this.navBarItemAre.Caption = "Area";
+            this.navBarItemAre.LargeImage = ((System.Drawing.Image)(resources.GetObject("navBarItemAre.LargeImage")));
+            this.navBarItemAre.Name = "navBarItemAre";
+            this.navBarItemAre.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItemAre_LinkClicked);
             // 
             // navBarGroupClient
             // 
@@ -322,15 +337,15 @@ namespace FinancialPlannerClient.Home
             this.navBarItemClient.LargeImage = ((System.Drawing.Image)(resources.GetObject("navBarItemClient.LargeImage")));
             this.navBarItemClient.Name = "navBarItemClient";
             this.navBarItemClient.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarItemClient.SmallImage")));
-            toolTipTitleItem8.Appearance.Image = global::FinancialPlannerClient.Properties.Resources.icons8_customer_16;
-            toolTipTitleItem8.Appearance.Options.UseImage = true;
-            toolTipTitleItem8.Image = global::FinancialPlannerClient.Properties.Resources.icons8_customer_16;
-            toolTipTitleItem8.Text = "Client";
-            toolTipItem5.LeftIndent = 6;
-            toolTipItem5.Text = "List of clients whoes investment and other portfolio manage by us.";
-            superToolTip6.Items.Add(toolTipTitleItem8);
-            superToolTip6.Items.Add(toolTipItem5);
-            this.navBarItemClient.SuperTip = superToolTip6;
+            toolTipTitleItem17.Appearance.Image = global::FinancialPlannerClient.Properties.Resources.icons8_customer_16;
+            toolTipTitleItem17.Appearance.Options.UseImage = true;
+            toolTipTitleItem17.Image = global::FinancialPlannerClient.Properties.Resources.icons8_customer_16;
+            toolTipTitleItem17.Text = "Client";
+            toolTipItem11.LeftIndent = 6;
+            toolTipItem11.Text = "List of clients whoes investment and other portfolio manage by us.";
+            superToolTip13.Items.Add(toolTipTitleItem17);
+            superToolTip13.Items.Add(toolTipItem11);
+            this.navBarItemClient.SuperTip = superToolTip13;
             this.navBarItemClient.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItemFinancialPlanner_LinkClicked);
             // 
             // navBarItemFinancialPlanner
@@ -339,15 +354,15 @@ namespace FinancialPlannerClient.Home
             this.navBarItemFinancialPlanner.LargeImage = ((System.Drawing.Image)(resources.GetObject("navBarItemFinancialPlanner.LargeImage")));
             this.navBarItemFinancialPlanner.Name = "navBarItemFinancialPlanner";
             this.navBarItemFinancialPlanner.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarItemFinancialPlanner.SmallImage")));
-            toolTipTitleItem9.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image6")));
-            toolTipTitleItem9.Appearance.Options.UseImage = true;
-            toolTipTitleItem9.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem9.Image")));
-            toolTipTitleItem9.Text = "Financial Planner";
-            toolTipItem6.LeftIndent = 6;
-            toolTipItem6.Text = "List of all clients which are associated with financial planning.";
-            superToolTip7.Items.Add(toolTipTitleItem9);
-            superToolTip7.Items.Add(toolTipItem6);
-            this.navBarItemFinancialPlanner.SuperTip = superToolTip7;
+            toolTipTitleItem18.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image6")));
+            toolTipTitleItem18.Appearance.Options.UseImage = true;
+            toolTipTitleItem18.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem18.Image")));
+            toolTipTitleItem18.Text = "Financial Planner";
+            toolTipItem12.LeftIndent = 6;
+            toolTipItem12.Text = "List of all clients which are associated with financial planning.";
+            superToolTip14.Items.Add(toolTipTitleItem18);
+            superToolTip14.Items.Add(toolTipItem12);
+            this.navBarItemFinancialPlanner.SuperTip = superToolTip14;
             this.navBarItemFinancialPlanner.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItemFinancialPlanner_LinkClicked);
             // 
             // navBarMenuGroup
@@ -358,7 +373,8 @@ namespace FinancialPlannerClient.Home
             this.navBarMenuGroup.Groups.AddRange(new DevExpress.XtraNavBar.NavBarGroup[] {
             this.mavBarMasterGroup,
             this.navBarGroupClient,
-            this.navBarGroupSetting});
+            this.navBarGroupSetting,
+            this.navBarGroupOthers});
             this.navBarMenuGroup.Items.AddRange(new DevExpress.XtraNavBar.NavBarItem[] {
             this.navBarItemCRMGroup,
             this.navBarItemFestivals,
@@ -368,18 +384,19 @@ namespace FinancialPlannerClient.Home
             this.navBarItemFinancialPlanner,
             this.navBarItem2,
             this.navBarSeparatorItem2,
-            this.navBarItemOld});
+            this.navBarItemOld,
+            this.navBarItemAre,
+            this.navBarItemAuditTrail});
             this.navBarMenuGroup.Location = new System.Drawing.Point(2, 2);
             this.navBarMenuGroup.Name = "navBarMenuGroup";
             this.navBarMenuGroup.OptionsNavPane.ExpandedWidth = 136;
-            this.navBarMenuGroup.Size = new System.Drawing.Size(136, 309);
+            this.navBarMenuGroup.Size = new System.Drawing.Size(136, 412);
             this.navBarMenuGroup.TabIndex = 1;
             this.navBarMenuGroup.Text = "navBarControl1";
             // 
             // navBarGroupSetting
             // 
             this.navBarGroupSetting.Caption = "Setting";
-            this.navBarGroupSetting.Expanded = true;
             this.navBarGroupSetting.GroupStyle = DevExpress.XtraNavBar.NavBarGroupStyle.LargeIconsText;
             this.navBarGroupSetting.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemOld)});
@@ -399,27 +416,27 @@ namespace FinancialPlannerClient.Home
             this.navigationFrame1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.navigationFrame1.Controls.Add(this.navigationPage1);
+            this.navigationFrame1.Controls.Add(this.homeNavigationPage1);
             this.navigationFrame1.Controls.Add(this.navigationMasterPage);
             this.navigationFrame1.Location = new System.Drawing.Point(146, 51);
             this.navigationFrame1.Name = "navigationFrame1";
             this.navigationFrame1.Pages.AddRange(new DevExpress.XtraBars.Navigation.NavigationPageBase[] {
-            this.navigationPage1,
+            this.homeNavigationPage1,
             this.navigationMasterPage});
             this.navigationFrame1.SelectedPage = this.navigationMasterPage;
-            this.navigationFrame1.Size = new System.Drawing.Size(646, 305);
+            this.navigationFrame1.Size = new System.Drawing.Size(788, 408);
             this.navigationFrame1.TabIndex = 2;
             this.navigationFrame1.Text = "navigationFrame1";
             // 
-            // navigationPage1
+            // homeNavigationPage1
             // 
-            this.navigationPage1.Name = "navigationPage1";
-            this.navigationPage1.Size = new System.Drawing.Size(646, 305);
+            this.homeNavigationPage1.Name = "homeNavigationPage1";
+            this.homeNavigationPage1.Size = new System.Drawing.Size(788, 408);
             // 
             // navigationMasterPage
             // 
             this.navigationMasterPage.Name = "navigationMasterPage";
-            this.navigationMasterPage.Size = new System.Drawing.Size(646, 305);
+            this.navigationMasterPage.Size = new System.Drawing.Size(788, 408);
             // 
             // panelControl2
             // 
@@ -427,7 +444,7 @@ namespace FinancialPlannerClient.Home
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelControl2.Location = new System.Drawing.Point(0, 47);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(140, 313);
+            this.panelControl2.Size = new System.Drawing.Size(140, 416);
             this.panelControl2.TabIndex = 3;
             // 
             // defaultLookAndFeel1
@@ -461,9 +478,24 @@ namespace FinancialPlannerClient.Home
             this.ribbonPage4.Name = "ribbonPage4";
             this.ribbonPage4.Text = "ribbonPage4";
             // 
+            // navBarGroupOthers
+            // 
+            this.navBarGroupOthers.Caption = "Tools";
+            this.navBarGroupOthers.Expanded = true;
+            this.navBarGroupOthers.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemAuditTrail)});
+            this.navBarGroupOthers.Name = "navBarGroupOthers";
+            // 
+            // navBarItemAuditTrail
+            // 
+            this.navBarItemAuditTrail.Caption = "Audit Trail";
+            this.navBarItemAuditTrail.Name = "navBarItemAuditTrail";
+            this.navBarItemAuditTrail.SmallImage = global::FinancialPlannerClient.Properties.Resources.AuditTrail_301;
+            this.navBarItemAuditTrail.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItemAuditTrail_LinkClicked);
+            // 
             // frmHome
             // 
-            this.ClientSize = new System.Drawing.Size(797, 360);
+            this.ClientSize = new System.Drawing.Size(939, 463);
             this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.navigationFrame1);
             this.Controls.Add(this.panelControl1);
@@ -569,6 +601,34 @@ namespace FinancialPlannerClient.Home
             this.Visible = false;
             frmclientMain.ShowDialog();
             this.Visible = true;
+        }
+
+        private void navBarItemAre_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            Others other = new Others("Areas");
+            other.ShowDialog();
+        }
+
+        private void navBarItemAuditTrail_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            //AuditTrail.AuditTrail auditTrail = new AuditTrail.AuditTrail();
+            AuditTrailView auditrail = new AuditTrailView();
+            auditrail.TopLevel = false;
+            auditrail.Visible = true;
+            homeNavigationPage1.Name = auditrail.Name;
+            homeNavigationPage1.Controls.Add(auditrail);
+            showNavigationPage(auditrail.Name);
+        }
+        private void showNavigationPage(string pageName)
+        {
+            for (int index = 0; index <= navigationFrame1.Pages.Count; index++)
+            {
+                if (navigationFrame1.Pages[index].Name == pageName)
+                {
+                    navigationFrame1.SelectedPageIndex = index;
+                    break;
+                }
+            }
         }
     }
 }

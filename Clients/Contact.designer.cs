@@ -223,6 +223,7 @@
             this.txtSpouseMobile.Name = "txtSpouseMobile";
             this.txtSpouseMobile.Size = new System.Drawing.Size(209, 20);
             this.txtSpouseMobile.TabIndex = 18;
+            this.txtSpouseMobile.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSpouseMobile_KeyPress);
             // 
             // chkSpousePrimaryEmail
             // 
@@ -248,6 +249,7 @@
             this.txtSpouseEmailId.Name = "txtSpouseEmailId";
             this.txtSpouseEmailId.Size = new System.Drawing.Size(222, 20);
             this.txtSpouseEmailId.TabIndex = 15;
+            this.txtSpouseEmailId.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSpouseEmailId_KeyPress);
             // 
             // groupControl1
             // 
@@ -337,6 +339,8 @@
             // 
             this.txtPincode.Location = new System.Drawing.Point(164, 162);
             this.txtPincode.Name = "txtPincode";
+            this.txtPincode.Properties.MaxLength = 6;
+            this.txtPincode.Properties.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPincode_Properties_KeyPress);
             this.txtPincode.Size = new System.Drawing.Size(318, 20);
             this.txtPincode.TabIndex = 13;
             // 

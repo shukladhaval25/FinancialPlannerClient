@@ -35,14 +35,16 @@ namespace FinancialPlannerClient.PlanOptions
             lblSpouseCurrentAge.Text = string.Format("{0} Years", cashFlowCalculation.SpouseCurrentAge.ToString());
 
             lblCashSurplusAmt.Text = cashFlowService.GetCashFlowSurplusAmount().ToString("#,###.##");
-            
-            lblCorpFundAmt.Text = (double.Parse(lblCashSurplusAmt.Text) + double.Parse(lblCurrentStatusAmt.Text)).ToString("#,###.##");
+            double cashSurplusAmt = 0;
+            if (double.TryParse(lblCashSurplusAmt.Text,out cashSurplusAmt))
+                lblCorpFundAmt.Text = (cashSurplusAmt  + double.Parse(lblCurrentStatusAmt.Text)).ToString("#,###.##");
         }
        
         private void fillPostRetirementCashFlowData()
         {
             grdSplitCashFlow.DataSource = postRetirementCashFlowService.GetPostRetirementCashFlowData();
             gridSplitContainerViewCashFlow.Columns["StartYear"].Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
+            gridSplitContainerViewCashFlow.Columns["EstimatedRequireCorpusFund"].DisplayFormat.FormatString = "#,###.##";
         }
 
 

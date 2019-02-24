@@ -31,6 +31,8 @@
             this.grdSplitCashFlow = new DevExpress.XtraGrid.GridControl();
             this.gridSplitContainerViewCashFlow = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.lblEstimatedCorpusFundValue = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             this.separatorControl1 = new DevExpress.XtraEditors.SeparatorControl();
             this.lblCorpFundAmt = new DevExpress.XtraEditors.LabelControl();
             this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
@@ -58,8 +60,6 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.lblSpouse = new DevExpress.XtraEditors.LabelControl();
             this.lblClient = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
-            this.lblEstimatedCorpusFundValue = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.grdSplitCashFlow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridSplitContainerViewCashFlow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
@@ -74,7 +74,7 @@
             this.grdSplitCashFlow.Location = new System.Drawing.Point(6, 119);
             this.grdSplitCashFlow.MainView = this.gridSplitContainerViewCashFlow;
             this.grdSplitCashFlow.Name = "grdSplitCashFlow";
-            this.grdSplitCashFlow.Size = new System.Drawing.Size(1120, 396);
+            this.grdSplitCashFlow.Size = new System.Drawing.Size(1140, 396);
             this.grdSplitCashFlow.TabIndex = 1;
             this.grdSplitCashFlow.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridSplitContainerViewCashFlow});
@@ -123,9 +123,34 @@
             this.groupControl1.Controls.Add(this.lblClient);
             this.groupControl1.Location = new System.Drawing.Point(6, 7);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(1120, 102);
+            this.groupControl1.Size = new System.Drawing.Size(1140, 102);
             this.groupControl1.TabIndex = 2;
             this.groupControl1.Text = "Information";
+            // 
+            // lblEstimatedCorpusFundValue
+            // 
+            this.lblEstimatedCorpusFundValue.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEstimatedCorpusFundValue.Appearance.Options.UseFont = true;
+            this.lblEstimatedCorpusFundValue.Appearance.Options.UseTextOptions = true;
+            this.lblEstimatedCorpusFundValue.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.lblEstimatedCorpusFundValue.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.lblEstimatedCorpusFundValue.Location = new System.Drawing.Point(1010, 68);
+            this.lblEstimatedCorpusFundValue.Name = "lblEstimatedCorpusFundValue";
+            this.lblEstimatedCorpusFundValue.Size = new System.Drawing.Size(92, 10);
+            this.lblEstimatedCorpusFundValue.TabIndex = 28;
+            this.lblEstimatedCorpusFundValue.Text = "0";
+            // 
+            // labelControl10
+            // 
+            this.labelControl10.Appearance.Options.UseTextOptions = true;
+            this.labelControl10.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.labelControl10.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
+            this.labelControl10.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.labelControl10.Location = new System.Drawing.Point(1012, 30);
+            this.labelControl10.Name = "labelControl10";
+            this.labelControl10.Size = new System.Drawing.Size(90, 32);
+            this.labelControl10.TabIndex = 27;
+            this.labelControl10.Text = "Estimated Require Corpus Fund";
             // 
             // separatorControl1
             // 
@@ -366,36 +391,11 @@
             this.lblClient.TabIndex = 0;
             this.lblClient.Text = "Client Details";
             // 
-            // labelControl10
-            // 
-            this.labelControl10.Appearance.Options.UseTextOptions = true;
-            this.labelControl10.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.labelControl10.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
-            this.labelControl10.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.labelControl10.Location = new System.Drawing.Point(1012, 30);
-            this.labelControl10.Name = "labelControl10";
-            this.labelControl10.Size = new System.Drawing.Size(90, 32);
-            this.labelControl10.TabIndex = 27;
-            this.labelControl10.Text = "Estimated Require Corpus Fund";
-            // 
-            // lblEstimatedCorpusFundValue
-            // 
-            this.lblEstimatedCorpusFundValue.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEstimatedCorpusFundValue.Appearance.Options.UseFont = true;
-            this.lblEstimatedCorpusFundValue.Appearance.Options.UseTextOptions = true;
-            this.lblEstimatedCorpusFundValue.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.lblEstimatedCorpusFundValue.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.lblEstimatedCorpusFundValue.Location = new System.Drawing.Point(1010, 68);
-            this.lblEstimatedCorpusFundValue.Name = "lblEstimatedCorpusFundValue";
-            this.lblEstimatedCorpusFundValue.Size = new System.Drawing.Size(92, 10);
-            this.lblEstimatedCorpusFundValue.TabIndex = 28;
-            this.lblEstimatedCorpusFundValue.Text = "0";
-            // 
             // PostRetirementCashFlow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1138, 522);
+            this.ClientSize = new System.Drawing.Size(1158, 522);
             this.Controls.Add(this.groupControl1);
             this.Controls.Add(this.grdSplitCashFlow);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
