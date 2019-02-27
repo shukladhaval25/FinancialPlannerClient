@@ -44,7 +44,7 @@ namespace FinancialPlannerClient.PlanOptions
         {
             grdSplitCashFlow.DataSource = postRetirementCashFlowService.GetPostRetirementCashFlowData();
             gridSplitContainerViewCashFlow.Columns["StartYear"].Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
-            gridSplitContainerViewCashFlow.Columns["EstimatedRequireCorpusFund"].DisplayFormat.FormatString = "#,###.##";
+            gridSplitContainerViewCashFlow.Columns["EstimatedRequireCorpusFund"].DisplayFormat.FormatString = "##,###.##";
         }
 
 

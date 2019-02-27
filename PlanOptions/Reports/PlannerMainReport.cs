@@ -54,8 +54,11 @@ namespace FinancialPlannerClient.PlanOptions
             FinancialClientGoal financialClientGoal = new FinancialClientGoal(this.planner,this.client);
             financialClientGoal.CreateDocument();
 
-            GoalProjectionForComplition goalProjectionForComplition = new GoalProjectionForComplition(this.client);
+            GoalProjectionForComplition goalProjectionForComplition = new GoalProjectionForComplition(this.planner, this.client);
             goalProjectionForComplition.CreateDocument();
+
+            IncomeExpenseAnalysis incomeExpenseAnalysis = new IncomeExpenseAnalysis(this.client, this.planner);
+            incomeExpenseAnalysis.CreateDocument();
 
             // Enable this property to maintain continuous page numbering 
             PrintingSystem.ContinuousPageNumbering = true;
@@ -70,6 +73,7 @@ namespace FinancialPlannerClient.PlanOptions
             this.Pages.Add(financialGoalIntro.Pages.First);
             this.Pages.Add(financialClientGoal.Pages.First);
             this.Pages.Add(goalProjectionForComplition.Pages.First);
+            this.Pages.Add(incomeExpenseAnalysis.Pages.First);
         }
     }
 }

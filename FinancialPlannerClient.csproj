@@ -376,6 +376,24 @@
     <Compile Include="PlanOptions\Reports\GoalProjectionForComplition.Designer.cs">
       <DependentUpon>GoalProjectionForComplition.cs</DependentUpon>
     </Compile>
+    <Compile Include="PlanOptions\Reports\IncomeExpenseAnalysis.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\IncomeExpenseAnalysis.Designer.cs">
+      <DependentUpon>IncomeExpenseAnalysis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\ExpensesOutflowChart.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\ExpensesOutflowChart.Designer.cs">
+      <DependentUpon>ExpensesOutflowChart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\IncomeInflowChart.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\IncomeInflowChart.Designer.cs">
+      <DependentUpon>IncomeInflowChart.cs</DependentUpon>
+    </Compile>
     <Compile Include="PlanOptions\Reports\Introduction.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -572,6 +590,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\Reports\GoalProjectionForComplition.resx">
       <DependentUpon>GoalProjectionForComplition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\Reports\IncomeExpenseAnalysis.resx">
+      <DependentUpon>IncomeExpenseAnalysis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\Reports\ExpensesOutflowChart.resx">
+      <DependentUpon>ExpensesOutflowChart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\Reports\IncomeInflowChart.resx">
+      <DependentUpon>IncomeInflowChart.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\Reports\Introduction.resx">
       <DependentUpon>Introduction.cs</DependentUpon>

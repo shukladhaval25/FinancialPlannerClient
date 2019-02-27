@@ -70,6 +70,8 @@ namespace FinancialPlannerClient.Clients
                         tpage.Name == "BankAccount")
                         tabPlannerDetails.TabPages.RemoveByKey(tpage.Name);
                 }
+                tabPlannerDetails.SelectTab("FamilyInfo");
+                fillupFamilyMemberInfo();
             }
         }
 
