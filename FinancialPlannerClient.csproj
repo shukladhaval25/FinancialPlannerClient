@@ -400,6 +400,12 @@
     <Compile Include="PlanOptions\Reports\Introduction.Designer.cs">
       <DependentUpon>Introduction.cs</DependentUpon>
     </Compile>
+    <Compile Include="PlanOptions\Reports\NetWorthAnalysis.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\NetWorthAnalysis.Designer.cs">
+      <DependentUpon>NetWorthAnalysis.cs</DependentUpon>
+    </Compile>
     <Compile Include="PlanOptions\Reports\PlannerMainReport.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -418,6 +424,18 @@
     </Compile>
     <Compile Include="PlanOptions\Reports\ScopeOfPlancs.Designer.cs">
       <DependentUpon>ScopeOfPlancs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\SpendingSavingRatioReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\SpendingSavingRatioReport.Designer.cs">
+      <DependentUpon>SpendingSavingRatioReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\SurplusPeriod.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\SurplusPeriod.Designer.cs">
+      <DependentUpon>SurplusPeriod.cs</DependentUpon>
     </Compile>
     <Compile Include="PlanOptions\Reports\TableOfContent.cs">
       <SubType>Component</SubType>
@@ -603,6 +621,9 @@
     <EmbeddedResource Include="PlanOptions\Reports\Introduction.resx">
       <DependentUpon>Introduction.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\Reports\NetWorthAnalysis.resx">
+      <DependentUpon>NetWorthAnalysis.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\Reports\PlannerMainReport.resx">
       <DependentUpon>PlannerMainReport.cs</DependentUpon>
     </EmbeddedResource>
@@ -611,6 +632,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\Reports\ScopeOfPlancs.resx">
       <DependentUpon>ScopeOfPlancs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\Reports\SpendingSavingRatioReport.resx">
+      <DependentUpon>SpendingSavingRatioReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\Reports\SurplusPeriod.resx">
+      <DependentUpon>SurplusPeriod.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\Reports\TableOfContent.resx">
       <DependentUpon>TableOfContent.cs</DependentUpon>

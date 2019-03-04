@@ -10,13 +10,16 @@ namespace FinancialPlannerClient.PlanOptions
         Client client;
         Planner planner;
         PersonalInformation personalInformation;
+        int riskprofileId, optionId;
        
-        public PlannerMainReport(PersonalInformation personalInformation, Planner planner)
+        public PlannerMainReport(PersonalInformation personalInformation, Planner planner,int riskProfileId,int optionId)
         {
             InitializeComponent();
             this.personalInformation = personalInformation;
             this.client = personalInformation.Client;
             this.planner = planner;
+            this.riskprofileId = riskProfileId;
+            this.optionId = optionId;
             this.lblClientName.Text = this.client.Name;
             this.lblPreparedFor.Text = this.client.Name;
             this.lblPreparedOn.Text = this.planner.StartDate.ToShortDateString();
@@ -60,6 +63,15 @@ namespace FinancialPlannerClient.PlanOptions
             IncomeExpenseAnalysis incomeExpenseAnalysis = new IncomeExpenseAnalysis(this.client, this.planner);
             incomeExpenseAnalysis.CreateDocument();
 
+            SpendingSavingRatioReport spendingSavingRatioReport = new SpendingSavingRatioReport(this.client, this.planner.ID, this.riskprofileId, this.optionId);
+            spendingSavingRatioReport.CreateDocument();
+
+            SurplusPeriod surplusPeriod = new SurplusPeriod(this.client, this.planner.ID, this.riskprofileId, this.optionId);
+            surplusPeriod.CreateDocument();
+
+            NetWorthAnalysis netWorthAnalysis = new NetWorthAnalysis(this.client);
+            netWorthAnalysis.CreateDocument();
+
             // Enable this property to maintain continuous page numbering 
             PrintingSystem.ContinuousPageNumbering = true;
 
@@ -74,6 +86,9 @@ namespace FinancialPlannerClient.PlanOptions
             this.Pages.Add(financialClientGoal.Pages.First);
             this.Pages.Add(goalProjectionForComplition.Pages.First);
             this.Pages.Add(incomeExpenseAnalysis.Pages.First);
+            this.Pages.Add(spendingSavingRatioReport.Pages.First);
+            this.Pages.Add(surplusPeriod.Pages.First);
+            this.Pages.Add(netWorthAnalysis.Pages.First);
         }
     }
 }

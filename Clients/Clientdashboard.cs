@@ -414,7 +414,7 @@ namespace FinancialPlannerClient.Clients
         private void navBarItemReport_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
 
-            PlannerMainReport plannerMainReport = new PlannerMainReport(this.personalInformation, planner);
+            PlannerMainReport plannerMainReport = new PlannerMainReport(this.personalInformation, planner,1,1);
             DevExpress.XtraReports.UI.ReportPrintTool printTool = new DevExpress.XtraReports.UI.ReportPrintTool(plannerMainReport);
             printTool.ShowRibbonPreviewDialog();
 

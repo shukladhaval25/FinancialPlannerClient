@@ -96,7 +96,12 @@
             this.xrChart1.Legend.Visibility = DevExpress.Utils.DefaultBoolean.False;
             legend1.AlignmentHorizontal = DevExpress.XtraCharts.LegendAlignmentHorizontal.Center;
             legend1.AlignmentVertical = DevExpress.XtraCharts.LegendAlignmentVertical.BottomOutside;
+            legend1.Border.Visibility = DevExpress.Utils.DefaultBoolean.True;
             legend1.Name = "Legend1";
+            legend1.Title.Text = "";
+            legend1.Title.Visible = true;
+            legend1.Title.WordWrap = true;
+            legend1.Visibility = DevExpress.Utils.DefaultBoolean.True;
             this.xrChart1.Legends.AddRange(new DevExpress.XtraCharts.Legend[] {
             legend1});
             this.xrChart1.LocationFloat = new DevExpress.Utils.PointFloat(10.00001F, 10.41667F);

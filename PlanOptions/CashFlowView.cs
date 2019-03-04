@@ -9,7 +9,7 @@ namespace FinancialPlannerClient.PlanOptions
     public partial class CashFlowView : DevExpress.XtraEditors.XtraForm
     {
         private int _clientId;
-        private int iD;
+        private int _planId;
         private int _riskProfileId;
         private int _optionId;
 
@@ -24,7 +24,7 @@ namespace FinancialPlannerClient.PlanOptions
         {
             InitializeComponent();
             _clientId = clientId;
-            this.iD = iD;
+            this._planId = iD;
             _riskProfileId = riskProfileId;
             _optionId = _optionId;
         }
@@ -36,7 +36,7 @@ namespace FinancialPlannerClient.PlanOptions
         private void CashFlowView_Load(object sender, EventArgs e)
         {
             CashFlow cf = cashFlowService.GetCashFlow(_optionId);
-            _dtcashFlow = cashFlowService.GenerateCashFlow(this._clientId, this.iD, _riskProfileId);
+            _dtcashFlow = cashFlowService.GenerateCashFlow(this._clientId, this._planId, _riskProfileId);
             grdSplitCashFlow.DataSource = _dtcashFlow;
             //grdSplitCashFlow.CreateSplitContainer();
             gridSplitContainerViewCashFlow.Columns["Id"].Visible = false;

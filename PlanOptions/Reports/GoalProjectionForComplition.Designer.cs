@@ -126,21 +126,18 @@
             // 
             this.lblProjectionCompleted.Dpi = 100F;
             this.lblProjectionCompleted.Name = "lblProjectionCompleted";
-            this.lblProjectionCompleted.Text = "lblProjectionCompleted";
             this.lblProjectionCompleted.Weight = 0.87372971761315288D;
             // 
             // lblGoalAchiveTillDate
             // 
             this.lblGoalAchiveTillDate.Dpi = 100F;
             this.lblGoalAchiveTillDate.Name = "lblGoalAchiveTillDate";
-            this.lblGoalAchiveTillDate.Text = "lblGoalAchiveTillDate";
             this.lblGoalAchiveTillDate.Weight = 0.62036230778943535D;
             // 
             // lblGoalReachedPercentage
             // 
             this.lblGoalReachedPercentage.Dpi = 100F;
             this.lblGoalReachedPercentage.Name = "lblGoalReachedPercentage";
-            this.lblGoalReachedPercentage.Text = "lblGoalReachedPercentage";
             this.lblGoalReachedPercentage.Weight = 1.1972381032144652D;
             // 
             // TopMargin
@@ -194,7 +191,7 @@
             this.BottomMargin.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
             this.xrPageInfo1});
             this.BottomMargin.Dpi = 100F;
-            this.BottomMargin.HeightF = 40.625F;
+            this.BottomMargin.HeightF = 41.66667F;
             this.BottomMargin.Name = "BottomMargin";
             this.BottomMargin.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.BottomMargin.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
@@ -316,7 +313,7 @@
             this.TopMargin,
             this.BottomMargin,
             this.PageHeader});
-            this.Margins = new System.Drawing.Printing.Margins(50, 41, 100, 41);
+            this.Margins = new System.Drawing.Printing.Margins(50, 41, 100, 42);
             this.Version = "16.2";
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).EndInit();
