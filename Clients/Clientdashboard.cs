@@ -413,11 +413,14 @@ namespace FinancialPlannerClient.Clients
 
         private void navBarItemReport_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
-
-            PlannerMainReport plannerMainReport = new PlannerMainReport(this.personalInformation, planner,1,1);
-            DevExpress.XtraReports.UI.ReportPrintTool printTool = new DevExpress.XtraReports.UI.ReportPrintTool(plannerMainReport);
-            printTool.ShowRibbonPreviewDialog();
-
+            ReportParams reportParameters = new ReportParams(this.planner.ID);
+            if (reportParameters.ShowDialog() == DialogResult.OK)
+            {
+                PlannerMainReport plannerMainReport = new PlannerMainReport(this.personalInformation, planner, 
+                    reportParameters.GetRiskProfileId(), reportParameters.GetOptionId());
+                DevExpress.XtraReports.UI.ReportPrintTool printTool = new DevExpress.XtraReports.UI.ReportPrintTool(plannerMainReport);
+                printTool.ShowRibbonPreviewDialog();
+            }           
         }
 
         private void navBarItemOtherInformation_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)

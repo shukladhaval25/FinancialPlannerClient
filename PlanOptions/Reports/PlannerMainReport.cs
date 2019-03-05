@@ -1,4 +1,5 @@
 ﻿using System;
+using DevExpress.Utils;
 using FinancialPlanner.Common.Model;
 using FinancialPlannerClient.PlanOptions.Reports;
 
@@ -33,6 +34,7 @@ namespace FinancialPlannerClient.PlanOptions
 
         private void PlannerMainReport_AfterPrint(object sender, EventArgs e)
         {
+            WaitDialogForm waitdlg = new WaitDialogForm("Loading Report...");
             TableOfContent tableOfContent = new TableOfContent(client);
             tableOfContent.CreateDocument();
 
@@ -89,6 +91,7 @@ namespace FinancialPlannerClient.PlanOptions
             this.Pages.Add(spendingSavingRatioReport.Pages.First);
             this.Pages.Add(surplusPeriod.Pages.First);
             this.Pages.Add(netWorthAnalysis.Pages.First);
+            waitdlg.Close();
         }
     }
 }

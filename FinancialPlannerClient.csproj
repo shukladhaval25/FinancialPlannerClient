@@ -231,6 +231,12 @@
     <Compile Include="PlannerInfo\ClientFestivalInfo.cs" />
     <Compile Include="PlannerInfo\DocumentInfo.cs" />
     <Compile Include="Master\FestivalsInfo.cs" />
+    <Compile Include="PlanOptions\ReportParams.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\ReportParams.Designer.cs">
+      <DependentUpon>ReportParams.cs</DependentUpon>
+    </Compile>
     <Compile Include="PlanOptions\GoalStatusView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -406,6 +412,12 @@
     <Compile Include="PlanOptions\Reports\NetWorthAnalysis.Designer.cs">
       <DependentUpon>NetWorthAnalysis.cs</DependentUpon>
     </Compile>
+    <Compile Include="PlanOptions\Reports\NetWorthStatement.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\NetWorthStatement.Designer.cs">
+      <DependentUpon>NetWorthStatement.cs</DependentUpon>
+    </Compile>
     <Compile Include="PlanOptions\Reports\PlannerMainReport.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -558,6 +570,9 @@
     <EmbeddedResource Include="Master\Others.resx">
       <DependentUpon>Others.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\ReportParams.resx">
+      <DependentUpon>ReportParams.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\GoalStatusView.resx">
       <DependentUpon>GoalStatusView.cs</DependentUpon>
     </EmbeddedResource>
@@ -623,6 +638,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\Reports\NetWorthAnalysis.resx">
       <DependentUpon>NetWorthAnalysis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\Reports\NetWorthStatement.resx">
+      <DependentUpon>NetWorthStatement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\Reports\PlannerMainReport.resx">
       <DependentUpon>PlannerMainReport.cs</DependentUpon>
