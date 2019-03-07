@@ -28,27 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NetWorthStatement));
             DevExpress.XtraCharts.XYDiagram xyDiagram1 = new DevExpress.XtraCharts.XYDiagram();
             DevExpress.XtraCharts.CustomLegendItem customLegendItem1 = new DevExpress.XtraCharts.CustomLegendItem();
             DevExpress.XtraCharts.CustomLegendItem customLegendItem2 = new DevExpress.XtraCharts.CustomLegendItem();
             DevExpress.XtraCharts.CustomLegendItem customLegendItem3 = new DevExpress.XtraCharts.CustomLegendItem();
             DevExpress.XtraCharts.Series series1 = new DevExpress.XtraCharts.Series();
-            DevExpress.XtraCharts.SeriesPoint seriesPoint1 = new DevExpress.XtraCharts.SeriesPoint("Income", new object[] {
+            DevExpress.XtraCharts.SeriesPoint seriesPoint1 = new DevExpress.XtraCharts.SeriesPoint("Assets", new object[] {
             ((object)(100D))});
-            DevExpress.XtraCharts.SeriesPoint seriesPoint2 = new DevExpress.XtraCharts.SeriesPoint("-Expenses", new object[] {
+            DevExpress.XtraCharts.SeriesPoint seriesPoint2 = new DevExpress.XtraCharts.SeriesPoint("- Liabilites", new object[] {
             ((object)(30D))});
-            DevExpress.XtraCharts.SeriesPoint seriesPoint3 = new DevExpress.XtraCharts.SeriesPoint("Surplus", new object[] {
+            DevExpress.XtraCharts.SeriesPoint seriesPoint3 = new DevExpress.XtraCharts.SeriesPoint("Net worth", new object[] {
             ((object)(70D))});
             DevExpress.XtraCharts.ChartTitle chartTitle1 = new DevExpress.XtraCharts.ChartTitle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NetWorthStatement));
             this.Detail = new DevExpress.XtraReports.UI.DetailBand();
+            this.xrChartNetWorth = new DevExpress.XtraReports.UI.XRChart();
             this.xrTable2 = new DevExpress.XtraReports.UI.XRTable();
             this.xrTableRow7 = new DevExpress.XtraReports.UI.XRTableRow();
             this.xrTableCell11 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell12 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell7 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell8 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableIncome = new DevExpress.XtraReports.UI.XRTable();
+            this.xrTableNetWorth = new DevExpress.XtraReports.UI.XRTable();
             this.xrTableRow1 = new DevExpress.XtraReports.UI.XRTableRow();
             this.lblIncomeBy0 = new DevExpress.XtraReports.UI.XRTableCell();
             this.lblAmount0 = new DevExpress.XtraReports.UI.XRTableCell();
@@ -121,9 +122,9 @@
             this.xrTableCell50 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableRow16 = new DevExpress.XtraReports.UI.XRTableRow();
             this.xrTableCell55 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell56 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.lblTotalAssets = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell57 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell58 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.lblTotalLiabilities = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrLabel2 = new DevExpress.XtraReports.UI.XRLabel();
             this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
             this.xrPictureBox1 = new DevExpress.XtraReports.UI.XRPictureBox();
@@ -131,26 +132,72 @@
             this.ReportTitle = new DevExpress.XtraReports.UI.XRLabel();
             this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
             this.xrPageInfo1 = new DevExpress.XtraReports.UI.XRPageInfo();
-            this.xrChartSurplusForPeriod = new DevExpress.XtraReports.UI.XRChart();
-            ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xrTableIncome)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xrChartSurplusForPeriod)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xrChartNetWorth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(series1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xrTableNetWorth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // Detail
             // 
             this.Detail.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
-            this.xrChartSurplusForPeriod,
+            this.xrChartNetWorth,
             this.xrTable2,
-            this.xrTableIncome,
+            this.xrTableNetWorth,
             this.xrLabel2});
             this.Detail.Dpi = 100F;
+            this.Detail.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Detail.HeightF = 847.9167F;
             this.Detail.Name = "Detail";
             this.Detail.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
+            this.Detail.StylePriority.UseFont = false;
             this.Detail.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
+            // 
+            // xrChartNetWorth
+            // 
+            this.xrChartNetWorth.BorderColor = System.Drawing.Color.Black;
+            this.xrChartNetWorth.Borders = DevExpress.XtraPrinting.BorderSide.None;
+            xyDiagram1.AxisX.GridLines.Visible = true;
+            xyDiagram1.AxisX.Title.Text = "";
+            xyDiagram1.AxisX.Title.Visibility = DevExpress.Utils.DefaultBoolean.True;
+            xyDiagram1.AxisX.VisibleInPanesSerializable = "-1";
+            xyDiagram1.AxisY.Title.Text = "Amount (Rs.)";
+            xyDiagram1.AxisY.Title.Visibility = DevExpress.Utils.DefaultBoolean.True;
+            xyDiagram1.AxisY.VisibleInPanesSerializable = "-1";
+            xyDiagram1.DefaultPane.EnableAxisXScrolling = DevExpress.Utils.DefaultBoolean.False;
+            xyDiagram1.DefaultPane.EnableAxisXZooming = DevExpress.Utils.DefaultBoolean.False;
+            xyDiagram1.DefaultPane.EnableAxisYScrolling = DevExpress.Utils.DefaultBoolean.False;
+            xyDiagram1.DefaultPane.EnableAxisYZooming = DevExpress.Utils.DefaultBoolean.False;
+            this.xrChartNetWorth.Diagram = xyDiagram1;
+            this.xrChartNetWorth.Dpi = 100F;
+            customLegendItem1.MarkerColor = System.Drawing.Color.CornflowerBlue;
+            customLegendItem1.Name = "Assets";
+            customLegendItem2.MarkerColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            customLegendItem2.Name = "Liabilities";
+            customLegendItem3.MarkerColor = System.Drawing.Color.DarkSeaGreen;
+            customLegendItem3.Name = "Net worth";
+            this.xrChartNetWorth.Legend.CustomItems.AddRange(new DevExpress.XtraCharts.CustomLegendItem[] {
+            customLegendItem1,
+            customLegendItem2,
+            customLegendItem3});
+            this.xrChartNetWorth.Legend.Name = "Default Legend";
+            this.xrChartNetWorth.Legend.Visibility = DevExpress.Utils.DefaultBoolean.True;
+            this.xrChartNetWorth.LocationFloat = new DevExpress.Utils.PointFloat(10.00001F, 562.5F);
+            this.xrChartNetWorth.Name = "xrChartNetWorth";
+            series1.Name = "Series 1";
+            seriesPoint2.ColorSerializable = "#E36C09";
+            seriesPoint3.ColorSerializable = "#76923C";
+            series1.Points.AddRange(new DevExpress.XtraCharts.SeriesPoint[] {
+            seriesPoint1,
+            seriesPoint2,
+            seriesPoint3});
+            this.xrChartNetWorth.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
+        series1};
+            this.xrChartNetWorth.SizeF = new System.Drawing.SizeF(613.5419F, 275.4167F);
+            chartTitle1.Text = "Surplus for the period";
+            this.xrChartNetWorth.Titles.AddRange(new DevExpress.XtraCharts.ChartTitle[] {
+            chartTitle1});
             // 
             // xrTable2
             // 
@@ -212,16 +259,16 @@
             this.xrTableCell8.Text = "Amount (Rs.)";
             this.xrTableCell8.Weight = 0.92235806335260428D;
             // 
-            // xrTableIncome
+            // xrTableNetWorth
             // 
-            this.xrTableIncome.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            this.xrTableNetWorth.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
             | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrTableIncome.Dpi = 100F;
-            this.xrTableIncome.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xrTableIncome.LocationFloat = new DevExpress.Utils.PointFloat(10.00001F, 70.3125F);
-            this.xrTableIncome.Name = "xrTableIncome";
-            this.xrTableIncome.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
+            this.xrTableNetWorth.Dpi = 100F;
+            this.xrTableNetWorth.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrTableNetWorth.LocationFloat = new DevExpress.Utils.PointFloat(10.00001F, 70.3125F);
+            this.xrTableNetWorth.Name = "xrTableNetWorth";
+            this.xrTableNetWorth.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.xrTableRow1,
             this.xrTableRow2,
             this.xrTableRow3,
@@ -237,9 +284,9 @@
             this.xrTableRow13,
             this.xrTableRow14,
             this.xrTableRow16});
-            this.xrTableIncome.SizeF = new System.Drawing.SizeF(613.5419F, 375F);
-            this.xrTableIncome.StylePriority.UseBorders = false;
-            this.xrTableIncome.StylePriority.UseFont = false;
+            this.xrTableNetWorth.SizeF = new System.Drawing.SizeF(613.5419F, 375F);
+            this.xrTableNetWorth.StylePriority.UseBorders = false;
+            this.xrTableNetWorth.StylePriority.UseFont = false;
             // 
             // xrTableRow1
             // 
@@ -711,12 +758,11 @@
             // xrTableCell51
             // 
             this.xrTableCell51.Dpi = 100F;
-            this.xrTableCell51.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xrTableCell51.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.xrTableCell51.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrTableCell51.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell51.Name = "xrTableCell51";
             this.xrTableCell51.StylePriority.UseFont = false;
             this.xrTableCell51.StylePriority.UseForeColor = false;
-            this.xrTableCell51.Text = "Real Estate";
             this.xrTableCell51.Weight = 1.1099245996061993D;
             // 
             // xrTableCell52
@@ -829,9 +875,9 @@
             // 
             this.xrTableRow16.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
             this.xrTableCell55,
-            this.xrTableCell56,
+            this.lblTotalAssets,
             this.xrTableCell57,
-            this.xrTableCell58});
+            this.lblTotalLiabilities});
             this.xrTableRow16.Dpi = 100F;
             this.xrTableRow16.Name = "xrTableRow16";
             this.xrTableRow16.Weight = 1D;
@@ -844,20 +890,23 @@
             this.xrTableCell55.Name = "xrTableCell55";
             this.xrTableCell55.StylePriority.UseBackColor = false;
             this.xrTableCell55.StylePriority.UseForeColor = false;
+            this.xrTableCell55.StylePriority.UseTextAlignment = false;
             this.xrTableCell55.Text = "Total Assets";
+            this.xrTableCell55.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell55.Weight = 1.1099245996061993D;
             // 
-            // xrTableCell56
+            // lblTotalAssets
             // 
-            this.xrTableCell56.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.xrTableCell56.Dpi = 100F;
-            this.xrTableCell56.ForeColor = System.Drawing.Color.White;
-            this.xrTableCell56.Name = "xrTableCell56";
-            this.xrTableCell56.StylePriority.UseBackColor = false;
-            this.xrTableCell56.StylePriority.UseForeColor = false;
-            this.xrTableCell56.StylePriority.UseTextAlignment = false;
-            this.xrTableCell56.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-            this.xrTableCell56.Weight = 0.75083166874687135D;
+            this.lblTotalAssets.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.lblTotalAssets.Dpi = 100F;
+            this.lblTotalAssets.ForeColor = System.Drawing.Color.White;
+            this.lblTotalAssets.Name = "lblTotalAssets";
+            this.lblTotalAssets.StylePriority.UseBackColor = false;
+            this.lblTotalAssets.StylePriority.UseForeColor = false;
+            this.lblTotalAssets.StylePriority.UseTextAlignment = false;
+            this.lblTotalAssets.Text = "0";
+            this.lblTotalAssets.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+            this.lblTotalAssets.Weight = 0.75083166874687135D;
             // 
             // xrTableCell57
             // 
@@ -869,20 +918,21 @@
             this.xrTableCell57.StylePriority.UseForeColor = false;
             this.xrTableCell57.StylePriority.UseTextAlignment = false;
             this.xrTableCell57.Text = "Total Liabilities";
-            this.xrTableCell57.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+            this.xrTableCell57.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell57.Weight = 0.75083166874687135D;
             // 
-            // xrTableCell58
+            // lblTotalLiabilities
             // 
-            this.xrTableCell58.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.xrTableCell58.Dpi = 100F;
-            this.xrTableCell58.ForeColor = System.Drawing.Color.White;
-            this.xrTableCell58.Name = "xrTableCell58";
-            this.xrTableCell58.StylePriority.UseBackColor = false;
-            this.xrTableCell58.StylePriority.UseForeColor = false;
-            this.xrTableCell58.StylePriority.UseTextAlignment = false;
-            this.xrTableCell58.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-            this.xrTableCell58.Weight = 0.75083166874687135D;
+            this.lblTotalLiabilities.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.lblTotalLiabilities.Dpi = 100F;
+            this.lblTotalLiabilities.ForeColor = System.Drawing.Color.White;
+            this.lblTotalLiabilities.Name = "lblTotalLiabilities";
+            this.lblTotalLiabilities.StylePriority.UseBackColor = false;
+            this.lblTotalLiabilities.StylePriority.UseForeColor = false;
+            this.lblTotalLiabilities.StylePriority.UseTextAlignment = false;
+            this.lblTotalLiabilities.Text = "0";
+            this.lblTotalLiabilities.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+            this.lblTotalLiabilities.Weight = 0.75083166874687135D;
             // 
             // xrLabel2
             // 
@@ -962,51 +1012,6 @@
             this.xrPageInfo1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrPageInfo1.SizeF = new System.Drawing.SizeF(55.20831F, 23F);
             // 
-            // xrChartSurplusForPeriod
-            // 
-            this.xrChartSurplusForPeriod.BorderColor = System.Drawing.Color.Black;
-            this.xrChartSurplusForPeriod.Borders = DevExpress.XtraPrinting.BorderSide.None;
-            xyDiagram1.AxisX.GridLines.Visible = true;
-            xyDiagram1.AxisX.Title.Text = "";
-            xyDiagram1.AxisX.Title.Visibility = DevExpress.Utils.DefaultBoolean.True;
-            xyDiagram1.AxisX.VisibleInPanesSerializable = "-1";
-            xyDiagram1.AxisY.Title.Text = "Amount (Rs.)";
-            xyDiagram1.AxisY.Title.Visibility = DevExpress.Utils.DefaultBoolean.True;
-            xyDiagram1.AxisY.VisibleInPanesSerializable = "-1";
-            xyDiagram1.DefaultPane.EnableAxisXScrolling = DevExpress.Utils.DefaultBoolean.False;
-            xyDiagram1.DefaultPane.EnableAxisXZooming = DevExpress.Utils.DefaultBoolean.False;
-            xyDiagram1.DefaultPane.EnableAxisYScrolling = DevExpress.Utils.DefaultBoolean.False;
-            xyDiagram1.DefaultPane.EnableAxisYZooming = DevExpress.Utils.DefaultBoolean.False;
-            this.xrChartSurplusForPeriod.Diagram = xyDiagram1;
-            this.xrChartSurplusForPeriod.Dpi = 100F;
-            customLegendItem1.MarkerColor = System.Drawing.Color.CornflowerBlue;
-            customLegendItem1.Name = "Total Income/Inflow";
-            customLegendItem2.MarkerColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            customLegendItem2.Name = "Total Expenses/Outflow";
-            customLegendItem3.MarkerColor = System.Drawing.Color.DarkSeaGreen;
-            customLegendItem3.Name = "Total Surplus";
-            this.xrChartSurplusForPeriod.Legend.CustomItems.AddRange(new DevExpress.XtraCharts.CustomLegendItem[] {
-            customLegendItem1,
-            customLegendItem2,
-            customLegendItem3});
-            this.xrChartSurplusForPeriod.Legend.Name = "Default Legend";
-            this.xrChartSurplusForPeriod.Legend.Visibility = DevExpress.Utils.DefaultBoolean.True;
-            this.xrChartSurplusForPeriod.LocationFloat = new DevExpress.Utils.PointFloat(10.00001F, 562.5F);
-            this.xrChartSurplusForPeriod.Name = "xrChartSurplusForPeriod";
-            series1.Name = "Series 1";
-            seriesPoint2.ColorSerializable = "#E36C09";
-            seriesPoint3.ColorSerializable = "#76923C";
-            series1.Points.AddRange(new DevExpress.XtraCharts.SeriesPoint[] {
-            seriesPoint1,
-            seriesPoint2,
-            seriesPoint3});
-            this.xrChartSurplusForPeriod.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
-        series1};
-            this.xrChartSurplusForPeriod.SizeF = new System.Drawing.SizeF(613.5419F, 275.4167F);
-            chartTitle1.Text = "Surplus for the period";
-            this.xrChartSurplusForPeriod.Titles.AddRange(new DevExpress.XtraCharts.ChartTitle[] {
-            chartTitle1});
-            // 
             // NetWorthStatement
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
@@ -1015,11 +1020,11 @@
             this.BottomMargin});
             this.Margins = new System.Drawing.Printing.Margins(100, 99, 100, 50);
             this.Version = "16.2";
-            ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xrTableIncome)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(series1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xrChartSurplusForPeriod)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xrChartNetWorth)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xrTableNetWorth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
 
         }
@@ -1040,7 +1045,7 @@
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell12;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell7;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell8;
-        private DevExpress.XtraReports.UI.XRTable xrTableIncome;
+        private DevExpress.XtraReports.UI.XRTable xrTableNetWorth;
         private DevExpress.XtraReports.UI.XRTableRow xrTableRow1;
         private DevExpress.XtraReports.UI.XRTableCell lblIncomeBy0;
         private DevExpress.XtraReports.UI.XRTableCell lblAmount0;
@@ -1113,9 +1118,9 @@
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell50;
         private DevExpress.XtraReports.UI.XRTableRow xrTableRow16;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell55;
-        private DevExpress.XtraReports.UI.XRTableCell xrTableCell56;
+        private DevExpress.XtraReports.UI.XRTableCell lblTotalAssets;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell57;
-        private DevExpress.XtraReports.UI.XRTableCell xrTableCell58;
-        private DevExpress.XtraReports.UI.XRChart xrChartSurplusForPeriod;
+        private DevExpress.XtraReports.UI.XRTableCell lblTotalLiabilities;
+        private DevExpress.XtraReports.UI.XRChart xrChartNetWorth;
     }
 }

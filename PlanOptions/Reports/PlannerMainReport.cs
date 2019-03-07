@@ -74,6 +74,12 @@ namespace FinancialPlannerClient.PlanOptions
             NetWorthAnalysis netWorthAnalysis = new NetWorthAnalysis(this.client);
             netWorthAnalysis.CreateDocument();
 
+            NetWorthStatement netWorthStatement = new NetWorthStatement(this.client, this.planner);
+            netWorthStatement.CreateDocument();
+
+            ToTotalAssetRatio toTotalAssetRatio = new ToTotalAssetRatio(this.client, netWorthStatement.GetNetWorth());
+            toTotalAssetRatio.CreateDocument();
+
             // Enable this property to maintain continuous page numbering 
             PrintingSystem.ContinuousPageNumbering = true;
 
@@ -91,6 +97,8 @@ namespace FinancialPlannerClient.PlanOptions
             this.Pages.Add(spendingSavingRatioReport.Pages.First);
             this.Pages.Add(surplusPeriod.Pages.First);
             this.Pages.Add(netWorthAnalysis.Pages.First);
+            this.Pages.Add(netWorthStatement.Pages.First);
+            this.Pages.Add(toTotalAssetRatio.Pages.First);
             waitdlg.Close();
         }
     }
