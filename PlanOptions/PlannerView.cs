@@ -188,7 +188,7 @@ namespace FinancialPlannerClient.PlanOptions
 
         private void btnClosePlanoptions_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
 
         private void dtStartDate_TextChanged(object sender, EventArgs e)

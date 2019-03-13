@@ -341,8 +341,8 @@ namespace FinancialPlannerClient.CashFlowManager
                 if (years < totalNoOfYearsForLoan || (totalNoOfYearsForLoan > years - 1 && totalNoOfYearsForLoan < years))
                 {
                     double loanAmt = double.Parse(_dtCashFlow.Rows[previousYearRowIndex][loan.TypeOfLoan].ToString());
-
-                    decimal period = 12 / (12 * ((totalNoOfYearsForLoan) - Math.Truncate(totalNoOfYearsForLoan)));
+                    decimal yearsForLoan = totalNoOfYearsForLoan -  Math.Truncate(totalNoOfYearsForLoan);
+                    decimal period = 12 / (12 * (yearsForLoan > 0? yearsForLoan : 1 ));
                     dr[loan.TypeOfLoan] = (years < totalNoOfYearsForLoan) ? loanAmt :
                         ((loanAmt) / (double)period);
                     loanAmt = (years < totalNoOfYearsForLoan) ? loanAmt :

@@ -80,6 +80,12 @@ namespace FinancialPlannerClient.PlanOptions
             ToTotalAssetRatio toTotalAssetRatio = new ToTotalAssetRatio(this.client, netWorthStatement.GetNetWorth());
             toTotalAssetRatio.CreateDocument();
 
+            NetWorthYearOnYear netWorthYearOnYear = new NetWorthYearOnYear(this.client, null);
+            netWorthYearOnYear.CreateDocument();
+
+            CurrentFinancialStatus currentFinancialStatus = new CurrentFinancialStatus(this.client, netWorthStatement.GetNetWorth());
+            currentFinancialStatus.CreateDocument();
+
             // Enable this property to maintain continuous page numbering 
             PrintingSystem.ContinuousPageNumbering = true;
 
@@ -99,6 +105,8 @@ namespace FinancialPlannerClient.PlanOptions
             this.Pages.Add(netWorthAnalysis.Pages.First);
             this.Pages.Add(netWorthStatement.Pages.First);
             this.Pages.Add(toTotalAssetRatio.Pages.First);
+            this.Pages.Add(netWorthYearOnYear.Pages.First);
+            this.Pages.Add(currentFinancialStatus.Pages.First);
             waitdlg.Close();
         }
     }

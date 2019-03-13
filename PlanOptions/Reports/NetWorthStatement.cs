@@ -71,7 +71,9 @@ namespace FinancialPlannerClient.PlanOptions.Reports
 
         private void setTotal()
         {
-            totalAssetsValue = Double.Parse(dtNetWorth.Compute("Sum(Amount)", string.Empty).ToString());
+            double totalOfSumAmount = 0;
+            double.TryParse(dtNetWorth.Compute("Sum(Amount)", string.Empty).ToString(), out totalOfSumAmount);
+            totalAssetsValue = totalOfSumAmount;
             totalLiabilitiesValue = dtNetWorth.Compute("Sum(LaibilityAmount)", string.Empty) != DBNull.Value ?
                 double.Parse(dtNetWorth.Compute("Sum(LaibilityAmount)",string.Empty).ToString()) : 0;
             lblTotalAssets.Text = totalAssetsValue.ToString("#,###");

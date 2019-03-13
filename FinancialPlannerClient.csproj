@@ -358,6 +358,12 @@
     <Compile Include="PlanOptions\GoalsCalculationInfo.cs" />
     <Compile Include="PlanOptions\GoalStatusInfo.cs" />
     <Compile Include="PlanOptions\GoalsValueCalculationInfo.cs" />
+    <Compile Include="PlanOptions\Reports\CurrentFinancialStatus.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\CurrentFinancialStatus.Designer.cs">
+      <DependentUpon>CurrentFinancialStatus.cs</DependentUpon>
+    </Compile>
     <Compile Include="PlanOptions\Reports\FamilyInfoPage.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -417,6 +423,12 @@
     </Compile>
     <Compile Include="PlanOptions\Reports\NetWorthStatement.Designer.cs">
       <DependentUpon>NetWorthStatement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\NetWorthYearOnYear.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\NetWorthYearOnYear.Designer.cs">
+      <DependentUpon>NetWorthYearOnYear.cs</DependentUpon>
     </Compile>
     <Compile Include="PlanOptions\Reports\PlannerMainReport.cs">
       <SubType>Component</SubType>
@@ -618,6 +630,9 @@
     <EmbeddedResource Include="PlanOptions\EstimatedPlan.resx">
       <DependentUpon>EstimatedPlan.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\Reports\CurrentFinancialStatus.resx">
+      <DependentUpon>CurrentFinancialStatus.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\Reports\FamilyInfoPage.resx">
       <DependentUpon>FamilyInfoPage.cs</DependentUpon>
     </EmbeddedResource>
@@ -647,6 +662,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\Reports\NetWorthStatement.resx">
       <DependentUpon>NetWorthStatement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\Reports\NetWorthYearOnYear.resx">
+      <DependentUpon>NetWorthYearOnYear.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\Reports\PlannerMainReport.resx">
       <DependentUpon>PlannerMainReport.cs</DependentUpon>

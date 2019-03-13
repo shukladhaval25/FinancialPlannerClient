@@ -34,6 +34,9 @@
             DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pnlAssumption = new System.Windows.Forms.Panel();
+            this.txtOngoingExpRise = new DevExpress.XtraEditors.TextEdit();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
             this.btnSaveAssumption = new DevExpress.XtraEditors.SimpleButton();
             this.txtOtherReturn = new DevExpress.XtraEditors.TextEdit();
             this.txtDebtReturn = new DevExpress.XtraEditors.TextEdit();
@@ -44,6 +47,13 @@
             this.label16 = new System.Windows.Forms.Label();
             this.label111 = new System.Windows.Forms.Label();
             this.pnlPlannerAssumption = new System.Windows.Forms.Panel();
+            this.label23 = new System.Windows.Forms.Label();
+            this.rdoPrimaryRetirement = new DevExpress.XtraEditors.RadioGroup();
+            this.label22 = new System.Windows.Forms.Label();
+            this.txtIncomeRiseForSpouse = new DevExpress.XtraEditors.TextEdit();
+            this.label21 = new System.Windows.Forms.Label();
+            this.txtIncomeRiseForClient = new DevExpress.XtraEditors.TextEdit();
+            this.label20 = new System.Windows.Forms.Label();
             this.txtSpouseLifeExp = new DevExpress.XtraEditors.TextEdit();
             this.txtClientLifeExp = new DevExpress.XtraEditors.TextEdit();
             this.txtSpouseRetAge = new DevExpress.XtraEditors.TextEdit();
@@ -69,33 +79,23 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.txtPlannerAssumptionDescription = new DevExpress.XtraEditors.MemoEdit();
-            this.label18 = new System.Windows.Forms.Label();
-            this.txtOngoingExpRise = new DevExpress.XtraEditors.TextEdit();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.txtIncomeRiseForClient = new DevExpress.XtraEditors.TextEdit();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.txtIncomeRiseForSpouse = new DevExpress.XtraEditors.TextEdit();
-            this.rdoPrimaryRetirement = new DevExpress.XtraEditors.RadioGroup();
-            this.label23 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.pnlAssumption.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtOngoingExpRise.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtOtherReturn.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDebtReturn.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEquityReturn.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPostRetInflationRate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPreRetInflationRate.Properties)).BeginInit();
             this.pnlPlannerAssumption.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.rdoPrimaryRetirement.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtIncomeRiseForSpouse.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtIncomeRiseForClient.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSpouseLifeExp.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtClientLifeExp.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSpouseRetAge.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtClientRetAge.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPlannerAssumptionDescription.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtOngoingExpRise.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtIncomeRiseForClient.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtIncomeRiseForSpouse.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rdoPrimaryRetirement.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -141,6 +141,33 @@
             this.pnlAssumption.Size = new System.Drawing.Size(724, 595);
             this.pnlAssumption.TabIndex = 0;
             // 
+            // txtOngoingExpRise
+            // 
+            this.txtOngoingExpRise.Location = new System.Drawing.Point(282, 456);
+            this.txtOngoingExpRise.Name = "txtOngoingExpRise";
+            this.txtOngoingExpRise.Size = new System.Drawing.Size(100, 20);
+            this.txtOngoingExpRise.TabIndex = 10;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(387, 457);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(115, 15);
+            this.label19.TabIndex = 65;
+            this.label19.Text = "% p.a till retirement.";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(53, 454);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(219, 15);
+            this.label18.TabIndex = 63;
+            this.label18.Text = "6. Regular onging expenes of raise by :";
+            // 
             // btnSaveAssumption
             // 
             this.btnSaveAssumption.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -157,7 +184,7 @@
             superToolTip1.Items.Add(toolTipTitleItem1);
             superToolTip1.Items.Add(toolTipItem1);
             this.btnSaveAssumption.SuperTip = superToolTip1;
-            this.btnSaveAssumption.TabIndex = 62;
+            this.btnSaveAssumption.TabIndex = 12;
             this.btnSaveAssumption.Text = "Save";
             this.btnSaveAssumption.Click += new System.EventHandler(this.btnSaveAssumption_Click);
             // 
@@ -252,6 +279,80 @@
             this.pnlPlannerAssumption.Name = "pnlPlannerAssumption";
             this.pnlPlannerAssumption.Size = new System.Drawing.Size(668, 187);
             this.pnlPlannerAssumption.TabIndex = 0;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Location = new System.Drawing.Point(39, 96);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(168, 15);
+            this.label23.TabIndex = 30;
+            this.label23.Text = "Select primary retirement age";
+            // 
+            // rdoPrimaryRetirement
+            // 
+            this.rdoPrimaryRetirement.Location = new System.Drawing.Point(213, 90);
+            this.rdoPrimaryRetirement.Name = "rdoPrimaryRetirement";
+            this.rdoPrimaryRetirement.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "Client"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(true, "Spouse")});
+            this.rdoPrimaryRetirement.Size = new System.Drawing.Size(292, 30);
+            this.rdoPrimaryRetirement.TabIndex = 2;
+            this.rdoPrimaryRetirement.ToolTip = "Based on selection of client or spouse retirement calculation should be taken in " +
+    "calculation. \r\nPost retirement plan and other calcualtin is also based on this s" +
+    "elction.";
+            this.rdoPrimaryRetirement.ToolTipTitle = "Primary Retirement";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Location = new System.Drawing.Point(511, 153);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(18, 15);
+            this.label22.TabIndex = 28;
+            this.label22.Text = "%";
+            // 
+            // txtIncomeRiseForSpouse
+            // 
+            this.txtIncomeRiseForSpouse.Location = new System.Drawing.Point(405, 152);
+            this.txtIncomeRiseForSpouse.Name = "txtIncomeRiseForSpouse";
+            this.txtIncomeRiseForSpouse.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.txtIncomeRiseForSpouse.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.txtIncomeRiseForSpouse.Properties.MaxLength = 3;
+            this.txtIncomeRiseForSpouse.Size = new System.Drawing.Size(100, 20);
+            this.txtIncomeRiseForSpouse.TabIndex = 6;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(319, 153);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(18, 15);
+            this.label21.TabIndex = 26;
+            this.label21.Text = "%";
+            // 
+            // txtIncomeRiseForClient
+            // 
+            this.txtIncomeRiseForClient.Location = new System.Drawing.Point(213, 152);
+            this.txtIncomeRiseForClient.Name = "txtIncomeRiseForClient";
+            this.txtIncomeRiseForClient.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.txtIncomeRiseForClient.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.txtIncomeRiseForClient.Properties.MaxLength = 3;
+            this.txtIncomeRiseForClient.Size = new System.Drawing.Size(100, 20);
+            this.txtIncomeRiseForClient.TabIndex = 3;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(23, 153);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(141, 15);
+            this.label20.TabIndex = 24;
+            this.label20.Text = "3. Annual rise in Income:";
             // 
             // txtSpouseLifeExp
             // 
@@ -491,108 +592,7 @@
             this.txtPlannerAssumptionDescription.Location = new System.Drawing.Point(43, 503);
             this.txtPlannerAssumptionDescription.Name = "txtPlannerAssumptionDescription";
             this.txtPlannerAssumptionDescription.Size = new System.Drawing.Size(599, 52);
-            this.txtPlannerAssumptionDescription.TabIndex = 10;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(53, 454);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(219, 15);
-            this.label18.TabIndex = 63;
-            this.label18.Text = "6. Regular onging expenes of raise by :";
-            // 
-            // txtOngoingExpRise
-            // 
-            this.txtOngoingExpRise.Location = new System.Drawing.Point(282, 456);
-            this.txtOngoingExpRise.Name = "txtOngoingExpRise";
-            this.txtOngoingExpRise.Size = new System.Drawing.Size(100, 20);
-            this.txtOngoingExpRise.TabIndex = 64;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(387, 457);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(115, 15);
-            this.label19.TabIndex = 65;
-            this.label19.Text = "% p.a till retirement.";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(23, 153);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(141, 15);
-            this.label20.TabIndex = 24;
-            this.label20.Text = "3. Annual rise in Income:";
-            // 
-            // txtIncomeRiseForClient
-            // 
-            this.txtIncomeRiseForClient.Location = new System.Drawing.Point(213, 152);
-            this.txtIncomeRiseForClient.Name = "txtIncomeRiseForClient";
-            this.txtIncomeRiseForClient.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.txtIncomeRiseForClient.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.txtIncomeRiseForClient.Properties.MaxLength = 3;
-            this.txtIncomeRiseForClient.Size = new System.Drawing.Size(100, 20);
-            this.txtIncomeRiseForClient.TabIndex = 3;
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(319, 153);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(18, 15);
-            this.label21.TabIndex = 26;
-            this.label21.Text = "%";
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(511, 153);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(18, 15);
-            this.label22.TabIndex = 28;
-            this.label22.Text = "%";
-            // 
-            // txtIncomeRiseForSpouse
-            // 
-            this.txtIncomeRiseForSpouse.Location = new System.Drawing.Point(405, 152);
-            this.txtIncomeRiseForSpouse.Name = "txtIncomeRiseForSpouse";
-            this.txtIncomeRiseForSpouse.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.txtIncomeRiseForSpouse.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.txtIncomeRiseForSpouse.Properties.MaxLength = 3;
-            this.txtIncomeRiseForSpouse.Size = new System.Drawing.Size(100, 20);
-            this.txtIncomeRiseForSpouse.TabIndex = 6;
-            // 
-            // rdoPrimaryRetirement
-            // 
-            this.rdoPrimaryRetirement.Location = new System.Drawing.Point(213, 90);
-            this.rdoPrimaryRetirement.Name = "rdoPrimaryRetirement";
-            this.rdoPrimaryRetirement.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "Client"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(true, "Spouse")});
-            this.rdoPrimaryRetirement.Size = new System.Drawing.Size(292, 30);
-            this.rdoPrimaryRetirement.TabIndex = 29;
-            this.rdoPrimaryRetirement.ToolTip = "Based on selection of client or spouse retirement calculation should be taken in " +
-    "calculation. \r\nPost retirement plan and other calcualtin is also based on this s" +
-    "elction.";
-            this.rdoPrimaryRetirement.ToolTipTitle = "Primary Retirement";
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(39, 96);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(168, 15);
-            this.label23.TabIndex = 30;
-            this.label23.Text = "Select primary retirement age";
+            this.txtPlannerAssumptionDescription.TabIndex = 11;
             // 
             // Assumption
             // 
@@ -609,6 +609,7 @@
             this.groupBox1.ResumeLayout(false);
             this.pnlAssumption.ResumeLayout(false);
             this.pnlAssumption.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtOngoingExpRise.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtOtherReturn.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDebtReturn.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEquityReturn.Properties)).EndInit();
@@ -616,15 +617,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtPreRetInflationRate.Properties)).EndInit();
             this.pnlPlannerAssumption.ResumeLayout(false);
             this.pnlPlannerAssumption.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.rdoPrimaryRetirement.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtIncomeRiseForSpouse.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtIncomeRiseForClient.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSpouseLifeExp.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtClientLifeExp.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSpouseRetAge.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtClientRetAge.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPlannerAssumptionDescription.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtOngoingExpRise.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtIncomeRiseForClient.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtIncomeRiseForSpouse.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rdoPrimaryRetirement.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
