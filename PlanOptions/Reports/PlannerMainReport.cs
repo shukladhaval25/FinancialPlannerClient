@@ -86,6 +86,22 @@ namespace FinancialPlannerClient.PlanOptions
             CurrentFinancialStatus currentFinancialStatus = new CurrentFinancialStatus(this.client, netWorthStatement.GetNetWorth());
             currentFinancialStatus.CreateDocument();
 
+            RiskProfiling riskProfiling = new RiskProfiling(this.client);
+            riskProfiling.CreateDocument();
+
+            RiskTolanceScore riskTolanceScore = new RiskTolanceScore(personalInformation);
+            riskTolanceScore.CreateDocument();
+
+            //Skip some pages here. 
+
+            RiskProfilingAssetAllocation riskProfilingAssetAllocation = new RiskProfilingAssetAllocation(this.client, this.riskprofileId);
+            riskProfilingAssetAllocation.CreateDocument();
+
+            CurrentFinancialAssetAllocation currentFinancialAssetAllocation = 
+                new CurrentFinancialAssetAllocation(this.client, netWorthStatement.GetNetWorth());
+            currentFinancialAssetAllocation.CreateDocument();
+
+
             // Enable this property to maintain continuous page numbering 
             PrintingSystem.ContinuousPageNumbering = true;
 
@@ -107,6 +123,11 @@ namespace FinancialPlannerClient.PlanOptions
             this.Pages.Add(toTotalAssetRatio.Pages.First);
             this.Pages.Add(netWorthYearOnYear.Pages.First);
             this.Pages.Add(currentFinancialStatus.Pages.First);
+            this.Pages.Add(riskProfiling.Pages.First);
+            this.Pages.Add(riskTolanceScore.Pages.First);
+            //Some page skip here.
+            this.Pages.Add(riskProfilingAssetAllocation.Pages.First);
+            this.Pages.Add(currentFinancialAssetAllocation.Pages.First);
             waitdlg.Close();
         }
     }

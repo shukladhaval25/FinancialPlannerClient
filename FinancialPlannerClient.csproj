@@ -358,6 +358,12 @@
     <Compile Include="PlanOptions\GoalsCalculationInfo.cs" />
     <Compile Include="PlanOptions\GoalStatusInfo.cs" />
     <Compile Include="PlanOptions\GoalsValueCalculationInfo.cs" />
+    <Compile Include="PlanOptions\Reports\CurrentFinancialAssetAllocation.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\CurrentFinancialAssetAllocation.Designer.cs">
+      <DependentUpon>CurrentFinancialAssetAllocation.cs</DependentUpon>
+    </Compile>
     <Compile Include="PlanOptions\Reports\CurrentFinancialStatus.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -442,6 +448,24 @@
     </Compile>
     <Compile Include="PlanOptions\PlanOptionMaster.Designer.cs">
       <DependentUpon>PlanOptionMaster.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\RiskProfiling.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\RiskProfiling.Designer.cs">
+      <DependentUpon>RiskProfiling.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\RiskProfilingAssetAllocation.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\RiskProfilingAssetAllocation.Designer.cs">
+      <DependentUpon>RiskProfilingAssetAllocation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\RiskTolanceScore.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\RiskTolanceScore.Designer.cs">
+      <DependentUpon>RiskTolanceScore.cs</DependentUpon>
     </Compile>
     <Compile Include="PlanOptions\Reports\ScopeOfPlancs.cs">
       <SubType>Component</SubType>
@@ -630,6 +654,9 @@
     <EmbeddedResource Include="PlanOptions\EstimatedPlan.resx">
       <DependentUpon>EstimatedPlan.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\Reports\CurrentFinancialAssetAllocation.resx">
+      <DependentUpon>CurrentFinancialAssetAllocation.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\Reports\CurrentFinancialStatus.resx">
       <DependentUpon>CurrentFinancialStatus.cs</DependentUpon>
     </EmbeddedResource>
@@ -671,6 +698,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\PlanOptionMaster.resx">
       <DependentUpon>PlanOptionMaster.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\Reports\RiskProfiling.resx">
+      <DependentUpon>RiskProfiling.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\Reports\RiskProfilingAssetAllocation.resx">
+      <DependentUpon>RiskProfilingAssetAllocation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\Reports\RiskTolanceScore.resx">
+      <DependentUpon>RiskTolanceScore.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\Reports\ScopeOfPlancs.resx">
       <DependentUpon>ScopeOfPlancs.cs</DependentUpon>
