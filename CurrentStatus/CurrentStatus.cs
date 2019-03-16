@@ -1,11 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Windows.Forms;
+﻿using FinancialPlanner.Common;
 using FinancialPlanner.Common.Model;
 using FinancialPlanner.Common.Model.CurrentStatus;
 using FinancialPlannerClient.PlannerInfo;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Diagnostics;
+using System.Linq;
+using System.Reflection;
+using System.Windows.Forms;
 
 namespace FinancialPlannerClient.CurrentStatus
 {
@@ -60,13 +63,13 @@ namespace FinancialPlannerClient.CurrentStatus
         {
             new PlannerInfo.FamilyMemberInfo().FillFamilyMemberInCombo(this._client.ID, cmbGeneralInsuranceApplicant);
         }
-       
+
 
         private void fillNPSInvesterCombobox()
         {
             new PlannerInfo.FamilyMemberInfo().FillFamilyMemberInCombo(this._client.ID, cmbNPSInvester);
         }
-       
+
         private void fillPlanData()
         {
             if (_dtPlan != null)
@@ -162,12 +165,12 @@ namespace FinancialPlannerClient.CurrentStatus
 
         private void fillFDInvesterCombobox()
         {
-              new PlannerInfo.FamilyMemberInfo().FillFamilyMemberInCombo(this._client.ID, cmbFDInvestor );
+            new PlannerInfo.FamilyMemberInfo().FillFamilyMemberInCombo(this._client.ID, cmbFDInvestor);
         }
 
         private void dtGridFD_SelectionChanged(object sender, EventArgs e)
         {
-            DataRow dr = getSelectedDataRow(dtGridFD,_dtFD);
+            DataRow dr = getSelectedDataRow(dtGridFD, _dtFD);
             if (dr != null)
                 displayFDInfo(dr);
             else
@@ -234,7 +237,7 @@ namespace FinancialPlannerClient.CurrentStatus
                 if (MessageBox.Show("Are you sure, you want to delete this record?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     FDInfo fdInfo = new FDInfo();
-                    FixedDeposit fd =  getFDData();
+                    FixedDeposit fd = getFDData();
                     fdInfo.Delete(fd);
                     fillupFDInfo();
                 }
@@ -250,9 +253,9 @@ namespace FinancialPlannerClient.CurrentStatus
             fd.AccountNo = cmbFDAccountno.Text;
             fd.BankName = txtFDBankName.Text;
             fd.Branch = txtFDBranch.Text;
-            fd.Balance = double.Parse(txtFDBalance.Text);
+            fd.Balance = (string.IsNullOrEmpty(txtFDBalance.Text) ? 0 : double.Parse(txtFDBalance.Text));
             fd.DepositDate = dtFDDepositDate.Value;
-            fd.MaturityAmt = double.Parse(txtFDMatuirtyAmt.Text);
+            fd.MaturityAmt = (string.IsNullOrEmpty(txtFDMatuirtyAmt.Text) ? 0 : double.Parse(txtFDMatuirtyAmt.Text));
             fd.MaturityDate = dtFDMaturityDate.Value;
             fd.GoalId = int.Parse(cmbFDGoal.Tag.ToString());
             fd.CreatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
@@ -260,28 +263,39 @@ namespace FinancialPlannerClient.CurrentStatus
             fd.UpdatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
             fd.UpdatedBy = Program.CurrentUser.Id;
             fd.MachineName = Environment.MachineName;
-            return fd;           
+            return fd;
         }
 
         private void btnFDSave_Click(object sender, EventArgs e)
         {
-            FDInfo FDInfo = new FDInfo();
-            FixedDeposit fd = getFDData();
-            bool isSaved = false;
-
-            if (fd != null && fd.Id == 0)
-                isSaved = FDInfo.Add(fd);
-            else
-                isSaved = FDInfo.Update(fd);
-
-            if (isSaved)
+            try
             {
-                MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                fillupFDInfo();
-                grpFD.Enabled = false;
+                FDInfo FDInfo = new FDInfo();
+                FixedDeposit fd = getFDData();
+                bool isSaved = false;
+
+                if (fd != null && fd.Id == 0)
+                    isSaved = FDInfo.Add(fd);
+                else
+                    isSaved = FDInfo.Update(fd);
+
+                if (isSaved)
+                {
+                    MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    fillupFDInfo();
+                    grpFD.Enabled = false;
+                }
+                else
+                    MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-                MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch (Exception ex)
+            {
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
+                LogDebug(currentMethodName.Name, ex);
+                MessageBox.Show("Unable to save record." + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnFDCancel_Click(object sender, EventArgs e)
@@ -336,7 +350,7 @@ namespace FinancialPlannerClient.CurrentStatus
 
         private void dtGridRD_SelectionChanged(object sender, EventArgs e)
         {
-            DataRow dr = getSelectedDataRow(dtGridRD,_dtRD);
+            DataRow dr = getSelectedDataRow(dtGridRD, _dtRD);
             if (dr != null)
                 displayRDInfo(dr);
             else
@@ -405,7 +419,7 @@ namespace FinancialPlannerClient.CurrentStatus
                 if (MessageBox.Show("Are you sure, you want to delete this record?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     RDInfo RDInfo = new RDInfo();
-                    RecurringDeposit RD =  getRDData();
+                    RecurringDeposit RD = getRDData();
                     RDInfo.Delete(RD);
                     fillupRDInfo();
                 }
@@ -421,11 +435,11 @@ namespace FinancialPlannerClient.CurrentStatus
             RD.AccountNo = cmbRDAccountNo.Text;
             RD.BankName = txtRDBankName.Text;
             RD.Branch = txtRDBranch.Text;
-            RD.IntRate = float.Parse(txtRDROI.Text);
-            RD.Balance = double.Parse(txtRDBalance.Text);
+            RD.IntRate = (string.IsNullOrEmpty(txtRDROI.Text) ? 0 : float.Parse(txtRDROI.Text));
+            RD.Balance = (string.IsNullOrEmpty(txtRDBalance.Text) ? 0 : double.Parse(txtRDBalance.Text));
             RD.DepositDate = dtRDDepositDate.Value;
-            RD.MonthlyInstallment = double.Parse(txtRDMonthlyInstallment.Text);
-            RD.MaturityAmt = double.Parse(txtRDMaturityAmt.Text);
+            RD.MonthlyInstallment = (string.IsNullOrEmpty(txtRDMonthlyInstallment.Text) ? 0 : double.Parse(txtRDMonthlyInstallment.Text));
+            RD.MaturityAmt = (string.IsNullOrEmpty(txtRDMaturityAmt.Text) ? 0 : double.Parse(txtRDMaturityAmt.Text));
             RD.MaturityDate = dtRDMaturityDate.Value;
             RD.GoalId = int.Parse(cmbRDGoalId.Tag.ToString());
             RD.CreatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
@@ -438,23 +452,35 @@ namespace FinancialPlannerClient.CurrentStatus
 
         private void btnRDSave_Click(object sender, EventArgs e)
         {
-            RDInfo RDInfo = new RDInfo();
-            RecurringDeposit RD = getRDData();
-            bool isSaved = false;
-
-            if (RD != null && RD.Id == 0)
-                isSaved = RDInfo.Add(RD);
-            else
-                isSaved = RDInfo.Update(RD);
-
-            if (isSaved)
+            try
             {
-                MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                fillupRDInfo();
-                grpRD.Enabled = false;
+
+                RDInfo RDInfo = new RDInfo();
+                RecurringDeposit RD = getRDData();
+                bool isSaved = false;
+
+                if (RD != null && RD.Id == 0)
+                    isSaved = RDInfo.Add(RD);
+                else
+                    isSaved = RDInfo.Update(RD);
+
+                if (isSaved)
+                {
+                    MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    fillupRDInfo();
+                    grpRD.Enabled = false;
+                }
+                else
+                    MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-                MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch (Exception ex)
+            {
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
+                LogDebug(currentMethodName.Name, ex);
+                MessageBox.Show("Unable to save record." + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnRDCancel_Click(object sender, EventArgs e)
@@ -501,7 +527,7 @@ namespace FinancialPlannerClient.CurrentStatus
 
         private void dtGridPPF_SelectionChanged(object sender, EventArgs e)
         {
-            DataRow dr = getSelectedDataRow(dtGridPPF,_dtPPF);
+            DataRow dr = getSelectedDataRow(dtGridPPF, _dtPPF);
             if (dr != null)
                 displayPPFInfo(dr);
             else
@@ -517,7 +543,7 @@ namespace FinancialPlannerClient.CurrentStatus
             cmbPPFGoal.Text = "";
             txtPPFBankName.Text = "";
             txtPPFBranch.Text = "";
-            txtPPFCurrentValue.Text = "";            
+            txtPPFCurrentValue.Text = "";
         }
 
         private void displayPPFInfo(DataRow dr)
@@ -528,7 +554,7 @@ namespace FinancialPlannerClient.CurrentStatus
                 cmbPPFInvestor.Text = dr.Field<string>("InvesterName");
                 txtPPFBankName.Text = dr.Field<string>("Bank");
                 cmbPPFAccountNo.Text = dr.Field<string>("AccountNo");
-                txtPPFCurrentValue.Text = dr.Field<string>("CurrentValue");                                
+                txtPPFCurrentValue.Text = dr.Field<string>("CurrentValue");
                 dtPPFOpeningDate.Text = dr.Field<string>("OpeningDate");
                 dtMaturityDate.Text = dr.Field<string>("MaturityDate");
                 if (dr["GoalID"] != null)
@@ -562,7 +588,7 @@ namespace FinancialPlannerClient.CurrentStatus
                 if (MessageBox.Show("Are you sure, you want to delete this record?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     PPFInfo PPFInfo = new PPFInfo();
-                    PPF PPF =  getPPFData();
+                    PPF PPF = getPPFData();
                     PPFInfo.Delete(PPF);
                     fillupPPFInfo();
                 }
@@ -576,10 +602,10 @@ namespace FinancialPlannerClient.CurrentStatus
             PPF.Pid = _planeId;
             PPF.InvesterName = cmbPPFInvestor.Text;
             PPF.AccountNo = cmbPPFAccountNo.Text;
-            PPF.Bank = txtPPFBankName.Text;            
-            PPF.OpeningDate = dtPPFOpeningDate.Value;           
+            PPF.Bank = txtPPFBankName.Text;
+            PPF.OpeningDate = dtPPFOpeningDate.Value;
             PPF.MaturityDate = dtPPFMaturityDate.Value;
-            PPF.CurrentValue = double.Parse(txtPPFCurrentValue.Text);
+            PPF.CurrentValue = (string.IsNullOrEmpty(txtPPFCurrentValue.Text) ? 0 : double.Parse(txtPPFCurrentValue.Text));
             PPF.GoalId = int.Parse(cmbPPFGoal.Tag.ToString());
             PPF.CreatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
             PPF.CreatedBy = Program.CurrentUser.Id;
@@ -591,23 +617,34 @@ namespace FinancialPlannerClient.CurrentStatus
 
         private void btnPPFSave_Click(object sender, EventArgs e)
         {
-            PPFInfo PPFInfo = new PPFInfo();
-            PPF PPF = getPPFData();
-            bool isSaved = false;
-
-            if (PPF != null && PPF.Id == 0)
-                isSaved = PPFInfo.Add(PPF);
-            else
-                isSaved = PPFInfo.Update(PPF);
-
-            if (isSaved)
+            try
             {
-                MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                fillupPPFInfo();
-                grpPPF.Enabled = false;
+                PPFInfo PPFInfo = new PPFInfo();
+                PPF PPF = getPPFData();
+                bool isSaved = false;
+
+                if (PPF != null && PPF.Id == 0)
+                    isSaved = PPFInfo.Add(PPF);
+                else
+                    isSaved = PPFInfo.Update(PPF);
+
+                if (isSaved)
+                {
+                    MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    fillupPPFInfo();
+                    grpPPF.Enabled = false;
+                }
+                else
+                    MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-                MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch (Exception ex)
+            {
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
+                LogDebug(currentMethodName.Name, ex);
+                MessageBox.Show("Unable to save record." + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnPPFCancel_Click(object sender, EventArgs e)
@@ -654,7 +691,7 @@ namespace FinancialPlannerClient.CurrentStatus
 
         private void dtGridSS_SelectionChanged(object sender, EventArgs e)
         {
-            DataRow dr = getSelectedDataRow(dtGridSS,_dtSS);
+            DataRow dr = getSelectedDataRow(dtGridSS, _dtSS);
             if (dr != null)
                 displaySSInfo(dr);
             else
@@ -714,7 +751,7 @@ namespace FinancialPlannerClient.CurrentStatus
                 if (MessageBox.Show("Are you sure, you want to delete this record?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     SukanyaSamrudhiInfo SSInfo = new SukanyaSamrudhiInfo();
-                    SukanyaSamrudhi SS =  getSSData();
+                    SukanyaSamrudhi SS = getSSData();
                     SSInfo.Delete(SS);
                     fillupSSInfo();
                 }
@@ -731,7 +768,7 @@ namespace FinancialPlannerClient.CurrentStatus
             SS.Bank = txtSSBankName.Text;
             SS.OpeningDate = dtSSOpeningDate.Value;
             SS.MaturityDate = dtSSMaturityDate.Value;
-            SS.CurrentValue = double.Parse(txtSSCurrentValue.Text);
+            SS.CurrentValue = (string.IsNullOrEmpty(txtSSCurrentValue.Text) ? 0 : double.Parse(txtSSCurrentValue.Text));
             SS.GoalId = int.Parse(cmbSSGoal.Tag.ToString());
             SS.CreatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
             SS.CreatedBy = Program.CurrentUser.Id;
@@ -743,23 +780,34 @@ namespace FinancialPlannerClient.CurrentStatus
 
         private void btnSSSave_Click(object sender, EventArgs e)
         {
-            SukanyaSamrudhiInfo SSInfo = new SukanyaSamrudhiInfo();
-            SukanyaSamrudhi SS = getSSData();
-            bool isSaved = false;
-
-            if (SS != null && SS.Id == 0)
-                isSaved = SSInfo.Add(SS);
-            else
-                isSaved = SSInfo.Update(SS);
-
-            if (isSaved)
+            try
             {
-                MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                fillupSSInfo();
-                grpSS.Enabled = false;
+                SukanyaSamrudhiInfo SSInfo = new SukanyaSamrudhiInfo();
+                SukanyaSamrudhi SS = getSSData();
+                bool isSaved = false;
+
+                if (SS != null && SS.Id == 0)
+                    isSaved = SSInfo.Add(SS);
+                else
+                    isSaved = SSInfo.Update(SS);
+
+                if (isSaved)
+                {
+                    MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    fillupSSInfo();
+                    grpSS.Enabled = false;
+                }
+                else
+                    MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-                MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch (Exception ex)
+            {
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
+                LogDebug(currentMethodName.Name, ex);
+                MessageBox.Show("Unable to save record." + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnSSCancel_Click(object sender, EventArgs e)
@@ -806,7 +854,7 @@ namespace FinancialPlannerClient.CurrentStatus
 
         private void dtGridSCSS_SelectionChanged(object sender, EventArgs e)
         {
-            DataRow dr = getSelectedDataRow(dtGridSCSS,_dtSCSS);
+            DataRow dr = getSelectedDataRow(dtGridSCSS, _dtSCSS);
             if (dr != null)
                 displaySCSSInfo(dr);
             else
@@ -866,7 +914,7 @@ namespace FinancialPlannerClient.CurrentStatus
                 if (MessageBox.Show("Are you sure, you want to delete this record?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     SCSSInfo SCSSInfo = new SCSSInfo();
-                    SCSS SCSS =  getSCSSData();
+                    SCSS SCSS = getSCSSData();
                     SCSSInfo.Delete(SCSS);
                     fillupSCSSInfo();
                 }
@@ -883,7 +931,7 @@ namespace FinancialPlannerClient.CurrentStatus
             SCSS.Bank = txtSCSSBankName.Text;
             SCSS.OpeningDate = dtSCSSOpeningDate.Value;
             SCSS.MaturityDate = dtSCSSMaturityDate.Value;
-            SCSS.CurrentValue = double.Parse(txtSCSSCurrentValue.Text);
+            SCSS.CurrentValue = (string.IsNullOrEmpty(txtSCSSCurrentValue.Text) ? 0 : double.Parse(txtSCSSCurrentValue.Text));
             SCSS.GoalId = int.Parse(cmbSCSSGoal.Tag.ToString());
             SCSS.CreatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
             SCSS.CreatedBy = Program.CurrentUser.Id;
@@ -895,23 +943,34 @@ namespace FinancialPlannerClient.CurrentStatus
 
         private void btnSCSSSave_Click(object sender, EventArgs e)
         {
-            SCSSInfo SCSSInfo = new SCSSInfo();
-            SCSS SCSS = getSCSSData();
-            bool isSaved = false;
-
-            if (SCSS != null && SCSS.Id == 0)
-                isSaved = SCSSInfo.Add(SCSS);
-            else
-                isSaved = SCSSInfo.Update(SCSS);
-
-            if (isSaved)
+            try
             {
-                MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                fillupSCSSInfo();
-                grpSCSS.Enabled = false;
+                SCSSInfo SCSSInfo = new SCSSInfo();
+                SCSS SCSS = getSCSSData();
+                bool isSaved = false;
+
+                if (SCSS != null && SCSS.Id == 0)
+                    isSaved = SCSSInfo.Add(SCSS);
+                else
+                    isSaved = SCSSInfo.Update(SCSS);
+
+                if (isSaved)
+                {
+                    MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    fillupSCSSInfo();
+                    grpSCSS.Enabled = false;
+                }
+                else
+                    MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-                MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch (Exception ex)
+            {
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
+                LogDebug(currentMethodName.Name, ex);
+                MessageBox.Show("Unable to save record." + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnSCSSCancel_Click(object sender, EventArgs e)
@@ -958,7 +1017,7 @@ namespace FinancialPlannerClient.CurrentStatus
 
         private void dtGridNSC_SelectionChanged(object sender, EventArgs e)
         {
-            DataRow dr = getSelectedDataRow(dtGridNSC,_dtNSC);
+            DataRow dr = getSelectedDataRow(dtGridNSC, _dtNSC);
             if (dr != null)
                 displayNSCInfo(dr);
             else
@@ -1024,7 +1083,7 @@ namespace FinancialPlannerClient.CurrentStatus
                 if (MessageBox.Show("Are you sure, you want to delete this record?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     NSCInfo NSCInfo = new NSCInfo();
-                    NSC NSC =  getNSCData();
+                    NSC NSC = getNSCData();
                     NSCInfo.Delete(NSC);
                     fillupNSCInfo();
                 }
@@ -1040,10 +1099,10 @@ namespace FinancialPlannerClient.CurrentStatus
             NSC.DocumentNo = cmbNSCDocumentNo.Text;
             NSC.PostOfficeBranch = txtNSCPostOffice.Text;
             NSC.MaturityDate = dtNSCMaturityDate.Value;
-            NSC.Rate = float.Parse(txtNSCRate.Text);
-            NSC.Units = int.Parse(txtNSCUnits.Text);
-            NSC.CurrentValue = double.Parse(txtNSCCurrentValue.Text);
-            NSC.ValueOfOne = float.Parse(txtNSCValueOfOne.Text);
+            NSC.Rate = (string.IsNullOrEmpty(txtNSCRate.Text) ? 0 : float.Parse(txtNSCRate.Text));
+            NSC.Units = (string.IsNullOrEmpty(txtNSCUnits.Text) ? 0 : int.Parse(txtNSCUnits.Text));
+            NSC.CurrentValue = (string.IsNullOrEmpty(txtNSCCurrentValue.Text) ? 0 : double.Parse(txtNSCCurrentValue.Text));
+            NSC.ValueOfOne = (string.IsNullOrEmpty(txtNSCValueOfOne.Text) ? 0 : float.Parse(txtNSCValueOfOne.Text));
             NSC.GoalId = int.Parse(cmbNSCGoal.Tag.ToString());
             NSC.CreatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
             NSC.CreatedBy = Program.CurrentUser.Id;
@@ -1055,23 +1114,34 @@ namespace FinancialPlannerClient.CurrentStatus
 
         private void btnNSCSave_Click(object sender, EventArgs e)
         {
-            NSCInfo NSCInfo = new NSCInfo();
-            NSC NSC = getNSCData();
-            bool isSaved = false;
-
-            if (NSC != null && NSC.Id == 0)
-                isSaved = NSCInfo.Add(NSC);
-            else
-                isSaved = NSCInfo.Update(NSC);
-
-            if (isSaved)
+            try
             {
-                MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                fillupNSCInfo();
-                grpNSC.Enabled = false;
+                NSCInfo NSCInfo = new NSCInfo();
+                NSC NSC = getNSCData();
+                bool isSaved = false;
+
+                if (NSC != null && NSC.Id == 0)
+                    isSaved = NSCInfo.Add(NSC);
+                else
+                    isSaved = NSCInfo.Update(NSC);
+
+                if (isSaved)
+                {
+                    MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    fillupNSCInfo();
+                    grpNSC.Enabled = false;
+                }
+                else
+                    MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-                MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch (Exception ex)
+            {
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
+                LogDebug(currentMethodName.Name, ex);
+                MessageBox.Show("Unable to save record." + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnNSCCancel_Click(object sender, EventArgs e)
@@ -1086,7 +1156,7 @@ namespace FinancialPlannerClient.CurrentStatus
             double.TryParse(txtNSCUnits.Text, out units);
             txtNSCCurrentValue.Text = (nav * units).ToString();
         }
-        
+
         private void txtNSCRate_Leave(object sender, EventArgs e)
         {
             calculateAndSetNSCCurrentValue();
@@ -1184,7 +1254,7 @@ namespace FinancialPlannerClient.CurrentStatus
                 if (dtGridMF.SelectedRows[0].Cells["ID"].Value != System.DBNull.Value)
                 {
                     int selectedUserId = int.Parse(dtGridMF.SelectedRows[0].Cells["ID"].Value.ToString());
-                    DataRow[] rows = _dtMutualFund.Select("Id ='" + selectedUserId +"'");
+                    DataRow[] rows = _dtMutualFund.Select("Id ='" + selectedUserId + "'");
                     foreach (DataRow dr in rows)
                     {
                         return dr;
@@ -1258,23 +1328,34 @@ namespace FinancialPlannerClient.CurrentStatus
 
         private void btnSaveMF_Click(object sender, EventArgs e)
         {
-            MutualFundInfo mutualFundInfo = new MutualFundInfo();
-            MutualFund mf = getMutualFundData();
-            bool isSaved = false;
-
-            if (mf != null && mf.Id == 0)
-                isSaved = mutualFundInfo.Add(mf);
-            else
-                isSaved = mutualFundInfo.Update(mf);
-
-            if (isSaved)
+            try
             {
-                MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                fillupMutualFundInfo();
-                grpMF.Enabled = false;
+                MutualFundInfo mutualFundInfo = new MutualFundInfo();
+                MutualFund mf = getMutualFundData();
+                bool isSaved = false;
+
+                if (mf != null && mf.Id == 0)
+                    isSaved = mutualFundInfo.Add(mf);
+                else
+                    isSaved = mutualFundInfo.Update(mf);
+
+                if (isSaved)
+                {
+                    MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    fillupMutualFundInfo();
+                    grpMF.Enabled = false;
+                }
+                else
+                    MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-                MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch (Exception ex)
+            {
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
+                LogDebug(currentMethodName.Name, ex);
+                MessageBox.Show("Unable to save record." + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private MutualFund getMutualFundData()
@@ -1286,13 +1367,13 @@ namespace FinancialPlannerClient.CurrentStatus
             mf.SchemeName = cmbSchemeName.Text;
             mf.FolioNo = txtFolioNo.Text;
             mf.Nav = float.Parse(txtNav.Text);
-            mf.Units = int.Parse(txtUnits.Text);
+            mf.Units = double.Parse(txtUnits.Text);
             mf.EquityRatio = float.Parse(txtMFEquityRatio.Text);
             mf.GoldRatio = float.Parse(txtMFGoldRatio.Text);
             mf.DebtRatio = float.Parse(txtMFDebtRatio.Text);
             mf.FreeUnit = int.Parse(txtFreeUnits.Text);
             double redumptionAmt = 0;
-            mf.RedumptionAmount = double.TryParse(txtRedumptionAmt.Text,out redumptionAmt) ? redumptionAmt : 0;
+            mf.RedumptionAmount = double.TryParse(txtRedumptionAmt.Text, out redumptionAmt) ? redumptionAmt : 0;
             mf.GoalID = int.Parse(cmbMFGoal.Tag.ToString());
             mf.CreatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
             mf.CreatedBy = Program.CurrentUser.Id;
@@ -1326,7 +1407,7 @@ namespace FinancialPlannerClient.CurrentStatus
                 if (MessageBox.Show("Are you sure, you want to delete this record?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     MutualFundInfo mutualFundInfo = new MutualFundInfo();
-                    MutualFund mutualFund =  getMutualFundData();
+                    MutualFund mutualFund = getMutualFundData();
                     mutualFundInfo.Delete(mutualFund);
                     fillupMutualFundInfo();
                 }
@@ -1419,7 +1500,7 @@ namespace FinancialPlannerClient.CurrentStatus
                 if (dtGridULIP.SelectedRows[0].Cells["ID"].Value != System.DBNull.Value)
                 {
                     int selectedUserId = int.Parse(dtGridULIP.SelectedRows[0].Cells["ID"].Value.ToString());
-                    DataRow[] rows = _dtULIP.Select("Id ='" + selectedUserId +"'");
+                    DataRow[] rows = _dtULIP.Select("Id ='" + selectedUserId + "'");
                     foreach (DataRow dr in rows)
                     {
                         return dr;
@@ -1481,23 +1562,34 @@ namespace FinancialPlannerClient.CurrentStatus
 
         private void btnSaveULIP_Click(object sender, EventArgs e)
         {
-            ULIPInfo ULIPInfo = new ULIPInfo();
-            ULIP ULIP = getULIPData();
-            bool isSaved = false;
-
-            if (ULIP != null && ULIP.Id == 0)
-                isSaved = ULIPInfo.Add(ULIP);
-            else
-                isSaved = ULIPInfo.Update(ULIP);
-
-            if (isSaved)
+            try
             {
-                MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                fillupULIPInfo();
-                grpULIP.Enabled = false;
+                ULIPInfo ULIPInfo = new ULIPInfo();
+                ULIP ULIP = getULIPData();
+                bool isSaved = false;
+
+                if (ULIP != null && ULIP.Id == 0)
+                    isSaved = ULIPInfo.Add(ULIP);
+                else
+                    isSaved = ULIPInfo.Update(ULIP);
+
+                if (isSaved)
+                {
+                    MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    fillupULIPInfo();
+                    grpULIP.Enabled = false;
+                }
+                else
+                    MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-                MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch (Exception ex)
+            {
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
+                LogDebug(currentMethodName.Name, ex);
+                MessageBox.Show("Unable to save record." + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private ULIP getULIPData()
@@ -1508,13 +1600,13 @@ namespace FinancialPlannerClient.CurrentStatus
             ULIP.InvesterName = cmbULIPInvestor.Text;
             ULIP.SchemeName = cmbULIPScheme.Text;
             ULIP.FolioNo = txtULIPFolioNo.Text;
-            ULIP.Nav = float.Parse(txtULIPNav.Text);
-            ULIP.Units = int.Parse(txtULIPUnits.Text);
-            ULIP.EquityRatio = float.Parse(txtULIPEquityRatio.Text);
-            ULIP.GoldRatio = float.Parse(txtULIPGoldRatio.Text);
-            ULIP.DebtRatio = float.Parse(txtULIPDebtRatio.Text);
-            ULIP.FreeUnit = int.Parse(txtULIPFreeUnits.Text);
-            ULIP.RedumptionAmount = double.Parse(txtULIPRedemptionAmt.Text);
+            ULIP.Nav = (string.IsNullOrEmpty(txtULIPNav.Text) ? 0 : float.Parse(txtULIPNav.Text));
+            ULIP.Units = (string.IsNullOrEmpty(txtULIPUnits.Text) ? 0 : int.Parse(txtULIPUnits.Text));
+            ULIP.EquityRatio = (string.IsNullOrEmpty(txtULIPEquityRatio.Text) ? 0 : float.Parse(txtULIPEquityRatio.Text));
+            ULIP.GoldRatio = (string.IsNullOrEmpty(txtULIPGoldRatio.Text) ? 0 : float.Parse(txtULIPGoldRatio.Text));
+            ULIP.DebtRatio = (string.IsNullOrEmpty(txtULIPDebtRatio.Text) ? 0 : float.Parse(txtULIPDebtRatio.Text));
+            ULIP.FreeUnit = (string.IsNullOrEmpty(txtULIPFreeUnits.Text) ? 0 : int.Parse(txtULIPFreeUnits.Text));
+            ULIP.RedumptionAmount = (string.IsNullOrEmpty(txtULIPRedemptionAmt.Text)? 0 : double.Parse(txtULIPRedemptionAmt.Text));
             ULIP.GoalID = int.Parse(cmbULIPGoal.Tag.ToString());
             ULIP.CreatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
             ULIP.CreatedBy = Program.CurrentUser.Id;
@@ -1548,7 +1640,7 @@ namespace FinancialPlannerClient.CurrentStatus
                 if (MessageBox.Show("Are you sure, you want to delete this record?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     ULIPInfo ULIPInfo = new ULIPInfo();
-                    ULIP ULIP =  getULIPData();
+                    ULIP ULIP = getULIPData();
                     ULIPInfo.Delete(ULIP);
                     fillupULIPInfo();
                 }
@@ -1599,7 +1691,7 @@ namespace FinancialPlannerClient.CurrentStatus
                 {
                     int selectedUserId = int.Parse(dtGridShares.SelectedRows[0].Cells["ID"].Value.ToString());
 
-                    DataRow[] rows = _dtShares.Select("Id ='" + selectedUserId +"'");
+                    DataRow[] rows = _dtShares.Select("Id ='" + selectedUserId + "'");
                     foreach (DataRow dr in rows)
                     {
                         return dr;
@@ -1665,36 +1757,47 @@ namespace FinancialPlannerClient.CurrentStatus
 
         private void btnSharesSave_Click(object sender, EventArgs e)
         {
-            SharesInfo SharesInfo = new SharesInfo();
-            Shares shares = getSharesData();
-            bool isSaved = false;
-
-            if (shares != null && shares.Id == 0)
-                isSaved = SharesInfo.Add(shares);
-            else
-                isSaved = SharesInfo.Update(shares);
-
-            if (isSaved)
+            try
             {
-                MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                fillupSharesInfo();
-                grpShares.Enabled = false;
+                SharesInfo SharesInfo = new SharesInfo();
+                Shares shares = getSharesData();
+                bool isSaved = false;
+
+                if (shares != null && shares.Id == 0)
+                    isSaved = SharesInfo.Add(shares);
+                else
+                    isSaved = SharesInfo.Update(shares);
+
+                if (isSaved)
+                {
+                    MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    fillupSharesInfo();
+                    grpShares.Enabled = false;
+                }
+                else
+                    MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-                MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch (Exception ex)
+            {
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
+                LogDebug(currentMethodName.Name, ex);
+                MessageBox.Show("Unable to save record." + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private Shares getSharesData()
         {
-            Shares  shares = new Shares();
+            Shares shares = new Shares();
             shares.Id = int.Parse(cmbSharesInvester.Tag.ToString());
             shares.Pid = _planeId;
             shares.InvesterName = cmbSharesInvester.Text;
             shares.CompanyName = cmbSharesCompnay.Text;
-            shares.FaceValue = float.Parse(txtSharesFaceValue.Text);
-            shares.NoOfShares = int.Parse(txtNoOfShares.Text);
-            shares.MarketPrice = float.Parse(txtSharesMarketPrice.Text);
-            shares.CurrentValue = double.Parse(txtSharesCurrentValue.Text);
+            shares.FaceValue = (string.IsNullOrEmpty(txtSharesFaceValue.Text) ? 0 : float.Parse(txtSharesFaceValue.Text));
+            shares.NoOfShares = (string.IsNullOrEmpty(txtNoOfShares.Text) ? 0 : int.Parse(txtNoOfShares.Text));
+            shares.MarketPrice = (string.IsNullOrEmpty(txtSharesMarketPrice.Text) ? 0 : float.Parse(txtSharesMarketPrice.Text));
+            shares.CurrentValue = (string.IsNullOrEmpty(txtSharesCurrentValue.Text) ? 0 : double.Parse(txtSharesCurrentValue.Text));
             shares.GoalID = int.Parse(cmbSharesGoal.Tag.ToString());
             shares.CreatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
             shares.CreatedBy = Program.CurrentUser.Id;
@@ -1725,7 +1828,7 @@ namespace FinancialPlannerClient.CurrentStatus
                 if (MessageBox.Show("Are you sure, you want to delete this record?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     SharesInfo SharesInfo = new SharesInfo();
-                    Shares Shares  =  getSharesData();
+                    Shares Shares = getSharesData();
                     SharesInfo.Delete(Shares);
                     fillupSharesInfo();
                 }
@@ -1793,7 +1896,7 @@ namespace FinancialPlannerClient.CurrentStatus
 
         private void dtGridSavingAccount_SelectionChanged(object sender, EventArgs e)
         {
-            DataRow dr = getSelectedDataRow(dtGridSavingAccount,_dtSA);
+            DataRow dr = getSelectedDataRow(dtGridSavingAccount, _dtSA);
             if (dr != null)
                 displaySAInfo(dr);
             else
@@ -1860,7 +1963,7 @@ namespace FinancialPlannerClient.CurrentStatus
                 if (MessageBox.Show("Are you sure, you want to delete this record?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     SavingAccountInfo saInfo = new SavingAccountInfo();
-                    SavingAccount sa  =  getSA();
+                    SavingAccount sa = getSA();
                     saInfo.Delete(sa);
                     fillupSavingAccount();
                 }
@@ -1876,8 +1979,8 @@ namespace FinancialPlannerClient.CurrentStatus
             sa.BankName = txtSABank.Text;
             sa.AccountNo = cmbSAAccountNo.Text;
             sa.Branch = txtSABranch.Text;
-            sa.Balance = double.Parse(txtSABalance.Text);
-            sa.IntRate = float.Parse(txtSAROI.Text);
+            sa.Balance = (string.IsNullOrEmpty(txtSABalance.Text) ? 0 : double.Parse(txtSABalance.Text));
+            sa.IntRate = (string.IsNullOrEmpty(txtSAROI.Text) ? 0 : float.Parse(txtSAROI.Text));
             sa.GoalId = int.Parse(cmbSAGoalId.Tag.ToString());
             sa.CreatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
             sa.CreatedBy = Program.CurrentUser.Id;
@@ -1898,23 +2001,34 @@ namespace FinancialPlannerClient.CurrentStatus
 
         private void btnSaveSA_Click(object sender, EventArgs e)
         {
-            SavingAccountInfo SavingAccountInfo = new SavingAccountInfo();
-            SavingAccount sa = getSA();
-            bool isSaved = false;
-
-            if (sa != null && sa.Id == 0)
-                isSaved = SavingAccountInfo.Add(sa);
-            else
-                isSaved = SavingAccountInfo.Update(sa);
-
-            if (isSaved)
+            try
             {
-                MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                fillupSavingAccount();
-                grpSa.Enabled = false;
+                SavingAccountInfo SavingAccountInfo = new SavingAccountInfo();
+                SavingAccount sa = getSA();
+                bool isSaved = false;
+
+                if (sa != null && sa.Id == 0)
+                    isSaved = SavingAccountInfo.Add(sa);
+                else
+                    isSaved = SavingAccountInfo.Update(sa);
+
+                if (isSaved)
+                {
+                    MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    fillupSavingAccount();
+                    grpSa.Enabled = false;
+                }
+                else
+                    MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-                MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch (Exception ex)
+            {
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
+                LogDebug(currentMethodName.Name, ex);
+                MessageBox.Show("Unable to save record." + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         #endregion
@@ -1962,7 +2076,7 @@ namespace FinancialPlannerClient.CurrentStatus
                 cmbNPSGoal.Items.Add(goal.Name);
             }
             cmbNPSGoal.Items.Add("");
-        }       
+        }
 
         private void fillupGenralInsuranceInfo()
         {
@@ -1984,7 +2098,7 @@ namespace FinancialPlannerClient.CurrentStatus
 
         private void cmbPlan_SelectedValueChanged(object sender, EventArgs e)
         {
-            var val =  _dtPlan.Select("NAME ='" + cmbPlan.Text + "'");
+            var val = _dtPlan.Select("NAME ='" + cmbPlan.Text + "'");
             _planeId = int.Parse(val[0][0].ToString());
             fillLifeInsuranceInfo();
         }
@@ -2047,7 +2161,7 @@ namespace FinancialPlannerClient.CurrentStatus
                 if (dtGridLifeInsurance.SelectedRows[0].Cells["ID"].Value != System.DBNull.Value)
                 {
                     int selectedUserId = int.Parse(dtGridLifeInsurance.SelectedRows[0].Cells["ID"].Value.ToString());
-                    DataRow[] rows = _dtLifeInsurance.Select("Id ='" + selectedUserId +"'");
+                    DataRow[] rows = _dtLifeInsurance.Select("Id ='" + selectedUserId + "'");
                     foreach (DataRow dr in rows)
                     {
                         return dr;
@@ -2116,23 +2230,34 @@ namespace FinancialPlannerClient.CurrentStatus
 
         private void btnPersonalDetailSave_Click(object sender, EventArgs e)
         {
-            LifeInsuranceInfo lifeInsuranceInfo = new LifeInsuranceInfo();
-            LifeInsurance lifeInsurance = getLifeInsuranceData();
-            bool isSaved = false;
-
-            if (lifeInsurance != null && lifeInsurance.Id == 0)
-                isSaved = lifeInsuranceInfo.Add(lifeInsurance);
-            else
-                isSaved = lifeInsuranceInfo.Update(lifeInsurance);
-
-            if (isSaved)
+            try
             {
-                MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                fillLifeInsuranceInfo();
-                pnlLifeInsuranceDetail.Enabled = false;
+                LifeInsuranceInfo lifeInsuranceInfo = new LifeInsuranceInfo();
+                LifeInsurance lifeInsurance = getLifeInsuranceData();
+                bool isSaved = false;
+
+                if (lifeInsurance != null && lifeInsurance.Id == 0)
+                    isSaved = lifeInsuranceInfo.Add(lifeInsurance);
+                else
+                    isSaved = lifeInsuranceInfo.Update(lifeInsurance);
+
+                if (isSaved)
+                {
+                    MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    fillLifeInsuranceInfo();
+                    pnlLifeInsuranceDetail.Enabled = false;
+                }
+                else
+                    MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-                MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch (Exception ex)
+            {
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
+                LogDebug(currentMethodName.Name, ex);
+                MessageBox.Show("Unable to save record." + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private LifeInsurance getLifeInsuranceData()
@@ -2165,18 +2290,18 @@ namespace FinancialPlannerClient.CurrentStatus
             lifeInsurance.Appointee = txtAppointee.Text;
             lifeInsurance.Nominee = txtNominee.Text;
             lifeInsurance.Relation = txtRelation.Text;
-            lifeInsurance.LoanTaken = double.Parse(txtLoanTaken.Text);
+            lifeInsurance.LoanTaken = (string.IsNullOrEmpty(txtLoanTaken.Text) ? 0 : double.Parse(txtLoanTaken.Text));
             if (dtLoanDate.Checked)
                 lifeInsurance.LoanDate = dtLoanDate.Value;
             lifeInsurance.BalanceUnit = txtBalanceUnit.Text;
             if (dtAsOnDate.Checked)
                 lifeInsurance.AsOnDate = dtAsOnDate.Value;
-            lifeInsurance.CurrentValue = double.Parse(txtCurrentValue.Text);
-            lifeInsurance.ExpectedMaturityValue = double.Parse(txtExpectedMaturityValue.Text);
+            lifeInsurance.CurrentValue = (string.IsNullOrEmpty(txtCurrentValue.Text) ? 0 : double.Parse(txtCurrentValue.Text));
+            lifeInsurance.ExpectedMaturityValue = (string.IsNullOrEmpty(txtExpectedMaturityValue.Text) ? 0 : double.Parse(txtExpectedMaturityValue.Text));
             lifeInsurance.Rider1 = txtRider1.Text;
-            lifeInsurance.Rider1Amount = double.Parse(txtRider1Amt.Text);
+            lifeInsurance.Rider1Amount = (string.IsNullOrEmpty(txtRider1Amt.Text) ? 0 : double.Parse(txtRider1Amt.Text));
             lifeInsurance.Rider2 = txtRider2.Text;
-            lifeInsurance.Rider2Amount = double.Parse(txtRider2Amt.Text);
+            lifeInsurance.Rider2Amount = (string.IsNullOrEmpty(txtRider2Amt.Text) ? 0 : double.Parse(txtRider2Amt.Text));
             lifeInsurance.Remarks = txtRemarks.Text;
             lifeInsurance.AttachmentPath = txtAttachPath.Text;
             lifeInsurance.CreatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
@@ -2227,7 +2352,7 @@ namespace FinancialPlannerClient.CurrentStatus
                 if (dtGridGeneralInsurance.SelectedRows[0].Cells["ID"].Value != System.DBNull.Value)
                 {
                     int selectedUserId = int.Parse(dtGridGeneralInsurance.SelectedRows[0].Cells["ID"].Value.ToString());
-                    DataRow[] rows = _dtGeneralInsurance.Select("Id ='" + selectedUserId +"'");
+                    DataRow[] rows = _dtGeneralInsurance.Select("Id ='" + selectedUserId + "'");
                     foreach (DataRow dr in rows)
                     {
                         return dr;
@@ -2277,23 +2402,43 @@ namespace FinancialPlannerClient.CurrentStatus
 
         private void btnGenInsSave_Click(object sender, EventArgs e)
         {
-            GeneralInsuranceInfo generalInsuranceInfo = new GeneralInsuranceInfo();
-            GeneralInsurance generalInsurance = getGeneralInsurnaceData();
-            bool isSaved = false;
-
-            if (generalInsurance != null && generalInsurance.Id == 0)
-                isSaved = generalInsuranceInfo.Add(generalInsurance);
-            else
-                isSaved = generalInsuranceInfo.Update(generalInsurance);
-
-            if (isSaved)
+            try
             {
-                MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                fillupGenralInsuranceInfo();
-                grpGeneralInsurance.Enabled = false;
+                GeneralInsuranceInfo generalInsuranceInfo = new GeneralInsuranceInfo();
+                GeneralInsurance generalInsurance = getGeneralInsurnaceData();
+                bool isSaved = false;
+
+                if (generalInsurance != null && generalInsurance.Id == 0)
+                    isSaved = generalInsuranceInfo.Add(generalInsurance);
+                else
+                    isSaved = generalInsuranceInfo.Update(generalInsurance);
+
+                if (isSaved)
+                {
+                    MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    fillupGenralInsuranceInfo();
+                    grpGeneralInsurance.Enabled = false;
+                }
+                else
+                    MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-                MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch (Exception ex)
+            {
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
+                LogDebug(currentMethodName.Name, ex);
+                MessageBox.Show("Unable to save record." + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void LogDebug(string methodName, Exception ex)
+        {
+            DebuggerLogInfo debuggerInfo = new DebuggerLogInfo();
+            debuggerInfo.ClassName = this.GetType().Name;
+            debuggerInfo.Method = methodName;
+            debuggerInfo.ExceptionInfo = ex;
+            Logger.LogDebug(debuggerInfo);
         }
 
         private GeneralInsurance getGeneralInsurnaceData()
@@ -2349,12 +2494,12 @@ namespace FinancialPlannerClient.CurrentStatus
                 if (MessageBox.Show("Are you sure, you want to delete this record?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     LifeInsuranceInfo lifeInsuranceInfo = new LifeInsuranceInfo();
-                    LifeInsurance lifeInsurance =  getLifeInsuranceData();
+                    LifeInsurance lifeInsurance = getLifeInsuranceData();
                     lifeInsuranceInfo.Delete(lifeInsurance);
                     fillLifeInsuranceInfo();
                 }
             }
-        }    
+        }
 
         private string getGoalName(int v)
         {
@@ -2363,7 +2508,7 @@ namespace FinancialPlannerClient.CurrentStatus
             else
                 return string.Empty;
         }
-       
+
         private void calculateAndSetNPSCurrentValue()
         {
             float nav = 0;
@@ -2372,19 +2517,19 @@ namespace FinancialPlannerClient.CurrentStatus
             double.TryParse(txtNPSUnits.Text, out units);
             txtNPSCurrentVal.Text = (nav * units).ToString();
         }
-              
+
         private void cmbSchemeName_Enter(object sender, EventArgs e)
         {
             if (_dtMutualFund != null)
             {
                 var distinctRows = (from DataRow dRow in _dtMutualFund.Rows
-                                    select dRow["SchemeName"] ).Distinct();
+                                    select dRow["SchemeName"]).Distinct();
                 foreach (var schmeName in distinctRows)
                 {
                     cmbSchemeName.Items.Add(schmeName);
                 }
             }
-        }     
+        }
 
         private void btnAddNPS_Click(object sender, EventArgs e)
         {
@@ -2433,7 +2578,7 @@ namespace FinancialPlannerClient.CurrentStatus
                 if (MessageBox.Show("Are you sure, you want to delete this record?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     NPSInfo npsInfo = new NPSInfo();
-                    NPS nps  =  getNPSData();
+                    NPS nps = getNPSData();
                     npsInfo.Delete(nps);
                     fillupNPSInfo();
                 }
@@ -2442,17 +2587,17 @@ namespace FinancialPlannerClient.CurrentStatus
 
         private NPS getNPSData()
         {
-            NPS  nps = new NPS();
+            NPS nps = new NPS();
             nps.Id = int.Parse(cmbNPSInvester.Tag.ToString());
             nps.Pid = _planeId;
             nps.InvesterName = cmbNPSInvester.Text;
             nps.SchemeName = cmbNPSScheme.Text;
             nps.FolioNo = txtNPSFolioNo.Text;
-            nps.Nav = float.Parse(txtNPSNAV.Text);
-            nps.Units = int.Parse(txtNPSUnits.Text);
-            nps.EquityRatio = float.Parse(txtNPSEquityRatio.Text);
-            nps.GoldRatio = float.Parse(txtNPSGoldRatio.Text);
-            nps.DebtRatio = float.Parse(txtNPSDebtRatio.Text);
+            nps.Nav = (string.IsNullOrEmpty(txtNPSNAV.Text) ? 0 : float.Parse(txtNPSNAV.Text));
+            nps.Units = (string.IsNullOrEmpty(txtNPSUnits.Text) ? 0 : int.Parse(txtNPSUnits.Text));
+            nps.EquityRatio = (string.IsNullOrEmpty(txtNPSEquityRatio.Text) ? 0 : float.Parse(txtNPSEquityRatio.Text));
+            nps.GoldRatio = (string.IsNullOrEmpty(txtNPSGoldRatio.Text) ? 0 : float.Parse(txtNPSGoldRatio.Text));
+            nps.DebtRatio = (string.IsNullOrEmpty(txtNPSDebtRatio.Text) ? 0 : float.Parse(txtNPSDebtRatio.Text));
             nps.GoalID = int.Parse(cmbNPSGoal.Tag.ToString());
             nps.CreatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
             nps.CreatedBy = Program.CurrentUser.Id;
@@ -2464,23 +2609,34 @@ namespace FinancialPlannerClient.CurrentStatus
 
         private void btnNPSSave_Click(object sender, EventArgs e)
         {
-            NPSInfo nPSInfo = new NPSInfo();
-            NPS mf = getNPSData();
-            bool isSaved = false;
-
-            if (mf != null && mf.Id == 0)
-                isSaved = nPSInfo.Add(mf);
-            else
-                isSaved = nPSInfo.Update(mf);
-
-            if (isSaved)
+            try
             {
-                MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                fillupNPSInfo();
-                grpMF.Enabled = false;
+                NPSInfo nPSInfo = new NPSInfo();
+                NPS mf = getNPSData();
+                bool isSaved = false;
+
+                if (mf != null && mf.Id == 0)
+                    isSaved = nPSInfo.Add(mf);
+                else
+                    isSaved = nPSInfo.Update(mf);
+
+                if (isSaved)
+                {
+                    MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    fillupNPSInfo();
+                    grpMF.Enabled = false;
+                }
+                else
+                    MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-                MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch (Exception ex)
+            {
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
+                LogDebug(currentMethodName.Name, ex);
+                MessageBox.Show("Unable to save record." + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void txtNPSNAV_Leave(object sender, EventArgs e)
@@ -2539,7 +2695,7 @@ namespace FinancialPlannerClient.CurrentStatus
                 {
                     int selectedUserId = int.Parse(dtGridNPS.SelectedRows[0].Cells["ID"].Value.ToString());
 
-                    DataRow[] rows = _dtNPS.Select("Id ='" + selectedUserId +"'");
+                    DataRow[] rows = _dtNPS.Select("Id ='" + selectedUserId + "'");
                     foreach (DataRow dr in rows)
                     {
                         return dr;
@@ -2549,7 +2705,7 @@ namespace FinancialPlannerClient.CurrentStatus
             return null;
         }
 
-       
+
         private void btnAddBonds_Click(object sender, EventArgs e)
         {
             grpBonds.Enabled = true;
@@ -2587,7 +2743,7 @@ namespace FinancialPlannerClient.CurrentStatus
 
         private void dtGridBonds_SelectionChanged(object sender, EventArgs e)
         {
-            DataRow dr = getSelectedDataRow(dtGridBonds,_dtBond);
+            DataRow dr = getSelectedDataRow(dtGridBonds, _dtBond);
             if (dr != null)
                 displayBondsInfo(dr);
             else
@@ -2630,7 +2786,7 @@ namespace FinancialPlannerClient.CurrentStatus
                 {
                     int selectedUserId = int.Parse(dtGridView.SelectedRows[0].Cells["ID"].Value.ToString());
 
-                    DataRow[] rows = dataTable.Select("Id ='" + selectedUserId +"'");
+                    DataRow[] rows = dataTable.Select("Id ='" + selectedUserId + "'");
                     foreach (DataRow dr in rows)
                     {
                         return dr;
@@ -2647,7 +2803,7 @@ namespace FinancialPlannerClient.CurrentStatus
                 if (MessageBox.Show("Are you sure, you want to delete this record?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     BondInfo bondInfo = new BondInfo();
-                    Bonds bond  =  getBondsData();
+                    Bonds bond = getBondsData();
                     bondInfo.Delete(bond);
                     fillupBondInfo();
                 }
@@ -2657,16 +2813,16 @@ namespace FinancialPlannerClient.CurrentStatus
         private Bonds getBondsData()
         {
 
-            Bonds  Bonds = new Bonds();
+            Bonds Bonds = new Bonds();
             Bonds.Id = int.Parse(cmbBondsInvester.Tag.ToString());
             Bonds.Pid = _planeId;
             Bonds.InvesterName = cmbBondsInvester.Text;
             Bonds.CompanyName = cmbBondsCompany.Text;
             Bonds.FolioNo = txtBondsFolioNo.Text;
-            Bonds.FaceValue = float.Parse(txtBondsFaceValue.Text);
-            Bonds.NoOfBond = int.Parse(txtBondsUnit.Text);
-            Bonds.Rate = float.Parse(txtBondsRate.Text);
-            Bonds.CurrentValue = double.Parse(txtBondsCurrentValue.Text);
+            Bonds.FaceValue = (string.IsNullOrEmpty(txtBondsFaceValue.Text) ? 0 : float.Parse(txtBondsFaceValue.Text));
+            Bonds.NoOfBond = (string.IsNullOrEmpty(txtBondsUnit.Text) ? 0 : int.Parse(txtBondsUnit.Text));
+            Bonds.Rate = (string.IsNullOrEmpty(txtBondsRate.Text) ? 0 : float.Parse(txtBondsRate.Text));
+            Bonds.CurrentValue = (string.IsNullOrEmpty(txtBondsCurrentValue.Text) ? 0 : double.Parse(txtBondsCurrentValue.Text));
             Bonds.MaturityDate = dtMaturityDate.Value;
             Bonds.GoalId = int.Parse(cmbBondsGoal.Tag.ToString());
             Bonds.CreatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
@@ -2679,23 +2835,34 @@ namespace FinancialPlannerClient.CurrentStatus
 
         private void btnBondsSave_Click(object sender, EventArgs e)
         {
-            BondInfo BondInfo = new BondInfo();
-            Bonds bonds = getBondsData();
-            bool isSaved = false;
-
-            if (bonds != null && bonds.Id == 0)
-                isSaved = BondInfo.Add(bonds);
-            else
-                isSaved = BondInfo.Update(bonds);
-
-            if (isSaved)
+            try
             {
-                MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                fillupBondInfo();
-                grpBonds.Enabled = false;
+                BondInfo BondInfo = new BondInfo();
+                Bonds bonds = getBondsData();
+                bool isSaved = false;
+
+                if (bonds != null && bonds.Id == 0)
+                    isSaved = BondInfo.Add(bonds);
+                else
+                    isSaved = BondInfo.Update(bonds);
+
+                if (isSaved)
+                {
+                    MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    fillupBondInfo();
+                    grpBonds.Enabled = false;
+                }
+                else
+                    MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-                MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch (Exception ex)
+            {
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
+                LogDebug(currentMethodName.Name, ex);
+                MessageBox.Show("Unable to save record." + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnBondsCancel_Click(object sender, EventArgs e)

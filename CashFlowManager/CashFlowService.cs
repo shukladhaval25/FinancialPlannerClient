@@ -1,6 +1,8 @@
 ﻿using FinancialPlanner.Common;
 using FinancialPlanner.Common.Model;
+using FinancialPlanner.Common.Model.CurrentStatus;
 using FinancialPlanner.Common.Model.PlanOptions;
+using FinancialPlannerClient.CurrentStatus;
 using FinancialPlannerClient.PlannerInfo;
 using FinancialPlannerClient.PlanOptions;
 using FinancialPlannerClient.RiskProfile;
@@ -49,13 +51,28 @@ namespace FinancialPlannerClient.CashFlowManager
 
             IList<Income> incomes = new IncomeInfo().GetAll(_planId);
             IList<Expenses> expenses = new ExpensesInfo().GetAll(_planId);
+            IList<LifeInsurance> lifeInsurances = new LifeInsuranceInfo().GetAllLifeInsurance(_planId);
+            IList<GeneralInsurance> generalInsurances = new GeneralInsuranceInfo().GetAllGeneralInsurances(_planId);
             IList<Loan> loans = new LoanInfo().GetAll(_planId);
             IList<Goals> goals = new GoalsInfo().GetAll(_planId);
+
             fillCashFlowFromIncomes(incomes);
             fillCashFlowFromExpenses(expenses);
+            fillLifeInsurance(lifeInsurances);
+            fillGeneranceInsurance(generalInsurances);
             fillCashFlowFromLoans(loans);
             fillCashFlowFromGoals(goals);
             return _cashFlowCalculation;
+        }
+
+        private void fillLifeInsurance(IList<LifeInsurance> lifeInsurances)
+        {
+            _cashFlowCalculation.LstLifeInsurances = lifeInsurances;
+        }
+
+        private void fillGeneranceInsurance(IList<GeneralInsurance> generalInsurances)
+        {
+            _cashFlowCalculation.LstGeneralInsurances = generalInsurances;
         }
 
         private void fillCashFlowFromGoals(IList<Goals> goals)
@@ -325,6 +342,28 @@ namespace FinancialPlannerClient.CashFlowManager
                 dr[exp.Item] = expWithInflaction;
                 totalExpenses = totalExpenses + expWithInflaction;
             }
+
+            foreach(LifeInsurance lifeInsurance in _cashFlowCalculation.LstLifeInsurances)
+            {
+                if (int.Parse(dr["StartYear"].ToString()) >= lifeInsurance.DateOfIssue.Year &&
+                    int.Parse(dr["StartYear"].ToString()) < lifeInsurance.DateOfIssue.AddYears(lifeInsurance.Terms).Year)
+                {
+                    dr[lifeInsurance.PolicyName] = lifeInsurance.Premium;
+                    totalExpenses = totalExpenses + lifeInsurance.Premium;
+                }
+            }
+
+            //General Insurance
+            foreach (GeneralInsurance generalInsurance in _cashFlowCalculation.LstGeneralInsurances)
+            {
+                if (int.Parse(dr["StartYear"].ToString()) >= generalInsurance.IssueDate.Value.Year &&
+                    int.Parse(dr["StartYear"].ToString()) <= generalInsurance.MaturityDate.Value.Year)
+                {
+                    dr[generalInsurance.Company] = generalInsurance.Premium;
+                    totalExpenses = totalExpenses + generalInsurance.Premium;
+                }
+            }
+
             dr["Total Annual Expenses"] = totalExpenses;
         }
 
@@ -388,6 +427,29 @@ namespace FinancialPlannerClient.CashFlowManager
                 dr[exp.Item] = expAmt;
                 totalExpenses = totalExpenses + expAmt;
             }
+
+            //Life Insurance
+            foreach(LifeInsurance lifeInsurance in _cashFlowCalculation.LstLifeInsurances)
+            {
+                if (_planner.StartDate.Year >= lifeInsurance.DateOfIssue.Year &&
+                    _planner.StartDate.Year <= lifeInsurance.DateOfIssue.AddYears(lifeInsurance.Terms).Year)
+                {
+                    dr[lifeInsurance.PolicyName] = lifeInsurance.Premium;
+                    totalExpenses = totalExpenses + lifeInsurance.Premium;
+                }
+            }
+
+            //General Insurance
+            foreach (GeneralInsurance generalInsurance in _cashFlowCalculation.LstGeneralInsurances)
+            {
+                if (_planner.StartDate >= generalInsurance.IssueDate && 
+                    _planner.StartDate <=  generalInsurance.MaturityDate)
+                {
+                    dr[generalInsurance.Company] = generalInsurance.Premium;
+                    totalExpenses = totalExpenses + generalInsurance.Premium;
+                }
+            }            
+
             dr["Total Annual Expenses"] = totalExpenses;
 
             #endregion
@@ -510,6 +572,51 @@ namespace FinancialPlannerClient.CashFlowManager
             dcEndYear.ReadOnly = true;
             _dtCashFlow.Columns.Add(dcEndYear);
 
+            AddIncomeColumnToDataTable();
+            AddExpensesColumnToDataTable();
+            AddLoanColumnToDataTable();
+            
+            _dtCashFlow.Columns.Add("Surplus Amount", typeof(System.Double));
+
+            AddGoalColumnToDataTable();
+
+            _dtCashFlow.Columns.Add("Corpus Fund", typeof(System.Double));
+        }
+
+        private void AddExpensesColumnToDataTable()
+        {
+            #region "Expenses Calculation" 
+            foreach (Expenses exp in _cashFlowCalculation.LstExpenses)
+            {
+                DataColumn dcExp = new DataColumn(exp.Item, typeof(System.Double));
+                dcExp.ReadOnly = true;
+                _dtCashFlow.Columns.Add(dcExp);
+            }
+
+            #region "Life Insurance"
+            foreach (LifeInsurance lifeInsurance in _cashFlowCalculation.LstLifeInsurances)
+            {
+                DataColumn dcLifeInsurance = new DataColumn(lifeInsurance.PolicyName, typeof(System.Double));
+                dcLifeInsurance.ReadOnly = true;
+                _dtCashFlow.Columns.Add(dcLifeInsurance);
+            }
+            #endregion
+
+            #region "General Insurance"
+            foreach (GeneralInsurance generalInsurance in _cashFlowCalculation.LstGeneralInsurances)
+            {
+                DataColumn dcInsurance = new DataColumn(generalInsurance.Company, typeof(System.Double));
+                dcInsurance.ReadOnly = true;
+                _dtCashFlow.Columns.Add(dcInsurance);
+            }
+            #endregion
+
+            _dtCashFlow.Columns.Add("Total Annual Expenses", typeof(System.Double));
+            #endregion
+        }
+
+        private void AddIncomeColumnToDataTable()
+        {
             #region "Income Calculation"
             foreach (Income income in _cashFlowCalculation.LstIncomes)
             {
@@ -528,18 +635,11 @@ namespace FinancialPlannerClient.CashFlowManager
 
             _dtCashFlow.Columns.Add("Total Tax Deduction", typeof(System.Double));
             _dtCashFlow.Columns.Add("Total Post Tax Income", typeof(System.Double));
-            #endregion 
-
-            #region "Expenses Calculation" 
-            foreach (Expenses exp in _cashFlowCalculation.LstExpenses)
-            {
-                DataColumn dcExp = new DataColumn(exp.Item, typeof(System.Double));
-                dcExp.ReadOnly = true;
-                _dtCashFlow.Columns.Add(dcExp);
-            }
-            _dtCashFlow.Columns.Add("Total Annual Expenses", typeof(System.Double));
             #endregion
+        }
 
+        private void AddLoanColumnToDataTable()
+        {
             #region "Loan Calculation"
             foreach (Loan loan in _cashFlowCalculation.LstLoans)
             {
@@ -549,9 +649,10 @@ namespace FinancialPlannerClient.CashFlowManager
             }
             _dtCashFlow.Columns.Add("Total Annual Loans", typeof(System.Double));
             #endregion
+        }
 
-            _dtCashFlow.Columns.Add("Surplus Amount", typeof(System.Double));
-
+        private void AddGoalColumnToDataTable()
+        {
             #region"Goals
             _cashFlowCalculation.LstGoals.OrderBy(x => x.Priority);
             foreach (Goals goal in _cashFlowCalculation.LstGoals)
@@ -565,9 +666,7 @@ namespace FinancialPlannerClient.CashFlowManager
                     _dtCashFlow.Columns.Add(dtLoanForGoal);
                 }
             }
-
             #endregion
-            _dtCashFlow.Columns.Add("Corpus Fund", typeof(System.Double));
         }
 
         internal bool Save(CashFlow cf)

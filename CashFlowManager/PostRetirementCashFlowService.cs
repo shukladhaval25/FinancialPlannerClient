@@ -18,6 +18,7 @@ namespace FinancialPlannerClient.CashFlowManager
         double totlaCorpusFund = 0;
         double corpusFundBalance;
         double proposeEstimatedCorpusFundRequire = 0;
+        double invReturnRate = 6;
         private DataTable _dtRetirementCashFlow;
 
         public PostRetirementCashFlowService(Planner planner,
@@ -117,11 +118,13 @@ namespace FinancialPlannerClient.CashFlowManager
             {
                 double totalExpAmount = (double.Parse(_dtRetirementCashFlow.Rows[i]["Total Annual Expenses"].ToString()) -
                         double.Parse(_dtRetirementCashFlow.Rows[i]["Total Post Tax Income"].ToString()));
-                double estimatedCorpusFundValue = getEstimatedCorpusFundWithReturnCalculation(totalExpAmount);
+                //double estimatedCorpusFundValue = getEstimatedCorpusFundWithReturnCalculation(totalExpAmount);
                 if (i == _dtRetirementCashFlow.Rows.Count - 1)
                     _dtRetirementCashFlow.Rows[i]["EstimatedRequireCorpusFund"] = 0;
-                _dtRetirementCashFlow.Rows[i - 1]["EstimatedRequireCorpusFund"] = estimatedCorpusFundValue +
-                    double.Parse(_dtRetirementCashFlow.Rows[i]["EstimatedRequireCorpusFund"].ToString());
+                _dtRetirementCashFlow.Rows[i - 1]["EstimatedRequireCorpusFund"] = totalExpAmount +
+                    getEstimatedCorpusFundWithReturnCalculation(
+                        double.Parse(_dtRetirementCashFlow.Rows[i]["EstimatedRequireCorpusFund"].ToString())
+                    );
             }
             proposeEstimatedCorpusFundRequire = 
                 double.Parse(_dtRetirementCashFlow.Rows[0]["EstimatedRequireCorpusFund"].ToString());
@@ -254,6 +257,7 @@ namespace FinancialPlannerClient.CashFlowManager
             dr["Total Annual Expenses"] = totalExpenses;
             corpusFundBalance = corpusFundBalance - (totalExpenses - double.Parse(dr["Total Post Tax Income" +
                 ""].ToString()) );
+            corpusFundBalance = corpusFundBalance + ((corpusFundBalance * invReturnRate) / 100);
             dr["Rem_Corp_Fund"] = corpusFundBalance;
         }
         #endregion
@@ -277,8 +281,7 @@ namespace FinancialPlannerClient.CashFlowManager
         }
 
         private double getEstimatedCorpusFundWithReturnCalculation(double value)
-        {
-            double invReturnRate = 6;      
+        {                
             return (value * 100) / (100 + invReturnRate);
         }
     }

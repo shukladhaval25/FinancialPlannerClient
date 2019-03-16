@@ -883,6 +883,8 @@
             this.txtBalanceUnit.Name = "txtBalanceUnit";
             this.txtBalanceUnit.Size = new System.Drawing.Size(135, 21);
             this.txtBalanceUnit.TabIndex = 67;
+            this.txtBalanceUnit.Text = "0";
+            this.txtBalanceUnit.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label44
             // 
@@ -1049,6 +1051,8 @@
             this.txtExpectedMaturityValue.Name = "txtExpectedMaturityValue";
             this.txtExpectedMaturityValue.Size = new System.Drawing.Size(135, 21);
             this.txtExpectedMaturityValue.TabIndex = 49;
+            this.txtExpectedMaturityValue.Text = "0";
+            this.txtExpectedMaturityValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label26
             // 
@@ -1065,6 +1069,8 @@
             this.txtCurrentValue.Name = "txtCurrentValue";
             this.txtCurrentValue.Size = new System.Drawing.Size(147, 21);
             this.txtCurrentValue.TabIndex = 47;
+            this.txtCurrentValue.Text = "0";
+            this.txtCurrentValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label25
             // 
@@ -1102,6 +1108,8 @@
             this.txtLoanTaken.Name = "txtLoanTaken";
             this.txtLoanTaken.Size = new System.Drawing.Size(147, 21);
             this.txtLoanTaken.TabIndex = 43;
+            this.txtLoanTaken.Text = "0";
+            this.txtLoanTaken.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label23
             // 
@@ -1594,7 +1602,7 @@
             this.cmbGenInsType.Location = new System.Drawing.Point(477, 21);
             this.cmbGenInsType.Name = "cmbGenInsType";
             this.cmbGenInsType.Size = new System.Drawing.Size(184, 24);
-            this.cmbGenInsType.TabIndex = 35;
+            this.cmbGenInsType.TabIndex = 7;
             // 
             // label46
             // 
@@ -1619,7 +1627,7 @@
             this.txtGenInsAttachmentPath.Location = new System.Drawing.Point(477, 178);
             this.txtGenInsAttachmentPath.Name = "txtGenInsAttachmentPath";
             this.txtGenInsAttachmentPath.Size = new System.Drawing.Size(288, 22);
-            this.txtGenInsAttachmentPath.TabIndex = 32;
+            this.txtGenInsAttachmentPath.TabIndex = 12;
             // 
             // label42
             // 
@@ -1636,7 +1644,7 @@
             this.txtGenInsRemark.Multiline = true;
             this.txtGenInsRemark.Name = "txtGenInsRemark";
             this.txtGenInsRemark.Size = new System.Drawing.Size(288, 37);
-            this.txtGenInsRemark.TabIndex = 30;
+            this.txtGenInsRemark.TabIndex = 11;
             // 
             // label41
             // 
@@ -1652,7 +1660,7 @@
             this.txtGenInsPremium.Location = new System.Drawing.Point(477, 108);
             this.txtGenInsPremium.Name = "txtGenInsPremium";
             this.txtGenInsPremium.Size = new System.Drawing.Size(184, 22);
-            this.txtGenInsPremium.TabIndex = 28;
+            this.txtGenInsPremium.TabIndex = 10;
             // 
             // label40
             // 
@@ -1668,7 +1676,7 @@
             this.txtGenInsBonus.Location = new System.Drawing.Point(477, 79);
             this.txtGenInsBonus.Name = "txtGenInsBonus";
             this.txtGenInsBonus.Size = new System.Drawing.Size(184, 22);
-            this.txtGenInsBonus.TabIndex = 26;
+            this.txtGenInsBonus.TabIndex = 9;
             // 
             // label39
             // 
@@ -1684,7 +1692,7 @@
             this.txtGenInsSumAssured.Location = new System.Drawing.Point(477, 50);
             this.txtGenInsSumAssured.Name = "txtGenInsSumAssured";
             this.txtGenInsSumAssured.Size = new System.Drawing.Size(184, 22);
-            this.txtGenInsSumAssured.TabIndex = 24;
+            this.txtGenInsSumAssured.TabIndex = 8;
             // 
             // cmbGenInsPolicy
             // 
@@ -1692,7 +1700,7 @@
             this.cmbGenInsPolicy.Location = new System.Drawing.Point(137, 193);
             this.cmbGenInsPolicy.Name = "cmbGenInsPolicy";
             this.cmbGenInsPolicy.Size = new System.Drawing.Size(184, 24);
-            this.cmbGenInsPolicy.TabIndex = 23;
+            this.cmbGenInsPolicy.TabIndex = 6;
             // 
             // label38
             // 
@@ -1709,7 +1717,7 @@
             this.cmbGenInsCompany.Location = new System.Drawing.Point(137, 163);
             this.cmbGenInsCompany.Name = "cmbGenInsCompany";
             this.cmbGenInsCompany.Size = new System.Drawing.Size(184, 24);
-            this.cmbGenInsCompany.TabIndex = 21;
+            this.cmbGenInsCompany.TabIndex = 5;
             // 
             // label37
             // 
@@ -1734,7 +1742,7 @@
             this.txtGenInsPolicyNumber.Location = new System.Drawing.Point(137, 135);
             this.txtGenInsPolicyNumber.Name = "txtGenInsPolicyNumber";
             this.txtGenInsPolicyNumber.Size = new System.Drawing.Size(184, 22);
-            this.txtGenInsPolicyNumber.TabIndex = 17;
+            this.txtGenInsPolicyNumber.TabIndex = 4;
             // 
             // dtGenInsMaturityDate
             // 
@@ -1742,7 +1750,7 @@
             this.dtGenInsMaturityDate.Location = new System.Drawing.Point(137, 107);
             this.dtGenInsMaturityDate.Name = "dtGenInsMaturityDate";
             this.dtGenInsMaturityDate.Size = new System.Drawing.Size(184, 22);
-            this.dtGenInsMaturityDate.TabIndex = 16;
+            this.dtGenInsMaturityDate.TabIndex = 3;
             // 
             // label35
             // 
@@ -1768,7 +1776,7 @@
             this.dtGenralInsIssueDate.Location = new System.Drawing.Point(137, 51);
             this.dtGenralInsIssueDate.Name = "dtGenralInsIssueDate";
             this.dtGenralInsIssueDate.Size = new System.Drawing.Size(184, 22);
-            this.dtGenralInsIssueDate.TabIndex = 13;
+            this.dtGenralInsIssueDate.TabIndex = 1;
             // 
             // cmbGeneralInsuranceApplicant
             // 
@@ -1776,7 +1784,7 @@
             this.cmbGeneralInsuranceApplicant.Location = new System.Drawing.Point(137, 21);
             this.cmbGeneralInsuranceApplicant.Name = "cmbGeneralInsuranceApplicant";
             this.cmbGeneralInsuranceApplicant.Size = new System.Drawing.Size(184, 24);
-            this.cmbGeneralInsuranceApplicant.TabIndex = 12;
+            this.cmbGeneralInsuranceApplicant.TabIndex = 0;
             // 
             // label33
             // 
@@ -1795,7 +1803,7 @@
             this.btnGenInsCancel.Location = new System.Drawing.Point(679, 206);
             this.btnGenInsCancel.Name = "btnGenInsCancel";
             this.btnGenInsCancel.Size = new System.Drawing.Size(86, 26);
-            this.btnGenInsCancel.TabIndex = 8;
+            this.btnGenInsCancel.TabIndex = 14;
             this.btnGenInsCancel.Text = "Cancel";
             this.btnGenInsCancel.UseVisualStyleBackColor = true;
             this.btnGenInsCancel.Click += new System.EventHandler(this.btnGenInsCancel_Click);
@@ -1808,7 +1816,7 @@
             this.btnGenInsSave.Location = new System.Drawing.Point(587, 206);
             this.btnGenInsSave.Name = "btnGenInsSave";
             this.btnGenInsSave.Size = new System.Drawing.Size(86, 26);
-            this.btnGenInsSave.TabIndex = 7;
+            this.btnGenInsSave.TabIndex = 13;
             this.btnGenInsSave.Text = "Save";
             this.btnGenInsSave.UseVisualStyleBackColor = true;
             this.btnGenInsSave.Click += new System.EventHandler(this.btnGenInsSave_Click);
@@ -1818,7 +1826,7 @@
             this.txtGenInsTerm.Location = new System.Drawing.Point(137, 79);
             this.txtGenInsTerm.Name = "txtGenInsTerm";
             this.txtGenInsTerm.Size = new System.Drawing.Size(184, 22);
-            this.txtGenInsTerm.TabIndex = 5;
+            this.txtGenInsTerm.TabIndex = 2;
             // 
             // label52
             // 

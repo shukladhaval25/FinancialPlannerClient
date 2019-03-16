@@ -82,6 +82,7 @@ namespace FinancialPlannerClient.PlanOptions
             txtTotalEquityAmount.Text = totalEquityAmount.ToString();
             txtTotalDebtAmount.Text = totalDebtAmount.ToString();
             txtTotalGoldAmount.Text = totalGoldAmount.ToString();
+            lblGrandTotalValue.Text = (totalEquityAmount + totalDebtAmount + totalGoldAmount).ToString("#,###,##");
         }
 
         private double getTotalGoldAmount()

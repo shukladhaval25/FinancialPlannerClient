@@ -1,4 +1,5 @@
 ﻿using FinancialPlanner.Common.Model;
+using FinancialPlanner.Common.Model.CurrentStatus;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,8 @@ namespace FinancialPlannerClient.CashFlowManager
         int _spouseRetirementAge;        
         IList<Income> lstIncomes;
         IList<Expenses> lstExpenses;
+        IList<LifeInsurance> lifeInsurances;
+        IList<GeneralInsurance> generalInsurances;
         IList<Loan> lstLoans;
         IList<Goals> lstGoals;
         int _planStartYear;
@@ -240,6 +243,18 @@ namespace FinancialPlannerClient.CashFlowManager
             {
                 lstGoals = value;
             }
+        }
+
+        public IList<LifeInsurance> LstLifeInsurances
+        {
+            get { return lifeInsurances; }
+            set { lifeInsurances = value; }
+        }
+
+        public IList<GeneralInsurance> LstGeneralInsurances
+        {
+            get { return generalInsurances; }
+            set { generalInsurances = value; }
         }
 
         public int PlanStartYear

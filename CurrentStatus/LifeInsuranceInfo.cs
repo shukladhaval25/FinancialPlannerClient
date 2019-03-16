@@ -22,6 +22,42 @@ namespace FinancialPlannerClient.CurrentStatus
         const string DELETE_LIFEINSURANCE_API = "LifeInsurance/Delete";
 
         DataTable dtLifeInsurance;
+        internal IList<LifeInsurance> GetAllLifeInsurance(int planId)
+        {
+            IList<LifeInsurance> lifeInsuranceObj = new List<LifeInsurance>();
+            try
+            {
+                FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
+                string apiurl = Program.WebServiceUrl + "/" + string.Format(GET_ALL_LIFEINSURANCE_API, planId);
+
+                RestAPIExecutor restApiExecutor = new RestAPIExecutor();
+
+                var restResult = restApiExecutor.Execute<IList<LifeInsurance>>(apiurl, null, "GET");
+
+                if (jsonSerialization.IsValidJson(restResult.ToString()))
+                {
+                    lifeInsuranceObj = jsonSerialization.DeserializeFromString<IList<LifeInsurance>>(restResult.ToString());
+                }
+               
+                return lifeInsuranceObj.ToList();
+            }
+            catch (System.Net.WebException webException)
+            {
+                if (webException.Message.Equals("The remote server returned an error: (401) Unauthorized."))
+                {
+                    MessageBox.Show("You session has been expired. Please Login again.", "Session Expired", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
+                LogDebug(currentMethodName.Name, ex);
+                return null;
+            }
+        }
         internal DataTable GetLifeInsuranceInfo(int plannerId)
         {
             IList<LifeInsurance> lifeInsuranceObj = new List<LifeInsurance>();

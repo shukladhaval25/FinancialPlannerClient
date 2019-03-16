@@ -79,6 +79,8 @@
             this.txtTotalDebtAmount = new DevExpress.XtraEditors.TextEdit();
             this.txtTotalGoldAmount = new DevExpress.XtraEditors.TextEdit();
             this.label1 = new System.Windows.Forms.Label();
+            this.lblGrandTotal = new DevExpress.XtraEditors.LabelControl();
+            this.lblGrandTotalValue = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtTotalEquityAmount.Properties)).BeginInit();
@@ -92,9 +94,9 @@
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.tableLayoutPanel1);
-            this.panel1.Location = new System.Drawing.Point(113, 20);
+            this.panel1.Location = new System.Drawing.Point(113, 9);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(832, 504);
+            this.panel1.Size = new System.Drawing.Size(832, 495);
             this.panel1.TabIndex = 1;
             // 
             // label7
@@ -208,7 +210,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 14F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(826, 464);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(826, 451);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // txtRDAmt
@@ -701,11 +703,32 @@
             this.label1.Text = "Total Share (%)";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // lblGrandTotal
+            // 
+            this.lblGrandTotal.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGrandTotal.Appearance.Options.UseFont = true;
+            this.lblGrandTotal.Location = new System.Drawing.Point(422, 510);
+            this.lblGrandTotal.Name = "lblGrandTotal";
+            this.lblGrandTotal.Size = new System.Drawing.Size(93, 19);
+            this.lblGrandTotal.TabIndex = 2;
+            this.lblGrandTotal.Text = "Final Total:";
+            // 
+            // lblGrandTotalValue
+            // 
+            this.lblGrandTotalValue.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGrandTotalValue.Location = new System.Drawing.Point(521, 510);
+            this.lblGrandTotalValue.Name = "lblGrandTotalValue";
+            this.lblGrandTotalValue.Size = new System.Drawing.Size(112, 19);
+            this.lblGrandTotalValue.TabIndex = 3;
+            this.lblGrandTotalValue.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
             // CurrentStatusView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1030, 554);
+            this.Controls.Add(this.lblGrandTotalValue);
+            this.Controls.Add(this.lblGrandTotal);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "CurrentStatusView";
@@ -718,6 +741,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtTotalDebtAmount.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTotalGoldAmount.Properties)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -774,6 +798,8 @@
         private DevExpress.XtraEditors.TextEdit txtTotalEquityAmount;
         private DevExpress.XtraEditors.TextEdit txtTotalDebtAmount;
         private DevExpress.XtraEditors.TextEdit txtTotalGoldAmount;
+        private DevExpress.XtraEditors.LabelControl lblGrandTotal;
+        private System.Windows.Forms.Label lblGrandTotalValue;
     }
 }
 
