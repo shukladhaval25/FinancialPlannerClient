@@ -65,6 +65,20 @@ namespace FinancialPlannerClient.CashFlowManager
             return _cashFlowCalculation;
         }
 
+        internal double GetCurrentStatusAccessFund()
+        {
+            CurrentStatusInfo currentStatusInfo = new CurrentStatusInfo();
+            double currentStatusFund  = currentStatusInfo.GetFundFromCurrentStatus(_planId, 0);
+            for (int rowIndex= 0; rowIndex <= _dtCashFlow.Rows.Count -1;rowIndex++)
+            {
+                double returnRate = (double)_riskProfileInfo.GetRiskProfileReturnRatio(this._riskProfileId,
+                    ((_dtCashFlow.Rows.Count - 1) - rowIndex));
+
+                currentStatusFund = currentStatusFund + ((currentStatusFund * returnRate) / 100 + returnRate);
+            }
+            return currentStatusFund;
+        }
+
         private void fillLifeInsurance(IList<LifeInsurance> lifeInsurances)
         {
             _cashFlowCalculation.LstLifeInsurances = lifeInsurances;
@@ -140,8 +154,8 @@ namespace FinancialPlannerClient.CashFlowManager
                 if (_dtCashFlow != null && _dtCashFlow.Rows.Count > 0)
                 {
 
-                    surplusCashFund = (double)_dtCashFlow.Compute("Sum([Corpus Fund])", string.Empty);
-                    //_dtCashFlow.Select().Sum(i => i.s)
+                    surplusCashFund = string.IsNullOrEmpty(_dtCashFlow.Rows[_dtCashFlow.Rows.Count - 1]["Cumulative Corpus Fund"].ToString()) ? 0 :
+                        double.Parse(_dtCashFlow.Rows[_dtCashFlow.Rows.Count - 1]["Cumulative Corpus Fund"].ToString());                        
                 }
             }
             catch(Exception ex)
@@ -192,7 +206,21 @@ namespace FinancialPlannerClient.CashFlowManager
                 addLoansCalculation(years, dr);
                 addGoalsCalculation(years, dr);
                 setSurplusAmount(dr);
+                setComulativeCorpusFund(years, dr,noOfYearsForCalculation);
                 _dtCashFlow.Rows.Add(dr);
+            }
+        }
+
+        private void setComulativeCorpusFund(int years, DataRow dr, int noOfYearsForCalculation)
+        {
+            if (_dtCashFlow.Rows.Count >0)
+            {
+                double previousYearCumulativeCorpusFund = string.IsNullOrEmpty(_dtCashFlow.Rows[_dtCashFlow.Rows.Count - 1]["Cumulative Corpus Fund"].ToString())? 0:
+                    double.Parse(_dtCashFlow.Rows[_dtCashFlow.Rows.Count - 1]["Cumulative Corpus Fund"].ToString());
+                double returnRate =(double) _riskProfileInfo.GetRiskProfileReturnRatio(this._riskProfileId, noOfYearsForCalculation - years);
+                double currentYearCorpusFund = (string.IsNullOrEmpty(dr["Corpus Fund"].ToString()) ? 0 : double.Parse(dr["Corpus Fund"].ToString()));
+                double cumulativeCorpusFund = currentYearCorpusFund + previousYearCumulativeCorpusFund + ((previousYearCumulativeCorpusFund * returnRate) / (100 +returnRate ));
+                dr["Cumulative Corpus Fund"] = Math.Round(cumulativeCorpusFund,2);
             }
         }
 
@@ -231,7 +259,7 @@ namespace FinancialPlannerClient.CashFlowManager
 
                 }
             }
-            dr["Corpus Fund"] = (surplusAmount > 0) ? surplusAmount : 0;
+            dr["Corpus Fund"] = (surplusAmount > 0) ? Math.Round(surplusAmount,2) : 0;
         }
         private void setSurplusAmount(DataRow dr)
         {
@@ -356,8 +384,7 @@ namespace FinancialPlannerClient.CashFlowManager
             //General Insurance
             foreach (GeneralInsurance generalInsurance in _cashFlowCalculation.LstGeneralInsurances)
             {
-                if (int.Parse(dr["StartYear"].ToString()) >= generalInsurance.IssueDate.Value.Year &&
-                    int.Parse(dr["StartYear"].ToString()) <= generalInsurance.MaturityDate.Value.Year)
+                if (int.Parse(dr["StartYear"].ToString()) >= generalInsurance.IssueDate.Value.Year)
                 {
                     dr[generalInsurance.Company] = generalInsurance.Premium;
                     totalExpenses = totalExpenses + generalInsurance.Premium;
@@ -581,6 +608,7 @@ namespace FinancialPlannerClient.CashFlowManager
             AddGoalColumnToDataTable();
 
             _dtCashFlow.Columns.Add("Corpus Fund", typeof(System.Double));
+            _dtCashFlow.Columns.Add("Cumulative Corpus Fund", typeof(System.Double));
         }
 
         private void AddExpensesColumnToDataTable()

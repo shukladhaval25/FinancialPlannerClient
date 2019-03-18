@@ -26,7 +26,7 @@ namespace FinancialPlannerClient.PlanOptions
         {
             _planId = planId;
             loadGoals(planId);
-            createTableStructureForMonthlyToGoals();
+            createTableStructureForMoneyToGoals();
             addRowInMoneyToGoalsTable();
             return _dtmoneyToGoals;
         }
@@ -70,7 +70,7 @@ namespace FinancialPlannerClient.PlanOptions
            return csInfo.GetFundFromCurrentStatus(_planId,goalId);
         }
 
-        private void createTableStructureForMonthlyToGoals()
+        private void createTableStructureForMoneyToGoals()
         {
             if (_dtmoneyToGoals == null)
                 _dtmoneyToGoals = new DataTable();

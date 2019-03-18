@@ -472,5 +472,18 @@ namespace FinancialPlannerClient.Clients
             navigationPageOther.Controls.Add(plannerView);
             showNavigationPage(plannerView.Name);
         }
+
+        private void navBarItemRiskProfile_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            FinancialPlannerClient.RiskProfile.frmRiskProfiledReturnList riskProfile =
+                            new FinancialPlannerClient.RiskProfile.frmRiskProfiledReturnList(); //(this.personalInformation.Client);
+            //FinancialPlannerClient.RiskProfile.RiskProfileReturn riskProfile = new RiskProfile.RiskProfileReturn();
+            riskProfile.TopLevel = false;
+            riskProfile.Visible = true;
+            navigationPageOther.Name = riskProfile.Name;
+            navigationPageOther.Controls.Clear();
+            navigationPageOther.Controls.Add(riskProfile);
+            showNavigationPage(riskProfile.Name);
+        }
     }
 }

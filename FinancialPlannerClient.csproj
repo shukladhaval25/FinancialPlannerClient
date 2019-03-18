@@ -530,6 +530,12 @@
       <DependentUpon>ProspectCustomerList.cs</DependentUpon>
     </Compile>
     <Compile Include="RiskProfile\DefaultReiskProfile.cs" />
+    <Compile Include="RiskProfile\RiskProfileReturn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RiskProfile\RiskProfileReturn.Designer.cs">
+      <DependentUpon>RiskProfileReturn.cs</DependentUpon>
+    </Compile>
     <Compile Include="RiskProfile\frmRiskProfiledReturnList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -748,6 +754,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ProspectCustomer\ProspectCustomerList.resx">
       <DependentUpon>ProspectCustomerList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RiskProfile\RiskProfileReturn.resx">
+      <DependentUpon>RiskProfileReturn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RiskProfile\frmRiskProfiledReturnList.resx">
       <DependentUpon>frmRiskProfiledReturnList.cs</DependentUpon>

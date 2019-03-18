@@ -69,7 +69,8 @@
             // 
             // grdSplitCashFlow
             // 
-            this.grdSplitCashFlow.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.grdSplitCashFlow.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.grdSplitCashFlow.Location = new System.Drawing.Point(6, 119);
             this.grdSplitCashFlow.MainView = this.gridSplitContainerViewCashFlow;

@@ -25,6 +25,7 @@ namespace FinancialPlannerClient.PlanOptions
         GoalsCalculationInfo _goalCalculationInfo;
         CashFlowService cashFlowService = new CashFlowService();
         DataTable _dtCurrentStatustoGoals = new DataTable();
+        DataTable _dtGoalMapped = new DataTable();
         IList<FinancialPlanner.Common.Model.PlanOptions.CurrentStatusToGoal> _currentStatusToGoal =
             new List<FinancialPlanner.Common.Model.PlanOptions.CurrentStatusToGoal>();
         int optionId;
@@ -41,6 +42,7 @@ namespace FinancialPlannerClient.PlanOptions
             {
                 CurrentStatusToGoal csGoal = new CurrentStatusToGoal();
                 _dtCurrentStatustoGoals = csGoal.CurrentStatusToGoalCalculation(planner.ID);
+
                 gridControlCurrentStatusGoal.DataSource = _dtCurrentStatustoGoals;
                 gridViewCurrentStatusGoal.Columns[2].AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
 
@@ -50,9 +52,15 @@ namespace FinancialPlannerClient.PlanOptions
                 gridViewCurrentStatusGoal.Columns[1].Width = 220;
                 gridViewCurrentStatusGoal.Columns[2].Caption = "Current Status Fund Allocated";
                 gridViewCurrentStatusGoal.Columns[3].Caption = "Surplus Fund";
+                gridViewCurrentStatusGoal.Columns[3].Visible = false;
                 //gridViewCurrentStatusGoal.Columns[4].HeaderText = "Excess Fund";
 
                 fillCurrentStatusToGoalData();
+
+                txtTotalCurrentStatusSurplusValue.Text = getTotalCurrentSatusSurplusValue().ToString();
+                txtTotalMappedValue.Text = getTotalFundAllocationValue().ToString();
+                txtAcessCurrentStautsValue.Text = (double.Parse(txtTotalCurrentStatusSurplusValue.Text) -
+                    double.Parse(txtTotalMappedValue.Text)).ToString();
             }
             catch(Exception ex)
             {
@@ -62,6 +70,28 @@ namespace FinancialPlannerClient.PlanOptions
                 MethodBase currentMethodName = sf.GetMethod();
                 LogDebug(currentMethodName.Name, ex);
             }
+        }
+
+        private double getTotalFundAllocationValue()
+        {
+            double alredyMappedValue = _dtCurrentStatustoGoals.AsEnumerable().Sum(x => Convert.ToDouble(x["CurrentStatusMappedAmount"]));
+            double mappedByProjetManager = _dtGoalMapped.AsEnumerable().Sum(x => Convert.ToDouble(x["FundAllocation"]));
+            return alredyMappedValue + mappedByProjetManager;
+        }
+
+        private double getTotalCurrentSatusSurplusValue()
+        {
+            double totalCurrentStatusValue = 0;
+            if (_dtCurrentStatustoGoals.Rows.Count > 0)
+            {
+                totalCurrentStatusValue = string.IsNullOrEmpty(_dtCurrentStatustoGoals.Rows[0]["ExcessFund"].ToString()) ? 0 :
+                    double.Parse(_dtCurrentStatustoGoals.Rows[0]["ExcessFund"].ToString());
+
+                //string mappedValue = _dtCurrentStatustoGoals.Compute("Sum(CurrentStatusMappedAmount)", string.Empty).ToString();
+                double alreadyMappedValue = _dtCurrentStatustoGoals.AsEnumerable().Sum(x => Convert.ToDouble(x["CurrentStatusMappedAmount"]));
+                totalCurrentStatusValue = totalCurrentStatusValue + alreadyMappedValue;
+            }
+            return Math.Round(totalCurrentStatusValue,2);
         }
 
         private void LogDebug(string methodName, Exception ex)
@@ -146,8 +176,8 @@ namespace FinancialPlannerClient.PlanOptions
                 _currentStatusToGoal = new CurrentStatusInfo().GetCurrentStatusToGoal(this.optionId);
                 if (_currentStatusToGoal != null)
                 {
-                    _dtCurrentStatustoGoals = ListtoDataTable.ToDataTable(_currentStatusToGoal.ToList());
-                    gridControlAllocationOfCurrentStatus.DataSource = _dtCurrentStatustoGoals;
+                    _dtGoalMapped = ListtoDataTable.ToDataTable(_currentStatusToGoal.ToList());
+                    gridControlAllocationOfCurrentStatus.DataSource = _dtGoalMapped;
                     gridViewAllocationOfCurrentStatus.Columns[1].Visible = false;
                     gridViewAllocationOfCurrentStatus.Columns[2].Visible = false;
                     gridViewAllocationOfCurrentStatus.Columns[3].Visible = false;
@@ -161,6 +191,7 @@ namespace FinancialPlannerClient.PlanOptions
                     gridViewAllocationOfCurrentStatus.Columns[5].Caption = "Goal";
                     gridViewAllocationOfCurrentStatus.Columns[4].VisibleIndex = 1;
                     gridViewAllocationOfCurrentStatus.Columns[4].Caption = "Fund Allocation";
+                    //gridViewAllocationOfCurrentStatus.Columns["ID"].Visible = false;
                 }
             }
             catch(Exception ex)
@@ -258,26 +289,33 @@ namespace FinancialPlannerClient.PlanOptions
                     MessageBox.Show("Please enter goal and fund allocation value.", "Validate Data", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
-
-                FinancialPlanner.Common.Model.PlanOptions.CurrentStatusToGoal currStatusToGoal = getCurrentStatusToGoalData();
-                var goal = _currentStatusToGoal.FirstOrDefault(i => i.GoalId == int.Parse(cmbCurrentStsatusToGoal.Tag.ToString()));
-                bool isSaved = false;
-
-                if (goal == null)
-                    isSaved = new CurrentStatusInfo().AddCurrentStatuToGoal(currStatusToGoal);
-                else
-                    isSaved = new CurrentStatusInfo().UpdateCurrentStatuToGoal(currStatusToGoal);
-
-                if (isSaved)
+                if (isAllowToFundAlocate())
                 {
-                    MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    _currentStatusToGoal.Add(currStatusToGoal);
-                    fillCurrentStatusToGoalData();
-                    cmbCurrentStsatusToGoal.Enabled = false;
-                    txtFundAllocation.Enabled = false;
+                    FinancialPlanner.Common.Model.PlanOptions.CurrentStatusToGoal currStatusToGoal = getCurrentStatusToGoalData();
+                    var goal = _currentStatusToGoal.FirstOrDefault(i => i.GoalId == int.Parse(cmbCurrentStsatusToGoal.Tag.ToString()));
+                    bool isSaved = false;
+
+                    if (goal == null)
+                        isSaved = new CurrentStatusInfo().AddCurrentStatuToGoal(currStatusToGoal);
+                    else
+                        isSaved = new CurrentStatusInfo().UpdateCurrentStatuToGoal(currStatusToGoal);
+
+                    if (isSaved)
+                    {
+                        MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        _currentStatusToGoal.Add(currStatusToGoal);
+                        calculateCurrentStatuFund();
+                        fillCurrentStatusToGoalData();
+                        cmbCurrentStsatusToGoal.Enabled = false;
+                        txtFundAllocation.Enabled = false;
+                    }
+                    else
+                        MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
-                    MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                {
+                    DevExpress.XtraEditors.XtraMessageBox.Show("Fund allocation should not be more then access fund.", "Exceed Fund", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
             catch(Exception ex)
             {
@@ -286,6 +324,25 @@ namespace FinancialPlannerClient.PlanOptions
                 StackFrame sf = st.GetFrame(0);
                 MethodBase currentMethodName = sf.GetMethod();
                 LogDebug(currentMethodName.Name, ex);
+            }
+        }
+
+        private void calculateCurrentStatuFund()
+        {
+            txtTotalMappedValue.Text = getTotalFundAllocationValue().ToString();
+            txtAcessCurrentStautsValue.Text = (double.Parse(txtTotalCurrentStatusSurplusValue.Text) -
+                double.Parse(txtTotalMappedValue.Text)).ToString();
+        }
+
+        private bool isAllowToFundAlocate()
+        {
+            try
+            {
+                return (double.Parse(txtAcessCurrentStautsValue.Text) > double.Parse(txtFundAllocation.Text));
+            }
+            catch(Exception ex)
+            {
+                return false;
             }
         }
 
@@ -319,14 +376,28 @@ namespace FinancialPlannerClient.PlanOptions
 
         private void btnDeleteCurrentStatusToGoal_Click(object sender, EventArgs e)
         {
-            if (gridViewAllocationOfCurrentStatus.SelectedRowsCount > 0)
+            try
             {
-                if (MessageBox.Show("Are you sure, you want to delete this record?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (gridViewAllocationOfCurrentStatus.SelectedRowsCount > 0)
                 {
-                    FinancialPlanner.Common.Model.PlanOptions.CurrentStatusToGoal currStatusToGoal = getCurrentStatusToGoalData();
-                    bool isResult = new CurrentStatusInfo().DeleteCurrentStatusToGoal(currStatusToGoal);
-                    fillCurrentStatusToGoalData();
+                    if (MessageBox.Show("Are you sure, you want to delete this record?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        FinancialPlanner.Common.Model.PlanOptions.CurrentStatusToGoal currStatusToGoal = getCurrentStatusToGoalData();
+                        bool isResult = new CurrentStatusInfo().DeleteCurrentStatusToGoal(currStatusToGoal);
+                        fillCurrentStatusToGoalData();
+                        calculateCurrentStatuFund();
+                    }
                 }
+                else
+                    DevExpress.XtraEditors.XtraMessageBox.Show("Please select row to delete record.");
+            }
+            catch(Exception ex)
+            {
+                DevExpress.XtraEditors.XtraMessageBox.Show(ex.StackTrace.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
+                LogDebug(currentMethodName.Name, ex);
             }
         }
 
@@ -334,6 +405,7 @@ namespace FinancialPlannerClient.PlanOptions
         {
             getGoalStatus();
         }
+
 
         private void gridViewCurrentStatusGoal_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
@@ -392,6 +464,26 @@ namespace FinancialPlannerClient.PlanOptions
             //catch (Exception ex)
             //{
             //}
+        }
+
+        private void gridViewAllocationOfCurrentStatus_SelectionChanged(object sender, DevExpress.Data.SelectionChangedEventArgs e)
+        {
+            if (gridViewAllocationOfCurrentStatus.SelectedRowsCount > 0)
+            {
+                cmbCurrentStsatusToGoal.Tag = gridViewAllocationOfCurrentStatus.GetFocusedRowCellValue("ID").ToString();
+                cmbCurrentStsatusToGoal.Text = gridViewAllocationOfCurrentStatus.GetFocusedRowCellValue("Goal").ToString();
+                txtFundAllocation.Text = gridViewAllocationOfCurrentStatus.GetFocusedRowCellValue("FundAllocation").ToString();
+            }
+        }
+
+        private void gridViewAllocationOfCurrentStatus_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
+        {
+            if (gridViewAllocationOfCurrentStatus.SelectedRowsCount > 0)
+            {
+                cmbCurrentStsatusToGoal.Tag = gridViewAllocationOfCurrentStatus.GetFocusedRowCellValue("Id").ToString();
+                cmbCurrentStsatusToGoal.Text = gridViewAllocationOfCurrentStatus.GetFocusedRowCellValue("GoalName").ToString();
+                txtFundAllocation.Text = gridViewAllocationOfCurrentStatus.GetFocusedRowCellValue("FundAllocation").ToString();
+            }
         }
     }
 }

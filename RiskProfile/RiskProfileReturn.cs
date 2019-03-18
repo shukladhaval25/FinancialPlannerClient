@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace DXApplication1
+namespace FinancialPlannerClient.RiskProfile
 {
     public partial class RiskProfileReturn : DevExpress.XtraEditors.XtraForm
     {

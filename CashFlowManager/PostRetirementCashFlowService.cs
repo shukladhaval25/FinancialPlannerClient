@@ -121,13 +121,13 @@ namespace FinancialPlannerClient.CashFlowManager
                 //double estimatedCorpusFundValue = getEstimatedCorpusFundWithReturnCalculation(totalExpAmount);
                 if (i == _dtRetirementCashFlow.Rows.Count - 1)
                     _dtRetirementCashFlow.Rows[i]["EstimatedRequireCorpusFund"] = 0;
-                _dtRetirementCashFlow.Rows[i - 1]["EstimatedRequireCorpusFund"] = totalExpAmount +
+                _dtRetirementCashFlow.Rows[i - 1]["EstimatedRequireCorpusFund"] = Math.Round(totalExpAmount +
                     getEstimatedCorpusFundWithReturnCalculation(
                         double.Parse(_dtRetirementCashFlow.Rows[i]["EstimatedRequireCorpusFund"].ToString())
-                    );
+                    ),2);
             }
-            proposeEstimatedCorpusFundRequire = 
-                double.Parse(_dtRetirementCashFlow.Rows[0]["EstimatedRequireCorpusFund"].ToString());
+            proposeEstimatedCorpusFundRequire = System.Math.Round(
+                double.Parse(_dtRetirementCashFlow.Rows[0]["EstimatedRequireCorpusFund"].ToString()),2);
         }
         #region "Income Section"
         private void generateIncomeColumns()
@@ -258,7 +258,7 @@ namespace FinancialPlannerClient.CashFlowManager
             corpusFundBalance = corpusFundBalance - (totalExpenses - double.Parse(dr["Total Post Tax Income" +
                 ""].ToString()) );
             corpusFundBalance = corpusFundBalance + ((corpusFundBalance * invReturnRate) / 100);
-            dr["Rem_Corp_Fund"] = corpusFundBalance;
+            dr["Rem_Corp_Fund"] = Math.Round(corpusFundBalance, 2) ;
         }
         #endregion
 

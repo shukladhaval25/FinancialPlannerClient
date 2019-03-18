@@ -90,7 +90,7 @@ namespace FinancialPlannerClient.CurrentStatus
 
         public double GetFundFromCurrentStatus(int plannerId,int goalId = 0)
         {
-            CurrentStatusCalculation csCal =  GetCurrestStatusWithoutGoalMapped(plannerId,goalId);
+            CurrentStatusCalculation csCal = GetCurrestStatusWithoutGoalMapped(plannerId,goalId);
             if (csCal != null)
             {
                 double totalEquityAmount = csCal.ShresValue +  csCal.EquityMFvalue +

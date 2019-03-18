@@ -29,21 +29,21 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GoalStatusView));
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem5 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip11 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem11 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem11 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip12 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem12 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem12 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip13 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem13 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem13 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip14 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem14 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem14 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip15 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem15 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem15 = new DevExpress.Utils.ToolTipItem();
             this.label29 = new System.Windows.Forms.Label();
             this.gridControlCurrentStatusGoal = new DevExpress.XtraGrid.GridControl();
             this.gridViewCurrentStatusGoal = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -60,6 +60,13 @@
             this.btnDelete = new DevExpress.XtraEditors.SimpleButton();
             this.btnEdit = new DevExpress.XtraEditors.SimpleButton();
             this.btnAdd = new DevExpress.XtraEditors.SimpleButton();
+            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.txtTotalCurrentStatusSurplusValue = new DevExpress.XtraEditors.TextEdit();
+            this.txtTotalMappedValue = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.txtAcessCurrentStautsValue = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlCurrentStatusGoal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCurrentStatusGoal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFundAllocation.Properties)).BeginInit();
@@ -68,6 +75,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridViewAllocationOfCurrentStatus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grpFundAllocation)).BeginInit();
             this.grpFundAllocation.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
+            this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTotalCurrentStatusSurplusValue.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTotalMappedValue.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtAcessCurrentStautsValue.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // label29
@@ -83,10 +95,10 @@
             // 
             // gridControlCurrentStatusGoal
             // 
-            this.gridControlCurrentStatusGoal.Location = new System.Drawing.Point(15, 43);
+            this.gridControlCurrentStatusGoal.Location = new System.Drawing.Point(15, 193);
             this.gridControlCurrentStatusGoal.MainView = this.gridViewCurrentStatusGoal;
             this.gridControlCurrentStatusGoal.Name = "gridControlCurrentStatusGoal";
-            this.gridControlCurrentStatusGoal.Size = new System.Drawing.Size(467, 404);
+            this.gridControlCurrentStatusGoal.Size = new System.Drawing.Size(467, 212);
             this.gridControlCurrentStatusGoal.TabIndex = 6;
             this.gridControlCurrentStatusGoal.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewCurrentStatusGoal});
@@ -130,6 +142,8 @@
             this.gridViewAllocationOfCurrentStatus.GridControl = this.gridControlAllocationOfCurrentStatus;
             this.gridViewAllocationOfCurrentStatus.Name = "gridViewAllocationOfCurrentStatus";
             this.gridViewAllocationOfCurrentStatus.OptionsBehavior.ReadOnly = true;
+            this.gridViewAllocationOfCurrentStatus.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gridViewAllocationOfCurrentStatus_RowClick);
+            this.gridViewAllocationOfCurrentStatus.SelectionChanged += new DevExpress.Data.SelectionChangedEventHandler(this.gridViewAllocationOfCurrentStatus_SelectionChanged);
             // 
             // lblLine
             // 
@@ -184,15 +198,15 @@
             this.btnClosePlanoptions.Location = new System.Drawing.Point(361, 368);
             this.btnClosePlanoptions.Name = "btnClosePlanoptions";
             this.btnClosePlanoptions.Size = new System.Drawing.Size(88, 23);
-            toolTipTitleItem1.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
-            toolTipTitleItem1.Appearance.Options.UseImage = true;
-            toolTipTitleItem1.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem1.Image")));
-            toolTipTitleItem1.Text = "Cancel";
-            toolTipItem1.LeftIndent = 6;
-            toolTipItem1.Text = "To close fund allocation to goal click here.";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            superToolTip1.Items.Add(toolTipItem1);
-            this.btnClosePlanoptions.SuperTip = superToolTip1;
+            toolTipTitleItem11.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            toolTipTitleItem11.Appearance.Options.UseImage = true;
+            toolTipTitleItem11.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem11.Image")));
+            toolTipTitleItem11.Text = "Cancel";
+            toolTipItem11.LeftIndent = 6;
+            toolTipItem11.Text = "To close fund allocation to goal click here.";
+            superToolTip11.Items.Add(toolTipTitleItem11);
+            superToolTip11.Items.Add(toolTipItem11);
+            this.btnClosePlanoptions.SuperTip = superToolTip11;
             this.btnClosePlanoptions.TabIndex = 28;
             this.btnClosePlanoptions.Text = "Close";
             this.btnClosePlanoptions.Click += new System.EventHandler(this.btnCancelCurrentStatusToGoal_Click);
@@ -204,15 +218,15 @@
             this.btnSavePlanoption.Location = new System.Drawing.Point(361, 339);
             this.btnSavePlanoption.Name = "btnSavePlanoption";
             this.btnSavePlanoption.Size = new System.Drawing.Size(88, 23);
-            toolTipTitleItem2.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
-            toolTipTitleItem2.Appearance.Options.UseImage = true;
-            toolTipTitleItem2.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem2.Image")));
-            toolTipTitleItem2.Text = "Save";
-            toolTipItem2.LeftIndent = 6;
-            toolTipItem2.Text = "To save fund allocation of current status to goal click here.";
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            superToolTip2.Items.Add(toolTipItem2);
-            this.btnSavePlanoption.SuperTip = superToolTip2;
+            toolTipTitleItem12.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
+            toolTipTitleItem12.Appearance.Options.UseImage = true;
+            toolTipTitleItem12.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem12.Image")));
+            toolTipTitleItem12.Text = "Save";
+            toolTipItem12.LeftIndent = 6;
+            toolTipItem12.Text = "To save fund allocation of current status to goal click here.";
+            superToolTip12.Items.Add(toolTipTitleItem12);
+            superToolTip12.Items.Add(toolTipItem12);
+            this.btnSavePlanoption.SuperTip = superToolTip12;
             this.btnSavePlanoption.TabIndex = 27;
             this.btnSavePlanoption.Text = "Save";
             this.btnSavePlanoption.Click += new System.EventHandler(this.btnSaveCurrentStatusToGoal_Click);
@@ -220,20 +234,19 @@
             // btnDelete
             // 
             this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDelete.Enabled = false;
             this.btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
             this.btnDelete.Location = new System.Drawing.Point(68, 289);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(25, 23);
-            toolTipTitleItem3.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
-            toolTipTitleItem3.Appearance.Options.UseImage = true;
-            toolTipTitleItem3.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem3.Image")));
-            toolTipTitleItem3.Text = "Delete plan";
-            toolTipItem3.LeftIndent = 6;
-            toolTipItem3.Text = "To delete selected plan option click here.";
-            superToolTip3.Items.Add(toolTipTitleItem3);
-            superToolTip3.Items.Add(toolTipItem3);
-            this.btnDelete.SuperTip = superToolTip3;
+            toolTipTitleItem13.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
+            toolTipTitleItem13.Appearance.Options.UseImage = true;
+            toolTipTitleItem13.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem13.Image")));
+            toolTipTitleItem13.Text = "Delete plan";
+            toolTipItem13.LeftIndent = 6;
+            toolTipItem13.Text = "To delete selected plan option click here.";
+            superToolTip13.Items.Add(toolTipTitleItem13);
+            superToolTip13.Items.Add(toolTipItem13);
+            this.btnDelete.SuperTip = superToolTip13;
             this.btnDelete.TabIndex = 19;
             this.btnDelete.ToolTip = "Delete Client";
             this.btnDelete.Click += new System.EventHandler(this.btnDeleteCurrentStatusToGoal_Click);
@@ -245,15 +258,15 @@
             this.btnEdit.Location = new System.Drawing.Point(37, 289);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(25, 23);
-            toolTipTitleItem4.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image3")));
-            toolTipTitleItem4.Appearance.Options.UseImage = true;
-            toolTipTitleItem4.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem4.Image")));
-            toolTipTitleItem4.Text = "Edit Allocation";
-            toolTipItem4.LeftIndent = 6;
-            toolTipItem4.Text = "To modify cash flow allocation to goal click here.";
-            superToolTip4.Items.Add(toolTipTitleItem4);
-            superToolTip4.Items.Add(toolTipItem4);
-            this.btnEdit.SuperTip = superToolTip4;
+            toolTipTitleItem14.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image3")));
+            toolTipTitleItem14.Appearance.Options.UseImage = true;
+            toolTipTitleItem14.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem14.Image")));
+            toolTipTitleItem14.Text = "Edit Allocation";
+            toolTipItem14.LeftIndent = 6;
+            toolTipItem14.Text = "To modify cash flow allocation to goal click here.";
+            superToolTip14.Items.Add(toolTipTitleItem14);
+            superToolTip14.Items.Add(toolTipItem14);
+            this.btnEdit.SuperTip = superToolTip14;
             this.btnEdit.TabIndex = 18;
             this.btnEdit.ToolTip = "Edit Client";
             this.btnEdit.Click += new System.EventHandler(this.btnEditCurrentStatusToGoal_Click);
@@ -265,26 +278,91 @@
             this.btnAdd.Location = new System.Drawing.Point(7, 289);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(25, 23);
-            toolTipTitleItem5.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image4")));
-            toolTipTitleItem5.Appearance.Options.UseImage = true;
-            toolTipTitleItem5.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem5.Image")));
-            toolTipTitleItem5.Text = "Allocate Fund";
-            toolTipItem5.LeftIndent = 6;
-            toolTipItem5.Text = "To add new allocation of current status to goal click here.";
-            superToolTip5.Items.Add(toolTipTitleItem5);
-            superToolTip5.Items.Add(toolTipItem5);
-            this.btnAdd.SuperTip = superToolTip5;
+            toolTipTitleItem15.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image4")));
+            toolTipTitleItem15.Appearance.Options.UseImage = true;
+            toolTipTitleItem15.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem15.Image")));
+            toolTipTitleItem15.Text = "Allocate Fund";
+            toolTipItem15.LeftIndent = 6;
+            toolTipItem15.Text = "To add new allocation of current status to goal click here.";
+            superToolTip15.Items.Add(toolTipTitleItem15);
+            superToolTip15.Items.Add(toolTipItem15);
+            this.btnAdd.SuperTip = superToolTip15;
             this.btnAdd.TabIndex = 17;
             this.btnAdd.ToolTip = "Add new client";
             this.btnAdd.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Application;
             this.btnAdd.ToolTipTitle = "New Client";
             this.btnAdd.Click += new System.EventHandler(this.btnAddCurrentStatuaToGoal_Click);
             // 
+            // panelControl1
+            // 
+            this.panelControl1.Controls.Add(this.txtAcessCurrentStautsValue);
+            this.panelControl1.Controls.Add(this.labelControl3);
+            this.panelControl1.Controls.Add(this.txtTotalMappedValue);
+            this.panelControl1.Controls.Add(this.labelControl2);
+            this.panelControl1.Controls.Add(this.txtTotalCurrentStatusSurplusValue);
+            this.panelControl1.Controls.Add(this.labelControl1);
+            this.panelControl1.Location = new System.Drawing.Point(13, 43);
+            this.panelControl1.Name = "panelControl1";
+            this.panelControl1.Size = new System.Drawing.Size(469, 141);
+            this.panelControl1.TabIndex = 9;
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Location = new System.Drawing.Point(37, 35);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(143, 13);
+            this.labelControl1.TabIndex = 0;
+            this.labelControl1.Text = "Total Current Status Surplus :";
+            // 
+            // txtTotalCurrentStatusSurplusValue
+            // 
+            this.txtTotalCurrentStatusSurplusValue.Location = new System.Drawing.Point(208, 32);
+            this.txtTotalCurrentStatusSurplusValue.Name = "txtTotalCurrentStatusSurplusValue";
+            this.txtTotalCurrentStatusSurplusValue.Properties.ReadOnly = true;
+            this.txtTotalCurrentStatusSurplusValue.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtTotalCurrentStatusSurplusValue.Size = new System.Drawing.Size(154, 20);
+            this.txtTotalCurrentStatusSurplusValue.TabIndex = 1;
+            // 
+            // txtTotalMappedValue
+            // 
+            this.txtTotalMappedValue.Location = new System.Drawing.Point(208, 58);
+            this.txtTotalMappedValue.Name = "txtTotalMappedValue";
+            this.txtTotalMappedValue.Properties.ReadOnly = true;
+            this.txtTotalMappedValue.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtTotalMappedValue.Size = new System.Drawing.Size(154, 20);
+            this.txtTotalMappedValue.TabIndex = 3;
+            // 
+            // labelControl2
+            // 
+            this.labelControl2.Location = new System.Drawing.Point(37, 61);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(143, 13);
+            this.labelControl2.TabIndex = 2;
+            this.labelControl2.Text = "Total value mapped for goals:";
+            // 
+            // txtAcessCurrentStautsValue
+            // 
+            this.txtAcessCurrentStautsValue.Location = new System.Drawing.Point(208, 84);
+            this.txtAcessCurrentStautsValue.Name = "txtAcessCurrentStautsValue";
+            this.txtAcessCurrentStautsValue.Properties.ReadOnly = true;
+            this.txtAcessCurrentStautsValue.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtAcessCurrentStautsValue.Size = new System.Drawing.Size(154, 20);
+            this.txtAcessCurrentStautsValue.TabIndex = 5;
+            // 
+            // labelControl3
+            // 
+            this.labelControl3.Location = new System.Drawing.Point(37, 87);
+            this.labelControl3.Name = "labelControl3";
+            this.labelControl3.Size = new System.Drawing.Size(165, 13);
+            this.labelControl3.TabIndex = 4;
+            this.labelControl3.Text = "Remaining Current Status Surplus:";
+            // 
             // GoalStatusView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(961, 459);
+            this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.grpFundAllocation);
             this.Controls.Add(this.gridControlCurrentStatusGoal);
             this.Controls.Add(this.label29);
@@ -301,6 +379,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.grpFundAllocation)).EndInit();
             this.grpFundAllocation.ResumeLayout(false);
             this.grpFundAllocation.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
+            this.panelControl1.ResumeLayout(false);
+            this.panelControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTotalCurrentStatusSurplusValue.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTotalMappedValue.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtAcessCurrentStautsValue.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -324,6 +408,13 @@
         private DevExpress.XtraEditors.SimpleButton btnAdd;
         private DevExpress.XtraEditors.SimpleButton btnClosePlanoptions;
         private DevExpress.XtraEditors.SimpleButton btnSavePlanoption;
+        private DevExpress.XtraEditors.PanelControl panelControl1;
+        private DevExpress.XtraEditors.TextEdit txtAcessCurrentStautsValue;
+        private DevExpress.XtraEditors.LabelControl labelControl3;
+        private DevExpress.XtraEditors.TextEdit txtTotalMappedValue;
+        private DevExpress.XtraEditors.LabelControl labelControl2;
+        private DevExpress.XtraEditors.TextEdit txtTotalCurrentStatusSurplusValue;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
     }
 }
 

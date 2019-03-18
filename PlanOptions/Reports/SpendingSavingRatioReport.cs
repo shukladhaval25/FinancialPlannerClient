@@ -72,15 +72,18 @@ namespace FinancialPlannerClient.PlanOptions.Reports
 
         private void addPointsToChart(int totalIncomeColumnIndex, int columnIndex)
         {
-            int value = (int)(double.Parse(_dtcashFlow.Rows[0][columnIndex].ToString()) * 100 /
-            double.Parse(_dtcashFlow.Rows[0][totalIncomeColumnIndex].ToString()));
-            chartSpendingSavingRatio.Series[0].Points.AddPoint(_dtcashFlow.Columns[columnIndex].Caption, value);
+            if (!string.IsNullOrEmpty(_dtcashFlow.Rows[0][columnIndex].ToString()))
+            {
+                int value = (int)(double.Parse(_dtcashFlow.Rows[0][columnIndex].ToString()) * 100 /
+                double.Parse(_dtcashFlow.Rows[0][totalIncomeColumnIndex].ToString()));
+                chartSpendingSavingRatio.Series[0].Points.AddPoint(_dtcashFlow.Columns[columnIndex].Caption, value);
 
-            Random randomGen = new Random();
-            KnownColor[] names = (KnownColor[])Enum.GetValues(typeof(KnownColor));
-            KnownColor randomColorName = names[randomGen.Next(names.Length)];
-            Color randomColor = Color.FromKnownColor(randomColorName);
-            chartSpendingSavingRatio.Series[0].Points[chartSpendingSavingRatio.Series[0].Points.Count - 1].Color = randomColor;
+                Random randomGen = new Random();
+                KnownColor[] names = (KnownColor[])Enum.GetValues(typeof(KnownColor));
+                KnownColor randomColorName = names[randomGen.Next(names.Length)];
+                Color randomColor = Color.FromKnownColor(randomColorName);
+                chartSpendingSavingRatio.Series[0].Points[chartSpendingSavingRatio.Series[0].Points.Count - 1].Color = randomColor;
+            }
         }
 
         private int getTotalLoanAmountColumnIndex(int startColumnIndex, DataTable dtcashFlow)

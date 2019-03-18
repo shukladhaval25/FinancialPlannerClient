@@ -35,6 +35,7 @@ namespace FinancialPlannerClient.PlanOptions
             lblSpouseCurrentAge.Text = string.Format("{0} Years", cashFlowCalculation.SpouseCurrentAge.ToString());
 
             lblCashSurplusAmt.Text = cashFlowService.GetCashFlowSurplusAmount().ToString("#,###.##");
+            lblCurrentStatusAmt.Text = cashFlowService.GetCurrentStatusAccessFund().ToString("#,###.##");
             double cashSurplusAmt = 0;
             if (double.TryParse(lblCashSurplusAmt.Text,out cashSurplusAmt))
                 lblCorpFundAmt.Text = (cashSurplusAmt  + double.Parse(lblCurrentStatusAmt.Text)).ToString("#,###.##");

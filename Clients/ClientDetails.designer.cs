@@ -400,6 +400,7 @@
             // 
             this.txtPAN.Location = new System.Drawing.Point(138, 23);
             this.txtPAN.Name = "txtPAN";
+            this.txtPAN.Properties.MaxLength = 10;
             this.txtPAN.Size = new System.Drawing.Size(228, 20);
             this.txtPAN.TabIndex = 10;
             // 
@@ -830,6 +831,7 @@
             // 
             this.txtSpousePAN.Location = new System.Drawing.Point(138, 23);
             this.txtSpousePAN.Name = "txtSpousePAN";
+            this.txtSpousePAN.Properties.MaxLength = 10;
             this.txtSpousePAN.Size = new System.Drawing.Size(228, 20);
             this.txtSpousePAN.TabIndex = 10;
             // 
