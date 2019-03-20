@@ -73,9 +73,10 @@
             this.navBarItem3 = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItem4 = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarGroupPlanOption = new DevExpress.XtraNavBar.NavBarGroup();
+            this.navBarItemRiskProfile = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItemEstimatedPlan = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItemReport = new DevExpress.XtraNavBar.NavBarItem();
-            this.navBarItemRiskProfile = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarItemInsurance = new DevExpress.XtraNavBar.NavBarItem();
             this.btnViewPlann = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.cmbPlanner = new DevExpress.XtraEditors.ComboBoxEdit();
@@ -309,11 +310,12 @@
             this.navBarItemEstimatedPlan,
             this.navBarItemReport,
             this.navBarItemOtherInformation,
-            this.navBarItemRiskProfile});
+            this.navBarItemRiskProfile,
+            this.navBarItemInsurance});
             this.navBarControlPlanner.Location = new System.Drawing.Point(-1, 81);
             this.navBarControlPlanner.Name = "navBarControlPlanner";
             this.navBarControlPlanner.OptionsNavPane.ExpandedWidth = 157;
-            this.navBarControlPlanner.Size = new System.Drawing.Size(157, 273);
+            this.navBarControlPlanner.Size = new System.Drawing.Size(157, 276);
             this.navBarControlPlanner.TabIndex = 3;
             this.navBarControlPlanner.Text = "navBarControl1";
             // 
@@ -376,10 +378,18 @@
             this.navBarGroupPlanOption.Caption = "Plan Option";
             this.navBarGroupPlanOption.Expanded = true;
             this.navBarGroupPlanOption.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemRiskProfile),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemEstimatedPlan),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemReport),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemRiskProfile)});
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemInsurance)});
             this.navBarGroupPlanOption.Name = "navBarGroupPlanOption";
+            // 
+            // navBarItemRiskProfile
+            // 
+            this.navBarItemRiskProfile.Caption = "Risk Profile";
+            this.navBarItemRiskProfile.Name = "navBarItemRiskProfile";
+            this.navBarItemRiskProfile.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarItemRiskProfile.SmallImage")));
+            this.navBarItemRiskProfile.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItemRiskProfile_LinkClicked);
             // 
             // navBarItemEstimatedPlan
             // 
@@ -395,12 +405,11 @@
             this.navBarItemReport.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarItemReport.SmallImage")));
             this.navBarItemReport.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItemReport_LinkClicked);
             // 
-            // navBarItemRiskProfile
+            // navBarItemInsurance
             // 
-            this.navBarItemRiskProfile.Caption = "Risk Profile";
-            this.navBarItemRiskProfile.Name = "navBarItemRiskProfile";
-            this.navBarItemRiskProfile.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarItemRiskProfile.SmallImage")));
-            this.navBarItemRiskProfile.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItemRiskProfile_LinkClicked);
+            this.navBarItemInsurance.Caption = "Insurance";
+            this.navBarItemInsurance.Name = "navBarItemInsurance";
+            this.navBarItemInsurance.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarItemInsurance.SmallImage")));
             // 
             // btnViewPlann
             // 
@@ -1275,5 +1284,6 @@
         private DevExpress.XtraNavBar.NavBarItem navBarItemReport;
         private DevExpress.XtraNavBar.NavBarItem navBarItemOtherInformation;
         private DevExpress.XtraNavBar.NavBarItem navBarItemRiskProfile;
+        private DevExpress.XtraNavBar.NavBarItem navBarItemInsurance;
     }
 }

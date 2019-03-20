@@ -131,6 +131,11 @@ namespace FinancialPlannerClient.PlanOptions
         {
             try
             {
+                if (cmbManagedBy.Text == "")
+                {
+                    DevExpress.XtraEditors.XtraMessageBox.Show("Please select plan manage by value.", "Invalid Value", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
                 FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
                 string apiurl = string.Empty;
                 int accountManagedById;

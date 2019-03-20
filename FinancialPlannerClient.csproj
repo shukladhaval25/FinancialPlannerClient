@@ -211,6 +211,12 @@
     <Compile Include="Home\frmHome.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Insurance\InsuranceCalcuation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Insurance\InsuranceCalcuation.Designer.cs">
+      <DependentUpon>InsuranceCalcuation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login\frmXtraLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -608,6 +614,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Home\frmHome.resx">
       <DependentUpon>frmHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Insurance\InsuranceCalcuation.resx">
+      <DependentUpon>InsuranceCalcuation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login\frmXtraLogin.resx">
       <DependentUpon>frmXtraLogin.cs</DependentUpon>

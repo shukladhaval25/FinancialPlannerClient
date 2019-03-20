@@ -67,7 +67,7 @@ namespace FinancialPlannerClient.Clients
                 foreach (TabPage tpage in lstTabPages)
                 {
                     if (tpage.Name == "Assumption" || tpage.Name == "PersonalInfo" ||
-                        tpage.Name == "BankAccount")
+                        tpage.Name == "BankAccount" || tpage.Name == "Goal")
                         tabPlannerDetails.TabPages.RemoveByKey(tpage.Name);
                 }
                 tabPlannerDetails.SelectTab("FamilyInfo");
@@ -1650,6 +1650,7 @@ namespace FinancialPlannerClient.Clients
                 txtExpItem.Text = expenses.Item;
                 txtExpAmount.Text = expenses.Amount.ToString("#,##0.00");
                 txtExpDescription.Text = "";
+                chkEligibleForInsuranceCover.Checked = expenses.EligibleForInsuranceCoverage;
             }
         }
 
@@ -1666,6 +1667,7 @@ namespace FinancialPlannerClient.Clients
             txtExpItem.Text = "";
             txtExpAmount.Text = "0";
             txtExpDescription.Text = "";
+            chkEligibleForInsuranceCover.Checked = false;
         }
 
         private void btnDeleteExpenses_Click(object sender, EventArgs e)
@@ -1713,6 +1715,7 @@ namespace FinancialPlannerClient.Clients
             expenses.UpdatedBy = Program.CurrentUser.Id;
             expenses.UpdatedByUserName = Program.CurrentUser.UserName;
             expenses.MachineName = System.Environment.MachineName;
+            expenses.EligibleForInsuranceCoverage = chkEligibleForInsuranceCover.Checked;
             return expenses;
         }
 

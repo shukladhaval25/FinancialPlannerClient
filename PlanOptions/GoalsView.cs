@@ -23,7 +23,7 @@ namespace FinancialPlannerClient.PlanOptions
 
         private void chkLaonForGoal_CheckedChanged(object sender, EventArgs e)
         {
-            grpLoanForGoal.Enabled = chkLaonForGoal.Checked;           
+            grpLoanForGoal.Enabled = chkLaonForGoal.Checked;
         }
 
         private void rdoGoalType_SelectedIndexChanged(object sender, EventArgs e)
@@ -44,7 +44,7 @@ namespace FinancialPlannerClient.PlanOptions
                 cmbCategory.ReadOnly = false;
                 lblAmountTitle.Text = "Amount(Today's Value)";
             }
-            
+
         }
 
         private void navigateToSelectedPage()
@@ -80,7 +80,7 @@ namespace FinancialPlannerClient.PlanOptions
             {
                 rdoGoalType.SelectedIndex =
                     (goals.Category == RETIREMENT_GOAL_TYPE) ? 1 : 0;
-               
+
                 cmbCategory.Tag = goals.Id;
                 cmbCategory.Text = goals.Category;
                 cmbCategory.Enabled = (goals.Category == RETIREMENT_GOAL_TYPE) ? false : true;
@@ -89,12 +89,14 @@ namespace FinancialPlannerClient.PlanOptions
                 txtGoalStartYear.Text = goals.StartYear;
                 txtInflationRate.Text = goals.InflationRate.ToString("##.00");
                 txtGoalEndYear.Text = goals.EndYear;
+                chkEligbileForInsuranceCoverage.Checked = goals.EligibleForInsuranceCoverage;
                 if (goals.Recurrence != null)
                     txtGoalRecurrence.Text = goals.Recurrence.Value.ToString();
                 else
                     txtGoalRecurrence.Text = "";
                 numPriority.Value = goals.Priority;
                 txtGoalDescription.Text = goals.Description;
+                
                 if (goals.LoanForGoal != null)
                 {
                     chkLaonForGoal.Checked = true;
@@ -131,7 +133,7 @@ namespace FinancialPlannerClient.PlanOptions
             displayGoalsData(goals);
             grpGoalsDetail.Enabled = true;
             rdoGoalType.Enabled = false;
-            navigationFrameGoals.Enabled = true;            
+            navigationFrameGoals.Enabled = true;
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -164,7 +166,8 @@ namespace FinancialPlannerClient.PlanOptions
             txtGoalStartYear.Text = "";
             txtGoalEndYear.Text = "";
             txtGoalRecurrence.Text = "";
-            numPriority.Text = "";
+            int maxPriority = int.Parse(_dtGoals.Compute("Max(Priority)","").ToString());
+            numPriority.Text = (maxPriority + 1).ToString();
             txtGoalDescription.Text = "";
             chkLaonForGoal.Checked = false;
             txtLoanForGoalAmount.Text = "";
@@ -174,6 +177,7 @@ namespace FinancialPlannerClient.PlanOptions
             txtLoanForGoalYears.Text = "";
             txtLoanForGoalStartYear.Text = "";
             txtLoanForGoalEndYear.Text = "";
+            chkEligbileForInsuranceCoverage.Checked = false;
         }
 
         private void btnCloseClientInfo_Click(object sender, EventArgs e)
@@ -185,6 +189,10 @@ namespace FinancialPlannerClient.PlanOptions
 
         private void btnSaveClientGoal_Click(object sender, EventArgs e)
         {
+            if (!repeatGoalValidated())
+            {
+                return;
+            }
             GoalsInfo goalsInfo = new GoalsInfo();
             Goals goals = getGoalsData();
             bool isSaved = false;
@@ -203,6 +211,61 @@ namespace FinancialPlannerClient.PlanOptions
             else
                 MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+
+        private bool repeatGoalValidated()
+        {
+            if (string.IsNullOrEmpty(numPriority.Value.ToString()))
+            {
+                DevExpress.XtraEditors.XtraMessageBox.Show("Please enter valid value for priority of goal.", "Invalid value", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
+
+            if (!string.IsNullOrEmpty(txtGoalStartYear.Text) && !string.IsNullOrEmpty(txtGoalEndYear.Text))
+            {
+                if (string.IsNullOrEmpty(txtGoalRecurrence.Text))
+                {
+                    DevExpress.XtraEditors.XtraMessageBox.Show("Please enter goal frequency value.", "Invalid value", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return false;
+                }
+                return isValidPriorityNumberForGoal();
+            }
+            return true;
+        }
+
+        private bool isValidPriorityNumberForGoal()
+        {
+            if (!isDuplicatePriorityNumber(numPriority.Value.ToString()))
+            {
+                int startYear = int.Parse(txtGoalStartYear.Text);
+                int endYear = int.Parse(txtGoalEndYear.Text);
+                int frequency = (string.IsNullOrEmpty(txtGoalRecurrence.Text) ? 1 : int.Parse(txtGoalRecurrence.Text));
+                bool isPriorityAssignDuplicate = false;
+                int currentPriorityNumber = int.Parse(numPriority.Value.ToString());
+                for (int year = startYear; year < endYear;)
+                {
+                    currentPriorityNumber++;
+                    isPriorityAssignDuplicate = isDuplicatePriorityNumber(currentPriorityNumber.ToString());
+                    if (isPriorityAssignDuplicate)
+                        return false;
+                    year = year + frequency;
+                }
+                return true;
+            }
+            else
+                return false;
+        }
+
+        private bool isDuplicatePriorityNumber(string priorityNumber)
+        {
+            DataRow[] dataRows = _dtGoals.Select("Priority = '" + priorityNumber + "'");
+            if (dataRows.Length > 0)
+            {
+                XtraMessageBox.Show("Please enter different priority number.", "Duplicate", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return true;
+            }
+            return false;
+        }
+
         private Goals getGoalsData()
         {
             Goals Goals = new Goals();
@@ -223,6 +286,7 @@ namespace FinancialPlannerClient.PlanOptions
             Goals.UpdatedBy = Program.CurrentUser.Id;
             Goals.UpdatedByUserName = Program.CurrentUser.UserName;
             Goals.MachineName = Environment.MachineName;
+            Goals.EligibleForInsuranceCoverage = chkEligbileForInsuranceCoverage.Checked;
 
             if (chkLaonForGoal.Checked)
                 Goals.LoanForGoal = getLoanForGoalData();

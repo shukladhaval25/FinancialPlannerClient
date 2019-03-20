@@ -2276,16 +2276,16 @@ namespace FinancialPlannerClient.CurrentStatus
             lifeInsurance.Company = txtCompany.Text;
             lifeInsurance.PolicyName = txtPolicyName.Text;
             lifeInsurance.PolicyNo = txtPolicyNo.Text;
-            lifeInsurance.Premium = double.Parse(txtPrmium.Text);
-            lifeInsurance.Terms = int.Parse(txtTerm.Text);
+            lifeInsurance.Premium = string.IsNullOrEmpty(txtPrmium.Text) ? 0 : double.Parse(txtPrmium.Text);
+            lifeInsurance.Terms = string.IsNullOrEmpty(txtTerm.Text) ? 0 : int.Parse(txtTerm.Text);
             lifeInsurance.PremiumPayTerm = txtPremiumPayTerm.Text;
-            lifeInsurance.SumAssured = double.Parse(txtSumAssured.Text);
+            lifeInsurance.SumAssured = string.IsNullOrEmpty(txtSumAssured.Text) ? 0 : double.Parse(txtSumAssured.Text);
             lifeInsurance.Status = txtStatus.Text;
             lifeInsurance.ModeOfPayment = cmbModeOfPayment.Text;
             lifeInsurance.Moneyback = cmbMoneyBack.Text;
             if (dtNextPremiumDate.Checked)
                 lifeInsurance.NextPremDate = dtNextPremiumDate.Value;
-            lifeInsurance.AccidentalDeathBenefit = double.Parse(txtAccidentalDeathBenefit.Text);
+            lifeInsurance.AccidentalDeathBenefit = string.IsNullOrEmpty(txtAccidentalDeathBenefit.Text) ? 0 : double.Parse(txtAccidentalDeathBenefit.Text);
             lifeInsurance.Type = cmbType.Text;
             lifeInsurance.Appointee = txtAppointee.Text;
             lifeInsurance.Nominee = txtNominee.Text;

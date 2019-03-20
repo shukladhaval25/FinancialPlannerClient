@@ -56,6 +56,7 @@
             this.btnSaveClientGoal = new DevExpress.XtraEditors.SimpleButton();
             this.navigationFrameGoals = new DevExpress.XtraBars.Navigation.NavigationFrame();
             this.navigationPageRegGoal = new DevExpress.XtraBars.Navigation.NavigationPage();
+            this.chkEligbileForInsuranceCoverage = new DevExpress.XtraEditors.CheckEdit();
             this.grpLoanForGoal = new DevExpress.XtraEditors.GroupControl();
             this.txtLoanForGoalEndYear = new DevExpress.XtraEditors.TextEdit();
             this.txtLoanForGoalStartYear = new DevExpress.XtraEditors.TextEdit();
@@ -116,6 +117,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.navigationFrameGoals)).BeginInit();
             this.navigationFrameGoals.SuspendLayout();
             this.navigationPageRegGoal.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkEligbileForInsuranceCoverage.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grpLoanForGoal)).BeginInit();
             this.grpLoanForGoal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtLoanForGoalEndYear.Properties)).BeginInit();
@@ -269,14 +271,14 @@
             this.grpGoalsDetail.Enabled = false;
             this.grpGoalsDetail.Location = new System.Drawing.Point(12, 302);
             this.grpGoalsDetail.Name = "grpGoalsDetail";
-            this.grpGoalsDetail.Size = new System.Drawing.Size(1103, 360);
+            this.grpGoalsDetail.Size = new System.Drawing.Size(1103, 374);
             this.grpGoalsDetail.TabIndex = 7;
             // 
             // btnCloseClientGoal
             // 
             this.btnCloseClientGoal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCloseClientGoal.Image = ((System.Drawing.Image)(resources.GetObject("btnCloseClientGoal.Image")));
-            this.btnCloseClientGoal.Location = new System.Drawing.Point(1036, 330);
+            this.btnCloseClientGoal.Location = new System.Drawing.Point(1036, 342);
             this.btnCloseClientGoal.Name = "btnCloseClientGoal";
             this.btnCloseClientGoal.Size = new System.Drawing.Size(62, 23);
             toolTipTitleItem4.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
@@ -296,7 +298,7 @@
             // 
             this.btnSaveClientGoal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSaveClientGoal.Image = ((System.Drawing.Image)(resources.GetObject("btnSaveClientGoal.Image")));
-            this.btnSaveClientGoal.Location = new System.Drawing.Point(973, 330);
+            this.btnSaveClientGoal.Location = new System.Drawing.Point(973, 342);
             this.btnSaveClientGoal.Name = "btnSaveClientGoal";
             this.btnSaveClientGoal.Size = new System.Drawing.Size(57, 23);
             toolTipTitleItem5.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
@@ -324,12 +326,14 @@
             this.navigationPageRegGoal,
             this.navigationPageRetGoal});
             this.navigationFrameGoals.SelectedPage = this.navigationPageRegGoal;
-            this.navigationFrameGoals.Size = new System.Drawing.Size(1078, 271);
+            this.navigationFrameGoals.Size = new System.Drawing.Size(1078, 283);
             this.navigationFrameGoals.TabIndex = 4;
             this.navigationFrameGoals.Text = "navigationFrame1";
             // 
             // navigationPageRegGoal
             // 
+            this.navigationPageRegGoal.Caption = "navigationPageRegGoal";
+            this.navigationPageRegGoal.Controls.Add(this.chkEligbileForInsuranceCoverage);
             this.navigationPageRegGoal.Controls.Add(this.grpLoanForGoal);
             this.navigationPageRegGoal.Controls.Add(this.cmbCategory);
             this.navigationPageRegGoal.Controls.Add(this.chkLaonForGoal);
@@ -351,7 +355,17 @@
             this.navigationPageRegGoal.Controls.Add(this.numPriority);
             this.navigationPageRegGoal.Controls.Add(this.label66);
             this.navigationPageRegGoal.Name = "navigationPageRegGoal";
-            this.navigationPageRegGoal.Size = new System.Drawing.Size(1078, 271);
+            this.navigationPageRegGoal.Size = new System.Drawing.Size(1078, 283);
+            // 
+            // chkEligbileForInsuranceCoverage
+            // 
+            this.chkEligbileForInsuranceCoverage.Location = new System.Drawing.Point(167, 249);
+            this.chkEligbileForInsuranceCoverage.Name = "chkEligbileForInsuranceCoverage";
+            this.chkEligbileForInsuranceCoverage.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkEligbileForInsuranceCoverage.Properties.Appearance.Options.UseFont = true;
+            this.chkEligbileForInsuranceCoverage.Properties.Caption = "Consider this item as insurance coverage need";
+            this.chkEligbileForInsuranceCoverage.Size = new System.Drawing.Size(302, 19);
+            this.chkEligbileForInsuranceCoverage.TabIndex = 59;
             // 
             // grpLoanForGoal
             // 
@@ -523,7 +537,7 @@
             // 
             this.txtGoalDescription.Location = new System.Drawing.Point(168, 207);
             this.txtGoalDescription.Name = "txtGoalDescription";
-            this.txtGoalDescription.Size = new System.Drawing.Size(266, 54);
+            this.txtGoalDescription.Size = new System.Drawing.Size(266, 36);
             this.txtGoalDescription.TabIndex = 56;
             // 
             // txtInflationRate
@@ -691,7 +705,7 @@
             this.navigationPageRetGoal.Controls.Add(this.numericUpDown1);
             this.navigationPageRetGoal.Controls.Add(this.label3);
             this.navigationPageRetGoal.Name = "navigationPageRetGoal";
-            this.navigationPageRetGoal.Size = new System.Drawing.Size(1078, 271);
+            this.navigationPageRetGoal.Size = new System.Drawing.Size(1078, 283);
             // 
             // textEdit1
             // 
@@ -872,7 +886,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1127, 674);
+            this.ClientSize = new System.Drawing.Size(1127, 688);
             this.Controls.Add(this.grpGoalsDetail);
             this.Controls.Add(this.grpGoals);
             this.Controls.Add(this.lblContactTitle);
@@ -889,6 +903,7 @@
             this.navigationFrameGoals.ResumeLayout(false);
             this.navigationPageRegGoal.ResumeLayout(false);
             this.navigationPageRegGoal.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkEligbileForInsuranceCoverage.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grpLoanForGoal)).EndInit();
             this.grpLoanForGoal.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txtLoanForGoalEndYear.Properties)).EndInit();
@@ -987,6 +1002,7 @@
         private DevExpress.XtraEditors.SimpleButton btnAdd;
         private DevExpress.XtraEditors.SimpleButton btnCloseClientGoal;
         private DevExpress.XtraEditors.SimpleButton btnSaveClientGoal;
+        private DevExpress.XtraEditors.CheckEdit chkEligbileForInsuranceCoverage;
     }
 }
 
