@@ -72,7 +72,7 @@ namespace FinancialPlannerClient.CashFlowManager
             for (int rowIndex= 0; rowIndex <= _dtCashFlow.Rows.Count -1;rowIndex++)
             {
                 double returnRate = (double)_riskProfileInfo.GetRiskProfileReturnRatio(this._riskProfileId,
-                    ((_dtCashFlow.Rows.Count - 1) - rowIndex));
+                    ((_dtCashFlow.Rows.Count) - rowIndex));
 
                 currentStatusFund = currentStatusFund + ((currentStatusFund * returnRate) / 100 + returnRate);
             }
@@ -160,7 +160,10 @@ namespace FinancialPlannerClient.CashFlowManager
             }
             catch(Exception ex)
             {
-
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
+                LogDebug(currentMethodName.Name, ex);                
             }
             return Math.Round(surplusCashFund,2);
         }
@@ -217,9 +220,9 @@ namespace FinancialPlannerClient.CashFlowManager
             {
                 double previousYearCumulativeCorpusFund = string.IsNullOrEmpty(_dtCashFlow.Rows[_dtCashFlow.Rows.Count - 1]["Cumulative Corpus Fund"].ToString())? 0:
                     double.Parse(_dtCashFlow.Rows[_dtCashFlow.Rows.Count - 1]["Cumulative Corpus Fund"].ToString());
-                double returnRate =(double) _riskProfileInfo.GetRiskProfileReturnRatio(this._riskProfileId, noOfYearsForCalculation - years);
+                double returnRate =(double) _riskProfileInfo.GetRiskProfileReturnRatio(this._riskProfileId, noOfYearsForCalculation -( years+1));
                 double currentYearCorpusFund = (string.IsNullOrEmpty(dr["Corpus Fund"].ToString()) ? 0 : double.Parse(dr["Corpus Fund"].ToString()));
-                double cumulativeCorpusFund = currentYearCorpusFund + previousYearCumulativeCorpusFund + ((previousYearCumulativeCorpusFund * returnRate) / (100 +returnRate ));
+                double cumulativeCorpusFund = currentYearCorpusFund + previousYearCumulativeCorpusFund + ((previousYearCumulativeCorpusFund * returnRate) / (100));
                 dr["Cumulative Corpus Fund"] = Math.Round(cumulativeCorpusFund,2);
             }
         }
@@ -248,7 +251,7 @@ namespace FinancialPlannerClient.CashFlowManager
                     GoalsValueCalculationInfo goalValCalInfo = GoalCalculationMgr.GetGoalValueCalculation(goal);
                     if (goalValCalInfo == null)
                     {
-                        goalValCalInfo = new GoalsValueCalculationInfo(goal, _planner, _riskProfileInfo, _riskProfileId);
+                        goalValCalInfo = new GoalsValueCalculationInfo(goal, _planner, _riskProfileInfo, _riskProfileId,this._optionId,this);
                         GoalCalculationMgr.AddGoalValueCalculation(goalValCalInfo);
                     }
                     GoalsCalculationInfo goalcalInfo = new GoalsCalculationInfo(goal, _planner, _riskProfileInfo, _riskProfileId, _optionId);
@@ -258,8 +261,15 @@ namespace FinancialPlannerClient.CashFlowManager
                     surplusAmount = surplusAmountAfterInvestment;
 
                 }
+                if (goal.Category == "Retirement")
+                {
+                    dr["Corpus Fund"] = string.IsNullOrEmpty(dr[string.Format("{0} - {1}", goal.Priority, goal.Name)].ToString())? 0 :
+                        double.Parse(dr[string.Format("{0} - {1}", goal.Priority, goal.Name)].ToString());
+                }
             }
-            dr["Corpus Fund"] = (surplusAmount > 0) ? Math.Round(surplusAmount,2) : 0;
+            dr["Corpus Fund"] = string.IsNullOrEmpty(dr["Corpus Fund"].ToString()) ? 
+                ((surplusAmount > 0) ? Math.Round(surplusAmount,2) : 0) : 
+                double.Parse(dr["Corpus Fund"].ToString()) + ((surplusAmount > 0) ? Math.Round(surplusAmount, 2) : 0);
         }
         private void setSurplusAmount(DataRow dr)
         {
@@ -518,7 +528,7 @@ namespace FinancialPlannerClient.CashFlowManager
                 {
                     _riskProfileInfo = new RiskProfileInfo();
 
-                    GoalsValueCalculationInfo goalValCalInfo = new GoalsValueCalculationInfo(goal, _planner, _riskProfileInfo, _riskProfileId);
+                    GoalsValueCalculationInfo goalValCalInfo = new GoalsValueCalculationInfo(goal, _planner, _riskProfileInfo, _riskProfileId,this._optionId,this);
                     GoalsCalculationInfo goalcalInfo = new GoalsCalculationInfo(goal, _planner, _riskProfileInfo, _riskProfileId, _optionId);
                     goalValCalInfo.SetPortfolioValue(goalcalInfo.GetProfileValue());
                     GoalCalculationMgr.AddGoalValueCalculation(goalValCalInfo);
@@ -531,7 +541,7 @@ namespace FinancialPlannerClient.CashFlowManager
                 {
                     _riskProfileInfo = new RiskProfileInfo();
 
-                    GoalsValueCalculationInfo goalValCalInfo = new GoalsValueCalculationInfo(goal, _planner, _riskProfileInfo, _riskProfileId);
+                    GoalsValueCalculationInfo goalValCalInfo = new GoalsValueCalculationInfo(goal, _planner, _riskProfileInfo, _riskProfileId,this._optionId,this);
                     GoalsCalculationInfo goalcalInfo = new GoalsCalculationInfo(goal, _planner, _riskProfileInfo, _riskProfileId, _optionId);
                     goalValCalInfo.SetPortfolioValue(goalcalInfo.GetProfileValue());
                     GoalCalculationMgr.AddGoalValueCalculation(goalValCalInfo);

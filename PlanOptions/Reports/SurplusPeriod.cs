@@ -42,11 +42,14 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                 int rowIndex = 0;
                 for (int colIndex = surplusColumnIndex + 1; colIndex < _dtcashFlow.Columns.Count - 1; colIndex++)
                 {
-                    xrTableCashFlowGoals.Rows[rowIndex].Cells[0].Text = _dtcashFlow.Columns[colIndex].Caption;
-                    if (!string.IsNullOrEmpty(_dtcashFlow.Rows[0][colIndex].ToString()))
+                    if (rowIndex <= xrTableCashFlowGoals.Rows.Count - 1)
                     {
-                        xrTableCashFlowGoals.Rows[rowIndex].Cells[1].Text = System.Math.Round(double.Parse(_dtcashFlow.Rows[0][colIndex].ToString())).ToString();
-                        totalCashFlowAllocation = totalCashFlowAllocation + double.Parse(_dtcashFlow.Rows[0][colIndex].ToString());
+                        xrTableCashFlowGoals.Rows[rowIndex].Cells[0].Text = _dtcashFlow.Columns[colIndex].Caption;
+                        if (!string.IsNullOrEmpty(_dtcashFlow.Rows[0][colIndex].ToString()))
+                        {
+                            xrTableCashFlowGoals.Rows[rowIndex].Cells[1].Text = System.Math.Round(double.Parse(_dtcashFlow.Rows[0][colIndex].ToString())).ToString();
+                            totalCashFlowAllocation = totalCashFlowAllocation + double.Parse(_dtcashFlow.Rows[0][colIndex].ToString());
+                        }
                     }
                     rowIndex++;
                 }

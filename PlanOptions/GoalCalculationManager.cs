@@ -28,24 +28,8 @@ namespace FinancialPlannerClient.PlanOptions
             _riskProfileId = riskProfileId;
         }
 
-        public IList<GoalsValueCalculationInfo> GetGoalValueCalculations()
-        {
-            if (GoalsList != null)
-            {
-                foreach (Goals goal in GoalsList)
-                {
-                    GoalsValueCalculationInfo goalsValueInfo = new GoalsValueCalculationInfo(goal,_planner,_riskProfileInfo,_riskProfileId);
-                    _goalsValuecalculationInfo.Add(goalsValueInfo);
-                }
-            }
-            return _goalsValuecalculationInfo;
-        }
-
         public GoalsValueCalculationInfo GetGoalValueCalculation(Goals goal)
-        {
-            //GoalsValueCalculationInfo goalsValueInfo = new GoalsValueCalculationInfo(goal,_planner,_riskProfileInfo,_riskProfileId);
-            //_goalsValuecalculationInfo.Add(goalsValueInfo);
-            //return goalsValueInfo;
+        {            
             var result = _goalsValuecalculationInfo.FirstOrDefault(i => i.Goal().Id == goal.Id);
             return result;
         }

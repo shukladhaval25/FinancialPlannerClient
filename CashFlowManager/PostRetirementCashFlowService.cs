@@ -128,6 +128,15 @@ namespace FinancialPlannerClient.CashFlowManager
             }
             proposeEstimatedCorpusFundRequire = System.Math.Round(
                 double.Parse(_dtRetirementCashFlow.Rows[0]["EstimatedRequireCorpusFund"].ToString()),2);
+
+            proposeEstimatedCorpusFundRequire = proposeEstimatedCorpusFundRequire -
+                double.Parse(_dtRetirementCashFlow.Rows[0]["Total Post Tax Income"].ToString());
+
+            proposeEstimatedCorpusFundRequire = (proposeEstimatedCorpusFundRequire * 100) / 106;
+
+
+            double totalExpAmountForFirstRow = (double.Parse(_dtRetirementCashFlow.Rows[0]["Total Annual Expenses"].ToString()));
+            proposeEstimatedCorpusFundRequire = proposeEstimatedCorpusFundRequire + totalExpAmountForFirstRow;           
         }
         #region "Income Section"
         private void generateIncomeColumns()
@@ -177,7 +186,7 @@ namespace FinancialPlannerClient.CashFlowManager
                     {
                         try
                         {
-                            long amount = getIncomeAmount(income);
+                            long amount = getIncomeAmount(income,years);
                             amount = amount + (long)((amount * float.Parse(income.ExpectGrowthInPercentage.ToString()) / 100));
                             dr["(" + income.IncomeBy + ") " + income.Source] = amount;
                             totalIncome = totalIncome + amount;
@@ -210,14 +219,24 @@ namespace FinancialPlannerClient.CashFlowManager
             dr["Total Post Tax Income"] = totalPostTaxIncome;
         }
 
-        private long getIncomeAmount(Income income)
+        private long getIncomeAmount(Income income,int year)
         {
             if (_dtRetirementCashFlow.Rows.Count > 0)
                 return long.Parse(_dtRetirementCashFlow.Rows[_dtRetirementCashFlow.Rows.Count - 1]["(" + income.IncomeBy + ") " + income.Source].ToString());
             else
             {
                 DataRow drLastCashFlow = cashFlowService.GetLastIncomeAndExpAtRetirementAge();
-                long amount = long.Parse(drLastCashFlow["(" + income.IncomeBy + ") " + income.Source].ToString());
+                long amount = 0;
+                if (drLastCashFlow != null)
+                    amount = long.Parse(drLastCashFlow["(" + income.IncomeBy + ") " + income.Source].ToString());
+                else
+                {
+                    int yearDifference = (cashFlowCalculation.ClientCurrentAge > cashFlowCalculation.SpouseCurrentAge) ?
+                        cashFlowCalculation.ClientCurrentAge - cashFlowCalculation.SpouseCurrentAge :
+                        cashFlowCalculation.SpouseCurrentAge - cashFlowCalculation.ClientCurrentAge;
+
+                    amount = (long)futureValue(income.Amount, income.ExpectGrowthInPercentage, ((year - yearDifference) - this.planner.StartDate.Year));
+                }
                 return amount;
             }
         }
@@ -249,7 +268,7 @@ namespace FinancialPlannerClient.CashFlowManager
                 if (goal.Category == "Retirement")
                 {
                     int forYears = years - this.planner.StartDate.Year;
-                    double retExp = futureValue(goal.Amount, goal.InflationRate, forYears);
+                    double retExp = futureValue(goal.Amount, goal.InflationRate, forYears - 1);
                     dr[goal.Name] = retExp;
                     totalExpenses = totalExpenses + retExp;                    
                 }               
@@ -266,10 +285,10 @@ namespace FinancialPlannerClient.CashFlowManager
         {
             //FV = PV * (1 + I)T;
             interest_rate = interest_rate / 100;
-            decimal futureValue = (decimal)presentValue *
-                ((decimal)Math.Pow((double)(1 + interest_rate), (double)timePeriodInYears));
+            double futureValue = presentValue *
+                (Math.Pow((double)(1 + interest_rate), (double)timePeriodInYears));
 
-            return Math.Round((double)futureValue);
+            return Math.Round(futureValue);
         }
         private void LogDebug(string methodName, Exception ex)
         {

@@ -20,13 +20,13 @@ namespace FinancialPlannerClient.PlanOptions
         {
             InitializeComponent();
         }
-        public CashFlowView(int clientId, int iD, int riskProfileId,int optinId)
+        public CashFlowView(int clientId, int iD, int riskProfileId,int optionId)
         {
             InitializeComponent();
             _clientId = clientId;
             this._planId = iD;
             _riskProfileId = riskProfileId;
-            _optionId = _optionId;
+            _optionId = optionId;
         }
         public CashFlowService GetCashFlowService()
         {

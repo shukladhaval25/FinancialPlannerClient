@@ -18,7 +18,7 @@ namespace FinancialPlannerClient.CurrentStatus
         private readonly string GET_CURRENT_STATUS_API= "CurrentStatusCalculator/Get?plannerId={0}&goalId={1}";
         private readonly string GET_ALL_CURRENT_STATUS_API= "CurrentStatusCalculator/GetALL?plannerId={0}";
 
-        private readonly string GET_CURRENT_STATUS_TO_GOAL_BYID = "CurrentStatusToGoal/Get?optionId={0}";
+        private readonly string GET_CURRENT_STATUS_TO_GOAL_BYID = "CurrentStatusToGoal/Get?optionId={0}&planId={1}";
         private readonly string ADD_CURRENT_STATUS_TO_GOAL_API = "CurrentStatusToGoal/Add";
         private readonly string UPDATE_CURRENT_STATUS_TO_GOAL_API = "CurrentStatusToGoal/Update";
         private readonly string DELETE_CURRENT_STATUS_TO_GOAL_API = "CurrentStatusToGoal/Delete";
@@ -149,14 +149,14 @@ namespace FinancialPlannerClient.CurrentStatus
             }
         }
 
-        public IList<FinancialPlanner.Common.Model.PlanOptions.CurrentStatusToGoal> GetCurrentStatusToGoal(int optionID)
+        public IList<FinancialPlanner.Common.Model.PlanOptions.CurrentStatusToGoal> GetCurrentStatusToGoal(int optionID,int planId)
         {
             IList<FinancialPlanner.Common.Model.PlanOptions.CurrentStatusToGoal> currentStatusToGoals = 
                 new List<FinancialPlanner.Common.Model.PlanOptions.CurrentStatusToGoal>();
             try
             {
                 FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
-                string apiurl = Program.WebServiceUrl +"/"+ string.Format(GET_CURRENT_STATUS_TO_GOAL_BYID,optionID);
+                string apiurl = Program.WebServiceUrl +"/"+ string.Format(GET_CURRENT_STATUS_TO_GOAL_BYID,optionID,planId);
 
                 RestAPIExecutor restApiExecutor = new RestAPIExecutor();
 

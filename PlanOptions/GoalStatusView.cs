@@ -173,7 +173,7 @@ namespace FinancialPlannerClient.PlanOptions
                     cmbCurrentStsatusToGoal.Properties.Items.Add(goal.Name);
                 }
 
-                _currentStatusToGoal = new CurrentStatusInfo().GetCurrentStatusToGoal(this.optionId);
+                _currentStatusToGoal = new CurrentStatusInfo().GetCurrentStatusToGoal(this.optionId,this.planner.ID);
                 if (_currentStatusToGoal != null)
                 {
                     _dtGoalMapped = ListtoDataTable.ToDataTable(_currentStatusToGoal.ToList());

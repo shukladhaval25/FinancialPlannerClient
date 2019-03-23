@@ -1,9 +1,13 @@
-﻿using FinancialPlanner.Common.Model;
+﻿using FinancialPlanner.Common;
+using FinancialPlanner.Common.Model;
+using FinancialPlannerClient.CashFlowManager;
 using FinancialPlannerClient.CurrentStatus;
 using FinancialPlannerClient.PlannerInfo;
 using FinancialPlannerClient.RiskProfile;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Reflection;
 
 namespace FinancialPlannerClient.PlanOptions
 {
@@ -13,13 +17,16 @@ namespace FinancialPlannerClient.PlanOptions
         Planner _planner;
         int _planStartYear;
         int _riskProfileId;
+        int _optionId;
         decimal growthPercentage;
+        CashFlowService cashFlowService;
         CurrentStatusInfo csInfo = new CurrentStatusInfo();
         RiskProfileInfo _riskProfileInfo;
         IList<GoalPlanning> _goalPlannings = new List<GoalPlanning>();
         IList<GoalPlanning> _LIFO_GoalPlannings = new List<GoalPlanning>();
 
         double _futureValueOfGoal;
+        double _firstYearExpenseOnRetirementYear;
         double _currentValueOfGoal;
         double _futureValueOfMappedInstruments;
         double _futureValueOfMappedNonFinancialAssets;
@@ -59,6 +66,9 @@ namespace FinancialPlannerClient.PlanOptions
             }
         }
 
+        public double FirstYearExpenseOnRetirementYear {
+            get => _firstYearExpenseOnRetirementYear; }
+
         public double GetCurrentPortfolioValue()
         {
             double totalCashInvestmentUptoNow = 0;
@@ -93,14 +103,18 @@ namespace FinancialPlannerClient.PlanOptions
             return _currentPortfolioValue;
         }
 
-        public GoalsValueCalculationInfo(Goals goal, Planner planner, RiskProfileInfo riskProfileInfo, int riskprorfileId)
+        public GoalsValueCalculationInfo(Goals goal, Planner planner, RiskProfileInfo riskProfileInfo, int riskprorfileId,
+            int optionId, CashFlowService cashFlowService)
         {
             _goal = goal;
             _planner = planner;
             _planStartYear = _planner.StartDate.Year;
             _riskProfileInfo = riskProfileInfo;
             _riskProfileId = riskprorfileId;
+            _optionId = optionId;
+            this.cashFlowService = cashFlowService;
             growthPercentage = _riskProfileInfo.GetRiskProfileReturnRatio(_riskProfileId, getRemainingYearsFromPlanStartYear());
+            _firstYearExpenseOnRetirementYear = getGoalFutureValue(false);
             _futureValueOfGoal = getGoalFutureValue();
             _currentValueOfGoal = getGoalCurrentValue();
             _futureValueOfMappedInstruments = getTotalMappedInstrumentValue();
@@ -170,7 +184,10 @@ namespace FinancialPlannerClient.PlanOptions
 
             GoalPlanning lifoGoalPlanningObj = GetLIFOGoalPlanning(investmentYear + 1);
             double currentProfileValue = GetCurrentPortfolioValue();
-            if (Math.Round(currentProfileValue) == Math.Round(lifoGoalPlanningObj.ActualFreshInvestment))
+            if (lifoGoalPlanningObj == null)
+                return investmentAmount;
+
+            if (lifoGoalPlanningObj != null && Math.Round(currentProfileValue) == Math.Round(lifoGoalPlanningObj.ActualFreshInvestment))
             {
                 GoalPlanning goalPlanning = new GoalPlanning(_goal);
                 goalPlanning.GoalId = _goal.Id;
@@ -185,7 +202,7 @@ namespace FinancialPlannerClient.PlanOptions
 
             double profileValue = (currentProfileValue + investmentAmount);
 
-            if (profileValue < lifoGoalPlanningObj.ActualFreshInvestment)
+            if ( profileValue < lifoGoalPlanningObj.ActualFreshInvestment)
             {                               
                 GoalPlanning goalPlanning = new GoalPlanning(_goal);
                 goalPlanning.GoalId = _goal.Id;
@@ -314,21 +331,46 @@ namespace FinancialPlannerClient.PlanOptions
             return 0;
         }
 
-        private double getGoalFutureValue()
+        private double getGoalFutureValue(bool includeRetirementCase = true)
         {
             double futureValueOfGoal = 0;
             if (_goal != null)
             {
-                int years = getRemainingYearsFromPlanStartYear();
-                futureValueOfGoal = futureValue(_goal.Amount, _goal.InflationRate, years);
+                if (_goal.Category != "Retirement" )
+                {
+                    int years = getRemainingYearsFromPlanStartYear();
+                    futureValueOfGoal = futureValue(_goal.Amount, _goal.InflationRate, years);
+                }
+                else
+                {
+                    if (includeRetirementCase)
+                    {
+                        PostRetirementCashFlowService postRetirementCashFlowService =
+                            new PostRetirementCashFlowService(this._planner, cashFlowService);
+                        postRetirementCashFlowService.GetPostRetirementCashFlowData();
+                        futureValueOfGoal = postRetirementCashFlowService.GetProposeEstimatedCorpusFund();
+                    }
+                    else
+                    {
+                        int years = getRemainingYearsFromPlanStartYear();
+                        futureValueOfGoal = futureValue(_goal.Amount, _goal.InflationRate, years);
+                    }
+                }
             }
             return futureValueOfGoal;
         }
 
         private double getTotalMappedInstrumentValue()
         {
+            
             double instumentMappedCurrentValue =  csInfo.GetFundFromCurrentStatus(_planner.ID, _goal.Id);
-
+            IList<FinancialPlanner.Common.Model.PlanOptions.CurrentStatusToGoal>  currentStatusToGoals = csInfo.GetCurrentStatusToGoal(this._optionId, this._planner.ID);
+            
+            foreach (FinancialPlanner.Common.Model.PlanOptions.CurrentStatusToGoal currentStatusToGoal
+                in currentStatusToGoals)
+            {
+                instumentMappedCurrentValue = instumentMappedCurrentValue + currentStatusToGoal.FundAllocation;
+            }
             return futureValue(instumentMappedCurrentValue, 10, getRemainingYearsFromPlanStartYear());
         }
 
@@ -373,15 +415,38 @@ namespace FinancialPlannerClient.PlanOptions
             return 0;
         }
 
-        private static double futureValue(double presentValue, decimal interest_rate, int timePeriodInYears)
+        private double futureValue(double presentValue, decimal interest_rate, int timePeriodInYears)
         {
-            //FV = PV * (1 + I)T;
-            interest_rate = interest_rate / 100;
-            decimal futureValue =  (decimal) presentValue *
-                ((decimal)Math.Pow((double)(1 + interest_rate), (double)timePeriodInYears));
+            try
+            {
+                //FV = PV * (1 + I)T;
+                interest_rate = interest_rate / 100;
+                decimal futureValue = (decimal)presentValue *
+                    ((decimal)Math.Pow((double)(1 + interest_rate), (double)timePeriodInYears));
 
-            return Math.Round((double)futureValue);
+                return Math.Round((double)futureValue);
+            }
+            catch(Exception ex)
+            {
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
+                LogDebug(currentMethodName.Name, ex);
+                return 0;
+            }
         }
+
+        private void LogDebug(string methodName, Exception ex)
+        {
+            DebuggerLogInfo debuggerInfo = new DebuggerLogInfo
+            {
+                ClassName = this.GetType().Name,
+                Method = methodName,
+                ExceptionInfo = ex
+            };
+            Logger.LogDebug(debuggerInfo);
+        }
+
         private static double presentValue(double futureValue, decimal interest_rate, int timePeriodInYears)
         {
             //PV = FV / (1 + I)T;

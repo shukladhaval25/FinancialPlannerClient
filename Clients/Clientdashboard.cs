@@ -2,6 +2,7 @@
 using FinancialPlanner.Common;
 using FinancialPlanner.Common.DataConversion;
 using FinancialPlanner.Common.Model;
+using FinancialPlannerClient.Insurance;
 using FinancialPlannerClient.PlannerInfo;
 using FinancialPlannerClient.PlanOptions;
 using System;
@@ -484,6 +485,18 @@ namespace FinancialPlannerClient.Clients
             navigationPageOther.Controls.Clear();
             navigationPageOther.Controls.Add(riskProfile);
             showNavigationPage(riskProfile.Name);
+        }
+
+        private void navBarItemInsurance_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            InsuranceCalculation insuranceCalculation = new
+                InsuranceCalculation(this.planner.ID);
+            insuranceCalculation.TopLevel = false;
+            insuranceCalculation.Visible = true;
+            navigationPageOther.Name = insuranceCalculation.Name;
+            navigationPageOther.Controls.Clear();
+            navigationPageOther.Controls.Add(insuranceCalculation);
+            showNavigationPage(insuranceCalculation.Name);
         }
     }
 }

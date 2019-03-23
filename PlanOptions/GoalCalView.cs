@@ -76,13 +76,13 @@ namespace FinancialPlannerClient.PlanOptions
                 }
 
                 _dtGoalProfile = _goalCalculationInfo.GetGoalValue(int.Parse(cmbGoals.Tag.ToString()),
-                planner.ID, _riskProfileId);
+                planner.ID, _riskProfileId,_planOptionId);
                 if (_dtGoalProfile != null && _dtGoalProfile.Rows.Count > 0)
                 {
                     lblGoalPeriodValue.Text = _dtGoalProfile.Rows[0]["GoalYear"].ToString();
                     lblPortfolioValue.Text = _goalCalculationInfo.GetProfileValue().ToString();
 
-                    setGoalProfileGrid();
+                    setGoalProfileGrid(goal);
                     _dtGoalValue = _goalCalculationInfo.GetGoalCalculation();
                     dtGridGoalValue.DataSource = _dtGoalValue;
                     int goalComplitionPercentage = getGoalComplitionPercentage();
@@ -108,7 +108,7 @@ namespace FinancialPlannerClient.PlanOptions
             Logger.LogDebug(debuggerInfo);
         }
 
-        private void setGoalProfileGrid()
+        private void setGoalProfileGrid(Goals goal)
         {
             grdGoalProfile.DataSource = _dtGoalProfile;
             gridViewGoalProfile.Columns["CurrentValue"].Caption = "Current Value";
@@ -125,6 +125,15 @@ namespace FinancialPlannerClient.PlanOptions
             gridViewGoalProfile.Columns["GoalValue"].AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             gridViewGoalProfile.Columns["GoalValue"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             gridViewGoalProfile.Columns["GoalValue"].DisplayFormat.FormatString = "#,###.00";
+
+            if (goal.Category == "Retirement")
+            {
+                gridViewGoalProfile.Columns["FirstYearExpenseOnRetirementYear"].Visible = true;
+                gridViewGoalProfile.Columns["FirstYearExpenseOnRetirementYear"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+                gridViewGoalProfile.Columns["FirstYearExpenseOnRetirementYear"].DisplayFormat.FormatString = "#,###.00";
+            }
+            else
+                gridViewGoalProfile.Columns["FirstYearExpenseOnRetirementYear"].Visible = false;
         }
 
         private int getGoalComplitionPercentage()

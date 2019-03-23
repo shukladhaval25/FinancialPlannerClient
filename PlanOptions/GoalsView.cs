@@ -189,12 +189,13 @@ namespace FinancialPlannerClient.PlanOptions
 
         private void btnSaveClientGoal_Click(object sender, EventArgs e)
         {
-            if (!repeatGoalValidated())
+            Goals goals = getGoalsData();
+            if (!repeatGoalValidated(goals))
             {
                 return;
             }
             GoalsInfo goalsInfo = new GoalsInfo();
-            Goals goals = getGoalsData();
+          
             bool isSaved = false;
 
             if (goals != null && goals.Id == 0)
@@ -212,8 +213,11 @@ namespace FinancialPlannerClient.PlanOptions
                 MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        private bool repeatGoalValidated()
+        private bool repeatGoalValidated(Goals goals)
         {
+            if (goals != null && goals.Id != 0)
+                return true;
+
             if (string.IsNullOrEmpty(numPriority.Value.ToString()))
             {
                 DevExpress.XtraEditors.XtraMessageBox.Show("Please enter valid value for priority of goal.", "Invalid value", MessageBoxButtons.OK, MessageBoxIcon.Information);

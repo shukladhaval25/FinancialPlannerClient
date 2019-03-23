@@ -47,7 +47,7 @@ namespace FinancialPlannerClient.PlanOptions
         }
         #endregion
 
-        internal DataTable GetGoalValue(int goalId, int plannerId, int RiskProfileID)
+        internal DataTable GetGoalValue(int goalId, int plannerId, int RiskProfileID,int planOptionId)
         {
             _goal = _goalsInfo.GetById(goalId, plannerId);
             var plannerInfo = new PlannerInfo.PlannerInfo();
@@ -76,6 +76,7 @@ namespace FinancialPlannerClient.PlanOptions
                 dr["GoalYear"] = int.Parse(_goal.StartYear);
                 dr["Inflation"] = _goal.InflationRate;
                 dr["YearLeft"] = getYears(_goal.StartYear);
+                dr["FirstYearExpenseOnRetirementYear"] = goalsValueCal.FirstYearExpenseOnRetirementYear;
                 dr["GoalValue"] = goalsValueCal.FutureValueOfGoal;
                 if (_goal.LoanForGoal != null)
                 {
@@ -116,6 +117,8 @@ namespace FinancialPlannerClient.PlanOptions
             DataColumn dcCurrentValue = new DataColumn("CurrentValue",typeof(System.Double));
             _dtGoalValue.Columns.Add(dcCurrentValue);
 
+           
+
             DataColumn dcGoalYear = new DataColumn("GoalYear",typeof(System.Int16));
             _dtGoalValue.Columns.Add(dcGoalYear);
 
@@ -124,6 +127,9 @@ namespace FinancialPlannerClient.PlanOptions
 
             DataColumn dcYearLeft = new DataColumn("YearLeft",typeof(System.Int16));
             _dtGoalValue.Columns.Add(dcYearLeft);
+
+            DataColumn dcFirstYearExp = new DataColumn("FirstYearExpenseOnRetirementYear", typeof(System.Double));
+            _dtGoalValue.Columns.Add(dcFirstYearExp);
 
             DataColumn dcGoalValue = new DataColumn("GoalValue",typeof(System.Double));
             _dtGoalValue.Columns.Add(dcGoalValue);
@@ -268,7 +274,7 @@ namespace FinancialPlannerClient.PlanOptions
         internal double GetProfileValue()
         {
             IList<FinancialPlanner.Common.Model.PlanOptions.CurrentStatusToGoal> currentStatusToGoals
-                = new CurrentStatusInfo().GetCurrentStatusToGoal(_optionId);
+                = new CurrentStatusInfo().GetCurrentStatusToGoal(_optionId,this.planner.ID);
             _dtcurrentStatusToGoal = ListtoDataTable.ToDataTable(currentStatusToGoals.ToList());
 
             DataRow[] dr =  _dtcurrentStatusToGoal.Select(string.Format("GoalName = '{0}'", _goal.Name));

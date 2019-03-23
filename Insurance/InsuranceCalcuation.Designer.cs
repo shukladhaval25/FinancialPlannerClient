@@ -74,6 +74,7 @@
             this.Controls.Add(this.lblContactTitle);
             this.Name = "InsuranceCalculation";
             this.Text = "Insurance";
+            this.Load += new System.EventHandler(this.InsuranceCalculation_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridInsuranceCoverage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewInsuranceCoverage)).EndInit();
             this.ResumeLayout(false);

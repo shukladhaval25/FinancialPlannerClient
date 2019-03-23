@@ -486,7 +486,7 @@ namespace FinancialPlannerClient.PlanOptions
                 cmbCurrentStsatusToGoal.Items.Add(goal.Name);
             }
 
-            _currentStatusToGoal = new CurrentStatusInfo().GetCurrentStatusToGoal(int.Parse(cmbPlanOption.Tag.ToString()));
+            _currentStatusToGoal = new CurrentStatusInfo().GetCurrentStatusToGoal(int.Parse(cmbPlanOption.Tag.ToString()),this._planeId);
             if (_currentStatusToGoal != null)
             {
                 _dtCurrentStatustoGoals = ListtoDataTable.ToDataTable(_currentStatusToGoal.ToList());
@@ -695,7 +695,7 @@ namespace FinancialPlannerClient.PlanOptions
 
                 // _goalCalculationInfo.SetInvestmentInGoal(_investmentToGoal);
                 _dtGoalValue = _goalCalculationInfo.GetGoalValue(int.Parse(cmbGoals.Tag.ToString()),
-                    _planeId, int.Parse(lblRiskProfileVal.Tag.ToString()));
+                    _planeId, int.Parse(lblRiskProfileVal.Tag.ToString()),this._optinId);
                 if (_dtGoalValue != null && _dtGoalValue.Rows.Count > 0)
                 {
                     lblGoalPeriodValue.Text = _dtGoalValue.Rows[0]["GoalYear"].ToString();
