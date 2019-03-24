@@ -17,6 +17,7 @@ namespace FinancialPlannerClient.PlannerInfo
         const string UPDATE_CLIENTPERSONAL_INFO_API ="Client/Update";
         const string UPDATE_CLIENTSPOUSE_PERSONAL_INFO_API = "ClientSpouse/Update";
         private const string ADD_CLIENT_API = "Client/Add";
+        const string DELETE_CLIENT = "Client/Delete";
         private PersonalInformation _personalInfo;
 
         public PersonalInformation Get(int clientId)
@@ -79,6 +80,26 @@ namespace FinancialPlannerClient.PlannerInfo
                 RestAPIExecutor restApiExecutor = new RestAPIExecutor();
 
                 var restResult = restApiExecutor.Execute<Client>(apiurl, client, "POST");
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Logger.LogDebug(ex);
+                return false;
+            }
+        }
+
+        public bool DeleteClient(Client client)
+        {
+            try
+            {
+                FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
+                string apiurl = Program.WebServiceUrl + "/" + DELETE_CLIENT;
+
+                RestAPIExecutor restApiExecutor = new RestAPIExecutor();
+
+                var restResult = restApiExecutor.Execute<Client>(apiurl, client, "DELETE");
 
                 return true;
             }

@@ -25,6 +25,7 @@ namespace FinancialPlannerClient.PlanOptions
         IList<GoalPlanning> _goalPlannings = new List<GoalPlanning>();
         IList<GoalPlanning> _LIFO_GoalPlannings = new List<GoalPlanning>();
 
+        private readonly decimal CURREN_STATUS_TO_GOAL_MAPPED_RETURN_REATE_IN_PERCENTAGE = 10;
         double _futureValueOfGoal;
         double _firstYearExpenseOnRetirementYear;
         double _currentValueOfGoal;
@@ -371,7 +372,8 @@ namespace FinancialPlannerClient.PlanOptions
             {
                 instumentMappedCurrentValue = instumentMappedCurrentValue + currentStatusToGoal.FundAllocation;
             }
-            return futureValue(instumentMappedCurrentValue, 10, getRemainingYearsFromPlanStartYear());
+            return futureValue(instumentMappedCurrentValue,
+                CURREN_STATUS_TO_GOAL_MAPPED_RETURN_REATE_IN_PERCENTAGE, getRemainingYearsFromPlanStartYear());
         }
 
         private double getFutureValueOfMappedNonFinancialAsset()

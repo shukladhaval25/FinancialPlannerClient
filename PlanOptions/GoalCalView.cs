@@ -42,10 +42,12 @@ namespace FinancialPlannerClient.PlanOptions
         private void getGoals()
         {
             cmbGoals.Properties.Items.Clear();
-
-            foreach (var goal in this.goals)
+            if (this.goals != null)
             {
-                cmbGoals.Properties.Items.Add(goal.Name);
+                foreach (var goal in this.goals)
+                {
+                    cmbGoals.Properties.Items.Add(goal.Name);
+                }
             }
         }
 
