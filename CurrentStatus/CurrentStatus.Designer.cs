@@ -517,6 +517,12 @@
             this.btnULIPDelete = new System.Windows.Forms.Button();
             this.btnULIPAdd = new System.Windows.Forms.Button();
             this.btnULIPEdit = new System.Windows.Forms.Button();
+            this.txtMFInvestmentReturnRate = new System.Windows.Forms.TextBox();
+            this.label182 = new System.Windows.Forms.Label();
+            this.label183 = new System.Windows.Forms.Label();
+            this.txtNPSInvestmentReturnRate = new System.Windows.Forms.TextBox();
+            this.txtSharesInvestmentReturnRate = new System.Windows.Forms.TextBox();
+            this.label184 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.tabCurrenStatus.SuspendLayout();
             this.LifeInsurance.SuspendLayout();
@@ -1881,6 +1887,8 @@
             // 
             this.grpMF.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpMF.Controls.Add(this.txtMFInvestmentReturnRate);
+            this.grpMF.Controls.Add(this.label182);
             this.grpMF.Controls.Add(this.btnMFViewDetails);
             this.grpMF.Controls.Add(this.txtMFNominee);
             this.grpMF.Controls.Add(this.label162);
@@ -2243,7 +2251,7 @@
             this.btnCancelMF.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCancelMF.ImageKey = "icons8-cancel-16.png";
             this.btnCancelMF.ImageList = this.imgCollection;
-            this.btnCancelMF.Location = new System.Drawing.Point(772, 195);
+            this.btnCancelMF.Location = new System.Drawing.Point(772, 229);
             this.btnCancelMF.Name = "btnCancelMF";
             this.btnCancelMF.Size = new System.Drawing.Size(86, 26);
             this.btnCancelMF.TabIndex = 18;
@@ -2256,7 +2264,7 @@
             this.btnSaveMF.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSaveMF.ImageKey = "icons8-save-close-16.png";
             this.btnSaveMF.ImageList = this.imgCollection;
-            this.btnSaveMF.Location = new System.Drawing.Point(680, 195);
+            this.btnSaveMF.Location = new System.Drawing.Point(680, 229);
             this.btnSaveMF.Name = "btnSaveMF";
             this.btnSaveMF.Size = new System.Drawing.Size(86, 26);
             this.btnSaveMF.TabIndex = 17;
@@ -2359,6 +2367,8 @@
             // 
             this.grpNPS.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpNPS.Controls.Add(this.txtNPSInvestmentReturnRate);
+            this.grpNPS.Controls.Add(this.label183);
             this.grpNPS.Controls.Add(this.txtNPSFolioNo);
             this.grpNPS.Controls.Add(this.label63);
             this.grpNPS.Controls.Add(this.txtNPSSIPAmt);
@@ -2429,6 +2439,7 @@
             // txtNPSDebtRatio
             // 
             this.txtNPSDebtRatio.Location = new System.Drawing.Point(137, 115);
+            this.txtNPSDebtRatio.MaxLength = 5;
             this.txtNPSDebtRatio.Name = "txtNPSDebtRatio";
             this.txtNPSDebtRatio.Size = new System.Drawing.Size(102, 22);
             this.txtNPSDebtRatio.TabIndex = 9;
@@ -2447,6 +2458,7 @@
             // txtNPSGoldRatio
             // 
             this.txtNPSGoldRatio.Location = new System.Drawing.Point(773, 87);
+            this.txtNPSGoldRatio.MaxLength = 5;
             this.txtNPSGoldRatio.Name = "txtNPSGoldRatio";
             this.txtNPSGoldRatio.Size = new System.Drawing.Size(75, 22);
             this.txtNPSGoldRatio.TabIndex = 8;
@@ -2466,6 +2478,7 @@
             // txtNPSEquityRatio
             // 
             this.txtNPSEquityRatio.Location = new System.Drawing.Point(581, 87);
+            this.txtNPSEquityRatio.MaxLength = 5;
             this.txtNPSEquityRatio.Name = "txtNPSEquityRatio";
             this.txtNPSEquityRatio.Size = new System.Drawing.Size(79, 22);
             this.txtNPSEquityRatio.TabIndex = 7;
@@ -2588,10 +2601,10 @@
             this.btnNPSCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnNPSCancel.ImageKey = "icons8-cancel-16.png";
             this.btnNPSCancel.ImageList = this.imgCollection;
-            this.btnNPSCancel.Location = new System.Drawing.Point(760, 155);
+            this.btnNPSCancel.Location = new System.Drawing.Point(762, 145);
             this.btnNPSCancel.Name = "btnNPSCancel";
             this.btnNPSCancel.Size = new System.Drawing.Size(86, 26);
-            this.btnNPSCancel.TabIndex = 15;
+            this.btnNPSCancel.TabIndex = 16;
             this.btnNPSCancel.Text = "Cancel";
             this.btnNPSCancel.UseVisualStyleBackColor = true;
             this.btnNPSCancel.Click += new System.EventHandler(this.btnNPSCancel_Click);
@@ -2601,10 +2614,10 @@
             this.btnNPSSave.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnNPSSave.ImageKey = "icons8-save-close-16.png";
             this.btnNPSSave.ImageList = this.imgCollection;
-            this.btnNPSSave.Location = new System.Drawing.Point(668, 155);
+            this.btnNPSSave.Location = new System.Drawing.Point(670, 145);
             this.btnNPSSave.Name = "btnNPSSave";
             this.btnNPSSave.Size = new System.Drawing.Size(86, 26);
-            this.btnNPSSave.TabIndex = 14;
+            this.btnNPSSave.TabIndex = 15;
             this.btnNPSSave.Text = "Save";
             this.btnNPSSave.UseVisualStyleBackColor = true;
             this.btnNPSSave.Click += new System.EventHandler(this.btnNPSSave_Click);
@@ -2704,6 +2717,8 @@
             // 
             this.grpShares.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpShares.Controls.Add(this.txtSharesInvestmentReturnRate);
+            this.grpShares.Controls.Add(this.label184);
             this.grpShares.Controls.Add(this.txtSharesNominee);
             this.grpShares.Controls.Add(this.label161);
             this.grpShares.Controls.Add(this.txtSharesSecondHolder);
@@ -2907,10 +2922,10 @@
             this.btnSharesCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSharesCancel.ImageKey = "icons8-cancel-16.png";
             this.btnSharesCancel.ImageList = this.imgCollection;
-            this.btnSharesCancel.Location = new System.Drawing.Point(711, 143);
+            this.btnSharesCancel.Location = new System.Drawing.Point(711, 172);
             this.btnSharesCancel.Name = "btnSharesCancel";
             this.btnSharesCancel.Size = new System.Drawing.Size(86, 26);
-            this.btnSharesCancel.TabIndex = 12;
+            this.btnSharesCancel.TabIndex = 13;
             this.btnSharesCancel.Text = "Cancel";
             this.btnSharesCancel.UseVisualStyleBackColor = true;
             this.btnSharesCancel.Click += new System.EventHandler(this.btnSharesCancel_Click);
@@ -2920,10 +2935,10 @@
             this.btnSharesSave.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSharesSave.ImageKey = "icons8-save-close-16.png";
             this.btnSharesSave.ImageList = this.imgCollection;
-            this.btnSharesSave.Location = new System.Drawing.Point(619, 143);
+            this.btnSharesSave.Location = new System.Drawing.Point(619, 172);
             this.btnSharesSave.Name = "btnSharesSave";
             this.btnSharesSave.Size = new System.Drawing.Size(86, 26);
-            this.btnSharesSave.TabIndex = 11;
+            this.btnSharesSave.TabIndex = 12;
             this.btnSharesSave.Text = "Save";
             this.btnSharesSave.UseVisualStyleBackColor = true;
             this.btnSharesSave.Click += new System.EventHandler(this.btnSharesSave_Click);
@@ -5740,6 +5755,60 @@
             this.btnULIPEdit.UseVisualStyleBackColor = true;
             this.btnULIPEdit.Click += new System.EventHandler(this.btnEditULIP_Click);
             // 
+            // txtMFInvestmentReturnRate
+            // 
+            this.txtMFInvestmentReturnRate.Location = new System.Drawing.Point(591, 195);
+            this.txtMFInvestmentReturnRate.MaxLength = 5;
+            this.txtMFInvestmentReturnRate.Name = "txtMFInvestmentReturnRate";
+            this.txtMFInvestmentReturnRate.Size = new System.Drawing.Size(267, 22);
+            this.txtMFInvestmentReturnRate.TabIndex = 16;
+            this.txtMFInvestmentReturnRate.Text = "0";
+            this.txtMFInvestmentReturnRate.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtMFInvestmentReturnRate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNav_KeyPress);
+            // 
+            // label182
+            // 
+            this.label182.Location = new System.Drawing.Point(480, 195);
+            this.label182.Name = "label182";
+            this.label182.Size = new System.Drawing.Size(102, 34);
+            this.label182.TabIndex = 49;
+            this.label182.Text = "Investment Return (%)";
+            // 
+            // label183
+            // 
+            this.label183.AutoSize = true;
+            this.label183.Location = new System.Drawing.Point(134, 146);
+            this.label183.Name = "label183";
+            this.label183.Size = new System.Drawing.Size(169, 16);
+            this.label183.TabIndex = 38;
+            this.label183.Text = "Investment Return Rate (%)";
+            // 
+            // txtNPSInvestmentReturnRate
+            // 
+            this.txtNPSInvestmentReturnRate.Location = new System.Drawing.Point(337, 143);
+            this.txtNPSInvestmentReturnRate.MaxLength = 5;
+            this.txtNPSInvestmentReturnRate.Name = "txtNPSInvestmentReturnRate";
+            this.txtNPSInvestmentReturnRate.Size = new System.Drawing.Size(120, 22);
+            this.txtNPSInvestmentReturnRate.TabIndex = 14;
+            this.txtNPSInvestmentReturnRate.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtSharesInvestmentReturnRate
+            // 
+            this.txtSharesInvestmentReturnRate.Location = new System.Drawing.Point(590, 142);
+            this.txtSharesInvestmentReturnRate.MaxLength = 5;
+            this.txtSharesInvestmentReturnRate.Name = "txtSharesInvestmentReturnRate";
+            this.txtSharesInvestmentReturnRate.Size = new System.Drawing.Size(207, 22);
+            this.txtSharesInvestmentReturnRate.TabIndex = 11;
+            this.txtSharesInvestmentReturnRate.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label184
+            // 
+            this.label184.Location = new System.Drawing.Point(479, 142);
+            this.label184.Name = "label184";
+            this.label184.Size = new System.Drawing.Size(107, 34);
+            this.label184.TabIndex = 42;
+            this.label184.Text = "Investment Return Rate(%):";
+            // 
             // CurrentStatus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -6333,5 +6402,11 @@
         private System.Windows.Forms.Button btnULIPAdd;
         private System.Windows.Forms.Button btnULIPEdit;
         private System.Windows.Forms.Button btnMFViewDetails;
+        private System.Windows.Forms.TextBox txtMFInvestmentReturnRate;
+        private System.Windows.Forms.Label label182;
+        private System.Windows.Forms.TextBox txtNPSInvestmentReturnRate;
+        private System.Windows.Forms.Label label183;
+        private System.Windows.Forms.TextBox txtSharesInvestmentReturnRate;
+        private System.Windows.Forms.Label label184;
     }
 }

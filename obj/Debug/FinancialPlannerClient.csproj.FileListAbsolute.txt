@@ -326,4 +326,3 @@ C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\
 C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\Debug\DXApplication1.RiskProfileReturn.resources
 C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.RiskProfile.RiskProfileReturn.resources
 C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.Insurance.InsuranceCalculation.resources
-C:\Application Development\Financial Planner Project\FinancialPlannerClient\bin\Debug\Newtonsoft.Json.dll

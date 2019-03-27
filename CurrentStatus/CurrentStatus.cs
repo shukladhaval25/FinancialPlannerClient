@@ -1243,6 +1243,7 @@ namespace FinancialPlannerClient.CurrentStatus
                 txtMFFirstHolder.Text = dr["FirstHolder"].ToString();
                 txtMFSecondHolder.Text = dr["SecondHolder"].ToString();
                 txtMFNominee.Text = dr["Nominee"].ToString();
+                txtMFInvestmentReturnRate.Text = dr["InvestmentReturnRate"].ToString();
             }
         }
 
@@ -1289,6 +1290,7 @@ namespace FinancialPlannerClient.CurrentStatus
             txtMFFirstHolder.Text = "";
             txtMFSecondHolder.Text = "";
             txtMFNominee.Text = "";
+            txtMFInvestmentReturnRate.Text = "0";
         }
 
         private void txtNav_KeyPress(object sender, KeyPressEventArgs e)
@@ -1383,6 +1385,7 @@ namespace FinancialPlannerClient.CurrentStatus
             mf.FirstHolder = txtMFFirstHolder.Text;
             mf.SecondHolder = txtMFSecondHolder.Text;
             mf.Nominee = txtMFNominee.Text;
+            mf.InvestmentReturnRate = string.IsNullOrEmpty(txtMFInvestmentReturnRate.Text) ? 0 : float.Parse(txtMFInvestmentReturnRate.Text);
             return mf;
         }
 
@@ -1725,6 +1728,7 @@ namespace FinancialPlannerClient.CurrentStatus
             txtSharesFirstHolder.Text = "";
             txtSharesSecondHolder.Text = "";
             txtSharesNominee.Text = "";
+            txtSharesInvestmentReturnRate.Text = "0";            
         }
 
         private void displaySharesInfo(DataRow dr)
@@ -1752,6 +1756,7 @@ namespace FinancialPlannerClient.CurrentStatus
                 txtSharesFirstHolder.Text = dr["FirstHolder"].ToString();
                 txtSharesSecondHolder.Text = dr["SecondHolder"].ToString();
                 txtSharesNominee.Text = dr["Nominee"].ToString();
+                txtSharesInvestmentReturnRate.Text = dr["InvestmentReturnRate"].ToString();
             }
         }
 
@@ -1807,6 +1812,8 @@ namespace FinancialPlannerClient.CurrentStatus
             shares.FirstHolder = txtSharesFirstHolder.Text;
             shares.SecondHolder = txtSharesSecondHolder.Text;
             shares.Nominee = txtSharesNominee.Text;
+            shares.InvestmentReturnRate = (string.IsNullOrEmpty(txtSharesInvestmentReturnRate.Text) ? 0 :
+                float.Parse(txtSharesInvestmentReturnRate.Text));
             return shares;
         }
 
@@ -2551,6 +2558,7 @@ namespace FinancialPlannerClient.CurrentStatus
             txtNPSDebtRatio.Text = "0";
             cmbNPSGoal.Text = "";
             cmbNPSGoal.Tag = "0";
+            txtNPSInvestmentReturnRate.Text = "0";
         }
 
         private void btnEditNPS_Click(object sender, EventArgs e)
@@ -2604,6 +2612,8 @@ namespace FinancialPlannerClient.CurrentStatus
             nps.UpdatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
             nps.UpdatedBy = Program.CurrentUser.Id;
             nps.MachineName = Environment.MachineName;
+            nps.InvestmentReturnRate = (string.IsNullOrEmpty(txtNPSInvestmentReturnRate.Text) ? 0 :
+                float.Parse(txtNPSInvestmentReturnRate.Text));
             return nps;
         }
 
@@ -2673,6 +2683,7 @@ namespace FinancialPlannerClient.CurrentStatus
                 txtNPSGoldRatio.Text = dr["GoldRatio"].ToString();
                 txtNPSDebtRatio.Text = dr["DebtRatio"].ToString();
                 txtSIPAmount.Text = dr["SIP"].ToString();
+                txtNPSInvestmentReturnRate.Text = dr["InvestmentReturnRate"].ToString();
                 if (dr["GoalID"] != null)
                 {
                     cmbNPSGoal.Tag = dr["GoalId"].ToString();
