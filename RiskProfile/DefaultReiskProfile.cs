@@ -108,6 +108,9 @@ namespace FinancialPlannerClient.RiskProfile
 
         public decimal GetRiskProfileReturnRatio(int RiskProfileId,int yearRemaining)
         {
+            if (yearRemaining == 0)
+                return 0;
+
             if (_dtRiskProfileReturn.Rows.Count == 0)
                 GetRiskProfileReturnById(RiskProfileId);
 

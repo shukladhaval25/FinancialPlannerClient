@@ -1,9 +1,13 @@
 ﻿using DevExpress.Utils;
+using DevExpress.XtraEditors;
+using FinancialPlanner.Common;
 using FinancialPlanner.Common.Model;
 using FinancialPlanner.Common.Model.PlanOptions;
 using FinancialPlannerClient.CashFlowManager;
 using System;
 using System.Data;
+using System.Diagnostics;
+using System.Reflection;
 
 namespace FinancialPlannerClient.PlanOptions
 {
@@ -13,11 +17,31 @@ namespace FinancialPlannerClient.PlanOptions
         CashFlowCalculation cashFlowCalculation;
         public PostRetirementCashFlow(Planner planner,CashFlowService cashFlowService)
         {
-            InitializeComponent();
-            postRetirementCashFlowService = new PostRetirementCashFlowService(planner,cashFlowService);
-            cashFlowCalculation = postRetirementCashFlowService.GetCashFlowCalculationData();
-            displayClientAndSpouseInfo(cashFlowService);
-            postRetirementCashFlowService.SetCorpusFund(double.Parse(lblCorpFundAmt.Text));
+            try
+            {
+
+                InitializeComponent();
+                postRetirementCashFlowService = new PostRetirementCashFlowService(planner, cashFlowService);
+                cashFlowCalculation = postRetirementCashFlowService.GetCashFlowCalculationData();
+                displayClientAndSpouseInfo(cashFlowService);
+                postRetirementCashFlowService.SetCorpusFund(double.Parse(lblCorpFundAmt.Text));
+            }
+            catch(Exception ex)
+            {
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
+                LogDebug(currentMethodName.Name, ex);
+                XtraMessageBox.Show("Error:" + ex.ToString(), "Error");
+            }
+        }
+        private void LogDebug(string methodName, Exception ex)
+        {
+            DebuggerLogInfo debuggerInfo = new DebuggerLogInfo();
+            debuggerInfo.ClassName = this.GetType().Name;
+            debuggerInfo.Method = methodName;
+            debuggerInfo.ExceptionInfo = ex;
+            Logger.LogDebug(debuggerInfo);
         }
         private void displayClientAndSpouseInfo(CashFlowService cashFlowService)
         {
@@ -34,11 +58,12 @@ namespace FinancialPlannerClient.PlanOptions
             lblSpouseLifeExp.Text = string.Format("{0} Years", cashFlowCalculation.SpouseLifeExpected.ToString());
             lblSpouseCurrentAge.Text = string.Format("{0} Years", cashFlowCalculation.SpouseCurrentAge.ToString());
 
-            lblCashSurplusAmt.Text = cashFlowService.GetCashFlowSurplusAmount().ToString("#,###.##");
-            lblCurrentStatusAmt.Text = cashFlowService.GetCurrentStatusAccessFund().ToString("#,###.##");
+            lblCashSurplusAmt.Text = Math.Round(cashFlowService.GetCashFlowSurplusAmount(), 2).ToString();
+            lblCurrentStatusAmt.Text = Math.Round(cashFlowService.GetCurrentStatusAccessFund(), 2).ToString();
             double cashSurplusAmt = 0;
-            if (double.TryParse(lblCashSurplusAmt.Text,out cashSurplusAmt))
-                lblCorpFundAmt.Text = (cashSurplusAmt  + double.Parse(lblCurrentStatusAmt.Text)).ToString("#,###.##");
+            if (double.TryParse(lblCashSurplusAmt.Text, out cashSurplusAmt))
+                lblCorpFundAmt.Text = (cashSurplusAmt + (string.IsNullOrEmpty(lblCurrentStatusAmt.Text) ? 0 :
+                   double.Parse(lblCurrentStatusAmt.Text))).ToString();
         }
        
         private void fillPostRetirementCashFlowData()
@@ -51,9 +76,20 @@ namespace FinancialPlannerClient.PlanOptions
 
         private void PostRetirementCashFlow_Load(object sender, EventArgs e)
         {
-            fillPostRetirementCashFlowData();
-            lblEstimatedCorpusFundValue.Text = postRetirementCashFlowService.GetProposeEstimatedCorpusFund().ToString("##,###.##");
-            lblEstimatedCorpusFundValue.Refresh();
+            try
+            {
+                fillPostRetirementCashFlowData();
+                lblEstimatedCorpusFundValue.Text = postRetirementCashFlowService.GetProposeEstimatedCorpusFund().ToString("##,###.##");
+                lblEstimatedCorpusFundValue.Refresh();
+            }
+            catch (Exception ex)
+            {
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
+                LogDebug(currentMethodName.Name, ex);
+                XtraMessageBox.Show("Error:" + ex.ToString(), "Error");
+            }
         }
     }
 }

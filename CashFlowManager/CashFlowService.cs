@@ -74,7 +74,7 @@ namespace FinancialPlannerClient.CashFlowManager
                 double returnRate = (double)_riskProfileInfo.GetRiskProfileReturnRatio(this._riskProfileId,
                     ((_dtCashFlow.Rows.Count) - rowIndex));
 
-                currentStatusFund = currentStatusFund + ((currentStatusFund * returnRate) / 100 + returnRate);
+                currentStatusFund = currentStatusFund + ((currentStatusFund * returnRate) / (100 + returnRate));
             }
             return currentStatusFund;
         }
@@ -408,11 +408,9 @@ namespace FinancialPlannerClient.CashFlowManager
         {
             double totalLoans = 0;
             int previousYearRowIndex = years - 1;
-            years = years + 1;
+            
             foreach (Loan loan in _cashFlowCalculation.LstLoans)
             {
-                //if (int.Parse(dr["StartYear"].ToString()) <=
-                //   int.Parse(_dtCashFlow.Rows[0]["StartYear"].ToString()) + (Decimal) ((Decimal) loan.TermLeftInMonths / 12) - 1)
                 decimal totalNoOfYearsForLoan = (Decimal)((Decimal)loan.TermLeftInMonths / 12);
                 if (years < totalNoOfYearsForLoan || (totalNoOfYearsForLoan > years - 1 && totalNoOfYearsForLoan < years))
                 {
@@ -479,8 +477,11 @@ namespace FinancialPlannerClient.CashFlowManager
             //General Insurance
             foreach (GeneralInsurance generalInsurance in _cashFlowCalculation.LstGeneralInsurances)
             {
-                if (_planner.StartDate >= generalInsurance.IssueDate && 
-                    _planner.StartDate <=  generalInsurance.MaturityDate)
+                if (( generalInsurance.IssueDate >= _planner.StartDate && 
+                     generalInsurance.IssueDate <= _planner.EndDate) ||
+                     (_planner.StartDate >= generalInsurance.IssueDate &&
+                     _planner.EndDate <= generalInsurance.MaturityDate) ||
+                     (generalInsurance.IssueDate <= _planner.StartDate))
                 {
                     dr[generalInsurance.Company] = generalInsurance.Premium;
                     totalExpenses = totalExpenses + generalInsurance.Premium;
@@ -507,7 +508,7 @@ namespace FinancialPlannerClient.CashFlowManager
             #region "Add Goals"
 
             double totalLoanEmi = 0;
-            double surplusCashFund = (totalpostTaxIncome - (totalExpenses + totalLoan + totalLoanEmi));
+            double surplusCashFund = (totalpostTaxIncome - (totalExpenses + totalLoan + totalLoanEmi));            
             foreach (Goals goal in _cashFlowCalculation.LstGoals)
             {
                 //1 Loan for Goal

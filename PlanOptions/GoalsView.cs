@@ -166,7 +166,8 @@ namespace FinancialPlannerClient.PlanOptions
             txtGoalStartYear.Text = "";
             txtGoalEndYear.Text = "";
             txtGoalRecurrence.Text = "";
-            int maxPriority = int.Parse(_dtGoals.Compute("Max(Priority)","").ToString());
+            int maxPriority = string.IsNullOrEmpty(_dtGoals.Compute("Max(Priority)", "").ToString()) ? 0 :
+                int.Parse(_dtGoals.Compute("Max(Priority)","").ToString());
             numPriority.Text = (maxPriority + 1).ToString();
             txtGoalDescription.Text = "";
             chkLaonForGoal.Checked = false;

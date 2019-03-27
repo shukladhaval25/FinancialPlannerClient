@@ -183,7 +183,9 @@ namespace FinancialPlannerClient.PlanOptions
             double futureInvestmentRequireValueForGoal = _futureValueOfGoal - (_futureValueOfMappedInstruments +
                 _futureValueOfMappedNonFinancialAssets + getLoanAmount());
 
-            GoalPlanning lifoGoalPlanningObj = GetLIFOGoalPlanning(investmentYear + 1);
+            GoalPlanning lifoGoalPlanningObj = (investmentYear == this._planner.StartDate.Year) ?
+                GetLIFOGoalPlanning(investmentYear):
+                GetLIFOGoalPlanning(investmentYear + 1);
             double currentProfileValue = GetCurrentPortfolioValue();
             if (lifoGoalPlanningObj == null)
                 return investmentAmount;

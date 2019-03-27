@@ -268,7 +268,7 @@ namespace FinancialPlannerClient.CashFlowManager
                 if (goal.Category == "Retirement")
                 {
                     int forYears = years - this.planner.StartDate.Year;
-                    double retExp = futureValue(goal.Amount, goal.InflationRate, forYears - 1);
+                    double retExp = futureValue(goal.Amount, goal.InflationRate, forYears);
                     dr[goal.Name] = retExp;
                     totalExpenses = totalExpenses + retExp;                    
                 }               
