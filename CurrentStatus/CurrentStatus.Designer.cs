@@ -154,6 +154,8 @@
             this.label51 = new System.Windows.Forms.Label();
             this.MutualFund = new System.Windows.Forms.TabPage();
             this.grpMF = new System.Windows.Forms.GroupBox();
+            this.txtMFInvestmentReturnRate = new System.Windows.Forms.TextBox();
+            this.label182 = new System.Windows.Forms.Label();
             this.btnMFViewDetails = new System.Windows.Forms.Button();
             this.txtMFNominee = new System.Windows.Forms.TextBox();
             this.label162 = new System.Windows.Forms.Label();
@@ -199,6 +201,8 @@
             this.btnEditMF = new System.Windows.Forms.Button();
             this.NPS = new System.Windows.Forms.TabPage();
             this.grpNPS = new System.Windows.Forms.GroupBox();
+            this.txtNPSInvestmentReturnRate = new System.Windows.Forms.TextBox();
+            this.label183 = new System.Windows.Forms.Label();
             this.txtNPSFolioNo = new System.Windows.Forms.TextBox();
             this.label63 = new System.Windows.Forms.Label();
             this.txtNPSSIPAmt = new System.Windows.Forms.TextBox();
@@ -231,6 +235,8 @@
             this.btnEditNPS = new System.Windows.Forms.Button();
             this.Shares = new System.Windows.Forms.TabPage();
             this.grpShares = new System.Windows.Forms.GroupBox();
+            this.txtSharesInvestmentReturnRate = new System.Windows.Forms.TextBox();
+            this.label184 = new System.Windows.Forms.Label();
             this.txtSharesNominee = new System.Windows.Forms.TextBox();
             this.label161 = new System.Windows.Forms.Label();
             this.txtSharesSecondHolder = new System.Windows.Forms.TextBox();
@@ -261,6 +267,8 @@
             this.btnSharesEdit = new System.Windows.Forms.Button();
             this.Bonds = new System.Windows.Forms.TabPage();
             this.grpBonds = new System.Windows.Forms.GroupBox();
+            this.txtBondInvRetRate = new System.Windows.Forms.TextBox();
+            this.label185 = new System.Windows.Forms.Label();
             this.label92 = new System.Windows.Forms.Label();
             this.txtBondsUnit = new System.Windows.Forms.TextBox();
             this.label91 = new System.Windows.Forms.Label();
@@ -375,6 +383,8 @@
             this.btnRDEdit = new System.Windows.Forms.Button();
             this.PPF = new System.Windows.Forms.TabPage();
             this.grpPPF = new System.Windows.Forms.GroupBox();
+            this.txtPPF_ROI = new System.Windows.Forms.TextBox();
+            this.label186 = new System.Windows.Forms.Label();
             this.dtPPFMaturityDate = new System.Windows.Forms.DateTimePicker();
             this.label126 = new System.Windows.Forms.Label();
             this.dtPPFOpeningDate = new System.Windows.Forms.DateTimePicker();
@@ -403,6 +413,8 @@
             this.dtGridSS = new System.Windows.Forms.DataGridView();
             this.label137 = new System.Windows.Forms.Label();
             this.grpSS = new System.Windows.Forms.GroupBox();
+            this.txtSSROI = new System.Windows.Forms.TextBox();
+            this.label187 = new System.Windows.Forms.Label();
             this.dtSSMaturityDate = new System.Windows.Forms.DateTimePicker();
             this.label125 = new System.Windows.Forms.Label();
             this.dtSSOpeningDate = new System.Windows.Forms.DateTimePicker();
@@ -427,6 +439,8 @@
             this.dtGridSCSS = new System.Windows.Forms.DataGridView();
             this.label141 = new System.Windows.Forms.Label();
             this.grpSCSS = new System.Windows.Forms.GroupBox();
+            this.txtSCSSROI = new System.Windows.Forms.TextBox();
+            this.label188 = new System.Windows.Forms.Label();
             this.dtSCSSMaturityDate = new System.Windows.Forms.DateTimePicker();
             this.label142 = new System.Windows.Forms.Label();
             this.dtSCSSOpeningDate = new System.Windows.Forms.DateTimePicker();
@@ -451,6 +465,8 @@
             this.dtGridNSC = new System.Windows.Forms.DataGridView();
             this.label149 = new System.Windows.Forms.Label();
             this.grpNSC = new System.Windows.Forms.GroupBox();
+            this.txtNSC_ROI = new System.Windows.Forms.TextBox();
+            this.label189 = new System.Windows.Forms.Label();
             this.txtNSCCurrentValue = new System.Windows.Forms.TextBox();
             this.label151 = new System.Windows.Forms.Label();
             this.txtNSCValueOfOne = new System.Windows.Forms.TextBox();
@@ -477,6 +493,8 @@
             this.btnNSCEdit = new System.Windows.Forms.Button();
             this.ULIP = new System.Windows.Forms.TabPage();
             this.grpULIP = new System.Windows.Forms.GroupBox();
+            this.txtULIP_ROI = new System.Windows.Forms.TextBox();
+            this.label190 = new System.Windows.Forms.Label();
             this.txtULIPNominee = new System.Windows.Forms.TextBox();
             this.label165 = new System.Windows.Forms.Label();
             this.txtULIPSecondHolder = new System.Windows.Forms.TextBox();
@@ -517,12 +535,28 @@
             this.btnULIPDelete = new System.Windows.Forms.Button();
             this.btnULIPAdd = new System.Windows.Forms.Button();
             this.btnULIPEdit = new System.Windows.Forms.Button();
-            this.txtMFInvestmentReturnRate = new System.Windows.Forms.TextBox();
-            this.label182 = new System.Windows.Forms.Label();
-            this.label183 = new System.Windows.Forms.Label();
-            this.txtNPSInvestmentReturnRate = new System.Windows.Forms.TextBox();
-            this.txtSharesInvestmentReturnRate = new System.Windows.Forms.TextBox();
-            this.label184 = new System.Windows.Forms.Label();
+            this.EPF = new System.Windows.Forms.TabPage();
+            this.grpEPF = new System.Windows.Forms.GroupBox();
+            this.txtEPF_ROI = new System.Windows.Forms.TextBox();
+            this.label191 = new System.Windows.Forms.Label();
+            this.txtEPFAmount = new System.Windows.Forms.TextBox();
+            this.label194 = new System.Windows.Forms.Label();
+            this.txtEPFParticular = new System.Windows.Forms.TextBox();
+            this.cmbEPFGoalMap = new System.Windows.Forms.ComboBox();
+            this.label195 = new System.Windows.Forms.Label();
+            this.cmbEPFAccountNo = new System.Windows.Forms.ComboBox();
+            this.label197 = new System.Windows.Forms.Label();
+            this.cmbEPF_Invester = new System.Windows.Forms.ComboBox();
+            this.label198 = new System.Windows.Forms.Label();
+            this.btnEPF_Cancel = new System.Windows.Forms.Button();
+            this.btnEPF_Save = new System.Windows.Forms.Button();
+            this.label199 = new System.Windows.Forms.Label();
+            this.dataGridEPF = new System.Windows.Forms.DataGridView();
+            this.label200 = new System.Windows.Forms.Label();
+            this.groupBox16 = new System.Windows.Forms.GroupBox();
+            this.btnEPFDelete = new System.Windows.Forms.Button();
+            this.btnAddEPF = new System.Windows.Forms.Button();
+            this.btnEditEPF = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.tabCurrenStatus.SuspendLayout();
             this.LifeInsurance.SuspendLayout();
@@ -585,6 +619,10 @@
             this.grpULIP.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridULIP)).BeginInit();
             this.groupBox15.SuspendLayout();
+            this.EPF.SuspendLayout();
+            this.grpEPF.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridEPF)).BeginInit();
+            this.groupBox16.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -669,6 +707,7 @@
             this.tabCurrenStatus.Controls.Add(this.SCSS);
             this.tabCurrenStatus.Controls.Add(this.NSC);
             this.tabCurrenStatus.Controls.Add(this.ULIP);
+            this.tabCurrenStatus.Controls.Add(this.EPF);
             this.tabCurrenStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabCurrenStatus.ImageList = this.imgCollection;
             this.tabCurrenStatus.Location = new System.Drawing.Point(13, 77);
@@ -1935,6 +1974,25 @@
             this.grpMF.TabStop = false;
             this.grpMF.Text = "Mutual Fund Details";
             // 
+            // txtMFInvestmentReturnRate
+            // 
+            this.txtMFInvestmentReturnRate.Location = new System.Drawing.Point(591, 195);
+            this.txtMFInvestmentReturnRate.MaxLength = 5;
+            this.txtMFInvestmentReturnRate.Name = "txtMFInvestmentReturnRate";
+            this.txtMFInvestmentReturnRate.Size = new System.Drawing.Size(267, 22);
+            this.txtMFInvestmentReturnRate.TabIndex = 16;
+            this.txtMFInvestmentReturnRate.Text = "0";
+            this.txtMFInvestmentReturnRate.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtMFInvestmentReturnRate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNav_KeyPress);
+            // 
+            // label182
+            // 
+            this.label182.Location = new System.Drawing.Point(480, 198);
+            this.label182.Name = "label182";
+            this.label182.Size = new System.Drawing.Size(102, 16);
+            this.label182.TabIndex = 49;
+            this.label182.Text = "ROI (%) :";
+            // 
             // btnMFViewDetails
             // 
             this.btnMFViewDetails.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -2402,6 +2460,24 @@
             this.grpNPS.TabStop = false;
             this.grpNPS.Text = "NPS";
             // 
+            // txtNPSInvestmentReturnRate
+            // 
+            this.txtNPSInvestmentReturnRate.Location = new System.Drawing.Point(137, 143);
+            this.txtNPSInvestmentReturnRate.MaxLength = 5;
+            this.txtNPSInvestmentReturnRate.Name = "txtNPSInvestmentReturnRate";
+            this.txtNPSInvestmentReturnRate.Size = new System.Drawing.Size(102, 22);
+            this.txtNPSInvestmentReturnRate.TabIndex = 14;
+            this.txtNPSInvestmentReturnRate.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label183
+            // 
+            this.label183.AutoSize = true;
+            this.label183.Location = new System.Drawing.Point(26, 146);
+            this.label183.Name = "label183";
+            this.label183.Size = new System.Drawing.Size(60, 16);
+            this.label183.TabIndex = 38;
+            this.label183.Text = "ROI (%) :";
+            // 
             // txtNPSFolioNo
             // 
             this.txtNPSFolioNo.Location = new System.Drawing.Point(137, 59);
@@ -2750,6 +2826,23 @@
             this.grpShares.TabStop = false;
             this.grpShares.Text = "Shares";
             // 
+            // txtSharesInvestmentReturnRate
+            // 
+            this.txtSharesInvestmentReturnRate.Location = new System.Drawing.Point(590, 142);
+            this.txtSharesInvestmentReturnRate.MaxLength = 5;
+            this.txtSharesInvestmentReturnRate.Name = "txtSharesInvestmentReturnRate";
+            this.txtSharesInvestmentReturnRate.Size = new System.Drawing.Size(207, 22);
+            this.txtSharesInvestmentReturnRate.TabIndex = 11;
+            this.txtSharesInvestmentReturnRate.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label184
+            // 
+            this.label184.Location = new System.Drawing.Point(484, 145);
+            this.label184.Name = "label184";
+            this.label184.Size = new System.Drawing.Size(107, 19);
+            this.label184.TabIndex = 42;
+            this.label184.Text = "ROI (%) :";
+            // 
             // txtSharesNominee
             // 
             this.txtSharesNominee.Location = new System.Drawing.Point(590, 115);
@@ -3038,6 +3131,8 @@
             // 
             this.grpBonds.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpBonds.Controls.Add(this.txtBondInvRetRate);
+            this.grpBonds.Controls.Add(this.label185);
             this.grpBonds.Controls.Add(this.label92);
             this.grpBonds.Controls.Add(this.txtBondsUnit);
             this.grpBonds.Controls.Add(this.label91);
@@ -3066,6 +3161,23 @@
             this.grpBonds.TabIndex = 27;
             this.grpBonds.TabStop = false;
             this.grpBonds.Text = "Bonds";
+            // 
+            // txtBondInvRetRate
+            // 
+            this.txtBondInvRetRate.Location = new System.Drawing.Point(137, 203);
+            this.txtBondInvRetRate.MaxLength = 5;
+            this.txtBondInvRetRate.Name = "txtBondInvRetRate";
+            this.txtBondInvRetRate.Size = new System.Drawing.Size(320, 22);
+            this.txtBondInvRetRate.TabIndex = 10;
+            this.txtBondInvRetRate.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label185
+            // 
+            this.label185.Location = new System.Drawing.Point(27, 203);
+            this.label185.Name = "label185";
+            this.label185.Size = new System.Drawing.Size(107, 22);
+            this.label185.TabIndex = 44;
+            this.label185.Text = "ROI (%):";
             // 
             // label92
             // 
@@ -3222,10 +3334,10 @@
             this.btnBondsCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnBondsCancel.ImageKey = "icons8-cancel-16.png";
             this.btnBondsCancel.ImageList = this.imgCollection;
-            this.btnBondsCancel.Location = new System.Drawing.Point(371, 203);
+            this.btnBondsCancel.Location = new System.Drawing.Point(371, 235);
             this.btnBondsCancel.Name = "btnBondsCancel";
             this.btnBondsCancel.Size = new System.Drawing.Size(86, 26);
-            this.btnBondsCancel.TabIndex = 11;
+            this.btnBondsCancel.TabIndex = 12;
             this.btnBondsCancel.Text = "Cancel";
             this.btnBondsCancel.UseVisualStyleBackColor = true;
             this.btnBondsCancel.Click += new System.EventHandler(this.btnBondsCancel_Click);
@@ -3235,10 +3347,10 @@
             this.btnBondsSave.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnBondsSave.ImageKey = "icons8-save-close-16.png";
             this.btnBondsSave.ImageList = this.imgCollection;
-            this.btnBondsSave.Location = new System.Drawing.Point(279, 203);
+            this.btnBondsSave.Location = new System.Drawing.Point(279, 235);
             this.btnBondsSave.Name = "btnBondsSave";
             this.btnBondsSave.Size = new System.Drawing.Size(86, 26);
-            this.btnBondsSave.TabIndex = 10;
+            this.btnBondsSave.TabIndex = 11;
             this.btnBondsSave.Text = "Save";
             this.btnBondsSave.UseVisualStyleBackColor = true;
             this.btnBondsSave.Click += new System.EventHandler(this.btnBondsSave_Click);
@@ -4246,6 +4358,8 @@
             // 
             this.grpPPF.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpPPF.Controls.Add(this.txtPPF_ROI);
+            this.grpPPF.Controls.Add(this.label186);
             this.grpPPF.Controls.Add(this.dtPPFMaturityDate);
             this.grpPPF.Controls.Add(this.label126);
             this.grpPPF.Controls.Add(this.dtPPFOpeningDate);
@@ -4273,13 +4387,30 @@
             this.grpPPF.TabStop = false;
             this.grpPPF.Text = "PPF";
             // 
+            // txtPPF_ROI
+            // 
+            this.txtPPF_ROI.Location = new System.Drawing.Point(337, 117);
+            this.txtPPF_ROI.MaxLength = 5;
+            this.txtPPF_ROI.Name = "txtPPF_ROI";
+            this.txtPPF_ROI.Size = new System.Drawing.Size(120, 22);
+            this.txtPPF_ROI.TabIndex = 8;
+            this.txtPPF_ROI.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label186
+            // 
+            this.label186.Location = new System.Drawing.Point(280, 117);
+            this.label186.Name = "label186";
+            this.label186.Size = new System.Drawing.Size(64, 22);
+            this.label186.TabIndex = 48;
+            this.label186.Text = "ROI (%):";
+            // 
             // dtPPFMaturityDate
             // 
             this.dtPPFMaturityDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtPPFMaturityDate.Location = new System.Drawing.Point(767, 51);
             this.dtPPFMaturityDate.Name = "dtPPFMaturityDate";
             this.dtPPFMaturityDate.Size = new System.Drawing.Size(154, 22);
-            this.dtPPFMaturityDate.TabIndex = 9;
+            this.dtPPFMaturityDate.TabIndex = 10;
             // 
             // label126
             // 
@@ -4296,7 +4427,7 @@
             this.dtPPFOpeningDate.Location = new System.Drawing.Point(601, 51);
             this.dtPPFOpeningDate.Name = "dtPPFOpeningDate";
             this.dtPPFOpeningDate.Size = new System.Drawing.Size(154, 22);
-            this.dtPPFOpeningDate.TabIndex = 8;
+            this.dtPPFOpeningDate.TabIndex = 9;
             // 
             // label127
             // 
@@ -4345,7 +4476,7 @@
             this.cmbPPFGoal.Location = new System.Drawing.Point(601, 79);
             this.cmbPPFGoal.Name = "cmbPPFGoal";
             this.cmbPPFGoal.Size = new System.Drawing.Size(320, 24);
-            this.cmbPPFGoal.TabIndex = 10;
+            this.cmbPPFGoal.TabIndex = 11;
             this.cmbPPFGoal.SelectedIndexChanged += new System.EventHandler(this.cmbPPFGoal_SelectedIndexChanged);
             // 
             // label130
@@ -4409,7 +4540,7 @@
             this.btnPPFCancel.Location = new System.Drawing.Point(835, 109);
             this.btnPPFCancel.Name = "btnPPFCancel";
             this.btnPPFCancel.Size = new System.Drawing.Size(86, 26);
-            this.btnPPFCancel.TabIndex = 12;
+            this.btnPPFCancel.TabIndex = 13;
             this.btnPPFCancel.Text = "Cancel";
             this.btnPPFCancel.UseVisualStyleBackColor = true;
             this.btnPPFCancel.Click += new System.EventHandler(this.btnPPFCancel_Click);
@@ -4422,7 +4553,7 @@
             this.btnPPFSave.Location = new System.Drawing.Point(743, 109);
             this.btnPPFSave.Name = "btnPPFSave";
             this.btnPPFSave.Size = new System.Drawing.Size(86, 26);
-            this.btnPPFSave.TabIndex = 11;
+            this.btnPPFSave.TabIndex = 12;
             this.btnPPFSave.Text = "Save";
             this.btnPPFSave.UseVisualStyleBackColor = true;
             this.btnPPFSave.Click += new System.EventHandler(this.btnPPFSave_Click);
@@ -4547,6 +4678,8 @@
             // 
             this.grpSS.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpSS.Controls.Add(this.txtSSROI);
+            this.grpSS.Controls.Add(this.label187);
             this.grpSS.Controls.Add(this.dtSSMaturityDate);
             this.grpSS.Controls.Add(this.label125);
             this.grpSS.Controls.Add(this.dtSSOpeningDate);
@@ -4571,6 +4704,24 @@
             this.grpSS.TabIndex = 44;
             this.grpSS.TabStop = false;
             this.grpSS.Text = "Suknya Samrudhi";
+            // 
+            // txtSSROI
+            // 
+            this.txtSSROI.Location = new System.Drawing.Point(601, 109);
+            this.txtSSROI.MaxLength = 5;
+            this.txtSSROI.Name = "txtSSROI";
+            this.txtSSROI.Size = new System.Drawing.Size(136, 22);
+            this.txtSSROI.TabIndex = 11;
+            this.txtSSROI.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label187
+            // 
+            this.label187.AutoSize = true;
+            this.label187.Location = new System.Drawing.Point(490, 112);
+            this.label187.Name = "label187";
+            this.label187.Size = new System.Drawing.Size(57, 16);
+            this.label187.TabIndex = 50;
+            this.label187.Text = "ROI (%):";
             // 
             // dtSSMaturityDate
             // 
@@ -4689,10 +4840,10 @@
             this.btnSSCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSSCancel.ImageKey = "icons8-cancel-16.png";
             this.btnSSCancel.ImageList = this.imgCollection;
-            this.btnSSCancel.Location = new System.Drawing.Point(835, 109);
+            this.btnSSCancel.Location = new System.Drawing.Point(835, 107);
             this.btnSSCancel.Name = "btnSSCancel";
             this.btnSSCancel.Size = new System.Drawing.Size(86, 26);
-            this.btnSSCancel.TabIndex = 12;
+            this.btnSSCancel.TabIndex = 13;
             this.btnSSCancel.Text = "Cancel";
             this.btnSSCancel.UseVisualStyleBackColor = true;
             this.btnSSCancel.Click += new System.EventHandler(this.btnSSDelete_Click);
@@ -4702,10 +4853,10 @@
             this.btnSSSave.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSSSave.ImageKey = "icons8-save-close-16.png";
             this.btnSSSave.ImageList = this.imgCollection;
-            this.btnSSSave.Location = new System.Drawing.Point(743, 109);
+            this.btnSSSave.Location = new System.Drawing.Point(743, 107);
             this.btnSSSave.Name = "btnSSSave";
             this.btnSSSave.Size = new System.Drawing.Size(86, 26);
-            this.btnSSSave.TabIndex = 11;
+            this.btnSSSave.TabIndex = 12;
             this.btnSSSave.Text = "Save";
             this.btnSSSave.UseVisualStyleBackColor = true;
             this.btnSSSave.Click += new System.EventHandler(this.btnSSSave_Click);
@@ -4798,14 +4949,16 @@
             this.label141.ForeColor = System.Drawing.Color.DarkGreen;
             this.label141.Location = new System.Drawing.Point(11, 13);
             this.label141.Name = "label141";
-            this.label141.Size = new System.Drawing.Size(148, 18);
+            this.label141.Size = new System.Drawing.Size(53, 18);
             this.label141.TabIndex = 49;
-            this.label141.Text = "Sukanya Samrudhi";
+            this.label141.Text = "SCSS";
             // 
             // grpSCSS
             // 
             this.grpSCSS.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpSCSS.Controls.Add(this.txtSCSSROI);
+            this.grpSCSS.Controls.Add(this.label188);
             this.grpSCSS.Controls.Add(this.dtSCSSMaturityDate);
             this.grpSCSS.Controls.Add(this.label142);
             this.grpSCSS.Controls.Add(this.dtSCSSOpeningDate);
@@ -4829,7 +4982,25 @@
             this.grpSCSS.Size = new System.Drawing.Size(1297, 273);
             this.grpSCSS.TabIndex = 48;
             this.grpSCSS.TabStop = false;
-            this.grpSCSS.Text = "Suknya Samrudhi";
+            this.grpSCSS.Text = "SCSS";
+            // 
+            // txtSCSSROI
+            // 
+            this.txtSCSSROI.Location = new System.Drawing.Point(601, 109);
+            this.txtSCSSROI.MaxLength = 5;
+            this.txtSCSSROI.Name = "txtSCSSROI";
+            this.txtSCSSROI.Size = new System.Drawing.Size(136, 22);
+            this.txtSCSSROI.TabIndex = 11;
+            this.txtSCSSROI.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label188
+            // 
+            this.label188.AutoSize = true;
+            this.label188.Location = new System.Drawing.Point(490, 112);
+            this.label188.Name = "label188";
+            this.label188.Size = new System.Drawing.Size(57, 16);
+            this.label188.TabIndex = 52;
+            this.label188.Text = "ROI (%):";
             // 
             // dtSCSSMaturityDate
             // 
@@ -4948,10 +5119,10 @@
             this.btnSCSSCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSCSSCancel.ImageKey = "icons8-cancel-16.png";
             this.btnSCSSCancel.ImageList = this.imgCollection;
-            this.btnSCSSCancel.Location = new System.Drawing.Point(835, 109);
+            this.btnSCSSCancel.Location = new System.Drawing.Point(835, 107);
             this.btnSCSSCancel.Name = "btnSCSSCancel";
             this.btnSCSSCancel.Size = new System.Drawing.Size(86, 26);
-            this.btnSCSSCancel.TabIndex = 12;
+            this.btnSCSSCancel.TabIndex = 13;
             this.btnSCSSCancel.Text = "Cancel";
             this.btnSCSSCancel.UseVisualStyleBackColor = true;
             this.btnSCSSCancel.Click += new System.EventHandler(this.btnSCSSCancel_Click);
@@ -4961,10 +5132,10 @@
             this.btnSCSSSave.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSCSSSave.ImageKey = "icons8-save-close-16.png";
             this.btnSCSSSave.ImageList = this.imgCollection;
-            this.btnSCSSSave.Location = new System.Drawing.Point(743, 109);
+            this.btnSCSSSave.Location = new System.Drawing.Point(743, 107);
             this.btnSCSSSave.Name = "btnSCSSSave";
             this.btnSCSSSave.Size = new System.Drawing.Size(86, 26);
-            this.btnSCSSSave.TabIndex = 11;
+            this.btnSCSSSave.TabIndex = 12;
             this.btnSCSSSave.Text = "Save";
             this.btnSCSSSave.UseVisualStyleBackColor = true;
             this.btnSCSSSave.Click += new System.EventHandler(this.btnSCSSSave_Click);
@@ -5064,6 +5235,8 @@
             // 
             this.grpNSC.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpNSC.Controls.Add(this.txtNSC_ROI);
+            this.grpNSC.Controls.Add(this.label189);
             this.grpNSC.Controls.Add(this.txtNSCCurrentValue);
             this.grpNSC.Controls.Add(this.label151);
             this.grpNSC.Controls.Add(this.txtNSCValueOfOne);
@@ -5092,6 +5265,24 @@
             this.grpNSC.TabIndex = 52;
             this.grpNSC.TabStop = false;
             this.grpNSC.Text = "NSC / KVP";
+            // 
+            // txtNSC_ROI
+            // 
+            this.txtNSC_ROI.Location = new System.Drawing.Point(558, 145);
+            this.txtNSC_ROI.MaxLength = 5;
+            this.txtNSC_ROI.Name = "txtNSC_ROI";
+            this.txtNSC_ROI.Size = new System.Drawing.Size(249, 22);
+            this.txtNSC_ROI.TabIndex = 9;
+            this.txtNSC_ROI.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label189
+            // 
+            this.label189.AutoSize = true;
+            this.label189.Location = new System.Drawing.Point(448, 148);
+            this.label189.Name = "label189";
+            this.label189.Size = new System.Drawing.Size(57, 16);
+            this.label189.TabIndex = 54;
+            this.label189.Text = "ROI (%):";
             // 
             // txtNSCCurrentValue
             // 
@@ -5250,10 +5441,10 @@
             this.btnNSCCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnNSCCancel.ImageKey = "icons8-cancel-16.png";
             this.btnNSCCancel.ImageList = this.imgCollection;
-            this.btnNSCCancel.Location = new System.Drawing.Point(721, 147);
+            this.btnNSCCancel.Location = new System.Drawing.Point(721, 173);
             this.btnNSCCancel.Name = "btnNSCCancel";
             this.btnNSCCancel.Size = new System.Drawing.Size(86, 26);
-            this.btnNSCCancel.TabIndex = 10;
+            this.btnNSCCancel.TabIndex = 11;
             this.btnNSCCancel.Text = "Cancel";
             this.btnNSCCancel.UseVisualStyleBackColor = true;
             this.btnNSCCancel.Click += new System.EventHandler(this.btnNSCCancel_Click);
@@ -5263,10 +5454,10 @@
             this.btnNSCSave.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnNSCSave.ImageKey = "icons8-save-close-16.png";
             this.btnNSCSave.ImageList = this.imgCollection;
-            this.btnNSCSave.Location = new System.Drawing.Point(629, 147);
+            this.btnNSCSave.Location = new System.Drawing.Point(629, 173);
             this.btnNSCSave.Name = "btnNSCSave";
             this.btnNSCSave.Size = new System.Drawing.Size(86, 26);
-            this.btnNSCSave.TabIndex = 9;
+            this.btnNSCSave.TabIndex = 10;
             this.btnNSCSave.Text = "Save";
             this.btnNSCSave.UseVisualStyleBackColor = true;
             this.btnNSCSave.Click += new System.EventHandler(this.btnNSCSave_Click);
@@ -5342,6 +5533,8 @@
             // 
             this.grpULIP.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpULIP.Controls.Add(this.txtULIP_ROI);
+            this.grpULIP.Controls.Add(this.label190);
             this.grpULIP.Controls.Add(this.txtULIPNominee);
             this.grpULIP.Controls.Add(this.label165);
             this.grpULIP.Controls.Add(this.txtULIPSecondHolder);
@@ -5384,6 +5577,24 @@
             this.grpULIP.TabIndex = 19;
             this.grpULIP.TabStop = false;
             this.grpULIP.Text = "ULIP Info";
+            // 
+            // txtULIP_ROI
+            // 
+            this.txtULIP_ROI.Location = new System.Drawing.Point(581, 198);
+            this.txtULIP_ROI.MaxLength = 5;
+            this.txtULIP_ROI.Name = "txtULIP_ROI";
+            this.txtULIP_ROI.Size = new System.Drawing.Size(267, 22);
+            this.txtULIP_ROI.TabIndex = 17;
+            this.txtULIP_ROI.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label190
+            // 
+            this.label190.AutoSize = true;
+            this.label190.Location = new System.Drawing.Point(471, 201);
+            this.label190.Name = "label190";
+            this.label190.Size = new System.Drawing.Size(57, 16);
+            this.label190.TabIndex = 56;
+            this.label190.Text = "ROI (%):";
             // 
             // txtULIPNominee
             // 
@@ -5656,10 +5867,10 @@
             this.btnULIPCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnULIPCancel.ImageKey = "icons8-cancel-16.png";
             this.btnULIPCancel.ImageList = this.imgCollection;
-            this.btnULIPCancel.Location = new System.Drawing.Point(762, 198);
+            this.btnULIPCancel.Location = new System.Drawing.Point(762, 226);
             this.btnULIPCancel.Name = "btnULIPCancel";
             this.btnULIPCancel.Size = new System.Drawing.Size(86, 26);
-            this.btnULIPCancel.TabIndex = 18;
+            this.btnULIPCancel.TabIndex = 19;
             this.btnULIPCancel.Text = "Cancel";
             this.btnULIPCancel.UseVisualStyleBackColor = true;
             this.btnULIPCancel.Click += new System.EventHandler(this.btnCancelULIP_Click);
@@ -5669,10 +5880,10 @@
             this.btnULIPSave.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnULIPSave.ImageKey = "icons8-save-close-16.png";
             this.btnULIPSave.ImageList = this.imgCollection;
-            this.btnULIPSave.Location = new System.Drawing.Point(670, 198);
+            this.btnULIPSave.Location = new System.Drawing.Point(670, 226);
             this.btnULIPSave.Name = "btnULIPSave";
             this.btnULIPSave.Size = new System.Drawing.Size(86, 26);
-            this.btnULIPSave.TabIndex = 17;
+            this.btnULIPSave.TabIndex = 18;
             this.btnULIPSave.Text = "Save";
             this.btnULIPSave.UseVisualStyleBackColor = true;
             this.btnULIPSave.Click += new System.EventHandler(this.btnSaveULIP_Click);
@@ -5755,59 +5966,246 @@
             this.btnULIPEdit.UseVisualStyleBackColor = true;
             this.btnULIPEdit.Click += new System.EventHandler(this.btnEditULIP_Click);
             // 
-            // txtMFInvestmentReturnRate
+            // EPF
             // 
-            this.txtMFInvestmentReturnRate.Location = new System.Drawing.Point(591, 195);
-            this.txtMFInvestmentReturnRate.MaxLength = 5;
-            this.txtMFInvestmentReturnRate.Name = "txtMFInvestmentReturnRate";
-            this.txtMFInvestmentReturnRate.Size = new System.Drawing.Size(267, 22);
-            this.txtMFInvestmentReturnRate.TabIndex = 16;
-            this.txtMFInvestmentReturnRate.Text = "0";
-            this.txtMFInvestmentReturnRate.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtMFInvestmentReturnRate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNav_KeyPress);
+            this.EPF.Controls.Add(this.grpEPF);
+            this.EPF.Controls.Add(this.dataGridEPF);
+            this.EPF.Controls.Add(this.label200);
+            this.EPF.Controls.Add(this.groupBox16);
+            this.EPF.Location = new System.Drawing.Point(4, 24);
+            this.EPF.Name = "EPF";
+            this.EPF.Padding = new System.Windows.Forms.Padding(3);
+            this.EPF.Size = new System.Drawing.Size(1321, 547);
+            this.EPF.TabIndex = 14;
+            this.EPF.Text = "EPF";
+            this.EPF.UseVisualStyleBackColor = true;
             // 
-            // label182
+            // grpEPF
             // 
-            this.label182.Location = new System.Drawing.Point(480, 195);
-            this.label182.Name = "label182";
-            this.label182.Size = new System.Drawing.Size(102, 34);
-            this.label182.TabIndex = 49;
-            this.label182.Text = "Investment Return (%)";
+            this.grpEPF.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpEPF.Controls.Add(this.txtEPF_ROI);
+            this.grpEPF.Controls.Add(this.label191);
+            this.grpEPF.Controls.Add(this.txtEPFAmount);
+            this.grpEPF.Controls.Add(this.label194);
+            this.grpEPF.Controls.Add(this.txtEPFParticular);
+            this.grpEPF.Controls.Add(this.cmbEPFGoalMap);
+            this.grpEPF.Controls.Add(this.label195);
+            this.grpEPF.Controls.Add(this.cmbEPFAccountNo);
+            this.grpEPF.Controls.Add(this.label197);
+            this.grpEPF.Controls.Add(this.cmbEPF_Invester);
+            this.grpEPF.Controls.Add(this.label198);
+            this.grpEPF.Controls.Add(this.btnEPF_Cancel);
+            this.grpEPF.Controls.Add(this.btnEPF_Save);
+            this.grpEPF.Controls.Add(this.label199);
+            this.grpEPF.Enabled = false;
+            this.grpEPF.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpEPF.Location = new System.Drawing.Point(12, 235);
+            this.grpEPF.Name = "grpEPF";
+            this.grpEPF.Size = new System.Drawing.Size(1297, 304);
+            this.grpEPF.TabIndex = 46;
+            this.grpEPF.TabStop = false;
+            this.grpEPF.Text = "EPF";
             // 
-            // label183
+            // txtEPF_ROI
             // 
-            this.label183.AutoSize = true;
-            this.label183.Location = new System.Drawing.Point(134, 146);
-            this.label183.Name = "label183";
-            this.label183.Size = new System.Drawing.Size(169, 16);
-            this.label183.TabIndex = 38;
-            this.label183.Text = "Investment Return Rate (%)";
+            this.txtEPF_ROI.Location = new System.Drawing.Point(601, 51);
+            this.txtEPF_ROI.MaxLength = 5;
+            this.txtEPF_ROI.Name = "txtEPF_ROI";
+            this.txtEPF_ROI.Size = new System.Drawing.Size(134, 22);
+            this.txtEPF_ROI.TabIndex = 8;
+            this.txtEPF_ROI.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // txtNPSInvestmentReturnRate
+            // label191
             // 
-            this.txtNPSInvestmentReturnRate.Location = new System.Drawing.Point(337, 143);
-            this.txtNPSInvestmentReturnRate.MaxLength = 5;
-            this.txtNPSInvestmentReturnRate.Name = "txtNPSInvestmentReturnRate";
-            this.txtNPSInvestmentReturnRate.Size = new System.Drawing.Size(120, 22);
-            this.txtNPSInvestmentReturnRate.TabIndex = 14;
-            this.txtNPSInvestmentReturnRate.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.label191.Location = new System.Drawing.Point(490, 51);
+            this.label191.Name = "label191";
+            this.label191.Size = new System.Drawing.Size(64, 22);
+            this.label191.TabIndex = 48;
+            this.label191.Text = "ROI (%):";
             // 
-            // txtSharesInvestmentReturnRate
+            // txtEPFAmount
             // 
-            this.txtSharesInvestmentReturnRate.Location = new System.Drawing.Point(590, 142);
-            this.txtSharesInvestmentReturnRate.MaxLength = 5;
-            this.txtSharesInvestmentReturnRate.Name = "txtSharesInvestmentReturnRate";
-            this.txtSharesInvestmentReturnRate.Size = new System.Drawing.Size(207, 22);
-            this.txtSharesInvestmentReturnRate.TabIndex = 11;
-            this.txtSharesInvestmentReturnRate.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtEPFAmount.Location = new System.Drawing.Point(337, 89);
+            this.txtEPFAmount.Name = "txtEPFAmount";
+            this.txtEPFAmount.Size = new System.Drawing.Size(120, 22);
+            this.txtEPFAmount.TabIndex = 7;
+            this.txtEPFAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // label184
+            // label194
             // 
-            this.label184.Location = new System.Drawing.Point(479, 142);
-            this.label184.Name = "label184";
-            this.label184.Size = new System.Drawing.Size(107, 34);
-            this.label184.TabIndex = 42;
-            this.label184.Text = "Investment Return Rate(%):";
+            this.label194.AutoSize = true;
+            this.label194.Location = new System.Drawing.Point(276, 92);
+            this.label194.Name = "label194";
+            this.label194.Size = new System.Drawing.Size(56, 16);
+            this.label194.TabIndex = 42;
+            this.label194.Text = "Amount:";
+            // 
+            // txtEPFParticular
+            // 
+            this.txtEPFParticular.Location = new System.Drawing.Point(137, 89);
+            this.txtEPFParticular.Name = "txtEPFParticular";
+            this.txtEPFParticular.Size = new System.Drawing.Size(134, 22);
+            this.txtEPFParticular.TabIndex = 3;
+            // 
+            // cmbEPFGoalMap
+            // 
+            this.cmbEPFGoalMap.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbEPFGoalMap.FormattingEnabled = true;
+            this.cmbEPFGoalMap.Location = new System.Drawing.Point(601, 79);
+            this.cmbEPFGoalMap.Name = "cmbEPFGoalMap";
+            this.cmbEPFGoalMap.Size = new System.Drawing.Size(320, 24);
+            this.cmbEPFGoalMap.TabIndex = 11;
+            this.cmbEPFGoalMap.SelectedIndexChanged += new System.EventHandler(this.cmbEPFGoal_SelectedIndexChanged);
+            // 
+            // label195
+            // 
+            this.label195.AutoSize = true;
+            this.label195.Location = new System.Drawing.Point(490, 82);
+            this.label195.Name = "label195";
+            this.label195.Size = new System.Drawing.Size(105, 16);
+            this.label195.TabIndex = 22;
+            this.label195.Text = "Goal (Mapped) :";
+            // 
+            // cmbEPFAccountNo
+            // 
+            this.cmbEPFAccountNo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.cmbEPFAccountNo.FormattingEnabled = true;
+            this.cmbEPFAccountNo.Location = new System.Drawing.Point(137, 59);
+            this.cmbEPFAccountNo.Name = "cmbEPFAccountNo";
+            this.cmbEPFAccountNo.Size = new System.Drawing.Size(320, 24);
+            this.cmbEPFAccountNo.TabIndex = 2;
+            // 
+            // label197
+            // 
+            this.label197.AutoSize = true;
+            this.label197.Location = new System.Drawing.Point(26, 92);
+            this.label197.Name = "label197";
+            this.label197.Size = new System.Drawing.Size(64, 16);
+            this.label197.TabIndex = 14;
+            this.label197.Text = "Particular";
+            // 
+            // cmbEPF_Invester
+            // 
+            this.cmbEPF_Invester.FormattingEnabled = true;
+            this.cmbEPF_Invester.Location = new System.Drawing.Point(137, 29);
+            this.cmbEPF_Invester.Name = "cmbEPF_Invester";
+            this.cmbEPF_Invester.Size = new System.Drawing.Size(320, 24);
+            this.cmbEPF_Invester.TabIndex = 1;
+            this.cmbEPF_Invester.SelectedIndexChanged += new System.EventHandler(this.cmbFDGoal_SelectedIndexChanged);
+            // 
+            // label198
+            // 
+            this.label198.AutoSize = true;
+            this.label198.Location = new System.Drawing.Point(26, 32);
+            this.label198.Name = "label198";
+            this.label198.Size = new System.Drawing.Size(58, 16);
+            this.label198.TabIndex = 11;
+            this.label198.Text = "Invester:";
+            // 
+            // btnEPF_Cancel
+            // 
+            this.btnEPF_Cancel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEPF_Cancel.ImageKey = "icons8-cancel-16.png";
+            this.btnEPF_Cancel.ImageList = this.imgCollection;
+            this.btnEPF_Cancel.Location = new System.Drawing.Point(835, 109);
+            this.btnEPF_Cancel.Name = "btnEPF_Cancel";
+            this.btnEPF_Cancel.Size = new System.Drawing.Size(86, 26);
+            this.btnEPF_Cancel.TabIndex = 13;
+            this.btnEPF_Cancel.Text = "Cancel";
+            this.btnEPF_Cancel.UseVisualStyleBackColor = true;
+            this.btnEPF_Cancel.Click += new System.EventHandler(this.btnEPFCancel_Click);
+            // 
+            // btnEPF_Save
+            // 
+            this.btnEPF_Save.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEPF_Save.ImageKey = "icons8-save-close-16.png";
+            this.btnEPF_Save.ImageList = this.imgCollection;
+            this.btnEPF_Save.Location = new System.Drawing.Point(743, 109);
+            this.btnEPF_Save.Name = "btnEPF_Save";
+            this.btnEPF_Save.Size = new System.Drawing.Size(86, 26);
+            this.btnEPF_Save.TabIndex = 12;
+            this.btnEPF_Save.Text = "Save";
+            this.btnEPF_Save.UseVisualStyleBackColor = true;
+            this.btnEPF_Save.Click += new System.EventHandler(this.btnEPFSave_Click);
+            // 
+            // label199
+            // 
+            this.label199.AutoSize = true;
+            this.label199.Location = new System.Drawing.Point(27, 61);
+            this.label199.Name = "label199";
+            this.label199.Size = new System.Drawing.Size(80, 16);
+            this.label199.TabIndex = 0;
+            this.label199.Text = "Account No:";
+            // 
+            // dataGridEPF
+            // 
+            this.dataGridEPF.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridEPF.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridEPF.Location = new System.Drawing.Point(12, 39);
+            this.dataGridEPF.Name = "dataGridEPF";
+            this.dataGridEPF.ReadOnly = true;
+            this.dataGridEPF.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridEPF.Size = new System.Drawing.Size(1297, 152);
+            this.dataGridEPF.TabIndex = 44;
+            this.dataGridEPF.SelectionChanged += new System.EventHandler(this.dtGridEPF_SelectionChanged);
+            // 
+            // label200
+            // 
+            this.label200.AutoSize = true;
+            this.label200.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label200.ForeColor = System.Drawing.Color.DarkGreen;
+            this.label200.Location = new System.Drawing.Point(15, 8);
+            this.label200.Name = "label200";
+            this.label200.Size = new System.Drawing.Size(40, 18);
+            this.label200.TabIndex = 43;
+            this.label200.Text = "EPF";
+            // 
+            // groupBox16
+            // 
+            this.groupBox16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox16.Controls.Add(this.btnEPFDelete);
+            this.groupBox16.Controls.Add(this.btnAddEPF);
+            this.groupBox16.Controls.Add(this.btnEditEPF);
+            this.groupBox16.Location = new System.Drawing.Point(1198, 197);
+            this.groupBox16.Name = "groupBox16";
+            this.groupBox16.Size = new System.Drawing.Size(111, 38);
+            this.groupBox16.TabIndex = 45;
+            this.groupBox16.TabStop = false;
+            // 
+            // btnEPFDelete
+            // 
+            this.btnEPFDelete.ImageIndex = 1;
+            this.btnEPFDelete.ImageList = this.imgCollection;
+            this.btnEPFDelete.Location = new System.Drawing.Point(76, 10);
+            this.btnEPFDelete.Name = "btnEPFDelete";
+            this.btnEPFDelete.Size = new System.Drawing.Size(29, 24);
+            this.btnEPFDelete.TabIndex = 4;
+            this.btnEPFDelete.UseVisualStyleBackColor = true;
+            this.btnEPFDelete.Click += new System.EventHandler(this.btnEPFDelete_Click);
+            // 
+            // btnAddEPF
+            // 
+            this.btnAddEPF.ImageIndex = 3;
+            this.btnAddEPF.ImageList = this.imgCollection;
+            this.btnAddEPF.Location = new System.Drawing.Point(6, 10);
+            this.btnAddEPF.Name = "btnAddEPF";
+            this.btnAddEPF.Size = new System.Drawing.Size(29, 24);
+            this.btnAddEPF.TabIndex = 2;
+            this.btnAddEPF.UseVisualStyleBackColor = true;
+            this.btnAddEPF.Click += new System.EventHandler(this.btnEPFAdd_Click);
+            // 
+            // btnEditEPF
+            // 
+            this.btnEditEPF.ImageIndex = 4;
+            this.btnEditEPF.ImageList = this.imgCollection;
+            this.btnEditEPF.Location = new System.Drawing.Point(41, 10);
+            this.btnEditEPF.Name = "btnEditEPF";
+            this.btnEditEPF.Size = new System.Drawing.Size(29, 24);
+            this.btnEditEPF.TabIndex = 3;
+            this.btnEditEPF.UseVisualStyleBackColor = true;
+            this.btnEditEPF.Click += new System.EventHandler(this.btnEPFEdit_Click);
             // 
             // CurrentStatus
             // 
@@ -5909,6 +6307,12 @@
             this.grpULIP.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridULIP)).EndInit();
             this.groupBox15.ResumeLayout(false);
+            this.EPF.ResumeLayout(false);
+            this.EPF.PerformLayout();
+            this.grpEPF.ResumeLayout(false);
+            this.grpEPF.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridEPF)).EndInit();
+            this.groupBox16.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -6408,5 +6812,39 @@
         private System.Windows.Forms.Label label183;
         private System.Windows.Forms.TextBox txtSharesInvestmentReturnRate;
         private System.Windows.Forms.Label label184;
+        private System.Windows.Forms.TextBox txtBondInvRetRate;
+        private System.Windows.Forms.Label label185;
+        private System.Windows.Forms.TextBox txtPPF_ROI;
+        private System.Windows.Forms.Label label186;
+        private System.Windows.Forms.TextBox txtSSROI;
+        private System.Windows.Forms.Label label187;
+        private System.Windows.Forms.TextBox txtSCSSROI;
+        private System.Windows.Forms.Label label188;
+        private System.Windows.Forms.TextBox txtNSC_ROI;
+        private System.Windows.Forms.Label label189;
+        private System.Windows.Forms.TextBox txtULIP_ROI;
+        private System.Windows.Forms.Label label190;
+        private System.Windows.Forms.TabPage EPF;
+        private System.Windows.Forms.GroupBox grpEPF;
+        private System.Windows.Forms.TextBox txtEPF_ROI;
+        private System.Windows.Forms.Label label191;
+        private System.Windows.Forms.TextBox txtEPFAmount;
+        private System.Windows.Forms.Label label194;
+        private System.Windows.Forms.TextBox txtEPFParticular;
+        private System.Windows.Forms.ComboBox cmbEPFGoalMap;
+        private System.Windows.Forms.Label label195;
+        private System.Windows.Forms.ComboBox cmbEPFAccountNo;
+        private System.Windows.Forms.Label label197;
+        private System.Windows.Forms.ComboBox cmbEPF_Invester;
+        private System.Windows.Forms.Label label198;
+        private System.Windows.Forms.Button btnEPF_Cancel;
+        private System.Windows.Forms.Button btnEPF_Save;
+        private System.Windows.Forms.Label label199;
+        private System.Windows.Forms.DataGridView dataGridEPF;
+        private System.Windows.Forms.Label label200;
+        private System.Windows.Forms.GroupBox groupBox16;
+        private System.Windows.Forms.Button btnEPFDelete;
+        private System.Windows.Forms.Button btnAddEPF;
+        private System.Windows.Forms.Button btnEditEPF;
     }
 }

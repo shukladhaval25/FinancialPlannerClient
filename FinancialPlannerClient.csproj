@@ -198,6 +198,7 @@
     <Compile Include="CurrentStatus\CurrentStatus.Designer.cs">
       <DependentUpon>CurrentStatus.cs</DependentUpon>
     </Compile>
+    <Compile Include="CurrentStatus\EPFInfo.cs" />
     <Compile Include="CurrentStatus\MFTransactionsForm.cs">
       <SubType>Form</SubType>
     </Compile>

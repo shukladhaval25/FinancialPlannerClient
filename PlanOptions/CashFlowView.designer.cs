@@ -36,11 +36,13 @@
             // 
             // grdSplitCashFlow
             // 
-            this.grdSplitCashFlow.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grdSplitCashFlow.Location = new System.Drawing.Point(0, 0);
+            this.grdSplitCashFlow.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grdSplitCashFlow.Location = new System.Drawing.Point(6, 7);
             this.grdSplitCashFlow.MainView = this.gridSplitContainerViewCashFlow;
             this.grdSplitCashFlow.Name = "grdSplitCashFlow";
-            this.grdSplitCashFlow.Size = new System.Drawing.Size(1082, 522);
+            this.grdSplitCashFlow.Size = new System.Drawing.Size(1070, 510);
             this.grdSplitCashFlow.TabIndex = 1;
             this.grdSplitCashFlow.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridSplitContainerViewCashFlow});

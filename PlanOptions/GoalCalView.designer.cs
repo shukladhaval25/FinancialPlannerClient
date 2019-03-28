@@ -177,7 +177,7 @@
             this.grdGoalProfile.MainView = this.gridViewGoalProfile;
             this.grdGoalProfile.Name = "grdGoalProfile";
             this.grdGoalProfile.ShowOnlyPredefinedDetails = true;
-            this.grdGoalProfile.Size = new System.Drawing.Size(724, 124);
+            this.grdGoalProfile.Size = new System.Drawing.Size(902, 124);
             this.grdGoalProfile.TabIndex = 23;
             this.grdGoalProfile.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewGoalProfile});
@@ -198,7 +198,7 @@
             this.dtGridGoalValue.Location = new System.Drawing.Point(12, 142);
             this.dtGridGoalValue.MainView = this.gridViewGoalValue;
             this.dtGridGoalValue.Name = "dtGridGoalValue";
-            this.dtGridGoalValue.Size = new System.Drawing.Size(975, 358);
+            this.dtGridGoalValue.Size = new System.Drawing.Size(1153, 354);
             this.dtGridGoalValue.TabIndex = 24;
             this.dtGridGoalValue.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewGoalValue});
@@ -212,7 +212,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(999, 508);
+            this.ClientSize = new System.Drawing.Size(1177, 508);
             this.Controls.Add(this.dtGridGoalValue);
             this.Controls.Add(this.grpGoalInfo);
             this.Controls.Add(this.grdGoalProfile);

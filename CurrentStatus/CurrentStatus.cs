@@ -27,6 +27,7 @@ namespace FinancialPlannerClient.CurrentStatus
         IList<Goals> _goals;
         DataTable _dtFD;
         DataTable _dtPPF;
+        DataTable _dtEPF;
         DataTable _dtSS;
         DataTable _dtSCSS;
         private DataTable _dtRD;
@@ -125,6 +126,9 @@ namespace FinancialPlannerClient.CurrentStatus
                     break;
                 case "PPF":
                     fillupPPFInfo();
+                    break;
+                case "EPF":
+                    fillupEPFInfo();
                     break;
                 case "Sukanya":
                     fillupSSInfo();
@@ -488,7 +492,7 @@ namespace FinancialPlannerClient.CurrentStatus
             grpRD.Enabled = false;
         }
         #endregion
-
+        
         #region "PPF"
 
         private void cmbPPFGoal_SelectedIndexChanged(object sender, EventArgs e)
@@ -544,6 +548,7 @@ namespace FinancialPlannerClient.CurrentStatus
             txtPPFBankName.Text = "";
             txtPPFBranch.Text = "";
             txtPPFCurrentValue.Text = "";
+            txtPPF_ROI.Text = "0";
         }
 
         private void displayPPFInfo(DataRow dr)
@@ -567,6 +572,7 @@ namespace FinancialPlannerClient.CurrentStatus
                     cmbPPFGoal.Tag = "0";
                     cmbPPFGoal.Text = "";
                 }
+                txtPPF_ROI.Text = dr.Field<string>("InvestmentReturnRate");
             }
         }
 
@@ -612,6 +618,7 @@ namespace FinancialPlannerClient.CurrentStatus
             PPF.UpdatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
             PPF.UpdatedBy = Program.CurrentUser.Id;
             PPF.MachineName = Environment.MachineName;
+            PPF.InvestmentReturnRate = (string.IsNullOrEmpty(txtPPF_ROI.Text) ? 0 : float.Parse(txtPPF_ROI.Text));
             return PPF;
         }
 
@@ -707,6 +714,7 @@ namespace FinancialPlannerClient.CurrentStatus
             cmbSSGoal.Text = "";
             txtSSBankName.Text = "";
             txtSSCurrentValue.Text = "";
+            txtSSROI.Text = "0";
         }
 
         private void displaySSInfo(DataRow dr)
@@ -730,6 +738,7 @@ namespace FinancialPlannerClient.CurrentStatus
                     cmbSSGoal.Tag = "0";
                     cmbSSGoal.Text = "";
                 }
+                txtSSROI.Text = dr.Field<string>("InvestmentReturnRate");
             }
         }
 
@@ -775,6 +784,7 @@ namespace FinancialPlannerClient.CurrentStatus
             SS.UpdatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
             SS.UpdatedBy = Program.CurrentUser.Id;
             SS.MachineName = Environment.MachineName;
+            SS.InvestmentReturnRate = (string.IsNullOrEmpty(txtSSROI.Text) ? 0 : float.Parse(txtSSROI.Text));
             return SS;
         }
 
@@ -870,6 +880,7 @@ namespace FinancialPlannerClient.CurrentStatus
             cmbSCSSGoal.Text = "";
             txtSCSSBankName.Text = "";
             txtSCSSCurrentValue.Text = "";
+            txtSCSSROI.Text = "0";
         }
 
         private void displaySCSSInfo(DataRow dr)
@@ -893,6 +904,7 @@ namespace FinancialPlannerClient.CurrentStatus
                     cmbSCSSGoal.Tag = "0";
                     cmbSCSSGoal.Text = "";
                 }
+                txtSCSSROI.Text = dr.Field<string>("InvestmentReturnRate");
             }
         }
 
@@ -938,6 +950,7 @@ namespace FinancialPlannerClient.CurrentStatus
             SCSS.UpdatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
             SCSS.UpdatedBy = Program.CurrentUser.Id;
             SCSS.MachineName = Environment.MachineName;
+            SCSS.InvestmentReturnRate = (string.IsNullOrEmpty(txtSCSSROI.Text) ? 0 : float.Parse(txtSCSSROI.Text));
             return SCSS;
         }
 
@@ -1036,6 +1049,7 @@ namespace FinancialPlannerClient.CurrentStatus
             txtNSCUnits.Text = "0";
             txtNSCValueOfOne.Text = "0";
             txtNSCCurrentValue.Text = "";
+            txtNSC_ROI.Text = "0";
         }
 
         private void displayNSCInfo(DataRow dr)
@@ -1062,6 +1076,7 @@ namespace FinancialPlannerClient.CurrentStatus
                     cmbNSCGoal.Tag = "0";
                     cmbNSCGoal.Text = "";
                 }
+                txtNSC_ROI.Text = dr.Field<string>("InvestmentReturnRate");
             }
         }
 
@@ -1109,6 +1124,7 @@ namespace FinancialPlannerClient.CurrentStatus
             NSC.UpdatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
             NSC.UpdatedBy = Program.CurrentUser.Id;
             NSC.MachineName = Environment.MachineName;
+            NSC.InvestmentReturnRate = (string.IsNullOrEmpty(txtNSC_ROI.Text) ? 0 : float.Parse(txtNSC_ROI.Text));
             return NSC;
         }
 
@@ -1492,6 +1508,7 @@ namespace FinancialPlannerClient.CurrentStatus
                 txtULIPFirstHolder.Text = dr["FirstHolder"].ToString();
                 txtULIPSecondHolder.Text = dr["SecondHolder"].ToString();
                 txtULIPNominee.Text = dr["Nominee"].ToString();
+                txtULIP_ROI.Text = dr["InvestmentReturnRate"].ToString();
             }
         }
 
@@ -1538,6 +1555,7 @@ namespace FinancialPlannerClient.CurrentStatus
             txtULIPFirstHolder.Text = "";
             txtULIPSecondHolder.Text = "";
             txtULIPNominee.Text = "";
+            txtULIP_ROI.Text = "0";
         }
 
         private void txtULIPNav_KeyPress(object sender, KeyPressEventArgs e)
@@ -1619,6 +1637,7 @@ namespace FinancialPlannerClient.CurrentStatus
             ULIP.FirstHolder = txtULIPFirstHolder.Text;
             ULIP.SecondHolder = txtULIPSecondHolder.Text;
             ULIP.Nominee = txtULIPNominee.Text;
+            ULIP.InvestmentReturnRate = (string.IsNullOrEmpty(txtULIP_ROI.Text) ? 0 : float.Parse(txtULIP_ROI.Text));
             return ULIP;
         }
 
@@ -2039,6 +2058,169 @@ namespace FinancialPlannerClient.CurrentStatus
         }
 
         #endregion
+
+        #region "EPF"
+
+        private void cmbEPFGoal_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbEPFGoalMap.Text != "")
+                cmbEPFGoalMap.Tag = _goals.FirstOrDefault(i => i.Name == cmbEPFGoalMap.Text).Id;
+            else
+                cmbEPFGoalMap.Tag = "0";
+        }
+
+        private void fillupEPFInfo()
+        {
+            EPFInfo epfInfo = new EPFInfo();
+            _dtEPF = epfInfo.GetEPFInfo(_planeId);
+            dataGridEPF.DataSource = _dtEPF;
+            epfInfo.SetGrid(dataGridEPF);
+            fillEPFInvesterCombobox();
+            fillEPFGoalsCombobox();
+        }
+
+        private void fillEPFGoalsCombobox()
+        {
+            cmbEPFGoalMap.Items.Clear();
+            _goals = new GoalsInfo().GetAll(_planeId);
+            foreach (var goal in _goals)
+            {
+                cmbEPFGoalMap.Items.Add(goal.Name);
+            }
+            cmbEPFGoalMap.Items.Add("");
+        }
+
+        private void fillEPFInvesterCombobox()
+        {
+            new PlannerInfo.FamilyMemberInfo().FillFamilyMemberInCombo(this._client.ID, cmbEPF_Invester);
+        }
+
+        private void dtGridEPF_SelectionChanged(object sender, EventArgs e)
+        {
+            DataRow dr = getSelectedDataRow(dataGridEPF, _dtEPF);
+            if (dr != null)
+                displayEPFInfo(dr);
+            else
+                setDefaultValueEPF();
+        }
+
+        private void setDefaultValueEPF()
+        {
+            cmbEPF_Invester.Tag = "0";
+            cmbEPF_Invester.Text = "";
+            cmbEPFAccountNo.Text = "";
+            cmbEPFGoalMap.Tag = "0";
+            cmbEPFGoalMap.Text = "";
+            txtEPFParticular.Text = "";
+            txtEPFAmount.Text = "0";
+            txtEPF_ROI.Text = "0";
+        }
+
+        private void displayEPFInfo(DataRow dr)
+        {
+            if (dr != null)
+            {
+                cmbEPF_Invester.Tag = dr.Field<string>("ID");
+                cmbEPF_Invester.Text = dr.Field<string>("InvesterName");
+                cmbEPFAccountNo.Text = dr.Field<string>("AccountNo");
+                txtEPFAmount.Text = dr.Field<string>("Amount");
+                txtEPFParticular.Text = dr.Field<string>("Particular");
+                if (dr["GoalID"] != null)
+                {
+                    cmbEPFGoalMap.Tag = dr["GoalId"].ToString();
+                    cmbEPFGoalMap.Text = getGoalName(int.Parse(cmbEPFGoalMap.Tag.ToString()));
+                }
+                else
+                {
+                    cmbEPFGoalMap.Tag = "0";
+                    cmbEPFGoalMap.Text = "";
+                }
+                txtEPF_ROI.Text = dr.Field<string>("InvestmentReturnRate");
+            }
+        }
+
+        private void btnEPFAdd_Click(object sender, EventArgs e)
+        {
+            grpEPF.Enabled = true;
+            setDefaultValueEPF();
+        }
+
+        private void btnEPFEdit_Click(object sender, EventArgs e)
+        {
+            grpEPF.Enabled = true;
+        }
+
+        private void btnEPFDelete_Click(object sender, EventArgs e)
+        {
+            if (dataGridEPF.SelectedRows.Count > 0)
+            {
+                if (MessageBox.Show("Are you sure, you want to delete this record?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    EPFInfo epfInfo = new EPFInfo();
+                    EPF epf = getEPFData();
+                    epfInfo.Delete(epf);
+                    fillupEPFInfo();
+                }
+            }
+        }
+
+        private EPF getEPFData()
+        {
+            EPF EPF = new EPF();
+            EPF.Id = int.Parse(cmbEPF_Invester.Tag.ToString());
+            EPF.Pid = _planeId;
+            EPF.InvesterName = cmbEPF_Invester.Text;
+            EPF.AccountNo = cmbEPFAccountNo.Text;
+            EPF.Particular = txtEPFParticular.Text;
+            EPF.Amount = (string.IsNullOrEmpty(txtEPFAmount.Text) ? 0 : double.Parse(txtEPFAmount.Text));
+            EPF.GoalId = int.Parse(cmbEPFGoalMap.Tag.ToString());
+            EPF.CreatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+            EPF.CreatedBy = Program.CurrentUser.Id;
+            EPF.UpdatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+            EPF.UpdatedBy = Program.CurrentUser.Id;
+            EPF.MachineName = Environment.MachineName;
+            EPF.InvestmentReturnRate = (string.IsNullOrEmpty(txtEPF_ROI.Text) ? 0 : float.Parse(txtEPF_ROI.Text));
+            return EPF;
+        }
+
+        private void btnEPFSave_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                EPFInfo epfInfo = new EPFInfo();
+                EPF PPF = getEPFData();
+                bool isSaved = false;
+
+                if (PPF != null && PPF.Id == 0)
+                    isSaved = epfInfo.Add(PPF);
+                else
+                    isSaved = epfInfo.Update(PPF);
+
+                if (isSaved)
+                {
+                    MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    fillupEPFInfo();
+                    grpEPF.Enabled = false;
+                }
+                else
+                    MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
+                LogDebug(currentMethodName.Name, ex);
+                MessageBox.Show("Unable to save record." + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnEPFCancel_Click(object sender, EventArgs e)
+        {
+            grpEPF.Enabled = false;
+        }
+        #endregion
+
 
         private void fillupBondInfo()
         {
@@ -2736,6 +2918,7 @@ namespace FinancialPlannerClient.CurrentStatus
             calculateAndSetBondsCurrentValue();
             cmbBondsGoal.Tag = "0";
             cmbBondsGoal.Text = "";
+            txtBondInvRetRate.Text = "0";
         }
 
         private void calculateAndSetBondsCurrentValue()
@@ -2785,6 +2968,7 @@ namespace FinancialPlannerClient.CurrentStatus
                     cmbBondsGoal.Tag = "0";
                     cmbBondsGoal.Text = "";
                 }
+                txtBondInvRetRate.Text = dr.Field<string>("InvestmentReturnRate").ToString();
             }
         }
 
@@ -2841,6 +3025,7 @@ namespace FinancialPlannerClient.CurrentStatus
             Bonds.UpdatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
             Bonds.UpdatedBy = Program.CurrentUser.Id;
             Bonds.MachineName = Environment.MachineName;
+            Bonds.InvestmentReturnRate = (string.IsNullOrEmpty(txtBondInvRetRate.Text) ? 0 : float.Parse(txtBondInvRetRate.Text));
             return Bonds;
         }
 
@@ -2898,5 +3083,6 @@ namespace FinancialPlannerClient.CurrentStatus
             else
                 cmbBondsGoal.Tag = "0";
         }
+
     }
 }

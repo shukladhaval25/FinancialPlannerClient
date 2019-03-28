@@ -195,6 +195,7 @@ namespace FinancialPlannerClient.PlanOptions
 
             tabNavigationPageGoalStatus.Controls.Clear();
             tabNavigationPageGoalStatus.Controls.Add(goalStatusView);
+            goalStatusView.Dock = DockStyle.Fill; 
             tabNavigationPageGoalStatus.Controls[0].Dock = DockStyle.Fill;
             tabEstimatedPlan.SelectedPage = tabNavigationPageGoalStatus;
         }
@@ -209,6 +210,7 @@ namespace FinancialPlannerClient.PlanOptions
 
             tabNavigationPagePostRetirementCashFlow.Controls.Clear();
             tabNavigationPagePostRetirementCashFlow.Controls.Add(postRetirementCashFlow);
+            postRetirementCashFlow.Dock = DockStyle.Fill;
             tabNavigationPagePostRetirementCashFlow.Controls[0].Dock = DockStyle.Fill;
             tabEstimatedPlan.SelectedPage = tabNavigationPagePostRetirementCashFlow;
         }
