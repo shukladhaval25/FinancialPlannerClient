@@ -28,20 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CurrentFinancialAssetAllocation));
-            DevExpress.XtraCharts.CustomLegendItem customLegendItem5 = new DevExpress.XtraCharts.CustomLegendItem();
-            DevExpress.XtraCharts.CustomLegendItem customLegendItem6 = new DevExpress.XtraCharts.CustomLegendItem();
-            DevExpress.XtraCharts.Legend legend2 = new DevExpress.XtraCharts.Legend();
-            DevExpress.XtraCharts.CustomLegendItem customLegendItem7 = new DevExpress.XtraCharts.CustomLegendItem();
-            DevExpress.XtraCharts.CustomLegendItem customLegendItem8 = new DevExpress.XtraCharts.CustomLegendItem();
-            DevExpress.XtraCharts.Series series2 = new DevExpress.XtraCharts.Series();
-            DevExpress.XtraCharts.PieSeriesLabel pieSeriesLabel2 = new DevExpress.XtraCharts.PieSeriesLabel();
-            DevExpress.XtraCharts.SeriesPoint seriesPoint3 = new DevExpress.XtraCharts.SeriesPoint("Dhaval", new object[] {
-            ((object)(70D))}, 0);
-            DevExpress.XtraCharts.SeriesPoint seriesPoint4 = new DevExpress.XtraCharts.SeriesPoint("Chhaya", new object[] {
-            ((object)(30D))}, 1);
-            DevExpress.XtraCharts.PieSeriesView pieSeriesView2 = new DevExpress.XtraCharts.PieSeriesView();
-            DevExpress.XtraCharts.ChartTitle chartTitle2 = new DevExpress.XtraCharts.ChartTitle();
             DevExpress.XtraCharts.CustomLegendItem customLegendItem1 = new DevExpress.XtraCharts.CustomLegendItem();
             DevExpress.XtraCharts.CustomLegendItem customLegendItem2 = new DevExpress.XtraCharts.CustomLegendItem();
             DevExpress.XtraCharts.Legend legend1 = new DevExpress.XtraCharts.Legend();
@@ -55,28 +41,21 @@
             ((object)(50D))}, 1);
             DevExpress.XtraCharts.PieSeriesView pieSeriesView1 = new DevExpress.XtraCharts.PieSeriesView();
             DevExpress.XtraCharts.ChartTitle chartTitle1 = new DevExpress.XtraCharts.ChartTitle();
+            DevExpress.XtraCharts.CustomLegendItem customLegendItem5 = new DevExpress.XtraCharts.CustomLegendItem();
+            DevExpress.XtraCharts.CustomLegendItem customLegendItem6 = new DevExpress.XtraCharts.CustomLegendItem();
+            DevExpress.XtraCharts.Legend legend2 = new DevExpress.XtraCharts.Legend();
+            DevExpress.XtraCharts.CustomLegendItem customLegendItem7 = new DevExpress.XtraCharts.CustomLegendItem();
+            DevExpress.XtraCharts.CustomLegendItem customLegendItem8 = new DevExpress.XtraCharts.CustomLegendItem();
+            DevExpress.XtraCharts.Series series2 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.PieSeriesLabel pieSeriesLabel2 = new DevExpress.XtraCharts.PieSeriesLabel();
+            DevExpress.XtraCharts.SeriesPoint seriesPoint3 = new DevExpress.XtraCharts.SeriesPoint("Dhaval", new object[] {
+            ((object)(70D))}, 0);
+            DevExpress.XtraCharts.SeriesPoint seriesPoint4 = new DevExpress.XtraCharts.SeriesPoint("Chhaya", new object[] {
+            ((object)(30D))}, 1);
+            DevExpress.XtraCharts.PieSeriesView pieSeriesView2 = new DevExpress.XtraCharts.PieSeriesView();
+            DevExpress.XtraCharts.ChartTitle chartTitle2 = new DevExpress.XtraCharts.ChartTitle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CurrentFinancialAssetAllocation));
             this.Detail = new DevExpress.XtraReports.UI.DetailBand();
-            this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
-            this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
-            this.ReportTitle = new DevExpress.XtraReports.UI.XRLabel();
-            this.lblClientName = new DevExpress.XtraReports.UI.XRLabel();
-            this.xrPageInfo1 = new DevExpress.XtraReports.UI.XRPageInfo();
-            this.xrLabel2 = new DevExpress.XtraReports.UI.XRLabel();
-            this.xrLabel1 = new DevExpress.XtraReports.UI.XRLabel();
-            this.xrLabel3 = new DevExpress.XtraReports.UI.XRLabel();
-            this.xrTable2 = new DevExpress.XtraReports.UI.XRTable();
-            this.xrTableRow7 = new DevExpress.XtraReports.UI.XRTableRow();
-            this.xrTableCell11 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell12 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableEquity = new DevExpress.XtraReports.UI.XRTable();
-            this.xrTableRow2 = new DevExpress.XtraReports.UI.XRTableRow();
-            this.xrTableCell1 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.lblEquity = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableRow5 = new DevExpress.XtraReports.UI.XRTableRow();
-            this.xrTableCell7 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.lblDebt = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrChartCurrentStatus = new DevExpress.XtraReports.UI.XRChart();
-            this.xrPictureBox1 = new DevExpress.XtraReports.UI.XRPictureBox();
             this.xrLabel4 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrTable1 = new DevExpress.XtraReports.UI.XRTable();
             this.xrTableRow1 = new DevExpress.XtraReports.UI.XRTableRow();
@@ -90,18 +69,39 @@
             this.xrTableCell9 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell10 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrChart1 = new DevExpress.XtraReports.UI.XRChart();
-            ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xrTableEquity)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xrChartCurrentStatus)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(pieSeriesLabel2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(pieSeriesView2)).BeginInit();
+            this.xrChartCurrentStatus = new DevExpress.XtraReports.UI.XRChart();
+            this.xrTable2 = new DevExpress.XtraReports.UI.XRTable();
+            this.xrTableRow7 = new DevExpress.XtraReports.UI.XRTableRow();
+            this.xrTableCell11 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrTableCell12 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrTableEquity = new DevExpress.XtraReports.UI.XRTable();
+            this.xrTableRow2 = new DevExpress.XtraReports.UI.XRTableRow();
+            this.xrTableCell1 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.lblEquity = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrTableRow5 = new DevExpress.XtraReports.UI.XRTableRow();
+            this.xrTableCell7 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.lblDebt = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrLabel3 = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrLabel1 = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrLabel2 = new DevExpress.XtraReports.UI.XRLabel();
+            this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
+            this.ReportTitle = new DevExpress.XtraReports.UI.XRLabel();
+            this.lblClientName = new DevExpress.XtraReports.UI.XRLabel();
+            this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
+            this.xrPageInfo1 = new DevExpress.XtraReports.UI.XRPageInfo();
+            this.xrPictureBox1 = new DevExpress.XtraReports.UI.XRPictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrChart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(series1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(pieSeriesLabel1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(pieSeriesView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xrChartCurrentStatus)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(pieSeriesLabel2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(pieSeriesView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xrTableEquity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // Detail
@@ -122,269 +122,6 @@
             this.Detail.Name = "Detail";
             this.Detail.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.Detail.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
-            // 
-            // TopMargin
-            // 
-            this.TopMargin.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
-            this.ReportTitle,
-            this.lblClientName,
-            this.xrPictureBox1});
-            this.TopMargin.Dpi = 100F;
-            this.TopMargin.HeightF = 100F;
-            this.TopMargin.Name = "TopMargin";
-            this.TopMargin.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
-            this.TopMargin.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
-            // 
-            // BottomMargin
-            // 
-            this.BottomMargin.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
-            this.xrPageInfo1});
-            this.BottomMargin.Dpi = 100F;
-            this.BottomMargin.HeightF = 40.625F;
-            this.BottomMargin.Name = "BottomMargin";
-            this.BottomMargin.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
-            this.BottomMargin.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
-            // 
-            // ReportTitle
-            // 
-            this.ReportTitle.Dpi = 100F;
-            this.ReportTitle.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ReportTitle.ForeColor = System.Drawing.Color.Navy;
-            this.ReportTitle.LocationFloat = new DevExpress.Utils.PointFloat(5F, 14.16667F);
-            this.ReportTitle.Name = "ReportTitle";
-            this.ReportTitle.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.ReportTitle.SizeF = new System.Drawing.SizeF(143.75F, 23F);
-            this.ReportTitle.StylePriority.UseFont = false;
-            this.ReportTitle.StylePriority.UseForeColor = false;
-            this.ReportTitle.Text = "Financial Plan of";
-            // 
-            // lblClientName
-            // 
-            this.lblClientName.Dpi = 100F;
-            this.lblClientName.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblClientName.ForeColor = System.Drawing.Color.Navy;
-            this.lblClientName.LocationFloat = new DevExpress.Utils.PointFloat(5F, 51.00002F);
-            this.lblClientName.Name = "lblClientName";
-            this.lblClientName.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.lblClientName.SizeF = new System.Drawing.SizeF(390.625F, 23F);
-            this.lblClientName.StylePriority.UseFont = false;
-            this.lblClientName.StylePriority.UseForeColor = false;
-            // 
-            // xrPageInfo1
-            // 
-            this.xrPageInfo1.Dpi = 100F;
-            this.xrPageInfo1.LocationFloat = new DevExpress.Utils.PointFloat(295.3125F, 10.00001F);
-            this.xrPageInfo1.Name = "xrPageInfo1";
-            this.xrPageInfo1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrPageInfo1.SizeF = new System.Drawing.SizeF(55.20831F, 23F);
-            // 
-            // xrLabel2
-            // 
-            this.xrLabel2.Dpi = 100F;
-            this.xrLabel2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xrLabel2.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.xrLabel2.LocationFloat = new DevExpress.Utils.PointFloat(25.52083F, 10.00001F);
-            this.xrLabel2.Multiline = true;
-            this.xrLabel2.Name = "xrLabel2";
-            this.xrLabel2.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel2.SizeF = new System.Drawing.SizeF(370.1042F, 25.08332F);
-            this.xrLabel2.StylePriority.UseFont = false;
-            this.xrLabel2.StylePriority.UseForeColor = false;
-            this.xrLabel2.Text = "Your Risk Profiling and Asset Allocation :\r\n";
-            // 
-            // xrLabel1
-            // 
-            this.xrLabel1.Dpi = 100F;
-            this.xrLabel1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(25.52083F, 47.87499F);
-            this.xrLabel1.Multiline = true;
-            this.xrLabel1.Name = "xrLabel1";
-            this.xrLabel1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel1.SizeF = new System.Drawing.SizeF(610F, 101.125F);
-            this.xrLabel1.StylePriority.UseFont = false;
-            this.xrLabel1.Text = resources.GetString("xrLabel1.Text");
-            this.xrLabel1.TextTrimming = System.Drawing.StringTrimming.Word;
-            // 
-            // xrLabel3
-            // 
-            this.xrLabel3.Dpi = 100F;
-            this.xrLabel3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xrLabel3.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.xrLabel3.LocationFloat = new DevExpress.Utils.PointFloat(25.52077F, 164.5417F);
-            this.xrLabel3.Multiline = true;
-            this.xrLabel3.Name = "xrLabel3";
-            this.xrLabel3.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel3.SizeF = new System.Drawing.SizeF(311.7709F, 25.08331F);
-            this.xrLabel3.StylePriority.UseFont = false;
-            this.xrLabel3.StylePriority.UseForeColor = false;
-            this.xrLabel3.Text = "Your Current Financial Asset Allocation :\r\n";
-            // 
-            // xrTable2
-            // 
-            this.xrTable2.BackColor = System.Drawing.Color.Navy;
-            this.xrTable2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.xrTable2.Dpi = 100F;
-            this.xrTable2.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xrTable2.ForeColor = System.Drawing.Color.White;
-            this.xrTable2.LocationFloat = new DevExpress.Utils.PointFloat(25.52083F, 229.1667F);
-            this.xrTable2.Name = "xrTable2";
-            this.xrTable2.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
-            this.xrTableRow7});
-            this.xrTable2.SizeF = new System.Drawing.SizeF(298.9583F, 39.58333F);
-            this.xrTable2.StylePriority.UseBackColor = false;
-            this.xrTable2.StylePriority.UseBorderColor = false;
-            this.xrTable2.StylePriority.UseFont = false;
-            this.xrTable2.StylePriority.UseForeColor = false;
-            this.xrTable2.StylePriority.UseTextAlignment = false;
-            this.xrTable2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            // 
-            // xrTableRow7
-            // 
-            this.xrTableRow7.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
-            this.xrTableCell11,
-            this.xrTableCell12});
-            this.xrTableRow7.Dpi = 100F;
-            this.xrTableRow7.Name = "xrTableRow7";
-            this.xrTableRow7.Weight = 1.5833332824707032D;
-            // 
-            // xrTableCell11
-            // 
-            this.xrTableCell11.BackColor = System.Drawing.Color.Navy;
-            this.xrTableCell11.Dpi = 100F;
-            this.xrTableCell11.Name = "xrTableCell11";
-            this.xrTableCell11.StylePriority.UseBackColor = false;
-            this.xrTableCell11.Text = "Assets Classes";
-            this.xrTableCell11.Weight = 0.99476281795144117D;
-            // 
-            // xrTableCell12
-            // 
-            this.xrTableCell12.Dpi = 100F;
-            this.xrTableCell12.Multiline = true;
-            this.xrTableCell12.Name = "xrTableCell12";
-            this.xrTableCell12.Text = "Current Assets Allocation";
-            this.xrTableCell12.Weight = 0.77735183583511758D;
-            // 
-            // xrTableEquity
-            // 
-            this.xrTableEquity.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrTableEquity.Dpi = 100F;
-            this.xrTableEquity.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xrTableEquity.LocationFloat = new DevExpress.Utils.PointFloat(25.52083F, 268.75F);
-            this.xrTableEquity.Name = "xrTableEquity";
-            this.xrTableEquity.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
-            this.xrTableRow2,
-            this.xrTableRow5});
-            this.xrTableEquity.SizeF = new System.Drawing.SizeF(298.9583F, 49.99999F);
-            this.xrTableEquity.StylePriority.UseBorders = false;
-            this.xrTableEquity.StylePriority.UseFont = false;
-            // 
-            // xrTableRow2
-            // 
-            this.xrTableRow2.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
-            this.xrTableCell1,
-            this.lblEquity});
-            this.xrTableRow2.Dpi = 100F;
-            this.xrTableRow2.Name = "xrTableRow2";
-            this.xrTableRow2.Weight = 1D;
-            // 
-            // xrTableCell1
-            // 
-            this.xrTableCell1.Dpi = 100F;
-            this.xrTableCell1.Name = "xrTableCell1";
-            this.xrTableCell1.Text = "Equity";
-            this.xrTableCell1.Weight = 1.5490891272341738D;
-            // 
-            // lblEquity
-            // 
-            this.lblEquity.Dpi = 100F;
-            this.lblEquity.Name = "lblEquity";
-            this.lblEquity.StylePriority.UseTextAlignment = false;
-            this.lblEquity.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
-            this.lblEquity.Weight = 1.2105268390230997D;
-            // 
-            // xrTableRow5
-            // 
-            this.xrTableRow5.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
-            this.xrTableCell7,
-            this.lblDebt});
-            this.xrTableRow5.Dpi = 100F;
-            this.xrTableRow5.Name = "xrTableRow5";
-            this.xrTableRow5.Weight = 1D;
-            // 
-            // xrTableCell7
-            // 
-            this.xrTableCell7.Dpi = 100F;
-            this.xrTableCell7.Name = "xrTableCell7";
-            this.xrTableCell7.Text = "Debt";
-            this.xrTableCell7.Weight = 1.5490891272341738D;
-            // 
-            // lblDebt
-            // 
-            this.lblDebt.Dpi = 100F;
-            this.lblDebt.Name = "lblDebt";
-            this.lblDebt.StylePriority.UseTextAlignment = false;
-            this.lblDebt.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
-            this.lblDebt.Weight = 1.2105268390230997D;
-            // 
-            // xrChartCurrentStatus
-            // 
-            this.xrChartCurrentStatus.BorderColor = System.Drawing.Color.Black;
-            this.xrChartCurrentStatus.Borders = DevExpress.XtraPrinting.BorderSide.None;
-            this.xrChartCurrentStatus.Dpi = 100F;
-            customLegendItem5.Name = "Custom Legend Item 1";
-            customLegendItem6.Name = "Custom Legend Item 2";
-            this.xrChartCurrentStatus.Legend.CustomItems.AddRange(new DevExpress.XtraCharts.CustomLegendItem[] {
-            customLegendItem5,
-            customLegendItem6});
-            this.xrChartCurrentStatus.Legend.Name = "Default Legend";
-            this.xrChartCurrentStatus.Legend.Visibility = DevExpress.Utils.DefaultBoolean.False;
-            legend2.AlignmentHorizontal = DevExpress.XtraCharts.LegendAlignmentHorizontal.Center;
-            legend2.AlignmentVertical = DevExpress.XtraCharts.LegendAlignmentVertical.BottomOutside;
-            legend2.Border.Visibility = DevExpress.Utils.DefaultBoolean.True;
-            customLegendItem7.MarkerColor = System.Drawing.Color.RoyalBlue;
-            customLegendItem7.Name = "Equity";
-            customLegendItem8.MarkerColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            customLegendItem8.Name = "Debt";
-            legend2.CustomItems.AddRange(new DevExpress.XtraCharts.CustomLegendItem[] {
-            customLegendItem7,
-            customLegendItem8});
-            legend2.Name = "Legend1";
-            legend2.Title.Text = "";
-            legend2.Title.Visible = true;
-            legend2.Title.WordWrap = true;
-            legend2.Visibility = DevExpress.Utils.DefaultBoolean.True;
-            this.xrChartCurrentStatus.Legends.AddRange(new DevExpress.XtraCharts.Legend[] {
-            legend2});
-            this.xrChartCurrentStatus.LocationFloat = new DevExpress.Utils.PointFloat(345F, 188.5F);
-            this.xrChartCurrentStatus.Name = "xrChartCurrentStatus";
-            this.xrChartCurrentStatus.PaletteBaseColorNumber = 4;
-            this.xrChartCurrentStatus.PaletteName = "Apex";
-            pieSeriesLabel2.Position = DevExpress.XtraCharts.PieSeriesLabelPosition.Inside;
-            series2.Label = pieSeriesLabel2;
-            series2.LabelsVisibility = DevExpress.Utils.DefaultBoolean.True;
-            series2.Name = "Series 1";
-            seriesPoint4.ColorSerializable = "#FF8040";
-            series2.Points.AddRange(new DevExpress.XtraCharts.SeriesPoint[] {
-            seriesPoint3,
-            seriesPoint4});
-            series2.View = pieSeriesView2;
-            this.xrChartCurrentStatus.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
-        series2};
-            this.xrChartCurrentStatus.SizeF = new System.Drawing.SizeF(300F, 284.4167F);
-            chartTitle2.Text = "Current Asset Allocation";
-            this.xrChartCurrentStatus.Titles.AddRange(new DevExpress.XtraCharts.ChartTitle[] {
-            chartTitle2});
-            // 
-            // xrPictureBox1
-            // 
-            this.xrPictureBox1.Dpi = 100F;
-            this.xrPictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("xrPictureBox1.Image")));
-            this.xrPictureBox1.LocationFloat = new DevExpress.Utils.PointFloat(403.5417F, 0F);
-            this.xrPictureBox1.Name = "xrPictureBox1";
-            this.xrPictureBox1.SizeF = new System.Drawing.SizeF(241.4583F, 100F);
-            this.xrPictureBox1.Sizing = DevExpress.XtraPrinting.ImageSizeMode.ZoomImage;
             // 
             // xrLabel4
             // 
@@ -552,6 +289,7 @@
             series1.Points.AddRange(new DevExpress.XtraCharts.SeriesPoint[] {
             seriesPoint1,
             seriesPoint2});
+            pieSeriesView1.Rotation = 90;
             series1.View = pieSeriesView1;
             this.xrChart1.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
         series1};
@@ -561,6 +299,269 @@
             this.xrChart1.Titles.AddRange(new DevExpress.XtraCharts.ChartTitle[] {
             chartTitle1});
             // 
+            // xrChartCurrentStatus
+            // 
+            this.xrChartCurrentStatus.BorderColor = System.Drawing.Color.Black;
+            this.xrChartCurrentStatus.Borders = DevExpress.XtraPrinting.BorderSide.None;
+            this.xrChartCurrentStatus.Dpi = 100F;
+            customLegendItem5.Name = "Custom Legend Item 1";
+            customLegendItem6.Name = "Custom Legend Item 2";
+            this.xrChartCurrentStatus.Legend.CustomItems.AddRange(new DevExpress.XtraCharts.CustomLegendItem[] {
+            customLegendItem5,
+            customLegendItem6});
+            this.xrChartCurrentStatus.Legend.Name = "Default Legend";
+            this.xrChartCurrentStatus.Legend.Visibility = DevExpress.Utils.DefaultBoolean.False;
+            legend2.AlignmentHorizontal = DevExpress.XtraCharts.LegendAlignmentHorizontal.Center;
+            legend2.AlignmentVertical = DevExpress.XtraCharts.LegendAlignmentVertical.BottomOutside;
+            legend2.Border.Visibility = DevExpress.Utils.DefaultBoolean.True;
+            customLegendItem7.MarkerColor = System.Drawing.Color.RoyalBlue;
+            customLegendItem7.Name = "Equity";
+            customLegendItem8.MarkerColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            customLegendItem8.Name = "Debt";
+            legend2.CustomItems.AddRange(new DevExpress.XtraCharts.CustomLegendItem[] {
+            customLegendItem7,
+            customLegendItem8});
+            legend2.Name = "Legend1";
+            legend2.Title.Text = "";
+            legend2.Title.Visible = true;
+            legend2.Title.WordWrap = true;
+            legend2.Visibility = DevExpress.Utils.DefaultBoolean.True;
+            this.xrChartCurrentStatus.Legends.AddRange(new DevExpress.XtraCharts.Legend[] {
+            legend2});
+            this.xrChartCurrentStatus.LocationFloat = new DevExpress.Utils.PointFloat(345F, 188.5F);
+            this.xrChartCurrentStatus.Name = "xrChartCurrentStatus";
+            this.xrChartCurrentStatus.PaletteBaseColorNumber = 4;
+            this.xrChartCurrentStatus.PaletteName = "Apex";
+            pieSeriesLabel2.Position = DevExpress.XtraCharts.PieSeriesLabelPosition.Inside;
+            series2.Label = pieSeriesLabel2;
+            series2.LabelsVisibility = DevExpress.Utils.DefaultBoolean.True;
+            series2.Name = "Series 1";
+            seriesPoint4.ColorSerializable = "#FF8040";
+            series2.Points.AddRange(new DevExpress.XtraCharts.SeriesPoint[] {
+            seriesPoint3,
+            seriesPoint4});
+            series2.View = pieSeriesView2;
+            this.xrChartCurrentStatus.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
+        series2};
+            this.xrChartCurrentStatus.SizeF = new System.Drawing.SizeF(300F, 284.4167F);
+            chartTitle2.Text = "Current Asset Allocation";
+            this.xrChartCurrentStatus.Titles.AddRange(new DevExpress.XtraCharts.ChartTitle[] {
+            chartTitle2});
+            // 
+            // xrTable2
+            // 
+            this.xrTable2.BackColor = System.Drawing.Color.Navy;
+            this.xrTable2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.xrTable2.Dpi = 100F;
+            this.xrTable2.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrTable2.ForeColor = System.Drawing.Color.White;
+            this.xrTable2.LocationFloat = new DevExpress.Utils.PointFloat(25.52083F, 229.1667F);
+            this.xrTable2.Name = "xrTable2";
+            this.xrTable2.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
+            this.xrTableRow7});
+            this.xrTable2.SizeF = new System.Drawing.SizeF(298.9583F, 39.58333F);
+            this.xrTable2.StylePriority.UseBackColor = false;
+            this.xrTable2.StylePriority.UseBorderColor = false;
+            this.xrTable2.StylePriority.UseFont = false;
+            this.xrTable2.StylePriority.UseForeColor = false;
+            this.xrTable2.StylePriority.UseTextAlignment = false;
+            this.xrTable2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            // 
+            // xrTableRow7
+            // 
+            this.xrTableRow7.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
+            this.xrTableCell11,
+            this.xrTableCell12});
+            this.xrTableRow7.Dpi = 100F;
+            this.xrTableRow7.Name = "xrTableRow7";
+            this.xrTableRow7.Weight = 1.5833332824707032D;
+            // 
+            // xrTableCell11
+            // 
+            this.xrTableCell11.BackColor = System.Drawing.Color.Navy;
+            this.xrTableCell11.Dpi = 100F;
+            this.xrTableCell11.Name = "xrTableCell11";
+            this.xrTableCell11.StylePriority.UseBackColor = false;
+            this.xrTableCell11.Text = "Assets Classes";
+            this.xrTableCell11.Weight = 0.99476281795144117D;
+            // 
+            // xrTableCell12
+            // 
+            this.xrTableCell12.Dpi = 100F;
+            this.xrTableCell12.Multiline = true;
+            this.xrTableCell12.Name = "xrTableCell12";
+            this.xrTableCell12.Text = "Current Assets Allocation";
+            this.xrTableCell12.Weight = 0.77735183583511758D;
+            // 
+            // xrTableEquity
+            // 
+            this.xrTableEquity.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrTableEquity.Dpi = 100F;
+            this.xrTableEquity.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrTableEquity.LocationFloat = new DevExpress.Utils.PointFloat(25.52083F, 268.75F);
+            this.xrTableEquity.Name = "xrTableEquity";
+            this.xrTableEquity.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
+            this.xrTableRow2,
+            this.xrTableRow5});
+            this.xrTableEquity.SizeF = new System.Drawing.SizeF(298.9583F, 49.99999F);
+            this.xrTableEquity.StylePriority.UseBorders = false;
+            this.xrTableEquity.StylePriority.UseFont = false;
+            // 
+            // xrTableRow2
+            // 
+            this.xrTableRow2.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
+            this.xrTableCell1,
+            this.lblEquity});
+            this.xrTableRow2.Dpi = 100F;
+            this.xrTableRow2.Name = "xrTableRow2";
+            this.xrTableRow2.Weight = 1D;
+            // 
+            // xrTableCell1
+            // 
+            this.xrTableCell1.Dpi = 100F;
+            this.xrTableCell1.Name = "xrTableCell1";
+            this.xrTableCell1.Text = "Equity";
+            this.xrTableCell1.Weight = 1.5490891272341738D;
+            // 
+            // lblEquity
+            // 
+            this.lblEquity.Dpi = 100F;
+            this.lblEquity.Name = "lblEquity";
+            this.lblEquity.StylePriority.UseTextAlignment = false;
+            this.lblEquity.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
+            this.lblEquity.Weight = 1.2105268390230997D;
+            // 
+            // xrTableRow5
+            // 
+            this.xrTableRow5.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
+            this.xrTableCell7,
+            this.lblDebt});
+            this.xrTableRow5.Dpi = 100F;
+            this.xrTableRow5.Name = "xrTableRow5";
+            this.xrTableRow5.Weight = 1D;
+            // 
+            // xrTableCell7
+            // 
+            this.xrTableCell7.Dpi = 100F;
+            this.xrTableCell7.Name = "xrTableCell7";
+            this.xrTableCell7.Text = "Debt";
+            this.xrTableCell7.Weight = 1.5490891272341738D;
+            // 
+            // lblDebt
+            // 
+            this.lblDebt.Dpi = 100F;
+            this.lblDebt.Name = "lblDebt";
+            this.lblDebt.StylePriority.UseTextAlignment = false;
+            this.lblDebt.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
+            this.lblDebt.Weight = 1.2105268390230997D;
+            // 
+            // xrLabel3
+            // 
+            this.xrLabel3.Dpi = 100F;
+            this.xrLabel3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrLabel3.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.xrLabel3.LocationFloat = new DevExpress.Utils.PointFloat(25.52077F, 164.5417F);
+            this.xrLabel3.Multiline = true;
+            this.xrLabel3.Name = "xrLabel3";
+            this.xrLabel3.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel3.SizeF = new System.Drawing.SizeF(311.7709F, 25.08331F);
+            this.xrLabel3.StylePriority.UseFont = false;
+            this.xrLabel3.StylePriority.UseForeColor = false;
+            this.xrLabel3.Text = "Your Current Financial Asset Allocation :\r\n";
+            // 
+            // xrLabel1
+            // 
+            this.xrLabel1.Dpi = 100F;
+            this.xrLabel1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(25.52083F, 47.87499F);
+            this.xrLabel1.Multiline = true;
+            this.xrLabel1.Name = "xrLabel1";
+            this.xrLabel1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel1.SizeF = new System.Drawing.SizeF(610F, 101.125F);
+            this.xrLabel1.StylePriority.UseFont = false;
+            this.xrLabel1.Text = resources.GetString("xrLabel1.Text");
+            this.xrLabel1.TextTrimming = System.Drawing.StringTrimming.Word;
+            // 
+            // xrLabel2
+            // 
+            this.xrLabel2.Dpi = 100F;
+            this.xrLabel2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrLabel2.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.xrLabel2.LocationFloat = new DevExpress.Utils.PointFloat(25.52083F, 10.00001F);
+            this.xrLabel2.Multiline = true;
+            this.xrLabel2.Name = "xrLabel2";
+            this.xrLabel2.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel2.SizeF = new System.Drawing.SizeF(370.1042F, 25.08332F);
+            this.xrLabel2.StylePriority.UseFont = false;
+            this.xrLabel2.StylePriority.UseForeColor = false;
+            this.xrLabel2.Text = "Your Risk Profiling and Asset Allocation :\r\n";
+            // 
+            // TopMargin
+            // 
+            this.TopMargin.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.ReportTitle,
+            this.lblClientName,
+            this.xrPictureBox1});
+            this.TopMargin.Dpi = 100F;
+            this.TopMargin.HeightF = 100F;
+            this.TopMargin.Name = "TopMargin";
+            this.TopMargin.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
+            this.TopMargin.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
+            // 
+            // ReportTitle
+            // 
+            this.ReportTitle.Dpi = 100F;
+            this.ReportTitle.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ReportTitle.ForeColor = System.Drawing.Color.Navy;
+            this.ReportTitle.LocationFloat = new DevExpress.Utils.PointFloat(5F, 14.16667F);
+            this.ReportTitle.Name = "ReportTitle";
+            this.ReportTitle.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.ReportTitle.SizeF = new System.Drawing.SizeF(143.75F, 23F);
+            this.ReportTitle.StylePriority.UseFont = false;
+            this.ReportTitle.StylePriority.UseForeColor = false;
+            this.ReportTitle.Text = "Financial Plan of";
+            // 
+            // lblClientName
+            // 
+            this.lblClientName.Dpi = 100F;
+            this.lblClientName.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblClientName.ForeColor = System.Drawing.Color.Navy;
+            this.lblClientName.LocationFloat = new DevExpress.Utils.PointFloat(5F, 51.00002F);
+            this.lblClientName.Name = "lblClientName";
+            this.lblClientName.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.lblClientName.SizeF = new System.Drawing.SizeF(390.625F, 23F);
+            this.lblClientName.StylePriority.UseFont = false;
+            this.lblClientName.StylePriority.UseForeColor = false;
+            // 
+            // BottomMargin
+            // 
+            this.BottomMargin.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.xrPageInfo1});
+            this.BottomMargin.Dpi = 100F;
+            this.BottomMargin.HeightF = 40.625F;
+            this.BottomMargin.Name = "BottomMargin";
+            this.BottomMargin.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
+            this.BottomMargin.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
+            // 
+            // xrPageInfo1
+            // 
+            this.xrPageInfo1.Dpi = 100F;
+            this.xrPageInfo1.LocationFloat = new DevExpress.Utils.PointFloat(295.3125F, 10.00001F);
+            this.xrPageInfo1.Name = "xrPageInfo1";
+            this.xrPageInfo1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrPageInfo1.SizeF = new System.Drawing.SizeF(55.20831F, 23F);
+            // 
+            // xrPictureBox1
+            // 
+            this.xrPictureBox1.Dpi = 100F;
+            this.xrPictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("xrPictureBox1.Image")));
+            this.xrPictureBox1.LocationFloat = new DevExpress.Utils.PointFloat(403.5417F, 0F);
+            this.xrPictureBox1.Name = "xrPictureBox1";
+            this.xrPictureBox1.SizeF = new System.Drawing.SizeF(241.4583F, 100F);
+            this.xrPictureBox1.Sizing = DevExpress.XtraPrinting.ImageSizeMode.ZoomImage;
+            // 
             // CurrentFinancialAssetAllocation
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
@@ -569,18 +570,18 @@
             this.BottomMargin});
             this.Margins = new System.Drawing.Printing.Margins(100, 100, 100, 41);
             this.Version = "16.2";
-            ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xrTableEquity)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(pieSeriesLabel2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(pieSeriesView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xrChartCurrentStatus)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(pieSeriesLabel1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(pieSeriesView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(series1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrChart1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(pieSeriesLabel2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(pieSeriesView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xrChartCurrentStatus)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xrTableEquity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
 
         }

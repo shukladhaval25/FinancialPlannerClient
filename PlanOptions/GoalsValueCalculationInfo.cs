@@ -365,17 +365,20 @@ namespace FinancialPlannerClient.PlanOptions
 
         private double getTotalMappedInstrumentValue()
         {
-            
-            double instumentMappedCurrentValue =  csInfo.GetFundFromCurrentStatus(_planner.ID, _goal.Id);
+
+            //double instumentMappedCurrentValue =  csInfo.GetFundFromCurrentStatus(_planner.ID, _goal.Id);
+            double instumentMappedCurrentValue = csInfo.GetFundFromCurrentStatus(_planner.ID, _goal.Id);
             IList<FinancialPlanner.Common.Model.PlanOptions.CurrentStatusToGoal>  currentStatusToGoals = csInfo.GetCurrentStatusToGoal(this._optionId, this._planner.ID);
-            
+
+            double totalCurrentStatuToGoalValue = 0;
             foreach (FinancialPlanner.Common.Model.PlanOptions.CurrentStatusToGoal currentStatusToGoal
                 in currentStatusToGoals)
             {
-                instumentMappedCurrentValue = instumentMappedCurrentValue + currentStatusToGoal.FundAllocation;
+                totalCurrentStatuToGoalValue = totalCurrentStatuToGoalValue + currentStatusToGoal.FundAllocation;
             }
-            return futureValue(instumentMappedCurrentValue,
+            totalCurrentStatuToGoalValue = futureValue(totalCurrentStatuToGoalValue,
                 CURREN_STATUS_TO_GOAL_MAPPED_RETURN_REATE_IN_PERCENTAGE, getRemainingYearsFromPlanStartYear());
+            return instumentMappedCurrentValue + totalCurrentStatuToGoalValue;
         }
 
         private double getFutureValueOfMappedNonFinancialAsset()

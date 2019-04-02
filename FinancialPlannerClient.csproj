@@ -292,6 +292,12 @@
     <Compile Include="PlanOptions\GoalCalView.designer.cs">
       <DependentUpon>GoalCalView.cs</DependentUpon>
     </Compile>
+    <Compile Include="PlanOptions\Reports\AssetAllocationTitle.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\AssetAllocationTitle.Designer.cs">
+      <DependentUpon>AssetAllocationTitle.cs</DependentUpon>
+    </Compile>
     <Compile Include="PlanOptions\Reports\AssumptionPage.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -401,6 +407,12 @@
     <Compile Include="PlanOptions\Reports\GoalProjectionForComplition.Designer.cs">
       <DependentUpon>GoalProjectionForComplition.cs</DependentUpon>
     </Compile>
+    <Compile Include="PlanOptions\Reports\GoalsDescription.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\GoalsDescription.Designer.cs">
+      <DependentUpon>GoalsDescription.cs</DependentUpon>
+    </Compile>
     <Compile Include="PlanOptions\Reports\IncomeExpenseAnalysis.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -480,11 +492,23 @@
     <Compile Include="PlanOptions\Reports\ScopeOfPlancs.Designer.cs">
       <DependentUpon>ScopeOfPlancs.cs</DependentUpon>
     </Compile>
+    <Compile Include="PlanOptions\Reports\SmartGoal.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\SmartGoal.Designer.cs">
+      <DependentUpon>SmartGoal.cs</DependentUpon>
+    </Compile>
     <Compile Include="PlanOptions\Reports\SpendingSavingRatioReport.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="PlanOptions\Reports\SpendingSavingRatioReport.Designer.cs">
       <DependentUpon>SpendingSavingRatioReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\StrategicAssetsCollection.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\StrategicAssetsCollection.Designer.cs">
+      <DependentUpon>StrategicAssetsCollection.cs</DependentUpon>
     </Compile>
     <Compile Include="PlanOptions\Reports\SurplusPeriod.cs">
       <SubType>Component</SubType>
@@ -655,6 +679,9 @@
     <EmbeddedResource Include="PlanOptions\GoalCalView.resx">
       <DependentUpon>GoalCalView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\Reports\AssetAllocationTitle.resx">
+      <DependentUpon>AssetAllocationTitle.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\Reports\AssumptionPage.resx">
       <DependentUpon>AssumptionPage.cs</DependentUpon>
     </EmbeddedResource>
@@ -687,6 +714,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\Reports\GoalProjectionForComplition.resx">
       <DependentUpon>GoalProjectionForComplition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\Reports\GoalsDescription.resx">
+      <DependentUpon>GoalsDescription.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\Reports\IncomeExpenseAnalysis.resx">
       <DependentUpon>IncomeExpenseAnalysis.cs</DependentUpon>
@@ -727,8 +757,14 @@
     <EmbeddedResource Include="PlanOptions\Reports\ScopeOfPlancs.resx">
       <DependentUpon>ScopeOfPlancs.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\Reports\SmartGoal.resx">
+      <DependentUpon>SmartGoal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\Reports\SpendingSavingRatioReport.resx">
       <DependentUpon>SpendingSavingRatioReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\Reports\StrategicAssetsCollection.resx">
+      <DependentUpon>StrategicAssetsCollection.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\Reports\SurplusPeriod.resx">
       <DependentUpon>SurplusPeriod.cs</DependentUpon>
@@ -977,6 +1013,21 @@
       <Project>{a709d5be-e962-42bb-8626-fdba7391f678}</Project>
       <Name>FinancialPlannerServer</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Vehicles.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EducationGoal.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ForeignTrip.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Marriage.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Retirement.PNG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

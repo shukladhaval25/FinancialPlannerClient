@@ -104,14 +104,14 @@
             // 
             this.lblName.Dpi = 100F;
             this.lblName.Name = "lblName";
-            this.lblName.Text = "lblName";
             this.lblName.Weight = 1.2502033516953661D;
             // 
             // lblStartYear
             // 
             this.lblStartYear.Dpi = 100F;
             this.lblStartYear.Name = "lblStartYear";
-            this.lblStartYear.Text = "lblStartYear";
+            this.lblStartYear.StylePriority.UseTextAlignment = false;
+            this.lblStartYear.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.lblStartYear.Weight = 0.4152289083434213D;
             this.lblStartYear.TextChanged += new System.EventHandler(this.lblStartYear_TextChanged);
             // 
@@ -119,25 +119,32 @@
             // 
             this.lblYearLeft.Dpi = 100F;
             this.lblYearLeft.Name = "lblYearLeft";
-            this.lblYearLeft.Text = "lblYearLeft";
+            this.lblYearLeft.StylePriority.UseTextAlignment = false;
+            this.lblYearLeft.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.lblYearLeft.Weight = 0.62082613386776853D;
             // 
             // lblProjectionCompleted
             // 
             this.lblProjectionCompleted.Dpi = 100F;
             this.lblProjectionCompleted.Name = "lblProjectionCompleted";
+            this.lblProjectionCompleted.StylePriority.UseTextAlignment = false;
+            this.lblProjectionCompleted.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.lblProjectionCompleted.Weight = 0.87372971761315288D;
             // 
             // lblGoalAchiveTillDate
             // 
             this.lblGoalAchiveTillDate.Dpi = 100F;
             this.lblGoalAchiveTillDate.Name = "lblGoalAchiveTillDate";
+            this.lblGoalAchiveTillDate.StylePriority.UseTextAlignment = false;
+            this.lblGoalAchiveTillDate.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.lblGoalAchiveTillDate.Weight = 0.62036230778943535D;
             // 
             // lblGoalReachedPercentage
             // 
             this.lblGoalReachedPercentage.Dpi = 100F;
             this.lblGoalReachedPercentage.Name = "lblGoalReachedPercentage";
+            this.lblGoalReachedPercentage.StylePriority.UseTextAlignment = false;
+            this.lblGoalReachedPercentage.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.lblGoalReachedPercentage.Weight = 1.1972381032144652D;
             // 
             // TopMargin

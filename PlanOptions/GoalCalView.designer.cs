@@ -207,6 +207,7 @@
             // 
             this.gridViewGoalValue.GridControl = this.dtGridGoalValue;
             this.gridViewGoalValue.Name = "gridViewGoalValue";
+            this.gridViewGoalValue.OptionsBehavior.ReadOnly = true;
             // 
             // GoalCalView
             // 

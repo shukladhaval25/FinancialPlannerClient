@@ -116,6 +116,7 @@
             series1.Points.AddRange(new DevExpress.XtraCharts.SeriesPoint[] {
             seriesPoint1,
             seriesPoint2});
+            pieSeriesView1.Rotation = 90;
             series1.View = pieSeriesView1;
             this.xrChart1.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
         series1};

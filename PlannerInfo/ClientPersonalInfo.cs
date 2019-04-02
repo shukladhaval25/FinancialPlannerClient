@@ -14,6 +14,7 @@ namespace FinancialPlannerClient.PlannerInfo
     {
         const string GET_CLIENT_PERSONAL_API =  "Client/GetById?id={0}";
         const string GET_SPOUSE_PERSONAL_API = "ClientSpouse/GetById?id={0}";
+        const string GET_CLIENT_PERSONAL_WITH_OTHERVALUES_API = "Client/GetByOtherValues?name={0}&pancard={1}";
         const string UPDATE_CLIENTPERSONAL_INFO_API ="Client/Update";
         const string UPDATE_CLIENTSPOUSE_PERSONAL_INFO_API = "ClientSpouse/Update";
         private const string ADD_CLIENT_API = "Client/Add";
@@ -39,6 +40,7 @@ namespace FinancialPlannerClient.PlannerInfo
             bool isUpdateClientSpousePersonalInfo = false;
             if (isUpdateClientPersonalInfo)
             {
+                personalInfo.Spouse.ClientId = getClientPersonalInfo(personalInfo.Client).ID;
                 isUpdateClientSpousePersonalInfo = updateClientSpousePersonalInfo(personalInfo.Spouse);
                 if (isUpdateClientSpousePersonalInfo)
                 {
@@ -80,6 +82,8 @@ namespace FinancialPlannerClient.PlannerInfo
                 RestAPIExecutor restApiExecutor = new RestAPIExecutor();
 
                 var restResult = restApiExecutor.Execute<Client>(apiurl, client, "POST");
+                
+
 
                 return true;
             }
@@ -142,6 +146,36 @@ namespace FinancialPlannerClient.PlannerInfo
             {
                 FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
                 string apiurl = Program.WebServiceUrl +"/"+ string.Format(GET_CLIENT_PERSONAL_API,clientId);
+
+                RestAPIExecutor restApiExecutor = new RestAPIExecutor();
+
+                var restResult = restApiExecutor.Execute<Client>(apiurl, null, "GET");
+
+                if (jsonSerialization.IsValidJson(restResult.ToString()))
+                {
+                    clientObj = jsonSerialization.DeserializeFromString<Client>(restResult.ToString());
+                }
+                else
+                    MessageBox.Show(restResult.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                return clientObj;
+            }
+            catch (Exception ex)
+            {
+                Logger.LogDebug(ex);
+                return clientObj;
+            }
+        }
+
+        private Client getClientPersonalInfo(Client client)
+        {
+            Client clientObj = new Client();
+            try
+            {
+                FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
+                string apiurl = Program.WebServiceUrl + "/" + string.Format(GET_CLIENT_PERSONAL_WITH_OTHERVALUES_API,
+                    client.Name,
+                    client.PAN);
 
                 RestAPIExecutor restApiExecutor = new RestAPIExecutor();
 

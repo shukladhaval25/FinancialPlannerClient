@@ -18,6 +18,7 @@ namespace FinancialPlannerClient.PlanOptions
         private const string GET_PLAN_BY_CLIENTID_API = "Planner/GetByClientId?id={0}";
         private const string ADD_PLAN_API = "Planner/Add";
         private const string UPDATE_PLAN_API = "Planner/Update";
+        private const string DELETE_PLAN_API = "Planner/Delete";
 
         private const string USERAPI = "User";
         DataTable _dtUser;
@@ -35,7 +36,7 @@ namespace FinancialPlannerClient.PlanOptions
             {
                 loadUserInformation();
                 loadPlanData();
-                displayPlanData();                
+                displayPlanData();   
             }
         }
 
@@ -119,7 +120,7 @@ namespace FinancialPlannerClient.PlanOptions
             txtEndDate.Text = "";
             cmbStartMonth.Text = "";
             cmbEndMonth.Text = "";
-            cmbManagedBy.Text = "";
+            cmbManagedBy.Text = Program.CurrentUser.UserName;
             memoDescription.Text = "";
         }
 
@@ -244,6 +245,55 @@ namespace FinancialPlannerClient.PlanOptions
         private void cmbManagedBy_SelectedIndexChanged(object sender, EventArgs e)
         {
             cmbManagedBy.Tag = _dtUser.Select("FirstName ='" + cmbManagedBy.Text + "'")[0]["ID"].ToString();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (lstPlanner.SelectedItems.Count > 0)
+            {
+                if (DevExpress.XtraEditors.XtraMessageBox.Show("Are you sure you want to delete this client?",
+                    "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
+                    Planner planner = getPlanner();
+                    string DATA = jsonSerialization.SerializeToString<Planner>(planner);
+
+                    WebClient webclient = new WebClient();
+                    webclient.Headers["Content-type"] = "application/json";
+                    webclient.Encoding = Encoding.UTF8;
+                    string apiurl = Program.WebServiceUrl + "/" + DELETE_PLAN_API;
+                    string json = webclient.UploadString(apiurl, "POST", DATA);
+
+                    if (json != null)
+                    {
+                        var resultObject = jsonSerialization.DeserializeFromString<Result>(json);
+                        if (resultObject.IsSuccess)
+                        {
+                            DevExpress.XtraEditors.XtraMessageBox.Show("Record deleted scuessfully.", "Deleted");
+                        }
+                    }
+                }
+            }
+        }
+
+        private Planner getPlanner()
+        {
+            Planner planner = new Planner()
+            {
+                ID = int.Parse(txtPlanName.Tag.ToString()),
+                Name = txtPlanName.Text,
+                ClientId = this.personalInformation.Client.ID,
+                StartDate = dtStartDate.DateTime,
+                CreatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss")),
+                CreatedBy = Program.CurrentUser.Id,
+                UpdatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss")),
+                UpdatedBy = Program.CurrentUser.Id,
+                UpdatedByUserName = Program.CurrentUser.UserName,
+                MachineName = System.Environment.MachineName,
+                PlannerStartMonth = cmbStartMonth.SelectedIndex + 1,
+                Description = memoDescription.Text
+            };
+            return planner;
         }
     }
 }

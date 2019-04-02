@@ -19,7 +19,7 @@ namespace FinancialPlannerClient.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -103,9 +103,29 @@ namespace FinancialPlannerClient.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap EducationGoal {
+            get {
+                object obj = ResourceManager.GetObject("EducationGoal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Email_60 {
             get {
                 object obj = ResourceManager.GetObject("Email-60", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ForeignTrip {
+            get {
+                object obj = ResourceManager.GetObject("ForeignTrip", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -513,6 +533,16 @@ namespace FinancialPlannerClient.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Marriage {
+            get {
+                object obj = ResourceManager.GetObject("Marriage", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap notification_60 {
             get {
                 object obj = ResourceManager.GetObject("notification_60", resourceCulture);
@@ -536,6 +566,16 @@ namespace FinancialPlannerClient.Properties {
         internal static System.Drawing.Bitmap Reports_60 {
             get {
                 object obj = ResourceManager.GetObject("Reports-60", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Retirement {
+            get {
+                object obj = ResourceManager.GetObject("Retirement", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -606,6 +646,16 @@ namespace FinancialPlannerClient.Properties {
         internal static System.Drawing.Bitmap Users_60 {
             get {
                 object obj = ResourceManager.GetObject("Users-60", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Vehicles {
+            get {
+                object obj = ResourceManager.GetObject("Vehicles", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

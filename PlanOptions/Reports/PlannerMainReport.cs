@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Reflection;
 using System.Windows.Forms;
 using DevExpress.Utils;
 using FinancialPlanner.Common;
 using FinancialPlanner.Common.Model;
+using FinancialPlannerClient.PlannerInfo;
 using FinancialPlannerClient.PlanOptions.Reports;
 
 
@@ -16,6 +18,7 @@ namespace FinancialPlannerClient.PlanOptions
         Planner planner;
         PersonalInformation personalInformation;
         int riskprofileId, optionId;
+        IList<Goals> goals;
        
         public PlannerMainReport(PersonalInformation personalInformation, Planner planner,int riskProfileId,int optionId)
         {
@@ -28,6 +31,13 @@ namespace FinancialPlannerClient.PlanOptions
             this.lblClientName.Text = this.client.Name;
             this.lblPreparedFor.Text = this.client.Name;
             this.lblPreparedOn.Text = this.planner.StartDate.ToShortDateString();
+            fillGoals(planner);
+        }
+
+        private void fillGoals(Planner planner)
+        {
+            GoalsInfo goalsInfo = new GoalsInfo();
+            goals = goalsInfo.GetAll(planner.ID);
         }
 
         private void Detail_AfterPrint(object sender, EventArgs e)
@@ -107,6 +117,29 @@ namespace FinancialPlannerClient.PlanOptions
                     new CurrentFinancialAssetAllocation(this.client, netWorthStatement.GetNetWorth());
                 currentFinancialAssetAllocation.CreateDocument();
 
+                StrategicAssetsCollection strategicAssetsCollection = new StrategicAssetsCollection(this.client);
+                strategicAssetsCollection.CreateDocument();
+
+                SmartGoal smartGoal = new SmartGoal(this.client);
+                smartGoal.CreateDocument();
+
+                GoalsDescription[] goalsDescriptions = null;
+                if (this.goals != null && this.goals.Count > 0)
+                {
+                    goalsDescriptions = new GoalsDescription[goals.Count];
+                    int goalCountIndex = 0;
+                    foreach(Goals goal  in goals)
+                    {
+                        goalsDescriptions[goalCountIndex] = new GoalsDescription();
+                        goalsDescriptions[goalCountIndex].SetReportParameter(this.client, this.planner, goal,
+                            this.riskprofileId,this.optionId);
+                        goalsDescriptions[goalCountIndex].CreateDocument();
+                        goalCountIndex++;
+                    }
+                }
+
+                AssetAllocationTitle assetAllocationTitle = new AssetAllocationTitle(this.client);
+                assetAllocationTitle.CreateDocument();
 
                 // Enable this property to maintain continuous page numbering 
                 PrintingSystem.ContinuousPageNumbering = true;
@@ -134,6 +167,18 @@ namespace FinancialPlannerClient.PlanOptions
                 //Some page skip here.
                 this.Pages.Add(riskProfilingAssetAllocation.Pages.First);
                 this.Pages.Add(currentFinancialAssetAllocation.Pages.First);
+                this.Pages.Add(strategicAssetsCollection.Pages.First);
+                this.Pages.Add(smartGoal.Pages.First);
+
+                int goalCount = 0;
+                foreach (Goals goal in goals)
+                {                    
+                    this.Pages.Add(goalsDescriptions[goalCount].Pages.First);
+                    goalCount++;
+                }
+
+                this.Pages.Add(assetAllocationTitle.Pages.First);
+
                 waitdlg.Close();
             }
             catch (Exception ex)

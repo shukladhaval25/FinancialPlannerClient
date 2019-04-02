@@ -497,6 +497,6 @@ namespace FinancialPlannerClient.Clients
             navigationPageOther.Controls.Clear();
             navigationPageOther.Controls.Add(insuranceCalculation);
             showNavigationPage(insuranceCalculation.Name);
-        }
+        }       
     }
 }

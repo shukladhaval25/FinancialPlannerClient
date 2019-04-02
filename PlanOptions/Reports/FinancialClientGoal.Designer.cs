@@ -30,6 +30,15 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FinancialClientGoal));
             this.Detail = new DevExpress.XtraReports.UI.DetailBand();
+            this.xrTable1 = new DevExpress.XtraReports.UI.XRTable();
+            this.xrTableRow1 = new DevExpress.XtraReports.UI.XRTableRow();
+            this.lblName = new DevExpress.XtraReports.UI.XRTableCell();
+            this.lblStartYear = new DevExpress.XtraReports.UI.XRTableCell();
+            this.lblEndYear = new DevExpress.XtraReports.UI.XRTableCell();
+            this.lblPriority = new DevExpress.XtraReports.UI.XRTableCell();
+            this.lblPresentCost = new DevExpress.XtraReports.UI.XRTableCell();
+            this.lblInflation = new DevExpress.XtraReports.UI.XRTableCell();
+            this.lblFutureCost = new DevExpress.XtraReports.UI.XRTableCell();
             this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
             this.ReportTitle = new DevExpress.XtraReports.UI.XRLabel();
             this.lblClientName = new DevExpress.XtraReports.UI.XRLabel();
@@ -47,17 +56,8 @@
             this.xrTableCell4 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell10 = new DevExpress.XtraReports.UI.XRTableCell();
             this.PageHeader = new DevExpress.XtraReports.UI.PageHeaderBand();
-            this.lblFutureCost = new DevExpress.XtraReports.UI.XRTableCell();
-            this.lblInflation = new DevExpress.XtraReports.UI.XRTableCell();
-            this.lblPresentCost = new DevExpress.XtraReports.UI.XRTableCell();
-            this.lblPriority = new DevExpress.XtraReports.UI.XRTableCell();
-            this.lblEndYear = new DevExpress.XtraReports.UI.XRTableCell();
-            this.lblStartYear = new DevExpress.XtraReports.UI.XRTableCell();
-            this.lblName = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableRow1 = new DevExpress.XtraReports.UI.XRTableRow();
-            this.xrTable1 = new DevExpress.XtraReports.UI.XRTable();
-            ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // Detail
@@ -69,6 +69,91 @@
             this.Detail.Name = "Detail";
             this.Detail.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.Detail.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
+            // 
+            // xrTable1
+            // 
+            this.xrTable1.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrTable1.Dpi = 100F;
+            this.xrTable1.LocationFloat = new DevExpress.Utils.PointFloat(12.00002F, 0F);
+            this.xrTable1.Name = "xrTable1";
+            this.xrTable1.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
+            this.xrTableRow1});
+            this.xrTable1.SizeF = new System.Drawing.SizeF(760.0001F, 25F);
+            this.xrTable1.StylePriority.UseBorders = false;
+            // 
+            // xrTableRow1
+            // 
+            this.xrTableRow1.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
+            this.lblName,
+            this.lblStartYear,
+            this.lblEndYear,
+            this.lblPriority,
+            this.lblPresentCost,
+            this.lblInflation,
+            this.lblFutureCost});
+            this.xrTableRow1.Dpi = 100F;
+            this.xrTableRow1.Name = "xrTableRow1";
+            this.xrTableRow1.Weight = 1D;
+            // 
+            // lblName
+            // 
+            this.lblName.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.lblName.Dpi = 100F;
+            this.lblName.Name = "lblName";
+            this.lblName.StylePriority.UseBorders = false;
+            this.lblName.Weight = 1.3240524020724815D;
+            // 
+            // lblStartYear
+            // 
+            this.lblStartYear.Dpi = 100F;
+            this.lblStartYear.Name = "lblStartYear";
+            this.lblStartYear.StylePriority.UseTextAlignment = false;
+            this.lblStartYear.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            this.lblStartYear.Weight = 0.61708278438870545D;
+            // 
+            // lblEndYear
+            // 
+            this.lblEndYear.Dpi = 100F;
+            this.lblEndYear.Name = "lblEndYear";
+            this.lblEndYear.StylePriority.UseTextAlignment = false;
+            this.lblEndYear.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            this.lblEndYear.Weight = 0.64595745901512958D;
+            // 
+            // lblPriority
+            // 
+            this.lblPriority.Dpi = 100F;
+            this.lblPriority.Name = "lblPriority";
+            this.lblPriority.StylePriority.UseTextAlignment = false;
+            this.lblPriority.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            this.lblPriority.Weight = 0.508721991018702D;
+            // 
+            // lblPresentCost
+            // 
+            this.lblPresentCost.Dpi = 100F;
+            this.lblPresentCost.Name = "lblPresentCost";
+            this.lblPresentCost.StylePriority.UseTextAlignment = false;
+            this.lblPresentCost.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+            this.lblPresentCost.Weight = 0.9483521481422108D;
+            // 
+            // lblInflation
+            // 
+            this.lblInflation.Dpi = 100F;
+            this.lblInflation.Name = "lblInflation";
+            this.lblInflation.StylePriority.UseTextAlignment = false;
+            this.lblInflation.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            this.lblInflation.Weight = 1.0816745508116752D;
+            // 
+            // lblFutureCost
+            // 
+            this.lblFutureCost.Dpi = 100F;
+            this.lblFutureCost.Name = "lblFutureCost";
+            this.lblFutureCost.StylePriority.UseTextAlignment = false;
+            this.lblFutureCost.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+            this.lblFutureCost.Weight = 0.99287862662941828D;
             // 
             // TopMargin
             // 
@@ -243,79 +328,6 @@
             this.PageHeader.HeightF = 100F;
             this.PageHeader.Name = "PageHeader";
             // 
-            // lblFutureCost
-            // 
-            this.lblFutureCost.Dpi = 100F;
-            this.lblFutureCost.Name = "lblFutureCost";
-            this.lblFutureCost.Weight = 0.99287862662941828D;
-            // 
-            // lblInflation
-            // 
-            this.lblInflation.Dpi = 100F;
-            this.lblInflation.Name = "lblInflation";
-            this.lblInflation.Weight = 1.0816745508116752D;
-            // 
-            // lblPresentCost
-            // 
-            this.lblPresentCost.Dpi = 100F;
-            this.lblPresentCost.Name = "lblPresentCost";
-            this.lblPresentCost.Weight = 0.9483521481422108D;
-            // 
-            // lblPriority
-            // 
-            this.lblPriority.Dpi = 100F;
-            this.lblPriority.Name = "lblPriority";
-            this.lblPriority.Weight = 0.508721991018702D;
-            // 
-            // lblEndYear
-            // 
-            this.lblEndYear.Dpi = 100F;
-            this.lblEndYear.Name = "lblEndYear";
-            this.lblEndYear.Weight = 0.64595745901512958D;
-            // 
-            // lblStartYear
-            // 
-            this.lblStartYear.Dpi = 100F;
-            this.lblStartYear.Name = "lblStartYear";
-            this.lblStartYear.Weight = 0.61708278438870545D;
-            // 
-            // lblName
-            // 
-            this.lblName.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.lblName.Dpi = 100F;
-            this.lblName.Name = "lblName";
-            this.lblName.StylePriority.UseBorders = false;
-            this.lblName.Weight = 1.3240524020724815D;
-            // 
-            // xrTableRow1
-            // 
-            this.xrTableRow1.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
-            this.lblName,
-            this.lblStartYear,
-            this.lblEndYear,
-            this.lblPriority,
-            this.lblPresentCost,
-            this.lblInflation,
-            this.lblFutureCost});
-            this.xrTableRow1.Dpi = 100F;
-            this.xrTableRow1.Name = "xrTableRow1";
-            this.xrTableRow1.Weight = 1D;
-            // 
-            // xrTable1
-            // 
-            this.xrTable1.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrTable1.Dpi = 100F;
-            this.xrTable1.LocationFloat = new DevExpress.Utils.PointFloat(12.00002F, 0F);
-            this.xrTable1.Name = "xrTable1";
-            this.xrTable1.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
-            this.xrTableRow1});
-            this.xrTable1.SizeF = new System.Drawing.SizeF(760.0001F, 25F);
-            this.xrTable1.StylePriority.UseBorders = false;
-            // 
             // FinancialClientGoal
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
@@ -325,8 +337,8 @@
             this.PageHeader});
             this.Margins = new System.Drawing.Printing.Margins(39, 33, 100, 62);
             this.Version = "16.2";
-            ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
 
         }
