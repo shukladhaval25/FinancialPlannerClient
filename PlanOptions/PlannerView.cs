@@ -270,6 +270,8 @@ namespace FinancialPlannerClient.PlanOptions
                         if (resultObject.IsSuccess)
                         {
                             DevExpress.XtraEditors.XtraMessageBox.Show("Record deleted scuessfully.", "Deleted");
+                            loadPlanData();
+                            displayPlanData();
                         }
                     }
                 }

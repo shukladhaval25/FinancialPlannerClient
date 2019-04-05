@@ -67,8 +67,8 @@
             this.navBarControlPlanner = new DevExpress.XtraNavBar.NavBarControl();
             this.navBarGroupPlannerData = new DevExpress.XtraNavBar.NavBarGroup();
             this.navBarItemAssumptions = new DevExpress.XtraNavBar.NavBarItem();
-            this.navBarItemOtherInformation = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItemGoals = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarItemOtherInformation = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItemCurrentStatus = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItem3 = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItem4 = new DevExpress.XtraNavBar.NavBarItem();
@@ -169,6 +169,7 @@
             this.navigationPageOther = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.BankDetails = new DevExpress.XtraNavBar.NavBarItem();
             ((System.ComponentModel.ISupportInitialize)(this.panelMenu)).BeginInit();
             this.panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlNavCtrl)).BeginInit();
@@ -284,7 +285,8 @@
             this.ContactInfo,
             this.EmployeeInfo,
             this.navBarItemFamily,
-            this.navBarItemHome});
+            this.navBarItemHome,
+            this.BankDetails});
             this.FamilyInfo.Location = new System.Drawing.Point(2, 3);
             this.FamilyInfo.Name = "FamilyInfo";
             this.FamilyInfo.OptionsNavPane.ExpandedWidth = 168;
@@ -298,6 +300,7 @@
             this.Personalnfo.Expanded = true;
             this.Personalnfo.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.ContactInfo),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.BankDetails),
             new DevExpress.XtraNavBar.NavBarItemLink(this.EmployeeInfo),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemFamily)});
             this.Personalnfo.Name = "Personalnfo";
@@ -312,7 +315,7 @@
             // 
             // EmployeeInfo
             // 
-            this.EmployeeInfo.Caption = "Employee";
+            this.EmployeeInfo.Caption = "Employment";
             this.EmployeeInfo.Name = "EmployeeInfo";
             this.EmployeeInfo.SmallImage = ((System.Drawing.Image)(resources.GetObject("EmployeeInfo.SmallImage")));
             this.EmployeeInfo.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.EmployeeInfo_LinkClicked);
@@ -363,10 +366,11 @@
             // navBarGroupPlannerData
             // 
             this.navBarGroupPlannerData.Caption = "Planner Data";
+            this.navBarGroupPlannerData.Expanded = true;
             this.navBarGroupPlannerData.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemAssumptions),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemOtherInformation),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemGoals),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemOtherInformation),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemCurrentStatus),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem3),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem4)});
@@ -379,19 +383,19 @@
             this.navBarItemAssumptions.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarItemAssumptions.SmallImage")));
             this.navBarItemAssumptions.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItemAssumptions_LinkClicked);
             // 
-            // navBarItemOtherInformation
-            // 
-            this.navBarItemOtherInformation.Caption = "Data Gathering";
-            this.navBarItemOtherInformation.Name = "navBarItemOtherInformation";
-            this.navBarItemOtherInformation.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarItemOtherInformation.SmallImage")));
-            this.navBarItemOtherInformation.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItemOtherInformation_LinkClicked);
-            // 
             // navBarItemGoals
             // 
             this.navBarItemGoals.Caption = "Goals";
             this.navBarItemGoals.Name = "navBarItemGoals";
             this.navBarItemGoals.SmallImage = global::FinancialPlannerClient.Properties.Resources.icons8_goal_16;
             this.navBarItemGoals.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItemGoals_LinkClicked);
+            // 
+            // navBarItemOtherInformation
+            // 
+            this.navBarItemOtherInformation.Caption = "Data Gathering";
+            this.navBarItemOtherInformation.Name = "navBarItemOtherInformation";
+            this.navBarItemOtherInformation.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarItemOtherInformation.SmallImage")));
+            this.navBarItemOtherInformation.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItemOtherInformation_LinkClicked);
             // 
             // navBarItemCurrentStatus
             // 
@@ -627,6 +631,7 @@
             // 
             // navigationPageDashboard
             // 
+            this.navigationPageDashboard.Caption = "navigationPageDashboard";
             this.navigationPageDashboard.Controls.Add(this.gridControl3);
             this.navigationPageDashboard.Controls.Add(this.gridControl2);
             this.navigationPageDashboard.Controls.Add(this.gridControl1);
@@ -1432,6 +1437,13 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // BankDetails
+            // 
+            this.BankDetails.Caption = "Bank Details";
+            this.BankDetails.Name = "BankDetails";
+            this.BankDetails.SmallImage = global::FinancialPlannerClient.Properties.Resources.icons8_museum_16;
+            this.BankDetails.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.BankDetails_LinkClicked);
+            // 
             // Clientdashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1622,5 +1634,6 @@
         private System.Windows.Forms.Label lblStep4;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label lblStep3;
+        private DevExpress.XtraNavBar.NavBarItem BankDetails;
     }
 }

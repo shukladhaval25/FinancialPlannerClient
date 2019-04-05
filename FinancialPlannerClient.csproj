@@ -173,6 +173,12 @@
     <Compile Include="Clients\EmploymentDetails.designer.cs">
       <DependentUpon>EmploymentDetails.cs</DependentUpon>
     </Compile>
+    <Compile Include="Clients\BankDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clients\BankDetails.designer.cs">
+      <DependentUpon>BankDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="Clients\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -621,6 +627,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Clients\EmploymentDetails.resx">
       <DependentUpon>EmploymentDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Clients\BankDetails.resx">
+      <DependentUpon>BankDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Clients\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

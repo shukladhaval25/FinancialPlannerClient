@@ -250,6 +250,7 @@
             this.txtSpouseEmailId.Size = new System.Drawing.Size(222, 20);
             this.txtSpouseEmailId.TabIndex = 15;
             this.txtSpouseEmailId.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSpouseEmailId_KeyPress);
+            this.txtSpouseEmailId.Validating += new System.ComponentModel.CancelEventHandler(this.txtClientEmailId_Validating);
             // 
             // groupControl1
             // 
@@ -289,6 +290,7 @@
             this.txtClientMobile.Name = "txtClientMobile";
             this.txtClientMobile.Size = new System.Drawing.Size(209, 20);
             this.txtClientMobile.TabIndex = 18;
+            this.txtClientMobile.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtClientMobile_KeyPress);
             // 
             // chkPrimaryEmail
             // 
@@ -314,6 +316,7 @@
             this.txtClientEmailId.Name = "txtClientEmailId";
             this.txtClientEmailId.Size = new System.Drawing.Size(222, 20);
             this.txtClientEmailId.TabIndex = 15;
+            this.txtClientEmailId.Validating += new System.ComponentModel.CancelEventHandler(this.txtClientEmailId_Validating);
             // 
             // grpAddressInfo
             // 

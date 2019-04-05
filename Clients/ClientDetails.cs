@@ -340,5 +340,17 @@ namespace FinancialPlannerClient.Clients
             this.Parent.Controls.Remove(this);
         }
 
+        private void btnViewBankInfo_Click(object sender, EventArgs e)
+        {
+            if (this._client.ID == 0)
+            {
+                DevExpress.XtraEditors.XtraMessageBox.Show("You can't view bank details without saving client information.", "Client", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Warning);
+                return;
+            }
+            BankDetails bankDetails = new BankDetails(this.personalInformation);
+            bankDetails.ShowDialog();
+            showBankDetails();
+            showSpouseBankDetails();
+        }
     }
 }

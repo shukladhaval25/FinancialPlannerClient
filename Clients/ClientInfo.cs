@@ -1986,6 +1986,43 @@ namespace FinancialPlannerClient.Clients
             grpLoanForGoal.Enabled = chkLaonForGoal.Checked;
         }
 
-       
+        private void txtMinReqBalance_Validating(object sender, CancelEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtMinReqBalance.Text))
+                e.Cancel = !FinancialPlanner.Common.Validation.IsDigit(txtMinReqBalance.Text);
+        }
+
+        private void txtLoanInterestRate_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // allows 0-9, backspace, and decimal
+            if (((e.KeyChar < 48 || e.KeyChar > 57) && e.KeyChar != 8 && e.KeyChar != 46))
+            {
+                e.Handled = true;
+                return;
+            }
+
+            // checks to make sure only 1 decimal is allowed
+            if (e.KeyChar == 46)
+            {
+                if ((sender as TextBox).Text.IndexOf(e.KeyChar) != -1)
+                    e.Handled = true;
+            }
+        }
+
+        private void txtLoanInterestRate_Validating(object sender, CancelEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtLoanInterestRate.Text))
+            {
+                e.Cancel = !FinancialPlanner.Common.Validation.IsDigit(txtLoanInterestRate.Text);
+            }
+        }
+
+        private void txtNoOfEmiPayableForCY_Validating(object sender, CancelEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtNoOfEmiPayableForCY.Text))
+            {
+                e.Cancel = !FinancialPlanner.Common.Validation.IsDigit(txtNoOfEmiPayableForCY.Text);
+            }
+        }
     }
 }

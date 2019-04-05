@@ -36,6 +36,19 @@
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
+            this.txtSpouseIncome = new DevExpress.XtraEditors.TextEdit();
+            this.txtSpouseEmployerPin = new DevExpress.XtraEditors.TextEdit();
+            this.txtSpouseEmployerCity = new DevExpress.XtraEditors.TextEdit();
+            this.txtSpouseEmployerStreet = new DevExpress.XtraEditors.TextEdit();
+            this.txtSpouseEmployerAdd = new DevExpress.XtraEditors.TextEdit();
+            this.txtSpouseEmployer = new DevExpress.XtraEditors.TextEdit();
+            this.txtSpouseDesigation = new DevExpress.XtraEditors.TextEdit();
+            this.txtClientIncome = new DevExpress.XtraEditors.TextEdit();
+            this.txtClientEmployerPin = new DevExpress.XtraEditors.TextEdit();
+            this.txtClientEmployerCity = new DevExpress.XtraEditors.TextEdit();
+            this.txtClientEmployerStreet = new DevExpress.XtraEditors.TextEdit();
+            this.txtClientEmployerAdd = new DevExpress.XtraEditors.TextEdit();
+            this.txtClientEmployer = new DevExpress.XtraEditors.TextEdit();
             this.label41 = new System.Windows.Forms.Label();
             this.label42 = new System.Windows.Forms.Label();
             this.label43 = new System.Windows.Forms.Label();
@@ -47,36 +60,23 @@
             this.label50 = new System.Windows.Forms.Label();
             this.label44 = new System.Windows.Forms.Label();
             this.txtClientDesignation = new DevExpress.XtraEditors.TextEdit();
-            this.txtClientEmployer = new DevExpress.XtraEditors.TextEdit();
-            this.txtClientEmployerAdd = new DevExpress.XtraEditors.TextEdit();
-            this.txtClientEmployerStreet = new DevExpress.XtraEditors.TextEdit();
-            this.txtClientEmployerCity = new DevExpress.XtraEditors.TextEdit();
-            this.txtClientEmployerPin = new DevExpress.XtraEditors.TextEdit();
-            this.txtClientIncome = new DevExpress.XtraEditors.TextEdit();
-            this.txtSpouseDesigation = new DevExpress.XtraEditors.TextEdit();
-            this.txtSpouseEmployer = new DevExpress.XtraEditors.TextEdit();
-            this.txtSpouseEmployerAdd = new DevExpress.XtraEditors.TextEdit();
-            this.txtSpouseEmployerStreet = new DevExpress.XtraEditors.TextEdit();
-            this.txtSpouseEmployerCity = new DevExpress.XtraEditors.TextEdit();
-            this.txtSpouseEmployerPin = new DevExpress.XtraEditors.TextEdit();
-            this.txtSpouseIncome = new DevExpress.XtraEditors.TextEdit();
             this.btnCancelEmployment = new DevExpress.XtraEditors.SimpleButton();
             this.btnSaveEmployment = new DevExpress.XtraEditors.SimpleButton();
             this.tableLayoutPanel8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtClientDesignation.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtClientEmployer.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtClientEmployerAdd.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtClientEmployerStreet.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtClientEmployerCity.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtClientEmployerPin.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtClientIncome.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtSpouseDesigation.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtSpouseEmployer.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtSpouseEmployerAdd.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtSpouseEmployerStreet.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtSpouseEmployerCity.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtSpouseEmployerPin.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSpouseIncome.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSpouseEmployerPin.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSpouseEmployerCity.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSpouseEmployerStreet.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSpouseEmployerAdd.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSpouseEmployer.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSpouseDesigation.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtClientIncome.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtClientEmployerPin.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtClientEmployerCity.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtClientEmployerStreet.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtClientEmployerAdd.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtClientEmployer.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtClientDesignation.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel8
@@ -88,14 +88,12 @@
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 32.25806F));
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.87097F));
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.87097F));
-            this.tableLayoutPanel8.Controls.Add(this.txtSpouseIncome, 2, 7);
             this.tableLayoutPanel8.Controls.Add(this.txtSpouseEmployerPin, 2, 6);
             this.tableLayoutPanel8.Controls.Add(this.txtSpouseEmployerCity, 2, 5);
             this.tableLayoutPanel8.Controls.Add(this.txtSpouseEmployerStreet, 2, 4);
             this.tableLayoutPanel8.Controls.Add(this.txtSpouseEmployerAdd, 2, 3);
             this.tableLayoutPanel8.Controls.Add(this.txtSpouseEmployer, 2, 2);
             this.tableLayoutPanel8.Controls.Add(this.txtSpouseDesigation, 2, 1);
-            this.tableLayoutPanel8.Controls.Add(this.txtClientIncome, 1, 7);
             this.tableLayoutPanel8.Controls.Add(this.txtClientEmployerPin, 1, 6);
             this.tableLayoutPanel8.Controls.Add(this.txtClientEmployerCity, 1, 5);
             this.tableLayoutPanel8.Controls.Add(this.txtClientEmployerStreet, 1, 4);
@@ -109,12 +107,11 @@
             this.tableLayoutPanel8.Controls.Add(this.label47, 0, 1);
             this.tableLayoutPanel8.Controls.Add(this.label48, 0, 3);
             this.tableLayoutPanel8.Controls.Add(this.label49, 0, 5);
-            this.tableLayoutPanel8.Controls.Add(this.label50, 0, 7);
             this.tableLayoutPanel8.Controls.Add(this.label44, 0, 0);
             this.tableLayoutPanel8.Controls.Add(this.txtClientDesignation, 1, 1);
             this.tableLayoutPanel8.Location = new System.Drawing.Point(5, 7);
             this.tableLayoutPanel8.Name = "tableLayoutPanel8";
-            this.tableLayoutPanel8.RowCount = 8;
+            this.tableLayoutPanel8.RowCount = 7;
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
@@ -122,9 +119,101 @@
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
-            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(852, 218);
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(852, 192);
             this.tableLayoutPanel8.TabIndex = 14;
+            // 
+            // txtSpouseIncome
+            // 
+            this.txtSpouseIncome.Location = new System.Drawing.Point(571, 205);
+            this.txtSpouseIncome.Name = "txtSpouseIncome";
+            this.txtSpouseIncome.Size = new System.Drawing.Size(281, 20);
+            this.txtSpouseIncome.TabIndex = 13;
+            this.txtSpouseIncome.Visible = false;
+            // 
+            // txtSpouseEmployerPin
+            // 
+            this.txtSpouseEmployerPin.Location = new System.Drawing.Point(566, 165);
+            this.txtSpouseEmployerPin.Name = "txtSpouseEmployerPin";
+            this.txtSpouseEmployerPin.Size = new System.Drawing.Size(281, 20);
+            this.txtSpouseEmployerPin.TabIndex = 12;
+            // 
+            // txtSpouseEmployerCity
+            // 
+            this.txtSpouseEmployerCity.Location = new System.Drawing.Point(566, 138);
+            this.txtSpouseEmployerCity.Name = "txtSpouseEmployerCity";
+            this.txtSpouseEmployerCity.Size = new System.Drawing.Size(281, 20);
+            this.txtSpouseEmployerCity.TabIndex = 11;
+            // 
+            // txtSpouseEmployerStreet
+            // 
+            this.txtSpouseEmployerStreet.Location = new System.Drawing.Point(566, 110);
+            this.txtSpouseEmployerStreet.Name = "txtSpouseEmployerStreet";
+            this.txtSpouseEmployerStreet.Size = new System.Drawing.Size(281, 20);
+            this.txtSpouseEmployerStreet.TabIndex = 10;
+            // 
+            // txtSpouseEmployerAdd
+            // 
+            this.txtSpouseEmployerAdd.Location = new System.Drawing.Point(566, 82);
+            this.txtSpouseEmployerAdd.Name = "txtSpouseEmployerAdd";
+            this.txtSpouseEmployerAdd.Size = new System.Drawing.Size(281, 20);
+            this.txtSpouseEmployerAdd.TabIndex = 9;
+            // 
+            // txtSpouseEmployer
+            // 
+            this.txtSpouseEmployer.Location = new System.Drawing.Point(566, 53);
+            this.txtSpouseEmployer.Name = "txtSpouseEmployer";
+            this.txtSpouseEmployer.Size = new System.Drawing.Size(281, 20);
+            this.txtSpouseEmployer.TabIndex = 8;
+            // 
+            // txtSpouseDesigation
+            // 
+            this.txtSpouseDesigation.Location = new System.Drawing.Point(566, 25);
+            this.txtSpouseDesigation.Name = "txtSpouseDesigation";
+            this.txtSpouseDesigation.Size = new System.Drawing.Size(281, 20);
+            this.txtSpouseDesigation.TabIndex = 7;
+            // 
+            // txtClientIncome
+            // 
+            this.txtClientIncome.Location = new System.Drawing.Point(284, 205);
+            this.txtClientIncome.Name = "txtClientIncome";
+            this.txtClientIncome.Size = new System.Drawing.Size(281, 20);
+            this.txtClientIncome.TabIndex = 6;
+            this.txtClientIncome.Visible = false;
+            // 
+            // txtClientEmployerPin
+            // 
+            this.txtClientEmployerPin.Location = new System.Drawing.Point(278, 165);
+            this.txtClientEmployerPin.Name = "txtClientEmployerPin";
+            this.txtClientEmployerPin.Size = new System.Drawing.Size(281, 20);
+            this.txtClientEmployerPin.TabIndex = 5;
+            // 
+            // txtClientEmployerCity
+            // 
+            this.txtClientEmployerCity.Location = new System.Drawing.Point(278, 138);
+            this.txtClientEmployerCity.Name = "txtClientEmployerCity";
+            this.txtClientEmployerCity.Size = new System.Drawing.Size(281, 20);
+            this.txtClientEmployerCity.TabIndex = 4;
+            // 
+            // txtClientEmployerStreet
+            // 
+            this.txtClientEmployerStreet.Location = new System.Drawing.Point(278, 110);
+            this.txtClientEmployerStreet.Name = "txtClientEmployerStreet";
+            this.txtClientEmployerStreet.Size = new System.Drawing.Size(281, 20);
+            this.txtClientEmployerStreet.TabIndex = 3;
+            // 
+            // txtClientEmployerAdd
+            // 
+            this.txtClientEmployerAdd.Location = new System.Drawing.Point(278, 82);
+            this.txtClientEmployerAdd.Name = "txtClientEmployerAdd";
+            this.txtClientEmployerAdd.Size = new System.Drawing.Size(281, 20);
+            this.txtClientEmployerAdd.TabIndex = 2;
+            // 
+            // txtClientEmployer
+            // 
+            this.txtClientEmployer.Location = new System.Drawing.Point(278, 53);
+            this.txtClientEmployer.Name = "txtClientEmployer";
+            this.txtClientEmployer.Size = new System.Drawing.Size(281, 20);
+            this.txtClientEmployer.TabIndex = 1;
             // 
             // label41
             // 
@@ -231,12 +320,13 @@
             this.label50.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label50.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label50.Location = new System.Drawing.Point(4, 189);
+            this.label50.Location = new System.Drawing.Point(11, 202);
             this.label50.Name = "label50";
             this.label50.Size = new System.Drawing.Size(267, 24);
             this.label50.TabIndex = 26;
             this.label50.Text = "Income:";
             this.label50.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label50.Visible = false;
             // 
             // label44
             // 
@@ -258,97 +348,6 @@
             this.txtClientDesignation.Name = "txtClientDesignation";
             this.txtClientDesignation.Size = new System.Drawing.Size(281, 20);
             this.txtClientDesignation.TabIndex = 0;
-            // 
-            // txtClientEmployer
-            // 
-            this.txtClientEmployer.Location = new System.Drawing.Point(278, 53);
-            this.txtClientEmployer.Name = "txtClientEmployer";
-            this.txtClientEmployer.Size = new System.Drawing.Size(281, 20);
-            this.txtClientEmployer.TabIndex = 1;
-            // 
-            // txtClientEmployerAdd
-            // 
-            this.txtClientEmployerAdd.Location = new System.Drawing.Point(278, 82);
-            this.txtClientEmployerAdd.Name = "txtClientEmployerAdd";
-            this.txtClientEmployerAdd.Size = new System.Drawing.Size(281, 20);
-            this.txtClientEmployerAdd.TabIndex = 2;
-            // 
-            // txtClientEmployerStreet
-            // 
-            this.txtClientEmployerStreet.Location = new System.Drawing.Point(278, 110);
-            this.txtClientEmployerStreet.Name = "txtClientEmployerStreet";
-            this.txtClientEmployerStreet.Size = new System.Drawing.Size(281, 20);
-            this.txtClientEmployerStreet.TabIndex = 3;
-            // 
-            // txtClientEmployerCity
-            // 
-            this.txtClientEmployerCity.Location = new System.Drawing.Point(278, 138);
-            this.txtClientEmployerCity.Name = "txtClientEmployerCity";
-            this.txtClientEmployerCity.Size = new System.Drawing.Size(281, 20);
-            this.txtClientEmployerCity.TabIndex = 4;
-            // 
-            // txtClientEmployerPin
-            // 
-            this.txtClientEmployerPin.Location = new System.Drawing.Point(278, 165);
-            this.txtClientEmployerPin.Name = "txtClientEmployerPin";
-            this.txtClientEmployerPin.Size = new System.Drawing.Size(281, 20);
-            this.txtClientEmployerPin.TabIndex = 5;
-            // 
-            // txtClientIncome
-            // 
-            this.txtClientIncome.Location = new System.Drawing.Point(278, 192);
-            this.txtClientIncome.Name = "txtClientIncome";
-            this.txtClientIncome.Size = new System.Drawing.Size(281, 20);
-            this.txtClientIncome.TabIndex = 6;
-            // 
-            // txtSpouseDesigation
-            // 
-            this.txtSpouseDesigation.Location = new System.Drawing.Point(566, 25);
-            this.txtSpouseDesigation.Name = "txtSpouseDesigation";
-            this.txtSpouseDesigation.Size = new System.Drawing.Size(281, 20);
-            this.txtSpouseDesigation.TabIndex = 7;
-            // 
-            // txtSpouseEmployer
-            // 
-            this.txtSpouseEmployer.Location = new System.Drawing.Point(566, 53);
-            this.txtSpouseEmployer.Name = "txtSpouseEmployer";
-            this.txtSpouseEmployer.Size = new System.Drawing.Size(281, 20);
-            this.txtSpouseEmployer.TabIndex = 8;
-            // 
-            // txtSpouseEmployerAdd
-            // 
-            this.txtSpouseEmployerAdd.Location = new System.Drawing.Point(566, 82);
-            this.txtSpouseEmployerAdd.Name = "txtSpouseEmployerAdd";
-            this.txtSpouseEmployerAdd.Size = new System.Drawing.Size(281, 20);
-            this.txtSpouseEmployerAdd.TabIndex = 9;
-            // 
-            // txtSpouseEmployerStreet
-            // 
-            this.txtSpouseEmployerStreet.Location = new System.Drawing.Point(566, 110);
-            this.txtSpouseEmployerStreet.Name = "txtSpouseEmployerStreet";
-            this.txtSpouseEmployerStreet.Size = new System.Drawing.Size(281, 20);
-            this.txtSpouseEmployerStreet.TabIndex = 10;
-            // 
-            // txtSpouseEmployerCity
-            // 
-            this.txtSpouseEmployerCity.Location = new System.Drawing.Point(566, 138);
-            this.txtSpouseEmployerCity.Name = "txtSpouseEmployerCity";
-            this.txtSpouseEmployerCity.Size = new System.Drawing.Size(281, 20);
-            this.txtSpouseEmployerCity.TabIndex = 11;
-            // 
-            // txtSpouseEmployerPin
-            // 
-            this.txtSpouseEmployerPin.Location = new System.Drawing.Point(566, 165);
-            this.txtSpouseEmployerPin.Name = "txtSpouseEmployerPin";
-            this.txtSpouseEmployerPin.Size = new System.Drawing.Size(281, 20);
-            this.txtSpouseEmployerPin.TabIndex = 12;
-            // 
-            // txtSpouseIncome
-            // 
-            this.txtSpouseIncome.Location = new System.Drawing.Point(566, 192);
-            this.txtSpouseIncome.Name = "txtSpouseIncome";
-            this.txtSpouseIncome.Size = new System.Drawing.Size(281, 20);
-            this.txtSpouseIncome.TabIndex = 13;
             // 
             // btnCancelEmployment
             // 
@@ -395,29 +394,32 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(861, 263);
+            this.Controls.Add(this.txtSpouseIncome);
             this.Controls.Add(this.btnCancelEmployment);
             this.Controls.Add(this.btnSaveEmployment);
             this.Controls.Add(this.tableLayoutPanel8);
+            this.Controls.Add(this.label50);
+            this.Controls.Add(this.txtClientIncome);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "EmploymentDetails";
             this.Text = "Employment Details";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.EmploymentDetails_FormClosed);
             this.tableLayoutPanel8.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.txtClientDesignation.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtClientEmployer.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtClientEmployerAdd.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtClientEmployerStreet.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtClientEmployerCity.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtClientEmployerPin.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtClientIncome.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtSpouseDesigation.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtSpouseEmployer.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtSpouseEmployerAdd.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtSpouseEmployerStreet.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtSpouseEmployerCity.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtSpouseEmployerPin.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSpouseIncome.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSpouseEmployerPin.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSpouseEmployerCity.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSpouseEmployerStreet.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSpouseEmployerAdd.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSpouseEmployer.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSpouseDesigation.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtClientIncome.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtClientEmployerPin.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtClientEmployerCity.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtClientEmployerStreet.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtClientEmployerAdd.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtClientEmployer.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtClientDesignation.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }

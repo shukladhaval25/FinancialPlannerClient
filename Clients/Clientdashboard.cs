@@ -442,7 +442,7 @@ namespace FinancialPlannerClient.Clients
 
         private void navBarItemGoals_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
-            GoalsView goalsView = new GoalsView(planner.ID);
+            GoalsView goalsView = new GoalsView(planner.ID,this.personalInformation.Client);
             goalsView.TopLevel = false;
             goalsView.Visible = true;
             navigationPageOther.Name = goalsView.Name;
@@ -490,13 +490,24 @@ namespace FinancialPlannerClient.Clients
         private void navBarItemInsurance_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
             InsuranceCalculation insuranceCalculation = new
-                InsuranceCalculation(this.planner.ID);
+                InsuranceCalculation(this.personalInformation.Client,  this.planner);
             insuranceCalculation.TopLevel = false;
             insuranceCalculation.Visible = true;
             navigationPageOther.Name = insuranceCalculation.Name;
             navigationPageOther.Controls.Clear();
             navigationPageOther.Controls.Add(insuranceCalculation);
             showNavigationPage(insuranceCalculation.Name);
-        }       
+        }
+
+        private void BankDetails_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            BankDetails bankDetails = new BankDetails(this.personalInformation);
+            bankDetails.TopLevel = false;
+            bankDetails.Visible = true;
+            navigationPageOther.Name = bankDetails.Name;
+            navigationPageOther.Controls.Clear();
+            navigationPageOther.Controls.Add(bankDetails);
+            showNavigationPage(bankDetails.Name);
+        }
     }
 }

@@ -166,12 +166,23 @@ namespace FinancialPlannerClient.Clients
 
         private void txtSpouseEmailId_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+           
         }
 
         private void txtSpouseMobile_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void txtClientMobile_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void txtClientEmailId_Validating(object sender, CancelEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtClientEmailId.Text))
+                e.Cancel = FinancialPlanner.Common.Validation.IsValidEmail(txtClientEmailId.Text);
         }
     }
 }

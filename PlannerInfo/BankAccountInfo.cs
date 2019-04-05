@@ -110,6 +110,7 @@ namespace FinancialPlannerClient.PlannerInfo
             _dtBankAccount = dtBankAccount;
             return convertSelectedRowDataToBankAccount(dtGridBankAccount);
         }
+       
         private void LogDebug(string methodName, Exception ex)
         {
             DebuggerLogInfo debuggerInfo = new DebuggerLogInfo();

@@ -29,21 +29,21 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GoalsView));
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem5 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip66 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem66 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem66 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip67 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem67 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem67 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip68 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem68 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem68 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip69 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem69 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem69 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip70 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem70 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem70 = new DevExpress.Utils.ToolTipItem();
             this.lblContactTitle = new DevExpress.XtraEditors.LabelControl();
             this.grpGoals = new DevExpress.XtraEditors.GroupControl();
             this.btnDelete = new DevExpress.XtraEditors.SimpleButton();
@@ -185,15 +185,15 @@
             this.btnDelete.Location = new System.Drawing.Point(1073, 239);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(25, 23);
-            toolTipTitleItem1.Appearance.Image = global::FinancialPlannerClient.Properties.Resources.icons8_goal_16;
-            toolTipTitleItem1.Appearance.Options.UseImage = true;
-            toolTipTitleItem1.Image = global::FinancialPlannerClient.Properties.Resources.icons8_goal_16;
-            toolTipTitleItem1.Text = "Delete Goal";
-            toolTipItem1.LeftIndent = 6;
-            toolTipItem1.Text = "To delete selected client goal record click here.";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            superToolTip1.Items.Add(toolTipItem1);
-            this.btnDelete.SuperTip = superToolTip1;
+            toolTipTitleItem66.Appearance.Image = global::FinancialPlannerClient.Properties.Resources.icons8_goal_16;
+            toolTipTitleItem66.Appearance.Options.UseImage = true;
+            toolTipTitleItem66.Image = global::FinancialPlannerClient.Properties.Resources.icons8_goal_16;
+            toolTipTitleItem66.Text = "Delete Goal";
+            toolTipItem66.LeftIndent = 6;
+            toolTipItem66.Text = "To delete selected client goal record click here.";
+            superToolTip66.Items.Add(toolTipTitleItem66);
+            superToolTip66.Items.Add(toolTipItem66);
+            this.btnDelete.SuperTip = superToolTip66;
             this.btnDelete.TabIndex = 6;
             this.btnDelete.ToolTip = "Delete Client";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -205,15 +205,15 @@
             this.btnEdit.Location = new System.Drawing.Point(1042, 239);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(25, 23);
-            toolTipTitleItem2.Appearance.Image = global::FinancialPlannerClient.Properties.Resources.icons8_goal_16;
-            toolTipTitleItem2.Appearance.Options.UseImage = true;
-            toolTipTitleItem2.Image = global::FinancialPlannerClient.Properties.Resources.icons8_goal_16;
-            toolTipTitleItem2.Text = "Edit Customer goal";
-            toolTipItem2.LeftIndent = 6;
-            toolTipItem2.Text = "To modify selected client goal click here.";
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            superToolTip2.Items.Add(toolTipItem2);
-            this.btnEdit.SuperTip = superToolTip2;
+            toolTipTitleItem67.Appearance.Image = global::FinancialPlannerClient.Properties.Resources.icons8_goal_16;
+            toolTipTitleItem67.Appearance.Options.UseImage = true;
+            toolTipTitleItem67.Image = global::FinancialPlannerClient.Properties.Resources.icons8_goal_16;
+            toolTipTitleItem67.Text = "Edit Customer goal";
+            toolTipItem67.LeftIndent = 6;
+            toolTipItem67.Text = "To modify selected client goal click here.";
+            superToolTip67.Items.Add(toolTipTitleItem67);
+            superToolTip67.Items.Add(toolTipItem67);
+            this.btnEdit.SuperTip = superToolTip67;
             this.btnEdit.TabIndex = 5;
             this.btnEdit.ToolTip = "Edit Client";
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
@@ -225,15 +225,15 @@
             this.btnAdd.Location = new System.Drawing.Point(1011, 239);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(25, 23);
-            toolTipTitleItem3.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
-            toolTipTitleItem3.Appearance.Options.UseImage = true;
-            toolTipTitleItem3.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem3.Image")));
-            toolTipTitleItem3.Text = "New Client";
-            toolTipItem3.LeftIndent = 6;
-            toolTipItem3.Text = "To add new client inforamtion click here.";
-            superToolTip3.Items.Add(toolTipTitleItem3);
-            superToolTip3.Items.Add(toolTipItem3);
-            this.btnAdd.SuperTip = superToolTip3;
+            toolTipTitleItem68.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            toolTipTitleItem68.Appearance.Options.UseImage = true;
+            toolTipTitleItem68.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem68.Image")));
+            toolTipTitleItem68.Text = "New Client";
+            toolTipItem68.LeftIndent = 6;
+            toolTipItem68.Text = "To add new client inforamtion click here.";
+            superToolTip68.Items.Add(toolTipTitleItem68);
+            superToolTip68.Items.Add(toolTipItem68);
+            this.btnAdd.SuperTip = superToolTip68;
             this.btnAdd.TabIndex = 4;
             this.btnAdd.ToolTip = "Add new client";
             this.btnAdd.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Application;
@@ -281,15 +281,15 @@
             this.btnCloseClientGoal.Location = new System.Drawing.Point(1036, 342);
             this.btnCloseClientGoal.Name = "btnCloseClientGoal";
             this.btnCloseClientGoal.Size = new System.Drawing.Size(62, 23);
-            toolTipTitleItem4.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
-            toolTipTitleItem4.Appearance.Options.UseImage = true;
-            toolTipTitleItem4.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem4.Image")));
-            toolTipTitleItem4.Text = "Cancel";
-            toolTipItem4.LeftIndent = 6;
-            toolTipItem4.Text = "To close client information without saving any information click here.";
-            superToolTip4.Items.Add(toolTipTitleItem4);
-            superToolTip4.Items.Add(toolTipItem4);
-            this.btnCloseClientGoal.SuperTip = superToolTip4;
+            toolTipTitleItem69.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
+            toolTipTitleItem69.Appearance.Options.UseImage = true;
+            toolTipTitleItem69.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem69.Image")));
+            toolTipTitleItem69.Text = "Cancel";
+            toolTipItem69.LeftIndent = 6;
+            toolTipItem69.Text = "To close client information without saving any information click here.";
+            superToolTip69.Items.Add(toolTipTitleItem69);
+            superToolTip69.Items.Add(toolTipItem69);
+            this.btnCloseClientGoal.SuperTip = superToolTip69;
             this.btnCloseClientGoal.TabIndex = 24;
             this.btnCloseClientGoal.Text = "Close";
             this.btnCloseClientGoal.Click += new System.EventHandler(this.btnCloseClientInfo_Click);
@@ -301,15 +301,15 @@
             this.btnSaveClientGoal.Location = new System.Drawing.Point(973, 342);
             this.btnSaveClientGoal.Name = "btnSaveClientGoal";
             this.btnSaveClientGoal.Size = new System.Drawing.Size(57, 23);
-            toolTipTitleItem5.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
-            toolTipTitleItem5.Appearance.Options.UseImage = true;
-            toolTipTitleItem5.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem5.Image")));
-            toolTipTitleItem5.Text = "Save";
-            toolTipItem5.LeftIndent = 6;
-            toolTipItem5.Text = "To save client infroamtion click here.";
-            superToolTip5.Items.Add(toolTipTitleItem5);
-            superToolTip5.Items.Add(toolTipItem5);
-            this.btnSaveClientGoal.SuperTip = superToolTip5;
+            toolTipTitleItem70.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
+            toolTipTitleItem70.Appearance.Options.UseImage = true;
+            toolTipTitleItem70.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem70.Image")));
+            toolTipTitleItem70.Text = "Save";
+            toolTipItem70.LeftIndent = 6;
+            toolTipItem70.Text = "To save client infroamtion click here.";
+            superToolTip70.Items.Add(toolTipTitleItem70);
+            superToolTip70.Items.Add(toolTipItem70);
+            this.btnSaveClientGoal.SuperTip = superToolTip70;
             this.btnSaveClientGoal.TabIndex = 23;
             this.btnSaveClientGoal.Text = "Save";
             this.btnSaveClientGoal.Click += new System.EventHandler(this.btnSaveClientGoal_Click);
@@ -332,7 +332,6 @@
             // 
             // navigationPageRegGoal
             // 
-            this.navigationPageRegGoal.Caption = "navigationPageRegGoal";
             this.navigationPageRegGoal.Controls.Add(this.chkEligbileForInsuranceCoverage);
             this.navigationPageRegGoal.Controls.Add(this.grpLoanForGoal);
             this.navigationPageRegGoal.Controls.Add(this.cmbCategory);
@@ -395,6 +394,7 @@
             this.txtLoanForGoalEndYear.Name = "txtLoanForGoalEndYear";
             this.txtLoanForGoalEndYear.Size = new System.Drawing.Size(136, 20);
             this.txtLoanForGoalEndYear.TabIndex = 39;
+            this.txtLoanForGoalEndYear.Validating += new System.ComponentModel.CancelEventHandler(this.txtLoanForGoalEndYear_Validating);
             // 
             // txtLoanForGoalStartYear
             // 
@@ -402,6 +402,7 @@
             this.txtLoanForGoalStartYear.Name = "txtLoanForGoalStartYear";
             this.txtLoanForGoalStartYear.Size = new System.Drawing.Size(136, 20);
             this.txtLoanForGoalStartYear.TabIndex = 38;
+            this.txtLoanForGoalStartYear.Validating += new System.ComponentModel.CancelEventHandler(this.txtLoanForGoalStartYear_Validating);
             // 
             // txtLoanForGoalYears
             // 
@@ -409,6 +410,7 @@
             this.txtLoanForGoalYears.Name = "txtLoanForGoalYears";
             this.txtLoanForGoalYears.Size = new System.Drawing.Size(136, 20);
             this.txtLoanForGoalYears.TabIndex = 37;
+            this.txtLoanForGoalYears.Validating += new System.ComponentModel.CancelEventHandler(this.txtLoanForGoalYears_Validating);
             // 
             // txtLoanForGoalROI
             // 
@@ -416,6 +418,7 @@
             this.txtLoanForGoalROI.Name = "txtLoanForGoalROI";
             this.txtLoanForGoalROI.Size = new System.Drawing.Size(136, 20);
             this.txtLoanForGoalROI.TabIndex = 36;
+            this.txtLoanForGoalROI.Validating += new System.ComponentModel.CancelEventHandler(this.txtLoanForGoalROI_Validating);
             // 
             // txtLoanForGoalEMI
             // 
@@ -423,13 +426,16 @@
             this.txtLoanForGoalEMI.Name = "txtLoanForGoalEMI";
             this.txtLoanForGoalEMI.Size = new System.Drawing.Size(136, 20);
             this.txtLoanForGoalEMI.TabIndex = 35;
+            this.txtLoanForGoalEMI.Validating += new System.ComponentModel.CancelEventHandler(this.txtLoanForGoalEMI_Validating);
             // 
             // txtLoanForGoalAmount
             // 
             this.txtLoanForGoalAmount.Location = new System.Drawing.Point(244, 58);
             this.txtLoanForGoalAmount.Name = "txtLoanForGoalAmount";
+            this.txtLoanForGoalAmount.Properties.MaxLength = 12;
             this.txtLoanForGoalAmount.Size = new System.Drawing.Size(136, 20);
             this.txtLoanForGoalAmount.TabIndex = 34;
+            this.txtLoanForGoalAmount.Validating += new System.ComponentModel.CancelEventHandler(this.txtLoanForGoalAmount_Validating);
             // 
             // label128
             // 
@@ -511,6 +517,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cmbCategory.Properties.Items.AddRange(new object[] {
             "Asset",
+            "Education",
             "Marriage",
             "Medical",
             "Others",
@@ -544,8 +551,11 @@
             // 
             this.txtInflationRate.Location = new System.Drawing.Point(357, 180);
             this.txtInflationRate.Name = "txtInflationRate";
+            this.txtInflationRate.Properties.MaxLength = 5;
             this.txtInflationRate.Size = new System.Drawing.Size(77, 20);
             this.txtInflationRate.TabIndex = 55;
+            this.txtInflationRate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtInflationRate_KeyPress);
+            this.txtInflationRate.Validating += new System.ComponentModel.CancelEventHandler(this.txtInflationRate_Validating);
             // 
             // label62
             // 
@@ -561,8 +571,10 @@
             // 
             this.txtGoalRecurrence.Location = new System.Drawing.Point(167, 154);
             this.txtGoalRecurrence.Name = "txtGoalRecurrence";
+            this.txtGoalRecurrence.Properties.MaxLength = 2;
             this.txtGoalRecurrence.Size = new System.Drawing.Size(267, 20);
             this.txtGoalRecurrence.TabIndex = 54;
+            this.txtGoalRecurrence.Validating += new System.ComponentModel.CancelEventHandler(this.txtGoalRecurrence_Validating);
             // 
             // lblAmountTitle
             // 
@@ -582,6 +594,7 @@
             this.txtGoalEndYear.Properties.MaxLength = 4;
             this.txtGoalEndYear.Size = new System.Drawing.Size(267, 20);
             this.txtGoalEndYear.TabIndex = 53;
+            this.txtGoalEndYear.Validating += new System.ComponentModel.CancelEventHandler(this.txtGoalEndYear_Validating);
             // 
             // label60
             // 
@@ -603,6 +616,7 @@
             this.txtGoalStartYear.Properties.NullValuePrompt = "Please enter start year";
             this.txtGoalStartYear.Size = new System.Drawing.Size(267, 20);
             this.txtGoalStartYear.TabIndex = 52;
+            this.txtGoalStartYear.Validating += new System.ComponentModel.CancelEventHandler(this.txtGoalStartYear_Validating);
             // 
             // label59
             // 
@@ -618,8 +632,11 @@
             // 
             this.txtGoalCurrentValue.Location = new System.Drawing.Point(168, 76);
             this.txtGoalCurrentValue.Name = "txtGoalCurrentValue";
+            this.txtGoalCurrentValue.Properties.MaxLength = 10;
+            this.txtGoalCurrentValue.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtGoalCurrentValue.Size = new System.Drawing.Size(267, 20);
             this.txtGoalCurrentValue.TabIndex = 51;
+            this.txtGoalCurrentValue.Validating += new System.ComponentModel.CancelEventHandler(this.txtGoalCurrentValue_Validating);
             // 
             // label58
             // 
@@ -637,6 +654,7 @@
             this.txtGoalName.Name = "txtGoalName";
             this.txtGoalName.Size = new System.Drawing.Size(267, 20);
             this.txtGoalName.TabIndex = 50;
+            this.txtGoalName.Validating += new System.ComponentModel.CancelEventHandler(this.txtGoalName_Validating);
             // 
             // label63
             // 

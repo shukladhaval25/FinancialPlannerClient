@@ -239,6 +239,7 @@
             this.btnViewBankInfo.SuperTip = superToolTip2;
             this.btnViewBankInfo.TabIndex = 1;
             this.btnViewBankInfo.Text = "View Details";
+            this.btnViewBankInfo.Click += new System.EventHandler(this.btnViewBankInfo_Click);
             // 
             // grdBank
             // 
@@ -672,6 +673,7 @@
             this.simpleButton4.SuperTip = superToolTip5;
             this.simpleButton4.TabIndex = 1;
             this.simpleButton4.Text = "View Details";
+            this.simpleButton4.Click += new System.EventHandler(this.btnViewBankInfo_Click);
             // 
             // grdSpouseBank
             // 

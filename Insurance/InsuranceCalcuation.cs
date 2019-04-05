@@ -15,32 +15,34 @@ namespace FinancialPlannerClient.Insurance
 {
     public partial class InsuranceCalculation : DevExpress.XtraEditors.XtraForm
     {
-        int planId;
+        Planner planner;
+        Client client;
         DataTable dtInsuranceCoverage = new DataTable();
-        public InsuranceCalculation(int planId)
+        public InsuranceCalculation(Client client, Planner planner)
         {
             InitializeComponent();
-            this.planId = planId;
+            this.planner = planner;
+            this.client = client;
         }
         private List<Expenses> GetExpenses()
         {
             List<Expenses> expenses = new List<Expenses>();
             ExpensesInfo expensesInfo = new ExpensesInfo();
-            expenses = (List<Expenses>)expensesInfo.GetAll(this.planId);
+            expenses = (List<Expenses>)expensesInfo.GetAll(this.planner.ID);
             return expenses;
         }
         private List<Goals> GetGoals()
         {
             List<Goals> goals = new List<Goals>();
             GoalsInfo goalsInfo = new GoalsInfo();
-            goals = (List<Goals>) goalsInfo.GetAll(this.planId);
+            goals = (List<Goals>) goalsInfo.GetAll(this.planner.ID);
             return goals;         
         }
 
         private IList<LifeInsurance> GetInsurances()
         {
             LifeInsuranceInfo lifeInsuranceInfo = new LifeInsuranceInfo();
-            return lifeInsuranceInfo.GetAllLifeInsurance(planId);
+            return lifeInsuranceInfo.GetAllLifeInsurance(this.planner.ID);
         }
 
         private void InsuranceCalculation_Load(object sender, EventArgs e)
@@ -88,9 +90,37 @@ namespace FinancialPlannerClient.Insurance
                 DataRow dataRow = dtInsuranceCoverage.NewRow();
                 dataRow["Category"] = "Expense";
                 dataRow["Content"] = exp.Item;
-                dataRow["Amount"] = exp.Amount; //Needs to be calculate
+                dataRow["Amount"] =  GetExpensesCoverage(exp); //Needs to be calculate
                 dtInsuranceCoverage.Rows.Add(dataRow);
             }
+        }
+
+        private double GetExpensesCoverage(Expenses exp)
+        {
+            PlannerAssumptionInfo plannerAssumptionInfo = new PlannerAssumptionInfo();
+            PlannerAssumption plannerAssumption = plannerAssumptionInfo.GetAll(this.planner.ID);
+            int yearsDiff = (this.client.DOB.Year + plannerAssumption.ClientRetirementAge) - planner.StartDate.Year;
+            double fvExp = futureValue(exp.Amount, plannerAssumption.PreRetirementInflactionRate, yearsDiff);
+            double pvExp = presentValue(fvExp, plannerAssumption.PreRetirementInflactionRate, yearsDiff);
+            return pvExp;
+        }
+        private static double presentValue(double futureValue, decimal interest_rate, int timePeriodInYears)
+        {
+            //PV = FV / (1 + I)T;
+            interest_rate = interest_rate / 100;
+            decimal presentValue = (decimal)futureValue /
+                ((decimal)Math.Pow((double)(1 + interest_rate), (double)timePeriodInYears));
+
+            return Math.Round((double)presentValue);
+        }
+        private static double futureValue(double presentValue, decimal interest_rate, int timePeriodInYears)
+        {
+            //FV = PV * (1 + I)T;
+            interest_rate = interest_rate / 100;
+            double futureValue = presentValue *
+                (Math.Pow((double)(1 + interest_rate), (double)timePeriodInYears));
+
+            return Math.Round(futureValue);
         }
 
         private void createInsuranceCoverateTable()

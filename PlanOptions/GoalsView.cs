@@ -14,11 +14,12 @@ namespace FinancialPlannerClient.PlanOptions
         private DataTable _dtGoals;
         private const string RETIREMENT_GOAL_TYPE = "Retirement";
         int planId;
-
-        public GoalsView(int planId)
+        Client client;
+        public GoalsView(int planId,Client client)
         {
             InitializeComponent();
             this.planId = planId;
+            this.client = client;
         }
 
         private void chkLaonForGoal_CheckedChanged(object sender, EventArgs e)
@@ -28,7 +29,6 @@ namespace FinancialPlannerClient.PlanOptions
 
         private void rdoGoalType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //navigateToSelectedPage();
             if (rdoGoalType.SelectedIndex == 1)
             {
                 chkLaonForGoal.Visible = false;
@@ -36,15 +36,29 @@ namespace FinancialPlannerClient.PlanOptions
                 cmbCategory.Text = "Retirement";
                 cmbCategory.ReadOnly = true;
                 lblAmountTitle.Text = "Annual Expense (Today's Value):";
+                if (cmbCategory.Tag.ToString() == "0")
+                    setRetirementStartYearAndEndYear();
             }
             else
             {
                 chkLaonForGoal.Visible = true;
                 grpLoanForGoal.Visible = true;
                 cmbCategory.ReadOnly = false;
+                cmbCategory.Text = "";
+                txtGoalStartYear.Text = "";
+                txtGoalEndYear.Text = "";
                 lblAmountTitle.Text = "Amount(Today's Value)";
             }
 
+        }
+        private void setRetirementStartYearAndEndYear()
+        {
+            PlannerAssumptionInfo plannerAssumptionInfo = new PlannerAssumptionInfo();
+            PlannerAssumption plannerAssumption = plannerAssumptionInfo.GetAll(this.planId);
+            int retirementYear = (client.DOB.Year + plannerAssumption.ClientRetirementAge) + 1;
+            int endOfLifeYear = (client.DOB.Year + plannerAssumption.ClientLifeExpectancy) + 1;
+            txtGoalStartYear.Text = retirementYear.ToString();
+            txtGoalEndYear.Text = endOfLifeYear.ToString();
         }
 
         private void navigateToSelectedPage()
@@ -316,6 +330,94 @@ namespace FinancialPlannerClient.PlanOptions
             goalLoan.UpdatedByUserName = Program.CurrentUser.UserName;
             goalLoan.MachineName = Environment.MachineName;
             return goalLoan;
+        }
+
+        private void txtInflationRate_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // allows 0-9, backspace, and decimal
+            //if (((e.KeyChar < 48 || e.KeyChar > 57) && e.KeyChar != 8 && e.KeyChar != 46))
+            //{
+            //    e.Handled = true;
+            //    return;
+            //}
+
+            //// checks to make sure only 1 decimal is allowed
+            //if (e.KeyChar == 46)
+            //{
+            //    if ((sender as TextBox).Text.IndexOf(e.KeyChar) != -1)
+            //        e.Handled = true;
+            //}
+        }
+
+        private void txtGoalName_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+
+        }
+
+        private void txtGoalCurrentValue_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtGoalCurrentValue.Text))
+                e.Cancel = !FinancialPlanner.Common.Validation.IsDigit(txtGoalCurrentValue.Text);
+        }
+
+        private void txtGoalStartYear_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtGoalStartYear.Text))
+                e.Cancel = !FinancialPlanner.Common.Validation.IsDigit(txtGoalStartYear.Text);
+        }
+
+        private void txtGoalEndYear_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtGoalEndYear.Text))
+                e.Cancel = !FinancialPlanner.Common.Validation.IsDigit(txtGoalEndYear.Text);
+        }
+
+        private void txtGoalRecurrence_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtGoalRecurrence.Text))
+                e.Cancel = !FinancialPlanner.Common.Validation.IsDigit(txtGoalRecurrence.Text);
+        }
+
+        private void txtLoanForGoalAmount_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtLoanForGoalAmount.Text))
+                e.Cancel = !FinancialPlanner.Common.Validation.IsDigit(txtLoanForGoalAmount.Text);
+        }
+
+        private void txtLoanForGoalEMI_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtLoanForGoalEMI.Text))
+                e.Cancel = !FinancialPlanner.Common.Validation.IsDigit(txtLoanForGoalEMI.Text);
+        }
+
+        private void txtLoanForGoalROI_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtLoanForGoalROI.Text))
+                e.Cancel = !FinancialPlanner.Common.Validation.IsDecimal(txtLoanForGoalROI.Text);
+        }
+
+        private void txtLoanForGoalYears_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtLoanForGoalYears.Text))
+                e.Cancel = !FinancialPlanner.Common.Validation.IsDigit(txtLoanForGoalYears.Text);
+        }
+
+        private void txtLoanForGoalStartYear_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtLoanForGoalStartYear.Text))
+                e.Cancel = !FinancialPlanner.Common.Validation.IsDigit(txtLoanForGoalStartYear.Text);
+        }
+
+        private void txtLoanForGoalEndYear_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtLoanForGoalEndYear.Text))
+                e.Cancel = !FinancialPlanner.Common.Validation.IsDigit(txtLoanForGoalEndYear.Text);
+        }
+
+        private void txtInflationRate_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtInflationRate.Text))
+                e.Cancel = !FinancialPlanner.Common.Validation.IsDigit(txtInflationRate.Text);
         }
     }
 }
