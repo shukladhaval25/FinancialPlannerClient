@@ -104,6 +104,7 @@ namespace FinancialPlannerClient.PlanOptions
                     DataRow[] drUsers = _dtUser.Select("ID =" + accountManagedById);
                     cmbManagedBy.Text = (drUsers != null) ? drUsers[0]["FirstName"].ToString() : string.Empty;
                 }
+                cmbReviewFrequency.Text = dr.Field<string>("ReviewFrequency");
                 memoDescription.Text = dr.Field<string>("Description");
             }
             pnlPlannerInfo.Enabled = true;
@@ -130,6 +131,7 @@ namespace FinancialPlannerClient.PlanOptions
             cmbStartMonth.Text = "";
             cmbEndMonth.Text = "";
             cmbManagedBy.Text = Program.CurrentUser.UserName;
+            cmbReviewFrequency.Text = "";
             memoDescription.Text = "";
             pnlPlannerInfo.Enabled = true;
             pnlManager.Enabled = true;
@@ -164,7 +166,8 @@ namespace FinancialPlannerClient.PlanOptions
                     UpdatedByUserName = Program.CurrentUser.UserName,
                     MachineName = System.Environment.MachineName,
                     PlannerStartMonth = cmbStartMonth.SelectedIndex + 1,
-                    Description = memoDescription.Text
+                    Description = memoDescription.Text,
+                    ReviewFrequency = cmbReviewFrequency.Text
                 };
                 if (int.TryParse(cmbManagedBy.Tag.ToString(), out accountManagedById))
                     planner.AccountManagedBy = accountManagedById;
