@@ -480,6 +480,7 @@
             // 
             // cmbGender
             // 
+            this.cmbGender.EditValue = "Male";
             this.cmbGender.Location = new System.Drawing.Point(347, 114);
             this.cmbGender.Name = "cmbGender";
             this.cmbGender.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -870,6 +871,7 @@
             // 
             // cmbSpouseGender
             // 
+            this.cmbSpouseGender.EditValue = "Female";
             this.cmbSpouseGender.Location = new System.Drawing.Point(125, 110);
             this.cmbSpouseGender.Name = "cmbSpouseGender";
             this.cmbSpouseGender.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {

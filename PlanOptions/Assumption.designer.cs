@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Assumption));
             DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
@@ -79,6 +82,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.txtPlannerAssumptionDescription = new DevExpress.XtraEditors.MemoEdit();
+            this.btnAdd = new DevExpress.XtraEditors.SimpleButton();
             this.groupBox1.SuspendLayout();
             this.pnlAssumption.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtOngoingExpRise.Properties)).BeginInit();
@@ -110,6 +114,7 @@
             // 
             // pnlAssumption
             // 
+            this.pnlAssumption.Controls.Add(this.btnAdd);
             this.pnlAssumption.Controls.Add(this.txtOngoingExpRise);
             this.pnlAssumption.Controls.Add(this.label19);
             this.pnlAssumption.Controls.Add(this.label18);
@@ -175,15 +180,15 @@
             this.btnSaveAssumption.Location = new System.Drawing.Point(319, 561);
             this.btnSaveAssumption.Name = "btnSaveAssumption";
             this.btnSaveAssumption.Size = new System.Drawing.Size(57, 23);
-            toolTipTitleItem1.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
-            toolTipTitleItem1.Appearance.Options.UseImage = true;
-            toolTipTitleItem1.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem1.Image")));
-            toolTipTitleItem1.Text = "Save";
-            toolTipItem1.LeftIndent = 6;
-            toolTipItem1.Text = "To save client contact infroamtion click here.";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            superToolTip1.Items.Add(toolTipItem1);
-            this.btnSaveAssumption.SuperTip = superToolTip1;
+            toolTipTitleItem2.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
+            toolTipTitleItem2.Appearance.Options.UseImage = true;
+            toolTipTitleItem2.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem2.Image")));
+            toolTipTitleItem2.Text = "Save";
+            toolTipItem2.LeftIndent = 6;
+            toolTipItem2.Text = "To save client contact infroamtion click here.";
+            superToolTip2.Items.Add(toolTipTitleItem2);
+            superToolTip2.Items.Add(toolTipItem2);
+            this.btnSaveAssumption.SuperTip = superToolTip2;
             this.btnSaveAssumption.TabIndex = 12;
             this.btnSaveAssumption.Text = "Save";
             this.btnSaveAssumption.Click += new System.EventHandler(this.btnSaveAssumption_Click);
@@ -594,6 +599,30 @@
             this.txtPlannerAssumptionDescription.Size = new System.Drawing.Size(599, 52);
             this.txtPlannerAssumptionDescription.TabIndex = 11;
             // 
+            // btnAdd
+            // 
+            this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
+            this.btnAdd.Location = new System.Drawing.Point(256, 561);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(57, 23);
+            toolTipTitleItem1.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            toolTipTitleItem1.Appearance.Options.UseImage = true;
+            toolTipTitleItem1.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem1.Image")));
+            toolTipTitleItem1.Text = "New Client";
+            toolTipItem1.LeftIndent = 6;
+            toolTipItem1.Text = "To add new client inforamtion click here.";
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            superToolTip1.Items.Add(toolTipItem1);
+            this.btnAdd.SuperTip = superToolTip1;
+            this.btnAdd.TabIndex = 66;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.ToolTip = "Add new client";
+            this.btnAdd.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Application;
+            this.btnAdd.ToolTipTitle = "New Client";
+            this.btnAdd.Visible = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
             // Assumption
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -678,6 +707,7 @@
         private System.Windows.Forms.Label label21;
         private DevExpress.XtraEditors.TextEdit txtIncomeRiseForClient;
         private System.Windows.Forms.Label label20;
+        private DevExpress.XtraEditors.SimpleButton btnAdd;
     }
 }
 

@@ -1,4 +1,5 @@
 ﻿using FinancialPlanner.Common.Model;
+using FinancialPlannerClient.Master;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,7 @@ namespace FinancialPlannerClient
     {
         private static string _webServiceUrl;
         public static User CurrentUser;
+        private static AssumptionMaster assumptionMaster;
         public static string WebServiceUrl
         {
             get { return _webServiceUrl; }
@@ -31,6 +33,16 @@ namespace FinancialPlannerClient
         {
             //return "http://localhost:37882/api";
             return System.Configuration.ConfigurationSettings.AppSettings.Get("webserviceurl");
+        }
+
+        public static AssumptionMaster GetAssumptionMaster()
+        {
+            if (assumptionMaster == null)
+            {
+                AssumptionMasterInfo assumptionInfo = new AssumptionMasterInfo();
+                assumptionMaster = assumptionInfo.GetAll();
+            }
+            return assumptionMaster;
         }
     }
 }

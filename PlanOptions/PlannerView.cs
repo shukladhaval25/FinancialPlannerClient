@@ -75,6 +75,13 @@ namespace FinancialPlannerClient.PlanOptions
                     lstPlanner.Items.Add(dr.Field<string>("Name"));
                 }
                 lstPlanner.SelectedIndex = 0;
+                pnlPlannerInfo.Enabled = true;
+                pnlManager.Enabled = true;
+            }
+            else
+            {
+                pnlPlannerInfo.Enabled = false;
+                pnlManager.Enabled = false;
             }
         }
 
@@ -99,6 +106,8 @@ namespace FinancialPlannerClient.PlanOptions
                 }
                 memoDescription.Text = dr.Field<string>("Description");
             }
+            pnlPlannerInfo.Enabled = true;
+            pnlManager.Enabled = true;
         }
 
         private void cmbStartMonth_SelectedIndexChanged(object sender, EventArgs e)
@@ -122,6 +131,8 @@ namespace FinancialPlannerClient.PlanOptions
             cmbEndMonth.Text = "";
             cmbManagedBy.Text = Program.CurrentUser.UserName;
             memoDescription.Text = "";
+            pnlPlannerInfo.Enabled = true;
+            pnlManager.Enabled = true;
         }
 
         private void btnSavePlanoption_Click(object sender, EventArgs e)

@@ -48,39 +48,48 @@
             this.lstPlanner = new DevExpress.XtraEditors.ListBoxControl();
             this.tabPlanner = new DevExpress.XtraBars.Navigation.TabPane();
             this.tabNavigationPagePlanner = new DevExpress.XtraBars.Navigation.TabNavigationPage();
-            this.cmbEndMonth = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
-            this.cmbStartMonth = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
-            this.txtEndDate = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
-            this.dtStartDate = new DevExpress.XtraEditors.DateEdit();
-            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.txtPlanName = new DevExpress.XtraEditors.TextEdit();
+            this.pnlPlannerInfo = new DevExpress.XtraEditors.PanelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.cmbEndMonth = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.txtPlanName = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
+            this.cmbStartMonth = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.dtStartDate = new DevExpress.XtraEditors.DateEdit();
+            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
+            this.txtEndDate = new DevExpress.XtraEditors.TextEdit();
             this.tabNavigationPageManagedBy = new DevExpress.XtraBars.Navigation.TabNavigationPage();
+            this.pnlManager = new DevExpress.XtraEditors.PanelControl();
             this.memoDescription = new DevExpress.XtraEditors.MemoEdit();
+            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
             this.cmbManagedBy = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.btnDelete = new DevExpress.XtraEditors.SimpleButton();
             this.btnEdit = new DevExpress.XtraEditors.SimpleButton();
             this.btnAdd = new DevExpress.XtraEditors.SimpleButton();
             this.btnClosePlanoptions = new DevExpress.XtraEditors.SimpleButton();
             this.btnSavePlanoption = new DevExpress.XtraEditors.SimpleButton();
+            this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
+            this.cmbReviewFrequency = new DevExpress.XtraEditors.ComboBoxEdit();
             ((System.ComponentModel.ISupportInitialize)(this.lstPlanner)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabPlanner)).BeginInit();
             this.tabPlanner.SuspendLayout();
             this.tabNavigationPagePlanner.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pnlPlannerInfo)).BeginInit();
+            this.pnlPlannerInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cmbEndMonth.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPlanName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbStartMonth.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtEndDate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtStartDate.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtStartDate.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPlanName.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEndDate.Properties)).BeginInit();
             this.tabNavigationPageManagedBy.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pnlManager)).BeginInit();
+            this.pnlManager.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.memoDescription.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbManagedBy.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbReviewFrequency.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // labelControl1
@@ -122,25 +131,41 @@
             // tabNavigationPagePlanner
             // 
             this.tabNavigationPagePlanner.Caption = "Planner Information";
-            this.tabNavigationPagePlanner.Controls.Add(this.cmbEndMonth);
-            this.tabNavigationPagePlanner.Controls.Add(this.labelControl6);
-            this.tabNavigationPagePlanner.Controls.Add(this.cmbStartMonth);
-            this.tabNavigationPagePlanner.Controls.Add(this.labelControl5);
-            this.tabNavigationPagePlanner.Controls.Add(this.txtEndDate);
-            this.tabNavigationPagePlanner.Controls.Add(this.labelControl4);
-            this.tabNavigationPagePlanner.Controls.Add(this.dtStartDate);
-            this.tabNavigationPagePlanner.Controls.Add(this.labelControl3);
-            this.tabNavigationPagePlanner.Controls.Add(this.txtPlanName);
-            this.tabNavigationPagePlanner.Controls.Add(this.labelControl2);
+            this.tabNavigationPagePlanner.Controls.Add(this.pnlPlannerInfo);
             this.tabNavigationPagePlanner.Image = ((System.Drawing.Image)(resources.GetObject("tabNavigationPagePlanner.Image")));
             this.tabNavigationPagePlanner.ItemShowMode = DevExpress.XtraBars.Navigation.ItemShowMode.ImageAndText;
             this.tabNavigationPagePlanner.Name = "tabNavigationPagePlanner";
             this.tabNavigationPagePlanner.Properties.ShowMode = DevExpress.XtraBars.Navigation.ItemShowMode.ImageAndText;
             this.tabNavigationPagePlanner.Size = new System.Drawing.Size(552, 177);
             // 
+            // pnlPlannerInfo
+            // 
+            this.pnlPlannerInfo.Controls.Add(this.labelControl2);
+            this.pnlPlannerInfo.Controls.Add(this.cmbEndMonth);
+            this.pnlPlannerInfo.Controls.Add(this.txtPlanName);
+            this.pnlPlannerInfo.Controls.Add(this.labelControl6);
+            this.pnlPlannerInfo.Controls.Add(this.labelControl3);
+            this.pnlPlannerInfo.Controls.Add(this.cmbStartMonth);
+            this.pnlPlannerInfo.Controls.Add(this.dtStartDate);
+            this.pnlPlannerInfo.Controls.Add(this.labelControl5);
+            this.pnlPlannerInfo.Controls.Add(this.labelControl4);
+            this.pnlPlannerInfo.Controls.Add(this.txtEndDate);
+            this.pnlPlannerInfo.Location = new System.Drawing.Point(6, 3);
+            this.pnlPlannerInfo.Name = "pnlPlannerInfo";
+            this.pnlPlannerInfo.Size = new System.Drawing.Size(546, 171);
+            this.pnlPlannerInfo.TabIndex = 10;
+            // 
+            // labelControl2
+            // 
+            this.labelControl2.Location = new System.Drawing.Point(25, 12);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(54, 13);
+            this.labelControl2.TabIndex = 0;
+            this.labelControl2.Text = "Plan Name:";
+            // 
             // cmbEndMonth
             // 
-            this.cmbEndMonth.Location = new System.Drawing.Point(317, 123);
+            this.cmbEndMonth.Location = new System.Drawing.Point(322, 112);
             this.cmbEndMonth.Name = "cmbEndMonth";
             this.cmbEndMonth.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -161,18 +186,33 @@
             this.cmbEndMonth.Size = new System.Drawing.Size(178, 20);
             this.cmbEndMonth.TabIndex = 9;
             // 
+            // txtPlanName
+            // 
+            this.txtPlanName.Location = new System.Drawing.Point(122, 9);
+            this.txtPlanName.Name = "txtPlanName";
+            this.txtPlanName.Size = new System.Drawing.Size(178, 20);
+            this.txtPlanName.TabIndex = 1;
+            // 
             // labelControl6
             // 
             this.labelControl6.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
-            this.labelControl6.Location = new System.Drawing.Point(332, 104);
+            this.labelControl6.Location = new System.Drawing.Point(337, 93);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(151, 13);
             this.labelControl6.TabIndex = 8;
             this.labelControl6.Text = "Calculation Start From Month:";
             // 
+            // labelControl3
+            // 
+            this.labelControl3.Location = new System.Drawing.Point(25, 38);
+            this.labelControl3.Name = "labelControl3";
+            this.labelControl3.Size = new System.Drawing.Size(54, 13);
+            this.labelControl3.TabIndex = 2;
+            this.labelControl3.Text = "Start Date:";
+            // 
             // cmbStartMonth
             // 
-            this.cmbStartMonth.Location = new System.Drawing.Point(118, 123);
+            this.cmbStartMonth.Location = new System.Drawing.Point(123, 112);
             this.cmbStartMonth.Name = "cmbStartMonth";
             this.cmbStartMonth.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -193,37 +233,10 @@
             this.cmbStartMonth.TabIndex = 7;
             this.cmbStartMonth.SelectedIndexChanged += new System.EventHandler(this.cmbStartMonth_SelectedIndexChanged);
             // 
-            // labelControl5
-            // 
-            this.labelControl5.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
-            this.labelControl5.Location = new System.Drawing.Point(132, 104);
-            this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(151, 13);
-            this.labelControl5.TabIndex = 6;
-            this.labelControl5.Text = "Calculation Start From Month:";
-            // 
-            // txtEndDate
-            // 
-            this.txtEndDate.Location = new System.Drawing.Point(117, 72);
-            this.txtEndDate.Name = "txtEndDate";
-            this.txtEndDate.Properties.DisplayFormat.FormatString = "d";
-            this.txtEndDate.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.txtEndDate.Properties.ReadOnly = true;
-            this.txtEndDate.Size = new System.Drawing.Size(178, 20);
-            this.txtEndDate.TabIndex = 5;
-            // 
-            // labelControl4
-            // 
-            this.labelControl4.Location = new System.Drawing.Point(20, 75);
-            this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(48, 13);
-            this.labelControl4.TabIndex = 4;
-            this.labelControl4.Text = "End Date:";
-            // 
             // dtStartDate
             // 
             this.dtStartDate.EditValue = null;
-            this.dtStartDate.Location = new System.Drawing.Point(117, 46);
+            this.dtStartDate.Location = new System.Drawing.Point(122, 35);
             this.dtStartDate.Name = "dtStartDate";
             this.dtStartDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -233,53 +246,77 @@
             this.dtStartDate.TabIndex = 3;
             this.dtStartDate.TextChanged += new System.EventHandler(this.dtStartDate_TextChanged);
             // 
-            // labelControl3
+            // labelControl5
             // 
-            this.labelControl3.Location = new System.Drawing.Point(20, 49);
-            this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(54, 13);
-            this.labelControl3.TabIndex = 2;
-            this.labelControl3.Text = "Start Date:";
+            this.labelControl5.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
+            this.labelControl5.Location = new System.Drawing.Point(137, 93);
+            this.labelControl5.Name = "labelControl5";
+            this.labelControl5.Size = new System.Drawing.Size(151, 13);
+            this.labelControl5.TabIndex = 6;
+            this.labelControl5.Text = "Calculation Start From Month:";
             // 
-            // txtPlanName
+            // labelControl4
             // 
-            this.txtPlanName.Location = new System.Drawing.Point(117, 20);
-            this.txtPlanName.Name = "txtPlanName";
-            this.txtPlanName.Size = new System.Drawing.Size(178, 20);
-            this.txtPlanName.TabIndex = 1;
+            this.labelControl4.Location = new System.Drawing.Point(25, 64);
+            this.labelControl4.Name = "labelControl4";
+            this.labelControl4.Size = new System.Drawing.Size(48, 13);
+            this.labelControl4.TabIndex = 4;
+            this.labelControl4.Text = "End Date:";
             // 
-            // labelControl2
+            // txtEndDate
             // 
-            this.labelControl2.Location = new System.Drawing.Point(20, 23);
-            this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(54, 13);
-            this.labelControl2.TabIndex = 0;
-            this.labelControl2.Text = "Plan Name:";
+            this.txtEndDate.Location = new System.Drawing.Point(122, 61);
+            this.txtEndDate.Name = "txtEndDate";
+            this.txtEndDate.Properties.DisplayFormat.FormatString = "d";
+            this.txtEndDate.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.txtEndDate.Properties.ReadOnly = true;
+            this.txtEndDate.Size = new System.Drawing.Size(178, 20);
+            this.txtEndDate.TabIndex = 5;
             // 
             // tabNavigationPageManagedBy
             // 
             this.tabNavigationPageManagedBy.Caption = "Manager Information";
-            this.tabNavigationPageManagedBy.Controls.Add(this.memoDescription);
-            this.tabNavigationPageManagedBy.Controls.Add(this.labelControl8);
-            this.tabNavigationPageManagedBy.Controls.Add(this.cmbManagedBy);
-            this.tabNavigationPageManagedBy.Controls.Add(this.labelControl7);
+            this.tabNavigationPageManagedBy.Controls.Add(this.pnlManager);
             this.tabNavigationPageManagedBy.Image = ((System.Drawing.Image)(resources.GetObject("tabNavigationPageManagedBy.Image")));
             this.tabNavigationPageManagedBy.ItemShowMode = DevExpress.XtraBars.Navigation.ItemShowMode.ImageAndText;
             this.tabNavigationPageManagedBy.Name = "tabNavigationPageManagedBy";
             this.tabNavigationPageManagedBy.Properties.ShowMode = DevExpress.XtraBars.Navigation.ItemShowMode.ImageAndText;
             this.tabNavigationPageManagedBy.Size = new System.Drawing.Size(552, 177);
             // 
+            // pnlManager
+            // 
+            this.pnlManager.Controls.Add(this.labelControl9);
+            this.pnlManager.Controls.Add(this.cmbReviewFrequency);
+            this.pnlManager.Controls.Add(this.memoDescription);
+            this.pnlManager.Controls.Add(this.labelControl7);
+            this.pnlManager.Controls.Add(this.labelControl8);
+            this.pnlManager.Controls.Add(this.cmbManagedBy);
+            this.pnlManager.Enabled = false;
+            this.pnlManager.Location = new System.Drawing.Point(3, 3);
+            this.pnlManager.Name = "pnlManager";
+            this.pnlManager.Size = new System.Drawing.Size(546, 171);
+            this.pnlManager.TabIndex = 12;
+            // 
             // memoDescription
             // 
-            this.memoDescription.Location = new System.Drawing.Point(12, 92);
+            this.memoDescription.Location = new System.Drawing.Point(5, 81);
             this.memoDescription.Name = "memoDescription";
             this.memoDescription.Size = new System.Drawing.Size(528, 73);
             this.memoDescription.TabIndex = 11;
             // 
+            // labelControl7
+            // 
+            this.labelControl7.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
+            this.labelControl7.Location = new System.Drawing.Point(5, 6);
+            this.labelControl7.Name = "labelControl7";
+            this.labelControl7.Size = new System.Drawing.Size(151, 13);
+            this.labelControl7.TabIndex = 8;
+            this.labelControl7.Text = "Plan Managed By:";
+            // 
             // labelControl8
             // 
             this.labelControl8.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
-            this.labelControl8.Location = new System.Drawing.Point(12, 72);
+            this.labelControl8.Location = new System.Drawing.Point(5, 61);
             this.labelControl8.Name = "labelControl8";
             this.labelControl8.Size = new System.Drawing.Size(151, 13);
             this.labelControl8.TabIndex = 10;
@@ -287,7 +324,7 @@
             // 
             // cmbManagedBy
             // 
-            this.cmbManagedBy.Location = new System.Drawing.Point(12, 36);
+            this.cmbManagedBy.Location = new System.Drawing.Point(5, 25);
             this.cmbManagedBy.Name = "cmbManagedBy";
             this.cmbManagedBy.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -295,15 +332,6 @@
             this.cmbManagedBy.Size = new System.Drawing.Size(178, 20);
             this.cmbManagedBy.TabIndex = 9;
             this.cmbManagedBy.SelectedIndexChanged += new System.EventHandler(this.cmbManagedBy_SelectedIndexChanged);
-            // 
-            // labelControl7
-            // 
-            this.labelControl7.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
-            this.labelControl7.Location = new System.Drawing.Point(12, 17);
-            this.labelControl7.Name = "labelControl7";
-            this.labelControl7.Size = new System.Drawing.Size(151, 13);
-            this.labelControl7.TabIndex = 8;
-            this.labelControl7.Text = "Plan Managed By:";
             // 
             // btnDelete
             // 
@@ -408,6 +436,30 @@
             this.btnSavePlanoption.Text = "Save";
             this.btnSavePlanoption.Click += new System.EventHandler(this.btnSavePlanoption_Click);
             // 
+            // labelControl9
+            // 
+            this.labelControl9.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
+            this.labelControl9.Location = new System.Drawing.Point(190, 6);
+            this.labelControl9.Name = "labelControl9";
+            this.labelControl9.Size = new System.Drawing.Size(151, 13);
+            this.labelControl9.TabIndex = 12;
+            this.labelControl9.Text = "Review Frequency:";
+            // 
+            // cmbReviewFrequency
+            // 
+            this.cmbReviewFrequency.Location = new System.Drawing.Point(190, 25);
+            this.cmbReviewFrequency.Name = "cmbReviewFrequency";
+            this.cmbReviewFrequency.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cmbReviewFrequency.Properties.Items.AddRange(new object[] {
+            "Monthly",
+            "Quarterly",
+            "Half Yearly",
+            "Yearly"});
+            this.cmbReviewFrequency.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.cmbReviewFrequency.Size = new System.Drawing.Size(178, 20);
+            this.cmbReviewFrequency.TabIndex = 10;
+            // 
             // PlannerView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -431,16 +483,21 @@
             ((System.ComponentModel.ISupportInitialize)(this.tabPlanner)).EndInit();
             this.tabPlanner.ResumeLayout(false);
             this.tabNavigationPagePlanner.ResumeLayout(false);
-            this.tabNavigationPagePlanner.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pnlPlannerInfo)).EndInit();
+            this.pnlPlannerInfo.ResumeLayout(false);
+            this.pnlPlannerInfo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cmbEndMonth.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPlanName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbStartMonth.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtEndDate.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtStartDate.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtStartDate.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPlanName.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEndDate.Properties)).EndInit();
             this.tabNavigationPageManagedBy.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pnlManager)).EndInit();
+            this.pnlManager.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.memoDescription.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbManagedBy.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbReviewFrequency.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -472,6 +529,10 @@
         private DevExpress.XtraEditors.SimpleButton btnAdd;
         private DevExpress.XtraEditors.SimpleButton btnClosePlanoptions;
         private DevExpress.XtraEditors.SimpleButton btnSavePlanoption;
+        private DevExpress.XtraEditors.PanelControl pnlPlannerInfo;
+        private DevExpress.XtraEditors.PanelControl pnlManager;
+        private DevExpress.XtraEditors.LabelControl labelControl9;
+        private DevExpress.XtraEditors.ComboBoxEdit cmbReviewFrequency;
     }
 }
 

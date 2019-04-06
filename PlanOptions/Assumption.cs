@@ -1,11 +1,15 @@
-﻿using FinancialPlanner.Common.Model;
+﻿using FinancialPlanner.Common;
+using FinancialPlanner.Common.Model;
+using FinancialPlannerClient.Master;
 using FinancialPlannerClient.PlannerInfo;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 
@@ -40,7 +44,7 @@ namespace FinancialPlannerClient.PlanOptions
 
         private void displayPlannerAssumptionData(PlannerAssumption plannerAssumption)
         {
-            if (plannerAssumption != null)
+            if (plannerAssumption.Id != 0)
             {
                 txtClientRetAge.Tag = plannerAssumption.Id;
                 txtClientRetAge.Text = plannerAssumption.ClientRetirementAge.ToString();
@@ -60,6 +64,8 @@ namespace FinancialPlannerClient.PlanOptions
                 txtIncomeRiseForSpouse.Text = plannerAssumption.SpouseIncomeRise.ToString();
                 txtOngoingExpRise.Text = plannerAssumption.OngoingExpRise.ToString();
             }
+            else
+                btnAdd.Visible = true;
         }
 
         private void Assumption_FormClosed(object sender, FormClosedEventArgs e)
@@ -70,19 +76,37 @@ namespace FinancialPlannerClient.PlanOptions
 
         private void btnSaveAssumption_Click(object sender, EventArgs e)
         {
-            PlannerAssumptionInfo PlannerAssumptionInfo = new PlannerAssumptionInfo();
-            PlannerAssumption PlannerAssumption = getPlannerAssumptionData();
-            bool isSaved = false;
-
-            isSaved = PlannerAssumptionInfo.Update(PlannerAssumption);
-
-            if (isSaved)
+            try
             {
-                DevExpress.XtraEditors.XtraMessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                fillupAssumptionInfo();
+                PlannerAssumptionInfo PlannerAssumptionInfo = new PlannerAssumptionInfo();
+                PlannerAssumption PlannerAssumption = getPlannerAssumptionData();
+                bool isSaved = false;
+
+                isSaved = PlannerAssumptionInfo.Update(PlannerAssumption);
+
+                if (isSaved)
+                {
+                    DevExpress.XtraEditors.XtraMessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    fillupAssumptionInfo();
+                }
+                else
+                    DevExpress.XtraEditors.XtraMessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-                DevExpress.XtraEditors.XtraMessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch(Exception ex)
+            {
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
+                LogDebug(currentMethodName.Name, ex);
+            }
+        }
+        private void LogDebug(string methodName, Exception ex)
+        {
+            DebuggerLogInfo debuggerInfo = new DebuggerLogInfo();
+            debuggerInfo.ClassName = this.GetType().Name;
+            debuggerInfo.Method = methodName;
+            debuggerInfo.ExceptionInfo = ex;
+            Logger.LogDebug(debuggerInfo);
         }
         private PlannerAssumption getPlannerAssumptionData()
         {
@@ -109,6 +133,32 @@ namespace FinancialPlannerClient.PlanOptions
             plannerAssumption.OngoingExpRise = decimal.Parse(txtOngoingExpRise.Text);
 
             return plannerAssumption;
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            AssumptionMasterInfo assumptionMasterInfo = new AssumptionMasterInfo();
+            AssumptionMaster assumptionMaster = assumptionMasterInfo.GetAll();
+            fillupDefaultAssumption(assumptionMaster);
+        }
+
+        private void fillupDefaultAssumption(AssumptionMaster assumptionMaster)
+        {
+            txtClientRetAge.Tag = "0";
+            txtClientRetAge.Text = assumptionMaster.RetirementAge.ToString();
+            txtSpouseRetAge.Text = assumptionMaster.RetirementAge.ToString();
+            txtClientLifeExp.Text = assumptionMaster.LifeExpectancy.ToString();
+            txtSpouseLifeExp.Text = assumptionMaster.LifeExpectancy.ToString();
+            txtPreRetInflationRate.Text = assumptionMaster.PreRetirementInflactionRate.ToString();
+            txtPostRetInflationRate.Text = assumptionMaster.PostRetirementInflactionRate.ToString();
+            txtEquityReturn.Text = assumptionMaster.EquityReturnRate.ToString();
+            txtDebtReturn.Text = assumptionMaster.DebtReturnRate.ToString();
+            txtOtherReturn.Text = assumptionMaster.OtherReturnRate.ToString();
+            txtPlannerAssumptionDescription.Text = "";
+
+            txtIncomeRiseForClient.Text = assumptionMaster.IncomeRaiseRatio.ToString();
+            txtIncomeRiseForSpouse.Text = assumptionMaster.IncomeRaiseRatio.ToString();
+            txtOngoingExpRise.Text = assumptionMaster.OngoingExpRise.ToString();
         }
     }
 }

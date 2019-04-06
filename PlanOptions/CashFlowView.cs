@@ -43,18 +43,10 @@ namespace FinancialPlannerClient.PlanOptions
             gridSplitContainerViewCashFlow.Columns["StartYear"].Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
             foreach (DevExpress.XtraGrid.Columns.GridColumn column in gridSplitContainerViewCashFlow.Columns)
             {
-                if (column.FieldName != "ID" && column.FieldName != "StartYear" && column.FieldName != "EndYear")
-                {
-                    column.DisplayFormat.FormatType = FormatType.Numeric;
-                    column.DisplayFormat.FormatString = "#,###";
-                    column.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;                 
-                }
-                if (column.FieldName != "IncomeTax")
-                {
-                    //column.ReadOnly = true;
-                }
-                else
-                    column.Caption = "Income Tax (%)";
+                if (column.FieldName == "Total Post Tax Income")
+                    column.ToolTip = "Total Income - Total Tax Deduction";
+                if (column.FieldName == "Surplus Amount")
+                    column.ToolTip = "Total Post Tax Income - (Total Annual Expenses + Total Annual Loans)";               
             }
         }
     }

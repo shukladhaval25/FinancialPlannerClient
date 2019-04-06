@@ -1082,7 +1082,7 @@ namespace FinancialPlannerClient.Clients
             txtGoalMappingShare.Text = "0";
             txtAssetRealisationYear.Text = DateTime.Now.Year.ToString();
             txtNonFinancialDesc.Text = "";
-            txtNonFinancialGrowthPercentage.Text = "";
+            txtNonFinancialGrowthPercentage.Text = Program.GetAssumptionMaster().NonFinancialRateOfReturn.ToString();
         }
 
         private void btnNonFinancialSave_Click(object sender, EventArgs e)
@@ -1200,7 +1200,7 @@ namespace FinancialPlannerClient.Clients
         private string getGoalName(int v)
         {
             if (_goals != null && v > 0)
-                return _goals.FirstOrDefault(i => i.Id == v).Name;
+                return (_goals.FirstOrDefault(i => i.Id == v) == null) ? string.Empty : _goals.FirstOrDefault(i => i.Id == v).Name;
             else
                 return string.Empty;
         }
@@ -1490,7 +1490,7 @@ namespace FinancialPlannerClient.Clients
             txtOtherDeduction.Text = "0";
             txtNetTakeHome.Text = "0";
             txtNextIncrementMonthYear.Text = "";
-            txtExpectedGrowthSalary.Text = "0";
+            txtExpectedGrowthSalary.Text = Program.GetAssumptionMaster().IncomeRaiseRatio.ToString();
             txtBonusMonthYear.Text = "";
             txtAnnualBonusAmt.Text = "0";
         }

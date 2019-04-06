@@ -229,9 +229,16 @@
     </Compile>
     <Compile Include="Master\AreaImplimenter.cs" />
     <Compile Include="Master\AreaInfo.cs" />
+    <Compile Include="Master\AssumptionMasterInfo.cs" />
     <Compile Include="Master\CRMGroupInfo.cs" />
     <Compile Include="Master\CRMGroupsImplimenter.cs" />
     <Compile Include="Master\FestivalsImplimenter.cs" />
+    <Compile Include="Master\AssumptionMaster.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Master\AssumptionMaster.Designer.cs">
+      <DependentUpon>AssumptionMaster.cs</DependentUpon>
+    </Compile>
     <Compile Include="Master\IOtherItems.cs" />
     <Compile Include="Master\Others.cs">
       <SubType>Form</SubType>
@@ -657,6 +664,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Master\AssumptionMaster.resx">
+      <DependentUpon>AssumptionMaster.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Master\Others.resx">
       <DependentUpon>Others.cs</DependentUpon>

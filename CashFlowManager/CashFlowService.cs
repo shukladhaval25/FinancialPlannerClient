@@ -357,7 +357,7 @@ namespace FinancialPlannerClient.CashFlowManager
             }
             dr["Total Income"] = totalIncome;
             dr["Total Tax Deduction"] = totalTaxAmt;
-            dr["Total Post Tax Income"] = totalPostTaxIncome;
+            dr["Total Post Tax Income"] =  totalPostTaxIncome;
         }
 
         private bool isIncomeValidaForYear(Income income, int years, int clientRetYear, int spouseRetYear)
@@ -377,8 +377,8 @@ namespace FinancialPlannerClient.CashFlowManager
             {
                 double expAmt = double.Parse(_dtCashFlow.Rows[years - 1][exp.Item].ToString());
                 double expWithInflaction = expAmt + ((expAmt * _inflactionRatePercentage) / 100);
-                dr[exp.Item] = expWithInflaction;
-                totalExpenses = totalExpenses + expWithInflaction;
+                dr[exp.Item] = System.Math.Round(expWithInflaction,2);
+                totalExpenses = System.Math.Round(totalExpenses + expWithInflaction,2);
             }
 
             foreach(LifeInsurance lifeInsurance in _cashFlowCalculation.LstLifeInsurances)
@@ -396,12 +396,12 @@ namespace FinancialPlannerClient.CashFlowManager
             {
                 if (int.Parse(dr["StartYear"].ToString()) >= generalInsurance.IssueDate.Value.Year)
                 {
-                    dr[generalInsurance.Company] = generalInsurance.Premium;
+                    dr[generalInsurance.Company] = System.Math.Round(generalInsurance.Premium,2);
                     totalExpenses = totalExpenses + generalInsurance.Premium;
                 }
             }
 
-            dr["Total Annual Expenses"] = totalExpenses;
+            dr["Total Annual Expenses"] = System.Math.Round(totalExpenses,2);
         }
 
         private void addLoansCalculation(int years, DataRow dr)
@@ -424,7 +424,7 @@ namespace FinancialPlannerClient.CashFlowManager
                     totalLoans = totalLoans + loanAmt;
                 }
             }
-            dr["Total Annual Loans"] = totalLoans;
+            dr["Total Annual Loans"] = System.Math.Round(totalLoans,2);
         }
 
         private void addFirstRowData(int rowId)
