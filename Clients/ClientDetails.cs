@@ -2,6 +2,7 @@
 using FinancialPlanner.Common;
 using FinancialPlanner.Common.DataConversion;
 using FinancialPlanner.Common.Model;
+using FinancialPlanner.Common.Model.Masters;
 using FinancialPlannerClient.PlannerInfo;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,7 @@ namespace FinancialPlannerClient.Clients
         Client _client;
         PersonalInformation personalInformation;
         IEnumerable<BankAccountDetail> allBankAcDetails;
+        List<ClientRating> clientRatings;
 
         private DataTable _dtBankAccount;
         private DataTable _dtSpouseBankAcInfo;
@@ -45,14 +47,28 @@ namespace FinancialPlannerClient.Clients
                 fillSpousePersonalDetails(personalInformation.Spouse);
                 showSpouseBankDetails();
             }
+            else
+            {
+                cmbGender.Text = "Male";
+            }
             dtMarriageAnniversary.Enabled = chkMarrried.Checked;
+
+            fillupClientRatingView();
             //this.DialogResult = DialogResult.Ignore;
+        }
+
+        private void fillupClientRatingView()
+        {
+            cmbRating.Properties.Items.Clear();
+            Master.ClientRatingView clientRatingView = new Master.ClientRatingView();
+            clientRatings = clientRatingView.GetAll().ToList();
+            clientRatings.ForEach(i => cmbRating.Properties.Items.Add(i.Rating));
         }
 
 
 
         #region "Clinet Details"
-        
+
         private void getClientAndSpousePersonalDetails()
         {
             ClientPersonalInfo clientPersonalInfo = new ClientPersonalInfo();
@@ -82,6 +98,8 @@ namespace FinancialPlannerClient.Clients
             txtAadharCard.Text = this._client.Aadhar;
             txtPlaceOfBirth.Text = this._client.PlaceOfBirth;
             txtClientOccupation.Text = this._client.Occupation;
+            cmbRating.Text = this._client.Rating;
+            cmbClientType.Text = this._client.ClientType;
         }
 
         private Image converToImageFromBase64String(string base64String)
@@ -261,7 +279,9 @@ namespace FinancialPlannerClient.Clients
                 UpdatedByUserName = Program.CurrentUser.UserName,
                 MachineName = System.Environment.MachineName,
                 ImageData = _client.ImageData,
-                ImagePath = _client.ImagePath
+                ImagePath = _client.ImagePath,
+                Rating = cmbRating.Text,
+                ClientType = cmbClientType.Text
             };
             return client;
         }

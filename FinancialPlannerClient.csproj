@@ -78,15 +78,17 @@
     <Reference Include="DevExpress.XtraTreeList.v16.2, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraTreeMap.v16.2, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraVerticalGrid.v16.2, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="FinancialPlanner.Common">
-      <HintPath>..\..\FinancialPlanner.Common\bin\Debug\FinancialPlanner.Common.dll</HintPath>
+    <Reference Include="FinancialPlanner.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\FinancialPlanner.Common\bin\Debug\FinancialPlanner.Common.dll</HintPath>
     </Reference>
     <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\log4net.dll</HintPath>
     </Reference>
-    <Reference Include="PDFLibNet">
-      <HintPath>..\..\..\..\..\My Downloads\PDFViewerNET40x64\PDFLibNet.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\FinancialPlanner\bin\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="System" />
@@ -230,6 +232,7 @@
     <Compile Include="Master\AreaImplimenter.cs" />
     <Compile Include="Master\AreaInfo.cs" />
     <Compile Include="Master\AssumptionMasterInfo.cs" />
+    <Compile Include="Master\ClientRatingImplimenter.cs" />
     <Compile Include="Master\CRMGroupInfo.cs" />
     <Compile Include="Master\CRMGroupsImplimenter.cs" />
     <Compile Include="Master\FestivalsImplimenter.cs" />
@@ -238,6 +241,12 @@
     </Compile>
     <Compile Include="Master\AssumptionMaster.Designer.cs">
       <DependentUpon>AssumptionMaster.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Master\ClientRatingView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Master\ClientRatingView.Designer.cs">
+      <DependentUpon>ClientRatingView.cs</DependentUpon>
     </Compile>
     <Compile Include="Master\IOtherItems.cs" />
     <Compile Include="Master\Others.cs">
@@ -304,6 +313,12 @@
     </Compile>
     <Compile Include="PlanOptions\GoalCalView.designer.cs">
       <DependentUpon>GoalCalView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\ActionPlan.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\ActionPlan.Designer.cs">
+      <DependentUpon>ActionPlan.cs</DependentUpon>
     </Compile>
     <Compile Include="PlanOptions\Reports\AssetAllocationTitle.cs">
       <SubType>Component</SubType>
@@ -395,6 +410,18 @@
     </Compile>
     <Compile Include="PlanOptions\Reports\CurrentFinancialStatus.Designer.cs">
       <DependentUpon>CurrentFinancialStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\CurrentStatusReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\CurrentStatusReport.Designer.cs">
+      <DependentUpon>CurrentStatusReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\CurrentStatusDetails.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\CurrentStatusDetails.Designer.cs">
+      <DependentUpon>CurrentStatusDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="PlanOptions\Reports\FamilyInfoPage.cs">
       <SubType>Component</SubType>
@@ -668,6 +695,9 @@
     <EmbeddedResource Include="Master\AssumptionMaster.resx">
       <DependentUpon>AssumptionMaster.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Master\ClientRatingView.resx">
+      <DependentUpon>ClientRatingView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Master\Others.resx">
       <DependentUpon>Others.cs</DependentUpon>
     </EmbeddedResource>
@@ -698,6 +728,9 @@
     <EmbeddedResource Include="PlanOptions\GoalCalView.resx">
       <DependentUpon>GoalCalView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\Reports\ActionPlan.resx">
+      <DependentUpon>ActionPlan.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\Reports\AssetAllocationTitle.resx">
       <DependentUpon>AssetAllocationTitle.cs</DependentUpon>
     </EmbeddedResource>
@@ -721,6 +754,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\Reports\CurrentFinancialStatus.resx">
       <DependentUpon>CurrentFinancialStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\Reports\CurrentStatusReport.resx">
+      <DependentUpon>CurrentStatusReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\Reports\CurrentStatusDetails.resx">
+      <DependentUpon>CurrentStatusDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\Reports\FamilyInfoPage.resx">
       <DependentUpon>FamilyInfoPage.cs</DependentUpon>
@@ -1047,6 +1086,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Retirement.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\newcontact_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\newcontact_32x321.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

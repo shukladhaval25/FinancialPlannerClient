@@ -123,6 +123,9 @@ namespace FinancialPlannerClient.PlanOptions
                 SmartGoal smartGoal = new SmartGoal(this.client);
                 smartGoal.CreateDocument();
 
+                CurrentStatusReport currentStatus = new CurrentStatusReport(netWorthStatement.GetNetWorth());
+                currentStatus.CreateDocument();
+
                 GoalsDescription[] goalsDescriptions = null;
                 if (this.goals != null && this.goals.Count > 0)
                 {
@@ -140,6 +143,9 @@ namespace FinancialPlannerClient.PlanOptions
 
                 AssetAllocationTitle assetAllocationTitle = new AssetAllocationTitle(this.client);
                 assetAllocationTitle.CreateDocument();
+
+                ActionPlan actionPlan = new ActionPlan(this.client, this.planner);
+                actionPlan.CreateDocument();
 
                 // Enable this property to maintain continuous page numbering 
                 PrintingSystem.ContinuousPageNumbering = true;
@@ -178,6 +184,8 @@ namespace FinancialPlannerClient.PlanOptions
                 }
 
                 this.Pages.Add(assetAllocationTitle.Pages.First);
+                this.Pages.Add(actionPlan.Pages.First);
+                this.Pages.Add(currentStatus.Pages.First);
 
                 waitdlg.Close();
             }

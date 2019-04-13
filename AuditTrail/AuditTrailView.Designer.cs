@@ -32,6 +32,8 @@
             this.gridSplitContainer1 = new DevExpress.XtraGrid.GridSplitContainer();
             this.grdsplitAuditTrail = new DevExpress.XtraGrid.GridControl();
             this.grdSplitAuditTrailView = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColTypeImg = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColStatusImg = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridSplitContainer1)).BeginInit();
             this.gridSplitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdsplitAuditTrail)).BeginInit();
@@ -77,8 +79,27 @@
             // 
             // grdSplitAuditTrailView
             // 
+            this.grdSplitAuditTrailView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColTypeImg,
+            this.gridColStatusImg});
             this.grdSplitAuditTrailView.GridControl = this.grdsplitAuditTrail;
             this.grdSplitAuditTrailView.Name = "grdSplitAuditTrailView";
+            this.grdSplitAuditTrailView.CustomRowCellEdit += new DevExpress.XtraGrid.Views.Grid.CustomRowCellEditEventHandler(this.grdSplitAuditTrailView_CustomRowCellEdit);
+            // 
+            // gridColTypeImg
+            // 
+            this.gridColTypeImg.Caption = "TypeImage";
+            this.gridColTypeImg.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
+            this.gridColTypeImg.Name = "gridColTypeImg";
+            this.gridColTypeImg.Visible = true;
+            this.gridColTypeImg.VisibleIndex = 0;
+            // 
+            // gridColStatusImg
+            // 
+            this.gridColStatusImg.Caption = "StatusImage";
+            this.gridColStatusImg.Name = "gridColStatusImg";
+            this.gridColStatusImg.Visible = true;
+            this.gridColStatusImg.VisibleIndex = 1;
             // 
             // AuditTrailView
             // 
@@ -104,6 +125,8 @@
         private DevExpress.XtraGrid.GridSplitContainer gridSplitContainer1;
         private DevExpress.XtraGrid.GridControl grdsplitAuditTrail;
         private DevExpress.XtraGrid.Views.Grid.GridView grdSplitAuditTrailView;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColTypeImg;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColStatusImg;
     }
 }
 

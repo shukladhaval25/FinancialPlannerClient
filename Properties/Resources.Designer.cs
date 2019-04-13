@@ -543,6 +543,26 @@ namespace FinancialPlannerClient.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap newcontact_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("newcontact_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap newcontact_32x321 {
+            get {
+                object obj = ResourceManager.GetObject("newcontact_32x321", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap notification_60 {
             get {
                 object obj = ResourceManager.GetObject("notification_60", resourceCulture);

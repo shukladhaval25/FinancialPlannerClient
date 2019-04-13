@@ -120,6 +120,10 @@
             this.label16 = new System.Windows.Forms.Label();
             this.txtSpouseName = new DevExpress.XtraEditors.TextEdit();
             this.label17 = new System.Windows.Forms.Label();
+            this.cmbRating = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.label12 = new System.Windows.Forms.Label();
+            this.cmbClientType = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.label18 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.grpClientInfo)).BeginInit();
             this.grpClientInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grpBankDetails)).BeginInit();
@@ -163,11 +167,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtSpouseMotherName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSpouseFatherName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSpouseName.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbRating.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbClientType.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // grpClientInfo
             // 
             this.grpClientInfo.CaptionImage = ((System.Drawing.Image)(resources.GetObject("grpClientInfo.CaptionImage")));
+            this.grpClientInfo.Controls.Add(this.cmbClientType);
+            this.grpClientInfo.Controls.Add(this.label18);
+            this.grpClientInfo.Controls.Add(this.cmbRating);
+            this.grpClientInfo.Controls.Add(this.label12);
             this.grpClientInfo.Controls.Add(this.btnChangeImage);
             this.grpClientInfo.Controls.Add(this.grpBankDetails);
             this.grpClientInfo.Controls.Add(this.grpClientOtherDetails);
@@ -215,10 +225,10 @@
             this.grpBankDetails.CaptionImage = global::FinancialPlannerClient.Properties.Resources.icons8_museum_16;
             this.grpBankDetails.Controls.Add(this.btnViewBankInfo);
             this.grpBankDetails.Controls.Add(this.grdBank);
-            this.grpBankDetails.Location = new System.Drawing.Point(15, 330);
+            this.grpBankDetails.Location = new System.Drawing.Point(15, 333);
             this.grpBankDetails.Name = "grpBankDetails";
-            this.grpBankDetails.Size = new System.Drawing.Size(641, 184);
-            this.grpBankDetails.TabIndex = 18;
+            this.grpBankDetails.Size = new System.Drawing.Size(641, 180);
+            this.grpBankDetails.TabIndex = 20;
             this.grpBankDetails.Text = "Bank Details";
             // 
             // btnViewBankInfo
@@ -248,7 +258,7 @@
             this.grdBank.Location = new System.Drawing.Point(10, 24);
             this.grdBank.MainView = this.cardViewBank;
             this.grdBank.Name = "grdBank";
-            this.grdBank.Size = new System.Drawing.Size(626, 156);
+            this.grdBank.Size = new System.Drawing.Size(626, 151);
             this.grdBank.TabIndex = 0;
             this.grdBank.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.cardViewBank});
@@ -338,10 +348,10 @@
             this.grpClientOtherDetails.Controls.Add(this.label7);
             this.grpClientOtherDetails.Controls.Add(this.txtPAN);
             this.grpClientOtherDetails.Controls.Add(this.lblPAN);
-            this.grpClientOtherDetails.Location = new System.Drawing.Point(243, 189);
+            this.grpClientOtherDetails.Location = new System.Drawing.Point(243, 192);
             this.grpClientOtherDetails.Name = "grpClientOtherDetails";
             this.grpClientOtherDetails.Size = new System.Drawing.Size(413, 133);
-            this.grpClientOtherDetails.TabIndex = 17;
+            this.grpClientOtherDetails.TabIndex = 19;
             this.grpClientOtherDetails.Text = "Other Details";
             // 
             // txtClientOccupation
@@ -419,10 +429,10 @@
             this.grpClientMarriageInfo.Controls.Add(this.dtMarriageAnniversary);
             this.grpClientMarriageInfo.Controls.Add(this.label5);
             this.grpClientMarriageInfo.Controls.Add(this.chkMarrried);
-            this.grpClientMarriageInfo.Location = new System.Drawing.Point(13, 189);
+            this.grpClientMarriageInfo.Location = new System.Drawing.Point(13, 192);
             this.grpClientMarriageInfo.Name = "grpClientMarriageInfo";
             this.grpClientMarriageInfo.Size = new System.Drawing.Size(224, 133);
-            this.grpClientMarriageInfo.TabIndex = 16;
+            this.grpClientMarriageInfo.TabIndex = 18;
             this.grpClientMarriageInfo.Text = "Marriage Details";
             // 
             // dtMarriageAnniversary
@@ -459,20 +469,20 @@
             // dtDOB
             // 
             this.dtDOB.EditValue = null;
-            this.dtDOB.Location = new System.Drawing.Point(347, 140);
+            this.dtDOB.Location = new System.Drawing.Point(529, 107);
             this.dtDOB.Name = "dtDOB";
             this.dtDOB.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dtDOB.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dtDOB.Properties.Mask.EditMask = "dd-MM-yyyy";
-            this.dtDOB.Size = new System.Drawing.Size(228, 20);
+            this.dtDOB.Size = new System.Drawing.Size(115, 20);
             this.dtDOB.TabIndex = 15;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(262, 141);
+            this.label4.Location = new System.Drawing.Point(449, 110);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(74, 13);
             this.label4.TabIndex = 14;
@@ -481,20 +491,20 @@
             // cmbGender
             // 
             this.cmbGender.EditValue = "Male";
-            this.cmbGender.Location = new System.Drawing.Point(347, 114);
+            this.cmbGender.Location = new System.Drawing.Point(329, 107);
             this.cmbGender.Name = "cmbGender";
             this.cmbGender.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cmbGender.Properties.Items.AddRange(new object[] {
             "Male",
             "Female"});
-            this.cmbGender.Size = new System.Drawing.Size(227, 20);
+            this.cmbGender.Size = new System.Drawing.Size(114, 20);
             this.cmbGender.TabIndex = 13;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(262, 117);
+            this.label3.Location = new System.Drawing.Point(244, 110);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(46, 13);
             this.label3.TabIndex = 12;
@@ -507,22 +517,22 @@
             this.labelControl2.Appearance.BackColor = System.Drawing.Color.Black;
             this.labelControl2.Appearance.Options.UseBackColor = true;
             this.labelControl2.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.labelControl2.Location = new System.Drawing.Point(10, 182);
+            this.labelControl2.Location = new System.Drawing.Point(10, 185);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(648, 1);
             this.labelControl2.TabIndex = 11;
             // 
             // txtMotherName
             // 
-            this.txtMotherName.Location = new System.Drawing.Point(347, 88);
+            this.txtMotherName.Location = new System.Drawing.Point(329, 81);
             this.txtMotherName.Name = "txtMotherName";
-            this.txtMotherName.Size = new System.Drawing.Size(228, 20);
+            this.txtMotherName.Size = new System.Drawing.Size(315, 20);
             this.txtMotherName.TabIndex = 10;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(262, 91);
+            this.label2.Location = new System.Drawing.Point(244, 84);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(82, 13);
             this.label2.TabIndex = 9;
@@ -530,15 +540,15 @@
             // 
             // txtFatherName
             // 
-            this.txtFatherName.Location = new System.Drawing.Point(347, 62);
+            this.txtFatherName.Location = new System.Drawing.Point(329, 55);
             this.txtFatherName.Name = "txtFatherName";
-            this.txtFatherName.Size = new System.Drawing.Size(228, 20);
+            this.txtFatherName.Size = new System.Drawing.Size(315, 20);
             this.txtFatherName.TabIndex = 8;
             // 
             // lblFatherName
             // 
             this.lblFatherName.AutoSize = true;
-            this.lblFatherName.Location = new System.Drawing.Point(262, 65);
+            this.lblFatherName.Location = new System.Drawing.Point(244, 58);
             this.lblFatherName.Name = "lblFatherName";
             this.lblFatherName.Size = new System.Drawing.Size(80, 13);
             this.lblFatherName.TabIndex = 7;
@@ -556,15 +566,15 @@
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(347, 36);
+            this.txtName.Location = new System.Drawing.Point(329, 29);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(228, 20);
+            this.txtName.Size = new System.Drawing.Size(315, 20);
             this.txtName.TabIndex = 6;
             // 
             // lblClientName
             // 
             this.lblClientName.AutoSize = true;
-            this.lblClientName.Location = new System.Drawing.Point(262, 39);
+            this.lblClientName.Location = new System.Drawing.Point(244, 32);
             this.lblClientName.Name = "lblClientName";
             this.lblClientName.Size = new System.Drawing.Size(57, 13);
             this.lblClientName.TabIndex = 5;
@@ -582,7 +592,7 @@
             // 
             this.btnCloseClientInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCloseClientInfo.Image = ((System.Drawing.Image)(resources.GetObject("btnCloseClientInfo.Image")));
-            this.btnCloseClientInfo.Location = new System.Drawing.Point(72, 539);
+            this.btnCloseClientInfo.Location = new System.Drawing.Point(86, 539);
             this.btnCloseClientInfo.Name = "btnCloseClientInfo";
             this.btnCloseClientInfo.Size = new System.Drawing.Size(62, 23);
             toolTipTitleItem3.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
@@ -595,14 +605,14 @@
             superToolTip3.Items.Add(toolTipItem3);
             this.btnCloseClientInfo.SuperTip = superToolTip3;
             this.btnCloseClientInfo.TabIndex = 22;
-            this.btnCloseClientInfo.Text = "Close";
+            this.btnCloseClientInfo.Text = "&Close";
             this.btnCloseClientInfo.Click += new System.EventHandler(this.btnCloseClientInfo_Click);
             // 
             // btnSaveClient
             // 
             this.btnSaveClient.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSaveClient.Image = ((System.Drawing.Image)(resources.GetObject("btnSaveClient.Image")));
-            this.btnSaveClient.Location = new System.Drawing.Point(9, 539);
+            this.btnSaveClient.Location = new System.Drawing.Point(23, 539);
             this.btnSaveClient.Name = "btnSaveClient";
             this.btnSaveClient.Size = new System.Drawing.Size(57, 23);
             toolTipTitleItem4.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
@@ -615,7 +625,7 @@
             superToolTip4.Items.Add(toolTipItem4);
             this.btnSaveClient.SuperTip = superToolTip4;
             this.btnSaveClient.TabIndex = 21;
-            this.btnSaveClient.Text = "Save";
+            this.btnSaveClient.Text = "&Save";
             this.btnSaveClient.Click += new System.EventHandler(this.btnSaveClient_Click);
             // 
             // openFileDialog1
@@ -650,9 +660,9 @@
             this.grpSpouseBank.CaptionImage = global::FinancialPlannerClient.Properties.Resources.icons8_museum_16;
             this.grpSpouseBank.Controls.Add(this.simpleButton4);
             this.grpSpouseBank.Controls.Add(this.grdSpouseBank);
-            this.grpSpouseBank.Location = new System.Drawing.Point(7, 330);
+            this.grpSpouseBank.Location = new System.Drawing.Point(7, 333);
             this.grpSpouseBank.Name = "grpSpouseBank";
-            this.grpSpouseBank.Size = new System.Drawing.Size(405, 187);
+            this.grpSpouseBank.Size = new System.Drawing.Size(405, 180);
             this.grpSpouseBank.TabIndex = 18;
             this.grpSpouseBank.Text = "Bank Details";
             // 
@@ -683,7 +693,7 @@
             this.grdSpouseBank.Location = new System.Drawing.Point(10, 24);
             this.grdSpouseBank.MainView = this.cardView1;
             this.grdSpouseBank.Name = "grdSpouseBank";
-            this.grdSpouseBank.Size = new System.Drawing.Size(390, 156);
+            this.grdSpouseBank.Size = new System.Drawing.Size(390, 151);
             this.grdSpouseBank.TabIndex = 0;
             this.grdSpouseBank.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.cardView1});
@@ -773,7 +783,7 @@
             this.grpSpouseOtherDetails.Controls.Add(this.label10);
             this.grpSpouseOtherDetails.Controls.Add(this.txtSpousePAN);
             this.grpSpouseOtherDetails.Controls.Add(this.label11);
-            this.grpSpouseOtherDetails.Location = new System.Drawing.Point(7, 189);
+            this.grpSpouseOtherDetails.Location = new System.Drawing.Point(7, 192);
             this.grpSpouseOtherDetails.Name = "grpSpouseOtherDetails";
             this.grpSpouseOtherDetails.Size = new System.Drawing.Size(405, 133);
             this.grpSpouseOtherDetails.TabIndex = 17;
@@ -951,6 +961,51 @@
             this.label17.TabIndex = 5;
             this.label17.Text = "Full Name:";
             // 
+            // cmbRating
+            // 
+            this.cmbRating.EditValue = "";
+            this.cmbRating.Location = new System.Drawing.Point(329, 133);
+            this.cmbRating.Name = "cmbRating";
+            this.cmbRating.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cmbRating.Properties.Items.AddRange(new object[] {
+            "Male",
+            "Female"});
+            this.cmbRating.Size = new System.Drawing.Size(114, 20);
+            this.cmbRating.TabIndex = 16;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(244, 136);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(42, 13);
+            this.label12.TabIndex = 21;
+            this.label12.Text = "Rating:";
+            // 
+            // cmbClientType
+            // 
+            this.cmbClientType.EditValue = "";
+            this.cmbClientType.Location = new System.Drawing.Point(329, 159);
+            this.cmbClientType.Name = "cmbClientType";
+            this.cmbClientType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cmbClientType.Properties.Items.AddRange(new object[] {
+            "Comprehensive Financial Plan",
+            "Goal Plan",
+            "Portfolio Management Service"});
+            this.cmbClientType.Size = new System.Drawing.Size(315, 20);
+            this.cmbClientType.TabIndex = 17;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(244, 162);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(65, 13);
+            this.label18.TabIndex = 23;
+            this.label18.Text = "Client Type:";
+            // 
             // ClientDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1014,6 +1069,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtSpouseMotherName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSpouseFatherName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSpouseName.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbRating.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbClientType.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1096,6 +1153,10 @@
         private System.Windows.Forms.Label label16;
         private DevExpress.XtraEditors.TextEdit txtSpouseName;
         private System.Windows.Forms.Label label17;
+        private DevExpress.XtraEditors.ComboBoxEdit cmbClientType;
+        private System.Windows.Forms.Label label18;
+        private DevExpress.XtraEditors.ComboBoxEdit cmbRating;
+        private System.Windows.Forms.Label label12;
     }
 }
 

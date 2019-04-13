@@ -1,4 +1,5 @@
-﻿using FinancialPlanner.Common.DataConversion;
+﻿using DevExpress.XtraGrid.Columns;
+using FinancialPlanner.Common.DataConversion;
 using FinancialPlanner.Common.Model;
 using System;
 using System.Collections.Generic;
@@ -66,8 +67,8 @@ namespace FinancialPlannerClient.AuditTrail
             grdSplitAuditTrailView.Columns["HostName"].Width = 150;
             grdSplitAuditTrailView.Columns["UserName"].Width = 100;
             grdSplitAuditTrailView.Columns["ActivityAt"].Width = 150;
-            //grdSplitAuditTrailView.Columns["TypeImg"].VisibleIndex = 0;
-            //grdSplitAuditTrailView.Columns["StatusImg"].VisibleIndex = 6;
+            grdSplitAuditTrailView.Columns["TypeImg"].VisibleIndex = 0;
+            grdSplitAuditTrailView.Columns["StatusImg"].VisibleIndex = 6;
         }
 
         private void setGridColumnsHeader()
@@ -80,9 +81,17 @@ namespace FinancialPlannerClient.AuditTrail
             grdSplitAuditTrailView.Columns["SourceType"].Caption = "Source";
         }
 
-        private void grdSplitAuditTrailView_CalcRowHeight(object sender, DevExpress.XtraGrid.Views.Grid.RowHeightEventArgs e)
+        private void grdSplitAuditTrailView_CustomRowCellEdit(object sender, DevExpress.XtraGrid.Views.Grid.CustomRowCellEditEventArgs e)
         {
 
+            if (grdSplitAuditTrailView.Columns[e.RowHandle].Name == "TypeImg")
+            {
+                GridColumn colActivityType = grdSplitAuditTrailView.Columns["ActivityTypeValue"];
+
+                DataRow dataRow = grdSplitAuditTrailView.GetDataRow(e.RowHandle);
+                if (dataRow[0].ToString().Contains("Login"))
+                    dataRow["TypeImg"] = Properties.Resources.icons8_padlock_16;
+            }
         }
     }
 }
