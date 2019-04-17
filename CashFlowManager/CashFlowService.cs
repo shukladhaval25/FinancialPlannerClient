@@ -25,7 +25,6 @@ namespace FinancialPlannerClient.CashFlowManager
         private readonly string GETALL_API = "CashFlow/Get?optionId={0}";
         private readonly string ADD_CASHFLOW_API = "cashflow/Add";
         private readonly string UPDATE_CASHFLOW_API = "cashflow/update";
-        private double _inflactionRatePercentage = 10;
         private Planner _planner;
         public GoalCalculationManager GoalCalculationMgr;
         private RiskProfileInfo _riskProfileInfo;
@@ -220,7 +219,7 @@ namespace FinancialPlannerClient.CashFlowManager
             {
                 double previousYearCumulativeCorpusFund = string.IsNullOrEmpty(_dtCashFlow.Rows[_dtCashFlow.Rows.Count - 1]["Cumulative Corpus Fund"].ToString())? 0:
                     double.Parse(_dtCashFlow.Rows[_dtCashFlow.Rows.Count - 1]["Cumulative Corpus Fund"].ToString());
-                double returnRate =(double) _riskProfileInfo.GetRiskProfileReturnRatio(this._riskProfileId, noOfYearsForCalculation -( years+1));
+                double returnRate =(double) _riskProfileInfo.GetRiskProfileReturnRatio(this._riskProfileId, noOfYearsForCalculation -(years));
                 double currentYearCorpusFund = (string.IsNullOrEmpty(dr["Corpus Fund"].ToString()) ? 0 : double.Parse(dr["Corpus Fund"].ToString()));
                 double cumulativeCorpusFund = currentYearCorpusFund + previousYearCumulativeCorpusFund + ((previousYearCumulativeCorpusFund * returnRate) / (100));
                 dr["Cumulative Corpus Fund"] = Math.Round(cumulativeCorpusFund,2);
@@ -373,12 +372,21 @@ namespace FinancialPlannerClient.CashFlowManager
         private void addExpenesCalculation(int years, DataRow dr)
         {
             double totalExpenses = 0;
+           
             foreach (Expenses exp in _cashFlowCalculation.LstExpenses)
             {
-                double expAmt = double.Parse(_dtCashFlow.Rows[years - 1][exp.Item].ToString());
-                double expWithInflaction = expAmt + ((expAmt * _inflactionRatePercentage) / 100);
-                dr[exp.Item] = System.Math.Round(expWithInflaction,2);
-                totalExpenses = System.Math.Round(totalExpenses + expWithInflaction,2);
+                int expEndYear = string.IsNullOrEmpty(exp.ExpEndYear) ? DateTime.Now.Year + 100 : int.Parse(exp.ExpEndYear);
+                int expStartYear = string.IsNullOrEmpty(exp.ExpEndYear) ? years  : int.Parse(exp.ExpStartYear);
+                if ((int.Parse(dr["StartYear"].ToString()) >= expStartYear &&
+                   int.Parse(dr["StartYear"].ToString()) <= expEndYear) || 
+                   string.IsNullOrEmpty(exp.ExpStartYear))
+                {
+                    double expAmt = double.Parse(_dtCashFlow.Rows[years - 1][exp.Item].ToString());
+                    double expInflationRate = exp.InflationRate;
+                    double expWithInflaction = expAmt + ((expAmt * expInflationRate) / 100);
+                    dr[exp.Item] = System.Math.Round(expWithInflaction, 2);
+                    totalExpenses = System.Math.Round(totalExpenses + expWithInflaction, 2);
+                }
             }
 
             foreach(LifeInsurance lifeInsurance in _cashFlowCalculation.LstLifeInsurances)

@@ -489,6 +489,12 @@
             this.textBox11 = new System.Windows.Forms.TextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
+            this.label151 = new System.Windows.Forms.Label();
+            this.txtExpStartYear = new System.Windows.Forms.TextBox();
+            this.txtExpEndYear = new System.Windows.Forms.TextBox();
+            this.label152 = new System.Windows.Forms.Label();
+            this.txtExpInflationRate = new System.Windows.Forms.TextBox();
+            this.label153 = new System.Windows.Forms.Label();
             this.tabPlannerDetails.SuspendLayout();
             this.Assumption.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -4720,6 +4726,12 @@
             // 
             this.grpExpenseDetails.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpExpenseDetails.Controls.Add(this.txtExpInflationRate);
+            this.grpExpenseDetails.Controls.Add(this.label153);
+            this.grpExpenseDetails.Controls.Add(this.txtExpEndYear);
+            this.grpExpenseDetails.Controls.Add(this.label152);
+            this.grpExpenseDetails.Controls.Add(this.txtExpStartYear);
+            this.grpExpenseDetails.Controls.Add(this.label151);
             this.grpExpenseDetails.Controls.Add(this.chkEligibleForInsuranceCover);
             this.grpExpenseDetails.Controls.Add(this.txtExpAmount);
             this.grpExpenseDetails.Controls.Add(this.cmbExpType);
@@ -4745,10 +4757,10 @@
             // chkEligibleForInsuranceCover
             // 
             this.chkEligibleForInsuranceCover.AutoSize = true;
-            this.chkEligibleForInsuranceCover.Location = new System.Drawing.Point(170, 158);
+            this.chkEligibleForInsuranceCover.Location = new System.Drawing.Point(170, 215);
             this.chkEligibleForInsuranceCover.Name = "chkEligibleForInsuranceCover";
             this.chkEligibleForInsuranceCover.Size = new System.Drawing.Size(281, 19);
-            this.chkEligibleForInsuranceCover.TabIndex = 19;
+            this.chkEligibleForInsuranceCover.TabIndex = 22;
             this.chkEligibleForInsuranceCover.Text = "Consider this item as insurance coverage need";
             this.chkEligibleForInsuranceCover.UseVisualStyleBackColor = true;
             // 
@@ -4813,7 +4825,7 @@
             this.btnCacelExp.Location = new System.Drawing.Point(727, 156);
             this.btnCacelExp.Name = "btnCacelExp";
             this.btnCacelExp.Size = new System.Drawing.Size(86, 26);
-            this.btnCacelExp.TabIndex = 14;
+            this.btnCacelExp.TabIndex = 25;
             this.btnCacelExp.Text = "Cancel";
             this.btnCacelExp.UseVisualStyleBackColor = true;
             this.btnCacelExp.Click += new System.EventHandler(this.btnCacelExp_Click);
@@ -4827,7 +4839,7 @@
             this.btnSaveExp.Location = new System.Drawing.Point(635, 156);
             this.btnSaveExp.Name = "btnSaveExp";
             this.btnSaveExp.Size = new System.Drawing.Size(86, 26);
-            this.btnSaveExp.TabIndex = 13;
+            this.btnSaveExp.TabIndex = 24;
             this.btnSaveExp.Text = "Save";
             this.btnSaveExp.UseVisualStyleBackColor = true;
             this.btnSaveExp.Click += new System.EventHandler(this.btnSaveExp_Click);
@@ -4840,7 +4852,7 @@
             this.txtExpDescription.Multiline = true;
             this.txtExpDescription.Name = "txtExpDescription";
             this.txtExpDescription.Size = new System.Drawing.Size(366, 87);
-            this.txtExpDescription.TabIndex = 12;
+            this.txtExpDescription.TabIndex = 23;
             // 
             // label110
             // 
@@ -5744,6 +5756,60 @@
             // 
             this.printDialog1.UseEXDialog = true;
             // 
+            // label151
+            // 
+            this.label151.AutoSize = true;
+            this.label151.Location = new System.Drawing.Point(21, 159);
+            this.label151.Name = "label151";
+            this.label151.Size = new System.Drawing.Size(63, 15);
+            this.label151.TabIndex = 20;
+            this.label151.Text = "Start Year:";
+            // 
+            // txtExpStartYear
+            // 
+            this.txtExpStartYear.Location = new System.Drawing.Point(170, 156);
+            this.txtExpStartYear.MaxLength = 4;
+            this.txtExpStartYear.Name = "txtExpStartYear";
+            this.txtExpStartYear.Size = new System.Drawing.Size(85, 21);
+            this.txtExpStartYear.TabIndex = 19;
+            this.txtExpStartYear.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrimaryHolderShare_KeyPress);
+            // 
+            // txtExpEndYear
+            // 
+            this.txtExpEndYear.Location = new System.Drawing.Point(339, 156);
+            this.txtExpEndYear.MaxLength = 4;
+            this.txtExpEndYear.Name = "txtExpEndYear";
+            this.txtExpEndYear.Size = new System.Drawing.Size(85, 21);
+            this.txtExpEndYear.TabIndex = 20;
+            this.txtExpEndYear.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrimaryHolderShare_KeyPress);
+            this.txtExpEndYear.Validating += new System.ComponentModel.CancelEventHandler(this.txtExpEndYear_Validating);
+            // 
+            // label152
+            // 
+            this.label152.AutoSize = true;
+            this.label152.Location = new System.Drawing.Point(273, 159);
+            this.label152.Name = "label152";
+            this.label152.Size = new System.Drawing.Size(60, 15);
+            this.label152.TabIndex = 22;
+            this.label152.Text = "End Year:";
+            // 
+            // txtExpInflationRate
+            // 
+            this.txtExpInflationRate.Location = new System.Drawing.Point(170, 183);
+            this.txtExpInflationRate.MaxLength = 4;
+            this.txtExpInflationRate.Name = "txtExpInflationRate";
+            this.txtExpInflationRate.Size = new System.Drawing.Size(85, 21);
+            this.txtExpInflationRate.TabIndex = 21;
+            // 
+            // label153
+            // 
+            this.label153.AutoSize = true;
+            this.label153.Location = new System.Drawing.Point(21, 186);
+            this.label153.Name = "label153";
+            this.label153.Size = new System.Drawing.Size(82, 15);
+            this.label153.TabIndex = 24;
+            this.label153.Text = "Inflation Rate:";
+            // 
             // ClientInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -6286,5 +6352,11 @@
         private System.Windows.Forms.ComboBox cmbArea;
         private System.Windows.Forms.Label label150;
         private System.Windows.Forms.CheckBox chkEligibleForInsuranceCover;
+        private System.Windows.Forms.TextBox txtExpEndYear;
+        private System.Windows.Forms.Label label152;
+        private System.Windows.Forms.TextBox txtExpStartYear;
+        private System.Windows.Forms.Label label151;
+        private System.Windows.Forms.TextBox txtExpInflationRate;
+        private System.Windows.Forms.Label label153;
     }
 }

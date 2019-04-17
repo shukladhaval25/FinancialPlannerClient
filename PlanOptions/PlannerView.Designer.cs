@@ -61,6 +61,8 @@
             this.txtEndDate = new DevExpress.XtraEditors.TextEdit();
             this.tabNavigationPageManagedBy = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             this.pnlManager = new DevExpress.XtraEditors.PanelControl();
+            this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
+            this.cmbReviewFrequency = new DevExpress.XtraEditors.ComboBoxEdit();
             this.memoDescription = new DevExpress.XtraEditors.MemoEdit();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
@@ -70,8 +72,6 @@
             this.btnAdd = new DevExpress.XtraEditors.SimpleButton();
             this.btnClosePlanoptions = new DevExpress.XtraEditors.SimpleButton();
             this.btnSavePlanoption = new DevExpress.XtraEditors.SimpleButton();
-            this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
-            this.cmbReviewFrequency = new DevExpress.XtraEditors.ComboBoxEdit();
             ((System.ComponentModel.ISupportInitialize)(this.lstPlanner)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabPlanner)).BeginInit();
             this.tabPlanner.SuspendLayout();
@@ -87,9 +87,9 @@
             this.tabNavigationPageManagedBy.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlManager)).BeginInit();
             this.pnlManager.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbReviewFrequency.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.memoDescription.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbManagedBy.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbReviewFrequency.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // labelControl1
@@ -275,7 +275,7 @@
             // 
             // tabNavigationPageManagedBy
             // 
-            this.tabNavigationPageManagedBy.Caption = "Manager Information";
+            this.tabNavigationPageManagedBy.Caption = "Managed by Information";
             this.tabNavigationPageManagedBy.Controls.Add(this.pnlManager);
             this.tabNavigationPageManagedBy.Image = ((System.Drawing.Image)(resources.GetObject("tabNavigationPageManagedBy.Image")));
             this.tabNavigationPageManagedBy.ItemShowMode = DevExpress.XtraBars.Navigation.ItemShowMode.ImageAndText;
@@ -296,6 +296,30 @@
             this.pnlManager.Name = "pnlManager";
             this.pnlManager.Size = new System.Drawing.Size(546, 171);
             this.pnlManager.TabIndex = 12;
+            // 
+            // labelControl9
+            // 
+            this.labelControl9.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
+            this.labelControl9.Location = new System.Drawing.Point(190, 6);
+            this.labelControl9.Name = "labelControl9";
+            this.labelControl9.Size = new System.Drawing.Size(151, 13);
+            this.labelControl9.TabIndex = 12;
+            this.labelControl9.Text = "Review Frequency:";
+            // 
+            // cmbReviewFrequency
+            // 
+            this.cmbReviewFrequency.Location = new System.Drawing.Point(190, 25);
+            this.cmbReviewFrequency.Name = "cmbReviewFrequency";
+            this.cmbReviewFrequency.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cmbReviewFrequency.Properties.Items.AddRange(new object[] {
+            "Monthly",
+            "Quarterly",
+            "Half Yearly",
+            "Yearly"});
+            this.cmbReviewFrequency.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.cmbReviewFrequency.Size = new System.Drawing.Size(178, 20);
+            this.cmbReviewFrequency.TabIndex = 10;
             // 
             // memoDescription
             // 
@@ -436,30 +460,6 @@
             this.btnSavePlanoption.Text = "Save";
             this.btnSavePlanoption.Click += new System.EventHandler(this.btnSavePlanoption_Click);
             // 
-            // labelControl9
-            // 
-            this.labelControl9.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
-            this.labelControl9.Location = new System.Drawing.Point(190, 6);
-            this.labelControl9.Name = "labelControl9";
-            this.labelControl9.Size = new System.Drawing.Size(151, 13);
-            this.labelControl9.TabIndex = 12;
-            this.labelControl9.Text = "Review Frequency:";
-            // 
-            // cmbReviewFrequency
-            // 
-            this.cmbReviewFrequency.Location = new System.Drawing.Point(190, 25);
-            this.cmbReviewFrequency.Name = "cmbReviewFrequency";
-            this.cmbReviewFrequency.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cmbReviewFrequency.Properties.Items.AddRange(new object[] {
-            "Monthly",
-            "Quarterly",
-            "Half Yearly",
-            "Yearly"});
-            this.cmbReviewFrequency.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.cmbReviewFrequency.Size = new System.Drawing.Size(178, 20);
-            this.cmbReviewFrequency.TabIndex = 10;
-            // 
             // PlannerView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -495,9 +495,9 @@
             this.tabNavigationPageManagedBy.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pnlManager)).EndInit();
             this.pnlManager.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cmbReviewFrequency.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.memoDescription.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbManagedBy.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbReviewFrequency.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

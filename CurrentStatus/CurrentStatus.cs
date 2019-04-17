@@ -148,12 +148,12 @@ namespace FinancialPlannerClient.CurrentStatus
         #region "FD"
         private void fillupFDInfo()
         {
+            fillFDInvesterCombobox();
+            fillFDGoalsCombobox();
             FDInfo fdInfo = new FDInfo();
             _dtFD = fdInfo.GetFixedDepositInfo(_planeId);
             dtGridFD.DataSource = _dtFD;
-            fdInfo.SetGrid(dtGridFD);
-            fillFDInvesterCombobox();
-            fillFDGoalsCombobox();
+            fdInfo.SetGrid(dtGridFD);           
         }
 
         private void fillFDGoalsCombobox()
@@ -328,12 +328,12 @@ namespace FinancialPlannerClient.CurrentStatus
 
         private void fillupRDInfo()
         {
+            fillRDInvesterCombobox();
+            fillRDGoalsCombobox();
             RDInfo RDInfo = new RDInfo();
             _dtRD = RDInfo.GetRecurringDepositInfo(_planeId);
             dtGridRD.DataSource = _dtRD;
-            RDInfo.SetGrid(dtGridRD);
-            fillRDInvesterCombobox();
-            fillRDGoalsCombobox();
+            RDInfo.SetGrid(dtGridRD);            
         }
 
         private void fillRDGoalsCombobox()
@@ -505,12 +505,12 @@ namespace FinancialPlannerClient.CurrentStatus
 
         private void fillupPPFInfo()
         {
+            fillPPFInvesterCombobox();
+            fillPPFGoalsCombobox();
             PPFInfo PPFInfo = new PPFInfo();
             _dtPPF = PPFInfo.GetPPFInfo(_planeId);
             dtGridPPF.DataSource = _dtPPF;
-            PPFInfo.SetGrid(dtGridPPF);
-            fillPPFInvesterCombobox();
-            fillPPFGoalsCombobox();
+            PPFInfo.SetGrid(dtGridPPF);          
         }
 
         private void fillPPFGoalsCombobox()
@@ -672,12 +672,12 @@ namespace FinancialPlannerClient.CurrentStatus
 
         private void fillupSSInfo()
         {
+            fillSSInvesterCombobox();
+            fillSSGoalsCombobox();
             SukanyaSamrudhiInfo SSInfo = new SukanyaSamrudhiInfo();
             _dtSS = SSInfo.GetSukanyaSamrudhiInfo(_planeId);
             dtGridSS.DataSource = _dtSS;
-            SSInfo.SetGrid(dtGridSS);
-            fillSSInvesterCombobox();
-            fillSSGoalsCombobox();
+            SSInfo.SetGrid(dtGridSS);          
         }
 
         private void fillSSGoalsCombobox()
@@ -838,12 +838,12 @@ namespace FinancialPlannerClient.CurrentStatus
 
         private void fillupSCSSInfo()
         {
+            fillSCSSInvesterCombobox();
+            fillSCSSGoalsCombobox();
             SCSSInfo SCSSInfo = new SCSSInfo();
             _dtSCSS = SCSSInfo.GetSCSSInfo(_planeId);
             dtGridSCSS.DataSource = _dtSCSS;
-            SCSSInfo.SetGrid(dtGridSCSS);
-            fillSCSSInvesterCombobox();
-            fillSCSSGoalsCombobox();
+            SCSSInfo.SetGrid(dtGridSCSS);           
         }
 
         private void fillSCSSGoalsCombobox()
@@ -1004,12 +1004,12 @@ namespace FinancialPlannerClient.CurrentStatus
 
         private void fillupNSCInfo()
         {
+            fillNSCInvesterCombobox();
+            fillNSCGoalsCombobox();
             NSCInfo NSCInfo = new NSCInfo();
             _dtNSC = NSCInfo.GetNSCInfo(_planeId);
             dtGridNSC.DataSource = _dtNSC;
-            NSCInfo.SetGrid(dtGridNSC);
-            fillNSCInvesterCombobox();
-            fillNSCGoalsCombobox();
+            NSCInfo.SetGrid(dtGridNSC);         
         }
 
         private void fillNSCGoalsCombobox()
@@ -1198,11 +1198,11 @@ namespace FinancialPlannerClient.CurrentStatus
         #region "Mutual Fund"
         private void fillupMutualFundInfo()
         {
-            MutualFundInfo mutualFundInfo = new MutualFundInfo();
-            _dtMutualFund = mutualFundInfo.GetMutualFundInfo(_planeId);
-            dtGridMF.DataSource = _dtMutualFund;
             fillMutualFundInvesterCombobox();
             fillMutualfundGolsCombobox();
+            MutualFundInfo mutualFundInfo = new MutualFundInfo();
+            _dtMutualFund = mutualFundInfo.GetMutualFundInfo(_planeId);
+            dtGridMF.DataSource = _dtMutualFund;           
         }
 
         private void fillMutualFundInvesterCombobox()
@@ -1447,11 +1447,11 @@ namespace FinancialPlannerClient.CurrentStatus
         #region "ULIP"
         private void fillupULIPInfo()
         {
-            ULIPInfo ULIPInfo = new ULIPInfo();
-            _dtULIP = ULIPInfo.GetULIPInfo(_planeId);
-            dtGridULIP.DataSource = _dtULIP;
             fillULIPInvesterCombobox();
             fillULIPGolsCombobox();
+            ULIPInfo ULIPInfo = new ULIPInfo();
+            _dtULIP = ULIPInfo.GetULIPInfo(_planeId);
+            dtGridULIP.DataSource = _dtULIP;          
         }
 
         private void fillULIPInvesterCombobox()
@@ -1684,11 +1684,11 @@ namespace FinancialPlannerClient.CurrentStatus
         }
         private void fillupSharesInfo()
         {
-            SharesInfo sharesInfo = new SharesInfo();
-            _dtShares = sharesInfo.GetSharesInfo(_planeId);
-            dtGridShares.DataSource = _dtShares;
             fillSharesInvesterCombobox();
             fillSharesGolsCombobox();
+            SharesInfo sharesInfo = new SharesInfo();
+            _dtShares = sharesInfo.GetSharesInfo(_planeId);
+            dtGridShares.DataSource = _dtShares;            
         }
         private void fillSharesInvesterCombobox()
         {
@@ -1895,12 +1895,12 @@ namespace FinancialPlannerClient.CurrentStatus
         #region "Saving Account"
         private void fillupSavingAccount()
         {
+            fillSavingAccountInvesterCombobox();
+            fillSavngAccountGoalsCombobox();
             SavingAccountInfo savingAccountInfo = new SavingAccountInfo();
             _dtSA = savingAccountInfo.GetSavingAccountInfo(_planeId);
             dtGridSavingAccount.DataSource = _dtSA;
-            savingAccountInfo.SetGrid(dtGridSavingAccount);
-            fillSavingAccountInvesterCombobox();
-            fillSavngAccountGoalsCombobox();
+            savingAccountInfo.SetGrid(dtGridSavingAccount);           
         }
 
         private void fillSavngAccountGoalsCombobox()
@@ -2071,12 +2071,12 @@ namespace FinancialPlannerClient.CurrentStatus
 
         private void fillupEPFInfo()
         {
+            fillEPFInvesterCombobox();
+            fillEPFGoalsCombobox();
             EPFInfo epfInfo = new EPFInfo();
             _dtEPF = epfInfo.GetEPFInfo(_planeId);
             dataGridEPF.DataSource = _dtEPF;
-            epfInfo.SetGrid(dataGridEPF);
-            fillEPFInvesterCombobox();
-            fillEPFGoalsCombobox();
+            epfInfo.SetGrid(dataGridEPF);          
         }
 
         private void fillEPFGoalsCombobox()
@@ -2224,12 +2224,12 @@ namespace FinancialPlannerClient.CurrentStatus
 
         private void fillupBondInfo()
         {
+            fillBondsInvesterCombobox();
+            fillBondsGoalsCombobox();
             BondInfo bondInfo = new BondInfo();
             _dtBond = bondInfo.GetBondsInfo(_planeId);
             dtGridBonds.DataSource = _dtBond;
-            bondInfo.SetGrid(dtGridBonds);
-            fillBondsInvesterCombobox();
-            fillBondsGoalsCombobox();
+            bondInfo.SetGrid(dtGridBonds);            
         }
 
         private void fillBondsGoalsCombobox()
@@ -2249,11 +2249,11 @@ namespace FinancialPlannerClient.CurrentStatus
 
         private void fillupNPSInfo()
         {
-            NPSInfo npsInfo = new NPSInfo();
-            _dtNPS = npsInfo.GetNPSInfo(_planeId);
-            dtGridNPS.DataSource = _dtNPS;
             fillNPSInvesterCombobox();
             fillNPSGolsCombobox();
+            NPSInfo npsInfo = new NPSInfo();
+            _dtNPS = npsInfo.GetNPSInfo(_planeId);
+            dtGridNPS.DataSource = _dtNPS;          
         }
 
         private void fillNPSGolsCombobox()

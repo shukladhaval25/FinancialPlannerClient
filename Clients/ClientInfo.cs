@@ -560,6 +560,7 @@ namespace FinancialPlannerClient.Clients
 
         private void fillupNonFinancialAssetInfo()
         {
+            fillNonFinancialAssetsGoals();
             FamilyMemberInfo familyMemInfo =  new FamilyMemberInfo();
             familyMemInfo.FillFamilyMemberInCombo(_client.ID, cmbOtherHolder);
             cmbPrimaryHolder.Text = _client.Name;
@@ -574,8 +575,7 @@ namespace FinancialPlannerClient.Clients
             List<NonFinancialAsset> lstNonFinancialAsset =(List<NonFinancialAsset>) nonFinancialAssetInfo.GetAll(PlannerId);
             _dtNonFinancialAsset = ListtoDataTable.ToDataTable(lstNonFinancialAsset);
             dtGridNonFinancialAssets.DataSource = _dtNonFinancialAsset;
-            nonFinancialAssetInfo.FillGrid(dtGridNonFinancialAssets);
-            fillNonFinancialAssetsGoals();
+            nonFinancialAssetInfo.FillGrid(dtGridNonFinancialAssets);            
         }
 
         private void fillNonFinancialAssetsGoals()
@@ -1647,9 +1647,13 @@ namespace FinancialPlannerClient.Clients
             {
                 cmbExpCategory.Tag = expenses.Id.ToString();
                 cmbExpCategory.Text = expenses.ItemCategory;
+                cmbExpType.Text = expenses.OccuranceType.ToString();
                 txtExpItem.Text = expenses.Item;
                 txtExpAmount.Text = expenses.Amount.ToString("#,##0.00");
-                txtExpDescription.Text = "";
+                txtExpDescription.Text = expenses.Description;
+                txtExpStartYear.Text = expenses.ExpStartYear;
+                txtExpEndYear.Text = expenses.ExpEndYear;
+                txtExpInflationRate.Text = expenses.InflationRate.ToString();
                 chkEligibleForInsuranceCover.Checked = expenses.EligibleForInsuranceCoverage;
             }
         }
@@ -1667,6 +1671,9 @@ namespace FinancialPlannerClient.Clients
             txtExpItem.Text = "";
             txtExpAmount.Text = "0";
             txtExpDescription.Text = "";
+            txtExpInflationRate.Text = (Program.GetAssumptionMaster().PreRetirementInflactionRate != null) ?
+                Program.GetAssumptionMaster().PreRetirementInflactionRate.ToString() :
+                string.Empty;
             chkEligibleForInsuranceCover.Checked = false;
         }
 
@@ -1716,6 +1723,10 @@ namespace FinancialPlannerClient.Clients
             expenses.UpdatedByUserName = Program.CurrentUser.UserName;
             expenses.MachineName = System.Environment.MachineName;
             expenses.EligibleForInsuranceCoverage = chkEligibleForInsuranceCover.Checked;
+            expenses.ExpStartYear = txtExpStartYear.Text;
+            expenses.ExpEndYear = txtExpEndYear.Text;
+            expenses.InflationRate = (string.IsNullOrEmpty(txtExpInflationRate.Text) ? 0 : float.Parse(txtExpInflationRate.Text));
+            expenses.Description = txtExpDescription.Text;
             return expenses;
         }
 
@@ -2023,6 +2034,31 @@ namespace FinancialPlannerClient.Clients
             {
                 e.Cancel = !FinancialPlanner.Common.Validation.IsDigit(txtNoOfEmiPayableForCY.Text);
             }
+        }
+
+        private void txtExpEndYear_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtExpEndYear.Text))
+                return;
+
+            if (FinancialPlanner.Common.Validation.IsDecimal(txtExpEndYear.Text))
+            {
+                if (string.IsNullOrEmpty(txtExpStartYear.Text) && !string.IsNullOrEmpty(txtExpEndYear.Text))
+                {
+                    DevExpress.XtraEditors.XtraMessageBox.Show("You can not enter end year without entering valid start year.", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    e.Cancel = true;
+                    return;
+                }
+
+                int startYear = 0;
+                if (int.TryParse(txtExpStartYear.Text, out startYear) && int.Parse(txtExpEndYear.Text) <= startYear)
+                {
+                    DevExpress.XtraEditors.XtraMessageBox.Show("End year should not be less than start year.", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    e.Cancel = true;
+                }
+            }
+            else
+                e.Cancel = true;
         }
     }
 }

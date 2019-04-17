@@ -18,7 +18,7 @@ namespace FinancialPlannerClient.CurrentStatus
         CurrentStatusCalculation csCal = new CurrentStatusCalculation();
         CurrentStatusInstrument currentStatusInstrument = new CurrentStatusInstrument();
         private readonly string GET_INSTRUMENTMAPPED_TO_GOAL_API = "CurrentStatusInstrument/Get?plannerId={0}&goalId={1}";
-        private readonly string GET_ALL_INSTRUMENTS_API = "CurrentStatusInstrument/GetAll?plannerId={0}";
+        //private readonly string GET_ALL_INSTRUMENTS_API = "CurrentStatusInstrument/GetAll?plannerId={0}";
 
         private readonly string GET_CURRENT_STATUS_API= "CurrentStatusCalculator/Get?plannerId={0}&goalId={1}";
         private readonly string GET_ALL_CURRENT_STATUS_API= "CurrentStatusCalculator/GetALL?plannerId={0}";
