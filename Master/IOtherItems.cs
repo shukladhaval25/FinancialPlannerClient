@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using DevExpress.XtraGrid;
+using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
 
@@ -11,5 +12,6 @@ namespace FinancialPlannerClient.Master
         object GetById(int id);
         bool Save(object obj);
         bool Delete(object obj);
+        void LoadData(GridControl gridControl);
     }
 }

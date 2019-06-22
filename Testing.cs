@@ -1,5 +1,6 @@
 ﻿using FinancialPlanner.Common;
 using FinancialPlanner.Common.Model;
+using FinancialPlanner.Common.Model.ProcessAction;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,9 +19,13 @@ namespace FinancialPlannerClient
     public partial class Testing : Form
     {
         const string ADD_BankAccount_API = "Document/Add";
+        Controls.ProcessContoller ProcessContoller = new Controls.ProcessContoller();
+
         public Testing()
         {
             InitializeComponent();
+            ProcessContoller.Dock = DockStyle.Fill;
+            groupControl1.Controls.Add(ProcessContoller);
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -32,6 +37,17 @@ namespace FinancialPlannerClient
             document.Path = textBox1.Text;
             document.Data = getStringfromFile(document.Path);
             bool result = uploadfile(document);
+
+            PlannerProcess plannerProcess = new PlannerProcess()
+            {
+                Action = textBox2.Text,
+                ProcessImagePath = textBox1.Text,
+                IsDelay = false,
+                Description = "This is testing purpose",
+                EstimatedDaysToComplete = 5,
+            };
+            this.ProcessContoller.Add(plannerProcess);
+
         }
 
         private bool uploadfile(Document doc)

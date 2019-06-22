@@ -1,4 +1,6 @@
-﻿using FinancialPlanner.Common.DataConversion;
+﻿using DevExpress.XtraGrid;
+using DevExpress.XtraGrid.Views.Grid;
+using FinancialPlanner.Common.DataConversion;
 using FinancialPlanner.Common.Model;
 using FinancialPlannerClient.PlannerInfo;
 using System;
@@ -65,6 +67,27 @@ namespace FinancialPlannerClient.Master
             Festivals fest = (Festivals) obj;
             return _festivalsInfo.Add(fest);
         }
+        public void LoadData(GridControl grdViewOther)
+        {
+            IList<Festivals> festivals = _festivalsInfo.GetAll();
+            _dtFestivals = ListtoDataTable.ToDataTable(festivals.ToList());
+            loadDataOnGrid(grdViewOther, _dtFestivals);
+        }
 
+        private void loadDataOnGrid(GridControl dtGridView, DataTable _dtArea)
+        {
+            dtGridView.DataSource = _dtArea;
+            setDataGridView(dtGridView.FocusedView as GridView);
+        }
+
+        private void setDataGridView(GridView dtGridView)
+        {
+            dtGridView.Columns["CreatedOn"].Visible = false;
+            dtGridView.Columns["CreatedBy"].Visible = false;
+            dtGridView.Columns["UpdatedOn"].Visible = false;
+            dtGridView.Columns["UpdatedBy"].Visible = false;
+            dtGridView.Columns["UpdatedByUserName"].Visible = false;
+            dtGridView.Columns["MachineName"].Visible = false;
+        }
     }
 }

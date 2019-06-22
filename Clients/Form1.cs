@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace DXApplication1
 {
-    public partial class RiskProfileReturn : DevExpress.XtraEditors.XtraForm
+    public partial class NewTask : DevExpress.XtraEditors.XtraForm
     {
-        public RiskProfileReturn()
+        public NewTask()
         {
             InitializeComponent();
         }

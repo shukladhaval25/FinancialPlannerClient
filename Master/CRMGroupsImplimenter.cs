@@ -1,4 +1,6 @@
-﻿using FinancialPlanner.Common.DataConversion;
+﻿using DevExpress.XtraGrid;
+using DevExpress.XtraGrid.Views.Grid;
+using FinancialPlanner.Common.DataConversion;
 using FinancialPlanner.Common.Model;
 using System;
 using System.Collections.Generic;
@@ -64,6 +66,27 @@ namespace FinancialPlannerClient.Master
             CRMGroup fest = (CRMGroup) obj;
             return _CRMGroupInfo.Add(fest);
         }
+        public void LoadData(GridControl grdViewOther)
+        {
+            IList<CRMGroup> cRMGroups = _CRMGroupInfo.GetAll();
+            _dtCRMGroup = ListtoDataTable.ToDataTable(cRMGroups.ToList());
+            loadDataOnGrid(grdViewOther, _dtCRMGroup);
+        }
 
+        private void loadDataOnGrid(GridControl dtGridView, DataTable _dtArea)
+        {
+            dtGridView.DataSource = _dtArea;
+            setDataGridView(dtGridView.FocusedView as GridView);
+        }
+
+        private void setDataGridView(GridView gridView)
+        {
+            gridView.Columns["CreatedOn"].Visible = false;
+            gridView.Columns["CreatedBy"].Visible = false;
+            gridView.Columns["UpdatedOn"].Visible = false;
+            gridView.Columns["UpdatedBy"].Visible = false;
+            gridView.Columns["UpdatedByUserName"].Visible = false;
+            gridView.Columns["MachineName"].Visible = false;
+        }
     }
 }

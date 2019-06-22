@@ -98,6 +98,9 @@ namespace FinancialPlannerClient.Master
             assumptionMaster.DebtReturnRate = decimal.Parse(txtDebt.Text);
             assumptionMaster.OtherReturnRate = decimal.Parse(txtOthers.Text);
             assumptionMaster.NonFinancialRateOfReturn = decimal.Parse(txtNonFinancialRaise.Text);         
+            assumptionMaster.UpdatedBy = Program.CurrentUser.Id;
+            assumptionMaster.UpdatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+            assumptionMaster.MachineName = System.Environment.MachineName;
         }
 
         private void fillupAssumptionInfo()

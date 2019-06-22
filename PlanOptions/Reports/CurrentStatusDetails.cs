@@ -4,6 +4,7 @@ using System.Collections;
 using System.ComponentModel;
 using DevExpress.XtraReports.UI;
 using System.Data;
+using System.Linq;
 
 namespace FinancialPlannerClient.PlanOptions.Reports
 {
@@ -13,6 +14,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         private const string SHARES = "Shares";
         private const string EQUITY = "Equity";
         private const string DEBT = "Debt";
+        double totalAmount,totalEquityAmount, totalDebtAmount = 0;
         DataTable dtCurrentStatus;
         public CurrentStatusDetails(DataTable dataTable)
         {
@@ -39,12 +41,38 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                 row.SetField("Group", DEBT);
             }
 
-            this.lblParticular.DataBindings.Add("Text", this.DataSource, "CurrentStatus.Title");
-            this.lblAssetClass.DataBindings.Add("Text", this.DataSource, "CurrentStatus.Group");
-            this.lblAmount.DataBindings.Add("Text", this.DataSource, "CurrentStatus.Amount");
+            GroupField groupField = new GroupField();
+            groupField.FieldName = "Group";
+            groupField.SortOrder = XRColumnSortOrder.Descending;
+            this.GroupHeader1.GroupFields.Add(groupField);
 
-            //this.lblName.DataBindings.Add("Text", this.DataSource, "FamilyMember.Name");
-            //this.lblRelationship.DataBindings.Add("Text", this.DataSource, "FamilyMember.Relationship");
+            this.lblTotalGroupAmt.DataBindings.Add("Text", this.DataSource, "CurrentStatus.Amount");
+            this.lblTotalGroupPerValue.DataBindings.Add("Text", this.DataSource, "CurrentStatus.Amount");
+            this.lblPageTotal.DataBindings.Add("Text", this.DataSource, "CurrentStatus.Amount");
+
+            this.lblParticular.DataBindings.Add("Text", this.DataSource, "CurrentStatus.Title");
+            this.xrLblGroupAssets.DataBindings.Add("Text", this.DataSource, "CurrentStatus.Group");
+            this.lblAmount.DataBindings.Add("Text", this.DataSource, "CurrentStatus.Amount");
+            this.lblGroupTitle.Text = string.Format(lblGroupTitle.Text, xrLblGroupAssets.Text);
+
+           totalAmount = dtCurrentStatus.AsEnumerable().Sum(x => Convert.ToDouble(x["Amount"]));
+           totalEquityAmount =  dtCurrentStatus.AsEnumerable()
+                .Where(x => x.Field<string>("Group") == "Equity")
+                .Sum(x => Convert.ToDouble(x["Amount"]));
+
+            totalDebtAmount = dtCurrentStatus.AsEnumerable()
+                .Where(x => x.Field<string>("Group") == "Debt")
+                .Sum(x => Convert.ToDouble(x["Amount"]));
+        }
+
+        private void lblPercentageValue_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            //lblPercentageValue.Text = (System.Math.Round((double.Parse(lblAmount.Text) * 100) / totalAmount)).ToString() + " %"; 
+        }
+
+        private void lblTotalGroupPerValue_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            //lblTotalGroupPerValue.Text = (System.Math.Round((double.Parse(lblTotalGroupAmt.Text) * 100) / totalAmount)).ToString() + " %";
         }
     }
 }

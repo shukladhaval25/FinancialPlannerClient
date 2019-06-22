@@ -1,6 +1,6 @@
 ﻿namespace DXApplication1
 {
-    partial class RiskProfileReturn
+    partial class NewTask
     {
         /// <summary>
         /// Required designer variable.

@@ -1,7 +1,10 @@
-﻿using DevExpress.XtraEditors;
+﻿using Chilkat;
+using DevExpress.XtraEditors;
 using FinancialPlanner.Common;
 using FinancialPlanner.Common.DataConversion;
+using FinancialPlanner.Common.EmailManager;
 using FinancialPlanner.Common.Model;
+using FinancialPlannerClient.Clients.MailService;
 using FinancialPlannerClient.Insurance;
 using FinancialPlannerClient.PlannerInfo;
 using FinancialPlannerClient.PlanOptions;
@@ -15,12 +18,14 @@ using System.Linq;
 using System.Net;
 using System.Reflection;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace FinancialPlannerClient.Clients
 {
     public partial class Clientdashboard : DevExpress.XtraEditors.XtraForm
     {
+        const string GET_MAIL_SERVER_SETTING_API = "ApplicationConfiguration";
         private enum NavigateTo
         {
             Dashborad = 0,
@@ -30,14 +35,14 @@ namespace FinancialPlannerClient.Clients
         }
 
         bool isControlAdded = false;
+        DataTable dtEmails = new DataTable();
+        private delegate void bindEmailGridWithDataSource();
 
         #region "ClientInfo variables"
         private Client _client;
         private DataTable _dtBankAccount;
         private const string UPDATE_CLIENT_API = "Client/Update";
-        PersonalInformation personalInformation;
-
-
+        PersonalInformation personalInformation;       
         #endregion
 
         #region "Planner Variables"
@@ -55,8 +60,113 @@ namespace FinancialPlannerClient.Clients
             InitializeComponent();
             displayClientInfo();
             loadPlanData();
+            loadDashBoradData();
             DashboardNavFrame.SelectedPageIndex = (int)NavigateTo.Dashborad;
         }
+
+        private void loadDashBoradData()
+        {
+
+            Thread loadEmailThread = new Thread(loadEmails);
+            loadEmailThread.Start();           
+        }
+
+        private void loadEmails()
+        {
+            getMailServerSetting();
+            EmailService mailManager = new EmailService(MailServer.HostName,MailServer.HostPort,MailServer.UserName,
+                MailServer.Password,MailServer.IsSSL, MailServer.FromEmail, MailServer.POP3_IMPS_HostName,
+                MailServer.POP3_IMPS_HostPort);
+            IList<Email> emails = mailManager.GetAllMails();
+            dtEmails = ListtoDataTable.ToDataTable(emails.ToList());
+            if (gridControl1.InvokeRequired)
+            {
+                gridControl1.Invoke(new bindEmailGridWithDataSource(bindEmailGrid));            
+            }
+        }
+
+        private void getMailServerSetting()
+        {
+            try
+            {
+                FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
+                string apiurl = Program.WebServiceUrl + "/" + GET_MAIL_SERVER_SETTING_API;
+
+                RestAPIExecutor restApiExecutor = new RestAPIExecutor();
+
+                var restResult = restApiExecutor.Execute<IList<ApplicationConfiguration>>(apiurl, null, "GET");
+                var applicationConfigurations = jsonSerialization.DeserializeFromString<List<ApplicationConfiguration>>(restResult.ToString());
+                DataTable _dtApplicationConfig = ListtoDataTable.ToDataTable(applicationConfigurations);
+                DataRow[] dataRows = _dtApplicationConfig.Select("CATEGORY = 'Mail Server Setting'");
+                foreach(DataRow dr in dataRows)
+                {
+                    if (dr.Field<string>("SettingName") == "FromEmail")
+                    {
+                        MailServer.FromEmail = dr.Field<string>("SettingValue");
+                    }
+                    else if (dr.Field<string>("SettingName") == "SMTPPort")
+                    {
+                        MailServer.HostPort = int.Parse(dr.Field<string>("SettingValue"));
+                    }
+                    else if (dr.Field<string>("SettingName") == "SMTPHost")
+                    {
+                        MailServer.HostName = dr.Field<string>("SettingValue");
+                    }
+                    else if (dr.Field<string>("SettingName") == "UserName")
+                    {
+                        MailServer.UserName = dr.Field<string>("SettingValue");
+                    }
+                    else if (dr.Field<string>("SettingName") == "Password")
+                    {
+                        MailServer.Password = dr.Field<string>("SettingValue");
+                    }
+                    else if (dr.Field<string>("SettingName") == "IsSSL")
+                    {
+                        MailServer.IsSSL = Boolean.Parse(dr.Field<string>("SettingValue"));
+                    }
+                    else if (dr.Field<string>("SettingName") == "POP3_IMPS_Host")
+                    {
+                        MailServer.POP3_IMPS_HostName = (dr.Field<string>("SettingValue"));
+                    }
+                    else if (dr.Field<string>("SettingName") == "POP3_IMPS_Port")
+                    {
+                        MailServer.POP3_IMPS_HostPort = (dr.Field<string>("SettingValue"));
+                    }
+                }
+            }
+            catch (System.Net.WebException webException)
+            {
+                if (webException.Message.Equals("The remote server returned an error: (401) Unauthorized."))
+                {
+                    MessageBox.Show("You session has been expired. Please Login again.", "Session Expired", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
+                LogDebug(currentMethodName.Name, ex);
+            }
+        }
+
+        private void bindEmailGrid()
+        {
+            gridControl1.DataSource = dtEmails;
+            for(int i = 0; i <= gridView1.Columns.Count -1; i++)
+            {
+                if (gridView1.Columns[i].FieldName.Equals("Subject",StringComparison.OrdinalIgnoreCase) ||
+                    gridView1.Columns[i].FieldName.Equals("From", StringComparison.OrdinalIgnoreCase) ||
+                    gridView1.Columns[i].FieldName.Equals("LocalDate", StringComparison.OrdinalIgnoreCase) 
+                    )
+                {
+                    gridView1.Columns[i].Visible = true;
+                }
+                else
+                    gridView1.Columns[i].Visible = false;
+            }
+        }
+
         private void getPersonalDetails(int clientId)
         {
             ClientPersonalInfo clientPersonalInfo = new ClientPersonalInfo();
@@ -253,7 +363,7 @@ namespace FinancialPlannerClient.Clients
                 {
                     if (System.IO.File.Exists(filePath))
                     {
-                        FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read);
+                        FileStream fs = new FileStream(filePath, FileMode.Open, System.IO.FileAccess.Read);
                         byte[] filebytes = new byte[fs.Length];
                         fs.Read(filebytes, 0, Convert.ToInt32(fs.Length));
                         return Convert.ToBase64String(filebytes,

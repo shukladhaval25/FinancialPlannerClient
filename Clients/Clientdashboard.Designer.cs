@@ -61,6 +61,7 @@
             this.FamilyInfo = new DevExpress.XtraNavBar.NavBarControl();
             this.Personalnfo = new DevExpress.XtraNavBar.NavBarGroup();
             this.ContactInfo = new DevExpress.XtraNavBar.NavBarItem();
+            this.BankDetails = new DevExpress.XtraNavBar.NavBarItem();
             this.EmployeeInfo = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItemFamily = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarGroupControlContainer1 = new DevExpress.XtraNavBar.NavBarGroupControlContainer();
@@ -169,7 +170,6 @@
             this.navigationPageOther = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.BankDetails = new DevExpress.XtraNavBar.NavBarItem();
             ((System.ComponentModel.ISupportInitialize)(this.panelMenu)).BeginInit();
             this.panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlNavCtrl)).BeginInit();
@@ -312,6 +312,13 @@
             this.ContactInfo.Name = "ContactInfo";
             this.ContactInfo.SmallImage = ((System.Drawing.Image)(resources.GetObject("ContactInfo.SmallImage")));
             this.ContactInfo.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.ContactInfo_LinkClicked);
+            // 
+            // BankDetails
+            // 
+            this.BankDetails.Caption = "Bank Details";
+            this.BankDetails.Name = "BankDetails";
+            this.BankDetails.SmallImage = global::FinancialPlannerClient.Properties.Resources.icons8_museum_16;
+            this.BankDetails.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.BankDetails_LinkClicked);
             // 
             // EmployeeInfo
             // 
@@ -631,7 +638,6 @@
             // 
             // navigationPageDashboard
             // 
-            this.navigationPageDashboard.Caption = "navigationPageDashboard";
             this.navigationPageDashboard.Controls.Add(this.gridControl3);
             this.navigationPageDashboard.Controls.Add(this.gridControl2);
             this.navigationPageDashboard.Controls.Add(this.gridControl1);
@@ -642,10 +648,10 @@
             // 
             // gridControl3
             // 
-            this.gridControl3.Location = new System.Drawing.Point(15, 355);
+            this.gridControl3.Location = new System.Drawing.Point(417, 355);
             this.gridControl3.MainView = this.gridView3;
             this.gridControl3.Name = "gridControl3";
-            this.gridControl3.Size = new System.Drawing.Size(808, 200);
+            this.gridControl3.Size = new System.Drawing.Size(406, 200);
             this.gridControl3.TabIndex = 4;
             this.gridControl3.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView3});
@@ -658,14 +664,15 @@
             // 
             // gridControl2
             // 
-            this.gridControl2.Location = new System.Drawing.Point(427, 148);
+            this.gridControl2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gridControl2.Location = new System.Drawing.Point(15, 355);
             this.gridControl2.MainView = this.gridView2;
             this.gridControl2.Name = "gridControl2";
             this.gridControl2.Size = new System.Drawing.Size(396, 200);
             this.gridControl2.TabIndex = 3;
             this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
-            this.gridControl2.Visible = false;
             // 
             // gridView2
             // 
@@ -674,14 +681,15 @@
             // 
             // gridControl1
             // 
+            this.gridControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.gridControl1.Location = new System.Drawing.Point(15, 149);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(406, 200);
+            this.gridControl1.Size = new System.Drawing.Size(808, 200);
             this.gridControl1.TabIndex = 2;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
-            this.gridControl1.Visible = false;
             // 
             // gridView1
             // 
@@ -694,13 +702,13 @@
             this.lblClientDashboard.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.lblClientDashboard.Appearance.Options.UseFont = true;
             this.lblClientDashboard.Appearance.Options.UseForeColor = true;
-            this.lblClientDashboard.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.lblClientDashboard.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
             this.lblClientDashboard.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblClientDashboard.Location = new System.Drawing.Point(0, 0);
             this.lblClientDashboard.Name = "lblClientDashboard";
-            this.lblClientDashboard.Size = new System.Drawing.Size(837, 22);
+            this.lblClientDashboard.Size = new System.Drawing.Size(837, 16);
             this.lblClientDashboard.TabIndex = 1;
-            this.lblClientDashboard.Text = "Client Dashboard";
+            this.lblClientDashboard.Text = "   Client Dashboard";
             // 
             // groupPlanStatus
             // 
@@ -731,7 +739,6 @@
             this.groupPlanStatus.Name = "groupPlanStatus";
             this.groupPlanStatus.Size = new System.Drawing.Size(808, 115);
             this.groupPlanStatus.TabIndex = 0;
-            this.groupPlanStatus.Visible = false;
             // 
             // label17
             // 
@@ -1436,13 +1443,6 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // BankDetails
-            // 
-            this.BankDetails.Caption = "Bank Details";
-            this.BankDetails.Name = "BankDetails";
-            this.BankDetails.SmallImage = global::FinancialPlannerClient.Properties.Resources.icons8_museum_16;
-            this.BankDetails.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.BankDetails_LinkClicked);
             // 
             // Clientdashboard
             // 

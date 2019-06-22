@@ -87,8 +87,8 @@ namespace FinancialPlannerClient.PlanOptions
                 SurplusPeriod surplusPeriod = new SurplusPeriod(this.client, this.planner.ID, this.riskprofileId, this.optionId);
                 surplusPeriod.CreateDocument();
 
-                NetWorthAnalysis netWorthAnalysis = new NetWorthAnalysis(this.client);
-                netWorthAnalysis.CreateDocument();
+                //NetWorthAnalysis netWorthAnalysis = new NetWorthAnalysis(this.client);
+                //netWorthAnalysis.CreateDocument();
 
                 NetWorthStatement netWorthStatement = new NetWorthStatement(this.client, this.planner);
                 netWorthStatement.CreateDocument();
@@ -105,8 +105,8 @@ namespace FinancialPlannerClient.PlanOptions
                 RiskProfiling riskProfiling = new RiskProfiling(this.client);
                 riskProfiling.CreateDocument();
 
-                RiskTolanceScore riskTolanceScore = new RiskTolanceScore(personalInformation);
-                riskTolanceScore.CreateDocument();
+                //RiskTolanceScore riskTolanceScore = new RiskTolanceScore(personalInformation);
+                //riskTolanceScore.CreateDocument();
 
                 //Skip some pages here. 
 
@@ -163,13 +163,13 @@ namespace FinancialPlannerClient.PlanOptions
                 this.Pages.Add(incomeExpenseAnalysis.Pages.First);
                 this.Pages.Add(spendingSavingRatioReport.Pages.First);
                 this.Pages.Add(surplusPeriod.Pages.First);
-                this.Pages.Add(netWorthAnalysis.Pages.First);
+                //this.Pages.Add(netWorthAnalysis.Pages.First);
                 this.Pages.Add(netWorthStatement.Pages.First);
                 this.Pages.Add(toTotalAssetRatio.Pages.First);
                 this.Pages.Add(netWorthYearOnYear.Pages.First);
                 this.Pages.Add(currentFinancialStatus.Pages.First);
                 this.Pages.Add(riskProfiling.Pages.First);
-                this.Pages.Add(riskTolanceScore.Pages.First);
+                //this.Pages.Add(riskTolanceScore.Pages.First);
                 //Some page skip here.
                 this.Pages.Add(riskProfilingAssetAllocation.Pages.First);
                 this.Pages.Add(currentFinancialAssetAllocation.Pages.First);

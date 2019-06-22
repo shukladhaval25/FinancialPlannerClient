@@ -1,4 +1,6 @@
-﻿using FinancialPlanner.Common.DataConversion;
+﻿using DevExpress.XtraGrid;
+using DevExpress.XtraGrid.Views.Grid;
+using FinancialPlanner.Common.DataConversion;
 using FinancialPlanner.Common.Model;
 using System;
 using System.Collections.Generic;
@@ -42,13 +44,28 @@ namespace FinancialPlannerClient.Master
             loadDataOnGrid(dtGridView, _dtArea);
         }
 
-        private void loadDataOnGrid(DataGridView dtGridView, DataTable _dtArea)
+        private void loadDataOnGrid(DataGridView dtGridView, DataTable dtArea)
         {
             dtGridView.DataSource = _dtArea;
             setDataGridView(dtGridView);
         }
 
+        private void loadDataOnGrid(GridControl dtGridView, DataTable _dtArea)
+        {
+            dtGridView.DataSource = _dtArea;
+            setDataGridView(dtGridView);
+        }
 
+        private void setDataGridView(GridControl gridControl)
+        {
+            GridView view = gridControl.MainView as GridView;
+            view.Columns["CreatedOn"].Visible = false;
+            view.Columns["CreatedBy"].Visible = false;
+            view.Columns["UpdatedOn"].Visible = false;
+            view.Columns["UpdatedBy"].Visible = false;
+            view.Columns["UpdatedByUserName"].Visible = false;
+            view.Columns["MachineName"].Visible = false;
+        }
         private void setDataGridView(DataGridView dtGridView)
         {
             dtGridView.Columns["CreatedOn"].Visible = false;
@@ -63,6 +80,13 @@ namespace FinancialPlannerClient.Master
         {
             Area fest = (Area) obj;
             return _AreaInfo.Add(fest);
+        }
+
+        public void LoadData(GridControl grdViewOther)
+        {
+            IList<Area> Area = _AreaInfo.GetAll();
+            _dtArea = ListtoDataTable.ToDataTable(Area.ToList());
+            loadDataOnGrid(grdViewOther, _dtArea);
         }
     }
 }

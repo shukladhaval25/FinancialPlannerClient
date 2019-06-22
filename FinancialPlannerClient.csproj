@@ -15,6 +15,21 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -36,10 +51,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ChilkatDotNet4">
+      <HintPath>..\FinancialPlanner.Common\bin\Debug\ChilkatDotNet4.dll</HintPath>
+    </Reference>
     <Reference Include="DevExpress.BonusSkins.v16.2, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Charts.v16.2.Core, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Dashboard.v16.2.Core, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Dashboard.v16.2.Win, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Data.v16.2, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.DataAccess.v16.2, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.DataAccess.v16.2.UI, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -75,6 +91,9 @@
     <Reference Include="DevExpress.XtraReports.v16.2.Extensions, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraRichEdit.v16.2, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraRichEdit.v16.2.Extensions, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraScheduler.v16.2, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraScheduler.v16.2.Core, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraScheduler.v16.2.Extensions, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraTreeList.v16.2, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraTreeMap.v16.2, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraVerticalGrid.v16.2, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -169,6 +188,7 @@
     <Compile Include="Clients\Contact.designer.cs">
       <DependentUpon>Contact.cs</DependentUpon>
     </Compile>
+    <Compile Include="Clients\MailService\MailManager.cs" />
     <Compile Include="Clients\EmploymentDetails.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -192,6 +212,18 @@
     </Compile>
     <Compile Include="Clients\Clientdashboard.Designer.cs">
       <DependentUpon>Clientdashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ProcessContoller.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ProcessContoller.Designer.cs">
+      <DependentUpon>ProcessContoller.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SingleProcess.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\SingleProcess.Designer.cs">
+      <DependentUpon>SingleProcess.cs</DependentUpon>
     </Compile>
     <Compile Include="CurrentStatus\BondInfo.cs" />
     <Compile Include="CurrentStatus\ClientCurrentStatusList.cs">
@@ -233,6 +265,12 @@
     <Compile Include="Master\AreaInfo.cs" />
     <Compile Include="Master\AssumptionMasterInfo.cs" />
     <Compile Include="Master\ClientRatingImplimenter.cs" />
+    <Compile Include="Master\Other.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Master\Other.Designer.cs">
+      <DependentUpon>Other.cs</DependentUpon>
+    </Compile>
     <Compile Include="Master\CRMGroupInfo.cs" />
     <Compile Include="Master\CRMGroupsImplimenter.cs" />
     <Compile Include="Master\FestivalsImplimenter.cs" />
@@ -247,6 +285,12 @@
     </Compile>
     <Compile Include="Master\ClientRatingView.Designer.cs">
       <DependentUpon>ClientRatingView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Master\DefaultPlanningActions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Master\DefaultPlanningActions.Designer.cs">
+      <DependentUpon>DefaultPlanningActions.cs</DependentUpon>
     </Compile>
     <Compile Include="Master\IOtherItems.cs" />
     <Compile Include="Master\Others.cs">
@@ -399,6 +443,12 @@
     <Compile Include="PlanOptions\GoalsCalculationInfo.cs" />
     <Compile Include="PlanOptions\GoalStatusInfo.cs" />
     <Compile Include="PlanOptions\GoalsValueCalculationInfo.cs" />
+    <Compile Include="PlanOptions\Reports\ContingencyFund.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\ContingencyFund.Designer.cs">
+      <DependentUpon>ContingencyFund.cs</DependentUpon>
+    </Compile>
     <Compile Include="PlanOptions\Reports\CurrentFinancialAssetAllocation.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -620,6 +670,48 @@
       <DependentUpon>frmRiskProfileReturn.cs</DependentUpon>
     </Compile>
     <Compile Include="RiskProfile\InvestmentByfercationInfo.cs" />
+    <Compile Include="TaskManagementSystem\CustomAppointmentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TaskManagementSystem\CustomAppointmentForm.Designer.cs">
+      <DependentUpon>CustomAppointmentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TaskManagementSystem\MyReminders.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TaskManagementSystem\MyReminders.Designer.cs">
+      <DependentUpon>MyReminders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TaskManagementSystem\NewProject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TaskManagementSystem\NewProject.designer.cs">
+      <DependentUpon>NewProject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TaskManagementSystem\ViewTaskCard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TaskManagementSystem\ViewTaskCard.designer.cs">
+      <DependentUpon>ViewTaskCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TaskManagementSystem\NewTaskCard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TaskManagementSystem\NewTaskCard.designer.cs">
+      <DependentUpon>NewTaskCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TaskManagementSystem\TaskDeshborad.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TaskManagementSystem\TaskDeshborad.Designer.cs">
+      <DependentUpon>TaskDeshborad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TaskManagementSystem\TaskMainPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TaskManagementSystem\TaskMainPage.Designer.cs">
+      <DependentUpon>TaskMainPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Testing.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -668,6 +760,12 @@
     <EmbeddedResource Include="Clients\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ProcessContoller.resx">
+      <DependentUpon>ProcessContoller.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\SingleProcess.resx">
+      <DependentUpon>SingleProcess.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CurrentStatus\ClientCurrentStatusList.resx">
       <DependentUpon>ClientCurrentStatusList.cs</DependentUpon>
     </EmbeddedResource>
@@ -695,8 +793,14 @@
     <EmbeddedResource Include="Master\AssumptionMaster.resx">
       <DependentUpon>AssumptionMaster.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Master\Other.resx">
+      <DependentUpon>Other.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Master\ClientRatingView.resx">
       <DependentUpon>ClientRatingView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Master\DefaultPlanningActions.resx">
+      <DependentUpon>DefaultPlanningActions.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Master\Others.resx">
       <DependentUpon>Others.cs</DependentUpon>
@@ -748,6 +852,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\EstimatedPlan.resx">
       <DependentUpon>EstimatedPlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\Reports\ContingencyFund.resx">
+      <DependentUpon>ContingencyFund.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\Reports\CurrentFinancialAssetAllocation.resx">
       <DependentUpon>CurrentFinancialAssetAllocation.cs</DependentUpon>
@@ -867,6 +974,40 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RiskProfile\frmRiskProfileReturn.resx">
       <DependentUpon>frmRiskProfileReturn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TaskManagementSystem\CustomAppointmentForm.de.resx">
+      <DependentUpon>CustomAppointmentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TaskManagementSystem\CustomAppointmentForm.es.resx">
+      <DependentUpon>CustomAppointmentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TaskManagementSystem\CustomAppointmentForm.ja.resx">
+      <DependentUpon>CustomAppointmentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TaskManagementSystem\CustomAppointmentForm.resx">
+      <DependentUpon>CustomAppointmentForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TaskManagementSystem\CustomAppointmentForm.ru.resx">
+      <DependentUpon>CustomAppointmentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TaskManagementSystem\MyReminders.resx">
+      <DependentUpon>MyReminders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TaskManagementSystem\NewProject.resx">
+      <DependentUpon>NewProject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TaskManagementSystem\ViewTaskCard.resx">
+      <DependentUpon>ViewTaskCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TaskManagementSystem\NewTaskCard.resx">
+      <DependentUpon>NewTaskCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TaskManagementSystem\TaskDeshborad.resx">
+      <DependentUpon>TaskDeshborad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TaskManagementSystem\TaskMainPage.resx">
+      <DependentUpon>TaskMainPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Testing.resx">
       <DependentUpon>Testing.cs</DependentUpon>
@@ -1092,6 +1233,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\newcontact_32x321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
