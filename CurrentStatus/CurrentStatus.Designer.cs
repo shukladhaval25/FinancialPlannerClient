@@ -2196,11 +2196,10 @@
             // 
             // txtMFCurrentVal
             // 
-            this.txtMFCurrentVal.Enabled = false;
             this.txtMFCurrentVal.Location = new System.Drawing.Point(591, 53);
             this.txtMFCurrentVal.Name = "txtMFCurrentVal";
             this.txtMFCurrentVal.Size = new System.Drawing.Size(267, 22);
-            this.txtMFCurrentVal.TabIndex = 4;
+            this.txtMFCurrentVal.TabIndex = 6;
             this.txtMFCurrentVal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtUnits
@@ -2208,7 +2207,7 @@
             this.txtUnits.Location = new System.Drawing.Point(349, 81);
             this.txtUnits.Name = "txtUnits";
             this.txtUnits.Size = new System.Drawing.Size(116, 22);
-            this.txtUnits.TabIndex = 6;
+            this.txtUnits.TabIndex = 5;
             this.txtUnits.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtUnits.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNav_KeyPress);
             this.txtUnits.Leave += new System.EventHandler(this.txtNav_Leave);
@@ -2218,7 +2217,7 @@
             this.txtNav.Location = new System.Drawing.Point(145, 81);
             this.txtNav.Name = "txtNav";
             this.txtNav.Size = new System.Drawing.Size(102, 22);
-            this.txtNav.TabIndex = 5;
+            this.txtNav.TabIndex = 4;
             this.txtNav.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtNav.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNav_KeyPress);
             this.txtNav.Leave += new System.EventHandler(this.txtNav_Leave);
@@ -2563,11 +2562,10 @@
             // 
             // txtNPSCurrentVal
             // 
-            this.txtNPSCurrentVal.Enabled = false;
             this.txtNPSCurrentVal.Location = new System.Drawing.Point(581, 59);
             this.txtNPSCurrentVal.Name = "txtNPSCurrentVal";
             this.txtNPSCurrentVal.Size = new System.Drawing.Size(267, 22);
-            this.txtNPSCurrentVal.TabIndex = 4;
+            this.txtNPSCurrentVal.TabIndex = 6;
             this.txtNPSCurrentVal.TabStop = false;
             this.txtNPSCurrentVal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -2576,7 +2574,7 @@
             this.txtNPSUnits.Location = new System.Drawing.Point(337, 87);
             this.txtNPSUnits.Name = "txtNPSUnits";
             this.txtNPSUnits.Size = new System.Drawing.Size(120, 22);
-            this.txtNPSUnits.TabIndex = 6;
+            this.txtNPSUnits.TabIndex = 5;
             this.txtNPSUnits.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtNPSUnits.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNav_KeyPress);
             this.txtNPSUnits.Leave += new System.EventHandler(this.txtNPSUnits_Leave);
@@ -2586,7 +2584,7 @@
             this.txtNPSNAV.Location = new System.Drawing.Point(137, 87);
             this.txtNPSNAV.Name = "txtNPSNAV";
             this.txtNPSNAV.Size = new System.Drawing.Size(102, 22);
-            this.txtNPSNAV.TabIndex = 5;
+            this.txtNPSNAV.TabIndex = 4;
             this.txtNPSNAV.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtNPSNAV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNav_KeyPress);
             this.txtNPSNAV.Leave += new System.EventHandler(this.txtNPSNAV_Leave);
@@ -2612,7 +2610,6 @@
             // 
             // cmbNPSScheme
             // 
-            this.cmbNPSScheme.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
             this.cmbNPSScheme.FormattingEnabled = true;
             this.cmbNPSScheme.Location = new System.Drawing.Point(581, 29);
             this.cmbNPSScheme.Name = "cmbNPSScheme";

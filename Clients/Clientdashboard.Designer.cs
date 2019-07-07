@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Clientdashboard));
             DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
@@ -40,6 +39,9 @@
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement1 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
+            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement2 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
+            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement3 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
             DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
@@ -55,6 +57,9 @@
             DevExpress.Utils.SuperToolTip superToolTip8 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem9 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem8 = new DevExpress.Utils.ToolTipItem();
+            this.tileViewColumnSubject = new DevExpress.XtraGrid.Columns.TileViewColumn();
+            this.tileViewColumnFrom = new DevExpress.XtraGrid.Columns.TileViewColumn();
+            this.tileViewColumnDate = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.panelMenu = new DevExpress.XtraEditors.PanelControl();
             this.lblClientID = new DevExpress.XtraEditors.LabelControl();
             this.pnlNavCtrl = new DevExpress.XtraEditors.PanelControl();
@@ -91,12 +96,20 @@
             this.clientImage = new DevExpress.XtraEditors.PictureEdit();
             this.DashboardNavFrame = new DevExpress.XtraBars.Navigation.NavigationFrame();
             this.navigationPageDashboard = new DevExpress.XtraBars.Navigation.NavigationPage();
-            this.gridControl3 = new DevExpress.XtraGrid.GridControl();
-            this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridControl2 = new DevExpress.XtraGrid.GridControl();
-            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.pnlEmailView = new DevExpress.XtraEditors.PanelControl();
+            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.webBrowserEmailBody = new System.Windows.Forms.WebBrowser();
+            this.lblSubjectValue = new DevExpress.XtraEditors.LabelControl();
+            this.lblSubjectlabel = new DevExpress.XtraEditors.LabelControl();
+            this.lblEmailDate = new DevExpress.XtraEditors.LabelControl();
+            this.lblFromValue = new DevExpress.XtraEditors.LabelControl();
+            this.lblFromlabel = new DevExpress.XtraEditors.LabelControl();
+            this.gridControlMailList = new DevExpress.XtraGrid.GridControl();
+            this.tileViewMailList = new DevExpress.XtraGrid.Views.Tile.TileView();
+            this.repositoryItemPictureEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit();
+            this.treeList1 = new DevExpress.XtraTreeList.TreeList();
+            this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.treeListColumn2 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.lblClientDashboard = new DevExpress.XtraEditors.LabelControl();
             this.groupPlanStatus = new DevExpress.XtraEditors.GroupControl();
             this.label17 = new System.Windows.Forms.Label();
@@ -114,12 +127,12 @@
             this.lblStatus1 = new System.Windows.Forms.Label();
             this.lblStep1 = new System.Windows.Forms.Label();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.navigationPageContactInfo = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.navigationPageEmployee = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.lblEmployeeTitle = new DevExpress.XtraEditors.LabelControl();
@@ -168,8 +181,9 @@
             this.txtImagePath = new DevExpress.XtraEditors.TextEdit();
             this.labelClientTitle = new DevExpress.XtraEditors.LabelControl();
             this.navigationPageOther = new DevExpress.XtraBars.Navigation.NavigationPage();
-            this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
+            this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.gridBand1 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             ((System.ComponentModel.ISupportInitialize)(this.panelMenu)).BeginInit();
             this.panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlNavCtrl)).BeginInit();
@@ -185,21 +199,23 @@
             ((System.ComponentModel.ISupportInitialize)(this.DashboardNavFrame)).BeginInit();
             this.DashboardNavFrame.SuspendLayout();
             this.navigationPageDashboard.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pnlEmailView)).BeginInit();
+            this.pnlEmailView.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
+            this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlMailList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tileViewMailList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.treeList1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupPlanStatus)).BeginInit();
             this.groupPlanStatus.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.navigationPageEmployee.SuspendLayout();
             this.navigationPageClient.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grpClientInfo)).BeginInit();
@@ -229,6 +245,33 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtImagePath.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // tileViewColumnSubject
+            // 
+            this.tileViewColumnSubject.AppearanceCell.ForeColor = System.Drawing.Color.Blue;
+            this.tileViewColumnSubject.AppearanceCell.Options.UseForeColor = true;
+            this.tileViewColumnSubject.Caption = "Subject";
+            this.tileViewColumnSubject.FieldName = "Subject";
+            this.tileViewColumnSubject.Name = "tileViewColumnSubject";
+            this.tileViewColumnSubject.OptionsColumn.ReadOnly = true;
+            this.tileViewColumnSubject.Visible = true;
+            this.tileViewColumnSubject.VisibleIndex = 0;
+            // 
+            // tileViewColumnFrom
+            // 
+            this.tileViewColumnFrom.Caption = "From";
+            this.tileViewColumnFrom.FieldName = "From";
+            this.tileViewColumnFrom.Name = "tileViewColumnFrom";
+            this.tileViewColumnFrom.Visible = true;
+            this.tileViewColumnFrom.VisibleIndex = 1;
+            // 
+            // tileViewColumnDate
+            // 
+            this.tileViewColumnDate.Caption = "Date";
+            this.tileViewColumnDate.FieldName = "LocalDateStr";
+            this.tileViewColumnDate.Name = "tileViewColumnDate";
+            this.tileViewColumnDate.Visible = true;
+            this.tileViewColumnDate.VisibleIndex = 2;
             // 
             // panelMenu
             // 
@@ -441,6 +484,7 @@
             this.navBarItemRiskProfile.Caption = "Risk Profile";
             this.navBarItemRiskProfile.Name = "navBarItemRiskProfile";
             this.navBarItemRiskProfile.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarItemRiskProfile.SmallImage")));
+            this.navBarItemRiskProfile.Visible = false;
             this.navBarItemRiskProfile.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItemRiskProfile_LinkClicked);
             // 
             // navBarItemEstimatedPlan
@@ -631,70 +675,223 @@
             this.navigationPageClient,
             this.navigationPageOther});
             this.DashboardNavFrame.SelectedPage = this.navigationPageContactInfo;
-            this.DashboardNavFrame.Size = new System.Drawing.Size(837, 599);
+            this.DashboardNavFrame.Size = new System.Drawing.Size(1004, 599);
             this.DashboardNavFrame.TabIndex = 2;
             this.DashboardNavFrame.Text = "DashboardnavigationFrame";
             this.DashboardNavFrame.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.navigationPageClient_ControlRemoved);
             // 
             // navigationPageDashboard
             // 
-            this.navigationPageDashboard.Controls.Add(this.gridControl3);
-            this.navigationPageDashboard.Controls.Add(this.gridControl2);
-            this.navigationPageDashboard.Controls.Add(this.gridControl1);
+            this.navigationPageDashboard.Caption = "navigationPageDashboard";
+            this.navigationPageDashboard.Controls.Add(this.pnlEmailView);
             this.navigationPageDashboard.Controls.Add(this.lblClientDashboard);
             this.navigationPageDashboard.Controls.Add(this.groupPlanStatus);
+            this.navigationPageDashboard.Controls.Add(this.pictureBox6);
             this.navigationPageDashboard.Name = "navigationPageDashboard";
-            this.navigationPageDashboard.Size = new System.Drawing.Size(837, 599);
+            this.navigationPageDashboard.Size = new System.Drawing.Size(1004, 599);
             // 
-            // gridControl3
+            // pnlEmailView
             // 
-            this.gridControl3.Location = new System.Drawing.Point(417, 355);
-            this.gridControl3.MainView = this.gridView3;
-            this.gridControl3.Name = "gridControl3";
-            this.gridControl3.Size = new System.Drawing.Size(406, 200);
-            this.gridControl3.TabIndex = 4;
-            this.gridControl3.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView3});
-            this.gridControl3.Visible = false;
-            // 
-            // gridView3
-            // 
-            this.gridView3.GridControl = this.gridControl3;
-            this.gridView3.Name = "gridView3";
-            // 
-            // gridControl2
-            // 
-            this.gridControl2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.pnlEmailView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gridControl2.Location = new System.Drawing.Point(15, 355);
-            this.gridControl2.MainView = this.gridView2;
-            this.gridControl2.Name = "gridControl2";
-            this.gridControl2.Size = new System.Drawing.Size(396, 200);
-            this.gridControl2.TabIndex = 3;
-            this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView2});
+            this.pnlEmailView.Controls.Add(this.panelControl1);
+            this.pnlEmailView.Controls.Add(this.gridControlMailList);
+            this.pnlEmailView.Controls.Add(this.treeList1);
+            this.pnlEmailView.Location = new System.Drawing.Point(15, 149);
+            this.pnlEmailView.Name = "pnlEmailView";
+            this.pnlEmailView.Size = new System.Drawing.Size(986, 447);
+            this.pnlEmailView.TabIndex = 6;
             // 
-            // gridView2
+            // panelControl1
             // 
-            this.gridView2.GridControl = this.gridControl2;
-            this.gridView2.Name = "gridView2";
-            // 
-            // gridControl1
-            // 
-            this.gridControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.panelControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gridControl1.Location = new System.Drawing.Point(15, 149);
-            this.gridControl1.MainView = this.gridView1;
-            this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(808, 200);
-            this.gridControl1.TabIndex = 2;
-            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
+            this.panelControl1.Controls.Add(this.webBrowserEmailBody);
+            this.panelControl1.Controls.Add(this.lblSubjectValue);
+            this.panelControl1.Controls.Add(this.lblSubjectlabel);
+            this.panelControl1.Controls.Add(this.lblEmailDate);
+            this.panelControl1.Controls.Add(this.lblFromValue);
+            this.panelControl1.Controls.Add(this.lblFromlabel);
+            this.panelControl1.Location = new System.Drawing.Point(517, 6);
+            this.panelControl1.Name = "panelControl1";
+            this.panelControl1.Size = new System.Drawing.Size(464, 436);
+            this.panelControl1.TabIndex = 5;
             // 
-            // gridView1
+            // webBrowserEmailBody
             // 
-            this.gridView1.GridControl = this.gridControl1;
-            this.gridView1.Name = "gridView1";
+            this.webBrowserEmailBody.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.webBrowserEmailBody.Location = new System.Drawing.Point(9, 69);
+            this.webBrowserEmailBody.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowserEmailBody.Name = "webBrowserEmailBody";
+            this.webBrowserEmailBody.ScriptErrorsSuppressed = true;
+            this.webBrowserEmailBody.Size = new System.Drawing.Size(449, 362);
+            this.webBrowserEmailBody.TabIndex = 6;
+            // 
+            // lblSubjectValue
+            // 
+            this.lblSubjectValue.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.lblSubjectValue.Location = new System.Drawing.Point(53, 25);
+            this.lblSubjectValue.Name = "lblSubjectValue";
+            this.lblSubjectValue.Size = new System.Drawing.Size(405, 13);
+            this.lblSubjectValue.TabIndex = 4;
+            this.lblSubjectValue.Text = "SubjectValue";
+            // 
+            // lblSubjectlabel
+            // 
+            this.lblSubjectlabel.Location = new System.Drawing.Point(9, 24);
+            this.lblSubjectlabel.Name = "lblSubjectlabel";
+            this.lblSubjectlabel.Size = new System.Drawing.Size(40, 13);
+            this.lblSubjectlabel.TabIndex = 3;
+            this.lblSubjectlabel.Text = "Subject:";
+            // 
+            // lblEmailDate
+            // 
+            this.lblEmailDate.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.lblEmailDate.Location = new System.Drawing.Point(9, 43);
+            this.lblEmailDate.Name = "lblEmailDate";
+            this.lblEmailDate.Size = new System.Drawing.Size(199, 13);
+            this.lblEmailDate.TabIndex = 2;
+            this.lblEmailDate.Text = "Date:";
+            // 
+            // lblFromValue
+            // 
+            this.lblFromValue.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.lblFromValue.Location = new System.Drawing.Point(43, 5);
+            this.lblFromValue.Name = "lblFromValue";
+            this.lblFromValue.Size = new System.Drawing.Size(214, 13);
+            this.lblFromValue.TabIndex = 1;
+            this.lblFromValue.Text = "From:";
+            // 
+            // lblFromlabel
+            // 
+            this.lblFromlabel.Location = new System.Drawing.Point(9, 5);
+            this.lblFromlabel.Name = "lblFromlabel";
+            this.lblFromlabel.Size = new System.Drawing.Size(28, 13);
+            this.lblFromlabel.TabIndex = 0;
+            this.lblFromlabel.Text = "From:";
+            // 
+            // gridControlMailList
+            // 
+            this.gridControlMailList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.gridControlMailList.Location = new System.Drawing.Point(172, 6);
+            this.gridControlMailList.MainView = this.tileViewMailList;
+            this.gridControlMailList.Margin = new System.Windows.Forms.Padding(0);
+            this.gridControlMailList.Name = "gridControlMailList";
+            this.gridControlMailList.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemPictureEdit1});
+            this.gridControlMailList.Size = new System.Drawing.Size(341, 435);
+            this.gridControlMailList.TabIndex = 4;
+            this.gridControlMailList.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.tileViewMailList});
+            this.gridControlMailList.DataSourceChanged += new System.EventHandler(this.gridControlMailList_DataSourceChanged);
+            this.gridControlMailList.Click += new System.EventHandler(this.gridControlMailList_Click);
+            // 
+            // tileViewMailList
+            // 
+            this.tileViewMailList.Appearance.EmptySpace.BackColor = System.Drawing.Color.Transparent;
+            this.tileViewMailList.Appearance.EmptySpace.Options.UseBackColor = true;
+            this.tileViewMailList.Appearance.ItemNormal.BackColor = System.Drawing.Color.White;
+            this.tileViewMailList.Appearance.ItemNormal.BackColor2 = System.Drawing.Color.White;
+            this.tileViewMailList.Appearance.ItemNormal.Options.UseBackColor = true;
+            this.tileViewMailList.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.tileViewColumnSubject,
+            this.tileViewColumnFrom,
+            this.tileViewColumnDate});
+            this.tileViewMailList.GridControl = this.gridControlMailList;
+            this.tileViewMailList.Name = "tileViewMailList";
+            this.tileViewMailList.OptionsBehavior.ReadOnly = true;
+            this.tileViewMailList.OptionsEditForm.PopupEditFormWidth = 200;
+            this.tileViewMailList.OptionsTiles.AllowItemHover = true;
+            this.tileViewMailList.OptionsTiles.IndentBetweenGroups = 10;
+            this.tileViewMailList.OptionsTiles.IndentBetweenItems = 2;
+            this.tileViewMailList.OptionsTiles.ItemPadding = new System.Windows.Forms.Padding(5);
+            this.tileViewMailList.OptionsTiles.ItemSize = new System.Drawing.Size(400, 70);
+            this.tileViewMailList.OptionsTiles.Orientation = System.Windows.Forms.Orientation.Vertical;
+            this.tileViewMailList.OptionsTiles.Padding = new System.Windows.Forms.Padding(5);
+            this.tileViewMailList.OptionsTiles.ScrollMode = DevExpress.XtraEditors.TileControlScrollMode.ScrollBar;
+            this.tileViewMailList.OptionsTiles.ShowGroupText = false;
+            this.tileViewMailList.OptionsTiles.VerticalContentAlignment = DevExpress.Utils.VertAlignment.Top;
+            tileViewItemElement1.Appearance.Hovered.BackColor = System.Drawing.Color.Navy;
+            tileViewItemElement1.Appearance.Hovered.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            tileViewItemElement1.Appearance.Hovered.Options.UseBackColor = true;
+            tileViewItemElement1.Appearance.Normal.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            tileViewItemElement1.Appearance.Normal.ForeColor = System.Drawing.Color.Navy;
+            tileViewItemElement1.Appearance.Normal.Options.UseFont = true;
+            tileViewItemElement1.Appearance.Normal.Options.UseForeColor = true;
+            tileViewItemElement1.Appearance.Pressed.BackColor = System.Drawing.Color.White;
+            tileViewItemElement1.Appearance.Pressed.BackColor2 = System.Drawing.Color.White;
+            tileViewItemElement1.Appearance.Pressed.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            tileViewItemElement1.Appearance.Pressed.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            tileViewItemElement1.Appearance.Pressed.Options.UseBackColor = true;
+            tileViewItemElement1.Appearance.Pressed.Options.UseFont = true;
+            tileViewItemElement1.Appearance.Pressed.Options.UseForeColor = true;
+            tileViewItemElement1.Column = this.tileViewColumnSubject;
+            tileViewItemElement1.Text = "tileViewColumnSubject";
+            tileViewItemElement1.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.Manual;
+            tileViewItemElement1.TextLocation = new System.Drawing.Point(20, 20);
+            tileViewItemElement2.Appearance.Pressed.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            tileViewItemElement2.Appearance.Pressed.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            tileViewItemElement2.Appearance.Pressed.Options.UseFont = true;
+            tileViewItemElement2.Appearance.Pressed.Options.UseForeColor = true;
+            tileViewItemElement2.Column = this.tileViewColumnFrom;
+            tileViewItemElement2.Text = "tileViewColumnFrom";
+            tileViewItemElement2.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.Manual;
+            tileViewItemElement2.TextLocation = new System.Drawing.Point(0, 5);
+            tileViewItemElement3.Column = this.tileViewColumnDate;
+            tileViewItemElement3.Text = "tileViewColumnDate";
+            tileViewItemElement3.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.Manual;
+            tileViewItemElement3.TextLocation = new System.Drawing.Point(0, 45);
+            this.tileViewMailList.TileTemplate.Add(tileViewItemElement1);
+            this.tileViewMailList.TileTemplate.Add(tileViewItemElement2);
+            this.tileViewMailList.TileTemplate.Add(tileViewItemElement3);
+            // 
+            // repositoryItemPictureEdit1
+            // 
+            this.repositoryItemPictureEdit1.Name = "repositoryItemPictureEdit1";
+            this.repositoryItemPictureEdit1.ZoomAccelerationFactor = 1D;
+            // 
+            // treeList1
+            // 
+            this.treeList1.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
+            this.treeListColumn1,
+            this.treeListColumn2});
+            this.treeList1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.treeList1.Location = new System.Drawing.Point(5, 6);
+            this.treeList1.Name = "treeList1";
+            this.treeList1.BeginUnboundLoad();
+            this.treeList1.AppendNode(new object[] {
+            "my@gmail.com",
+            null}, -1);
+            this.treeList1.AppendNode(new object[] {
+            "Inbox",
+            null}, 0);
+            this.treeList1.AppendNode(new object[] {
+            "Outbox",
+            null}, 0);
+            this.treeList1.EndUnboundLoad();
+            this.treeList1.OptionsBehavior.PopulateServiceColumns = true;
+            this.treeList1.Size = new System.Drawing.Size(164, 436);
+            this.treeList1.TabIndex = 3;
+            // 
+            // treeListColumn1
+            // 
+            this.treeListColumn1.Caption = "Email";
+            this.treeListColumn1.FieldName = "treeListColumn1";
+            this.treeListColumn1.MinWidth = 52;
+            this.treeListColumn1.Name = "treeListColumn1";
+            this.treeListColumn1.Visible = true;
+            this.treeListColumn1.VisibleIndex = 0;
+            // 
+            // treeListColumn2
+            // 
+            this.treeListColumn2.Caption = "treeListColumn2";
+            this.treeListColumn2.FieldName = "treeListColumn2";
+            this.treeListColumn2.Name = "treeListColumn2";
             // 
             // lblClientDashboard
             // 
@@ -706,7 +903,7 @@
             this.lblClientDashboard.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblClientDashboard.Location = new System.Drawing.Point(0, 0);
             this.lblClientDashboard.Name = "lblClientDashboard";
-            this.lblClientDashboard.Size = new System.Drawing.Size(837, 16);
+            this.lblClientDashboard.Size = new System.Drawing.Size(1004, 16);
             this.lblClientDashboard.TabIndex = 1;
             this.lblClientDashboard.Text = "   Client Dashboard";
             // 
@@ -729,7 +926,6 @@
             this.groupPlanStatus.Controls.Add(this.lblStatus1);
             this.groupPlanStatus.Controls.Add(this.lblStep1);
             this.groupPlanStatus.Controls.Add(this.pictureBox7);
-            this.groupPlanStatus.Controls.Add(this.pictureBox6);
             this.groupPlanStatus.Controls.Add(this.pictureBox5);
             this.groupPlanStatus.Controls.Add(this.pictureBox4);
             this.groupPlanStatus.Controls.Add(this.pictureBox3);
@@ -737,7 +933,7 @@
             this.groupPlanStatus.Controls.Add(this.pictureBox1);
             this.groupPlanStatus.Location = new System.Drawing.Point(15, 27);
             this.groupPlanStatus.Name = "groupPlanStatus";
-            this.groupPlanStatus.Size = new System.Drawing.Size(808, 115);
+            this.groupPlanStatus.Size = new System.Drawing.Size(975, 115);
             this.groupPlanStatus.TabIndex = 0;
             // 
             // label17
@@ -874,14 +1070,6 @@
             this.pictureBox7.TabIndex = 2;
             this.pictureBox7.TabStop = false;
             // 
-            // pictureBox6
-            // 
-            this.pictureBox6.Location = new System.Drawing.Point(592, 23);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(100, 50);
-            this.pictureBox6.TabIndex = 5;
-            this.pictureBox6.TabStop = false;
-            // 
             // pictureBox5
             // 
             this.pictureBox5.Location = new System.Drawing.Point(474, 23);
@@ -922,11 +1110,20 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Location = new System.Drawing.Point(689, 93);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(100, 50);
+            this.pictureBox6.TabIndex = 5;
+            this.pictureBox6.TabStop = false;
+            // 
             // navigationPageContactInfo
             // 
             this.navigationPageContactInfo.AutoScroll = true;
+            this.navigationPageContactInfo.Caption = "navigationPageContactInfo";
             this.navigationPageContactInfo.Name = "navigationPageContactInfo";
-            this.navigationPageContactInfo.Size = new System.Drawing.Size(837, 599);
+            this.navigationPageContactInfo.Size = new System.Drawing.Size(1004, 599);
             this.navigationPageContactInfo.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.navigationPageClient_ControlRemoved);
             // 
             // navigationPageEmployee
@@ -934,7 +1131,7 @@
             this.navigationPageEmployee.Caption = "navigationPageEmployee";
             this.navigationPageEmployee.Controls.Add(this.lblEmployeeTitle);
             this.navigationPageEmployee.Name = "navigationPageEmployee";
-            this.navigationPageEmployee.Size = new System.Drawing.Size(837, 599);
+            this.navigationPageEmployee.Size = new System.Drawing.Size(1004, 599);
             toolTipTitleItem5.Text = "Employee Infomation";
             toolTipItem4.LeftIndent = 6;
             toolTipItem4.Text = "View client employee information.";
@@ -953,7 +1150,7 @@
             this.lblEmployeeTitle.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblEmployeeTitle.Location = new System.Drawing.Point(0, 0);
             this.lblEmployeeTitle.Name = "lblEmployeeTitle";
-            this.lblEmployeeTitle.Size = new System.Drawing.Size(837, 22);
+            this.lblEmployeeTitle.Size = new System.Drawing.Size(1004, 22);
             this.lblEmployeeTitle.TabIndex = 3;
             this.lblEmployeeTitle.Text = "Employee Details";
             // 
@@ -963,7 +1160,7 @@
             this.navigationPageClient.Controls.Add(this.grpClientInfo);
             this.navigationPageClient.Controls.Add(this.labelClientTitle);
             this.navigationPageClient.Name = "navigationPageClient";
-            this.navigationPageClient.Size = new System.Drawing.Size(837, 599);
+            this.navigationPageClient.Size = new System.Drawing.Size(1004, 599);
             this.navigationPageClient.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.navigationPageClient_ControlRemoved);
             // 
             // grpClientInfo
@@ -1429,7 +1626,7 @@
             this.labelClientTitle.Dock = System.Windows.Forms.DockStyle.Top;
             this.labelClientTitle.Location = new System.Drawing.Point(0, 0);
             this.labelClientTitle.Name = "labelClientTitle";
-            this.labelClientTitle.Size = new System.Drawing.Size(837, 22);
+            this.labelClientTitle.Size = new System.Drawing.Size(1004, 22);
             this.labelClientTitle.TabIndex = 2;
             this.labelClientTitle.Text = "Client Information";
             // 
@@ -1437,18 +1634,24 @@
             // 
             this.navigationPageOther.Caption = "navigationPageOther";
             this.navigationPageOther.Name = "navigationPageOther";
-            this.navigationPageOther.Size = new System.Drawing.Size(837, 599);
+            this.navigationPageOther.Size = new System.Drawing.Size(1004, 599);
             this.navigationPageOther.ControlAdded += new System.Windows.Forms.ControlEventHandler(this.navigationPageOther_ControlAdded);
             // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // gridBand1
+            // 
+            this.gridBand1.Caption = "gridBand1";
+            this.gridBand1.Name = "gridBand1";
+            this.gridBand1.VisibleIndex = -1;
+            // 
             // Clientdashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1012, 599);
+            this.ClientSize = new System.Drawing.Size(1179, 599);
             this.Controls.Add(this.DashboardNavFrame);
             this.Controls.Add(this.panelMenu);
             this.Name = "Clientdashboard";
@@ -1469,21 +1672,24 @@
             ((System.ComponentModel.ISupportInitialize)(this.DashboardNavFrame)).EndInit();
             this.DashboardNavFrame.ResumeLayout(false);
             this.navigationPageDashboard.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pnlEmailView)).EndInit();
+            this.pnlEmailView.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
+            this.panelControl1.ResumeLayout(false);
+            this.panelControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlMailList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tileViewMailList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.treeList1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupPlanStatus)).EndInit();
             this.groupPlanStatus.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.navigationPageEmployee.ResumeLayout(false);
             this.navigationPageClient.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grpClientInfo)).EndInit();
@@ -1618,12 +1824,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblStep2;
-        private DevExpress.XtraGrid.GridControl gridControl3;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView3;
-        private DevExpress.XtraGrid.GridControl gridControl2;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
-        private DevExpress.XtraGrid.GridControl gridControl1;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label lblStep7;
         private System.Windows.Forms.Label label15;
@@ -1635,5 +1835,23 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label lblStep3;
         private DevExpress.XtraNavBar.NavBarItem BankDetails;
+        private DevExpress.XtraEditors.PanelControl pnlEmailView;
+        private DevExpress.XtraTreeList.TreeList treeList1;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
+        private DevExpress.XtraGrid.GridControl gridControlMailList;
+        private DevExpress.XtraGrid.Views.Tile.TileView tileViewMailList;
+        private DevExpress.XtraGrid.Columns.TileViewColumn tileViewColumnSubject;
+        private DevExpress.XtraGrid.Columns.TileViewColumn tileViewColumnFrom;
+        private DevExpress.XtraGrid.Columns.TileViewColumn tileViewColumnDate;
+        private DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit repositoryItemPictureEdit1;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn1;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn2;
+        private DevExpress.XtraEditors.PanelControl panelControl1;
+        private DevExpress.XtraEditors.LabelControl lblSubjectValue;
+        private DevExpress.XtraEditors.LabelControl lblSubjectlabel;
+        private DevExpress.XtraEditors.LabelControl lblEmailDate;
+        private DevExpress.XtraEditors.LabelControl lblFromValue;
+        private DevExpress.XtraEditors.LabelControl lblFromlabel;
+        private System.Windows.Forms.WebBrowser webBrowserEmailBody;
     }
 }

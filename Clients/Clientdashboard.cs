@@ -1,10 +1,10 @@
 ﻿using Chilkat;
+using DevExpress.Utils;
 using DevExpress.XtraEditors;
 using FinancialPlanner.Common;
 using FinancialPlanner.Common.DataConversion;
 using FinancialPlanner.Common.EmailManager;
 using FinancialPlanner.Common.Model;
-using FinancialPlannerClient.Clients.MailService;
 using FinancialPlannerClient.Insurance;
 using FinancialPlannerClient.PlannerInfo;
 using FinancialPlannerClient.PlanOptions;
@@ -19,6 +19,7 @@ using System.Net;
 using System.Reflection;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FinancialPlannerClient.Clients
@@ -42,7 +43,7 @@ namespace FinancialPlannerClient.Clients
         private Client _client;
         private DataTable _dtBankAccount;
         private const string UPDATE_CLIENT_API = "Client/Update";
-        PersonalInformation personalInformation;       
+        PersonalInformation personalInformation;
         #endregion
 
         #region "Planner Variables"
@@ -64,25 +65,40 @@ namespace FinancialPlannerClient.Clients
             DashboardNavFrame.SelectedPageIndex = (int)NavigateTo.Dashborad;
         }
 
-        private void loadDashBoradData()
+        private async void loadDashBoradData()
         {
+            try
+            {
+                //Thread loadEmailThread = new Thread(loadEmails);
+                //loadEmailThread.Start();   
+                //WaitDialogForm waitdlg = new WaitDialogForm("Loading Data...");
+                //waitdlg.Show();
+               
+                Task<IList<Email>> task = new Task<IList<Email>>(getEmails);
+                task.Start();
 
-            Thread loadEmailThread = new Thread(loadEmails);
-            loadEmailThread.Start();           
+                IList<Email> emails = await (task);
+                dtEmails = ListtoDataTable.ToDataTable(emails.ToList());
+                bindEmailGrid();
+
+                //waitdlg.Close();
+                DashboardNavFrame.SelectedPageIndex = (int)NavigateTo.Dashborad;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
-        private void loadEmails()
+        private IList<Email> getEmails()
         {
             getMailServerSetting();
-            EmailService mailManager = new EmailService(MailServer.HostName,MailServer.HostPort,MailServer.UserName,
-                MailServer.Password,MailServer.IsSSL, MailServer.FromEmail, MailServer.POP3_IMPS_HostName,
+            EmailService mailManager = new EmailService(MailServer.HostName, MailServer.HostPort, MailServer.UserName,
+                MailServer.Password, MailServer.IsSSL, MailServer.FromEmail, MailServer.POP3_IMPS_HostName,
                 MailServer.POP3_IMPS_HostPort);
+
             IList<Email> emails = mailManager.GetAllMails();
-            dtEmails = ListtoDataTable.ToDataTable(emails.ToList());
-            if (gridControl1.InvokeRequired)
-            {
-                gridControl1.Invoke(new bindEmailGridWithDataSource(bindEmailGrid));            
-            }
+            return emails;
         }
 
         private void getMailServerSetting()
@@ -98,7 +114,7 @@ namespace FinancialPlannerClient.Clients
                 var applicationConfigurations = jsonSerialization.DeserializeFromString<List<ApplicationConfiguration>>(restResult.ToString());
                 DataTable _dtApplicationConfig = ListtoDataTable.ToDataTable(applicationConfigurations);
                 DataRow[] dataRows = _dtApplicationConfig.Select("CATEGORY = 'Mail Server Setting'");
-                foreach(DataRow dr in dataRows)
+                foreach (DataRow dr in dataRows)
                 {
                     if (dr.Field<string>("SettingName") == "FromEmail")
                     {
@@ -150,20 +166,39 @@ namespace FinancialPlannerClient.Clients
             }
         }
 
+        private void createEmailsDataStructure()
+        {
+            if (dtEmails.Columns.Count == 0 )
+            {
+                dtEmails = new DataTable();
+                dtEmails.Columns.Add("From", typeof(System.String));
+                dtEmails.Columns.Add("FromName", typeof(System.String));
+                dtEmails.Columns.Add("FromAddress", typeof(System.String));
+                dtEmails.Columns.Add("To", typeof(System.String));
+                dtEmails.Columns.Add("LocalDate", typeof(System.DateTime));
+                dtEmails.Columns.Add("Subject", typeof(System.String));
+                dtEmails.Columns.Add("Body", typeof(System.String));
+                dtEmails.Columns.Add("NumAttachedMessages", typeof(System.Int16));
+                dtEmails.Columns.Add("Size", typeof(System.Int64));
+                dtEmails.Columns.Add("NumDaysOld", typeof(System.Int16));
+            }
+        }
+
         private void bindEmailGrid()
         {
-            gridControl1.DataSource = dtEmails;
-            for(int i = 0; i <= gridView1.Columns.Count -1; i++)
+            //createEmailsDataStructure();
+            gridControlMailList.DataSource = dtEmails;
+            for(int i = 0; i <= tileViewMailList.Columns.Count -1; i++)
             {
-                if (gridView1.Columns[i].FieldName.Equals("Subject",StringComparison.OrdinalIgnoreCase) ||
-                    gridView1.Columns[i].FieldName.Equals("From", StringComparison.OrdinalIgnoreCase) ||
-                    gridView1.Columns[i].FieldName.Equals("LocalDate", StringComparison.OrdinalIgnoreCase) 
-                    )
+                if (tileViewMailList.Columns[i].FieldName.Equals("Subject",StringComparison.OrdinalIgnoreCase) ||
+                    tileViewMailList.Columns[i].FieldName.Equals("From", StringComparison.OrdinalIgnoreCase) ||
+                    tileViewMailList.Columns[i].FieldName.Equals("LocalDateStr", StringComparison.OrdinalIgnoreCase) || 
+                    tileViewMailList.Columns[i].FieldName.Equals("Size",StringComparison.OrdinalIgnoreCase))
                 {
-                    gridView1.Columns[i].Visible = true;
+                    tileViewMailList.Columns[i].Visible = true;
                 }
                 else
-                    gridView1.Columns[i].Visible = false;
+                    tileViewMailList.Columns[i].Visible = false;
             }
         }
 
@@ -618,6 +653,28 @@ namespace FinancialPlannerClient.Clients
             navigationPageOther.Controls.Clear();
             navigationPageOther.Controls.Add(bankDetails);
             showNavigationPage(bankDetails.Name);
+        }
+
+        private void gridControlMailList_Click(object sender, EventArgs e)
+        {
+            if (tileViewMailList.FocusedRowHandle >= 0)
+            {
+                int rowIndex = tileViewMailList.FocusedRowHandle;
+                DataRow[] drEmails = dtEmails.Select("Subject ='" + tileViewMailList.GetFocusedRowCellValue("Subject").ToString().Replace("'","''") +
+                    "' and  LocalDateStr ='" + tileViewMailList.GetFocusedRowCellValue("LocalDateStr").ToString() +
+                    "' and Size ='" + tileViewMailList.GetFocusedRowCellValue("Size").ToString() + "'");
+
+                lblFromValue.Text = drEmails[0].Field<string>("From");
+                
+                lblSubjectValue.Text = drEmails[0].Field<string>("Subject");
+                lblEmailDate.Text = drEmails[0].Field<string>("LocalDate");
+                webBrowserEmailBody.DocumentText = drEmails[0].Field<string>("Body");
+            }
+        }
+
+        private void gridControlMailList_DataSourceChanged(object sender, EventArgs e)
+        {
+            //gridControlMailList.RefreshDataSource();
         }
     }
 }

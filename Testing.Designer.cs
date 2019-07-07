@@ -37,22 +37,22 @@
             this.button2 = new System.Windows.Forms.Button();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.groupControl7 = new DevExpress.XtraEditors.GroupControl();
+            this.groupControl6 = new DevExpress.XtraEditors.GroupControl();
+            this.groupControl5 = new DevExpress.XtraEditors.GroupControl();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
             this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
-            this.groupControl5 = new DevExpress.XtraEditors.GroupControl();
-            this.groupControl6 = new DevExpress.XtraEditors.GroupControl();
-            this.groupControl7 = new DevExpress.XtraEditors.GroupControl();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl7)).BeginInit();
             this.SuspendLayout();
             // 
             // openFileDialog1
@@ -130,6 +130,30 @@
             this.panel1.Size = new System.Drawing.Size(370, 147);
             this.panel1.TabIndex = 7;
             // 
+            // groupControl7
+            // 
+            this.groupControl7.Location = new System.Drawing.Point(3, 148);
+            this.groupControl7.Name = "groupControl7";
+            this.groupControl7.Size = new System.Drawing.Size(297, 66);
+            this.groupControl7.TabIndex = 9;
+            this.groupControl7.Text = "groupControl7";
+            // 
+            // groupControl6
+            // 
+            this.groupControl6.Location = new System.Drawing.Point(3, 76);
+            this.groupControl6.Name = "groupControl6";
+            this.groupControl6.Size = new System.Drawing.Size(297, 66);
+            this.groupControl6.TabIndex = 8;
+            this.groupControl6.Text = "groupControl6";
+            // 
+            // groupControl5
+            // 
+            this.groupControl5.Location = new System.Drawing.Point(3, 6);
+            this.groupControl5.Name = "groupControl5";
+            this.groupControl5.Size = new System.Drawing.Size(297, 66);
+            this.groupControl5.TabIndex = 7;
+            this.groupControl5.Text = "groupControl5";
+            // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.AutoScroll = true;
@@ -165,30 +189,6 @@
             this.groupControl4.TabIndex = 9;
             this.groupControl4.Text = "groupControl4";
             // 
-            // groupControl5
-            // 
-            this.groupControl5.Location = new System.Drawing.Point(3, 6);
-            this.groupControl5.Name = "groupControl5";
-            this.groupControl5.Size = new System.Drawing.Size(297, 66);
-            this.groupControl5.TabIndex = 7;
-            this.groupControl5.Text = "groupControl5";
-            // 
-            // groupControl6
-            // 
-            this.groupControl6.Location = new System.Drawing.Point(3, 76);
-            this.groupControl6.Name = "groupControl6";
-            this.groupControl6.Size = new System.Drawing.Size(297, 66);
-            this.groupControl6.TabIndex = 8;
-            this.groupControl6.Text = "groupControl6";
-            // 
-            // groupControl7
-            // 
-            this.groupControl7.Location = new System.Drawing.Point(3, 148);
-            this.groupControl7.Name = "groupControl7";
-            this.groupControl7.Size = new System.Drawing.Size(297, 66);
-            this.groupControl7.TabIndex = 9;
-            this.groupControl7.Text = "groupControl7";
-            // 
             // Testing
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -207,13 +207,13 @@
             this.Text = "Testing";
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl7)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -215,7 +215,7 @@ namespace FinancialPlannerClient.CashFlowManager
 
         private void setComulativeCorpusFund(int years, DataRow dr, int noOfYearsForCalculation)
         {
-            if (_dtCashFlow.Rows.Count >0)
+            if (_dtCashFlow.Rows.Count > 0)
             {
                 double previousYearCumulativeCorpusFund = string.IsNullOrEmpty(_dtCashFlow.Rows[_dtCashFlow.Rows.Count - 1]["Cumulative Corpus Fund"].ToString())? 0:
                     double.Parse(_dtCashFlow.Rows[_dtCashFlow.Rows.Count - 1]["Cumulative Corpus Fund"].ToString());
@@ -416,18 +416,19 @@ namespace FinancialPlannerClient.CashFlowManager
         {
             double totalLoans = 0;
             int previousYearRowIndex = years - 1;
+            int currentLoanYear = years + 1;
             
             foreach (Loan loan in _cashFlowCalculation.LstLoans)
             {
                 decimal totalNoOfYearsForLoan = (Decimal)((Decimal)loan.TermLeftInMonths / 12);
-                if (years < totalNoOfYearsForLoan || (totalNoOfYearsForLoan > years - 1 && totalNoOfYearsForLoan < years))
+                if (currentLoanYear < totalNoOfYearsForLoan || (totalNoOfYearsForLoan > currentLoanYear - 1 && totalNoOfYearsForLoan < currentLoanYear))
                 {
                     double loanAmt = double.Parse(_dtCashFlow.Rows[previousYearRowIndex][loan.TypeOfLoan].ToString());
                     decimal yearsForLoan = totalNoOfYearsForLoan -  Math.Truncate(totalNoOfYearsForLoan);
                     decimal period = 12 / (12 * (yearsForLoan > 0? yearsForLoan : 1 ));
-                    dr[loan.TypeOfLoan] = (years < totalNoOfYearsForLoan) ? loanAmt :
+                    dr[loan.TypeOfLoan] = (currentLoanYear < totalNoOfYearsForLoan) ? loanAmt :
                         ((loanAmt) / (double)period);
-                    loanAmt = (years < totalNoOfYearsForLoan) ? loanAmt :
+                    loanAmt = (currentLoanYear < totalNoOfYearsForLoan) ? loanAmt :
                         ((loanAmt) / (double)period);
                     totalLoans = totalLoans + loanAmt;
                 }
@@ -555,6 +556,15 @@ namespace FinancialPlannerClient.CashFlowManager
                     goalValCalInfo.SetPortfolioValue(goalcalInfo.GetProfileValue());
                     GoalCalculationMgr.AddGoalValueCalculation(goalValCalInfo);
                 }
+
+                if (goal.Category == "Retirement")
+                {
+                    dr["Corpus Fund"] = string.IsNullOrEmpty(dr[string.Format("{0} - {1}", goal.Priority, goal.Name)].ToString()) ? 0 :
+                        double.Parse(dr[string.Format("{0} - {1}", goal.Priority, goal.Name)].ToString());
+                }
+
+                dr["Corpus Fund"] =  ((surplusCashFund > 0) ? Math.Round(surplusCashFund, 2) : 0);
+                dr["Cumulative Corpus Fund"] = ((surplusCashFund > 0) ? Math.Round(surplusCashFund, 2) : 0);
             }
             #endregion
 

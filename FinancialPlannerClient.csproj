@@ -149,6 +149,12 @@
     <Compile Include="Clients\AllClientsList.Designer.cs">
       <DependentUpon>AllClientsList.cs</DependentUpon>
     </Compile>
+    <Compile Include="Clients\ClientEmailView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Clients\ClientEmailView.Designer.cs">
+      <DependentUpon>ClientEmailView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Clients\ClientSearch.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -729,6 +735,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Clients\Clientdashboard.resx">
       <DependentUpon>Clientdashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Clients\ClientEmailView.resx">
+      <DependentUpon>ClientEmailView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Clients\ClientSearch.resx">
       <DependentUpon>ClientSearch.cs</DependentUpon>

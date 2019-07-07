@@ -1293,8 +1293,8 @@ namespace FinancialPlannerClient.CurrentStatus
             cmbMFInvester.Text = "";
             cmbSchemeName.Text = "";
             txtFolioNo.Text = "";
-            txtNav.Text = "";
-            txtUnits.Text = "";
+            txtNav.Text = "0";
+            txtUnits.Text = "0";
             txtMFCurrentVal.Text = "0";
             txtMFEquityRatio.Text = "0";
             txtMFGoldRatio.Text = "0";
@@ -2732,8 +2732,8 @@ namespace FinancialPlannerClient.CurrentStatus
             cmbNPSInvester.Text = "";
             cmbSchemeName.Text = "";
             txtNPSFolioNo.Text = "";
-            txtNPSNAV.Text = "";
-            txtUnits.Text = "";
+            txtNPSNAV.Text = "0";
+            txtUnits.Text = "0";
             txtNPSCurrentVal.Text = "0";
             txtNPSEquityRatio.Text = "0";
             txtNPSGoldRatio.Text = "0";
