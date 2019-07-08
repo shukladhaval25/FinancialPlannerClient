@@ -3,14 +3,9 @@ using FinancialPlanner.Common.Model;
 using FinancialPlannerClient.Master;
 using FinancialPlannerClient.PlannerInfo;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
 using System.Reflection;
-using System.Text;
 using System.Windows.Forms;
 
 namespace FinancialPlannerClient.PlanOptions
@@ -20,16 +15,18 @@ namespace FinancialPlannerClient.PlanOptions
         Client client;
         Planner planner;
         string spouseName;
+        int spouseAge;
         public Assumption()
         {
             InitializeComponent();
         }
-        public Assumption(Client client,Planner planner,string spouseName)
+        public Assumption(Client client, Planner planner, string spouseName, int spouseAge)
         {
             InitializeComponent();
             this.client = client;
             this.planner = planner;
             this.spouseName = spouseName;
+            this.spouseAge = spouseAge;
             fillupAssumptionInfo();
         }
 
@@ -92,7 +89,7 @@ namespace FinancialPlannerClient.PlanOptions
                 else
                     DevExpress.XtraEditors.XtraMessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 StackTrace st = new StackTrace();
                 StackFrame sf = st.GetFrame(0);
@@ -165,8 +162,26 @@ namespace FinancialPlannerClient.PlanOptions
         {
             if (txtSpouseLifeExp.Text == "0" || string.IsNullOrEmpty(txtSpouseLifeExp.Text))
             {
-                DevExpress.XtraEditors.XtraMessageBox.Show("Invalid value for spouse life Expectancy","Invalid Value",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                DevExpress.XtraEditors.XtraMessageBox.Show("Invalid value for spouse life Expectancy", "Invalid Value", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 e.Cancel = true;
+            }
+            else
+            {
+                if (!string.IsNullOrEmpty(txtSpouseLifeExp.Text) && int.Parse(txtSpouseLifeExp.Text) < spouseAge)
+                {
+                    DevExpress.XtraEditors.XtraMessageBox.Show("Spouse expected life age should not be less than spouse current age.", "Invalid Value", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    e.Cancel = true;
+                }
+            }
+        }
+
+        private void txtSpouseLifeExp_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // allows 0-9, backspace, and decimal
+            if (((e.KeyChar < 48 || e.KeyChar > 57) && e.KeyChar != 8 && e.KeyChar != 46))
+            {
+                e.Handled = true;
+                return;
             }
         }
     }

@@ -537,13 +537,22 @@ namespace FinancialPlannerClient.Clients
         {
             string spouseName = (personalInformation.Spouse != null) ?
                 personalInformation.Spouse.Name : string.Empty;
-            Assumption assumption = new Assumption(this._client, planner, spouseName);
+            int spouseAge = getSpouseAge(personalInformation.Spouse);
+            Assumption assumption = new Assumption(this._client, planner, spouseName,spouseAge);
             assumption.TopLevel = false;
             assumption.Visible = true;
             navigationPageOther.Name = assumption.Name;
             navigationPageOther.Controls.Clear();
             navigationPageOther.Controls.Add(assumption);
             showNavigationPage(assumption.Name);
+        }
+
+        private int getSpouseAge(ClientSpouse spouse)
+        {
+            if (spouse != null)
+                return (DateTime.Now.Year - spouse.DOB.Year);
+            else
+                return 0;
         }
 
         private void navBarItemEstimatedPlan_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
