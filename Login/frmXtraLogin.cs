@@ -170,7 +170,7 @@ namespace FinancialPlannerClient.Login
             }
             catch (Exception ex)
             {
-                DevExpress.XtraEditors.XtraMessageBox.Show("Invalid user or credential.", "Login fail", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                DevExpress.XtraEditors.XtraMessageBox.Show("Exception:" + ex.ToString(), "Error occurred", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Logger.LogDebug(ex);
             }
         }

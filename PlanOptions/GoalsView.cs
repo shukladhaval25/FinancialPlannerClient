@@ -38,6 +38,10 @@ namespace FinancialPlannerClient.PlanOptions
                 lblAmountTitle.Text = "Annual Expense (Today's Value):";
                 if (cmbCategory.Tag.ToString() == "0")
                     setRetirementStartYearAndEndYear();
+                lblOtherAnnualRetirementExp.Text = "Other annual expense (Today's Value)";
+                lblOtherAnnualRetirementExp.Visible = true;
+                txtOtherAnnualRetirementExp.Visible = true;
+                txtOtherAnnualRetirementExp.Text = "0";
             }
             else
             {
@@ -47,7 +51,8 @@ namespace FinancialPlannerClient.PlanOptions
                 cmbCategory.Text = "";
                 txtGoalStartYear.Text = "";
                 txtGoalEndYear.Text = "";
-                lblAmountTitle.Text = "Amount(Today's Value)";
+                lblOtherAnnualRetirementExp.Visible = false;
+                txtOtherAnnualRetirementExp.Visible = false;
             }
 
         }
@@ -100,6 +105,7 @@ namespace FinancialPlannerClient.PlanOptions
                 cmbCategory.Enabled = (goals.Category == RETIREMENT_GOAL_TYPE) ? false : true;
                 txtGoalName.Text = goals.Name;
                 txtGoalCurrentValue.Text = goals.Amount.ToString("#,##0.00");
+                txtOtherAnnualRetirementExp.Text = goals.OtherAmount.ToString("#,##0.00");
                 txtGoalStartYear.Text = goals.StartYear;
                 txtInflationRate.Text = goals.InflationRate.ToString("##.00");
                 txtGoalEndYear.Text = goals.EndYear;
@@ -306,6 +312,7 @@ namespace FinancialPlannerClient.PlanOptions
             Goals.UpdatedByUserName = Program.CurrentUser.UserName;
             Goals.MachineName = Environment.MachineName;
             Goals.EligibleForInsuranceCoverage = chkEligbileForInsuranceCoverage.Checked;
+            Goals.OtherAmount = double.Parse(txtOtherAnnualRetirementExp.Text);
 
             if (chkLaonForGoal.Checked)
                 Goals.LoanForGoal = getLoanForGoalData();
@@ -418,6 +425,12 @@ namespace FinancialPlannerClient.PlanOptions
         {
             if (!string.IsNullOrEmpty(txtInflationRate.Text))
                 e.Cancel = !FinancialPlanner.Common.Validation.IsDigit(txtInflationRate.Text);
+        }
+
+        private void txtOtherAnnualRetirementExp_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtOtherAnnualRetirementExp.Text))
+                e.Cancel = !FinancialPlanner.Common.Validation.IsDigit(txtOtherAnnualRetirementExp.Text);
         }
     }
 }
