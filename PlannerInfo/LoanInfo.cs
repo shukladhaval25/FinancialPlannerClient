@@ -189,6 +189,10 @@ namespace FinancialPlannerClient.PlannerInfo
                     loan.TermLeftInMonths = int.Parse(dr.Field<string>("TermLeftInMonths"));
                     loan.NoEmisPayableUntilYear = int.Parse(dr.Field<string>("NoEMISPayableUntilYear"));
                     loan.Description = dr.Field<string>("Description");
+                    if ((dr["LoanStartDate"] != DBNull.Value))
+                    {
+                        loan.LoanStartDate = DateTime.Parse(dr.Field<string>("LoanStartDate"));
+                    }
                     return loan;
                 }
             }

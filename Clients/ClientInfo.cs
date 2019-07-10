@@ -1320,7 +1320,7 @@ namespace FinancialPlannerClient.Clients
             loan.UpdatedBy = Program.CurrentUser.Id;
             loan.UpdatedByUserName = Program.CurrentUser.UserName;
             loan.MachineName = Environment.MachineName;
-
+            loan.LoanStartDate =  dtLoanStartDate.Value;
             return loan;
         }
 
@@ -1343,6 +1343,12 @@ namespace FinancialPlannerClient.Clients
                 txtLoanTermLeft_Months.Text = loan.TermLeftInMonths.ToString();
                 txtNoOfEmiPayableForCY.Text = loan.NoEmisPayableUntilYear.ToString();
                 txtLoanDescription.Text = loan.Description;
+                if (loan.LoanStartDate != null)
+                    dtLoanStartDate.Value = loan.LoanStartDate;
+                else
+                {
+                    dtLoanStartDate.Value = dtLoanStartDate.MinDate;
+                }
             }
         }
 
@@ -1369,6 +1375,10 @@ namespace FinancialPlannerClient.Clients
         {
             Loan loan = new LoanInfo().GetLonInfo(dtGridLoan,_dtLoan);
             displayLoanData(loan);
+            if (loan != null)
+                btnLoanSchedule.Enabled = true;
+            else
+                btnLoanSchedule.Enabled = false;
         }
 
         private void cmbIncomeSource_SelectedIndexChanged(object sender, EventArgs e)
@@ -2059,6 +2069,16 @@ namespace FinancialPlannerClient.Clients
             }
             else
                 e.Cancel = true;
+        }
+
+        private void dtLoanStartDate_Validating(object sender, CancelEventArgs e)
+        {
+            
+        }
+
+        private void btnLoanSchedule_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
