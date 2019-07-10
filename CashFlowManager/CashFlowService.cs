@@ -256,7 +256,8 @@ namespace FinancialPlannerClient.CashFlowManager
                     GoalsCalculationInfo goalcalInfo = new GoalsCalculationInfo(goal, _planner, _riskProfileInfo, _riskProfileId, _optionId);
                     goalValCalInfo.SetPortfolioValue(goalcalInfo.GetProfileValue());
                     double surplusAmountAfterInvestment = goalValCalInfo.SetInvestmentToAchiveGoal(calculationYear, surplusAmount);
-                    dr[string.Format("{0} - {1}", goal.Priority, goal.Name)] = surplusAmount - surplusAmountAfterInvestment;
+                    dr[string.Format("{0} - {1}", goal.Priority, goal.Name)] = Math.Round(surplusAmount - surplusAmountAfterInvestment, 2,
+                                             MidpointRounding.ToEven) ;
                     surplusAmount = surplusAmountAfterInvestment;
 
                 }
@@ -544,7 +545,8 @@ namespace FinancialPlannerClient.CashFlowManager
                     GoalCalculationMgr.AddGoalValueCalculation(goalValCalInfo);
 
                     double surplusAmountAfterInvestment = goalValCalInfo.SetInvestmentToAchiveGoal(_planner.StartDate.Year, surplusCashFund);
-                    dr[string.Format("{0} - {1}", goal.Priority, goal.Name)] = surplusCashFund - surplusAmountAfterInvestment;
+                    dr[string.Format("{0} - {1}", goal.Priority, goal.Name)] = Math.Round(surplusCashFund - surplusAmountAfterInvestment, 2,
+                                             MidpointRounding.ToEven);
                     surplusCashFund = surplusAmountAfterInvestment;
                 }
                 else

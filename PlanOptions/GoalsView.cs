@@ -210,28 +210,35 @@ namespace FinancialPlannerClient.PlanOptions
 
         private void btnSaveClientGoal_Click(object sender, EventArgs e)
         {
-            Goals goals = getGoalsData();
-            if (!repeatGoalValidated(goals))
+            try
             {
-                return;
+                Goals goals = getGoalsData();
+                if (!repeatGoalValidated(goals))
+                {
+                    return;
+                }
+                GoalsInfo goalsInfo = new GoalsInfo();
+
+                bool isSaved = false;
+
+                if (goals != null && goals.Id == 0)
+                    isSaved = goalsInfo.Add(goals);
+                else
+                    isSaved = goalsInfo.Update(goals);
+
+                if (isSaved)
+                {
+                    MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    fillupGoalsInfo();
+                    grpGoalsDetail.Enabled = false;
+                }
+                else
+                    MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            GoalsInfo goalsInfo = new GoalsInfo();
-          
-            bool isSaved = false;
-
-            if (goals != null && goals.Id == 0)
-                isSaved = goalsInfo.Add(goals);
-            else
-                isSaved = goalsInfo.Update(goals);
-
-            if (isSaved)
+            catch(Exception ex)
             {
-                MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                fillupGoalsInfo();
-                grpGoalsDetail.Enabled = false;
+                DevExpress.XtraEditors.XtraMessageBox.Show("Unable to save record." + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-                MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private bool repeatGoalValidated(Goals goals)
@@ -312,7 +319,8 @@ namespace FinancialPlannerClient.PlanOptions
             Goals.UpdatedByUserName = Program.CurrentUser.UserName;
             Goals.MachineName = Environment.MachineName;
             Goals.EligibleForInsuranceCoverage = chkEligbileForInsuranceCoverage.Checked;
-            Goals.OtherAmount = double.Parse(txtOtherAnnualRetirementExp.Text);
+            Goals.OtherAmount = (!string.IsNullOrEmpty(txtOtherAnnualRetirementExp.Text)) ?
+                double.Parse(txtOtherAnnualRetirementExp.Text) : 0;
 
             if (chkLaonForGoal.Checked)
                 Goals.LoanForGoal = getLoanForGoalData();
