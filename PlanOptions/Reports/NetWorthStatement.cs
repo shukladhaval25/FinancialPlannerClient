@@ -126,6 +126,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                 {
                     DataRow drNetWorth = dtNetWorth.NewRow();
                     drNetWorth["Group"] = LIABILITY;
+                    drNetWorth["Amount"] = 0;
                     drNetWorth["Liability"] = dr["TypeOfLoan"];
                     drNetWorth["LaibilityAmount"] = double.Parse(dr["OutstandingAmt"].ToString());
                     dtNetWorth.Rows.Add(drNetWorth);
