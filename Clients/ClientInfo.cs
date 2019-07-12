@@ -2078,7 +2078,9 @@ namespace FinancialPlannerClient.Clients
 
         private void btnLoanSchedule_Click(object sender, EventArgs e)
         {
-
+            Loan loan = new LoanInfo().GetLonInfo(dtGridLoan, _dtLoan);
+            LoanSchedule loanSchedule = new LoanSchedule(loan);
+            loanSchedule.ShowDialog();
         }
     }
 }

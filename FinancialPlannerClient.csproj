@@ -194,6 +194,12 @@
     <Compile Include="Clients\Contact.designer.cs">
       <DependentUpon>Contact.cs</DependentUpon>
     </Compile>
+    <Compile Include="Clients\LoanSchedule.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clients\LoanSchedule.Designer.cs">
+      <DependentUpon>LoanSchedule.cs</DependentUpon>
+    </Compile>
     <Compile Include="Clients\MailService\MailManager.cs" />
     <Compile Include="Clients\EmploymentDetails.cs">
       <SubType>Form</SubType>
@@ -768,6 +774,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Clients\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Clients\LoanSchedule.resx">
+      <DependentUpon>LoanSchedule.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\ProcessContoller.resx">
       <DependentUpon>ProcessContoller.cs</DependentUpon>
