@@ -422,7 +422,7 @@ namespace FinancialPlannerClient.CashFlowManager
             foreach (Loan loan in _cashFlowCalculation.LstLoans)
             {
                 decimal totalNoOfYearsForLoan = (Decimal)((Decimal)loan.TermLeftInMonths / 12);
-                if (currentLoanYear < totalNoOfYearsForLoan || (totalNoOfYearsForLoan > currentLoanYear - 1 && totalNoOfYearsForLoan < currentLoanYear))
+                if (currentLoanYear <= totalNoOfYearsForLoan || (totalNoOfYearsForLoan > currentLoanYear - 1 && totalNoOfYearsForLoan < currentLoanYear))
                 {
                     double loanAmt = double.Parse(_dtCashFlow.Rows[previousYearRowIndex][loan.TypeOfLoan].ToString());
                     decimal yearsForLoan = totalNoOfYearsForLoan -  Math.Truncate(totalNoOfYearsForLoan);

@@ -208,6 +208,7 @@ namespace FinancialPlannerClient.PlanOptions
         {
             cmbCurrentStsatusToGoal.Text = "";
             txtFundAllocation.Text = "";
+            txtFundAllocation.Tag = 0;
 
             cmbCurrentStsatusToGoal.Enabled = true;
             txtFundAllocation.Enabled = true;
@@ -252,6 +253,7 @@ namespace FinancialPlannerClient.PlanOptions
             cmbCurrentStsatusToGoal.Text = _goals.First(i => i.Id == int.Parse(dr["GoalId"].ToString())).Name;
             cmbCurrentStsatusToGoal.Tag = dr["GoalId"].ToString();
             txtFundAllocation.Text = dr["FundAllocation"].ToString();
+            txtFundAllocation.Tag = dr["Id"].ToString();
         }
 
         private DataRow getSelectedDataRow(DataGridView dtGridView, DataTable dataTable)
@@ -306,6 +308,7 @@ namespace FinancialPlannerClient.PlanOptions
                         _currentStatusToGoal.Add(currStatusToGoal);
                         calculateCurrentStatuFund();
                         fillCurrentStatusToGoalData();
+                        getGoalStatus();
                         cmbCurrentStsatusToGoal.Enabled = false;
                         txtFundAllocation.Enabled = false;
                     }
@@ -352,6 +355,7 @@ namespace FinancialPlannerClient.PlanOptions
                 new FinancialPlanner.Common.Model.PlanOptions.CurrentStatusToGoal();
             currStatusToGoal.PlannerId = planner.ID;
             currStatusToGoal.OptionId = this.optionId;
+            currStatusToGoal.Id = int.Parse(txtFundAllocation.Tag.ToString());
             currStatusToGoal.GoalId = int.Parse(cmbCurrentStsatusToGoal.Tag.ToString());
             currStatusToGoal.FundAllocation = double.Parse(txtFundAllocation.Text);
             currStatusToGoal.CreatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
@@ -386,6 +390,7 @@ namespace FinancialPlannerClient.PlanOptions
                         bool isResult = new CurrentStatusInfo().DeleteCurrentStatusToGoal(currStatusToGoal);
                         fillCurrentStatusToGoalData();
                         calculateCurrentStatuFund();
+                        getGoalStatus();
                     }
                 }
                 else
@@ -470,7 +475,7 @@ namespace FinancialPlannerClient.PlanOptions
         {
             if (gridViewAllocationOfCurrentStatus.SelectedRowsCount > 0)
             {
-                cmbCurrentStsatusToGoal.Tag = gridViewAllocationOfCurrentStatus.GetFocusedRowCellValue("ID").ToString();
+                cmbCurrentStsatusToGoal.Tag = gridViewAllocationOfCurrentStatus.GetFocusedRowCellValue("GoalID").ToString();
                 cmbCurrentStsatusToGoal.Text = gridViewAllocationOfCurrentStatus.GetFocusedRowCellValue("Goal").ToString();
                 txtFundAllocation.Text = gridViewAllocationOfCurrentStatus.GetFocusedRowCellValue("FundAllocation").ToString();
             }
@@ -480,9 +485,10 @@ namespace FinancialPlannerClient.PlanOptions
         {
             if (gridViewAllocationOfCurrentStatus.SelectedRowsCount > 0)
             {
-                cmbCurrentStsatusToGoal.Tag = gridViewAllocationOfCurrentStatus.GetFocusedRowCellValue("Id").ToString();
+                cmbCurrentStsatusToGoal.Tag = gridViewAllocationOfCurrentStatus.GetFocusedRowCellValue("GoalId").ToString();
                 cmbCurrentStsatusToGoal.Text = gridViewAllocationOfCurrentStatus.GetFocusedRowCellValue("GoalName").ToString();
                 txtFundAllocation.Text = gridViewAllocationOfCurrentStatus.GetFocusedRowCellValue("FundAllocation").ToString();
+                txtFundAllocation.Tag = gridViewAllocationOfCurrentStatus.GetFocusedRowCellValue("Id").ToString();
             }
         }
     }

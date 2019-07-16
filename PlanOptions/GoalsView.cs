@@ -38,7 +38,7 @@ namespace FinancialPlannerClient.PlanOptions
                 lblAmountTitle.Text = "Annual Expense (Today's Value):";
                 if (cmbCategory.Tag == null || cmbCategory.Tag.ToString() == "0")
                     setRetirementStartYearAndEndYear();
-                lblOtherAnnualRetirementExp.Text = "Other annual expense (Today's Value)";
+                lblOtherAnnualRetirementExp.Text = "Travelling && other annual expense (Today's Value)";
                 lblOtherAnnualRetirementExp.Visible = true;
                 txtOtherAnnualRetirementExp.Visible = true;
                 txtOtherAnnualRetirementExp.Text = "0";

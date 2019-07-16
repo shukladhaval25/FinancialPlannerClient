@@ -79,7 +79,7 @@ namespace FinancialPlannerClient.PlanOptions
             try
             {
                 fillPostRetirementCashFlowData();
-                lblEstimatedCorpusFundValue.Text = postRetirementCashFlowService.GetProposeEstimatedCorpusFund().ToString("##,###.##");
+                lblEstimatedCorpusFundValue.Text = postRetirementCashFlowService.GetProposeEstimatedCorpusFund().ToString("##,###.00");
                 lblEstimatedCorpusFundValue.Refresh();
             }
             catch (Exception ex)

@@ -107,6 +107,7 @@
             // 
             this.gridViewCurrentStatusGoal.GridControl = this.gridControlCurrentStatusGoal;
             this.gridViewCurrentStatusGoal.Name = "gridViewCurrentStatusGoal";
+            this.gridViewCurrentStatusGoal.OptionsBehavior.Editable = false;
             this.gridViewCurrentStatusGoal.OptionsBehavior.ReadOnly = true;
             this.gridViewCurrentStatusGoal.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gridViewCurrentStatusGoal_CellValueChanged);
             // 
@@ -141,6 +142,7 @@
             // 
             this.gridViewAllocationOfCurrentStatus.GridControl = this.gridControlAllocationOfCurrentStatus;
             this.gridViewAllocationOfCurrentStatus.Name = "gridViewAllocationOfCurrentStatus";
+            this.gridViewAllocationOfCurrentStatus.OptionsBehavior.Editable = false;
             this.gridViewAllocationOfCurrentStatus.OptionsBehavior.ReadOnly = true;
             this.gridViewAllocationOfCurrentStatus.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gridViewAllocationOfCurrentStatus_RowClick);
             this.gridViewAllocationOfCurrentStatus.SelectionChanged += new DevExpress.Data.SelectionChangedEventHandler(this.gridViewAllocationOfCurrentStatus_SelectionChanged);

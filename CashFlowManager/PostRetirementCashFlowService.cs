@@ -249,7 +249,7 @@ namespace FinancialPlannerClient.CashFlowManager
             #region "Expenses Calculation" 
             foreach (Goals goal in cashFlowCalculation.LstGoals)
             {
-                if (goal.Category == "Retirement")
+                if (goal.Category == "Retirement" || int.Parse(goal.StartYear) > this.retirementPlanningYearStartFrom)
                 {
                     DataColumn dcExp = new DataColumn(goal.Name, typeof(System.Double));
                     dcExp.ReadOnly = true;
@@ -265,7 +265,7 @@ namespace FinancialPlannerClient.CashFlowManager
             double totalExpenses = 0;
             foreach (Goals  goal in cashFlowCalculation.LstGoals)
             {
-                if (goal.Category == "Retirement")
+                if (goal.Category == "Retirement" || int.Parse(goal.StartYear) == years)
                 {
                     int forYears = years - this.planner.StartDate.Year;
                     double retExp = futureValue(goal.Amount + goal.OtherAmount, goal.InflationRate, forYears);
