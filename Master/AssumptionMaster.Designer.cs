@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AssumptionMasters));
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
             this.lblContactTitle = new DevExpress.XtraEditors.LabelControl();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
@@ -60,6 +60,8 @@
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.btnSaveAssumption = new DevExpress.XtraEditors.SimpleButton();
             this.btnCloseClientInfo = new DevExpress.XtraEditors.SimpleButton();
+            this.txtPostRetirementInvReturn = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
@@ -80,6 +82,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtPreRetirmentInflationRate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtRetirementAge.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLifeExpectancy.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPostRetirementInvReturn.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // lblContactTitle
@@ -98,13 +101,15 @@
             // 
             // groupControl1
             // 
+            this.groupControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.groupControl1.Controls.Add(this.groupControl4);
             this.groupControl1.Controls.Add(this.groupControl3);
             this.groupControl1.Controls.Add(this.groupControl2);
             this.groupControl1.Controls.Add(this.grpClient);
             this.groupControl1.Location = new System.Drawing.Point(13, 28);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(825, 374);
+            this.groupControl1.Size = new System.Drawing.Size(825, 392);
             this.groupControl1.TabIndex = 8;
             this.groupControl1.Text = "Assumption Master Details";
             // 
@@ -112,7 +117,7 @@
             // 
             this.groupControl4.Controls.Add(this.txtNonFinancialRaise);
             this.groupControl4.Controls.Add(this.labelControl15);
-            this.groupControl4.Location = new System.Drawing.Point(417, 202);
+            this.groupControl4.Location = new System.Drawing.Point(417, 233);
             this.groupControl4.Name = "groupControl4";
             this.groupControl4.Size = new System.Drawing.Size(390, 154);
             this.groupControl4.TabIndex = 7;
@@ -146,7 +151,7 @@
             this.groupControl3.Controls.Add(this.txtOutgoingExp);
             this.groupControl3.Controls.Add(this.labelControl11);
             this.groupControl3.Controls.Add(this.labelControl12);
-            this.groupControl3.Location = new System.Drawing.Point(21, 202);
+            this.groupControl3.Location = new System.Drawing.Point(21, 233);
             this.groupControl3.Name = "groupControl3";
             this.groupControl3.Size = new System.Drawing.Size(390, 154);
             this.groupControl3.TabIndex = 6;
@@ -206,7 +211,7 @@
             this.groupControl2.Controls.Add(this.labelControl8);
             this.groupControl2.Location = new System.Drawing.Point(417, 42);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(390, 154);
+            this.groupControl2.Size = new System.Drawing.Size(390, 185);
             this.groupControl2.TabIndex = 5;
             this.groupControl2.Text = "Investment Return Related";
             // 
@@ -278,6 +283,8 @@
             // 
             // grpClient
             // 
+            this.grpClient.Controls.Add(this.txtPostRetirementInvReturn);
+            this.grpClient.Controls.Add(this.labelControl5);
             this.grpClient.Controls.Add(this.txtPostRetirementInfationRate);
             this.grpClient.Controls.Add(this.labelControl4);
             this.grpClient.Controls.Add(this.txtPreRetirmentInflationRate);
@@ -288,14 +295,14 @@
             this.grpClient.Controls.Add(this.labelControl2);
             this.grpClient.Location = new System.Drawing.Point(21, 42);
             this.grpClient.Name = "grpClient";
-            this.grpClient.Size = new System.Drawing.Size(390, 154);
+            this.grpClient.Size = new System.Drawing.Size(390, 185);
             this.grpClient.TabIndex = 4;
             this.grpClient.Text = "Client && Spouse Related";
             // 
             // txtPostRetirementInfationRate
             // 
             this.txtPostRetirementInfationRate.EditValue = "";
-            this.txtPostRetirementInfationRate.Location = new System.Drawing.Point(239, 113);
+            this.txtPostRetirementInfationRate.Location = new System.Drawing.Point(257, 113);
             this.txtPostRetirementInfationRate.Name = "txtPostRetirementInfationRate";
             this.txtPostRetirementInfationRate.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.txtPostRetirementInfationRate.Properties.MaxLength = 6;
@@ -317,7 +324,7 @@
             // txtPreRetirmentInflationRate
             // 
             this.txtPreRetirmentInflationRate.EditValue = "";
-            this.txtPreRetirmentInflationRate.Location = new System.Drawing.Point(239, 87);
+            this.txtPreRetirmentInflationRate.Location = new System.Drawing.Point(257, 87);
             this.txtPreRetirmentInflationRate.Name = "txtPreRetirmentInflationRate";
             this.txtPreRetirmentInflationRate.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.txtPreRetirmentInflationRate.Properties.MaxLength = 6;
@@ -339,7 +346,7 @@
             // txtRetirementAge
             // 
             this.txtRetirementAge.EditValue = "";
-            this.txtRetirementAge.Location = new System.Drawing.Point(239, 35);
+            this.txtRetirementAge.Location = new System.Drawing.Point(257, 35);
             this.txtRetirementAge.Name = "txtRetirementAge";
             this.txtRetirementAge.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.txtRetirementAge.Properties.MaxLength = 2;
@@ -354,7 +361,7 @@
             // txtLifeExpectancy
             // 
             this.txtLifeExpectancy.EditValue = "";
-            this.txtLifeExpectancy.Location = new System.Drawing.Point(239, 61);
+            this.txtLifeExpectancy.Location = new System.Drawing.Point(257, 61);
             this.txtLifeExpectancy.Name = "txtLifeExpectancy";
             this.txtLifeExpectancy.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.txtLifeExpectancy.Properties.MaxLength = 2;
@@ -384,40 +391,64 @@
             // 
             // btnSaveAssumption
             // 
-            this.btnSaveAssumption.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnSaveAssumption.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnSaveAssumption.Image = ((System.Drawing.Image)(resources.GetObject("btnSaveAssumption.Image")));
-            this.btnSaveAssumption.Location = new System.Drawing.Point(367, 408);
+            this.btnSaveAssumption.Location = new System.Drawing.Point(367, 426);
             this.btnSaveAssumption.Name = "btnSaveAssumption";
             this.btnSaveAssumption.Size = new System.Drawing.Size(57, 23);
-            toolTipTitleItem1.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
-            toolTipTitleItem1.Appearance.Options.UseImage = true;
-            toolTipTitleItem1.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem1.Image")));
-            toolTipTitleItem1.Text = "Save";
-            toolTipItem1.LeftIndent = 6;
-            toolTipItem1.Text = "To save client contact infroamtion click here.";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            superToolTip1.Items.Add(toolTipItem1);
-            this.btnSaveAssumption.SuperTip = superToolTip1;
+            toolTipTitleItem2.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            toolTipTitleItem2.Appearance.Options.UseImage = true;
+            toolTipTitleItem2.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem2.Image")));
+            toolTipTitleItem2.Text = "Save";
+            toolTipItem2.LeftIndent = 6;
+            toolTipItem2.Text = "To save client contact infroamtion click here.";
+            superToolTip2.Items.Add(toolTipTitleItem2);
+            superToolTip2.Items.Add(toolTipItem2);
+            this.btnSaveAssumption.SuperTip = superToolTip2;
             this.btnSaveAssumption.TabIndex = 13;
             this.btnSaveAssumption.Text = "Save";
             this.btnSaveAssumption.Click += new System.EventHandler(this.btnSaveAssumption_Click);
             // 
             // btnCloseClientInfo
             // 
-            this.btnCloseClientInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCloseClientInfo.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnCloseClientInfo.Image = ((System.Drawing.Image)(resources.GetObject("btnCloseClientInfo.Image")));
-            this.btnCloseClientInfo.Location = new System.Drawing.Point(430, 408);
+            this.btnCloseClientInfo.Location = new System.Drawing.Point(430, 426);
             this.btnCloseClientInfo.Name = "btnCloseClientInfo";
             this.btnCloseClientInfo.Size = new System.Drawing.Size(62, 23);
             this.btnCloseClientInfo.TabIndex = 23;
             this.btnCloseClientInfo.Text = "Close";
             this.btnCloseClientInfo.Click += new System.EventHandler(this.btnCloseClientInfo_Click);
             // 
+            // txtPostRetirementInvReturn
+            // 
+            this.txtPostRetirementInvReturn.EditValue = "";
+            this.txtPostRetirementInvReturn.Location = new System.Drawing.Point(257, 139);
+            this.txtPostRetirementInvReturn.Name = "txtPostRetirementInvReturn";
+            this.txtPostRetirementInvReturn.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.txtPostRetirementInvReturn.Properties.MaxLength = 6;
+            this.txtPostRetirementInvReturn.Properties.NullValuePrompt = "Please enter value for this field its require.";
+            this.txtPostRetirementInvReturn.Properties.ValidateOnEnterKey = true;
+            this.txtPostRetirementInvReturn.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtPostRetirementInvReturn.Size = new System.Drawing.Size(100, 20);
+            this.txtPostRetirementInvReturn.TabIndex = 9;
+            this.txtPostRetirementInvReturn.Validating += new System.ComponentModel.CancelEventHandler(this.txtPostRetirementInvReturn_Validating);
+            // 
+            // labelControl5
+            // 
+            this.labelControl5.AutoEllipsis = true;
+            this.labelControl5.LineVisible = true;
+            this.labelControl5.Location = new System.Drawing.Point(61, 142);
+            this.labelControl5.Name = "labelControl5";
+            this.labelControl5.Size = new System.Drawing.Size(192, 13);
+            this.labelControl5.TabIndex = 8;
+            this.labelControl5.Text = "Post Retirement investment return (%):";
+            // 
             // AssumptionMasters
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(848, 437);
+            this.ClientSize = new System.Drawing.Size(848, 455);
             this.Controls.Add(this.btnCloseClientInfo);
             this.Controls.Add(this.btnSaveAssumption);
             this.Controls.Add(this.groupControl1);
@@ -451,6 +482,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtPreRetirmentInflationRate.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtRetirementAge.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLifeExpectancy.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPostRetirementInvReturn.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -485,6 +517,8 @@
         private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraEditors.SimpleButton btnSaveAssumption;
         private DevExpress.XtraEditors.SimpleButton btnCloseClientInfo;
+        private DevExpress.XtraEditors.TextEdit txtPostRetirementInvReturn;
+        private DevExpress.XtraEditors.LabelControl labelControl5;
     }
 }
 

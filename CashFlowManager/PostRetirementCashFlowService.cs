@@ -18,7 +18,7 @@ namespace FinancialPlannerClient.CashFlowManager
         double totlaCorpusFund = 0;
         double corpusFundBalance;
         double proposeEstimatedCorpusFundRequire = 0;
-        double invReturnRate = 6;
+        double invReturnRate = 0;
         private DataTable _dtRetirementCashFlow;
 
         public PostRetirementCashFlowService(Planner planner,
@@ -27,6 +27,7 @@ namespace FinancialPlannerClient.CashFlowManager
             this.planner = planner;         
             this.cashFlowService = cashFlowService;
             loadPlannerAssumption();
+            double.TryParse( plannerAssumption.PostRetirementInvestmentReturnRate.ToString(),out invReturnRate);
             this.cashFlowCalculation = cashFlowService.GetCashFlowCalculation();
             //generateCashFlowCalculationData();
             this.retirementPlanningYearStartFrom = getRetirementYear();

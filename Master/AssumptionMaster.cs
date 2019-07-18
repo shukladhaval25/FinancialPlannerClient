@@ -101,6 +101,7 @@ namespace FinancialPlannerClient.Master
             assumptionMaster.UpdatedBy = Program.CurrentUser.Id;
             assumptionMaster.UpdatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
             assumptionMaster.MachineName = System.Environment.MachineName;
+            assumptionMaster.PostRetirementInvestmentReturnRate = decimal.Parse(txtPostRetirementInvReturn.Text);
         }
 
         private void fillupAssumptionInfo()
@@ -116,6 +117,7 @@ namespace FinancialPlannerClient.Master
             txtDebt.Text = assumptionMaster.DebtReturnRate.ToString();
             txtOthers.Text = assumptionMaster.OtherReturnRate.ToString();
             txtNonFinancialRaise.Text = assumptionMaster.NonFinancialRateOfReturn.ToString();
+            txtPostRetirementInvReturn.Text = assumptionMaster.PostRetirementInvestmentReturnRate.ToString();
         }
 
         private void AssumptionMasters_Load(object sender, EventArgs e)
@@ -127,6 +129,11 @@ namespace FinancialPlannerClient.Master
         private void btnCloseClientInfo_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void txtPostRetirementInvReturn_Validating(object sender, CancelEventArgs e)
+        {
+            e.Cancel = !FinancialPlanner.Common.Validation.IsDecimal(txtPostRetirementInfationRate.Text);
         }
     }
 }

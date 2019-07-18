@@ -60,6 +60,7 @@ namespace FinancialPlannerClient.PlanOptions
                 txtIncomeRiseForClient.Text = plannerAssumption.ClientIncomeRise.ToString();
                 txtIncomeRiseForSpouse.Text = plannerAssumption.SpouseIncomeRise.ToString();
                 txtOngoingExpRise.Text = plannerAssumption.OngoingExpRise.ToString();
+                txtPostRetirementInvestmentReturnRate.Text = plannerAssumption.PostRetirementInvestmentReturnRate.ToString();
             }
             else
                 btnAdd.Visible = true;
@@ -128,6 +129,7 @@ namespace FinancialPlannerClient.PlanOptions
             plannerAssumption.ClientIncomeRise = decimal.Parse(txtIncomeRiseForClient.Text);
             plannerAssumption.SpouseIncomeRise = decimal.Parse(txtIncomeRiseForSpouse.Text);
             plannerAssumption.OngoingExpRise = decimal.Parse(txtOngoingExpRise.Text);
+            plannerAssumption.PostRetirementInvestmentReturnRate = decimal.Parse(txtPostRetirementInvestmentReturnRate.Text);
 
             return plannerAssumption;
         }
@@ -156,6 +158,7 @@ namespace FinancialPlannerClient.PlanOptions
             txtIncomeRiseForClient.Text = assumptionMaster.IncomeRaiseRatio.ToString();
             txtIncomeRiseForSpouse.Text = assumptionMaster.IncomeRaiseRatio.ToString();
             txtOngoingExpRise.Text = assumptionMaster.OngoingExpRise.ToString();
+            txtPostRetirementInvestmentReturnRate.Text = assumptionMaster.PostRetirementInvestmentReturnRate.ToString();
         }
 
         private void txtSpouseLifeExp_Validating(object sender, CancelEventArgs e)
