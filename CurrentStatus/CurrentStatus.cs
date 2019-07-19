@@ -2419,6 +2419,11 @@ namespace FinancialPlannerClient.CurrentStatus
 
         private void btnPersonalDetailSave_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtPolicyName.Text))
+            {
+                MessageBox.Show("Policy Name should be not be blank.");
+                return;
+            }
             try
             {
                 LifeInsuranceInfo lifeInsuranceInfo = new LifeInsuranceInfo();

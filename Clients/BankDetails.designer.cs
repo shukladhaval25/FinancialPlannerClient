@@ -357,7 +357,9 @@
             this.cmbAccountType.FormattingEnabled = true;
             this.cmbAccountType.Items.AddRange(new object[] {
             "SA",
-            "CA"});
+            "CA",
+            "NRE",
+            "NRO"});
             this.cmbAccountType.Location = new System.Drawing.Point(153, 125);
             this.cmbAccountType.Name = "cmbAccountType";
             this.cmbAccountType.Size = new System.Drawing.Size(144, 21);

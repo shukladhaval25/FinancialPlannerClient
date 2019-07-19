@@ -35,18 +35,25 @@ namespace FinancialPlannerClient.PlanOptions
 
         private void CashFlowView_Load(object sender, EventArgs e)
         {
-            CashFlow cf = cashFlowService.GetCashFlow(_optionId);
-            _dtcashFlow = cashFlowService.GenerateCashFlow(this._clientId, this._planId, _riskProfileId);
-            grdSplitCashFlow.DataSource = _dtcashFlow;
-            //grdSplitCashFlow.CreateSplitContainer();
-            gridSplitContainerViewCashFlow.Columns["Id"].Visible = false;
-            gridSplitContainerViewCashFlow.Columns["StartYear"].Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
-            foreach (DevExpress.XtraGrid.Columns.GridColumn column in gridSplitContainerViewCashFlow.Columns)
+            try
             {
-                if (column.FieldName == "Total Post Tax Income")
-                    column.ToolTip = "Total Income - Total Tax Deduction";
-                if (column.FieldName == "Surplus Amount")
-                    column.ToolTip = "Total Post Tax Income - (Total Annual Expenses + Total Annual Loans)";               
+                CashFlow cf = cashFlowService.GetCashFlow(_optionId);
+                _dtcashFlow = cashFlowService.GenerateCashFlow(this._clientId, this._planId, _riskProfileId);
+                grdSplitCashFlow.DataSource = _dtcashFlow;
+                //grdSplitCashFlow.CreateSplitContainer();
+                gridSplitContainerViewCashFlow.Columns["Id"].Visible = false;
+                gridSplitContainerViewCashFlow.Columns["StartYear"].Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
+                foreach (DevExpress.XtraGrid.Columns.GridColumn column in gridSplitContainerViewCashFlow.Columns)
+                {
+                    if (column.FieldName == "Total Post Tax Income")
+                        column.ToolTip = "Total Income - Total Tax Deduction";
+                    if (column.FieldName == "Surplus Amount")
+                        column.ToolTip = "Total Post Tax Income - (Total Annual Expenses + Total Annual Loans)";
+                }
+            }
+            catch(Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("Exception:" + ex.ToString());
             }
         }
     }

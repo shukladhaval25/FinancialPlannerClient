@@ -329,7 +329,7 @@ namespace FinancialPlannerClient.PlanOptions
         private double getGoalCurrentValue()
         {
             if (_goal != null)
-                return _goal.Amount;
+                return _goal.Amount + _goal.OtherAmount;
 
             return 0;
         }
@@ -342,7 +342,7 @@ namespace FinancialPlannerClient.PlanOptions
                 if (_goal.Category != "Retirement" )
                 {
                     int years = getRemainingYearsFromPlanStartYear();
-                    futureValueOfGoal = futureValue(_goal.Amount, _goal.InflationRate, years);
+                    futureValueOfGoal = futureValue(_goal.Amount + _goal.OtherAmount, _goal.InflationRate, years);
                 }
                 else
                 {

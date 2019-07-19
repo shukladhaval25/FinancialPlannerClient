@@ -47,6 +47,7 @@ namespace FinancialPlannerClient.PlanOptions
                 txtEPFAmt.Text = _csCal.EPFValue.ToString();
                 txtSSAmt.Text = _csCal.SSValue.ToString();
                 txtSCSSValue.Text = _csCal.SCSSValue.ToString();
+                txtNSCAmt.Text = _csCal.NscValue.ToString();
                 txtDebOtherAmt.Text = _csCal.OtherDebtValue.ToString();
                 txtBondsAmt.Text = _csCal.BondsValue.ToString();
                 double totalDebtAmount = getTotalDebtAmount();
@@ -101,7 +102,7 @@ namespace FinancialPlannerClient.PlanOptions
             return _csCal.DebtMFValue + _csCal.FdValue +
                             _csCal.RdValue + _csCal.SaValue + _csCal.NpsDebtValue +
                             _csCal.PPFValue + _csCal.EPFValue + _csCal.SSValue + _csCal.BondsValue +
-                            _csCal.SCSSValue + _csCal.OtherDebtValue;
+                            _csCal.SCSSValue + _csCal.OtherDebtValue + _csCal.NscValue;
         }
     }
 }

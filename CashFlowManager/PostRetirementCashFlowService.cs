@@ -147,11 +147,16 @@ namespace FinancialPlannerClient.CashFlowManager
             {
                 DataColumn dcIncome = new DataColumn("(" + income.IncomeBy + ") " + income.Source, typeof(System.Double));
                 dcIncome.ReadOnly = true;
-                _dtRetirementCashFlow.Columns.Add(dcIncome);
+                if (!_dtRetirementCashFlow.Columns.Contains(dcIncome.Caption))
+                    _dtRetirementCashFlow.Columns.Add(dcIncome);
+
                 DataColumn dcIncomeTax = new DataColumn(dcIncome.ColumnName + " - Income Tax", typeof(System.Decimal));
-                _dtRetirementCashFlow.Columns.Add(dcIncomeTax);
+                if (!_dtRetirementCashFlow.Columns.Contains(dcIncomeTax.Caption))
+                    _dtRetirementCashFlow.Columns.Add(dcIncomeTax);
+
                 DataColumn postTaxIncome = new DataColumn(dcIncome.ColumnName + " - Post Tax", typeof(System.Double));
-                _dtRetirementCashFlow.Columns.Add(postTaxIncome);
+                if (!_dtRetirementCashFlow.Columns.Contains(postTaxIncome.Caption))
+                    _dtRetirementCashFlow.Columns.Add(postTaxIncome);
             }
 
             DataColumn dcTotal = new DataColumn("Total Income", typeof(System.Double));

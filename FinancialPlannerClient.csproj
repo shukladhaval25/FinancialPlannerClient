@@ -56,6 +56,7 @@
     </Reference>
     <Reference Include="DevExpress.BonusSkins.v16.2, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Charts.v16.2.Core, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Dashboard.v16.2.Core, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Data.v16.2, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.DataAccess.v16.2, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.DataAccess.v16.2.UI, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -224,6 +225,12 @@
     </Compile>
     <Compile Include="Clients\Clientdashboard.Designer.cs">
       <DependentUpon>Clientdashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Clients\MailService\MailManagerDeskBoard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clients\MailService\MailManagerDeskBoard.Designer.cs">
+      <DependentUpon>MailManagerDeskBoard.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\ProcessContoller.cs">
       <SubType>UserControl</SubType>
@@ -777,6 +784,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Clients\LoanSchedule.resx">
       <DependentUpon>LoanSchedule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Clients\MailService\MailManagerDeskBoard.resx">
+      <DependentUpon>MailManagerDeskBoard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\ProcessContoller.resx">
       <DependentUpon>ProcessContoller.cs</DependentUpon>
