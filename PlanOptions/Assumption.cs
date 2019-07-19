@@ -187,5 +187,21 @@ namespace FinancialPlannerClient.PlanOptions
                 return;
             }
         }
+
+        private void txtClientLifeExp_Validating(object sender, CancelEventArgs e)
+        {
+            e.Cancel = !FinancialPlanner.Common.Validation.IsDigit(txtClientLifeExp.Text);
+            if (!e.Cancel)
+            {
+                int retirementAge, lifeExpectency = 0;
+                int.TryParse(txtClientRetAge.Text, out retirementAge);
+                int.TryParse(txtClientLifeExp.Text, out lifeExpectency);
+                if (lifeExpectency < retirementAge)
+                {
+                    DevExpress.XtraEditors.XtraMessageBox.Show("Life expectancy value must be greater than retirement age.", "Invalid Value", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    e.Cancel = true;
+                }
+            }
+        }
     }
 }

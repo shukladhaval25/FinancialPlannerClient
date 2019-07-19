@@ -26,6 +26,17 @@ namespace FinancialPlannerClient.Master
         private void txtLifeExpectancy_Validating(object sender, CancelEventArgs e)
         {
             e.Cancel = !FinancialPlanner.Common.Validation.IsDigit(txtLifeExpectancy.Text);
+            if (!e.Cancel)
+            {
+                int retirementAge,lifeExpectency = 0;
+                int.TryParse(txtRetirementAge.Text, out retirementAge);
+                int.TryParse(txtLifeExpectancy.Text, out lifeExpectency);
+                if (lifeExpectency < retirementAge)
+                {
+                    DevExpress.XtraEditors.XtraMessageBox.Show("Life expectancy value must be greater than retirement age.","Invalid Value", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    e.Cancel = true;
+                }                
+            }
         }
 
         private void txtPreRetirmentInflationRate_Validating(object sender, CancelEventArgs e)

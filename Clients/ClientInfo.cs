@@ -1283,6 +1283,11 @@ namespace FinancialPlannerClient.Clients
 
         private void btnSaveLoan_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtTypeOfLoan.Text))
+            {
+                DevExpress.XtraEditors.XtraMessageBox.Show("Loan type value should not be blank.", "Invalid Value", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             LoanInfo loanInfo = new LoanInfo();
             Loan loan = getLaonData();
             bool isSaved = false;
@@ -1507,6 +1512,11 @@ namespace FinancialPlannerClient.Clients
 
         private void btnSaveIncome_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(cmbIncomeSource.Text) || string.IsNullOrEmpty(cmbIncomeBy.Text))
+            {
+                DevExpress.XtraEditors.XtraMessageBox.Show("Income source and income by field should not be blank.", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             IncomeInfo incomeInfo = new IncomeInfo();
             Income income = getIncomeData();
             bool isSaved = false;
@@ -1700,6 +1710,11 @@ namespace FinancialPlannerClient.Clients
 
         private void btnSaveExp_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(cmbExpCategory.Text) || string.IsNullOrEmpty(txtExpItem.Text))
+            {
+                DevExpress.XtraEditors.XtraMessageBox.Show("Expense category and expence type should not be allow blank.", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             ExpensesInfo expensesInfo = new ExpensesInfo();
             Expenses expenses = getExpensesData();
             bool isSaved = false;

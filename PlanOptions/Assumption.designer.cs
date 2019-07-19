@@ -38,6 +38,9 @@
             DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pnlAssumption = new System.Windows.Forms.Panel();
+            this.txtPostRetirementInvestmentReturnRate = new DevExpress.XtraEditors.TextEdit();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
             this.btnAdd = new DevExpress.XtraEditors.SimpleButton();
             this.txtOngoingExpRise = new DevExpress.XtraEditors.TextEdit();
             this.label19 = new System.Windows.Forms.Label();
@@ -85,11 +88,9 @@
             this.label9 = new System.Windows.Forms.Label();
             this.txtPlannerAssumptionDescription = new DevExpress.XtraEditors.MemoEdit();
             this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
-            this.txtPostRetirementInvestmentReturnRate = new DevExpress.XtraEditors.TextEdit();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.pnlAssumption.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPostRetirementInvestmentReturnRate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtOngoingExpRise.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtOtherReturn.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDebtReturn.Properties)).BeginInit();
@@ -106,7 +107,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtClientRetAge.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPlannerAssumptionDescription.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPostRetirementInvestmentReturnRate.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -155,6 +155,33 @@
             this.pnlAssumption.Name = "pnlAssumption";
             this.pnlAssumption.Size = new System.Drawing.Size(724, 609);
             this.pnlAssumption.TabIndex = 0;
+            // 
+            // txtPostRetirementInvestmentReturnRate
+            // 
+            this.txtPostRetirementInvestmentReturnRate.Location = new System.Drawing.Point(282, 472);
+            this.txtPostRetirementInvestmentReturnRate.Name = "txtPostRetirementInvestmentReturnRate";
+            this.txtPostRetirementInvestmentReturnRate.Size = new System.Drawing.Size(100, 20);
+            this.txtPostRetirementInvestmentReturnRate.TabIndex = 11;
+            // 
+            // label24
+            // 
+            this.label24.AutoEllipsis = true;
+            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.Location = new System.Drawing.Point(53, 470);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(219, 18);
+            this.label24.TabIndex = 69;
+            this.label24.Text = "7. Post Retirement Investment Return:";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.Location = new System.Drawing.Point(388, 473);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(18, 15);
+            this.label25.TabIndex = 68;
+            this.label25.Text = "%";
             // 
             // btnAdd
             // 
@@ -408,6 +435,7 @@
             this.txtClientLifeExp.Name = "txtClientLifeExp";
             this.txtClientLifeExp.Size = new System.Drawing.Size(100, 20);
             this.txtClientLifeExp.TabIndex = 2;
+            this.txtClientLifeExp.Validating += new System.ComponentModel.CancelEventHandler(this.txtClientLifeExp_Validating);
             // 
             // txtSpouseRetAge
             // 
@@ -635,33 +663,6 @@
             this.txtPlannerAssumptionDescription.Size = new System.Drawing.Size(599, 53);
             this.txtPlannerAssumptionDescription.TabIndex = 12;
             // 
-            // txtPostRetirementInvestmentReturnRate
-            // 
-            this.txtPostRetirementInvestmentReturnRate.Location = new System.Drawing.Point(282, 472);
-            this.txtPostRetirementInvestmentReturnRate.Name = "txtPostRetirementInvestmentReturnRate";
-            this.txtPostRetirementInvestmentReturnRate.Size = new System.Drawing.Size(100, 20);
-            this.txtPostRetirementInvestmentReturnRate.TabIndex = 11;
-            // 
-            // label24
-            // 
-            this.label24.AutoEllipsis = true;
-            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(53, 470);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(219, 18);
-            this.label24.TabIndex = 69;
-            this.label24.Text = "7. Post Retirement Investment Return:";
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(388, 473);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(18, 15);
-            this.label25.TabIndex = 68;
-            this.label25.Text = "%";
-            // 
             // Assumption
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -677,6 +678,7 @@
             this.groupBox1.ResumeLayout(false);
             this.pnlAssumption.ResumeLayout(false);
             this.pnlAssumption.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPostRetirementInvestmentReturnRate.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtOngoingExpRise.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtOtherReturn.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDebtReturn.Properties)).EndInit();
@@ -694,7 +696,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtClientRetAge.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPlannerAssumptionDescription.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPostRetirementInvestmentReturnRate.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
