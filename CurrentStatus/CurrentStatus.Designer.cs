@@ -2894,7 +2894,7 @@
             this.txtSharesMarketPrice.Name = "txtSharesMarketPrice";
             this.txtSharesMarketPrice.Size = new System.Drawing.Size(102, 22);
             this.txtSharesMarketPrice.TabIndex = 5;
-            this.txtSharesMarketPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSharesFaceValue_KeyPress);
+            this.txtSharesMarketPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNav_KeyPress);
             this.txtSharesMarketPrice.Leave += new System.EventHandler(this.txtSharesMarketPrice_Leave);
             // 
             // label64
@@ -2933,7 +2933,7 @@
             this.txtSharesFaceValue.Size = new System.Drawing.Size(102, 22);
             this.txtSharesFaceValue.TabIndex = 3;
             this.txtSharesFaceValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtSharesFaceValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSharesFaceValue_KeyPress);
+            this.txtSharesFaceValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNav_KeyPress);
             // 
             // cmbSharesGoal
             // 
@@ -3217,6 +3217,7 @@
             this.txtBondsFaceValue.Name = "txtBondsFaceValue";
             this.txtBondsFaceValue.Size = new System.Drawing.Size(102, 22);
             this.txtBondsFaceValue.TabIndex = 7;
+            this.txtBondsFaceValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNav_KeyPress);
             // 
             // label65
             // 
@@ -3244,6 +3245,7 @@
             this.txtBondsRate.Size = new System.Drawing.Size(120, 22);
             this.txtBondsRate.TabIndex = 4;
             this.txtBondsRate.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtBondsRate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNav_KeyPress);
             this.txtBondsRate.Leave += new System.EventHandler(this.txtBondsRate_Leave);
             // 
             // txtBondsFolioNo
@@ -5271,6 +5273,7 @@
             this.txtNSC_ROI.Size = new System.Drawing.Size(249, 22);
             this.txtNSC_ROI.TabIndex = 9;
             this.txtNSC_ROI.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtNSC_ROI.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNav_KeyPress);
             // 
             // label189
             // 
@@ -5360,7 +5363,7 @@
             this.txtNSCRate.Size = new System.Drawing.Size(249, 22);
             this.txtNSCRate.TabIndex = 4;
             this.txtNSCRate.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtNSCRate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNSCRate_KeyPress);
+            this.txtNSCRate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNav_KeyPress);
             this.txtNSCRate.Leave += new System.EventHandler(this.txtNSCRate_Leave);
             // 
             // label152
@@ -5583,6 +5586,7 @@
             this.txtULIP_ROI.Size = new System.Drawing.Size(267, 22);
             this.txtULIP_ROI.TabIndex = 17;
             this.txtULIP_ROI.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtULIP_ROI.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNav_KeyPress);
             // 
             // label190
             // 
@@ -5775,7 +5779,7 @@
             this.txtULIPNav.Size = new System.Drawing.Size(102, 22);
             this.txtULIPNav.TabIndex = 5;
             this.txtULIPNav.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtULIPNav.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtULIPNav_KeyPress);
+            this.txtULIPNav.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNav_KeyPress);
             this.txtULIPNav.Leave += new System.EventHandler(this.txtULIPNav_Leave);
             // 
             // cmbULIPGoal
@@ -6012,6 +6016,7 @@
             this.txtEPF_ROI.Size = new System.Drawing.Size(134, 22);
             this.txtEPF_ROI.TabIndex = 8;
             this.txtEPF_ROI.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtEPF_ROI.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNav_KeyPress);
             // 
             // label191
             // 

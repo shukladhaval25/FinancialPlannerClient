@@ -1185,7 +1185,7 @@ namespace FinancialPlannerClient.CurrentStatus
 
         private void txtNSCRate_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+
         }
 
         private void txtNSCUnits_KeyPress(object sender, KeyPressEventArgs e)
@@ -1560,7 +1560,7 @@ namespace FinancialPlannerClient.CurrentStatus
 
         private void txtULIPNav_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+
         }
 
         private void txtULIPNav_Leave(object sender, EventArgs e)
