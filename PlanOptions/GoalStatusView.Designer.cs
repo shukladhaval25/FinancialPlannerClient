@@ -67,6 +67,7 @@
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.txtTotalCurrentStatusSurplusValue = new DevExpress.XtraEditors.TextEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.lblInformation = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlCurrentStatusGoal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCurrentStatusGoal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFundAllocation.Properties)).BeginInit();
@@ -133,7 +134,7 @@
             this.gridControlAllocationOfCurrentStatus.Location = new System.Drawing.Point(5, 23);
             this.gridControlAllocationOfCurrentStatus.MainView = this.gridViewAllocationOfCurrentStatus;
             this.gridControlAllocationOfCurrentStatus.Name = "gridControlAllocationOfCurrentStatus";
-            this.gridControlAllocationOfCurrentStatus.Size = new System.Drawing.Size(457, 260);
+            this.gridControlAllocationOfCurrentStatus.Size = new System.Drawing.Size(457, 241);
             this.gridControlAllocationOfCurrentStatus.TabIndex = 14;
             this.gridControlAllocationOfCurrentStatus.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewAllocationOfCurrentStatus});
@@ -176,6 +177,7 @@
             // 
             // grpFundAllocation
             // 
+            this.grpFundAllocation.Controls.Add(this.lblInformation);
             this.grpFundAllocation.Controls.Add(this.btnClosePlanoptions);
             this.grpFundAllocation.Controls.Add(this.btnSavePlanoption);
             this.grpFundAllocation.Controls.Add(this.btnDelete);
@@ -237,7 +239,7 @@
             // 
             this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
-            this.btnDelete.Location = new System.Drawing.Point(68, 289);
+            this.btnDelete.Location = new System.Drawing.Point(67, 272);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(25, 23);
             toolTipTitleItem3.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
@@ -257,7 +259,7 @@
             // 
             this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEdit.Image = ((System.Drawing.Image)(resources.GetObject("btnEdit.Image")));
-            this.btnEdit.Location = new System.Drawing.Point(37, 289);
+            this.btnEdit.Location = new System.Drawing.Point(36, 272);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(25, 23);
             toolTipTitleItem4.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image3")));
@@ -277,7 +279,7 @@
             // 
             this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
-            this.btnAdd.Location = new System.Drawing.Point(7, 289);
+            this.btnAdd.Location = new System.Drawing.Point(6, 272);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(25, 23);
             toolTipTitleItem5.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image4")));
@@ -359,6 +361,18 @@
             this.labelControl1.TabIndex = 0;
             this.labelControl1.Text = "Total Current Status Surplus :";
             // 
+            // lblInformation
+            // 
+            this.lblInformation.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInformation.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.lblInformation.Appearance.Options.UseFont = true;
+            this.lblInformation.Appearance.Options.UseForeColor = true;
+            this.lblInformation.Location = new System.Drawing.Point(45, 305);
+            this.lblInformation.Name = "lblInformation";
+            this.lblInformation.Size = new System.Drawing.Size(395, 14);
+            this.lblInformation.TabIndex = 29;
+            this.lblInformation.Text = "(Its require to reopen plan to reflact changes in fund allocation)";
+            // 
             // GoalStatusView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -417,6 +431,7 @@
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.TextEdit txtTotalCurrentStatusSurplusValue;
         private DevExpress.XtraEditors.LabelControl labelControl1;
+        private DevExpress.XtraEditors.LabelControl lblInformation;
     }
 }
 

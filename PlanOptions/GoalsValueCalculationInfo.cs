@@ -374,7 +374,8 @@ namespace FinancialPlannerClient.PlanOptions
             foreach (FinancialPlanner.Common.Model.PlanOptions.CurrentStatusToGoal currentStatusToGoal
                 in currentStatusToGoals)
             {
-                totalCurrentStatuToGoalValue = totalCurrentStatuToGoalValue + currentStatusToGoal.FundAllocation;
+                if (currentStatusToGoal.GoalId == _goal.Id)
+                    totalCurrentStatuToGoalValue = totalCurrentStatuToGoalValue + currentStatusToGoal.FundAllocation;
             }
             totalCurrentStatuToGoalValue = futureValue(totalCurrentStatuToGoalValue,
                 CURREN_STATUS_TO_GOAL_MAPPED_RETURN_REATE_IN_PERCENTAGE, getRemainingYearsFromPlanStartYear());
