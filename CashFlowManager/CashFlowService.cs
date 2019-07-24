@@ -461,143 +461,164 @@ namespace FinancialPlannerClient.CashFlowManager
                 dr["ID"] = rowId;
                 dr["StartYear"] = _planner.StartDate.Year;
 
-                #region "Add Incomes"
-                double totalIncome = 0;
-                double totalpostTaxIncome = 0;
-                double totalTaxAmt = 0;
-                foreach (Income income in _cashFlowCalculation.LstIncomes)
-                {
-                    if (income.StartYear == _planner.StartDate.Year.ToString())
-                    {
-                        dr["(" + income.IncomeBy + ") " + income.Source] = income.Amount;
-                        totalIncome = totalIncome + income.Amount;
-                        dr["(" + income.IncomeBy + ") " + income.Source + " - Income Tax"] = income.IncomeTax;
-                        double taxAmt = (income.Amount * income.IncomeTax) / 100;
-                        totalTaxAmt = totalTaxAmt + taxAmt;
-                        dr["(" + income.IncomeBy + ") " + income.Source + " - Post Tax"] = income.Amount - taxAmt;
-                        totalpostTaxIncome = totalpostTaxIncome + (income.Amount - taxAmt);
-                    }
-                }
-                dr["Total Income"] = totalIncome;
-                dr["Total Tax Deduction"] = totalTaxAmt;
-                dr["Total Post Tax Income"] = totalpostTaxIncome;
-                #endregion
-
-                #region "Add Expenses"
-
-                double totalExpenses = 0;
-                foreach (Expenses exp in _cashFlowCalculation.LstExpenses)
-                {
-
-                    double expAmt = (exp.OccuranceType == ExpenseType.Monthly) ? exp.Amount * 12 : exp.Amount;
-                    dr[exp.Item] = expAmt;
-                    totalExpenses = totalExpenses + expAmt;
-                }
-
-                //Life Insurance
-                foreach (LifeInsurance lifeInsurance in _cashFlowCalculation.LstLifeInsurances)
-                {
-                    if (_planner.StartDate.Year >= lifeInsurance.DateOfIssue.Year &&
-                        _planner.StartDate.Year <= lifeInsurance.DateOfIssue.AddYears(lifeInsurance.Terms).Year)
-                    {
-                        dr[lifeInsurance.PolicyName] = lifeInsurance.Premium;
-                        totalExpenses = totalExpenses + lifeInsurance.Premium;
-                    }
-                }
-
-                //General Insurance
-                foreach (GeneralInsurance generalInsurance in _cashFlowCalculation.LstGeneralInsurances)
-                {
-                    if ((generalInsurance.IssueDate >= _planner.StartDate &&
-                         generalInsurance.IssueDate <= _planner.EndDate) ||
-                         (_planner.StartDate >= generalInsurance.IssueDate &&
-                         _planner.EndDate <= generalInsurance.MaturityDate) ||
-                         (generalInsurance.IssueDate <= _planner.StartDate))
-                    {
-                        dr[generalInsurance.Company] = generalInsurance.Premium;
-                        totalExpenses = totalExpenses + generalInsurance.Premium;
-                    }
-                }
-
-                dr["Total Annual Expenses"] = totalExpenses;
-
-                #endregion
-
-                #region "Add Loans"
-
-                double totalLoan = 0;
-                foreach (Loan loan in _cashFlowCalculation.LstLoans)
-                {
-                    double loanAmt = loan.Emis * 12;
-                    dr[loan.TypeOfLoan] = loanAmt;
-                    totalLoan = totalLoan + loanAmt;
-                }
-                dr["Total Annual Loans"] = totalLoan;
-
-                #endregion
-
-                #region "Add Goals"
-
-                double totalLoanEmi = 0;
-                double surplusCashFund = (totalpostTaxIncome - (totalExpenses + totalLoan + totalLoanEmi));
-                foreach (Goals goal in _cashFlowCalculation.LstGoals)
-                {
-                    //1 Loan for Goal
-                    double loanForGoalValue = 0;
-                    double emi = 0;
-                    if (goal.LoanForGoal != null)
-                    {
-                        loanForGoalValue = goal.LoanForGoal.LoanAmount;
-                        if (_planner.StartDate.Year >= goal.LoanForGoal.StratYear)
-                        {
-                            dr[string.Format("(Loan EMI - {0})", goal.Name)] = goal.LoanForGoal.EMI;
-                            totalLoanEmi = totalLoanEmi + goal.LoanForGoal.EMI;
-                            emi = goal.LoanForGoal.EMI;
-                        }
-                    }
-                    //2 Cash Flow and fund allocation to goal
-                    if (surplusCashFund > 0)
-                    {
-                        _riskProfileInfo = new RiskProfileInfo();
-
-                        GoalsValueCalculationInfo goalValCalInfo = new GoalsValueCalculationInfo(goal, _planner, _riskProfileInfo, _riskProfileId, this._optionId, this);
-                        GoalsCalculationInfo goalcalInfo = new GoalsCalculationInfo(goal, _planner, _riskProfileInfo, _riskProfileId, _optionId);
-                        goalValCalInfo.SetPortfolioValue(goalcalInfo.GetProfileValue());
-                        GoalCalculationMgr.AddGoalValueCalculation(goalValCalInfo);
-
-                        double surplusAmountAfterInvestment = goalValCalInfo.SetInvestmentToAchiveGoal(_planner.StartDate.Year, surplusCashFund);
-                        dr[string.Format("{0} - {1}", goal.Priority, goal.Name)] = Math.Round(surplusCashFund - surplusAmountAfterInvestment, 2,
-                                                 MidpointRounding.ToEven);
-                        surplusCashFund = surplusAmountAfterInvestment;
-                    }
-                    else
-                    {
-                        _riskProfileInfo = new RiskProfileInfo();
-
-                        GoalsValueCalculationInfo goalValCalInfo = new GoalsValueCalculationInfo(goal, _planner, _riskProfileInfo, _riskProfileId, this._optionId, this);
-                        GoalsCalculationInfo goalcalInfo = new GoalsCalculationInfo(goal, _planner, _riskProfileInfo, _riskProfileId, _optionId);
-                        goalValCalInfo.SetPortfolioValue(goalcalInfo.GetProfileValue());
-                        GoalCalculationMgr.AddGoalValueCalculation(goalValCalInfo);
-                    }
-
-                    if (goal.Category == "Retirement")
-                    {
-                        dr["Corpus Fund"] = string.IsNullOrEmpty(dr[string.Format("{0} - {1}", goal.Priority, goal.Name)].ToString()) ? 0 :
-                            double.Parse(dr[string.Format("{0} - {1}", goal.Priority, goal.Name)].ToString());
-                    }
-
-                    dr["Corpus Fund"] = ((surplusCashFund > 0) ? Math.Round(surplusCashFund, 2) : 0);
-                    dr["Cumulative Corpus Fund"] = ((surplusCashFund > 0) ? Math.Round(surplusCashFund, 2) : 0);
-                }
-                #endregion
+                double totalpostTaxIncome = addIncomes(dr);
+                double totalExpenses = addExpenses(dr);
+                double totalLoan = addLoans(dr);
+                double totalLoanEmi = addGoals(dr, totalpostTaxIncome, totalExpenses, totalLoan);
 
                 dr["Surplus Amount"] = totalpostTaxIncome - (totalExpenses + totalLoan + totalLoanEmi);
                 _dtCashFlow.Rows.Add(dr);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private double addExpenses(DataRow dr)
+        {
+            #region "Add Expenses"
+
+            double totalExpenses = 0;
+            foreach (Expenses exp in _cashFlowCalculation.LstExpenses)
+            {
+
+                double expAmt = (exp.OccuranceType == ExpenseType.Monthly) ? exp.Amount * 12 : exp.Amount;
+                dr[exp.Item] = expAmt;
+                totalExpenses = totalExpenses + expAmt;
+            }
+
+            //Life Insurance
+            foreach (LifeInsurance lifeInsurance in _cashFlowCalculation.LstLifeInsurances)
+            {
+                if (_planner.StartDate.Year >= lifeInsurance.DateOfIssue.Year &&
+                    _planner.StartDate.Year <= lifeInsurance.DateOfIssue.AddYears(lifeInsurance.Terms).Year)
+                {
+                    dr[lifeInsurance.PolicyName] = lifeInsurance.Premium;
+                    totalExpenses = totalExpenses + lifeInsurance.Premium;
+                }
+            }
+
+            //General Insurance
+            foreach (GeneralInsurance generalInsurance in _cashFlowCalculation.LstGeneralInsurances)
+            {
+                if ((generalInsurance.IssueDate >= _planner.StartDate &&
+                     generalInsurance.IssueDate <= _planner.EndDate) ||
+                     (_planner.StartDate >= generalInsurance.IssueDate &&
+                     _planner.EndDate <= generalInsurance.MaturityDate) ||
+                     (generalInsurance.IssueDate <= _planner.StartDate))
+                {
+                    dr[generalInsurance.Company] = generalInsurance.Premium;
+                    totalExpenses = totalExpenses + generalInsurance.Premium;
+                }
+            }
+
+            dr["Total Annual Expenses"] = totalExpenses;
+
+            #endregion
+            return totalExpenses;
+        }
+
+        private double addIncomes(DataRow dr)
+        {
+            #region "Add Incomes"
+            double totalIncome = 0;
+            double totalpostTaxIncome = 0;
+            double totalTaxAmt = 0;
+            foreach (Income income in _cashFlowCalculation.LstIncomes)
+            {
+                if (income.StartYear == _planner.StartDate.Year.ToString())
+                {
+                    dr["(" + income.IncomeBy + ") " + income.Source] = income.Amount;
+                    totalIncome = totalIncome + income.Amount;
+                    dr["(" + income.IncomeBy + ") " + income.Source + " - Income Tax"] = income.IncomeTax;
+                    double taxAmt = (income.Amount * income.IncomeTax) / 100;
+                    totalTaxAmt = totalTaxAmt + taxAmt;
+                    dr["(" + income.IncomeBy + ") " + income.Source + " - Post Tax"] = income.Amount - taxAmt;
+                    totalpostTaxIncome = totalpostTaxIncome + (income.Amount - taxAmt);
+                }
+            }
+            dr["Total Income"] = totalIncome;
+            dr["Total Tax Deduction"] = totalTaxAmt;
+            dr["Total Post Tax Income"] = totalpostTaxIncome;
+            #endregion
+            return totalpostTaxIncome;
+        }
+
+        private double addLoans(DataRow dr)
+        {
+            #region "Add Loans"
+
+            double totalLoan = 0;
+            foreach (Loan loan in _cashFlowCalculation.LstLoans)
+            {
+                double loanAmt = loan.Emis * 12;
+                dr[loan.TypeOfLoan] = loanAmt;
+                totalLoan = totalLoan + loanAmt;
+            }
+            dr["Total Annual Loans"] = totalLoan;
+
+            #endregion
+            return totalLoan;
+        }
+
+        private double addGoals(DataRow dr, double totalpostTaxIncome, double totalExpenses, double totalLoan)
+        {
+            #region "Add Goals"
+
+            double totalLoanEmi = 0;
+            double surplusCashFund = (totalpostTaxIncome - (totalExpenses + totalLoan + totalLoanEmi));
+            foreach (Goals goal in _cashFlowCalculation.LstGoals)
+            {
+                //1 Loan for Goal
+                double loanForGoalValue = 0;
+                double emi = 0;
+                if (goal.LoanForGoal != null)
+                {
+                    loanForGoalValue = goal.LoanForGoal.LoanAmount;
+                    if (_planner.StartDate.Year >= goal.LoanForGoal.StratYear)
+                    {
+                        dr[string.Format("(Loan EMI - {0})", goal.Name)] = goal.LoanForGoal.EMI;
+                        totalLoanEmi = totalLoanEmi + goal.LoanForGoal.EMI;
+                        emi = goal.LoanForGoal.EMI;
+                    }
+                }
+                //2 Cash Flow and fund allocation to goal
+                if (surplusCashFund > 0)
+                {
+                    _riskProfileInfo = new RiskProfileInfo();
+
+                    GoalsValueCalculationInfo goalValCalInfo = new GoalsValueCalculationInfo(goal, _planner, _riskProfileInfo, _riskProfileId, this._optionId, this);
+                    GoalsCalculationInfo goalcalInfo = new GoalsCalculationInfo(goal, _planner, _riskProfileInfo, _riskProfileId, _optionId);
+                    goalValCalInfo.SetPortfolioValue(goalcalInfo.GetProfileValue());
+                    GoalCalculationMgr.AddGoalValueCalculation(goalValCalInfo);
+
+                    double surplusAmountAfterInvestment = goalValCalInfo.SetInvestmentToAchiveGoal(_planner.StartDate.Year, surplusCashFund);
+                    dr[string.Format("{0} - {1}", goal.Priority, goal.Name)] = Math.Round(surplusCashFund - surplusAmountAfterInvestment, 2,
+                                             MidpointRounding.ToEven);
+                    surplusCashFund = surplusAmountAfterInvestment;
+                }
+                else
+                {
+                    _riskProfileInfo = new RiskProfileInfo();
+
+                    GoalsValueCalculationInfo goalValCalInfo = new GoalsValueCalculationInfo(goal, _planner, _riskProfileInfo, _riskProfileId, this._optionId, this);
+                    GoalsCalculationInfo goalcalInfo = new GoalsCalculationInfo(goal, _planner, _riskProfileInfo, _riskProfileId, _optionId);
+                    goalValCalInfo.SetPortfolioValue(goalcalInfo.GetProfileValue());
+                    GoalCalculationMgr.AddGoalValueCalculation(goalValCalInfo);
+                }
+
+                if (goal.Category == "Retirement")
+                {
+                    dr["Corpus Fund"] = string.IsNullOrEmpty(dr[string.Format("{0} - {1}", goal.Priority, goal.Name)].ToString()) ? 0 :
+                        double.Parse(dr[string.Format("{0} - {1}", goal.Priority, goal.Name)].ToString());
+                }
+
+                dr["Corpus Fund"] = ((surplusCashFund > 0) ? Math.Round(surplusCashFund, 2) : 0);
+                dr["Cumulative Corpus Fund"] = ((surplusCashFund > 0) ? Math.Round(surplusCashFund, 2) : 0);
+            }
+            #endregion
+            return totalLoanEmi;
         }
 
         private void fillCashFlowFromIncomes(IList<Income> incomes)
