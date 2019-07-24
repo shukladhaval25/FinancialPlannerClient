@@ -257,6 +257,7 @@
     <Compile Include="CurrentStatus\CurrentStatus.Designer.cs">
       <DependentUpon>CurrentStatus.cs</DependentUpon>
     </Compile>
+    <Compile Include="CurrentStatus\OthersInfo.cs" />
     <Compile Include="CurrentStatus\EPFInfo.cs" />
     <Compile Include="CurrentStatus\MFTransactionsForm.cs">
       <SubType>Form</SubType>
@@ -707,6 +708,7 @@
     <Compile Include="TaskManagementSystem\NewProject.designer.cs">
       <DependentUpon>NewProject.cs</DependentUpon>
     </Compile>
+    <Compile Include="TaskManagementSystem\Services\TaskProjectInfo.cs" />
     <Compile Include="TaskManagementSystem\ViewTaskCard.cs">
       <SubType>Form</SubType>
     </Compile>

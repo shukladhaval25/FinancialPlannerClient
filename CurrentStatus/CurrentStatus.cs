@@ -30,7 +30,8 @@ namespace FinancialPlannerClient.CurrentStatus
         DataTable _dtEPF;
         DataTable _dtSS;
         DataTable _dtSCSS;
-        private DataTable _dtRD;
+        DataTable _dtOthers;
+        DataTable _dtRD;
         DataTable _dtNSC;
         DataTable _dtULIP;
 
@@ -141,6 +142,9 @@ namespace FinancialPlannerClient.CurrentStatus
                     break;
                 case "ULIP":
                     fillupULIPInfo();
+                    break;
+                case "Others":
+                    fillupOthersInfo();
                     break;
             }
         }
@@ -2221,6 +2225,167 @@ namespace FinancialPlannerClient.CurrentStatus
         }
         #endregion
 
+        #region "Others"
+
+        private void cmbOthersGoal_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbOtherGoalMap.Text != "")
+                cmbOtherGoalMap.Tag = _goals.FirstOrDefault(i => i.Name == cmbOtherGoalMap.Text).Id;
+            else
+                cmbOtherGoalMap.Tag = "0";
+        }
+
+        private void fillupOthersInfo()
+        {
+            fillOthersInvesterCombobox();
+            fillOthersGoalsCombobox();
+            OthersInfo OthersInfo = new OthersInfo();
+            _dtOthers = OthersInfo.GetOthersInfo(_planeId);
+            dtGridOthers.DataSource = _dtOthers;
+            OthersInfo.SetGrid(dtGridOthers);
+        }
+
+        private void fillOthersGoalsCombobox()
+        {
+            cmbOtherGoalMap.Items.Clear();
+            _goals = new GoalsInfo().GetAll(_planeId);
+            foreach (var goal in _goals)
+            {
+                cmbOtherGoalMap.Items.Add(goal.Name);
+            }
+            cmbOtherGoalMap.Items.Add("");
+        }
+
+        private void fillOthersInvesterCombobox()
+        {
+            new PlannerInfo.FamilyMemberInfo().FillFamilyMemberInCombo(this._client.ID, cmbOthersInvestor);
+        }
+
+        private void dtGridOthers_SelectionChanged(object sender, EventArgs e)
+        {
+            DataRow dr = getSelectedDataRow(dtGridOthers, _dtOthers);
+            if (dr != null)
+                displayOthersInfo(dr);
+            else
+                setDefaultValueOthers();
+        }
+
+        private void setDefaultValueOthers()
+        {
+            cmbOthersInvestor.Tag = "0";
+            cmbOthersInvestor.Text = "";
+            txtOthersAccountNo.Text = "";
+            cmbOtherGoalMap.Tag = "0";
+            cmbOtherGoalMap.Text = "";
+            txtOthersParticular.Text = "";
+            txtOthersAmount.Text = "0";
+            txtOthersROI.Text = "0";
+        }
+
+        private void displayOthersInfo(DataRow dr)
+        {
+            if (dr != null)
+            {
+                cmbOthersInvestor.Tag = dr.Field<string>("ID");
+                cmbOthersInvestor.Text = dr.Field<string>("InvesterName");
+                txtOthersAccountNo.Text = dr.Field<string>("AccountNo");
+                txtOthersAmount.Text = dr.Field<string>("Amount");
+                txtOthersParticular.Text = dr.Field<string>("Particular");
+                if (dr["GoalID"] != null)
+                {
+                    cmbOtherGoalMap.Tag = dr["GoalId"].ToString();
+                    cmbOtherGoalMap.Text = getGoalName(int.Parse(cmbOtherGoalMap.Tag.ToString()));
+                }
+                else
+                {
+                    cmbOtherGoalMap.Tag = "0";
+                    cmbOtherGoalMap.Text = "";
+                }
+                txtOthersROI.Text = dr.Field<string>("InvestmentReturnRate");
+            }
+        }
+
+        private void btnOthersAdd_Click(object sender, EventArgs e)
+        {
+            grpOthersDetails.Enabled = true;
+            setDefaultValueOthers();
+        }
+
+        private void btnOthersEdit_Click(object sender, EventArgs e)
+        {
+            grpOthersDetails.Enabled = true;
+        }
+
+        private void btnOthersDelete_Click(object sender, EventArgs e)
+        {
+            if (dtGridOthers.SelectedRows.Count > 0)
+            {
+                if (MessageBox.Show("Are you sure, you want to delete this record?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    OthersInfo OthersInfo = new OthersInfo();
+                    Others Others = getOthersData();
+                    OthersInfo.Delete(Others);
+                    fillupOthersInfo();
+                }
+            }
+        }
+
+        private Others getOthersData()
+        {
+            Others Others = new Others();
+            Others.Id = int.Parse(cmbOthersInvestor.Tag.ToString());
+            Others.Pid = _planeId;
+            Others.InvesterName = cmbOthersInvestor.Text;
+            Others.AccountNo = txtOthersAccountNo.Text;
+            Others.Particular = txtOthersParticular.Text;
+            Others.Amount = (string.IsNullOrEmpty(txtOthersAmount.Text) ? 0 : double.Parse(txtOthersAmount.Text));
+            Others.GoalId = int.Parse(cmbOtherGoalMap.Tag.ToString());
+            Others.CreatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+            Others.CreatedBy = Program.CurrentUser.Id;
+            Others.UpdatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+            Others.UpdatedBy = Program.CurrentUser.Id;
+            Others.MachineName = Environment.MachineName;
+            Others.InvestmentReturnRate = (string.IsNullOrEmpty(txtOthersROI.Text) ? 0 : float.Parse(txtOthersROI.Text));
+            return Others;
+        }
+
+        private void btnOthersSave_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OthersInfo OthersInfo = new OthersInfo();
+                Others PPF = getOthersData();
+                bool isSaved = false;
+
+                if (PPF != null && PPF.Id == 0)
+                    isSaved = OthersInfo.Add(PPF);
+                else
+                    isSaved = OthersInfo.Update(PPF);
+
+                if (isSaved)
+                {
+                    MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    fillupOthersInfo();
+                    grpOthersDetails.Enabled = false;
+                }
+                else
+                    MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
+                LogDebug(currentMethodName.Name, ex);
+                MessageBox.Show("Unable to save record." + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnOthersCancel_Click(object sender, EventArgs e)
+        {
+            grpOthersDetails.Enabled = false;
+        }
+        #endregion
 
         private void fillupBondInfo()
         {
@@ -3088,6 +3253,6 @@ namespace FinancialPlannerClient.CurrentStatus
             else
                 cmbBondsGoal.Tag = "0";
         }
-
+       
     }
 }

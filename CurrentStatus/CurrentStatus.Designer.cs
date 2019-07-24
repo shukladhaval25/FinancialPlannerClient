@@ -557,6 +557,28 @@
             this.btnEPFDelete = new System.Windows.Forms.Button();
             this.btnAddEPF = new System.Windows.Forms.Button();
             this.btnEditEPF = new System.Windows.Forms.Button();
+            this.Others = new System.Windows.Forms.TabPage();
+            this.grpOthersDetails = new System.Windows.Forms.GroupBox();
+            this.txtOthersAccountNo = new System.Windows.Forms.TextBox();
+            this.txtOthersROI = new System.Windows.Forms.TextBox();
+            this.label192 = new System.Windows.Forms.Label();
+            this.txtOthersAmount = new System.Windows.Forms.TextBox();
+            this.label193 = new System.Windows.Forms.Label();
+            this.txtOthersParticular = new System.Windows.Forms.TextBox();
+            this.cmbOtherGoalMap = new System.Windows.Forms.ComboBox();
+            this.label196 = new System.Windows.Forms.Label();
+            this.label201 = new System.Windows.Forms.Label();
+            this.cmbOthersInvestor = new System.Windows.Forms.ComboBox();
+            this.label202 = new System.Windows.Forms.Label();
+            this.btnOthersCancel = new System.Windows.Forms.Button();
+            this.btnOthersSave = new System.Windows.Forms.Button();
+            this.label203 = new System.Windows.Forms.Label();
+            this.dtGridOthers = new System.Windows.Forms.DataGridView();
+            this.lblOtherTitle = new System.Windows.Forms.Label();
+            this.grpOtherControls = new System.Windows.Forms.GroupBox();
+            this.btnOthersDelete = new System.Windows.Forms.Button();
+            this.btnOthersAdd = new System.Windows.Forms.Button();
+            this.btnOthersEdit = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.tabCurrenStatus.SuspendLayout();
             this.LifeInsurance.SuspendLayout();
@@ -623,6 +645,10 @@
             this.grpEPF.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridEPF)).BeginInit();
             this.groupBox16.SuspendLayout();
+            this.Others.SuspendLayout();
+            this.grpOthersDetails.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtGridOthers)).BeginInit();
+            this.grpOtherControls.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -708,6 +734,7 @@
             this.tabCurrenStatus.Controls.Add(this.NSC);
             this.tabCurrenStatus.Controls.Add(this.ULIP);
             this.tabCurrenStatus.Controls.Add(this.EPF);
+            this.tabCurrenStatus.Controls.Add(this.Others);
             this.tabCurrenStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabCurrenStatus.ImageList = this.imgCollection;
             this.tabCurrenStatus.Location = new System.Drawing.Point(13, 77);
@@ -6209,6 +6236,246 @@
             this.btnEditEPF.UseVisualStyleBackColor = true;
             this.btnEditEPF.Click += new System.EventHandler(this.btnEPFEdit_Click);
             // 
+            // Others
+            // 
+            this.Others.Controls.Add(this.grpOthersDetails);
+            this.Others.Controls.Add(this.dtGridOthers);
+            this.Others.Controls.Add(this.lblOtherTitle);
+            this.Others.Controls.Add(this.grpOtherControls);
+            this.Others.Location = new System.Drawing.Point(4, 24);
+            this.Others.Name = "Others";
+            this.Others.Padding = new System.Windows.Forms.Padding(3);
+            this.Others.Size = new System.Drawing.Size(1321, 547);
+            this.Others.TabIndex = 15;
+            this.Others.Text = "Others";
+            this.Others.UseVisualStyleBackColor = true;
+            // 
+            // grpOthersDetails
+            // 
+            this.grpOthersDetails.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpOthersDetails.Controls.Add(this.txtOthersAccountNo);
+            this.grpOthersDetails.Controls.Add(this.txtOthersROI);
+            this.grpOthersDetails.Controls.Add(this.label192);
+            this.grpOthersDetails.Controls.Add(this.txtOthersAmount);
+            this.grpOthersDetails.Controls.Add(this.label193);
+            this.grpOthersDetails.Controls.Add(this.txtOthersParticular);
+            this.grpOthersDetails.Controls.Add(this.cmbOtherGoalMap);
+            this.grpOthersDetails.Controls.Add(this.label196);
+            this.grpOthersDetails.Controls.Add(this.label201);
+            this.grpOthersDetails.Controls.Add(this.cmbOthersInvestor);
+            this.grpOthersDetails.Controls.Add(this.label202);
+            this.grpOthersDetails.Controls.Add(this.btnOthersCancel);
+            this.grpOthersDetails.Controls.Add(this.btnOthersSave);
+            this.grpOthersDetails.Controls.Add(this.label203);
+            this.grpOthersDetails.Enabled = false;
+            this.grpOthersDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpOthersDetails.Location = new System.Drawing.Point(12, 235);
+            this.grpOthersDetails.Name = "grpOthersDetails";
+            this.grpOthersDetails.Size = new System.Drawing.Size(1297, 304);
+            this.grpOthersDetails.TabIndex = 50;
+            this.grpOthersDetails.TabStop = false;
+            this.grpOthersDetails.Text = "Others";
+            // 
+            // txtOthersAccountNo
+            // 
+            this.txtOthersAccountNo.Location = new System.Drawing.Point(137, 60);
+            this.txtOthersAccountNo.MaxLength = 5;
+            this.txtOthersAccountNo.Name = "txtOthersAccountNo";
+            this.txtOthersAccountNo.Size = new System.Drawing.Size(320, 22);
+            this.txtOthersAccountNo.TabIndex = 2;
+            this.txtOthersAccountNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtOthersROI
+            // 
+            this.txtOthersROI.Location = new System.Drawing.Point(601, 51);
+            this.txtOthersROI.MaxLength = 5;
+            this.txtOthersROI.Name = "txtOthersROI";
+            this.txtOthersROI.Size = new System.Drawing.Size(134, 22);
+            this.txtOthersROI.TabIndex = 8;
+            this.txtOthersROI.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label192
+            // 
+            this.label192.Location = new System.Drawing.Point(490, 51);
+            this.label192.Name = "label192";
+            this.label192.Size = new System.Drawing.Size(64, 22);
+            this.label192.TabIndex = 48;
+            this.label192.Text = "ROI (%):";
+            // 
+            // txtOthersAmount
+            // 
+            this.txtOthersAmount.Location = new System.Drawing.Point(337, 89);
+            this.txtOthersAmount.Name = "txtOthersAmount";
+            this.txtOthersAmount.Size = new System.Drawing.Size(120, 22);
+            this.txtOthersAmount.TabIndex = 7;
+            this.txtOthersAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label193
+            // 
+            this.label193.AutoSize = true;
+            this.label193.Location = new System.Drawing.Point(276, 92);
+            this.label193.Name = "label193";
+            this.label193.Size = new System.Drawing.Size(56, 16);
+            this.label193.TabIndex = 42;
+            this.label193.Text = "Amount:";
+            // 
+            // txtOthersParticular
+            // 
+            this.txtOthersParticular.Location = new System.Drawing.Point(137, 89);
+            this.txtOthersParticular.Name = "txtOthersParticular";
+            this.txtOthersParticular.Size = new System.Drawing.Size(134, 22);
+            this.txtOthersParticular.TabIndex = 3;
+            // 
+            // cmbOtherGoalMap
+            // 
+            this.cmbOtherGoalMap.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbOtherGoalMap.FormattingEnabled = true;
+            this.cmbOtherGoalMap.Location = new System.Drawing.Point(601, 79);
+            this.cmbOtherGoalMap.Name = "cmbOtherGoalMap";
+            this.cmbOtherGoalMap.Size = new System.Drawing.Size(320, 24);
+            this.cmbOtherGoalMap.TabIndex = 11;
+            this.cmbOtherGoalMap.SelectedIndexChanged += new System.EventHandler(this.cmbOthersGoal_SelectedIndexChanged);
+            // 
+            // label196
+            // 
+            this.label196.AutoSize = true;
+            this.label196.Location = new System.Drawing.Point(490, 82);
+            this.label196.Name = "label196";
+            this.label196.Size = new System.Drawing.Size(105, 16);
+            this.label196.TabIndex = 22;
+            this.label196.Text = "Goal (Mapped) :";
+            // 
+            // label201
+            // 
+            this.label201.AutoSize = true;
+            this.label201.Location = new System.Drawing.Point(26, 92);
+            this.label201.Name = "label201";
+            this.label201.Size = new System.Drawing.Size(64, 16);
+            this.label201.TabIndex = 14;
+            this.label201.Text = "Particular";
+            // 
+            // cmbOthersInvestor
+            // 
+            this.cmbOthersInvestor.FormattingEnabled = true;
+            this.cmbOthersInvestor.Location = new System.Drawing.Point(137, 29);
+            this.cmbOthersInvestor.Name = "cmbOthersInvestor";
+            this.cmbOthersInvestor.Size = new System.Drawing.Size(320, 24);
+            this.cmbOthersInvestor.TabIndex = 1;
+            // 
+            // label202
+            // 
+            this.label202.AutoSize = true;
+            this.label202.Location = new System.Drawing.Point(26, 32);
+            this.label202.Name = "label202";
+            this.label202.Size = new System.Drawing.Size(58, 16);
+            this.label202.TabIndex = 11;
+            this.label202.Text = "Invester:";
+            // 
+            // btnOthersCancel
+            // 
+            this.btnOthersCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnOthersCancel.ImageKey = "icons8-cancel-16.png";
+            this.btnOthersCancel.ImageList = this.imgCollection;
+            this.btnOthersCancel.Location = new System.Drawing.Point(835, 109);
+            this.btnOthersCancel.Name = "btnOthersCancel";
+            this.btnOthersCancel.Size = new System.Drawing.Size(86, 26);
+            this.btnOthersCancel.TabIndex = 13;
+            this.btnOthersCancel.Text = "Cancel";
+            this.btnOthersCancel.UseVisualStyleBackColor = true;
+            this.btnOthersCancel.Click += new System.EventHandler(this.btnOthersCancel_Click);
+            // 
+            // btnOthersSave
+            // 
+            this.btnOthersSave.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnOthersSave.ImageKey = "icons8-save-close-16.png";
+            this.btnOthersSave.ImageList = this.imgCollection;
+            this.btnOthersSave.Location = new System.Drawing.Point(743, 109);
+            this.btnOthersSave.Name = "btnOthersSave";
+            this.btnOthersSave.Size = new System.Drawing.Size(86, 26);
+            this.btnOthersSave.TabIndex = 12;
+            this.btnOthersSave.Text = "Save";
+            this.btnOthersSave.UseVisualStyleBackColor = true;
+            this.btnOthersSave.Click += new System.EventHandler(this.btnOthersSave_Click);
+            // 
+            // label203
+            // 
+            this.label203.AutoSize = true;
+            this.label203.Location = new System.Drawing.Point(27, 61);
+            this.label203.Name = "label203";
+            this.label203.Size = new System.Drawing.Size(80, 16);
+            this.label203.TabIndex = 0;
+            this.label203.Text = "Account No:";
+            // 
+            // dtGridOthers
+            // 
+            this.dtGridOthers.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtGridOthers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtGridOthers.Location = new System.Drawing.Point(12, 39);
+            this.dtGridOthers.Name = "dtGridOthers";
+            this.dtGridOthers.ReadOnly = true;
+            this.dtGridOthers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtGridOthers.Size = new System.Drawing.Size(1297, 152);
+            this.dtGridOthers.TabIndex = 48;
+            this.dtGridOthers.SelectionChanged += new System.EventHandler(this.dtGridOthers_SelectionChanged);
+            // 
+            // lblOtherTitle
+            // 
+            this.lblOtherTitle.AutoSize = true;
+            this.lblOtherTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOtherTitle.ForeColor = System.Drawing.Color.DarkGreen;
+            this.lblOtherTitle.Location = new System.Drawing.Point(15, 8);
+            this.lblOtherTitle.Name = "lblOtherTitle";
+            this.lblOtherTitle.Size = new System.Drawing.Size(59, 18);
+            this.lblOtherTitle.TabIndex = 47;
+            this.lblOtherTitle.Text = "Others";
+            // 
+            // grpOtherControls
+            // 
+            this.grpOtherControls.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpOtherControls.Controls.Add(this.btnOthersDelete);
+            this.grpOtherControls.Controls.Add(this.btnOthersAdd);
+            this.grpOtherControls.Controls.Add(this.btnOthersEdit);
+            this.grpOtherControls.Location = new System.Drawing.Point(1198, 197);
+            this.grpOtherControls.Name = "grpOtherControls";
+            this.grpOtherControls.Size = new System.Drawing.Size(111, 38);
+            this.grpOtherControls.TabIndex = 49;
+            this.grpOtherControls.TabStop = false;
+            // 
+            // btnOthersDelete
+            // 
+            this.btnOthersDelete.ImageIndex = 1;
+            this.btnOthersDelete.ImageList = this.imgCollection;
+            this.btnOthersDelete.Location = new System.Drawing.Point(76, 10);
+            this.btnOthersDelete.Name = "btnOthersDelete";
+            this.btnOthersDelete.Size = new System.Drawing.Size(29, 24);
+            this.btnOthersDelete.TabIndex = 4;
+            this.btnOthersDelete.UseVisualStyleBackColor = true;
+            this.btnOthersDelete.Click += new System.EventHandler(this.btnOthersDelete_Click);
+            // 
+            // btnOthersAdd
+            // 
+            this.btnOthersAdd.ImageIndex = 3;
+            this.btnOthersAdd.ImageList = this.imgCollection;
+            this.btnOthersAdd.Location = new System.Drawing.Point(6, 10);
+            this.btnOthersAdd.Name = "btnOthersAdd";
+            this.btnOthersAdd.Size = new System.Drawing.Size(29, 24);
+            this.btnOthersAdd.TabIndex = 2;
+            this.btnOthersAdd.UseVisualStyleBackColor = true;
+            this.btnOthersAdd.Click += new System.EventHandler(this.btnOthersAdd_Click);
+            // 
+            // btnOthersEdit
+            // 
+            this.btnOthersEdit.ImageIndex = 4;
+            this.btnOthersEdit.ImageList = this.imgCollection;
+            this.btnOthersEdit.Location = new System.Drawing.Point(41, 10);
+            this.btnOthersEdit.Name = "btnOthersEdit";
+            this.btnOthersEdit.Size = new System.Drawing.Size(29, 24);
+            this.btnOthersEdit.TabIndex = 3;
+            this.btnOthersEdit.UseVisualStyleBackColor = true;
+            this.btnOthersEdit.Click += new System.EventHandler(this.btnOthersEdit_Click);
+            // 
             // CurrentStatus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -6315,6 +6582,12 @@
             this.grpEPF.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridEPF)).EndInit();
             this.groupBox16.ResumeLayout(false);
+            this.Others.ResumeLayout(false);
+            this.Others.PerformLayout();
+            this.grpOthersDetails.ResumeLayout(false);
+            this.grpOthersDetails.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtGridOthers)).EndInit();
+            this.grpOtherControls.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -6848,5 +7121,27 @@
         private System.Windows.Forms.Button btnEPFDelete;
         private System.Windows.Forms.Button btnAddEPF;
         private System.Windows.Forms.Button btnEditEPF;
+        private System.Windows.Forms.TabPage Others;
+        private System.Windows.Forms.GroupBox grpOthersDetails;
+        private System.Windows.Forms.TextBox txtOthersAccountNo;
+        private System.Windows.Forms.TextBox txtOthersROI;
+        private System.Windows.Forms.Label label192;
+        private System.Windows.Forms.TextBox txtOthersAmount;
+        private System.Windows.Forms.Label label193;
+        private System.Windows.Forms.TextBox txtOthersParticular;
+        private System.Windows.Forms.ComboBox cmbOtherGoalMap;
+        private System.Windows.Forms.Label label196;
+        private System.Windows.Forms.Label label201;
+        private System.Windows.Forms.ComboBox cmbOthersInvestor;
+        private System.Windows.Forms.Label label202;
+        private System.Windows.Forms.Button btnOthersCancel;
+        private System.Windows.Forms.Button btnOthersSave;
+        private System.Windows.Forms.Label label203;
+        private System.Windows.Forms.DataGridView dtGridOthers;
+        private System.Windows.Forms.Label lblOtherTitle;
+        private System.Windows.Forms.GroupBox grpOtherControls;
+        private System.Windows.Forms.Button btnOthersDelete;
+        private System.Windows.Forms.Button btnOthersAdd;
+        private System.Windows.Forms.Button btnOthersEdit;
     }
 }

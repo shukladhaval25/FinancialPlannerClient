@@ -450,8 +450,8 @@ namespace FinancialPlannerClient.TaskManagementSystem
             WaitDialogForm waitdlg = new WaitDialogForm("Loading Data...");
             try
             {
-                setDummyData();
-                displayResultONScreen();
+                //setDummyData();
+                //displayResultONScreen();
             }
             catch (Exception ex)
             {

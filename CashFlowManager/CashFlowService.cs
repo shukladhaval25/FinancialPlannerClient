@@ -758,30 +758,7 @@ namespace FinancialPlannerClient.CashFlowManager
             }
             #endregion
         }
-
-        internal bool Save(CashFlow cf)
-        {
-            try
-            {
-                FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
-                string apiurl = "";
-                apiurl = (cf.Id == 0) ? Program.WebServiceUrl + "/" + ADD_CASHFLOW_API :
-                    Program.WebServiceUrl + "/" + UPDATE_CASHFLOW_API;
-                RestAPIExecutor restApiExecutor = new RestAPIExecutor();
-                var restResult = restApiExecutor.Execute<CashFlow>(apiurl, cf, "POST");
-                return true;
-            }
-            catch (Exception ex)
-            {
-                StackTrace st = new StackTrace();
-                StackFrame sf = st.GetFrame(0);
-                MethodBase currentMethodName = sf.GetMethod();
-                LogDebug(currentMethodName.Name, ex);
-                MessageBox.Show(ex.ToString());
-                return false;
-            }
-        }
-
+        
         private void LogDebug(string methodName, Exception ex)
         {
             DebuggerLogInfo debuggerInfo = new DebuggerLogInfo();
