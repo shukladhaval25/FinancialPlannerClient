@@ -44,6 +44,8 @@
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
             this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
+            this.vGridControl1 = new DevExpress.XtraVerticalGrid.VGridControl();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl7)).BeginInit();
@@ -53,6 +55,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vGridControl1)).BeginInit();
             this.SuspendLayout();
             // 
             // openFileDialog1
@@ -189,11 +192,29 @@
             this.groupControl4.TabIndex = 9;
             this.groupControl4.Text = "groupControl4";
             // 
+            // vGridControl1
+            // 
+            this.vGridControl1.Location = new System.Drawing.Point(562, 178);
+            this.vGridControl1.Name = "vGridControl1";
+            this.vGridControl1.Size = new System.Drawing.Size(400, 145);
+            this.vGridControl1.TabIndex = 9;
+            // 
+            // simpleButton1
+            // 
+            this.simpleButton1.Location = new System.Drawing.Point(968, 178);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(75, 23);
+            this.simpleButton1.TabIndex = 10;
+            this.simpleButton1.Text = "simpleButton1";
+            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
+            // 
             // Testing
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1145, 372);
+            this.Controls.Add(this.simpleButton1);
+            this.Controls.Add(this.vGridControl1);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupControl1);
@@ -214,6 +235,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vGridControl1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -237,5 +259,7 @@
         private DevExpress.XtraEditors.GroupControl groupControl2;
         private DevExpress.XtraEditors.GroupControl groupControl3;
         private DevExpress.XtraEditors.GroupControl groupControl4;
+        private DevExpress.XtraVerticalGrid.VGridControl vGridControl1;
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
     }
 }

@@ -45,6 +45,10 @@
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem5 = new DevExpress.Utils.ToolTipItem();
             this.grpClientInfo = new DevExpress.XtraEditors.GroupControl();
+            this.cmbClientType = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.label18 = new System.Windows.Forms.Label();
+            this.cmbRating = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.label12 = new System.Windows.Forms.Label();
             this.btnChangeImage = new DevExpress.XtraEditors.SimpleButton();
             this.grpBankDetails = new DevExpress.XtraEditors.GroupControl();
             this.btnViewBankInfo = new DevExpress.XtraEditors.SimpleButton();
@@ -120,12 +124,12 @@
             this.label16 = new System.Windows.Forms.Label();
             this.txtSpouseName = new DevExpress.XtraEditors.TextEdit();
             this.label17 = new System.Windows.Forms.Label();
-            this.cmbRating = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.label12 = new System.Windows.Forms.Label();
-            this.cmbClientType = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.label18 = new System.Windows.Forms.Label();
+            this.cmbResiStatus = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.label19 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.grpClientInfo)).BeginInit();
             this.grpClientInfo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbClientType.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbRating.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grpBankDetails)).BeginInit();
             this.grpBankDetails.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdBank)).BeginInit();
@@ -167,13 +171,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtSpouseMotherName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSpouseFatherName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSpouseName.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbRating.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbClientType.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbResiStatus.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // grpClientInfo
             // 
             this.grpClientInfo.CaptionImage = ((System.Drawing.Image)(resources.GetObject("grpClientInfo.CaptionImage")));
+            this.grpClientInfo.Controls.Add(this.cmbResiStatus);
+            this.grpClientInfo.Controls.Add(this.label19);
             this.grpClientInfo.Controls.Add(this.cmbClientType);
             this.grpClientInfo.Controls.Add(this.label18);
             this.grpClientInfo.Controls.Add(this.cmbRating);
@@ -200,6 +205,51 @@
             this.grpClientInfo.Size = new System.Drawing.Size(664, 525);
             this.grpClientInfo.TabIndex = 7;
             this.grpClientInfo.Text = "Client Details";
+            // 
+            // cmbClientType
+            // 
+            this.cmbClientType.EditValue = "";
+            this.cmbClientType.Location = new System.Drawing.Point(329, 159);
+            this.cmbClientType.Name = "cmbClientType";
+            this.cmbClientType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cmbClientType.Properties.Items.AddRange(new object[] {
+            "Comprehensive Financial Plan",
+            "Goal Plan",
+            "Portfolio Management Service"});
+            this.cmbClientType.Size = new System.Drawing.Size(315, 20);
+            this.cmbClientType.TabIndex = 17;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(244, 162);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(65, 13);
+            this.label18.TabIndex = 23;
+            this.label18.Text = "Client Type:";
+            // 
+            // cmbRating
+            // 
+            this.cmbRating.EditValue = "";
+            this.cmbRating.Location = new System.Drawing.Point(329, 133);
+            this.cmbRating.Name = "cmbRating";
+            this.cmbRating.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cmbRating.Properties.Items.AddRange(new object[] {
+            "Male",
+            "Female"});
+            this.cmbRating.Size = new System.Drawing.Size(114, 20);
+            this.cmbRating.TabIndex = 16;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(244, 136);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(42, 13);
+            this.label12.TabIndex = 21;
+            this.label12.Text = "Rating:";
             // 
             // btnChangeImage
             // 
@@ -961,50 +1011,27 @@
             this.label17.TabIndex = 5;
             this.label17.Text = "Full Name:";
             // 
-            // cmbRating
+            // cmbResiStatus
             // 
-            this.cmbRating.EditValue = "";
-            this.cmbRating.Location = new System.Drawing.Point(329, 133);
-            this.cmbRating.Name = "cmbRating";
-            this.cmbRating.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.cmbResiStatus.EditValue = "";
+            this.cmbResiStatus.Location = new System.Drawing.Point(529, 133);
+            this.cmbResiStatus.Name = "cmbResiStatus";
+            this.cmbResiStatus.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cmbRating.Properties.Items.AddRange(new object[] {
-            "Male",
-            "Female"});
-            this.cmbRating.Size = new System.Drawing.Size(114, 20);
-            this.cmbRating.TabIndex = 16;
+            this.cmbResiStatus.Properties.Items.AddRange(new object[] {
+            "Indian",
+            "NRI"});
+            this.cmbResiStatus.Size = new System.Drawing.Size(114, 20);
+            this.cmbResiStatus.TabIndex = 17;
             // 
-            // label12
+            // label19
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(244, 136);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(42, 13);
-            this.label12.TabIndex = 21;
-            this.label12.Text = "Rating:";
-            // 
-            // cmbClientType
-            // 
-            this.cmbClientType.EditValue = "";
-            this.cmbClientType.Location = new System.Drawing.Point(329, 159);
-            this.cmbClientType.Name = "cmbClientType";
-            this.cmbClientType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cmbClientType.Properties.Items.AddRange(new object[] {
-            "Comprehensive Financial Plan",
-            "Goal Plan",
-            "Portfolio Management Service"});
-            this.cmbClientType.Size = new System.Drawing.Size(315, 20);
-            this.cmbClientType.TabIndex = 17;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(244, 162);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(65, 13);
-            this.label18.TabIndex = 23;
-            this.label18.Text = "Client Type:";
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(449, 136);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(69, 13);
+            this.label19.TabIndex = 25;
+            this.label19.Text = "Resi. Status:";
             // 
             // ClientDetails
             // 
@@ -1024,6 +1051,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.grpClientInfo)).EndInit();
             this.grpClientInfo.ResumeLayout(false);
             this.grpClientInfo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbClientType.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbRating.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grpBankDetails)).EndInit();
             this.grpBankDetails.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdBank)).EndInit();
@@ -1069,8 +1098,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtSpouseMotherName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSpouseFatherName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSpouseName.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbRating.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbClientType.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbResiStatus.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1157,6 +1185,8 @@
         private System.Windows.Forms.Label label18;
         private DevExpress.XtraEditors.ComboBoxEdit cmbRating;
         private System.Windows.Forms.Label label12;
+        private DevExpress.XtraEditors.ComboBoxEdit cmbResiStatus;
+        private System.Windows.Forms.Label label19;
     }
 }
 

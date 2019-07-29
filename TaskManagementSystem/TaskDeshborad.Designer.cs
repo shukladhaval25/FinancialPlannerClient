@@ -29,17 +29,17 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.Data.UnboundSourceProperty unboundSourceProperty11 = new DevExpress.Data.UnboundSourceProperty();
-            DevExpress.Data.UnboundSourceProperty unboundSourceProperty12 = new DevExpress.Data.UnboundSourceProperty();
+            DevExpress.Data.UnboundSourceProperty unboundSourceProperty1 = new DevExpress.Data.UnboundSourceProperty();
+            DevExpress.Data.UnboundSourceProperty unboundSourceProperty2 = new DevExpress.Data.UnboundSourceProperty();
+            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement1 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
+            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement2 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
             DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement3 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
             DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement4 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
-            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement11 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
-            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement12 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TaskDeshborad));
-            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement13 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
-            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement14 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
             DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement5 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
             DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement6 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
+            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement7 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
+            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement8 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
             this.tileViewColumnCardNo = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.tileViewColumnTitle = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.tileViewColumnDueDate = new DevExpress.XtraGrid.Columns.TileViewColumn();
@@ -154,19 +154,19 @@
             // gridColumnProject
             // 
             this.gridColumnProject.Caption = "Project";
-            this.gridColumnProject.FieldName = "ProjectName";
+            this.gridColumnProject.FieldName = "Name";
             this.gridColumnProject.Name = "gridColumnProject";
             this.gridColumnProject.Visible = true;
             this.gridColumnProject.VisibleIndex = 1;
             // 
             // unboundSource1
             // 
-            unboundSourceProperty11.DisplayName = null;
-            unboundSourceProperty11.Name = "Property0";
-            unboundSourceProperty12.DisplayName = null;
-            unboundSourceProperty12.Name = "Property1";
-            this.unboundSource1.Properties.Add(unboundSourceProperty11);
-            this.unboundSource1.Properties.Add(unboundSourceProperty12);
+            unboundSourceProperty1.DisplayName = null;
+            unboundSourceProperty1.Name = "Property0";
+            unboundSourceProperty2.DisplayName = null;
+            unboundSourceProperty2.Name = "Property1";
+            this.unboundSource1.Properties.Add(unboundSourceProperty1);
+            this.unboundSource1.Properties.Add(unboundSourceProperty2);
             // 
             // textEdit1
             // 
@@ -174,6 +174,7 @@
             this.textEdit1.Name = "textEdit1";
             this.textEdit1.Size = new System.Drawing.Size(305, 20);
             this.textEdit1.TabIndex = 0;
+            this.textEdit1.Visible = false;
             // 
             // btnSearch
             // 
@@ -184,6 +185,7 @@
             this.btnSearch.Size = new System.Drawing.Size(75, 23);
             this.btnSearch.TabIndex = 1;
             this.btnSearch.Text = "&Search";
+            this.btnSearch.Visible = false;
             // 
             // grpMyOverDueTask
             // 
@@ -238,56 +240,56 @@
             this.tileViewMyOverView.OptionsTiles.Padding = new System.Windows.Forms.Padding(5);
             this.tileViewMyOverView.OptionsTiles.ShowGroupText = false;
             this.tileViewMyOverView.OptionsTiles.VerticalContentAlignment = DevExpress.Utils.VertAlignment.Top;
-            tileViewItemElement3.Appearance.Hovered.BackColor = System.Drawing.Color.Navy;
-            tileViewItemElement3.Appearance.Hovered.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            tileViewItemElement3.Appearance.Hovered.Options.UseBackColor = true;
-            tileViewItemElement3.Appearance.Normal.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            tileViewItemElement3.Appearance.Normal.ForeColor = System.Drawing.Color.Navy;
-            tileViewItemElement3.Appearance.Normal.Options.UseFont = true;
-            tileViewItemElement3.Appearance.Normal.Options.UseForeColor = true;
-            tileViewItemElement3.Appearance.Pressed.BackColor = System.Drawing.Color.White;
-            tileViewItemElement3.Appearance.Pressed.BackColor2 = System.Drawing.Color.White;
-            tileViewItemElement3.Appearance.Pressed.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            tileViewItemElement3.Appearance.Pressed.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            tileViewItemElement3.Appearance.Pressed.Options.UseBackColor = true;
-            tileViewItemElement3.Appearance.Pressed.Options.UseFont = true;
-            tileViewItemElement3.Appearance.Pressed.Options.UseForeColor = true;
-            tileViewItemElement3.Column = this.tileViewColumnCardNo;
-            tileViewItemElement3.Text = "tileViewColumnCardNo";
-            tileViewItemElement3.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.Manual;
-            tileViewItemElement3.TextLocation = new System.Drawing.Point(22, 4);
-            tileViewItemElement4.Appearance.Pressed.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            tileViewItemElement4.Appearance.Pressed.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            tileViewItemElement4.Appearance.Pressed.Options.UseFont = true;
-            tileViewItemElement4.Appearance.Pressed.Options.UseForeColor = true;
-            tileViewItemElement4.Column = this.tileViewColumnTitle;
-            tileViewItemElement4.Text = "tileViewColumnTitle";
-            tileViewItemElement4.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.Manual;
-            tileViewItemElement4.TextLocation = new System.Drawing.Point(0, 20);
-            tileViewItemElement11.Column = this.tileViewColumnDueDate;
-            tileViewItemElement11.Text = "tileViewColumnDueDate";
-            tileViewItemElement12.Column = this.tileViewColumnPriority;
-            tileViewItemElement12.Image = ((System.Drawing.Image)(resources.GetObject("tileViewItemElement12.Image")));
-            tileViewItemElement12.ImageLocation = new System.Drawing.Point(-370, -45);
-            tileViewItemElement12.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.NoScale;
-            tileViewItemElement12.Text = "tileViewColumnPriority";
-            tileViewItemElement12.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.TopRight;
-            tileViewItemElement12.TextLocation = new System.Drawing.Point(0, 60);
-            tileViewItemElement13.Column = this.tileViewColumnStatus;
-            tileViewItemElement13.Text = "tileViewColumnStatus";
-            tileViewItemElement13.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.BottomCenter;
-            tileViewItemElement14.Column = this.tileViewColumnAssignTo;
-            tileViewItemElement14.Image = ((System.Drawing.Image)(resources.GetObject("tileViewItemElement14.Image")));
-            tileViewItemElement14.ImageLocation = new System.Drawing.Point(140, 25);
-            tileViewItemElement14.ImageToTextAlignment = DevExpress.XtraEditors.TileControlImageToTextAlignment.Left;
-            tileViewItemElement14.Text = "tileViewColumnAssignTo";
-            tileViewItemElement14.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.BottomRight;
+            tileViewItemElement1.Appearance.Hovered.BackColor = System.Drawing.Color.Navy;
+            tileViewItemElement1.Appearance.Hovered.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            tileViewItemElement1.Appearance.Hovered.Options.UseBackColor = true;
+            tileViewItemElement1.Appearance.Normal.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            tileViewItemElement1.Appearance.Normal.ForeColor = System.Drawing.Color.Navy;
+            tileViewItemElement1.Appearance.Normal.Options.UseFont = true;
+            tileViewItemElement1.Appearance.Normal.Options.UseForeColor = true;
+            tileViewItemElement1.Appearance.Pressed.BackColor = System.Drawing.Color.White;
+            tileViewItemElement1.Appearance.Pressed.BackColor2 = System.Drawing.Color.White;
+            tileViewItemElement1.Appearance.Pressed.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            tileViewItemElement1.Appearance.Pressed.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            tileViewItemElement1.Appearance.Pressed.Options.UseBackColor = true;
+            tileViewItemElement1.Appearance.Pressed.Options.UseFont = true;
+            tileViewItemElement1.Appearance.Pressed.Options.UseForeColor = true;
+            tileViewItemElement1.Column = this.tileViewColumnCardNo;
+            tileViewItemElement1.Text = "tileViewColumnCardNo";
+            tileViewItemElement1.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.Manual;
+            tileViewItemElement1.TextLocation = new System.Drawing.Point(22, 4);
+            tileViewItemElement2.Appearance.Pressed.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            tileViewItemElement2.Appearance.Pressed.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            tileViewItemElement2.Appearance.Pressed.Options.UseFont = true;
+            tileViewItemElement2.Appearance.Pressed.Options.UseForeColor = true;
+            tileViewItemElement2.Column = this.tileViewColumnTitle;
+            tileViewItemElement2.Text = "tileViewColumnTitle";
+            tileViewItemElement2.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.Manual;
+            tileViewItemElement2.TextLocation = new System.Drawing.Point(0, 20);
+            tileViewItemElement3.Column = this.tileViewColumnDueDate;
+            tileViewItemElement3.Text = "tileViewColumnDueDate";
+            tileViewItemElement4.Column = this.tileViewColumnPriority;
+            tileViewItemElement4.Image = ((System.Drawing.Image)(resources.GetObject("tileViewItemElement4.Image")));
+            tileViewItemElement4.ImageLocation = new System.Drawing.Point(-370, -45);
+            tileViewItemElement4.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.NoScale;
+            tileViewItemElement4.Text = "tileViewColumnPriority";
+            tileViewItemElement4.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.TopRight;
+            tileViewItemElement4.TextLocation = new System.Drawing.Point(0, 60);
+            tileViewItemElement5.Column = this.tileViewColumnStatus;
+            tileViewItemElement5.Text = "tileViewColumnStatus";
+            tileViewItemElement5.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.BottomCenter;
+            tileViewItemElement6.Column = this.tileViewColumnAssignTo;
+            tileViewItemElement6.Image = ((System.Drawing.Image)(resources.GetObject("tileViewItemElement6.Image")));
+            tileViewItemElement6.ImageLocation = new System.Drawing.Point(140, 25);
+            tileViewItemElement6.ImageToTextAlignment = DevExpress.XtraEditors.TileControlImageToTextAlignment.Left;
+            tileViewItemElement6.Text = "tileViewColumnAssignTo";
+            tileViewItemElement6.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.BottomRight;
+            this.tileViewMyOverView.TileTemplate.Add(tileViewItemElement1);
+            this.tileViewMyOverView.TileTemplate.Add(tileViewItemElement2);
             this.tileViewMyOverView.TileTemplate.Add(tileViewItemElement3);
             this.tileViewMyOverView.TileTemplate.Add(tileViewItemElement4);
-            this.tileViewMyOverView.TileTemplate.Add(tileViewItemElement11);
-            this.tileViewMyOverView.TileTemplate.Add(tileViewItemElement12);
-            this.tileViewMyOverView.TileTemplate.Add(tileViewItemElement13);
-            this.tileViewMyOverView.TileTemplate.Add(tileViewItemElement14);
+            this.tileViewMyOverView.TileTemplate.Add(tileViewItemElement5);
+            this.tileViewMyOverView.TileTemplate.Add(tileViewItemElement6);
             this.tileViewMyOverView.DoubleClick += new System.EventHandler(this.tileViewMyOverView_DoubleClick);
             // 
             // chartControl1
@@ -382,31 +384,31 @@
             this.tileViewProjectWise.OptionsBehavior.ReadOnly = true;
             this.tileViewProjectWise.OptionsTiles.ItemSize = new System.Drawing.Size(180, 100);
             this.tileViewProjectWise.OptionsTiles.ShowGroupText = false;
-            tileViewItemElement5.Appearance.Hovered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            tileViewItemElement5.Appearance.Hovered.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            tileViewItemElement5.Appearance.Hovered.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            tileViewItemElement5.Appearance.Hovered.ForeColor = System.Drawing.Color.Navy;
-            tileViewItemElement5.Appearance.Hovered.Options.UseBackColor = true;
-            tileViewItemElement5.Appearance.Hovered.Options.UseFont = true;
-            tileViewItemElement5.Appearance.Hovered.Options.UseForeColor = true;
-            tileViewItemElement5.Appearance.Normal.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            tileViewItemElement5.Appearance.Normal.Options.UseFont = true;
-            tileViewItemElement5.Appearance.Pressed.Font = new System.Drawing.Font("Tahoma", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            tileViewItemElement5.Appearance.Pressed.ForeColor = System.Drawing.Color.Navy;
-            tileViewItemElement5.Appearance.Pressed.Options.UseFont = true;
-            tileViewItemElement5.Appearance.Pressed.Options.UseForeColor = true;
-            tileViewItemElement5.Appearance.Selected.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            tileViewItemElement5.Appearance.Selected.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            tileViewItemElement5.Appearance.Selected.Options.UseBackColor = true;
-            tileViewItemElement5.Column = this.gridColumnCount;
-            tileViewItemElement5.Text = "gridColumnCount";
-            tileViewItemElement5.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            tileViewItemElement6.Column = this.gridColumnProject;
-            tileViewItemElement6.Text = "gridColumnProject";
-            tileViewItemElement6.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.Manual;
-            tileViewItemElement6.TextLocation = new System.Drawing.Point(70, 70);
-            this.tileViewProjectWise.TileTemplate.Add(tileViewItemElement5);
-            this.tileViewProjectWise.TileTemplate.Add(tileViewItemElement6);
+            tileViewItemElement7.Appearance.Hovered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            tileViewItemElement7.Appearance.Hovered.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            tileViewItemElement7.Appearance.Hovered.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            tileViewItemElement7.Appearance.Hovered.ForeColor = System.Drawing.Color.Navy;
+            tileViewItemElement7.Appearance.Hovered.Options.UseBackColor = true;
+            tileViewItemElement7.Appearance.Hovered.Options.UseFont = true;
+            tileViewItemElement7.Appearance.Hovered.Options.UseForeColor = true;
+            tileViewItemElement7.Appearance.Normal.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            tileViewItemElement7.Appearance.Normal.Options.UseFont = true;
+            tileViewItemElement7.Appearance.Pressed.Font = new System.Drawing.Font("Tahoma", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            tileViewItemElement7.Appearance.Pressed.ForeColor = System.Drawing.Color.Navy;
+            tileViewItemElement7.Appearance.Pressed.Options.UseFont = true;
+            tileViewItemElement7.Appearance.Pressed.Options.UseForeColor = true;
+            tileViewItemElement7.Appearance.Selected.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            tileViewItemElement7.Appearance.Selected.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            tileViewItemElement7.Appearance.Selected.Options.UseBackColor = true;
+            tileViewItemElement7.Column = this.gridColumnCount;
+            tileViewItemElement7.Text = "gridColumnCount";
+            tileViewItemElement7.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileViewItemElement8.Column = this.gridColumnProject;
+            tileViewItemElement8.Text = "gridColumnProject";
+            tileViewItemElement8.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.Manual;
+            tileViewItemElement8.TextLocation = new System.Drawing.Point(60, 70);
+            this.tileViewProjectWise.TileTemplate.Add(tileViewItemElement7);
+            this.tileViewProjectWise.TileTemplate.Add(tileViewItemElement8);
             // 
             // gridView5
             // 
@@ -418,7 +420,7 @@
             this.grpProjectWiseTasks.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.grpProjectWiseTasks.Controls.Add(this.grdProjectWiseTask);
-            this.grpProjectWiseTasks.Location = new System.Drawing.Point(15, 40);
+            this.grpProjectWiseTasks.Location = new System.Drawing.Point(16, 40);
             this.grpProjectWiseTasks.Name = "grpProjectWiseTasks";
             this.grpProjectWiseTasks.Size = new System.Drawing.Size(989, 152);
             this.grpProjectWiseTasks.TabIndex = 8;

@@ -103,5 +103,23 @@ namespace FinancialPlannerClient
             openFileDialog1.ShowDialog();           
             textBox1.Text = openFileDialog1.FileName;
         }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+           
+            DevExpress.XtraVerticalGrid.Rows.EditorRow ARN = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            ARN.Name = "ARN";
+            ARN.Properties.FieldName = "ARN";
+            ARN.Properties.Caption = "ARN";
+
+            DevExpress.XtraVerticalGrid.Rows.EditorRow ClientGroup = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            ClientGroup.Name = "ClientGroup";
+            ClientGroup.Properties.FieldName = "ClientGroup";
+            ClientGroup.Properties.Caption = "ClientGroup";
+
+            vGridControl1.Rows.AddRange(new DevExpress.XtraVerticalGrid.Rows.BaseRow[]{ ARN,ClientGroup });
+           
+
+        }
     }
 }

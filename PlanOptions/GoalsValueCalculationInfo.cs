@@ -356,7 +356,7 @@ namespace FinancialPlannerClient.PlanOptions
                     else
                     {
                         int years = getRemainingYearsFromPlanStartYear();
-                        futureValueOfGoal = futureValue(_goal.Amount, _goal.InflationRate, years);
+                        futureValueOfGoal = futureValue(_goal.Amount + _goal.OtherAmount, _goal.InflationRate, years);
                     }
                 }
             }

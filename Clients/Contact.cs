@@ -182,7 +182,13 @@ namespace FinancialPlannerClient.Clients
         private void txtClientEmailId_Validating(object sender, CancelEventArgs e)
         {
             if (!string.IsNullOrEmpty(txtClientEmailId.Text))
-                e.Cancel = FinancialPlanner.Common.Validation.IsValidEmail(txtClientEmailId.Text);
+                e.Cancel = !FinancialPlanner.Common.Validation.IsValidEmail(txtClientEmailId.Text);
+        }
+
+        private void txtSpouseEmailId_Validating(object sender, CancelEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtClientEmailId.Text))
+                e.Cancel = !FinancialPlanner.Common.Validation.IsValidEmail(txtClientEmailId.Text);
         }
     }
 }

@@ -16,9 +16,9 @@ namespace FinancialPlannerClient.TaskManagementSystem.Services
     {
         const string GET_ALL_PROJECT_API = "TaskProjectController/GetAll";
         const string GET_ALL_BY_ID_API = "TaskProjectController/Get?id={0}";
-        const string ADD_PROJECT_API = "BankAccount/Add";
-        const string UPDATE_BankAccount_API = "BankAccount/Update";
-        const string DELETE_BankAccount_API = "BankAccount/Delete";
+        const string ADD_PROJECT_API = "TaskProjectController/Add";
+        const string UPDATE_PROJECT_API = "TaskProjectController/Update";
+        const string DELETE_PROJEC_API = "TaskProjectController/Delete";
         DataTable _dtProjects;
         internal IList<Project> GetAll()
         {
@@ -120,15 +120,15 @@ namespace FinancialPlannerClient.TaskManagementSystem.Services
             Logger.LogDebug(debuggerInfo);
         }
 
-        /*
-        internal bool Add(BankAccountDetail BankAccount)
+        
+        internal bool Add(Project project)
         {
             try
             {
                 FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
-                string apiurl = Program.WebServiceUrl + "/" + ADD_BankAccount_API;
+                string apiurl = Program.WebServiceUrl + "/" + ADD_PROJECT_API;
                 RestAPIExecutor restApiExecutor = new RestAPIExecutor();
-                var restResult = restApiExecutor.Execute<BankAccountDetail>(apiurl, BankAccount, "POST");
+                var restResult = restApiExecutor.Execute<Project>(apiurl, project, "POST");
                 return true;
             }
             catch (Exception ex)
@@ -140,14 +140,36 @@ namespace FinancialPlannerClient.TaskManagementSystem.Services
                 return false;
             }
         }
-        internal bool Update(BankAccountDetail BankAccount)
+
+        internal bool Delete(Project project)
         {
             try
             {
                 FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
-                string apiurl = Program.WebServiceUrl + "/" + UPDATE_BankAccount_API;
+                string apiurl = Program.WebServiceUrl + "/" + DELETE_PROJEC_API;
                 RestAPIExecutor restApiExecutor = new RestAPIExecutor();
-                var restResult = restApiExecutor.Execute<BankAccountDetail>(apiurl, BankAccount, "POST");
+                var restResult = restApiExecutor.Execute<Project>(apiurl, project, "POST");
+                
+                return true;
+            }
+            catch (Exception ex)
+            {
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
+                LogDebug(currentMethodName.Name, ex);
+                return false;
+            }
+        }
+
+        internal bool Update(Project project)
+        {
+            try
+            {
+                FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
+                string apiurl = Program.WebServiceUrl + "/" + UPDATE_PROJECT_API;
+                RestAPIExecutor restApiExecutor = new RestAPIExecutor();
+                var restResult = restApiExecutor.Execute<Project>(apiurl, project, "POST");
 
                 return true;
             }
@@ -160,6 +182,7 @@ namespace FinancialPlannerClient.TaskManagementSystem.Services
                 return false;
             }
         }
+        /*
         internal bool Delete(BankAccountDetail BankAccount)
         {
             try

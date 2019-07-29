@@ -667,10 +667,20 @@ namespace FinancialPlannerClient.Home
 
         private void showClientDashboard(Client client)
         {
-            Clients.Clientdashboard clientdashboard = new Clients.Clientdashboard(client);
-            this.Visible = false;
-            clientdashboard.ShowDialog();
-            this.Visible = true;
+            try
+            {
+                Clients.Clientdashboard clientdashboard = new Clients.Clientdashboard(client);
+                this.Visible = false;
+                clientdashboard.ShowDialog();
+                this.Visible = true;
+            }
+            catch(Exception ex)
+            {
+
+            }
+           
+            
+            
         }
 
         private void frmHome_FormClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)

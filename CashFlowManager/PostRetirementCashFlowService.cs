@@ -273,8 +273,7 @@ namespace FinancialPlannerClient.CashFlowManager
             {
                 if (goal.Category == "Retirement" || int.Parse(goal.StartYear) == years)
                 {
-                    int forYears = years - this.planner.StartDate.Year;
-                    double retExp = futureValue(goal.Amount + goal.OtherAmount, goal.InflationRate, forYears);
+                    double retExp = getPostRetirementExpWithInfluationRate(dr, years, goal);                    
                     dr[goal.Name] = retExp;
                     totalExpenses = totalExpenses + retExp;                    
                 }               
@@ -284,6 +283,22 @@ namespace FinancialPlannerClient.CashFlowManager
                 ""].ToString()) );
             corpusFundBalance = corpusFundBalance + ((corpusFundBalance * invReturnRate) / 100);
             dr["Rem_Corp_Fund"] = Math.Round(corpusFundBalance, 2) ;
+        }
+
+        private double getPostRetirementExpWithInfluationRate(DataRow dr, int years, Goals goal)
+        {
+            double retExp = 0;
+            int forYears = years - this.planner.StartDate.Year;
+            if (int.Parse(goal.StartYear) == years)
+            {
+                retExp = futureValue(goal.Amount + goal.OtherAmount, goal.InflationRate, forYears);
+            }
+            else
+            {
+                double previouYearExp = double.Parse(_dtRetirementCashFlow.Rows[_dtRetirementCashFlow.Rows.Count - 1][goal.Name].ToString());
+                retExp = previouYearExp + ((previouYearExp * double.Parse(plannerAssumption.PostRetirementInflactionRate.ToString())) / 100);
+            }
+            return retExp;
         }
         #endregion
 

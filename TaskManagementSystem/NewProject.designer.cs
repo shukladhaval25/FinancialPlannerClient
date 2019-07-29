@@ -29,21 +29,21 @@
         private void InitializeComponent()
         {         
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewProject));
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem5 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip11 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem11 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem11 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip12 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem12 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem12 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip13 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem13 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem13 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip14 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem14 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem14 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip15 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem15 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem15 = new DevExpress.Utils.ToolTipItem();
             this.grpProject = new DevExpress.XtraEditors.GroupControl();
             this.btnDelete = new DevExpress.XtraEditors.SimpleButton();
             this.btnEdit = new DevExpress.XtraEditors.SimpleButton();
@@ -91,15 +91,15 @@
             this.btnDelete.Location = new System.Drawing.Point(380, 241);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(25, 23);
-            toolTipTitleItem1.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
-            toolTipTitleItem1.Appearance.Options.UseImage = true;
-            toolTipTitleItem1.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem1.Image")));
-            toolTipTitleItem1.Text = "Delete Client";
-            toolTipItem1.LeftIndent = 6;
-            toolTipItem1.Text = "To delete selected client record click here.";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            superToolTip1.Items.Add(toolTipItem1);
-            this.btnDelete.SuperTip = superToolTip1;
+            toolTipTitleItem11.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            toolTipTitleItem11.Appearance.Options.UseImage = true;
+            toolTipTitleItem11.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem11.Image")));
+            toolTipTitleItem11.Text = "Delete Client";
+            toolTipItem11.LeftIndent = 6;
+            toolTipItem11.Text = "To delete selected client record click here.";
+            superToolTip11.Items.Add(toolTipTitleItem11);
+            superToolTip11.Items.Add(toolTipItem11);
+            this.btnDelete.SuperTip = superToolTip11;
             this.btnDelete.TabIndex = 5;
             this.btnDelete.ToolTip = "Delete Client";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -111,15 +111,15 @@
             this.btnEdit.Location = new System.Drawing.Point(349, 241);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(25, 23);
-            toolTipTitleItem2.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
-            toolTipTitleItem2.Appearance.Options.UseImage = true;
-            toolTipTitleItem2.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem2.Image")));
-            toolTipTitleItem2.Text = "Edit Customer";
-            toolTipItem2.LeftIndent = 6;
-            toolTipItem2.Text = "To modify selected client information click here.";
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            superToolTip2.Items.Add(toolTipItem2);
-            this.btnEdit.SuperTip = superToolTip2;
+            toolTipTitleItem12.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
+            toolTipTitleItem12.Appearance.Options.UseImage = true;
+            toolTipTitleItem12.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem12.Image")));
+            toolTipTitleItem12.Text = "Edit Customer";
+            toolTipItem12.LeftIndent = 6;
+            toolTipItem12.Text = "To modify selected client information click here.";
+            superToolTip12.Items.Add(toolTipTitleItem12);
+            superToolTip12.Items.Add(toolTipItem12);
+            this.btnEdit.SuperTip = superToolTip12;
             this.btnEdit.TabIndex = 4;
             this.btnEdit.ToolTip = "Edit Client";
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
@@ -131,15 +131,15 @@
             this.btnAdd.Location = new System.Drawing.Point(318, 241);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(25, 23);
-            toolTipTitleItem3.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
-            toolTipTitleItem3.Appearance.Options.UseImage = true;
-            toolTipTitleItem3.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem3.Image")));
-            toolTipTitleItem3.Text = "New Client";
-            toolTipItem3.LeftIndent = 6;
-            toolTipItem3.Text = "To add new client inforamtion click here.";
-            superToolTip3.Items.Add(toolTipTitleItem3);
-            superToolTip3.Items.Add(toolTipItem3);
-            this.btnAdd.SuperTip = superToolTip3;
+            toolTipTitleItem13.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
+            toolTipTitleItem13.Appearance.Options.UseImage = true;
+            toolTipTitleItem13.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem13.Image")));
+            toolTipTitleItem13.Text = "New Client";
+            toolTipItem13.LeftIndent = 6;
+            toolTipItem13.Text = "To add new client inforamtion click here.";
+            superToolTip13.Items.Add(toolTipTitleItem13);
+            superToolTip13.Items.Add(toolTipItem13);
+            this.btnAdd.SuperTip = superToolTip13;
             this.btnAdd.TabIndex = 3;
             this.btnAdd.ToolTip = "Add new client";
             this.btnAdd.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Application;
@@ -192,17 +192,18 @@
             this.btnClose.Location = new System.Drawing.Point(316, 240);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(62, 23);
-            toolTipTitleItem4.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image3")));
-            toolTipTitleItem4.Appearance.Options.UseImage = true;
-            toolTipTitleItem4.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem4.Image")));
-            toolTipTitleItem4.Text = "Cancel";
-            toolTipItem4.LeftIndent = 6;
-            toolTipItem4.Text = "To close client information without saving any information click here.";
-            superToolTip4.Items.Add(toolTipTitleItem4);
-            superToolTip4.Items.Add(toolTipItem4);
-            this.btnClose.SuperTip = superToolTip4;
+            toolTipTitleItem14.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image3")));
+            toolTipTitleItem14.Appearance.Options.UseImage = true;
+            toolTipTitleItem14.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem14.Image")));
+            toolTipTitleItem14.Text = "Cancel";
+            toolTipItem14.LeftIndent = 6;
+            toolTipItem14.Text = "To close client information without saving any information click here.";
+            superToolTip14.Items.Add(toolTipTitleItem14);
+            superToolTip14.Items.Add(toolTipItem14);
+            this.btnClose.SuperTip = superToolTip14;
             this.btnClose.TabIndex = 31;
             this.btnClose.Text = "&Close";
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnSave
             // 
@@ -211,17 +212,18 @@
             this.btnSave.Location = new System.Drawing.Point(253, 240);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(57, 23);
-            toolTipTitleItem5.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image4")));
-            toolTipTitleItem5.Appearance.Options.UseImage = true;
-            toolTipTitleItem5.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem5.Image")));
-            toolTipTitleItem5.Text = "Save";
-            toolTipItem5.LeftIndent = 6;
-            toolTipItem5.Text = "To save client infroamtion click here.";
-            superToolTip5.Items.Add(toolTipTitleItem5);
-            superToolTip5.Items.Add(toolTipItem5);
-            this.btnSave.SuperTip = superToolTip5;
+            toolTipTitleItem15.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image4")));
+            toolTipTitleItem15.Appearance.Options.UseImage = true;
+            toolTipTitleItem15.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem15.Image")));
+            toolTipTitleItem15.Text = "Save";
+            toolTipItem15.LeftIndent = 6;
+            toolTipItem15.Text = "To save client infroamtion click here.";
+            superToolTip15.Items.Add(toolTipTitleItem15);
+            superToolTip15.Items.Add(toolTipItem15);
+            this.btnSave.SuperTip = superToolTip15;
             this.btnSave.TabIndex = 30;
             this.btnSave.Text = "&Save";
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // labelControl2
             // 
@@ -241,11 +243,12 @@
             // 
             // txtPreFix
             // 
+            this.txtPreFix.EnterMoveNextControl = true;
             this.txtPreFix.Location = new System.Drawing.Point(26, 102);
             this.txtPreFix.Name = "txtPreFix";
-            this.txtPreFix.Properties.MaxLength = 2;
+            this.txtPreFix.Properties.MaxLength = 5;
             this.txtPreFix.Size = new System.Drawing.Size(109, 20);
-            this.txtPreFix.TabIndex = 11;
+            this.txtPreFix.TabIndex = 10;
             // 
             // labelControl3
             // 
@@ -257,8 +260,11 @@
             // 
             // txtProjectName
             // 
+            this.txtProjectName.EnterMoveNextControl = true;
             this.txtProjectName.Location = new System.Drawing.Point(26, 51);
             this.txtProjectName.Name = "txtProjectName";
+            this.txtProjectName.Properties.NullValuePrompt = "You can not leave this field blank.";
+            this.txtProjectName.Properties.NullValuePromptShowForEmptyValue = true;
             this.txtProjectName.Size = new System.Drawing.Size(352, 20);
             this.txtProjectName.TabIndex = 9;
             // 
@@ -266,9 +272,8 @@
             // 
             this.txtDescription.Location = new System.Drawing.Point(26, 153);
             this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Properties.MaxLength = 2;
             this.txtDescription.Size = new System.Drawing.Size(352, 76);
-            this.txtDescription.TabIndex = 13;
+            this.txtDescription.TabIndex = 11;
             // 
             // NewProject
             // 

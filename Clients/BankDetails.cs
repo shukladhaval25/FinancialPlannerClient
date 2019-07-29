@@ -243,5 +243,21 @@ namespace FinancialPlannerClient.Clients
             if (!string.IsNullOrEmpty(txtMinReqBalance.Text))
                 e.Cancel = !FinancialPlanner.Common.Validation.IsDigit(txtMinReqBalance.Text);
         }
+
+        private void cmbAccountType_Enter(object sender, EventArgs e)
+        {
+            cmbAccountType.Items.Clear();
+            if (this.personalInformation.Client.ResiStatus != "Indian")
+            {
+                
+                cmbAccountType.Items.Add("NRE");
+                cmbAccountType.Items.Add("NRO");
+            }
+            else
+            {
+                cmbAccountType.Items.Add("SA");
+                cmbAccountType.Items.Add("CA");
+            }
+        }
     }
 }

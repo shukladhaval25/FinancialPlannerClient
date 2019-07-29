@@ -100,6 +100,7 @@ namespace FinancialPlannerClient.Clients
             txtClientOccupation.Text = this._client.Occupation;
             cmbRating.Text = this._client.Rating;
             cmbClientType.Text = this._client.ClientType;
+            cmbResiStatus.Text = this._client.ResiStatus;
         }
 
         private Image converToImageFromBase64String(string base64String)
@@ -281,7 +282,8 @@ namespace FinancialPlannerClient.Clients
                 ImageData = _client.ImageData,
                 ImagePath = _client.ImagePath,
                 Rating = cmbRating.Text,
-                ClientType = cmbClientType.Text
+                ClientType = cmbClientType.Text,
+                ResiStatus = cmbResiStatus.Text
             };
             return client;
         }

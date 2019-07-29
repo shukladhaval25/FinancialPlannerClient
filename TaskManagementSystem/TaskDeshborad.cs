@@ -1,7 +1,9 @@
 ﻿using DevExpress.Utils;
 using DevExpress.XtraCharts;
 using FinancialPlanner.Common;
+using FinancialPlanner.Common.DataConversion;
 using FinancialPlanner.Common.Model.TaskManagement;
+using FinancialPlannerClient.TaskManagementSystem.Services;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -9,6 +11,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FinancialPlannerClient.TaskManagementSystem
@@ -17,12 +20,10 @@ namespace FinancialPlannerClient.TaskManagementSystem
     {
         List<FinancialPlanner.Common.Model.TaskManagement.TaskCard> taskCards =
             new List<FinancialPlanner.Common.Model.TaskManagement.TaskCard>();
-        DataTable dtTasks = new DataTable();
 
-        delegate void delegeteProjectWiseData();
-        delegate void delegateChartWiseData();
-        delegate void delegateMyOverDueData();
-        delegate void delegateMyWorkStatus();
+        DataTable dtProject = new DataTable();
+        DataTable dtTasks = new DataTable();
+              
 
         public TaskDeshborad()
         {
@@ -38,26 +39,26 @@ namespace FinancialPlannerClient.TaskManagementSystem
             Logger.LogDebug(debuggerInfo);
         }
 
-        private void displayResultONScreen()
-        {
-            dtTasks = FinancialPlanner.Common.DataConversion.ListtoDataTable.ToDataTable(taskCards);
+        //private void displayResultONScreen()
+        //{
+        //    dtTasks = FinancialPlanner.Common.DataConversion.ListtoDataTable.ToDataTable(taskCards);
 
-            delegeteProjectWiseData projectWiseData = 
-                new delegeteProjectWiseData(fillProjectWiseGrid);
-            this.BeginInvoke(projectWiseData);
+        //    delegeteProjectWiseData projectWiseData = 
+        //        new delegeteProjectWiseData(fillProjectWiseGrid);
+        //    this.BeginInvoke(projectWiseData);
 
-            delegateChartWiseData chartWiseData =  new delegateChartWiseData(fillChartStatusWise);
-            this.BeginInvoke(chartWiseData);
+        //    delegateChartWiseData chartWiseData =  new delegateChartWiseData(fillChartStatusWise);
+        //    this.BeginInvoke(chartWiseData);
 
-            delegateMyOverDueData myOverDueData = new delegateMyOverDueData(fillMyOverDueGrid);
-            BeginInvoke(myOverDueData);
+        //    delegateMyOverDueData myOverDueData = new delegateMyOverDueData(fillMyOverDueGrid);
+        //    BeginInvoke(myOverDueData);
 
-            delegateMyWorkStatus myWorkStatusData = new delegateMyWorkStatus(fillMyWorkStatusChart);
-            BeginInvoke(myWorkStatusData);
+        //    delegateMyWorkStatus myWorkStatusData = new delegateMyWorkStatus(fillMyWorkStatusChart);
+        //    BeginInvoke(myWorkStatusData);
 
-        }
+        //}
 
-        private void fillMyWorkStatusChart()
+        /*private void fillMyWorkStatusChart()
         {
             
         }
@@ -443,13 +444,15 @@ namespace FinancialPlannerClient.TaskManagementSystem
             taskCard3.ActualCompletedDate = DateTime.Now.Date.AddDays(7);
             taskCards.Add(taskCard3);
 
-        }
+        }*/
 
         private void TaskDeshborad_Load(object sender, EventArgs e)
         {
             WaitDialogForm waitdlg = new WaitDialogForm("Loading Data...");
             try
             {
+                loadDashBorad();
+                
                 //setDummyData();
                 //displayResultONScreen();
             }
@@ -464,6 +467,23 @@ namespace FinancialPlannerClient.TaskManagementSystem
             {
                 waitdlg.Close();
             }
+        }
+
+        private void loadDashBorad()
+        {
+            loadProjectsDetails();
+            throw new NotImplementedException();
+        }
+
+        private async void loadProjectsDetails()
+        {
+            TaskProjectInfo taskProjectInfo = new TaskProjectInfo();
+            Task<IList<Project>> task = new Task<IList<Project>>(taskProjectInfo.GetAll);
+            task.Start();
+
+            IList<Project> projects = await (task);
+            dtProject = ListtoDataTable.ToDataTable(projects.ToList());
+            grdProjectWiseTask.DataSource = dtProject;
         }
 
         private void tileViewMyOverView_DoubleClick(object sender, EventArgs e)

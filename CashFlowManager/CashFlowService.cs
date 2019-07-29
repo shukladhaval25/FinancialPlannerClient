@@ -396,7 +396,11 @@ namespace FinancialPlannerClient.CashFlowManager
                    int.Parse(dr["StartYear"].ToString()) <= expEndYear) || 
                    string.IsNullOrEmpty(exp.ExpStartYear))
                 {
-                    double expAmt = double.Parse(_dtCashFlow.Rows[years - 1][exp.Item].ToString());
+                    double expAmt = 0;
+                    if (!double.TryParse(_dtCashFlow.Rows[years - 1][exp.Item].ToString(), out expAmt))
+                    {
+                        expAmt = exp.Amount;
+                    }
                     double expInflationRate = exp.InflationRate;
                     double expWithInflaction = expAmt + ((expAmt * expInflationRate) / 100);
                     dr[exp.Item] = System.Math.Round(expWithInflaction, 2);
@@ -482,10 +486,22 @@ namespace FinancialPlannerClient.CashFlowManager
             double totalExpenses = 0;
             foreach (Expenses exp in _cashFlowCalculation.LstExpenses)
             {
-
-                double expAmt = (exp.OccuranceType == ExpenseType.Monthly) ? exp.Amount * 12 : exp.Amount;
-                dr[exp.Item] = expAmt;
-                totalExpenses = totalExpenses + expAmt;
+                if (!string.IsNullOrEmpty(exp.ExpStartYear) && !string.IsNullOrEmpty(exp.ExpEndYear))
+                {
+                    if (_planner.StartDate.Year >= int.Parse(exp.ExpStartYear) &&
+                        _planner.StartDate.Year <= int.Parse(exp.ExpEndYear))
+                    {
+                        double expAmt = (exp.OccuranceType == ExpenseType.Monthly) ? exp.Amount * 12 : exp.Amount;
+                        dr[exp.Item] = expAmt;
+                        totalExpenses = totalExpenses + expAmt;
+                    }
+                }
+                else
+                {
+                    double expAmt = (exp.OccuranceType == ExpenseType.Monthly) ? exp.Amount * 12 : exp.Amount;
+                    dr[exp.Item] = expAmt;
+                    totalExpenses = totalExpenses + expAmt;
+                }
             }
 
             //Life Insurance

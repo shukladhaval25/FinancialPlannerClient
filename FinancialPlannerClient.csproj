@@ -64,6 +64,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="DevExpress.Map.v16.2.Core, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Mvvm.v16.2, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Office.v16.2.Core, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Pdf.v16.2.Core, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.PivotGrid.v16.2.Core, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -159,6 +160,7 @@
     <Compile Include="Clients\ClientSearch.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Clients\ClientService.cs" />
     <Compile Include="Clients\ClientWithPrimaryDetails.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -690,6 +692,8 @@
       <DependentUpon>frmRiskProfileReturn.cs</DependentUpon>
     </Compile>
     <Compile Include="RiskProfile\InvestmentByfercationInfo.cs" />
+    <Compile Include="TaskManagementSystem\TransactionOptions\FreshPurchase.cs" />
+    <Compile Include="TaskManagementSystem\TransactionOptions\ITransactionType.cs" />
     <Compile Include="TaskManagementSystem\CustomAppointmentForm.cs">
       <SubType>Form</SubType>
     </Compile>

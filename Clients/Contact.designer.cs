@@ -250,7 +250,7 @@
             this.txtSpouseEmailId.Size = new System.Drawing.Size(222, 20);
             this.txtSpouseEmailId.TabIndex = 15;
             this.txtSpouseEmailId.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSpouseEmailId_KeyPress);
-            this.txtSpouseEmailId.Validating += new System.ComponentModel.CancelEventHandler(this.txtClientEmailId_Validating);
+            this.txtSpouseEmailId.Validating += new System.ComponentModel.CancelEventHandler(this.txtSpouseEmailId_Validating);
             // 
             // groupControl1
             // 

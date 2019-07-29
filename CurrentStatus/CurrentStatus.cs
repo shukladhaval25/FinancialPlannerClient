@@ -1264,6 +1264,7 @@ namespace FinancialPlannerClient.CurrentStatus
                 txtMFSecondHolder.Text = dr["SecondHolder"].ToString();
                 txtMFNominee.Text = dr["Nominee"].ToString();
                 txtMFInvestmentReturnRate.Text = dr["InvestmentReturnRate"].ToString();
+                txtMFCurrentVal.Text = dr["CurrentValue"].ToString();
             }
         }
 
@@ -1340,7 +1341,8 @@ namespace FinancialPlannerClient.CurrentStatus
             double units = 0;
             float.TryParse(txtNav.Text, out nav);
             double.TryParse(txtUnits.Text, out units);
-            txtMFCurrentVal.Text = (nav * units).ToString();
+            if (nav > 0 && units > 0)
+                txtMFCurrentVal.Text = (nav * units).ToString();
         }
 
         private void btnCancelMF_Click(object sender, EventArgs e)
@@ -1406,6 +1408,7 @@ namespace FinancialPlannerClient.CurrentStatus
             mf.SecondHolder = txtMFSecondHolder.Text;
             mf.Nominee = txtMFNominee.Text;
             mf.InvestmentReturnRate = string.IsNullOrEmpty(txtMFInvestmentReturnRate.Text) ? 0 : float.Parse(txtMFInvestmentReturnRate.Text);
+            mf.CurrentValue = double.Parse(txtMFCurrentVal.Text);
             return mf;
         }
 
@@ -2171,7 +2174,7 @@ namespace FinancialPlannerClient.CurrentStatus
         private EPF getEPFData()
         {
             EPF EPF = new EPF();
-            EPF.Id = int.Parse(cmbEPF_Invester.Tag.ToString());
+            EPF.Id = (cmbEPF_Invester.Tag == null) ? 0 : int.Parse(cmbEPF_Invester.Tag.ToString());
             EPF.Pid = _planeId;
             EPF.InvesterName = cmbEPF_Invester.Text;
             EPF.AccountNo = cmbEPFAccountNo.Text;
@@ -2280,6 +2283,8 @@ namespace FinancialPlannerClient.CurrentStatus
             txtOthersParticular.Text = "";
             txtOthersAmount.Text = "0";
             txtOthersROI.Text = "0";
+            cmbOthersTransactionType.Text = "Equity";
+            
         }
 
         private void displayOthersInfo(DataRow dr)
@@ -2302,6 +2307,7 @@ namespace FinancialPlannerClient.CurrentStatus
                     cmbOtherGoalMap.Text = "";
                 }
                 txtOthersROI.Text = dr.Field<string>("InvestmentReturnRate");
+                cmbOthersTransactionType.Text = dr.Field<string>("TransactionType");
             }
         }
 
@@ -2333,7 +2339,7 @@ namespace FinancialPlannerClient.CurrentStatus
         private Others getOthersData()
         {
             Others Others = new Others();
-            Others.Id = int.Parse(cmbOthersInvestor.Tag.ToString());
+            Others.Id = (cmbOthersInvestor.Tag == null) ? 0 : int.Parse(cmbOthersInvestor.Tag.ToString());
             Others.Pid = _planeId;
             Others.InvesterName = cmbOthersInvestor.Text;
             Others.AccountNo = txtOthersAccountNo.Text;
@@ -2346,6 +2352,7 @@ namespace FinancialPlannerClient.CurrentStatus
             Others.UpdatedBy = Program.CurrentUser.Id;
             Others.MachineName = Environment.MachineName;
             Others.InvestmentReturnRate = (string.IsNullOrEmpty(txtOthersROI.Text) ? 0 : float.Parse(txtOthersROI.Text));
+            Others.TransactionType = cmbOthersTransactionType.Text;
             return Others;
         }
 

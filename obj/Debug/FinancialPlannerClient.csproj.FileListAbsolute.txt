@@ -388,3 +388,5 @@ C:\Application Development\Financial Planner Project\FinancialPlannerClient\bin\
 C:\Application Development\Financial Planner Project\FinancialPlannerClient\bin\Debug\es\DevExpress.Dashboard.v16.2.Core.resources.dll
 C:\Application Development\Financial Planner Project\FinancialPlannerClient\bin\Debug\ja\DevExpress.Dashboard.v16.2.Core.resources.dll
 C:\Application Development\Financial Planner Project\FinancialPlannerClient\bin\Debug\ru\DevExpress.Dashboard.v16.2.Core.resources.dll
+C:\Application Development\Financial Planner Project\FinancialPlannerClient\bin\Debug\DevExpress.Mvvm.v16.2.dll
+C:\Application Development\Financial Planner Project\FinancialPlannerClient\bin\Debug\DevExpress.Mvvm.v16.2.xml

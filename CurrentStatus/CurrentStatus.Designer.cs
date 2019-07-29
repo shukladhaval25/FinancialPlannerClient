@@ -559,6 +559,8 @@
             this.btnEditEPF = new System.Windows.Forms.Button();
             this.Others = new System.Windows.Forms.TabPage();
             this.grpOthersDetails = new System.Windows.Forms.GroupBox();
+            this.cmbOthersTransactionType = new System.Windows.Forms.ComboBox();
+            this.label204 = new System.Windows.Forms.Label();
             this.txtOthersAccountNo = new System.Windows.Forms.TextBox();
             this.txtOthersROI = new System.Windows.Forms.TextBox();
             this.label192 = new System.Windows.Forms.Label();
@@ -3611,7 +3613,7 @@
             this.label100.Name = "label100";
             this.label100.Size = new System.Drawing.Size(58, 16);
             this.label100.TabIndex = 11;
-            this.label100.Text = "Invester:";
+            this.label100.Text = "Investor:";
             // 
             // btnCancelSA
             // 
@@ -6254,6 +6256,8 @@
             // 
             this.grpOthersDetails.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpOthersDetails.Controls.Add(this.cmbOthersTransactionType);
+            this.grpOthersDetails.Controls.Add(this.label204);
             this.grpOthersDetails.Controls.Add(this.txtOthersAccountNo);
             this.grpOthersDetails.Controls.Add(this.txtOthersROI);
             this.grpOthersDetails.Controls.Add(this.label192);
@@ -6277,6 +6281,26 @@
             this.grpOthersDetails.TabStop = false;
             this.grpOthersDetails.Text = "Others";
             // 
+            // cmbOthersTransactionType
+            // 
+            this.cmbOthersTransactionType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbOthersTransactionType.FormattingEnabled = true;
+            this.cmbOthersTransactionType.Items.AddRange(new object[] {
+            "Equity",
+            "Debt"});
+            this.cmbOthersTransactionType.Location = new System.Drawing.Point(601, 29);
+            this.cmbOthersTransactionType.Name = "cmbOthersTransactionType";
+            this.cmbOthersTransactionType.Size = new System.Drawing.Size(320, 24);
+            this.cmbOthersTransactionType.TabIndex = 5;
+            // 
+            // label204
+            // 
+            this.label204.Location = new System.Drawing.Point(490, 29);
+            this.label204.Name = "label204";
+            this.label204.Size = new System.Drawing.Size(111, 22);
+            this.label204.TabIndex = 50;
+            this.label204.Text = "Investment Type:";
+            // 
             // txtOthersAccountNo
             // 
             this.txtOthersAccountNo.Location = new System.Drawing.Point(137, 60);
@@ -6288,7 +6312,7 @@
             // 
             // txtOthersROI
             // 
-            this.txtOthersROI.Location = new System.Drawing.Point(601, 51);
+            this.txtOthersROI.Location = new System.Drawing.Point(601, 58);
             this.txtOthersROI.MaxLength = 5;
             this.txtOthersROI.Name = "txtOthersROI";
             this.txtOthersROI.Size = new System.Drawing.Size(134, 22);
@@ -6297,7 +6321,7 @@
             // 
             // label192
             // 
-            this.label192.Location = new System.Drawing.Point(490, 51);
+            this.label192.Location = new System.Drawing.Point(490, 57);
             this.label192.Name = "label192";
             this.label192.Size = new System.Drawing.Size(64, 22);
             this.label192.TabIndex = 48;
@@ -6308,7 +6332,7 @@
             this.txtOthersAmount.Location = new System.Drawing.Point(337, 89);
             this.txtOthersAmount.Name = "txtOthersAmount";
             this.txtOthersAmount.Size = new System.Drawing.Size(120, 22);
-            this.txtOthersAmount.TabIndex = 7;
+            this.txtOthersAmount.TabIndex = 4;
             this.txtOthersAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label193
@@ -6331,7 +6355,7 @@
             // 
             this.cmbOtherGoalMap.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbOtherGoalMap.FormattingEnabled = true;
-            this.cmbOtherGoalMap.Location = new System.Drawing.Point(601, 79);
+            this.cmbOtherGoalMap.Location = new System.Drawing.Point(601, 85);
             this.cmbOtherGoalMap.Name = "cmbOtherGoalMap";
             this.cmbOtherGoalMap.Size = new System.Drawing.Size(320, 24);
             this.cmbOtherGoalMap.TabIndex = 11;
@@ -6340,7 +6364,7 @@
             // label196
             // 
             this.label196.AutoSize = true;
-            this.label196.Location = new System.Drawing.Point(490, 82);
+            this.label196.Location = new System.Drawing.Point(490, 88);
             this.label196.Name = "label196";
             this.label196.Size = new System.Drawing.Size(105, 16);
             this.label196.TabIndex = 22;
@@ -6377,7 +6401,7 @@
             this.btnOthersCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnOthersCancel.ImageKey = "icons8-cancel-16.png";
             this.btnOthersCancel.ImageList = this.imgCollection;
-            this.btnOthersCancel.Location = new System.Drawing.Point(835, 109);
+            this.btnOthersCancel.Location = new System.Drawing.Point(835, 121);
             this.btnOthersCancel.Name = "btnOthersCancel";
             this.btnOthersCancel.Size = new System.Drawing.Size(86, 26);
             this.btnOthersCancel.TabIndex = 13;
@@ -6390,7 +6414,7 @@
             this.btnOthersSave.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnOthersSave.ImageKey = "icons8-save-close-16.png";
             this.btnOthersSave.ImageList = this.imgCollection;
-            this.btnOthersSave.Location = new System.Drawing.Point(743, 109);
+            this.btnOthersSave.Location = new System.Drawing.Point(743, 121);
             this.btnOthersSave.Name = "btnOthersSave";
             this.btnOthersSave.Size = new System.Drawing.Size(86, 26);
             this.btnOthersSave.TabIndex = 12;
@@ -7143,5 +7167,7 @@
         private System.Windows.Forms.Button btnOthersDelete;
         private System.Windows.Forms.Button btnOthersAdd;
         private System.Windows.Forms.Button btnOthersEdit;
+        private System.Windows.Forms.ComboBox cmbOthersTransactionType;
+        private System.Windows.Forms.Label label204;
     }
 }
