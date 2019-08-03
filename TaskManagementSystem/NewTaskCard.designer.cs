@@ -71,9 +71,6 @@
             this.lblTransactionDetails = new DevExpress.XtraEditors.LabelControl();
             this.lblTaskIDTitle = new DevExpress.XtraEditors.LabelControl();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
-            this.TEST = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.OPT = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.CAN = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             ((System.ComponentModel.ISupportInitialize)(this.cmbProject.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbClient.Properties)).BeginInit();
@@ -271,7 +268,7 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.textEdit3.Location = new System.Drawing.Point(8, 24);
             this.textEdit3.Name = "textEdit3";
-            this.textEdit3.Size = new System.Drawing.Size(525, 54);
+            this.textEdit3.Size = new System.Drawing.Size(525, 8);
             this.textEdit3.TabIndex = 19;
             // 
             // labelControl10
@@ -390,11 +387,7 @@
             this.vGridTransaction.Name = "vGridTransaction";
             this.vGridTransaction.RecordWidth = 343;
             this.vGridTransaction.RowHeaderWidth = 177;
-            this.vGridTransaction.Rows.AddRange(new DevExpress.XtraVerticalGrid.Rows.BaseRow[] {
-            this.TEST,
-            this.OPT,
-            this.CAN});
-            this.vGridTransaction.Size = new System.Drawing.Size(525, 81);
+            this.vGridTransaction.Size = new System.Drawing.Size(525, 127);
             this.vGridTransaction.TabIndex = 30;
             // 
             // cmbTransactionType
@@ -448,21 +441,9 @@
             this.splitContainerControl1.Panel2.Controls.Add(this.textEdit3);
             this.splitContainerControl1.Panel2.Text = "Panel2";
             this.splitContainerControl1.Size = new System.Drawing.Size(538, 212);
-            this.splitContainerControl1.SplitterPosition = 114;
+            this.splitContainerControl1.SplitterPosition = 160;
             this.splitContainerControl1.TabIndex = 36;
             this.splitContainerControl1.Text = "splitContainerControl1";
-            // 
-            // TEST
-            // 
-            this.TEST.Name = "TEST";
-            // 
-            // OPT
-            // 
-            this.OPT.Name = "OPT";
-            // 
-            // CAN
-            // 
-            this.CAN.Name = "CAN";
             // 
             // NewTaskCard
             // 
@@ -566,9 +547,6 @@
         private DevExpress.XtraEditors.LabelControl lblTransactionDetails;
         private DevExpress.XtraEditors.LabelControl lblTaskIDTitle;
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow TEST;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow OPT;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow CAN;
     }
 }
 

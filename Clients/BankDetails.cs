@@ -192,7 +192,11 @@ namespace FinancialPlannerClient.Clients
 
         private void gridViewBankAccount_SelectionChanged(object sender, DevExpress.Data.SelectionChangedEventArgs e)
         {
-           
+            if (gridViewBankAccount.FocusedRowHandle >= 0)
+            {
+                BankAccountDetail bank = getBankDetailsByFocusedRow();
+                displayBankAccountData(bank);
+            }
         }
 
         private void gridViewBankAccount_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)

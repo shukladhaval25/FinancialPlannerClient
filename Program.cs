@@ -1,10 +1,14 @@
-﻿using FinancialPlanner.Common.Model;
+﻿using FinancialPlanner.Common;
+using FinancialPlanner.Common.Model;
 using FinancialPlannerClient.Master;
+using FinancialPlannerClient.TaskManagementSystem;
+using FinancialPlannerClient.TaskManagementSystem.TransactionOptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Unity;
 
 namespace FinancialPlannerClient
 {
@@ -12,6 +16,7 @@ namespace FinancialPlannerClient
     {
         private static string _webServiceUrl;
         public static User CurrentUser;
+        public static IUnityContainer container = new UnityContainer();
         private static AssumptionMaster assumptionMaster;
         public static string WebServiceUrl
         {
@@ -23,10 +28,24 @@ namespace FinancialPlannerClient
         [STAThread]
         static void Main()
         {
+            registerInterfaces();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             _webServiceUrl = getWebServiceUrl();
             Application.Run(new Login.frmXtraLogin());
+        }
+
+        private static void registerInterfaces()
+        {
+            try
+            {                
+                container.RegisterType<ITransactionType, FreshPurchase>("Fresh Purchase");
+                container.RegisterType<ITransactionType, AdditionalPurchase>("Additional Purchase");
+            }
+            catch(Exception ex)
+            {
+                Logger.LogDebug(ex);
+            }
         }
 
         private static string getWebServiceUrl()

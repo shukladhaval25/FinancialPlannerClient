@@ -56,18 +56,14 @@
     </Reference>
     <Reference Include="DevExpress.BonusSkins.v16.2, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Charts.v16.2.Core, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Dashboard.v16.2.Core, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Data.v16.2, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.DataAccess.v16.2, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.DataAccess.v16.2.UI, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Images.v16.2, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <Private>False</Private>
     </Reference>
-    <Reference Include="DevExpress.Map.v16.2.Core, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Mvvm.v16.2, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Office.v16.2.Core, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Pdf.v16.2.Core, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.PivotGrid.v16.2.Core, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Printing.v16.2.Core, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.RichEdit.v16.2.Core, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Sparkline.v16.2.Core, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -115,6 +111,9 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard1.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Remoting" />
     <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Xml.Linq" />
@@ -127,6 +126,12 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="UIAutomationClient" />
+    <Reference Include="Unity.Abstractions, Version=5.11.1.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.11.1\lib\net45\Unity.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Container, Version=5.11.1.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.11.1\lib\net45\Unity.Container.dll</HintPath>
+    </Reference>
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
@@ -320,6 +325,13 @@
     </Compile>
     <Compile Include="Master\Others.Designer.cs">
       <DependentUpon>Others.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Master\TaskMaster\ARNInfo.cs" />
+    <Compile Include="Master\TaskMaster\ARNView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Master\TaskMaster\ARNView.Designer.cs">
+      <DependentUpon>ARNView.cs</DependentUpon>
     </Compile>
     <Compile Include="PlannerInfo\BankAccountInfo.cs" />
     <Compile Include="PlannerInfo\ClientCRMGroupinfo.cs" />
@@ -692,6 +704,7 @@
       <DependentUpon>frmRiskProfileReturn.cs</DependentUpon>
     </Compile>
     <Compile Include="RiskProfile\InvestmentByfercationInfo.cs" />
+    <Compile Include="TaskManagementSystem\TransactionOptions\AdditionalPurchase.cs" />
     <Compile Include="TaskManagementSystem\TransactionOptions\FreshPurchase.cs" />
     <Compile Include="TaskManagementSystem\TransactionOptions\ITransactionType.cs" />
     <Compile Include="TaskManagementSystem\CustomAppointmentForm.cs">
@@ -838,6 +851,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Master\Others.resx">
       <DependentUpon>Others.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Master\TaskMaster\ARNView.resx">
+      <DependentUpon>ARNView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\ReportParams.resx">
       <DependentUpon>ReportParams.cs</DependentUpon>
@@ -1046,6 +1062,7 @@
     <EmbeddedResource Include="Testing.resx">
       <DependentUpon>Testing.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -1280,6 +1297,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

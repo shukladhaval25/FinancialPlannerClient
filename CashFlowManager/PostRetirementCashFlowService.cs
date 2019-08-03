@@ -168,6 +168,20 @@ namespace FinancialPlannerClient.CashFlowManager
         }
         private bool isIncomeValidaForYear(Income income, int years, int clientRetYear, int spouseRetYear)
         {
+            if ( !string.IsNullOrEmpty(income.StartYear) && !string.IsNullOrEmpty(income.EndYear) &&
+                int.Parse(income.StartYear) >= years && years <= int.Parse(income.EndYear))
+            {
+                return true;
+            }
+            else
+            {
+                if((!string.IsNullOrEmpty(income.StartYear) && string.IsNullOrEmpty(income.EndYear)) && 
+                        (int.Parse(income.StartYear) >= years))
+                {
+                    return true;
+                }
+            }
+
             if (income.IncomeBy == cashFlowCalculation.ClientName)
                 return (clientRetYear >= (years - cashFlowCalculation.ClientDateOfBirth.Year)) ? true : false;
             else if (income.IncomeBy == cashFlowCalculation.SpouseName)
@@ -228,7 +242,14 @@ namespace FinancialPlannerClient.CashFlowManager
         private long getIncomeAmount(Income income,int year)
         {
             if (_dtRetirementCashFlow.Rows.Count > 0)
-                return long.Parse(_dtRetirementCashFlow.Rows[_dtRetirementCashFlow.Rows.Count - 1]["(" + income.IncomeBy + ") " + income.Source].ToString());
+            {
+                long incomeAmount = long.Parse(_dtRetirementCashFlow.Rows[_dtRetirementCashFlow.Rows.Count - 1]["(" + income.IncomeBy + ") " + income.Source].ToString());
+                if (int.Parse(income.StartYear) == year && incomeAmount == 0)
+                {
+                    incomeAmount = long.Parse(income.Amount.ToString());
+                }
+                return incomeAmount;
+            }
             else
             {
                 DataRow drLastCashFlow = cashFlowService.GetLastIncomeAndExpAtRetirementAge();

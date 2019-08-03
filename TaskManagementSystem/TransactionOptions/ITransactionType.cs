@@ -10,6 +10,7 @@ namespace FinancialPlannerClient.TaskManagementSystem
 {
     public interface ITransactionType
     {
+        void setVGridControl(VGridControl vGrid);
         VGridControl GetGridControl();
         void BindDataSource(DataTable dataTable);
         void HideGridControl();

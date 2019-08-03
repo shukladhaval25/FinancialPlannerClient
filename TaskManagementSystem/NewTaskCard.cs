@@ -11,13 +11,14 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Unity;
 
 namespace FinancialPlannerClient.TaskManagementSystem
 {
     public partial class NewTaskCard : DevExpress.XtraEditors.XtraForm
     {
         IList<Project> projects = new List<Project>();
-        
+        IList<Client> clients;
         public NewTaskCard()
         {
             InitializeComponent();
@@ -40,7 +41,7 @@ namespace FinancialPlannerClient.TaskManagementSystem
         private void fillupCustomer()
         {
             ClientService clientService = new ClientService();
-            IList<Client> clients = clientService.GetAll();
+            clients = clientService.GetAll();
             cmbClient.Properties.Items.Clear();
             cmbClient.Properties.Items.AddRange(clients.Select(i => i.Name).ToList());
         }
@@ -90,34 +91,16 @@ namespace FinancialPlannerClient.TaskManagementSystem
 
         private void cmbTransactionType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.vGridTransaction.Rows.Clear();
-            DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemARN = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
-            DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBoxClientGroup = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            //this.vGridTransaction.Rows.Clear();
+            //freshPurchaseTypeTransaction();
 
-            DevExpress.XtraVerticalGrid.Rows.EditorRow ARN = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            ARN.Name = "ARN";
-            ARN.Properties.FieldName = "ARN";
-            ARN.Properties.Caption = "ARN";
-            ARN.Properties.RowEdit = repositoryItemARN;
+            
+            var transactionType = Program.container.Resolve<ITransactionType>(cmbTransactionType.Text);
+            transactionType.setVGridControl(this.vGridTransaction);
 
-            DevExpress.XtraVerticalGrid.Rows.EditorRow ClientGroup = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            ClientGroup.Name = "ClientGroup";
-            ClientGroup.Properties.FieldName = "ClientGroup";
-            ClientGroup.Properties.Caption = "ClientGroup";
-            ClientGroup.Properties.RowEdit = repositoryItemComboBoxClientGroup;
+            //this.vGridTransaction.RepositoryItems.AddRange(freshPurchase.GetRepositoryItems());
+            //this.vGridTransaction.Rows.AddRange(freshPurchase.GetBaseRows());
 
-
-
-            this.vGridTransaction.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] { repositoryItemARN, repositoryItemComboBoxClientGroup });
-            this.vGridTransaction.Rows.AddRange(new DevExpress.XtraVerticalGrid.Rows.BaseRow[] { ARN, ClientGroup });
-
-
-            /*FreshPurchase freshPurchase = new FreshPurchase();
-            this.vGridTransaction.RepositoryItems.Clear();
-            this.vGridTransaction.Rows.Clear();
-            this.vGridTransaction.RepositoryItems.AddRange(freshPurchase.GetRepositoryItems());
-            this.vGridTransaction.Rows.AddRange(freshPurchase.GetBaseRows());
-            */
 
             //this.vGridTransaction.Update();
             //this.vGridTransaction.Refresh();
@@ -138,6 +121,46 @@ namespace FinancialPlannerClient.TaskManagementSystem
             //vGridTransaction.DataSource = dtTransaction;
             //vGridTransaction.CreateRow(1);
             //vGridTransaction.AddNewRecord();
+        }
+
+        private void freshPurchaseTypeTransaction()
+        {
+            DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemARN = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBoxClientGroup = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBoxMemberName = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+
+            repositoryItemARN.Items.Add("10211/25/2565");
+            repositoryItemARN.Items.Add("36560/25/2345");
+            repositoryItemARN.Items.Add("2334/25/2346");
+
+            repositoryItemComboBoxClientGroup.Items.AddRange(this.clients.Select(i => i.Name).ToList());
+            repositoryItemComboBoxMemberName.Items.AddRange(this.clients.Select(i => i.Name).ToList());
+
+            DevExpress.XtraVerticalGrid.Rows.EditorRow ARN = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            ARN.Name = "ARN";
+            ARN.Properties.FieldName = "ARN";
+            ARN.Properties.Caption = "ARN";
+            ARN.Properties.RowEdit = repositoryItemARN;
+
+            DevExpress.XtraVerticalGrid.Rows.EditorRow ClientGroup = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            ClientGroup.Name = "ClientGroup";
+            ClientGroup.Properties.FieldName = "ClientGroup";
+            ClientGroup.Properties.Caption = "ClientGroup";
+            ClientGroup.Properties.RowEdit = repositoryItemComboBoxClientGroup;
+
+            DevExpress.XtraVerticalGrid.Rows.EditorRow memberName = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            memberName.Name = "MemberName";
+            memberName.Properties.FieldName = "MemberName";
+            memberName.Properties.Caption = "MemberName";
+            memberName.Properties.RowEdit = repositoryItemComboBoxMemberName;
+
+            this.vGridTransaction.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] { repositoryItemARN,
+                repositoryItemComboBoxClientGroup,
+                repositoryItemComboBoxMemberName});
+
+            this.vGridTransaction.Rows.AddRange(new DevExpress.XtraVerticalGrid.Rows.BaseRow[] { ARN,
+                ClientGroup,
+                memberName});
         }
     }
 }
