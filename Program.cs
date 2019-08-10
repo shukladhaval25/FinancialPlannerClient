@@ -43,6 +43,7 @@ namespace FinancialPlannerClient
                 container.RegisterType<ITransactionType, FreshPurchase>("Fresh Purchase");
                 container.RegisterType<ITransactionType, AdditionalPurchase>("Additional Purchase");
                 container.RegisterType<ITransactionType, Switch>("Switch");
+                container.RegisterType<ITransactionType, STP>("STP");
             }
             catch(Exception ex)
             {

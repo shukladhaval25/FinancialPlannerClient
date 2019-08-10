@@ -92,6 +92,7 @@ namespace FinancialPlannerClient.TaskManagementSystem
             cmbTransactionType.Properties.Items.Add("Fresh Purchase");
             cmbTransactionType.Properties.Items.Add("Additional Purchase");
             cmbTransactionType.Properties.Items.Add("Switch");
+            cmbTransactionType.Properties.Items.Add("STP");
             cmbTransactionType.Properties.Items.Add("SIP-Fresh Folio");
         }
 
