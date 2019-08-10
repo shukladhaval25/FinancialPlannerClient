@@ -60,7 +60,7 @@ namespace FinancialPlannerClient.Clients
             getPersonalDetails(client.ID);
             InitializeComponent();
             displayClientInfo();
-            loadPlanData();
+            LoadPlanData();
             DashboardNavFrame.SelectedPageIndex = (int)NavigateTo.Dashborad;
         }
 
@@ -281,7 +281,7 @@ namespace FinancialPlannerClient.Clients
         #endregion
 
         #region "Plan Information"
-        private void loadPlanData()
+        public void LoadPlanData()
         {
             FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
             string apiurl = Program.WebServiceUrl + "/" + string.Format(GET_PLAN_BY_CLIENTID_API, this._client.ID);

@@ -33,6 +33,7 @@ namespace FinancialPlannerClient
             Application.SetCompatibleTextRenderingDefault(false);
             _webServiceUrl = getWebServiceUrl();
             Application.Run(new Login.frmXtraLogin());
+            //Application.Run(new Testing() );
         }
 
         private static void registerInterfaces()
@@ -41,6 +42,7 @@ namespace FinancialPlannerClient
             {                
                 container.RegisterType<ITransactionType, FreshPurchase>("Fresh Purchase");
                 container.RegisterType<ITransactionType, AdditionalPurchase>("Additional Purchase");
+                container.RegisterType<ITransactionType, Switch>("Switch");
             }
             catch(Exception ex)
             {

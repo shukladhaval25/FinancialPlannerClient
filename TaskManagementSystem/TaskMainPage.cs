@@ -72,15 +72,18 @@ namespace FinancialPlannerClient.TaskManagementSystem
 
         private void btnNewTask_Click(object sender, EventArgs e)
         {
-            navigationPageDeshboard.Controls.Clear();
-            NewTaskCard newTaskCard = new NewTaskCard();
-            newTaskCard.TopLevel = false;
-            newTaskCard.Visible = true;
-            //newTaskCard.Height = this.Height - 100;
-            //newTaskCard.Width = this.Width - 100;
-            navigationPageDeshboard.Name = newTaskCard.Name;
-            navigationPageDeshboard.Controls.Add(newTaskCard);
-            showNavigationPage(newTaskCard.Name);
+            //navigationPageDeshboard.Controls.Clear();
+            //NewTaskCard newTaskCard = new NewTaskCard();
+            ////newTaskCard.TopLevel = false;
+            //newTaskCard.Visible = true;
+            //////newTaskCard.Height = this.Height - 100;
+            //////newTaskCard.Width = this.Width - 100;
+            //navigationPageDeshboard.Name = newTaskCard.Name;
+            //navigationPageDeshboard.Controls.Add(newTaskCard);
+            //showNavigationPage(newTaskCard.Name);
+            NewTaskCard newTask = new NewTaskCard();
+            newTask.StartPosition = FormStartPosition.CenterParent;
+            newTask.ShowDialog();
         }
         private void redirectToDashboardPage()
         {

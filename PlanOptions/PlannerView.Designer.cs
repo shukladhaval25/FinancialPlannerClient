@@ -478,6 +478,7 @@
             this.MinimizeBox = false;
             this.Name = "PlannerView";
             this.Text = "Planner Information";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PlannerView_FormClosing);
             this.Load += new System.EventHandler(this.PlannerView_Load);
             ((System.ComponentModel.ISupportInitialize)(this.lstPlanner)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabPlanner)).EndInit();

@@ -389,3 +389,4 @@ C:\Application Development\Financial Planner Project\FinancialPlannerClient\bin\
 C:\Application Development\Financial Planner Project\FinancialPlannerClient\bin\Debug\Unity.Abstractions.pdb
 C:\Application Development\Financial Planner Project\FinancialPlannerClient\bin\Debug\Unity.Container.pdb
 C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.Master.TaskMaster.ARNView.resources
+C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.Master.TaskMaster.SchemeView.resources

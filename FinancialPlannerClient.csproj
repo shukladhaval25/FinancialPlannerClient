@@ -326,13 +326,21 @@
     <Compile Include="Master\Others.Designer.cs">
       <DependentUpon>Others.cs</DependentUpon>
     </Compile>
+    <Compile Include="Master\TaskMaster\SchemeInfo.cs" />
     <Compile Include="Master\TaskMaster\ARNInfo.cs" />
+    <Compile Include="Master\TaskMaster\Scheme.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Master\TaskMaster\Scheme.Designer.cs">
+      <DependentUpon>Scheme.cs</DependentUpon>
+    </Compile>
     <Compile Include="Master\TaskMaster\ARNView.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Master\TaskMaster\ARNView.Designer.cs">
       <DependentUpon>ARNView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Master\UserServiceHelper.cs" />
     <Compile Include="PlannerInfo\BankAccountInfo.cs" />
     <Compile Include="PlannerInfo\ClientCRMGroupinfo.cs" />
     <Compile Include="PlannerInfo\ClientFestivalInfo.cs" />
@@ -726,6 +734,7 @@
       <DependentUpon>NewProject.cs</DependentUpon>
     </Compile>
     <Compile Include="TaskManagementSystem\Services\TaskProjectInfo.cs" />
+    <Compile Include="TaskManagementSystem\TransactionOptions\Switch.cs" />
     <Compile Include="TaskManagementSystem\ViewTaskCard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -851,6 +860,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Master\Others.resx">
       <DependentUpon>Others.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Master\TaskMaster\Scheme.resx">
+      <DependentUpon>Scheme.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Master\TaskMaster\ARNView.resx">
       <DependentUpon>ARNView.cs</DependentUpon>

@@ -1,4 +1,5 @@
-﻿using FinancialPlanner.Common;
+﻿using DevExpress.XtraEditors.Repository;
+using FinancialPlanner.Common;
 using FinancialPlanner.Common.Model;
 using System;
 using System.Collections.Generic;
@@ -81,6 +82,20 @@ namespace FinancialPlannerClient.PlannerInfo
             comboboxObj.Items.Add(personalInfo.Client.Name);
             if (personalInfo.Spouse.Name != null)
                 comboboxObj.Items.Add(personalInfo.Spouse.Name);
+        }
+        public void FillFamilyMemberInCombo(int clientId, RepositoryItemComboBox repositoryItemCombo)
+        {
+            var lstFamily = Get(clientId);
+            repositoryItemCombo.Items.Clear();
+            foreach (FamilyMember familyMember in lstFamily)
+            {
+                repositoryItemCombo.Items.Add(familyMember.Name);
+            }
+            ClientPersonalInfo clientPersonalInfo = new ClientPersonalInfo();
+            PersonalInformation personalInfo = clientPersonalInfo.Get(clientId);
+            repositoryItemCombo.Items.Add(personalInfo.Client.Name);
+            if (personalInfo.Spouse.Name != null)
+                repositoryItemCombo.Items.Add(personalInfo.Spouse.Name);
         }
         public bool Add(FamilyMember familyMember)
         {
