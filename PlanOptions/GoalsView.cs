@@ -158,13 +158,16 @@ namespace FinancialPlannerClient.PlanOptions
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (XtraMessageBox.Show("Are you sure, you want to delete this record?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (gridViewGoals.SelectedRowsCount > 0)
             {
-                GoalsInfo goalsInfo = new GoalsInfo();
-                Goals goals = goalsInfo.GetGoalsInfo(gridViewGoals, _dtGoals);
-                if (!goalsInfo.Delete(goals))
-                    XtraMessageBox.Show("Unable to delete selected record. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                fillupGoalsInfo();
+                if (XtraMessageBox.Show("Are you sure, you want to delete this record?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    GoalsInfo goalsInfo = new GoalsInfo();
+                    Goals goals = goalsInfo.GetGoalsInfo(gridViewGoals, _dtGoals);
+                    if (!goalsInfo.Delete(goals))
+                        XtraMessageBox.Show("Unable to delete selected record. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    fillupGoalsInfo();
+                }
             }
         }
 

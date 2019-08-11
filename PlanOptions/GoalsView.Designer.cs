@@ -29,21 +29,21 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GoalsView));
-            DevExpress.Utils.SuperToolTip superToolTip6 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem6 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem6 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip7 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem7 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem7 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip8 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem8 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem8 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip9 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem9 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem9 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip10 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem10 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem10 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem5 = new DevExpress.Utils.ToolTipItem();
             this.lblContactTitle = new DevExpress.XtraEditors.LabelControl();
             this.grpGoals = new DevExpress.XtraEditors.GroupControl();
             this.btnDelete = new DevExpress.XtraEditors.SimpleButton();
@@ -56,6 +56,8 @@
             this.btnSaveClientGoal = new DevExpress.XtraEditors.SimpleButton();
             this.navigationFrameGoals = new DevExpress.XtraBars.Navigation.NavigationFrame();
             this.navigationPageRegGoal = new DevExpress.XtraBars.Navigation.NavigationPage();
+            this.lblOtherAnnualRetirementExp = new System.Windows.Forms.Label();
+            this.txtOtherAnnualRetirementExp = new DevExpress.XtraEditors.TextEdit();
             this.chkEligbileForInsuranceCoverage = new DevExpress.XtraEditors.CheckEdit();
             this.grpLoanForGoal = new DevExpress.XtraEditors.GroupControl();
             this.txtLoanForGoalEndYear = new DevExpress.XtraEditors.TextEdit();
@@ -108,8 +110,6 @@
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
             this.rdoGoalType = new DevExpress.XtraEditors.RadioGroup();
-            this.lblOtherAnnualRetirementExp = new System.Windows.Forms.Label();
-            this.txtOtherAnnualRetirementExp = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.grpGoals)).BeginInit();
             this.grpGoals.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdGoals)).BeginInit();
@@ -119,6 +119,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.navigationFrameGoals)).BeginInit();
             this.navigationFrameGoals.SuspendLayout();
             this.navigationPageRegGoal.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtOtherAnnualRetirementExp.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkEligbileForInsuranceCoverage.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grpLoanForGoal)).BeginInit();
             this.grpLoanForGoal.SuspendLayout();
@@ -148,7 +149,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rdoGoalType.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtOtherAnnualRetirementExp.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // lblContactTitle
@@ -183,20 +183,19 @@
             // btnDelete
             // 
             this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDelete.Enabled = false;
             this.btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
             this.btnDelete.Location = new System.Drawing.Point(1073, 211);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(25, 23);
-            toolTipTitleItem6.Appearance.Image = global::FinancialPlannerClient.Properties.Resources.icons8_goal_16;
-            toolTipTitleItem6.Appearance.Options.UseImage = true;
-            toolTipTitleItem6.Image = global::FinancialPlannerClient.Properties.Resources.icons8_goal_16;
-            toolTipTitleItem6.Text = "Delete Goal";
-            toolTipItem6.LeftIndent = 6;
-            toolTipItem6.Text = "To delete selected client goal record click here.";
-            superToolTip6.Items.Add(toolTipTitleItem6);
-            superToolTip6.Items.Add(toolTipItem6);
-            this.btnDelete.SuperTip = superToolTip6;
+            toolTipTitleItem1.Appearance.Image = global::FinancialPlannerClient.Properties.Resources.icons8_goal_16;
+            toolTipTitleItem1.Appearance.Options.UseImage = true;
+            toolTipTitleItem1.Image = global::FinancialPlannerClient.Properties.Resources.icons8_goal_16;
+            toolTipTitleItem1.Text = "Delete Goal";
+            toolTipItem1.LeftIndent = 6;
+            toolTipItem1.Text = "To delete selected client goal record click here.";
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            superToolTip1.Items.Add(toolTipItem1);
+            this.btnDelete.SuperTip = superToolTip1;
             this.btnDelete.TabIndex = 6;
             this.btnDelete.ToolTip = "Delete Client";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -208,15 +207,15 @@
             this.btnEdit.Location = new System.Drawing.Point(1042, 211);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(25, 23);
-            toolTipTitleItem7.Appearance.Image = global::FinancialPlannerClient.Properties.Resources.icons8_goal_16;
-            toolTipTitleItem7.Appearance.Options.UseImage = true;
-            toolTipTitleItem7.Image = global::FinancialPlannerClient.Properties.Resources.icons8_goal_16;
-            toolTipTitleItem7.Text = "Edit Customer goal";
-            toolTipItem7.LeftIndent = 6;
-            toolTipItem7.Text = "To modify selected client goal click here.";
-            superToolTip7.Items.Add(toolTipTitleItem7);
-            superToolTip7.Items.Add(toolTipItem7);
-            this.btnEdit.SuperTip = superToolTip7;
+            toolTipTitleItem2.Appearance.Image = global::FinancialPlannerClient.Properties.Resources.icons8_goal_16;
+            toolTipTitleItem2.Appearance.Options.UseImage = true;
+            toolTipTitleItem2.Image = global::FinancialPlannerClient.Properties.Resources.icons8_goal_16;
+            toolTipTitleItem2.Text = "Edit Customer goal";
+            toolTipItem2.LeftIndent = 6;
+            toolTipItem2.Text = "To modify selected client goal click here.";
+            superToolTip2.Items.Add(toolTipTitleItem2);
+            superToolTip2.Items.Add(toolTipItem2);
+            this.btnEdit.SuperTip = superToolTip2;
             this.btnEdit.TabIndex = 5;
             this.btnEdit.ToolTip = "Edit Client";
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
@@ -228,15 +227,15 @@
             this.btnAdd.Location = new System.Drawing.Point(1011, 211);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(25, 23);
-            toolTipTitleItem8.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
-            toolTipTitleItem8.Appearance.Options.UseImage = true;
-            toolTipTitleItem8.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem8.Image")));
-            toolTipTitleItem8.Text = "New Client";
-            toolTipItem8.LeftIndent = 6;
-            toolTipItem8.Text = "To add new client inforamtion click here.";
-            superToolTip8.Items.Add(toolTipTitleItem8);
-            superToolTip8.Items.Add(toolTipItem8);
-            this.btnAdd.SuperTip = superToolTip8;
+            toolTipTitleItem3.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            toolTipTitleItem3.Appearance.Options.UseImage = true;
+            toolTipTitleItem3.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem3.Image")));
+            toolTipTitleItem3.Text = "New Client";
+            toolTipItem3.LeftIndent = 6;
+            toolTipItem3.Text = "To add new client inforamtion click here.";
+            superToolTip3.Items.Add(toolTipTitleItem3);
+            superToolTip3.Items.Add(toolTipItem3);
+            this.btnAdd.SuperTip = superToolTip3;
             this.btnAdd.TabIndex = 4;
             this.btnAdd.ToolTip = "Add new client";
             this.btnAdd.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Application;
@@ -284,15 +283,15 @@
             this.btnCloseClientGoal.Location = new System.Drawing.Point(1036, 358);
             this.btnCloseClientGoal.Name = "btnCloseClientGoal";
             this.btnCloseClientGoal.Size = new System.Drawing.Size(62, 23);
-            toolTipTitleItem9.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
-            toolTipTitleItem9.Appearance.Options.UseImage = true;
-            toolTipTitleItem9.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem9.Image")));
-            toolTipTitleItem9.Text = "Cancel";
-            toolTipItem9.LeftIndent = 6;
-            toolTipItem9.Text = "To close client information without saving any information click here.";
-            superToolTip9.Items.Add(toolTipTitleItem9);
-            superToolTip9.Items.Add(toolTipItem9);
-            this.btnCloseClientGoal.SuperTip = superToolTip9;
+            toolTipTitleItem4.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
+            toolTipTitleItem4.Appearance.Options.UseImage = true;
+            toolTipTitleItem4.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem4.Image")));
+            toolTipTitleItem4.Text = "Cancel";
+            toolTipItem4.LeftIndent = 6;
+            toolTipItem4.Text = "To close client information without saving any information click here.";
+            superToolTip4.Items.Add(toolTipTitleItem4);
+            superToolTip4.Items.Add(toolTipItem4);
+            this.btnCloseClientGoal.SuperTip = superToolTip4;
             this.btnCloseClientGoal.TabIndex = 24;
             this.btnCloseClientGoal.Text = "Close";
             this.btnCloseClientGoal.Click += new System.EventHandler(this.btnCloseClientInfo_Click);
@@ -304,15 +303,15 @@
             this.btnSaveClientGoal.Location = new System.Drawing.Point(973, 358);
             this.btnSaveClientGoal.Name = "btnSaveClientGoal";
             this.btnSaveClientGoal.Size = new System.Drawing.Size(57, 23);
-            toolTipTitleItem10.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
-            toolTipTitleItem10.Appearance.Options.UseImage = true;
-            toolTipTitleItem10.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem10.Image")));
-            toolTipTitleItem10.Text = "Save";
-            toolTipItem10.LeftIndent = 6;
-            toolTipItem10.Text = "To save client infroamtion click here.";
-            superToolTip10.Items.Add(toolTipTitleItem10);
-            superToolTip10.Items.Add(toolTipItem10);
-            this.btnSaveClientGoal.SuperTip = superToolTip10;
+            toolTipTitleItem5.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
+            toolTipTitleItem5.Appearance.Options.UseImage = true;
+            toolTipTitleItem5.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem5.Image")));
+            toolTipTitleItem5.Text = "Save";
+            toolTipItem5.LeftIndent = 6;
+            toolTipItem5.Text = "To save client infroamtion click here.";
+            superToolTip5.Items.Add(toolTipTitleItem5);
+            superToolTip5.Items.Add(toolTipItem5);
+            this.btnSaveClientGoal.SuperTip = superToolTip5;
             this.btnSaveClientGoal.TabIndex = 23;
             this.btnSaveClientGoal.Text = "Save";
             this.btnSaveClientGoal.Click += new System.EventHandler(this.btnSaveClientGoal_Click);
@@ -360,6 +359,28 @@
             this.navigationPageRegGoal.Controls.Add(this.label66);
             this.navigationPageRegGoal.Name = "navigationPageRegGoal";
             this.navigationPageRegGoal.Size = new System.Drawing.Size(1078, 301);
+            // 
+            // lblOtherAnnualRetirementExp
+            // 
+            this.lblOtherAnnualRetirementExp.AutoEllipsis = true;
+            this.lblOtherAnnualRetirementExp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOtherAnnualRetirementExp.Location = new System.Drawing.Point(12, 103);
+            this.lblOtherAnnualRetirementExp.Name = "lblOtherAnnualRetirementExp";
+            this.lblOtherAnnualRetirementExp.Size = new System.Drawing.Size(150, 27);
+            this.lblOtherAnnualRetirementExp.TabIndex = 60;
+            this.lblOtherAnnualRetirementExp.Text = "Amount (Today\'s Value):";
+            this.lblOtherAnnualRetirementExp.Visible = false;
+            // 
+            // txtOtherAnnualRetirementExp
+            // 
+            this.txtOtherAnnualRetirementExp.Location = new System.Drawing.Point(168, 102);
+            this.txtOtherAnnualRetirementExp.Name = "txtOtherAnnualRetirementExp";
+            this.txtOtherAnnualRetirementExp.Properties.MaxLength = 10;
+            this.txtOtherAnnualRetirementExp.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtOtherAnnualRetirementExp.Size = new System.Drawing.Size(267, 20);
+            this.txtOtherAnnualRetirementExp.TabIndex = 52;
+            this.txtOtherAnnualRetirementExp.Visible = false;
+            this.txtOtherAnnualRetirementExp.Validating += new System.ComponentModel.CancelEventHandler(this.txtOtherAnnualRetirementExp_Validating);
             // 
             // chkEligbileForInsuranceCoverage
             // 
@@ -710,7 +731,6 @@
             // 
             // navigationPageRetGoal
             // 
-            this.navigationPageRetGoal.Caption = "navigationPageRetGoal";
             this.navigationPageRetGoal.Controls.Add(this.textEdit1);
             this.navigationPageRetGoal.Controls.Add(this.label2);
             this.navigationPageRetGoal.Controls.Add(this.textEdit2);
@@ -905,28 +925,6 @@
             this.rdoGoalType.TabIndex = 3;
             this.rdoGoalType.SelectedIndexChanged += new System.EventHandler(this.rdoGoalType_SelectedIndexChanged);
             // 
-            // lblOtherAnnualRetirementExp
-            // 
-            this.lblOtherAnnualRetirementExp.AutoEllipsis = true;
-            this.lblOtherAnnualRetirementExp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblOtherAnnualRetirementExp.Location = new System.Drawing.Point(12, 103);
-            this.lblOtherAnnualRetirementExp.Name = "lblOtherAnnualRetirementExp";
-            this.lblOtherAnnualRetirementExp.Size = new System.Drawing.Size(150, 27);
-            this.lblOtherAnnualRetirementExp.TabIndex = 60;
-            this.lblOtherAnnualRetirementExp.Text = "Amount (Today\'s Value):";
-            this.lblOtherAnnualRetirementExp.Visible = false;
-            // 
-            // txtOtherAnnualRetirementExp
-            // 
-            this.txtOtherAnnualRetirementExp.Location = new System.Drawing.Point(168, 102);
-            this.txtOtherAnnualRetirementExp.Name = "txtOtherAnnualRetirementExp";
-            this.txtOtherAnnualRetirementExp.Properties.MaxLength = 10;
-            this.txtOtherAnnualRetirementExp.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtOtherAnnualRetirementExp.Size = new System.Drawing.Size(267, 20);
-            this.txtOtherAnnualRetirementExp.TabIndex = 52;
-            this.txtOtherAnnualRetirementExp.Visible = false;
-            this.txtOtherAnnualRetirementExp.Validating += new System.ComponentModel.CancelEventHandler(this.txtOtherAnnualRetirementExp_Validating);
-            // 
             // GoalsView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -948,6 +946,7 @@
             this.navigationFrameGoals.ResumeLayout(false);
             this.navigationPageRegGoal.ResumeLayout(false);
             this.navigationPageRegGoal.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtOtherAnnualRetirementExp.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkEligbileForInsuranceCoverage.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grpLoanForGoal)).EndInit();
             this.grpLoanForGoal.ResumeLayout(false);
@@ -978,7 +977,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rdoGoalType.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtOtherAnnualRetirementExp.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }

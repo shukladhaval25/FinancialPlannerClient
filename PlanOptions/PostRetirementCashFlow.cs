@@ -58,12 +58,12 @@ namespace FinancialPlannerClient.PlanOptions
             lblSpouseLifeExp.Text = string.Format("{0} Years", cashFlowCalculation.SpouseLifeExpected.ToString());
             lblSpouseCurrentAge.Text = string.Format("{0} Years", cashFlowCalculation.SpouseCurrentAge.ToString());
 
-            lblCashSurplusAmt.Text = Math.Round(cashFlowService.GetCashFlowSurplusAmount(), 2).ToString();
-            lblCurrentStatusAmt.Text = Math.Round(cashFlowService.GetCurrentStatusAccessFund(), 2).ToString();
+            lblCashSurplusAmt.Text = Math.Round(cashFlowService.GetCashFlowSurplusAmount(), 2).ToString("##,###.00"); ;
+            lblCurrentStatusAmt.Text = Math.Round(cashFlowService.GetCurrentStatusAccessFund(), 2).ToString("##,###.00"); ;
             double cashSurplusAmt = 0;
             if (double.TryParse(lblCashSurplusAmt.Text, out cashSurplusAmt))
                 lblCorpFundAmt.Text = (cashSurplusAmt + (string.IsNullOrEmpty(lblCurrentStatusAmt.Text) ? 0 :
-                   double.Parse(lblCurrentStatusAmt.Text))).ToString();
+                   double.Parse(lblCurrentStatusAmt.Text))).ToString("##,###.00"); ;
         }
        
         private void fillPostRetirementCashFlowData()
@@ -81,6 +81,7 @@ namespace FinancialPlannerClient.PlanOptions
                 fillPostRetirementCashFlowData();
                 lblEstimatedCorpusFundValue.Text = postRetirementCashFlowService.GetProposeEstimatedCorpusFund().ToString("##,###.00");
                 lblEstimatedCorpusFundValue.Refresh();
+                setGoalCompletionPercentage();
             }
             catch (Exception ex)
             {
@@ -90,6 +91,19 @@ namespace FinancialPlannerClient.PlanOptions
                 LogDebug(currentMethodName.Name, ex);
                 XtraMessageBox.Show("Error:" + ex.ToString(), "Error");
             }
+        }
+
+        private void setGoalCompletionPercentage()
+        {
+            double totalAvailableCorpFund = 0;
+            double estitmatedCorpFund = 0;
+            double.TryParse(lblCorpFundAmt.Text, out totalAvailableCorpFund);
+            double.TryParse(lblEstimatedCorpusFundValue.Text, out estitmatedCorpFund);
+            if (totalAvailableCorpFund >= estitmatedCorpFund)
+                progressBarRetGoalCompletion.Text = "100";
+            else
+                progressBarRetGoalCompletion.Text = Math.Round(((100 * totalAvailableCorpFund) / estitmatedCorpFund)).ToString();
+
         }
     }
 }
