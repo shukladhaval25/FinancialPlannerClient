@@ -13,5 +13,7 @@ namespace FinancialPlannerClient.TaskManagementSystem
         void setVGridControl(VGridControl vGrid);
         VGridControl GetGridControl();
         void BindDataSource(DataTable dataTable);
+        object GetTransactionType();
+        bool IsAllRequireInputAvailable();
     }
 }

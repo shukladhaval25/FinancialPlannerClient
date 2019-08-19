@@ -712,6 +712,7 @@
       <DependentUpon>frmRiskProfileReturn.cs</DependentUpon>
     </Compile>
     <Compile Include="RiskProfile\InvestmentByfercationInfo.cs" />
+    <Compile Include="TaskManagementSystem\TaskCardHelper.cs" />
     <Compile Include="TaskManagementSystem\TransactionOptions\AdditionalPurchase.cs" />
     <Compile Include="TaskManagementSystem\TransactionOptions\FreshPurchase.cs" />
     <Compile Include="TaskManagementSystem\TransactionOptions\ITransactionType.cs" />
@@ -734,6 +735,8 @@
       <DependentUpon>NewProject.cs</DependentUpon>
     </Compile>
     <Compile Include="TaskManagementSystem\Services\TaskProjectInfo.cs" />
+    <Compile Include="TaskManagementSystem\TransactionOptions\SIPFresh.cs" />
+    <Compile Include="TaskManagementSystem\TransactionOptions\SIPOld.cs" />
     <Compile Include="TaskManagementSystem\TransactionOptions\STP.cs" />
     <Compile Include="TaskManagementSystem\TransactionOptions\Switch.cs" />
     <Compile Include="TaskManagementSystem\ViewTaskCard.cs">

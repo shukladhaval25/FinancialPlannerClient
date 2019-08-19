@@ -17,7 +17,9 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
         IList<ARN> arns;
         IList<Client> clients;
         IList<Scheme> schemes;
-        Client currentClient;
+        internal Client currentClient;
+        internal int selectedSchemeId;
+        List<string> optionalFields = new List<string>();
         
         readonly string GRID_NAME = "vGridFreshPurchase";
         DevExpress.XtraVerticalGrid.VGridControl vGridTransaction;
@@ -61,7 +63,7 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
         public DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEditRemark;
 
 
-
+        #region "Private"
         private void InitializeComponent()
         {
             if (this.vGridTransaction == null)
@@ -81,20 +83,24 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             this.Options = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.Amount = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.TransactionDate = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            //this.AssignedTo = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.ModeOfExecution = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.Remark = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
 
             this.repositoryItemARN = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             loadARNValue();
+            this.repositoryItemARN.EditValueChanged += RepositoryItemARN_EditValueChanged;
+            this.repositoryItemARN.Validating += RepositoryItemARN_Validating;  
+
 
             this.repositoryItemComboBoxClientGroup = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.repositoryItemComboBoxClientGroup.EditValueChanged += RepositoryItemComboBoxClientGroup_SelectedValueChanged;
             this.repositoryItemComboBoxClientGroup.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             loadClients();
+            this.repositoryItemComboBoxClientGroup.Validating += RepositoryItemComboBoxClientGroup_Validating;
 
             this.repositoryItemComboBoxMemberName = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.repositoryItemComboBoxMemberName.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.repositoryItemComboBoxMemberName.Validating += RepositoryItemComboBoxClientGroup_Validating;
 
             this.repositoryItemComboBoxSecondHolder = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.repositoryItemComboBoxSecondHolder.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
@@ -108,17 +114,18 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             this.repositoryItemComboBoxModeOfHolding = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.repositoryItemComboBoxModeOfHolding.Items.AddRange(new string[] { "Joint", "Either or survivor", "Single" });
             this.repositoryItemComboBoxModeOfHolding.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-
+            
             this.repositoryItemTextEditAMC = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.repositoryItemTextEditFolioNumber = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
 
             this.repositoryItemComboBoxScheme = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.repositoryItemComboBoxScheme.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             loadScheme();
+            this.repositoryItemComboBoxScheme.EditValueChanged += RepositoryItemComboBoxScheme_EditValueChanged;
 
             this.repositoryItemComboBoxOption = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
 
-            this.repositoryItemComboBoxOption.Items.AddRange(new string[] { "GR","WDR","DD" });
+            this.repositoryItemComboBoxOption.Items.AddRange(new string[] { "GR", "WDR", "DD" });
             this.repositoryItemComboBoxOption.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
 
             this.repositoryItemTextEditAmount = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
@@ -128,13 +135,10 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
 
             this.repositoryItemDateEditTransactionDate = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
 
-            //this.repositoryItemComboBoxAssignTo = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
-            //this.repositoryItemComboBoxAssignTo.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-
             this.repositoryItemComboBoxModeOfExecution = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
-            this.repositoryItemComboBoxModeOfExecution.Items.AddRange(new string[] { "BSE", "AMC App","Physical" });
+            this.repositoryItemComboBoxModeOfExecution.Items.AddRange(new string[] { "BSE", "AMC App", "Physical" });
             this.repositoryItemComboBoxModeOfExecution.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            
+
             this.repositoryItemTextEditRemark = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             // 
             // ARN
@@ -240,13 +244,6 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             this.TransactionDate.Properties.Format.FormatString = string.Format("dd/MM/yyyy");
             this.TransactionDate.Properties.RowEdit = this.repositoryItemDateEditTransactionDate;
             //
-            // AssignedTo
-            //
-            //this.AssignedTo.Name = "AssignedTo";
-            //this.AssignedTo.Properties.Caption = "Assigned To";
-            //this.AssignedTo.Properties.FieldName = "AssignedTo";
-            //this.AssignedTo.Properties.RowEdit = this.repositoryItemComboBoxAssignTo;
-            //
             // ModeOfExecution
             //
             this.ModeOfExecution.Name = "ModeOfExecution";
@@ -284,7 +281,6 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             this.repositoryItemComboBoxOption,
             this.repositoryItemTextEditAmount,
             this.repositoryItemDateEditTransactionDate,
-            //this.repositoryItemComboBoxAssignTo,
             this.repositoryItemComboBoxModeOfExecution,
             this.repositoryItemTextEditRemark
             });
@@ -304,9 +300,46 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             this.Options,
             this.Amount,
             this.TransactionDate,
-            //this.AssignedTo,
             this.ModeOfExecution,
             this.Remark});
+            prepareOptionalFieldsList();
+
+        }
+
+        private void RepositoryItemComboBoxClientGroup_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit = (DevExpress.XtraEditors.ComboBoxEdit)sender;
+            e.Cancel = string.IsNullOrEmpty(comboBoxEdit.Text);
+        }
+
+        private void RepositoryItemARN_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            DevExpress.XtraEditors.LookUpEdit lookUpEdit = (DevExpress.XtraEditors.LookUpEdit)sender;
+            e.Cancel = string.IsNullOrEmpty(lookUpEdit.Text);
+        }
+
+        private void prepareOptionalFieldsList()
+        {
+            this.optionalFields.Add(this.SecondHolder.Properties.FieldName);
+            this.optionalFields.Add(this.ThirdHolder.Properties.FieldName);
+            this.optionalFields.Add(this.Nominee.Properties.FieldName);
+            this.optionalFields.Add(this.Guardian.Properties.FieldName);
+            this.optionalFields.Add(this.Remark.Properties.FieldName);
+        }
+
+        private void RepositoryItemComboBoxScheme_EditValueChanged(object sender, EventArgs e)
+        {
+            DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit = (DevExpress.XtraEditors.ComboBoxEdit)sender;
+            if (comboBoxEdit.SelectedItem != null)
+            {
+                Scheme scheme =  ((List<Scheme>) schemes).Find(i => i.Name == comboBoxEdit.SelectedItem.ToString());
+                selectedSchemeId = scheme.Id;
+            }
+        }
+
+        private void RepositoryItemARN_EditValueChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
         }
 
         private void loadScheme()
@@ -387,6 +420,7 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             }
             return dtARN;
         }
+        #endregion
 
         public void BindDataSource(DataTable dataTable)
         {
@@ -418,6 +452,55 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
                 this.vGridTransaction.Rows[rowindex].Height = 20;
             }
             this.vGridTransaction.Refresh();
+        }
+
+        public object GetTransactionType()
+        {
+            FinancialPlanner.Common.Model.TaskManagement.MFTransactions.FreshPurchase freshPurchase = 
+                new FinancialPlanner.Common.Model.TaskManagement.MFTransactions.FreshPurchase();
+            if (this.vGridTransaction.Rows.Count > 0)
+            {
+                freshPurchase.Arn = int.Parse(this.vGridTransaction.Rows["ARN"].Properties.Value.ToString());
+                freshPurchase.Cid = this.currentClient.ID;
+                freshPurchase.ClientGroup = this.vGridTransaction.Rows["ClientGroup"].Properties.Value.ToString();
+                freshPurchase.MemberName = this.vGridTransaction.Rows["MemberName"].Properties.Value.ToString();
+                freshPurchase.SecondHolder = (this.vGridTransaction.Rows["SecondHolder"].Properties.Value != null) ?
+                    this.vGridTransaction.Rows["SecondHolder"].Properties.Value.ToString() : string.Empty;
+
+                freshPurchase.ThirdHolder = (this.vGridTransaction.Rows["ThirdHolder"].Properties.Value != null) ? 
+                    this.vGridTransaction.Rows["ThirdHolder"].Properties.Value.ToString() : string.Empty;
+
+                freshPurchase.Nominee = (this.vGridTransaction.Rows["Nominee"].Properties.Value != null) ?
+                    this.vGridTransaction.Rows["Nominee"].Properties.Value.ToString() : string.Empty;
+
+                freshPurchase.Guardian = (this.vGridTransaction.Rows["Guardian"].Properties.Value != null)?
+                this.vGridTransaction.Rows["Guardian"].Properties.Value.ToString() : string.Empty;
+
+                freshPurchase.ModeOfHolding = this.vGridTransaction.Rows["ModeOfHolding"].Properties.Value.ToString();
+                freshPurchase.Amc = this.vGridTransaction.Rows["AMC"].Properties.Value.ToString();
+                freshPurchase.FolioNumber = this.vGridTransaction.Rows["FolioNumber"].Properties.Value.ToString();
+                freshPurchase.Scheme = selectedSchemeId;
+                freshPurchase.Options = this.vGridTransaction.Rows["Option"].Properties.Value.ToString();
+                freshPurchase.Amount = double.Parse(this.vGridTransaction.Rows["Amount"].Properties.Value.ToString());
+                freshPurchase.TransactionDate = (DateTime) this.vGridTransaction.Rows["TransactionDate"].Properties.Value;
+                freshPurchase.ModeOfExecution = this.vGridTransaction.Rows["ModeOfExecution"].Properties.Value.ToString();
+                freshPurchase.Remark = (this.vGridTransaction.Rows["Remark"].Properties.Value != null) ?
+                    this.vGridTransaction.Rows["Remark"].Properties.Value.ToString() : string.Empty;
+            }
+            return freshPurchase;
+        }
+
+        public bool IsAllRequireInputAvailable()
+        {
+            for(int rowIndex = 0; rowIndex < this.vGridTransaction.Rows.Count; rowIndex++)
+            {
+                if(!optionalFields.Contains(this.vGridTransaction.Rows[rowIndex].Properties.FieldName) && 
+                   this.vGridTransaction.Rows[rowIndex].Properties.Value == null)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }

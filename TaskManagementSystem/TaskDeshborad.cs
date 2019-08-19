@@ -452,9 +452,6 @@ namespace FinancialPlannerClient.TaskManagementSystem
             try
             {
                 loadDashBorad();
-                
-                //setDummyData();
-                //displayResultONScreen();
             }
             catch (Exception ex)
             {
@@ -472,7 +469,6 @@ namespace FinancialPlannerClient.TaskManagementSystem
         private void loadDashBorad()
         {
             loadProjectsDetails();
-            throw new NotImplementedException();
         }
 
         private async void loadProjectsDetails()
@@ -506,6 +502,11 @@ namespace FinancialPlannerClient.TaskManagementSystem
                     //showNavigationPage(viewTaskCard.Name);
                 }
             }
+        }
+
+        private void tileViewProjectWise_ItemClick(object sender, DevExpress.XtraGrid.Views.Tile.TileViewItemClickEventArgs e)
+        {
+            MessageBox.Show(e.Item.Text2);
         }
     }
 }

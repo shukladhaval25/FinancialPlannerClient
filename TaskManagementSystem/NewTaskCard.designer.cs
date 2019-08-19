@@ -29,20 +29,20 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewTaskCard));
-            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
             this.lblProject = new DevExpress.XtraEditors.LabelControl();
             this.cmbProject = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.comboBoxEdit2 = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.cmbCardType = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.cmbClient = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.comboBoxEdit4 = new DevExpress.XtraEditors.TextEdit();
+            this.txtTitle = new DevExpress.XtraEditors.TextEdit();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.txtCreatedBy = new DevExpress.XtraEditors.TextEdit();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
@@ -52,15 +52,14 @@
             this.cmbPriority = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
-            this.dateEdit1 = new DevExpress.XtraEditors.DateEdit();
+            this.dtDueDate = new DevExpress.XtraEditors.DateEdit();
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
-            this.textEdit3 = new DevExpress.XtraEditors.MemoEdit();
+            this.txtDescription = new DevExpress.XtraEditors.MemoEdit();
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
-            this.textEdit4 = new DevExpress.XtraEditors.TextEdit();
+            this.txtCompletedPercentage = new DevExpress.XtraEditors.TextEdit();
             this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
             this.comboBoxEdit7 = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
-            this.textEdit5 = new DevExpress.XtraEditors.TextEdit();
             this.btnAddProject = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.btnCloseTask = new DevExpress.XtraEditors.SimpleButton();
@@ -74,20 +73,22 @@
             this.repositoryItemComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.repositoryItemDateEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
+            this.cmbOwner = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.cmbTaskStatus = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.cmbProject.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit2.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbCardType.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbClient.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit4.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTitle.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCreatedBy.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCreatedOn.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbAssingTo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbPriority.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit4.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtDueDate.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtDueDate.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDescription.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCompletedPercentage.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit7.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit5.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbTransactionType.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerTransOperation)).BeginInit();
             this.splitContainerTransOperation.SuspendLayout();
@@ -96,6 +97,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbOwner.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbTaskStatus.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // lblProject
@@ -112,21 +115,23 @@
             this.cmbProject.Name = "cmbProject";
             this.cmbProject.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cmbProject.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.cmbProject.Size = new System.Drawing.Size(408, 20);
             this.cmbProject.TabIndex = 1;
             this.cmbProject.SelectedIndexChanged += new System.EventHandler(this.cmbProject_SelectedIndexChanged);
             // 
-            // comboBoxEdit2
+            // cmbCardType
             // 
-            this.comboBoxEdit2.Location = new System.Drawing.Point(128, 88);
-            this.comboBoxEdit2.Name = "comboBoxEdit2";
-            this.comboBoxEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.cmbCardType.Location = new System.Drawing.Point(128, 88);
+            this.cmbCardType.Name = "cmbCardType";
+            this.cmbCardType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboBoxEdit2.Properties.Items.AddRange(new object[] {
+            this.cmbCardType.Properties.Items.AddRange(new object[] {
             "Query",
             "Task"});
-            this.comboBoxEdit2.Size = new System.Drawing.Size(439, 20);
-            this.comboBoxEdit2.TabIndex = 3;
+            this.cmbCardType.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.cmbCardType.Size = new System.Drawing.Size(439, 20);
+            this.cmbCardType.TabIndex = 4;
             // 
             // labelControl1
             // 
@@ -142,8 +147,10 @@
             this.cmbClient.Name = "cmbClient";
             this.cmbClient.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cmbClient.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.cmbClient.Size = new System.Drawing.Size(408, 20);
             this.cmbClient.TabIndex = 5;
+            this.cmbClient.SelectedIndexChanged += new System.EventHandler(this.cmbClient_SelectedIndexChanged);
             // 
             // labelControl2
             // 
@@ -161,12 +168,12 @@
             this.labelControl3.TabIndex = 6;
             this.labelControl3.Text = "Title:";
             // 
-            // comboBoxEdit4
+            // txtTitle
             // 
-            this.comboBoxEdit4.Location = new System.Drawing.Point(128, 140);
-            this.comboBoxEdit4.Name = "comboBoxEdit4";
-            this.comboBoxEdit4.Size = new System.Drawing.Size(439, 20);
-            this.comboBoxEdit4.TabIndex = 7;
+            this.txtTitle.Location = new System.Drawing.Point(128, 140);
+            this.txtTitle.Name = "txtTitle";
+            this.txtTitle.Size = new System.Drawing.Size(439, 20);
+            this.txtTitle.TabIndex = 7;
             // 
             // labelControl4
             // 
@@ -183,7 +190,7 @@
             this.txtCreatedBy.Name = "txtCreatedBy";
             this.txtCreatedBy.Properties.ReadOnly = true;
             this.txtCreatedBy.Size = new System.Drawing.Size(326, 20);
-            this.txtCreatedBy.TabIndex = 9;
+            this.txtCreatedBy.TabIndex = 11;
             // 
             // labelControl5
             // 
@@ -200,7 +207,7 @@
             this.txtCreatedOn.Name = "txtCreatedOn";
             this.txtCreatedOn.Properties.ReadOnly = true;
             this.txtCreatedOn.Size = new System.Drawing.Size(326, 20);
-            this.txtCreatedOn.TabIndex = 11;
+            this.txtCreatedOn.TabIndex = 12;
             // 
             // cmbAssingTo
             // 
@@ -210,7 +217,8 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cmbAssingTo.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.cmbAssingTo.Size = new System.Drawing.Size(326, 20);
-            this.cmbAssingTo.TabIndex = 13;
+            this.cmbAssingTo.TabIndex = 14;
+            this.cmbAssingTo.SelectedIndexChanged += new System.EventHandler(this.cmbAssingTo_SelectedIndexChanged);
             // 
             // labelControl6
             // 
@@ -250,17 +258,17 @@
             this.labelControl8.TabIndex = 16;
             this.labelControl8.Text = "Due Date:";
             // 
-            // dateEdit1
+            // dtDueDate
             // 
-            this.dateEdit1.EditValue = null;
-            this.dateEdit1.Location = new System.Drawing.Point(633, 327);
-            this.dateEdit1.Name = "dateEdit1";
-            this.dateEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.dtDueDate.EditValue = null;
+            this.dtDueDate.Location = new System.Drawing.Point(633, 327);
+            this.dtDueDate.Name = "dtDueDate";
+            this.dtDueDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEdit1.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.dtDueDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEdit1.Size = new System.Drawing.Size(112, 20);
-            this.dateEdit1.TabIndex = 17;
+            this.dtDueDate.Size = new System.Drawing.Size(112, 20);
+            this.dtDueDate.TabIndex = 17;
             // 
             // labelControl9
             // 
@@ -270,14 +278,14 @@
             this.labelControl9.TabIndex = 18;
             this.labelControl9.Text = "Description:";
             // 
-            // textEdit3
+            // txtDescription
             // 
-            this.textEdit3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.txtDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.textEdit3.Location = new System.Drawing.Point(6, 24);
-            this.textEdit3.Name = "textEdit3";
-            this.textEdit3.Size = new System.Drawing.Size(521, 84);
-            this.textEdit3.TabIndex = 19;
+            this.txtDescription.Location = new System.Drawing.Point(6, 24);
+            this.txtDescription.Name = "txtDescription";
+            this.txtDescription.Size = new System.Drawing.Size(521, 84);
+            this.txtDescription.TabIndex = 9;
             // 
             // labelControl10
             // 
@@ -287,15 +295,15 @@
             this.labelControl10.TabIndex = 20;
             this.labelControl10.Text = "Completed (%)";
             // 
-            // textEdit4
+            // txtCompletedPercentage
             // 
-            this.textEdit4.EditValue = "0";
-            this.textEdit4.Enabled = false;
-            this.textEdit4.Location = new System.Drawing.Point(838, 327);
-            this.textEdit4.Name = "textEdit4";
-            this.textEdit4.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.textEdit4.Size = new System.Drawing.Size(69, 20);
-            this.textEdit4.TabIndex = 21;
+            this.txtCompletedPercentage.EditValue = "0";
+            this.txtCompletedPercentage.Enabled = false;
+            this.txtCompletedPercentage.Location = new System.Drawing.Point(838, 327);
+            this.txtCompletedPercentage.Name = "txtCompletedPercentage";
+            this.txtCompletedPercentage.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtCompletedPercentage.Size = new System.Drawing.Size(69, 20);
+            this.txtCompletedPercentage.TabIndex = 21;
             // 
             // labelControl11
             // 
@@ -318,18 +326,9 @@
             // 
             this.labelControl12.Location = new System.Drawing.Point(581, 171);
             this.labelControl12.Name = "labelControl12";
-            this.labelControl12.Size = new System.Drawing.Size(60, 13);
+            this.labelControl12.Size = new System.Drawing.Size(36, 13);
             this.labelControl12.TabIndex = 24;
-            this.labelControl12.Text = "Created On:";
-            // 
-            // textEdit5
-            // 
-            this.textEdit5.Enabled = false;
-            this.textEdit5.Location = new System.Drawing.Point(581, 194);
-            this.textEdit5.Name = "textEdit5";
-            this.textEdit5.Properties.ReadOnly = true;
-            this.textEdit5.Size = new System.Drawing.Size(326, 20);
-            this.textEdit5.TabIndex = 25;
+            this.labelControl12.Text = "Owner:";
             // 
             // btnAddProject
             // 
@@ -337,7 +336,7 @@
             this.btnAddProject.Location = new System.Drawing.Point(542, 32);
             this.btnAddProject.Name = "btnAddProject";
             this.btnAddProject.Size = new System.Drawing.Size(25, 22);
-            this.btnAddProject.TabIndex = 26;
+            this.btnAddProject.TabIndex = 2;
             // 
             // simpleButton1
             // 
@@ -345,7 +344,7 @@
             this.simpleButton1.Location = new System.Drawing.Point(542, 114);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(25, 22);
-            this.simpleButton1.TabIndex = 27;
+            this.simpleButton1.TabIndex = 6;
             // 
             // btnCloseTask
             // 
@@ -353,15 +352,15 @@
             this.btnCloseTask.Location = new System.Drawing.Point(845, 402);
             this.btnCloseTask.Name = "btnCloseTask";
             this.btnCloseTask.Size = new System.Drawing.Size(62, 23);
-            toolTipTitleItem3.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
-            toolTipTitleItem3.Appearance.Options.UseImage = true;
-            toolTipTitleItem3.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem3.Image")));
-            toolTipTitleItem3.Text = "Cancel";
-            toolTipItem3.LeftIndent = 6;
-            toolTipItem3.Text = "To close client information without saving any information click here.";
-            superToolTip3.Items.Add(toolTipTitleItem3);
-            superToolTip3.Items.Add(toolTipItem3);
-            this.btnCloseTask.SuperTip = superToolTip3;
+            toolTipTitleItem1.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            toolTipTitleItem1.Appearance.Options.UseImage = true;
+            toolTipTitleItem1.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem1.Image")));
+            toolTipTitleItem1.Text = "Cancel";
+            toolTipItem1.LeftIndent = 6;
+            toolTipItem1.Text = "To close client information without saving any information click here.";
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            superToolTip1.Items.Add(toolTipItem1);
+            this.btnCloseTask.SuperTip = superToolTip1;
             this.btnCloseTask.TabIndex = 29;
             this.btnCloseTask.Text = "&Close";
             // 
@@ -371,15 +370,15 @@
             this.btnSaveTask.Location = new System.Drawing.Point(782, 402);
             this.btnSaveTask.Name = "btnSaveTask";
             this.btnSaveTask.Size = new System.Drawing.Size(57, 23);
-            toolTipTitleItem4.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
-            toolTipTitleItem4.Appearance.Options.UseImage = true;
-            toolTipTitleItem4.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem4.Image")));
-            toolTipTitleItem4.Text = "Save";
-            toolTipItem4.LeftIndent = 6;
-            toolTipItem4.Text = "To save client infroamtion click here.";
-            superToolTip4.Items.Add(toolTipTitleItem4);
-            superToolTip4.Items.Add(toolTipItem4);
-            this.btnSaveTask.SuperTip = superToolTip4;
+            toolTipTitleItem2.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
+            toolTipTitleItem2.Appearance.Options.UseImage = true;
+            toolTipTitleItem2.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem2.Image")));
+            toolTipTitleItem2.Text = "Save";
+            toolTipItem2.LeftIndent = 6;
+            toolTipItem2.Text = "To save client infroamtion click here.";
+            superToolTip2.Items.Add(toolTipTitleItem2);
+            superToolTip2.Items.Add(toolTipItem2);
+            this.btnSaveTask.SuperTip = superToolTip2;
             this.btnSaveTask.TabIndex = 28;
             this.btnSaveTask.Text = "&Save";
             this.btnSaveTask.Click += new System.EventHandler(this.btnSaveTask_Click);
@@ -390,8 +389,9 @@
             this.cmbTransactionType.Name = "cmbTransactionType";
             this.cmbTransactionType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cmbTransactionType.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.cmbTransactionType.Size = new System.Drawing.Size(439, 20);
-            this.cmbTransactionType.TabIndex = 32;
+            this.cmbTransactionType.TabIndex = 3;
             this.cmbTransactionType.SelectedIndexChanged += new System.EventHandler(this.cmbTransactionType_SelectedIndexChanged);
             // 
             // lblTransactionTypeTitle
@@ -435,11 +435,11 @@
             this.splitContainerTransOperation.Panel1.Text = "Trasaction";
             this.splitContainerTransOperation.Panel2.AutoScroll = true;
             this.splitContainerTransOperation.Panel2.Controls.Add(this.labelControl9);
-            this.splitContainerTransOperation.Panel2.Controls.Add(this.textEdit3);
+            this.splitContainerTransOperation.Panel2.Controls.Add(this.txtDescription);
             this.splitContainerTransOperation.Panel2.Text = "Description";
             this.splitContainerTransOperation.Size = new System.Drawing.Size(532, 410);
             this.splitContainerTransOperation.SplitterPosition = 111;
-            this.splitContainerTransOperation.TabIndex = 36;
+            this.splitContainerTransOperation.TabIndex = 8;
             this.splitContainerTransOperation.Text = "splitContainerControl1";
             this.splitContainerTransOperation.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainerTransOperation_Paint);
             // 
@@ -455,7 +455,7 @@
             this.repositoryItemTextEdit1,
             this.repositoryItemDateEdit1});
             this.vGridTransaction.Size = new System.Drawing.Size(521, 261);
-            this.vGridTransaction.TabIndex = 37;
+            this.vGridTransaction.TabIndex = 1;
             // 
             // repositoryItemComboBox1
             // 
@@ -482,11 +482,50 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemDateEdit1.Name = "repositoryItemDateEdit1";
             // 
+            // cmbOwner
+            // 
+            this.cmbOwner.Location = new System.Drawing.Point(581, 190);
+            this.cmbOwner.Name = "cmbOwner";
+            this.cmbOwner.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cmbOwner.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.cmbOwner.Size = new System.Drawing.Size(326, 20);
+            this.cmbOwner.TabIndex = 13;
+            this.cmbOwner.SelectedIndexChanged += new System.EventHandler(this.cmbOwner_SelectedIndexChanged);
+            // 
+            // cmbTaskStatus
+            // 
+            this.cmbTaskStatus.Location = new System.Drawing.Point(581, 32);
+            this.cmbTaskStatus.Name = "cmbTaskStatus";
+            this.cmbTaskStatus.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cmbTaskStatus.Properties.Items.AddRange(new object[] {
+            "Backlog",
+            "InProgress",
+            "Blocked",
+            "Completed",
+            "Rejected",
+            "Close"});
+            this.cmbTaskStatus.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.cmbTaskStatus.Size = new System.Drawing.Size(326, 20);
+            this.cmbTaskStatus.TabIndex = 10;
+            // 
+            // labelControl13
+            // 
+            this.labelControl13.Location = new System.Drawing.Point(581, 13);
+            this.labelControl13.Name = "labelControl13";
+            this.labelControl13.Size = new System.Drawing.Size(96, 13);
+            this.labelControl13.TabIndex = 38;
+            this.labelControl13.Text = "Task Current Status";
+            // 
             // NewTaskCard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(935, 624);
+            this.Controls.Add(this.cmbTaskStatus);
+            this.Controls.Add(this.labelControl13);
+            this.Controls.Add(this.cmbOwner);
             this.Controls.Add(this.splitContainerTransOperation);
             this.Controls.Add(this.lblTaskIDTitle);
             this.Controls.Add(this.cmbTransactionType);
@@ -496,12 +535,11 @@
             this.Controls.Add(this.simpleButton1);
             this.Controls.Add(this.btnAddProject);
             this.Controls.Add(this.labelControl12);
-            this.Controls.Add(this.textEdit5);
             this.Controls.Add(this.comboBoxEdit7);
             this.Controls.Add(this.labelControl11);
             this.Controls.Add(this.labelControl10);
-            this.Controls.Add(this.textEdit4);
-            this.Controls.Add(this.dateEdit1);
+            this.Controls.Add(this.txtCompletedPercentage);
+            this.Controls.Add(this.dtDueDate);
             this.Controls.Add(this.labelControl8);
             this.Controls.Add(this.cmbPriority);
             this.Controls.Add(this.labelControl7);
@@ -514,11 +552,11 @@
             this.Controls.Add(this.labelControl3);
             this.Controls.Add(this.cmbClient);
             this.Controls.Add(this.labelControl2);
-            this.Controls.Add(this.comboBoxEdit2);
+            this.Controls.Add(this.cmbCardType);
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.cmbProject);
             this.Controls.Add(this.lblProject);
-            this.Controls.Add(this.comboBoxEdit4);
+            this.Controls.Add(this.txtTitle);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "NewTaskCard";
@@ -526,19 +564,18 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.NewTaskCard_FormClosed);
             this.Load += new System.EventHandler(this.NewTaskCard_Load);
             ((System.ComponentModel.ISupportInitialize)(this.cmbProject.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit2.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbCardType.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbClient.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit4.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTitle.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCreatedBy.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCreatedOn.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbAssingTo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbPriority.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit4.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtDueDate.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtDueDate.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDescription.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCompletedPercentage.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit7.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit5.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbTransactionType.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerTransOperation)).EndInit();
             this.splitContainerTransOperation.ResumeLayout(false);
@@ -547,6 +584,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbOwner.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbTaskStatus.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -556,12 +595,12 @@
 
         private DevExpress.XtraEditors.LabelControl lblProject;
         private DevExpress.XtraEditors.ComboBoxEdit cmbProject;
-        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit2;
+        private DevExpress.XtraEditors.ComboBoxEdit cmbCardType;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.ComboBoxEdit cmbClient;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.LabelControl labelControl3;
-        private DevExpress.XtraEditors.TextEdit comboBoxEdit4;
+        private DevExpress.XtraEditors.TextEdit txtTitle;
         private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraEditors.TextEdit txtCreatedBy;
         private DevExpress.XtraEditors.LabelControl labelControl5;
@@ -571,15 +610,14 @@
         private DevExpress.XtraEditors.ComboBoxEdit cmbPriority;
         private DevExpress.XtraEditors.LabelControl labelControl7;
         private DevExpress.XtraEditors.LabelControl labelControl8;
-        private DevExpress.XtraEditors.DateEdit dateEdit1;
+        private DevExpress.XtraEditors.DateEdit dtDueDate;
         private DevExpress.XtraEditors.LabelControl labelControl9;
-        private DevExpress.XtraEditors.MemoEdit textEdit3;
+        private DevExpress.XtraEditors.MemoEdit txtDescription;
         private DevExpress.XtraEditors.LabelControl labelControl10;
-        private DevExpress.XtraEditors.TextEdit textEdit4;
+        private DevExpress.XtraEditors.TextEdit txtCompletedPercentage;
         private DevExpress.XtraEditors.LabelControl labelControl11;
         private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit7;
         private DevExpress.XtraEditors.LabelControl labelControl12;
-        private DevExpress.XtraEditors.TextEdit textEdit5;
         private DevExpress.XtraEditors.SimpleButton btnAddProject;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private DevExpress.XtraEditors.SimpleButton btnCloseTask;
@@ -593,6 +631,9 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox1;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit1;
         private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit repositoryItemDateEdit1;
+        private DevExpress.XtraEditors.ComboBoxEdit cmbOwner;
+        private DevExpress.XtraEditors.ComboBoxEdit cmbTaskStatus;
+        private DevExpress.XtraEditors.LabelControl labelControl13;
     }
 }
 

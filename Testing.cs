@@ -1,6 +1,7 @@
 ﻿using FinancialPlanner.Common;
 using FinancialPlanner.Common.Model;
 using FinancialPlanner.Common.Model.ProcessAction;
+using FinancialPlanner.Common.Model.TaskManagement;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -55,16 +56,16 @@ namespace FinancialPlannerClient
             try
             {
                 FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
-                string apiurl = Program.WebServiceUrl +"/"+ ADD_BankAccount_API;
+                string apiurl = Program.WebServiceUrl + "/" + ADD_BankAccount_API;
                 RestAPIExecutor restApiExecutor = new RestAPIExecutor();
                 var restResult = restApiExecutor.Execute<Document>(apiurl, doc, "POST");
                 return true;
             }
             catch (Exception ex)
             {
-                StackTrace st = new StackTrace ();
-                StackFrame sf = st.GetFrame (0);
-                MethodBase  currentMethodName = sf.GetMethod();
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
                 LogDebug(currentMethodName.Name, ex);
                 return false;
             }
@@ -100,13 +101,13 @@ namespace FinancialPlannerClient
         private void button1_Click(object sender, EventArgs e)
         {
             openFileDialog1.Multiselect = false;
-            openFileDialog1.ShowDialog();           
+            openFileDialog1.ShowDialog();
             textBox1.Text = openFileDialog1.FileName;
         }
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
-           
+
             DevExpress.XtraVerticalGrid.Rows.EditorRow ARN = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             ARN.Name = "ARN";
             ARN.Properties.FieldName = "ARN";
@@ -117,9 +118,36 @@ namespace FinancialPlannerClient
             ClientGroup.Properties.FieldName = "ClientGroup";
             ClientGroup.Properties.Caption = "ClientGroup";
 
-            vGridControl1.Rows.AddRange(new DevExpress.XtraVerticalGrid.Rows.BaseRow[]{ ARN,ClientGroup });
-           
+            vGridControl1.Rows.AddRange(new DevExpress.XtraVerticalGrid.Rows.BaseRow[] { ARN, ClientGroup });
 
+
+        }
+
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
         }
     }
 }
+//    public class TaskHistory
+//    {
+//        int id;
+//        string taskId;
+//        OperationType operation;
+//        string previousValue;
+//        string changeValue;
+//        string changeBy;
+//        DateTime changedOn;
+//        TaskCard taskCard = new TaskCard();
+//        public TaskHistory()
+//        {
+//            ITaskTransactionType sipTransaction = new SIPTransaction();
+//            taskCard.TaskTransactionType = sipTransaction;
+//            taskCard.TaskTransactionType.GetTransaction<SIP>();
+
+//            taskCard.TaskTransactionType.GetTransaction<FreshPurchase>().MemberName = 1;
+//            JSONSerialization jSON = new JSONSerialization();
+//            string jsonStr = jSON.SerializeToString<TaskCard>(taskCard);
+
+//        }
+//    }
+//}

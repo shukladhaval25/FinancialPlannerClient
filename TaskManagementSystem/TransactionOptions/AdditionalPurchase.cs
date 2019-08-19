@@ -14,6 +14,7 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
     {
         readonly string GRID_NAME = "vGridAdditionalPurchase";
         DevExpress.XtraVerticalGrid.VGridControl vGridTransaction;
+        FreshPurchase freshPurchase;
 
         //private DevExpress.XtraVerticalGrid.Rows.EditorRow ARN;
         //private DevExpress.XtraVerticalGrid.Rows.EditorRow ClientGroup;
@@ -51,8 +52,6 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
         //private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBoxAssignTo;
         //private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBoxModeOfExecution;
         //private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEditRemark;
-
-
 
         private void InitializeComponent()
         {
@@ -276,19 +275,24 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
         public void setVGridControl(VGridControl vGrid)
         {
             this.vGridTransaction = vGrid;
-            FreshPurchase freshPurchase = new FreshPurchase();
-            string[] removeRows = getRemoveRows();
+            freshPurchase = new FreshPurchase();
             freshPurchase.setVGridControl(vGrid);
+            removeUnwantedFields(vGrid);
+        }
+
+
+        private void removeUnwantedFields(VGridControl vGrid)
+        {
+            string[] removeRows = getRemoveRows();            
             List<int> indexRows = new List<int>();
-            
-            for (int index = 0;index < vGrid.Rows.Count; index++)
+            for (int index = 0; index < vGrid.Rows.Count; index++)
             {
                 if (removeRows.Contains(vGrid.Rows[index].Name))
                 {
                     indexRows.Add(index);
                 }
             }
-            for(int index = indexRows.Count - 1; index >= 0; index--)
+            for (int index = indexRows.Count - 1; index >= 0; index--)
             {
                 vGrid.Rows.RemoveAt(indexRows[index]);
             }
@@ -297,6 +301,35 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
         private string[] getRemoveRows()
         {
             return new string[] { "SecondHolder","ThirdHolder","Nominee","Guardian" };
+        }
+
+        public object GetTransactionType()
+        {
+            FinancialPlanner.Common.Model.TaskManagement.MFTransactions.AdditionalPurchase additionalPurchase =
+                 new FinancialPlanner.Common.Model.TaskManagement.MFTransactions.AdditionalPurchase();
+            if (this.vGridTransaction.Rows.Count > 0)
+            {
+                additionalPurchase.Arn = (int) this.vGridTransaction.Rows["ARN"].Properties.Value;
+                additionalPurchase.Cid = freshPurchase.currentClient.ID;
+                additionalPurchase.ClientGroup = this.vGridTransaction.Rows["ClientGroup"].Properties.Value.ToString();
+                additionalPurchase.MemberName = this.vGridTransaction.Rows["MemberName"].Properties.Value.ToString();
+                additionalPurchase.ModeOfHolding = this.vGridTransaction.Rows["ModeOfHolding"].Properties.Value.ToString();
+                additionalPurchase.Amc = this.vGridTransaction.Rows["AMC"].Properties.Value.ToString();
+                additionalPurchase.FolioNumber = this.vGridTransaction.Rows["FolioNumber"].Properties.Value.ToString();
+                additionalPurchase.Scheme = freshPurchase.selectedSchemeId;
+                additionalPurchase.Options = this.vGridTransaction.Rows["Option"].Properties.Value.ToString();
+                additionalPurchase.Amount = double.Parse( this.vGridTransaction.Rows["Amount"].Properties.Value.ToString());
+                additionalPurchase.TransactionDate = (DateTime) this.vGridTransaction.Rows["TransactionDate"].Properties.Value;
+                additionalPurchase.ModeOfExecution = this.vGridTransaction.Rows["ModeOfExecution"].Properties.Value.ToString();
+                additionalPurchase.Remark = ( this.vGridTransaction.Rows["Remark"].Properties.Value != null) ?
+                    this.vGridTransaction.Rows["Remark"].Properties.Value.ToString() : string.Empty;
+            }
+            return additionalPurchase;
+        }
+
+        public bool IsAllRequireInputAvailable()
+        {
+            return freshPurchase.IsAllRequireInputAvailable();
         }
     }
 }

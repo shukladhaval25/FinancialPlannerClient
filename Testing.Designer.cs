@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.Utils.SimpleContextButton simpleContextButton1 = new DevExpress.Utils.SimpleContextButton();
-            DevExpress.Utils.SimpleContextButton simpleContextButton2 = new DevExpress.Utils.SimpleContextButton();
+            this.components = new System.ComponentModel.Container();
+            DevExpress.Utils.SimpleContextButton simpleContextButton5 = new DevExpress.Utils.SimpleContextButton();
+            DevExpress.Utils.SimpleContextButton simpleContextButton6 = new DevExpress.Utils.SimpleContextButton();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -50,10 +51,15 @@
             this.repositoryItemComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.repositoryItemTextEditAmount = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.repositoryItemDateEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
+            this.repositoryItemSpinEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit();
             this.row = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.Amount = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.row2 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.row1 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
+            this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
+            this.txtDescription = new DevExpress.XtraEditors.MemoEdit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl7)).BeginInit();
@@ -68,6 +74,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditAmount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDescription.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // openFileDialog1
@@ -206,19 +215,21 @@
             // 
             // vGridControl1
             // 
-            this.vGridControl1.Cursor = System.Windows.Forms.Cursors.SizeNS;
+            this.vGridControl1.Cursor = System.Windows.Forms.Cursors.Default;
             this.vGridControl1.Location = new System.Drawing.Point(492, 178);
             this.vGridControl1.Name = "vGridControl1";
             this.vGridControl1.RecordWidth = 404;
             this.vGridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemComboBox1,
             this.repositoryItemTextEditAmount,
-            this.repositoryItemDateEdit1});
+            this.repositoryItemDateEdit1,
+            this.repositoryItemSpinEdit1});
             this.vGridControl1.RowHeaderWidth = 302;
             this.vGridControl1.Rows.AddRange(new DevExpress.XtraVerticalGrid.Rows.BaseRow[] {
             this.row,
             this.Amount,
-            this.row2});
+            this.row2,
+            this.row1});
             this.vGridControl1.Size = new System.Drawing.Size(649, 145);
             this.vGridControl1.TabIndex = 9;
             // 
@@ -227,13 +238,13 @@
             this.repositoryItemComboBox1.AutoHeight = false;
             this.repositoryItemComboBox1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            simpleContextButton1.Id = new System.Guid("1109bcfa-56ad-4d64-a117-4a6dd5afbdcf");
-            simpleContextButton1.Name = "SimpleContextButton";
-            simpleContextButton1.Visibility = DevExpress.Utils.ContextItemVisibility.Visible;
-            simpleContextButton2.Id = new System.Guid("cdd1d729-d4e6-44cb-9f4e-962bc5943852");
-            simpleContextButton2.Name = "SimpleContextButton";
-            this.repositoryItemComboBox1.ContextButtons.Add(simpleContextButton1);
-            this.repositoryItemComboBox1.ContextButtons.Add(simpleContextButton2);
+            simpleContextButton5.Id = new System.Guid("1109bcfa-56ad-4d64-a117-4a6dd5afbdcf");
+            simpleContextButton5.Name = "SimpleContextButton";
+            simpleContextButton5.Visibility = DevExpress.Utils.ContextItemVisibility.Visible;
+            simpleContextButton6.Id = new System.Guid("cdd1d729-d4e6-44cb-9f4e-962bc5943852");
+            simpleContextButton6.Name = "SimpleContextButton";
+            this.repositoryItemComboBox1.ContextButtons.Add(simpleContextButton5);
+            this.repositoryItemComboBox1.ContextButtons.Add(simpleContextButton6);
             this.repositoryItemComboBox1.Items.AddRange(new object[] {
             "Apple",
             "Orange",
@@ -257,6 +268,28 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemDateEdit1.Name = "repositoryItemDateEdit1";
             // 
+            // repositoryItemSpinEdit1
+            // 
+            this.repositoryItemSpinEdit1.AutoHeight = false;
+            this.repositoryItemSpinEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemSpinEdit1.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.repositoryItemSpinEdit1.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.repositoryItemSpinEdit1.IsFloatValue = false;
+            this.repositoryItemSpinEdit1.Mask.EditMask = "N00";
+            this.repositoryItemSpinEdit1.MaxValue = new decimal(new int[] {
+            31,
+            0,
+            0,
+            0});
+            this.repositoryItemSpinEdit1.MinValue = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.repositoryItemSpinEdit1.Name = "repositoryItemSpinEdit1";
+            this.repositoryItemSpinEdit1.ValidateOnEnterKey = true;
+            // 
             // row
             // 
             this.row.Name = "row";
@@ -279,6 +312,16 @@
             this.row2.Properties.RowEdit = this.repositoryItemDateEdit1;
             this.row2.Properties.Value = new System.DateTime(2019, 8, 9, 0, 6, 2, 0);
             // 
+            // row1
+            // 
+            this.row1.Name = "row1";
+            this.row1.Properties.RowEdit = this.repositoryItemSpinEdit1;
+            this.row1.Properties.Value = new decimal(new int[] {
+            31,
+            0,
+            0,
+            0});
+            // 
             // simpleButton1
             // 
             this.simpleButton1.Location = new System.Drawing.Point(968, 178);
@@ -288,11 +331,29 @@
             this.simpleButton1.Text = "simpleButton1";
             this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
+            // simpleButton2
+            // 
+            this.simpleButton2.Location = new System.Drawing.Point(12, 383);
+            this.simpleButton2.Name = "simpleButton2";
+            this.simpleButton2.Size = new System.Drawing.Size(75, 23);
+            this.simpleButton2.TabIndex = 11;
+            this.simpleButton2.Text = "simpleButton2";
+            this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
+            // 
+            // txtDescription
+            // 
+            this.txtDescription.Location = new System.Drawing.Point(12, 301);
+            this.txtDescription.Name = "txtDescription";
+            this.txtDescription.Size = new System.Drawing.Size(463, 76);
+            this.txtDescription.TabIndex = 12;
+            // 
             // Testing
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1145, 372);
+            this.ClientSize = new System.Drawing.Size(1145, 420);
+            this.Controls.Add(this.txtDescription);
+            this.Controls.Add(this.simpleButton2);
             this.Controls.Add(this.simpleButton1);
             this.Controls.Add(this.vGridControl1);
             this.Controls.Add(this.flowLayoutPanel1);
@@ -320,6 +381,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditAmount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDescription.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -348,8 +412,13 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox1;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEditAmount;
         private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit repositoryItemDateEdit1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit repositoryItemSpinEdit1;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow row;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow Amount;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow row2;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow row1;
+        private DevExpress.XtraEditors.SimpleButton simpleButton2;
+        private DevExpress.Utils.Behaviors.BehaviorManager behaviorManager1;
+        private DevExpress.XtraEditors.MemoEdit txtDescription;
     }
 }

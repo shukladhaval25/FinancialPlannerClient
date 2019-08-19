@@ -1,17 +1,13 @@
-﻿using DevExpress.XtraVerticalGrid.Rows;
-using FinancialPlanner.Common.Model;
+﻿using FinancialPlanner.Common.Model;
 using FinancialPlanner.Common.Model.TaskManagement;
+using FinancialPlanner.Common.Model.TaskManagement.MFTransactions;
 using FinancialPlannerClient.Clients;
 using FinancialPlannerClient.Master;
 using FinancialPlannerClient.TaskManagementSystem.Services;
-using FinancialPlannerClient.TaskManagementSystem.TransactionOptions;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using Unity;
 
@@ -22,6 +18,7 @@ namespace FinancialPlannerClient.TaskManagementSystem
         IList<Project> projects = new List<Project>();
         IList<Client> clients;
         IList<User> users;
+        private ITransactionType transactionType;
         public NewTaskCard()
         {
             InitializeComponent();
@@ -31,15 +28,17 @@ namespace FinancialPlannerClient.TaskManagementSystem
         {
             fillupProjectCombobox();
             fillupCustomer();
-            fillupAssingTo();
+            fillupAssingTo();        
             txtCreatedBy.Text = Program.CurrentUser.UserName;
             txtCreatedOn.Text = DateTime.Now.ToString();
         }
 
         private void fillupAssingTo()
         {
-            users =  new UserServiceHelper().GetAll();
+            users = new UserServiceHelper().GetAll();
             cmbAssingTo.Properties.Items.Clear();
+            cmbOwner.Properties.Items.Clear();
+            cmbOwner.Properties.Items.AddRange(users.Select(i => i.UserName).ToList());
             cmbAssingTo.Properties.Items.AddRange(users.Select(i => i.UserName).ToList());
         }
 
@@ -55,8 +54,8 @@ namespace FinancialPlannerClient.TaskManagementSystem
         {
             TaskProjectInfo taskProjectInfo = new TaskProjectInfo();
             projects = taskProjectInfo.GetAll();
-            cmbProject.Properties.Items.Clear();            
-            cmbProject.Properties.Items.AddRange(projects.Select(i => i.Name).ToList());           
+            cmbProject.Properties.Items.Clear();
+            cmbProject.Properties.Items.AddRange(projects.Select(i => i.Name).ToList());
         }
 
         private void NewTaskCard_FormClosed(object sender, FormClosedEventArgs e)
@@ -65,7 +64,11 @@ namespace FinancialPlannerClient.TaskManagementSystem
 
         private void cmbProject_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(cmbProject.Text))
+            if (!string.IsNullOrEmpty(cmbProject.Text))
+            {
+                cmbProject.Tag = projects.FirstOrDefault(i => i.Name == cmbProject.Text).Id;               
+            }
+            else
             {
                 cmbTransactionType.Properties.Items.Clear();
                 lblTaskIDTitle.Text = string.Empty;
@@ -93,19 +96,20 @@ namespace FinancialPlannerClient.TaskManagementSystem
             cmbTransactionType.Properties.Items.Add("Additional Purchase");
             cmbTransactionType.Properties.Items.Add("Switch");
             cmbTransactionType.Properties.Items.Add("STP");
-            cmbTransactionType.Properties.Items.Add("SIP-Fresh Folio");
+            cmbTransactionType.Properties.Items.Add("SIP Fresh");
+            cmbTransactionType.Properties.Items.Add("SIP Old");
         }
 
         private void cmbTransactionType_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
-                var transactionType = Program.container.Resolve<ITransactionType>(cmbTransactionType.Text);
+                transactionType = Program.container.Resolve<ITransactionType>(cmbTransactionType.Text);
                 transactionType.setVGridControl(this.vGridTransaction);
                 splitContainerTransOperation.Panel1.Height = 400;
                 splitContainerTransOperation.PanelVisibility = DevExpress.XtraEditors.SplitPanelVisibility.Both;
             }
-            catch (Unity.ResolutionFailedException unityException)
+            catch (Unity.ResolutionFailedException)
             {
                 this.vGridTransaction.Rows.Clear();
                 splitContainerTransOperation.PanelVisibility = DevExpress.XtraEditors.SplitPanelVisibility.Panel2;
@@ -114,12 +118,107 @@ namespace FinancialPlannerClient.TaskManagementSystem
 
         private void btnSaveTask_Click(object sender, EventArgs e)
         {
-            new Testing().ShowDialog();
+            try
+            {
+                if (!isValidateAllRequireField() || !transactionType.IsAllRequireInputAvailable())
+                {
+                    DevExpress.XtraEditors.XtraMessageBox.Show("Please enter all require fields.",
+                       "Invalid Data", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                TaskCard taskCard = getTaskCard();
+                if (new TaskCardHelper().Add(taskCard))
+                {
+                    DevExpress.XtraEditors.XtraMessageBox.Show("Record saved sucessfully.",
+                    "Save", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                DevExpress.XtraEditors.XtraMessageBox.Show("Error :" + ex.ToString(),
+                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        private TaskCard getTaskCard()
+        {
+            TaskCard taskCard = new TaskCard();
+            taskCard.TaskId = lblTaskIDTitle.Text;
+            taskCard.ProjectId = int.Parse(cmbProject.Tag.ToString());
+            taskCard.TransactionType = cmbTransactionType.Text;
+            taskCard.Type = (CardType)(cmbTransactionType.SelectedIndex);
+            taskCard.CustomerId = int.Parse(cmbClient.Tag.ToString());
+            taskCard.Title = txtTitle.Text;
+            taskCard.Owner = int.Parse(cmbOwner.Tag.ToString());
+            taskCard.CreatedBy = Program.CurrentUser.Id;
+            taskCard.CreatedOn = System.DateTime.Now.Date;
+            taskCard.UpdatedBy = taskCard.CreatedBy;
+            taskCard.UpdatedByUserName = Program.CurrentUser.UserName;
+            taskCard.UpdatedOn = System.DateTime.Now.Date;
+            taskCard.AssignTo = int.Parse(cmbAssingTo.Tag.ToString());
+            taskCard.Priority = (Priority)(cmbPriority.SelectedIndex);
+            taskCard.TaskStatus = (TaskStatus)(cmbTaskStatus.SelectedIndex);
+            taskCard.DueDate = dtDueDate.DateTime;
+            taskCard.CompletedPercentage = int.Parse(txtCompletedPercentage.Text);
+            taskCard.Description = txtDescription.Text;
+            taskCard.MachineName = System.Environment.MachineName;
+            taskCard.TaskTransactionType = getTransactionType();
+            return taskCard;
+        }
+
+        private object getTransactionType()
+        {
+            return this.transactionType.GetTransactionType();
+            //switch (transactionType)
+            //{
+            //    case "Fresh Purchse":
+            //        return new FreshPurchase();
+            //    case "Additional Purchase":
+            //        return new AdditionalPurchase();
+            //    default:
+            //        return null;
+            //}
+        }
+
+        private bool isValidateAllRequireField()
+        {
+            if (!string.IsNullOrEmpty(cmbProject.Text) && !string.IsNullOrEmpty(cmbTransactionType.Text) &&
+                !string.IsNullOrEmpty(cmbCardType.Text) && !string.IsNullOrEmpty(txtTitle.Text) && 
+                !string.IsNullOrEmpty(cmbAssingTo.Text) && !string.IsNullOrEmpty(cmbClient.Text))
+            {
+                return true;
+            }
+            return false;
         }
 
         private void splitContainerTransOperation_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void cmbClient_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(cmbClient.Text))
+            {
+                cmbClient.Tag = clients.FirstOrDefault(i => i.Name == cmbClient.Text).ID;
+            }
+        }
+
+        private void cmbOwner_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(cmbOwner.Text))
+            {
+                cmbOwner.Tag = users.FirstOrDefault(i => i.UserName == cmbOwner.Text).Id;
+            }
+        }
+
+        private void cmbAssingTo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(cmbAssingTo.Text))
+            {
+                cmbAssingTo.Tag = users.FirstOrDefault(i => i.UserName == cmbAssingTo.Text).Id;
+            }
         }
     }
 }

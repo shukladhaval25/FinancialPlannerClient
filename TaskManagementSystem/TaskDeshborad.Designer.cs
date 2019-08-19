@@ -406,9 +406,10 @@
             tileViewItemElement8.Column = this.gridColumnProject;
             tileViewItemElement8.Text = "gridColumnProject";
             tileViewItemElement8.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.Manual;
-            tileViewItemElement8.TextLocation = new System.Drawing.Point(60, 70);
+            tileViewItemElement8.TextLocation = new System.Drawing.Point(50, 70);
             this.tileViewProjectWise.TileTemplate.Add(tileViewItemElement7);
             this.tileViewProjectWise.TileTemplate.Add(tileViewItemElement8);
+            this.tileViewProjectWise.ItemClick += new DevExpress.XtraGrid.Views.Tile.TileViewItemClickEventHandler(this.tileViewProjectWise_ItemClick);
             // 
             // gridView5
             // 

@@ -358,5 +358,15 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             }
             return dtARN;
         }
+
+        public object GetTransactionType()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool IsAllRequireInputAvailable()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
