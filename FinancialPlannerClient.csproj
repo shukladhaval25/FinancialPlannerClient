@@ -326,6 +326,13 @@
     <Compile Include="Master\Others.Designer.cs">
       <DependentUpon>Others.cs</DependentUpon>
     </Compile>
+    <Compile Include="Master\TaskMaster\AMCInfo.cs" />
+    <Compile Include="Master\TaskMaster\AmcView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Master\TaskMaster\AmcView.Designer.cs">
+      <DependentUpon>AmcView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Master\TaskMaster\SchemeInfo.cs" />
     <Compile Include="Master\TaskMaster\ARNInfo.cs" />
     <Compile Include="Master\TaskMaster\Scheme.cs">
@@ -712,7 +719,13 @@
       <DependentUpon>frmRiskProfileReturn.cs</DependentUpon>
     </Compile>
     <Compile Include="RiskProfile\InvestmentByfercationInfo.cs" />
-    <Compile Include="TaskManagementSystem\TaskCardHelper.cs" />
+    <Compile Include="TaskManagementSystem\AllTask.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TaskManagementSystem\AllTask.Designer.cs">
+      <DependentUpon>AllTask.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TaskManagementSystem\TaskCardService.cs" />
     <Compile Include="TaskManagementSystem\TransactionOptions\AdditionalPurchase.cs" />
     <Compile Include="TaskManagementSystem\TransactionOptions\FreshPurchase.cs" />
     <Compile Include="TaskManagementSystem\TransactionOptions\ITransactionType.cs" />
@@ -864,6 +877,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Master\Others.resx">
       <DependentUpon>Others.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Master\TaskMaster\AmcView.resx">
+      <DependentUpon>AmcView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Master\TaskMaster\Scheme.resx">
       <DependentUpon>Scheme.cs</DependentUpon>
@@ -1040,6 +1056,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RiskProfile\frmRiskProfileReturn.resx">
       <DependentUpon>frmRiskProfileReturn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TaskManagementSystem\AllTask.resx">
+      <DependentUpon>AllTask.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TaskManagementSystem\CustomAppointmentForm.de.resx">
       <DependentUpon>CustomAppointmentForm.cs</DependentUpon>

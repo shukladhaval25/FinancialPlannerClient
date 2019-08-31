@@ -13,6 +13,7 @@ namespace FinancialPlannerClient.Master.TaskMaster
     public class SchemeInfo
     {
         const string GET_All_API = "Scheme/GetAll";
+        const string GET_COUNT_BASEDON_AMC = "Scheme/GetSchemeCount?amcId={0}";
         const string ADD_Scheme_API = "Scheme/Add";
         const string DELETE_Scheme_API = "Scheme/Delete";
         const string UPDATE_Scheme_API = "Scheme/Update";
@@ -108,6 +109,30 @@ namespace FinancialPlannerClient.Master.TaskMaster
                 MethodBase currentMethodName = sf.GetMethod();
                 LogDebug(currentMethodName.Name, ex);
                 return false;
+            }
+        }
+        public int GetCountByAMC(int amcId)
+        {
+            try
+            {
+                int recordCount = 0;
+                FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
+                string apiurl = Program.WebServiceUrl + "/" + string.Format(GET_COUNT_BASEDON_AMC,amcId);
+
+                RestAPIExecutor restApiExecutor = new RestAPIExecutor();
+
+                var restResult = restApiExecutor.Execute<int?>(apiurl, null, "GET");
+
+                if (jsonSerialization.IsValidJson(restResult.ToString()))
+                {
+                    recordCount = jsonSerialization.DeserializeFromString<int>(restResult.ToString());
+                }
+                return recordCount;
+            }
+            catch (Exception ex)
+            {
+                Logger.LogDebug(ex);
+                return 0;
             }
         }
         private void LogDebug(string methodName, Exception ex)

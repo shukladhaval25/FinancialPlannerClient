@@ -19,6 +19,7 @@ namespace FinancialPlannerClient.TaskManagementSystem.Services
         const string ADD_PROJECT_API = "TaskProjectController/Add";
         const string UPDATE_PROJECT_API = "TaskProjectController/Update";
         const string DELETE_PROJEC_API = "TaskProjectController/Delete";
+        const string GET_TASKCOUNT_PROJECTWISE_OPENTASK = "TaskProjectController/GetOpenTaskProjectWise?userId={0}";
         DataTable _dtProjects;
         internal IList<Project> GetAll()
         {
@@ -55,6 +56,43 @@ namespace FinancialPlannerClient.TaskManagementSystem.Services
                 return null;
             }
         }
+
+        internal IList<KeyValuePair<string, int>> GetOpenTaskCountProjectWise(int userId)
+        {
+            IList<KeyValuePair<string, int>> projects = new List<KeyValuePair<string, int>>();
+            try
+            {
+                FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
+                string apiurl = Program.WebServiceUrl + "/" + (string.Format(GET_TASKCOUNT_PROJECTWISE_OPENTASK,userId));
+
+                RestAPIExecutor restApiExecutor = new RestAPIExecutor();
+
+                var restResult = restApiExecutor.Execute<IList<KeyValuePair<string,int>>>(apiurl, null, "GET");
+
+                if (jsonSerialization.IsValidJson(restResult.ToString()))
+                {
+                    projects = jsonSerialization.DeserializeFromString<IList<KeyValuePair<string, int>>>(restResult.ToString());
+                }
+                return projects;
+            }
+            catch (System.Net.WebException webException)
+            {
+                if (webException.Message.Equals("The remote server returned an error: (401) Unauthorized."))
+                {
+                    MessageBox.Show("You session has been expired. Please Login again.", "Session Expired", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
+                LogDebug(currentMethodName.Name, ex);
+                return null;
+            }
+        }
+
         /*
         internal BankAccountDetail GetById(int id, int clientId)
         {

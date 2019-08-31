@@ -1,10 +1,13 @@
-﻿using FinancialPlanner.Common.DataConversion;
+﻿using FinancialPlanner.Common;
+using FinancialPlanner.Common.DataConversion;
 using FinancialPlanner.Common.Model.TaskManagement.MFTransactions;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace FinancialPlannerClient.Master.TaskMaster
@@ -12,6 +15,7 @@ namespace FinancialPlannerClient.Master.TaskMaster
     public partial class SchemeView : DevExpress.XtraEditors.XtraForm
     {
         DataTable dtScheme = new DataTable();
+        IList<AMC> aMCs;
         public SchemeView()
         {
             InitializeComponent();
@@ -20,6 +24,36 @@ namespace FinancialPlannerClient.Master.TaskMaster
         private void SchemeView_Load(object sender, EventArgs e)
         {
             fillupScheme();
+            loadAMC();
+        }
+
+        private void loadAMC()
+        {
+            try
+            {
+                AMCInfo aMCInfo = new AMCInfo();
+                aMCs = aMCInfo.GetAll();
+                if (aMCs != null)
+                cmbAMC.Properties.Items.AddRange(aMCs.Select(i => i.Name).ToArray());
+            }
+            catch (Exception ex)
+            {
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
+                LogDebug(currentMethodName.Name, ex);
+                DevExpress.XtraEditors.XtraMessageBox.Show("Error occured during load of AMC value.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+        private void LogDebug(string name, Exception ex)
+        {
+            DebuggerLogInfo debuggerInfo = new DebuggerLogInfo();
+            debuggerInfo.ClassName = this.GetType().Name;
+            debuggerInfo.Method = name;
+            debuggerInfo.ExceptionInfo = ex;
+            Logger.LogDebug(debuggerInfo);
         }
         private void fillupScheme()
         {
@@ -29,18 +63,7 @@ namespace FinancialPlannerClient.Master.TaskMaster
             {
                 dtScheme = ListtoDataTable.ToDataTable(SchemeDetails.ToList());
                 gridControlScheme.DataSource = dtScheme;
-                //setgridViewDisplay();
             }
-        }
-
-        private void setgridViewDisplay()
-        {
-            gridViewScheme.Columns["ID"].Visible = false;
-            gridViewScheme.Columns["CreatedOn"].Visible = false;
-            gridViewScheme.Columns["CreatedBy"].Visible = false;
-            gridViewScheme.Columns["UpdatedOn"].Visible = false;
-            gridViewScheme.Columns["UpdatedBy"].Visible = false;
-            gridViewScheme.Columns["UpdatedByUserName"].Visible = false;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -57,9 +80,9 @@ namespace FinancialPlannerClient.Master.TaskMaster
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtName.Text))
+            if (string.IsNullOrEmpty(txtName.Text) && string.IsNullOrEmpty(cmbAMC.Text))
             {
-                DevExpress.XtraEditors.XtraMessageBox.Show("Please enter Scheme Name.",
+                DevExpress.XtraEditors.XtraMessageBox.Show("Please enter Scheme Name and AMC.",
                     "Invalid Data", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
@@ -88,7 +111,9 @@ namespace FinancialPlannerClient.Master.TaskMaster
         {
             Scheme Scheme = new Scheme();
             Scheme.Id = int.Parse(txtName.Tag.ToString());
+            Scheme.AmcName = cmbAMC.Text;
             Scheme.Name = txtName.Text;
+            Scheme.AmcId = (string.IsNullOrEmpty(cmbAMC.Tag.ToString()) ? 0 : (int)cmbAMC.Tag);
             Scheme.CreatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
             Scheme.CreatedBy = Program.CurrentUser.Id;
             Scheme.UpdatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
@@ -107,6 +132,8 @@ namespace FinancialPlannerClient.Master.TaskMaster
         {
             if (gridViewScheme.FocusedRowHandle >= 0)
             {
+                cmbAMC.Tag = gridViewScheme.GetFocusedRowCellValue(gridViewScheme.Columns[2]).ToString();
+                cmbAMC.Text = gridViewScheme.GetFocusedRowCellValue(gridViewScheme.Columns[3]).ToString();
                 txtName.Text = gridViewScheme.GetFocusedRowCellValue(gridViewScheme.Columns[0]).ToString();
                 txtName.Tag = gridViewScheme.GetFocusedRowCellValue(gridViewScheme.Columns[1]).ToString();
             }
@@ -142,6 +169,23 @@ namespace FinancialPlannerClient.Master.TaskMaster
                         fillupScheme();
                 }
             }
+        }
+
+        private void grpSchemeDetails_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void cmbAMC_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            foreach(AMC amc in aMCs)
+            {
+                if (amc.Name == cmbAMC.Text)
+                {
+                    cmbAMC.Tag = amc.Id;
+                    return;
+                }
+            }            
         }
     }
 }

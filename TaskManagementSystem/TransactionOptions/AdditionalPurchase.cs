@@ -309,7 +309,7 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
                  new FinancialPlanner.Common.Model.TaskManagement.MFTransactions.AdditionalPurchase();
             if (this.vGridTransaction.Rows.Count > 0)
             {
-                additionalPurchase.Arn = (int) this.vGridTransaction.Rows["ARN"].Properties.Value;
+                additionalPurchase.Arn = int.Parse(this.vGridTransaction.Rows["ARN"].Properties.Value.ToString());
                 additionalPurchase.Cid = freshPurchase.currentClient.ID;
                 additionalPurchase.ClientGroup = this.vGridTransaction.Rows["ClientGroup"].Properties.Value.ToString();
                 additionalPurchase.MemberName = this.vGridTransaction.Rows["MemberName"].Properties.Value.ToString();

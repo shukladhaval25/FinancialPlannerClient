@@ -40,13 +40,13 @@
             DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement6 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
             DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement7 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
             DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement8 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
-            this.tileViewColumnCardNo = new DevExpress.XtraGrid.Columns.TileViewColumn();
+            this.tileViewColumnTaskId = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.tileViewColumnTitle = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.tileViewColumnDueDate = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.tileViewColumnPriority = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.repositoryItemPictureEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit();
             this.tileViewColumnStatus = new DevExpress.XtraGrid.Columns.TileViewColumn();
-            this.tileViewColumnAssignTo = new DevExpress.XtraGrid.Columns.TileViewColumn();
+            this.tileViewColumnOwnerName = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.gridColumnCount = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.gridColumnProject = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.unboundSource1 = new DevExpress.Data.UnboundSource(this.components);
@@ -86,22 +86,24 @@
             this.grpProjectWiseTasks.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tileViewColumnCardNo
+            // tileViewColumnTaskId
             // 
-            this.tileViewColumnCardNo.AppearanceCell.ForeColor = System.Drawing.Color.Blue;
-            this.tileViewColumnCardNo.AppearanceCell.Options.UseForeColor = true;
-            this.tileViewColumnCardNo.Caption = "Card No";
-            this.tileViewColumnCardNo.FieldName = "Id";
-            this.tileViewColumnCardNo.Name = "tileViewColumnCardNo";
-            this.tileViewColumnCardNo.OptionsColumn.ReadOnly = true;
-            this.tileViewColumnCardNo.Visible = true;
-            this.tileViewColumnCardNo.VisibleIndex = 0;
+            this.tileViewColumnTaskId.AppearanceCell.ForeColor = System.Drawing.Color.Blue;
+            this.tileViewColumnTaskId.AppearanceCell.Options.UseForeColor = true;
+            this.tileViewColumnTaskId.Caption = "Card No";
+            this.tileViewColumnTaskId.FieldName = "TaskId";
+            this.tileViewColumnTaskId.Name = "tileViewColumnTaskId";
+            this.tileViewColumnTaskId.OptionsColumn.AllowEdit = false;
+            this.tileViewColumnTaskId.OptionsColumn.ReadOnly = true;
+            this.tileViewColumnTaskId.Visible = true;
+            this.tileViewColumnTaskId.VisibleIndex = 0;
             // 
             // tileViewColumnTitle
             // 
             this.tileViewColumnTitle.Caption = "Title";
             this.tileViewColumnTitle.FieldName = "Title";
             this.tileViewColumnTitle.Name = "tileViewColumnTitle";
+            this.tileViewColumnTitle.OptionsColumn.AllowEdit = false;
             this.tileViewColumnTitle.Visible = true;
             this.tileViewColumnTitle.VisibleIndex = 1;
             // 
@@ -110,6 +112,9 @@
             this.tileViewColumnDueDate.Caption = "Due Date";
             this.tileViewColumnDueDate.FieldName = "DueDate";
             this.tileViewColumnDueDate.Name = "tileViewColumnDueDate";
+            this.tileViewColumnDueDate.OptionsColumn.AllowEdit = false;
+            this.tileViewColumnDueDate.OptionsColumn.ShowCaption = true;
+            this.tileViewColumnDueDate.UnboundType = DevExpress.Data.UnboundColumnType.DateTime;
             this.tileViewColumnDueDate.Visible = true;
             this.tileViewColumnDueDate.VisibleIndex = 2;
             // 
@@ -119,6 +124,7 @@
             this.tileViewColumnPriority.ColumnEdit = this.repositoryItemPictureEdit1;
             this.tileViewColumnPriority.FieldName = "Priority";
             this.tileViewColumnPriority.Name = "tileViewColumnPriority";
+            this.tileViewColumnPriority.OptionsColumn.AllowEdit = false;
             this.tileViewColumnPriority.Visible = true;
             this.tileViewColumnPriority.VisibleIndex = 3;
             // 
@@ -132,29 +138,34 @@
             this.tileViewColumnStatus.Caption = "Status";
             this.tileViewColumnStatus.FieldName = "TaskStatus";
             this.tileViewColumnStatus.Name = "tileViewColumnStatus";
+            this.tileViewColumnStatus.OptionsColumn.AllowEdit = false;
+            this.tileViewColumnStatus.OptionsColumn.ShowCaption = true;
             this.tileViewColumnStatus.Visible = true;
             this.tileViewColumnStatus.VisibleIndex = 4;
             // 
-            // tileViewColumnAssignTo
+            // tileViewColumnOwnerName
             // 
-            this.tileViewColumnAssignTo.Caption = "AssignTo";
-            this.tileViewColumnAssignTo.FieldName = "AssignTo";
-            this.tileViewColumnAssignTo.Name = "tileViewColumnAssignTo";
-            this.tileViewColumnAssignTo.Visible = true;
-            this.tileViewColumnAssignTo.VisibleIndex = 5;
+            this.tileViewColumnOwnerName.Caption = "Owner";
+            this.tileViewColumnOwnerName.FieldName = "OwnerName";
+            this.tileViewColumnOwnerName.Name = "tileViewColumnOwnerName";
+            this.tileViewColumnOwnerName.OptionsColumn.AllowEdit = false;
+            this.tileViewColumnOwnerName.OptionsColumn.ShowCaption = true;
+            this.tileViewColumnOwnerName.Visible = true;
+            this.tileViewColumnOwnerName.VisibleIndex = 5;
             // 
             // gridColumnCount
             // 
             this.gridColumnCount.Caption = "TotalCount";
-            this.gridColumnCount.FieldName = "TotalCount";
+            this.gridColumnCount.FieldName = "Value";
             this.gridColumnCount.Name = "gridColumnCount";
+            this.gridColumnCount.ToolTip = "Total number of open item for logged in user under this project.";
             this.gridColumnCount.Visible = true;
             this.gridColumnCount.VisibleIndex = 0;
             // 
             // gridColumnProject
             // 
             this.gridColumnProject.Caption = "Project";
-            this.gridColumnProject.FieldName = "Name";
+            this.gridColumnProject.FieldName = "Key";
             this.gridColumnProject.Name = "gridColumnProject";
             this.gridColumnProject.Visible = true;
             this.gridColumnProject.VisibleIndex = 1;
@@ -222,12 +233,12 @@
             this.tileViewMyOverView.Appearance.ItemNormal.BackColor2 = System.Drawing.Color.White;
             this.tileViewMyOverView.Appearance.ItemNormal.Options.UseBackColor = true;
             this.tileViewMyOverView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.tileViewColumnCardNo,
+            this.tileViewColumnTaskId,
             this.tileViewColumnTitle,
             this.tileViewColumnDueDate,
             this.tileViewColumnPriority,
             this.tileViewColumnStatus,
-            this.tileViewColumnAssignTo});
+            this.tileViewColumnOwnerName});
             this.tileViewMyOverView.GridControl = this.gridControlMyOverDue;
             this.tileViewMyOverView.Name = "tileViewMyOverView";
             this.tileViewMyOverView.OptionsBehavior.ReadOnly = true;
@@ -254,10 +265,12 @@
             tileViewItemElement1.Appearance.Pressed.Options.UseBackColor = true;
             tileViewItemElement1.Appearance.Pressed.Options.UseFont = true;
             tileViewItemElement1.Appearance.Pressed.Options.UseForeColor = true;
-            tileViewItemElement1.Column = this.tileViewColumnCardNo;
-            tileViewItemElement1.Text = "tileViewColumnCardNo";
+            tileViewItemElement1.Column = this.tileViewColumnTaskId;
+            tileViewItemElement1.Text = "tileViewColumnTaskId";
             tileViewItemElement1.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.Manual;
             tileViewItemElement1.TextLocation = new System.Drawing.Point(22, 4);
+            tileViewItemElement2.Appearance.Normal.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            tileViewItemElement2.Appearance.Normal.Options.UseFont = true;
             tileViewItemElement2.Appearance.Pressed.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             tileViewItemElement2.Appearance.Pressed.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             tileViewItemElement2.Appearance.Pressed.Options.UseFont = true;
@@ -265,7 +278,7 @@
             tileViewItemElement2.Column = this.tileViewColumnTitle;
             tileViewItemElement2.Text = "tileViewColumnTitle";
             tileViewItemElement2.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.Manual;
-            tileViewItemElement2.TextLocation = new System.Drawing.Point(0, 20);
+            tileViewItemElement2.TextLocation = new System.Drawing.Point(0, 23);
             tileViewItemElement3.Column = this.tileViewColumnDueDate;
             tileViewItemElement3.Text = "tileViewColumnDueDate";
             tileViewItemElement4.Column = this.tileViewColumnPriority;
@@ -277,13 +290,14 @@
             tileViewItemElement4.TextLocation = new System.Drawing.Point(0, 60);
             tileViewItemElement5.Column = this.tileViewColumnStatus;
             tileViewItemElement5.Text = "tileViewColumnStatus";
-            tileViewItemElement5.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.BottomCenter;
-            tileViewItemElement6.Column = this.tileViewColumnAssignTo;
+            tileViewItemElement5.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.Manual;
+            tileViewItemElement5.TextLocation = new System.Drawing.Point(90, 3);
+            tileViewItemElement6.Column = this.tileViewColumnOwnerName;
             tileViewItemElement6.Image = ((System.Drawing.Image)(resources.GetObject("tileViewItemElement6.Image")));
-            tileViewItemElement6.ImageLocation = new System.Drawing.Point(140, 25);
+            tileViewItemElement6.ImageLocation = new System.Drawing.Point(120, 25);
             tileViewItemElement6.ImageToTextAlignment = DevExpress.XtraEditors.TileControlImageToTextAlignment.Left;
-            tileViewItemElement6.Text = "tileViewColumnAssignTo";
-            tileViewItemElement6.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.BottomRight;
+            tileViewItemElement6.Text = "tileViewColumnOwnerName";
+            tileViewItemElement6.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.BottomCenter;
             this.tileViewMyOverView.TileTemplate.Add(tileViewItemElement1);
             this.tileViewMyOverView.TileTemplate.Add(tileViewItemElement2);
             this.tileViewMyOverView.TileTemplate.Add(tileViewItemElement3);
@@ -482,13 +496,13 @@
         private DevExpress.XtraGrid.Views.Grid.GridView gridView5;
         private DevExpress.XtraEditors.GroupControl grpProjectWiseTasks;
         private DevExpress.XtraGrid.Views.Tile.TileView tileViewMyOverView;
-        private DevExpress.XtraGrid.Columns.TileViewColumn tileViewColumnCardNo;
+        private DevExpress.XtraGrid.Columns.TileViewColumn tileViewColumnTaskId;
         private DevExpress.XtraGrid.Columns.TileViewColumn tileViewColumnTitle;
         private DevExpress.XtraGrid.Columns.TileViewColumn tileViewColumnDueDate;
         private DevExpress.XtraGrid.Columns.TileViewColumn tileViewColumnPriority;
         private DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit repositoryItemPictureEdit1;
         private DevExpress.XtraGrid.Columns.TileViewColumn tileViewColumnStatus;
-        private DevExpress.XtraGrid.Columns.TileViewColumn tileViewColumnAssignTo;
+        private DevExpress.XtraGrid.Columns.TileViewColumn tileViewColumnOwnerName;
         private DevExpress.XtraCharts.ChartControl chartControl1;
     }
 }

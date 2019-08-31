@@ -127,7 +127,7 @@ namespace FinancialPlannerClient.TaskManagementSystem
                     return;
                 }
                 TaskCard taskCard = getTaskCard();
-                if (new TaskCardHelper().Add(taskCard))
+                if (new TaskCardService().Add(taskCard))
                 {
                     DevExpress.XtraEditors.XtraMessageBox.Show("Record saved sucessfully.",
                     "Save", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -147,8 +147,8 @@ namespace FinancialPlannerClient.TaskManagementSystem
             taskCard.TaskId = lblTaskIDTitle.Text;
             taskCard.ProjectId = int.Parse(cmbProject.Tag.ToString());
             taskCard.TransactionType = cmbTransactionType.Text;
-            taskCard.Type = (CardType)(cmbTransactionType.SelectedIndex);
-            taskCard.CustomerId = int.Parse(cmbClient.Tag.ToString());
+            taskCard.Type = (CardType)(cmbCardType.SelectedIndex);
+            taskCard.CustomerId =  !string.IsNullOrEmpty(cmbClient.Text) ?  int.Parse(cmbClient.Tag.ToString()): 0;
             taskCard.Title = txtTitle.Text;
             taskCard.Owner = int.Parse(cmbOwner.Tag.ToString());
             taskCard.CreatedBy = Program.CurrentUser.Id;
@@ -156,7 +156,7 @@ namespace FinancialPlannerClient.TaskManagementSystem
             taskCard.UpdatedBy = taskCard.CreatedBy;
             taskCard.UpdatedByUserName = Program.CurrentUser.UserName;
             taskCard.UpdatedOn = System.DateTime.Now.Date;
-            taskCard.AssignTo = int.Parse(cmbAssingTo.Tag.ToString());
+            taskCard.AssignTo = (!string.IsNullOrEmpty(cmbAssingTo.Text) ? int.Parse(cmbAssingTo.Tag.ToString()) : 0);
             taskCard.Priority = (Priority)(cmbPriority.SelectedIndex);
             taskCard.TaskStatus = (TaskStatus)(cmbTaskStatus.SelectedIndex);
             taskCard.DueDate = dtDueDate.DateTime;
@@ -185,7 +185,7 @@ namespace FinancialPlannerClient.TaskManagementSystem
         {
             if (!string.IsNullOrEmpty(cmbProject.Text) && !string.IsNullOrEmpty(cmbTransactionType.Text) &&
                 !string.IsNullOrEmpty(cmbCardType.Text) && !string.IsNullOrEmpty(txtTitle.Text) && 
-                !string.IsNullOrEmpty(cmbAssingTo.Text) && !string.IsNullOrEmpty(cmbClient.Text))
+                !string.IsNullOrEmpty(cmbClient.Text))
             {
                 return true;
             }

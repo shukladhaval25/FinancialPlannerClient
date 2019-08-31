@@ -187,6 +187,7 @@
             this.btnAllTask.Size = new System.Drawing.Size(72, 52);
             this.btnAllTask.TabIndex = 3;
             this.btnAllTask.Text = "All Task";
+            this.btnAllTask.Click += new System.EventHandler(this.btnAllTask_Click);
             // 
             // btnAssingToMe
             // 
@@ -197,6 +198,7 @@
             this.btnAssingToMe.Size = new System.Drawing.Size(72, 52);
             this.btnAssingToMe.TabIndex = 2;
             this.btnAssingToMe.Text = "Assing To Me";
+            this.btnAssingToMe.Click += new System.EventHandler(this.btnAssingToMe_Click);
             // 
             // btnNewTask
             // 

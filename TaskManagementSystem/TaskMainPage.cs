@@ -17,8 +17,8 @@ namespace FinancialPlannerClient.TaskManagementSystem
         {
             this.WindowState = FormWindowState.Maximized;
             redirectToDashboardPage();
-            btnNotification.Image = FinancialPlanner.Common.DataConversion.FPImage.AddTextToImageOnTopRight("9", btnNotification.Image);
-            btnNotification.Tag = 9;
+            btnNotification.Image = FinancialPlanner.Common.DataConversion.FPImage.AddTextToImageOnTopRight("100", btnNotification.Image);
+            btnNotification.Tag = 3;
             Displaynotify();
         }
         protected void Displaynotify()
@@ -136,6 +136,24 @@ namespace FinancialPlannerClient.TaskManagementSystem
             navigationPageForTasks.Name = myReminders.Name;
             navigationPageForTasks.Controls.Add(myReminders);
             showNavigationPage(myReminders.Name);
+        }
+
+        private void btnAssingToMe_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnAllTask_Click(object sender, EventArgs e)
+        {
+            navigationPageDeshboard.Controls.Clear();
+            AllTask allTask = new AllTask();
+            allTask.TopLevel = false;
+            allTask.Visible = true;
+            ////newTaskCard.Height = this.Height - 100;
+            ////newTaskCard.Width = this.Width - 100;
+            navigationPageDeshboard.Name = allTask.Name;
+            navigationPageDeshboard.Controls.Add(allTask);
+            showNavigationPage(allTask.Name);
         }
     }
 }

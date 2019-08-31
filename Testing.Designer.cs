@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.Utils.SimpleContextButton simpleContextButton5 = new DevExpress.Utils.SimpleContextButton();
-            DevExpress.Utils.SimpleContextButton simpleContextButton6 = new DevExpress.Utils.SimpleContextButton();
+            DevExpress.Utils.SimpleContextButton simpleContextButton1 = new DevExpress.Utils.SimpleContextButton();
+            DevExpress.Utils.SimpleContextButton simpleContextButton2 = new DevExpress.Utils.SimpleContextButton();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -60,6 +60,13 @@
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             this.txtDescription = new DevExpress.XtraEditors.MemoEdit();
+            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.P = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemImageEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageEdit();
+            this.repositoryItemPictureEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl7)).BeginInit();
@@ -77,6 +84,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDescription.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).BeginInit();
             this.SuspendLayout();
             // 
             // openFileDialog1
@@ -230,7 +241,7 @@
             this.Amount,
             this.row2,
             this.row1});
-            this.vGridControl1.Size = new System.Drawing.Size(649, 145);
+            this.vGridControl1.Size = new System.Drawing.Size(649, 113);
             this.vGridControl1.TabIndex = 9;
             // 
             // repositoryItemComboBox1
@@ -238,13 +249,13 @@
             this.repositoryItemComboBox1.AutoHeight = false;
             this.repositoryItemComboBox1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            simpleContextButton5.Id = new System.Guid("1109bcfa-56ad-4d64-a117-4a6dd5afbdcf");
-            simpleContextButton5.Name = "SimpleContextButton";
-            simpleContextButton5.Visibility = DevExpress.Utils.ContextItemVisibility.Visible;
-            simpleContextButton6.Id = new System.Guid("cdd1d729-d4e6-44cb-9f4e-962bc5943852");
-            simpleContextButton6.Name = "SimpleContextButton";
-            this.repositoryItemComboBox1.ContextButtons.Add(simpleContextButton5);
-            this.repositoryItemComboBox1.ContextButtons.Add(simpleContextButton6);
+            simpleContextButton1.Id = new System.Guid("1109bcfa-56ad-4d64-a117-4a6dd5afbdcf");
+            simpleContextButton1.Name = "SimpleContextButton";
+            simpleContextButton1.Visibility = DevExpress.Utils.ContextItemVisibility.Visible;
+            simpleContextButton2.Id = new System.Guid("cdd1d729-d4e6-44cb-9f4e-962bc5943852");
+            simpleContextButton2.Name = "SimpleContextButton";
+            this.repositoryItemComboBox1.ContextButtons.Add(simpleContextButton1);
+            this.repositoryItemComboBox1.ContextButtons.Add(simpleContextButton2);
             this.repositoryItemComboBox1.Items.AddRange(new object[] {
             "Apple",
             "Orange",
@@ -347,11 +358,70 @@
             this.txtDescription.Size = new System.Drawing.Size(463, 76);
             this.txtDescription.TabIndex = 12;
             // 
+            // gridControl1
+            // 
+            this.gridControl1.Location = new System.Drawing.Point(492, 269);
+            this.gridControl1.MainView = this.gridView1;
+            this.gridControl1.Name = "gridControl1";
+            this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemImageEdit1,
+            this.repositoryItemPictureEdit1});
+            this.gridControl1.Size = new System.Drawing.Size(649, 148);
+            this.gridControl1.TabIndex = 13;
+            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView1});
+            // 
+            // gridView1
+            // 
+            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn1,
+            this.P,
+            this.gridColumn3});
+            this.gridView1.GridControl = this.gridControl1;
+            this.gridView1.Name = "gridView1";
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "Name";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 0;
+            // 
+            // P
+            // 
+            this.P.Caption = "P";
+            this.P.ColumnEdit = this.repositoryItemPictureEdit1;
+            this.P.FieldName = "P";
+            this.P.Image = global::FinancialPlannerClient.Properties.Resources.Users_60;
+            this.P.Name = "P";
+            this.P.Visible = true;
+            this.P.VisibleIndex = 1;
+            // 
+            // gridColumn3
+            // 
+            this.gridColumn3.Caption = "gridColumn3";
+            this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.Visible = true;
+            this.gridColumn3.VisibleIndex = 2;
+            // 
+            // repositoryItemImageEdit1
+            // 
+            this.repositoryItemImageEdit1.AutoHeight = false;
+            this.repositoryItemImageEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemImageEdit1.Name = "repositoryItemImageEdit1";
+            // 
+            // repositoryItemPictureEdit1
+            // 
+            this.repositoryItemPictureEdit1.Name = "repositoryItemPictureEdit1";
+            this.repositoryItemPictureEdit1.ZoomAccelerationFactor = 1D;
+            // 
             // Testing
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1145, 420);
+            this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.txtDescription);
             this.Controls.Add(this.simpleButton2);
             this.Controls.Add(this.simpleButton1);
@@ -384,6 +454,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDescription.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -420,5 +494,12 @@
         private DevExpress.XtraEditors.SimpleButton simpleButton2;
         private DevExpress.Utils.Behaviors.BehaviorManager behaviorManager1;
         private DevExpress.XtraEditors.MemoEdit txtDescription;
+        private DevExpress.XtraGrid.GridControl gridControl1;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraGrid.Columns.GridColumn P;
+        private DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit repositoryItemPictureEdit1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
+        private DevExpress.XtraEditors.Repository.RepositoryItemImageEdit repositoryItemImageEdit1;
     }
 }
