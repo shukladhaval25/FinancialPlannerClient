@@ -8,6 +8,8 @@ namespace FinancialPlannerClient.TaskManagementSystem
 {
     public partial class TaskMainPage : DevExpress.XtraEditors.XtraForm
     {
+        System.Drawing.Color notificationButtonDefaultColor;
+        System.Drawing.Color notificationColorChange = System.Drawing.Color.OrangeRed;
         public TaskMainPage()
         {
             InitializeComponent();
@@ -17,27 +19,10 @@ namespace FinancialPlannerClient.TaskManagementSystem
         {
             this.WindowState = FormWindowState.Maximized;
             redirectToDashboardPage();
-            btnNotification.Image = FinancialPlanner.Common.DataConversion.FPImage.AddTextToImageOnTopRight("100", btnNotification.Image);
-            btnNotification.Tag = 3;
-            Displaynotify();
+            notificationButtonDefaultColor = btnNotification.BackColor;
+            timerTaskNotification.Start();
         }
-        protected void Displaynotify()
-        {
-            try
-            {
-                //System.IO.Path.GetFullPath(@"image\graph.ico"));
-                //notifyIconTask.Icon = new System.Drawing.Icon(System.IO.Path.GetFullPath(@"C:\Application Development\Financial Planner Project\Other Documents\App.ico"));
-
-                //frmHome.notifyIconTask.Text = "Custommer Support";
-                //frmHome.notifyIconTask.Visible = true;
-                //frmHome.notifyIconTask.BalloonTipTitle = "Please make a call to Mr. Dhaval Shukla @ 4:00 PM.";
-                //frmHome.notifyIconTask.BalloonTipText = "Click Here to see details";
-                //frmHome.notifyIconTask.ShowBalloonTip(100);
-            }
-            catch (Exception)
-            {
-            }
-        }
+       
         //private Bitmap addTextToImageOnTopRight(string text,Image sourceImage)
         //{           
         //   //string imageFilePath = btnNotification.Image.i
@@ -72,18 +57,9 @@ namespace FinancialPlannerClient.TaskManagementSystem
 
         private void btnNewTask_Click(object sender, EventArgs e)
         {
-            //navigationPageDeshboard.Controls.Clear();
-            //NewTaskCard newTaskCard = new NewTaskCard();
-            ////newTaskCard.TopLevel = false;
-            //newTaskCard.Visible = true;
-            //////newTaskCard.Height = this.Height - 100;
-            //////newTaskCard.Width = this.Width - 100;
-            //navigationPageDeshboard.Name = newTaskCard.Name;
-            //navigationPageDeshboard.Controls.Add(newTaskCard);
-            //showNavigationPage(newTaskCard.Name);
             NewTaskCard newTask = new NewTaskCard();
             newTask.StartPosition = FormStartPosition.CenterParent;
-            newTask.ShowDialog();
+            newTask.Show();
         }
         private void redirectToDashboardPage()
         {
@@ -140,17 +116,78 @@ namespace FinancialPlannerClient.TaskManagementSystem
 
         private void btnAssingToMe_Click(object sender, EventArgs e)
         {
-            
+            navigationPageDeshboard.Controls.Clear();
+            AllTask allTask = new AllTask(TaskView.AssignToMe);
+            allTask.TopLevel = false;
+            allTask.Visible = true;
+            navigationPageDeshboard.Name = allTask.Name;
+            navigationPageDeshboard.Controls.Add(allTask);
+            showNavigationPage(allTask.Name);
         }
 
         private void btnAllTask_Click(object sender, EventArgs e)
         {
             navigationPageDeshboard.Controls.Clear();
-            AllTask allTask = new AllTask();
+            AllTask allTask = new AllTask(TaskView.GetAll);
             allTask.TopLevel = false;
             allTask.Visible = true;
-            ////newTaskCard.Height = this.Height - 100;
-            ////newTaskCard.Width = this.Width - 100;
+            navigationPageDeshboard.Name = allTask.Name;
+            navigationPageDeshboard.Controls.Add(allTask);
+            showNavigationPage(allTask.Name);
+        }
+
+        private void timerTaskNotification_Tick(object sender, EventArgs e)
+        {
+            int count = new TaskNotificationInfo().GetNotification(Program.CurrentUser.Id);
+            displaynotify(count);           
+        }
+
+        private void displaynotify(int count)
+        {
+            if (count > 0)
+            {
+                btnNotification.Image = FinancialPlanner.Common.DataConversion.FPImage.AddTextToImageOnTopRight(count.ToString(), btnNotification.Image);
+                btnNotification.Tag = count;
+                timerBackgroundChange.Start();
+            }
+            else
+            {
+                resetNotificationButton();
+            }
+
+        }
+
+        private void resetNotificationButton()
+        {
+            btnNotification.Image = global::FinancialPlannerClient.Properties.Resources.Apps_Notifications_icon;
+            btnNotification.BackColor = notificationButtonDefaultColor;
+            timerBackgroundChange.Stop();
+        }
+
+        private void timerBackgroundChange_Tick(object sender, EventArgs e)
+        {
+            btnNotification.BackColor = (btnNotification.BackColor == notificationButtonDefaultColor) ? notificationColorChange :
+                notificationButtonDefaultColor;
+        }
+
+        private void btnNotification_Click(object sender, EventArgs e)
+        {
+            navigationPageDeshboard.Controls.Clear();
+            AllTask allTask = new AllTask(TaskView.Notified);
+            allTask.TopLevel = false;
+            allTask.Visible = true;
+            navigationPageDeshboard.Name = allTask.Name;
+            navigationPageDeshboard.Controls.Add(allTask);
+            showNavigationPage(allTask.Name);
+            resetNotificationButton();
+        }
+
+        private void btnOverDue_Click(object sender, EventArgs e)
+        {
+            navigationPageDeshboard.Controls.Clear();
+            AllTask allTask = new AllTask(TaskView.MyOverDue);
+            allTask.TopLevel = false;
+            allTask.Visible = true;
             navigationPageDeshboard.Name = allTask.Name;
             navigationPageDeshboard.Controls.Add(allTask);
             showNavigationPage(allTask.Name);

@@ -257,9 +257,9 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             }
         }
 
-        public void BindDataSource(DataTable dataTable)
+        public void BindDataSource(Object obj)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         public VGridControl GetGridControl()

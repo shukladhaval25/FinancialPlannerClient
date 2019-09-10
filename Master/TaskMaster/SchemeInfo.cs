@@ -13,6 +13,7 @@ namespace FinancialPlannerClient.Master.TaskMaster
     public class SchemeInfo
     {
         const string GET_All_API = "Scheme/GetAll";
+        const string GET_All_API_BY_AMC = "Scheme/GetAll?amcId={0}";
         const string GET_COUNT_BASEDON_AMC = "Scheme/GetSchemeCount?amcId={0}";
         const string ADD_Scheme_API = "Scheme/Add";
         const string DELETE_Scheme_API = "Scheme/Delete";
@@ -43,7 +44,30 @@ namespace FinancialPlannerClient.Master.TaskMaster
                 return null;
             }
         }
+        public IList<Scheme> GetAll(int amcId)
+        {
+            IList<Scheme> SchemeObj = new List<Scheme>();
+            try
+            {
+                FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
+                string apiurl = Program.WebServiceUrl + "/" + string.Format(GET_All_API_BY_AMC,amcId);
 
+                RestAPIExecutor restApiExecutor = new RestAPIExecutor();
+
+                var restResult = restApiExecutor.Execute<IList<Scheme>>(apiurl, null, "GET");
+
+                if (jsonSerialization.IsValidJson(restResult.ToString()))
+                {
+                    SchemeObj = jsonSerialization.DeserializeFromString<IList<Scheme>>(restResult.ToString());
+                }
+                return SchemeObj;
+            }
+            catch (Exception ex)
+            {
+                Logger.LogDebug(ex);
+                return null;
+            }
+        }
         internal bool Delete(Scheme fest)
         {
             try

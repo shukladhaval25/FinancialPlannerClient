@@ -78,6 +78,7 @@
             this.cmbGoals.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cmbGoals.Properties.ShowDropDown = DevExpress.XtraEditors.Controls.ShowDropDown.DoubleClick;
+            this.cmbGoals.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.cmbGoals.Size = new System.Drawing.Size(176, 20);
             this.cmbGoals.TabIndex = 17;
             this.cmbGoals.SelectedValueChanged += new System.EventHandler(this.cmbGoals_SelectedValueChanged);

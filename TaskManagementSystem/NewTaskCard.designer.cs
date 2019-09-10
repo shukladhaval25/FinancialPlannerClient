@@ -363,6 +363,7 @@
             this.btnCloseTask.SuperTip = superToolTip1;
             this.btnCloseTask.TabIndex = 29;
             this.btnCloseTask.Text = "&Close";
+            this.btnCloseTask.Click += new System.EventHandler(this.btnCloseTask_Click);
             // 
             // btnSaveTask
             // 

@@ -1,5 +1,7 @@
-﻿using FinancialPlanner.Common.DataConversion;
+﻿using DevExpress.XtraEditors.Filtering.Templates;
+using FinancialPlanner.Common.DataConversion;
 using FinancialPlanner.Common.Model.TaskManagement;
+using FinancialPlannerClient.Clients;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,9 +18,11 @@ namespace FinancialPlannerClient.TaskManagementSystem
     {
         DataTable dtTaskCard = new DataTable();
         TaskCardService taskCardService = new TaskCardService();
-        public AllTask()
+        TaskView taskView;
+        public AllTask(TaskView taskView)
         {
             InitializeComponent();
+            this.taskView = taskView;
         }
 
         private void AllTask_Load(object sender, EventArgs e)
@@ -28,13 +32,12 @@ namespace FinancialPlannerClient.TaskManagementSystem
 
         private void fillupTasks()
         {
-            IList<TaskCard> tasks = taskCardService.GetAll();
+            IList<TaskCard> tasks = taskCardService.GetTasks(this.taskView);
             if (tasks != null)
             {
                 dtTaskCard = ListtoDataTable.ToDataTable(tasks.ToList());
                 grdTasks.DataSource = dtTaskCard;
                 addAdditionalImageColumnToGrid();
-
                 setgridViewColumnDisplay();
             }
         }
@@ -67,5 +70,115 @@ namespace FinancialPlannerClient.TaskManagementSystem
         {
             this.Close();
         }
+
+        private void gridViewTasks_DoubleClick(object sender, EventArgs e)
+        {
+            try
+            {
+                if (gridViewTasks.FocusedRowHandle >= 0)
+                {
+                    int rowIndex = gridViewTasks.FocusedRowHandle;
+                    int taskId = int.Parse(gridViewTasks.GetFocusedRowCellValue("Id").ToString());
+                    DataRow[] drTask = dtTaskCard.Select("Id='" + taskId + "'");
+                    if (drTask != null && drTask.Count() > 0)
+                    {
+                        TaskCard taskCard = convertToTaskCard(drTask[0]);
+                        Control[] controls = this.Parent.Controls.Find(this.Name, true); // .Controls.Clear();
+                        if (controls.Count() > 0)
+                        {
+                            ViewTaskCard viewTaskCard = new ViewTaskCard(taskCard);
+                            viewTaskCard.Show();
+                            //controls[0].Controls.Clear();
+                            //viewTaskCard.TopLevel = false;
+                            //viewTaskCard.Visible = true;
+                            //viewTaskCard.Dock = DockStyle.Fill;
+                            //controls[0].Name = viewTaskCard.Name;
+                            //controls[0].Controls.Add(viewTaskCard);
+                            ////showNavigationPage(viewTaskCard.Name);
+                        }
+                    }
+                    //this.DialogResult = System.Windows.Forms.DialogResult.OK;
+                    //this.Close();
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private TaskCard convertToTaskCard(DataRow dr)
+        {
+            TaskCard taskCard = new TaskCard();
+            taskCard.Id = int.Parse(dr.Field<string>("Id"));
+            taskCard.TaskId = dr.Field<string>("TaskId");
+            taskCard.ProjectId = int.Parse(dr.Field<string>("ProjectId"));
+            taskCard.TransactionType = dr.Field<string>("TransactionType");
+            taskCard.TaskTransactionType = dr.Field<string>("TaskTransactionType");
+            //taskCard.Type = (CardType) int.Parse(dr.Field<string>("CardType"));
+            taskCard.CustomerId = int.Parse(dr.Field<string>("Customerid"));
+            taskCard.CustomerName = dr.Field<string>("CustomerName");
+            taskCard.Title = dr.Field<string>("Title");
+            taskCard.Description = dr.Field<string>("Description");
+            taskCard.Priority = convertToPriorityEnum(dr.Field<string>("Priority"));
+            taskCard.TaskStatus = convertToTaskStatusEnum(dr.Field<string>("TaskStatus"));
+            taskCard.Owner = int.Parse(dr.Field<string>("Owner"));
+            taskCard.OwnerName = dr.Field<string>("OwnerName");
+            taskCard.AssignTo = !string.IsNullOrEmpty(dr.Field<string>("AssignTo")) ?
+                int.Parse(dr.Field<string>("AssignTo")) : 0;
+            taskCard.CreatedBy = int.Parse(dr.Field<string>("CreatedBy"));
+            taskCard.CreatedOn = DateTime.Parse(dr.Field<string>("CreatedOn"));
+            taskCard.UpdatedOn = DateTime.Parse(dr.Field<string>("UpdatedOn"));
+            //taskCard.ActualCompletedDate = dr.Field<DateTime>("ActualCompletedDate");
+            taskCard.DueDate = DateTime.Parse(dr.Field<string>("DueDate"));
+            taskCard.ProjectName = dr.Field<string>("ProjectName");
+            taskCard.OwnerName = dr.Field<string>("OwnerName");
+            //taskCard.AssignToName = getAssignTo(dr.Field<int?>("AssignTo"));
+            //taskCard.CustomerName = getCustomerName(taskCard.CustomerId);
+            return taskCard;
+        }
+
+        private FinancialPlanner.Common.Model.TaskManagement.TaskStatus convertToTaskStatusEnum(string v)
+        {
+            switch (v)
+            {
+                case "Backlog":
+                    return FinancialPlanner.Common.Model.TaskManagement.TaskStatus.Backlog;
+                case "InProgress":
+                    return FinancialPlanner.Common.Model.TaskManagement.TaskStatus.InProgress;
+                case "Blocked":
+                    return FinancialPlanner.Common.Model.TaskManagement.TaskStatus.Blocked;
+                case "Completed":
+                    return FinancialPlanner.Common.Model.TaskManagement.TaskStatus.Completed;
+                case "Rejected":
+                    return FinancialPlanner.Common.Model.TaskManagement.TaskStatus.Rejected;
+                default:
+                    return FinancialPlanner.Common.Model.TaskManagement.TaskStatus.Close;
+            }
+        }
+
+        private Priority convertToPriorityEnum(string v)
+        {
+            switch (v)
+            {
+                case "Low":
+                    return Priority.Low;
+                case "Medium":
+                    return Priority.Medium;
+                case "High":
+                    return Priority.High;
+                default:
+                    return Priority.Low;
+            }
+        }
+    }
+
+    public enum TaskView
+    {
+        None,
+        GetAll,
+        Notified,
+        MyOverDue,
+        AssignToMe
     }
 }

@@ -98,18 +98,19 @@ namespace FinancialPlannerClient.TaskManagementSystem
             if (tileViewMyOverView.FocusedRowHandle >= 0)
             {
                 int rowIndex = tileViewMyOverView.FocusedRowHandle;
-                string taskId = tileViewMyOverView.GetFocusedRowCellValue("Id").ToString();
-                ViewTaskCard viewTaskCard = new ViewTaskCard();
+                int taskId = int.Parse( tileViewMyOverView.GetFocusedRowCellValue("Id").ToString());
+                TaskCard taskCard = overDueTasks.DefaultIfEmpty<TaskCard>().First(i => i.Id == taskId);
                 Control[] controls = this.Parent.Controls.Find(this.Name, true); // .Controls.Clear();
                 if (controls.Count() > 0)
                 {
-                    controls[0].Controls.Clear();
-                    NewTaskCard newTaskCard = new NewTaskCard();
-                    viewTaskCard.TopLevel = false;
-                    viewTaskCard.Visible = true;
-                    viewTaskCard.Dock = DockStyle.Fill;
-                    controls[0].Name = viewTaskCard.Name;
-                    controls[0].Controls.Add(viewTaskCard);
+                    ViewTaskCard viewTaskCard = new ViewTaskCard(taskCard);
+                    viewTaskCard.Show();
+                    //controls[0].Controls.Clear();
+                    //viewTaskCard.TopLevel = false;
+                    //viewTaskCard.Visible = true;
+                    //viewTaskCard.Dock = DockStyle.Fill;
+                    //controls[0].Name = viewTaskCard.Name;
+                    //controls[0].Controls.Add(viewTaskCard);
                     //showNavigationPage(viewTaskCard.Name);
                 }
             }
@@ -117,7 +118,7 @@ namespace FinancialPlannerClient.TaskManagementSystem
 
         private void tileViewProjectWise_ItemClick(object sender, DevExpress.XtraGrid.Views.Tile.TileViewItemClickEventArgs e)
         {
-            //MessageBox.Show(e.Item.Text2);            
+            MessageBox.Show(e.Item.Text2);            
         }
     }
 }

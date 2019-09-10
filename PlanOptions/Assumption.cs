@@ -163,6 +163,8 @@ namespace FinancialPlannerClient.PlanOptions
 
         private void txtSpouseLifeExp_Validating(object sender, CancelEventArgs e)
         {
+            if (!client.IsMarried)
+                return;
             if (txtSpouseLifeExp.Text == "0" || string.IsNullOrEmpty(txtSpouseLifeExp.Text))
             {
                 DevExpress.XtraEditors.XtraMessageBox.Show("Invalid value for spouse life Expectancy", "Invalid Value", MessageBoxButtons.OK, MessageBoxIcon.Information);

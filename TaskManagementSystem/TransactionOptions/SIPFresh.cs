@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DevExpress.XtraVerticalGrid;
+using FinancialPlanner.Common;
 using FinancialPlanner.Common.Model;
 using FinancialPlanner.Common.Model.TaskManagement.MFTransactions;
 using FinancialPlannerClient.Clients;
@@ -15,11 +16,13 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
     public class SIPFresh : ITransactionType
     {
         IList<Client> clients;
+        IList<AMC> amcs;
         IList<Scheme> schemes;
         internal Client currentClient;
         internal int selectedSchemeId;
         List<string> optionalFields = new List<string>();
         readonly string GRID_NAME = "vGridSIPFresh";
+        SIP sip;
         DevExpress.XtraVerticalGrid.VGridControl vGridTransaction;
 
 
@@ -49,7 +52,7 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
         public DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBoxThirdHolder;
         public DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEditNominee;
         public DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEditGuardian;
-        public DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEditAMC;
+        public DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemAMC;
         public DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEditFolioNumber;
         public DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBoxScheme;
         public DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBoxOption;
@@ -105,11 +108,15 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             this.repositoryItemTextEditNominee = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.repositoryItemTextEditGuardian = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
 
-            this.repositoryItemTextEditAMC = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
+            this.repositoryItemAMC = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.repositoryItemAMC.EditValueChanged += RepositoryItemAMC_EditValueChanged; ;
+            loadAMC();
+
             this.repositoryItemTextEditFolioNumber = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
 
             this.repositoryItemComboBoxScheme = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.repositoryItemComboBoxScheme.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.repositoryItemComboBoxScheme.EditValueChanged += RepositoryItemComboBoxScheme_EditValueChanged;
             loadScheme();
 
             this.repositoryItemComboBoxOption = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
@@ -208,7 +215,7 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             this.AMC.Name = "AMC";
             this.AMC.Properties.Caption = "AMC";
             this.AMC.Properties.FieldName = "AMC";
-            this.AMC.Properties.RowEdit = this.repositoryItemTextEditAMC;
+            this.AMC.Properties.RowEdit = this.repositoryItemAMC;
             //
             // FolioNumber
             //
@@ -306,7 +313,7 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
                 this.repositoryItemComboBoxThirdHolder,
                 this.repositoryItemTextEditNominee,
                 this.repositoryItemTextEditGuardian,
-                this.repositoryItemTextEditAMC,
+                this.repositoryItemAMC,
                 this.repositoryItemTextEditFolioNumber,
                 this.repositoryItemComboBoxScheme,
                 this.repositoryItemComboBoxOption,
@@ -340,6 +347,32 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
                 this.ModeOfExecution,
                 this.Remark});
             prepareOptionalFieldsList();
+        }
+
+        private void loadAMC()
+        {
+            AMCInfo aMCInfo = new AMCInfo();
+            amcs = aMCInfo.GetAll();
+            DataTable dtAMC = getAMCTable();
+            repositoryItemAMC.DataSource = dtAMC;
+            repositoryItemAMC.DisplayMember = "Name";
+            repositoryItemAMC.ValueMember = "Id";
+            repositoryItemAMC.NullValuePrompt = "Please select valid value.";
+        }
+
+        private DataTable getAMCTable()
+        {
+            DataTable dtAMC = new DataTable();
+            dtAMC.Columns.Add("Id", typeof(System.Int64));
+            dtAMC.Columns.Add("Name", typeof(System.String));
+            foreach (AMC amc in amcs)
+            {
+                DataRow dr = dtAMC.NewRow();
+                dr["Id"] = amc.Id;
+                dr["Name"] = amc.Name;
+                dtAMC.Rows.Add(dr);
+            }
+            return dtAMC;
         }
 
         private void RepositoryItemComboBoxClientGroup_SelectedValueChanged(object sender, EventArgs e)
@@ -403,9 +436,50 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             }
         }
        
-        public void BindDataSource(DataTable dataTable)
+        public void BindDataSource(Object obj)
         {
-            throw new NotImplementedException();
+            if (obj == null)
+            {
+                LogDebug("SIPFresh.BindDataSource()", new ArgumentNullException("object value is null"));
+                return;
+            }
+
+            FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
+
+            sip  = jsonSerialization.DeserializeFromString<SIP>(obj.ToString());
+            this.vGridTransaction.Rows["AccountType"].Properties.Value = sip.AccounType;
+            this.vGridTransaction.Rows["ClientGroup"].Properties.Value = getClientName(sip.CID);
+            this.vGridTransaction.Rows["MemberName"].Properties.Value = sip.MemberName;
+            this.vGridTransaction.Rows["SecondHolder"].Properties.Value = sip.SecondHolder;
+            this.vGridTransaction.Rows["ThirdHolder"].Properties.Value = sip.ThirdHolder;
+            this.vGridTransaction.Rows["Nominee"].Properties.Value = sip.Nominee;
+            this.vGridTransaction.Rows["Guardian"].Properties.Value = sip.Guardian;
+
+            this.vGridTransaction.Rows["FolioNumber"].Properties.Value = sip.FolioNo;
+            this.vGridTransaction.Rows["AMC"].Properties.Value = sip.AMC;
+            repositoryItemAMC.GetDisplayValueByKeyValue(sip.AMC);
+            loadScheme(sip.AMC);
+            this.vGridTransaction.Rows["Scheme"].Properties.Value = getSchemeName(sip.SchemeId);
+            this.vGridTransaction.Rows["SIPDate"].Properties.Value = sip.SIPDayOn;
+            this.vGridTransaction.Rows["SIPStartDate"].Properties.Value = sip.SIPStartDate;
+            this.vGridTransaction.Rows["SIPEndDate"].Properties.Value = sip.SIPEndDate;
+            this.vGridTransaction.Rows["Option"].Properties.Value = sip.Option;
+            this.vGridTransaction.Rows["Amount"].Properties.Value = sip.Amount;
+            this.vGridTransaction.Rows["TransactionDate"].Properties.Value = sip.TransactionDate;
+            this.vGridTransaction.Rows["ModeOfExecution"].Properties.Value = sip.ModeOfExecution;
+            this.vGridTransaction.Rows["Remark"].Properties.Value = sip.Remark;
+        }
+
+        private string getClientName(int cid)
+        {
+            Client client = new Client();
+            return (clients.TryGetValue(clients.FindIndex(i => i.ID == cid), out client)) ? client.Name : string.Empty;
+        }
+
+        private string getSchemeName(int schemeId)
+        {
+            Scheme scheme = new Scheme();
+            return (schemes.TryGetValue(schemes.FindIndex(i => i.Id == schemeId), out scheme)) ? scheme.Name : string.Empty;
         }
 
         public VGridControl GetGridControl()
@@ -447,7 +521,7 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
                 sip.Guardian = (this.vGridTransaction.Rows["Guardian"].Properties.Value != null) ?
                 this.vGridTransaction.Rows["Guardian"].Properties.Value.ToString() : string.Empty;
 
-                sip.AMC = this.vGridTransaction.Rows["AMC"].Properties.Value.ToString();
+                sip.AMC = int.Parse(this.vGridTransaction.Rows["AMC"].Properties.Value.ToString());
                 sip.FolioNo = this.vGridTransaction.Rows["FolioNumber"].Properties.Value.ToString();
                 sip.SchemeId = selectedSchemeId;
                 sip.Option = this.vGridTransaction.Rows["Option"].Properties.Value.ToString();
@@ -464,6 +538,16 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             return sip;
         }
 
+        private void RepositoryItemComboBoxScheme_EditValueChanged(object sender, EventArgs e)
+        {
+            DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit = (DevExpress.XtraEditors.ComboBoxEdit)sender;
+            if (comboBoxEdit.SelectedItem != null)
+            {
+                Scheme scheme = ((List<Scheme>)schemes).Find(i => i.Name == comboBoxEdit.SelectedItem.ToString());
+                selectedSchemeId = scheme.Id;
+            }
+        }
+
         public bool IsAllRequireInputAvailable()
         {
             for (int rowIndex = 0; rowIndex < this.vGridTransaction.Rows.Count; rowIndex++)
@@ -475,6 +559,33 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
                 }
             }
             return true;
+        }
+        private void RepositoryItemAMC_EditValueChanged(object sender, EventArgs e)
+        {
+            DevExpress.XtraEditors.LookUpEdit comboBoxEdit = (DevExpress.XtraEditors.LookUpEdit)sender;
+            if (comboBoxEdit.SelectedText != null)
+            {
+                AMC amcobject = ((List<AMC>)amcs).Find(i => i.Name == comboBoxEdit.Text.ToString());
+                loadScheme(amcobject.Id);
+            }
+        }
+        private void loadScheme(int amcId)
+        {
+            SchemeInfo schemeInfo = new SchemeInfo();
+            schemes = schemeInfo.GetAll(amcId);
+            repositoryItemComboBoxScheme.Items.Clear();
+            foreach (Scheme scheme in schemes)
+            {
+                repositoryItemComboBoxScheme.Items.Add(scheme.Name);
+            }
+        }
+        private void LogDebug(string name, Exception ex)
+        {
+            DebuggerLogInfo debuggerInfo = new DebuggerLogInfo();
+            debuggerInfo.ClassName = this.GetType().Name;
+            debuggerInfo.Method = name;
+            debuggerInfo.ExceptionInfo = ex;
+            Logger.LogDebug(debuggerInfo);
         }
     }
 }

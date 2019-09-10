@@ -19,6 +19,7 @@ namespace FinancialPlannerClient.TaskManagementSystem
         IList<Client> clients;
         IList<User> users;
         private ITransactionType transactionType;
+        const string MUTUALFUND = "Mutual Fund";
         public NewTaskCard()
         {
             InitializeComponent();
@@ -66,7 +67,10 @@ namespace FinancialPlannerClient.TaskManagementSystem
         {
             if (!string.IsNullOrEmpty(cmbProject.Text))
             {
-                cmbProject.Tag = projects.FirstOrDefault(i => i.Name == cmbProject.Text).Id;               
+                Project project = projects.FirstOrDefault(i => i.Name == cmbProject.Text);
+                cmbProject.Tag = project.Id;
+                lblTaskIDTitle.Text = project.InitialId;
+                fillupTransactionType();
             }
             else
             {
@@ -75,7 +79,7 @@ namespace FinancialPlannerClient.TaskManagementSystem
                 return;
             }
 
-            showTentiveTransactionID();
+            //showTentiveTransactionID();
         }
 
         private void showTentiveTransactionID()
@@ -84,20 +88,27 @@ namespace FinancialPlannerClient.TaskManagementSystem
             Project project = projects.First(i => i.Name == cmbProject.Text);
             if (project != null)
             {
-                lblTaskIDTitle.Text = string.Format("{0}-{1}", project.InitialId, 11);
-                fillupTransactionType();
+                lblTaskIDTitle.Text = string.Format("{0}", project.InitialId);
+               
             }
         }
 
         private void fillupTransactionType()
         {
             cmbTransactionType.Properties.Items.Clear();
-            cmbTransactionType.Properties.Items.Add("Fresh Purchase");
-            cmbTransactionType.Properties.Items.Add("Additional Purchase");
-            cmbTransactionType.Properties.Items.Add("Switch");
-            cmbTransactionType.Properties.Items.Add("STP");
-            cmbTransactionType.Properties.Items.Add("SIP Fresh");
-            cmbTransactionType.Properties.Items.Add("SIP Old");
+            if (cmbProject.Text == MUTUALFUND)
+            {
+                cmbTransactionType.Properties.Items.Add("Fresh Purchase");
+                cmbTransactionType.Properties.Items.Add("Additional Purchase");
+                cmbTransactionType.Properties.Items.Add("Switch");
+                cmbTransactionType.Properties.Items.Add("STP");
+                cmbTransactionType.Properties.Items.Add("SIP Fresh");
+                cmbTransactionType.Properties.Items.Add("SIP Old");
+            }
+            else
+            {
+                hideTransactionTypePanel();
+            }
         }
 
         private void cmbTransactionType_SelectedIndexChanged(object sender, EventArgs e)
@@ -111,9 +122,14 @@ namespace FinancialPlannerClient.TaskManagementSystem
             }
             catch (Unity.ResolutionFailedException)
             {
-                this.vGridTransaction.Rows.Clear();
-                splitContainerTransOperation.PanelVisibility = DevExpress.XtraEditors.SplitPanelVisibility.Panel2;
+                hideTransactionTypePanel();
             }
+        }
+
+        private void hideTransactionTypePanel()
+        {
+            this.vGridTransaction.Rows.Clear();
+            splitContainerTransOperation.PanelVisibility = DevExpress.XtraEditors.SplitPanelVisibility.Panel2;
         }
 
         private void btnSaveTask_Click(object sender, EventArgs e)
@@ -127,10 +143,13 @@ namespace FinancialPlannerClient.TaskManagementSystem
                     return;
                 }
                 TaskCard taskCard = getTaskCard();
-                if (new TaskCardService().Add(taskCard))
+                int taskId = new TaskCardService().Add(taskCard);
+                if (taskId > 0)
                 {
-                    DevExpress.XtraEditors.XtraMessageBox.Show("Record saved sucessfully.",
+                    lblTaskIDTitle.Text = taskCard.TaskId + "-" + taskId;
+                    DevExpress.XtraEditors.XtraMessageBox.Show("Record saved sucessfully. Transaction Id: " + taskCard.TaskId + "-" + taskId,
                     "Save", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    btnSaveTask.Enabled = false;
                 }
             }
             catch (Exception ex)
@@ -163,7 +182,8 @@ namespace FinancialPlannerClient.TaskManagementSystem
             taskCard.CompletedPercentage = int.Parse(txtCompletedPercentage.Text);
             taskCard.Description = txtDescription.Text;
             taskCard.MachineName = System.Environment.MachineName;
-            taskCard.TaskTransactionType = getTransactionType();
+            if (cmbProject.Text == "Mutual Fund")
+                taskCard.TaskTransactionType = getTransactionType();
             return taskCard;
         }
 
@@ -219,6 +239,11 @@ namespace FinancialPlannerClient.TaskManagementSystem
             {
                 cmbAssingTo.Tag = users.FirstOrDefault(i => i.UserName == cmbAssingTo.Text).Id;
             }
+        }
+
+        private void btnCloseTask_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

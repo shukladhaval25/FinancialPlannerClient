@@ -14,9 +14,9 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
         readonly string GRID_NAME = "vGridSIPOld";
         SIPFresh sIPFresh;
         DevExpress.XtraVerticalGrid.VGridControl vGridTransaction;
-        public void BindDataSource(DataTable dataTable)
+        public void BindDataSource(Object obj)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         public VGridControl GetGridControl()
@@ -61,7 +61,7 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             {
                 sip.CID = sIPFresh.currentClient.ID;
                 sip.MemberName = this.vGridTransaction.Rows["MemberName"].Properties.Value.ToString();
-                sip.AMC = this.vGridTransaction.Rows["AMC"].Properties.Value.ToString();
+                sip.AMC = int.Parse( this.vGridTransaction.Rows["AMC"].Properties.Value.ToString());
                 sip.FolioNo = this.vGridTransaction.Rows["FolioNumber"].Properties.Value.ToString();
                 sip.SchemeId = sIPFresh.selectedSchemeId;
                 sip.Option = this.vGridTransaction.Rows["Option"].Properties.Value.ToString();

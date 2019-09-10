@@ -56,6 +56,8 @@
             // 
             this.gridViewTasks.GridControl = this.grdTasks;
             this.gridViewTasks.Name = "gridViewTasks";
+            this.gridViewTasks.OptionsBehavior.AllowIncrementalSearch = true;
+            this.gridViewTasks.DoubleClick += new System.EventHandler(this.gridViewTasks_DoubleClick);
             // 
             // btnClose
             // 

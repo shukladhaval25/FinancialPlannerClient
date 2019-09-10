@@ -15,6 +15,7 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
     public class STP : ITransactionType
     {
         IList<ARN> arns;
+        IList<AMC> amcs;
         IList<Client> clients;
         Client currentClient;
         IList<Scheme> schemes;
@@ -40,7 +41,7 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
         public DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemARN;
         public DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBoxClientGroup;
         public DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBoxMemberName;
-        public DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEditAMC;
+        public DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemAMC;
         public DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEditFolioNumber;
         public DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBoxFromScheme;
         public DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBoxFromOption;
@@ -83,7 +84,10 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             this.repositoryItemComboBoxMemberName = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.repositoryItemComboBoxMemberName.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
 
-            this.repositoryItemTextEditAMC = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
+            this.repositoryItemAMC = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.repositoryItemAMC.EditValueChanged += RepositoryItemAMC_EditValueChanged; ;
+            loadAMC();
+
             this.repositoryItemTextEditFolioNumber = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.repositoryItemComboBoxFromScheme = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.repositoryItemComboBoxFromScheme.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
@@ -142,7 +146,7 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             this.AMC.Name = "AMC";
             this.AMC.Properties.Caption = "AMC";
             this.AMC.Properties.FieldName = "AMC";
-            this.AMC.Properties.RowEdit = this.repositoryItemTextEditAMC;
+            this.AMC.Properties.RowEdit = this.repositoryItemAMC;
             //
             // FolioNumber
             //
@@ -227,7 +231,7 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
                 this.repositoryItemARN,
                 this.repositoryItemComboBoxClientGroup,
                 this.repositoryItemComboBoxMemberName,
-                this.repositoryItemTextEditAMC,
+                this.repositoryItemAMC,
                 this.repositoryItemTextEditFolioNumber,
                 this.repositoryItemComboBoxFromScheme,
                 this.repositoryItemComboBoxFromOption,
@@ -255,6 +259,32 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
                 this.Frequency,
                 this.ModeOfExecution,
                 this.Remark});
+        }
+
+        private void loadAMC()
+        {
+            AMCInfo aMCInfo = new AMCInfo();
+            amcs = aMCInfo.GetAll();
+            DataTable dtAMC = getAMCTable();
+            repositoryItemAMC.DataSource = dtAMC;
+            repositoryItemAMC.DisplayMember = "Name";
+            repositoryItemAMC.ValueMember = "Id";
+            repositoryItemAMC.NullValuePrompt = "Please select valid value.";
+        }
+
+        private DataTable getAMCTable()
+        {
+            DataTable dtAMC = new DataTable();
+            dtAMC.Columns.Add("Id", typeof(System.Int64));
+            dtAMC.Columns.Add("Name", typeof(System.String));
+            foreach (AMC amc in amcs)
+            {
+                DataRow dr = dtAMC.NewRow();
+                dr["Id"] = amc.Id;
+                dr["Name"] = amc.Name;
+                dtAMC.Rows.Add(dr);
+            }
+            return dtAMC;
         }
 
         private void loadScheme()
@@ -291,9 +321,9 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             throw new NotImplementedException();
         }
 
-        public void BindDataSource(DataTable dataTable)
+        public void BindDataSource(Object obj)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
         
         private void RepositoryItemTextEditAmount_Validating(object sender, System.ComponentModel.CancelEventArgs e)
@@ -357,6 +387,16 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
                 dtARN.Rows.Add(dr);
             }
             return dtARN;
+        }
+
+        private void RepositoryItemAMC_EditValueChanged(object sender, EventArgs e)
+        {
+            DevExpress.XtraEditors.LookUpEdit comboBoxEdit = (DevExpress.XtraEditors.LookUpEdit)sender;
+            if (comboBoxEdit.SelectedText != null)
+            {
+                AMC amcobject = ((List<AMC>)amcs).Find(i => i.Name == comboBoxEdit.Text.ToString());
+                //loadScheme();
+            }
         }
 
         public object GetTransactionType()

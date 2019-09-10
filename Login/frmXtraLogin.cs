@@ -181,7 +181,6 @@ namespace FinancialPlannerClient.Login
             var deserializeUser = jsonSerialization.DeserializeFromString<User>(restResult.ToString());
             Program.CurrentUser = deserializeUser;
             Home.frmHome frmclientMain = new Home.frmHome();
-            //Main  frmclientMain = new Main();
             this.Visible = false;
             frmclientMain.ShowDialog();
             Close();

@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DevExpress.Utils;
 using DevExpress.XtraVerticalGrid;
-using DevExpress.XtraVerticalGrid.Rows;
+using FinancialPlanner.Common;
+using FinancialPlanner.Common.Model;
+using FinancialPlanner.Common.Model.TaskManagement.MFTransactions;
 
 namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
 {
@@ -14,6 +12,7 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
     {
         readonly string GRID_NAME = "vGridAdditionalPurchase";
         DevExpress.XtraVerticalGrid.VGridControl vGridTransaction;
+        FreshPurchaseTrans freshPurchaseTrans;
         FreshPurchase freshPurchase;
 
         //private DevExpress.XtraVerticalGrid.Rows.EditorRow ARN;
@@ -262,9 +261,34 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             //this.Remark});
         }
 
-        public void BindDataSource(DataTable dataTable)
+        public void BindDataSource(Object obj)
         {
-            //this.vGridTransaction.DataSource = dataTable;
+            if (obj == null)
+            {
+                LogDebug("FreshPurchase.BindDataSource()", new ArgumentNullException("object value is null"));
+                return;
+            }
+
+            FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
+
+            freshPurchase = jsonSerialization.DeserializeFromString<FinancialPlanner.Common.Model.TaskManagement.MFTransactions.FreshPurchase>(obj.ToString());
+            this.vGridTransaction.Rows["ARN"].Properties.Value = freshPurchase.Arn;
+
+            this.vGridTransaction.Rows["ClientGroup"].Properties.Value = getClientName(freshPurchase.Cid);
+            freshPurchaseTrans.currentClient = ((List<Client>) freshPurchaseTrans.clients).Find(i => i.Name == this.vGridTransaction.Rows["ClientGroup"].Properties.Value.ToString());
+            freshPurchaseTrans.loadMembers();
+            this.vGridTransaction.Rows["MemberName"].Properties.Value = freshPurchase.MemberName;
+            this.vGridTransaction.Rows["FolioNumber"].Properties.Value = freshPurchase.FolioNumber;
+            this.vGridTransaction.Rows["AMC"].Properties.Value = freshPurchase.Amc;
+            freshPurchaseTrans.repositoryItemAMC.GetDisplayValueByKeyValue(freshPurchase.Amc);
+            freshPurchaseTrans.loadScheme(freshPurchase.Amc);
+            this.vGridTransaction.Rows["Scheme"].Properties.Value = freshPurchaseTrans.getSchemeName(freshPurchase.Scheme);
+            this.vGridTransaction.Rows["ModeOfHolding"].Properties.Value = freshPurchase.ModeOfHolding;
+            this.vGridTransaction.Rows["Option"].Properties.Value = freshPurchase.Options;
+            this.vGridTransaction.Rows["Amount"].Properties.Value = freshPurchase.Amount;
+            this.vGridTransaction.Rows["TransactionDate"].Properties.Value = freshPurchase.TransactionDate;
+            this.vGridTransaction.Rows["ModeOfExecution"].Properties.Value = freshPurchase.ModeOfExecution;
+            this.vGridTransaction.Rows["Remark"].Properties.Value = freshPurchase.Remark;
         }
 
         public VGridControl GetGridControl()
@@ -275,11 +299,25 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
         public void setVGridControl(VGridControl vGrid)
         {
             this.vGridTransaction = vGrid;
-            freshPurchase = new FreshPurchase();
-            freshPurchase.setVGridControl(vGrid);
+            freshPurchaseTrans = new FreshPurchaseTrans();
+            freshPurchaseTrans.setVGridControl(vGrid);
             removeUnwantedFields(vGrid);
         }
 
+        private void LogDebug(string name, Exception ex)
+        {
+            DebuggerLogInfo debuggerInfo = new DebuggerLogInfo();
+            debuggerInfo.ClassName = this.GetType().Name;
+            debuggerInfo.Method = name;
+            debuggerInfo.ExceptionInfo = ex;
+            Logger.LogDebug(debuggerInfo);
+        }
+
+        private string getClientName(int cid)
+        {
+            Client client = new Client();
+            return (freshPurchaseTrans.clients.TryGetValue(freshPurchaseTrans.clients.FindIndex(i => i.ID == cid), out client)) ? client.Name : string.Empty;
+        }
 
         private void removeUnwantedFields(VGridControl vGrid)
         {
@@ -310,13 +348,13 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             if (this.vGridTransaction.Rows.Count > 0)
             {
                 additionalPurchase.Arn = int.Parse(this.vGridTransaction.Rows["ARN"].Properties.Value.ToString());
-                additionalPurchase.Cid = freshPurchase.currentClient.ID;
+                additionalPurchase.Cid = freshPurchaseTrans.currentClient.ID;
                 additionalPurchase.ClientGroup = this.vGridTransaction.Rows["ClientGroup"].Properties.Value.ToString();
                 additionalPurchase.MemberName = this.vGridTransaction.Rows["MemberName"].Properties.Value.ToString();
                 additionalPurchase.ModeOfHolding = this.vGridTransaction.Rows["ModeOfHolding"].Properties.Value.ToString();
-                additionalPurchase.Amc = this.vGridTransaction.Rows["AMC"].Properties.Value.ToString();
+                additionalPurchase.Amc = int.Parse(this.vGridTransaction.Rows["AMC"].Properties.Value.ToString());
                 additionalPurchase.FolioNumber = this.vGridTransaction.Rows["FolioNumber"].Properties.Value.ToString();
-                additionalPurchase.Scheme = freshPurchase.selectedSchemeId;
+                additionalPurchase.Scheme = freshPurchaseTrans.selectedSchemeId;
                 additionalPurchase.Options = this.vGridTransaction.Rows["Option"].Properties.Value.ToString();
                 additionalPurchase.Amount = double.Parse( this.vGridTransaction.Rows["Amount"].Properties.Value.ToString());
                 additionalPurchase.TransactionDate = (DateTime) this.vGridTransaction.Rows["TransactionDate"].Properties.Value;
@@ -329,7 +367,7 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
 
         public bool IsAllRequireInputAvailable()
         {
-            return freshPurchase.IsAllRequireInputAvailable();
+            return freshPurchaseTrans.IsAllRequireInputAvailable();
         }
     }
 }

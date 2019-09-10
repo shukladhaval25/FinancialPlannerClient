@@ -45,6 +45,8 @@
             this.btnAssingToMe = new DevExpress.XtraEditors.SimpleButton();
             this.btnNewTask = new DevExpress.XtraEditors.SimpleButton();
             this.btnProjects = new DevExpress.XtraEditors.SimpleButton();
+            this.timerTaskNotification = new System.Windows.Forms.Timer(this.components);
+            this.timerBackgroundChange = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.imageCollectionForTaskMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.navigationFrameDashboard)).BeginInit();
             this.navigationFrameDashboard.SuspendLayout();
@@ -85,14 +87,12 @@
             // 
             // navigationPageDeshboard
             // 
-            this.navigationPageDeshboard.Caption = "navigationPageDeshboard";
             this.navigationPageDeshboard.Name = "navigationPageDeshboard";
             this.navigationPageDeshboard.Size = new System.Drawing.Size(1126, 629);
             // 
             // navigationPageForTasks
             // 
             this.navigationPageForTasks.AutoScroll = true;
-            this.navigationPageForTasks.Caption = "navigationPageForTasks";
             this.navigationPageForTasks.Name = "navigationPageForTasks";
             this.navigationPageForTasks.Size = new System.Drawing.Size(1126, 629);
             // 
@@ -127,13 +127,14 @@
             // 
             // btnNotification
             // 
-            this.btnNotification.Image = global::FinancialPlannerClient.Properties.Resources.icons8_notification_30;
+            this.btnNotification.Image = global::FinancialPlannerClient.Properties.Resources.Apps_Notifications_icon;
             this.btnNotification.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter;
             this.btnNotification.Location = new System.Drawing.Point(3, 381);
             this.btnNotification.Name = "btnNotification";
             this.btnNotification.Size = new System.Drawing.Size(72, 52);
             this.btnNotification.TabIndex = 7;
             this.btnNotification.Text = "Notification";
+            this.btnNotification.Click += new System.EventHandler(this.btnNotification_Click);
             // 
             // btnClose
             // 
@@ -167,6 +168,7 @@
             this.btnOverDue.Size = new System.Drawing.Size(72, 52);
             this.btnOverDue.TabIndex = 5;
             this.btnOverDue.Text = "My Overdue";
+            this.btnOverDue.Click += new System.EventHandler(this.btnOverDue_Click);
             // 
             // btnStatusWiseTask
             // 
@@ -222,6 +224,16 @@
             this.btnProjects.Text = "Projects";
             this.btnProjects.Click += new System.EventHandler(this.btnProjects_Click);
             // 
+            // timerTaskNotification
+            // 
+            this.timerTaskNotification.Interval = 60000;
+            this.timerTaskNotification.Tick += new System.EventHandler(this.timerTaskNotification_Tick);
+            // 
+            // timerBackgroundChange
+            // 
+            this.timerBackgroundChange.Interval = 10000;
+            this.timerBackgroundChange.Tick += new System.EventHandler(this.timerBackgroundChange_Tick);
+            // 
             // TaskMainPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -259,5 +271,7 @@
         private DevExpress.XtraEditors.SimpleButton btnOverDue;
         private DevExpress.XtraEditors.SimpleButton btnNotification;
         private DevExpress.XtraEditors.SimpleButton btnMyReminders;
+        private System.Windows.Forms.Timer timerTaskNotification;
+        private System.Windows.Forms.Timer timerBackgroundChange;
     }
 }
