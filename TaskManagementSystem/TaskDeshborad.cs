@@ -118,11 +118,11 @@ namespace FinancialPlannerClient.TaskManagementSystem
 
         private void tileViewProjectWise_ItemClick(object sender, DevExpress.XtraGrid.Views.Tile.TileViewItemClickEventArgs e)
         {
-            MessageBox.Show(this.Parent.Parent.Parent.Name);
-            if (this.Parent.Parent.Parent.Name.Equals("TaskMainPage"))
-            {
-                ((TaskMainPage)(this.Parent.Parent.Parent)).OpenProjectWiseUserTask();
-            }
+            //MessageBox.Show(this.Parent.Parent.Parent.Name);
+            //if (this.Parent.Parent.Parent.Name.Equals("TaskMainPage"))
+            //{
+            //    ((TaskMainPage)(this.Parent.Parent.Parent)).OpenProjectWiseUserTask();
+            //}
         }
     }
 }

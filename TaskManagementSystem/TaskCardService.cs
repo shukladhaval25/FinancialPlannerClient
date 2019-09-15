@@ -17,9 +17,10 @@ namespace FinancialPlannerClient.TaskManagementSystem
         private readonly string UPDATE_TASK_API = "TaskController/Update";
         private readonly string GET_ALL_TASK = "TaskController/GetAll";
         private readonly string GET_NOTIFIED_TASK = "TaskController/NotifiedTasks?userId={0}";
-        private readonly string GET_ASSIGNTOME_TASK = "TaskController/AssignTo?userId={0}";
+        private readonly string GET_ASSIGNTOME_TASK = "TaskContrGetTaskByProjectAndUseroller/AssignTo?userId={0}";
         private readonly string GET_USEROVERDUE_TASK = "TaskController/GetOverDueTask?userId={0}";
-        private const string GET_TASK_BYPROJECTNAME_BYUSERID = "TaskController/GetTaskByProjectAndUser?projectname={0}&userId={1}";
+        private const string GET_TASK_BYPROJECTNAME_BYUSERID = "TaskController/?projectName={0}&userId={1}";
+        private const string GET_TASK_BYPROJECTNAME = "TaskController/GetAll?projectName={0}";
 
 
         public IList<TaskCard> GetTasks(TaskView taskView)
