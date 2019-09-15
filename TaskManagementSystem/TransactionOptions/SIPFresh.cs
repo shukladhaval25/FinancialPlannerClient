@@ -15,9 +15,9 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
 {
     public class SIPFresh : ITransactionType
     {
-        IList<Client> clients;
-        IList<AMC> amcs;
-        IList<Scheme> schemes;
+        internal IList<Client> clients;
+        internal IList<AMC> amcs;
+        internal IList<Scheme> schemes;
         internal Client currentClient;
         internal int selectedSchemeId;
         List<string> optionalFields = new List<string>();
@@ -394,7 +394,7 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             this.optionalFields.Add(this.Remark.Properties.FieldName);
         }
 
-        private void loadScheme()
+        internal void loadScheme()
         {
             SchemeInfo schemeInfo = new SchemeInfo();
             schemes = schemeInfo.GetAll();
@@ -411,7 +411,7 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             e.Cancel = !FinancialPlanner.Common.Validation.IsDecimal(textEdit.Text);
         }
 
-        private void loadMembers()
+        internal void loadMembers()
         {
             if (this.currentClient == null)
                 return;
@@ -448,7 +448,9 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
 
             sip  = jsonSerialization.DeserializeFromString<SIP>(obj.ToString());
             this.vGridTransaction.Rows["AccountType"].Properties.Value = sip.AccounType;
-            this.vGridTransaction.Rows["ClientGroup"].Properties.Value = getClientName(sip.CID);
+            this.vGridTransaction.Rows["ClientGroup"].Properties.Value = getClientName(sip.CID); this.currentClient = ((List<Client>)clients).Find(i => i.Name == this.vGridTransaction.Rows["ClientGroup"].Properties.Value.ToString());
+            loadMembers();
+
             this.vGridTransaction.Rows["MemberName"].Properties.Value = sip.MemberName;
             this.vGridTransaction.Rows["SecondHolder"].Properties.Value = sip.SecondHolder;
             this.vGridTransaction.Rows["ThirdHolder"].Properties.Value = sip.ThirdHolder;
@@ -460,6 +462,7 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             repositoryItemAMC.GetDisplayValueByKeyValue(sip.AMC);
             loadScheme(sip.AMC);
             this.vGridTransaction.Rows["Scheme"].Properties.Value = getSchemeName(sip.SchemeId);
+            selectedSchemeId = sip.SchemeId;
             this.vGridTransaction.Rows["SIPDate"].Properties.Value = sip.SIPDayOn;
             this.vGridTransaction.Rows["SIPStartDate"].Properties.Value = sip.SIPStartDate;
             this.vGridTransaction.Rows["SIPEndDate"].Properties.Value = sip.SIPEndDate;
@@ -470,13 +473,13 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             this.vGridTransaction.Rows["Remark"].Properties.Value = sip.Remark;
         }
 
-        private string getClientName(int cid)
+        internal string getClientName(int cid)
         {
             Client client = new Client();
             return (clients.TryGetValue(clients.FindIndex(i => i.ID == cid), out client)) ? client.Name : string.Empty;
         }
 
-        private string getSchemeName(int schemeId)
+        internal string getSchemeName(int schemeId)
         {
             Scheme scheme = new Scheme();
             return (schemes.TryGetValue(schemes.FindIndex(i => i.Id == schemeId), out scheme)) ? scheme.Name : string.Empty;
@@ -504,7 +507,7 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
 
         public object GetTransactionType()
         {
-            SIP  sip = new  SIP();
+            sip = new  SIP();
             if (this.vGridTransaction.Rows.Count > 0)
             {
                 sip.CID = this.currentClient.ID;
@@ -569,7 +572,7 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
                 loadScheme(amcobject.Id);
             }
         }
-        private void loadScheme(int amcId)
+        internal void loadScheme(int amcId)
         {
             SchemeInfo schemeInfo = new SchemeInfo();
             schemes = schemeInfo.GetAll(amcId);

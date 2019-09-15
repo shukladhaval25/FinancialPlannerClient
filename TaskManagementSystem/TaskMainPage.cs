@@ -135,6 +135,16 @@ namespace FinancialPlannerClient.TaskManagementSystem
             navigationPageDeshboard.Controls.Add(allTask);
             showNavigationPage(allTask.Name);
         }
+        public void OpenProjectWiseUserTask()
+        {
+            navigationPageDeshboard.Controls.Clear();
+            AllTask allTask = new AllTask(TaskView.ProjectWiseAssingToMe);
+            allTask.TopLevel = false;
+            allTask.Visible = true;
+            navigationPageDeshboard.Name = allTask.Name;
+            navigationPageDeshboard.Controls.Add(allTask);
+            showNavigationPage(allTask.Name);
+        }
 
         private void timerTaskNotification_Tick(object sender, EventArgs e)
         {

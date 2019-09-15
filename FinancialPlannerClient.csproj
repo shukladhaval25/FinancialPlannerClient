@@ -726,7 +726,14 @@
       <DependentUpon>AllTask.cs</DependentUpon>
     </Compile>
     <Compile Include="TaskManagementSystem\TaskCardService.cs" />
+    <Compile Include="TaskManagementSystem\TaskCommentView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TaskManagementSystem\TaskCommentView.Designer.cs">
+      <DependentUpon>TaskCommentView.cs</DependentUpon>
+    </Compile>
     <Compile Include="TaskManagementSystem\TaskNotificationInfo.cs" />
+    <Compile Include="TaskManagementSystem\TaskCommentInfo.cs" />
     <Compile Include="TaskManagementSystem\TransactionOptions\AdditionalPurchase.cs" />
     <Compile Include="TaskManagementSystem\TransactionOptions\FreshPurchaseTrans.cs" />
     <Compile Include="TaskManagementSystem\TransactionOptions\ITransactionType.cs" />
@@ -1083,6 +1090,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TaskManagementSystem\NewProject.resx">
       <DependentUpon>NewProject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TaskManagementSystem\TaskCommentView.resx">
+      <DependentUpon>TaskCommentView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TaskManagementSystem\ViewTaskCard.resx">
       <DependentUpon>ViewTaskCard.cs</DependentUpon>

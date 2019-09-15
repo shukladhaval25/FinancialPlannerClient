@@ -146,7 +146,7 @@ namespace FinancialPlannerClient.Login
         }
 
         private const string AUTHENTICATIONAPI = "Authentication/AuthenticateClient";
-
+        private const string AUTHENTICATION_FAIL = "Authentication Fail due to invalid credential";
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
@@ -170,8 +170,16 @@ namespace FinancialPlannerClient.Login
             }
             catch (Exception ex)
             {
-                DevExpress.XtraEditors.XtraMessageBox.Show("Exception:" + ex.ToString(), "Error occurred", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Logger.LogDebug(ex);
+                if (ex.Message.Equals(AUTHENTICATION_FAIL))
+                {
+                    DevExpress.XtraEditors.XtraMessageBox.Show(ex.Message, "Error occurred", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Logger.LogDebug(ex);
+                }
+                else
+                {
+                    DevExpress.XtraEditors.XtraMessageBox.Show("Exception:" + ex.ToString(), "Error occurred", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Logger.LogDebug(ex);
+                }
             }
         }
 

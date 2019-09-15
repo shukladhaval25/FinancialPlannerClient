@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DevExpress.XtraVerticalGrid;
+using FinancialPlanner.Common;
+using FinancialPlanner.Common.Model;
 using FinancialPlanner.Common.Model.TaskManagement.MFTransactions;
 
 namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
@@ -13,10 +15,37 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
     {
         readonly string GRID_NAME = "vGridSIPOld";
         SIPFresh sIPFresh;
+        SIP sip;
         DevExpress.XtraVerticalGrid.VGridControl vGridTransaction;
         public void BindDataSource(Object obj)
         {
-            //throw new NotImplementedException();
+            if (obj == null)
+            {
+                LogDebug("SIPFresh.BindDataSource()", new ArgumentNullException("object value is null"));
+                return;
+            }
+
+            FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
+
+            sip = jsonSerialization.DeserializeFromString<SIP>(obj.ToString());
+            this.vGridTransaction.Rows["AccountType"].Properties.Value = sip.AccounType;
+            this.vGridTransaction.Rows["ClientGroup"].Properties.Value = sIPFresh.getClientName(sip.CID); sIPFresh.currentClient = ((List<Client>) sIPFresh.clients).Find(i => i.Name == this.vGridTransaction.Rows["ClientGroup"].Properties.Value.ToString());
+            sIPFresh.loadMembers();
+            this.vGridTransaction.Rows["MemberName"].Properties.Value = sip.MemberName;
+            this.vGridTransaction.Rows["FolioNumber"].Properties.Value = sip.FolioNo;
+            this.vGridTransaction.Rows["AMC"].Properties.Value = sip.AMC;
+            sIPFresh.repositoryItemAMC.GetDisplayValueByKeyValue(sip.AMC);
+            sIPFresh.loadScheme(sip.AMC);
+            this.vGridTransaction.Rows["Scheme"].Properties.Value = sIPFresh.getSchemeName(sip.SchemeId);
+            sIPFresh.selectedSchemeId = sip.SchemeId;
+            this.vGridTransaction.Rows["SIPDate"].Properties.Value = sip.SIPDayOn;
+            this.vGridTransaction.Rows["SIPStartDate"].Properties.Value = sip.SIPStartDate;
+            this.vGridTransaction.Rows["SIPEndDate"].Properties.Value = sip.SIPEndDate;
+            this.vGridTransaction.Rows["Option"].Properties.Value = sip.Option;
+            this.vGridTransaction.Rows["Amount"].Properties.Value = sip.Amount;
+            this.vGridTransaction.Rows["TransactionDate"].Properties.Value = sip.TransactionDate;
+            this.vGridTransaction.Rows["ModeOfExecution"].Properties.Value = sip.ModeOfExecution;
+            this.vGridTransaction.Rows["Remark"].Properties.Value = sip.Remark;
         }
 
         public VGridControl GetGridControl()
@@ -81,6 +110,15 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
         public bool IsAllRequireInputAvailable()
         {
             return sIPFresh.IsAllRequireInputAvailable();
+        }
+
+        private void LogDebug(string name, Exception ex)
+        {
+            DebuggerLogInfo debuggerInfo = new DebuggerLogInfo();
+            debuggerInfo.ClassName = this.GetType().Name;
+            debuggerInfo.Method = name;
+            debuggerInfo.ExceptionInfo = ex;
+            Logger.LogDebug(debuggerInfo);
         }
     }
 }

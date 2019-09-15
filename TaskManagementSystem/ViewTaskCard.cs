@@ -1,4 +1,5 @@
-﻿using FinancialPlanner.Common.Model;
+﻿using FinancialPlanner.Common;
+using FinancialPlanner.Common.Model;
 using FinancialPlanner.Common.Model.TaskManagement;
 using FinancialPlannerClient.Clients;
 using FinancialPlannerClient.Master;
@@ -6,11 +7,10 @@ using FinancialPlannerClient.TaskManagementSystem.Services;
 using FinancialPlannerClient.Users;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
+using System.Diagnostics;
 using System.Linq;
-using System.Text;
+using System.Reflection;
 using System.Windows.Forms;
 using Unity;
 
@@ -23,7 +23,7 @@ namespace FinancialPlannerClient.TaskManagementSystem
         IList<Client> clients;
         IList<User> users;
         private ITransactionType transactionType;
-        List<TaskComment> taskComments = new List<TaskComment>();
+        IList<TaskComment> taskComments = new List<TaskComment>();
         private readonly string MUTUALFUND = "Mutual Fund";
 
         //public ViewTaskCard()
@@ -40,7 +40,8 @@ namespace FinancialPlannerClient.TaskManagementSystem
         private void setEnableDisableControls()
         {
             cmbProject.Enabled = false;
-            if (isCardCreatorOrOwner()) {
+            if (isCardCreatorOrOwner())
+            {
                 setControls(true);
             }
             else
@@ -69,7 +70,7 @@ namespace FinancialPlannerClient.TaskManagementSystem
 
             fillupTaskView();
 
-            dummyTaskComments();
+            //dummyTaskComments();
             fillupComments();
         }
 
@@ -79,16 +80,18 @@ namespace FinancialPlannerClient.TaskManagementSystem
             lblTaskIDTitle.Tag = taskCard.Id;
             cmbProject.Text = taskCard.ProjectName;
             cmbTransactionType.Text = taskCard.TransactionType;
-            cmbCardType.Text =  taskCard.Type.ToString() == "0" ? "Query" : "Task";
+            cmbCardType.Text = taskCard.Type.ToString() == "0" ? "Query" : "Task";
+            cmbClient.Tag = taskCard.CustomerId;
             cmbClient.Text = string.IsNullOrEmpty(taskCard.CustomerName) ? getCustomerName((int)(taskCard.CustomerId)) : taskCard.CustomerName;
             txtTitle.Text = taskCard.Title;
             txtCreatedBy.Text = getUserName(taskCard.CreatedBy);
             txtCreatedOn.Text = taskCard.CreatedOn.ToShortDateString();
             cmbAssignTo.Text = string.IsNullOrEmpty(taskCard.AssignToName) ? getUserName((int)(taskCard.AssignTo)) : taskCard.AssignToName;
+            cmbAssignTo.Tag = taskCard.AssignTo;
             cmbPriority.Text = taskCard.Priority.ToString();
             dtDueDate.EditValue = taskCard.DueDate;
             cmbOwner.Tag = taskCard.Owner.ToString();
-            cmbOwner.Text = string.IsNullOrEmpty(taskCard.OwnerName) ? getUserName((int)(taskCard.Owner)): taskCard.OwnerName;
+            cmbOwner.Text = string.IsNullOrEmpty(taskCard.OwnerName) ? getUserName((int)(taskCard.Owner)) : taskCard.OwnerName;
             cmbTaskStatus.Text = taskCard.TaskStatus.ToString();
 
         }
@@ -112,9 +115,13 @@ namespace FinancialPlannerClient.TaskManagementSystem
 
         private void fillupComments()
         {
-            DataTable dtComments = new DataTable();
-            dtComments = FinancialPlanner.Common.DataConversion.ListtoDataTable.ToDataTable(taskComments);
-            gridControl1.DataSource = dtComments;
+            taskComments = new TaskCommentInfo().GetTaskComments(this.taskCard.Id);
+            if (taskComments != null)
+            {
+                DataTable dtComments = new DataTable();
+                dtComments = FinancialPlanner.Common.DataConversion.ListtoDataTable.ToDataTable(taskComments.ToList());
+                gridComments.DataSource = dtComments;
+            }
         }
 
         private void fillupCustomer()
@@ -123,46 +130,6 @@ namespace FinancialPlannerClient.TaskManagementSystem
             clients = clientService.GetAll();
             cmbClient.Properties.Items.Clear();
             cmbClient.Properties.Items.AddRange(clients.Select(i => i.Name).ToList());
-        }
-
-        private void dummyTaskComments()
-        {
-            TaskComment taskComment = new TaskComment();
-            taskComment.Id = 1;
-            taskComment.TaskId = "PF-001";
-            taskComment.CommantedBy = "Admin";
-            taskComment.CommentedOn = new DateTime(2019, 02, 06);
-            taskComment.To = new List<string>() { "Amit Shah" };
-            taskComment.Comment = "This work is not going to complete unless and untill you provide client contact inforamtion";
-            taskComments.Add(taskComment);
-
-            TaskComment taskComment1 = new TaskComment();
-            taskComment1.Id = 2;
-            taskComment1.TaskId = "PF-001";
-            taskComment1.CommantedBy = "Amit Shah";
-            taskComment1.CommentedOn = new DateTime(2019, 02, 06);
-            taskComment1.To = new List<string>() { "Admin" };
-            taskComment1.Comment = "Client contact information is as below: Mobile 9869544585";
-            taskComments.Add(taskComment1);
-
-            TaskComment taskComment2 = new TaskComment();
-            taskComment2.Id = 3;
-            taskComment2.TaskId = "MF-15";
-            taskComment2.CommantedBy = "Amit Shah";
-            taskComment2.CommentedOn = new DateTime(2019, 02, 06);
-            taskComment2.To = new List<string>() { "Admin" };
-            taskComment2.Comment = "Fresh purchse of ICICI Long term fund.";
-            taskComments.Add(taskComment2);
-
-            TaskComment taskComment3 = new TaskComment();
-            taskComment3.Id = 3;
-            taskComment3.TaskId = "MF-16";
-            taskComment3.CommantedBy = "Dhaval Shah";
-            taskComment3.CommentedOn = new DateTime(2019, 02, 06);
-            taskComment3.To = new List<string>() { "Admin" };
-            taskComment3.Comment = "Additional purchse of ICICI Long term fund.";
-            taskComments.Add(taskComment3);
-
         }
 
         private void ViewTaskCard_FormClosed(object sender, FormClosedEventArgs e)
@@ -175,7 +142,7 @@ namespace FinancialPlannerClient.TaskManagementSystem
             if (!string.IsNullOrEmpty(cmbProject.Text))
             {
                 Project project = projects.FirstOrDefault(i => i.Name == cmbProject.Text);
-                cmbProject.Tag = project.Id;                
+                cmbProject.Tag = project.Id;
                 fillupTransactionType();
             }
             else
@@ -240,7 +207,152 @@ namespace FinancialPlannerClient.TaskManagementSystem
 
         private void btnSaveTask_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Currently this functionality is not working. Work in progress...");
+            try
+            {
+                if (!isValidateAllRequireField() || ((transactionType != null) ? !transactionType.IsAllRequireInputAvailable() : false))
+                {
+                    DevExpress.XtraEditors.XtraMessageBox.Show("Please enter all require fields.",
+                       "Invalid Data", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                TaskCard taskCard = getTaskCard();
+                int taskId = new TaskCardService().Update(taskCard);
+                if (taskId > 0)
+                {
+                    DevExpress.XtraEditors.XtraMessageBox.Show("Record saved sucessfully. Transaction Id: " + taskCard.TaskId,
+                    "Save", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    btnSaveTask.Enabled = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                DevExpress.XtraEditors.XtraMessageBox.Show("Error :" + ex.ToString(),
+                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private TaskCard getTaskCard()
+        {
+            TaskCard taskCard = new TaskCard();
+            taskCard.Id = int.Parse(lblTaskIDTitle.Tag.ToString());
+            taskCard.TaskId = lblTaskIDTitle.Text;
+            taskCard.ProjectId = int.Parse(cmbProject.Tag.ToString());
+            taskCard.TransactionType = cmbTransactionType.Text;
+            taskCard.Type = (CardType)(cmbCardType.SelectedIndex);
+            taskCard.CustomerId = !string.IsNullOrEmpty(cmbClient.Text) ? int.Parse(cmbClient.Tag.ToString()) : 0;
+            taskCard.Title = txtTitle.Text;
+            taskCard.Owner = int.Parse(cmbOwner.Tag.ToString());
+            taskCard.CreatedBy = Program.CurrentUser.Id;
+            taskCard.CreatedOn = System.DateTime.Now.Date;
+            taskCard.UpdatedBy = taskCard.CreatedBy;
+            taskCard.UpdatedByUserName = Program.CurrentUser.UserName;
+            taskCard.UpdatedOn = System.DateTime.Now.Date;
+            taskCard.AssignTo = (!string.IsNullOrEmpty(cmbAssignTo.Text) ? int.Parse(cmbAssignTo.Tag.ToString()) : 0);
+            taskCard.Priority = (Priority)(cmbPriority.SelectedIndex);
+            taskCard.TaskStatus = (TaskStatus)(cmbTaskStatus.SelectedIndex);
+            taskCard.DueDate = dtDueDate.DateTime;
+            taskCard.CompletedPercentage = int.Parse(txtPercentageCompeleted.Text);
+            taskCard.Description = txtDescription.Text;
+            taskCard.MachineName = System.Environment.MachineName;
+            if (cmbProject.Text == MUTUALFUND)
+                taskCard.TaskTransactionType = getTransactionType();
+            return taskCard;
+        }
+        private object getTransactionType()
+        {
+            return this.transactionType.GetTransactionType();
+        }
+        private bool isValidateAllRequireField()
+        {
+            if (cmbProject.Text == MUTUALFUND)
+            {
+                if (!string.IsNullOrEmpty(cmbProject.Text) && !string.IsNullOrEmpty(cmbTransactionType.Text) &&
+                    !string.IsNullOrEmpty(cmbCardType.Text) && !string.IsNullOrEmpty(txtTitle.Text) &&
+                    !string.IsNullOrEmpty(cmbClient.Text))
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                if (!string.IsNullOrEmpty(cmbProject.Text) &&
+                   !string.IsNullOrEmpty(cmbCardType.Text) && !string.IsNullOrEmpty(txtTitle.Text))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            TaskCommentView taskCommentView = new TaskCommentView(taskCard.Id);
+            taskCommentView.ShowDialog();
+        }
+
+        private void tileViewComment_ItemClick(object sender, DevExpress.XtraGrid.Views.Tile.TileViewItemClickEventArgs e)
+        {
+
+        }
+
+        private void tileViewComment_ItemDoubleClick(object sender, DevExpress.XtraGrid.Views.Tile.TileViewItemClickEventArgs e)
+        {
+            try
+            {
+                openTaskComment(e.Item.RowHandle);
+            }
+            catch (Exception ex)
+            {
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
+                LogDebug(currentMethodName.Name, ex);
+            }
+        }
+        private void LogDebug(string methodName, Exception ex)
+        {
+            DebuggerLogInfo debuggerInfo = new DebuggerLogInfo();
+            debuggerInfo.ClassName = this.GetType().Name;
+            debuggerInfo.Method = methodName;
+            debuggerInfo.ExceptionInfo = ex;
+            Logger.LogDebug(debuggerInfo);
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (tileViewComment.SelectedRowsCount > 0)
+                {
+                    int index = tileViewComment.FocusedRowHandle;
+                    openTaskComment(index);
+                }
+                else
+                    DevExpress.XtraEditors.XtraMessageBox.Show("Please select valid row.", "Select row", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
+                LogDebug(currentMethodName.Name, ex);
+                DevExpress.XtraEditors.XtraMessageBox.Show("Error:" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void openTaskComment(int index)
+        {
+            int commentId;
+            int.TryParse((
+                       (System.Data.DataRowView)tileViewComment.GetRow(index)
+                       ).Row.ItemArray[0].ToString(), out commentId);
+            TaskComment taskComment = taskComments.FirstOrDefault(i => i.Id == commentId);
+            if (taskComment.CommantedBy == Program.CurrentUser.Id)
+            {
+                TaskCommentView taskCommentView = new TaskCommentView(taskComment, taskCard.Id);
+                taskCommentView.ShowDialog();
+            }
+            else
+                DevExpress.XtraEditors.XtraMessageBox.Show("You can not modify others comment", "Comment", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
     }
 }

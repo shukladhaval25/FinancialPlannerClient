@@ -60,7 +60,7 @@ namespace FinancialPlannerClient.PlanOptions
         {
             PlannerAssumptionInfo plannerAssumptionInfo = new PlannerAssumptionInfo();
             PlannerAssumption plannerAssumption = plannerAssumptionInfo.GetAll(this.planId);
-            int retirementYear = (client.DOB.Year + plannerAssumption.ClientRetirementAge) + 1;
+            int retirementYear = (client.DOB.Year + plannerAssumption.ClientRetirementAge);
             int endOfLifeYear = (client.DOB.Year + plannerAssumption.ClientLifeExpectancy) + 1;
             txtGoalStartYear.Text = retirementYear.ToString();
             txtGoalEndYear.Text = endOfLifeYear.ToString();
@@ -278,10 +278,11 @@ namespace FinancialPlannerClient.PlanOptions
                 int currentPriorityNumber = int.Parse(numPriority.Value.ToString());
                 for (int year = startYear; year < endYear;)
                 {
-                    currentPriorityNumber++;
+                    
                     isPriorityAssignDuplicate = isDuplicatePriorityNumber(currentPriorityNumber.ToString());
                     if (isPriorityAssignDuplicate)
                         return false;
+                    currentPriorityNumber++;
                     year = year + frequency;
                 }
                 return true;

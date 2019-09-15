@@ -182,7 +182,7 @@ namespace FinancialPlannerClient.TaskManagementSystem
             taskCard.CompletedPercentage = int.Parse(txtCompletedPercentage.Text);
             taskCard.Description = txtDescription.Text;
             taskCard.MachineName = System.Environment.MachineName;
-            if (cmbProject.Text == "Mutual Fund")
+            if (cmbProject.Text == MUTUALFUND)
                 taskCard.TaskTransactionType = getTransactionType();
             return taskCard;
         }
@@ -190,24 +190,26 @@ namespace FinancialPlannerClient.TaskManagementSystem
         private object getTransactionType()
         {
             return this.transactionType.GetTransactionType();
-            //switch (transactionType)
-            //{
-            //    case "Fresh Purchse":
-            //        return new FreshPurchase();
-            //    case "Additional Purchase":
-            //        return new AdditionalPurchase();
-            //    default:
-            //        return null;
-            //}
         }
 
         private bool isValidateAllRequireField()
         {
-            if (!string.IsNullOrEmpty(cmbProject.Text) && !string.IsNullOrEmpty(cmbTransactionType.Text) &&
-                !string.IsNullOrEmpty(cmbCardType.Text) && !string.IsNullOrEmpty(txtTitle.Text) && 
-                !string.IsNullOrEmpty(cmbClient.Text))
+            if (cmbProject.Text == MUTUALFUND)
             {
-                return true;
+                if (!string.IsNullOrEmpty(cmbProject.Text) && !string.IsNullOrEmpty(cmbTransactionType.Text) &&
+                    !string.IsNullOrEmpty(cmbCardType.Text) && !string.IsNullOrEmpty(txtTitle.Text) &&
+                    !string.IsNullOrEmpty(cmbClient.Text))
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                if (!string.IsNullOrEmpty(cmbProject.Text) && 
+                   !string.IsNullOrEmpty(cmbCardType.Text) && !string.IsNullOrEmpty(txtTitle.Text))
+                {
+                    return true;
+                }
             }
             return false;
         }

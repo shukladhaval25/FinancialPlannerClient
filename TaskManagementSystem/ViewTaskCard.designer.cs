@@ -29,22 +29,32 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ViewTaskCard));
-            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement1 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
-            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement2 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
-            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement3 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
-            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement4 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
-            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement5 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
-            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement6 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
-            this.tileViewColumnCommentedBy = new DevExpress.XtraGrid.Columns.TileViewColumn();
+            DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem5 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip6 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem6 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem6 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement9 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
+            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement10 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
+            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement11 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
+            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement12 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
+            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement13 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
+            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement14 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
+            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement15 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
+            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement16 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
+            DevExpress.Utils.SuperToolTip superToolTip7 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem7 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem7 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip8 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem8 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem8 = new DevExpress.Utils.ToolTipItem();
+            this.tileViewColumnCommentedByName = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.tileViewColumnCommentedOn = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.tileViewColumnTo = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.tileViewColumnComment = new DevExpress.XtraGrid.Columns.TileViewColumn();
+            this.tileViewColumnCommentedBy = new DevExpress.XtraGrid.Columns.TileViewColumn();
+            this.tileViewColumnId = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.lblProject = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
@@ -67,12 +77,13 @@
             this.txtUpdatedOn = new DevExpress.XtraEditors.TextEdit();
             this.tabPaneComment = new DevExpress.XtraBars.Navigation.TabPane();
             this.tabNavigationCommentsPage = new DevExpress.XtraBars.Navigation.TabNavigationPage();
-            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.tileView1 = new DevExpress.XtraGrid.Views.Tile.TileView();
-            this.tileViewColumn2 = new DevExpress.XtraGrid.Columns.TileViewColumn();
+            this.btnEdit = new DevExpress.XtraEditors.SimpleButton();
+            this.btnAdd = new DevExpress.XtraEditors.SimpleButton();
+            this.gridComments = new DevExpress.XtraGrid.GridControl();
+            this.tileViewComment = new DevExpress.XtraGrid.Views.Tile.TileView();
             this.tileViewColumn1 = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.tabNavigationHistoryPage = new DevExpress.XtraBars.Navigation.TabNavigationPage();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnlTaskOtherOptions = new System.Windows.Forms.Panel();
             this.splitContainerTransOperation = new DevExpress.XtraEditors.SplitContainerControl();
             this.vGridTransaction = new DevExpress.XtraVerticalGrid.VGridControl();
             this.repositoryItemComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
@@ -108,9 +119,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.tabPaneComment)).BeginInit();
             this.tabPaneComment.SuspendLayout();
             this.tabNavigationCommentsPage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tileView1)).BeginInit();
-            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridComments)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tileViewComment)).BeginInit();
+            this.pnlTaskOtherOptions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerTransOperation)).BeginInit();
             this.splitContainerTransOperation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.vGridTransaction)).BeginInit();
@@ -128,15 +139,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.cmbOwner.Properties)).BeginInit();
             this.SuspendLayout();
             // 
-            // tileViewColumnCommentedBy
+            // tileViewColumnCommentedByName
             // 
-            this.tileViewColumnCommentedBy.Caption = "CommentedBy";
-            this.tileViewColumnCommentedBy.FieldName = "CommantedBy";
-            this.tileViewColumnCommentedBy.Image = ((System.Drawing.Image)(resources.GetObject("tileViewColumnCommentedBy.Image")));
-            this.tileViewColumnCommentedBy.Name = "tileViewColumnCommentedBy";
-            this.tileViewColumnCommentedBy.OptionsColumn.ReadOnly = true;
-            this.tileViewColumnCommentedBy.Visible = true;
-            this.tileViewColumnCommentedBy.VisibleIndex = 0;
+            this.tileViewColumnCommentedByName.Caption = "CommentedByName";
+            this.tileViewColumnCommentedByName.FieldName = "CommentedByName";
+            this.tileViewColumnCommentedByName.Name = "tileViewColumnCommentedByName";
+            this.tileViewColumnCommentedByName.Visible = true;
+            this.tileViewColumnCommentedByName.VisibleIndex = 3;
             // 
             // tileViewColumnCommentedOn
             // 
@@ -146,7 +155,7 @@
             this.tileViewColumnCommentedOn.OptionsColumn.AllowEdit = false;
             this.tileViewColumnCommentedOn.OptionsColumn.ReadOnly = true;
             this.tileViewColumnCommentedOn.Visible = true;
-            this.tileViewColumnCommentedOn.VisibleIndex = 1;
+            this.tileViewColumnCommentedOn.VisibleIndex = 0;
             // 
             // tileViewColumnTo
             // 
@@ -160,7 +169,23 @@
             this.tileViewColumnComment.FieldName = "Comment";
             this.tileViewColumnComment.Name = "tileViewColumnComment";
             this.tileViewColumnComment.Visible = true;
-            this.tileViewColumnComment.VisibleIndex = 3;
+            this.tileViewColumnComment.VisibleIndex = 1;
+            // 
+            // tileViewColumnCommentedBy
+            // 
+            this.tileViewColumnCommentedBy.Caption = "CommentedBy";
+            this.tileViewColumnCommentedBy.FieldName = "CommantedBy";
+            this.tileViewColumnCommentedBy.Image = ((System.Drawing.Image)(resources.GetObject("tileViewColumnCommentedBy.Image")));
+            this.tileViewColumnCommentedBy.Name = "tileViewColumnCommentedBy";
+            this.tileViewColumnCommentedBy.OptionsColumn.ReadOnly = true;
+            // 
+            // tileViewColumnId
+            // 
+            this.tileViewColumnId.Caption = "Id";
+            this.tileViewColumnId.FieldName = "Id";
+            this.tileViewColumnId.Name = "tileViewColumnId";
+            this.tileViewColumnId.OptionsColumn.AllowEdit = false;
+            this.tileViewColumnId.OptionsColumn.ReadOnly = true;
             // 
             // lblProject
             // 
@@ -360,90 +385,140 @@
             // 
             this.tabNavigationCommentsPage.AutoSize = true;
             this.tabNavigationCommentsPage.Caption = "Comments";
-            this.tabNavigationCommentsPage.Controls.Add(this.gridControl1);
+            this.tabNavigationCommentsPage.Controls.Add(this.btnEdit);
+            this.tabNavigationCommentsPage.Controls.Add(this.btnAdd);
+            this.tabNavigationCommentsPage.Controls.Add(this.gridComments);
             this.tabNavigationCommentsPage.Name = "tabNavigationCommentsPage";
             this.tabNavigationCommentsPage.Size = new System.Drawing.Size(598, 287);
             // 
-            // gridControl1
+            // btnEdit
             // 
-            this.gridControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.btnEdit.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnEdit.Image = ((System.Drawing.Image)(resources.GetObject("btnEdit.Image")));
+            this.btnEdit.Location = new System.Drawing.Point(299, 3);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(25, 23);
+            toolTipTitleItem5.Text = "Edit comment";
+            toolTipItem5.LeftIndent = 6;
+            toolTipItem5.Text = "To modify selected comment click here.";
+            superToolTip5.Items.Add(toolTipTitleItem5);
+            superToolTip5.Items.Add(toolTipItem5);
+            this.btnEdit.SuperTip = superToolTip5;
+            this.btnEdit.TabIndex = 32;
+            this.btnEdit.ToolTip = "Edit Client";
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
+            this.btnAdd.Location = new System.Drawing.Point(268, 3);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(25, 23);
+            toolTipTitleItem6.Text = "New comment";
+            toolTipItem6.LeftIndent = 6;
+            toolTipItem6.Text = "To add new comment click here.";
+            superToolTip6.Items.Add(toolTipTitleItem6);
+            superToolTip6.Items.Add(toolTipItem6);
+            this.btnAdd.SuperTip = superToolTip6;
+            this.btnAdd.TabIndex = 31;
+            this.btnAdd.ToolTip = "Add new client";
+            this.btnAdd.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Application;
+            this.btnAdd.ToolTipTitle = "New Client";
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // gridComments
+            // 
+            this.gridComments.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gridControl1.Location = new System.Drawing.Point(3, 31);
-            this.gridControl1.MainView = this.tileView1;
-            this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(592, 256);
-            this.gridControl1.TabIndex = 0;
-            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.tileView1});
+            this.gridComments.Location = new System.Drawing.Point(3, 31);
+            this.gridComments.MainView = this.tileViewComment;
+            this.gridComments.Name = "gridComments";
+            this.gridComments.Size = new System.Drawing.Size(592, 256);
+            this.gridComments.TabIndex = 0;
+            this.gridComments.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.tileViewComment});
             // 
-            // tileView1
+            // tileViewComment
             // 
-            this.tileView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.tileViewComment.Appearance.EmptySpace.BorderColor = System.Drawing.Color.Gray;
+            this.tileViewComment.Appearance.EmptySpace.Options.UseBorderColor = true;
+            this.tileViewComment.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
+            this.tileViewComment.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.tileViewColumnCommentedBy,
-            this.tileViewColumn2,
+            this.tileViewColumnId,
             this.tileViewColumnCommentedOn,
             this.tileViewColumnTo,
             this.tileViewColumnComment,
-            this.tileViewColumn1});
-            this.tileView1.GridControl = this.gridControl1;
-            this.tileView1.Name = "tileView1";
-            this.tileView1.OptionsTiles.IndentBetweenItems = 5;
-            this.tileView1.OptionsTiles.ItemSize = new System.Drawing.Size(450, 80);
-            this.tileView1.OptionsTiles.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.tileView1.OptionsTiles.Padding = new System.Windows.Forms.Padding(5, 10, 10, 10);
-            this.tileView1.OptionsTiles.ScrollMode = DevExpress.XtraEditors.TileControlScrollMode.ScrollButtons;
-            this.tileView1.OptionsTiles.ShowGroupText = false;
-            this.tileView1.OptionsTiles.VerticalContentAlignment = DevExpress.Utils.VertAlignment.Top;
-            this.tileView1.OptionsView.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowForFocusedRow;
-            tileViewItemElement1.Appearance.Normal.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            tileViewItemElement1.Appearance.Normal.Options.UseFont = true;
-            tileViewItemElement1.Column = this.tileViewColumnCommentedBy;
-            tileViewItemElement1.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomOutside;
-            tileViewItemElement1.Text = "tileViewColumnCommentedBy";
-            tileViewItemElement2.Text = "- comment added on";
-            tileViewItemElement2.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.Manual;
-            tileViewItemElement2.TextLocation = new System.Drawing.Point(100, 0);
-            tileViewItemElement3.Column = this.tileViewColumnCommentedOn;
-            tileViewItemElement3.Text = "tileViewColumnCommentedOn";
-            tileViewItemElement3.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.TopRight;
-            tileViewItemElement4.Column = this.tileViewColumnTo;
-            tileViewItemElement4.Text = "tileViewColumnTo";
-            tileViewItemElement4.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.Manual;
-            tileViewItemElement4.TextLocation = new System.Drawing.Point(60, 20);
-            tileViewItemElement4.TextVisible = false;
-            tileViewItemElement4.UseImageInTransition = false;
-            tileViewItemElement5.Column = this.tileViewColumnComment;
-            tileViewItemElement5.Text = "tileViewColumnComment";
-            tileViewItemElement5.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.Manual;
-            tileViewItemElement5.TextLocation = new System.Drawing.Point(60, 25);
-            tileViewItemElement6.Image = ((System.Drawing.Image)(resources.GetObject("tileViewItemElement6.Image")));
-            tileViewItemElement6.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.Manual;
-            tileViewItemElement6.ImageLocation = new System.Drawing.Point(0, 20);
-            tileViewItemElement6.Text = "";
-            tileViewItemElement6.TextVisible = false;
-            this.tileView1.TileTemplate.Add(tileViewItemElement1);
-            this.tileView1.TileTemplate.Add(tileViewItemElement2);
-            this.tileView1.TileTemplate.Add(tileViewItemElement3);
-            this.tileView1.TileTemplate.Add(tileViewItemElement4);
-            this.tileView1.TileTemplate.Add(tileViewItemElement5);
-            this.tileView1.TileTemplate.Add(tileViewItemElement6);
-            // 
-            // tileViewColumn2
-            // 
-            this.tileViewColumn2.Caption = "tileViewColumn2";
-            this.tileViewColumn2.Name = "tileViewColumn2";
-            this.tileViewColumn2.OptionsColumn.AllowEdit = false;
-            this.tileViewColumn2.OptionsColumn.ReadOnly = true;
-            this.tileViewColumn2.Visible = true;
-            this.tileViewColumn2.VisibleIndex = 2;
+            this.tileViewColumn1,
+            this.tileViewColumnCommentedByName});
+            this.tileViewComment.GridControl = this.gridComments;
+            this.tileViewComment.Name = "tileViewComment";
+            this.tileViewComment.OptionsTiles.IndentBetweenItems = 5;
+            this.tileViewComment.OptionsTiles.ItemSize = new System.Drawing.Size(450, 80);
+            this.tileViewComment.OptionsTiles.Orientation = System.Windows.Forms.Orientation.Vertical;
+            this.tileViewComment.OptionsTiles.Padding = new System.Windows.Forms.Padding(5, 10, 10, 10);
+            this.tileViewComment.OptionsTiles.ScrollMode = DevExpress.XtraEditors.TileControlScrollMode.ScrollButtons;
+            this.tileViewComment.OptionsTiles.VerticalContentAlignment = DevExpress.Utils.VertAlignment.Top;
+            this.tileViewComment.OptionsView.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowForFocusedRow;
+            tileViewItemElement9.Appearance.Normal.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            tileViewItemElement9.Appearance.Normal.Options.UseFont = true;
+            tileViewItemElement9.Column = this.tileViewColumnCommentedByName;
+            tileViewItemElement9.Text = "tileViewColumnCommentedByName";
+            tileViewItemElement10.Text = "- comment added on";
+            tileViewItemElement10.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.Manual;
+            tileViewItemElement10.TextLocation = new System.Drawing.Point(140, 0);
+            tileViewItemElement11.Column = this.tileViewColumnCommentedOn;
+            tileViewItemElement11.Text = "tileViewColumnCommentedOn";
+            tileViewItemElement11.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.TopRight;
+            tileViewItemElement12.Column = this.tileViewColumnTo;
+            tileViewItemElement12.Text = "tileViewColumnTo";
+            tileViewItemElement12.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.Manual;
+            tileViewItemElement12.TextLocation = new System.Drawing.Point(60, 20);
+            tileViewItemElement12.TextVisible = false;
+            tileViewItemElement12.UseImageInTransition = false;
+            tileViewItemElement13.Column = this.tileViewColumnComment;
+            tileViewItemElement13.Text = "tileViewColumnComment";
+            tileViewItemElement13.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.Manual;
+            tileViewItemElement13.TextLocation = new System.Drawing.Point(60, 25);
+            tileViewItemElement14.Appearance.Normal.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            tileViewItemElement14.Appearance.Normal.Options.UseImage = true;
+            tileViewItemElement14.Image = ((System.Drawing.Image)(resources.GetObject("tileViewItemElement14.Image")));
+            tileViewItemElement14.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleLeft;
+            tileViewItemElement14.ImageLocation = new System.Drawing.Point(0, 3);
+            tileViewItemElement14.Text = "";
+            tileViewItemElement14.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.Manual;
+            tileViewItemElement15.Appearance.Normal.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            tileViewItemElement15.Appearance.Normal.Options.UseFont = true;
+            tileViewItemElement15.Column = this.tileViewColumnCommentedBy;
+            tileViewItemElement15.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomOutside;
+            tileViewItemElement15.Text = "tileViewColumnCommentedBy";
+            tileViewItemElement15.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.Manual;
+            tileViewItemElement15.TextLocation = new System.Drawing.Point(0, 50);
+            tileViewItemElement16.Column = this.tileViewColumnId;
+            tileViewItemElement16.Text = "tileViewColumnId";
+            tileViewItemElement16.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.BottomRight;
+            this.tileViewComment.TileTemplate.Add(tileViewItemElement9);
+            this.tileViewComment.TileTemplate.Add(tileViewItemElement10);
+            this.tileViewComment.TileTemplate.Add(tileViewItemElement11);
+            this.tileViewComment.TileTemplate.Add(tileViewItemElement12);
+            this.tileViewComment.TileTemplate.Add(tileViewItemElement13);
+            this.tileViewComment.TileTemplate.Add(tileViewItemElement14);
+            this.tileViewComment.TileTemplate.Add(tileViewItemElement15);
+            this.tileViewComment.TileTemplate.Add(tileViewItemElement16);
+            this.tileViewComment.ViewCaption = "Comments";
+            this.tileViewComment.ItemClick += new DevExpress.XtraGrid.Views.Tile.TileViewItemClickEventHandler(this.tileViewComment_ItemClick);
+            this.tileViewComment.ItemDoubleClick += new DevExpress.XtraGrid.Views.Tile.TileViewItemClickEventHandler(this.tileViewComment_ItemDoubleClick);
             // 
             // tileViewColumn1
             // 
+            this.tileViewColumn1.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.tileViewColumn1.AppearanceCell.Options.UseBackColor = true;
             this.tileViewColumn1.Caption = "tileViewImage";
             this.tileViewColumn1.Name = "tileViewColumn1";
             this.tileViewColumn1.Visible = true;
-            this.tileViewColumn1.VisibleIndex = 4;
+            this.tileViewColumn1.VisibleIndex = 2;
             // 
             // tabNavigationHistoryPage
             // 
@@ -451,14 +526,17 @@
             this.tabNavigationHistoryPage.Name = "tabNavigationHistoryPage";
             this.tabNavigationHistoryPage.Size = new System.Drawing.Size(598, 287);
             // 
-            // panel1
+            // pnlTaskOtherOptions
             // 
-            this.panel1.AutoScroll = true;
-            this.panel1.Controls.Add(this.tabPaneComment);
-            this.panel1.Location = new System.Drawing.Point(559, 253);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(616, 332);
-            this.panel1.TabIndex = 31;
+            this.pnlTaskOtherOptions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlTaskOtherOptions.AutoScroll = true;
+            this.pnlTaskOtherOptions.Controls.Add(this.tabPaneComment);
+            this.pnlTaskOtherOptions.Location = new System.Drawing.Point(559, 253);
+            this.pnlTaskOtherOptions.Name = "pnlTaskOtherOptions";
+            this.pnlTaskOtherOptions.Size = new System.Drawing.Size(616, 332);
+            this.pnlTaskOtherOptions.TabIndex = 31;
             // 
             // splitContainerTransOperation
             // 
@@ -671,15 +749,12 @@
             this.btnCloseTask.Location = new System.Drawing.Point(980, 214);
             this.btnCloseTask.Name = "btnCloseTask";
             this.btnCloseTask.Size = new System.Drawing.Size(62, 23);
-            toolTipTitleItem1.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
-            toolTipTitleItem1.Appearance.Options.UseImage = true;
-            toolTipTitleItem1.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem1.Image")));
-            toolTipTitleItem1.Text = "Cancel";
-            toolTipItem1.LeftIndent = 6;
-            toolTipItem1.Text = "To close client information without saving any information click here.";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            superToolTip1.Items.Add(toolTipItem1);
-            this.btnCloseTask.SuperTip = superToolTip1;
+            toolTipTitleItem7.Text = "Cancel";
+            toolTipItem7.LeftIndent = 6;
+            toolTipItem7.Text = "Cancel task click here.";
+            superToolTip7.Items.Add(toolTipTitleItem7);
+            superToolTip7.Items.Add(toolTipItem7);
+            this.btnCloseTask.SuperTip = superToolTip7;
             this.btnCloseTask.TabIndex = 48;
             this.btnCloseTask.Text = "&Close";
             this.btnCloseTask.Click += new System.EventHandler(this.btnCloseTask_Click);
@@ -690,15 +765,12 @@
             this.btnSaveTask.Location = new System.Drawing.Point(917, 214);
             this.btnSaveTask.Name = "btnSaveTask";
             this.btnSaveTask.Size = new System.Drawing.Size(57, 23);
-            toolTipTitleItem2.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
-            toolTipTitleItem2.Appearance.Options.UseImage = true;
-            toolTipTitleItem2.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem2.Image")));
-            toolTipTitleItem2.Text = "Save";
-            toolTipItem2.LeftIndent = 6;
-            toolTipItem2.Text = "To save client infroamtion click here.";
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            superToolTip2.Items.Add(toolTipItem2);
-            this.btnSaveTask.SuperTip = superToolTip2;
+            toolTipTitleItem8.Text = "Save";
+            toolTipItem8.LeftIndent = 6;
+            toolTipItem8.Text = "To save task click here.";
+            superToolTip8.Items.Add(toolTipTitleItem8);
+            superToolTip8.Items.Add(toolTipItem8);
+            this.btnSaveTask.SuperTip = superToolTip8;
             this.btnSaveTask.TabIndex = 47;
             this.btnSaveTask.Text = "&Save";
             this.btnSaveTask.Click += new System.EventHandler(this.btnSaveTask_Click);
@@ -735,7 +807,7 @@
             this.Controls.Add(this.txtTitle);
             this.Controls.Add(this.lblTransactionTypeTitle);
             this.Controls.Add(this.splitContainerTransOperation);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pnlTaskOtherOptions);
             this.Controls.Add(this.labelControl12);
             this.Controls.Add(this.txtUpdatedOn);
             this.Controls.Add(this.comboBoxEdit7);
@@ -758,6 +830,7 @@
             this.Controls.Add(this.lblProject);
             this.Name = "ViewTaskCard";
             this.Text = "View / Edit card details";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ViewTaskCard_FormClosed);
             this.Load += new System.EventHandler(this.ViewTaskCard_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txtCreatedBy.Properties)).EndInit();
@@ -773,9 +846,9 @@
             this.tabPaneComment.ResumeLayout(false);
             this.tabPaneComment.PerformLayout();
             this.tabNavigationCommentsPage.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tileView1)).EndInit();
-            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridComments)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tileViewComment)).EndInit();
+            this.pnlTaskOtherOptions.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerTransOperation)).EndInit();
             this.splitContainerTransOperation.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.vGridTransaction)).EndInit();
@@ -821,11 +894,11 @@
         private DevExpress.XtraBars.Navigation.TabPane tabPaneComment;
         private DevExpress.XtraBars.Navigation.TabNavigationPage tabNavigationCommentsPage;
         private DevExpress.XtraBars.Navigation.TabNavigationPage tabNavigationHistoryPage;
-        private System.Windows.Forms.Panel panel1;
-        private DevExpress.XtraGrid.GridControl gridControl1;
-        private DevExpress.XtraGrid.Views.Tile.TileView tileView1;
+        private System.Windows.Forms.Panel pnlTaskOtherOptions;
+        private DevExpress.XtraGrid.GridControl gridComments;
+        private DevExpress.XtraGrid.Views.Tile.TileView tileViewComment;
         private DevExpress.XtraGrid.Columns.TileViewColumn tileViewColumnCommentedBy;
-        private DevExpress.XtraGrid.Columns.TileViewColumn tileViewColumn2;
+        private DevExpress.XtraGrid.Columns.TileViewColumn tileViewColumnId;
         private DevExpress.XtraGrid.Columns.TileViewColumn tileViewColumnCommentedOn;
         private DevExpress.XtraGrid.Columns.TileViewColumn tileViewColumnTo;
         private DevExpress.XtraGrid.Columns.TileViewColumn tileViewColumnComment;
@@ -853,6 +926,9 @@
         private DevExpress.XtraEditors.SimpleButton btnCloseTask;
         private DevExpress.XtraEditors.SimpleButton btnSaveTask;
         private DevExpress.XtraEditors.ComboBoxEdit cmbOwner;
+        private DevExpress.XtraEditors.SimpleButton btnEdit;
+        private DevExpress.XtraEditors.SimpleButton btnAdd;
+        private DevExpress.XtraGrid.Columns.TileViewColumn tileViewColumnCommentedByName;
     }
 }
 

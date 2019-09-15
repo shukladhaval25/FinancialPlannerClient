@@ -14,6 +14,7 @@ namespace FinancialPlannerClient.TaskManagementSystem
     public class TaskCardService
     {
         private readonly string ADD_TASK_API = "TaskController/Add";
+        private readonly string UPDATE_TASK_API = "TaskController/Update";
         private readonly string GET_ALL_TASK = "TaskController/GetAll";
         private readonly string GET_NOTIFIED_TASK = "TaskController/NotifiedTasks?userId={0}";
         private readonly string GET_ASSIGNTOME_TASK = "TaskController/AssignTo?userId={0}";
@@ -32,6 +33,8 @@ namespace FinancialPlannerClient.TaskManagementSystem
                     return getTasksByAssignToMe();
                 case TaskView.MyOverDue:
                     return GetOverDueTask(Program.CurrentUser.Id);
+                case TaskView.ProjectWiseAssingToMe:
+                    return GetOpenTaskProjectWiseAndUserWise("Mutual Fund", Program.CurrentUser.Id);
                 case TaskView.None:
                 default:
                     return null;
@@ -235,6 +238,33 @@ namespace FinancialPlannerClient.TaskManagementSystem
                 MethodBase currentMethodName = sf.GetMethod();
                 LogDebug(currentMethodName.Name, ex);
                 return null;
+            }
+        }
+
+        internal int Update(TaskCard taskCard)
+        {
+            if (taskCard == null)
+            {
+                Logger.LogDebug("Null parameter of taskcard.");
+                return 0;
+            }
+            try
+            {
+                FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
+                string apiurl = Program.WebServiceUrl + "/" + UPDATE_TASK_API;
+                RestAPIExecutor restApiExecutor = new RestAPIExecutor();
+                JSONSerialization jSON = new JSONSerialization();
+                string jsonStr = jSON.SerializeToString<TaskCard>(taskCard);
+                var restResult = restApiExecutor.Execute<TaskCard>(apiurl, taskCard, "POST");
+                return int.Parse(restResult.ToString());
+            }
+            catch (Exception ex)
+            {
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
+                LogDebug(currentMethodName.Name, ex);
+                return 0;
             }
         }
 

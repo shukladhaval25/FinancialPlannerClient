@@ -492,6 +492,7 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             repositoryItemAMC.GetDisplayValueByKeyValue(freshPurchase.Amc);
             loadScheme(freshPurchase.Amc);
             this.vGridTransaction.Rows["Scheme"].Properties.Value = getSchemeName(freshPurchase.Scheme);
+            selectedSchemeId = freshPurchase.Scheme;
             this.vGridTransaction.Rows["ModeOfHolding"].Properties.Value = freshPurchase.ModeOfHolding;
             this.vGridTransaction.Rows["Option"].Properties.Value = freshPurchase.Options;
             this.vGridTransaction.Rows["Amount"].Properties.Value = freshPurchase.Amount;
@@ -580,7 +581,8 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             for(int rowIndex = 0; rowIndex < this.vGridTransaction.Rows.Count; rowIndex++)
             {
                 if(!optionalFields.Contains(this.vGridTransaction.Rows[rowIndex].Properties.FieldName) && 
-                   this.vGridTransaction.Rows[rowIndex].Properties.Value == null)
+                   (this.vGridTransaction.Rows[rowIndex].Properties.Value == null || 
+                   this.vGridTransaction.Rows[rowIndex].Properties.Value.ToString() == string.Empty ))
                 {
                     return false;
                 }

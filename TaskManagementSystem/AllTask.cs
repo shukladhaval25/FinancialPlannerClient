@@ -179,6 +179,7 @@ namespace FinancialPlannerClient.TaskManagementSystem
         GetAll,
         Notified,
         MyOverDue,
-        AssignToMe
+        AssignToMe,
+        ProjectWiseAssingToMe
     }
 }
