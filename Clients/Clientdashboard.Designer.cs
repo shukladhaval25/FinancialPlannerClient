@@ -638,7 +638,6 @@
             // 
             // navigationPageDashboard
             // 
-            this.navigationPageDashboard.Caption = "navigationPageDashboard";
             this.navigationPageDashboard.Controls.Add(this.lblClientDashboard);
             this.navigationPageDashboard.Controls.Add(this.groupPlanStatus);
             this.navigationPageDashboard.Controls.Add(this.pictureBox6);
@@ -687,6 +686,7 @@
             this.groupPlanStatus.Name = "groupPlanStatus";
             this.groupPlanStatus.Size = new System.Drawing.Size(975, 115);
             this.groupPlanStatus.TabIndex = 0;
+            this.groupPlanStatus.Visible = false;
             // 
             // label17
             // 
@@ -873,7 +873,6 @@
             // navigationPageContactInfo
             // 
             this.navigationPageContactInfo.AutoScroll = true;
-            this.navigationPageContactInfo.Caption = "navigationPageContactInfo";
             this.navigationPageContactInfo.Name = "navigationPageContactInfo";
             this.navigationPageContactInfo.Size = new System.Drawing.Size(1004, 599);
             this.navigationPageContactInfo.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.navigationPageClient_ControlRemoved);

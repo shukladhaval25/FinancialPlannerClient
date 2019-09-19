@@ -1,4 +1,5 @@
-﻿using FinancialPlanner.Common.DataConversion;
+﻿using FinancialPlanner.Common;
+using FinancialPlanner.Common.DataConversion;
 using FinancialPlanner.Common.Model;
 using FinancialPlannerClient.Master;
 using FinancialPlannerClient.PlannerInfo;
@@ -6,9 +7,11 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -28,6 +31,7 @@ namespace FinancialPlannerClient.Clients
         private DataTable _dtGoals;
         private DataTable _dtBankAccount;
         private DataTable _dtDocument;
+        private DataTable _dtFMBankDetails = new DataTable();
         private PersonalInformation _personalInfo;
         IList<Goals> _goals;
 
@@ -274,6 +278,8 @@ namespace FinancialPlannerClient.Clients
 
         private void btnFamilyMemberSave_Click(object sender, EventArgs e)
         {
+            
+
             FamilyMemberInfo familyMemberInfo = new FamilyMemberInfo();
             FamilyMember familyMember = getFamilyMemberData();
             bool isSaved = false;
@@ -309,6 +315,9 @@ namespace FinancialPlannerClient.Clients
             familymember.UpdatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
             familymember.UpdatedBy = Program.CurrentUser.Id;
             familymember.MachineName = Environment.MachineName;
+            familymember.Pancard = txtFMPANCard.Text;
+            familymember.AadharCard = txtFMAdharCard.Text;
+            familymember.Occupation = txtFMOccuption.Text;
             return familymember;
         }
 
@@ -330,6 +339,10 @@ namespace FinancialPlannerClient.Clients
                 rdoFamilyMemberDependentYes.Checked = familymember.IsDependent;
                 txtChildrenClass.Text = familymember.ChildrenClass;
                 txtFamilyMemberDesc.Text = familymember.Description;
+                txtFMPANCard.Text = familymember.Pancard;
+                txtFMAdharCard.Text = familymember.AadharCard;
+                txtFMOccuption.Text = familymember.Occupation;
+                displayBankDetailsOfFamilyMember(familymember.Id);
             }
             else
             {
@@ -337,7 +350,25 @@ namespace FinancialPlannerClient.Clients
             }
         }
 
-        private void setDefaultFamilyMemberData()
+        private void displayBankDetailsOfFamilyMember(int accountHolderId)
+        {
+            _dtFMBankDetails.Clear();
+            FamilyMemberInfo familyMemberInfo = new FamilyMemberInfo();
+            List<FamilyMemberBank> lstFamilyMemberBank = (List<FamilyMemberBank>)familyMemberInfo.GetFamilyMemberBank(accountHolderId);
+            _dtFMBankDetails = ListtoDataTable.ToDataTable(lstFamilyMemberBank);
+            gridControlFMBankDetails.DataSource = _dtFMBankDetails;
+            if (_dtFMBankDetails.Rows.Count > 0)
+            {
+                int familyMemberBankId;
+                int.TryParse((
+                           (System.Data.DataRowView)tileViewFMBankDetails.GetRow(0)
+                           ).Row.ItemArray[0].ToString(), out familyMemberBankId);
+                displayFamilyMemberBankDetails(familyMemberBankId);
+            }
+            else
+                setDefaultFamilyMemberBankValue();
+        }
+            private void setDefaultFamilyMemberData()
         {
             txtFamilyMemberName.Tag = "";
             txtFamilyMemberName.Text = "";
@@ -346,6 +377,9 @@ namespace FinancialPlannerClient.Clients
             rdoFamilyMemberDependentYes.Checked = false;
             txtChildrenClass.Text = "";
             txtFamilyMemberDesc.Text = "";
+            txtFMPANCard.Text = "";
+            txtFMAdharCard.Text = "";
+            txtFMOccuption.Text = "";
         }
         
         private void dtGridFamilyMember_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -2096,6 +2130,166 @@ namespace FinancialPlannerClient.Clients
             Loan loan = new LoanInfo().GetLonInfo(dtGridLoan, _dtLoan);
             LoanSchedule loanSchedule = new LoanSchedule(loan);
             loanSchedule.ShowDialog();
+        }
+
+        private void btnAddFMBank_Click(object sender, EventArgs e)
+        {
+            grpBankDetails.Enabled = true;
+            setDefaultFamilyMemberBankValue();
+        }
+
+        private void setDefaultFamilyMemberBankValue()
+        {
+            txtFMBankName.Tag = "0";
+            txtFMBankName.Text = "";
+            txtFMAccountNo.Text = "";
+            cmbFMAccountType.Text = "";
+            txtFMBranchAdd.Text = "";
+            txtFMBranchContantNo.Text = "";
+        }
+
+        private void btnFMBankSave_Click(object sender, EventArgs e)
+        {
+            if (txtFamilyMemberName.Tag.ToString().Equals("0"))
+            {
+                MessageBox.Show("First save family member and try again.", "Save", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if (string.IsNullOrEmpty(txtFMBankName.Text) || string.IsNullOrEmpty(txtFMAccountNo.Text))
+            {
+                MessageBox.Show("Please enter bank name and account number.", "Save", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            FamilyMemberInfo familyMemberInfo = new FamilyMemberInfo();
+            FamilyMemberBank familyMemberBank = getFamilyMemberBankData();
+            bool isSaved = false;
+
+            if (familyMemberBank != null && familyMemberBank.Id == 0)
+                isSaved = familyMemberInfo.Add(familyMemberBank);
+            else
+                isSaved = familyMemberInfo.Update(familyMemberBank);
+
+            if (isSaved)
+            {
+                MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                fillupFamilyMemberInfo();
+                grpFamilyMemberDetail.Enabled = false;
+            }
+            else
+                MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private FamilyMemberBank getFamilyMemberBankData()
+        {
+            FamilyMemberBank familymemberBank = new FamilyMemberBank();
+            familymemberBank.Id = int.Parse(txtFMBankName.Tag.ToString());
+            familymemberBank.AccountHolderId = int.Parse(txtFamilyMemberName.Tag.ToString());
+            familymemberBank.BankName = txtFMBankName.Text;
+            familymemberBank.BranchAddress = txtFMBranchAdd.Text;
+            familymemberBank.AccountType = cmbFMAccountType.Text;
+            familymemberBank.BranchContantNo = txtFMBranchContantNo.Text;
+            familymemberBank.AccountNo = txtFMAccountNo.Text;
+            familymemberBank.CreatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+            familymemberBank.CreatedBy = Program.CurrentUser.Id;
+            familymemberBank.UpdatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+            familymemberBank.UpdatedBy = Program.CurrentUser.Id;
+            familymemberBank.MachineName = Environment.MachineName;
+            return familymemberBank;
+        }
+
+        private void btnFMBankEdit_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (tileViewFMBankDetails.SelectedRowsCount > 0)
+                {
+                    int index = tileViewFMBankDetails.FocusedRowHandle;
+                    int familyMemberBankId;
+                    int.TryParse((
+                               (System.Data.DataRowView)tileViewFMBankDetails.GetRow(index)
+                               ).Row.ItemArray[0].ToString(), out familyMemberBankId);
+
+                    displayFamilyMemberBankDetails(familyMemberBankId);
+                    grpBankDetails.Enabled = true;
+                }
+                else
+                    DevExpress.XtraEditors.XtraMessageBox.Show("Please select valid row.", "Select row", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
+                LogDebug(currentMethodName.Name, ex);
+                DevExpress.XtraEditors.XtraMessageBox.Show("Error:" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void displayFamilyMemberBankDetails(int index)
+        {
+            DataRow[] dataRow = _dtFMBankDetails.Select("Id = " + index);
+            if (dataRow != null && dataRow.Count() > 0)
+            {
+                txtFMBankName.Text = dataRow[0]["BankName"].ToString();
+                txtFMBankName.Tag = dataRow[0]["Id"].ToString();
+                txtFMAccountNo.Text = dataRow[0]["AccountNo"].ToString();
+                cmbFMAccountType.Text = dataRow[0]["AccountType"].ToString();
+                txtFMBranchAdd.Text = dataRow[0]["BranchAddress"].ToString();
+                txtFMBranchContantNo.Text = dataRow[0]["BranchContantNo"].ToString();
+            }
+            else
+                setDefaultFamilyMemberBankValue();
+        }
+
+        private void LogDebug(string methodName, Exception ex)
+        {
+            DebuggerLogInfo debuggerInfo = new DebuggerLogInfo();
+            debuggerInfo.ClassName = this.GetType().Name;
+            debuggerInfo.Method = methodName;
+            debuggerInfo.ExceptionInfo = ex;
+            Logger.LogDebug(debuggerInfo);
+        }
+
+        private void tileViewFMBankDetails_ItemClick(object sender, DevExpress.XtraGrid.Views.Tile.TileViewItemClickEventArgs e)
+        {
+            int familyMemberBankId;
+            int.TryParse((
+                       (System.Data.DataRowView)tileViewFMBankDetails.GetRow(e.Item.RowHandle)
+                       ).Row.ItemArray[0].ToString(), out familyMemberBankId);
+            displayFamilyMemberBankDetails(familyMemberBankId);
+        }
+
+        private void btnFMBankDelete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (tileViewFMBankDetails.SelectedRowsCount > 0)
+                {
+                    if (MessageBox.Show("Are you sure, you want to delete this record?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        FamilyMemberInfo familyMemberInfo = new FamilyMemberInfo();
+                        FamilyMemberBank familyMemberBank = getFamilyMemberBankData();
+                        familyMemberInfo.Delete(familyMemberBank);
+                        displayBankDetailsOfFamilyMember(int.Parse(txtFamilyMemberName.Tag.ToString()));
+                    }
+                }
+                else
+                    DevExpress.XtraEditors.XtraMessageBox.Show("Please select valid row.", "Select row", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
+                LogDebug(currentMethodName.Name, ex);
+                DevExpress.XtraEditors.XtraMessageBox.Show("Error:" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnFMBankCancel_Click(object sender, EventArgs e)
+        {
+            btnEditFamilyMember_Click(sender, e);
+            grpBankDetails.Enabled = false;
         }
     }
 }

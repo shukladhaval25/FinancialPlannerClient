@@ -20,6 +20,13 @@ namespace FinancialPlannerClient.PlannerInfo
         const string ADD_FAMILYMEMBER_API = "FamilyMember/Add";
         const string UPDATE_FAMILYMEMBER_API = "FamilyMember/Update";
         const string DELETE_FAMILYMEMBER_API = "FamilyMember/Delete?id={0}";
+
+        const string GET_ALL_BANKS_BY_ACCOUNTHOLDER = "FamilyMemberBank/GetAll?accountHolderId={0}";
+        const string ADD_FAMILYMEMBER_BANK = "FamilyMemberBank/Add";
+        const string UPDATE_FAMILYMEMBER_BANK = "FamilyMemberBank/Update";
+        const string DELETE_FAMILYMEMBER_BANK = "FamilyMemberBank/Delete?id={0}";
+
+
         DataTable _dtFamilymember;
         public FamilyMember Get(int id,int clientId)
         {
@@ -218,6 +225,9 @@ namespace FinancialPlannerClient.PlannerInfo
                     fm.IsDependent = bool.Parse(dr["IsDependent"].ToString());
                     fm.ChildrenClass = dr.Field<string>("ChildrenClass");
                     fm.Description = dr.Field<string>("Description");
+                    fm.Pancard = dr.Field<string>("PanCard");
+                    fm.AadharCard = dr.Field<string>("AadharCard");
+                    fm.Occupation = dr.Field<string>("Occupation");
                     return fm;
                 }
             }
@@ -238,5 +248,98 @@ namespace FinancialPlannerClient.PlannerInfo
             }
             return null;
         }
+
+        #region "Family Member Bank"
+        public IList<FamilyMemberBank> GetFamilyMemberBank(int accountHolderId)
+        {
+            IList<FamilyMemberBank> familyMemberObj = new List<FamilyMemberBank>();
+            try
+            {
+                FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
+                string apiurl = Program.WebServiceUrl + "/" + string.Format(GET_ALL_BANKS_BY_ACCOUNTHOLDER, accountHolderId);
+
+                RestAPIExecutor restApiExecutor = new RestAPIExecutor();
+
+                var restResult = restApiExecutor.Execute<IList<FamilyMemberBank>>(apiurl, null, "GET");
+
+                if (jsonSerialization.IsValidJson(restResult.ToString()))
+                {
+                    familyMemberObj = jsonSerialization.DeserializeFromString<IList<FamilyMemberBank>>(restResult.ToString());
+                }
+                return familyMemberObj;
+            }
+            catch (Exception ex)
+            {
+                Logger.LogDebug(ex);
+                return null;
+            }
+        }
+        public bool Add(FamilyMemberBank familyMemberBank)
+        {
+            try
+            {
+                FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
+                string apiurl = Program.WebServiceUrl + "/" + ADD_FAMILYMEMBER_BANK;
+
+                RestAPIExecutor restApiExecutor = new RestAPIExecutor();
+
+                var restResult = restApiExecutor.Execute<FamilyMemberBank>(apiurl, familyMemberBank, "POST");
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
+                LogDebug(currentMethodName.Name, ex);
+                return false;
+            }
+        }
+        public bool Update(FamilyMemberBank familyMemberBank)
+        {
+            try
+            {
+                FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
+                string apiurl = Program.WebServiceUrl + "/" + UPDATE_FAMILYMEMBER_BANK;
+
+                RestAPIExecutor restApiExecutor = new RestAPIExecutor();
+
+                var restResult = restApiExecutor.Execute<FamilyMemberBank>(apiurl, familyMemberBank, "POST");
+                return true;
+            }
+            catch (Exception ex)
+            {
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
+                LogDebug(currentMethodName.Name, ex);
+                return false;
+            }
+        }
+        internal void Delete(FamilyMemberBank familyMemberBank)
+        {
+            try
+            {
+                FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
+                string apiurl = Program.WebServiceUrl + "/" + string.Format(DELETE_FAMILYMEMBER_BANK, familyMemberBank);
+
+                RestAPIExecutor restApiExecutor = new RestAPIExecutor();
+
+                var restResult = restApiExecutor.Execute<FamilyMemberBank>(apiurl, familyMemberBank, "DELETE");
+                MessageBox.Show("Record deleted successfully.", "Delete", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+            catch (Exception ex)
+            {
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
+                LogDebug(currentMethodName.Name, ex);
+                MessageBox.Show("Unable to delete record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        #endregion
     }
 }

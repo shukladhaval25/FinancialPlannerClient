@@ -342,7 +342,8 @@ namespace FinancialPlannerClient.CashFlowManager
                             totalIncome = totalIncome + amount;
 
                             dr["(" + income.IncomeBy + ") " + income.Source + " - Income Tax"] = income.IncomeTax;
-                            long incomeTaxAmt = ((amount * long.Parse(income.IncomeTax.ToString()) / 100));
+                            var incomeTaxPercentage = (income.IncomeTax / 100);
+                            long incomeTaxAmt =(long)(amount * incomeTaxPercentage);
                             totalTaxAmt = totalTaxAmt + incomeTaxAmt;
 
                             long postTaxAmt = (amount - incomeTaxAmt);
