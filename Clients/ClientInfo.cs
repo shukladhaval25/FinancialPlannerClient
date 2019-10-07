@@ -1,6 +1,7 @@
 ﻿using FinancialPlanner.Common;
 using FinancialPlanner.Common.DataConversion;
 using FinancialPlanner.Common.Model;
+using FinancialPlanner.Common.Model.Masters;
 using FinancialPlannerClient.Master;
 using FinancialPlannerClient.PlannerInfo;
 using System;
@@ -254,7 +255,16 @@ namespace FinancialPlannerClient.Clients
             List<FamilyMember> lstFamilyMember =(List<FamilyMember>) familyMemberInfo.Get(_client.ID);
             _dtFamilymember = ListtoDataTable.ToDataTable(lstFamilyMember);
             dtGridFamilyMember.DataSource = _dtFamilymember;
+            fillupBankMaster();
             setFamilyMemberGridSetting();
+        }
+
+        private void fillupBankMaster()
+        {
+            BankInfo bankInfo = new BankInfo();
+            List<Bank> banks = (List<Bank>) bankInfo.GetAll();
+            DataTable dtBank = ListtoDataTable.ToDataTable(banks);
+            lookupBank.Properties.DataSource = dtBank;
         }
 
         private void setFamilyMemberGridSetting()
@@ -356,6 +366,16 @@ namespace FinancialPlannerClient.Clients
             FamilyMemberInfo familyMemberInfo = new FamilyMemberInfo();
             List<FamilyMemberBank> lstFamilyMemberBank = (List<FamilyMemberBank>)familyMemberInfo.GetFamilyMemberBank(accountHolderId);
             _dtFMBankDetails = ListtoDataTable.ToDataTable(lstFamilyMemberBank);
+            _dtFMBankDetails.Columns.Add("BankName");
+            foreach(FamilyMemberBank fmBank in lstFamilyMemberBank)
+            {
+                DataRow[] dtRow = _dtFMBankDetails.Select("Id = " + fmBank.Id);
+                if (dtRow != null)
+                {
+                    dtRow[0]["BankName"] = fmBank.Bank.Name;
+                }
+            }
+
             gridControlFMBankDetails.DataSource = _dtFMBankDetails;
             if (_dtFMBankDetails.Rows.Count > 0)
             {
@@ -2140,12 +2160,11 @@ namespace FinancialPlannerClient.Clients
 
         private void setDefaultFamilyMemberBankValue()
         {
-            txtFMBankName.Tag = "0";
-            txtFMBankName.Text = "";
+            lookupBank.Tag = "0";
+            lookupBank.Text = "";
             txtFMAccountNo.Text = "";
             cmbFMAccountType.Text = "";
-            txtFMBranchAdd.Text = "";
-            txtFMBranchContantNo.Text = "";
+            txtFMBranch.Text = "";
         }
 
         private void btnFMBankSave_Click(object sender, EventArgs e)
@@ -2155,7 +2174,7 @@ namespace FinancialPlannerClient.Clients
                 MessageBox.Show("First save family member and try again.", "Save", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            if (string.IsNullOrEmpty(txtFMBankName.Text) || string.IsNullOrEmpty(txtFMAccountNo.Text))
+            if (string.IsNullOrEmpty(lookupBank.Text) || string.IsNullOrEmpty(txtFMAccountNo.Text))
             {
                 MessageBox.Show("Please enter bank name and account number.", "Save", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
@@ -2182,19 +2201,27 @@ namespace FinancialPlannerClient.Clients
         private FamilyMemberBank getFamilyMemberBankData()
         {
             FamilyMemberBank familymemberBank = new FamilyMemberBank();
-            familymemberBank.Id = int.Parse(txtFMBankName.Tag.ToString());
+            familymemberBank.Id = int.Parse(lookupBank.Tag.ToString());
             familymemberBank.AccountHolderId = int.Parse(txtFamilyMemberName.Tag.ToString());
-            familymemberBank.BankName = txtFMBankName.Text;
-            familymemberBank.BranchAddress = txtFMBranchAdd.Text;
+            familymemberBank.BankId = int.Parse(lookupBank.EditValue.ToString());
             familymemberBank.AccountType = cmbFMAccountType.Text;
-            familymemberBank.BranchContantNo = txtFMBranchContantNo.Text;
             familymemberBank.AccountNo = txtFMAccountNo.Text;
             familymemberBank.CreatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
             familymemberBank.CreatedBy = Program.CurrentUser.Id;
             familymemberBank.UpdatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
             familymemberBank.UpdatedBy = Program.CurrentUser.Id;
             familymemberBank.MachineName = Environment.MachineName;
+            familymemberBank.Bank = getFamilyMemberBankDetails(familymemberBank.BankId);
             return familymemberBank;
+        }
+
+        private Bank getFamilyMemberBankDetails(int bankId)
+        {
+            Bank bank = new Bank();
+            bank.Id = int.Parse(lookupBank.EditValue.ToString());
+            bank.Name = lookupBank.Text;
+            bank.Branch = txtBranchAddress.Text;
+            return bank;
         }
 
         private void btnFMBankEdit_Click(object sender, EventArgs e)
@@ -2230,12 +2257,10 @@ namespace FinancialPlannerClient.Clients
             DataRow[] dataRow = _dtFMBankDetails.Select("Id = " + index);
             if (dataRow != null && dataRow.Count() > 0)
             {
-                txtFMBankName.Text = dataRow[0]["BankName"].ToString();
-                txtFMBankName.Tag = dataRow[0]["Id"].ToString();
+                lookupBank.Text = dataRow[0]["BankName"].ToString();
+                lookupBank.Tag = dataRow[0]["Id"].ToString();
                 txtFMAccountNo.Text = dataRow[0]["AccountNo"].ToString();
                 cmbFMAccountType.Text = dataRow[0]["AccountType"].ToString();
-                txtFMBranchAdd.Text = dataRow[0]["BranchAddress"].ToString();
-                txtFMBranchContantNo.Text = dataRow[0]["BranchContantNo"].ToString();
             }
             else
                 setDefaultFamilyMemberBankValue();
@@ -2290,6 +2315,15 @@ namespace FinancialPlannerClient.Clients
         {
             btnEditFamilyMember_Click(sender, e);
             grpBankDetails.Enabled = false;
+        }
+
+        private void lookupBank_EditValueChanged(object sender, EventArgs e)
+        {
+            var dataRow = lookupBank.GetSelectedDataRow();
+            if (dataRow != null)
+            {                
+                txtFMBranch.Text = ((System.Data.DataRowView)dataRow).Row.ItemArray[2].ToString();
+            }
         }
     }
 }

@@ -36,6 +36,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             new DevExpress.XtraReports.UI.XRBinding("Text", this.DataSource,  "FamilyMember.Relationship")});
             this.lblDOB.DataBindings.Add("Text", this.DataSource, "FamilyMember.DOB");
             this.lblAge.DataBindings.Add("Text", this.DataSource, "FamilyMember.Age");
+            this.lblOccupation.DataBindings.Add("Text", this.DataSource, "FamilyMember.Occupation");
         }
 
         private void addAgeColumnToDataTable()

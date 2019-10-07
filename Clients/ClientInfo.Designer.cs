@@ -261,17 +261,15 @@
             this.btnAddFMBank = new System.Windows.Forms.Button();
             this.btnFMBankEdit = new System.Windows.Forms.Button();
             this.grpBankDetails = new DevExpress.XtraEditors.GroupControl();
+            this.lookupBank = new DevExpress.XtraEditors.LookUpEdit();
             this.btnFMBankCancel = new System.Windows.Forms.Button();
             this.btnFMBankSave = new System.Windows.Forms.Button();
-            this.txtFMBranchContantNo = new System.Windows.Forms.TextBox();
             this.cmbFMAccountType = new System.Windows.Forms.ComboBox();
-            this.label158 = new System.Windows.Forms.Label();
             this.label159 = new System.Windows.Forms.Label();
-            this.txtFMBranchAdd = new System.Windows.Forms.TextBox();
+            this.txtFMBranch = new System.Windows.Forms.TextBox();
             this.txtFMAccountNo = new System.Windows.Forms.TextBox();
             this.label160 = new System.Windows.Forms.Label();
             this.label161 = new System.Windows.Forms.Label();
-            this.txtFMBankName = new System.Windows.Forms.TextBox();
             this.label162 = new System.Windows.Forms.Label();
             this.dtGridFamilyMember = new System.Windows.Forms.DataGridView();
             this.label51 = new System.Windows.Forms.Label();
@@ -575,6 +573,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grpBankDetails)).BeginInit();
             this.grpBankDetails.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lookupBank.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridFamilyMember)).BeginInit();
             this.BankAccount.SuspendLayout();
             this.grpBankAccountDetails.SuspendLayout();
@@ -2979,17 +2978,15 @@
             this.grpBankDetails.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpBankDetails.Controls.Add(this.lookupBank);
             this.grpBankDetails.Controls.Add(this.btnFMBankCancel);
             this.grpBankDetails.Controls.Add(this.btnFMBankSave);
-            this.grpBankDetails.Controls.Add(this.txtFMBranchContantNo);
             this.grpBankDetails.Controls.Add(this.cmbFMAccountType);
-            this.grpBankDetails.Controls.Add(this.label158);
             this.grpBankDetails.Controls.Add(this.label159);
-            this.grpBankDetails.Controls.Add(this.txtFMBranchAdd);
+            this.grpBankDetails.Controls.Add(this.txtFMBranch);
             this.grpBankDetails.Controls.Add(this.txtFMAccountNo);
             this.grpBankDetails.Controls.Add(this.label160);
             this.grpBankDetails.Controls.Add(this.label161);
-            this.grpBankDetails.Controls.Add(this.txtFMBankName);
             this.grpBankDetails.Controls.Add(this.label162);
             this.grpBankDetails.Enabled = false;
             this.grpBankDetails.Location = new System.Drawing.Point(327, 6);
@@ -2997,6 +2994,22 @@
             this.grpBankDetails.Size = new System.Drawing.Size(580, 202);
             this.grpBankDetails.TabIndex = 1;
             this.grpBankDetails.Text = "Bank Information";
+            // 
+            // lookupBank
+            // 
+            this.lookupBank.Location = new System.Drawing.Point(152, 30);
+            this.lookupBank.Name = "lookupBank";
+            this.lookupBank.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lookupBank.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Id", "Id", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Branch", "Branch")});
+            this.lookupBank.Properties.DisplayMember = "Name";
+            this.lookupBank.Properties.ValueMember = "Id";
+            this.lookupBank.Size = new System.Drawing.Size(351, 20);
+            this.lookupBank.TabIndex = 51;
+            this.lookupBank.EditValueChanged += new System.EventHandler(this.lookupBank_EditValueChanged);
             // 
             // btnFMBankCancel
             // 
@@ -3026,15 +3039,6 @@
             this.btnFMBankSave.UseVisualStyleBackColor = true;
             this.btnFMBankSave.Click += new System.EventHandler(this.btnFMBankSave_Click);
             // 
-            // txtFMBranchContantNo
-            // 
-            this.txtFMBranchContantNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFMBranchContantNo.Location = new System.Drawing.Point(152, 142);
-            this.txtFMBranchContantNo.MaxLength = 15;
-            this.txtFMBranchContantNo.Name = "txtFMBranchContantNo";
-            this.txtFMBranchContantNo.Size = new System.Drawing.Size(351, 22);
-            this.txtFMBranchContantNo.TabIndex = 45;
-            // 
             // cmbFMAccountType
             // 
             this.cmbFMAccountType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -3044,44 +3048,35 @@
             "CA",
             "NRE",
             "NRO"});
-            this.cmbFMAccountType.Location = new System.Drawing.Point(152, 87);
+            this.cmbFMAccountType.Location = new System.Drawing.Point(152, 115);
             this.cmbFMAccountType.Name = "cmbFMAccountType";
             this.cmbFMAccountType.Size = new System.Drawing.Size(144, 21);
             this.cmbFMAccountType.TabIndex = 42;
-            // 
-            // label158
-            // 
-            this.label158.AutoSize = true;
-            this.label158.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label158.Location = new System.Drawing.Point(21, 145);
-            this.label158.Name = "label158";
-            this.label158.Size = new System.Drawing.Size(122, 16);
-            this.label158.TabIndex = 47;
-            this.label158.Text = "Branch Contact No:";
             // 
             // label159
             // 
             this.label159.AutoSize = true;
             this.label159.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label159.Location = new System.Drawing.Point(21, 116);
+            this.label159.Location = new System.Drawing.Point(21, 61);
             this.label159.Name = "label159";
-            this.label159.Size = new System.Drawing.Size(107, 16);
+            this.label159.Size = new System.Drawing.Size(53, 16);
             this.label159.TabIndex = 46;
-            this.label159.Text = "Branch Address:";
+            this.label159.Text = "Branch:";
             // 
-            // txtFMBranchAdd
+            // txtFMBranch
             // 
-            this.txtFMBranchAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFMBranchAdd.Location = new System.Drawing.Point(152, 114);
-            this.txtFMBranchAdd.MaxLength = 500;
-            this.txtFMBranchAdd.Name = "txtFMBranchAdd";
-            this.txtFMBranchAdd.Size = new System.Drawing.Size(351, 22);
-            this.txtFMBranchAdd.TabIndex = 43;
+            this.txtFMBranch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFMBranch.Location = new System.Drawing.Point(152, 59);
+            this.txtFMBranch.MaxLength = 500;
+            this.txtFMBranch.Name = "txtFMBranch";
+            this.txtFMBranch.ReadOnly = true;
+            this.txtFMBranch.Size = new System.Drawing.Size(351, 22);
+            this.txtFMBranch.TabIndex = 43;
             // 
             // txtFMAccountNo
             // 
             this.txtFMAccountNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFMAccountNo.Location = new System.Drawing.Point(152, 59);
+            this.txtFMAccountNo.Location = new System.Drawing.Point(152, 87);
             this.txtFMAccountNo.MaxLength = 15;
             this.txtFMAccountNo.Name = "txtFMAccountNo";
             this.txtFMAccountNo.Size = new System.Drawing.Size(351, 22);
@@ -3091,7 +3086,7 @@
             // 
             this.label160.AutoSize = true;
             this.label160.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label160.Location = new System.Drawing.Point(21, 87);
+            this.label160.Location = new System.Drawing.Point(21, 115);
             this.label160.Name = "label160";
             this.label160.Size = new System.Drawing.Size(94, 16);
             this.label160.TabIndex = 44;
@@ -3101,20 +3096,11 @@
             // 
             this.label161.AutoSize = true;
             this.label161.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label161.Location = new System.Drawing.Point(21, 56);
+            this.label161.Location = new System.Drawing.Point(21, 84);
             this.label161.Name = "label161";
             this.label161.Size = new System.Drawing.Size(80, 16);
             this.label161.TabIndex = 41;
             this.label161.Text = "Account No:";
-            // 
-            // txtFMBankName
-            // 
-            this.txtFMBankName.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFMBankName.Location = new System.Drawing.Point(152, 29);
-            this.txtFMBankName.MaxLength = 50;
-            this.txtFMBankName.Name = "txtFMBankName";
-            this.txtFMBankName.Size = new System.Drawing.Size(351, 24);
-            this.txtFMBankName.TabIndex = 39;
             // 
             // label162
             // 
@@ -6400,6 +6386,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.grpBankDetails)).EndInit();
             this.grpBankDetails.ResumeLayout(false);
             this.grpBankDetails.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lookupBank.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridFamilyMember)).EndInit();
             this.BankAccount.ResumeLayout(false);
             this.BankAccount.PerformLayout();
@@ -6918,15 +6905,12 @@
         private System.Windows.Forms.Button btnFMBankEdit;
         private System.Windows.Forms.Button btnFMBankCancel;
         private System.Windows.Forms.Button btnFMBankSave;
-        private System.Windows.Forms.TextBox txtFMBranchContantNo;
         private System.Windows.Forms.ComboBox cmbFMAccountType;
-        private System.Windows.Forms.Label label158;
         private System.Windows.Forms.Label label159;
-        private System.Windows.Forms.TextBox txtFMBranchAdd;
+        private System.Windows.Forms.TextBox txtFMBranch;
         private System.Windows.Forms.TextBox txtFMAccountNo;
         private System.Windows.Forms.Label label160;
         private System.Windows.Forms.Label label161;
-        private System.Windows.Forms.TextBox txtFMBankName;
         private System.Windows.Forms.Label label162;
         private DevExpress.XtraGrid.GridControl gridControlFMBankDetails;
         private DevExpress.XtraGrid.Views.Tile.TileView tileViewFMBankDetails;
@@ -6938,5 +6922,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit repositoryItemPictureEdit1;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEditDefault;
         private DevExpress.XtraGrid.Columns.TileViewColumn tileViewColumnBankImage;
+        private DevExpress.XtraEditors.LookUpEdit lookupBank;
     }
 }

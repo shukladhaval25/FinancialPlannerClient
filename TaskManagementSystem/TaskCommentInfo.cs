@@ -16,6 +16,7 @@ namespace FinancialPlannerClient.TaskManagementSystem
         private readonly string GET_TASK_COMMENTS = "TaskCommentController/GetAllComments?taskId={0}";
         private readonly string GET_TASK_COMMENT_BY_ID = "TaskCommentController/GetTaskComment?id={0}";
         private readonly string ADD_TASK_COMMENT = "TaskCommentController/Add";
+        private readonly string UPDATE_TASK_COMMENT = "TaskCommentController/Update";
         public IList<TaskComment> GetTaskComments(int taskId)
         {
             IList<TaskComment> taskComments = new List<TaskComment>();
@@ -49,6 +50,28 @@ namespace FinancialPlannerClient.TaskManagementSystem
                 MethodBase currentMethodName = sf.GetMethod();
                 LogDebug(currentMethodName.Name, ex);
                 return null;
+            }
+        }
+
+        internal bool Update(TaskComment taskComment)
+        {
+            try
+            {
+                FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
+                string apiurl = Program.WebServiceUrl + "/" + UPDATE_TASK_COMMENT;
+                RestAPIExecutor restApiExecutor = new RestAPIExecutor();
+                JSONSerialization jSON = new JSONSerialization();
+                string jsonStr = jSON.SerializeToString<TaskComment>(taskComment);
+                var restResult = restApiExecutor.Execute<TaskComment>(apiurl, taskComment, "POST");
+                return true;
+            }
+            catch (Exception ex)
+            {
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
+                LogDebug(currentMethodName.Name, ex);
+                return false;
             }
         }
 

@@ -20,6 +20,7 @@ namespace FinancialPlannerClient.TaskManagementSystem
         public TaskCommentView(int id)
         {
             this.taskId = id;
+            this.taskComment = new TaskComment();
             InitializeComponent();
         }
 
@@ -32,8 +33,8 @@ namespace FinancialPlannerClient.TaskManagementSystem
 
         private void TaskComment_Load(object sender, EventArgs e)
         {
-            txtComment.Tag = taskComment.Id;
-            txtComment.Text = taskComment.Comment;            
+            txtComment.Tag = (taskComment != null) ? taskComment.Id : 0;
+            txtComment.Text =(taskComment != null) ? taskComment.Comment : string.Empty;            
         }
 
         private void btnCloseTask_Click(object sender, EventArgs e)
@@ -53,12 +54,15 @@ namespace FinancialPlannerClient.TaskManagementSystem
             bool isSaved = false;
             if (taskComment.Id == 0)
                 isSaved = new TaskCommentInfo().Add(taskComment);
-
+            else
+                isSaved = new TaskCommentInfo().Update(taskComment);
             if (isSaved)
             {
                 DevExpress.XtraEditors.XtraMessageBox.Show("Record saved sucessfully.",
                    "Save", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 btnSaveTask.Enabled = false;
+                this.DialogResult = DialogResult.OK;
+                this.Close();
             }
 
         }
@@ -68,7 +72,7 @@ namespace FinancialPlannerClient.TaskManagementSystem
             taskComment.TaskId  = taskId;
             taskComment.CommantedBy = Program.CurrentUser.Id;
             taskComment.Comment = txtComment.Text.Replace("'", "''");
-            taskComment.IsEditable = (taskComment.Id > 0) ? true : false;
+            taskComment.IsEdited = (taskComment.Id > 0) ? true : false;
             return taskComment;
         }
     }

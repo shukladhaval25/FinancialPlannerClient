@@ -156,6 +156,7 @@
     <Compile Include="Clients\AllClientsList.Designer.cs">
       <DependentUpon>AllClientsList.cs</DependentUpon>
     </Compile>
+    <Compile Include="Clients\BankInfo.cs" />
     <Compile Include="Clients\ClientEmailView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -291,6 +292,12 @@
     <Compile Include="Master\AreaImplimenter.cs" />
     <Compile Include="Master\AreaInfo.cs" />
     <Compile Include="Master\AssumptionMasterInfo.cs" />
+    <Compile Include="Master\BankView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Master\BankView.Designer.cs">
+      <DependentUpon>BankView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Master\ClientRatingImplimenter.cs" />
     <Compile Include="Master\Other.cs">
       <SubType>Form</SubType>
@@ -874,6 +881,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Master\AssumptionMaster.resx">
       <DependentUpon>AssumptionMaster.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Master\BankView.resx">
+      <DependentUpon>BankView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Master\Other.resx">
       <DependentUpon>Other.cs</DependentUpon>

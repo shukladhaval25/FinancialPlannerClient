@@ -286,12 +286,19 @@ namespace FinancialPlannerClient.TaskManagementSystem
         private void btnAdd_Click(object sender, EventArgs e)
         {
             TaskCommentView taskCommentView = new TaskCommentView(taskCard.Id);
-            taskCommentView.ShowDialog();
+            if (taskCommentView.ShowDialog() == DialogResult.OK)
+            {
+                fillupComments();
+            }
         }
 
         private void tileViewComment_ItemClick(object sender, DevExpress.XtraGrid.Views.Tile.TileViewItemClickEventArgs e)
         {
-
+            //string isEdited = ((System.Data.DataRowView)tileViewComment.GetRow(e.Item.RowHandle)).Row.ItemArray[5].ToString();
+            //if (isEdited == "True")
+            //{
+            //        (((System.Data.DataRowView)tileViewComment.GetRow(e.Item.RowHandle)).Row.
+            //}
         }
 
         private void tileViewComment_ItemDoubleClick(object sender, DevExpress.XtraGrid.Views.Tile.TileViewItemClickEventArgs e)
@@ -349,10 +356,32 @@ namespace FinancialPlannerClient.TaskManagementSystem
             if (taskComment.CommantedBy == Program.CurrentUser.Id)
             {
                 TaskCommentView taskCommentView = new TaskCommentView(taskComment, taskCard.Id);
-                taskCommentView.ShowDialog();
+                if (taskCommentView.ShowDialog() == DialogResult.OK)
+                    fillupComments();
             }
             else
                 DevExpress.XtraEditors.XtraMessageBox.Show("You can not modify others comment", "Comment", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        private void tileViewComment_CustomRowCellEditForEditing(object sender, DevExpress.XtraGrid.Views.Grid.CustomRowCellEditEventArgs e)
+        {
+            
+        }
+
+        private void tileViewComment_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        {
+            if (e.Column.Caption == "IsEdited" && e.Value.ToString() == "True")
+            {
+                bool visiblImg = true;
+            }
+        }
+
+        private void tileViewComment_CellValueChanging(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        {
+            if (e.Column.Caption == "IsEdited" && e.Value.ToString() == "True")
+            {
+                bool visiblImg = true;
+            }
         }
     }
 }
