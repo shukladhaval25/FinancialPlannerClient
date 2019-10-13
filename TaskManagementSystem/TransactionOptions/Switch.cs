@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DevExpress.XtraVerticalGrid;
+using FinancialPlanner.Common;
 using FinancialPlanner.Common.Model;
 using FinancialPlanner.Common.Model.TaskManagement.MFTransactions;
 using FinancialPlannerClient.Clients;
@@ -15,9 +16,14 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
     public class Switch : ITransactionType
     {
         IList<ARN> arns;
+        internal IList<AMC> amcs;
         IList<Client> clients;
         Client currentClient;
         IList<Scheme> schemes;
+        internal int fromSchemeId;
+        internal int selectedSchemeId;
+        List<string> optionalFields = new List<string>();
+        SwitchOpt switchOpt;
 
         readonly string GRID_NAME = "vGridSwitch";
         DevExpress.XtraVerticalGrid.VGridControl vGridTransaction;
@@ -39,7 +45,7 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
         public DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemARN;
         public DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBoxClientGroup;
         public DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBoxMemberName;
-        public DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEditAMC;
+        public DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemAMC;
         public DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEditFolioNumber;
         public DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBoxFromScheme;
         public DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBoxFromOption;
@@ -80,10 +86,14 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             this.repositoryItemComboBoxMemberName = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.repositoryItemComboBoxMemberName.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
 
-            this.repositoryItemTextEditAMC = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
+            this.repositoryItemAMC = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.repositoryItemAMC.EditValueChanged += RepositoryItemAMC_EditValueChanged; ;
+            loadAMC();
+
             this.repositoryItemTextEditFolioNumber = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.repositoryItemComboBoxFromScheme = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.repositoryItemComboBoxFromScheme.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.repositoryItemComboBoxFromScheme.EditValueChanged += repositoryItemComboBoxFromScheme_EditValueChanged;
 
             this.repositoryItemComboBoxFromOption = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.repositoryItemComboBoxFromOption.Items.AddRange(new string[] { "GR", "WDR", "DD" });
@@ -91,6 +101,7 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
 
             this.repositoryItemComboBoxToScheme = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.repositoryItemComboBoxToScheme.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.repositoryItemComboBoxToScheme.EditValueChanged += repositoryItemComboBoxToScheme_EditValueChanged; 
 
             this.repositoryItemComboBoxToOption = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.repositoryItemComboBoxToOption.Items.AddRange(new string[] { "GR", "WDR", "DD" });
@@ -136,7 +147,7 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             this.AMC.Name = "AMC";
             this.AMC.Properties.Caption = "AMC";
             this.AMC.Properties.FieldName = "AMC";
-            this.AMC.Properties.RowEdit = this.repositoryItemTextEditAMC;
+            this.AMC.Properties.RowEdit = this.repositoryItemAMC;
             //
             // FolioNumber
             //
@@ -215,7 +226,7 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
                 this.repositoryItemARN,
                 this.repositoryItemComboBoxClientGroup,
                 this.repositoryItemComboBoxMemberName,
-                this.repositoryItemTextEditAMC,
+                this.repositoryItemAMC,
                 this.repositoryItemTextEditFolioNumber,
                 this.repositoryItemComboBoxFromScheme,
                 this.repositoryItemComboBoxFromOption,
@@ -241,6 +252,32 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
                 this.TransactionDate,
                 this.ModeOfExecution,
                 this.Remark});
+            prepareOptionalFieldsList();
+        }
+
+        private void repositoryItemComboBoxToScheme_EditValueChanged(object sender, EventArgs e)
+        {
+            DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit = (DevExpress.XtraEditors.ComboBoxEdit)sender;
+            if (comboBoxEdit.SelectedItem != null)
+            {
+                Scheme scheme = ((List<Scheme>)schemes).Find(i => i.Name == comboBoxEdit.SelectedItem.ToString());
+                selectedSchemeId = scheme.Id;
+            }
+        }
+
+        private void repositoryItemComboBoxFromScheme_EditValueChanged(object sender, EventArgs e)
+        {
+            DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit = (DevExpress.XtraEditors.ComboBoxEdit)sender;
+            if (comboBoxEdit.SelectedItem != null)
+            {
+                Scheme scheme = ((List<Scheme>)schemes).Find(i => i.Name == comboBoxEdit.SelectedItem.ToString());
+                fromSchemeId = scheme.Id;
+            }
+        }
+
+        private void prepareOptionalFieldsList()
+        {            
+            this.optionalFields.Add(this.Remark.Properties.FieldName);
         }
 
         private void loadScheme()
@@ -259,7 +296,43 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
 
         public void BindDataSource(Object obj)
         {
-            //throw new NotImplementedException();
+            if (obj == null)
+            {
+                LogDebug("switchOpt.BindDataSource()", new ArgumentNullException("object value is null"));
+                return;
+            }
+
+            FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
+
+            switchOpt = jsonSerialization.DeserializeFromString<FinancialPlanner.Common.Model.TaskManagement.MFTransactions.SwitchOpt>(obj.ToString());
+            this.vGridTransaction.Rows["ARN"].Properties.Value = switchOpt.Arn;
+
+            this.vGridTransaction.Rows["ClientGroup"].Properties.Value = getClientName(switchOpt.Cid);
+            this.currentClient = ((List<Client>)clients).Find(i => i.Name == this.vGridTransaction.Rows["ClientGroup"].Properties.Value.ToString());
+            loadMembers();
+            this.vGridTransaction.Rows["MemberName"].Properties.Value = switchOpt.MemberName;
+            
+            this.vGridTransaction.Rows["FolioNumber"].Properties.Value = switchOpt.FolioNumber;
+            this.vGridTransaction.Rows["AMC"].Properties.Value = switchOpt.Amc;
+            repositoryItemAMC.GetDisplayValueByKeyValue(switchOpt.Amc);
+            loadScheme(switchOpt.Amc);
+            this.vGridTransaction.Rows["ToScheme"].Properties.Value = getSchemeName(switchOpt.Scheme);
+            selectedSchemeId = switchOpt.Scheme;
+            //this.vGridTransaction.Rows["ModeOfHolding"].Properties.Value = switchOpt.ModeOfHolding;
+            this.vGridTransaction.Rows["ToOption"].Properties.Value = switchOpt.Options;
+            this.vGridTransaction.Rows["FromScheme"].Properties.Value = getSchemeName(switchOpt.FromSchemeId);
+            fromSchemeId = switchOpt.FromSchemeId;
+            this.vGridTransaction.Rows["FromOption"].Properties.Value = switchOpt.FromOptions;
+            this.vGridTransaction.Rows["Amount"].Properties.Value = switchOpt.Amount;
+            this.vGridTransaction.Rows["TransactionDate"].Properties.Value = switchOpt.TransactionDate;
+            this.vGridTransaction.Rows["ModeOfExecution"].Properties.Value = switchOpt.ModeOfExecution;
+            this.vGridTransaction.Rows["Remark"].Properties.Value = switchOpt.Remark;
+        }
+
+        internal string getSchemeName(int schemeId)
+        {
+            Scheme scheme = new Scheme();
+            return (schemes.TryGetValue(schemes.FindIndex(i => i.Id == schemeId), out scheme)) ? scheme.Name : string.Empty;
         }
 
         public VGridControl GetGridControl()
@@ -280,6 +353,15 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
                 this.vGridTransaction.Rows[rowindex].Height = 20;
             }
             this.vGridTransaction.Refresh();
+        }
+
+        private void LogDebug(string name, Exception ex)
+        {
+            DebuggerLogInfo debuggerInfo = new DebuggerLogInfo();
+            debuggerInfo.ClassName = this.GetType().Name;
+            debuggerInfo.Method = name;
+            debuggerInfo.ExceptionInfo = ex;
+            Logger.LogDebug(debuggerInfo);
         }
 
         private void RepositoryItemTextEditAmount_Validating(object sender, System.ComponentModel.CancelEventArgs e)
@@ -347,12 +429,99 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
 
         public object GetTransactionType()
         {
-            throw new NotImplementedException();
+            switchOpt = new SwitchOpt();
+            if (this.vGridTransaction.Rows.Count > 0)
+            {
+                switchOpt.Cid = this.currentClient.ID;
+                switchOpt.Arn = int.Parse(this.vGridTransaction.Rows["ARN"].Properties.Value.ToString());
+                switchOpt.MemberName = this.vGridTransaction.Rows["MemberName"].Properties.Value.ToString();
+                
+                switchOpt.Amc = int.Parse(this.vGridTransaction.Rows["AMC"].Properties.Value.ToString());
+                switchOpt.FolioNumber = this.vGridTransaction.Rows["FolioNumber"].Properties.Value.ToString();
+
+                switchOpt.FromOptions = this.vGridTransaction.Rows["FromOption"].Properties.Value.ToString();
+                switchOpt.FromSchemeId = fromSchemeId;
+
+                switchOpt.Scheme = selectedSchemeId;
+                switchOpt.Options = this.vGridTransaction.Rows["ToOption"].Properties.Value.ToString();
+                switchOpt.Amount = double.Parse(this.vGridTransaction.Rows["Amount"].Properties.Value.ToString());
+                                
+                switchOpt.TransactionDate = (DateTime)this.vGridTransaction.Rows["TransactionDate"].Properties.Value;
+                //switchOpt.switchOptStartDate = (DateTime)this.vGridTransaction.Rows["switchOptStartDate"].Properties.Value;
+                //switchOpt.switchOptEndDate = (DateTime)this.vGridTransaction.Rows["switchOptEndDate"].Properties.Value;
+                switchOpt.ModeOfExecution = this.vGridTransaction.Rows["ModeOfExecution"].Properties.Value.ToString();
+                switchOpt.Remark = (this.vGridTransaction.Rows["Remark"].Properties.Value != null) ?
+                    this.vGridTransaction.Rows["Remark"].Properties.Value.ToString() : string.Empty;
+            }
+            return switchOpt;
         }
 
         public bool IsAllRequireInputAvailable()
         {
-            throw new NotImplementedException();
+            for (int rowIndex = 0; rowIndex < this.vGridTransaction.Rows.Count; rowIndex++)
+            {
+                if (!optionalFields.Contains(this.vGridTransaction.Rows[rowIndex].Properties.FieldName) &&
+                   this.vGridTransaction.Rows[rowIndex].Properties.Value == null)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        private void RepositoryItemAMC_EditValueChanged(object sender, EventArgs e)
+        {
+            DevExpress.XtraEditors.LookUpEdit comboBoxEdit = (DevExpress.XtraEditors.LookUpEdit)sender;
+            if (comboBoxEdit.SelectedText != null)
+            {
+                AMC amcobject = ((List<AMC>)amcs).Find(i => i.Name == comboBoxEdit.Text.ToString());
+                loadScheme(amcobject.Id);
+            }
+        }
+
+        internal void loadScheme(int amcId)
+        {
+            SchemeInfo schemeInfo = new SchemeInfo();
+            if (schemes == null)
+                schemes = schemeInfo.GetAll(amcId);
+
+            repositoryItemComboBoxFromScheme.Items.Clear();
+            foreach (Scheme scheme in schemes)
+            {
+                repositoryItemComboBoxFromScheme.Items.Add(scheme.Name);
+            }
+        }
+
+        private void loadAMC()
+        {
+            AMCInfo aMCInfo = new AMCInfo();
+            amcs = aMCInfo.GetAll();
+            DataTable dtAMC = getAMCTable();
+            repositoryItemAMC.DataSource = dtAMC;
+            repositoryItemAMC.DisplayMember = "Name";
+            repositoryItemAMC.ValueMember = "Id";
+            repositoryItemAMC.NullValuePrompt = "Please select valid value.";
+        }
+
+        private DataTable getAMCTable()
+        {
+            DataTable dtAMC = new DataTable();
+            dtAMC.Columns.Add("Id", typeof(System.Int64));
+            dtAMC.Columns.Add("Name", typeof(System.String));
+            foreach (AMC amc in amcs)
+            {
+                DataRow dr = dtAMC.NewRow();
+                dr["Id"] = amc.Id;
+                dr["Name"] = amc.Name;
+                dtAMC.Rows.Add(dr);
+            }
+            return dtAMC;
+        }
+
+        private string getClientName(int cid)
+        {
+            Client client = new Client();
+            return (clients.TryGetValue(clients.FindIndex(i => i.ID == cid), out client)) ? client.Name : string.Empty;
         }
     }
 }
