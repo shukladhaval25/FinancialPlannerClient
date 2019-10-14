@@ -165,6 +165,7 @@ namespace FinancialPlannerClient.TaskManagementSystem
                 cmbTransactionType.Properties.Items.Add("STP");
                 cmbTransactionType.Properties.Items.Add("SIP Fresh");
                 cmbTransactionType.Properties.Items.Add("SIP Old");
+                cmbTransactionType.Properties.Items.Add("SWP");
             }
         }
 

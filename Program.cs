@@ -46,6 +46,7 @@ namespace FinancialPlannerClient
                 container.RegisterType<ITransactionType, STPTrans>("STP");
                 container.RegisterType<ITransactionType, SIPFresh>("SIP Fresh");
                 container.RegisterType<ITransactionType, SIPOld>("SIP Old");
+                container.RegisterType<ITransactionType, SWPTrans>("SWP");
             }
             catch(Exception ex)
             {

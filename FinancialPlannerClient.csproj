@@ -767,6 +767,7 @@
     <Compile Include="TaskManagementSystem\TransactionOptions\SIPOld.cs" />
     <Compile Include="TaskManagementSystem\TransactionOptions\STPTrans.cs" />
     <Compile Include="TaskManagementSystem\TransactionOptions\Switch.cs" />
+    <Compile Include="TaskManagementSystem\TransactionOptions\SWPTrans.cs" />
     <Compile Include="TaskManagementSystem\ViewTaskCard.cs">
       <SubType>Form</SubType>
     </Compile>
