@@ -7,9 +7,10 @@ using FinancialPlannerClient.Master.TaskMaster;
 using System;
 using System.Collections.Generic;
 using System.Data;
+
 namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
 {
-    public class STPTrans : ITransactionType
+    class STPCancellationTrans : ITransactionType
     {
         IList<ARN> arns;
         internal IList<AMC> amcs;
@@ -19,9 +20,9 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
         internal int fromSchemeId;
         internal int selectedSchemeId;
         List<string> optionalFields = new List<string>();
-        STP stp;
+        STPCancellation stpCancellation;
 
-        readonly string GRID_NAME = "vGridSTP";
+        readonly string GRID_NAME = "vGridSTPCancellation";
         DevExpress.XtraVerticalGrid.VGridControl vGridTransaction;
 
         private DevExpress.XtraVerticalGrid.Rows.EditorRow ARN;
@@ -34,8 +35,8 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
         private DevExpress.XtraVerticalGrid.Rows.EditorRow ToScheme;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow ToOptions;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow Amount;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow Duration;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow Frequency;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow STPDate;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow TransactionDate;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow ModeOfExecution;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow Remark;
 
@@ -49,8 +50,8 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
         public DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBoxToScheme;
         public DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBoxToOption;
         public DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEditAmount;
-        public DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEditDuration;
-        public DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBoxFrequency;
+        public DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEditSTPDate;
+        public DevExpress.XtraEditors.Repository.RepositoryItemDateEdit repositoryItemDateEditTransactionDate;
         public DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBoxModeOfExecution;
         public DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEditRemark;
 
@@ -69,8 +70,8 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             this.ToScheme = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.ToOptions = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.Amount = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.Duration = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.Frequency = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.STPDate = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.TransactionDate = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.ModeOfExecution = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.Remark = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
 
@@ -112,14 +113,12 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             this.repositoryItemTextEditAmount.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.repositoryItemTextEditAmount.Validating += RepositoryItemTextEditAmount_Validating;
 
-            this.repositoryItemTextEditDuration = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
-            this.repositoryItemTextEditDuration.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.repositoryItemTextEditDuration.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.repositoryItemTextEditDuration.Validating += RepositoryItemTextEditAmount_Validating;
+            this.repositoryItemTextEditSTPDate = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
+            this.repositoryItemTextEditSTPDate.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.repositoryItemTextEditSTPDate.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.repositoryItemTextEditSTPDate.Validating += RepositoryItemTextEditAmount_Validating;
 
-            this.repositoryItemComboBoxFrequency = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
-            this.repositoryItemComboBoxFrequency.Items.AddRange(new string[] { "Weekly", "Monthly", "Quarterly" });
-            this.repositoryItemComboBoxFrequency.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.repositoryItemDateEditTransactionDate = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
 
             this.repositoryItemComboBoxModeOfExecution = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.repositoryItemComboBoxModeOfExecution.Items.AddRange(new string[] { "BSE", "AMC App", "Physical" });
@@ -200,18 +199,18 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             //
             // Duration
             //
-            this.Duration.Name = "Duration";
-            this.Duration.Properties.Caption = "Duration";
-            this.Duration.Properties.FieldName = "Duration";
-            this.Duration.Properties.Format.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.Duration.Properties.RowEdit = this.repositoryItemTextEditAmount;
+            this.STPDate.Name = "STPDate";
+            this.STPDate.Properties.Caption = "STP Date";
+            this.STPDate.Properties.FieldName = "STPDate";
+            this.STPDate.Properties.Format.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.STPDate.Properties.RowEdit = this.repositoryItemTextEditAmount;
             //
             // Frequency
             //
-            this.Frequency.Name = "Frequency";
-            this.Frequency.Properties.Caption = "Frequency";
-            this.Frequency.Properties.FieldName = "Frequency";
-            this.Frequency.Properties.RowEdit = this.repositoryItemComboBoxFrequency;
+            this.TransactionDate.Name = "TransactionDate";
+            this.TransactionDate.Properties.Caption = "Transaction Date";
+            this.TransactionDate.Properties.FieldName = "TransactionDate";
+            this.TransactionDate.Properties.RowEdit = this.repositoryItemDateEditTransactionDate;
             //
             // ModeOfExecution
             //
@@ -246,8 +245,8 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
                 this.repositoryItemComboBoxToScheme,
                 this.repositoryItemComboBoxToOption,
                 this.repositoryItemTextEditAmount,
-                this.repositoryItemTextEditDuration,
-                this.repositoryItemComboBoxFrequency,
+                this.repositoryItemTextEditSTPDate,
+                this.repositoryItemDateEditTransactionDate,
                 this.repositoryItemComboBoxModeOfExecution,
                 this.repositoryItemTextEditRemark
             });
@@ -263,8 +262,8 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
                 this.ToScheme,
                 this.ToOptions,
                 this.Amount,
-                this.Duration,
-                this.Frequency,
+                this.STPDate,
+                this.TransactionDate,
                 this.ModeOfExecution,
                 this.Remark});
             prepareOptionalFieldsList();
@@ -313,36 +312,36 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
         {
             if (obj == null)
             {
-                LogDebug("STP.BindDataSource()", new ArgumentNullException("object value is null"));
+                LogDebug("STPCancellation.BindDataSource()", new ArgumentNullException("object value is null"));
                 return;
             }
 
             FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
 
-            stp = jsonSerialization.DeserializeFromString<FinancialPlanner.Common.Model.TaskManagement.MFTransactions.STP>(obj.ToString());
-            this.vGridTransaction.Rows["ARN"].Properties.Value = stp.Arn;
+            stpCancellation = jsonSerialization.DeserializeFromString<FinancialPlanner.Common.Model.TaskManagement.MFTransactions.STPCancellation>(obj.ToString());
+            this.vGridTransaction.Rows["ARN"].Properties.Value = stpCancellation.Arn;
 
-            this.vGridTransaction.Rows["ClientGroup"].Properties.Value = getClientName(stp.Cid);
+            this.vGridTransaction.Rows["ClientGroup"].Properties.Value = getClientName(stpCancellation.Cid);
             this.currentClient = ((List<Client>)clients).Find(i => i.Name == this.vGridTransaction.Rows["ClientGroup"].Properties.Value.ToString());
             loadMembers();
-            this.vGridTransaction.Rows["MemberName"].Properties.Value = stp.MemberName;
+            this.vGridTransaction.Rows["MemberName"].Properties.Value = stpCancellation.MemberName;
 
-            this.vGridTransaction.Rows["FolioNumber"].Properties.Value = stp.FolioNumber;
-            this.vGridTransaction.Rows["AMC"].Properties.Value = stp.Amc;
-            repositoryItemAMC.GetDisplayValueByKeyValue(stp.Amc);
-            loadScheme(stp.Amc);
-            this.vGridTransaction.Rows["ToScheme"].Properties.Value = getSchemeName(stp.Scheme);
-            selectedSchemeId = stp.Scheme;
+            this.vGridTransaction.Rows["FolioNumber"].Properties.Value = stpCancellation.FolioNumber;
+            this.vGridTransaction.Rows["AMC"].Properties.Value = stpCancellation.Amc;
+            repositoryItemAMC.GetDisplayValueByKeyValue(stpCancellation.Amc);
+            loadScheme(stpCancellation.Amc);
+            this.vGridTransaction.Rows["ToScheme"].Properties.Value = getSchemeName(stpCancellation.Scheme);
+            selectedSchemeId = stpCancellation.Scheme;
             //this.vGridTransaction.Rows["ModeOfHolding"].Properties.Value = switchOpt.ModeOfHolding;
-            this.vGridTransaction.Rows["ToOption"].Properties.Value = stp.Options;
-            this.vGridTransaction.Rows["FromScheme"].Properties.Value = getSchemeName(stp.FromSchemeId);
-            fromSchemeId = stp.FromSchemeId;
-            this.vGridTransaction.Rows["FromOption"].Properties.Value = stp.FromOptions;
-            this.vGridTransaction.Rows["Amount"].Properties.Value = stp.Amount;
-            this.vGridTransaction.Rows["Duration"].Properties.Value = stp.Duration;
-            this.vGridTransaction.Rows["Frequency"].Properties.Value = stp.Frequency;
-            this.vGridTransaction.Rows["ModeOfExecution"].Properties.Value = stp.ModeOfExecution;
-            this.vGridTransaction.Rows["Remark"].Properties.Value = stp.Remark;
+            this.vGridTransaction.Rows["ToOption"].Properties.Value = stpCancellation.Options;
+            this.vGridTransaction.Rows["FromScheme"].Properties.Value = getSchemeName(stpCancellation.FromSchemeId);
+            fromSchemeId = stpCancellation.FromSchemeId;
+            this.vGridTransaction.Rows["FromOption"].Properties.Value = stpCancellation.FromOptions;
+            this.vGridTransaction.Rows["Amount"].Properties.Value = stpCancellation.Amount;
+            this.vGridTransaction.Rows["STPDate"].Properties.Value = stpCancellation.StpDate;
+            this.vGridTransaction.Rows["TransactionDate"].Properties.Value = stpCancellation.TransactionDate;
+            this.vGridTransaction.Rows["ModeOfExecution"].Properties.Value = stpCancellation.ModeOfExecution;
+            this.vGridTransaction.Rows["Remark"].Properties.Value = stpCancellation.Remark;
         }
 
         internal string getSchemeName(int schemeId)
@@ -445,30 +444,30 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
 
         public object GetTransactionType()
         {
-            stp = new STP();
+            stpCancellation = new STPCancellation();
             if (this.vGridTransaction.Rows.Count > 0)
             {
-                stp.Cid = this.currentClient.ID;
-                stp.Arn = int.Parse(this.vGridTransaction.Rows["ARN"].Properties.Value.ToString());
-                stp.MemberName = this.vGridTransaction.Rows["MemberName"].Properties.Value.ToString();
+                stpCancellation.Cid = this.currentClient.ID;
+                stpCancellation.Arn = int.Parse(this.vGridTransaction.Rows["ARN"].Properties.Value.ToString());
+                stpCancellation.MemberName = this.vGridTransaction.Rows["MemberName"].Properties.Value.ToString();
 
-                stp.Amc = int.Parse(this.vGridTransaction.Rows["AMC"].Properties.Value.ToString());
-                stp.FolioNumber = this.vGridTransaction.Rows["FolioNumber"].Properties.Value.ToString();
+                stpCancellation.Amc = int.Parse(this.vGridTransaction.Rows["AMC"].Properties.Value.ToString());
+                stpCancellation.FolioNumber = this.vGridTransaction.Rows["FolioNumber"].Properties.Value.ToString();
 
-                stp.FromOptions = this.vGridTransaction.Rows["FromOption"].Properties.Value.ToString();
-                stp.FromSchemeId = fromSchemeId;
+                stpCancellation.FromOptions = this.vGridTransaction.Rows["FromOption"].Properties.Value.ToString();
+                stpCancellation.FromSchemeId = fromSchemeId;
 
-                stp.Scheme = selectedSchemeId;
-                stp.Options = this.vGridTransaction.Rows["ToOption"].Properties.Value.ToString();
-                stp.Amount = double.Parse(this.vGridTransaction.Rows["Amount"].Properties.Value.ToString());
+                stpCancellation.Scheme = selectedSchemeId;
+                stpCancellation.Options = this.vGridTransaction.Rows["ToOption"].Properties.Value.ToString();
+                stpCancellation.Amount = double.Parse(this.vGridTransaction.Rows["Amount"].Properties.Value.ToString());
 
-                stp.Duration = int.Parse(this.vGridTransaction.Rows["Duration"].Properties.Value.ToString());
-                stp.Frequency = this.vGridTransaction.Rows["Frequency"].Properties.Value.ToString();
-                stp.ModeOfExecution = this.vGridTransaction.Rows["ModeOfExecution"].Properties.Value.ToString();
-                stp.Remark = (this.vGridTransaction.Rows["Remark"].Properties.Value != null) ?
+                stpCancellation.StpDate = int.Parse(this.vGridTransaction.Rows["STPDate"].Properties.Value.ToString());
+                stpCancellation.TransactionDate = (DateTime)this.vGridTransaction.Rows["TransactionDate"].Properties.Value;
+                stpCancellation.ModeOfExecution = this.vGridTransaction.Rows["ModeOfExecution"].Properties.Value.ToString();
+                stpCancellation.Remark = (this.vGridTransaction.Rows["Remark"].Properties.Value != null) ?
                     this.vGridTransaction.Rows["Remark"].Properties.Value.ToString() : string.Empty;
             }
-            return stp;
+            return stpCancellation;
         }
 
         public bool IsAllRequireInputAvailable()

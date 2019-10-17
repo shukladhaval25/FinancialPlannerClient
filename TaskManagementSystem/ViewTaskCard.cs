@@ -66,7 +66,7 @@ namespace FinancialPlannerClient.TaskManagementSystem
         {
             fillupProjectCombobox();
             fillupCustomer();
-            fillupAssingTo();
+            fillupAssignTo();
 
             fillupTaskView();
 
@@ -96,7 +96,7 @@ namespace FinancialPlannerClient.TaskManagementSystem
 
         }
 
-        private void fillupAssingTo()
+        private void fillupAssignTo()
         {
             users = new UserServiceHelper().GetAll();
             cmbAssignTo.Properties.Items.Clear();
@@ -166,6 +166,7 @@ namespace FinancialPlannerClient.TaskManagementSystem
                 cmbTransactionType.Properties.Items.Add("SIP Fresh");
                 cmbTransactionType.Properties.Items.Add("SIP Old");
                 cmbTransactionType.Properties.Items.Add("SWP");
+                cmbTransactionType.Properties.Items.Add("STP Cancellation");
             }
         }
 
@@ -382,6 +383,22 @@ namespace FinancialPlannerClient.TaskManagementSystem
             if (e.Column.Caption == "IsEdited" && e.Value.ToString() == "True")
             {
                 bool visiblImg = true;
+            }
+        }
+
+        private void cmbAssignTo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(cmbAssignTo.Text))
+            {
+                cmbAssignTo.Tag = users.FirstOrDefault(i => i.UserName == cmbAssignTo.Text).Id;
+            }
+        }
+
+        private void cmbOwner_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(cmbOwner.Text))
+            {
+                cmbOwner.Tag = users.FirstOrDefault(i => i.UserName == cmbOwner.Text).Id;
             }
         }
     }

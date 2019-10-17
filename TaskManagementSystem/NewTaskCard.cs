@@ -29,18 +29,18 @@ namespace FinancialPlannerClient.TaskManagementSystem
         {
             fillupProjectCombobox();
             fillupCustomer();
-            fillupAssingTo();        
+            fillupAssignTo();        
             txtCreatedBy.Text = Program.CurrentUser.UserName;
             txtCreatedOn.Text = DateTime.Now.ToString();
         }
 
-        private void fillupAssingTo()
+        private void fillupAssignTo()
         {
             users = new UserServiceHelper().GetAll();
-            cmbAssingTo.Properties.Items.Clear();
+            cmbAssignTo.Properties.Items.Clear();
             cmbOwner.Properties.Items.Clear();
             cmbOwner.Properties.Items.AddRange(users.Select(i => i.UserName).ToList());
-            cmbAssingTo.Properties.Items.AddRange(users.Select(i => i.UserName).ToList());
+            cmbAssignTo.Properties.Items.AddRange(users.Select(i => i.UserName).ToList());
         }
 
         private void fillupCustomer()
@@ -105,6 +105,7 @@ namespace FinancialPlannerClient.TaskManagementSystem
                 cmbTransactionType.Properties.Items.Add("SIP Fresh");
                 cmbTransactionType.Properties.Items.Add("SIP Old");
                 cmbTransactionType.Properties.Items.Add("SWP");
+                cmbTransactionType.Properties.Items.Add("STP Cancellation");
 
             }
             else
@@ -177,7 +178,7 @@ namespace FinancialPlannerClient.TaskManagementSystem
             taskCard.UpdatedBy = taskCard.CreatedBy;
             taskCard.UpdatedByUserName = Program.CurrentUser.UserName;
             taskCard.UpdatedOn = System.DateTime.Now.Date;
-            taskCard.AssignTo = (!string.IsNullOrEmpty(cmbAssingTo.Text) ? int.Parse(cmbAssingTo.Tag.ToString()) : 0);
+            taskCard.AssignTo = (!string.IsNullOrEmpty(cmbAssignTo.Text) ? int.Parse(cmbAssignTo.Tag.ToString()) : 0);
             taskCard.Priority = (Priority)(cmbPriority.SelectedIndex);
             taskCard.TaskStatus = (TaskStatus)(cmbTaskStatus.SelectedIndex);
             taskCard.DueDate = dtDueDate.DateTime;
@@ -239,9 +240,9 @@ namespace FinancialPlannerClient.TaskManagementSystem
 
         private void cmbAssingTo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(cmbAssingTo.Text))
+            if (!string.IsNullOrEmpty(cmbAssignTo.Text))
             {
-                cmbAssingTo.Tag = users.FirstOrDefault(i => i.UserName == cmbAssingTo.Text).Id;
+                cmbAssignTo.Tag = users.FirstOrDefault(i => i.UserName == cmbAssignTo.Text).Id;
             }
         }
 

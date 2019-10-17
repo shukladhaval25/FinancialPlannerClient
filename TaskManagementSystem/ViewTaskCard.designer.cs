@@ -85,6 +85,7 @@
             this.btnAdd = new DevExpress.XtraEditors.SimpleButton();
             this.gridComments = new DevExpress.XtraGrid.GridControl();
             this.tileViewComment = new DevExpress.XtraGrid.Views.Tile.TileView();
+            this.tileViewColumnSeprator = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.tileViewColumn1 = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.tileViewColumnEditedImg = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.tabNavigationHistoryPage = new DevExpress.XtraBars.Navigation.TabNavigationPage();
@@ -112,7 +113,6 @@
             this.btnCloseTask = new DevExpress.XtraEditors.SimpleButton();
             this.btnSaveTask = new DevExpress.XtraEditors.SimpleButton();
             this.cmbOwner = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.tileViewColumnSeprator = new DevExpress.XtraGrid.Columns.TileViewColumn();
             ((System.ComponentModel.ISupportInitialize)(this.txtCreatedBy.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCreatedOn.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbAssignTo.Properties)).BeginInit();
@@ -278,6 +278,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cmbAssignTo.Size = new System.Drawing.Size(311, 20);
             this.cmbAssignTo.TabIndex = 13;
+            this.cmbAssignTo.SelectedIndexChanged += new System.EventHandler(this.cmbAssignTo_SelectedIndexChanged);
             // 
             // labelControl6
             // 
@@ -553,6 +554,17 @@
             this.tileViewComment.ItemDoubleClick += new DevExpress.XtraGrid.Views.Tile.TileViewItemClickEventHandler(this.tileViewComment_ItemDoubleClick);
             this.tileViewComment.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.tileViewComment_CellValueChanged);
             this.tileViewComment.CellValueChanging += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.tileViewComment_CellValueChanging);
+            // 
+            // tileViewColumnSeprator
+            // 
+            this.tileViewColumnSeprator.AppearanceCell.BackColor = System.Drawing.Color.Silver;
+            this.tileViewColumnSeprator.AppearanceCell.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.tileViewColumnSeprator.AppearanceCell.Options.UseBackColor = true;
+            this.tileViewColumnSeprator.Caption = "Seprator";
+            this.tileViewColumnSeprator.Name = "tileViewColumnSeprator";
+            this.tileViewColumnSeprator.Visible = true;
+            this.tileViewColumnSeprator.VisibleIndex = 0;
+            this.tileViewColumnSeprator.Width = 700;
             // 
             // tileViewColumn1
             // 
@@ -833,17 +845,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cmbOwner.Size = new System.Drawing.Size(150, 20);
             this.cmbOwner.TabIndex = 49;
-            // 
-            // tileViewColumnSeprator
-            // 
-            this.tileViewColumnSeprator.AppearanceCell.BackColor = System.Drawing.Color.Silver;
-            this.tileViewColumnSeprator.AppearanceCell.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.tileViewColumnSeprator.AppearanceCell.Options.UseBackColor = true;
-            this.tileViewColumnSeprator.Caption = "Seprator";
-            this.tileViewColumnSeprator.Name = "tileViewColumnSeprator";
-            this.tileViewColumnSeprator.Visible = true;
-            this.tileViewColumnSeprator.VisibleIndex = 0;
-            this.tileViewColumnSeprator.Width = 700;
+            this.cmbOwner.SelectedIndexChanged += new System.EventHandler(this.cmbOwner_SelectedIndexChanged);
             // 
             // ViewTaskCard
             // 

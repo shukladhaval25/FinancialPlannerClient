@@ -47,7 +47,7 @@
             this.txtCreatedBy = new DevExpress.XtraEditors.TextEdit();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.txtCreatedOn = new DevExpress.XtraEditors.TextEdit();
-            this.cmbAssingTo = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.cmbAssignTo = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.cmbPriority = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
@@ -82,7 +82,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtTitle.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCreatedBy.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCreatedOn.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbAssingTo.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbAssignTo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbPriority.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtDueDate.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtDueDate.Properties)).BeginInit();
@@ -211,14 +211,14 @@
             // 
             // cmbAssingTo
             // 
-            this.cmbAssingTo.Location = new System.Drawing.Point(581, 247);
-            this.cmbAssingTo.Name = "cmbAssingTo";
-            this.cmbAssingTo.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.cmbAssignTo.Location = new System.Drawing.Point(581, 247);
+            this.cmbAssignTo.Name = "cmbAssingTo";
+            this.cmbAssignTo.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cmbAssingTo.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.cmbAssingTo.Size = new System.Drawing.Size(326, 20);
-            this.cmbAssingTo.TabIndex = 14;
-            this.cmbAssingTo.SelectedIndexChanged += new System.EventHandler(this.cmbAssingTo_SelectedIndexChanged);
+            this.cmbAssignTo.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.cmbAssignTo.Size = new System.Drawing.Size(326, 20);
+            this.cmbAssignTo.TabIndex = 14;
+            this.cmbAssignTo.SelectedIndexChanged += new System.EventHandler(this.cmbAssingTo_SelectedIndexChanged);
             // 
             // labelControl6
             // 
@@ -544,7 +544,7 @@
             this.Controls.Add(this.labelControl8);
             this.Controls.Add(this.cmbPriority);
             this.Controls.Add(this.labelControl7);
-            this.Controls.Add(this.cmbAssingTo);
+            this.Controls.Add(this.cmbAssignTo);
             this.Controls.Add(this.labelControl6);
             this.Controls.Add(this.labelControl5);
             this.Controls.Add(this.txtCreatedOn);
@@ -570,7 +570,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtTitle.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCreatedBy.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCreatedOn.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbAssingTo.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbAssignTo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbPriority.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtDueDate.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtDueDate.Properties)).EndInit();
@@ -606,7 +606,7 @@
         private DevExpress.XtraEditors.TextEdit txtCreatedBy;
         private DevExpress.XtraEditors.LabelControl labelControl5;
         private DevExpress.XtraEditors.TextEdit txtCreatedOn;
-        private DevExpress.XtraEditors.ComboBoxEdit cmbAssingTo;
+        private DevExpress.XtraEditors.ComboBoxEdit cmbAssignTo;
         private DevExpress.XtraEditors.LabelControl labelControl6;
         private DevExpress.XtraEditors.ComboBoxEdit cmbPriority;
         private DevExpress.XtraEditors.LabelControl labelControl7;
