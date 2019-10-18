@@ -106,7 +106,7 @@ namespace FinancialPlannerClient.TaskManagementSystem
                 cmbTransactionType.Properties.Items.Add("SIP Old");
                 cmbTransactionType.Properties.Items.Add("SWP");
                 cmbTransactionType.Properties.Items.Add("STP Cancellation");
-
+                cmbTransactionType.Properties.Items.Add("SIP Cancellation");
             }
             else
             {

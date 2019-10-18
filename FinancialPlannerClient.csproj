@@ -763,6 +763,7 @@
       <DependentUpon>NewProject.cs</DependentUpon>
     </Compile>
     <Compile Include="TaskManagementSystem\Services\TaskProjectInfo.cs" />
+    <Compile Include="TaskManagementSystem\TransactionOptions\SIPCancellationTrans.cs" />
     <Compile Include="TaskManagementSystem\TransactionOptions\SIPFresh.cs" />
     <Compile Include="TaskManagementSystem\TransactionOptions\SIPOld.cs" />
     <Compile Include="TaskManagementSystem\TransactionOptions\STPCancellationTrans.cs" />
