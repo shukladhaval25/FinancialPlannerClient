@@ -29,22 +29,27 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClientDetails));
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem5 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip7 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem7 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem7 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip8 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem8 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem8 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip9 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem9 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem9 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip10 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem10 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem10 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip11 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem11 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem11 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip12 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem12 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem12 = new DevExpress.Utils.ToolTipItem();
             this.grpClientInfo = new DevExpress.XtraEditors.GroupControl();
+            this.cmbResiStatus = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.label19 = new System.Windows.Forms.Label();
             this.cmbClientType = new DevExpress.XtraEditors.ComboBoxEdit();
             this.label18 = new System.Windows.Forms.Label();
             this.cmbRating = new DevExpress.XtraEditors.ComboBoxEdit();
@@ -124,10 +129,10 @@
             this.label16 = new System.Windows.Forms.Label();
             this.txtSpouseName = new DevExpress.XtraEditors.TextEdit();
             this.label17 = new System.Windows.Forms.Label();
-            this.cmbResiStatus = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.label19 = new System.Windows.Forms.Label();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.grpClientInfo)).BeginInit();
             this.grpClientInfo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbResiStatus.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbClientType.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbRating.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grpBankDetails)).BeginInit();
@@ -171,11 +176,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtSpouseMotherName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSpouseFatherName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSpouseName.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbResiStatus.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // grpClientInfo
             // 
+            this.grpClientInfo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.grpClientInfo.CaptionImage = ((System.Drawing.Image)(resources.GetObject("grpClientInfo.CaptionImage")));
             this.grpClientInfo.Controls.Add(this.cmbResiStatus);
             this.grpClientInfo.Controls.Add(this.label19);
@@ -202,9 +208,31 @@
             this.grpClientInfo.Controls.Add(this.txtImagePath);
             this.grpClientInfo.Location = new System.Drawing.Point(8, 8);
             this.grpClientInfo.Name = "grpClientInfo";
-            this.grpClientInfo.Size = new System.Drawing.Size(664, 525);
+            this.grpClientInfo.Size = new System.Drawing.Size(664, 615);
             this.grpClientInfo.TabIndex = 7;
             this.grpClientInfo.Text = "Client Details";
+            // 
+            // cmbResiStatus
+            // 
+            this.cmbResiStatus.EditValue = "";
+            this.cmbResiStatus.Location = new System.Drawing.Point(529, 133);
+            this.cmbResiStatus.Name = "cmbResiStatus";
+            this.cmbResiStatus.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cmbResiStatus.Properties.Items.AddRange(new object[] {
+            "Indian",
+            "NRI"});
+            this.cmbResiStatus.Size = new System.Drawing.Size(114, 20);
+            this.cmbResiStatus.TabIndex = 17;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(449, 136);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(69, 13);
+            this.label19.TabIndex = 25;
+            this.label19.Text = "Resi. Status:";
             // 
             // cmbClientType
             // 
@@ -257,15 +285,15 @@
             this.btnChangeImage.Location = new System.Drawing.Point(78, 157);
             this.btnChangeImage.Name = "btnChangeImage";
             this.btnChangeImage.Size = new System.Drawing.Size(83, 21);
-            toolTipTitleItem1.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
-            toolTipTitleItem1.Appearance.Options.UseImage = true;
-            toolTipTitleItem1.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem1.Image")));
-            toolTipTitleItem1.Text = "Change Image";
-            toolTipItem1.LeftIndent = 6;
-            toolTipItem1.Text = "To change client image click here.";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            superToolTip1.Items.Add(toolTipItem1);
-            this.btnChangeImage.SuperTip = superToolTip1;
+            toolTipTitleItem7.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            toolTipTitleItem7.Appearance.Options.UseImage = true;
+            toolTipTitleItem7.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem7.Image")));
+            toolTipTitleItem7.Text = "Change Image";
+            toolTipItem7.LeftIndent = 6;
+            toolTipItem7.Text = "To change client image click here.";
+            superToolTip7.Items.Add(toolTipTitleItem7);
+            superToolTip7.Items.Add(toolTipItem7);
+            this.btnChangeImage.SuperTip = superToolTip7;
             this.btnChangeImage.TabIndex = 19;
             this.btnChangeImage.Text = "Change";
             this.btnChangeImage.Click += new System.EventHandler(this.btnChangeImage_Click);
@@ -277,7 +305,7 @@
             this.grpBankDetails.Controls.Add(this.grdBank);
             this.grpBankDetails.Location = new System.Drawing.Point(15, 333);
             this.grpBankDetails.Name = "grpBankDetails";
-            this.grpBankDetails.Size = new System.Drawing.Size(641, 180);
+            this.grpBankDetails.Size = new System.Drawing.Size(641, 277);
             this.grpBankDetails.TabIndex = 20;
             this.grpBankDetails.Text = "Bank Details";
             // 
@@ -288,15 +316,15 @@
             this.btnViewBankInfo.Location = new System.Drawing.Point(618, 5);
             this.btnViewBankInfo.Name = "btnViewBankInfo";
             this.btnViewBankInfo.Size = new System.Drawing.Size(20, 14);
-            toolTipTitleItem2.Appearance.Image = global::FinancialPlannerClient.Properties.Resources.icons8_museum_16;
-            toolTipTitleItem2.Appearance.Options.UseImage = true;
-            toolTipTitleItem2.Image = global::FinancialPlannerClient.Properties.Resources.icons8_museum_16;
-            toolTipTitleItem2.Text = "Bank Details";
-            toolTipItem2.LeftIndent = 6;
-            toolTipItem2.Text = "To view bank details click here.";
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            superToolTip2.Items.Add(toolTipItem2);
-            this.btnViewBankInfo.SuperTip = superToolTip2;
+            toolTipTitleItem8.Appearance.Image = global::FinancialPlannerClient.Properties.Resources.icons8_museum_16;
+            toolTipTitleItem8.Appearance.Options.UseImage = true;
+            toolTipTitleItem8.Image = global::FinancialPlannerClient.Properties.Resources.icons8_museum_16;
+            toolTipTitleItem8.Text = "Bank Details";
+            toolTipItem8.LeftIndent = 6;
+            toolTipItem8.Text = "To view bank details click here.";
+            superToolTip8.Items.Add(toolTipTitleItem8);
+            superToolTip8.Items.Add(toolTipItem8);
+            this.btnViewBankInfo.SuperTip = superToolTip8;
             this.btnViewBankInfo.TabIndex = 1;
             this.btnViewBankInfo.Text = "View Details";
             this.btnViewBankInfo.Click += new System.EventHandler(this.btnViewBankInfo_Click);
@@ -305,10 +333,10 @@
             // 
             this.grdBank.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.grdBank.Location = new System.Drawing.Point(10, 24);
+            this.grdBank.Location = new System.Drawing.Point(5, 24);
             this.grdBank.MainView = this.cardViewBank;
             this.grdBank.Name = "grdBank";
-            this.grdBank.Size = new System.Drawing.Size(626, 151);
+            this.grdBank.Size = new System.Drawing.Size(631, 248);
             this.grdBank.TabIndex = 0;
             this.grdBank.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.cardViewBank});
@@ -642,18 +670,18 @@
             // 
             this.btnCloseClientInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCloseClientInfo.Image = ((System.Drawing.Image)(resources.GetObject("btnCloseClientInfo.Image")));
-            this.btnCloseClientInfo.Location = new System.Drawing.Point(86, 539);
+            this.btnCloseClientInfo.Location = new System.Drawing.Point(86, 633);
             this.btnCloseClientInfo.Name = "btnCloseClientInfo";
             this.btnCloseClientInfo.Size = new System.Drawing.Size(62, 23);
-            toolTipTitleItem3.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
-            toolTipTitleItem3.Appearance.Options.UseImage = true;
-            toolTipTitleItem3.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem3.Image")));
-            toolTipTitleItem3.Text = "Cancel";
-            toolTipItem3.LeftIndent = 6;
-            toolTipItem3.Text = "To close client information without saving any information click here.";
-            superToolTip3.Items.Add(toolTipTitleItem3);
-            superToolTip3.Items.Add(toolTipItem3);
-            this.btnCloseClientInfo.SuperTip = superToolTip3;
+            toolTipTitleItem9.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
+            toolTipTitleItem9.Appearance.Options.UseImage = true;
+            toolTipTitleItem9.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem9.Image")));
+            toolTipTitleItem9.Text = "Cancel";
+            toolTipItem9.LeftIndent = 6;
+            toolTipItem9.Text = "To close client information without saving any information click here.";
+            superToolTip9.Items.Add(toolTipTitleItem9);
+            superToolTip9.Items.Add(toolTipItem9);
+            this.btnCloseClientInfo.SuperTip = superToolTip9;
             this.btnCloseClientInfo.TabIndex = 22;
             this.btnCloseClientInfo.Text = "&Close";
             this.btnCloseClientInfo.Click += new System.EventHandler(this.btnCloseClientInfo_Click);
@@ -662,18 +690,18 @@
             // 
             this.btnSaveClient.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSaveClient.Image = ((System.Drawing.Image)(resources.GetObject("btnSaveClient.Image")));
-            this.btnSaveClient.Location = new System.Drawing.Point(23, 539);
+            this.btnSaveClient.Location = new System.Drawing.Point(23, 633);
             this.btnSaveClient.Name = "btnSaveClient";
             this.btnSaveClient.Size = new System.Drawing.Size(57, 23);
-            toolTipTitleItem4.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
-            toolTipTitleItem4.Appearance.Options.UseImage = true;
-            toolTipTitleItem4.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem4.Image")));
-            toolTipTitleItem4.Text = "Save";
-            toolTipItem4.LeftIndent = 6;
-            toolTipItem4.Text = "To save client infroamtion click here.";
-            superToolTip4.Items.Add(toolTipTitleItem4);
-            superToolTip4.Items.Add(toolTipItem4);
-            this.btnSaveClient.SuperTip = superToolTip4;
+            toolTipTitleItem10.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
+            toolTipTitleItem10.Appearance.Options.UseImage = true;
+            toolTipTitleItem10.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem10.Image")));
+            toolTipTitleItem10.Text = "Save";
+            toolTipItem10.LeftIndent = 6;
+            toolTipItem10.Text = "To save client infroamtion click here.";
+            superToolTip10.Items.Add(toolTipTitleItem10);
+            superToolTip10.Items.Add(toolTipItem10);
+            this.btnSaveClient.SuperTip = superToolTip10;
             this.btnSaveClient.TabIndex = 21;
             this.btnSaveClient.Text = "&Save";
             this.btnSaveClient.Click += new System.EventHandler(this.btnSaveClient_Click);
@@ -684,6 +712,8 @@
             // 
             // grpSpouse
             // 
+            this.grpSpouse.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.grpSpouse.CaptionImage = ((System.Drawing.Image)(resources.GetObject("grpSpouse.CaptionImage")));
             this.grpSpouse.Controls.Add(this.grpSpouseBank);
             this.grpSpouse.Controls.Add(this.grpSpouseOtherDetails);
@@ -701,7 +731,7 @@
             this.grpSpouse.Enabled = false;
             this.grpSpouse.Location = new System.Drawing.Point(678, 8);
             this.grpSpouse.Name = "grpSpouse";
-            this.grpSpouse.Size = new System.Drawing.Size(418, 525);
+            this.grpSpouse.Size = new System.Drawing.Size(418, 615);
             this.grpSpouse.TabIndex = 8;
             this.grpSpouse.Text = "Spouse Details";
             // 
@@ -712,7 +742,7 @@
             this.grpSpouseBank.Controls.Add(this.grdSpouseBank);
             this.grpSpouseBank.Location = new System.Drawing.Point(7, 333);
             this.grpSpouseBank.Name = "grpSpouseBank";
-            this.grpSpouseBank.Size = new System.Drawing.Size(405, 180);
+            this.grpSpouseBank.Size = new System.Drawing.Size(405, 277);
             this.grpSpouseBank.TabIndex = 18;
             this.grpSpouseBank.Text = "Bank Details";
             // 
@@ -723,15 +753,15 @@
             this.simpleButton4.Location = new System.Drawing.Point(382, 5);
             this.simpleButton4.Name = "simpleButton4";
             this.simpleButton4.Size = new System.Drawing.Size(20, 14);
-            toolTipTitleItem5.Appearance.Image = global::FinancialPlannerClient.Properties.Resources.icons8_museum_16;
-            toolTipTitleItem5.Appearance.Options.UseImage = true;
-            toolTipTitleItem5.Image = global::FinancialPlannerClient.Properties.Resources.icons8_museum_16;
-            toolTipTitleItem5.Text = "Bank Details";
-            toolTipItem5.LeftIndent = 6;
-            toolTipItem5.Text = "To view bank details click here.";
-            superToolTip5.Items.Add(toolTipTitleItem5);
-            superToolTip5.Items.Add(toolTipItem5);
-            this.simpleButton4.SuperTip = superToolTip5;
+            toolTipTitleItem11.Appearance.Image = global::FinancialPlannerClient.Properties.Resources.icons8_museum_16;
+            toolTipTitleItem11.Appearance.Options.UseImage = true;
+            toolTipTitleItem11.Image = global::FinancialPlannerClient.Properties.Resources.icons8_museum_16;
+            toolTipTitleItem11.Text = "Bank Details";
+            toolTipItem11.LeftIndent = 6;
+            toolTipItem11.Text = "To view bank details click here.";
+            superToolTip11.Items.Add(toolTipTitleItem11);
+            superToolTip11.Items.Add(toolTipItem11);
+            this.simpleButton4.SuperTip = superToolTip11;
             this.simpleButton4.TabIndex = 1;
             this.simpleButton4.Text = "View Details";
             this.simpleButton4.Click += new System.EventHandler(this.btnViewBankInfo_Click);
@@ -740,10 +770,10 @@
             // 
             this.grdSpouseBank.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.grdSpouseBank.Location = new System.Drawing.Point(10, 24);
+            this.grdSpouseBank.Location = new System.Drawing.Point(5, 24);
             this.grdSpouseBank.MainView = this.cardView1;
             this.grdSpouseBank.Name = "grdSpouseBank";
-            this.grdSpouseBank.Size = new System.Drawing.Size(390, 151);
+            this.grdSpouseBank.Size = new System.Drawing.Size(395, 248);
             this.grdSpouseBank.TabIndex = 0;
             this.grdSpouseBank.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.cardView1});
@@ -1011,33 +1041,32 @@
             this.label17.TabIndex = 5;
             this.label17.Text = "Full Name:";
             // 
-            // cmbResiStatus
+            // simpleButton1
             // 
-            this.cmbResiStatus.EditValue = "";
-            this.cmbResiStatus.Location = new System.Drawing.Point(529, 133);
-            this.cmbResiStatus.Name = "cmbResiStatus";
-            this.cmbResiStatus.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cmbResiStatus.Properties.Items.AddRange(new object[] {
-            "Indian",
-            "NRI"});
-            this.cmbResiStatus.Size = new System.Drawing.Size(114, 20);
-            this.cmbResiStatus.TabIndex = 17;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(449, 136);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(69, 13);
-            this.label19.TabIndex = 25;
-            this.label19.Text = "Resi. Status:";
+            this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButton1.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.Image")));
+            this.simpleButton1.Location = new System.Drawing.Point(86, 633);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(62, 23);
+            toolTipTitleItem12.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image3")));
+            toolTipTitleItem12.Appearance.Options.UseImage = true;
+            toolTipTitleItem12.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem12.Image")));
+            toolTipTitleItem12.Text = "Cancel";
+            toolTipItem12.LeftIndent = 6;
+            toolTipItem12.Text = "To close client information without saving any information click here.";
+            superToolTip12.Items.Add(toolTipTitleItem12);
+            superToolTip12.Items.Add(toolTipItem12);
+            this.simpleButton1.SuperTip = superToolTip12;
+            this.simpleButton1.TabIndex = 22;
+            this.simpleButton1.Text = "&Close";
+            this.simpleButton1.Click += new System.EventHandler(this.btnCloseClientInfo_Click);
             // 
             // ClientDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1099, 566);
+            this.ClientSize = new System.Drawing.Size(1099, 664);
+            this.Controls.Add(this.simpleButton1);
             this.Controls.Add(this.btnCloseClientInfo);
             this.Controls.Add(this.btnSaveClient);
             this.Controls.Add(this.grpSpouse);
@@ -1051,6 +1080,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.grpClientInfo)).EndInit();
             this.grpClientInfo.ResumeLayout(false);
             this.grpClientInfo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbResiStatus.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbClientType.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbRating.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grpBankDetails)).EndInit();
@@ -1098,7 +1128,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtSpouseMotherName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSpouseFatherName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSpouseName.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbResiStatus.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1187,6 +1216,7 @@
         private System.Windows.Forms.Label label12;
         private DevExpress.XtraEditors.ComboBoxEdit cmbResiStatus;
         private System.Windows.Forms.Label label19;
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
     }
 }
 

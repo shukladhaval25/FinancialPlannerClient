@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GoalCalView));
             this.grpGoalInfo = new DevExpress.XtraEditors.GroupControl();
             this.cmbGoals = new DevExpress.XtraEditors.ComboBoxEdit();
             this.progGoalComplition = new DevExpress.XtraEditors.ProgressBarControl();
@@ -43,6 +44,7 @@
             this.gridViewGoalProfile = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.dtGridGoalValue = new DevExpress.XtraGrid.GridControl();
             this.gridViewGoalValue = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.btnExport = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.grpGoalInfo)).BeginInit();
             this.grpGoalInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cmbGoals.Properties)).BeginInit();
@@ -210,11 +212,25 @@
             this.gridViewGoalValue.Name = "gridViewGoalValue";
             this.gridViewGoalValue.OptionsBehavior.ReadOnly = true;
             // 
+            // btnExport
+            // 
+            this.btnExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExport.Image = ((System.Drawing.Image)(resources.GetObject("btnExport.Image")));
+            this.btnExport.Location = new System.Drawing.Point(1136, 147);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(23, 23);
+            this.btnExport.TabIndex = 25;
+            this.btnExport.Text = "Export To Excel";
+            this.btnExport.ToolTip = "Export to excel";
+            this.btnExport.ToolTipTitle = "Export";
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            // 
             // GoalCalView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1177, 508);
+            this.Controls.Add(this.btnExport);
             this.Controls.Add(this.dtGridGoalValue);
             this.Controls.Add(this.grpGoalInfo);
             this.Controls.Add(this.grdGoalProfile);
@@ -252,6 +268,7 @@
         private DevExpress.XtraGrid.GridControl dtGridGoalValue;
         private DevExpress.XtraGrid.Views.Grid.GridView gridViewGoalValue;
         private DevExpress.XtraGrid.Views.Grid.GridView gridViewGoalProfile;
+        private DevExpress.XtraEditors.SimpleButton btnExport;
     }
 }
 

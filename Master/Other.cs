@@ -29,32 +29,36 @@ namespace FinancialPlannerClient.Master
         {
             InitializeComponent();
 
-            if (option == "Festivals")
+            switch (option)
             {
-                _otherItems = new FestivalsImplimenter();
-                setFestivalsUI();
-            }
-            else if (option == "CRM Groups")
-            {
-                _otherItems = new CRMGroupsImplimenter();
-                setCRMGroupUI();
-            }
-            else if (option == "Areas")
-            {
-                _otherItems = new AreaImplimenter();
-                setAreaUI();
-            }
-
+                case "Festivals":
+                    _otherItems = new FestivalsImplimenter();
+                    setFestivalsUI();
+                    break;
+                case "CRM Groups":
+                    _otherItems = new CRMGroupsImplimenter();
+                    setCRMGroupUI();
+                    break;
+                case "Areas":
+                    _otherItems = new AreaImplimenter();
+                    setAreaUI();
+                    break;
+                case "MFCategory":
+                    _otherItems = new MFCategoryImpl();
+                    setSchemeCategoryUI();
+                    break;
+            }            
             _otherItems.LoadData(gridControlOthers);
             
             if (gridViewOthers.Columns.Count > 0 && this.Text != "Festivals Master")
                 gridViewOthers.Columns[0].Width = 220;
         }
+
         #region "Area"
 
         private void setAreaUI()
         {
-            this.Text = "Areas";
+            this.Text = "Category";
             lblReligion.Visible = false;
             txtReligion.Visible = false;
         }
@@ -156,6 +160,42 @@ namespace FinancialPlannerClient.Master
         }
         #endregion
 
+        #region "MF Category"
+        private void setSchemeCategoryUI()
+        {
+            this.Text = "Category";
+            lblReligion.Visible = false;
+            txtReligion.Visible = false;
+        }
+
+        private void saveCategory()
+        {
+            SchemeCategory schemeCategory = getSchemeCategoryData();
+            if (_otherItems.Save(schemeCategory))
+            {
+                MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                _otherItems.LoadData(gridControlOthers);
+                grpItem.Enabled = false;
+            }
+            else
+            {
+                MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private SchemeCategory getSchemeCategoryData()
+        {
+            SchemeCategory schemeCategory = new SchemeCategory();
+            schemeCategory.Name = txtName.Text;
+            schemeCategory.CreatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+            schemeCategory.CreatedBy = Program.CurrentUser.Id;
+            schemeCategory.UpdatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+            schemeCategory.UpdatedBy = Program.CurrentUser.Id;
+            schemeCategory.MachineName = Environment.MachineName;
+            return schemeCategory;
+        }
+        #endregion
+
         private void gridViewOthers_SelectionChanged(object sender, DevExpress.Data.SelectionChangedEventArgs e)
         {
            
@@ -165,7 +205,9 @@ namespace FinancialPlannerClient.Master
         {
             grpItem.Enabled = true;
             txtName.Text = "";
+            txtName.Tag = "";
             txtReligion.Text = "";
+            btnSave.Enabled = true;
         }
 
         private void btnCloseClientInfo_Click(object sender, EventArgs e)
@@ -187,6 +229,11 @@ namespace FinancialPlannerClient.Master
             {
                 saveArea();
             }
+            else if(this.Text == "Category")
+            {
+                saveCategory();
+            }
+
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -211,6 +258,11 @@ namespace FinancialPlannerClient.Master
                     //if (_otherItems.Delete(area))
                         //_otherItems.LoadData(gridControlOthers);
                 }
+                else if (this.Text == "Category")
+                {
+                    SchemeCategory schemeCategory = getSchemeCategoryData();
+                    _otherItems.Delete(schemeCategory);
+                }
             }
         }
 
@@ -222,6 +274,11 @@ namespace FinancialPlannerClient.Master
                 {
                     txtName.Text = gridViewOthers.GetFocusedRowCellValue(gridViewOthers.Columns[1]).ToString();  //dtGridOther.SelectedRows[0].Cells[1].Value.ToString();
                     txtReligion.Text = gridViewOthers.GetFocusedRowCellValue(gridViewOthers.Columns[0]).ToString();
+                }
+                else if (this.Text == "Category")
+                {
+                    txtName.Text = gridViewOthers.GetFocusedRowCellValue(gridViewOthers.Columns[1]).ToString(); 
+                    txtName.Tag = gridViewOthers.GetFocusedRowCellValue(gridViewOthers.Columns[0]).ToString();
                 }
                 else
                     txtName.Text = gridViewOthers.GetFocusedRowCellValue(gridViewOthers.Columns[0]).ToString();

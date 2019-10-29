@@ -8,6 +8,7 @@ using System;
 using System.Data;
 using System.Diagnostics;
 using System.Reflection;
+using System.Windows.Forms;
 
 namespace FinancialPlannerClient.PlanOptions
 {
@@ -104,6 +105,25 @@ namespace FinancialPlannerClient.PlanOptions
             else
                 progressBarRetGoalCompletion.Text = Math.Round(((100 * totalAvailableCorpFund) / estitmatedCorpFund)).ToString();
 
+        }
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string filePath = System.IO.Path.GetTempPath() + "/" + "PostRetirementCashFlow" + DateTime.Now.Ticks.ToString() + ".xls";
+                grdSplitCashFlow.ExportToXls(filePath);
+                System.Diagnostics.Process.Start(filePath);
+            }
+            catch (Exception ex)
+            {
+                DevExpress.XtraEditors.XtraMessageBox.Show(ex.StackTrace.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
+                LogDebug(currentMethodName.Name, ex);
+                System.Windows.Forms.MessageBox.Show("Exception:" + ex.ToString());
+            }
         }
     }
 }

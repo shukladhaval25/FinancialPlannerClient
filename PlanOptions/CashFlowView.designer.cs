@@ -28,8 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CashFlowView));
             this.grdSplitCashFlow = new DevExpress.XtraGrid.GridControl();
             this.gridSplitContainerViewCashFlow = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.btnExport = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.grdSplitCashFlow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridSplitContainerViewCashFlow)).BeginInit();
             this.SuspendLayout();
@@ -56,11 +58,25 @@
             this.gridSplitContainerViewCashFlow.OptionsMenu.ShowConditionalFormattingItem = true;
             this.gridSplitContainerViewCashFlow.OptionsView.ColumnAutoWidth = false;
             // 
+            // btnExport
+            // 
+            this.btnExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExport.Image = ((System.Drawing.Image)(resources.GetObject("btnExport.Image")));
+            this.btnExport.Location = new System.Drawing.Point(1047, 12);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(23, 23);
+            this.btnExport.TabIndex = 2;
+            this.btnExport.Text = "Export To Excel";
+            this.btnExport.ToolTip = "Export to excel";
+            this.btnExport.ToolTipTitle = "Export";
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            // 
             // CashFlowView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1082, 522);
+            this.Controls.Add(this.btnExport);
             this.Controls.Add(this.grdSplitCashFlow);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "CashFlowView";
@@ -76,6 +92,7 @@
 
         private DevExpress.XtraGrid.GridControl grdSplitCashFlow;
         private DevExpress.XtraGrid.Views.Grid.GridView gridSplitContainerViewCashFlow;
+        private DevExpress.XtraEditors.SimpleButton btnExport;
     }
 }
 

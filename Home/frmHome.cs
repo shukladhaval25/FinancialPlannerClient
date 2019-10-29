@@ -63,6 +63,7 @@ namespace FinancialPlannerClient.Home
         private DevExpress.XtraNavBar.NavBarItem navBarItemAMC;
         private System.Windows.Forms.Timer timerNotification;
         private DevExpress.XtraNavBar.NavBarItem navBarItemBank;
+        private DevExpress.XtraNavBar.NavBarItem navBarItemMFCategory;
         private const string AUDITLOGCONTROLLER = "Activities/Add";
 
         public frmHome()
@@ -131,6 +132,7 @@ namespace FinancialPlannerClient.Home
             this.navBarItemARN = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItemMFScheme = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItemAMC = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarItemBank = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarGroupClient = new DevExpress.XtraNavBar.NavBarGroup();
             this.navBarItemProspectCustomer = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItemClient = new DevExpress.XtraNavBar.NavBarItem();
@@ -154,7 +156,7 @@ namespace FinancialPlannerClient.Home
             this.ribbonPage4 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.notifyIconTask = new System.Windows.Forms.NotifyIcon(this.components);
             this.timerNotification = new System.Windows.Forms.Timer(this.components);
-            this.navBarItemBank = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarItemMFCategory = new DevExpress.XtraNavBar.NavBarItem();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -338,6 +340,7 @@ namespace FinancialPlannerClient.Home
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarSeparatorItem1),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem2),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemARN),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemMFCategory),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemMFScheme),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemAMC),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemBank)});
@@ -453,6 +456,13 @@ namespace FinancialPlannerClient.Home
             this.navBarItemAMC.Name = "navBarItemAMC";
             this.navBarItemAMC.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItemAMC_LinkClicked);
             // 
+            // navBarItemBank
+            // 
+            this.navBarItemBank.Caption = "Bank";
+            this.navBarItemBank.LargeImage = ((System.Drawing.Image)(resources.GetObject("navBarItemBank.LargeImage")));
+            this.navBarItemBank.Name = "navBarItemBank";
+            this.navBarItemBank.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItemBank_LinkClicked);
+            // 
             // navBarGroupClient
             // 
             this.navBarGroupClient.Caption = "Client";
@@ -544,7 +554,8 @@ namespace FinancialPlannerClient.Home
             this.navBarItemARN,
             this.navBarItemMFScheme,
             this.navBarItemAMC,
-            this.navBarItemBank});
+            this.navBarItemBank,
+            this.navBarItemMFCategory});
             this.navBarMenuGroup.Location = new System.Drawing.Point(2, 2);
             this.navBarMenuGroup.Name = "navBarMenuGroup";
             this.navBarMenuGroup.OptionsNavPane.ExpandedWidth = 136;
@@ -555,7 +566,6 @@ namespace FinancialPlannerClient.Home
             // navBarGroupSetting
             // 
             this.navBarGroupSetting.Caption = "Setting";
-            this.navBarGroupSetting.Expanded = true;
             this.navBarGroupSetting.GroupStyle = DevExpress.XtraNavBar.NavBarGroupStyle.LargeIconsText;
             this.navBarGroupSetting.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemOld),
@@ -673,12 +683,12 @@ namespace FinancialPlannerClient.Home
             this.timerNotification.Interval = 60000;
             this.timerNotification.Tick += new System.EventHandler(this.timerNotification_Tick);
             // 
-            // navBarItemBank
+            // navBarItemMFCategory
             // 
-            this.navBarItemBank.Caption = "Bank";
-            this.navBarItemBank.LargeImage = ((System.Drawing.Image)(resources.GetObject("navBarItemBank.LargeImage")));
-            this.navBarItemBank.Name = "navBarItemBank";
-            this.navBarItemBank.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItemBank_LinkClicked);
+            this.navBarItemMFCategory.Caption = "MF Category";
+            this.navBarItemMFCategory.LargeImage = ((System.Drawing.Image)(resources.GetObject("navBarItemMFCategory.LargeImage")));
+            this.navBarItemMFCategory.Name = "navBarItemMFCategory";
+            this.navBarItemMFCategory.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItemMFCategory_LinkClicked);
             // 
             // frmHome
             // 
@@ -982,6 +992,16 @@ namespace FinancialPlannerClient.Home
             homeNavigationPage1.Name = bankView.Name;
             homeNavigationPage1.Controls.Add(bankView);
             showNavigationPage(bankView.Name);
+        }
+
+        private void navBarItemMFCategory_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            Other other = new Other("MFCategory");
+            other.TopLevel = false;
+            other.Visible = true;
+            homeNavigationPage1.Name = other.Name;
+            homeNavigationPage1.Controls.Add(other);
+            showNavigationPage(other.Name);
         }
     }
 }

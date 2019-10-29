@@ -1,5 +1,6 @@
 ﻿using FinancialPlanner.Common;
 using FinancialPlanner.Common.DataConversion;
+using FinancialPlanner.Common.Model.Masters;
 using FinancialPlanner.Common.Model.TaskManagement.MFTransactions;
 using System;
 using System.Collections.Generic;
@@ -16,15 +17,58 @@ namespace FinancialPlannerClient.Master.TaskMaster
     {
         DataTable dtScheme = new DataTable();
         IList<AMC> aMCs;
+        IList<SchemeCategory> schemeCategories;
         public SchemeView()
         {
             InitializeComponent();
         }
 
         private void SchemeView_Load(object sender, EventArgs e)
-        {
-            fillupScheme();
+        {            
             loadAMC();
+            loadSchmeCategory();
+            fillupScheme();
+        }
+
+        private void loadSchmeCategory()
+        {
+            try
+            {
+                SchemeCategoryInfo schemeCategoryInfo = new SchemeCategoryInfo();
+                schemeCategories = schemeCategoryInfo.GetAll();
+                DataTable dtSchemeCategory = convertSchemeCategoriesToDataTable(schemeCategories);
+
+                if (schemeCategories != null)
+                {
+                    lookupCategory.Properties.DataSource = dtSchemeCategory;
+                    lookupCategory.Properties.DisplayMember = "Name";
+                    lookupCategory.Properties.ValueMember = "Id";
+                    lookupCategory.Properties.NullValuePrompt = "Please select valid value.";                  
+                }                   
+            }
+            catch (Exception ex)
+            {
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
+                LogDebug(currentMethodName.Name, ex);
+                DevExpress.XtraEditors.XtraMessageBox.Show("Error occured during load of AMC value.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private DataTable convertSchemeCategoriesToDataTable(IList<SchemeCategory> schemeCategories)
+        {
+            DataTable dtCategory = new DataTable();
+            dtCategory.Columns.Add("Id", Type.GetType("System.Int16"));
+            dtCategory.Columns.Add("Name", Type.GetType("System.String"));
+            foreach(SchemeCategory schemeCategory in schemeCategories)
+            {
+                DataRow dr = dtCategory.NewRow();
+                dr["Id"] = schemeCategory.Id;
+                dr["Name"] = schemeCategory.Name;
+                dtCategory.Rows.Add(dr);
+            }
+            return dtCategory;
         }
 
         private void loadAMC()
@@ -120,6 +164,7 @@ namespace FinancialPlannerClient.Master.TaskMaster
             Scheme.UpdatedBy = Program.CurrentUser.Id;
             Scheme.UpdatedByUserName = Program.CurrentUser.UserName;
             Scheme.MachineName = Environment.MachineName;
+            Scheme.CategoryId = int.Parse(lookupCategory.EditValue.ToString());
             return Scheme;
         }
 
@@ -136,6 +181,9 @@ namespace FinancialPlannerClient.Master.TaskMaster
                 cmbAMC.Text = gridViewScheme.GetFocusedRowCellValue(gridViewScheme.Columns[3]).ToString();
                 txtName.Text = gridViewScheme.GetFocusedRowCellValue(gridViewScheme.Columns[0]).ToString();
                 txtName.Tag = gridViewScheme.GetFocusedRowCellValue(gridViewScheme.Columns[1]).ToString();
+                int id = int.Parse(gridViewScheme.GetFocusedRowCellValue(gridViewScheme.Columns[4]).ToString());
+                lookupCategory.Text = (id > 0) ? schemeCategories.First(i => i.Id == id).Name : "";
+                lookupCategory.EditValue = id;
             }
         }
 

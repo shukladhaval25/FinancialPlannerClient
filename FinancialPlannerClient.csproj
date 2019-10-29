@@ -299,6 +299,7 @@
       <DependentUpon>BankView.cs</DependentUpon>
     </Compile>
     <Compile Include="Master\ClientRatingImplimenter.cs" />
+    <Compile Include="Master\MFCategoryImpl.cs" />
     <Compile Include="Master\Other.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -333,6 +334,7 @@
     <Compile Include="Master\Others.Designer.cs">
       <DependentUpon>Others.cs</DependentUpon>
     </Compile>
+    <Compile Include="Master\SchemeCategoryInfo.cs" />
     <Compile Include="Master\TaskMaster\AMCInfo.cs" />
     <Compile Include="Master\TaskMaster\AmcView.cs">
       <SubType>Form</SubType>
@@ -360,6 +362,12 @@
     <Compile Include="PlannerInfo\ClientFestivalInfo.cs" />
     <Compile Include="PlannerInfo\DocumentInfo.cs" />
     <Compile Include="Master\FestivalsInfo.cs" />
+    <Compile Include="PlanOptions\InvestmentRecomendationView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\InvestmentRecomendationView.Designer.cs">
+      <DependentUpon>InvestmentRecomendationView.cs</DependentUpon>
+    </Compile>
     <Compile Include="PlanOptions\ReportParams.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -908,6 +916,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Master\TaskMaster\ARNView.resx">
       <DependentUpon>ARNView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\InvestmentRecomendationView.resx">
+      <DependentUpon>InvestmentRecomendationView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\ReportParams.resx">
       <DependentUpon>ReportParams.cs</DependentUpon>

@@ -90,6 +90,22 @@ namespace FinancialPlannerClient.PlannerInfo
             if (personalInfo.Spouse.Name != null)
                 comboboxObj.Items.Add(personalInfo.Spouse.Name);
         }
+
+        public void FillFamilyMemberInCombo(int clientId, DevExpress.XtraEditors.ComboBoxEdit comboboxObj)
+        {
+            var lstFamily = Get(clientId);
+            comboboxObj.Properties.Items.Clear();
+            foreach (FamilyMember familyMember in lstFamily)
+            {
+                comboboxObj.Properties.Items.Add(familyMember.Name);
+            }
+            ClientPersonalInfo clientPersonalInfo = new ClientPersonalInfo();
+            PersonalInformation personalInfo = clientPersonalInfo.Get(clientId);
+            comboboxObj.Properties.Items.Add(personalInfo.Client.Name);
+            if (personalInfo.Spouse.Name != null)
+                comboboxObj.Properties.Items.Add(personalInfo.Spouse.Name);
+        }
+
         public void FillFamilyMemberInCombo(int clientId, RepositoryItemComboBox repositoryItemCombo)
         {
             var lstFamily = Get(clientId);

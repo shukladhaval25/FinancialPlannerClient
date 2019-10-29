@@ -166,6 +166,7 @@
             this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.gridBand1 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.navBarItemInvRecomm = new DevExpress.XtraNavBar.NavBarItem();
             ((System.ComponentModel.ISupportInitialize)(this.panelMenu)).BeginInit();
             this.panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlNavCtrl)).BeginInit();
@@ -352,7 +353,8 @@
             this.navBarItemReport,
             this.navBarItemOtherInformation,
             this.navBarItemRiskProfile,
-            this.navBarItemInsurance});
+            this.navBarItemInsurance,
+            this.navBarItemInvRecomm});
             this.navBarControlPlanner.Location = new System.Drawing.Point(-1, 81);
             this.navBarControlPlanner.Name = "navBarControlPlanner";
             this.navBarControlPlanner.OptionsNavPane.ExpandedWidth = 157;
@@ -418,11 +420,13 @@
             // navBarGroupPlanOption
             // 
             this.navBarGroupPlanOption.Caption = "Plan Option";
+            this.navBarGroupPlanOption.Expanded = true;
             this.navBarGroupPlanOption.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemRiskProfile),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemEstimatedPlan),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemReport),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemInsurance)});
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemInsurance),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemInvRecomm)});
             this.navBarGroupPlanOption.Name = "navBarGroupPlanOption";
             // 
             // navBarItemRiskProfile
@@ -638,6 +642,7 @@
             // 
             // navigationPageDashboard
             // 
+            this.navigationPageDashboard.Caption = "navigationPageDashboard";
             this.navigationPageDashboard.Controls.Add(this.lblClientDashboard);
             this.navigationPageDashboard.Controls.Add(this.groupPlanStatus);
             this.navigationPageDashboard.Controls.Add(this.pictureBox6);
@@ -873,6 +878,7 @@
             // navigationPageContactInfo
             // 
             this.navigationPageContactInfo.AutoScroll = true;
+            this.navigationPageContactInfo.Caption = "navigationPageContactInfo";
             this.navigationPageContactInfo.Name = "navigationPageContactInfo";
             this.navigationPageContactInfo.Size = new System.Drawing.Size(1004, 599);
             this.navigationPageContactInfo.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.navigationPageClient_ControlRemoved);
@@ -1398,6 +1404,13 @@
             this.gridBand1.Name = "gridBand1";
             this.gridBand1.VisibleIndex = -1;
             // 
+            // navBarItemInvRecomm
+            // 
+            this.navBarItemInvRecomm.Caption = "Investment Recommendation";
+            this.navBarItemInvRecomm.Name = "navBarItemInvRecomm";
+            this.navBarItemInvRecomm.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarItemInvRecomm.SmallImage")));
+            this.navBarItemInvRecomm.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItemInvRecomm_LinkClicked);
+            // 
             // Clientdashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1579,5 +1592,6 @@
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
         private DevExpress.XtraNavBar.NavBarItem navBarMailManager;
         public DevExpress.XtraEditors.ComboBoxEdit cmbPlanner;
+        private DevExpress.XtraNavBar.NavBarItem navBarItemInvRecomm;
     }
 }

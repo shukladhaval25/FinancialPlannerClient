@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PostRetirementCashFlow));
             this.grdSplitCashFlow = new DevExpress.XtraGrid.GridControl();
             this.gridSplitContainerViewCashFlow = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
@@ -62,6 +63,7 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.lblSpouse = new DevExpress.XtraEditors.LabelControl();
             this.lblClient = new DevExpress.XtraEditors.LabelControl();
+            this.btnExport = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.grdSplitCashFlow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridSplitContainerViewCashFlow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
@@ -415,11 +417,25 @@
             this.lblClient.TabIndex = 0;
             this.lblClient.Text = "Client Details";
             // 
+            // btnExport
+            // 
+            this.btnExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExport.Image = ((System.Drawing.Image)(resources.GetObject("btnExport.Image")));
+            this.btnExport.Location = new System.Drawing.Point(1117, 125);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(23, 23);
+            this.btnExport.TabIndex = 26;
+            this.btnExport.Text = "Export To Excel";
+            this.btnExport.ToolTip = "Export to excel";
+            this.btnExport.ToolTipTitle = "Export";
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            // 
             // PostRetirementCashFlow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1158, 522);
+            this.Controls.Add(this.btnExport);
             this.Controls.Add(this.groupControl1);
             this.Controls.Add(this.grdSplitCashFlow);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -473,6 +489,7 @@
         private DevExpress.XtraEditors.LabelControl labelControl10;
         private DevExpress.XtraEditors.ProgressBarControl progressBarRetGoalCompletion;
         private DevExpress.XtraEditors.LabelControl labelControl13;
+        private DevExpress.XtraEditors.SimpleButton btnExport;
     }
 }
 

@@ -139,7 +139,7 @@ namespace FinancialPlannerClient.TaskManagementSystem
         {
             try
             {
-                if (!isValidateAllRequireField() || !transactionType.IsAllRequireInputAvailable())
+                if (!isValidateAllRequireField() || ( transactionType != null && !transactionType.IsAllRequireInputAvailable()))
                 {
                     DevExpress.XtraEditors.XtraMessageBox.Show("Please enter all require fields.",
                        "Invalid Data", MessageBoxButtons.OK, MessageBoxIcon.Information);

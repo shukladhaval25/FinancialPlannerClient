@@ -543,5 +543,16 @@ namespace FinancialPlannerClient.Clients
             navigationPageOther.Controls.Add(mailManagerDeskBorad);
             showNavigationPage(mailManagerDeskBorad.Name);
         }
+
+        private void navBarItemInvRecomm_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            InvestmentRecomendationView investmentRecomendationView = new InvestmentRecomendationView(this.personalInformation.Client);
+            investmentRecomendationView.TopLevel = false;
+            investmentRecomendationView.Visible = true;
+            navigationPageOther.Name = investmentRecomendationView.Name;
+            navigationPageOther.Controls.Clear();
+            navigationPageOther.Controls.Add(investmentRecomendationView);
+            showNavigationPage(investmentRecomendationView.Name);
+        }
     }
 }

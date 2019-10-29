@@ -49,7 +49,7 @@
             this.txtName = new DevExpress.XtraEditors.TextEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.btnCloseClientInfo = new DevExpress.XtraEditors.SimpleButton();
-            this.btnSaveClient = new DevExpress.XtraEditors.SimpleButton();
+            this.btnSave = new DevExpress.XtraEditors.SimpleButton();
             this.gridControlOthers = new DevExpress.XtraGrid.GridControl();
             this.gridViewOthers = new DevExpress.XtraGrid.Views.Grid.GridView();
             ((System.ComponentModel.ISupportInitialize)(this.grpItem)).BeginInit();
@@ -109,7 +109,7 @@
             this.grpItem.Controls.Add(this.txtName);
             this.grpItem.Controls.Add(this.labelControl1);
             this.grpItem.Controls.Add(this.btnCloseClientInfo);
-            this.grpItem.Controls.Add(this.btnSaveClient);
+            this.grpItem.Controls.Add(this.btnSave);
             this.grpItem.Location = new System.Drawing.Point(224, 28);
             this.grpItem.Name = "grpItem";
             this.grpItem.Size = new System.Drawing.Size(370, 247);
@@ -165,25 +165,26 @@
             this.btnCloseClientInfo.Text = "Close";
             this.btnCloseClientInfo.Click += new System.EventHandler(this.btnCloseClientInfo_Click);
             // 
-            // btnSaveClient
+            // btnSave
             // 
-            this.btnSaveClient.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSaveClient.Image = ((System.Drawing.Image)(resources.GetObject("btnSaveClient.Image")));
-            this.btnSaveClient.Location = new System.Drawing.Point(215, 106);
-            this.btnSaveClient.Name = "btnSaveClient";
-            this.btnSaveClient.Size = new System.Drawing.Size(57, 23);
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSave.Enabled = false;
+            this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
+            this.btnSave.Location = new System.Drawing.Point(215, 106);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(57, 23);
             toolTipTitleItem4.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image3")));
             toolTipTitleItem4.Appearance.Options.UseImage = true;
             toolTipTitleItem4.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem4.Image")));
             toolTipTitleItem4.Text = "Save";
             toolTipItem4.LeftIndent = 6;
-            toolTipItem4.Text = "To save client rating click here.";
+            toolTipItem4.Text = "To save record click here.";
             superToolTip4.Items.Add(toolTipTitleItem4);
             superToolTip4.Items.Add(toolTipItem4);
-            this.btnSaveClient.SuperTip = superToolTip4;
-            this.btnSaveClient.TabIndex = 3;
-            this.btnSaveClient.Text = "Save";
-            this.btnSaveClient.Click += new System.EventHandler(this.btnSaveClient_Click);
+            this.btnSave.SuperTip = superToolTip4;
+            this.btnSave.TabIndex = 3;
+            this.btnSave.Text = "Save";
+            this.btnSave.Click += new System.EventHandler(this.btnSaveClient_Click);
             // 
             // gridControlOthers
             // 
@@ -236,7 +237,7 @@
         private DevExpress.XtraEditors.TextEdit txtName;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.SimpleButton btnCloseClientInfo;
-        private DevExpress.XtraEditors.SimpleButton btnSaveClient;
+        private DevExpress.XtraEditors.SimpleButton btnSave;
         private DevExpress.XtraGrid.GridControl gridControlOthers;
         private DevExpress.XtraGrid.Views.Grid.GridView gridViewOthers;
         private DevExpress.XtraEditors.TextEdit txtReligion;
