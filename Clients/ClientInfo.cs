@@ -74,6 +74,13 @@ namespace FinancialPlannerClient.Clients
                     if (tpage.Name == "Assumption" || tpage.Name == "PersonalInfo" ||
                         tpage.Name == "BankAccount" || tpage.Name == "Goal")
                         tabPlannerDetails.TabPages.RemoveByKey(tpage.Name);
+                    else if (this.PlannerId == 0)
+                    {
+                        if (tpage.Name != "FamilyInfo")
+                        {
+                            tabPlannerDetails.TabPages.RemoveByKey(tpage.Name);
+                        }
+                    }
                 }
                 tabPlannerDetails.SelectTab("FamilyInfo");
                 fillupFamilyMemberInfo();

@@ -554,5 +554,16 @@ namespace FinancialPlannerClient.Clients
             navigationPageOther.Controls.Add(investmentRecomendationView);
             showNavigationPage(investmentRecomendationView.Name);
         }
+
+        private void navBarItemFamily_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            ClientInfo clientInfo = new ClientInfo(this._client, true);
+            clientInfo.TopLevel = false;
+            clientInfo.Visible = true;
+            navigationPageOther.Name = clientInfo.Name;
+            navigationPageOther.Controls.Clear();
+            navigationPageOther.Controls.Add(clientInfo);
+            showNavigationPage(clientInfo.Name);
+        }
     }
 }

@@ -78,6 +78,7 @@
             this.navBarItemEstimatedPlan = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItemReport = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItemInsurance = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarItemInvRecomm = new DevExpress.XtraNavBar.NavBarItem();
             this.btnViewPlann = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.cmbPlanner = new DevExpress.XtraEditors.ComboBoxEdit();
@@ -166,7 +167,6 @@
             this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.gridBand1 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.navBarItemInvRecomm = new DevExpress.XtraNavBar.NavBarItem();
             ((System.ComponentModel.ISupportInitialize)(this.panelMenu)).BeginInit();
             this.panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlNavCtrl)).BeginInit();
@@ -289,6 +289,7 @@
             // Personalnfo
             // 
             this.Personalnfo.Caption = "Personal Info";
+            this.Personalnfo.Expanded = true;
             this.Personalnfo.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.ContactInfo),
             new DevExpress.XtraNavBar.NavBarItemLink(this.BankDetails),
@@ -323,7 +324,7 @@
             this.navBarItemFamily.Caption = "Family Members";
             this.navBarItemFamily.Name = "navBarItemFamily";
             this.navBarItemFamily.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarItemFamily.SmallImage")));
-            this.navBarItemFamily.Visible = false;
+            this.navBarItemFamily.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItemFamily_LinkClicked);
             // 
             // navBarGroupControlContainer1
             // 
@@ -457,6 +458,13 @@
             this.navBarItemInsurance.Name = "navBarItemInsurance";
             this.navBarItemInsurance.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarItemInsurance.SmallImage")));
             this.navBarItemInsurance.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItemInsurance_LinkClicked);
+            // 
+            // navBarItemInvRecomm
+            // 
+            this.navBarItemInvRecomm.Caption = "Investment Recommendation";
+            this.navBarItemInvRecomm.Name = "navBarItemInvRecomm";
+            this.navBarItemInvRecomm.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarItemInvRecomm.SmallImage")));
+            this.navBarItemInvRecomm.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItemInvRecomm_LinkClicked);
             // 
             // btnViewPlann
             // 
@@ -878,7 +886,6 @@
             // navigationPageContactInfo
             // 
             this.navigationPageContactInfo.AutoScroll = true;
-            this.navigationPageContactInfo.Caption = "navigationPageContactInfo";
             this.navigationPageContactInfo.Name = "navigationPageContactInfo";
             this.navigationPageContactInfo.Size = new System.Drawing.Size(1004, 599);
             this.navigationPageContactInfo.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.navigationPageClient_ControlRemoved);
@@ -1403,13 +1410,6 @@
             this.gridBand1.Caption = "gridBand1";
             this.gridBand1.Name = "gridBand1";
             this.gridBand1.VisibleIndex = -1;
-            // 
-            // navBarItemInvRecomm
-            // 
-            this.navBarItemInvRecomm.Caption = "Investment Recommendation";
-            this.navBarItemInvRecomm.Name = "navBarItemInvRecomm";
-            this.navBarItemInvRecomm.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarItemInvRecomm.SmallImage")));
-            this.navBarItemInvRecomm.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItemInvRecomm_LinkClicked);
             // 
             // Clientdashboard
             // 
