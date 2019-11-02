@@ -64,6 +64,9 @@
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
             this.txtName = new DevExpress.XtraEditors.TextEdit();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
+            this.txtChequeInFavourOff = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
+            this.colChequeInFavourOff = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlScheme)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewScheme)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grpSchemeDetails)).BeginInit();
@@ -71,6 +74,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.lookupCategory.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbAMC.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtChequeInFavourOff.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // gridControlScheme
@@ -90,7 +94,8 @@
             this.colID,
             this.colAMCId,
             this.colAMCName,
-            this.colCategoryId});
+            this.colCategoryId,
+            this.colChequeInFavourOff});
             this.gridViewScheme.GridControl = this.gridControlScheme;
             this.gridViewScheme.Name = "gridViewScheme";
             this.gridViewScheme.OptionsBehavior.Editable = false;
@@ -209,6 +214,8 @@
             // 
             // grpSchemeDetails
             // 
+            this.grpSchemeDetails.Controls.Add(this.txtChequeInFavourOff);
+            this.grpSchemeDetails.Controls.Add(this.labelControl4);
             this.grpSchemeDetails.Controls.Add(this.labelControl2);
             this.grpSchemeDetails.Controls.Add(this.lookupCategory);
             this.grpSchemeDetails.Controls.Add(this.cmbAMC);
@@ -220,14 +227,14 @@
             this.grpSchemeDetails.Enabled = false;
             this.grpSchemeDetails.Location = new System.Drawing.Point(13, 233);
             this.grpSchemeDetails.Name = "grpSchemeDetails";
-            this.grpSchemeDetails.Size = new System.Drawing.Size(443, 121);
+            this.grpSchemeDetails.Size = new System.Drawing.Size(443, 149);
             this.grpSchemeDetails.TabIndex = 8;
             this.grpSchemeDetails.Text = "Scheme Details";
             this.grpSchemeDetails.Paint += new System.Windows.Forms.PaintEventHandler(this.grpSchemeDetails_Paint);
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(30, 90);
+            this.labelControl2.Location = new System.Drawing.Point(18, 90);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(49, 13);
             this.labelControl2.TabIndex = 48;
@@ -235,28 +242,28 @@
             // 
             // lookupCategory
             // 
-            this.lookupCategory.Location = new System.Drawing.Point(86, 87);
+            this.lookupCategory.Location = new System.Drawing.Point(129, 87);
             this.lookupCategory.Name = "lookupCategory";
             this.lookupCategory.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lookupCategory.Properties.NullText = "";
-            this.lookupCategory.Size = new System.Drawing.Size(247, 20);
-            this.lookupCategory.TabIndex = 47;
+            this.lookupCategory.Size = new System.Drawing.Size(238, 20);
+            this.lookupCategory.TabIndex = 2;
             // 
             // cmbAMC
             // 
-            this.cmbAMC.Location = new System.Drawing.Point(86, 34);
+            this.cmbAMC.Location = new System.Drawing.Point(129, 34);
             this.cmbAMC.Name = "cmbAMC";
             this.cmbAMC.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cmbAMC.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.cmbAMC.Size = new System.Drawing.Size(247, 20);
+            this.cmbAMC.Size = new System.Drawing.Size(238, 20);
             this.cmbAMC.TabIndex = 0;
             this.cmbAMC.SelectedIndexChanged += new System.EventHandler(this.cmbAMC_SelectedIndexChanged);
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(30, 37);
+            this.labelControl1.Location = new System.Drawing.Point(18, 37);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(26, 13);
             this.labelControl1.TabIndex = 46;
@@ -266,7 +273,7 @@
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.Image = ((System.Drawing.Image)(resources.GetObject("btnCancel.Image")));
-            this.btnCancel.Location = new System.Drawing.Point(366, 84);
+            this.btnCancel.Location = new System.Drawing.Point(376, 110);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(62, 23);
             toolTipTitleItem4.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image3")));
@@ -278,7 +285,7 @@
             superToolTip4.Items.Add(toolTipTitleItem4);
             superToolTip4.Items.Add(toolTipItem4);
             this.btnCancel.SuperTip = superToolTip4;
-            this.btnCancel.TabIndex = 43;
+            this.btnCancel.TabIndex = 5;
             this.btnCancel.Text = "&Cancel";
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
@@ -286,7 +293,7 @@
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
-            this.btnSave.Location = new System.Drawing.Point(366, 55);
+            this.btnSave.Location = new System.Drawing.Point(376, 81);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(62, 23);
             toolTipTitleItem5.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image4")));
@@ -298,31 +305,52 @@
             superToolTip5.Items.Add(toolTipTitleItem5);
             superToolTip5.Items.Add(toolTipItem5);
             this.btnSave.SuperTip = superToolTip5;
-            this.btnSave.TabIndex = 42;
+            this.btnSave.TabIndex = 4;
             this.btnSave.Text = "&Save";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(86, 60);
+            this.txtName.Location = new System.Drawing.Point(129, 60);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(247, 20);
-            this.txtName.TabIndex = 3;
+            this.txtName.Size = new System.Drawing.Size(238, 20);
+            this.txtName.TabIndex = 1;
             this.txtName.Validating += new System.ComponentModel.CancelEventHandler(this.txtName_Validating);
             // 
             // labelControl3
             // 
-            this.labelControl3.Location = new System.Drawing.Point(30, 63);
+            this.labelControl3.Location = new System.Drawing.Point(18, 63);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(31, 13);
             this.labelControl3.TabIndex = 1;
             this.labelControl3.Text = "Name:";
             // 
+            // txtChequeInFavourOff
+            // 
+            this.txtChequeInFavourOff.Location = new System.Drawing.Point(129, 113);
+            this.txtChequeInFavourOff.Name = "txtChequeInFavourOff";
+            this.txtChequeInFavourOff.Size = new System.Drawing.Size(238, 20);
+            this.txtChequeInFavourOff.TabIndex = 3;
+            // 
+            // labelControl4
+            // 
+            this.labelControl4.Location = new System.Drawing.Point(18, 116);
+            this.labelControl4.Name = "labelControl4";
+            this.labelControl4.Size = new System.Drawing.Size(104, 13);
+            this.labelControl4.TabIndex = 49;
+            this.labelControl4.Text = "Cheque in favour off:";
+            // 
+            // colChequeInFavourOff
+            // 
+            this.colChequeInFavourOff.Caption = "Cheque in favour off";
+            this.colChequeInFavourOff.FieldName = "ChequeInFavourOff";
+            this.colChequeInFavourOff.Name = "colChequeInFavourOff";
+            // 
             // SchemeView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(468, 366);
+            this.ClientSize = new System.Drawing.Size(468, 394);
             this.Controls.Add(this.grpSchemeDetails);
             this.Controls.Add(this.lblLine);
             this.Controls.Add(this.btnDelete);
@@ -342,6 +370,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.lookupCategory.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbAMC.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtChequeInFavourOff.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -368,5 +397,8 @@
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.LookUpEdit lookupCategory;
         private DevExpress.XtraGrid.Columns.GridColumn colCategoryId;
+        private DevExpress.XtraEditors.TextEdit txtChequeInFavourOff;
+        private DevExpress.XtraEditors.LabelControl labelControl4;
+        private DevExpress.XtraGrid.Columns.GridColumn colChequeInFavourOff;
     }
 }

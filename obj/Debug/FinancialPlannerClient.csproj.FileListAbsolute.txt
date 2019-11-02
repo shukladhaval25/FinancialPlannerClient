@@ -323,7 +323,6 @@ C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\
 C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.Reports.CurrentStatusReport.resources
 C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.Reports.CurrentStatusDetails.resources
 C:\Application Development\Financial Planner Project\FinancialPlannerClient\bin\Debug\Newtonsoft.Json.dll
-C:\Application Development\Financial Planner Project\FinancialPlannerClient\bin\Debug\FinancialPlanner.Common.dll
 C:\Application Development\Financial Planner Project\FinancialPlannerClient\bin\Debug\FinancialPlanner.Common.pdb
 C:\Application Development\Financial Planner Project\FinancialPlannerClient\bin\Debug\FinancialPlanner.Common.dll.config
 C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.Master.ClientRatingView.resources
@@ -395,3 +394,4 @@ C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\
 C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.TaskManagementSystem.TaskCommentView.resources
 C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.Master.BankView.resources
 C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.InvestmentRecomendationView.resources
+C:\Application Development\Financial Planner Project\FinancialPlannerClient\bin\Debug\FinancialPlanner.Common.dll

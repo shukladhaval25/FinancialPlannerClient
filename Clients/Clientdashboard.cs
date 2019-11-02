@@ -546,7 +546,8 @@ namespace FinancialPlannerClient.Clients
 
         private void navBarItemInvRecomm_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
-            InvestmentRecomendationView investmentRecomendationView = new InvestmentRecomendationView(this.personalInformation.Client);
+            InvestmentRecomendationView investmentRecomendationView = 
+                new InvestmentRecomendationView(this.personalInformation.Client,this.planner);
             investmentRecomendationView.TopLevel = false;
             investmentRecomendationView.Visible = true;
             navigationPageOther.Name = investmentRecomendationView.Name;

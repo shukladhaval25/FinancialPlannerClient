@@ -15,7 +15,32 @@ namespace FinancialPlannerClient.Master
         const string GET_All_API = "SchemeCategory/GetAll";
         const string ADD_Area_API = "SchemeCategory/Add";
         const string DELETE_Area_API = "SchemeCategory/Delete";
+        const string GET_SCHEME = "SchemeCategory/Get?id={0}";
 
+        public SchemeCategory Get(int id)
+        {
+            SchemeCategory schemeCategory = new SchemeCategory();
+            try
+            {
+                FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
+                string apiurl = Program.WebServiceUrl + "/" + string.Format(GET_SCHEME,id);
+
+                RestAPIExecutor restApiExecutor = new RestAPIExecutor();
+
+                var restResult = restApiExecutor.Execute<SchemeCategory>(apiurl, null, "GET");
+
+                if (jsonSerialization.IsValidJson(restResult.ToString()))
+                {
+                    schemeCategory = jsonSerialization.DeserializeFromString<SchemeCategory>(restResult.ToString());
+                }
+                return schemeCategory;
+            }
+            catch (Exception ex)
+            {
+                Logger.LogDebug(ex);
+                return null;
+            }
+        }
         public IList<SchemeCategory> GetAll()
         {
             IList<SchemeCategory> schemeCategoryList = new List<SchemeCategory>();

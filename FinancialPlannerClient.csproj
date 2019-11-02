@@ -751,6 +751,7 @@
     <Compile Include="TaskManagementSystem\TaskCommentInfo.cs" />
     <Compile Include="TaskManagementSystem\TransactionOptions\AdditionalPurchase.cs" />
     <Compile Include="TaskManagementSystem\TransactionOptions\FreshPurchaseTrans.cs" />
+    <Compile Include="TaskManagementSystem\TransactionOptions\Helper\LumsumInvestmentRecomendationHelper.cs" />
     <Compile Include="TaskManagementSystem\TransactionOptions\ITransactionType.cs" />
     <Compile Include="TaskManagementSystem\CustomAppointmentForm.cs">
       <SubType>Form</SubType>
@@ -771,11 +772,14 @@
       <DependentUpon>NewProject.cs</DependentUpon>
     </Compile>
     <Compile Include="TaskManagementSystem\Services\TaskProjectInfo.cs" />
+    <Compile Include="TaskManagementSystem\TransactionOptions\LumsumInvestmentType.cs" />
     <Compile Include="TaskManagementSystem\TransactionOptions\SIPCancellationTrans.cs" />
     <Compile Include="TaskManagementSystem\TransactionOptions\SIPFresh.cs" />
+    <Compile Include="TaskManagementSystem\TransactionOptions\SIPInvestmentRecomendation.cs" />
     <Compile Include="TaskManagementSystem\TransactionOptions\SIPOld.cs" />
     <Compile Include="TaskManagementSystem\TransactionOptions\STPCancellationTrans.cs" />
     <Compile Include="TaskManagementSystem\TransactionOptions\STPTrans.cs" />
+    <Compile Include="TaskManagementSystem\TransactionOptions\STPTypeRecomendation.cs" />
     <Compile Include="TaskManagementSystem\TransactionOptions\Switch.cs" />
     <Compile Include="TaskManagementSystem\TransactionOptions\SWPTrans.cs" />
     <Compile Include="TaskManagementSystem\ViewTaskCard.cs">
