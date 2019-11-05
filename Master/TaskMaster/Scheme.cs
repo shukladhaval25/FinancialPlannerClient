@@ -166,6 +166,7 @@ namespace FinancialPlannerClient.Master.TaskMaster
             Scheme.MachineName = Environment.MachineName;
             Scheme.CategoryId = int.Parse(lookupCategory.EditValue.ToString());
             Scheme.ChequeInFavourOff = txtChequeInFavourOff.Text;
+            Scheme.Type = cmbType.Text;
             return Scheme;
         }
 
@@ -186,6 +187,7 @@ namespace FinancialPlannerClient.Master.TaskMaster
                 lookupCategory.Text = (id > 0) ? schemeCategories.First(i => i.Id == id).Name : "";
                 lookupCategory.EditValue = id;
                 txtChequeInFavourOff.Text = gridViewScheme.GetFocusedRowCellValue(gridViewScheme.Columns[5]).ToString();
+                cmbType.Text = gridViewScheme.GetFocusedRowCellValue(gridViewScheme.Columns[6]).ToString();
             }
         }
 

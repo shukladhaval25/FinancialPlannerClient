@@ -751,7 +751,10 @@
     <Compile Include="TaskManagementSystem\TaskCommentInfo.cs" />
     <Compile Include="TaskManagementSystem\TransactionOptions\AdditionalPurchase.cs" />
     <Compile Include="TaskManagementSystem\TransactionOptions\FreshPurchaseTrans.cs" />
+    <Compile Include="TaskManagementSystem\TransactionOptions\Helper\InvestmentRecommedationRatioHelper.cs" />
+    <Compile Include="TaskManagementSystem\TransactionOptions\Helper\SIPInvestmentRecomendationHelper.cs" />
     <Compile Include="TaskManagementSystem\TransactionOptions\Helper\LumsumInvestmentRecomendationHelper.cs" />
+    <Compile Include="TaskManagementSystem\TransactionOptions\Helper\STPInvestmentRecommendationHelper.cs" />
     <Compile Include="TaskManagementSystem\TransactionOptions\ITransactionType.cs" />
     <Compile Include="TaskManagementSystem\CustomAppointmentForm.cs">
       <SubType>Form</SubType>

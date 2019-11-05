@@ -45,15 +45,15 @@
             this.gridViewInvestmentRatio = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.xtraTabInvestmentRecomendationDetails = new DevExpress.XtraTab.XtraTabControl();
             this.LumsumInvestment = new DevExpress.XtraTab.XtraTabPage();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.btnDeleteLumsum = new DevExpress.XtraEditors.SimpleButton();
             this.gridControlLumsumInvestment = new DevExpress.XtraGrid.GridControl();
             this.gridViewLumsumInvestment = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.STPInvestment = new DevExpress.XtraTab.XtraTabPage();
-            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
+            this.btnDeleteSTPInvestementRecommendation = new DevExpress.XtraEditors.SimpleButton();
             this.gridControlSTPInvestment = new DevExpress.XtraGrid.GridControl();
             this.gridViewSTPInvestment = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.SIPInvestement = new DevExpress.XtraTab.XtraTabPage();
-            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
+            this.btnDeleteSIPInvestement = new DevExpress.XtraEditors.SimpleButton();
             this.gridControlSIPInvestment = new DevExpress.XtraGrid.GridControl();
             this.gridViewSIPInvestmentRecomendation = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.grpInvestmentOption = new DevExpress.XtraEditors.GroupControl();
@@ -175,30 +175,31 @@
             // 
             // LumsumInvestment
             // 
-            this.LumsumInvestment.Controls.Add(this.simpleButton1);
+            this.LumsumInvestment.Controls.Add(this.btnDeleteLumsum);
             this.LumsumInvestment.Controls.Add(this.gridControlLumsumInvestment);
             this.LumsumInvestment.Name = "LumsumInvestment";
             this.LumsumInvestment.Size = new System.Drawing.Size(754, 405);
             this.LumsumInvestment.Text = "Lumsum Investment";
             // 
-            // simpleButton1
+            // btnDeleteLumsum
             // 
-            this.simpleButton1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.simpleButton1.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.Image")));
-            this.simpleButton1.Location = new System.Drawing.Point(365, 372);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(25, 23);
+            this.btnDeleteLumsum.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnDeleteLumsum.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteLumsum.Image")));
+            this.btnDeleteLumsum.Location = new System.Drawing.Point(365, 372);
+            this.btnDeleteLumsum.Name = "btnDeleteLumsum";
+            this.btnDeleteLumsum.Size = new System.Drawing.Size(25, 23);
             toolTipTitleItem1.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
             toolTipTitleItem1.Appearance.Options.UseImage = true;
             toolTipTitleItem1.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem1.Image")));
-            toolTipTitleItem1.Text = "Delete Client";
+            toolTipTitleItem1.Text = "Delete";
             toolTipItem1.LeftIndent = 6;
-            toolTipItem1.Text = "To delete selected client record click here.";
+            toolTipItem1.Text = "To delete selected investment record click here.";
             superToolTip1.Items.Add(toolTipTitleItem1);
             superToolTip1.Items.Add(toolTipItem1);
-            this.simpleButton1.SuperTip = superToolTip1;
-            this.simpleButton1.TabIndex = 7;
-            this.simpleButton1.ToolTip = "Delete Client";
+            this.btnDeleteLumsum.SuperTip = superToolTip1;
+            this.btnDeleteLumsum.TabIndex = 7;
+            this.btnDeleteLumsum.ToolTip = "Delete";
+            this.btnDeleteLumsum.Click += new System.EventHandler(this.btnDeleteLumsum_Click);
             // 
             // gridControlLumsumInvestment
             // 
@@ -216,6 +217,8 @@
             // gridViewLumsumInvestment
             // 
             this.gridViewLumsumInvestment.GridControl = this.gridControlLumsumInvestment;
+            this.gridViewLumsumInvestment.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Amount", null, "")});
             this.gridViewLumsumInvestment.Name = "gridViewLumsumInvestment";
             this.gridViewLumsumInvestment.OptionsBehavior.Editable = false;
             this.gridViewLumsumInvestment.OptionsView.ShowFooter = true;
@@ -223,30 +226,31 @@
             // 
             // STPInvestment
             // 
-            this.STPInvestment.Controls.Add(this.simpleButton2);
+            this.STPInvestment.Controls.Add(this.btnDeleteSTPInvestementRecommendation);
             this.STPInvestment.Controls.Add(this.gridControlSTPInvestment);
             this.STPInvestment.Name = "STPInvestment";
             this.STPInvestment.Size = new System.Drawing.Size(754, 405);
             this.STPInvestment.Text = "STP Details";
             // 
-            // simpleButton2
+            // btnDeleteSTPInvestementRecommendation
             // 
-            this.simpleButton2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.simpleButton2.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton2.Image")));
-            this.simpleButton2.Location = new System.Drawing.Point(365, 372);
-            this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(25, 23);
+            this.btnDeleteSTPInvestementRecommendation.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnDeleteSTPInvestementRecommendation.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteSTPInvestementRecommendation.Image")));
+            this.btnDeleteSTPInvestementRecommendation.Location = new System.Drawing.Point(365, 372);
+            this.btnDeleteSTPInvestementRecommendation.Name = "btnDeleteSTPInvestementRecommendation";
+            this.btnDeleteSTPInvestementRecommendation.Size = new System.Drawing.Size(25, 23);
             toolTipTitleItem2.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
             toolTipTitleItem2.Appearance.Options.UseImage = true;
             toolTipTitleItem2.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem2.Image")));
-            toolTipTitleItem2.Text = "Delete Client";
+            toolTipTitleItem2.Text = "Delete";
             toolTipItem2.LeftIndent = 6;
-            toolTipItem2.Text = "To delete selected client record click here.";
+            toolTipItem2.Text = "To delete selected investment record click here.";
             superToolTip2.Items.Add(toolTipTitleItem2);
             superToolTip2.Items.Add(toolTipItem2);
-            this.simpleButton2.SuperTip = superToolTip2;
-            this.simpleButton2.TabIndex = 8;
-            this.simpleButton2.ToolTip = "Delete Client";
+            this.btnDeleteSTPInvestementRecommendation.SuperTip = superToolTip2;
+            this.btnDeleteSTPInvestementRecommendation.TabIndex = 8;
+            this.btnDeleteSTPInvestementRecommendation.ToolTip = "Delete";
+            this.btnDeleteSTPInvestementRecommendation.Click += new System.EventHandler(this.btnDeleteSTPInvestementRecommendation_Click);
             // 
             // gridControlSTPInvestment
             // 
@@ -269,30 +273,31 @@
             // 
             // SIPInvestement
             // 
-            this.SIPInvestement.Controls.Add(this.simpleButton3);
+            this.SIPInvestement.Controls.Add(this.btnDeleteSIPInvestement);
             this.SIPInvestement.Controls.Add(this.gridControlSIPInvestment);
             this.SIPInvestement.Name = "SIPInvestement";
             this.SIPInvestement.Size = new System.Drawing.Size(754, 405);
             this.SIPInvestement.Text = "SIP Details";
             // 
-            // simpleButton3
+            // btnDeleteSIPInvestement
             // 
-            this.simpleButton3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.simpleButton3.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton3.Image")));
-            this.simpleButton3.Location = new System.Drawing.Point(363, 372);
-            this.simpleButton3.Name = "simpleButton3";
-            this.simpleButton3.Size = new System.Drawing.Size(25, 23);
+            this.btnDeleteSIPInvestement.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnDeleteSIPInvestement.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteSIPInvestement.Image")));
+            this.btnDeleteSIPInvestement.Location = new System.Drawing.Point(363, 372);
+            this.btnDeleteSIPInvestement.Name = "btnDeleteSIPInvestement";
+            this.btnDeleteSIPInvestement.Size = new System.Drawing.Size(25, 23);
             toolTipTitleItem3.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
             toolTipTitleItem3.Appearance.Options.UseImage = true;
             toolTipTitleItem3.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem3.Image")));
-            toolTipTitleItem3.Text = "Delete Client";
+            toolTipTitleItem3.Text = "Delete";
             toolTipItem3.LeftIndent = 6;
-            toolTipItem3.Text = "To delete selected client record click here.";
+            toolTipItem3.Text = "To delete selected investment record click here.";
             superToolTip3.Items.Add(toolTipTitleItem3);
             superToolTip3.Items.Add(toolTipItem3);
-            this.simpleButton3.SuperTip = superToolTip3;
-            this.simpleButton3.TabIndex = 9;
-            this.simpleButton3.ToolTip = "Delete Client";
+            this.btnDeleteSIPInvestement.SuperTip = superToolTip3;
+            this.btnDeleteSIPInvestement.TabIndex = 9;
+            this.btnDeleteSIPInvestement.ToolTip = "Delete";
+            this.btnDeleteSIPInvestement.Click += new System.EventHandler(this.btnDeleteSIPInvestement_Click);
             // 
             // gridControlSIPInvestment
             // 
@@ -534,13 +539,13 @@
         private DevExpress.XtraGrid.Views.Grid.GridView gridViewLumsumInvestment;
         private DevExpress.XtraGrid.GridControl gridControlInvestmenRatio;
         private DevExpress.XtraGrid.Views.Grid.GridView gridViewInvestmentRatio;
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraEditors.SimpleButton btnDeleteLumsum;
         private DevExpress.XtraGrid.GridControl gridControlSTPInvestment;
         private DevExpress.XtraGrid.Views.Grid.GridView gridViewSTPInvestment;
         private DevExpress.XtraTab.XtraTabPage SIPInvestement;
         private DevExpress.XtraGrid.GridControl gridControlSIPInvestment;
         private DevExpress.XtraGrid.Views.Grid.GridView gridViewSIPInvestmentRecomendation;
-        private DevExpress.XtraEditors.SimpleButton simpleButton2;
-        private DevExpress.XtraEditors.SimpleButton simpleButton3;
+        private DevExpress.XtraEditors.SimpleButton btnDeleteSTPInvestementRecommendation;
+        private DevExpress.XtraEditors.SimpleButton btnDeleteSIPInvestement;
     }
 }

@@ -11,6 +11,10 @@ using FinancialPlannerClient.Master;
 using FinancialPlanner.Common.Model.Masters;
 using FinancialPlannerClient.TaskManagementSystem.TransactionOptions.Helper;
 using FinancialPlanner.Common.DataConversion;
+using System.Linq;
+using System.Diagnostics;
+using System.Reflection;
+using FinancialPlanner.Common;
 
 namespace FinancialPlannerClient.PlanOptions
 {
@@ -24,6 +28,9 @@ namespace FinancialPlannerClient.PlanOptions
         private DataTable dtSTPInvestment = new DataTable();
         private DataTable dtSIPInvestment = new DataTable();
         LumsumInvestmentRecomendationHelper lumsumInvestmentRecomendationHelper = new LumsumInvestmentRecomendationHelper();
+        STPInvestmentRecommendationHelper stpInvestmentRecommendationHelper = new STPInvestmentRecommendationHelper();
+        SIPInvestmentRecomendationHelper sipInvestmentRecommendationHelper = new SIPInvestmentRecomendationHelper();
+        InvestmentRecommedationRatioHelper investmentRecommedationRatioHelper = new InvestmentRecommedationRatioHelper();
         private ITransactionType transactionType;
 
         public IList<Scheme> schemes { get; private set; }
@@ -37,45 +44,131 @@ namespace FinancialPlannerClient.PlanOptions
 
         private void InvestmentRecomendationView_Load(object sender, EventArgs e)
         {
+            loadInvestmentRatioInfo();
             loadAMC();
             loadLumsumInvestment();
             loadSTPInvestment();
-            loadSIPInvestment();
+            loadSIPInvestment();            
+        }
+
+        private void loadInvestmentRatioInfo()
+        {
+            InvestmentRecommendationRatio investmentRecommendationRatio = new InvestmentRecommendationRatio();
+            investmentRecommendationRatio = investmentRecommedationRatioHelper.Get(this.planner.ID);
+            vGridInvestmentRatio.Rows[0].Properties.Value = investmentRecommendationRatio.EquityRatio;
+            vGridInvestmentRatio.Rows[1].Properties.Value = investmentRecommendationRatio.DebtRatio;
+        }
+
+        private void loadInvestmentRatio()
+        {
+            DataTable dt = new DataTable();
+            dt = getGroupbyTypeAndCategoryData();
+            DataTable dtInvestmentRatio = new DataTable();
+            dtInvestmentRatio.Columns.Add("Category", Type.GetType("System.String"));
+            dtInvestmentRatio.Columns.Add("Amount", Type.GetType("System.Double"));
+            dtInvestmentRatio.Columns.Add("Ratio (%)", Type.GetType("System.Double"));
+            dtInvestmentRatio.Columns.Add("Type", Type.GetType("System.String"));
+            double totalAmount = 0;
+            foreach (DataRow dr in dt.Rows)
+            {
+                DataRow drInvRatio = dtInvestmentRatio.NewRow();
+                drInvRatio["Category"] = dr["Category"];
+                drInvRatio["Amount"] = dr["Amount"];
+                totalAmount = totalAmount + double.Parse(dr["Amount"].ToString());
+                drInvRatio["Type"] = dr["Type"];
+                dtInvestmentRatio.Rows.Add(drInvRatio);
+            }
+            foreach (DataRow dr in dtInvestmentRatio.Rows)
+            {
+                DataRow drInvRatio = dr;
+                drInvRatio["Ratio (%)"] = Math.Round((double.Parse(dr["Amount"].ToString()) * 100) / totalAmount, 2);               
+            }
+            gridControlInvestmenRatio.DataSource = dtInvestmentRatio;
+        }
+
+        private DataTable getGroupbyTypeAndCategoryData()
+        {
+            DataTable dt;
+            dt = dtLumsumInvestment.AsEnumerable()
+                .OrderByDescending(en => en.Field<String>("Type"))
+                .GroupBy(r => new { Col1 = r["Type"], Col2 = r["Category"] })
+                .Select(g =>
+                {
+                    var row = dtLumsumInvestment.NewRow();
+                    row["Amount"] = g.Sum(r => r.Field<double>("Amount"));
+                    row["Category"] = g.Key.Col2;
+                    row["Type"] = g.Key.Col1;
+                    return row;
+
+                })
+                .CopyToDataTable();
+            return dt;
         }
 
         private void loadSIPInvestment()
         {
-            dtSIPInvestment.Columns.Add("Id", Type.GetType("System.Int64"));
-            dtSIPInvestment.Columns.Add("PId", Type.GetType("System.Int64"));
-            dtSIPInvestment.Columns.Add("CId", Type.GetType("System.Int64"));
-            dtSIPInvestment.Columns.Add("SchemeId", Type.GetType("System.Int64"));
-            dtSIPInvestment.Columns.Add("SchemeName", Type.GetType("System.String"));
-            dtSIPInvestment.Columns.Add("Amount", Type.GetType("System.Double"));
-            dtSIPInvestment.Columns.Add("Category", Type.GetType("System.String"));
-            dtSIPInvestment.Columns.Add("ChequeInFavourOff", Type.GetType("System.String"));
-            dtSIPInvestment.Columns.Add("FirstHolder", Type.GetType("System.String"));
-            dtSIPInvestment.Columns.Add("SecondHolder", Type.GetType("System.String"));
+            List<SIPTypeInvestmentRecomendation> sipTypeInvestmentRecommendation =
+                 (List<SIPTypeInvestmentRecomendation>) sipInvestmentRecommendationHelper.GetAll(this.planner.ID);
+            dtSIPInvestment = ListtoDataTable.ToDataTable(sipTypeInvestmentRecommendation);
+            gridControlSIPInvestment.DataSource = dtSIPInvestment;
+            gridViewSIPInvestmentRecomendation.Columns["SchemeName"].VisibleIndex = 0;
+            gridViewSIPInvestmentRecomendation.Columns["Amount"].VisibleIndex = 1;
+            gridViewSIPInvestmentRecomendation.Columns["Category"].VisibleIndex = 2;
+            gridViewSIPInvestmentRecomendation.Columns["ChequeInFavourOff"].VisibleIndex = 3;
+            gridViewSIPInvestmentRecomendation.Columns["FirstHolder"].VisibleIndex = 4;
+            gridViewSIPInvestmentRecomendation.Columns["SecondHolder"].VisibleIndex = 5;
+            gridViewSIPInvestmentRecomendation.Columns["Id"].Visible = false;
+            gridViewSIPInvestmentRecomendation.Columns["Cid"].Visible = false;
+            gridViewSIPInvestmentRecomendation.Columns["Pid"].Visible = false;
+            gridViewSIPInvestmentRecomendation.Columns["SchemeId"].Visible = false;
+            gridViewSIPInvestmentRecomendation.Columns["CreatedOn"].Visible = false;
+            gridViewSIPInvestmentRecomendation.Columns["CreatedBy"].Visible = false;
+            gridViewSIPInvestmentRecomendation.Columns["UpdatedBy"].Visible = false;
+            gridViewSIPInvestmentRecomendation.Columns["UpdatedOn"].Visible = false;
+            gridViewSIPInvestmentRecomendation.Columns["MachineName"].Visible = false;
+            gridViewSIPInvestmentRecomendation.Columns["UpdatedByUserName"].Visible = false;
+            gridViewSIPInvestmentRecomendation.Columns["Type"].Visible = false;
         }
 
         private void loadSTPInvestment()
         {
-            dtSTPInvestment.Columns.Add("Id", Type.GetType("System.Int64"));
-            dtSTPInvestment.Columns.Add("PId", Type.GetType("System.Int64"));
-            dtSTPInvestment.Columns.Add("CId", Type.GetType("System.Int64"));
-            dtSTPInvestment.Columns.Add("FromSchemeId", Type.GetType("System.Int64"));
-            dtSTPInvestment.Columns.Add("FromSchemeName", Type.GetType("System.String"));
-            dtSTPInvestment.Columns.Add("SchemeId", Type.GetType("System.Int64"));
-            dtSTPInvestment.Columns.Add("SchemeName", Type.GetType("System.String"));
-            dtSTPInvestment.Columns.Add("Amount", Type.GetType("System.Double"));
-            dtSTPInvestment.Columns.Add("Duration", Type.GetType("System.Int16"));
-            dtSTPInvestment.Columns.Add("Frequency", Type.GetType("System.String"));           
+            List<STPTypeInvestmentRecomendation> lumsumInvestmentRecomendations =
+                (List<STPTypeInvestmentRecomendation>)stpInvestmentRecommendationHelper.GetAll(this.planner.ID);
+            dtSTPInvestment = ListtoDataTable.ToDataTable(lumsumInvestmentRecomendations);
+            gridControlSTPInvestment.DataSource = dtSTPInvestment;
+            gridControlLumsumInvestment.DataSource = dtLumsumInvestment;
+            gridViewSTPInvestment.Columns["FromSchemeName"].VisibleIndex = 0;
+            gridViewSTPInvestment.Columns["SchemeName"].VisibleIndex = 1;
+            gridViewSTPInvestment.Columns["Amount"].VisibleIndex = 2;
+            gridViewSTPInvestment.Columns["Duration"].VisibleIndex = 3;
+            gridViewSTPInvestment.Columns["Frequency"].VisibleIndex = 4;
+            
+            gridViewSTPInvestment.Columns["Id"].Visible = false;
+            gridViewSTPInvestment.Columns["Cid"].Visible = false;
+            gridViewSTPInvestment.Columns["Pid"].Visible = false;
+            gridViewSTPInvestment.Columns["FromSchemeId"].Visible = false;
+            gridViewSTPInvestment.Columns["SchemeId"].Visible = false;
+            gridViewSTPInvestment.Columns["CreatedOn"].Visible = false;
+            gridViewSTPInvestment.Columns["CreatedBy"].Visible = false;
+            gridViewSTPInvestment.Columns["UpdatedBy"].Visible = false;
+            gridViewSTPInvestment.Columns["UpdatedOn"].Visible = false;
+            gridViewSTPInvestment.Columns["MachineName"].Visible = false;
+            gridViewSTPInvestment.Columns["UpdatedByUserName"].Visible = false;              
         }
 
         private void loadLumsumInvestment()
         {
             List<LumsumInvestmentRecomendation> lumsumInvestmentRecomendations = 
                 (List<LumsumInvestmentRecomendation>) lumsumInvestmentRecomendationHelper.GetAll(this.planner.ID);
-            dtLumsumInvestment = ListtoDataTable.ToDataTable(lumsumInvestmentRecomendations);
+            DataTable dttempLumsumInv   = ListtoDataTable.ToDataTable(lumsumInvestmentRecomendations);
+
+            dtLumsumInvestment = dttempLumsumInv.Clone();
+            dtLumsumInvestment.Columns["Amount"].DataType = typeof(Double);
+            foreach (DataRow row in dttempLumsumInv.Rows)
+            {
+                dtLumsumInvestment.ImportRow(row);
+            }
+            
             gridControlLumsumInvestment.DataSource = dtLumsumInvestment;
             gridViewLumsumInvestment.Columns["SchemeName"].VisibleIndex = 0;
             gridViewLumsumInvestment.Columns["Amount"].VisibleIndex = 1;
@@ -92,7 +185,9 @@ namespace FinancialPlannerClient.PlanOptions
             gridViewLumsumInvestment.Columns["UpdatedBy"].Visible = false;
             gridViewLumsumInvestment.Columns["UpdatedOn"].Visible = false;
             gridViewLumsumInvestment.Columns["MachineName"].Visible = false;
-            gridViewLumsumInvestment.Columns["UpdatedByUserName"].Visible = false;           
+            gridViewLumsumInvestment.Columns["UpdatedByUserName"].Visible = false;
+            gridViewLumsumInvestment.Columns["Type"].Visible = false;
+            loadInvestmentRatio();
         }
 
         internal void loadAMC()
@@ -296,22 +391,38 @@ namespace FinancialPlannerClient.PlanOptions
 
         private void vGridInvestmentRatio_CellValueChanged(object sender, DevExpress.XtraVerticalGrid.Events.CellValueChangedEventArgs e)
         {
+            double equityRatio = 0;
+            double debtRatio = 0;
             if (e.Value != null && e.Value.ToString() != "")
             {
                 decimal totalPercentage = 100;
                 decimal currentCellValue;
                 decimal.TryParse(e.Value.ToString(), out currentCellValue);
                 decimal otherCellValue = totalPercentage - currentCellValue;
+               
                 if (e.Row.Index == 0 )
                 {
+                    equityRatio = double.Parse(currentCellValue.ToString());
+                    debtRatio = double.Parse(otherCellValue.ToString());
                     vGridInvestmentRatio.Rows[e.Row.Index + 1].Properties.Value = otherCellValue;
                 }
                 else
                 {
+                    debtRatio = double.Parse(currentCellValue.ToString());
+                    equityRatio = double.Parse(otherCellValue.ToString());
                     vGridInvestmentRatio.Rows[e.Row.Index - 1].Properties.Value = otherCellValue;
                 }
             }
-            
+            InvestmentRecommendationRatio investmentRecommendationRatio = new InvestmentRecommendationRatio();
+            investmentRecommendationRatio.Pid = this.planner.ID;
+            investmentRecommendationRatio.EquityRatio = equityRatio;
+            investmentRecommendationRatio.DebtRatio = debtRatio;
+            investmentRecommendationRatio.CreatedBy = this.currentClient.ID;
+            investmentRecommendationRatio.CreatedOn = DateTime.Now;
+            investmentRecommendationRatio.UpdatedBy = this.currentClient.ID;
+            investmentRecommendationRatio.UpdatedOn = DateTime.Now;
+            investmentRecommendationRatio.MachineName = Environment.MachineName;
+            investmentRecommedationRatioHelper.Save(investmentRecommendationRatio);
         }
 
         private void btnAddInvestment_Click(object sender, EventArgs e)
@@ -334,20 +445,38 @@ namespace FinancialPlannerClient.PlanOptions
                 else if (rdoInvestmentType.SelectedIndex == 1)
                 {
                     STPTypeInvestmentRecomendation stpInvestmentRecomendation = getSTPInvestment();
-                    addSTPInvestment(stpInvestmentRecomendation);
+                    if (stpInvestmentRecommendationHelper.Save(stpInvestmentRecomendation))
+                    {
+                        loadSTPInvestment();
+                    }                    
                 }
                 else if (rdoInvestmentType.SelectedIndex == 2)
                 {
                     SIPTypeInvestmentRecomendation sIPTypeInvestmentRecomendation = getSIPInvestment();
-                    addSIPInvestment(sIPTypeInvestmentRecomendation);
+                    if (sipInvestmentRecommendationHelper.Save(sIPTypeInvestmentRecomendation))
+                    {
+                        loadSIPInvestment();
+                    }
                 }
             }
             catch (Exception ex)
             {
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
+                LogDebug(currentMethodName.Name, ex);
                 MessageBox.Show(ex.ToString());
             }
         }
 
+        private void LogDebug(string methodName, Exception ex)
+        {
+            DebuggerLogInfo debuggerInfo = new DebuggerLogInfo();
+            debuggerInfo.ClassName = this.GetType().Name;
+            debuggerInfo.Method = methodName;
+            debuggerInfo.ExceptionInfo = ex;
+            Logger.LogDebug(debuggerInfo);
+        }
         private void addSIPInvestment(SIPTypeInvestmentRecomendation sIPTypeInvestmentRecomendation)
         {
             DataRow dataRow = dtSIPInvestment.NewRow();
@@ -383,6 +512,11 @@ namespace FinancialPlannerClient.PlanOptions
             sipTypeInvestment.SchemeId = selectedScheme.Id;
             sipTypeInvestment.SchemeName = selectedScheme.Name;
             sipTypeInvestment.Category = getCategoryName(selectedScheme.CategoryId);
+            sipTypeInvestment.CreatedBy = this.currentClient.ID;
+            sipTypeInvestment.CreatedOn = DateTime.Now;
+            sipTypeInvestment.UpdatedBy = this.currentClient.ID;
+            sipTypeInvestment.UpdatedOn = DateTime.Now;
+            sipTypeInvestment.MachineName = Environment.MachineName;
             return sipTypeInvestment;
         }
 
@@ -395,6 +529,11 @@ namespace FinancialPlannerClient.PlanOptions
             stpInvestmentRecomendation.SchemeId = selectedScheme.Id;
             stpInvestmentRecomendation.SchemeName = selectedScheme.Name;
             stpInvestmentRecomendation.Pid = this.planner.ID;
+            stpInvestmentRecomendation.CreatedBy = this.currentClient.ID;
+            stpInvestmentRecomendation.CreatedOn = DateTime.Now;
+            stpInvestmentRecomendation.UpdatedBy = this.currentClient.ID;
+            stpInvestmentRecomendation.UpdatedOn = DateTime.Now;
+            stpInvestmentRecomendation.MachineName = Environment.MachineName;
             return stpInvestmentRecomendation;
         }
 
@@ -419,48 +558,103 @@ namespace FinancialPlannerClient.PlanOptions
             investmentRecomendation.MachineName = Environment.MachineName;
             return investmentRecomendation;
         }
-
-        private void addLumsumInvestment(LumsumInvestmentRecomendation investmentRecomendation)
-        {
-            DataRow drLumsumInv = dtLumsumInvestment.NewRow();
-            drLumsumInv["CID"] = investmentRecomendation.Cid;
-            drLumsumInv["PID"] = investmentRecomendation.Pid;
-            drLumsumInv["SchemeId"] = investmentRecomendation.SchemeId;
-            drLumsumInv["SchemeName"] = investmentRecomendation.SchemeName;
-            drLumsumInv["Category"] = investmentRecomendation.Category;
-            drLumsumInv["Amount"] = investmentRecomendation.Amount;
-            drLumsumInv["ChequeInFavourOff"] = investmentRecomendation.ChequeInFavourOff;
-            drLumsumInv["FirstHolder"] = investmentRecomendation.FirstHolder;
-            drLumsumInv["SecondHolder"] = investmentRecomendation.SecondHolder;
-
-            dtLumsumInvestment.Rows.Add(drLumsumInv);
-                   
-        }
-        private void addSTPInvestment (STPTypeInvestmentRecomendation stpInvestmentRecomendation)
-        {
-            DataRow dataRow = dtSTPInvestment.NewRow();
-            dataRow["CID"] = stpInvestmentRecomendation.Cid;
-            dataRow["PID"] = stpInvestmentRecomendation.Pid;
-            dataRow["FromSchemeId"] = stpInvestmentRecomendation.FromSchemeId;
-            dataRow["FromSchemeName"] = stpInvestmentRecomendation.FromSchemeName;
-            dataRow["SchemeId"] = stpInvestmentRecomendation.SchemeId;
-            dataRow["SchemeName"] = stpInvestmentRecomendation.SchemeName;
-            dataRow["Amount"] = stpInvestmentRecomendation.Amount;
-            dataRow["Duration"] = stpInvestmentRecomendation.Duration;
-            dataRow["Frequency"] = stpInvestmentRecomendation.Frequency;
-
-            dtSTPInvestment.Rows.Add(dataRow);
-            gridControlSTPInvestment.DataSource = dtSTPInvestment;
-            gridViewSTPInvestment.Columns["Id"].Visible = false;
-            gridViewSTPInvestment.Columns["CId"].Visible = false;
-            gridViewSTPInvestment.Columns["PId"].Visible = false;
-            gridViewSTPInvestment.Columns["SchemeId"].Visible = false;
-            gridViewSTPInvestment.Columns["FromSchemeId"].Visible = false;
-        }
-
+        
         private void gridControlLumsumInvestment_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnDeleteLumsum_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                LumsumInvestmentRecomendation investmentRecomendation = getSeletedLumsum();
+                if (lumsumInvestmentRecomendationHelper.Delete(investmentRecomendation))
+                {
+                    MessageBox.Show("Record deleted sucessfully.");
+                    loadLumsumInvestment();
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private LumsumInvestmentRecomendation getSeletedLumsum()
+        {
+            LumsumInvestmentRecomendation lumsumInvestmentRecomendation = new LumsumInvestmentRecomendation();
+            if (gridViewLumsumInvestment.SelectedRowsCount > 0)
+            {
+                object obj =  gridViewLumsumInvestment.GetFocusedRow();
+                lumsumInvestmentRecomendation.Id = int.Parse(gridViewLumsumInvestment.GetFocusedRowCellValue("Id").ToString());
+                lumsumInvestmentRecomendation.Pid = int.Parse(gridViewLumsumInvestment.GetFocusedRowCellValue("Pid").ToString());
+                lumsumInvestmentRecomendation.SchemeId = int.Parse(gridViewLumsumInvestment.GetFocusedRowCellValue("SchemeId").ToString());
+                lumsumInvestmentRecomendation.Amount = double.Parse(gridViewLumsumInvestment.GetFocusedRowCellValue("Amount").ToString());
+            }
+            return lumsumInvestmentRecomendation;
+        }
+
+        private void btnDeleteSTPInvestementRecommendation_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                STPTypeInvestmentRecomendation stpInvestmentRecommendation = getSelectedSTPTypeInvestmentRecommendation();
+                if (stpInvestmentRecommendationHelper.Delete(stpInvestmentRecommendation))
+                {
+                    MessageBox.Show("Record deleted sucessfully.");
+                    loadSTPInvestment();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private STPTypeInvestmentRecomendation getSelectedSTPTypeInvestmentRecommendation()
+        {
+            STPTypeInvestmentRecomendation sTPTypeInvestmentRecomendation = new STPTypeInvestmentRecomendation();
+            if (gridViewSTPInvestment.SelectedRowsCount > 0)
+            {
+                object obj = gridViewLumsumInvestment.GetFocusedRow();
+                sTPTypeInvestmentRecomendation.Id = int.Parse(gridViewSTPInvestment.GetFocusedRowCellValue("Id").ToString());
+                sTPTypeInvestmentRecomendation.Pid = int.Parse(gridViewSTPInvestment.GetFocusedRowCellValue("Pid").ToString());
+                sTPTypeInvestmentRecomendation.SchemeId = int.Parse(gridViewSTPInvestment.GetFocusedRowCellValue("SchemeId").ToString());
+                sTPTypeInvestmentRecomendation.Amount = double.Parse(gridViewSTPInvestment.GetFocusedRowCellValue("Amount").ToString());
+            }
+            return sTPTypeInvestmentRecomendation;
+        }
+
+        private void btnDeleteSIPInvestement_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SIPTypeInvestmentRecomendation sipTypeInvestmentRecommendation = getSelectedSIPTypeInvestmentRecommendation();
+                if (sipInvestmentRecommendationHelper.Delete(sipTypeInvestmentRecommendation))
+                {
+                    MessageBox.Show("Record deleted sucessfully.");
+                    loadSIPInvestment();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private SIPTypeInvestmentRecomendation getSelectedSIPTypeInvestmentRecommendation()
+        {
+            SIPTypeInvestmentRecomendation sipInvestmentRecommendation = new SIPTypeInvestmentRecomendation();
+            if (gridViewSTPInvestment.SelectedRowsCount > 0)
+            {
+                object obj = gridViewSIPInvestmentRecomendation.GetFocusedRow();
+                sipInvestmentRecommendation.Id = int.Parse(gridViewSIPInvestmentRecomendation.GetFocusedRowCellValue("Id").ToString());
+                sipInvestmentRecommendation.Pid = int.Parse(gridViewSIPInvestmentRecomendation.GetFocusedRowCellValue("Pid").ToString());
+                sipInvestmentRecommendation.SchemeId = int.Parse(gridViewSIPInvestmentRecomendation.GetFocusedRowCellValue("SchemeId").ToString());
+                sipInvestmentRecommendation.Amount = double.Parse(gridViewSIPInvestmentRecomendation.GetFocusedRowCellValue("Amount").ToString());
+            }
+            return sipInvestmentRecommendation;
         }
     }
 }

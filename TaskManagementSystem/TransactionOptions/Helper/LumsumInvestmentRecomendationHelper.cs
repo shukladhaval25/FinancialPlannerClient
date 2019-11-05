@@ -3,10 +3,7 @@ using FinancialPlanner.Common.Model;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions.Helper
@@ -15,6 +12,7 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions.Helper
     {
         const string ADD_LUMSUMINVESTMENT_API = "LumsumInvRecController/Add";
         const string GET_ALL_API = "LumsumInvRecController/GetAll?plannerId={0}";
+        const string DELETE_API = "LumsumInvRecController/Delete";
 
         public bool Save(LumsumInvestmentRecomendation lumsumInvestmentRecomendation)
         {
@@ -76,6 +74,26 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions.Helper
             debuggerInfo.Method = methodName;
             debuggerInfo.ExceptionInfo = ex;
             Logger.LogDebug(debuggerInfo);
+        }
+
+        internal bool Delete(LumsumInvestmentRecomendation investmentRecomendation)
+        {
+            try
+            {
+                FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
+                string apiurl = Program.WebServiceUrl + "/" + DELETE_API;
+                RestAPIExecutor restApiExecutor = new RestAPIExecutor();
+                var restResult = restApiExecutor.Execute<LumsumInvestmentRecomendation>(apiurl, investmentRecomendation, "POST");
+                return true;
+            }
+            catch (Exception ex)
+            {
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
+                LogDebug(currentMethodName.Name, ex);
+                return false;
+            }
         }
     }
 }
