@@ -750,6 +750,11 @@
     <Compile Include="TaskManagementSystem\TaskNotificationInfo.cs" />
     <Compile Include="TaskManagementSystem\TaskCommentInfo.cs" />
     <Compile Include="TaskManagementSystem\TransactionOptions\AdditionalPurchase.cs" />
+    <Compile Include="TaskManagementSystem\TransactionOptions\PanCardUpdateTrans.cs" />
+    <Compile Include="TaskManagementSystem\TransactionOptions\TransmissionAfterDeathTrans.cs" />
+    <Compile Include="TaskManagementSystem\TransactionOptions\AddressChangeTrans.cs" />
+    <Compile Include="TaskManagementSystem\TransactionOptions\ContactUpdateTrans.cs" />
+    <Compile Include="TaskManagementSystem\TransactionOptions\BankChangeRequestTrans.cs" />
     <Compile Include="TaskManagementSystem\TransactionOptions\FreshPurchaseTrans.cs" />
     <Compile Include="TaskManagementSystem\TransactionOptions\Helper\InvestmentRecommedationRatioHelper.cs" />
     <Compile Include="TaskManagementSystem\TransactionOptions\Helper\SIPInvestmentRecomendationHelper.cs" />

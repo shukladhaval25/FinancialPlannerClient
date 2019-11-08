@@ -168,6 +168,11 @@ namespace FinancialPlannerClient.TaskManagementSystem
                 cmbTransactionType.Properties.Items.Add("SWP");
                 cmbTransactionType.Properties.Items.Add("STP Cancellation");
                 cmbTransactionType.Properties.Items.Add("SIP Cancellation");
+                cmbTransactionType.Properties.Items.Add("Bank Change Request");
+                cmbTransactionType.Properties.Items.Add("Contact Update");
+                cmbTransactionType.Properties.Items.Add("PAN Card Update");
+                cmbTransactionType.Properties.Items.Add("Address Change");
+                cmbTransactionType.Properties.Items.Add("Transmission After Death");
             }
         }
 

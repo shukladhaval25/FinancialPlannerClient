@@ -2330,6 +2330,8 @@ namespace FinancialPlannerClient.Clients
             if (dataRow != null)
             {                
                 txtFMBranch.Text = ((System.Data.DataRowView)dataRow).Row.ItemArray[2].ToString();
+                txtIFSC.Text = ((System.Data.DataRowView)dataRow).Row.ItemArray[6].ToString();
+                txtMICR.Text = ((System.Data.DataRowView)dataRow).Row.ItemArray[7].ToString();
             }
         }
     }
