@@ -1,5 +1,6 @@
 ﻿using FinancialPlanner.Common.DataConversion;
 using FinancialPlanner.Common.Model;
+using FinancialPlanner.Common.Model.Masters;
 using FinancialPlannerClient.PlannerInfo;
 using System;
 using System.Collections.Generic;
@@ -57,6 +58,7 @@ namespace FinancialPlannerClient.Clients
             gridViewBankAccount.Columns["UpdatedBy"].Visible = false;
             gridViewBankAccount.Columns["UpdatedByUserName"].Visible = false;
             gridViewBankAccount.Columns["MachineName"].Visible = false;
+            gridViewBankAccount.Columns["BankId"].Visible = false;
         }
 
         private void fillListOfAccountHolders()
@@ -76,6 +78,7 @@ namespace FinancialPlannerClient.Clients
         {
             cmbAccountHolder.Text = personalInformation.Client.Name;
             cmbAccountHolder.Tag = personalInformation.Client.ID;
+            lookupBank.Tag = null;
             txtBankName.Text = "";
             txtAccountNo.Text = "";
             txtAccountNo.Tag = "0";
@@ -130,6 +133,8 @@ namespace FinancialPlannerClient.Clients
                 rdoYesJoinAC.Checked = bankAccount.IsJoinAccount;
                 txtJoinHolderName.Text = bankAccount.JoinHolderName;
                 txtMinReqBalance.Text = bankAccount.MinRequireBalance.ToString();
+                lookupBank.Text = bankAccount.BankName;
+                lookupBank.Tag = bankAccount.BankId;
             }
         }
 
@@ -181,13 +186,32 @@ namespace FinancialPlannerClient.Clients
             bankACDetails.UpdatedBy = Program.CurrentUser.Id;
             bankACDetails.UpdatedByUserName = Program.CurrentUser.UserName;
             bankACDetails.MachineName = Environment.MachineName;
-
+            bankACDetails.BankId = (lookupBank.EditValue == null) ? 0 : int.Parse(lookupBank.EditValue.ToString());
             return bankACDetails;
         }
 
         private void BankDetails_Load(object sender, EventArgs e)
         {
             fillupBankAccountInfo();
+            fillupBankMaster();
+        }
+
+        private void fillupBankMaster()
+        {
+            BankInfo bankInfo = new BankInfo();
+            List<Bank> banks = (List<Bank>)bankInfo.GetAll();
+            DataTable dtBank = ListtoDataTable.ToDataTable(banks);
+            lookupBank.Properties.DataSource = dtBank;
+        }
+
+        private void lookupBank_EditValueChanged(object sender, EventArgs e)
+        {
+            var dataRow = lookupBank.GetSelectedDataRow();
+            if (dataRow != null)
+            {
+                txtBankName.Text = ((System.Data.DataRowView)dataRow).Row.ItemArray[1].ToString();
+                lookupBank.Tag = int.Parse(lookupBank.EditValue.ToString());
+            }
         }
 
         private void gridViewBankAccount_SelectionChanged(object sender, DevExpress.Data.SelectionChangedEventArgs e)
@@ -228,6 +252,7 @@ namespace FinancialPlannerClient.Clients
                 bank.IsJoinAccount = bool.Parse(dr.Field<string>("IsJoinAccount"));
                 bank.JoinHolderName = dr.Field<string>("JoinHolderName");
                 bank.MinRequireBalance = Double.Parse(dr.Field<string>("MinRequireBalance"));
+                bank.BankId = (dr["BankId"] == null) ? 0 : int.Parse(dr.Field<string>("BankId"));
             }
             return bank;
         }
@@ -262,6 +287,6 @@ namespace FinancialPlannerClient.Clients
                 cmbAccountType.Items.Add("SA");
                 cmbAccountType.Items.Add("CA");
             }
-        }
+        }       
     }
 }

@@ -51,6 +51,7 @@
             this.gridBankAccount = new DevExpress.XtraGrid.GridControl();
             this.gridViewBankAccount = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.grpBankAccountDetails = new DevExpress.XtraEditors.GroupControl();
+            this.lookupBank = new DevExpress.XtraEditors.LookUpEdit();
             this.cmbAccountHolder = new DevExpress.XtraEditors.ComboBoxEdit();
             this.btnCancelBankAccount = new DevExpress.XtraEditors.SimpleButton();
             this.btnSaveBankAccount = new DevExpress.XtraEditors.SimpleButton();
@@ -79,6 +80,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridViewBankAccount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grpBankAccountDetails)).BeginInit();
             this.grpBankAccountDetails.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lookupBank.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbAccountHolder.Properties)).BeginInit();
             this.grpJoinAccountInfo.SuspendLayout();
             this.SuspendLayout();
@@ -179,6 +181,7 @@
             // 
             // grpBankAccountDetails
             // 
+            this.grpBankAccountDetails.Controls.Add(this.lookupBank);
             this.grpBankAccountDetails.Controls.Add(this.cmbAccountHolder);
             this.grpBankAccountDetails.Controls.Add(this.btnCancelBankAccount);
             this.grpBankAccountDetails.Controls.Add(this.btnSaveBankAccount);
@@ -202,6 +205,24 @@
             this.grpBankAccountDetails.Size = new System.Drawing.Size(994, 265);
             this.grpBankAccountDetails.TabIndex = 1;
             this.grpBankAccountDetails.Text = "Bank Account Details";
+            // 
+            // lookupBank
+            // 
+            this.lookupBank.Location = new System.Drawing.Point(153, 69);
+            this.lookupBank.Name = "lookupBank";
+            this.lookupBank.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lookupBank.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Id", "Id", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Branch", "Branch"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("IFSC", "IFSC"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("MICR", "MICR")});
+            this.lookupBank.Properties.DisplayMember = "Name";
+            this.lookupBank.Properties.ValueMember = "Id";
+            this.lookupBank.Size = new System.Drawing.Size(351, 20);
+            this.lookupBank.TabIndex = 1;
+            this.lookupBank.EditValueChanged += new System.EventHandler(this.lookupBank_EditValueChanged);
             // 
             // cmbAccountHolder
             // 
@@ -426,12 +447,14 @@
             // 
             // txtBankName
             // 
+            this.txtBankName.Enabled = false;
             this.txtBankName.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBankName.Location = new System.Drawing.Point(153, 67);
+            this.txtBankName.Location = new System.Drawing.Point(153, 208);
             this.txtBankName.MaxLength = 50;
             this.txtBankName.Name = "txtBankName";
             this.txtBankName.Size = new System.Drawing.Size(351, 24);
             this.txtBankName.TabIndex = 25;
+            this.txtBankName.WordWrap = false;
             // 
             // label142
             // 
@@ -477,6 +500,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.grpBankAccountDetails)).EndInit();
             this.grpBankAccountDetails.ResumeLayout(false);
             this.grpBankAccountDetails.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lookupBank.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbAccountHolder.Properties)).EndInit();
             this.grpJoinAccountInfo.ResumeLayout(false);
             this.grpJoinAccountInfo.PerformLayout();
@@ -515,6 +539,7 @@
         private DevExpress.XtraEditors.SimpleButton btnSaveBankAccount;
         private DevExpress.XtraEditors.ComboBoxEdit cmbAccountHolder;
         private DevExpress.XtraEditors.LabelControl lblContactTitle;
+        private DevExpress.XtraEditors.LookUpEdit lookupBank;
     }
 }
 
