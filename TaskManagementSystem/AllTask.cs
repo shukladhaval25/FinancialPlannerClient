@@ -1,15 +1,9 @@
-﻿using DevExpress.XtraEditors.Filtering.Templates;
-using FinancialPlanner.Common.DataConversion;
+﻿using FinancialPlanner.Common.DataConversion;
 using FinancialPlanner.Common.Model.TaskManagement;
-using FinancialPlannerClient.Clients;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FinancialPlannerClient.TaskManagementSystem
@@ -44,8 +38,8 @@ namespace FinancialPlannerClient.TaskManagementSystem
 
         private void addAdditionalImageColumnToGrid()
         {
-            DevExpress.XtraGrid.Columns.GridColumn gridColumnPriority =
-                new DevExpress.XtraGrid.Columns.GridColumn();
+            //DevExpress.XtraGrid.Columns.GridColumn gridColumnPriority =
+            //    new DevExpress.XtraGrid.Columns.GridColumn();
         }
 
         private void setgridViewColumnDisplay()

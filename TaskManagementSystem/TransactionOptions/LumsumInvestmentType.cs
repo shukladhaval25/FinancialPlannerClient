@@ -3,6 +3,7 @@ using System.ComponentModel;
 using DevExpress.XtraVerticalGrid;
 using FinancialPlanner.Common;
 using FinancialPlanner.Common.Model;
+using FinancialPlannerClient.PlanOptions;
 
 namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
 {
@@ -52,7 +53,7 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             this.repositoryItemTextEditAmount.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.repositoryItemTextEditAmount.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.repositoryItemTextEditAmount.Validating += RepositoryItemTextEditAmount_Validating;
-            
+            this.repositoryItemTextEditAmount.EditValueChanged += RepositoryItemTextEditAmount_EditValueChanged;
 
             // 
             // Scheme Name
@@ -129,6 +130,11 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
                 this.SecondHolder});
             prepareOptionalFieldsList();
 
+        }
+
+        private void RepositoryItemTextEditAmount_EditValueChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
         }
 
         private void prepareOptionalFieldsList()

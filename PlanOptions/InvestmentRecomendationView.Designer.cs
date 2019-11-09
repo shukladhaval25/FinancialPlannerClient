@@ -1,4 +1,6 @@
-﻿namespace FinancialPlannerClient.PlanOptions
+﻿using FinancialPlanner.Common.Model;
+
+namespace FinancialPlannerClient.PlanOptions
 {
     partial class InvestmentRecomendationView
     {
@@ -41,6 +43,11 @@
             this.lookupAMC = new DevExpress.XtraEditors.LookUpEdit();
             this.lblAMC = new System.Windows.Forms.Label();
             this.grpInvRec = new DevExpress.XtraEditors.GroupControl();
+            this.GrpEquityDebtRatio = new DevExpress.XtraEditors.GroupControl();
+            this.txtDebtRatio = new DevExpress.XtraEditors.TextEdit();
+            this.txtEquityRatio = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.lblEquity = new DevExpress.XtraEditors.LabelControl();
             this.gridControlInvestmenRatio = new DevExpress.XtraGrid.GridControl();
             this.gridViewInvestmentRatio = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.xtraTabInvestmentRecomendationDetails = new DevExpress.XtraTab.XtraTabControl();
@@ -48,6 +55,14 @@
             this.btnDeleteLumsum = new DevExpress.XtraEditors.SimpleButton();
             this.gridControlLumsumInvestment = new DevExpress.XtraGrid.GridControl();
             this.gridViewLumsumInvestment = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.AMC = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.SchemeName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Amount = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Category = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.ChequeInFavourOff = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.FirstHolder = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.SecondHolder = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.STPInvestment = new DevExpress.XtraTab.XtraTabPage();
             this.btnDeleteSTPInvestementRecommendation = new DevExpress.XtraEditors.SimpleButton();
             this.gridControlSTPInvestment = new DevExpress.XtraGrid.GridControl();
@@ -62,6 +77,12 @@
             this.Equity = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.Debt = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.grpScheme = new DevExpress.XtraEditors.GroupControl();
+            this.cmbScheme = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.chkSTPApply = new DevExpress.XtraEditors.CheckEdit();
+            this.vGridControlSTP = new DevExpress.XtraVerticalGrid.VGridControl();
+            this.repositoryItemComboBox2 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            this.repositoryItemTextEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
+            this.repositoryItemDateEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.btnAddInvestment = new DevExpress.XtraEditors.SimpleButton();
             this.vGridTransaction = new DevExpress.XtraVerticalGrid.VGridControl();
             this.repositoryItemComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
@@ -69,10 +90,13 @@
             this.repositoryItemDateEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.rdoInvestmentType = new DevExpress.XtraEditors.RadioGroup();
             this.label4 = new System.Windows.Forms.Label();
-            this.lstSchemes = new DevExpress.XtraEditors.ListBoxControl();
             ((System.ComponentModel.ISupportInitialize)(this.lookupAMC.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grpInvRec)).BeginInit();
             this.grpInvRec.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GrpEquityDebtRatio)).BeginInit();
+            this.GrpEquityDebtRatio.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDebtRatio.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEquityRatio.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlInvestmenRatio)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewInvestmentRatio)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabInvestmentRecomendationDetails)).BeginInit();
@@ -80,6 +104,7 @@
             this.LumsumInvestment.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlLumsumInvestment)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewLumsumInvestment)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
             this.STPInvestment.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlSTPInvestment)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewSTPInvestment)).BeginInit();
@@ -92,13 +117,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grpScheme)).BeginInit();
             this.grpScheme.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbScheme.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkSTPApply.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vGridControlSTP)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vGridTransaction)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rdoInvestmentType.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lstSchemes)).BeginInit();
             this.SuspendLayout();
             // 
             // lookupAMC
@@ -129,6 +160,7 @@
             this.grpInvRec.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpInvRec.Controls.Add(this.GrpEquityDebtRatio);
             this.grpInvRec.Controls.Add(this.gridControlInvestmenRatio);
             this.grpInvRec.Controls.Add(this.xtraTabInvestmentRecomendationDetails);
             this.grpInvRec.Controls.Add(this.grpInvestmentOption);
@@ -140,6 +172,53 @@
             this.grpInvRec.Text = "Investment Recommendation Detail";
             this.grpInvRec.Paint += new System.Windows.Forms.PaintEventHandler(this.grpInvRec_Paint);
             // 
+            // GrpEquityDebtRatio
+            // 
+            this.GrpEquityDebtRatio.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.GrpEquityDebtRatio.Controls.Add(this.txtDebtRatio);
+            this.GrpEquityDebtRatio.Controls.Add(this.txtEquityRatio);
+            this.GrpEquityDebtRatio.Controls.Add(this.labelControl2);
+            this.GrpEquityDebtRatio.Controls.Add(this.lblEquity);
+            this.GrpEquityDebtRatio.Location = new System.Drawing.Point(819, 471);
+            this.GrpEquityDebtRatio.Name = "GrpEquityDebtRatio";
+            this.GrpEquityDebtRatio.ShowCaption = false;
+            this.GrpEquityDebtRatio.Size = new System.Drawing.Size(211, 164);
+            this.GrpEquityDebtRatio.TabIndex = 29;
+            this.GrpEquityDebtRatio.Text = "groupControl1";
+            // 
+            // txtDebtRatio
+            // 
+            this.txtDebtRatio.Enabled = false;
+            this.txtDebtRatio.Location = new System.Drawing.Point(90, 88);
+            this.txtDebtRatio.Name = "txtDebtRatio";
+            this.txtDebtRatio.Size = new System.Drawing.Size(100, 20);
+            this.txtDebtRatio.TabIndex = 3;
+            // 
+            // txtEquityRatio
+            // 
+            this.txtEquityRatio.Enabled = false;
+            this.txtEquityRatio.Location = new System.Drawing.Point(90, 58);
+            this.txtEquityRatio.Name = "txtEquityRatio";
+            this.txtEquityRatio.Size = new System.Drawing.Size(100, 20);
+            this.txtEquityRatio.TabIndex = 2;
+            // 
+            // labelControl2
+            // 
+            this.labelControl2.Location = new System.Drawing.Point(28, 91);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(49, 13);
+            this.labelControl2.TabIndex = 1;
+            this.labelControl2.Text = "Debt (%):";
+            // 
+            // lblEquity
+            // 
+            this.lblEquity.Location = new System.Drawing.Point(28, 61);
+            this.lblEquity.Name = "lblEquity";
+            this.lblEquity.Size = new System.Drawing.Size(56, 13);
+            this.lblEquity.TabIndex = 0;
+            this.lblEquity.Text = "Equity (%):";
+            // 
             // gridControlInvestmenRatio
             // 
             this.gridControlInvestmenRatio.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -148,7 +227,7 @@
             this.gridControlInvestmenRatio.Location = new System.Drawing.Point(277, 471);
             this.gridControlInvestmenRatio.MainView = this.gridViewInvestmentRatio;
             this.gridControlInvestmenRatio.Name = "gridControlInvestmenRatio";
-            this.gridControlInvestmenRatio.Size = new System.Drawing.Size(755, 167);
+            this.gridControlInvestmenRatio.Size = new System.Drawing.Size(535, 167);
             this.gridControlInvestmenRatio.TabIndex = 28;
             this.gridControlInvestmenRatio.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewInvestmentRatio});
@@ -178,14 +257,14 @@
             this.LumsumInvestment.Controls.Add(this.btnDeleteLumsum);
             this.LumsumInvestment.Controls.Add(this.gridControlLumsumInvestment);
             this.LumsumInvestment.Name = "LumsumInvestment";
-            this.LumsumInvestment.Size = new System.Drawing.Size(754, 405);
+            this.LumsumInvestment.Size = new System.Drawing.Size(750, 410);
             this.LumsumInvestment.Text = "Lumsum Investment";
             // 
             // btnDeleteLumsum
             // 
             this.btnDeleteLumsum.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnDeleteLumsum.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteLumsum.Image")));
-            this.btnDeleteLumsum.Location = new System.Drawing.Point(365, 372);
+            this.btnDeleteLumsum.Location = new System.Drawing.Point(365, 379);
             this.btnDeleteLumsum.Name = "btnDeleteLumsum";
             this.btnDeleteLumsum.Size = new System.Drawing.Size(25, 23);
             toolTipTitleItem1.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
@@ -208,7 +287,9 @@
             this.gridControlLumsumInvestment.Location = new System.Drawing.Point(4, 3);
             this.gridControlLumsumInvestment.MainView = this.gridViewLumsumInvestment;
             this.gridControlLumsumInvestment.Name = "gridControlLumsumInvestment";
-            this.gridControlLumsumInvestment.Size = new System.Drawing.Size(747, 363);
+            this.gridControlLumsumInvestment.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemButtonEdit1});
+            this.gridControlLumsumInvestment.Size = new System.Drawing.Size(747, 370);
             this.gridControlLumsumInvestment.TabIndex = 0;
             this.gridControlLumsumInvestment.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewLumsumInvestment});
@@ -216,20 +297,101 @@
             // 
             // gridViewLumsumInvestment
             // 
+            this.gridViewLumsumInvestment.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.AMC,
+            this.SchemeName,
+            this.Amount,
+            this.Category,
+            this.ChequeInFavourOff,
+            this.FirstHolder,
+            this.SecondHolder});
             this.gridViewLumsumInvestment.GridControl = this.gridControlLumsumInvestment;
+            this.gridViewLumsumInvestment.GroupCount = 2;
             this.gridViewLumsumInvestment.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Amount", null, "")});
+            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Amount", this.Amount, "")});
             this.gridViewLumsumInvestment.Name = "gridViewLumsumInvestment";
             this.gridViewLumsumInvestment.OptionsBehavior.Editable = false;
             this.gridViewLumsumInvestment.OptionsView.ShowFooter = true;
             this.gridViewLumsumInvestment.OptionsView.ShowGroupedColumns = true;
+            this.gridViewLumsumInvestment.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.AMC, DevExpress.Data.ColumnSortOrder.Ascending),
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.Category, DevExpress.Data.ColumnSortOrder.Ascending)});
+            // 
+            // AMC
+            // 
+            this.AMC.Caption = "AMC";
+            this.AMC.FieldName = "AMC";
+            this.AMC.GroupInterval = DevExpress.XtraGrid.ColumnGroupInterval.Value;
+            this.AMC.Name = "AMC";
+            this.AMC.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Amount", "Total={0:0.##}")});
+            this.AMC.Visible = true;
+            this.AMC.VisibleIndex = 1;
+            // 
+            // SchemeName
+            // 
+            this.SchemeName.Caption = "Scheme Name";
+            this.SchemeName.FieldName = "SchemeName";
+            this.SchemeName.Name = "SchemeName";
+            this.SchemeName.OptionsColumn.ReadOnly = true;
+            this.SchemeName.Visible = true;
+            this.SchemeName.VisibleIndex = 0;
+            // 
+            // Amount
+            // 
+            this.Amount.Caption = "Amount";
+            this.Amount.FieldName = "Amount";
+            this.Amount.GroupInterval = DevExpress.XtraGrid.ColumnGroupInterval.Value;
+            this.Amount.Name = "Amount";
+            this.Amount.Visible = true;
+            this.Amount.VisibleIndex = 2;
+            // 
+            // Category
+            // 
+            this.Category.Caption = "Category";
+            this.Category.FieldName = "Category";
+            this.Category.GroupInterval = DevExpress.XtraGrid.ColumnGroupInterval.Value;
+            this.Category.Name = "Category";
+            this.Category.Visible = true;
+            this.Category.VisibleIndex = 3;
+            // 
+            // ChequeInFavourOff
+            // 
+            this.ChequeInFavourOff.Caption = "Cheque in favour off";
+            this.ChequeInFavourOff.FieldName = "ChequeInFavourOff";
+            this.ChequeInFavourOff.Name = "ChequeInFavourOff";
+            this.ChequeInFavourOff.Visible = true;
+            this.ChequeInFavourOff.VisibleIndex = 4;
+            // 
+            // FirstHolder
+            // 
+            this.FirstHolder.Caption = "First Holder";
+            this.FirstHolder.FieldName = "FirstHolder";
+            this.FirstHolder.Name = "FirstHolder";
+            this.FirstHolder.Visible = true;
+            this.FirstHolder.VisibleIndex = 5;
+            // 
+            // SecondHolder
+            // 
+            this.SecondHolder.Caption = "Second Holder";
+            this.SecondHolder.FieldName = "SecondHolder";
+            this.SecondHolder.Name = "SecondHolder";
+            this.SecondHolder.Visible = true;
+            this.SecondHolder.VisibleIndex = 6;
+            // 
+            // repositoryItemButtonEdit1
+            // 
+            this.repositoryItemButtonEdit1.AutoHeight = false;
+            this.repositoryItemButtonEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.repositoryItemButtonEdit1.Name = "repositoryItemButtonEdit1";
             // 
             // STPInvestment
             // 
             this.STPInvestment.Controls.Add(this.btnDeleteSTPInvestementRecommendation);
             this.STPInvestment.Controls.Add(this.gridControlSTPInvestment);
             this.STPInvestment.Name = "STPInvestment";
-            this.STPInvestment.Size = new System.Drawing.Size(754, 405);
+            this.STPInvestment.Size = new System.Drawing.Size(750, 410);
             this.STPInvestment.Text = "STP Details";
             // 
             // btnDeleteSTPInvestementRecommendation
@@ -276,7 +438,7 @@
             this.SIPInvestement.Controls.Add(this.btnDeleteSIPInvestement);
             this.SIPInvestement.Controls.Add(this.gridControlSIPInvestment);
             this.SIPInvestement.Name = "SIPInvestement";
-            this.SIPInvestement.Size = new System.Drawing.Size(754, 405);
+            this.SIPInvestement.Size = new System.Drawing.Size(750, 410);
             this.SIPInvestement.Text = "SIP Details";
             // 
             // btnDeleteSIPInvestement
@@ -376,11 +538,13 @@
             // 
             this.grpScheme.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.grpScheme.Controls.Add(this.cmbScheme);
+            this.grpScheme.Controls.Add(this.chkSTPApply);
+            this.grpScheme.Controls.Add(this.vGridControlSTP);
             this.grpScheme.Controls.Add(this.btnAddInvestment);
             this.grpScheme.Controls.Add(this.vGridTransaction);
             this.grpScheme.Controls.Add(this.rdoInvestmentType);
             this.grpScheme.Controls.Add(this.label4);
-            this.grpScheme.Controls.Add(this.lstSchemes);
             this.grpScheme.Controls.Add(this.lblAMC);
             this.grpScheme.Controls.Add(this.lookupAMC);
             this.grpScheme.Location = new System.Drawing.Point(5, 83);
@@ -388,6 +552,65 @@
             this.grpScheme.Size = new System.Drawing.Size(265, 555);
             this.grpScheme.TabIndex = 25;
             this.grpScheme.Text = "Mutual Fund Scheme";
+            // 
+            // cmbScheme
+            // 
+            this.cmbScheme.Location = new System.Drawing.Point(5, 94);
+            this.cmbScheme.Name = "cmbScheme";
+            this.cmbScheme.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cmbScheme.Size = new System.Drawing.Size(255, 20);
+            this.cmbScheme.TabIndex = 32;
+            this.cmbScheme.SelectedValueChanged += new System.EventHandler(this.cmbScheme_SelectedValueChanged);
+            // 
+            // chkSTPApply
+            // 
+            this.chkSTPApply.Location = new System.Drawing.Point(5, 295);
+            this.chkSTPApply.Name = "chkSTPApply";
+            this.chkSTPApply.Properties.Caption = "STP apply for selected scheme";
+            this.chkSTPApply.Size = new System.Drawing.Size(255, 19);
+            this.chkSTPApply.TabIndex = 31;
+            this.chkSTPApply.CheckedChanged += new System.EventHandler(this.chkSTPApply_CheckedChanged);
+            // 
+            // vGridControlSTP
+            // 
+            this.vGridControlSTP.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.vGridControlSTP.Location = new System.Drawing.Point(5, 320);
+            this.vGridControlSTP.Name = "vGridControlSTP";
+            this.vGridControlSTP.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemComboBox2,
+            this.repositoryItemTextEdit2,
+            this.repositoryItemDateEdit2});
+            this.vGridControlSTP.Size = new System.Drawing.Size(255, 138);
+            this.vGridControlSTP.TabIndex = 30;
+            this.vGridControlSTP.Visible = false;
+            // 
+            // repositoryItemComboBox2
+            // 
+            this.repositoryItemComboBox2.AutoHeight = false;
+            this.repositoryItemComboBox2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemComboBox2.Items.AddRange(new object[] {
+            "Apple",
+            "Orange",
+            "Mango"});
+            this.repositoryItemComboBox2.Name = "repositoryItemComboBox2";
+            // 
+            // repositoryItemTextEdit2
+            // 
+            this.repositoryItemTextEdit2.AutoHeight = false;
+            this.repositoryItemTextEdit2.Name = "repositoryItemTextEdit2";
+            // 
+            // repositoryItemDateEdit2
+            // 
+            this.repositoryItemDateEdit2.AutoHeight = false;
+            this.repositoryItemDateEdit2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemDateEdit2.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemDateEdit2.Name = "repositoryItemDateEdit2";
             // 
             // btnAddInvestment
             // 
@@ -406,7 +629,7 @@
             this.vGridTransaction.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.vGridTransaction.Location = new System.Drawing.Point(5, 375);
+            this.vGridTransaction.Location = new System.Drawing.Point(5, 151);
             this.vGridTransaction.Name = "vGridTransaction";
             this.vGridTransaction.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemComboBox1,
@@ -414,6 +637,7 @@
             this.repositoryItemDateEdit1});
             this.vGridTransaction.Size = new System.Drawing.Size(255, 138);
             this.vGridTransaction.TabIndex = 28;
+            this.vGridTransaction.CellValueChanged += new DevExpress.XtraVerticalGrid.Events.CellValueChangedEventHandler(this.VGridTransaction_CellValueChanged);
             // 
             // repositoryItemComboBox1
             // 
@@ -442,13 +666,12 @@
             // 
             // rdoInvestmentType
             // 
-            this.rdoInvestmentType.Location = new System.Drawing.Point(5, 325);
+            this.rdoInvestmentType.Location = new System.Drawing.Point(5, 120);
             this.rdoInvestmentType.Name = "rdoInvestmentType";
             this.rdoInvestmentType.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
             new DevExpress.XtraEditors.Controls.RadioGroupItem(((short)(0)), "Lumsum Investment"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(((short)(1)), "STP"),
             new DevExpress.XtraEditors.Controls.RadioGroupItem(((short)(2)), "SIP")});
-            this.rdoInvestmentType.Size = new System.Drawing.Size(255, 44);
+            this.rdoInvestmentType.Size = new System.Drawing.Size(255, 24);
             this.rdoInvestmentType.TabIndex = 27;
             this.rdoInvestmentType.SelectedIndexChanged += new System.EventHandler(this.rdoInvestmentType_SelectedIndexChanged);
             // 
@@ -462,15 +685,6 @@
             this.label4.TabIndex = 26;
             this.label4.Text = "Schme Name:";
             // 
-            // lstSchemes
-            // 
-            this.lstSchemes.Cursor = System.Windows.Forms.Cursors.Default;
-            this.lstSchemes.Location = new System.Drawing.Point(5, 99);
-            this.lstSchemes.Name = "lstSchemes";
-            this.lstSchemes.Size = new System.Drawing.Size(255, 220);
-            this.lstSchemes.TabIndex = 25;
-            this.lstSchemes.SelectedIndexChanged += new System.EventHandler(this.lstSchemes_SelectedIndexChanged);
-            // 
             // InvestmentRecomendationView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -483,6 +697,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.lookupAMC.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grpInvRec)).EndInit();
             this.grpInvRec.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.GrpEquityDebtRatio)).EndInit();
+            this.GrpEquityDebtRatio.ResumeLayout(false);
+            this.GrpEquityDebtRatio.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDebtRatio.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEquityRatio.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlInvestmenRatio)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewInvestmentRatio)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabInvestmentRecomendationDetails)).EndInit();
@@ -490,6 +709,7 @@
             this.LumsumInvestment.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControlLumsumInvestment)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewLumsumInvestment)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).EndInit();
             this.STPInvestment.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControlSTPInvestment)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewSTPInvestment)).EndInit();
@@ -503,15 +723,35 @@
             ((System.ComponentModel.ISupportInitialize)(this.grpScheme)).EndInit();
             this.grpScheme.ResumeLayout(false);
             this.grpScheme.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbScheme.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkSTPApply.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vGridControlSTP)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.vGridTransaction)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rdoInvestmentType.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lstSchemes)).EndInit();
             this.ResumeLayout(false);
 
+        }
+
+        public void VGridTransaction_CellValueChanged(object sender, DevExpress.XtraVerticalGrid.Events.CellValueChangedEventArgs e)
+        {
+            if (rdoInvestmentType.SelectedIndex == 0 && e.Row.Name == "Amount")
+            {
+                lumsumInvestmentAmount = double.Parse(e.Value.ToString());
+                if (chkSTPApply.Checked)
+                {
+                    STPTypeInvestmentRecomendation stpInvestmentRecomendation = getSTPInvestment();
+                    FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
+                    stpTransactionType.BindDataSource(jsonSerialization.SerializeToString<STPTypeInvestmentRecomendation>(stpInvestmentRecomendation));
+                }
+            }            
         }
 
         #endregion
@@ -521,7 +761,6 @@
         private DevExpress.XtraEditors.GroupControl grpScheme;
         private DevExpress.XtraEditors.RadioGroup rdoInvestmentType;
         private System.Windows.Forms.Label label4;
-        private DevExpress.XtraEditors.ListBoxControl lstSchemes;
         private DevExpress.XtraVerticalGrid.VGridControl vGridTransaction;
         private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox1;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit1;
@@ -547,5 +786,24 @@
         private DevExpress.XtraGrid.Views.Grid.GridView gridViewSIPInvestmentRecomendation;
         private DevExpress.XtraEditors.SimpleButton btnDeleteSTPInvestementRecommendation;
         private DevExpress.XtraEditors.SimpleButton btnDeleteSIPInvestement;
+        private DevExpress.XtraGrid.Columns.GridColumn AMC;
+        private DevExpress.XtraGrid.Columns.GridColumn SchemeName;
+        private DevExpress.XtraGrid.Columns.GridColumn Amount;
+        private DevExpress.XtraGrid.Columns.GridColumn Category;
+        private DevExpress.XtraGrid.Columns.GridColumn ChequeInFavourOff;
+        private DevExpress.XtraGrid.Columns.GridColumn FirstHolder;
+        private DevExpress.XtraGrid.Columns.GridColumn SecondHolder;
+        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit1;
+        private DevExpress.XtraVerticalGrid.VGridControl vGridControlSTP;
+        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox2;
+        private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit2;
+        private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit repositoryItemDateEdit2;
+        private DevExpress.XtraEditors.CheckEdit chkSTPApply;
+        private DevExpress.XtraEditors.ComboBoxEdit cmbScheme;
+        private DevExpress.XtraEditors.GroupControl GrpEquityDebtRatio;
+        private DevExpress.XtraEditors.TextEdit txtDebtRatio;
+        private DevExpress.XtraEditors.TextEdit txtEquityRatio;
+        private DevExpress.XtraEditors.LabelControl labelControl2;
+        private DevExpress.XtraEditors.LabelControl lblEquity;
     }
 }

@@ -17,6 +17,7 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
     {
         readonly string GRID_NAME = "vGridSTPTypeRecomendation";
         int clientId;
+        double lumsumInvestmentAmount = 0;
         IList<Scheme> schemes = new List<Scheme>();
         DevExpress.XtraVerticalGrid.VGridControl vGridTransaction;
         DevExpress.XtraVerticalGrid.Rows.EditorRow FromSchemeName;
@@ -51,6 +52,8 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             this.repositoryItemTextEditSchemeName = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
 
             this.repositoryItemTextEditDuration = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
+            this.repositoryItemTextEditDuration.Validating += RepositoryItemTextEditAmount_Validating;
+            this.repositoryItemTextEditDuration.Leave += RepositoryItemTextEditDuration_EditValueChanged;
 
             this.repositoryItemComboBoxFrequency = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.repositoryItemComboBoxFrequency.Items.AddRange(new string[] { "Weekly", "Monthly", "Quarterly" });
@@ -86,6 +89,7 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             this.Amount.Properties.FieldName = "Amount";
             this.Amount.Properties.Format.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.Amount.Properties.RowEdit = this.repositoryItemTextEditAmount;
+            //this.Amount.Properties.AllowEdit = false;
             // 
             // Duration
             // 
@@ -114,20 +118,25 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             this.vGridTransaction.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
                 this.repositoryItemFromSchemeName,
                 this.repositoryItemTextEditSchemeName,
+                this.repositoryItemComboBoxFrequency,
+                this.repositoryItemTextEditDuration,                
                 this.repositoryItemTextEditAmount,
-                this.repositoryItemTextEditDuration,
-                this.repositoryItemComboBoxFrequency
             });
 
             this.vGridTransaction.Rows.AddRange(new DevExpress.XtraVerticalGrid.Rows.BaseRow[] {
                 this.FromSchemeName,
                 this.SchemeName,
-                this.Amount,
-                this.Duration,
-                this.Frequency
+                 this.Frequency,
+                this.Duration,               
+                this.Amount
               });
             prepareOptionalFieldsList();
 
+        }
+
+        private void RepositoryItemTextEditDuration_EditValueChanged(object sender, EventArgs e)
+        {
+            this.vGridTransaction.Rows["Amount"].Properties.Value = Math.Round(lumsumInvestmentAmount / int.Parse(((DevExpress.XtraEditors.BaseEdit)sender).Text.ToString()));
         }
 
         private void loadSchemes()
@@ -164,7 +173,7 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
         private void RepositoryItemTextEditAmount_Validating(object sender, CancelEventArgs e)
         {
             DevExpress.XtraEditors.TextEdit textEdit = (DevExpress.XtraEditors.TextEdit)sender;
-            e.Cancel = !FinancialPlanner.Common.Validation.IsDecimal(textEdit.Text);
+            e.Cancel = !FinancialPlanner.Common.Validation.IsDecimal(textEdit.Text);            
         }
 
         private void LogDebug(string name, Exception ex)
@@ -188,9 +197,10 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
             STPTypeInvestmentRecomendation stpInvestmentRecomendation = jsonSerialization.DeserializeFromString<FinancialPlanner.Common.Model.STPTypeInvestmentRecomendation>(obj.ToString());
             this.vGridTransaction.Rows["SchemeName"].Properties.Value = stpInvestmentRecomendation.SchemeName;
-            this.vGridTransaction.Rows["Duration"].Properties.Value = 0;
+            this.vGridTransaction.Rows["Duration"].Properties.Value = stpInvestmentRecomendation.Duration;
             this.vGridTransaction.Rows["Amount"].Properties.Value = stpInvestmentRecomendation.Amount;
-            this.clientId = stpInvestmentRecomendation.Cid;                        
+            this.clientId = stpInvestmentRecomendation.Cid;
+            this.lumsumInvestmentAmount = stpInvestmentRecomendation.LumsumAmount;
         }
 
         public VGridControl GetGridControl()
