@@ -180,10 +180,10 @@ namespace FinancialPlannerClient.PlanOptions
             this.GrpEquityDebtRatio.Controls.Add(this.txtEquityRatio);
             this.GrpEquityDebtRatio.Controls.Add(this.labelControl2);
             this.GrpEquityDebtRatio.Controls.Add(this.lblEquity);
-            this.GrpEquityDebtRatio.Location = new System.Drawing.Point(819, 471);
+            this.GrpEquityDebtRatio.Location = new System.Drawing.Point(818, 471);
             this.GrpEquityDebtRatio.Name = "GrpEquityDebtRatio";
             this.GrpEquityDebtRatio.ShowCaption = false;
-            this.GrpEquityDebtRatio.Size = new System.Drawing.Size(211, 164);
+            this.GrpEquityDebtRatio.Size = new System.Drawing.Size(212, 167);
             this.GrpEquityDebtRatio.TabIndex = 29;
             this.GrpEquityDebtRatio.Text = "groupControl1";
             // 
@@ -493,7 +493,7 @@ namespace FinancialPlannerClient.PlanOptions
             // 
             // vGridInvestmentRatio
             // 
-            this.vGridInvestmentRatio.Cursor = System.Windows.Forms.Cursors.Default;
+            this.vGridInvestmentRatio.Cursor = System.Windows.Forms.Cursors.SizeWE;
             this.vGridInvestmentRatio.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vGridInvestmentRatio.Location = new System.Drawing.Point(2, 2);
             this.vGridInvestmentRatio.Name = "vGridInvestmentRatio";

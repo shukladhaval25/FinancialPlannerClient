@@ -566,5 +566,16 @@ namespace FinancialPlannerClient.Clients
             navigationPageOther.Controls.Add(clientInfo);
             showNavigationPage(clientInfo.Name);
         }
+
+        private void navBarItemClientARN_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            ClientARNView clientInfo = new ClientARNView(this._client);
+            clientInfo.TopLevel = false;
+            clientInfo.Visible = true;
+            navigationPageOther.Name = clientInfo.Name;
+            navigationPageOther.Controls.Clear();
+            navigationPageOther.Controls.Add(clientInfo);
+            showNavigationPage(clientInfo.Name);
+        }
     }
 }

@@ -156,7 +156,14 @@
     <Compile Include="Clients\AllClientsList.Designer.cs">
       <DependentUpon>AllClientsList.cs</DependentUpon>
     </Compile>
+    <Compile Include="Clients\ClientARNInfo.cs" />
     <Compile Include="Clients\BankInfo.cs" />
+    <Compile Include="Clients\ClientARNView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clients\ClientARNView.Designer.cs">
+      <DependentUpon>ClientARNView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Clients\ClientEmailView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -829,6 +836,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Clients\AllClientsList.resx">
       <DependentUpon>AllClientsList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Clients\ClientARNView.resx">
+      <DependentUpon>ClientARNView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Clients\Clientdashboard.resx">
       <DependentUpon>Clientdashboard.cs</DependentUpon>

@@ -417,7 +417,7 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             DataTable dtARN = getARNTable();
             repositoryItemARN.DataSource = dtARN;
             repositoryItemARN.DisplayMember = "ARNNumber";
-            repositoryItemARN.ValueMember = "ID";
+            repositoryItemARN.ValueMember = "Id";
             repositoryItemARN.NullValuePrompt = "Please select valid value.";           
         }
 
