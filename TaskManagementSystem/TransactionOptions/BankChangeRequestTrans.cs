@@ -438,5 +438,10 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             Client client = new Client();
             return (clients.TryGetValue(clients.FindIndex(i => i.ID == cid), out client)) ? client.Name : string.Empty;
         }
+
+        public void SetARN(int arnNo)
+        {
+            this.vGridTransaction.Rows["ARN"].Properties.Value = arnNo;
+        }
     }
 }

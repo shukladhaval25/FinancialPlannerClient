@@ -120,5 +120,10 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             debuggerInfo.ExceptionInfo = ex;
             Logger.LogDebug(debuggerInfo);
         }
+
+        public void SetARN(int arnNo)
+        {
+            this.vGridTransaction.Rows["ARN"].Properties.Value = arnNo;
+        }
     }
 }

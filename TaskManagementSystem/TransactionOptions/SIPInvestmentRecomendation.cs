@@ -220,5 +220,10 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             new PlannerInfo.FamilyMemberInfo().FillFamilyMemberInCombo(this.clientId, repositoryItemComboBoxFirstHolder);
             repositoryItemComboBoxSecondHolder.Items.AddRange(repositoryItemComboBoxFirstHolder.Items);
         }
+
+        public void SetARN(int arnNo)
+        {
+            this.vGridTransaction.Rows["ARN"].Properties.Value = arnNo;
+        }
     }
 }

@@ -103,7 +103,7 @@
             // 
             // lblProject
             // 
-            this.lblProject.Location = new System.Drawing.Point(35, 37);
+            this.lblProject.Location = new System.Drawing.Point(35, 65);
             this.lblProject.Name = "lblProject";
             this.lblProject.Size = new System.Drawing.Size(38, 13);
             this.lblProject.TabIndex = 0;
@@ -111,18 +111,18 @@
             // 
             // cmbProject
             // 
-            this.cmbProject.Location = new System.Drawing.Point(128, 34);
+            this.cmbProject.Location = new System.Drawing.Point(128, 62);
             this.cmbProject.Name = "cmbProject";
             this.cmbProject.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cmbProject.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.cmbProject.Size = new System.Drawing.Size(408, 20);
-            this.cmbProject.TabIndex = 1;
+            this.cmbProject.TabIndex = 3;
             this.cmbProject.SelectedIndexChanged += new System.EventHandler(this.cmbProject_SelectedIndexChanged);
             // 
             // cmbCardType
             // 
-            this.cmbCardType.Location = new System.Drawing.Point(128, 88);
+            this.cmbCardType.Location = new System.Drawing.Point(128, 113);
             this.cmbCardType.Name = "cmbCardType";
             this.cmbCardType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -131,11 +131,11 @@
             "Task"});
             this.cmbCardType.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.cmbCardType.Size = new System.Drawing.Size(439, 20);
-            this.cmbCardType.TabIndex = 4;
+            this.cmbCardType.TabIndex = 6;
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(35, 91);
+            this.labelControl1.Location = new System.Drawing.Point(35, 116);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(54, 13);
             this.labelControl1.TabIndex = 2;
@@ -143,18 +143,18 @@
             // 
             // cmbClient
             // 
-            this.cmbClient.Location = new System.Drawing.Point(128, 114);
+            this.cmbClient.Location = new System.Drawing.Point(128, 36);
             this.cmbClient.Name = "cmbClient";
             this.cmbClient.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cmbClient.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.cmbClient.Size = new System.Drawing.Size(408, 20);
-            this.cmbClient.TabIndex = 5;
+            this.cmbClient.TabIndex = 1;
             this.cmbClient.SelectedIndexChanged += new System.EventHandler(this.cmbClient_SelectedIndexChanged);
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(35, 117);
+            this.labelControl2.Location = new System.Drawing.Point(38, 38);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(50, 13);
             this.labelControl2.TabIndex = 4;
@@ -209,10 +209,10 @@
             this.txtCreatedOn.Size = new System.Drawing.Size(326, 20);
             this.txtCreatedOn.TabIndex = 12;
             // 
-            // cmbAssingTo
+            // cmbAssignTo
             // 
             this.cmbAssignTo.Location = new System.Drawing.Point(581, 247);
-            this.cmbAssignTo.Name = "cmbAssingTo";
+            this.cmbAssignTo.Name = "cmbAssignTo";
             this.cmbAssignTo.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cmbAssignTo.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
@@ -333,18 +333,18 @@
             // btnAddProject
             // 
             this.btnAddProject.Image = ((System.Drawing.Image)(resources.GetObject("btnAddProject.Image")));
-            this.btnAddProject.Location = new System.Drawing.Point(542, 32);
+            this.btnAddProject.Location = new System.Drawing.Point(542, 60);
             this.btnAddProject.Name = "btnAddProject";
             this.btnAddProject.Size = new System.Drawing.Size(25, 22);
-            this.btnAddProject.TabIndex = 2;
+            this.btnAddProject.TabIndex = 4;
             // 
             // simpleButton1
             // 
             this.simpleButton1.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.Image")));
-            this.simpleButton1.Location = new System.Drawing.Point(542, 114);
+            this.simpleButton1.Location = new System.Drawing.Point(542, 34);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(25, 22);
-            this.simpleButton1.TabIndex = 6;
+            this.simpleButton1.TabIndex = 2;
             // 
             // btnCloseTask
             // 
@@ -386,18 +386,18 @@
             // 
             // cmbTransactionType
             // 
-            this.cmbTransactionType.Location = new System.Drawing.Point(128, 62);
+            this.cmbTransactionType.Location = new System.Drawing.Point(128, 87);
             this.cmbTransactionType.Name = "cmbTransactionType";
             this.cmbTransactionType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cmbTransactionType.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.cmbTransactionType.Size = new System.Drawing.Size(439, 20);
-            this.cmbTransactionType.TabIndex = 3;
+            this.cmbTransactionType.TabIndex = 5;
             this.cmbTransactionType.SelectedIndexChanged += new System.EventHandler(this.cmbTransactionType_SelectedIndexChanged);
             // 
             // lblTransactionTypeTitle
             // 
-            this.lblTransactionTypeTitle.Location = new System.Drawing.Point(35, 65);
+            this.lblTransactionTypeTitle.Location = new System.Drawing.Point(35, 90);
             this.lblTransactionTypeTitle.Name = "lblTransactionTypeTitle";
             this.lblTransactionTypeTitle.Size = new System.Drawing.Size(87, 13);
             this.lblTransactionTypeTitle.TabIndex = 31;
@@ -417,7 +417,7 @@
             this.lblTaskIDTitle.Appearance.ForeColor = System.Drawing.Color.RoyalBlue;
             this.lblTaskIDTitle.Appearance.Options.UseFont = true;
             this.lblTaskIDTitle.Appearance.Options.UseForeColor = true;
-            this.lblTaskIDTitle.Location = new System.Drawing.Point(128, 10);
+            this.lblTaskIDTitle.Location = new System.Drawing.Point(37, 9);
             this.lblTaskIDTitle.Name = "lblTaskIDTitle";
             this.lblTaskIDTitle.Size = new System.Drawing.Size(0, 16);
             this.lblTaskIDTitle.TabIndex = 34;
@@ -496,7 +496,7 @@
             // 
             // cmbTaskStatus
             // 
-            this.cmbTaskStatus.Location = new System.Drawing.Point(581, 32);
+            this.cmbTaskStatus.Location = new System.Drawing.Point(581, 35);
             this.cmbTaskStatus.Name = "cmbTaskStatus";
             this.cmbTaskStatus.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -513,7 +513,7 @@
             // 
             // labelControl13
             // 
-            this.labelControl13.Location = new System.Drawing.Point(581, 13);
+            this.labelControl13.Location = new System.Drawing.Point(581, 16);
             this.labelControl13.Name = "labelControl13";
             this.labelControl13.Size = new System.Drawing.Size(96, 13);
             this.labelControl13.TabIndex = 38;

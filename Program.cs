@@ -57,7 +57,7 @@ namespace FinancialPlannerClient
                 container.RegisterType<ITransactionType, PanCardUpdateTrans>("PAN Card Update");
                 container.RegisterType<ITransactionType, AddressChangeTrans>("Address Change");
                 container.RegisterType<ITransactionType, TransmissionAfterDeathTrans>("Transmission After Death");
-
+                container.RegisterType<ITransactionType, SignatureChangeTrans>("Signature Change");
             }
             catch(Exception ex)
             {

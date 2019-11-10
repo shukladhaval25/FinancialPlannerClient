@@ -165,6 +165,11 @@ namespace FinancialPlannerClient.TaskManagementSystem
                     return Priority.Low;
             }
         }
+
+        private void btnView_Click(object sender, EventArgs e)
+        {
+            gridViewTasks_DoubleClick(sender, e);
+        }
     }
 
     public enum TaskView

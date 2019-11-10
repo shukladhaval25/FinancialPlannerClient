@@ -18,6 +18,7 @@ namespace FinancialPlannerClient.TaskManagementSystem
         IList<Project> projects = new List<Project>();
         IList<Client> clients;
         IList<User> users;
+        ClientARN clientARN;
         private ITransactionType transactionType;
         const string MUTUALFUND = "Mutual Fund";
         public NewTaskCard()
@@ -112,6 +113,7 @@ namespace FinancialPlannerClient.TaskManagementSystem
                 cmbTransactionType.Properties.Items.Add("PAN Card Update");
                 cmbTransactionType.Properties.Items.Add("Address Change");
                 cmbTransactionType.Properties.Items.Add("Transmission After Death");
+                cmbTransactionType.Properties.Items.Add("Signature Change");
             }
             else
             {
@@ -123,8 +125,9 @@ namespace FinancialPlannerClient.TaskManagementSystem
         {
             try
             {
-                transactionType = Program.container.Resolve<ITransactionType>(cmbTransactionType.Text);
+                transactionType = Program.container.Resolve<ITransactionType>(cmbTransactionType.Text);                
                 transactionType.setVGridControl(this.vGridTransaction);
+                transactionType.SetARN(clientARN.ARNId);
                 splitContainerTransOperation.Panel1.Height = 400;
                 splitContainerTransOperation.PanelVisibility = DevExpress.XtraEditors.SplitPanelVisibility.Both;
             }
@@ -232,6 +235,8 @@ namespace FinancialPlannerClient.TaskManagementSystem
             if (!string.IsNullOrEmpty(cmbClient.Text))
             {
                 cmbClient.Tag = clients.FirstOrDefault(i => i.Name == cmbClient.Text).ID;
+                ClientARNInfo clientARNInfo = new ClientARNInfo();
+                clientARN = clientARNInfo.Get(int.Parse(cmbClient.Tag.ToString()));
             }
         }
 

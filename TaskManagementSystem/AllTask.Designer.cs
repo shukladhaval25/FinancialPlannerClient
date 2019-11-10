@@ -34,6 +34,7 @@
             this.imgTaskGrid = new DevExpress.Utils.ImageCollection(this.components);
             this.grdTasks = new DevExpress.XtraGrid.GridControl();
             this.gridViewTasks = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.btnView = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.imgTaskGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdTasks)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewTasks)).BeginInit();
@@ -74,13 +75,24 @@
             // 
             this.gridViewTasks.GridControl = this.grdTasks;
             this.gridViewTasks.Name = "gridViewTasks";
-            this.gridViewTasks.OptionsBehavior.Editable = true;
+            this.gridViewTasks.DoubleClick += new System.EventHandler(this.gridViewTasks_DoubleClick);
+            // 
+            // btnView
+            // 
+            this.btnView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnView.Location = new System.Drawing.Point(93, 479);
+            this.btnView.Name = "btnView";
+            this.btnView.Size = new System.Drawing.Size(75, 23);
+            this.btnView.TabIndex = 30;
+            this.btnView.Text = "&View";
+            this.btnView.Click += new System.EventHandler(this.btnView_Click);
             // 
             // AllTask
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1139, 514);
+            this.Controls.Add(this.btnView);
             this.Controls.Add(this.grdTasks);
             this.Controls.Add(this.btnClose);
             this.Name = "AllTask";
@@ -98,5 +110,6 @@
         private DevExpress.Utils.ImageCollection imgTaskGrid;
         private DevExpress.XtraGrid.GridControl grdTasks;
         private DevExpress.XtraGrid.Views.Grid.GridView gridViewTasks;
+        private DevExpress.XtraEditors.SimpleButton btnView;
     }
 }

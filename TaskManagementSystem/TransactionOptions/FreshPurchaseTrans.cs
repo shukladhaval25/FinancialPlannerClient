@@ -417,7 +417,7 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             DataTable dtARN = getARNTable();
             repositoryItemARN.DataSource = dtARN;
             repositoryItemARN.DisplayMember = "ARNNumber";
-            repositoryItemARN.ValueMember = "Id";
+            repositoryItemARN.ValueMember = "ID";
             repositoryItemARN.NullValuePrompt = "Please select valid value.";           
         }
 
@@ -596,6 +596,11 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             debuggerInfo.Method = name;
             debuggerInfo.ExceptionInfo = ex;
             Logger.LogDebug(debuggerInfo);
+        }
+
+        public void SetARN(int arnNo)
+        {
+            this.vGridTransaction.Rows["ARN"].Properties.Value = arnNo;
         }
     }
 }

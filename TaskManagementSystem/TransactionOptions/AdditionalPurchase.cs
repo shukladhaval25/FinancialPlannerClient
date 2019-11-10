@@ -369,5 +369,10 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
         {
             return freshPurchaseTrans.IsAllRequireInputAvailable();
         }
+
+        public void SetARN(int arnNo)
+        {
+            this.vGridTransaction.Rows["ARN"].Properties.Value = arnNo;
+        }
     }
 }

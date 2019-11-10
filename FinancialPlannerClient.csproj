@@ -757,6 +757,7 @@
     <Compile Include="TaskManagementSystem\TaskNotificationInfo.cs" />
     <Compile Include="TaskManagementSystem\TaskCommentInfo.cs" />
     <Compile Include="TaskManagementSystem\TransactionOptions\AdditionalPurchase.cs" />
+    <Compile Include="TaskManagementSystem\TransactionOptions\SignatureChangeTrans.cs" />
     <Compile Include="TaskManagementSystem\TransactionOptions\PanCardUpdateTrans.cs" />
     <Compile Include="TaskManagementSystem\TransactionOptions\TransmissionAfterDeathTrans.cs" />
     <Compile Include="TaskManagementSystem\TransactionOptions\AddressChangeTrans.cs" />

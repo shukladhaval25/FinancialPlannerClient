@@ -256,5 +256,10 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             }
             return new Scheme();
         }
+
+        public void SetARN(int arnNo)
+        {
+            this.vGridTransaction.Rows["ARN"].Properties.Value = arnNo;
+        }
     }
 }

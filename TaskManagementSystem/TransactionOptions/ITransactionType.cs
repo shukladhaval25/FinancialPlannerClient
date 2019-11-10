@@ -15,5 +15,6 @@ namespace FinancialPlannerClient.TaskManagementSystem
         void BindDataSource(Object obj);
         object GetTransactionType();
         bool IsAllRequireInputAvailable();
+        void SetARN(int arnNo);
     }
 }

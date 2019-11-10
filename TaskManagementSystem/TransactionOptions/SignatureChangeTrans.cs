@@ -11,7 +11,7 @@ using System.Data;
 
 namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
 {
-    internal class AddressChangeTrans : ITransactionType
+    internal class SignatureChangeTrans : ITransactionType
     {
         internal IList<ARN> arns;
         internal IList<AMC> amcs;
@@ -24,12 +24,12 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
         private DevExpress.XtraVerticalGrid.Rows.EditorRow MemberName;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow AMC;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow FolioNumber;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow Address;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow SignatureChangeOf;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow ModeOfExecution;
 
-        readonly string GRID_NAME = "vGridAddressChange";
+        readonly string GRID_NAME = "vGridPSignatureChangeRequest";
         DevExpress.XtraVerticalGrid.VGridControl vGridTransaction;
-        AddressChange addressChange;
+        SignatureChange signatureChange;
 
 
         public DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemARN;
@@ -37,7 +37,7 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
         public DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBoxMemberName;
         public DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemAMC;
         public DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEditFolioNumber;
-        public DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEditAddress;
+        public DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBoxSignatureChangeOf;
         public DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBoxModeOfExecution;
 
         private void InitializeComponent()
@@ -50,7 +50,7 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             this.MemberName = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.AMC = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.FolioNumber = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.Address = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.SignatureChangeOf = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.ModeOfExecution = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
 
 
@@ -75,7 +75,8 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
 
             this.repositoryItemTextEditFolioNumber = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
 
-            this.repositoryItemTextEditAddress = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
+            this.repositoryItemComboBoxSignatureChangeOf = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            this.repositoryItemComboBoxSignatureChangeOf.Items.AddRange(new string[] { "1st Holder", "2nd Holder", "3rd Holder" });
 
             this.repositoryItemComboBoxModeOfExecution = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.repositoryItemComboBoxModeOfExecution.Items.AddRange(new string[] { "BSE", "AMC App", "Physical" });
@@ -117,12 +118,12 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             this.FolioNumber.Properties.FieldName = "FolioNumber";
             this.FolioNumber.Properties.RowEdit = this.repositoryItemTextEditFolioNumber;            
             //
-            // Address
+            // First Holder PAN
             //
-            this.Address.Name = "Address";
-            this.Address.Properties.Caption = "Address";
-            this.Address.Properties.FieldName = "Address";
-            this.Address.Properties.RowEdit = this.repositoryItemTextEditAddress;
+            this.SignatureChangeOf.Name = "SignatureChangeOf";
+            this.SignatureChangeOf.Properties.Caption = "Signature Change of";
+            this.SignatureChangeOf.Properties.FieldName = "SignatureChangeOf";
+            this.SignatureChangeOf.Properties.RowEdit = this.repositoryItemComboBoxSignatureChangeOf;
             //
             // ModeOfExecution
             //
@@ -144,7 +145,7 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
                 this.repositoryItemComboBoxMemberName,
                 this.repositoryItemAMC,
                 this.repositoryItemTextEditFolioNumber,
-                this.repositoryItemTextEditAddress,
+                this.repositoryItemComboBoxSignatureChangeOf,
                 this.repositoryItemComboBoxModeOfExecution
             });
 
@@ -154,7 +155,7 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
                 this.MemberName,               
                 this.AMC,
                 this.FolioNumber,
-                this.Address,
+                this.SignatureChangeOf,
                 this.ModeOfExecution});
             prepareOptionalFieldsList();
         }
@@ -180,7 +181,6 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             if (comboBoxEdit.SelectedText != null)
             {
                 AMC amcobject = ((List<AMC>)amcs).Find(i => i.Name == comboBoxEdit.Text.ToString());
-                //loadScheme(amcobject.Id);
             }
         }
         private void RepositoryItemComboBoxClientGroup_Validating(object sender, System.ComponentModel.CancelEventArgs e)
@@ -277,19 +277,19 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
 
             FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
 
-            addressChange = jsonSerialization.DeserializeFromString<AddressChange>(obj.ToString());
-            this.vGridTransaction.Rows["ARN"].Properties.Value = addressChange.Arn;
+            signatureChange = jsonSerialization.DeserializeFromString<SignatureChange>(obj.ToString());
+            this.vGridTransaction.Rows["ARN"].Properties.Value = signatureChange.Arn;
 
-            this.vGridTransaction.Rows["ClientGroup"].Properties.Value = getClientName(addressChange.Cid);
+            this.vGridTransaction.Rows["ClientGroup"].Properties.Value = getClientName(signatureChange.Cid);
             this.currentClient = ((List<Client>)clients).Find(i => i.Name == this.vGridTransaction.Rows["ClientGroup"].Properties.Value.ToString());
             loadMembers();
-            this.vGridTransaction.Rows["MemberName"].Properties.Value = addressChange.MemberName;            
-            this.vGridTransaction.Rows["FolioNumber"].Properties.Value = addressChange.FolioNumber;
-            this.vGridTransaction.Rows["AMC"].Properties.Value = addressChange.Amc;
-            repositoryItemAMC.GetDisplayValueByKeyValue(addressChange.Amc);
+            this.vGridTransaction.Rows["MemberName"].Properties.Value = signatureChange.MemberName;            
+            this.vGridTransaction.Rows["FolioNumber"].Properties.Value = signatureChange.FolioNumber;
+            this.vGridTransaction.Rows["AMC"].Properties.Value = signatureChange.Amc;
+            repositoryItemAMC.GetDisplayValueByKeyValue(signatureChange.Amc);
 
-            this.vGridTransaction.Rows["Address"].Properties.Value = addressChange.Address;
-            this.vGridTransaction.Rows["ModeOfExecution"].Properties.Value = addressChange.ModeOfExecution;
+            this.vGridTransaction.Rows["SignatureChangeOf"].Properties.Value = signatureChange.SignatureChangeOf;
+            this.vGridTransaction.Rows["ModeOfExecution"].Properties.Value = signatureChange.ModeOfExecution;
         }
 
         public VGridControl GetGridControl()
@@ -306,22 +306,22 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
 
         public object GetTransactionType()
         {
-            AddressChange address = new AddressChange();
+            SignatureChange panCard = new SignatureChange();
             if (this.vGridTransaction.Rows.Count > 0)
             {
-                address.Arn = int.Parse(this.vGridTransaction.Rows["ARN"].Properties.Value.ToString());
-                address.Cid = this.currentClient.ID;
-                address.ClientGroup = this.vGridTransaction.Rows["ClientGroup"].Properties.Value.ToString();
-                address.MemberName = this.vGridTransaction.Rows["MemberName"].Properties.Value.ToString();
+                panCard.Arn = int.Parse(this.vGridTransaction.Rows["ARN"].Properties.Value.ToString());
+                panCard.Cid = this.currentClient.ID;
+                panCard.ClientGroup = this.vGridTransaction.Rows["ClientGroup"].Properties.Value.ToString();
+                panCard.MemberName = this.vGridTransaction.Rows["MemberName"].Properties.Value.ToString();
                 
-                address.Amc = int.Parse(this.vGridTransaction.Rows["AMC"].Properties.Value.ToString());
-                address.FolioNumber = this.vGridTransaction.Rows["FolioNumber"].Properties.Value.ToString();
+                panCard.Amc = int.Parse(this.vGridTransaction.Rows["AMC"].Properties.Value.ToString());
+                panCard.FolioNumber = this.vGridTransaction.Rows["FolioNumber"].Properties.Value.ToString();
 
-                address.Address = (this.vGridTransaction.Rows["Address"].Properties.Value ==  null) ? "" : this.vGridTransaction.Rows["Address"].Properties.Value.ToString();
-                address.ModeOfExecution = this.vGridTransaction.Rows["ModeOfExecution"].Properties.Value.ToString();
+                panCard.SignatureChangeOf = (this.vGridTransaction.Rows["SignatureChangeOf"].Properties.Value ==  null) ? "" : this.vGridTransaction.Rows["SignatureChangeOf"].Properties.Value.ToString();
+                panCard.ModeOfExecution = this.vGridTransaction.Rows["ModeOfExecution"].Properties.Value.ToString();
 
             }
-            return address;
+            return panCard;
         }
 
         public bool IsAllRequireInputAvailable()
