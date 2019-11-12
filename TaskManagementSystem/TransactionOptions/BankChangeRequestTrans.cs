@@ -213,6 +213,7 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             repositoryItemOldBank.DisplayMember = "Name";
             repositoryItemOldBank.ValueMember = "Id";
             repositoryItemOldBank.NullValuePrompt = "Please select valid value.";
+            repositoryItemOldBank.Columns["Id"].Visible = false;
 
             repositoryItemNewBank.DataSource = dtBank;
             repositoryItemNewBank.DisplayMember = "Name";
@@ -225,11 +226,17 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             DataTable dtBank = new DataTable();
             dtBank.Columns.Add("Id", typeof(System.Int64));
             dtBank.Columns.Add("Name", typeof(System.String));
+            dtBank.Columns.Add("Branch", typeof(System.String));
+            dtBank.Columns.Add("IFSC", typeof(System.String));
+            dtBank.Columns.Add("MICR", typeof(System.String));
             foreach (Bank bank in banks)
             {
                 DataRow dr = dtBank.NewRow();
                 dr["Id"] = bank.Id;
                 dr["Name"] = bank.Name;
+                dr["Branch"] = bank.Branch;
+                dr["IFSC"] = bank.IFSC;
+                dr["MICR"] = bank.MICR;
                 dtBank.Rows.Add(dr);
             }
             return dtBank;

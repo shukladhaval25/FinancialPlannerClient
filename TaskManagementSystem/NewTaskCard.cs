@@ -114,6 +114,7 @@ namespace FinancialPlannerClient.TaskManagementSystem
                 cmbTransactionType.Properties.Items.Add("Address Change");
                 cmbTransactionType.Properties.Items.Add("Transmission After Death");
                 cmbTransactionType.Properties.Items.Add("Signature Change");
+                cmbTransactionType.Properties.Items.Add("SIP Bank Change");
             }
             else
             {
