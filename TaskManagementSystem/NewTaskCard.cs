@@ -115,6 +115,8 @@ namespace FinancialPlannerClient.TaskManagementSystem
                 cmbTransactionType.Properties.Items.Add("Transmission After Death");
                 cmbTransactionType.Properties.Items.Add("Signature Change");
                 cmbTransactionType.Properties.Items.Add("SIP Bank Change");
+                cmbTransactionType.Properties.Items.Add("Minor To Major");
+                cmbTransactionType.Properties.Items.Add("Change of Name");
             }
             else
             {
