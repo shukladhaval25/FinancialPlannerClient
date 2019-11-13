@@ -331,7 +331,7 @@
             // 
             // labelControl10
             // 
-            this.labelControl10.Location = new System.Drawing.Point(900, 78);
+            this.labelControl10.Location = new System.Drawing.Point(900, 55);
             this.labelControl10.Name = "labelControl10";
             this.labelControl10.Size = new System.Drawing.Size(73, 13);
             this.labelControl10.TabIndex = 20;
@@ -341,7 +341,7 @@
             // 
             this.txtPercentageCompeleted.EditValue = "0";
             this.txtPercentageCompeleted.Enabled = false;
-            this.txtPercentageCompeleted.Location = new System.Drawing.Point(980, 75);
+            this.txtPercentageCompeleted.Location = new System.Drawing.Point(980, 52);
             this.txtPercentageCompeleted.Name = "txtPercentageCompeleted";
             this.txtPercentageCompeleted.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtPercentageCompeleted.Size = new System.Drawing.Size(69, 20);
@@ -354,6 +354,7 @@
             this.labelControl11.Size = new System.Drawing.Size(50, 13);
             this.labelControl11.TabIndex = 22;
             this.labelControl11.Text = "Watchers:";
+            this.labelControl11.Visible = false;
             // 
             // comboBoxEdit7
             // 
@@ -363,6 +364,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.comboBoxEdit7.Size = new System.Drawing.Size(270, 20);
             this.comboBoxEdit7.TabIndex = 23;
+            this.comboBoxEdit7.Visible = false;
             // 
             // labelControl12
             // 
@@ -873,7 +875,6 @@
             this.Controls.Add(this.pnlTaskOtherOptions);
             this.Controls.Add(this.labelControl12);
             this.Controls.Add(this.txtUpdatedOn);
-            this.Controls.Add(this.comboBoxEdit7);
             this.Controls.Add(this.labelControl11);
             this.Controls.Add(this.labelControl10);
             this.Controls.Add(this.txtPercentageCompeleted);
@@ -891,6 +892,7 @@
             this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.lblProject);
+            this.Controls.Add(this.comboBoxEdit7);
             this.Name = "ViewTaskCard";
             this.Text = "View / Edit card details";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
