@@ -33,9 +33,11 @@
             this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
             this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
             this.xrPageInfo1 = new DevExpress.XtraReports.UI.XRPageInfo();
-            this.lblClientName = new DevExpress.XtraReports.UI.XRLabel();
-            this.ReportTitle = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrPanel2 = new DevExpress.XtraReports.UI.XRPanel();
             this.xrPictureBox1 = new DevExpress.XtraReports.UI.XRPictureBox();
+            this.ReportTitle = new DevExpress.XtraReports.UI.XRLabel();
+            this.lblClientName = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrPanel1 = new DevExpress.XtraReports.UI.XRPanel();
             this.xrRichTextContent = new DevExpress.XtraReports.UI.XRRichText();
             ((System.ComponentModel.ISupportInitialize)(this.xrRichTextContent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
@@ -43,9 +45,9 @@
             // Detail
             // 
             this.Detail.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
-            this.xrRichTextContent});
+            this.xrPanel1});
             this.Detail.Dpi = 100F;
-            this.Detail.HeightF = 672.0833F;
+            this.Detail.HeightF = 951.25F;
             this.Detail.Name = "Detail";
             this.Detail.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.Detail.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
@@ -53,11 +55,9 @@
             // TopMargin
             // 
             this.TopMargin.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
-            this.xrPictureBox1,
-            this.lblClientName,
-            this.ReportTitle});
+            this.xrPanel2});
             this.TopMargin.Dpi = 100F;
-            this.TopMargin.HeightF = 100F;
+            this.TopMargin.HeightF = 107.4167F;
             this.TopMargin.Name = "TopMargin";
             this.TopMargin.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.TopMargin.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
@@ -80,48 +80,99 @@
             this.xrPageInfo1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrPageInfo1.SizeF = new System.Drawing.SizeF(55.20831F, 23F);
             // 
-            // lblClientName
+            // xrPanel2
             // 
-            this.lblClientName.Dpi = 100F;
-            this.lblClientName.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblClientName.ForeColor = System.Drawing.Color.Navy;
-            this.lblClientName.LocationFloat = new DevExpress.Utils.PointFloat(5.000031F, 51.00002F);
-            this.lblClientName.Name = "lblClientName";
-            this.lblClientName.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.lblClientName.SizeF = new System.Drawing.SizeF(390.625F, 23F);
-            this.lblClientName.StylePriority.UseFont = false;
-            this.lblClientName.StylePriority.UseForeColor = false;
+            this.xrPanel2.AnchorHorizontal = ((DevExpress.XtraReports.UI.HorizontalAnchorStyles)((DevExpress.XtraReports.UI.HorizontalAnchorStyles.Left | DevExpress.XtraReports.UI.HorizontalAnchorStyles.Right)));
+            this.xrPanel2.AnchorVertical = ((DevExpress.XtraReports.UI.VerticalAnchorStyles)((DevExpress.XtraReports.UI.VerticalAnchorStyles.Top | DevExpress.XtraReports.UI.VerticalAnchorStyles.Bottom)));
+            this.xrPanel2.BorderColor = System.Drawing.Color.Navy;
+            this.xrPanel2.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrPanel2.BorderWidth = 2F;
+            this.xrPanel2.CanGrow = false;
+            this.xrPanel2.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.xrPictureBox1,
+            this.ReportTitle,
+            this.lblClientName});
+            this.xrPanel2.Dpi = 100F;
+            this.xrPanel2.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0.4583041F);
+            this.xrPanel2.Name = "xrPanel2";
+            this.xrPanel2.SizeF = new System.Drawing.SizeF(650F, 106.9584F);
+            this.xrPanel2.StylePriority.UseBorderColor = false;
+            this.xrPanel2.StylePriority.UseBorders = false;
+            this.xrPanel2.StylePriority.UseBorderWidth = false;
+            // 
+            // xrPictureBox1
+            // 
+            this.xrPictureBox1.Borders = DevExpress.XtraPrinting.BorderSide.None;
+            this.xrPictureBox1.Dpi = 100F;
+            this.xrPictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("xrPictureBox1.Image")));
+            this.xrPictureBox1.LocationFloat = new DevExpress.Utils.PointFloat(400.625F, 10F);
+            this.xrPictureBox1.Name = "xrPictureBox1";
+            this.xrPictureBox1.SizeF = new System.Drawing.SizeF(241.4583F, 85.12498F);
+            this.xrPictureBox1.Sizing = DevExpress.XtraPrinting.ImageSizeMode.ZoomImage;
+            this.xrPictureBox1.StylePriority.UseBorders = false;
             // 
             // ReportTitle
             // 
+            this.ReportTitle.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.ReportTitle.Dpi = 100F;
             this.ReportTitle.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ReportTitle.ForeColor = System.Drawing.Color.Navy;
-            this.ReportTitle.LocationFloat = new DevExpress.Utils.PointFloat(5.000031F, 14.16667F);
+            this.ReportTitle.LocationFloat = new DevExpress.Utils.PointFloat(23.95833F, 12.79168F);
             this.ReportTitle.Name = "ReportTitle";
             this.ReportTitle.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.ReportTitle.SizeF = new System.Drawing.SizeF(143.75F, 23F);
+            this.ReportTitle.StylePriority.UseBorders = false;
             this.ReportTitle.StylePriority.UseFont = false;
             this.ReportTitle.StylePriority.UseForeColor = false;
             this.ReportTitle.Text = "Financial Plan of";
             // 
-            // xrPictureBox1
+            // lblClientName
             // 
-            this.xrPictureBox1.Dpi = 100F;
-            this.xrPictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("xrPictureBox1.Image")));
-            this.xrPictureBox1.LocationFloat = new DevExpress.Utils.PointFloat(403.5417F, 0F);
-            this.xrPictureBox1.Name = "xrPictureBox1";
-            this.xrPictureBox1.SizeF = new System.Drawing.SizeF(241.4583F, 100F);
-            this.xrPictureBox1.Sizing = DevExpress.XtraPrinting.ImageSizeMode.ZoomImage;
+            this.lblClientName.Borders = DevExpress.XtraPrinting.BorderSide.None;
+            this.lblClientName.Dpi = 100F;
+            this.lblClientName.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblClientName.ForeColor = System.Drawing.Color.Navy;
+            this.lblClientName.LocationFloat = new DevExpress.Utils.PointFloat(23.95833F, 54.12502F);
+            this.lblClientName.Name = "lblClientName";
+            this.lblClientName.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.lblClientName.SizeF = new System.Drawing.SizeF(366.25F, 23F);
+            this.lblClientName.StylePriority.UseBorders = false;
+            this.lblClientName.StylePriority.UseFont = false;
+            this.lblClientName.StylePriority.UseForeColor = false;
+            // 
+            // xrPanel1
+            // 
+            this.xrPanel1.BorderColor = System.Drawing.Color.Navy;
+            this.xrPanel1.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrPanel1.BorderWidth = 2F;
+            this.xrPanel1.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.xrRichTextContent});
+            this.xrPanel1.Dpi = 100F;
+            this.xrPanel1.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
+            this.xrPanel1.Name = "xrPanel1";
+            this.xrPanel1.SizeF = new System.Drawing.SizeF(650F, 941.25F);
+            this.xrPanel1.StylePriority.UseBorderColor = false;
+            this.xrPanel1.StylePriority.UseBorders = false;
+            this.xrPanel1.StylePriority.UseBorderWidth = false;
             // 
             // xrRichTextContent
             // 
+            this.xrRichTextContent.BorderColor = System.Drawing.Color.Navy;
+            this.xrRichTextContent.Borders = DevExpress.XtraPrinting.BorderSide.None;
+            this.xrRichTextContent.BorderWidth = 2F;
             this.xrRichTextContent.Dpi = 100F;
             this.xrRichTextContent.Font = new System.Drawing.Font("Times New Roman", 9.75F);
-            this.xrRichTextContent.LocationFloat = new DevExpress.Utils.PointFloat(15.98959F, 0F);
+            this.xrRichTextContent.LocationFloat = new DevExpress.Utils.PointFloat(9.999974F, 3.178914E-05F);
             this.xrRichTextContent.Name = "xrRichTextContent";
             this.xrRichTextContent.SerializableRtfString = resources.GetString("xrRichTextContent.SerializableRtfString");
-            this.xrRichTextContent.SizeF = new System.Drawing.SizeF(618.0208F, 672.0833F);
+            this.xrRichTextContent.SizeF = new System.Drawing.SizeF(629.9999F, 708.3333F);
+            this.xrRichTextContent.StylePriority.UseBorderColor = false;
+            this.xrRichTextContent.StylePriority.UseBorders = false;
+            this.xrRichTextContent.StylePriority.UseBorderWidth = false;
             // 
             // ScopeOfPlancs
             // 
@@ -129,6 +180,7 @@
             this.Detail,
             this.TopMargin,
             this.BottomMargin});
+            this.Margins = new System.Drawing.Printing.Margins(100, 100, 107, 100);
             this.Version = "16.2";
             ((System.ComponentModel.ISupportInitialize)(this.xrRichTextContent)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
@@ -141,9 +193,11 @@
         private DevExpress.XtraReports.UI.TopMarginBand TopMargin;
         private DevExpress.XtraReports.UI.BottomMarginBand BottomMargin;
         private DevExpress.XtraReports.UI.XRPageInfo xrPageInfo1;
-        private DevExpress.XtraReports.UI.XRPictureBox xrPictureBox1;
-        private DevExpress.XtraReports.UI.XRLabel lblClientName;
-        private DevExpress.XtraReports.UI.XRLabel ReportTitle;
+        private DevExpress.XtraReports.UI.XRPanel xrPanel1;
         private DevExpress.XtraReports.UI.XRRichText xrRichTextContent;
+        private DevExpress.XtraReports.UI.XRPanel xrPanel2;
+        private DevExpress.XtraReports.UI.XRPictureBox xrPictureBox1;
+        private DevExpress.XtraReports.UI.XRLabel ReportTitle;
+        private DevExpress.XtraReports.UI.XRLabel lblClientName;
     }
 }

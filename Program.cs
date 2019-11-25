@@ -61,6 +61,7 @@ namespace FinancialPlannerClient
                 container.RegisterType<ITransactionType, SIPBankChangeTrans>("SIP Bank Change");
                 container.RegisterType<ITransactionType, MinorToMajorTrans>("Minor To Major");
                 container.RegisterType<ITransactionType, ChangeOfNameTrans>("Change of Name");
+                container.RegisterType<ITransactionType, NominationTrans>("Nomination");
             }
             catch(Exception ex)
             {

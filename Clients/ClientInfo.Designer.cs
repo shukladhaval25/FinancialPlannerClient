@@ -2784,9 +2784,11 @@
             // 
             // dtFamilyMemberDOB
             // 
+            this.dtFamilyMemberDOB.Checked = false;
             this.dtFamilyMemberDOB.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtFamilyMemberDOB.Location = new System.Drawing.Point(134, 68);
             this.dtFamilyMemberDOB.Name = "dtFamilyMemberDOB";
+            this.dtFamilyMemberDOB.ShowCheckBox = true;
             this.dtFamilyMemberDOB.Size = new System.Drawing.Size(294, 22);
             this.dtFamilyMemberDOB.TabIndex = 3;
             // 

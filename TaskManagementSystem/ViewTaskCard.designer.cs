@@ -89,6 +89,20 @@
             this.tileViewColumn1 = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.tileViewColumnEditedImg = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.tabNavigationHistoryPage = new DevExpress.XtraBars.Navigation.TabNavigationPage();
+            this.gridControlHistory = new DevExpress.XtraGrid.GridControl();
+            this.layoutViewHistory = new DevExpress.XtraGrid.Views.Layout.LayoutView();
+            this.tileViewColumnUserName = new DevExpress.XtraGrid.Columns.LayoutViewColumn();
+            this.layoutViewField_tileViewColumnUserName = new DevExpress.XtraGrid.Views.Layout.LayoutViewField();
+            this.tileViewColumnUpdatedOn = new DevExpress.XtraGrid.Columns.LayoutViewColumn();
+            this.layoutViewField_tileViewColumnUpdatedOn = new DevExpress.XtraGrid.Views.Layout.LayoutViewField();
+            this.tileViewColumnFiledName = new DevExpress.XtraGrid.Columns.LayoutViewColumn();
+            this.layoutViewField_tileViewColumnFiledName = new DevExpress.XtraGrid.Views.Layout.LayoutViewField();
+            this.tileViewColumnOldValue = new DevExpress.XtraGrid.Columns.LayoutViewColumn();
+            this.layoutViewField_tileViewColumnOldValue = new DevExpress.XtraGrid.Views.Layout.LayoutViewField();
+            this.tileViewColumnNewName = new DevExpress.XtraGrid.Columns.LayoutViewColumn();
+            this.layoutViewField_tileViewColumnNewName = new DevExpress.XtraGrid.Views.Layout.LayoutViewField();
+            this.layoutViewCard1 = new DevExpress.XtraGrid.Views.Layout.LayoutViewCard();
+            this.item1 = new DevExpress.XtraLayout.SimpleSeparator();
             this.pnlTaskOtherOptions = new System.Windows.Forms.Panel();
             this.splitContainerTransOperation = new DevExpress.XtraEditors.SplitContainerControl();
             this.vGridTransaction = new DevExpress.XtraVerticalGrid.VGridControl();
@@ -127,6 +141,16 @@
             this.tabNavigationCommentsPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridComments)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tileViewComment)).BeginInit();
+            this.tabNavigationHistoryPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlHistory)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutViewHistory)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutViewField_tileViewColumnUserName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutViewField_tileViewColumnUpdatedOn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutViewField_tileViewColumnFiledName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutViewField_tileViewColumnOldValue)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutViewField_tileViewColumnNewName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutViewCard1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.item1)).BeginInit();
             this.pnlTaskOtherOptions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerTransOperation)).BeginInit();
             this.splitContainerTransOperation.SuspendLayout();
@@ -181,7 +205,6 @@
             // 
             this.tileViewColumnCommentedBy.Caption = "CommentedBy";
             this.tileViewColumnCommentedBy.FieldName = "CommantedBy";
-            this.tileViewColumnCommentedBy.Image = ((System.Drawing.Image)(resources.GetObject("tileViewColumnCommentedBy.Image")));
             this.tileViewColumnCommentedBy.Name = "tileViewColumnCommentedBy";
             this.tileViewColumnCommentedBy.OptionsColumn.ReadOnly = true;
             // 
@@ -195,7 +218,6 @@
             // 
             // tileViewColumnIsEdited
             // 
-            this.tileViewColumnIsEdited.AppearanceCell.Image = ((System.Drawing.Image)(resources.GetObject("tileViewColumnIsEdited.AppearanceCell.Image")));
             this.tileViewColumnIsEdited.AppearanceCell.Options.UseImage = true;
             this.tileViewColumnIsEdited.Caption = "Edited";
             this.tileViewColumnIsEdited.FieldName = "IsEdited";
@@ -580,15 +602,165 @@
             // tileViewColumnEditedImg
             // 
             this.tileViewColumnEditedImg.Caption = "EditedImg";
-            this.tileViewColumnEditedImg.Image = ((System.Drawing.Image)(resources.GetObject("tileViewColumnEditedImg.Image")));
             this.tileViewColumnEditedImg.Name = "tileViewColumnEditedImg";
             // 
             // tabNavigationHistoryPage
             // 
             this.tabNavigationHistoryPage.Caption = "History";
+            this.tabNavigationHistoryPage.Controls.Add(this.gridControlHistory);
             this.tabNavigationHistoryPage.Name = "tabNavigationHistoryPage";
-            this.tabNavigationHistoryPage.PageVisible = false;
-            this.tabNavigationHistoryPage.Size = new System.Drawing.Size(616, 332);
+            this.tabNavigationHistoryPage.Size = new System.Drawing.Size(598, 287);
+            // 
+            // gridControlHistory
+            // 
+            this.gridControlHistory.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControlHistory.Location = new System.Drawing.Point(0, 0);
+            this.gridControlHistory.MainView = this.layoutViewHistory;
+            this.gridControlHistory.Name = "gridControlHistory";
+            this.gridControlHistory.Size = new System.Drawing.Size(598, 287);
+            this.gridControlHistory.TabIndex = 0;
+            this.gridControlHistory.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.layoutViewHistory});
+            // 
+            // layoutViewHistory
+            // 
+            this.layoutViewHistory.CardMinSize = new System.Drawing.Size(188, 94);
+            this.layoutViewHistory.Columns.AddRange(new DevExpress.XtraGrid.Columns.LayoutViewColumn[] {
+            this.tileViewColumnUserName,
+            this.tileViewColumnUpdatedOn,
+            this.tileViewColumnFiledName,
+            this.tileViewColumnOldValue,
+            this.tileViewColumnNewName});
+            this.layoutViewHistory.GridControl = this.gridControlHistory;
+            this.layoutViewHistory.Name = "layoutViewHistory";
+            this.layoutViewHistory.OptionsBehavior.Editable = false;
+            this.layoutViewHistory.OptionsItemText.TextToControlDistance = 2;
+            this.layoutViewHistory.OptionsPrint.PrintMode = DevExpress.XtraGrid.Views.Layout.LayoutViewPrintMode.MultiRow;
+            this.layoutViewHistory.OptionsView.AllowBorderColorBlending = true;
+            this.layoutViewHistory.OptionsView.CardsAlignment = DevExpress.XtraGrid.Views.Layout.CardsAlignment.Near;
+            this.layoutViewHistory.OptionsView.ShowCardCaption = false;
+            this.layoutViewHistory.OptionsView.ShowCardExpandButton = false;
+            this.layoutViewHistory.OptionsView.ShowCardLines = false;
+            this.layoutViewHistory.OptionsView.ShowHeaderPanel = false;
+            this.layoutViewHistory.OptionsView.ViewMode = DevExpress.XtraGrid.Views.Layout.LayoutViewMode.Column;
+            this.layoutViewHistory.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.tileViewColumnNewName, DevExpress.Data.ColumnSortOrder.Ascending)});
+            this.layoutViewHistory.TemplateCard = this.layoutViewCard1;
+            // 
+            // tileViewColumnUserName
+            // 
+            this.tileViewColumnUserName.Caption = "User";
+            this.tileViewColumnUserName.FieldName = "Username";
+            this.tileViewColumnUserName.FieldNameSortGroup = "Username";
+            this.tileViewColumnUserName.LayoutViewField = this.layoutViewField_tileViewColumnUserName;
+            this.tileViewColumnUserName.Name = "tileViewColumnUserName";
+            this.tileViewColumnUserName.SortMode = DevExpress.XtraGrid.ColumnSortMode.Value;
+            // 
+            // layoutViewField_tileViewColumnUserName
+            // 
+            this.layoutViewField_tileViewColumnUserName.EditorPreferredWidth = 170;
+            this.layoutViewField_tileViewColumnUserName.Location = new System.Drawing.Point(0, 0);
+            this.layoutViewField_tileViewColumnUserName.Name = "layoutViewField_tileViewColumnUserName";
+            this.layoutViewField_tileViewColumnUserName.Size = new System.Drawing.Size(242, 28);
+            this.layoutViewField_tileViewColumnUserName.Spacing = new DevExpress.XtraLayout.Utils.Padding(2, 2, 2, 2);
+            this.layoutViewField_tileViewColumnUserName.TextLocation = DevExpress.Utils.Locations.Left;
+            this.layoutViewField_tileViewColumnUserName.TextSize = new System.Drawing.Size(62, 13);
+            // 
+            // tileViewColumnUpdatedOn
+            // 
+            this.tileViewColumnUpdatedOn.Caption = "Updated On";
+            this.tileViewColumnUpdatedOn.FieldName = "UpdatedOn";
+            this.tileViewColumnUpdatedOn.FieldNameSortGroup = "UpdatedOn";
+            this.tileViewColumnUpdatedOn.LayoutViewField = this.layoutViewField_tileViewColumnUpdatedOn;
+            this.tileViewColumnUpdatedOn.Name = "tileViewColumnUpdatedOn";
+            this.tileViewColumnUpdatedOn.SortMode = DevExpress.XtraGrid.ColumnSortMode.Value;
+            // 
+            // layoutViewField_tileViewColumnUpdatedOn
+            // 
+            this.layoutViewField_tileViewColumnUpdatedOn.EditorPreferredWidth = 159;
+            this.layoutViewField_tileViewColumnUpdatedOn.Location = new System.Drawing.Point(242, 0);
+            this.layoutViewField_tileViewColumnUpdatedOn.Name = "layoutViewField_tileViewColumnUpdatedOn";
+            this.layoutViewField_tileViewColumnUpdatedOn.Size = new System.Drawing.Size(231, 28);
+            this.layoutViewField_tileViewColumnUpdatedOn.Spacing = new DevExpress.XtraLayout.Utils.Padding(2, 2, 2, 2);
+            this.layoutViewField_tileViewColumnUpdatedOn.TextLocation = DevExpress.Utils.Locations.Left;
+            this.layoutViewField_tileViewColumnUpdatedOn.TextSize = new System.Drawing.Size(62, 13);
+            // 
+            // tileViewColumnFiledName
+            // 
+            this.tileViewColumnFiledName.Caption = "Field Name";
+            this.tileViewColumnFiledName.FieldName = "FieldName";
+            this.tileViewColumnFiledName.LayoutViewField = this.layoutViewField_tileViewColumnFiledName;
+            this.tileViewColumnFiledName.Name = "tileViewColumnFiledName";
+            // 
+            // layoutViewField_tileViewColumnFiledName
+            // 
+            this.layoutViewField_tileViewColumnFiledName.EditorPreferredWidth = 92;
+            this.layoutViewField_tileViewColumnFiledName.Location = new System.Drawing.Point(0, 34);
+            this.layoutViewField_tileViewColumnFiledName.Name = "layoutViewField_tileViewColumnFiledName";
+            this.layoutViewField_tileViewColumnFiledName.Size = new System.Drawing.Size(164, 56);
+            this.layoutViewField_tileViewColumnFiledName.Spacing = new DevExpress.XtraLayout.Utils.Padding(2, 2, 2, 2);
+            this.layoutViewField_tileViewColumnFiledName.TextLocation = DevExpress.Utils.Locations.Left;
+            this.layoutViewField_tileViewColumnFiledName.TextSize = new System.Drawing.Size(62, 13);
+            // 
+            // tileViewColumnOldValue
+            // 
+            this.tileViewColumnOldValue.Caption = "Old Value";
+            this.tileViewColumnOldValue.FieldName = "NewValue";
+            this.tileViewColumnOldValue.LayoutViewField = this.layoutViewField_tileViewColumnOldValue;
+            this.tileViewColumnOldValue.Name = "tileViewColumnOldValue";
+            // 
+            // layoutViewField_tileViewColumnOldValue
+            // 
+            this.layoutViewField_tileViewColumnOldValue.EditorPreferredWidth = 237;
+            this.layoutViewField_tileViewColumnOldValue.Location = new System.Drawing.Point(164, 34);
+            this.layoutViewField_tileViewColumnOldValue.Name = "layoutViewField_tileViewColumnOldValue";
+            this.layoutViewField_tileViewColumnOldValue.Size = new System.Drawing.Size(309, 28);
+            this.layoutViewField_tileViewColumnOldValue.Spacing = new DevExpress.XtraLayout.Utils.Padding(2, 2, 2, 2);
+            this.layoutViewField_tileViewColumnOldValue.TextLocation = DevExpress.Utils.Locations.Left;
+            this.layoutViewField_tileViewColumnOldValue.TextSize = new System.Drawing.Size(62, 13);
+            // 
+            // tileViewColumnNewName
+            // 
+            this.tileViewColumnNewName.Caption = "New Value";
+            this.tileViewColumnNewName.FieldName = "OldValue";
+            this.tileViewColumnNewName.LayoutViewField = this.layoutViewField_tileViewColumnNewName;
+            this.tileViewColumnNewName.Name = "tileViewColumnNewName";
+            // 
+            // layoutViewField_tileViewColumnNewName
+            // 
+            this.layoutViewField_tileViewColumnNewName.EditorPreferredWidth = 237;
+            this.layoutViewField_tileViewColumnNewName.Location = new System.Drawing.Point(164, 62);
+            this.layoutViewField_tileViewColumnNewName.Name = "layoutViewField_tileViewColumnNewName";
+            this.layoutViewField_tileViewColumnNewName.Size = new System.Drawing.Size(309, 28);
+            this.layoutViewField_tileViewColumnNewName.Spacing = new DevExpress.XtraLayout.Utils.Padding(2, 2, 2, 2);
+            this.layoutViewField_tileViewColumnNewName.TextLocation = DevExpress.Utils.Locations.Left;
+            this.layoutViewField_tileViewColumnNewName.TextSize = new System.Drawing.Size(62, 13);
+            // 
+            // layoutViewCard1
+            // 
+            this.layoutViewCard1.CustomizationFormText = "TemplateCard";
+            this.layoutViewCard1.GroupBordersVisible = false;
+            this.layoutViewCard1.HeaderButtonsLocation = DevExpress.Utils.GroupElementLocation.AfterText;
+            this.layoutViewCard1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutViewField_tileViewColumnUserName,
+            this.layoutViewField_tileViewColumnUpdatedOn,
+            this.item1,
+            this.layoutViewField_tileViewColumnFiledName,
+            this.layoutViewField_tileViewColumnOldValue,
+            this.layoutViewField_tileViewColumnNewName});
+            this.layoutViewCard1.Name = "layoutViewTemplateCard";
+            this.layoutViewCard1.OptionsItemText.TextToControlDistance = 2;
+            this.layoutViewCard1.Padding = new DevExpress.XtraLayout.Utils.Padding(2, 2, 2, 2);
+            this.layoutViewCard1.Text = "TemplateCard";
+            // 
+            // item1
+            // 
+            this.item1.AllowHotTrack = false;
+            this.item1.CustomizationFormText = "item1";
+            this.item1.Location = new System.Drawing.Point(0, 28);
+            this.item1.Name = "item1";
+            this.item1.Size = new System.Drawing.Size(473, 6);
+            this.item1.Spacing = new DevExpress.XtraLayout.Utils.Padding(2, 2, 2, 2);
             // 
             // pnlTaskOtherOptions
             // 
@@ -701,6 +873,7 @@
             this.cmbTransactionType.Name = "cmbTransactionType";
             this.cmbTransactionType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cmbTransactionType.Properties.ReadOnly = true;
             this.cmbTransactionType.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.cmbTransactionType.Size = new System.Drawing.Size(409, 20);
             this.cmbTransactionType.TabIndex = 37;
@@ -751,6 +924,7 @@
             this.cmbProject.Name = "cmbProject";
             this.cmbProject.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cmbProject.Properties.ReadOnly = true;
             this.cmbProject.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.cmbProject.Size = new System.Drawing.Size(378, 20);
             this.cmbProject.TabIndex = 35;
@@ -789,8 +963,8 @@
             "Backlog",
             "InProgress",
             "Blocked",
-            "Completed",
-            "Rejected",
+            "Complete",
+            "Discard",
             "Close"});
             this.cmbTaskStatus.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.cmbTaskStatus.Size = new System.Drawing.Size(205, 20);
@@ -913,6 +1087,16 @@
             this.tabNavigationCommentsPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridComments)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tileViewComment)).EndInit();
+            this.tabNavigationHistoryPage.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlHistory)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutViewHistory)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutViewField_tileViewColumnUserName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutViewField_tileViewColumnUpdatedOn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutViewField_tileViewColumnFiledName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutViewField_tileViewColumnOldValue)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutViewField_tileViewColumnNewName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutViewCard1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.item1)).EndInit();
             this.pnlTaskOtherOptions.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerTransOperation)).EndInit();
             this.splitContainerTransOperation.ResumeLayout(false);
@@ -997,6 +1181,20 @@
         private DevExpress.XtraGrid.Columns.TileViewColumn tileViewColumnIsEdited;
         private DevExpress.XtraGrid.Columns.TileViewColumn tileViewColumnEditedImg;
         private DevExpress.XtraGrid.Columns.TileViewColumn tileViewColumnSeprator;
+        private DevExpress.XtraGrid.GridControl gridControlHistory;
+        private DevExpress.XtraGrid.Views.Layout.LayoutView layoutViewHistory;
+        private DevExpress.XtraGrid.Columns.LayoutViewColumn tileViewColumnUserName;
+        private DevExpress.XtraGrid.Columns.LayoutViewColumn tileViewColumnUpdatedOn;
+        private DevExpress.XtraGrid.Columns.LayoutViewColumn tileViewColumnFiledName;
+        private DevExpress.XtraGrid.Columns.LayoutViewColumn tileViewColumnOldValue;
+        private DevExpress.XtraGrid.Columns.LayoutViewColumn tileViewColumnNewName;
+        private DevExpress.XtraGrid.Views.Layout.LayoutViewField layoutViewField_tileViewColumnUserName;
+        private DevExpress.XtraGrid.Views.Layout.LayoutViewField layoutViewField_tileViewColumnUpdatedOn;
+        private DevExpress.XtraGrid.Views.Layout.LayoutViewField layoutViewField_tileViewColumnFiledName;
+        private DevExpress.XtraGrid.Views.Layout.LayoutViewField layoutViewField_tileViewColumnOldValue;
+        private DevExpress.XtraGrid.Views.Layout.LayoutViewField layoutViewField_tileViewColumnNewName;
+        private DevExpress.XtraGrid.Views.Layout.LayoutViewCard layoutViewCard1;
+        private DevExpress.XtraLayout.SimpleSeparator item1;
     }
 }
 

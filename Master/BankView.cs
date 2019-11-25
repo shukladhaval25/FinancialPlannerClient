@@ -86,7 +86,15 @@ namespace FinancialPlannerClient.Master
                 DevExpress.XtraEditors.XtraMessageBox.Show("Please enter all requie fields (Name,Branch,IFSC,MICR).", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
             }
+           
             Bank bank = getBankObject();
+
+            if ((bank != null && bank.Id == 0) && isDuplicateIFSCCode())
+            {
+                DevExpress.XtraEditors.XtraMessageBox.Show(string.Format("IFSC: {0} already exists. Please check bank and branch details.", txtIFSC.Text), "Validation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
             BankInfo bankInfo = new BankInfo();
            
             bool isSaved = false;
@@ -107,6 +115,12 @@ namespace FinancialPlannerClient.Master
                 DevExpress.XtraEditors.XtraMessageBox.Show("Unable to save record.",
                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private bool isDuplicateIFSCCode()
+        {
+            int recordCount = dtBank.Select("IFSC = '" + txtIFSC.Text +"'").Count();
+            return (recordCount > 0);
         }
 
         private Bank getBankObject()

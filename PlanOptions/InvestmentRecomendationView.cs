@@ -28,6 +28,7 @@ namespace FinancialPlannerClient.PlanOptions
         private DataTable dtLumsumInvestment = new DataTable();
         private DataTable dtSTPInvestment = new DataTable();
         private DataTable dtSIPInvestment = new DataTable();
+        int amcId;
         LumsumInvestmentRecomendationHelper lumsumInvestmentRecomendationHelper = new LumsumInvestmentRecomendationHelper();
         STPInvestmentRecommendationHelper stpInvestmentRecommendationHelper = new STPInvestmentRecommendationHelper();
         SIPInvestmentRecomendationHelper sipInvestmentRecommendationHelper = new SIPInvestmentRecomendationHelper();
@@ -92,6 +93,9 @@ namespace FinancialPlannerClient.PlanOptions
 
         private void calculateEquityDebtRatio( DataTable dtInvestmentRatio, double totalAmount)
         {
+            if (dtInvestmentRatio.Rows.Count == 0)
+                return;
+
             DataTable newDt = dtInvestmentRatio.AsEnumerable()
                           .GroupBy(r => r.Field<string>("Type"))
                           .Select(g =>
@@ -256,6 +260,7 @@ namespace FinancialPlannerClient.PlanOptions
             SchemeInfo schemeInfo = new SchemeInfo();
             schemes = schemeInfo.GetAll(amcId);
             cmbScheme.Properties.Items.Clear();
+            cmbScheme.Text = "";
             foreach (Scheme scheme in schemes)
             {
                 cmbScheme.Properties.Items.Add(scheme.Name);
@@ -268,6 +273,7 @@ namespace FinancialPlannerClient.PlanOptions
             if (comboBoxEdit.SelectedText != null)
             {
                 AMC amcobject = ((List<AMC>)amcs).Find(i => i.Name == comboBoxEdit.Text.ToString());
+                amcId = amcobject.Id;
                 loadScheme(amcobject.Id);
             }
         }
@@ -307,15 +313,12 @@ namespace FinancialPlannerClient.PlanOptions
             if (rdoInvestmentType.SelectedIndex == 0)
             {
                 loadLumpsumValue();
+                chkSTPApply.Visible = true;
             }
             else if (rdoInvestmentType.SelectedIndex == 1)
             {
-                //loadSTPValue();
                 loadSIPValue();
-            }
-            else if (rdoInvestmentType.SelectedIndex == 2)
-            {
-               
+                chkSTPApply.Visible = false;
             }
         }
 
@@ -351,7 +354,7 @@ namespace FinancialPlannerClient.PlanOptions
                 Scheme selectedScheme = getSelectedScheme(cmbScheme.SelectedText.ToString());
                 stpInvestmentRecomendation.SchemeId = selectedScheme.Id;
                 stpInvestmentRecomendation.SchemeName = selectedScheme.Name;
-                stpTransactionType = new STPTypeRecomendation();
+                stpTransactionType = new STPTypeRecomendation(amcId);
                 stpTransactionType.setVGridControl(this.vGridControlSTP);
                 FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
                 stpInvestmentRecomendation.LumsumAmount = lumsumInvestmentAmount;

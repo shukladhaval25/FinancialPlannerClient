@@ -65,7 +65,8 @@ namespace FinancialPlannerClient.Clients
         {
             cmbAccountHolder.Properties.Items.Clear();
             cmbAccountHolder.Properties.Items.Add(personalInformation.Client.Name);
-            cmbAccountHolder.Properties.Items.Add(personalInformation.Spouse.Name);
+            if (personalInformation.Spouse.Name != null)
+                cmbAccountHolder.Properties.Items.Add(personalInformation.Spouse.Name);
         }
 
         private void btnAddBankAcc_Click(object sender, EventArgs e)
@@ -211,6 +212,9 @@ namespace FinancialPlannerClient.Clients
             {
                 txtBankName.Text = ((System.Data.DataRowView)dataRow).Row.ItemArray[1].ToString();
                 lookupBank.Tag = int.Parse(lookupBank.EditValue.ToString());
+                
+                txtIFSC.Text = ((System.Data.DataRowView)dataRow).Row.ItemArray[6].ToString();
+                txtMICR.Text = ((System.Data.DataRowView)dataRow).Row.ItemArray[7].ToString();
             }
         }
 
@@ -243,6 +247,7 @@ namespace FinancialPlannerClient.Clients
                 DataRow dr = drs[0];
                
                 bank.Id = int.Parse(dr.Field<string>("ID"));
+                bank.AccountHolderID = int.Parse(dr.Field<string>("AccountHolderID"));
                 bank.Cid = int.Parse(dr.Field<string>("CID"));
                 bank.BankName = dr.Field<string>("BankName");
                 bank.AccountNo = dr.Field<string>("AccountNo");

@@ -30,34 +30,26 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WhatIsPlan));
             this.Detail = new DevExpress.XtraReports.UI.DetailBand();
-            this.xrRichTextContent = new DevExpress.XtraReports.UI.XRRichText();
             this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
             this.xrPictureBox1 = new DevExpress.XtraReports.UI.XRPictureBox();
             this.lblClientName = new DevExpress.XtraReports.UI.XRLabel();
             this.ReportTitle = new DevExpress.XtraReports.UI.XRLabel();
             this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
             this.xrPageInfo1 = new DevExpress.XtraReports.UI.XRPageInfo();
+            this.xrPanel1 = new DevExpress.XtraReports.UI.XRPanel();
+            this.xrRichTextContent = new DevExpress.XtraReports.UI.XRRichText();
             ((System.ComponentModel.ISupportInitialize)(this.xrRichTextContent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // Detail
             // 
             this.Detail.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
-            this.xrRichTextContent});
+            this.xrPanel1});
             this.Detail.Dpi = 100F;
-            this.Detail.HeightF = 702.9166F;
+            this.Detail.HeightF = 932.5F;
             this.Detail.Name = "Detail";
             this.Detail.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.Detail.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
-            // 
-            // xrRichTextContent
-            // 
-            this.xrRichTextContent.Dpi = 100F;
-            this.xrRichTextContent.Font = new System.Drawing.Font("Times New Roman", 9.75F);
-            this.xrRichTextContent.LocationFloat = new DevExpress.Utils.PointFloat(21.97924F, 0F);
-            this.xrRichTextContent.Name = "xrRichTextContent";
-            this.xrRichTextContent.SerializableRtfString = resources.GetString("xrRichTextContent.SerializableRtfString");
-            this.xrRichTextContent.SizeF = new System.Drawing.SizeF(618.0208F, 672.0833F);
             // 
             // TopMargin
             // 
@@ -123,6 +115,34 @@
             this.xrPageInfo1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrPageInfo1.SizeF = new System.Drawing.SizeF(55.20831F, 23F);
             // 
+            // xrPanel1
+            // 
+            this.xrPanel1.BorderColor = System.Drawing.Color.Navy;
+            this.xrPanel1.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrPanel1.BorderWidth = 2F;
+            this.xrPanel1.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.xrRichTextContent});
+            this.xrPanel1.Dpi = 100F;
+            this.xrPanel1.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
+            this.xrPanel1.Name = "xrPanel1";
+            this.xrPanel1.SizeF = new System.Drawing.SizeF(644.9999F, 895.4167F);
+            this.xrPanel1.StylePriority.UseBorderColor = false;
+            this.xrPanel1.StylePriority.UseBorders = false;
+            this.xrPanel1.StylePriority.UseBorderWidth = false;
+            // 
+            // xrRichTextContent
+            // 
+            this.xrRichTextContent.Borders = DevExpress.XtraPrinting.BorderSide.None;
+            this.xrRichTextContent.Dpi = 100F;
+            this.xrRichTextContent.Font = new System.Drawing.Font("Times New Roman", 9.75F);
+            this.xrRichTextContent.LocationFloat = new DevExpress.Utils.PointFloat(16.97909F, 42.91668F);
+            this.xrRichTextContent.Name = "xrRichTextContent";
+            this.xrRichTextContent.SerializableRtfString = resources.GetString("xrRichTextContent.SerializableRtfString");
+            this.xrRichTextContent.SizeF = new System.Drawing.SizeF(618.0208F, 708.5417F);
+            this.xrRichTextContent.StylePriority.UseBorders = false;
+            // 
             // WhatIsPlan
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
@@ -143,7 +163,8 @@
         private DevExpress.XtraReports.UI.XRPictureBox xrPictureBox1;
         private DevExpress.XtraReports.UI.XRLabel lblClientName;
         private DevExpress.XtraReports.UI.XRLabel ReportTitle;
-        private DevExpress.XtraReports.UI.XRRichText xrRichTextContent;
         private DevExpress.XtraReports.UI.XRPageInfo xrPageInfo1;
+        private DevExpress.XtraReports.UI.XRPanel xrPanel1;
+        private DevExpress.XtraReports.UI.XRRichText xrRichTextContent;
     }
 }

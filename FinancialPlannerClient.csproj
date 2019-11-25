@@ -754,10 +754,12 @@
     <Compile Include="TaskManagementSystem\TaskCommentView.Designer.cs">
       <DependentUpon>TaskCommentView.cs</DependentUpon>
     </Compile>
+    <Compile Include="TaskManagementSystem\TaskHistoryInfo.cs" />
     <Compile Include="TaskManagementSystem\TaskNotificationInfo.cs" />
     <Compile Include="TaskManagementSystem\TaskCommentInfo.cs" />
     <Compile Include="TaskManagementSystem\TransactionOptions\AdditionalPurchase.cs" />
     <Compile Include="TaskManagementSystem\TransactionOptions\ChangeOfNameTrans.cs" />
+    <Compile Include="TaskManagementSystem\TransactionOptions\NominationTrans.cs" />
     <Compile Include="TaskManagementSystem\TransactionOptions\MinorToMajorTrans.cs" />
     <Compile Include="TaskManagementSystem\TransactionOptions\SIPBankChangeTrans.cs" />
     <Compile Include="TaskManagementSystem\TransactionOptions\SignatureChangeTrans.cs" />

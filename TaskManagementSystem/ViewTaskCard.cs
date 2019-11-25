@@ -24,6 +24,8 @@ namespace FinancialPlannerClient.TaskManagementSystem
         IList<User> users;
         private ITransactionType transactionType;
         IList<TaskComment> taskComments = new List<TaskComment>();
+        IList<TaskHistory> taskHistories = new List<TaskHistory>();
+
         private readonly string MUTUALFUND = "Mutual Fund";
 
         //public ViewTaskCard()
@@ -72,6 +74,45 @@ namespace FinancialPlannerClient.TaskManagementSystem
 
             //dummyTaskComments();
             fillupComments();
+            fillupHistory();
+        }
+
+        private void fillupHistory()
+        {
+            taskHistories = new TaskHistoryInfo().GetAll(this.taskCard.Id);
+            if (taskHistories != null)
+            {
+                DataTable dtHistory = new DataTable();
+                dtHistory  = FinancialPlanner.Common.DataConversion.ListtoDataTable.ToDataTable(taskHistories.ToList());
+                gridControlHistory.DataSource = dtHistory;
+            }
+
+
+            //dtHistory.Columns.Add("UserName",Type.GetType("System.String"));
+            //dtHistory.Columns.Add("UpdatedOn", Type.GetType("System.DateTime"));
+            //dtHistory.Columns.Add("FieldName", Type.GetType("System.String"));
+            //dtHistory.Columns.Add("OldValue", Type.GetType("System.String"));
+            //dtHistory.Columns.Add("NewValue", Type.GetType("System.String"));
+
+            //DateTime dtNow = DateTime.Now;
+
+            //DataRow dr = dtHistory.NewRow();
+            //dr["UserName"] = "Admin";
+            //dr["UpdatedOn"] = dtNow;
+            //dr["FieldName"] = "Description";
+            //dr["OldValue"] = "";
+            //dr["NewValue"] = "New value for description";
+            //dtHistory.Rows.Add(dr);
+
+            //DataRow dr1 = dtHistory.NewRow();
+            //dr1["UserName"] = "Admin1";
+            //dr1["UpdatedOn"] = dtNow;
+            //dr1["FieldName"] = "Status";
+            //dr1["OldValue"] = "Beccklog";
+            //dr1["NewValue"] = "In Progress";
+            //dtHistory.Rows.Add(dr1);
+
+            //gridControlHistory.DataSource = dtHistory;            
         }
 
         private void fillupTaskView()
@@ -177,6 +218,7 @@ namespace FinancialPlannerClient.TaskManagementSystem
                 cmbTransactionType.Properties.Items.Add("SIP Bank Change");
                 cmbTransactionType.Properties.Items.Add("Minor To Major");
                 cmbTransactionType.Properties.Items.Add("Change of Name");
+                cmbTransactionType.Properties.Items.Add("Nomination");
             }
         }
 

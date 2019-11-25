@@ -45,15 +45,42 @@ namespace FinancialPlannerClient.Insurance
             return lifeInsuranceInfo.GetAllLifeInsurance(this.planner.ID);
         }
 
+        private IList<Loan> getLoans()
+        {
+            LoanInfo loanInfo = new LoanInfo();
+            return (List<Loan>)loanInfo.GetAll(this.planner.ID);
+        }
+
         private void InsuranceCalculation_Load(object sender, EventArgs e)
         {
             createInsuranceCoverateTable();
             AddExpenesIntoInsuranceCoverage();
             AddGoalsIntoInsuranceCoverage();
+            AddOutStandingLoansIntoInsuranceCoverage();
             AddInsuranceIntoInsuranceCoverage();
             gridInsuranceCoverage.DataSource = dtInsuranceCoverage;
-            gridViewInsuranceCoverage.GroupCount = 0;
-            gridViewInsuranceCoverage.Columns[0].GroupIndex = 1;
+            //gridViewInsuranceCoverage.GroupCount = 0;
+            //gridViewInsuranceCoverage.Columns[0].GroupIndex = 1;
+            AddFinancialAssetIntoInsuranceCoverage();
+        }
+
+        private void AddFinancialAssetIntoInsuranceCoverage()
+        {
+            //throw new NotImplementedException();
+            //IList<FinancialAss>
+        }
+
+        private void AddOutStandingLoansIntoInsuranceCoverage()
+        {
+            IList<Loan> loans = getLoans();
+            foreach (Loan loan in loans)
+            {
+                DataRow dataRow = dtInsuranceCoverage.NewRow();
+                dataRow["Category"] = "Loan";
+                dataRow["Content"] = loan.TypeOfLoan;
+                dataRow["Amount"] = loan.OutstandingAmt;
+                dtInsuranceCoverage.Rows.Add(dataRow);
+            }
         }
 
         private void AddInsuranceIntoInsuranceCoverage()
@@ -75,7 +102,7 @@ namespace FinancialPlannerClient.Insurance
             foreach (Goals goal in goals)
             {
                 DataRow dataRow = dtInsuranceCoverage.NewRow();
-                dataRow["Category"] = "Expense";
+                dataRow["Category"] = "Goals";
                 dataRow["Content"] = goal.Name;
                 dataRow["Amount"] = goal.Amount;
                 dtInsuranceCoverage.Rows.Add(dataRow);

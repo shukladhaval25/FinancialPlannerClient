@@ -323,7 +323,8 @@ namespace FinancialPlannerClient.Clients
             familymember.Cid = _client.ID;
             familymember.Name = txtFamilyMemberName.Text;
             familymember.Relationship = cmbFamilyRelationship.Text;
-            familymember.DOB = dtFamilyMemberDOB.Value;
+            if (dtFamilyMemberDOB.Checked)
+                familymember.DOB = dtFamilyMemberDOB.Value;
             familymember.IsDependent = rdoFamilyMemberDependentYes.Checked;
             familymember.ChildrenClass = txtChildrenClass.Text;
             familymember.Description = txtFamilyMemberDesc.Text;
@@ -352,7 +353,17 @@ namespace FinancialPlannerClient.Clients
                 txtFamilyMemberName.Tag = familymember.Id;
                 txtFamilyMemberName.Text = familymember.Name;
                 cmbFamilyRelationship.Text = familymember.Relationship;
-                dtFamilyMemberDOB.Value = familymember.DOB;
+                if (familymember.DOB.HasValue)
+                {
+                    dtFamilyMemberDOB.Checked = true;
+                    dtFamilyMemberDOB.Value = familymember.DOB.Value;
+                }
+                else
+                {
+                    dtFamilyMemberDOB.Checked = false;
+                    dtFamilyMemberDOB.Text = "";
+                }
+                
                 rdoFamilyMemberDependentYes.Checked = familymember.IsDependent;
                 txtChildrenClass.Text = familymember.ChildrenClass;
                 txtFamilyMemberDesc.Text = familymember.Description;
@@ -1698,8 +1709,15 @@ namespace FinancialPlannerClient.Clients
 
         private void dtGridFamilyMember_SelectionChanged(object sender, EventArgs e)
         {
-            FamilyMember familymember = new FamilyMemberInfo().GetFamilyMemberInfo(dtGridFamilyMember,_dtFamilymember);
-            displayFamilyMemberData(familymember);
+            try
+            {
+                FamilyMember familymember = new FamilyMemberInfo().GetFamilyMemberInfo(dtGridFamilyMember, _dtFamilymember);
+                displayFamilyMemberData(familymember);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         private void btnIncomeCancel_Click(object sender, EventArgs e)

@@ -142,10 +142,10 @@ namespace FinancialPlannerClient.TaskManagementSystem
                     return FinancialPlanner.Common.Model.TaskManagement.TaskStatus.InProgress;
                 case "Blocked":
                     return FinancialPlanner.Common.Model.TaskManagement.TaskStatus.Blocked;
-                case "Completed":
-                    return FinancialPlanner.Common.Model.TaskManagement.TaskStatus.Completed;
-                case "Rejected":
-                    return FinancialPlanner.Common.Model.TaskManagement.TaskStatus.Rejected;
+                case "Complet":
+                    return FinancialPlanner.Common.Model.TaskManagement.TaskStatus.Complete;
+                case "Discard":
+                    return FinancialPlanner.Common.Model.TaskManagement.TaskStatus.Discard;
                 default:
                     return FinancialPlanner.Common.Model.TaskManagement.TaskStatus.Close;
             }

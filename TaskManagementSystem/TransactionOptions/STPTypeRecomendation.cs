@@ -32,7 +32,12 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
         public DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEditAmount;
         public DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEditDuration;
         public DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBoxFrequency;
+        private int amcId;
 
+        public STPTypeRecomendation(int amcId)
+        {
+            this.amcId = amcId;
+        }
 
         private void InitializeComponent()
         {
@@ -142,7 +147,7 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
         private void loadSchemes()
         {
             SchemeInfo schemeInfo = new SchemeInfo();
-            schemes = schemeInfo.GetAll();
+            schemes = schemeInfo.GetAll(amcId);
             DataTable dtScheme = getSchemeTable(schemes);
             repositoryItemFromSchemeName.DataSource = dtScheme;
             repositoryItemFromSchemeName.DisplayMember = "Name";

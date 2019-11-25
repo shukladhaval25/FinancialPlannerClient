@@ -308,7 +308,7 @@ namespace FinancialPlannerClient.PlanOptions
             this.gridViewLumsumInvestment.GridControl = this.gridControlLumsumInvestment;
             this.gridViewLumsumInvestment.GroupCount = 2;
             this.gridViewLumsumInvestment.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Amount", this.Amount, "")});
+            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Amount", this.Amount, "Total = {0.00##}")});
             this.gridViewLumsumInvestment.Name = "gridViewLumsumInvestment";
             this.gridViewLumsumInvestment.OptionsBehavior.Editable = false;
             this.gridViewLumsumInvestment.OptionsView.ShowFooter = true;
@@ -570,6 +570,7 @@ namespace FinancialPlannerClient.PlanOptions
             this.chkSTPApply.Properties.Caption = "STP apply for selected scheme";
             this.chkSTPApply.Size = new System.Drawing.Size(255, 19);
             this.chkSTPApply.TabIndex = 31;
+            this.chkSTPApply.Visible = false;
             this.chkSTPApply.CheckedChanged += new System.EventHandler(this.chkSTPApply_CheckedChanged);
             // 
             // vGridControlSTP

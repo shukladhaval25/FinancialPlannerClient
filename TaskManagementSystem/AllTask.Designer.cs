@@ -73,8 +73,17 @@
             // 
             // gridViewTasks
             // 
+            this.gridViewTasks.Appearance.EvenRow.BorderColor = System.Drawing.Color.WhiteSmoke;
+            this.gridViewTasks.Appearance.EvenRow.Options.UseBorderColor = true;
+            this.gridViewTasks.Appearance.OddRow.BorderColor = System.Drawing.Color.Gainsboro;
+            this.gridViewTasks.Appearance.OddRow.Options.UseBorderColor = true;
             this.gridViewTasks.GridControl = this.grdTasks;
             this.gridViewTasks.Name = "gridViewTasks";
+            this.gridViewTasks.OptionsFilter.ShowAllTableValuesInFilterPopup = true;
+            this.gridViewTasks.OptionsFind.AlwaysVisible = true;
+            this.gridViewTasks.OptionsView.EnableAppearanceEvenRow = true;
+            this.gridViewTasks.OptionsView.EnableAppearanceOddRow = true;
+            this.gridViewTasks.OptionsView.ShowGroupedColumns = true;
             this.gridViewTasks.DoubleClick += new System.EventHandler(this.gridViewTasks_DoubleClick);
             // 
             // btnView

@@ -171,7 +171,8 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
 
         public VGridControl GetGridControl()
         {
-            throw new NotImplementedException();
+            return this.vGridTransaction;
+            //throw new NotImplementedException();
         }
 
         public object GetTransactionType()
@@ -195,7 +196,8 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
 
         public bool IsAllRequireInputAvailable()
         {
-            throw new NotImplementedException();
+            return true;
+            //throw new NotImplementedException();
         }
 
         public void setVGridControl(VGridControl vGrid)

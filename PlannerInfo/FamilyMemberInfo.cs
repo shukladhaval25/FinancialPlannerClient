@@ -237,7 +237,8 @@ namespace FinancialPlannerClient.PlannerInfo
                     fm.Cid = int.Parse(dr.Field<string>("Cid"));
                     fm.Name = dr.Field<string>("Name");
                     fm.Relationship = dr.Field<string>("Relationship");
-                    fm.DOB = DateTime.Parse(dr.Field<string>("DOB"));
+                    if (dr["DOB"] != DBNull.Value)
+                        fm.DOB = DateTime.Parse(dr.Field<string>("DOB"));
                     fm.IsDependent = bool.Parse(dr["IsDependent"].ToString());
                     fm.ChildrenClass = dr.Field<string>("ChildrenClass");
                     fm.Description = dr.Field<string>("Description");
@@ -256,7 +257,7 @@ namespace FinancialPlannerClient.PlannerInfo
             if (dtGridFamilyMember.SelectedRows[0].Cells["ID"].Value != System.DBNull.Value)
             {
                     int selectedUserId = int.Parse(dtGridFamilyMember.SelectedRows[0].Cells["ID"].Value.ToString());
-                    DataRow[] rows = _dtFamilymember.Select("Id = " + selectedUserId);
+                    DataRow[] rows = _dtFamilymember.Select("Id = '" + selectedUserId +"'");
                     foreach (DataRow dr in rows)
                     {
                         return dr;

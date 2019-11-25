@@ -117,6 +117,7 @@ namespace FinancialPlannerClient.TaskManagementSystem
                 cmbTransactionType.Properties.Items.Add("SIP Bank Change");
                 cmbTransactionType.Properties.Items.Add("Minor To Major");
                 cmbTransactionType.Properties.Items.Add("Change of Name");
+                cmbTransactionType.Properties.Items.Add("Nomination");
             }
             else
             {

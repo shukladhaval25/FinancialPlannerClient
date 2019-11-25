@@ -215,6 +215,7 @@ namespace FinancialPlannerClient.Clients
             this.tileViewColumnPANCARD});
             this.tileViewClients.GridControl = this.gridControlClients;
             this.tileViewClients.Name = "tileViewClients";
+            this.tileViewClients.OptionsFind.AlwaysVisible = true;
             this.tileViewClients.OptionsTiles.Orientation = System.Windows.Forms.Orientation.Vertical;
             tileViewItemElement1.Column = this.tileViewColumnClientId;
             tileViewItemElement1.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.TopCenter;
