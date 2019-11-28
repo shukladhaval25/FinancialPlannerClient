@@ -64,6 +64,7 @@ namespace FinancialPlannerClient.Clients
                 txtState.Text = contactInfo.State;
                 txtPincode.Text = contactInfo.Pin;
                 cmbArea.Text = contactInfo.Area;
+                txtCountry.Text = contactInfo.Country;
                 txtClientEmailId.Text = contactInfo.Email;
                 txtSpouseEmailId.Text = contactInfo.SpouseEmail;
                 txtClientMobile.Text = contactInfo.Mobile;
@@ -104,6 +105,7 @@ namespace FinancialPlannerClient.Clients
             contactInfo.City = txtCity.Text;
             contactInfo.State = txtState.Text;
             contactInfo.Area = cmbArea.Text;
+            contactInfo.Country = txtCountry.Text;
             contactInfo.Pin = txtPincode.Text;
             contactInfo.Email = txtClientEmailId.Text;
             contactInfo.SpouseEmail = txtSpouseEmailId.Text;

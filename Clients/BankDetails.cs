@@ -125,6 +125,9 @@ namespace FinancialPlannerClient.Clients
                 cmbAccountHolder.Tag = bankAccount.AccountHolderID.ToString();
                 cmbAccountHolder.Text = (bankAccount.AccountHolderID == personalInformation.Client.ID) ?
                     personalInformation.Client.Name : personalInformation.Spouse.Name;
+                lookupBank.EditValue = bankAccount.BankId;
+                lookupBank.Text = bankAccount.BankName;
+                lookupBank.Tag = bankAccount.BankId;
                 txtBankName.Text = bankAccount.BankName;
                 txtAccountNo.Tag = bankAccount.Id;
                 txtAccountNo.Text = bankAccount.AccountNo;
@@ -134,8 +137,7 @@ namespace FinancialPlannerClient.Clients
                 rdoYesJoinAC.Checked = bankAccount.IsJoinAccount;
                 txtJoinHolderName.Text = bankAccount.JoinHolderName;
                 txtMinReqBalance.Text = bankAccount.MinRequireBalance.ToString();
-                lookupBank.Text = bankAccount.BankName;
-                lookupBank.Tag = bankAccount.BankId;
+               
             }
         }
 
@@ -203,10 +205,13 @@ namespace FinancialPlannerClient.Clients
             List<Bank> banks = (List<Bank>)bankInfo.GetAll();
             DataTable dtBank = ListtoDataTable.ToDataTable(banks);
             lookupBank.Properties.DataSource = dtBank;
+            lookupBank.Properties.ValueMember = "Id";
+            //lookupBank.Properties.DisplayMember = "Name";
         }
 
         private void lookupBank_EditValueChanged(object sender, EventArgs e)
         {
+            lookupBank.GetColumnValue("Id");
             var dataRow = lookupBank.GetSelectedDataRow();
             if (dataRow != null)
             {
@@ -215,6 +220,7 @@ namespace FinancialPlannerClient.Clients
                 
                 txtIFSC.Text = ((System.Data.DataRowView)dataRow).Row.ItemArray[6].ToString();
                 txtMICR.Text = ((System.Data.DataRowView)dataRow).Row.ItemArray[7].ToString();
+                txtBranchAddress.Text = ((System.Data.DataRowView)dataRow).Row.ItemArray[3].ToString();
             }
         }
 

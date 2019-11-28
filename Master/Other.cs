@@ -58,7 +58,7 @@ namespace FinancialPlannerClient.Master
 
         private void setAreaUI()
         {
-            this.Text = "Category";
+            this.Text = "Areas";
             lblReligion.Visible = false;
             txtReligion.Visible = false;
         }

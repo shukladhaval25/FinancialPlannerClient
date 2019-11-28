@@ -69,6 +69,8 @@
             this.lblStreet = new DevExpress.XtraEditors.LabelControl();
             this.lblBuildingNo = new DevExpress.XtraEditors.LabelControl();
             this.lblContactTitle = new DevExpress.XtraEditors.LabelControl();
+            this.txtCountry = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.grpClientContact)).BeginInit();
             this.grpClientContact.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grpCommunicationInfo)).BeginInit();
@@ -94,6 +96,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtCity.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtStreetName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHouseNo.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCountry.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // grpClientContact
@@ -320,6 +323,8 @@
             // 
             // grpAddressInfo
             // 
+            this.grpAddressInfo.Controls.Add(this.txtCountry);
+            this.grpAddressInfo.Controls.Add(this.labelControl1);
             this.grpAddressInfo.Controls.Add(this.txtPincode);
             this.grpAddressInfo.Controls.Add(this.cmbArea);
             this.grpAddressInfo.Controls.Add(this.txtState);
@@ -345,7 +350,7 @@
             this.txtPincode.Properties.MaxLength = 6;
             this.txtPincode.Properties.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPincode_Properties_KeyPress);
             this.txtPincode.Size = new System.Drawing.Size(318, 20);
-            this.txtPincode.TabIndex = 13;
+            this.txtPincode.TabIndex = 14;
             // 
             // cmbArea
             // 
@@ -354,7 +359,7 @@
             this.cmbArea.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cmbArea.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.cmbArea.Size = new System.Drawing.Size(318, 20);
+            this.cmbArea.Size = new System.Drawing.Size(132, 20);
             this.cmbArea.TabIndex = 12;
             // 
             // txtState
@@ -453,6 +458,22 @@
             this.lblContactTitle.TabIndex = 4;
             this.lblContactTitle.Text = "  Contact Details";
             // 
+            // txtCountry
+            // 
+            this.txtCountry.Location = new System.Drawing.Point(350, 136);
+            this.txtCountry.Name = "txtCountry";
+            this.txtCountry.Size = new System.Drawing.Size(132, 20);
+            this.txtCountry.TabIndex = 13;
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.labelControl1.Location = new System.Drawing.Point(304, 139);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(51, 13);
+            this.labelControl1.TabIndex = 14;
+            this.labelControl1.Text = "Country:";
+            // 
             // Contact
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -493,6 +514,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtCity.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtStreetName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHouseNo.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCountry.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -533,6 +555,8 @@
         private DevExpress.XtraEditors.LabelControl lblBuildingNo;
         private DevExpress.XtraEditors.LabelControl lblContactTitle;
         private DevExpress.XtraEditors.TextEdit txtPerferedTime;
+        private DevExpress.XtraEditors.TextEdit txtCountry;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
     }
 }
 

@@ -272,6 +272,8 @@ namespace FinancialPlannerClient.Clients
             List<Bank> banks = (List<Bank>) bankInfo.GetAll();
             DataTable dtBank = ListtoDataTable.ToDataTable(banks);
             lookupBank.Properties.DataSource = dtBank;
+            lookupBank.Properties.ValueMember = "Id";
+            lookupBank.Properties.DisplayMember = "Name";
         }
 
         private void setFamilyMemberGridSetting()
@@ -2282,13 +2284,27 @@ namespace FinancialPlannerClient.Clients
             DataRow[] dataRow = _dtFMBankDetails.Select("Id = " + index);
             if (dataRow != null && dataRow.Count() > 0)
             {
-                lookupBank.Text = dataRow[0]["BankName"].ToString();
+                lookupBank.EditValue = dataRow[0]["BankId"].ToString();
+                //lookupBank.Text = dataRow[0]["BankName"].ToString();
                 lookupBank.Tag = dataRow[0]["Id"].ToString();
                 txtFMAccountNo.Text = dataRow[0]["AccountNo"].ToString();
                 cmbFMAccountType.Text = dataRow[0]["AccountType"].ToString();
+                displayBankValues();
             }
             else
                 setDefaultFamilyMemberBankValue();
+        }
+
+        private void displayBankValues()
+        {
+            var dataRow = lookupBank.GetSelectedDataRow();
+            if (dataRow != null)
+            {
+                txtFMBranch.Text = ((System.Data.DataRowView)dataRow).Row.ItemArray[2].ToString();
+                txtIFSC.Text = ((System.Data.DataRowView)dataRow).Row.ItemArray[6].ToString();
+                txtMICR.Text = ((System.Data.DataRowView)dataRow).Row.ItemArray[7].ToString();
+            }
+
         }
 
         private void LogDebug(string methodName, Exception ex)
@@ -2344,13 +2360,7 @@ namespace FinancialPlannerClient.Clients
 
         private void lookupBank_EditValueChanged(object sender, EventArgs e)
         {
-            var dataRow = lookupBank.GetSelectedDataRow();
-            if (dataRow != null)
-            {                
-                txtFMBranch.Text = ((System.Data.DataRowView)dataRow).Row.ItemArray[2].ToString();
-                txtIFSC.Text = ((System.Data.DataRowView)dataRow).Row.ItemArray[6].ToString();
-                txtMICR.Text = ((System.Data.DataRowView)dataRow).Row.ItemArray[7].ToString();
-            }
+            displayBankValues();
         }
     }
 }

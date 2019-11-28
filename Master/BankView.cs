@@ -71,6 +71,7 @@ namespace FinancialPlannerClient.Master
             txtPincode.Text = string.Empty;
             txtIFSC.Text = string.Empty;
             txtMICR.Text = string.Empty;
+            txtCountry.Text = string.Empty;
         }
 
         private void btnCancelBankAccount_Click(object sender, EventArgs e)
@@ -133,6 +134,7 @@ namespace FinancialPlannerClient.Master
             bank.Address = txtAddress.Text;
             bank.City = txtCity.Text;
             bank.State = txtState.Text;
+            bank.Country = txtCountry.Text;
             if (!string.IsNullOrEmpty(txtPincode.Text))
             bank.Pincode = int.Parse(txtPincode.Text);
             bank.IFSC = txtIFSC.Text;
@@ -164,6 +166,8 @@ namespace FinancialPlannerClient.Master
                 txtBranch.Text = bank.Branch;
                 txtCity.Text = bank.City;
                 txtState.Text = bank.State;
+                txtAddress.Text = bank.Address;
+                txtCountry.Text = bank.Country;
                 txtPincode.Text = (bank.Pincode != null) ?
                     bank.Pincode.ToString(): null;
                 txtIFSC.Text = bank.IFSC;
@@ -203,6 +207,7 @@ namespace FinancialPlannerClient.Master
                 bank.Address = dr.Field<string>("Address");
                 bank.City = dr.Field<string>("City");
                 bank.State = dr.Field<string>("State");
+                bank.Country = dr.Field<string>("Country");
                 //bank.Pincode = dr.Field<int>("Pincode");
                 bank.IFSC = dr.Field<string>("IFSC");
                 bank.MICR = dr.Field<string>("MICR");                

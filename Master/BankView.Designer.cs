@@ -70,6 +70,8 @@
             this.btnEdit = new DevExpress.XtraEditors.SimpleButton();
             this.btnAdd = new DevExpress.XtraEditors.SimpleButton();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.txtCountry = new System.Windows.Forms.TextBox();
+            this.lblCountry = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.grpBankDetails)).BeginInit();
             this.grpBankDetails.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewBank)).BeginInit();
@@ -171,11 +173,11 @@
             // txtPincode
             // 
             this.txtPincode.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPincode.Location = new System.Drawing.Point(153, 184);
+            this.txtPincode.Location = new System.Drawing.Point(370, 184);
             this.txtPincode.MaxLength = 6;
             this.txtPincode.Name = "txtPincode";
-            this.txtPincode.Size = new System.Drawing.Size(173, 22);
-            this.txtPincode.TabIndex = 5;
+            this.txtPincode.Size = new System.Drawing.Size(134, 22);
+            this.txtPincode.TabIndex = 6;
             this.txtPincode.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // btnCancelBankAccount
@@ -194,7 +196,7 @@
             superToolTip1.Items.Add(toolTipTitleItem1);
             superToolTip1.Items.Add(toolTipItem1);
             this.btnCancelBankAccount.SuperTip = superToolTip1;
-            this.btnCancelBankAccount.TabIndex = 9;
+            this.btnCancelBankAccount.TabIndex = 10;
             this.btnCancelBankAccount.Text = "Close";
             this.btnCancelBankAccount.Click += new System.EventHandler(this.btnCancelBankAccount_Click);
             // 
@@ -214,7 +216,7 @@
             superToolTip2.Items.Add(toolTipTitleItem2);
             superToolTip2.Items.Add(toolTipItem2);
             this.btnSaveBankAccount.SuperTip = superToolTip2;
-            this.btnSaveBankAccount.TabIndex = 8;
+            this.btnSaveBankAccount.TabIndex = 9;
             this.btnSaveBankAccount.Text = "Save";
             this.btnSaveBankAccount.Click += new System.EventHandler(this.btnSaveBankAccount_Click);
             // 
@@ -222,6 +224,8 @@
             // 
             this.grpBankDetails.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpBankDetails.Controls.Add(this.txtCountry);
+            this.grpBankDetails.Controls.Add(this.lblCountry);
             this.grpBankDetails.Controls.Add(this.txtMICR);
             this.grpBankDetails.Controls.Add(this.label3);
             this.grpBankDetails.Controls.Add(this.txtIFSC);
@@ -254,7 +258,7 @@
             this.txtMICR.MaxLength = 20;
             this.txtMICR.Name = "txtMICR";
             this.txtMICR.Size = new System.Drawing.Size(188, 22);
-            this.txtMICR.TabIndex = 7;
+            this.txtMICR.TabIndex = 8;
             // 
             // label3
             // 
@@ -273,7 +277,7 @@
             this.txtIFSC.MaxLength = 20;
             this.txtIFSC.Name = "txtIFSC";
             this.txtIFSC.Size = new System.Drawing.Size(188, 22);
-            this.txtIFSC.TabIndex = 6;
+            this.txtIFSC.TabIndex = 7;
             // 
             // label2
             // 
@@ -308,7 +312,7 @@
             // 
             this.label139.AutoSize = true;
             this.label139.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label139.Location = new System.Drawing.Point(23, 187);
+            this.label139.Location = new System.Drawing.Point(303, 187);
             this.label139.Name = "label139";
             this.label139.Size = new System.Drawing.Size(61, 16);
             this.label139.TabIndex = 38;
@@ -414,6 +418,25 @@
             this.groupControl1.TabIndex = 7;
             this.groupControl1.Text = "Bank";
             // 
+            // txtCountry
+            // 
+            this.txtCountry.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCountry.Location = new System.Drawing.Point(153, 184);
+            this.txtCountry.MaxLength = 15;
+            this.txtCountry.Name = "txtCountry";
+            this.txtCountry.Size = new System.Drawing.Size(144, 22);
+            this.txtCountry.TabIndex = 5;
+            // 
+            // lblCountry
+            // 
+            this.lblCountry.AutoSize = true;
+            this.lblCountry.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCountry.Location = new System.Drawing.Point(22, 190);
+            this.lblCountry.Name = "lblCountry";
+            this.lblCountry.Size = new System.Drawing.Size(56, 16);
+            this.lblCountry.TabIndex = 49;
+            this.lblCountry.Text = "Country:";
+            // 
             // BankView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -464,5 +487,7 @@
         private DevExpress.XtraEditors.SimpleButton btnEdit;
         private DevExpress.XtraEditors.SimpleButton btnAdd;
         private DevExpress.XtraEditors.GroupControl groupControl1;
+        private System.Windows.Forms.TextBox txtCountry;
+        private System.Windows.Forms.Label lblCountry;
     }
 }
