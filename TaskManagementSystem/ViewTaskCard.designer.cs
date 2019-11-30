@@ -705,7 +705,7 @@
             // tileViewColumnOldValue
             // 
             this.tileViewColumnOldValue.Caption = "Old Value";
-            this.tileViewColumnOldValue.FieldName = "NewValue";
+            this.tileViewColumnOldValue.FieldName = "OldValue";
             this.tileViewColumnOldValue.LayoutViewField = this.layoutViewField_tileViewColumnOldValue;
             this.tileViewColumnOldValue.Name = "tileViewColumnOldValue";
             // 
@@ -722,7 +722,7 @@
             // tileViewColumnNewName
             // 
             this.tileViewColumnNewName.Caption = "New Value";
-            this.tileViewColumnNewName.FieldName = "OldValue";
+            this.tileViewColumnNewName.FieldName = "NewValue";
             this.tileViewColumnNewName.LayoutViewField = this.layoutViewField_tileViewColumnNewName;
             this.tileViewColumnNewName.Name = "tileViewColumnNewName";
             // 

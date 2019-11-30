@@ -38,8 +38,14 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TaskDeshborad));
             DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement5 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
             DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement6 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
+            DevExpress.XtraCharts.XYDiagram xyDiagram1 = new DevExpress.XtraCharts.XYDiagram();
+            DevExpress.XtraCharts.Series series1 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.Series series2 = new DevExpress.XtraCharts.Series();
             DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement7 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
             DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement8 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
+            DevExpress.XtraCharts.XYDiagram xyDiagram2 = new DevExpress.XtraCharts.XYDiagram();
+            DevExpress.XtraCharts.Series series3 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.Series series4 = new DevExpress.XtraCharts.Series();
             this.tileViewColumnTaskId = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.tileViewColumnTitle = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.tileViewColumnDueDate = new DevExpress.XtraGrid.Columns.TileViewColumn();
@@ -47,24 +53,25 @@
             this.repositoryItemPictureEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit();
             this.tileViewColumnStatus = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.tileViewColumnOwnerName = new DevExpress.XtraGrid.Columns.TileViewColumn();
-            this.gridColumnCount = new DevExpress.XtraGrid.Columns.TileViewColumn();
-            this.gridColumnProject = new DevExpress.XtraGrid.Columns.TileViewColumn();
+            this.tileViewColumnKey = new DevExpress.XtraGrid.Columns.TileViewColumn();
+            this.tileViewColumnValue = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.unboundSource1 = new DevExpress.Data.UnboundSource(this.components);
             this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
             this.btnSearch = new DevExpress.XtraEditors.SimpleButton();
             this.grpMyOverDueTask = new DevExpress.XtraEditors.GroupControl();
             this.gridControlMyOverDue = new DevExpress.XtraGrid.GridControl();
             this.tileViewMyOverView = new DevExpress.XtraGrid.Views.Tile.TileView();
-            this.chartControl1 = new DevExpress.XtraCharts.ChartControl();
-            this.chartStatusWise = new DevExpress.XtraCharts.ChartControl();
-            this.grpTaskAssignByMe = new DevExpress.XtraEditors.GroupControl();
-            this.gridControl3 = new DevExpress.XtraGrid.GridControl();
-            this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.chartControlCompanyTaskPerformance = new DevExpress.XtraCharts.ChartControl();
+            this.grpCompany = new DevExpress.XtraEditors.GroupControl();
             this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             this.grdProjectWiseTask = new DevExpress.XtraGrid.GridControl();
             this.tileViewProjectWise = new DevExpress.XtraGrid.Views.Tile.TileView();
             this.gridView5 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.grpProjectWiseTasks = new DevExpress.XtraEditors.GroupControl();
+            this.lumsumInvestmentRecomendationBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.chartUserPerformance = new DevExpress.XtraCharts.ChartControl();
+            this.financialPlannerDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.lblUserPerformanceTitle = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.unboundSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
@@ -72,18 +79,24 @@
             this.grpMyOverDueTask.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlMyOverDue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tileViewMyOverView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartStatusWise)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grpTaskAssignByMe)).BeginInit();
-            this.grpTaskAssignByMe.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartControlCompanyTaskPerformance)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grpCompany)).BeginInit();
+            this.grpCompany.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdProjectWiseTask)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tileViewProjectWise)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grpProjectWiseTasks)).BeginInit();
             this.grpProjectWiseTasks.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lumsumInvestmentRecomendationBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartUserPerformance)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.financialPlannerDataSetBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tileViewColumnTaskId
@@ -153,22 +166,21 @@
             this.tileViewColumnOwnerName.Visible = true;
             this.tileViewColumnOwnerName.VisibleIndex = 5;
             // 
-            // gridColumnCount
+            // tileViewColumnKey
             // 
-            this.gridColumnCount.Caption = "TotalCount";
-            this.gridColumnCount.FieldName = "Value";
-            this.gridColumnCount.Name = "gridColumnCount";
-            this.gridColumnCount.ToolTip = "Total number of open item for logged in user under this project.";
-            this.gridColumnCount.Visible = true;
-            this.gridColumnCount.VisibleIndex = 0;
+            this.tileViewColumnKey.Caption = "tileViewColumnKey";
+            this.tileViewColumnKey.FieldName = "Key";
+            this.tileViewColumnKey.Name = "tileViewColumnKey";
+            this.tileViewColumnKey.Visible = true;
+            this.tileViewColumnKey.VisibleIndex = 0;
             // 
-            // gridColumnProject
+            // tileViewColumnValue
             // 
-            this.gridColumnProject.Caption = "Project";
-            this.gridColumnProject.FieldName = "Key";
-            this.gridColumnProject.Name = "gridColumnProject";
-            this.gridColumnProject.Visible = true;
-            this.gridColumnProject.VisibleIndex = 1;
+            this.tileViewColumnValue.Caption = "tileViewColumnValue";
+            this.tileViewColumnValue.FieldName = "Value";
+            this.tileViewColumnValue.Name = "tileViewColumnValue";
+            this.tileViewColumnValue.Visible = true;
+            this.tileViewColumnValue.VisibleIndex = 1;
             // 
             // unboundSource1
             // 
@@ -203,9 +215,9 @@
             this.grpMyOverDueTask.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.grpMyOverDueTask.Controls.Add(this.gridControlMyOverDue);
-            this.grpMyOverDueTask.Location = new System.Drawing.Point(554, 207);
+            this.grpMyOverDueTask.Location = new System.Drawing.Point(552, 296);
             this.grpMyOverDueTask.Name = "grpMyOverDueTask";
-            this.grpMyOverDueTask.Size = new System.Drawing.Size(450, 352);
+            this.grpMyOverDueTask.Size = new System.Drawing.Size(452, 263);
             this.grpMyOverDueTask.TabIndex = 4;
             this.grpMyOverDueTask.Text = "My Overdue Tasks";
             // 
@@ -220,7 +232,7 @@
             this.gridControlMyOverDue.Name = "gridControlMyOverDue";
             this.gridControlMyOverDue.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemPictureEdit1});
-            this.gridControlMyOverDue.Size = new System.Drawing.Size(434, 322);
+            this.gridControlMyOverDue.Size = new System.Drawing.Size(436, 233);
             this.gridControlMyOverDue.TabIndex = 0;
             this.gridControlMyOverDue.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.tileViewMyOverView});
@@ -306,71 +318,45 @@
             this.tileViewMyOverView.TileTemplate.Add(tileViewItemElement6);
             this.tileViewMyOverView.DoubleClick += new System.EventHandler(this.tileViewMyOverView_DoubleClick);
             // 
-            // chartControl1
+            // chartControlCompanyTaskPerformance
             // 
-            this.chartControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.chartControlCompanyTaskPerformance.BorderOptions.Visibility = DevExpress.Utils.DefaultBoolean.True;
+            this.chartControlCompanyTaskPerformance.DataBindings = null;
+            xyDiagram1.AxisX.VisibleInPanesSerializable = "-1";
+            xyDiagram1.AxisY.VisibleInPanesSerializable = "-1";
+            this.chartControlCompanyTaskPerformance.Diagram = xyDiagram1;
+            this.chartControlCompanyTaskPerformance.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chartControlCompanyTaskPerformance.Legend.Name = "Default Legend";
+            this.chartControlCompanyTaskPerformance.Legend.Visibility = DevExpress.Utils.DefaultBoolean.True;
+            this.chartControlCompanyTaskPerformance.Location = new System.Drawing.Point(2, 20);
+            this.chartControlCompanyTaskPerformance.Name = "chartControlCompanyTaskPerformance";
+            series1.Name = "Series 1";
+            series2.Name = "Series 2";
+            this.chartControlCompanyTaskPerformance.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
+        series1,
+        series2};
+            this.chartControlCompanyTaskPerformance.Size = new System.Drawing.Size(530, 243);
+            this.chartControlCompanyTaskPerformance.TabIndex = 6;
+            // 
+            // grpCompany
+            // 
+            this.grpCompany.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.chartControl1.DataBindings = null;
-            this.chartControl1.Legend.Name = "Default Legend";
-            this.chartControl1.Legend.Visibility = DevExpress.Utils.DefaultBoolean.True;
-            this.chartControl1.Location = new System.Drawing.Point(0, 0);
-            this.chartControl1.Name = "chartControl1";
-            this.chartControl1.SeriesSerializable = new DevExpress.XtraCharts.Series[0];
-            this.chartControl1.Size = new System.Drawing.Size(534, 190);
-            this.chartControl1.TabIndex = 6;
-            // 
-            // chartStatusWise
-            // 
-            this.chartStatusWise.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.chartStatusWise.DataBindings = null;
-            this.chartStatusWise.Legend.Name = "Default Legend";
-            this.chartStatusWise.Legend.Visibility = DevExpress.Utils.DefaultBoolean.True;
-            this.chartStatusWise.Location = new System.Drawing.Point(14, 206);
-            this.chartStatusWise.Name = "chartStatusWise";
-            this.chartStatusWise.SeriesSerializable = new DevExpress.XtraCharts.Series[0];
-            this.chartStatusWise.Size = new System.Drawing.Size(534, 157);
-            this.chartStatusWise.TabIndex = 5;
-            // 
-            // grpTaskAssignByMe
-            // 
-            this.grpTaskAssignByMe.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.grpTaskAssignByMe.Controls.Add(this.chartControl1);
-            this.grpTaskAssignByMe.Controls.Add(this.gridControl3);
-            this.grpTaskAssignByMe.Location = new System.Drawing.Point(14, 371);
-            this.grpTaskAssignByMe.Name = "grpTaskAssignByMe";
-            this.grpTaskAssignByMe.Size = new System.Drawing.Size(533, 190);
-            this.grpTaskAssignByMe.TabIndex = 6;
-            this.grpTaskAssignByMe.Text = "My Assign Open Task";
-            // 
-            // gridControl3
-            // 
-            this.gridControl3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl3.Location = new System.Drawing.Point(2, 20);
-            this.gridControl3.MainView = this.gridView3;
-            this.gridControl3.Name = "gridControl3";
-            this.gridControl3.Size = new System.Drawing.Size(529, 168);
-            this.gridControl3.TabIndex = 0;
-            this.gridControl3.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView3});
-            // 
-            // gridView3
-            // 
-            this.gridView3.GridControl = this.gridControl3;
-            this.gridView3.Name = "gridView3";
-            this.gridView3.OptionsView.ShowGroupPanel = false;
+            this.grpCompany.Controls.Add(this.chartControlCompanyTaskPerformance);
+            this.grpCompany.Location = new System.Drawing.Point(14, 296);
+            this.grpCompany.Name = "grpCompany";
+            this.grpCompany.Size = new System.Drawing.Size(534, 265);
+            this.grpCompany.TabIndex = 6;
+            this.grpCompany.Text = "Company\'s last one year task performance chart";
             // 
             // grdProjectWiseTask
             // 
-            this.grdProjectWiseTask.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grdProjectWiseTask.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grdProjectWiseTask.Location = new System.Drawing.Point(2, 20);
             this.grdProjectWiseTask.MainView = this.tileViewProjectWise;
             this.grdProjectWiseTask.Name = "grdProjectWiseTask";
-            this.grdProjectWiseTask.Size = new System.Drawing.Size(985, 130);
+            this.grdProjectWiseTask.Size = new System.Drawing.Size(446, 234);
             this.grdProjectWiseTask.TabIndex = 0;
             this.grdProjectWiseTask.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.tileViewProjectWise,
@@ -391,36 +377,26 @@
             this.tileViewProjectWise.Appearance.ItemSelected.BackColor2 = System.Drawing.Color.Yellow;
             this.tileViewProjectWise.Appearance.ItemSelected.Options.UseBackColor = true;
             this.tileViewProjectWise.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumnCount,
-            this.gridColumnProject});
+            this.tileViewColumnKey,
+            this.tileViewColumnValue});
             this.tileViewProjectWise.GridControl = this.grdProjectWiseTask;
             this.tileViewProjectWise.Name = "tileViewProjectWise";
             this.tileViewProjectWise.OptionsBehavior.ReadOnly = true;
-            this.tileViewProjectWise.OptionsTiles.ItemSize = new System.Drawing.Size(180, 100);
-            this.tileViewProjectWise.OptionsTiles.ShowGroupText = false;
-            tileViewItemElement7.Appearance.Hovered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            tileViewItemElement7.Appearance.Hovered.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            tileViewItemElement7.Appearance.Hovered.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            tileViewItemElement7.Appearance.Hovered.ForeColor = System.Drawing.Color.Navy;
-            tileViewItemElement7.Appearance.Hovered.Options.UseBackColor = true;
-            tileViewItemElement7.Appearance.Hovered.Options.UseFont = true;
-            tileViewItemElement7.Appearance.Hovered.Options.UseForeColor = true;
-            tileViewItemElement7.Appearance.Normal.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tileViewProjectWise.OptionsTiles.IndentBetweenItems = 3;
+            this.tileViewProjectWise.OptionsTiles.ItemPadding = new System.Windows.Forms.Padding(1, -10, 5, 5);
+            this.tileViewProjectWise.OptionsTiles.ItemSize = new System.Drawing.Size(100, 100);
+            this.tileViewProjectWise.OptionsTiles.Orientation = System.Windows.Forms.Orientation.Vertical;
+            this.tileViewProjectWise.OptionsTiles.Padding = new System.Windows.Forms.Padding(5);
+            tileViewItemElement7.Appearance.Normal.Font = new System.Drawing.Font("Tahoma", 9F);
             tileViewItemElement7.Appearance.Normal.Options.UseFont = true;
-            tileViewItemElement7.Appearance.Pressed.Font = new System.Drawing.Font("Tahoma", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            tileViewItemElement7.Appearance.Pressed.ForeColor = System.Drawing.Color.Navy;
-            tileViewItemElement7.Appearance.Pressed.Options.UseFont = true;
-            tileViewItemElement7.Appearance.Pressed.Options.UseForeColor = true;
-            tileViewItemElement7.Appearance.Selected.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            tileViewItemElement7.Appearance.Selected.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            tileViewItemElement7.Appearance.Selected.Options.UseBackColor = true;
-            tileViewItemElement7.Column = this.gridColumnCount;
-            tileViewItemElement7.Text = "gridColumnCount";
-            tileViewItemElement7.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            tileViewItemElement8.Column = this.gridColumnProject;
-            tileViewItemElement8.Text = "gridColumnProject";
-            tileViewItemElement8.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.Manual;
-            tileViewItemElement8.TextLocation = new System.Drawing.Point(50, 70);
+            tileViewItemElement7.Column = this.tileViewColumnKey;
+            tileViewItemElement7.Text = "tileViewColumnKey";
+            tileViewItemElement7.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.BottomCenter;
+            tileViewItemElement8.Appearance.Normal.Font = new System.Drawing.Font("Tahoma", 12F);
+            tileViewItemElement8.Appearance.Normal.Options.UseFont = true;
+            tileViewItemElement8.Column = this.tileViewColumnValue;
+            tileViewItemElement8.Text = "tileViewColumnValue";
+            tileViewItemElement8.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
             this.tileViewProjectWise.TileTemplate.Add(tileViewItemElement7);
             this.tileViewProjectWise.TileTemplate.Add(tileViewItemElement8);
             this.tileViewProjectWise.ItemClick += new DevExpress.XtraGrid.Views.Tile.TileViewItemClickEventHandler(this.tileViewProjectWise_ItemClick);
@@ -432,22 +408,64 @@
             // 
             // grpProjectWiseTasks
             // 
-            this.grpProjectWiseTasks.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpProjectWiseTasks.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.grpProjectWiseTasks.Controls.Add(this.grdProjectWiseTask);
-            this.grpProjectWiseTasks.Location = new System.Drawing.Point(16, 40);
+            this.grpProjectWiseTasks.Location = new System.Drawing.Point(554, 34);
             this.grpProjectWiseTasks.Name = "grpProjectWiseTasks";
-            this.grpProjectWiseTasks.Size = new System.Drawing.Size(989, 152);
+            this.grpProjectWiseTasks.Size = new System.Drawing.Size(450, 256);
             this.grpProjectWiseTasks.TabIndex = 8;
             this.grpProjectWiseTasks.Text = "Project wise total open tasks";
+            // 
+            // chartUserPerformance
+            // 
+            this.chartUserPerformance.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.chartUserPerformance.DataBindings = null;
+            xyDiagram2.AxisX.Title.Text = "Period";
+            xyDiagram2.AxisX.Title.Visibility = DevExpress.Utils.DefaultBoolean.True;
+            xyDiagram2.AxisX.Title.WordWrap = true;
+            xyDiagram2.AxisX.VisibleInPanesSerializable = "-1";
+            xyDiagram2.AxisY.VisibleInPanesSerializable = "-1";
+            this.chartUserPerformance.Diagram = xyDiagram2;
+            this.chartUserPerformance.EmptyChartText.Text = "Unable to load chart data.";
+            this.chartUserPerformance.Legend.Name = "Default Legend";
+            this.chartUserPerformance.Legend.Visibility = DevExpress.Utils.DefaultBoolean.True;
+            this.chartUserPerformance.Location = new System.Drawing.Point(14, 53);
+            this.chartUserPerformance.Name = "chartUserPerformance";
+            series3.Name = "Series 1";
+            series4.Name = "Series 2";
+            this.chartUserPerformance.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
+        series3,
+        series4};
+            this.chartUserPerformance.SeriesTemplate.ToolTipPointPattern = "{V:#,#}";
+            this.chartUserPerformance.Size = new System.Drawing.Size(533, 237);
+            this.chartUserPerformance.TabIndex = 9;
+            // 
+            // lblUserPerformanceTitle
+            // 
+            this.lblUserPerformanceTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblUserPerformanceTitle.Appearance.BackColor = System.Drawing.Color.DimGray;
+            this.lblUserPerformanceTitle.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUserPerformanceTitle.Appearance.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.lblUserPerformanceTitle.Appearance.Options.UseBackColor = true;
+            this.lblUserPerformanceTitle.Appearance.Options.UseFont = true;
+            this.lblUserPerformanceTitle.Appearance.Options.UseForeColor = true;
+            this.lblUserPerformanceTitle.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.lblUserPerformanceTitle.Location = new System.Drawing.Point(14, 34);
+            this.lblUserPerformanceTitle.Name = "lblUserPerformanceTitle";
+            this.lblUserPerformanceTitle.Size = new System.Drawing.Size(534, 16);
+            this.lblUserPerformanceTitle.TabIndex = 10;
+            this.lblUserPerformanceTitle.Text = "User\'s last one year task performance chart";
             // 
             // TaskDeshborad
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lblUserPerformanceTitle);
+            this.Controls.Add(this.chartUserPerformance);
             this.Controls.Add(this.grpProjectWiseTasks);
-            this.Controls.Add(this.grpTaskAssignByMe);
-            this.Controls.Add(this.chartStatusWise);
+            this.Controls.Add(this.grpCompany);
             this.Controls.Add(this.grpMyOverDueTask);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.textEdit1);
@@ -461,18 +479,24 @@
             this.grpMyOverDueTask.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControlMyOverDue)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tileViewMyOverView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartStatusWise)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grpTaskAssignByMe)).EndInit();
-            this.grpTaskAssignByMe.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartControlCompanyTaskPerformance)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grpCompany)).EndInit();
+            this.grpCompany.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdProjectWiseTask)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tileViewProjectWise)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grpProjectWiseTasks)).EndInit();
             this.grpProjectWiseTasks.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.lumsumInvestmentRecomendationBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartUserPerformance)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.financialPlannerDataSetBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -482,17 +506,12 @@
         private DevExpress.XtraEditors.TextEdit textEdit1;
         private DevExpress.XtraEditors.SimpleButton btnSearch;
         private DevExpress.XtraEditors.GroupControl grpMyOverDueTask;
-        private DevExpress.XtraCharts.ChartControl chartStatusWise;
-        private DevExpress.XtraEditors.GroupControl grpTaskAssignByMe;
+        private DevExpress.XtraEditors.GroupControl grpCompany;
         private DevExpress.Data.UnboundSource unboundSource1;
         private DevExpress.Utils.Behaviors.BehaviorManager behaviorManager1;
         private DevExpress.XtraGrid.GridControl gridControlMyOverDue;
-        private DevExpress.XtraGrid.GridControl gridControl3;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView3;
         private DevExpress.XtraGrid.GridControl grdProjectWiseTask;
         private DevExpress.XtraGrid.Views.Tile.TileView tileViewProjectWise;
-        private DevExpress.XtraGrid.Columns.TileViewColumn gridColumnCount;
-        private DevExpress.XtraGrid.Columns.TileViewColumn gridColumnProject;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView5;
         private DevExpress.XtraEditors.GroupControl grpProjectWiseTasks;
         private DevExpress.XtraGrid.Views.Tile.TileView tileViewMyOverView;
@@ -503,6 +522,12 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit repositoryItemPictureEdit1;
         private DevExpress.XtraGrid.Columns.TileViewColumn tileViewColumnStatus;
         private DevExpress.XtraGrid.Columns.TileViewColumn tileViewColumnOwnerName;
-        private DevExpress.XtraCharts.ChartControl chartControl1;
+        private DevExpress.XtraCharts.ChartControl chartControlCompanyTaskPerformance;
+        private System.Windows.Forms.BindingSource lumsumInvestmentRecomendationBindingSource;
+        private DevExpress.XtraCharts.ChartControl chartUserPerformance;
+        private System.Windows.Forms.BindingSource financialPlannerDataSetBindingSource;
+        private DevExpress.XtraEditors.LabelControl lblUserPerformanceTitle;
+        private DevExpress.XtraGrid.Columns.TileViewColumn tileViewColumnKey;
+        private DevExpress.XtraGrid.Columns.TileViewColumn tileViewColumnValue;
     }
 }

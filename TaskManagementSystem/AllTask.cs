@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FinancialPlannerClient.TaskManagementSystem
@@ -24,9 +25,9 @@ namespace FinancialPlannerClient.TaskManagementSystem
             fillupTasks();
         }
 
-        private void fillupTasks()
+        private async void fillupTasks()
         {
-            IList<TaskCard> tasks = taskCardService.GetTasks(this.taskView);
+            IList<TaskCard> tasks = await Task.Run(() => taskCardService.GetTasks(this.taskView));
             if (tasks != null)
             {
                 dtTaskCard = ListtoDataTable.ToDataTable(tasks.ToList());

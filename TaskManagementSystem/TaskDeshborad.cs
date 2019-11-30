@@ -1,4 +1,5 @@
 ﻿using DevExpress.Utils;
+using DevExpress.XtraCharts;
 using FinancialPlanner.Common;
 using FinancialPlanner.Common.DataConversion;
 using FinancialPlanner.Common.Model.TaskManagement;
@@ -18,7 +19,11 @@ namespace FinancialPlannerClient.TaskManagementSystem
     {
         DataTable dtProject = new DataTable();
         DataTable dtOverDueTasks = new DataTable();
+        DataTable dtUserPerformance = new DataTable();
+        DataTable dtCompanyTaskPerformance = new DataTable();
         IList<TaskCard> overDueTasks;
+        IList<UserPerformanceOnTask> userPerformanceOnTasks;
+        IList<UserPerformanceOnTask> companyPerformanceOnTasks;
         TaskCardService taskCardService = new TaskCardService();
 
 
@@ -59,14 +64,102 @@ namespace FinancialPlannerClient.TaskManagementSystem
         private void loadDashBorad()
         {
             loadProjectsDetails();
-
-            loadMyOverDueTaskDetails();
+            loadCurrentUserOverDueTaskDetails();
+            loadCurrentUserTaskPerformanceData();
+            loadCompanyTaskPerformanceData();
         }
 
-        private  void loadMyOverDueTaskDetails()
+        private void loadCompanyTaskPerformanceData()
+        {
+            try
+            {
+                companyPerformanceOnTasks = taskCardService.GetCompanyTaskPerformanceYearly();
+
+                generatPerformanceDataTable(dtCompanyTaskPerformance);
+                
+
+                if (companyPerformanceOnTasks != null)
+                {
+                    fillupDataIntoUserPerformanceTable(dtCompanyTaskPerformance, companyPerformanceOnTasks);
+                    chartControlCompanyTaskPerformance.DataSource = dtCompanyTaskPerformance;
+                    chartControlCompanyTaskPerformance.Series[0].ArgumentDataMember = "Period";
+                    chartControlCompanyTaskPerformance.Series[0].ValueDataMembers.AddRange(new string[] { "CompletedTaskCount" });
+                    chartControlCompanyTaskPerformance.Series[0].ValueScaleType = ScaleType.Numerical;
+                    chartControlCompanyTaskPerformance.Series[0].LegendText = "Complete Task";
+
+                    chartControlCompanyTaskPerformance.Series[1].ArgumentDataMember = "Period";
+                    chartControlCompanyTaskPerformance.Series[1].ValueDataMembers.AddRange(new string[] { "OverDueTaskCount" });
+                    chartControlCompanyTaskPerformance.Series[1].ValueScaleType = ScaleType.Numerical;
+                    chartControlCompanyTaskPerformance.Series[1].LegendText = "Overdue Task";
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private  void loadCurrentUserTaskPerformanceData()
+        {
+            try
+            {
+                userPerformanceOnTasks = taskCardService.GetUserPerformanceYearly(Program.CurrentUser.Id);
+
+                generatPerformanceDataTable(dtUserPerformance);
+                
+
+                if (userPerformanceOnTasks != null)
+                {
+                    fillupDataIntoUserPerformanceTable(dtUserPerformance, userPerformanceOnTasks);
+
+                    chartUserPerformance.DataSource = dtUserPerformance;                
+                    chartUserPerformance.Series[0].ArgumentDataMember = "Period";
+                    chartUserPerformance.Series[0].ValueDataMembers.AddRange(new string[] { "CompletedTaskCount" });
+                    chartUserPerformance.Series[0].ValueScaleType = ScaleType.Numerical;
+                    chartUserPerformance.Series[0].LegendText = "Complete Task";
+
+                    chartUserPerformance.Series[1].ArgumentDataMember = "Period";
+                    chartUserPerformance.Series[1].ValueDataMembers.AddRange(new string[] { "OverDueTaskCount" });
+                    chartUserPerformance.Series[1].ValueScaleType = ScaleType.Numerical;
+                    chartUserPerformance.Series[1].LegendText = "Overdue Task";
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void fillupDataIntoUserPerformanceTable(DataTable dataTable,IList<UserPerformanceOnTask> userPerformances)
+        {
+            foreach (UserPerformanceOnTask userPerformanceOnTask in userPerformances)
+            {
+                DataRow dr = dataTable.NewRow();
+                dr["UserId"] = userPerformanceOnTask.UserId;
+                dr["Period"] = userPerformanceOnTask.Period;
+                dr["CompletedTaskCount"] = userPerformanceOnTask.CompletedTaskCount;
+                dr["OverdueTaskCount"] = userPerformanceOnTask.OverDueTaskCount;
+                dataTable.Rows.Add(dr);
+            }
+        }
+
+        private void generatPerformanceDataTable(DataTable dataTable)
+        {
+            if (dataTable.Columns.Count == 0)
+            {
+                dataTable.Columns.Add("UserId", Type.GetType("System.Int16"));
+                dataTable.Columns.Add("Period", Type.GetType("System.String"));
+                dataTable.Columns.Add("CompletedTaskCount", Type.GetType("System.Int16"));
+                dataTable.Columns.Add("OverdueTaskCount", Type.GetType("System.Int16"));
+            }
+        }
+
+        private void loadCurrentUserOverDueTaskDetails()
         {
             //overDueTasks = await Task.Run(() => taskCardService.GetOverDueTask(Program.CurrentUser.Id));
-            overDueTasks =taskCardService.GetOverDueTask(Program.CurrentUser.Id);
+            overDueTasks = taskCardService.GetOverDueTask(Program.CurrentUser.Id);
             if (overDueTasks != null)
             {
                 dtOverDueTasks = ListtoDataTable.ToDataTable(overDueTasks.ToList());
@@ -79,11 +172,8 @@ namespace FinancialPlannerClient.TaskManagementSystem
         private void loadProjectsDetails()
         {
             TaskProjectInfo taskProjectInfo = new TaskProjectInfo();
-            //IList<KeyValuePair<string, int>> projects =
-            //    await Task.Run(() => taskProjectInfo.GetOpenTaskCountProjectWise(Program.CurrentUser.Id));
 
-            IList<KeyValuePair<string, int>> projects =
-               taskProjectInfo.GetOpenTaskCountProjectWise(Program.CurrentUser.Id);
+            IList<KeyValuePair<string, int>> projects = taskProjectInfo.GetOpenTaskCountProjectWise(Program.CurrentUser.Id);
 
             if (projects != null)
             {

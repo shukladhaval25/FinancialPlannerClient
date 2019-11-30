@@ -36,7 +36,7 @@ namespace FinancialPlannerClient.Home
         private DevExpress.Utils.Behaviors.BehaviorManager behaviorManager1;
         private DevExpress.XtraNavBar.NavBarItem navBarItemClient;
         private DevExpress.XtraNavBar.NavBarItem navBarItemFinancialPlanner;
-        private DevExpress.XtraNavBar.NavBarGroup navBarGroupSetting;
+        private DevExpress.XtraNavBar.NavBarGroup navBarGroupTask;
         private DevExpress.LookAndFeel.DefaultLookAndFeel defaultLookAndFeel1;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage2;
         private System.ComponentModel.IContainer components;
@@ -130,6 +130,7 @@ namespace FinancialPlannerClient.Home
             this.navBarItemClientRating = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItem2 = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItemARN = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarItemMFCategory = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItemMFScheme = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItemAMC = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItemBank = new DevExpress.XtraNavBar.NavBarItem();
@@ -138,7 +139,7 @@ namespace FinancialPlannerClient.Home
             this.navBarItemClient = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItemFinancialPlanner = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarMenuGroup = new DevExpress.XtraNavBar.NavBarControl();
-            this.navBarGroupSetting = new DevExpress.XtraNavBar.NavBarGroup();
+            this.navBarGroupTask = new DevExpress.XtraNavBar.NavBarGroup();
             this.navBarItemOld = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItemTask = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarGroupOthers = new DevExpress.XtraNavBar.NavBarGroup();
@@ -156,7 +157,6 @@ namespace FinancialPlannerClient.Home
             this.ribbonPage4 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.notifyIconTask = new System.Windows.Forms.NotifyIcon(this.components);
             this.timerNotification = new System.Windows.Forms.Timer(this.components);
-            this.navBarItemMFCategory = new DevExpress.XtraNavBar.NavBarItem();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -327,7 +327,6 @@ namespace FinancialPlannerClient.Home
             // mavBarMasterGroup
             // 
             this.mavBarMasterGroup.Caption = "Masters";
-            this.mavBarMasterGroup.Expanded = true;
             this.mavBarMasterGroup.GroupStyle = DevExpress.XtraNavBar.NavBarGroupStyle.LargeIconsText;
             this.mavBarMasterGroup.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemCRMGroup),
@@ -442,6 +441,13 @@ namespace FinancialPlannerClient.Home
             this.navBarItemARN.SuperTip = superToolTip7;
             this.navBarItemARN.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItemARN_LinkClicked);
             // 
+            // navBarItemMFCategory
+            // 
+            this.navBarItemMFCategory.Caption = "MF Category";
+            this.navBarItemMFCategory.LargeImage = ((System.Drawing.Image)(resources.GetObject("navBarItemMFCategory.LargeImage")));
+            this.navBarItemMFCategory.Name = "navBarItemMFCategory";
+            this.navBarItemMFCategory.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItemMFCategory_LinkClicked);
+            // 
             // navBarItemMFScheme
             // 
             this.navBarItemMFScheme.Caption = "MF Scheme";
@@ -533,7 +539,7 @@ namespace FinancialPlannerClient.Home
             this.navBarMenuGroup.Groups.AddRange(new DevExpress.XtraNavBar.NavBarGroup[] {
             this.mavBarMasterGroup,
             this.navBarGroupClient,
-            this.navBarGroupSetting,
+            this.navBarGroupTask,
             this.navBarGroupOthers});
             this.navBarMenuGroup.Items.AddRange(new DevExpress.XtraNavBar.NavBarItem[] {
             this.navBarItemCRMGroup,
@@ -563,16 +569,16 @@ namespace FinancialPlannerClient.Home
             this.navBarMenuGroup.TabIndex = 1;
             this.navBarMenuGroup.Text = "navBarControl1";
             // 
-            // navBarGroupSetting
+            // navBarGroupTask
             // 
-            this.navBarGroupSetting.Caption = "Setting";
-            this.navBarGroupSetting.GroupStyle = DevExpress.XtraNavBar.NavBarGroupStyle.LargeIconsText;
-            this.navBarGroupSetting.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
+            this.navBarGroupTask.Caption = "Task";
+            this.navBarGroupTask.GroupStyle = DevExpress.XtraNavBar.NavBarGroupStyle.LargeIconsText;
+            this.navBarGroupTask.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemOld),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemTask)});
-            this.navBarGroupSetting.LargeImage = ((System.Drawing.Image)(resources.GetObject("navBarGroupSetting.LargeImage")));
-            this.navBarGroupSetting.Name = "navBarGroupSetting";
-            this.navBarGroupSetting.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarGroupSetting.SmallImage")));
+            this.navBarGroupTask.LargeImage = ((System.Drawing.Image)(resources.GetObject("navBarGroupTask.LargeImage")));
+            this.navBarGroupTask.Name = "navBarGroupTask";
+            this.navBarGroupTask.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarGroupTask.SmallImage")));
             // 
             // navBarItemOld
             // 
@@ -682,13 +688,6 @@ namespace FinancialPlannerClient.Home
             // 
             this.timerNotification.Interval = 60000;
             this.timerNotification.Tick += new System.EventHandler(this.timerNotification_Tick);
-            // 
-            // navBarItemMFCategory
-            // 
-            this.navBarItemMFCategory.Caption = "MF Category";
-            this.navBarItemMFCategory.LargeImage = ((System.Drawing.Image)(resources.GetObject("navBarItemMFCategory.LargeImage")));
-            this.navBarItemMFCategory.Name = "navBarItemMFCategory";
-            this.navBarItemMFCategory.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItemMFCategory_LinkClicked);
             // 
             // frmHome
             // 

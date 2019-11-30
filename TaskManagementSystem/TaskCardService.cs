@@ -19,6 +19,8 @@ namespace FinancialPlannerClient.TaskManagementSystem
         private readonly string GET_NOTIFIED_TASK = "TaskController/NotifiedTasks?userId={0}";
         private readonly string GET_ASSIGNTOME_TASK = "TaskController/AssignTo?userId={0}";
         private readonly string GET_USEROVERDUE_TASK = "TaskController/GetOverDueTask?userId={0}";
+        private readonly string GET_USER_PERFORMANCE_YEARLY_TASK = "TaskController/GetUserPerformanceForYear?userId={0}";
+        private readonly string GET_COMPANY_PERFORMANCE_YEARLY_TASK = "TaskController/GetCompanyTaskPerformanceForYear";
         private const string GET_TASK_BYPROJECTNAME_BYUSERID = "TaskController/?projectName={0}&userId={1}";
         private const string GET_TASK_BYPROJECTNAME = "TaskController/GetAll?projectName={0}";
 
@@ -185,6 +187,78 @@ namespace FinancialPlannerClient.TaskManagementSystem
                 if (jsonSerialization.IsValidJson(restResult.ToString()))
                 {
                     tasks = jsonSerialization.DeserializeFromString<IList<TaskCard>>(restResult.ToString());
+                }
+                return tasks;
+            }
+            catch (System.Net.WebException webException)
+            {
+                if (webException.Message.Equals("The remote server returned an error: (401) Unauthorized."))
+                {
+                    MessageBox.Show("You session has been expired. Please Login again.", "Session Expired", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
+                LogDebug(currentMethodName.Name, ex);
+                return null;
+            }
+        }
+
+        public IList<UserPerformanceOnTask> GetUserPerformanceYearly(int userId)
+        {
+            IList<UserPerformanceOnTask> tasks = new List<UserPerformanceOnTask>();
+            try
+            {
+                FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
+                string apiurl = Program.WebServiceUrl + "/" + (string.Format(GET_USER_PERFORMANCE_YEARLY_TASK, userId));
+
+                RestAPIExecutor restApiExecutor = new RestAPIExecutor();
+
+                var restResult = restApiExecutor.Execute<IList<UserPerformanceOnTask>>(apiurl, null, "GET");
+
+                if (jsonSerialization.IsValidJson(restResult.ToString()))
+                {
+                    tasks = jsonSerialization.DeserializeFromString<IList<UserPerformanceOnTask>>(restResult.ToString());
+                }
+                return tasks;
+            }
+            catch (System.Net.WebException webException)
+            {
+                if (webException.Message.Equals("The remote server returned an error: (401) Unauthorized."))
+                {
+                    MessageBox.Show("You session has been expired. Please Login again.", "Session Expired", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
+                LogDebug(currentMethodName.Name, ex);
+                return null;
+            }
+        }
+
+        public IList<UserPerformanceOnTask> GetCompanyTaskPerformanceYearly()
+        {
+            IList<UserPerformanceOnTask> tasks = new List<UserPerformanceOnTask>();
+            try
+            {
+                FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
+                string apiurl = Program.WebServiceUrl + "/" + GET_COMPANY_PERFORMANCE_YEARLY_TASK;
+
+                RestAPIExecutor restApiExecutor = new RestAPIExecutor();
+
+                var restResult = restApiExecutor.Execute<IList<UserPerformanceOnTask>>(apiurl, null, "GET");
+
+                if (jsonSerialization.IsValidJson(restResult.ToString()))
+                {
+                    tasks = jsonSerialization.DeserializeFromString<IList<UserPerformanceOnTask>>(restResult.ToString());
                 }
                 return tasks;
             }
