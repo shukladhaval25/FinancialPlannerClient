@@ -670,10 +670,9 @@
             // 
             this.tileViewColumnUpdatedOn.Caption = "Updated On";
             this.tileViewColumnUpdatedOn.FieldName = "UpdatedOn";
-            this.tileViewColumnUpdatedOn.FieldNameSortGroup = "UpdatedOn";
             this.tileViewColumnUpdatedOn.LayoutViewField = this.layoutViewField_tileViewColumnUpdatedOn;
             this.tileViewColumnUpdatedOn.Name = "tileViewColumnUpdatedOn";
-            this.tileViewColumnUpdatedOn.SortMode = DevExpress.XtraGrid.ColumnSortMode.Value;
+            //this.tileViewColumnUpdatedOn.SortMode = DevExpress.XtraGrid.ColumnSortMode.Value;
             // 
             // layoutViewField_tileViewColumnUpdatedOn
             // 
