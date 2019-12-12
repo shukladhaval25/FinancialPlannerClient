@@ -213,7 +213,7 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             repositoryItemOldBank.DisplayMember = "Name";
             repositoryItemOldBank.ValueMember = "Id";
             repositoryItemOldBank.NullValuePrompt = "Please select valid value.";
-            repositoryItemOldBank.Columns["Id"].Visible = false;
+            //repositoryItemOldBank.Columns["Id"].Visible = false;
 
             repositoryItemNewBank.DataSource = dtBank;
             repositoryItemNewBank.DisplayMember = "Name";
@@ -448,7 +448,7 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
 
         public void SetARN(int arnNo)
         {
-            this.vGridTransaction.Rows["ARN"].Properties.Value = arnNo;
+            //this.vGridTransaction.Rows["ARN"].Properties.Value = arnNo;
         }
     }
 }
