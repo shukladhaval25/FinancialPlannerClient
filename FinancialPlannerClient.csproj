@@ -364,6 +364,7 @@
       <DependentUpon>ARNView.cs</DependentUpon>
     </Compile>
     <Compile Include="Master\UserServiceHelper.cs" />
+    <Compile Include="Permissions\PermissionInfo.cs" />
     <Compile Include="PlannerInfo\BankAccountInfo.cs" />
     <Compile Include="PlannerInfo\ClientCRMGroupinfo.cs" />
     <Compile Include="PlannerInfo\ClientFestivalInfo.cs" />

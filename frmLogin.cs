@@ -1,5 +1,7 @@
 ﻿using FinancialPlanner.Common;
 using FinancialPlanner.Common.Model;
+using FinancialPlanner.Common.Permission;
+using FinancialPlannerClient.Permissions;
 using System;
 using System.IO;
 using System.Net;
@@ -69,13 +71,26 @@ namespace FinancialPlannerClient
 
         private void actionOnValidAuthentication(string restResult)
         {
+
             JSONSerialization jsonSerialization = new JSONSerialization();
             var deserializeUser = jsonSerialization.DeserializeFromString<User>(restResult.ToString());
             Program.CurrentUser = deserializeUser;
+            Program.CurrentUserRolePermission = getCurrentUserRolePermission();
             Main frmclientMain = new Main();
             this.Visible = false;
             frmclientMain.ShowDialog();
             Close();
+        }
+
+        private Role getCurrentUserRolePermission()
+        {
+            if (Program.CurrentUser != null )
+            {
+                PermissionInfo permissionInfo = new PermissionInfo();
+                Role role = permissionInfo.Get(Program.CurrentUser.Id);
+                return role;
+            }
+            return new Role();
         }
 
         private User getUserObjectFromUI()

@@ -128,6 +128,7 @@ namespace FinancialPlannerClient.TaskManagementSystem
             taskCard.DueDate = DateTime.Parse(dr.Field<string>("DueDate"));
             taskCard.ProjectName = dr.Field<string>("ProjectName");
             taskCard.OwnerName = dr.Field<string>("OwnerName");
+            taskCard.OtherName = dr.Field<string>("OtherName");
             //taskCard.AssignToName = getAssignTo(dr.Field<int?>("AssignTo"));
             //taskCard.CustomerName = getCustomerName(taskCard.CustomerId);
             return taskCard;

@@ -7,6 +7,8 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using FinancialPlanner.Common;
 using FinancialPlanner.Common.Model;
+using FinancialPlanner.Common.Permission;
+using FinancialPlannerClient.Permissions;
 
 namespace FinancialPlannerClient.Login
 {
@@ -188,12 +190,23 @@ namespace FinancialPlannerClient.Login
             JSONSerialization jsonSerialization = new JSONSerialization();
             var deserializeUser = jsonSerialization.DeserializeFromString<User>(restResult.ToString());
             Program.CurrentUser = deserializeUser;
+            Program.CurrentUserRolePermission = getCurrentUserRolePermission();
             Home.frmHome frmclientMain = new Home.frmHome();
             this.Visible = false;
             frmclientMain.ShowDialog();
             Close();
         }
 
+        private Role getCurrentUserRolePermission()
+        {
+            if (Program.CurrentUser != null)
+            {
+                PermissionInfo permissionInfo = new PermissionInfo();
+                Role role = permissionInfo.Get(Program.CurrentUser.RoleId);
+                return role;
+            }
+            return new Role();
+        }
         private User getUserObjectFromUI()
         {
             User user = new User()

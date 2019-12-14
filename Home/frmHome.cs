@@ -1,17 +1,16 @@
 ﻿using DevExpress.XtraEditors;
+using DevExpress.XtraNavBar;
 using FinancialPlanner.Common;
 using FinancialPlanner.Common.Model;
-using FinancialPlannerClient.AuditTrail;
+using FinancialPlanner.Common.Permission;
 using FinancialPlannerClient.Master;
 using FinancialPlannerClient.Master.TaskMaster;
 using FinancialPlannerClient.ProspectCustomer;
 using FinancialPlannerClient.TaskManagementSystem;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FinancialPlannerClient.Home
@@ -716,9 +715,9 @@ namespace FinancialPlannerClient.Home
 
         }
 
-       
+
         private void Logout_Click(object sender, EventArgs e)
-        {            
+        {
             this.Close();
         }
 
@@ -738,7 +737,7 @@ namespace FinancialPlannerClient.Home
         }
 
         private void navBarItemFestivals_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
-        {            
+        {
             Other other = new Other("Festivals");
             other.TopLevel = false;
             other.Visible = true;
@@ -769,13 +768,13 @@ namespace FinancialPlannerClient.Home
                 clientdashboard.ShowDialog();
                 this.Visible = true;
             }
-            catch(Exception ex)
+            catch (Exception)
             {
 
             }
-           
-            
-            
+
+
+
         }
 
         private void frmHome_FormClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)
@@ -856,7 +855,7 @@ namespace FinancialPlannerClient.Home
         }
 
         private void navBarItemAssumptionMaster_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
-        {            
+        {
             AssumptionMasters assumptionMasters = new AssumptionMasters();
             assumptionMasters.TopLevel = false;
             assumptionMasters.Visible = true;
@@ -867,7 +866,7 @@ namespace FinancialPlannerClient.Home
 
         private void navBarItemProspectCustomer_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
-            ProspectCustomerList prospectCustomerList  = new ProspectCustomerList();
+            ProspectCustomerList prospectCustomerList = new ProspectCustomerList();
             prospectCustomerList.TopLevel = false;
             prospectCustomerList.Visible = true;
             homeNavigationPage1.Name = prospectCustomerList.Name;
@@ -876,7 +875,7 @@ namespace FinancialPlannerClient.Home
         }
 
         private void navBarItemClientRating_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
-        {           
+        {
             ClientRatingView clientRatingView = new ClientRatingView();
             clientRatingView.TopLevel = false;
             clientRatingView.Visible = true;
@@ -897,7 +896,7 @@ namespace FinancialPlannerClient.Home
 
         private void navBarItemTask_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
-            TaskMainPage  taskMainPage = new TaskMainPage();
+            TaskMainPage taskMainPage = new TaskMainPage();
             taskMainPage.TopLevel = false;
             taskMainPage.Visible = true;
             //taskMainPage.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -936,7 +935,62 @@ namespace FinancialPlannerClient.Home
         {
             lblCurrentUser.BackColor = ribbonControl1.BackColor;
             lblCurrentUser.Text = Program.CurrentUser.UserName;
+            displayMenuBasedOnRolePermission();
             timerNotification.Start();
+        }
+
+        private void displayMenuBasedOnRolePermission()
+        {
+            if (Program.CurrentUserRolePermission.Name == "Admin")
+                return;
+
+            List<RolePermission> rolePermission = (List<RolePermission>)Program.CurrentUserRolePermission.Permissions;
+
+            setMasterMenuPermission(rolePermission);
+            setClientMenuPermission(rolePermission);
+            setTaskMenuPermission(rolePermission);
+            setToolMenuPermission(rolePermission);
+        }
+
+        private void setToolMenuPermission(List<RolePermission> rolePermission)
+        {
+            foreach (NavBarItemLink control in navBarGroupOthers.ItemLinks)
+            {
+                setMenuControlPermission(rolePermission, control);
+            }
+        }
+
+        private void setClientMenuPermission(List<RolePermission> rolePermission)
+        {
+            foreach (NavBarItemLink control in navBarGroupClient.ItemLinks)
+            {
+                setMenuControlPermission(rolePermission, control);
+            }
+        }
+
+        private void setTaskMenuPermission(List<RolePermission> rolePermission)
+        {
+            foreach (NavBarItemLink control in navBarGroupTask.ItemLinks)
+            {
+                setMenuControlPermission(rolePermission, control);
+            }
+        }
+
+        private static void setMenuControlPermission(List<RolePermission> rolePermission, NavBarItemLink control)
+        {
+            RolePermission permission = rolePermission.Find(x => x.FormName == control.Caption);
+            if (permission != null)
+                control.Visible = permission.IsView;
+            else
+                control.Visible = false;
+        }
+
+        private void setMasterMenuPermission(List<RolePermission> rolePermission)
+        {
+            foreach (NavBarItemLink control in mavBarMasterGroup.ItemLinks)
+            {
+                setMenuControlPermission(rolePermission, control);
+            }
         }
 
         private void navBarItemAMC_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
@@ -966,7 +1020,7 @@ namespace FinancialPlannerClient.Home
 
                 this.notifyIconTask.Text = "Notification";
                 this.notifyIconTask.Visible = true;
-                this.notifyIconTask.BalloonTipTitle = string.Format("New task notifaction ({0})", notificationCount); 
+                this.notifyIconTask.BalloonTipTitle = string.Format("New task notifaction ({0})", notificationCount);
                 this.notifyIconTask.BalloonTipText = "Click here to view more details";
                 this.notifyIconTask.ShowBalloonTip(1000);
                 //notifyIconTask.Visible = true;

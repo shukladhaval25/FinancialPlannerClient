@@ -134,7 +134,7 @@ namespace FinancialPlannerClient.TaskManagementSystem
             cmbOwner.Tag = taskCard.Owner.ToString();
             cmbOwner.Text = string.IsNullOrEmpty(taskCard.OwnerName) ? getUserName((int)(taskCard.Owner)) : taskCard.OwnerName;
             cmbTaskStatus.Text = taskCard.TaskStatus.ToString();
-
+            txtOtherName.Text = taskCard.OtherName;
         }
 
         private void fillupAssignTo()
@@ -307,6 +307,7 @@ namespace FinancialPlannerClient.TaskManagementSystem
             taskCard.CompletedPercentage = int.Parse(txtPercentageCompeleted.Text);
             taskCard.Description = txtDescription.Text;
             taskCard.MachineName = System.Environment.MachineName;
+            taskCard.OtherName = txtOtherName.Text;
             if (cmbProject.Text == MUTUALFUND)
                 taskCard.TaskTransactionType = getTransactionType();
             return taskCard;
@@ -320,8 +321,7 @@ namespace FinancialPlannerClient.TaskManagementSystem
             if (cmbProject.Text == MUTUALFUND)
             {
                 if (!string.IsNullOrEmpty(cmbProject.Text) && !string.IsNullOrEmpty(cmbTransactionType.Text) &&
-                    !string.IsNullOrEmpty(cmbCardType.Text) && !string.IsNullOrEmpty(txtTitle.Text) &&
-                    !string.IsNullOrEmpty(cmbClient.Text))
+                    !string.IsNullOrEmpty(cmbCardType.Text) && !string.IsNullOrEmpty(txtTitle.Text))
                 {
                     return true;
                 }

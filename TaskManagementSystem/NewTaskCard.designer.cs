@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewTaskCard));
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
             this.lblProject = new DevExpress.XtraEditors.LabelControl();
             this.cmbProject = new DevExpress.XtraEditors.ComboBoxEdit();
             this.cmbCardType = new DevExpress.XtraEditors.ComboBoxEdit();
@@ -76,6 +76,8 @@
             this.cmbOwner = new DevExpress.XtraEditors.ComboBoxEdit();
             this.cmbTaskStatus = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
+            this.txtOthenThenClient = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl14 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.cmbProject.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbCardType.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbClient.Properties)).BeginInit();
@@ -99,11 +101,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbOwner.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbTaskStatus.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtOthenThenClient.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // lblProject
             // 
-            this.lblProject.Location = new System.Drawing.Point(35, 65);
+            this.lblProject.Location = new System.Drawing.Point(35, 87);
             this.lblProject.Name = "lblProject";
             this.lblProject.Size = new System.Drawing.Size(38, 13);
             this.lblProject.TabIndex = 0;
@@ -111,7 +114,7 @@
             // 
             // cmbProject
             // 
-            this.cmbProject.Location = new System.Drawing.Point(128, 62);
+            this.cmbProject.Location = new System.Drawing.Point(128, 84);
             this.cmbProject.Name = "cmbProject";
             this.cmbProject.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -122,7 +125,7 @@
             // 
             // cmbCardType
             // 
-            this.cmbCardType.Location = new System.Drawing.Point(128, 113);
+            this.cmbCardType.Location = new System.Drawing.Point(128, 135);
             this.cmbCardType.Name = "cmbCardType";
             this.cmbCardType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -135,7 +138,7 @@
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(35, 116);
+            this.labelControl1.Location = new System.Drawing.Point(35, 138);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(54, 13);
             this.labelControl1.TabIndex = 2;
@@ -143,7 +146,7 @@
             // 
             // cmbClient
             // 
-            this.cmbClient.Location = new System.Drawing.Point(128, 36);
+            this.cmbClient.Location = new System.Drawing.Point(128, 32);
             this.cmbClient.Name = "cmbClient";
             this.cmbClient.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -154,7 +157,7 @@
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(38, 38);
+            this.labelControl2.Location = new System.Drawing.Point(38, 34);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(50, 13);
             this.labelControl2.TabIndex = 4;
@@ -162,7 +165,7 @@
             // 
             // labelControl3
             // 
-            this.labelControl3.Location = new System.Drawing.Point(35, 143);
+            this.labelControl3.Location = new System.Drawing.Point(35, 165);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(24, 13);
             this.labelControl3.TabIndex = 6;
@@ -170,7 +173,7 @@
             // 
             // txtTitle
             // 
-            this.txtTitle.Location = new System.Drawing.Point(128, 140);
+            this.txtTitle.Location = new System.Drawing.Point(128, 162);
             this.txtTitle.Name = "txtTitle";
             this.txtTitle.Size = new System.Drawing.Size(439, 20);
             this.txtTitle.TabIndex = 7;
@@ -284,7 +287,7 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.txtDescription.Location = new System.Drawing.Point(6, 24);
             this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(521, 84);
+            this.txtDescription.Size = new System.Drawing.Size(521, 62);
             this.txtDescription.TabIndex = 9;
             // 
             // labelControl10
@@ -335,7 +338,7 @@
             // btnAddProject
             // 
             this.btnAddProject.Image = ((System.Drawing.Image)(resources.GetObject("btnAddProject.Image")));
-            this.btnAddProject.Location = new System.Drawing.Point(542, 60);
+            this.btnAddProject.Location = new System.Drawing.Point(542, 82);
             this.btnAddProject.Name = "btnAddProject";
             this.btnAddProject.Size = new System.Drawing.Size(25, 22);
             this.btnAddProject.TabIndex = 4;
@@ -343,7 +346,7 @@
             // simpleButton1
             // 
             this.simpleButton1.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.Image")));
-            this.simpleButton1.Location = new System.Drawing.Point(542, 34);
+            this.simpleButton1.Location = new System.Drawing.Point(542, 30);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(25, 22);
             this.simpleButton1.TabIndex = 2;
@@ -354,15 +357,15 @@
             this.btnCloseTask.Location = new System.Drawing.Point(845, 369);
             this.btnCloseTask.Name = "btnCloseTask";
             this.btnCloseTask.Size = new System.Drawing.Size(62, 23);
-            toolTipTitleItem1.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
-            toolTipTitleItem1.Appearance.Options.UseImage = true;
-            toolTipTitleItem1.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem1.Image")));
-            toolTipTitleItem1.Text = "Cancel";
-            toolTipItem1.LeftIndent = 6;
-            toolTipItem1.Text = "To close client information without saving any information click here.";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            superToolTip1.Items.Add(toolTipItem1);
-            this.btnCloseTask.SuperTip = superToolTip1;
+            toolTipTitleItem3.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            toolTipTitleItem3.Appearance.Options.UseImage = true;
+            toolTipTitleItem3.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem3.Image")));
+            toolTipTitleItem3.Text = "Cancel";
+            toolTipItem3.LeftIndent = 6;
+            toolTipItem3.Text = "To close client information without saving any information click here.";
+            superToolTip3.Items.Add(toolTipTitleItem3);
+            superToolTip3.Items.Add(toolTipItem3);
+            this.btnCloseTask.SuperTip = superToolTip3;
             this.btnCloseTask.TabIndex = 29;
             this.btnCloseTask.Text = "&Close";
             this.btnCloseTask.Click += new System.EventHandler(this.btnCloseTask_Click);
@@ -373,22 +376,22 @@
             this.btnSaveTask.Location = new System.Drawing.Point(782, 369);
             this.btnSaveTask.Name = "btnSaveTask";
             this.btnSaveTask.Size = new System.Drawing.Size(57, 23);
-            toolTipTitleItem2.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
-            toolTipTitleItem2.Appearance.Options.UseImage = true;
-            toolTipTitleItem2.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem2.Image")));
-            toolTipTitleItem2.Text = "Save";
-            toolTipItem2.LeftIndent = 6;
-            toolTipItem2.Text = "To save client infroamtion click here.";
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            superToolTip2.Items.Add(toolTipItem2);
-            this.btnSaveTask.SuperTip = superToolTip2;
+            toolTipTitleItem4.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
+            toolTipTitleItem4.Appearance.Options.UseImage = true;
+            toolTipTitleItem4.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem4.Image")));
+            toolTipTitleItem4.Text = "Save";
+            toolTipItem4.LeftIndent = 6;
+            toolTipItem4.Text = "To save client infroamtion click here.";
+            superToolTip4.Items.Add(toolTipTitleItem4);
+            superToolTip4.Items.Add(toolTipItem4);
+            this.btnSaveTask.SuperTip = superToolTip4;
             this.btnSaveTask.TabIndex = 28;
             this.btnSaveTask.Text = "&Save";
             this.btnSaveTask.Click += new System.EventHandler(this.btnSaveTask_Click);
             // 
             // cmbTransactionType
             // 
-            this.cmbTransactionType.Location = new System.Drawing.Point(128, 87);
+            this.cmbTransactionType.Location = new System.Drawing.Point(128, 109);
             this.cmbTransactionType.Name = "cmbTransactionType";
             this.cmbTransactionType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -399,7 +402,7 @@
             // 
             // lblTransactionTypeTitle
             // 
-            this.lblTransactionTypeTitle.Location = new System.Drawing.Point(35, 90);
+            this.lblTransactionTypeTitle.Location = new System.Drawing.Point(35, 112);
             this.lblTransactionTypeTitle.Name = "lblTransactionTypeTitle";
             this.lblTransactionTypeTitle.Size = new System.Drawing.Size(87, 13);
             this.lblTransactionTypeTitle.TabIndex = 31;
@@ -430,7 +433,7 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.splitContainerTransOperation.FixedPanel = DevExpress.XtraEditors.SplitFixedPanel.Panel2;
             this.splitContainerTransOperation.Horizontal = false;
-            this.splitContainerTransOperation.Location = new System.Drawing.Point(35, 180);
+            this.splitContainerTransOperation.Location = new System.Drawing.Point(35, 193);
             this.splitContainerTransOperation.Name = "splitContainerTransOperation";
             this.splitContainerTransOperation.Panel1.AutoScroll = true;
             this.splitContainerTransOperation.Panel1.Controls.Add(this.vGridTransaction);
@@ -440,8 +443,8 @@
             this.splitContainerTransOperation.Panel2.Controls.Add(this.labelControl9);
             this.splitContainerTransOperation.Panel2.Controls.Add(this.txtDescription);
             this.splitContainerTransOperation.Panel2.Text = "Description";
-            this.splitContainerTransOperation.Size = new System.Drawing.Size(532, 410);
-            this.splitContainerTransOperation.SplitterPosition = 111;
+            this.splitContainerTransOperation.Size = new System.Drawing.Size(532, 419);
+            this.splitContainerTransOperation.SplitterPosition = 89;
             this.splitContainerTransOperation.TabIndex = 8;
             this.splitContainerTransOperation.Text = "splitContainerControl1";
             this.splitContainerTransOperation.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainerTransOperation_Paint);
@@ -457,7 +460,7 @@
             this.repositoryItemComboBox1,
             this.repositoryItemTextEdit1,
             this.repositoryItemDateEdit1});
-            this.vGridTransaction.Size = new System.Drawing.Size(521, 261);
+            this.vGridTransaction.Size = new System.Drawing.Size(521, 292);
             this.vGridTransaction.TabIndex = 1;
             // 
             // repositoryItemComboBox1
@@ -521,11 +524,28 @@
             this.labelControl13.TabIndex = 38;
             this.labelControl13.Text = "Task Current Status";
             // 
+            // txtOthenThenClient
+            // 
+            this.txtOthenThenClient.Location = new System.Drawing.Point(128, 58);
+            this.txtOthenThenClient.Name = "txtOthenThenClient";
+            this.txtOthenThenClient.Size = new System.Drawing.Size(439, 20);
+            this.txtOthenThenClient.TabIndex = 2;
+            // 
+            // labelControl14
+            // 
+            this.labelControl14.Location = new System.Drawing.Point(37, 61);
+            this.labelControl14.Name = "labelControl14";
+            this.labelControl14.Size = new System.Drawing.Size(31, 13);
+            this.labelControl14.TabIndex = 40;
+            this.labelControl14.Text = "Name:";
+            // 
             // NewTaskCard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(935, 624);
+            this.Controls.Add(this.labelControl14);
+            this.Controls.Add(this.txtOthenThenClient);
             this.Controls.Add(this.cmbTaskStatus);
             this.Controls.Add(this.labelControl13);
             this.Controls.Add(this.cmbOwner);
@@ -589,6 +609,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbOwner.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbTaskStatus.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtOthenThenClient.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -637,6 +658,8 @@
         private DevExpress.XtraEditors.ComboBoxEdit cmbOwner;
         private DevExpress.XtraEditors.ComboBoxEdit cmbTaskStatus;
         private DevExpress.XtraEditors.LabelControl labelControl13;
+        private DevExpress.XtraEditors.TextEdit txtOthenThenClient;
+        private DevExpress.XtraEditors.LabelControl labelControl14;
     }
 }
 

@@ -127,6 +127,8 @@
             this.btnCloseTask = new DevExpress.XtraEditors.SimpleButton();
             this.btnSaveTask = new DevExpress.XtraEditors.SimpleButton();
             this.cmbOwner = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.txtOtherName = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl14 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.txtCreatedBy.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCreatedOn.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbAssignTo.Properties)).BeginInit();
@@ -167,6 +169,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtTitle.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbTaskStatus.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbOwner.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtOtherName.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // tileViewColumnCommentedByName
@@ -252,7 +255,7 @@
             // 
             // labelControl3
             // 
-            this.labelControl3.Location = new System.Drawing.Point(21, 143);
+            this.labelControl3.Location = new System.Drawing.Point(21, 170);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(24, 13);
             this.labelControl3.TabIndex = 6;
@@ -672,7 +675,6 @@
             this.tileViewColumnUpdatedOn.FieldName = "UpdatedOn";
             this.tileViewColumnUpdatedOn.LayoutViewField = this.layoutViewField_tileViewColumnUpdatedOn;
             this.tileViewColumnUpdatedOn.Name = "tileViewColumnUpdatedOn";
-            //this.tileViewColumnUpdatedOn.SortMode = DevExpress.XtraGrid.ColumnSortMode.Value;
             // 
             // layoutViewField_tileViewColumnUpdatedOn
             // 
@@ -779,7 +781,7 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.splitContainerTransOperation.FixedPanel = DevExpress.XtraEditors.SplitFixedPanel.Panel2;
             this.splitContainerTransOperation.Horizontal = false;
-            this.splitContainerTransOperation.Location = new System.Drawing.Point(21, 182);
+            this.splitContainerTransOperation.Location = new System.Drawing.Point(21, 200);
             this.splitContainerTransOperation.Name = "splitContainerTransOperation";
             this.splitContainerTransOperation.Panel1.AutoScroll = true;
             this.splitContainerTransOperation.Panel1.Controls.Add(this.vGridTransaction);
@@ -789,8 +791,8 @@
             this.splitContainerTransOperation.Panel2.Controls.Add(this.labelControl9);
             this.splitContainerTransOperation.Panel2.Controls.Add(this.txtDescription);
             this.splitContainerTransOperation.Panel2.Text = "Description";
-            this.splitContainerTransOperation.Size = new System.Drawing.Size(501, 403);
-            this.splitContainerTransOperation.SplitterPosition = 111;
+            this.splitContainerTransOperation.Size = new System.Drawing.Size(501, 385);
+            this.splitContainerTransOperation.SplitterPosition = 86;
             this.splitContainerTransOperation.TabIndex = 32;
             this.splitContainerTransOperation.Text = "splitContainerControl1";
             // 
@@ -805,7 +807,7 @@
             this.repositoryItemComboBox1,
             this.repositoryItemTextEdit1,
             this.repositoryItemDateEdit1});
-            this.vGridTransaction.Size = new System.Drawing.Size(490, 254);
+            this.vGridTransaction.Size = new System.Drawing.Size(490, 261);
             this.vGridTransaction.TabIndex = 1;
             // 
             // repositoryItemComboBox1
@@ -855,7 +857,7 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.txtDescription.Location = new System.Drawing.Point(6, 24);
             this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(492, 84);
+            this.txtDescription.Size = new System.Drawing.Size(492, 59);
             this.txtDescription.TabIndex = 9;
             // 
             // lblTransactionTypeTitle
@@ -931,7 +933,7 @@
             // 
             // txtTitle
             // 
-            this.txtTitle.Location = new System.Drawing.Point(113, 141);
+            this.txtTitle.Location = new System.Drawing.Point(113, 167);
             this.txtTitle.Name = "txtTitle";
             this.txtTitle.Size = new System.Drawing.Size(409, 20);
             this.txtTitle.TabIndex = 41;
@@ -1022,6 +1024,21 @@
             this.cmbOwner.TabIndex = 49;
             this.cmbOwner.SelectedIndexChanged += new System.EventHandler(this.cmbOwner_SelectedIndexChanged);
             // 
+            // txtOtherName
+            // 
+            this.txtOtherName.Location = new System.Drawing.Point(113, 141);
+            this.txtOtherName.Name = "txtOtherName";
+            this.txtOtherName.Size = new System.Drawing.Size(409, 20);
+            this.txtOtherName.TabIndex = 40;
+            // 
+            // labelControl14
+            // 
+            this.labelControl14.Location = new System.Drawing.Point(21, 143);
+            this.labelControl14.Name = "labelControl14";
+            this.labelControl14.Size = new System.Drawing.Size(31, 13);
+            this.labelControl14.TabIndex = 50;
+            this.labelControl14.Text = "Name:";
+            // 
             // ViewTaskCard
             // 
             this.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
@@ -1029,6 +1046,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1197, 598);
+            this.Controls.Add(this.txtOtherName);
+            this.Controls.Add(this.labelControl14);
             this.Controls.Add(this.cmbOwner);
             this.Controls.Add(this.btnCloseTask);
             this.Controls.Add(this.btnSaveTask);
@@ -1112,6 +1131,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtTitle.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbTaskStatus.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbOwner.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtOtherName.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1194,6 +1214,8 @@
         private DevExpress.XtraGrid.Views.Layout.LayoutViewField layoutViewField_tileViewColumnNewName;
         private DevExpress.XtraGrid.Views.Layout.LayoutViewCard layoutViewCard1;
         private DevExpress.XtraLayout.SimpleSeparator item1;
+        private DevExpress.XtraEditors.TextEdit txtOtherName;
+        private DevExpress.XtraEditors.LabelControl labelControl14;
     }
 }
 

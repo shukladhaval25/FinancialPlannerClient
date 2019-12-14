@@ -197,8 +197,10 @@ namespace FinancialPlannerClient.TaskManagementSystem
             taskCard.CompletedPercentage = int.Parse(txtCompletedPercentage.Text);
             taskCard.Description = txtDescription.Text;
             taskCard.MachineName = System.Environment.MachineName;
+            taskCard.OtherName = txtOthenThenClient.Text;
             if (cmbProject.Text == MUTUALFUND)
                 taskCard.TaskTransactionType = getTransactionType();
+            
             return taskCard;
         }
 
@@ -212,8 +214,7 @@ namespace FinancialPlannerClient.TaskManagementSystem
             if (cmbProject.Text == MUTUALFUND)
             {
                 if (!string.IsNullOrEmpty(cmbProject.Text) && !string.IsNullOrEmpty(cmbTransactionType.Text) &&
-                    !string.IsNullOrEmpty(cmbCardType.Text) && !string.IsNullOrEmpty(txtTitle.Text) &&
-                    !string.IsNullOrEmpty(cmbClient.Text))
+                    !string.IsNullOrEmpty(cmbCardType.Text) && !string.IsNullOrEmpty(txtTitle.Text))
                 {
                     return true;
                 }

@@ -1,5 +1,6 @@
 ﻿using FinancialPlanner.Common;
 using FinancialPlanner.Common.Model;
+using FinancialPlanner.Common.Permission;
 using FinancialPlannerClient.Master;
 using FinancialPlannerClient.TaskManagementSystem;
 using FinancialPlannerClient.TaskManagementSystem.TransactionOptions;
@@ -16,6 +17,7 @@ namespace FinancialPlannerClient
     {
         private static string _webServiceUrl;
         public static User CurrentUser;
+        public static Role CurrentUserRolePermission;
         public static IUnityContainer container = new UnityContainer();
         private static AssumptionMaster assumptionMaster;
         public static string WebServiceUrl
