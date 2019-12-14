@@ -50,7 +50,6 @@ namespace FinancialPlannerClient.Permissions
                 return null;
             }
         }
-
         private void LogDebug(string methodName, Exception ex)
         {
             DebuggerLogInfo debuggerInfo = new DebuggerLogInfo();

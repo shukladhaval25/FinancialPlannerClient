@@ -212,7 +212,7 @@ namespace FinancialPlannerClient.Clients
             "All",
             "Comprehensive Financial Plan",
             "Goal Plan",
-            "Portfolio  Management Service"});
+            "Portfolio Management Service"});
             this.cmbClientType.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.cmbClientType.Size = new System.Drawing.Size(180, 20);
             this.cmbClientType.TabIndex = 2;

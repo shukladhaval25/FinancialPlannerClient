@@ -1,10 +1,12 @@
 ﻿using Chilkat;
 using DevExpress.Utils;
 using DevExpress.XtraEditors;
+using DevExpress.XtraNavBar;
 using FinancialPlanner.Common;
 using FinancialPlanner.Common.DataConversion;
 using FinancialPlanner.Common.EmailManager;
 using FinancialPlanner.Common.Model;
+using FinancialPlanner.Common.Permission;
 using FinancialPlannerClient.Clients.MailService;
 using FinancialPlannerClient.Insurance;
 using FinancialPlannerClient.PlannerInfo;
@@ -353,9 +355,42 @@ namespace FinancialPlannerClient.Clients
 
         private void Clientdashboard_Load(object sender, EventArgs e)
         {
-
+            applyPermissionOnClientDashBoard();
         }
 
+        private void applyPermissionOnClientDashBoard()
+        {
+            List<RolePermission> rolePermission = (List<RolePermission>)Program.CurrentUserRolePermission.Permissions;
+
+            setPersonalInfoMenuPermission(rolePermission);          
+        }
+
+        
+
+        private void setPersonalInfoMenuPermission(List<RolePermission> rolePermission)
+        {
+            foreach (NavBarItemLink control in Personalnfo.ItemLinks)
+            {
+                setMenuControlPermission(rolePermission, control);
+            }
+            foreach(NavBarItemLink control in navBarGroupPlannerData.ItemLinks)
+            {
+                setMenuControlPermission(rolePermission, control);
+            }
+            foreach (NavBarItemLink control in navBarGroupPlanOption.ItemLinks)
+            {
+                setMenuControlPermission(rolePermission, control);
+            }
+        }
+
+        private static void setMenuControlPermission(List<RolePermission> rolePermission, NavBarItemLink control)
+        {
+            RolePermission permission = rolePermission.Find(x => x.FormName == control.Caption);
+            if (permission != null)
+                control.Visible = permission.IsView;
+            else
+                control.Visible = false;
+        }
         //private bool addNewNavigationPage(string pagename, DevExpress.XtraEditors.XtraForm xtraForm)
         //{
         //    bool result = false;

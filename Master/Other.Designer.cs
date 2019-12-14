@@ -48,7 +48,7 @@
             this.lblReligion = new DevExpress.XtraEditors.LabelControl();
             this.txtName = new DevExpress.XtraEditors.TextEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.btnCloseClientInfo = new DevExpress.XtraEditors.SimpleButton();
+            this.btnClose = new DevExpress.XtraEditors.SimpleButton();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
             this.gridControlOthers = new DevExpress.XtraGrid.GridControl();
             this.gridViewOthers = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -108,7 +108,7 @@
             this.grpItem.Controls.Add(this.lblReligion);
             this.grpItem.Controls.Add(this.txtName);
             this.grpItem.Controls.Add(this.labelControl1);
-            this.grpItem.Controls.Add(this.btnCloseClientInfo);
+            this.grpItem.Controls.Add(this.btnClose);
             this.grpItem.Controls.Add(this.btnSave);
             this.grpItem.Location = new System.Drawing.Point(224, 28);
             this.grpItem.Name = "grpItem";
@@ -145,13 +145,13 @@
             this.labelControl1.TabIndex = 25;
             this.labelControl1.Text = "Name:";
             // 
-            // btnCloseClientInfo
+            // btnClose
             // 
-            this.btnCloseClientInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCloseClientInfo.Image = ((System.Drawing.Image)(resources.GetObject("btnCloseClientInfo.Image")));
-            this.btnCloseClientInfo.Location = new System.Drawing.Point(278, 106);
-            this.btnCloseClientInfo.Name = "btnCloseClientInfo";
-            this.btnCloseClientInfo.Size = new System.Drawing.Size(62, 23);
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
+            this.btnClose.Location = new System.Drawing.Point(278, 106);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(62, 23);
             toolTipTitleItem3.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
             toolTipTitleItem3.Appearance.Options.UseImage = true;
             toolTipTitleItem3.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem3.Image")));
@@ -160,10 +160,10 @@
             toolTipItem3.Text = "To close client rating without saving any information click here.";
             superToolTip3.Items.Add(toolTipTitleItem3);
             superToolTip3.Items.Add(toolTipItem3);
-            this.btnCloseClientInfo.SuperTip = superToolTip3;
-            this.btnCloseClientInfo.TabIndex = 4;
-            this.btnCloseClientInfo.Text = "Close";
-            this.btnCloseClientInfo.Click += new System.EventHandler(this.btnCloseClientInfo_Click);
+            this.btnClose.SuperTip = superToolTip3;
+            this.btnClose.TabIndex = 4;
+            this.btnClose.Text = "Close";
+            this.btnClose.Click += new System.EventHandler(this.btnCloseClientInfo_Click);
             // 
             // btnSave
             // 
@@ -236,7 +236,7 @@
         private DevExpress.XtraEditors.GroupControl grpItem;
         private DevExpress.XtraEditors.TextEdit txtName;
         private DevExpress.XtraEditors.LabelControl labelControl1;
-        private DevExpress.XtraEditors.SimpleButton btnCloseClientInfo;
+        private DevExpress.XtraEditors.SimpleButton btnClose;
         private DevExpress.XtraEditors.SimpleButton btnSave;
         private DevExpress.XtraGrid.GridControl gridControlOthers;
         private DevExpress.XtraGrid.Views.Grid.GridView gridViewOthers;

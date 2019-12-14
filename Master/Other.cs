@@ -1,6 +1,8 @@
 ﻿using FinancialPlanner.Common;
 using FinancialPlanner.Common.Model;
 using FinancialPlanner.Common.Model.Masters;
+using FinancialPlanner.Common.Permission;
+using FinancialPlannerClient.Permissions;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,6 +21,7 @@ namespace FinancialPlannerClient.Master
 
         private DataTable _dtOtherItems;
         private IOtherItems _otherItems;
+        private string _formOptionName;
 
         List<ClientRating> clientRatings;
         public Other()
@@ -28,7 +31,8 @@ namespace FinancialPlannerClient.Master
         public Other(string option)
         {
             InitializeComponent();
-
+            _formOptionName = option;
+            ApplyPermission(option);
             switch (option)
             {
                 case "Festivals":
@@ -52,6 +56,22 @@ namespace FinancialPlannerClient.Master
             
             if (gridViewOthers.Columns.Count > 0 && this.Text != "Festivals Master")
                 gridViewOthers.Columns[0].Width = 220;
+        }
+
+        private void ApplyPermission(string option)
+        {
+            List<RolePermission> rolePermission = (List<RolePermission>)Program.CurrentUserRolePermission.Permissions;
+            RolePermission permission = rolePermission.Find(x => x.FormName == option);
+            if (permission != null)
+            {
+                btnAdd.Visible = permission.IsAdd;
+                btnDelete.Visible = permission.IsDelete;
+            }               
+            else
+            {
+                btnAdd.Visible = false;
+                btnDelete.Visible = false;
+            }
         }
 
         #region "Area"

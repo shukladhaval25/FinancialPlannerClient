@@ -256,7 +256,7 @@ namespace FinancialPlannerClient.Home
             // 
             // navBarItemCRMGroup
             // 
-            this.navBarItemCRMGroup.Caption = "CRM Group";
+            this.navBarItemCRMGroup.Caption = "CRM Groups";
             this.navBarItemCRMGroup.LargeImage = ((System.Drawing.Image)(resources.GetObject("navBarItemCRMGroup.LargeImage")));
             this.navBarItemCRMGroup.Name = "navBarItemCRMGroup";
             this.navBarItemCRMGroup.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarItemCRMGroup.SmallImage")));
@@ -326,6 +326,7 @@ namespace FinancialPlannerClient.Home
             // mavBarMasterGroup
             // 
             this.mavBarMasterGroup.Caption = "Masters";
+            this.mavBarMasterGroup.Expanded = true;
             this.mavBarMasterGroup.GroupStyle = DevExpress.XtraNavBar.NavBarGroupStyle.LargeIconsText;
             this.mavBarMasterGroup.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemCRMGroup),

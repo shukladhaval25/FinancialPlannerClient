@@ -64,6 +64,7 @@
             this.BankDetails = new DevExpress.XtraNavBar.NavBarItem();
             this.EmployeeInfo = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItemFamily = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarItemClientARN = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarGroupControlContainer1 = new DevExpress.XtraNavBar.NavBarGroupControlContainer();
             this.navBarControlPlanner = new DevExpress.XtraNavBar.NavBarControl();
             this.navBarGroupPlannerData = new DevExpress.XtraNavBar.NavBarGroup();
@@ -167,7 +168,6 @@
             this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.gridBand1 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.navBarItemClientARN = new DevExpress.XtraNavBar.NavBarItem();
             ((System.ComponentModel.ISupportInitialize)(this.panelMenu)).BeginInit();
             this.panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlNavCtrl)).BeginInit();
@@ -328,6 +328,13 @@
             this.navBarItemFamily.Name = "navBarItemFamily";
             this.navBarItemFamily.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarItemFamily.SmallImage")));
             this.navBarItemFamily.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItemFamily_LinkClicked);
+            // 
+            // navBarItemClientARN
+            // 
+            this.navBarItemClientARN.Caption = "Client ARN";
+            this.navBarItemClientARN.Name = "navBarItemClientARN";
+            this.navBarItemClientARN.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarItemClientARN.SmallImage")));
+            this.navBarItemClientARN.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItemClientARN_LinkClicked);
             // 
             // navBarGroupControlContainer1
             // 
@@ -889,6 +896,7 @@
             // navigationPageContactInfo
             // 
             this.navigationPageContactInfo.AutoScroll = true;
+            this.navigationPageContactInfo.Caption = "navigationPageContactInfo";
             this.navigationPageContactInfo.Name = "navigationPageContactInfo";
             this.navigationPageContactInfo.Size = new System.Drawing.Size(1004, 599);
             this.navigationPageContactInfo.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.navigationPageClient_ControlRemoved);
@@ -1413,13 +1421,6 @@
             this.gridBand1.Caption = "gridBand1";
             this.gridBand1.Name = "gridBand1";
             this.gridBand1.VisibleIndex = -1;
-            // 
-            // navBarItemClientARN
-            // 
-            this.navBarItemClientARN.Caption = "Client ARN";
-            this.navBarItemClientARN.Name = "navBarItemClientARN";
-            this.navBarItemClientARN.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarItemClientARN.SmallImage")));
-            this.navBarItemClientARN.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItemClientARN_LinkClicked);
             // 
             // Clientdashboard
             // 
