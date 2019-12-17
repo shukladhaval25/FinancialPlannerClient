@@ -9,7 +9,9 @@ using FinancialPlannerClient.ProspectCustomer;
 using FinancialPlannerClient.TaskManagementSystem;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Net;
+using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 
@@ -769,15 +771,22 @@ namespace FinancialPlannerClient.Home
                 clientdashboard.ShowDialog();
                 this.Visible = true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
+                LogDebug(currentMethodName.Name, ex);
             }
-
-
-
         }
-
+        private void LogDebug(string methodName, Exception ex)
+        {
+            DebuggerLogInfo debuggerInfo = new DebuggerLogInfo();
+            debuggerInfo.ClassName = this.GetType().Name;
+            debuggerInfo.Method = methodName;
+            debuggerInfo.ExceptionInfo = ex;
+            Logger.LogDebug(debuggerInfo);
+        }
         private void frmHome_FormClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)
         {
             try

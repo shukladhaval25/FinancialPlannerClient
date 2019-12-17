@@ -24,14 +24,19 @@ namespace FinancialPlannerClient.CashFlowManager
         public PostRetirementCashFlowService(Planner planner,
             CashFlowService cashFlowService)
         {
+            Logger.LogInfo("Post retirement cash flow service constructor call");
             this.planner = planner;         
             this.cashFlowService = cashFlowService;
             loadPlannerAssumption();
             double.TryParse( plannerAssumption.PostRetirementInvestmentReturnRate.ToString(),out invReturnRate);
+            Logger.LogInfo("Get cash flow calculation from cash flow service.");
             this.cashFlowCalculation = cashFlowService.GetCashFlowCalculation();
             //generateCashFlowCalculationData();
             this.retirementPlanningYearStartFrom = getRetirementYear();
+            Logger.LogInfo("Get retirment year :" + this.retirementPlanningYearStartFrom);
             this.expectedLifeEndYear = getExpectedLifeEndYear();
+            Logger.LogInfo("Get expected life end year :" + this.expectedLifeEndYear);
+            Logger.LogInfo("Post retirement cash flow service constructor call completed");
         }
         public CashFlowCalculation GetCashFlowCalculationData()
         {
@@ -48,7 +53,17 @@ namespace FinancialPlannerClient.CashFlowManager
         }
         private void loadPlannerAssumption()
         {
+            Logger.LogInfo("Load planner assumption start");
             plannerAssumption = new PlannerAssumptionInfo().GetAll(this.planner.ID);
+            if (plannerAssumption.ClientLifeExpectancy == 0 && 
+                plannerAssumption.ClientRetirementAge == 0 && 
+                plannerAssumption.PostRetirementInflactionRate == 0
+                )
+            {
+                DevExpress.XtraEditors.XtraMessageBox.Show("Please check assumption infromation are correct.", "Assumption Information");
+                throw new DataMisalignedException();
+            }
+            Logger.LogInfo("Load planner assumption completed");
         }
         private int getRetirementYear()
         {
@@ -95,6 +110,7 @@ namespace FinancialPlannerClient.CashFlowManager
 
         public DataTable GetPostRetirementCashFlowData()
         {
+            Logger.LogInfo("GetPostRetirementCashFlowData call start");
             createRetiremtnCashFlowTable();
             for (int i = retirementPlanningYearStartFrom + 1; i <= expectedLifeEndYear; i++)
             {
@@ -111,10 +127,12 @@ namespace FinancialPlannerClient.CashFlowManager
                 _dtRetirementCashFlow.Rows.Add(dr);
             }
             calculateEstimatedRequireCorpusFund();
+            Logger.LogInfo("GetPostRetirementCashFlowData call end");
             return _dtRetirementCashFlow;
         }
         public void calculateEstimatedRequireCorpusFund()
         {
+            Logger.LogInfo("calculateEstimatedRequireCorpusFund for post retirment cash flow service start");
             for (int i = _dtRetirementCashFlow.Rows.Count - 1; i >= 1; i--)
             {
                 double totalExpAmount = (double.Parse(_dtRetirementCashFlow.Rows[i]["Total Annual Expenses"].ToString()) -
@@ -137,7 +155,8 @@ namespace FinancialPlannerClient.CashFlowManager
 
 
             double totalExpAmountForFirstRow = (double.Parse(_dtRetirementCashFlow.Rows[0]["Total Annual Expenses"].ToString()));
-            proposeEstimatedCorpusFundRequire = proposeEstimatedCorpusFundRequire + totalExpAmountForFirstRow;           
+            proposeEstimatedCorpusFundRequire = proposeEstimatedCorpusFundRequire + totalExpAmountForFirstRow;
+            Logger.LogInfo("calculateEstimatedRequireCorpusFund for post retirment cash flow service end");
         }
         #region "Income Section"
         private void generateIncomeColumns()
@@ -192,6 +211,7 @@ namespace FinancialPlannerClient.CashFlowManager
 
         private void addIncomeCalculation(int years, DataRow dr, int clientRetYear, int spouseRetYear)
         {
+            Logger.LogInfo("addIncomeCalculation for post retirment cash flow service start");
             long totalIncome = 0;
             int incomeEndYear = 0;
             long totalTaxAmt = 0;
@@ -237,6 +257,7 @@ namespace FinancialPlannerClient.CashFlowManager
             dr["Total Income"] = totalIncome;
             dr["Total Tax Deduction"] = totalTaxAmt;
             dr["Total Post Tax Income"] = totalPostTaxIncome;
+            Logger.LogInfo("addIncomeCalculation for post retirment cash flow service end");
         }
 
         private long getIncomeAmount(Income income,int year)
@@ -272,15 +293,18 @@ namespace FinancialPlannerClient.CashFlowManager
         #region "Expenses"
         private void generateExpensesColumns()
         {
-            
+
             #region "Expenses Calculation" 
-            foreach (Goals goal in cashFlowCalculation.LstGoals)
+            if (cashFlowCalculation.LstGoals != null)
             {
-                if (goal.Category == "Retirement" || int.Parse(goal.StartYear) > this.retirementPlanningYearStartFrom)
+                foreach (Goals goal in cashFlowCalculation.LstGoals)
                 {
-                    DataColumn dcExp = new DataColumn(goal.Name, typeof(System.Double));
-                    dcExp.ReadOnly = true;
-                    _dtRetirementCashFlow.Columns.Add(dcExp);
+                    if (goal.Category == "Retirement" || int.Parse(goal.StartYear) > this.retirementPlanningYearStartFrom)
+                    {
+                        DataColumn dcExp = new DataColumn(goal.Name, typeof(System.Double));
+                        dcExp.ReadOnly = true;
+                        _dtRetirementCashFlow.Columns.Add(dcExp);
+                    }
                 }
             }
             _dtRetirementCashFlow.Columns.Add("Total Annual Expenses", typeof(System.Double));
@@ -288,22 +312,26 @@ namespace FinancialPlannerClient.CashFlowManager
         }
         private void addExpenesCalculation(int years, DataRow dr)
         {
-           
+            Logger.LogInfo("addExpenesCalculation for post retirment cash flow service start");
             double totalExpenses = 0;
-            foreach (Goals  goal in cashFlowCalculation.LstGoals)
+            if (cashFlowCalculation.LstGoals != null)
             {
-                if (goal.Category == "Retirement" || int.Parse(goal.StartYear) == years)
+                foreach (Goals goal in cashFlowCalculation.LstGoals)
                 {
-                    double retExp = getPostRetirementExpWithInfluationRate(dr, years, goal);                    
-                    dr[goal.Name] = retExp;
-                    totalExpenses = totalExpenses + retExp;                    
-                }               
+                    if (goal.Category == "Retirement" || int.Parse(goal.StartYear) == years)
+                    {
+                        double retExp = getPostRetirementExpWithInfluationRate(dr, years, goal);
+                        dr[goal.Name] = retExp;
+                        totalExpenses = totalExpenses + retExp;
+                    }
+                }
             }
             dr["Total Annual Expenses"] = totalExpenses;
             corpusFundBalance = corpusFundBalance - (totalExpenses - double.Parse(dr["Total Post Tax Income" +
                 ""].ToString()) );
             corpusFundBalance = corpusFundBalance + ((corpusFundBalance * invReturnRate) / 100);
             dr["Rem_Corp_Fund"] = Math.Round(corpusFundBalance, 2) ;
+            Logger.LogInfo("addExpenesCalculation for post retirment cash flow service end");
         }
 
         private double getPostRetirementExpWithInfluationRate(DataRow dr, int years, Goals goal)
@@ -316,8 +344,11 @@ namespace FinancialPlannerClient.CashFlowManager
             }
             else
             {
-                double previouYearExp = double.Parse(_dtRetirementCashFlow.Rows[_dtRetirementCashFlow.Rows.Count - 1][goal.Name].ToString());
-                retExp = previouYearExp + ((previouYearExp * double.Parse(plannerAssumption.PostRetirementInflactionRate.ToString())) / 100);
+                if (_dtRetirementCashFlow.Rows.Count > 0)
+                {
+                    double previouYearExp = double.Parse(_dtRetirementCashFlow.Rows[_dtRetirementCashFlow.Rows.Count - 1][goal.Name].ToString());
+                    retExp = previouYearExp + ((previouYearExp * double.Parse(plannerAssumption.PostRetirementInflactionRate.ToString())) / 100);
+                }
             }
             return retExp;
         }

@@ -39,16 +39,18 @@ namespace FinancialPlannerClient.PlanOptions
             dr["CurrentStatusMappedAmount"] = 0;
             dr["ExcessFund"] = getExcessFundFromCurrentStatus();
             _dtmoneyToGoals.Rows.Add(dr);
-
-            foreach (Goals goal in goals)
+            if (goals != null)
             {
-                dr = _dtmoneyToGoals.NewRow();
-                dr["GoalId"] = goal.Id;
-                dr["Goal"] = goal.Name;
-                double csAllocatedFund = getCurrentStatusFundForMappedGoal(goal.Id);
-                dr["CurrentStatusMappedAmount"] = csAllocatedFund;
-                dr["ExcessFund"] = double.Parse(_dtmoneyToGoals.Rows[_dtmoneyToGoals.Rows.Count - 1]["ExcessFund"].ToString()) - csAllocatedFund;
-                _dtmoneyToGoals.Rows.Add(dr);
+                foreach (Goals goal in goals)
+                {
+                    dr = _dtmoneyToGoals.NewRow();
+                    dr["GoalId"] = goal.Id;
+                    dr["Goal"] = goal.Name;
+                    double csAllocatedFund = getCurrentStatusFundForMappedGoal(goal.Id);
+                    dr["CurrentStatusMappedAmount"] = csAllocatedFund;
+                    dr["ExcessFund"] = double.Parse(_dtmoneyToGoals.Rows[_dtmoneyToGoals.Rows.Count - 1]["ExcessFund"].ToString()) - csAllocatedFund;
+                    _dtmoneyToGoals.Rows.Add(dr);
+                }
             }
 
             dr = _dtmoneyToGoals.NewRow();

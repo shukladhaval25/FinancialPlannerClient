@@ -39,9 +39,12 @@ namespace FinancialPlannerClient.PlanOptions
 
         private void CashFlowView_Load(object sender, EventArgs e)
         {
+            Logger.LogInfo("Cash flow load...");
             try
             {
+                Logger.LogInfo("Get Cash Flow.");
                 CashFlow cf = cashFlowService.GetCashFlow(_optionId);
+                Logger.LogInfo("Generate cash flow");
                 _dtcashFlow = cashFlowService.GenerateCashFlow(this._clientId, this._planId, _riskProfileId);
                 grdSplitCashFlow.DataSource = _dtcashFlow;
                 //grdSplitCashFlow.CreateSplitContainer();
@@ -57,8 +60,10 @@ namespace FinancialPlannerClient.PlanOptions
             }
             catch(Exception ex)
             {
+                Logger.LogDebug("Cash flow load process exception:" + ex.ToString());
                 System.Windows.Forms.MessageBox.Show("Exception:" + ex.ToString());
             }
+            Logger.LogInfo("Cash flow load process completed.");
         }
 
         private void btnExport_Click(object sender, EventArgs e)

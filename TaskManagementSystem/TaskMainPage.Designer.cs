@@ -40,7 +40,7 @@
             this.btnClose = new DevExpress.XtraEditors.SimpleButton();
             this.btnUser = new DevExpress.XtraEditors.SimpleButton();
             this.btnOverDue = new DevExpress.XtraEditors.SimpleButton();
-            this.btnStatusWiseTask = new DevExpress.XtraEditors.SimpleButton();
+            this.btnReports = new DevExpress.XtraEditors.SimpleButton();
             this.btnAllTask = new DevExpress.XtraEditors.SimpleButton();
             this.btnAssingToMe = new DevExpress.XtraEditors.SimpleButton();
             this.btnNewTask = new DevExpress.XtraEditors.SimpleButton();
@@ -87,6 +87,7 @@
             // 
             // navigationPageDeshboard
             // 
+            this.navigationPageDeshboard.Caption = "navigationPageDeshboard";
             this.navigationPageDeshboard.Name = "navigationPageDeshboard";
             this.navigationPageDeshboard.Size = new System.Drawing.Size(1126, 629);
             // 
@@ -103,7 +104,7 @@
             this.pnlTaskMenu.Controls.Add(this.btnClose);
             this.pnlTaskMenu.Controls.Add(this.btnUser);
             this.pnlTaskMenu.Controls.Add(this.btnOverDue);
-            this.pnlTaskMenu.Controls.Add(this.btnStatusWiseTask);
+            this.pnlTaskMenu.Controls.Add(this.btnReports);
             this.pnlTaskMenu.Controls.Add(this.btnAllTask);
             this.pnlTaskMenu.Controls.Add(this.btnAssingToMe);
             this.pnlTaskMenu.Controls.Add(this.btnNewTask);
@@ -118,11 +119,12 @@
             // 
             this.btnMyReminders.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter;
             this.btnMyReminders.ImageUri.Uri = "TimeLineView;Size32x32";
-            this.btnMyReminders.Location = new System.Drawing.Point(3, 435);
+            this.btnMyReminders.Location = new System.Drawing.Point(3, 547);
             this.btnMyReminders.Name = "btnMyReminders";
             this.btnMyReminders.Size = new System.Drawing.Size(72, 52);
             this.btnMyReminders.TabIndex = 8;
             this.btnMyReminders.Text = "Reminders";
+            this.btnMyReminders.Visible = false;
             this.btnMyReminders.Click += new System.EventHandler(this.btnMyReminders_Click);
             // 
             // btnNotification
@@ -140,7 +142,7 @@
             // 
             this.btnClose.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter;
             this.btnClose.ImageUri.Uri = "Close;Size32x32";
-            this.btnClose.Location = new System.Drawing.Point(3, 489);
+            this.btnClose.Location = new System.Drawing.Point(3, 439);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(72, 52);
             this.btnClose.TabIndex = 9;
@@ -163,22 +165,23 @@
             // 
             this.btnOverDue.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter;
             this.btnOverDue.ImageUri.Uri = "Today;Size32x32";
-            this.btnOverDue.Location = new System.Drawing.Point(3, 273);
+            this.btnOverDue.Location = new System.Drawing.Point(3, 219);
             this.btnOverDue.Name = "btnOverDue";
             this.btnOverDue.Size = new System.Drawing.Size(72, 52);
             this.btnOverDue.TabIndex = 5;
             this.btnOverDue.Text = "My Overdue";
             this.btnOverDue.Click += new System.EventHandler(this.btnOverDue_Click);
             // 
-            // btnStatusWiseTask
+            // btnReports
             // 
-            this.btnStatusWiseTask.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter;
-            this.btnStatusWiseTask.ImageUri.Uri = "Columns;Size32x32";
-            this.btnStatusWiseTask.Location = new System.Drawing.Point(3, 219);
-            this.btnStatusWiseTask.Name = "btnStatusWiseTask";
-            this.btnStatusWiseTask.Size = new System.Drawing.Size(72, 52);
-            this.btnStatusWiseTask.TabIndex = 4;
-            this.btnStatusWiseTask.Text = "Status Wise";
+            this.btnReports.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter;
+            this.btnReports.ImageUri.Uri = "Columns;Size32x32";
+            this.btnReports.Location = new System.Drawing.Point(3, 273);
+            this.btnReports.Name = "btnReports";
+            this.btnReports.Size = new System.Drawing.Size(72, 52);
+            this.btnReports.TabIndex = 4;
+            this.btnReports.Text = "Reports";
+            this.btnReports.Click += new System.EventHandler(this.btnReports_Click);
             // 
             // btnAllTask
             // 
@@ -265,7 +268,7 @@
         private DevExpress.XtraEditors.SimpleButton btnNewTask;
         private DevExpress.XtraEditors.SimpleButton btnProjects;
         private DevExpress.XtraEditors.SimpleButton btnAllTask;
-        private DevExpress.XtraEditors.SimpleButton btnStatusWiseTask;
+        private DevExpress.XtraEditors.SimpleButton btnReports;
         private DevExpress.XtraEditors.SimpleButton btnClose;
         private DevExpress.XtraEditors.SimpleButton btnUser;
         private DevExpress.XtraEditors.SimpleButton btnOverDue;

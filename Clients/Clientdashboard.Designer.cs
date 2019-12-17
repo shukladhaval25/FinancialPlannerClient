@@ -291,7 +291,6 @@
             // Personalnfo
             // 
             this.Personalnfo.Caption = "Personal Info";
-            this.Personalnfo.Expanded = true;
             this.Personalnfo.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.ContactInfo),
             new DevExpress.XtraNavBar.NavBarItemLink(this.BankDetails),
@@ -376,7 +375,6 @@
             // navBarGroupPlannerData
             // 
             this.navBarGroupPlannerData.Caption = "Planner Data";
-            this.navBarGroupPlannerData.Expanded = true;
             this.navBarGroupPlannerData.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemAssumptions),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemGoals),
@@ -431,7 +429,6 @@
             // navBarGroupPlanOption
             // 
             this.navBarGroupPlanOption.Caption = "Plan Option";
-            this.navBarGroupPlanOption.Expanded = true;
             this.navBarGroupPlanOption.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemRiskProfile),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemEstimatedPlan),
@@ -896,7 +893,6 @@
             // navigationPageContactInfo
             // 
             this.navigationPageContactInfo.AutoScroll = true;
-            this.navigationPageContactInfo.Caption = "navigationPageContactInfo";
             this.navigationPageContactInfo.Name = "navigationPageContactInfo";
             this.navigationPageContactInfo.Size = new System.Drawing.Size(1004, 599);
             this.navigationPageContactInfo.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.navigationPageClient_ControlRemoved);

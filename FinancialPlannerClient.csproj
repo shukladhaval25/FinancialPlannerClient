@@ -758,6 +758,12 @@
     <Compile Include="TaskManagementSystem\TaskHistoryInfo.cs" />
     <Compile Include="TaskManagementSystem\TaskNotificationInfo.cs" />
     <Compile Include="TaskManagementSystem\TaskCommentInfo.cs" />
+    <Compile Include="TaskManagementSystem\TaskReports.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TaskManagementSystem\TaskReports.Designer.cs">
+      <DependentUpon>TaskReports.cs</DependentUpon>
+    </Compile>
     <Compile Include="TaskManagementSystem\TransactionOptions\AdditionalPurchase.cs" />
     <Compile Include="TaskManagementSystem\TransactionOptions\ChangeOfNameTrans.cs" />
     <Compile Include="TaskManagementSystem\TransactionOptions\NominationTrans.cs" />
@@ -1146,6 +1152,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TaskManagementSystem\TaskCommentView.resx">
       <DependentUpon>TaskCommentView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TaskManagementSystem\TaskReports.resx">
+      <DependentUpon>TaskReports.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TaskManagementSystem\ViewTaskCard.resx">
       <DependentUpon>ViewTaskCard.cs</DependentUpon>

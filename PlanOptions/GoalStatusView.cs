@@ -167,10 +167,12 @@ namespace FinancialPlannerClient.PlanOptions
             try
             {
                 cmbCurrentStsatusToGoal.Properties.Items.Clear();
-
-                foreach (var goal in _goals)
+                if (_goals != null)
                 {
-                    cmbCurrentStsatusToGoal.Properties.Items.Add(goal.Name);
+                    foreach (var goal in _goals)
+                    {
+                        cmbCurrentStsatusToGoal.Properties.Items.Add(goal.Name);
+                    }
                 }
 
                 _currentStatusToGoal = new CurrentStatusInfo().GetCurrentStatusToGoal(this.optionId,this.planner.ID);

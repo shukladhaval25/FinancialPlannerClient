@@ -202,5 +202,10 @@ namespace FinancialPlannerClient.TaskManagementSystem
             navigationPageDeshboard.Controls.Add(allTask);
             showNavigationPage(allTask.Name);
         }
+
+        private void btnReports_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Comming soon....");
+        }
     }
 }

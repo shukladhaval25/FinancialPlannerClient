@@ -27,6 +27,9 @@ namespace FinancialPlannerClient.PlanOptions
 
         public EstimatedPlan(PersonalInformation personalInformation, Planner planner)
         {
+            if (personalInformation == null)
+                Logger.LogInfo("Personal information is not available.");
+
             WaitDialogForm waitdlg = new WaitDialogForm("Loading Data...");
             InitializeComponent();
             if (planner == null)
@@ -45,6 +48,7 @@ namespace FinancialPlannerClient.PlanOptions
         {
             try
             {
+                Logger.LogInfo("Start displaying planner information");
                 this.planner = planner;
                 lblPlanName.Text = this.planner.Name;
                 string startMonth = System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(this.planner.PlannerStartMonth);
@@ -52,6 +56,7 @@ namespace FinancialPlannerClient.PlanOptions
                     new DateTime(2000, this.planner.PlannerStartMonth, 1).AddMonths(-1).Month);
                 lblPlanPeriod.Text = string.Format("{0} - {1}", startMonth, endMonth);
                 lblStartDate.Text = this.planner.StartDate.ToShortDateString();
+                Logger.LogInfo("End displaying planner information");
             }
             catch(Exception ex)
             {
@@ -74,6 +79,7 @@ namespace FinancialPlannerClient.PlanOptions
         private void fillOptionData()
         {
             cmbPlanOption.Properties.Items.Clear();
+            Logger.LogInfo("Fill planner option data process start");
             _dtOption = new PlanOptionInfo().GetAll(this.planner.ID);
             if (_dtOption != null)
             {
@@ -85,8 +91,10 @@ namespace FinancialPlannerClient.PlanOptions
                         cmbPlanOption.Properties.Items.Add(dr.Field<string>("Name"));
                     }
                     cmbPlanOption.SelectedIndex = 0;
-                }
+                    Logger.LogInfo("Fill up data with planner options");
+                }    
             }
+            Logger.LogInfo("Fill planner option data process end");
         }
 
         private void cmbPlanOption_SelectedIndexChanged(object sender, EventArgs e)
@@ -105,6 +113,7 @@ namespace FinancialPlannerClient.PlanOptions
 
         private void showCashFlow()
         {
+            Logger.LogInfo("Start show cash flow data.");
             if (!string.IsNullOrEmpty(cmbPlanOption.Text))
             {
                 CashFlowView cashFlowView = new CashFlowView(this.personalInformation.Client.ID, this.planner.ID,
@@ -118,11 +127,12 @@ namespace FinancialPlannerClient.PlanOptions
                 cashFlowService = cashFlowView.GetCashFlowService();
             }
             tabEstimatedPlan.SelectedPage = tabNavigationPageCashFlow;
+            Logger.LogInfo("End show cash flow data.");
         }
 
         private void loadRiskProfileData()
         {
-
+            Logger.LogInfo("Load risk profile data start");
             FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
             string apiurl = Program.WebServiceUrl + "/" + RISKPROFILE_GETALL;
 
@@ -136,6 +146,8 @@ namespace FinancialPlannerClient.PlanOptions
             }
             else
                 MessageBox.Show(restResult.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            Logger.LogInfo("Load risk profile data completed");
         }
 
         private void EstimatedPlan_Load(object sender, EventArgs e)

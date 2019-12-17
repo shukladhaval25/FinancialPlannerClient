@@ -1,10 +1,7 @@
-﻿using Chilkat;
-using DevExpress.Utils;
-using DevExpress.XtraEditors;
+﻿using DevExpress.XtraEditors;
 using DevExpress.XtraNavBar;
 using FinancialPlanner.Common;
 using FinancialPlanner.Common.DataConversion;
-using FinancialPlanner.Common.EmailManager;
 using FinancialPlanner.Common.Model;
 using FinancialPlanner.Common.Permission;
 using FinancialPlannerClient.Clients.MailService;
@@ -21,8 +18,6 @@ using System.Linq;
 using System.Net;
 using System.Reflection;
 using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FinancialPlannerClient.Clients
@@ -360,8 +355,10 @@ namespace FinancialPlannerClient.Clients
 
         private void applyPermissionOnClientDashBoard()
         {
-            List<RolePermission> rolePermission = (List<RolePermission>)Program.CurrentUserRolePermission.Permissions;
+            if (Program.CurrentUserRolePermission.Name == "Admin")
+                return;
 
+            List<RolePermission> rolePermission = (List<RolePermission>)Program.CurrentUserRolePermission.Permissions;
             setPersonalInfoMenuPermission(rolePermission);          
         }
 
