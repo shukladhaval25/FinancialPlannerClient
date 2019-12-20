@@ -24,7 +24,8 @@ namespace FinancialPlannerClient.Master.TaskMaster
         }
 
         private void SchemeView_Load(object sender, EventArgs e)
-        {            
+        {
+            Program.ApplyPermission(this.Tag.ToString(), this);
             loadAMC();
             loadSchmeCategory();
             fillupScheme();

@@ -86,5 +86,78 @@ namespace FinancialPlannerClient
             }
             return assumptionMaster;
         }
+
+        public static void ApplyPermission(string option,Form form)
+        {
+            if (CurrentUserRolePermission.Name == "Admin")
+                return;
+
+            List<RolePermission> rolePermission = (List<RolePermission>)Program.CurrentUserRolePermission.Permissions;
+            RolePermission permission = rolePermission.Find(x => x.FormName == option);
+            if (permission != null)
+            {
+                setControlsVisibility(form, permission);
+            }
+            else
+            {
+                disableAllControls(form);
+            }
+        }
+
+        private static void setControlsVisibility(Form form, RolePermission permission)
+        {
+            foreach (Control control in form.Controls)
+            {
+                setControlVisibility(permission, control);
+            }
+        }
+
+        private static void setControlVisibility(RolePermission permission, Control control)
+        {
+            string type = control.GetType().ToString();
+            if (type == "DevExpress.XtraEditors.SimpleButton" &&
+                (control.Name == "btnDelete" || control.Name == "btnEdit") ||
+                control.Name == "btnAdd" || control.Name == "btnSave")
+            {
+                if (control.Name == "btnDelete")
+                {
+                    control.Visible = permission.IsDelete;
+                }
+                if (control.Name == "btnEdit")
+                {
+                    control.Visible = permission.IsUpdate;
+                }
+                if (control.Name == "btnAdd")
+                {
+                    control.Visible = permission.IsAdd;
+                }
+                //if (control.Name == "btnSave" &&
+                //    permission.IsAdd == false && permission.IsUpdate == false)
+                //{
+                //    control.Visible = false;
+                //}
+            }
+            else if (control.Controls.Count > 0)
+            {
+                foreach(Control childControl in control.Controls)
+                {
+                    setControlVisibility(permission, childControl);
+                }
+            }
+        }
+
+        private static void disableAllControls(Form form)
+        {
+            foreach (Control control in form.Controls)
+            {
+                string type = control.GetType().ToString();
+                if (type == "DevExpress.XtraEditors.SimpleButton" &&
+                    (control.Name == "btnDelete" || control.Name == "btnEdit") ||
+                    control.Name == "btnAdd" || control.Name == "btnSave")
+                {
+                    control.Visible = false;
+                }
+            }
+        }
     }
 }

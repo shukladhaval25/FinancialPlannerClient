@@ -1,4 +1,5 @@
 ﻿using FinancialPlanner.Common.Model;
+using FinancialPlanner.Common.Permission;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -133,10 +134,24 @@ namespace FinancialPlannerClient.Master
 
         private void AssumptionMasters_Load(object sender, EventArgs e)
         {
+
             assumptionMaster = Program.GetAssumptionMaster();
             fillupAssumptionInfo();
         }
 
+        private void ApplyPermission(string option)
+        {
+            List<RolePermission> rolePermission = (List<RolePermission>)Program.CurrentUserRolePermission.Permissions;
+            RolePermission permission = rolePermission.Find(x => x.FormName == option);
+            if (permission != null)
+            {
+                btnSaveAssumption.Visible = permission.IsAdd || permission.IsUpdate;
+            }
+            else
+            {
+                btnSaveAssumption.Visible = false;
+            }
+        }
         private void btnCloseClientInfo_Click(object sender, EventArgs e)
         {
             this.Close();

@@ -205,7 +205,24 @@ namespace FinancialPlannerClient.TaskManagementSystem
 
         private void btnReports_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Comming soon....");
+            try
+            {
+                navigationPageDeshboard.Controls.Clear();
+                TaskReports  taskReports = new TaskReports();
+                taskReports.Visible = true;
+                navigationPageDeshboard.Name = taskReports.Name;
+                navigationPageDeshboard.Controls.Add(taskReports);
+                taskReports.Dock = DockStyle.Fill;
+                taskReports.Show();
+                showNavigationPage(taskReports.Name);
+            }
+            catch (Exception ex)
+            {
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
+                LogDebug(currentMethodName.Name, ex);
+            }
         }
     }
 }

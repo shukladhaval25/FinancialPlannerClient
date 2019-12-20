@@ -3,6 +3,7 @@ using FinancialPlanner.Common.DataConversion;
 using FinancialPlanner.Common.Model;
 using FinancialPlanner.Common.Model.Masters;
 using FinancialPlanner.Common.Model.TaskManagement.MFTransactions;
+using FinancialPlanner.Common.Permission;
 using FinancialPlannerClient.Master;
 using FinancialPlannerClient.Master.TaskMaster;
 using FinancialPlannerClient.TaskManagementSystem;
@@ -48,11 +49,33 @@ namespace FinancialPlannerClient.PlanOptions
 
         private void InvestmentRecomendationView_Load(object sender, EventArgs e)
         {
+            setPermission();
             loadInvestmentRatioInfo();
             loadAMC();
             loadLumsumInvestment();
             loadSTPInvestment();
             loadSIPInvestment();
+        }
+
+        private void setPermission()
+        {
+            List<RolePermission> rolePermission = (List<RolePermission>)Program.CurrentUserRolePermission.Permissions;
+            RolePermission permission = rolePermission.Find(x => x.FormName.Trim() == "Investment Recommendation");
+
+            if (permission == null)
+            {
+                btnAddInvestment.Visible = false;
+                btnDeleteLumsum.Visible = false;
+                btnDeleteSIPInvestement.Visible = false;
+                btnDeleteSTPInvestementRecommendation.Visible = false;
+            }
+            else
+            {
+                btnAddInvestment.Visible = permission.IsAdd;
+                btnDeleteLumsum.Visible = permission.IsDelete;
+                btnDeleteSIPInvestement.Visible = permission.IsDelete;
+                btnDeleteSTPInvestementRecommendation.Visible = permission.IsDelete;
+            }
         }
 
         private void loadInvestmentRatioInfo()
@@ -91,7 +114,7 @@ namespace FinancialPlannerClient.PlanOptions
             calculateEquityDebtRatio(dtInvestmentRatio, totalAmount);
         }
 
-        private void calculateEquityDebtRatio( DataTable dtInvestmentRatio, double totalAmount)
+        private void calculateEquityDebtRatio(DataTable dtInvestmentRatio, double totalAmount)
         {
             if (dtInvestmentRatio.Rows.Count == 0)
                 return;
@@ -471,7 +494,7 @@ namespace FinancialPlannerClient.PlanOptions
                     if (lumsumInvestmentRecomendationHelper.Save(investmentRecomendation))
                     {
                         if (chkSTPApply.Checked)
-                        {                           
+                        {
                             STPTypeInvestmentRecomendation stpInvestmentRecomendation = getSTPInvestment();
                             if (stpInvestmentRecommendationHelper.Save(stpInvestmentRecomendation))
                             {
@@ -576,7 +599,7 @@ namespace FinancialPlannerClient.PlanOptions
             stpInvestmentRecomendation.MachineName = Environment.MachineName;
             if (stpInvestmentRecomendation.Duration > 0)
             {
-                stpInvestmentRecomendation.Amount = Math.Round(lumsumInvestmentAmount /  stpInvestmentRecomendation.Duration);                
+                stpInvestmentRecomendation.Amount = Math.Round(lumsumInvestmentAmount / stpInvestmentRecomendation.Duration);
             }
             stpInvestmentRecomendation.LumsumAmount = lumsumInvestmentAmount;
             return stpInvestmentRecomendation;
@@ -710,7 +733,7 @@ namespace FinancialPlannerClient.PlanOptions
 
         private void cmbScheme_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (cmbScheme.SelectedItem  != null)
+            if (cmbScheme.SelectedItem != null)
             {
                 rdoInvestmentType_SelectedIndexChanged(sender, e);
             }

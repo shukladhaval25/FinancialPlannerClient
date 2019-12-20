@@ -366,11 +366,13 @@ namespace FinancialPlannerClient.Clients
 
         private void setPersonalInfoMenuPermission(List<RolePermission> rolePermission)
         {
+            setVisibilityForViewClientInfoBasedOnPermission(rolePermission);
+
             foreach (NavBarItemLink control in Personalnfo.ItemLinks)
             {
                 setMenuControlPermission(rolePermission, control);
             }
-            foreach(NavBarItemLink control in navBarGroupPlannerData.ItemLinks)
+            foreach (NavBarItemLink control in navBarGroupPlannerData.ItemLinks)
             {
                 setMenuControlPermission(rolePermission, control);
             }
@@ -380,9 +382,18 @@ namespace FinancialPlannerClient.Clients
             }
         }
 
+        private void setVisibilityForViewClientInfoBasedOnPermission(List<RolePermission> rolePermission)
+        {
+            RolePermission permission = rolePermission.Find(x => x.FormName == "Client View Details");
+            if (permission != null)
+                btnViewClientInfo.Visible = permission.IsView;
+            else
+                btnViewClientInfo.Visible = false;
+        }
+
         private static void setMenuControlPermission(List<RolePermission> rolePermission, NavBarItemLink control)
         {
-            RolePermission permission = rolePermission.Find(x => x.FormName == control.Caption);
+            RolePermission permission = rolePermission.Find(x => x.FormName.Trim() == control.Caption.Trim());
             if (permission != null)
                 control.Visible = permission.IsView;
             else

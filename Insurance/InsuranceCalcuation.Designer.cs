@@ -61,12 +61,13 @@
             // 
             // gridInsuranceCoverage
             // 
-            this.gridInsuranceCoverage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.gridInsuranceCoverage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.gridInsuranceCoverage.Location = new System.Drawing.Point(12, 47);
             this.gridInsuranceCoverage.MainView = this.gridViewInsuranceCoverage;
             this.gridInsuranceCoverage.Name = "gridInsuranceCoverage";
-            this.gridInsuranceCoverage.Size = new System.Drawing.Size(537, 377);
+            this.gridInsuranceCoverage.Size = new System.Drawing.Size(937, 223);
             this.gridInsuranceCoverage.TabIndex = 8;
             this.gridInsuranceCoverage.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewInsuranceCoverage});
@@ -118,12 +119,12 @@
             // 
             // gridControlFinancialAssert
             // 
-            this.gridControlFinancialAssert.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.gridControlFinancialAssert.Location = new System.Drawing.Point(555, 47);
+            this.gridControlFinancialAssert.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gridControlFinancialAssert.Location = new System.Drawing.Point(12, 276);
             this.gridControlFinancialAssert.MainView = this.gridViewFinancialAsset;
             this.gridControlFinancialAssert.Name = "gridControlFinancialAssert";
-            this.gridControlFinancialAssert.Size = new System.Drawing.Size(398, 267);
+            this.gridControlFinancialAssert.Size = new System.Drawing.Size(937, 174);
             this.gridControlFinancialAssert.TabIndex = 9;
             this.gridControlFinancialAssert.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewFinancialAsset});
@@ -177,7 +178,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(961, 436);
+            this.ClientSize = new System.Drawing.Size(961, 462);
             this.Controls.Add(this.gridControlFinancialAssert);
             this.Controls.Add(this.gridInsuranceCoverage);
             this.Controls.Add(this.lblContactTitle);

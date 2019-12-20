@@ -28,6 +28,7 @@ namespace FinancialPlannerClient.Master
 
         private void Bank_Load(object sender, EventArgs e)
         {
+            Program.ApplyPermission(this.Text, this);
             fillupBank();
         }
 

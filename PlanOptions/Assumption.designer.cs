@@ -673,6 +673,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Assumption";
+            this.Tag = "Assumptions";
             this.Text = "Planner Assumption";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Assumption_FormClosed);
             this.groupBox1.ResumeLayout(false);

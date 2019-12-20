@@ -4,12 +4,8 @@ using FinancialPlannerClient.CurrentStatus;
 using FinancialPlannerClient.PlannerInfo;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Windows.Forms;
 
 namespace FinancialPlannerClient.Insurance
 {
@@ -18,6 +14,7 @@ namespace FinancialPlannerClient.Insurance
         Planner planner;
         Client client;
         DataTable dtInsuranceCoverage = new DataTable();
+        DataTable dtFinancialAssets = new DataTable();
         public InsuranceCalculation(Client client, Planner planner)
         {
             InitializeComponent();
@@ -54,6 +51,7 @@ namespace FinancialPlannerClient.Insurance
         private void InsuranceCalculation_Load(object sender, EventArgs e)
         {
             createInsuranceCoverateTable();
+            createFinancialAssetsTable();
             AddExpenesIntoInsuranceCoverage();
             AddGoalsIntoInsuranceCoverage();
             AddOutStandingLoansIntoInsuranceCoverage();
@@ -62,12 +60,18 @@ namespace FinancialPlannerClient.Insurance
             //gridViewInsuranceCoverage.GroupCount = 0;
             //gridViewInsuranceCoverage.Columns[0].GroupIndex = 1;
             AddFinancialAssetIntoInsuranceCoverage();
+            gridControlFinancialAssert.DataSource = dtFinancialAssets;
         }
 
         private void AddFinancialAssetIntoInsuranceCoverage()
         {
-            //throw new NotImplementedException();
-            //IList<FinancialAss>
+            CurrentStatusCalculation currentStatusCalculation = new CurrentStatusInfo().GetAllCurrestStatus(this.planner.ID);
+            double totalCurrentStatusValue = currentStatusCalculation.Total;
+            DataRow dataRow = dtFinancialAssets.NewRow();
+            dataRow["Category"] = "Financial Assets";
+            dataRow["Content"] = "Existing value of Financial Assets";
+            dataRow["Amount"] = totalCurrentStatusValue;
+            dtFinancialAssets.Rows.Add(dataRow);
         }
 
         private void AddOutStandingLoansIntoInsuranceCoverage()
@@ -104,7 +108,7 @@ namespace FinancialPlannerClient.Insurance
                 DataRow dataRow = dtInsuranceCoverage.NewRow();
                 dataRow["Category"] = "Goals";
                 dataRow["Content"] = goal.Name;
-                dataRow["Amount"] = goal.Amount;
+                dataRow["Amount"] = futureValue(goal.Amount, goal.InflationRate, (int.Parse(goal.StartYear) - DateTime.Now.Year));
                 dtInsuranceCoverage.Rows.Add(dataRow);
             }
         }
@@ -124,13 +128,16 @@ namespace FinancialPlannerClient.Insurance
 
         private double GetExpensesCoverage(Expenses exp)
         {
+            Double currentAmount = (exp.OccuranceType == ExpenseType.Yearly) ? exp.Amount : (exp.Amount * 12);
             PlannerAssumptionInfo plannerAssumptionInfo = new PlannerAssumptionInfo();
             PlannerAssumption plannerAssumption = plannerAssumptionInfo.GetAll(this.planner.ID);
             int yearsDiff = (this.client.DOB.Year + plannerAssumption.ClientRetirementAge) - planner.StartDate.Year;
-            double fvExp = futureValue(exp.Amount, plannerAssumption.PreRetirementInflactionRate, yearsDiff);
-            double pvExp = presentValue(fvExp, plannerAssumption.PreRetirementInflactionRate, yearsDiff);
+            double fvExp = futureValue(currentAmount, 7, yearsDiff);
+            //return fvExp;
+            double pvExp = presentValue(fvExp, 8, yearsDiff);
             return pvExp;
         }
+       
         private static double presentValue(double futureValue, decimal interest_rate, int timePeriodInYears)
         {
             //PV = FV / (1 + I)T;
@@ -155,6 +162,12 @@ namespace FinancialPlannerClient.Insurance
             dtInsuranceCoverage.Columns.Add("Category", typeof(string));
             dtInsuranceCoverage.Columns.Add("Content", typeof(string));
             dtInsuranceCoverage.Columns.Add("Amount", typeof(Double));
+        }
+        private void createFinancialAssetsTable()
+        {
+            dtFinancialAssets.Columns.Add("Category", typeof(string));
+            dtFinancialAssets.Columns.Add("Content");
+            dtFinancialAssets.Columns.Add("Amount", typeof(Double));
         }
     }
 }

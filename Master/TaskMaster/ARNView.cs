@@ -19,6 +19,7 @@ namespace FinancialPlannerClient.Master.TaskMaster
 
         private void ARNView_Load(object sender, EventArgs e)
         {
+            Program.ApplyPermission(this.Text, this);
             fillupARN();
         }
         private void fillupARN()

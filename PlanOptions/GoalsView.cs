@@ -74,6 +74,7 @@ namespace FinancialPlannerClient.PlanOptions
 
         private void GoalsView_Load(object sender, EventArgs e)
         {
+            Program.ApplyPermission(this.Tag.ToString(), this);
             rdoGoalType.SelectedIndex = 0;
             navigateToSelectedPage();
             fillupGoalsInfo();

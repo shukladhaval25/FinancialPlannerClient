@@ -1,8 +1,10 @@
 ﻿using FinancialPlanner.Common;
 using FinancialPlanner.Common.Model;
+using FinancialPlanner.Common.Permission;
 using FinancialPlannerClient.Master;
 using FinancialPlannerClient.PlannerInfo;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Reflection;
@@ -70,8 +72,23 @@ namespace FinancialPlannerClient.PlanOptions
         {
             if (this.Parent != null)
                 this.Parent.Controls.Clear();
-        }
 
+        }
+        private void setPermissionOnControl()
+        {
+            List<RolePermission> rolePermission = (List<RolePermission>)Program.CurrentUserRolePermission.Permissions;
+            RolePermission permission = rolePermission.Find(x => x.FormName == this.Tag.ToString());
+            if (permission != null)
+            {
+                btnAdd.Visible = permission.IsAdd;
+                btnSaveAssumption.Visible = (permission.IsAdd || permission.IsUpdate) ? true : false;
+            }
+            else
+            {
+                btnSaveAssumption.Visible = false;
+                btnAdd.Visible = false;
+            }
+        }
         private void btnSaveAssumption_Click(object sender, EventArgs e)
         {
             try

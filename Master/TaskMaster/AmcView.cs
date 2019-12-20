@@ -158,6 +158,7 @@ namespace FinancialPlannerClient.Master.TaskMaster
 
         private void AmcView_Load(object sender, EventArgs e)
         {
+            Program.ApplyPermission(this.Tag.ToString(), this);
             fillupAMC();
         }
     }

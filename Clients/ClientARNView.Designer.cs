@@ -168,6 +168,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ClientARNView";
+            this.Tag = "Client ARN";
             this.Text = "Client ARN Details";
             this.Load += new System.EventHandler(this.ClientARN_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grpClientARN)).EndInit();

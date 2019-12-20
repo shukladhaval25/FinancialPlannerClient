@@ -988,9 +988,14 @@ namespace FinancialPlannerClient.Home
 
         private static void setMenuControlPermission(List<RolePermission> rolePermission, NavBarItemLink control)
         {
-            RolePermission permission = rolePermission.Find(x => x.FormName == control.Caption);
-            if (permission != null)
-                control.Visible = permission.IsView;
+            if (rolePermission != null)
+            {
+                RolePermission permission = rolePermission.Find(x => x.FormName == control.Caption);
+                if (permission != null)
+                    control.Visible = permission.IsView;
+                else
+                    control.Visible = false;
+            }
             else
                 control.Visible = false;
         }

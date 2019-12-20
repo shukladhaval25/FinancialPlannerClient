@@ -483,9 +483,9 @@
         private System.Windows.Forms.Label label139;
         private DevExpress.XtraGrid.Views.Grid.GridView gridViewBank;
         private DevExpress.XtraGrid.GridControl gridBank;
-        private DevExpress.XtraEditors.SimpleButton btnDelete;
-        private DevExpress.XtraEditors.SimpleButton btnEdit;
-        private DevExpress.XtraEditors.SimpleButton btnAdd;
+        public DevExpress.XtraEditors.SimpleButton btnDelete;
+        public DevExpress.XtraEditors.SimpleButton btnEdit;
+        public DevExpress.XtraEditors.SimpleButton btnAdd;
         private DevExpress.XtraEditors.GroupControl groupControl1;
         private System.Windows.Forms.TextBox txtCountry;
         private System.Windows.Forms.Label lblCountry;

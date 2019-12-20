@@ -28,80 +28,45 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.navBarControl1 = new DevExpress.XtraNavBar.NavBarControl();
-            this.navBarGroup1 = new DevExpress.XtraNavBar.NavBarGroup();
-            this.navBarGroup2 = new DevExpress.XtraNavBar.NavBarGroup();
-            this.navBarGroup3 = new DevExpress.XtraNavBar.NavBarGroup();
-            this.navBarItem1 = new DevExpress.XtraNavBar.NavBarItem();
-            this.navBarItem2 = new DevExpress.XtraNavBar.NavBarItem();
-            ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.SuspendLayout();
             // 
-            // navBarControl1
+            // labelControl1
             // 
-            this.navBarControl1.ActiveGroup = this.navBarGroup1;
-            this.navBarControl1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.navBarControl1.Groups.AddRange(new DevExpress.XtraNavBar.NavBarGroup[] {
-            this.navBarGroup1,
-            this.navBarGroup2,
-            this.navBarGroup3});
-            this.navBarControl1.Items.AddRange(new DevExpress.XtraNavBar.NavBarItem[] {
-            this.navBarItem1,
-            this.navBarItem2});
-            this.navBarControl1.Location = new System.Drawing.Point(0, 0);
-            this.navBarControl1.Name = "navBarControl1";
-            this.navBarControl1.Size = new System.Drawing.Size(157, 515);
-            this.navBarControl1.TabIndex = 0;
-            this.navBarControl1.Text = "navBarControl1";
+            this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl1.Appearance.Options.UseFont = true;
+            this.labelControl1.Location = new System.Drawing.Point(266, 240);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(163, 23);
+            this.labelControl1.TabIndex = 0;
+            this.labelControl1.Text = "Comming Soon...";
             // 
-            // navBarGroup1
+            // simpleButton1
             // 
-            this.navBarGroup1.Caption = "navBarGroup1";
-            this.navBarGroup1.Expanded = true;
-            this.navBarGroup1.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem1),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem2)});
-            this.navBarGroup1.Name = "navBarGroup1";
-            // 
-            // navBarGroup2
-            // 
-            this.navBarGroup2.Caption = "navBarGroup2";
-            this.navBarGroup2.Name = "navBarGroup2";
-            // 
-            // navBarGroup3
-            // 
-            this.navBarGroup3.Caption = "navBarGroup3";
-            this.navBarGroup3.Name = "navBarGroup3";
-            // 
-            // navBarItem1
-            // 
-            this.navBarItem1.Caption = "navBarItem1";
-            this.navBarItem1.Name = "navBarItem1";
-            // 
-            // navBarItem2
-            // 
-            this.navBarItem2.Caption = "navBarItem2";
-            this.navBarItem2.Name = "navBarItem2";
+            this.simpleButton1.Location = new System.Drawing.Point(307, 270);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(75, 23);
+            this.simpleButton1.TabIndex = 1;
+            this.simpleButton1.Text = "Good Bye";
             // 
             // TaskReports
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.navBarControl1);
+            this.Controls.Add(this.simpleButton1);
+            this.Controls.Add(this.labelControl1);
             this.Name = "TaskReports";
             this.Size = new System.Drawing.Size(688, 515);
-            ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).EndInit();
+            this.Load += new System.EventHandler(this.TaskReports_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private DevExpress.XtraNavBar.NavBarControl navBarControl1;
-        private DevExpress.XtraNavBar.NavBarGroup navBarGroup1;
-        private DevExpress.XtraNavBar.NavBarItem navBarItem1;
-        private DevExpress.XtraNavBar.NavBarItem navBarItem2;
-        private DevExpress.XtraNavBar.NavBarGroup navBarGroup2;
-        private DevExpress.XtraNavBar.NavBarGroup navBarGroup3;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
     }
 }

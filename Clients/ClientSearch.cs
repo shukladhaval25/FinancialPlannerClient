@@ -36,9 +36,9 @@ namespace FinancialPlannerClient.Clients
         private DevExpress.XtraGrid.Columns.TileViewColumn tileViewColumnDOB;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit1;
         private DevExpress.XtraGrid.Columns.TileViewColumn tileViewColumnPANCARD;
-        private SimpleButton btnDelete;
-        private SimpleButton btnEdit;
-        private SimpleButton btnAdd;
+        public SimpleButton btnDelete;
+        public SimpleButton btnEdit;
+        public SimpleButton btnAdd;
         private SimpleButton btnSelect;
         private SimpleButton btnRefresh;
         private DevExpress.XtraGrid.Columns.TileViewColumn tileViewClientType;
@@ -573,7 +573,8 @@ namespace FinancialPlannerClient.Clients
 
         private void ClientSearch_Load(object sender, EventArgs e)
         {
-            WaitDialogForm waitdlg = new WaitDialogForm("Loading Data...");            
+            WaitDialogForm waitdlg = new WaitDialogForm("Loading Data...");
+            Program.ApplyPermission(this.Text, this);
             loadCustomerData();
             waitdlg.Close();
         }

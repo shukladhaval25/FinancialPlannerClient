@@ -44,7 +44,8 @@ namespace FinancialPlannerClient.PlanOptions.Reports
            _dtFamilymember.Columns.Add("Age",typeof(System.Int16));
             foreach(DataRow dr in _dtFamilymember.Rows)
             {
-                dr["Age"] = (DateTime.Now.Year - (DateTime.Parse(dr["DOB"].ToString()).Year)).ToString();                
+                if (dr["DOB"] != DBNull.Value)
+                    dr["Age"] = (DateTime.Now.Year - (DateTime.Parse(dr["DOB"].ToString()).Year)).ToString();                
             }
         }
     }

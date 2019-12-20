@@ -17,5 +17,10 @@ namespace FinancialPlannerClient.TaskManagementSystem
         {
             InitializeComponent();
         }
+
+        private void TaskReports_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

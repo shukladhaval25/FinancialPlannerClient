@@ -306,9 +306,9 @@
 
         private DevExpress.XtraGrid.GridControl gridControlARN;
         private DevExpress.XtraGrid.Views.Grid.GridView gridViewARN;
-        private DevExpress.XtraEditors.SimpleButton btnDelete;
-        private DevExpress.XtraEditors.SimpleButton btnEdit;
-        private DevExpress.XtraEditors.SimpleButton btnAdd;
+        public DevExpress.XtraEditors.SimpleButton btnDelete;
+        public DevExpress.XtraEditors.SimpleButton btnEdit;
+        public DevExpress.XtraEditors.SimpleButton btnAdd;
         private DevExpress.XtraEditors.LabelControl lblLine;
         private DevExpress.XtraEditors.GroupControl grpARNDetails;
         private DevExpress.XtraEditors.TextEdit txtName;

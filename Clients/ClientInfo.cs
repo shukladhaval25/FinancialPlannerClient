@@ -2,6 +2,7 @@
 using FinancialPlanner.Common.DataConversion;
 using FinancialPlanner.Common.Model;
 using FinancialPlanner.Common.Model.Masters;
+using FinancialPlanner.Common.Permission;
 using FinancialPlannerClient.Master;
 using FinancialPlannerClient.PlannerInfo;
 using System;
@@ -253,6 +254,7 @@ namespace FinancialPlannerClient.Clients
         #region "Family Member"
         private void fillupFamilyMemberInfo()
         {
+            setVisibilityOfFamilyMemberControlBasedOnPermission();
             if (_dtFamilymember == null)
                 _dtFamilymember = new DataTable();
             else
@@ -264,6 +266,24 @@ namespace FinancialPlannerClient.Clients
             dtGridFamilyMember.DataSource = _dtFamilymember;
             fillupBankMaster();
             setFamilyMemberGridSetting();
+        }
+
+        private void setVisibilityOfFamilyMemberControlBasedOnPermission()
+        {
+            List<RolePermission> rolePermission = (List<RolePermission>)Program.CurrentUserRolePermission.Permissions;
+            RolePermission permission = rolePermission.Find(x => x.FormName == "Data Gathering");
+            if (permission != null)
+            {
+                btnAddFamilyMember.Visible = permission.IsAdd;
+                btnEditFamilyMember.Visible = permission.IsUpdate;
+                btnDeleteFamilyMember.Visible = permission.IsDelete;
+            }
+            else
+            {
+                btnAddFamilyMember.Visible = false;
+                btnEditFamilyMember.Visible = false;
+                btnDeleteFamilyMember.Visible = false;
+            }
         }
 
         private void fillupBankMaster()
@@ -449,6 +469,7 @@ namespace FinancialPlannerClient.Clients
         #region "Bank Account"
         private void fillupBankAccountInfo()
         {
+            setPermissionForBankAccount();
             BankAccountInfo bankAccountInfo = new BankAccountInfo();
             IList<BankAccountDetail> bankAcDetails = bankAccountInfo.GetAll(_client.ID);
             if (bankAcDetails != null)
@@ -458,6 +479,24 @@ namespace FinancialPlannerClient.Clients
                 bankAccountInfo.setGrid(dtGridBankAccount);                
             }
             fillListOfAccountHolders();
+        }
+
+        private void setPermissionForBankAccount()
+        {
+            List<RolePermission> rolePermission = (List<RolePermission>)Program.CurrentUserRolePermission.Permissions;
+            RolePermission permission = rolePermission.Find(x => x.FormName == "Data Gathering");
+            if (permission != null)
+            {
+                btnAddBankAcc.Visible = permission.IsAdd;
+                btnEditBankAcc.Visible = permission.IsUpdate;
+                btnDeleteBankAcc.Visible = permission.IsDelete;
+            }
+            else
+            {
+                btnAddBankAcc.Visible = false;
+                btnEditBankAcc.Visible = false;
+                btnDeleteBankAcc.Visible = false;
+            }
         }
 
         private void fillListOfAccountHolders()
@@ -606,15 +645,34 @@ namespace FinancialPlannerClient.Clients
 
         private void fillupExpensesInfo()
         {
+            setPermissionForExpenses();
             ExpensesInfo expensesInfo = new ExpensesInfo();
             List<Expenses> lstIncome =(List<Expenses>) expensesInfo.GetAll(PlannerId);
             _dtExpenses = ListtoDataTable.ToDataTable(lstIncome);
             dtGridExpenses.DataSource = _dtExpenses;
             expensesInfo.FillGrid(dtGridExpenses);
         }
+        private void setPermissionForExpenses()
+        {
+            List<RolePermission> rolePermission = (List<RolePermission>)Program.CurrentUserRolePermission.Permissions;
+            RolePermission permission = rolePermission.Find(x => x.FormName == "Data Gathering");
+            if (permission != null)
+            {
+                btnAddExpenses.Visible = permission.IsAdd;
+                btnEditExpenses.Visible = permission.IsUpdate;
+                btnDeleteExpenses.Visible = permission.IsDelete;
+            }
+            else
+            {
+                btnAddExpenses.Visible = false;
+                btnEditExpenses.Visible = false;
+                btnDeleteExpenses.Visible = false;
+            }
+        }
 
         private void fillupIncomeInfo()
         {
+            setPermissionForIncome();
             IncomeInfo incomeInfo = new IncomeInfo();
             List<Income> lstIncome =(List<Income>) incomeInfo.GetAll(PlannerId);
             _dtIncome = ListtoDataTable.ToDataTable(lstIncome);
@@ -622,18 +680,54 @@ namespace FinancialPlannerClient.Clients
             incomeInfo.FillGrid(dtGridIncome);
             new PlannerInfo.FamilyMemberInfo().FillFamilyMemberInCombo(this._client.ID, cmbIncomeBy);
         }
+        private void setPermissionForIncome()
+        {
+            List<RolePermission> rolePermission = (List<RolePermission>)Program.CurrentUserRolePermission.Permissions;
+            RolePermission permission = rolePermission.Find(x => x.FormName == "Data Gathering");
+            if (permission != null)
+            {
+                btnAddIncome.Visible = permission.IsAdd;
+                btnEditIncome.Visible = permission.IsUpdate;
+                btnDeleteIncome.Visible = permission.IsDelete;
+            }
+            else
+            {
+                btnAddIncome.Visible = false;
+                btnEditIncome.Visible = false;
+                btnDeleteIncome.Visible = false;
+            }
+        }
 
         private void fillupLoanInfo()
         {
+            setPermissionForLoan();
             LoanInfo loanInfo = new LoanInfo();
             List<Loan> lstNonFinancialAsset =(List<Loan>) loanInfo.GetAll(PlannerId);
             _dtLoan = ListtoDataTable.ToDataTable(lstNonFinancialAsset);
             dtGridLoan.DataSource = _dtLoan;
             loanInfo.FillGrid(dtGridLoan);
         }
+        private void setPermissionForLoan()
+        {
+            List<RolePermission> rolePermission = (List<RolePermission>)Program.CurrentUserRolePermission.Permissions;
+            RolePermission permission = rolePermission.Find(x => x.FormName == "Data Gathering");
+            if (permission != null)
+            {
+                btnAddLoan.Visible = permission.IsAdd;
+                btnUpdateLoan.Visible = permission.IsUpdate;
+                btnDeleteLoan.Visible = permission.IsDelete;
+            }
+            else
+            {
+                btnAddLoan.Visible = false;
+                btnUpdateLoan.Visible = false;
+                btnDeleteLoan.Visible = false;
+            }
+        }
 
         private void fillupNonFinancialAssetInfo()
         {
+            setPermissionForNonFinancailAsset();
             fillNonFinancialAssetsGoals();
             FamilyMemberInfo familyMemInfo =  new FamilyMemberInfo();
             familyMemInfo.FillFamilyMemberInCombo(_client.ID, cmbOtherHolder);
@@ -650,6 +744,24 @@ namespace FinancialPlannerClient.Clients
             _dtNonFinancialAsset = ListtoDataTable.ToDataTable(lstNonFinancialAsset);
             dtGridNonFinancialAssets.DataSource = _dtNonFinancialAsset;
             nonFinancialAssetInfo.FillGrid(dtGridNonFinancialAssets);            
+        }
+
+        private void setPermissionForNonFinancailAsset()
+        {
+            List<RolePermission> rolePermission = (List<RolePermission>)Program.CurrentUserRolePermission.Permissions;
+            RolePermission permission = rolePermission.Find(x => x.FormName == "Data Gathering");
+            if (permission != null)
+            {
+                btnAddNFA.Visible = permission.IsAdd;
+                btnEditNFA.Visible = permission.IsUpdate;
+                btnDeleteNFA.Visible = permission.IsDelete;
+            }
+            else
+            {
+                btnAddNFA.Visible = false;
+                btnEditNFA.Visible = false;
+                btnDeleteNFA.Visible = false;
+            }
         }
 
         private void fillNonFinancialAssetsGoals()

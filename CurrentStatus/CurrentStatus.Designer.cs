@@ -43,8 +43,8 @@
             this.grpActionControls = new System.Windows.Forms.GroupBox();
             this.btnDeleteLifeInsurance = new System.Windows.Forms.Button();
             this.imgCollection = new System.Windows.Forms.ImageList(this.components);
-            this.btnAddFamilyMember = new System.Windows.Forms.Button();
-            this.btnEditFamilyMember = new System.Windows.Forms.Button();
+            this.btnAddLifeInsurance = new System.Windows.Forms.Button();
+            this.btnEditLifeInsurance = new System.Windows.Forms.Button();
             this.pnlLifeInsuranceDetail = new System.Windows.Forms.Panel();
             this.dtAsOnDate = new System.Windows.Forms.DateTimePicker();
             this.label45 = new System.Windows.Forms.Label();
@@ -117,7 +117,7 @@
             this.cmbApplicant = new System.Windows.Forms.ComboBox();
             this.lblApplicant = new System.Windows.Forms.Label();
             this.GeneralInsurance = new System.Windows.Forms.TabPage();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.grpGenIsuranceControl = new System.Windows.Forms.GroupBox();
             this.btnGenInsDelete = new System.Windows.Forms.Button();
             this.btnGenInsAdd = new System.Windows.Forms.Button();
             this.btnGenInsEdit = new System.Windows.Forms.Button();
@@ -195,7 +195,7 @@
             this.label61 = new System.Windows.Forms.Label();
             this.dtGridMF = new System.Windows.Forms.DataGridView();
             this.label62 = new System.Windows.Forms.Label();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.grpMFControls = new System.Windows.Forms.GroupBox();
             this.btnDeleteMF = new System.Windows.Forms.Button();
             this.btnAddMF = new System.Windows.Forms.Button();
             this.btnEditMF = new System.Windows.Forms.Button();
@@ -229,7 +229,7 @@
             this.label75 = new System.Windows.Forms.Label();
             this.dtGridNPS = new System.Windows.Forms.DataGridView();
             this.label76 = new System.Windows.Forms.Label();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.grpNPSControls = new System.Windows.Forms.GroupBox();
             this.btnDeleteNPS = new System.Windows.Forms.Button();
             this.btnAddNPS = new System.Windows.Forms.Button();
             this.btnEditNPS = new System.Windows.Forms.Button();
@@ -261,7 +261,7 @@
             this.label85 = new System.Windows.Forms.Label();
             this.dtGridShares = new System.Windows.Forms.DataGridView();
             this.label86 = new System.Windows.Forms.Label();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.grpSharesControl = new System.Windows.Forms.GroupBox();
             this.btnSharesDelete = new System.Windows.Forms.Button();
             this.btnSharesAdd = new System.Windows.Forms.Button();
             this.btnSharesEdit = new System.Windows.Forms.Button();
@@ -291,7 +291,7 @@
             this.label89 = new System.Windows.Forms.Label();
             this.dtGridBonds = new System.Windows.Forms.DataGridView();
             this.label90 = new System.Windows.Forms.Label();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.grpBondsControl = new System.Windows.Forms.GroupBox();
             this.btnDeleteBonds = new System.Windows.Forms.Button();
             this.btnAddBonds = new System.Windows.Forms.Button();
             this.btnEditBonds = new System.Windows.Forms.Button();
@@ -315,7 +315,7 @@
             this.label101 = new System.Windows.Forms.Label();
             this.dtGridSavingAccount = new System.Windows.Forms.DataGridView();
             this.label102 = new System.Windows.Forms.Label();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.grpSavingACControls = new System.Windows.Forms.GroupBox();
             this.btnDeleteSA = new System.Windows.Forms.Button();
             this.btnAddSA = new System.Windows.Forms.Button();
             this.btnEditSA = new System.Windows.Forms.Button();
@@ -345,7 +345,7 @@
             this.label107 = new System.Windows.Forms.Label();
             this.dtGridFD = new System.Windows.Forms.DataGridView();
             this.label108 = new System.Windows.Forms.Label();
-            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.grpFDControls = new System.Windows.Forms.GroupBox();
             this.btnFDDelete = new System.Windows.Forms.Button();
             this.btnFDAdd = new System.Windows.Forms.Button();
             this.btnFDEdit = new System.Windows.Forms.Button();
@@ -377,7 +377,7 @@
             this.label121 = new System.Windows.Forms.Label();
             this.dtGridRD = new System.Windows.Forms.DataGridView();
             this.label122 = new System.Windows.Forms.Label();
-            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.grpRDControls = new System.Windows.Forms.GroupBox();
             this.btnRDDelete = new System.Windows.Forms.Button();
             this.btnRDAdd = new System.Windows.Forms.Button();
             this.btnRDEdit = new System.Windows.Forms.Button();
@@ -405,7 +405,7 @@
             this.label135 = new System.Windows.Forms.Label();
             this.dtGridPPF = new System.Windows.Forms.DataGridView();
             this.label124 = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.grpPPFControls = new System.Windows.Forms.GroupBox();
             this.btnDeletePPF = new System.Windows.Forms.Button();
             this.btnADDPPF = new System.Windows.Forms.Button();
             this.btnEditPPF = new System.Windows.Forms.Button();
@@ -431,7 +431,7 @@
             this.btnSSCancel = new System.Windows.Forms.Button();
             this.btnSSSave = new System.Windows.Forms.Button();
             this.label140 = new System.Windows.Forms.Label();
-            this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.grpSSControls = new System.Windows.Forms.GroupBox();
             this.btnDeleteSS = new System.Windows.Forms.Button();
             this.btnAddSS = new System.Windows.Forms.Button();
             this.btnEditSS = new System.Windows.Forms.Button();
@@ -457,7 +457,7 @@
             this.btnSCSSCancel = new System.Windows.Forms.Button();
             this.btnSCSSSave = new System.Windows.Forms.Button();
             this.label148 = new System.Windows.Forms.Label();
-            this.groupBox13 = new System.Windows.Forms.GroupBox();
+            this.grpSCSSControls = new System.Windows.Forms.GroupBox();
             this.btnSCSSDelete = new System.Windows.Forms.Button();
             this.btnSCSSAdd = new System.Windows.Forms.Button();
             this.btnSCSSEdit = new System.Windows.Forms.Button();
@@ -487,7 +487,7 @@
             this.btnNSCCancel = new System.Windows.Forms.Button();
             this.btnNSCSave = new System.Windows.Forms.Button();
             this.label156 = new System.Windows.Forms.Label();
-            this.groupBox14 = new System.Windows.Forms.GroupBox();
+            this.grpNSCControls = new System.Windows.Forms.GroupBox();
             this.btnNSCDelete = new System.Windows.Forms.Button();
             this.btnNSCAdd = new System.Windows.Forms.Button();
             this.btnNSCEdit = new System.Windows.Forms.Button();
@@ -531,7 +531,7 @@
             this.label180 = new System.Windows.Forms.Label();
             this.dtGridULIP = new System.Windows.Forms.DataGridView();
             this.label181 = new System.Windows.Forms.Label();
-            this.groupBox15 = new System.Windows.Forms.GroupBox();
+            this.grpULIPControls = new System.Windows.Forms.GroupBox();
             this.btnULIPDelete = new System.Windows.Forms.Button();
             this.btnULIPAdd = new System.Windows.Forms.Button();
             this.btnULIPEdit = new System.Windows.Forms.Button();
@@ -553,7 +553,7 @@
             this.label199 = new System.Windows.Forms.Label();
             this.dataGridEPF = new System.Windows.Forms.DataGridView();
             this.label200 = new System.Windows.Forms.Label();
-            this.groupBox16 = new System.Windows.Forms.GroupBox();
+            this.grpEPFControls = new System.Windows.Forms.GroupBox();
             this.btnEPFDelete = new System.Windows.Forms.Button();
             this.btnAddEPF = new System.Windows.Forms.Button();
             this.btnEditEPF = new System.Windows.Forms.Button();
@@ -592,61 +592,61 @@
             this.grpActionControls.SuspendLayout();
             this.pnlLifeInsuranceDetail.SuspendLayout();
             this.GeneralInsurance.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.grpGenIsuranceControl.SuspendLayout();
             this.grpGeneralInsurance.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridGeneralInsurance)).BeginInit();
             this.MutualFund.SuspendLayout();
             this.grpMF.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridMF)).BeginInit();
-            this.groupBox4.SuspendLayout();
+            this.grpMFControls.SuspendLayout();
             this.NPS.SuspendLayout();
             this.grpNPS.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridNPS)).BeginInit();
-            this.groupBox5.SuspendLayout();
+            this.grpNPSControls.SuspendLayout();
             this.Shares.SuspendLayout();
             this.grpShares.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridShares)).BeginInit();
-            this.groupBox6.SuspendLayout();
+            this.grpSharesControl.SuspendLayout();
             this.Bonds.SuspendLayout();
             this.grpBonds.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridBonds)).BeginInit();
-            this.groupBox7.SuspendLayout();
+            this.grpBondsControl.SuspendLayout();
             this.SavingAC.SuspendLayout();
             this.grpSa.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridSavingAccount)).BeginInit();
-            this.groupBox8.SuspendLayout();
+            this.grpSavingACControls.SuspendLayout();
             this.FD.SuspendLayout();
             this.grpFD.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridFD)).BeginInit();
-            this.groupBox10.SuspendLayout();
+            this.grpFDControls.SuspendLayout();
             this.RD.SuspendLayout();
             this.grpRD.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridRD)).BeginInit();
-            this.groupBox9.SuspendLayout();
+            this.grpRDControls.SuspendLayout();
             this.PPF.SuspendLayout();
             this.grpPPF.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridPPF)).BeginInit();
-            this.groupBox3.SuspendLayout();
+            this.grpPPFControls.SuspendLayout();
             this.Sukanya.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridSS)).BeginInit();
             this.grpSS.SuspendLayout();
-            this.groupBox12.SuspendLayout();
+            this.grpSSControls.SuspendLayout();
             this.SCSS.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridSCSS)).BeginInit();
             this.grpSCSS.SuspendLayout();
-            this.groupBox13.SuspendLayout();
+            this.grpSCSSControls.SuspendLayout();
             this.NSC.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridNSC)).BeginInit();
             this.grpNSC.SuspendLayout();
-            this.groupBox14.SuspendLayout();
+            this.grpNSCControls.SuspendLayout();
             this.ULIP.SuspendLayout();
             this.grpULIP.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridULIP)).BeginInit();
-            this.groupBox15.SuspendLayout();
+            this.grpULIPControls.SuspendLayout();
             this.EPF.SuspendLayout();
             this.grpEPF.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridEPF)).BeginInit();
-            this.groupBox16.SuspendLayout();
+            this.grpEPFControls.SuspendLayout();
             this.Others.SuspendLayout();
             this.grpOthersDetails.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridOthers)).BeginInit();
@@ -794,8 +794,8 @@
             // 
             this.grpActionControls.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.grpActionControls.Controls.Add(this.btnDeleteLifeInsurance);
-            this.grpActionControls.Controls.Add(this.btnAddFamilyMember);
-            this.grpActionControls.Controls.Add(this.btnEditFamilyMember);
+            this.grpActionControls.Controls.Add(this.btnAddLifeInsurance);
+            this.grpActionControls.Controls.Add(this.btnEditLifeInsurance);
             this.grpActionControls.Location = new System.Drawing.Point(156, 497);
             this.grpActionControls.Name = "grpActionControls";
             this.grpActionControls.Size = new System.Drawing.Size(111, 38);
@@ -828,27 +828,27 @@
             this.imgCollection.Images.SetKeyName(8, "icons8-umbrella-16.png");
             this.imgCollection.Images.SetKeyName(9, "icons8-treatment-16.png");
             // 
-            // btnAddFamilyMember
+            // btnAddLifeInsurance
             // 
-            this.btnAddFamilyMember.ImageIndex = 3;
-            this.btnAddFamilyMember.ImageList = this.imgCollection;
-            this.btnAddFamilyMember.Location = new System.Drawing.Point(6, 10);
-            this.btnAddFamilyMember.Name = "btnAddFamilyMember";
-            this.btnAddFamilyMember.Size = new System.Drawing.Size(29, 24);
-            this.btnAddFamilyMember.TabIndex = 2;
-            this.btnAddFamilyMember.UseVisualStyleBackColor = true;
-            this.btnAddFamilyMember.Click += new System.EventHandler(this.btnAddFamilyMember_Click);
+            this.btnAddLifeInsurance.ImageIndex = 3;
+            this.btnAddLifeInsurance.ImageList = this.imgCollection;
+            this.btnAddLifeInsurance.Location = new System.Drawing.Point(6, 10);
+            this.btnAddLifeInsurance.Name = "btnAddLifeInsurance";
+            this.btnAddLifeInsurance.Size = new System.Drawing.Size(29, 24);
+            this.btnAddLifeInsurance.TabIndex = 2;
+            this.btnAddLifeInsurance.UseVisualStyleBackColor = true;
+            this.btnAddLifeInsurance.Click += new System.EventHandler(this.btnAddFamilyMember_Click);
             // 
-            // btnEditFamilyMember
+            // btnEditLifeInsurance
             // 
-            this.btnEditFamilyMember.ImageIndex = 4;
-            this.btnEditFamilyMember.ImageList = this.imgCollection;
-            this.btnEditFamilyMember.Location = new System.Drawing.Point(41, 10);
-            this.btnEditFamilyMember.Name = "btnEditFamilyMember";
-            this.btnEditFamilyMember.Size = new System.Drawing.Size(29, 24);
-            this.btnEditFamilyMember.TabIndex = 3;
-            this.btnEditFamilyMember.UseVisualStyleBackColor = true;
-            this.btnEditFamilyMember.Click += new System.EventHandler(this.btnEditFamilyMember_Click);
+            this.btnEditLifeInsurance.ImageIndex = 4;
+            this.btnEditLifeInsurance.ImageList = this.imgCollection;
+            this.btnEditLifeInsurance.Location = new System.Drawing.Point(41, 10);
+            this.btnEditLifeInsurance.Name = "btnEditLifeInsurance";
+            this.btnEditLifeInsurance.Size = new System.Drawing.Size(29, 24);
+            this.btnEditLifeInsurance.TabIndex = 3;
+            this.btnEditLifeInsurance.UseVisualStyleBackColor = true;
+            this.btnEditLifeInsurance.Click += new System.EventHandler(this.btnEditFamilyMember_Click);
             // 
             // pnlLifeInsuranceDetail
             // 
@@ -1571,7 +1571,7 @@
             // 
             // GeneralInsurance
             // 
-            this.GeneralInsurance.Controls.Add(this.groupBox2);
+            this.GeneralInsurance.Controls.Add(this.grpGenIsuranceControl);
             this.GeneralInsurance.Controls.Add(this.grpGeneralInsurance);
             this.GeneralInsurance.Controls.Add(this.dtGridGeneralInsurance);
             this.GeneralInsurance.Controls.Add(this.label51);
@@ -1584,17 +1584,17 @@
             this.GeneralInsurance.Text = "General Insurance";
             this.GeneralInsurance.UseVisualStyleBackColor = true;
             // 
-            // groupBox2
+            // grpGenIsuranceControl
             // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.btnGenInsDelete);
-            this.groupBox2.Controls.Add(this.btnGenInsAdd);
-            this.groupBox2.Controls.Add(this.btnGenInsEdit);
-            this.groupBox2.Location = new System.Drawing.Point(1196, 215);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(111, 38);
-            this.groupBox2.TabIndex = 11;
-            this.groupBox2.TabStop = false;
+            this.grpGenIsuranceControl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpGenIsuranceControl.Controls.Add(this.btnGenInsDelete);
+            this.grpGenIsuranceControl.Controls.Add(this.btnGenInsAdd);
+            this.grpGenIsuranceControl.Controls.Add(this.btnGenInsEdit);
+            this.grpGenIsuranceControl.Location = new System.Drawing.Point(1196, 215);
+            this.grpGenIsuranceControl.Name = "grpGenIsuranceControl";
+            this.grpGenIsuranceControl.Size = new System.Drawing.Size(111, 38);
+            this.grpGenIsuranceControl.TabIndex = 11;
+            this.grpGenIsuranceControl.TabStop = false;
             // 
             // btnGenInsDelete
             // 
@@ -1940,7 +1940,7 @@
             this.MutualFund.Controls.Add(this.grpMF);
             this.MutualFund.Controls.Add(this.dtGridMF);
             this.MutualFund.Controls.Add(this.label62);
-            this.MutualFund.Controls.Add(this.groupBox4);
+            this.MutualFund.Controls.Add(this.grpMFControls);
             this.MutualFund.ImageKey = "icons8-cash-in-hand-16.png";
             this.MutualFund.Location = new System.Drawing.Point(4, 24);
             this.MutualFund.Name = "MutualFund";
@@ -2391,17 +2391,17 @@
             this.label62.TabIndex = 12;
             this.label62.Text = "Mutual Funds";
             // 
-            // groupBox4
+            // grpMFControls
             // 
-            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox4.Controls.Add(this.btnDeleteMF);
-            this.groupBox4.Controls.Add(this.btnAddMF);
-            this.groupBox4.Controls.Add(this.btnEditMF);
-            this.groupBox4.Location = new System.Drawing.Point(1193, 209);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(111, 38);
-            this.groupBox4.TabIndex = 14;
-            this.groupBox4.TabStop = false;
+            this.grpMFControls.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpMFControls.Controls.Add(this.btnDeleteMF);
+            this.grpMFControls.Controls.Add(this.btnAddMF);
+            this.grpMFControls.Controls.Add(this.btnEditMF);
+            this.grpMFControls.Location = new System.Drawing.Point(1193, 209);
+            this.grpMFControls.Name = "grpMFControls";
+            this.grpMFControls.Size = new System.Drawing.Size(111, 38);
+            this.grpMFControls.TabIndex = 14;
+            this.grpMFControls.TabStop = false;
             // 
             // btnDeleteMF
             // 
@@ -2441,7 +2441,7 @@
             this.NPS.Controls.Add(this.grpNPS);
             this.NPS.Controls.Add(this.dtGridNPS);
             this.NPS.Controls.Add(this.label76);
-            this.NPS.Controls.Add(this.groupBox5);
+            this.NPS.Controls.Add(this.grpNPSControls);
             this.NPS.Location = new System.Drawing.Point(4, 24);
             this.NPS.Name = "NPS";
             this.NPS.Size = new System.Drawing.Size(1321, 547);
@@ -2757,17 +2757,17 @@
             this.label76.TabIndex = 16;
             this.label76.Text = "NPS";
             // 
-            // groupBox5
+            // grpNPSControls
             // 
-            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox5.Controls.Add(this.btnDeleteNPS);
-            this.groupBox5.Controls.Add(this.btnAddNPS);
-            this.groupBox5.Controls.Add(this.btnEditNPS);
-            this.groupBox5.Location = new System.Drawing.Point(1192, 208);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(111, 38);
-            this.groupBox5.TabIndex = 18;
-            this.groupBox5.TabStop = false;
+            this.grpNPSControls.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpNPSControls.Controls.Add(this.btnDeleteNPS);
+            this.grpNPSControls.Controls.Add(this.btnAddNPS);
+            this.grpNPSControls.Controls.Add(this.btnEditNPS);
+            this.grpNPSControls.Location = new System.Drawing.Point(1192, 208);
+            this.grpNPSControls.Name = "grpNPSControls";
+            this.grpNPSControls.Size = new System.Drawing.Size(111, 38);
+            this.grpNPSControls.TabIndex = 18;
+            this.grpNPSControls.TabStop = false;
             // 
             // btnDeleteNPS
             // 
@@ -2807,7 +2807,7 @@
             this.Shares.Controls.Add(this.grpShares);
             this.Shares.Controls.Add(this.dtGridShares);
             this.Shares.Controls.Add(this.label86);
-            this.Shares.Controls.Add(this.groupBox6);
+            this.Shares.Controls.Add(this.grpSharesControl);
             this.Shares.Location = new System.Drawing.Point(4, 24);
             this.Shares.Name = "Shares";
             this.Shares.Size = new System.Drawing.Size(1321, 547);
@@ -3095,17 +3095,17 @@
             this.label86.TabIndex = 20;
             this.label86.Text = "Shares";
             // 
-            // groupBox6
+            // grpSharesControl
             // 
-            this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox6.Controls.Add(this.btnSharesDelete);
-            this.groupBox6.Controls.Add(this.btnSharesAdd);
-            this.groupBox6.Controls.Add(this.btnSharesEdit);
-            this.groupBox6.Location = new System.Drawing.Point(1192, 206);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(111, 38);
-            this.groupBox6.TabIndex = 22;
-            this.groupBox6.TabStop = false;
+            this.grpSharesControl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpSharesControl.Controls.Add(this.btnSharesDelete);
+            this.grpSharesControl.Controls.Add(this.btnSharesAdd);
+            this.grpSharesControl.Controls.Add(this.btnSharesEdit);
+            this.grpSharesControl.Location = new System.Drawing.Point(1192, 206);
+            this.grpSharesControl.Name = "grpSharesControl";
+            this.grpSharesControl.Size = new System.Drawing.Size(111, 38);
+            this.grpSharesControl.TabIndex = 22;
+            this.grpSharesControl.TabStop = false;
             // 
             // btnSharesDelete
             // 
@@ -3145,7 +3145,7 @@
             this.Bonds.Controls.Add(this.grpBonds);
             this.Bonds.Controls.Add(this.dtGridBonds);
             this.Bonds.Controls.Add(this.label90);
-            this.Bonds.Controls.Add(this.groupBox7);
+            this.Bonds.Controls.Add(this.grpBondsControl);
             this.Bonds.Location = new System.Drawing.Point(4, 24);
             this.Bonds.Name = "Bonds";
             this.Bonds.Size = new System.Drawing.Size(1321, 547);
@@ -3416,17 +3416,17 @@
             this.label90.TabIndex = 24;
             this.label90.Text = "Bonds";
             // 
-            // groupBox7
+            // grpBondsControl
             // 
-            this.groupBox7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox7.Controls.Add(this.btnDeleteBonds);
-            this.groupBox7.Controls.Add(this.btnAddBonds);
-            this.groupBox7.Controls.Add(this.btnEditBonds);
-            this.groupBox7.Location = new System.Drawing.Point(1197, 206);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(111, 38);
-            this.groupBox7.TabIndex = 26;
-            this.groupBox7.TabStop = false;
+            this.grpBondsControl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpBondsControl.Controls.Add(this.btnDeleteBonds);
+            this.grpBondsControl.Controls.Add(this.btnAddBonds);
+            this.grpBondsControl.Controls.Add(this.btnEditBonds);
+            this.grpBondsControl.Location = new System.Drawing.Point(1197, 206);
+            this.grpBondsControl.Name = "grpBondsControl";
+            this.grpBondsControl.Size = new System.Drawing.Size(111, 38);
+            this.grpBondsControl.TabIndex = 26;
+            this.grpBondsControl.TabStop = false;
             // 
             // btnDeleteBonds
             // 
@@ -3466,7 +3466,7 @@
             this.SavingAC.Controls.Add(this.grpSa);
             this.SavingAC.Controls.Add(this.dtGridSavingAccount);
             this.SavingAC.Controls.Add(this.label102);
-            this.SavingAC.Controls.Add(this.groupBox8);
+            this.SavingAC.Controls.Add(this.grpSavingACControls);
             this.SavingAC.Location = new System.Drawing.Point(4, 24);
             this.SavingAC.Name = "SavingAC";
             this.SavingAC.Size = new System.Drawing.Size(1321, 547);
@@ -3674,17 +3674,17 @@
             this.label102.TabIndex = 28;
             this.label102.Text = "Saving Account";
             // 
-            // groupBox8
+            // grpSavingACControls
             // 
-            this.groupBox8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox8.Controls.Add(this.btnDeleteSA);
-            this.groupBox8.Controls.Add(this.btnAddSA);
-            this.groupBox8.Controls.Add(this.btnEditSA);
-            this.groupBox8.Location = new System.Drawing.Point(1197, 206);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(111, 38);
-            this.groupBox8.TabIndex = 30;
-            this.groupBox8.TabStop = false;
+            this.grpSavingACControls.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpSavingACControls.Controls.Add(this.btnDeleteSA);
+            this.grpSavingACControls.Controls.Add(this.btnAddSA);
+            this.grpSavingACControls.Controls.Add(this.btnEditSA);
+            this.grpSavingACControls.Location = new System.Drawing.Point(1197, 206);
+            this.grpSavingACControls.Name = "grpSavingACControls";
+            this.grpSavingACControls.Size = new System.Drawing.Size(111, 38);
+            this.grpSavingACControls.TabIndex = 30;
+            this.grpSavingACControls.TabStop = false;
             // 
             // btnDeleteSA
             // 
@@ -3724,7 +3724,7 @@
             this.FD.Controls.Add(this.grpFD);
             this.FD.Controls.Add(this.dtGridFD);
             this.FD.Controls.Add(this.label108);
-            this.FD.Controls.Add(this.groupBox10);
+            this.FD.Controls.Add(this.grpFDControls);
             this.FD.Location = new System.Drawing.Point(4, 24);
             this.FD.Name = "FD";
             this.FD.Size = new System.Drawing.Size(1321, 547);
@@ -3990,17 +3990,17 @@
             this.label108.TabIndex = 32;
             this.label108.Text = "Fixed Deposit";
             // 
-            // groupBox10
+            // grpFDControls
             // 
-            this.groupBox10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox10.Controls.Add(this.btnFDDelete);
-            this.groupBox10.Controls.Add(this.btnFDAdd);
-            this.groupBox10.Controls.Add(this.btnFDEdit);
-            this.groupBox10.Location = new System.Drawing.Point(1197, 195);
-            this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(111, 38);
-            this.groupBox10.TabIndex = 34;
-            this.groupBox10.TabStop = false;
+            this.grpFDControls.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpFDControls.Controls.Add(this.btnFDDelete);
+            this.grpFDControls.Controls.Add(this.btnFDAdd);
+            this.grpFDControls.Controls.Add(this.btnFDEdit);
+            this.grpFDControls.Location = new System.Drawing.Point(1197, 195);
+            this.grpFDControls.Name = "grpFDControls";
+            this.grpFDControls.Size = new System.Drawing.Size(111, 38);
+            this.grpFDControls.TabIndex = 34;
+            this.grpFDControls.TabStop = false;
             // 
             // btnFDDelete
             // 
@@ -4040,7 +4040,7 @@
             this.RD.Controls.Add(this.grpRD);
             this.RD.Controls.Add(this.dtGridRD);
             this.RD.Controls.Add(this.label122);
-            this.RD.Controls.Add(this.groupBox9);
+            this.RD.Controls.Add(this.grpRDControls);
             this.RD.Location = new System.Drawing.Point(4, 24);
             this.RD.Name = "RD";
             this.RD.Size = new System.Drawing.Size(1321, 547);
@@ -4324,17 +4324,17 @@
             this.label122.TabIndex = 36;
             this.label122.Text = "Recurring Deposit";
             // 
-            // groupBox9
+            // grpRDControls
             // 
-            this.groupBox9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox9.Controls.Add(this.btnRDDelete);
-            this.groupBox9.Controls.Add(this.btnRDAdd);
-            this.groupBox9.Controls.Add(this.btnRDEdit);
-            this.groupBox9.Location = new System.Drawing.Point(1205, 195);
-            this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(111, 38);
-            this.groupBox9.TabIndex = 38;
-            this.groupBox9.TabStop = false;
+            this.grpRDControls.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpRDControls.Controls.Add(this.btnRDDelete);
+            this.grpRDControls.Controls.Add(this.btnRDAdd);
+            this.grpRDControls.Controls.Add(this.btnRDEdit);
+            this.grpRDControls.Location = new System.Drawing.Point(1205, 195);
+            this.grpRDControls.Name = "grpRDControls";
+            this.grpRDControls.Size = new System.Drawing.Size(111, 38);
+            this.grpRDControls.TabIndex = 38;
+            this.grpRDControls.TabStop = false;
             // 
             // btnRDDelete
             // 
@@ -4374,7 +4374,7 @@
             this.PPF.Controls.Add(this.grpPPF);
             this.PPF.Controls.Add(this.dtGridPPF);
             this.PPF.Controls.Add(this.label124);
-            this.PPF.Controls.Add(this.groupBox3);
+            this.PPF.Controls.Add(this.grpPPFControls);
             this.PPF.Location = new System.Drawing.Point(4, 24);
             this.PPF.Name = "PPF";
             this.PPF.Size = new System.Drawing.Size(1321, 547);
@@ -4619,17 +4619,17 @@
             this.label124.TabIndex = 39;
             this.label124.Text = "PPF";
             // 
-            // groupBox3
+            // grpPPFControls
             // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox3.Controls.Add(this.btnDeletePPF);
-            this.groupBox3.Controls.Add(this.btnADDPPF);
-            this.groupBox3.Controls.Add(this.btnEditPPF);
-            this.groupBox3.Location = new System.Drawing.Point(1194, 199);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(111, 38);
-            this.groupBox3.TabIndex = 41;
-            this.groupBox3.TabStop = false;
+            this.grpPPFControls.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpPPFControls.Controls.Add(this.btnDeletePPF);
+            this.grpPPFControls.Controls.Add(this.btnADDPPF);
+            this.grpPPFControls.Controls.Add(this.btnEditPPF);
+            this.grpPPFControls.Location = new System.Drawing.Point(1194, 199);
+            this.grpPPFControls.Name = "grpPPFControls";
+            this.grpPPFControls.Size = new System.Drawing.Size(111, 38);
+            this.grpPPFControls.TabIndex = 41;
+            this.grpPPFControls.TabStop = false;
             // 
             // btnDeletePPF
             // 
@@ -4669,7 +4669,7 @@
             this.Sukanya.Controls.Add(this.dtGridSS);
             this.Sukanya.Controls.Add(this.label137);
             this.Sukanya.Controls.Add(this.grpSS);
-            this.Sukanya.Controls.Add(this.groupBox12);
+            this.Sukanya.Controls.Add(this.grpSSControls);
             this.Sukanya.Location = new System.Drawing.Point(4, 24);
             this.Sukanya.Name = "Sukanya";
             this.Sukanya.Padding = new System.Windows.Forms.Padding(3);
@@ -4898,17 +4898,17 @@
             this.label140.TabIndex = 0;
             this.label140.Text = "Account No:";
             // 
-            // groupBox12
+            // grpSSControls
             // 
-            this.groupBox12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox12.Controls.Add(this.btnDeleteSS);
-            this.groupBox12.Controls.Add(this.btnAddSS);
-            this.groupBox12.Controls.Add(this.btnEditSS);
-            this.groupBox12.Location = new System.Drawing.Point(1194, 192);
-            this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Size = new System.Drawing.Size(111, 38);
-            this.groupBox12.TabIndex = 43;
-            this.groupBox12.TabStop = false;
+            this.grpSSControls.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpSSControls.Controls.Add(this.btnDeleteSS);
+            this.grpSSControls.Controls.Add(this.btnAddSS);
+            this.grpSSControls.Controls.Add(this.btnEditSS);
+            this.grpSSControls.Location = new System.Drawing.Point(1194, 192);
+            this.grpSSControls.Name = "grpSSControls";
+            this.grpSSControls.Size = new System.Drawing.Size(111, 38);
+            this.grpSSControls.TabIndex = 43;
+            this.grpSSControls.TabStop = false;
             // 
             // btnDeleteSS
             // 
@@ -4948,7 +4948,7 @@
             this.SCSS.Controls.Add(this.dtGridSCSS);
             this.SCSS.Controls.Add(this.label141);
             this.SCSS.Controls.Add(this.grpSCSS);
-            this.SCSS.Controls.Add(this.groupBox13);
+            this.SCSS.Controls.Add(this.grpSCSSControls);
             this.SCSS.Location = new System.Drawing.Point(4, 24);
             this.SCSS.Name = "SCSS";
             this.SCSS.Padding = new System.Windows.Forms.Padding(3);
@@ -5177,17 +5177,17 @@
             this.label148.TabIndex = 0;
             this.label148.Text = "Account No:";
             // 
-            // groupBox13
+            // grpSCSSControls
             // 
-            this.groupBox13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox13.Controls.Add(this.btnSCSSDelete);
-            this.groupBox13.Controls.Add(this.btnSCSSAdd);
-            this.groupBox13.Controls.Add(this.btnSCSSEdit);
-            this.groupBox13.Location = new System.Drawing.Point(1194, 224);
-            this.groupBox13.Name = "groupBox13";
-            this.groupBox13.Size = new System.Drawing.Size(111, 38);
-            this.groupBox13.TabIndex = 47;
-            this.groupBox13.TabStop = false;
+            this.grpSCSSControls.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpSCSSControls.Controls.Add(this.btnSCSSDelete);
+            this.grpSCSSControls.Controls.Add(this.btnSCSSAdd);
+            this.grpSCSSControls.Controls.Add(this.btnSCSSEdit);
+            this.grpSCSSControls.Location = new System.Drawing.Point(1194, 224);
+            this.grpSCSSControls.Name = "grpSCSSControls";
+            this.grpSCSSControls.Size = new System.Drawing.Size(111, 38);
+            this.grpSCSSControls.TabIndex = 47;
+            this.grpSCSSControls.TabStop = false;
             // 
             // btnSCSSDelete
             // 
@@ -5227,7 +5227,7 @@
             this.NSC.Controls.Add(this.dtGridNSC);
             this.NSC.Controls.Add(this.label149);
             this.NSC.Controls.Add(this.grpNSC);
-            this.NSC.Controls.Add(this.groupBox14);
+            this.NSC.Controls.Add(this.grpNSCControls);
             this.NSC.Location = new System.Drawing.Point(4, 24);
             this.NSC.Name = "NSC";
             this.NSC.Size = new System.Drawing.Size(1321, 547);
@@ -5500,17 +5500,17 @@
             this.label156.TabIndex = 0;
             this.label156.Text = "Account No:";
             // 
-            // groupBox14
+            // grpNSCControls
             // 
-            this.groupBox14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox14.Controls.Add(this.btnNSCDelete);
-            this.groupBox14.Controls.Add(this.btnNSCAdd);
-            this.groupBox14.Controls.Add(this.btnNSCEdit);
-            this.groupBox14.Location = new System.Drawing.Point(1198, 220);
-            this.groupBox14.Name = "groupBox14";
-            this.groupBox14.Size = new System.Drawing.Size(111, 38);
-            this.groupBox14.TabIndex = 51;
-            this.groupBox14.TabStop = false;
+            this.grpNSCControls.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpNSCControls.Controls.Add(this.btnNSCDelete);
+            this.grpNSCControls.Controls.Add(this.btnNSCAdd);
+            this.grpNSCControls.Controls.Add(this.btnNSCEdit);
+            this.grpNSCControls.Location = new System.Drawing.Point(1198, 220);
+            this.grpNSCControls.Name = "grpNSCControls";
+            this.grpNSCControls.Size = new System.Drawing.Size(111, 38);
+            this.grpNSCControls.TabIndex = 51;
+            this.grpNSCControls.TabStop = false;
             // 
             // btnNSCDelete
             // 
@@ -5550,7 +5550,7 @@
             this.ULIP.Controls.Add(this.grpULIP);
             this.ULIP.Controls.Add(this.dtGridULIP);
             this.ULIP.Controls.Add(this.label181);
-            this.ULIP.Controls.Add(this.groupBox15);
+            this.ULIP.Controls.Add(this.grpULIPControls);
             this.ULIP.Location = new System.Drawing.Point(4, 24);
             this.ULIP.Name = "ULIP";
             this.ULIP.Size = new System.Drawing.Size(1321, 547);
@@ -5951,17 +5951,17 @@
             this.label181.TabIndex = 16;
             this.label181.Text = "ULIP";
             // 
-            // groupBox15
+            // grpULIPControls
             // 
-            this.groupBox15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox15.Controls.Add(this.btnULIPDelete);
-            this.groupBox15.Controls.Add(this.btnULIPAdd);
-            this.groupBox15.Controls.Add(this.btnULIPEdit);
-            this.groupBox15.Location = new System.Drawing.Point(1200, 205);
-            this.groupBox15.Name = "groupBox15";
-            this.groupBox15.Size = new System.Drawing.Size(111, 38);
-            this.groupBox15.TabIndex = 18;
-            this.groupBox15.TabStop = false;
+            this.grpULIPControls.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpULIPControls.Controls.Add(this.btnULIPDelete);
+            this.grpULIPControls.Controls.Add(this.btnULIPAdd);
+            this.grpULIPControls.Controls.Add(this.btnULIPEdit);
+            this.grpULIPControls.Location = new System.Drawing.Point(1200, 205);
+            this.grpULIPControls.Name = "grpULIPControls";
+            this.grpULIPControls.Size = new System.Drawing.Size(111, 38);
+            this.grpULIPControls.TabIndex = 18;
+            this.grpULIPControls.TabStop = false;
             // 
             // btnULIPDelete
             // 
@@ -6001,7 +6001,7 @@
             this.EPF.Controls.Add(this.grpEPF);
             this.EPF.Controls.Add(this.dataGridEPF);
             this.EPF.Controls.Add(this.label200);
-            this.EPF.Controls.Add(this.groupBox16);
+            this.EPF.Controls.Add(this.grpEPFControls);
             this.EPF.Location = new System.Drawing.Point(4, 24);
             this.EPF.Name = "EPF";
             this.EPF.Padding = new System.Windows.Forms.Padding(3);
@@ -6193,17 +6193,17 @@
             this.label200.TabIndex = 43;
             this.label200.Text = "EPF";
             // 
-            // groupBox16
+            // grpEPFControls
             // 
-            this.groupBox16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox16.Controls.Add(this.btnEPFDelete);
-            this.groupBox16.Controls.Add(this.btnAddEPF);
-            this.groupBox16.Controls.Add(this.btnEditEPF);
-            this.groupBox16.Location = new System.Drawing.Point(1198, 197);
-            this.groupBox16.Name = "groupBox16";
-            this.groupBox16.Size = new System.Drawing.Size(111, 38);
-            this.groupBox16.TabIndex = 45;
-            this.groupBox16.TabStop = false;
+            this.grpEPFControls.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpEPFControls.Controls.Add(this.btnEPFDelete);
+            this.grpEPFControls.Controls.Add(this.btnAddEPF);
+            this.grpEPFControls.Controls.Add(this.btnEditEPF);
+            this.grpEPFControls.Location = new System.Drawing.Point(1198, 197);
+            this.grpEPFControls.Name = "grpEPFControls";
+            this.grpEPFControls.Size = new System.Drawing.Size(111, 38);
+            this.grpEPFControls.TabIndex = 45;
+            this.grpEPFControls.TabStop = false;
             // 
             // btnEPFDelete
             // 
@@ -6524,7 +6524,7 @@
             this.pnlLifeInsuranceDetail.PerformLayout();
             this.GeneralInsurance.ResumeLayout(false);
             this.GeneralInsurance.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
+            this.grpGenIsuranceControl.ResumeLayout(false);
             this.grpGeneralInsurance.ResumeLayout(false);
             this.grpGeneralInsurance.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridGeneralInsurance)).EndInit();
@@ -6533,79 +6533,79 @@
             this.grpMF.ResumeLayout(false);
             this.grpMF.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridMF)).EndInit();
-            this.groupBox4.ResumeLayout(false);
+            this.grpMFControls.ResumeLayout(false);
             this.NPS.ResumeLayout(false);
             this.NPS.PerformLayout();
             this.grpNPS.ResumeLayout(false);
             this.grpNPS.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridNPS)).EndInit();
-            this.groupBox5.ResumeLayout(false);
+            this.grpNPSControls.ResumeLayout(false);
             this.Shares.ResumeLayout(false);
             this.Shares.PerformLayout();
             this.grpShares.ResumeLayout(false);
             this.grpShares.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridShares)).EndInit();
-            this.groupBox6.ResumeLayout(false);
+            this.grpSharesControl.ResumeLayout(false);
             this.Bonds.ResumeLayout(false);
             this.Bonds.PerformLayout();
             this.grpBonds.ResumeLayout(false);
             this.grpBonds.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridBonds)).EndInit();
-            this.groupBox7.ResumeLayout(false);
+            this.grpBondsControl.ResumeLayout(false);
             this.SavingAC.ResumeLayout(false);
             this.SavingAC.PerformLayout();
             this.grpSa.ResumeLayout(false);
             this.grpSa.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridSavingAccount)).EndInit();
-            this.groupBox8.ResumeLayout(false);
+            this.grpSavingACControls.ResumeLayout(false);
             this.FD.ResumeLayout(false);
             this.FD.PerformLayout();
             this.grpFD.ResumeLayout(false);
             this.grpFD.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridFD)).EndInit();
-            this.groupBox10.ResumeLayout(false);
+            this.grpFDControls.ResumeLayout(false);
             this.RD.ResumeLayout(false);
             this.RD.PerformLayout();
             this.grpRD.ResumeLayout(false);
             this.grpRD.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridRD)).EndInit();
-            this.groupBox9.ResumeLayout(false);
+            this.grpRDControls.ResumeLayout(false);
             this.PPF.ResumeLayout(false);
             this.PPF.PerformLayout();
             this.grpPPF.ResumeLayout(false);
             this.grpPPF.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridPPF)).EndInit();
-            this.groupBox3.ResumeLayout(false);
+            this.grpPPFControls.ResumeLayout(false);
             this.Sukanya.ResumeLayout(false);
             this.Sukanya.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridSS)).EndInit();
             this.grpSS.ResumeLayout(false);
             this.grpSS.PerformLayout();
-            this.groupBox12.ResumeLayout(false);
+            this.grpSSControls.ResumeLayout(false);
             this.SCSS.ResumeLayout(false);
             this.SCSS.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridSCSS)).EndInit();
             this.grpSCSS.ResumeLayout(false);
             this.grpSCSS.PerformLayout();
-            this.groupBox13.ResumeLayout(false);
+            this.grpSCSSControls.ResumeLayout(false);
             this.NSC.ResumeLayout(false);
             this.NSC.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridNSC)).EndInit();
             this.grpNSC.ResumeLayout(false);
             this.grpNSC.PerformLayout();
-            this.groupBox14.ResumeLayout(false);
+            this.grpNSCControls.ResumeLayout(false);
             this.ULIP.ResumeLayout(false);
             this.ULIP.PerformLayout();
             this.grpULIP.ResumeLayout(false);
             this.grpULIP.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridULIP)).EndInit();
-            this.groupBox15.ResumeLayout(false);
+            this.grpULIPControls.ResumeLayout(false);
             this.EPF.ResumeLayout(false);
             this.EPF.PerformLayout();
             this.grpEPF.ResumeLayout(false);
             this.grpEPF.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridEPF)).EndInit();
-            this.groupBox16.ResumeLayout(false);
+            this.grpEPFControls.ResumeLayout(false);
             this.Others.ResumeLayout(false);
             this.Others.PerformLayout();
             this.grpOthersDetails.ResumeLayout(false);
@@ -6707,11 +6707,11 @@
         private System.Windows.Forms.ImageList imgCollection;
         private System.Windows.Forms.GroupBox grpActionControls;
         private System.Windows.Forms.Button btnDeleteLifeInsurance;
-        private System.Windows.Forms.Button btnAddFamilyMember;
-        private System.Windows.Forms.Button btnEditFamilyMember;
+        private System.Windows.Forms.Button btnAddLifeInsurance;
+        private System.Windows.Forms.Button btnEditLifeInsurance;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox grpGenIsuranceControl;
         private System.Windows.Forms.Button btnGenInsDelete;
         private System.Windows.Forms.Button btnGenInsAdd;
         private System.Windows.Forms.Button btnGenInsEdit;
@@ -6769,7 +6769,7 @@
         private System.Windows.Forms.Label label61;
         private System.Windows.Forms.DataGridView dtGridMF;
         private System.Windows.Forms.Label label62;
-        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.GroupBox grpMFControls;
         private System.Windows.Forms.Button btnDeleteMF;
         private System.Windows.Forms.Button btnAddMF;
         private System.Windows.Forms.Button btnEditMF;
@@ -6815,7 +6815,7 @@
         private System.Windows.Forms.Label label75;
         private System.Windows.Forms.DataGridView dtGridNPS;
         private System.Windows.Forms.Label label76;
-        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.GroupBox grpNPSControls;
         private System.Windows.Forms.Button btnDeleteNPS;
         private System.Windows.Forms.Button btnAddNPS;
         private System.Windows.Forms.Button btnEditNPS;
@@ -6838,7 +6838,7 @@
         private System.Windows.Forms.Label label85;
         private System.Windows.Forms.DataGridView dtGridShares;
         private System.Windows.Forms.Label label86;
-        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.GroupBox grpSharesControl;
         private System.Windows.Forms.Button btnSharesDelete;
         private System.Windows.Forms.Button btnSharesAdd;
         private System.Windows.Forms.Button btnSharesEdit;
@@ -6865,7 +6865,7 @@
         private System.Windows.Forms.Label label89;
         private System.Windows.Forms.DataGridView dtGridBonds;
         private System.Windows.Forms.Label label90;
-        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.GroupBox grpBondsControl;
         private System.Windows.Forms.Button btnDeleteBonds;
         private System.Windows.Forms.Button btnAddBonds;
         private System.Windows.Forms.Button btnEditBonds;
@@ -6888,7 +6888,7 @@
         private System.Windows.Forms.Label label101;
         private System.Windows.Forms.DataGridView dtGridSavingAccount;
         private System.Windows.Forms.Label label102;
-        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.GroupBox grpSavingACControls;
         private System.Windows.Forms.Button btnDeleteSA;
         private System.Windows.Forms.Button btnAddSA;
         private System.Windows.Forms.Button btnEditSA;
@@ -6911,7 +6911,7 @@
         private System.Windows.Forms.Label label107;
         private System.Windows.Forms.DataGridView dtGridFD;
         private System.Windows.Forms.Label label108;
-        private System.Windows.Forms.GroupBox groupBox10;
+        private System.Windows.Forms.GroupBox grpFDControls;
         private System.Windows.Forms.Button btnFDDelete;
         private System.Windows.Forms.Button btnFDAdd;
         private System.Windows.Forms.Button btnFDEdit;
@@ -6948,13 +6948,13 @@
         private System.Windows.Forms.Label label121;
         private System.Windows.Forms.DataGridView dtGridRD;
         private System.Windows.Forms.Label label122;
-        private System.Windows.Forms.GroupBox groupBox9;
+        private System.Windows.Forms.GroupBox grpRDControls;
         private System.Windows.Forms.Button btnRDDelete;
         private System.Windows.Forms.Button btnRDAdd;
         private System.Windows.Forms.Button btnRDEdit;
         private System.Windows.Forms.DataGridView dtGridPPF;
         private System.Windows.Forms.Label label124;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox grpPPFControls;
         private System.Windows.Forms.Button btnDeletePPF;
         private System.Windows.Forms.Button btnADDPPF;
         private System.Windows.Forms.Button btnEditPPF;
@@ -6994,7 +6994,7 @@
         private System.Windows.Forms.Button btnSSCancel;
         private System.Windows.Forms.Button btnSSSave;
         private System.Windows.Forms.Label label140;
-        private System.Windows.Forms.GroupBox groupBox12;
+        private System.Windows.Forms.GroupBox grpSSControls;
         private System.Windows.Forms.Button btnDeleteSS;
         private System.Windows.Forms.Button btnAddSS;
         private System.Windows.Forms.Button btnEditSS;
@@ -7019,7 +7019,7 @@
         private System.Windows.Forms.Button btnSCSSCancel;
         private System.Windows.Forms.Button btnSCSSSave;
         private System.Windows.Forms.Label label148;
-        private System.Windows.Forms.GroupBox groupBox13;
+        private System.Windows.Forms.GroupBox grpSCSSControls;
         private System.Windows.Forms.Button btnSCSSDelete;
         private System.Windows.Forms.Button btnSCSSAdd;
         private System.Windows.Forms.Button btnSCSSEdit;
@@ -7044,7 +7044,7 @@
         private System.Windows.Forms.Button btnNSCCancel;
         private System.Windows.Forms.Button btnNSCSave;
         private System.Windows.Forms.Label label156;
-        private System.Windows.Forms.GroupBox groupBox14;
+        private System.Windows.Forms.GroupBox grpNSCControls;
         private System.Windows.Forms.Button btnNSCDelete;
         private System.Windows.Forms.Button btnNSCAdd;
         private System.Windows.Forms.Button btnNSCEdit;
@@ -7100,7 +7100,7 @@
         private System.Windows.Forms.Label label180;
         private System.Windows.Forms.DataGridView dtGridULIP;
         private System.Windows.Forms.Label label181;
-        private System.Windows.Forms.GroupBox groupBox15;
+        private System.Windows.Forms.GroupBox grpULIPControls;
         private System.Windows.Forms.Button btnULIPDelete;
         private System.Windows.Forms.Button btnULIPAdd;
         private System.Windows.Forms.Button btnULIPEdit;
@@ -7141,7 +7141,7 @@
         private System.Windows.Forms.Label label199;
         private System.Windows.Forms.DataGridView dataGridEPF;
         private System.Windows.Forms.Label label200;
-        private System.Windows.Forms.GroupBox groupBox16;
+        private System.Windows.Forms.GroupBox grpEPFControls;
         private System.Windows.Forms.Button btnEPFDelete;
         private System.Windows.Forms.Button btnAddEPF;
         private System.Windows.Forms.Button btnEditEPF;

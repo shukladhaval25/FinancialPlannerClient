@@ -19,6 +19,7 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
         DevExpress.XtraVerticalGrid.Rows.EditorRow ChequeInFavourOff;
         DevExpress.XtraVerticalGrid.Rows.EditorRow FirstHolder;
         DevExpress.XtraVerticalGrid.Rows.EditorRow SecondHolder;
+        DevExpress.XtraVerticalGrid.Rows.EditorRow ThirdHolder;
 
         public DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEditSchemeName;
         public DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEditAmount;
@@ -26,6 +27,7 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
         public DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEditChequeInFavourOff;
         public DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBoxSecondHolder;
         public DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBoxFirstHolder;
+        public DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBoxThirdHolder;
 
         private void InitializeComponent()
         {
@@ -38,12 +40,16 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             this.ChequeInFavourOff = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.SecondHolder = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.FirstHolder = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.ThirdHolder = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
 
             this.repositoryItemComboBoxSecondHolder = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.repositoryItemComboBoxSecondHolder.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
 
             this.repositoryItemComboBoxFirstHolder = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.repositoryItemComboBoxFirstHolder.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+
+            this.repositoryItemComboBoxThirdHolder = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            this.repositoryItemComboBoxThirdHolder.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
 
             this.repositoryItemTextEditSchemeName = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.repositoryItemTextEditCategory = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
@@ -102,8 +108,16 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             this.SecondHolder.Name = "SecondHolder";
             this.SecondHolder.Properties.Caption = "Second Holder";
             this.SecondHolder.Properties.FieldName = "SecondHolder";
-            this.SecondHolder.Properties.RowEdit = this.repositoryItemComboBoxSecondHolder;            
-                        
+            this.SecondHolder.Properties.RowEdit = this.repositoryItemComboBoxSecondHolder;
+
+            //
+            // ThirdHolder
+            //
+            this.ThirdHolder.Name = "ThirdHolder";
+            this.ThirdHolder.Properties.Caption = "Third Holder";
+            this.ThirdHolder.Properties.FieldName = "ThirdHolder";
+            this.ThirdHolder.Properties.RowEdit = this.repositoryItemComboBoxThirdHolder;
+
             //
             // VGridControl
             //
@@ -118,7 +132,8 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
                 this.repositoryItemTextEditCategory,
                 this.repositoryItemTextEditChequeInFavourOff,
                 this.repositoryItemComboBoxFirstHolder,
-                this.repositoryItemComboBoxSecondHolder                
+                this.repositoryItemComboBoxSecondHolder,
+                this.repositoryItemComboBoxThirdHolder
             });
 
             this.vGridTransaction.Rows.AddRange(new DevExpress.XtraVerticalGrid.Rows.BaseRow[] {
@@ -127,7 +142,8 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
                 this.Category,
                 this.ChequeInFavourOff,
                 this.FirstHolder,
-                this.SecondHolder});
+                this.SecondHolder,
+                this.ThirdHolder});
             prepareOptionalFieldsList();
 
         }
@@ -191,6 +207,8 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
                     this.vGridTransaction.Rows["FirstHolder"].Properties.Value.ToString() : string.Empty;
                 investmentRecomendation.SecondHolder = (this.vGridTransaction.Rows["SecondHolder"].Properties.Value != null) ?
                     this.vGridTransaction.Rows["SecondHolder"].Properties.Value.ToString() : string.Empty;
+                investmentRecomendation.ThirdHolder = (this.vGridTransaction.Rows["ThirdHolder"].Properties.Value != null) ?
+                    this.vGridTransaction.Rows["ThirdHolder"].Properties.Value.ToString() : string.Empty;
 
                 investmentRecomendation.ChequeInFavourOff = (this.vGridTransaction.Rows["ChequeInFavourOff"].Properties.Value != null) ?
                     this.vGridTransaction.Rows["ChequeInFavourOff"].Properties.Value.ToString() : string.Empty;
@@ -226,6 +244,7 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
 
             new PlannerInfo.FamilyMemberInfo().FillFamilyMemberInCombo(this.clientId, repositoryItemComboBoxFirstHolder);
             repositoryItemComboBoxSecondHolder.Items.AddRange(repositoryItemComboBoxFirstHolder.Items);
+            repositoryItemComboBoxThirdHolder.Items.AddRange(repositoryItemComboBoxFirstHolder.Items);
         }
 
         public void SetARN(int arnNo)

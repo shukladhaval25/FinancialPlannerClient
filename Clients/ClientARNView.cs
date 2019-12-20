@@ -5,6 +5,7 @@ using FinancialPlannerClient.Master.TaskMaster;
 using FinancialPlanner.Common.Model.TaskManagement.MFTransactions;
 using FinancialPlanner.Common.Model;
 using System.Windows.Forms;
+using FinancialPlanner.Common.Permission;
 
 namespace FinancialPlannerClient.Clients
 {
@@ -21,8 +22,25 @@ namespace FinancialPlannerClient.Clients
 
         private void ClientARN_Load(object sender, EventArgs e)
         {
+            setPermissionOnControl();
             loadAllARNValue();
             loadClientARN();
+        }
+
+        private void setPermissionOnControl()
+        {
+            List<RolePermission> rolePermission = (List<RolePermission>)Program.CurrentUserRolePermission.Permissions;
+            RolePermission permission = rolePermission.Find(x => x.FormName == this.Tag.ToString());
+            if (permission != null)
+            {
+                btnSave.Visible = (permission.IsAdd || permission.IsUpdate) ? true : false;
+                btnDelete.Visible = permission.IsDelete;
+            }
+            else
+            {
+                btnSave.Visible = false;
+                btnDelete.Visible = false;
+            }
         }
 
         private void loadClientARN()

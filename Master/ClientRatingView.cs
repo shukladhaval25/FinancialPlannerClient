@@ -28,9 +28,11 @@ namespace FinancialPlannerClient.Master
 
         private void ClientRatingView_Load(object sender, EventArgs e)
         {
+            Program.ApplyPermission(this.Text, this);
             grpRatingDetail.Enabled = false;
             fillListRating();
         }
+        
 
         private void fillListRating()
         {

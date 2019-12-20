@@ -334,6 +334,7 @@
             // 
             // navigationPageRegGoal
             // 
+            this.navigationPageRegGoal.Caption = "navigationPageRegGoal";
             this.navigationPageRegGoal.Controls.Add(this.lblOtherAnnualRetirementExp);
             this.navigationPageRegGoal.Controls.Add(this.txtOtherAnnualRetirementExp);
             this.navigationPageRegGoal.Controls.Add(this.chkEligbileForInsuranceCoverage);
@@ -731,6 +732,7 @@
             // 
             // navigationPageRetGoal
             // 
+            this.navigationPageRetGoal.Caption = "navigationPageRetGoal";
             this.navigationPageRetGoal.Controls.Add(this.textEdit1);
             this.navigationPageRetGoal.Controls.Add(this.label2);
             this.navigationPageRetGoal.Controls.Add(this.textEdit2);
@@ -934,6 +936,7 @@
             this.Controls.Add(this.grpGoals);
             this.Controls.Add(this.lblContactTitle);
             this.Name = "GoalsView";
+            this.Tag = "Goals";
             this.Text = "Client Goals";
             this.Load += new System.EventHandler(this.GoalsView_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grpGoals)).EndInit();
@@ -1041,9 +1044,9 @@
         private DevExpress.XtraBars.Navigation.NavigationPage navigationPageRegGoal;
         private DevExpress.XtraBars.Navigation.NavigationPage navigationPageRetGoal;
         private DevExpress.XtraEditors.RadioGroup rdoGoalType;
-        private DevExpress.XtraEditors.SimpleButton btnDelete;
-        private DevExpress.XtraEditors.SimpleButton btnEdit;
-        private DevExpress.XtraEditors.SimpleButton btnAdd;
+        public DevExpress.XtraEditors.SimpleButton btnDelete;
+        public DevExpress.XtraEditors.SimpleButton btnEdit;
+        public DevExpress.XtraEditors.SimpleButton btnAdd;
         private DevExpress.XtraEditors.SimpleButton btnCloseClientGoal;
         private DevExpress.XtraEditors.SimpleButton btnSaveClientGoal;
         private DevExpress.XtraEditors.CheckEdit chkEligbileForInsuranceCoverage;

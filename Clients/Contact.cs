@@ -1,4 +1,5 @@
 ﻿using FinancialPlanner.Common.Model;
+using FinancialPlanner.Common.Permission;
 using FinancialPlannerClient.Master;
 using FinancialPlannerClient.PlannerInfo;
 using System;
@@ -28,8 +29,16 @@ namespace FinancialPlannerClient.Clients
        
         private void ClientContact_Load(object sender, EventArgs e)
         {
+            setVisibilityOfControlBasedOnPermission();
             fillupClientAreaList();
             fillupContactDetails();
+        }
+
+        private void setVisibilityOfControlBasedOnPermission()
+        {
+            List<RolePermission> rolePermission = (List<RolePermission>)Program.CurrentUserRolePermission.Permissions;
+            RolePermission permission = rolePermission.Find(x => x.FormName == this.Text);
+            btnSaveContact.Visible = (permission.IsAdd || permission.IsUpdate) ? true : false;
         }
 
         private void fillupClientAreaList()

@@ -45,10 +45,10 @@
             this.btnDelete = new DevExpress.XtraEditors.SimpleButton();
             this.btnAdd = new DevExpress.XtraEditors.SimpleButton();
             this.grpRatingDetail = new DevExpress.XtraEditors.GroupControl();
-            this.btnCloseClientInfo = new DevExpress.XtraEditors.SimpleButton();
-            this.btnSaveClient = new DevExpress.XtraEditors.SimpleButton();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.txtRating = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.btnCloseClientInfo = new DevExpress.XtraEditors.SimpleButton();
+            this.btnSave = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.lstRating)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grpRatingDetail)).BeginInit();
             this.grpRatingDetail.SuspendLayout();
@@ -111,12 +111,27 @@
             this.grpRatingDetail.Controls.Add(this.txtRating);
             this.grpRatingDetail.Controls.Add(this.labelControl1);
             this.grpRatingDetail.Controls.Add(this.btnCloseClientInfo);
-            this.grpRatingDetail.Controls.Add(this.btnSaveClient);
+            this.grpRatingDetail.Controls.Add(this.btnSave);
             this.grpRatingDetail.Location = new System.Drawing.Point(224, 28);
             this.grpRatingDetail.Name = "grpRatingDetail";
             this.grpRatingDetail.Size = new System.Drawing.Size(370, 247);
             this.grpRatingDetail.TabIndex = 7;
             this.grpRatingDetail.Text = "Client Rating Details";
+            // 
+            // txtRating
+            // 
+            this.txtRating.Location = new System.Drawing.Point(126, 80);
+            this.txtRating.Name = "txtRating";
+            this.txtRating.Size = new System.Drawing.Size(214, 20);
+            this.txtRating.TabIndex = 1;
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Location = new System.Drawing.Point(44, 83);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(65, 13);
+            this.labelControl1.TabIndex = 25;
+            this.labelControl1.Text = "Client Rating:";
             // 
             // btnCloseClientInfo
             // 
@@ -138,13 +153,13 @@
             this.btnCloseClientInfo.Text = "Close";
             this.btnCloseClientInfo.Click += new System.EventHandler(this.btnCloseClientInfo_Click);
             // 
-            // btnSaveClient
+            // btnSave
             // 
-            this.btnSaveClient.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSaveClient.Image = ((System.Drawing.Image)(resources.GetObject("btnSaveClient.Image")));
-            this.btnSaveClient.Location = new System.Drawing.Point(215, 106);
-            this.btnSaveClient.Name = "btnSaveClient";
-            this.btnSaveClient.Size = new System.Drawing.Size(57, 23);
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
+            this.btnSave.Location = new System.Drawing.Point(215, 106);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(57, 23);
             toolTipTitleItem4.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image3")));
             toolTipTitleItem4.Appearance.Options.UseImage = true;
             toolTipTitleItem4.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem4.Image")));
@@ -153,25 +168,10 @@
             toolTipItem4.Text = "To save client rating click here.";
             superToolTip4.Items.Add(toolTipTitleItem4);
             superToolTip4.Items.Add(toolTipItem4);
-            this.btnSaveClient.SuperTip = superToolTip4;
-            this.btnSaveClient.TabIndex = 2;
-            this.btnSaveClient.Text = "Save";
-            this.btnSaveClient.Click += new System.EventHandler(this.btnSaveClient_Click);
-            // 
-            // labelControl1
-            // 
-            this.labelControl1.Location = new System.Drawing.Point(44, 83);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(65, 13);
-            this.labelControl1.TabIndex = 25;
-            this.labelControl1.Text = "Client Rating:";
-            // 
-            // txtRating
-            // 
-            this.txtRating.Location = new System.Drawing.Point(126, 80);
-            this.txtRating.Name = "txtRating";
-            this.txtRating.Size = new System.Drawing.Size(214, 20);
-            this.txtRating.TabIndex = 1;
+            this.btnSave.SuperTip = superToolTip4;
+            this.btnSave.TabIndex = 2;
+            this.btnSave.Text = "Save";
+            this.btnSave.Click += new System.EventHandler(this.btnSaveClient_Click);
             // 
             // ClientRatingView
             // 
@@ -187,7 +187,7 @@
             this.MinimizeBox = false;
             this.Name = "ClientRatingView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Client Rating";
+            this.Text = "Rating";
             this.Load += new System.EventHandler(this.ClientRatingView_Load);
             ((System.ComponentModel.ISupportInitialize)(this.lstRating)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grpRatingDetail)).EndInit();
@@ -201,13 +201,13 @@
         #endregion
 
         private DevExpress.XtraEditors.ListBoxControl lstRating;
-        private DevExpress.XtraEditors.SimpleButton btnDelete;
-        private DevExpress.XtraEditors.SimpleButton btnAdd;
+        public DevExpress.XtraEditors.SimpleButton btnDelete;
+        public DevExpress.XtraEditors.SimpleButton btnAdd;
         private DevExpress.XtraEditors.GroupControl grpRatingDetail;
         private DevExpress.XtraEditors.TextEdit txtRating;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.SimpleButton btnCloseClientInfo;
-        private DevExpress.XtraEditors.SimpleButton btnSaveClient;
+        public DevExpress.XtraEditors.SimpleButton btnSave;
     }
 }
 

@@ -1,5 +1,6 @@
 ﻿using DevExpress.XtraEditors;
 using FinancialPlanner.Common.Model;
+using FinancialPlanner.Common.Permission;
 using FinancialPlannerClient.PlannerInfo;
 using System;
 using System.Collections.Generic;
@@ -135,6 +136,17 @@ namespace FinancialPlannerClient.Clients
             clientEmployment.UpdatedByUserName = Program.CurrentUser.UserName;
             clientEmployment.MachineName = System.Environment.MachineName;
             return clientEmployment;
+        }
+
+        private void EmploymentDetails_Load(object sender, EventArgs e)
+        {
+            setVisibilityOfControlBasedOnPermission();
+        }
+        private void setVisibilityOfControlBasedOnPermission()
+        {
+            List<RolePermission> rolePermission = (List<RolePermission>)Program.CurrentUserRolePermission.Permissions;
+            RolePermission permission = rolePermission.Find(x => x.FormName == this.Tag.ToString());
+            btnSaveEmployment.Visible = (permission.IsAdd || permission.IsUpdate) ? true : false;
         }
     }
 }

@@ -29,21 +29,19 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EmploymentDetails));
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
-            this.txtSpouseIncome = new DevExpress.XtraEditors.TextEdit();
             this.txtSpouseEmployerPin = new DevExpress.XtraEditors.TextEdit();
             this.txtSpouseEmployerCity = new DevExpress.XtraEditors.TextEdit();
             this.txtSpouseEmployerStreet = new DevExpress.XtraEditors.TextEdit();
             this.txtSpouseEmployerAdd = new DevExpress.XtraEditors.TextEdit();
             this.txtSpouseEmployer = new DevExpress.XtraEditors.TextEdit();
             this.txtSpouseDesigation = new DevExpress.XtraEditors.TextEdit();
-            this.txtClientIncome = new DevExpress.XtraEditors.TextEdit();
             this.txtClientEmployerPin = new DevExpress.XtraEditors.TextEdit();
             this.txtClientEmployerCity = new DevExpress.XtraEditors.TextEdit();
             this.txtClientEmployerStreet = new DevExpress.XtraEditors.TextEdit();
@@ -57,26 +55,28 @@
             this.label47 = new System.Windows.Forms.Label();
             this.label48 = new System.Windows.Forms.Label();
             this.label49 = new System.Windows.Forms.Label();
-            this.label50 = new System.Windows.Forms.Label();
             this.label44 = new System.Windows.Forms.Label();
             this.txtClientDesignation = new DevExpress.XtraEditors.TextEdit();
+            this.txtSpouseIncome = new DevExpress.XtraEditors.TextEdit();
+            this.txtClientIncome = new DevExpress.XtraEditors.TextEdit();
+            this.label50 = new System.Windows.Forms.Label();
             this.btnCancelEmployment = new DevExpress.XtraEditors.SimpleButton();
             this.btnSaveEmployment = new DevExpress.XtraEditors.SimpleButton();
             this.tableLayoutPanel8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtSpouseIncome.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSpouseEmployerPin.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSpouseEmployerCity.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSpouseEmployerStreet.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSpouseEmployerAdd.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSpouseEmployer.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSpouseDesigation.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtClientIncome.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtClientEmployerPin.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtClientEmployerCity.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtClientEmployerStreet.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtClientEmployerAdd.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtClientEmployer.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtClientDesignation.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSpouseIncome.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtClientIncome.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel8
@@ -122,14 +122,6 @@
             this.tableLayoutPanel8.Size = new System.Drawing.Size(852, 192);
             this.tableLayoutPanel8.TabIndex = 14;
             // 
-            // txtSpouseIncome
-            // 
-            this.txtSpouseIncome.Location = new System.Drawing.Point(571, 205);
-            this.txtSpouseIncome.Name = "txtSpouseIncome";
-            this.txtSpouseIncome.Size = new System.Drawing.Size(281, 20);
-            this.txtSpouseIncome.TabIndex = 13;
-            this.txtSpouseIncome.Visible = false;
-            // 
             // txtSpouseEmployerPin
             // 
             this.txtSpouseEmployerPin.Location = new System.Drawing.Point(566, 165);
@@ -171,14 +163,6 @@
             this.txtSpouseDesigation.Name = "txtSpouseDesigation";
             this.txtSpouseDesigation.Size = new System.Drawing.Size(281, 20);
             this.txtSpouseDesigation.TabIndex = 7;
-            // 
-            // txtClientIncome
-            // 
-            this.txtClientIncome.Location = new System.Drawing.Point(284, 205);
-            this.txtClientIncome.Name = "txtClientIncome";
-            this.txtClientIncome.Size = new System.Drawing.Size(281, 20);
-            this.txtClientIncome.TabIndex = 6;
-            this.txtClientIncome.Visible = false;
             // 
             // txtClientEmployerPin
             // 
@@ -315,19 +299,6 @@
             this.label49.Text = "City:";
             this.label49.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label50
-            // 
-            this.label50.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label50.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label50.Location = new System.Drawing.Point(11, 202);
-            this.label50.Name = "label50";
-            this.label50.Size = new System.Drawing.Size(267, 24);
-            this.label50.TabIndex = 26;
-            this.label50.Text = "Income:";
-            this.label50.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label50.Visible = false;
-            // 
             // label44
             // 
             this.label44.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -349,6 +320,35 @@
             this.txtClientDesignation.Size = new System.Drawing.Size(281, 20);
             this.txtClientDesignation.TabIndex = 0;
             // 
+            // txtSpouseIncome
+            // 
+            this.txtSpouseIncome.Location = new System.Drawing.Point(571, 205);
+            this.txtSpouseIncome.Name = "txtSpouseIncome";
+            this.txtSpouseIncome.Size = new System.Drawing.Size(281, 20);
+            this.txtSpouseIncome.TabIndex = 13;
+            this.txtSpouseIncome.Visible = false;
+            // 
+            // txtClientIncome
+            // 
+            this.txtClientIncome.Location = new System.Drawing.Point(284, 205);
+            this.txtClientIncome.Name = "txtClientIncome";
+            this.txtClientIncome.Size = new System.Drawing.Size(281, 20);
+            this.txtClientIncome.TabIndex = 6;
+            this.txtClientIncome.Visible = false;
+            // 
+            // label50
+            // 
+            this.label50.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label50.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label50.Location = new System.Drawing.Point(11, 202);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(267, 24);
+            this.label50.TabIndex = 26;
+            this.label50.Text = "Income:";
+            this.label50.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label50.Visible = false;
+            // 
             // btnCancelEmployment
             // 
             this.btnCancelEmployment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -356,15 +356,15 @@
             this.btnCancelEmployment.Location = new System.Drawing.Point(795, 231);
             this.btnCancelEmployment.Name = "btnCancelEmployment";
             this.btnCancelEmployment.Size = new System.Drawing.Size(62, 23);
-            toolTipTitleItem1.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
-            toolTipTitleItem1.Appearance.Options.UseImage = true;
-            toolTipTitleItem1.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem1.Image")));
-            toolTipTitleItem1.Text = "Cancel";
-            toolTipItem1.LeftIndent = 6;
-            toolTipItem1.Text = "To close employment information without saving any data click here.";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            superToolTip1.Items.Add(toolTipItem1);
-            this.btnCancelEmployment.SuperTip = superToolTip1;
+            toolTipTitleItem3.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            toolTipTitleItem3.Appearance.Options.UseImage = true;
+            toolTipTitleItem3.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem3.Image")));
+            toolTipTitleItem3.Text = "Cancel";
+            toolTipItem3.LeftIndent = 6;
+            toolTipItem3.Text = "To close employment information without saving any data click here.";
+            superToolTip3.Items.Add(toolTipTitleItem3);
+            superToolTip3.Items.Add(toolTipItem3);
+            this.btnCancelEmployment.SuperTip = superToolTip3;
             this.btnCancelEmployment.TabIndex = 26;
             this.btnCancelEmployment.Text = "&Close";
             this.btnCancelEmployment.Click += new System.EventHandler(this.btnCancelEmployment_Click);
@@ -376,15 +376,15 @@
             this.btnSaveEmployment.Location = new System.Drawing.Point(732, 231);
             this.btnSaveEmployment.Name = "btnSaveEmployment";
             this.btnSaveEmployment.Size = new System.Drawing.Size(57, 23);
-            toolTipTitleItem2.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
-            toolTipTitleItem2.Appearance.Options.UseImage = true;
-            toolTipTitleItem2.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem2.Image")));
-            toolTipTitleItem2.Text = "Save";
-            toolTipItem2.LeftIndent = 6;
-            toolTipItem2.Text = "To save employment infroamtion click here.";
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            superToolTip2.Items.Add(toolTipItem2);
-            this.btnSaveEmployment.SuperTip = superToolTip2;
+            toolTipTitleItem4.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
+            toolTipTitleItem4.Appearance.Options.UseImage = true;
+            toolTipTitleItem4.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem4.Image")));
+            toolTipTitleItem4.Text = "Save";
+            toolTipItem4.LeftIndent = 6;
+            toolTipItem4.Text = "To save employment infroamtion click here.";
+            superToolTip4.Items.Add(toolTipTitleItem4);
+            superToolTip4.Items.Add(toolTipItem4);
+            this.btnSaveEmployment.SuperTip = superToolTip4;
             this.btnSaveEmployment.TabIndex = 25;
             this.btnSaveEmployment.Text = "&Save";
             this.btnSaveEmployment.Click += new System.EventHandler(this.btnSaveEmployment_Click);
@@ -403,23 +403,25 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "EmploymentDetails";
+            this.Tag = "Employment";
             this.Text = "Employment Details";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.EmploymentDetails_FormClosed);
+            this.Load += new System.EventHandler(this.EmploymentDetails_Load);
             this.tableLayoutPanel8.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.txtSpouseIncome.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSpouseEmployerPin.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSpouseEmployerCity.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSpouseEmployerStreet.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSpouseEmployerAdd.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSpouseEmployer.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSpouseDesigation.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtClientIncome.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtClientEmployerPin.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtClientEmployerCity.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtClientEmployerStreet.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtClientEmployerAdd.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtClientEmployer.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtClientDesignation.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSpouseIncome.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtClientIncome.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }

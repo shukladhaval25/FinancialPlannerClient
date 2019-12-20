@@ -52,11 +52,14 @@
             this.colAMCName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCategoryId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colChequeInFavourOff = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colType = new DevExpress.XtraGrid.Columns.GridColumn();
             this.btnDelete = new DevExpress.XtraEditors.SimpleButton();
             this.btnEdit = new DevExpress.XtraEditors.SimpleButton();
             this.btnAdd = new DevExpress.XtraEditors.SimpleButton();
             this.lblLine = new DevExpress.XtraEditors.LabelControl();
             this.grpSchemeDetails = new DevExpress.XtraEditors.GroupControl();
+            this.cmbType = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.txtChequeInFavourOff = new DevExpress.XtraEditors.TextEdit();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
@@ -67,18 +70,15 @@
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
             this.txtName = new DevExpress.XtraEditors.TextEdit();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.cmbType = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
-            this.colType = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlScheme)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewScheme)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grpSchemeDetails)).BeginInit();
             this.grpSchemeDetails.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbType.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtChequeInFavourOff.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookupCategory.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbAMC.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbType.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // gridControlScheme
@@ -147,6 +147,12 @@
             this.colChequeInFavourOff.Caption = "Cheque in favour off";
             this.colChequeInFavourOff.FieldName = "ChequeInFavourOff";
             this.colChequeInFavourOff.Name = "colChequeInFavourOff";
+            // 
+            // colType
+            // 
+            this.colType.Caption = "Type";
+            this.colType.FieldName = "Type";
+            this.colType.Name = "colType";
             // 
             // btnDelete
             // 
@@ -244,6 +250,27 @@
             this.grpSchemeDetails.TabIndex = 8;
             this.grpSchemeDetails.Text = "Scheme Details";
             this.grpSchemeDetails.Paint += new System.Windows.Forms.PaintEventHandler(this.grpSchemeDetails_Paint);
+            // 
+            // cmbType
+            // 
+            this.cmbType.Location = new System.Drawing.Point(129, 139);
+            this.cmbType.Name = "cmbType";
+            this.cmbType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cmbType.Properties.Items.AddRange(new object[] {
+            "Equity",
+            "Debt"});
+            this.cmbType.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.cmbType.Size = new System.Drawing.Size(238, 20);
+            this.cmbType.TabIndex = 50;
+            // 
+            // labelControl5
+            // 
+            this.labelControl5.Location = new System.Drawing.Point(18, 142);
+            this.labelControl5.Name = "labelControl5";
+            this.labelControl5.Size = new System.Drawing.Size(28, 13);
+            this.labelControl5.TabIndex = 51;
+            this.labelControl5.Text = "Type:";
             // 
             // txtChequeInFavourOff
             // 
@@ -353,33 +380,6 @@
             this.labelControl3.TabIndex = 1;
             this.labelControl3.Text = "Name:";
             // 
-            // cmbType
-            // 
-            this.cmbType.Location = new System.Drawing.Point(129, 139);
-            this.cmbType.Name = "cmbType";
-            this.cmbType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cmbType.Properties.Items.AddRange(new object[] {
-            "Equity",
-            "Debt"});
-            this.cmbType.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.cmbType.Size = new System.Drawing.Size(238, 20);
-            this.cmbType.TabIndex = 50;
-            // 
-            // labelControl5
-            // 
-            this.labelControl5.Location = new System.Drawing.Point(18, 142);
-            this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(28, 13);
-            this.labelControl5.TabIndex = 51;
-            this.labelControl5.Text = "Type:";
-            // 
-            // colType
-            // 
-            this.colType.Caption = "Type";
-            this.colType.FieldName = "Type";
-            this.colType.Name = "colType";
-            // 
             // SchemeView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -394,6 +394,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "SchemeView";
+            this.Tag = "MF Scheme";
             this.Text = "Scheme";
             this.Load += new System.EventHandler(this.SchemeView_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridControlScheme)).EndInit();
@@ -401,11 +402,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.grpSchemeDetails)).EndInit();
             this.grpSchemeDetails.ResumeLayout(false);
             this.grpSchemeDetails.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbType.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtChequeInFavourOff.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookupCategory.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbAMC.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbType.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -414,9 +415,9 @@
 
         private DevExpress.XtraGrid.GridControl gridControlScheme;
         private DevExpress.XtraGrid.Views.Grid.GridView gridViewScheme;
-        private DevExpress.XtraEditors.SimpleButton btnDelete;
-        private DevExpress.XtraEditors.SimpleButton btnEdit;
-        private DevExpress.XtraEditors.SimpleButton btnAdd;
+        public DevExpress.XtraEditors.SimpleButton btnDelete;
+        public DevExpress.XtraEditors.SimpleButton btnEdit;
+        public DevExpress.XtraEditors.SimpleButton btnAdd;
         private DevExpress.XtraEditors.LabelControl lblLine;
         private DevExpress.XtraEditors.GroupControl grpSchemeDetails;
         private DevExpress.XtraEditors.TextEdit txtName;

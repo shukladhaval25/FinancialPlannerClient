@@ -195,6 +195,7 @@ namespace FinancialPlannerClient.Clients
 
         private void BankDetails_Load(object sender, EventArgs e)
         {
+            Program.ApplyPermission(this.Text, this);
             fillupBankAccountInfo();
             fillupBankMaster();
         }

@@ -51,6 +51,10 @@
             this.gridBankAccount = new DevExpress.XtraGrid.GridControl();
             this.gridViewBankAccount = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.grpBankAccountDetails = new DevExpress.XtraEditors.GroupControl();
+            this.txtMICR = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtIFSC = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.lookupBank = new DevExpress.XtraEditors.LookUpEdit();
             this.cmbAccountHolder = new DevExpress.XtraEditors.ComboBoxEdit();
             this.btnCancelBankAccount = new DevExpress.XtraEditors.SimpleButton();
@@ -74,10 +78,6 @@
             this.txtBankName = new System.Windows.Forms.TextBox();
             this.label142 = new System.Windows.Forms.Label();
             this.lblContactTitle = new DevExpress.XtraEditors.LabelControl();
-            this.txtIFSC = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtMICR = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridBankAccount)).BeginInit();
@@ -214,6 +214,46 @@
             this.grpBankAccountDetails.TabIndex = 1;
             this.grpBankAccountDetails.Text = "Bank Account Details";
             // 
+            // txtMICR
+            // 
+            this.txtMICR.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMICR.Location = new System.Drawing.Point(364, 208);
+            this.txtMICR.MaxLength = 15;
+            this.txtMICR.Name = "txtMICR";
+            this.txtMICR.ReadOnly = true;
+            this.txtMICR.Size = new System.Drawing.Size(140, 22);
+            this.txtMICR.TabIndex = 44;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(318, 211);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(44, 16);
+            this.label2.TabIndex = 45;
+            this.label2.Text = "MICR:";
+            // 
+            // txtIFSC
+            // 
+            this.txtIFSC.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIFSC.Location = new System.Drawing.Point(153, 208);
+            this.txtIFSC.MaxLength = 15;
+            this.txtIFSC.Name = "txtIFSC";
+            this.txtIFSC.ReadOnly = true;
+            this.txtIFSC.Size = new System.Drawing.Size(160, 22);
+            this.txtIFSC.TabIndex = 42;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(22, 211);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(40, 16);
+            this.label1.TabIndex = 43;
+            this.label1.Text = "IFSC:";
+            // 
             // lookupBank
             // 
             this.lookupBank.Location = new System.Drawing.Point(153, 69);
@@ -298,12 +338,13 @@
             // txtMinReqBalance
             // 
             this.txtMinReqBalance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMinReqBalance.Location = new System.Drawing.Point(668, 153);
+            this.txtMinReqBalance.Location = new System.Drawing.Point(668, 211);
             this.txtMinReqBalance.MaxLength = 6;
             this.txtMinReqBalance.Name = "txtMinReqBalance";
             this.txtMinReqBalance.Size = new System.Drawing.Size(173, 22);
             this.txtMinReqBalance.TabIndex = 33;
             this.txtMinReqBalance.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtMinReqBalance.Visible = false;
             this.txtMinReqBalance.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMinReqBalance_KeyPress);
             this.txtMinReqBalance.Validating += new System.ComponentModel.CancelEventHandler(this.txtMinReqBalance_Validating);
             // 
@@ -311,11 +352,12 @@
             // 
             this.label139.AutoSize = true;
             this.label139.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label139.Location = new System.Drawing.Point(523, 156);
+            this.label139.Location = new System.Drawing.Point(523, 214);
             this.label139.Name = "label139";
             this.label139.Size = new System.Drawing.Size(139, 16);
             this.label139.TabIndex = 38;
             this.label139.Text = "Min. Require Balance:";
+            this.label139.Visible = false;
             // 
             // grpJoinAccountInfo
             // 
@@ -489,46 +531,6 @@
             this.lblContactTitle.TabIndex = 6;
             this.lblContactTitle.Text = "Bank Details";
             // 
-            // txtIFSC
-            // 
-            this.txtIFSC.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIFSC.Location = new System.Drawing.Point(153, 208);
-            this.txtIFSC.MaxLength = 15;
-            this.txtIFSC.Name = "txtIFSC";
-            this.txtIFSC.ReadOnly = true;
-            this.txtIFSC.Size = new System.Drawing.Size(160, 22);
-            this.txtIFSC.TabIndex = 42;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(22, 211);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(40, 16);
-            this.label1.TabIndex = 43;
-            this.label1.Text = "IFSC:";
-            // 
-            // txtMICR
-            // 
-            this.txtMICR.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMICR.Location = new System.Drawing.Point(364, 208);
-            this.txtMICR.MaxLength = 15;
-            this.txtMICR.Name = "txtMICR";
-            this.txtMICR.ReadOnly = true;
-            this.txtMICR.Size = new System.Drawing.Size(140, 22);
-            this.txtMICR.TabIndex = 44;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(318, 211);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 16);
-            this.label2.TabIndex = 45;
-            this.label2.Text = "MICR:";
-            // 
             // BankDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -562,9 +564,9 @@
         private DevExpress.XtraEditors.GroupControl groupControl1;
         private DevExpress.XtraGrid.GridControl gridBankAccount;
         private DevExpress.XtraGrid.Views.Grid.GridView gridViewBankAccount;
-        private DevExpress.XtraEditors.SimpleButton btnDelete;
-        private DevExpress.XtraEditors.SimpleButton btnEdit;
-        private DevExpress.XtraEditors.SimpleButton btnAdd;
+        public DevExpress.XtraEditors.SimpleButton btnDelete;
+        public DevExpress.XtraEditors.SimpleButton btnEdit;
+        public DevExpress.XtraEditors.SimpleButton btnAdd;
         private DevExpress.XtraEditors.GroupControl grpBankAccountDetails;
         private System.Windows.Forms.Label label143;
         private System.Windows.Forms.TextBox txtMinReqBalance;
