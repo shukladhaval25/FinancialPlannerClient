@@ -6,6 +6,7 @@ using FinancialPlanner.Common.Model.TaskManagement.MFTransactions;
 using FinancialPlanner.Common.Permission;
 using FinancialPlannerClient.Master;
 using FinancialPlannerClient.Master.TaskMaster;
+using FinancialPlannerClient.PlanOptions.Reports.Investment_Recommendation;
 using FinancialPlannerClient.TaskManagementSystem;
 using FinancialPlannerClient.TaskManagementSystem.TransactionOptions;
 using FinancialPlannerClient.TaskManagementSystem.TransactionOptions.Helper;
@@ -59,6 +60,9 @@ namespace FinancialPlannerClient.PlanOptions
 
         private void setPermission()
         {
+            if (Program.CurrentUserRolePermission.Name == "Admin")
+                return;
+
             List<RolePermission> rolePermission = (List<RolePermission>)Program.CurrentUserRolePermission.Permissions;
             RolePermission permission = rolePermission.Find(x => x.FormName.Trim() == "Investment Recommendation");
 
@@ -737,6 +741,18 @@ namespace FinancialPlannerClient.PlanOptions
             {
                 rdoInvestmentType_SelectedIndexChanged(sender, e);
             }
+        }
+
+        private void xtraTabInvestmentRecomendationDetails_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnReportInvRec_Click(object sender, EventArgs e)
+        {
+            investmentRecommendation investmentRecommendation = new investmentRecommendation(this.currentClient, this.planner);
+            DevExpress.XtraReports.UI.ReportPrintTool printTool = new DevExpress.XtraReports.UI.ReportPrintTool(investmentRecommendation);
+            printTool.ShowRibbonPreviewDialog();
         }
     }
 }

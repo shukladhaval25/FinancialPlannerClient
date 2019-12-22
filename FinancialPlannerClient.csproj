@@ -64,6 +64,7 @@
     </Reference>
     <Reference Include="DevExpress.Office.v16.2.Core, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Pdf.v16.2.Core, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.PivotGrid.v16.2.Core, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Printing.v16.2.Core, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.RichEdit.v16.2.Core, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Sparkline.v16.2.Core, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -599,6 +600,42 @@
     <Compile Include="PlanOptions\Reports\Introduction.Designer.cs">
       <DependentUpon>Introduction.cs</DependentUpon>
     </Compile>
+    <Compile Include="PlanOptions\Reports\Investment Recommendation\ChequeDetailsReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\Investment Recommendation\ChequeDetailsReport.Designer.cs">
+      <DependentUpon>ChequeDetailsReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\Investment Recommendation\InvBreackup.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\Investment Recommendation\InvBreackup.Designer.cs">
+      <DependentUpon>InvBreackup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\Investment Recommendation\InvestmentDetails.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\Investment Recommendation\InvestmentDetails.Designer.cs">
+      <DependentUpon>InvestmentDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\Investment Recommendation\investmentRecommendation.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\Investment Recommendation\investmentRecommendation.Designer.cs">
+      <DependentUpon>investmentRecommendation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\Investment Recommendation\SchemeCategoryWiseBreackup.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\Investment Recommendation\SchemeCategoryWiseBreackup.Designer.cs">
+      <DependentUpon>SchemeCategoryWiseBreackup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\Investment Recommendation\STPDetails.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\Investment Recommendation\STPDetails.Designer.cs">
+      <DependentUpon>STPDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="PlanOptions\Reports\NetWorthAnalysis.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -1044,6 +1081,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\Reports\Introduction.resx">
       <DependentUpon>Introduction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\Reports\Investment Recommendation\ChequeDetailsReport.resx">
+      <DependentUpon>ChequeDetailsReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\Reports\Investment Recommendation\InvBreackup.resx">
+      <DependentUpon>InvBreackup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\Reports\Investment Recommendation\InvestmentDetails.resx">
+      <DependentUpon>InvestmentDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\Reports\Investment Recommendation\investmentRecommendation.resx">
+      <DependentUpon>investmentRecommendation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\Reports\Investment Recommendation\SchemeCategoryWiseBreackup.resx">
+      <DependentUpon>SchemeCategoryWiseBreackup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\Reports\Investment Recommendation\STPDetails.resx">
+      <DependentUpon>STPDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\Reports\NetWorthAnalysis.resx">
       <DependentUpon>NetWorthAnalysis.cs</DependentUpon>

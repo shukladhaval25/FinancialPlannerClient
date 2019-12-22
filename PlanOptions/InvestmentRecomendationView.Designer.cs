@@ -31,15 +31,15 @@ namespace FinancialPlannerClient.PlanOptions
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InvestmentRecomendationView));
-            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem5 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip6 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem6 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem6 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
             this.lookupAMC = new DevExpress.XtraEditors.LookUpEdit();
             this.lblAMC = new System.Windows.Forms.Label();
             this.grpInvRec = new DevExpress.XtraEditors.GroupControl();
@@ -62,6 +62,7 @@ namespace FinancialPlannerClient.PlanOptions
             this.ChequeInFavourOff = new DevExpress.XtraGrid.Columns.GridColumn();
             this.FirstHolder = new DevExpress.XtraGrid.Columns.GridColumn();
             this.SecondHolder = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumnThirdHolder = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.STPInvestment = new DevExpress.XtraTab.XtraTabPage();
             this.btnDeleteSTPInvestementRecommendation = new DevExpress.XtraEditors.SimpleButton();
@@ -77,6 +78,7 @@ namespace FinancialPlannerClient.PlanOptions
             this.Equity = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.Debt = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.grpScheme = new DevExpress.XtraEditors.GroupControl();
+            this.btnReportInvRec = new DevExpress.XtraEditors.SimpleButton();
             this.cmbScheme = new DevExpress.XtraEditors.ComboBoxEdit();
             this.chkSTPApply = new DevExpress.XtraEditors.CheckEdit();
             this.vGridControlSTP = new DevExpress.XtraVerticalGrid.VGridControl();
@@ -90,7 +92,6 @@ namespace FinancialPlannerClient.PlanOptions
             this.repositoryItemDateEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.rdoInvestmentType = new DevExpress.XtraEditors.RadioGroup();
             this.label4 = new System.Windows.Forms.Label();
-            this.gridColumnThirdHolder = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.lookupAMC.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grpInvRec)).BeginInit();
             this.grpInvRec.SuspendLayout();
@@ -252,6 +253,7 @@ namespace FinancialPlannerClient.PlanOptions
             this.LumsumInvestment,
             this.STPInvestment,
             this.SIPInvestement});
+            this.xtraTabInvestmentRecomendationDetails.Click += new System.EventHandler(this.xtraTabInvestmentRecomendationDetails_Click);
             // 
             // LumsumInvestment
             // 
@@ -268,15 +270,15 @@ namespace FinancialPlannerClient.PlanOptions
             this.btnDeleteLumsum.Location = new System.Drawing.Point(365, 379);
             this.btnDeleteLumsum.Name = "btnDeleteLumsum";
             this.btnDeleteLumsum.Size = new System.Drawing.Size(25, 23);
-            toolTipTitleItem4.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
-            toolTipTitleItem4.Appearance.Options.UseImage = true;
-            toolTipTitleItem4.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem4.Image")));
-            toolTipTitleItem4.Text = "Delete";
-            toolTipItem4.LeftIndent = 6;
-            toolTipItem4.Text = "To delete selected investment record click here.";
-            superToolTip4.Items.Add(toolTipTitleItem4);
-            superToolTip4.Items.Add(toolTipItem4);
-            this.btnDeleteLumsum.SuperTip = superToolTip4;
+            toolTipTitleItem1.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            toolTipTitleItem1.Appearance.Options.UseImage = true;
+            toolTipTitleItem1.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem1.Image")));
+            toolTipTitleItem1.Text = "Delete";
+            toolTipItem1.LeftIndent = 6;
+            toolTipItem1.Text = "To delete selected investment record click here.";
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            superToolTip1.Items.Add(toolTipItem1);
+            this.btnDeleteLumsum.SuperTip = superToolTip1;
             this.btnDeleteLumsum.TabIndex = 7;
             this.btnDeleteLumsum.ToolTip = "Delete";
             this.btnDeleteLumsum.Click += new System.EventHandler(this.btnDeleteLumsum_Click);
@@ -381,6 +383,14 @@ namespace FinancialPlannerClient.PlanOptions
             this.SecondHolder.Visible = true;
             this.SecondHolder.VisibleIndex = 6;
             // 
+            // gridColumnThirdHolder
+            // 
+            this.gridColumnThirdHolder.Caption = "ThirdHolder";
+            this.gridColumnThirdHolder.FieldName = "ThirdHolder";
+            this.gridColumnThirdHolder.Name = "gridColumnThirdHolder";
+            this.gridColumnThirdHolder.Visible = true;
+            this.gridColumnThirdHolder.VisibleIndex = 7;
+            // 
             // repositoryItemButtonEdit1
             // 
             this.repositoryItemButtonEdit1.AutoHeight = false;
@@ -403,15 +413,15 @@ namespace FinancialPlannerClient.PlanOptions
             this.btnDeleteSTPInvestementRecommendation.Location = new System.Drawing.Point(365, 372);
             this.btnDeleteSTPInvestementRecommendation.Name = "btnDeleteSTPInvestementRecommendation";
             this.btnDeleteSTPInvestementRecommendation.Size = new System.Drawing.Size(25, 23);
-            toolTipTitleItem5.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
-            toolTipTitleItem5.Appearance.Options.UseImage = true;
-            toolTipTitleItem5.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem5.Image")));
-            toolTipTitleItem5.Text = "Delete";
-            toolTipItem5.LeftIndent = 6;
-            toolTipItem5.Text = "To delete selected investment record click here.";
-            superToolTip5.Items.Add(toolTipTitleItem5);
-            superToolTip5.Items.Add(toolTipItem5);
-            this.btnDeleteSTPInvestementRecommendation.SuperTip = superToolTip5;
+            toolTipTitleItem2.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
+            toolTipTitleItem2.Appearance.Options.UseImage = true;
+            toolTipTitleItem2.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem2.Image")));
+            toolTipTitleItem2.Text = "Delete";
+            toolTipItem2.LeftIndent = 6;
+            toolTipItem2.Text = "To delete selected investment record click here.";
+            superToolTip2.Items.Add(toolTipTitleItem2);
+            superToolTip2.Items.Add(toolTipItem2);
+            this.btnDeleteSTPInvestementRecommendation.SuperTip = superToolTip2;
             this.btnDeleteSTPInvestementRecommendation.TabIndex = 8;
             this.btnDeleteSTPInvestementRecommendation.ToolTip = "Delete";
             this.btnDeleteSTPInvestementRecommendation.Click += new System.EventHandler(this.btnDeleteSTPInvestementRecommendation_Click);
@@ -450,15 +460,15 @@ namespace FinancialPlannerClient.PlanOptions
             this.btnDeleteSIPInvestement.Location = new System.Drawing.Point(363, 372);
             this.btnDeleteSIPInvestement.Name = "btnDeleteSIPInvestement";
             this.btnDeleteSIPInvestement.Size = new System.Drawing.Size(25, 23);
-            toolTipTitleItem6.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
-            toolTipTitleItem6.Appearance.Options.UseImage = true;
-            toolTipTitleItem6.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem6.Image")));
-            toolTipTitleItem6.Text = "Delete";
-            toolTipItem6.LeftIndent = 6;
-            toolTipItem6.Text = "To delete selected investment record click here.";
-            superToolTip6.Items.Add(toolTipTitleItem6);
-            superToolTip6.Items.Add(toolTipItem6);
-            this.btnDeleteSIPInvestement.SuperTip = superToolTip6;
+            toolTipTitleItem3.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
+            toolTipTitleItem3.Appearance.Options.UseImage = true;
+            toolTipTitleItem3.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem3.Image")));
+            toolTipTitleItem3.Text = "Delete";
+            toolTipItem3.LeftIndent = 6;
+            toolTipItem3.Text = "To delete selected investment record click here.";
+            superToolTip3.Items.Add(toolTipTitleItem3);
+            superToolTip3.Items.Add(toolTipItem3);
+            this.btnDeleteSIPInvestement.SuperTip = superToolTip3;
             this.btnDeleteSIPInvestement.TabIndex = 9;
             this.btnDeleteSIPInvestement.ToolTip = "Delete";
             this.btnDeleteSIPInvestement.Click += new System.EventHandler(this.btnDeleteSIPInvestement_Click);
@@ -495,7 +505,7 @@ namespace FinancialPlannerClient.PlanOptions
             // 
             // vGridInvestmentRatio
             // 
-            this.vGridInvestmentRatio.Cursor = System.Windows.Forms.Cursors.SizeWE;
+            this.vGridInvestmentRatio.Cursor = System.Windows.Forms.Cursors.Default;
             this.vGridInvestmentRatio.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vGridInvestmentRatio.Location = new System.Drawing.Point(2, 2);
             this.vGridInvestmentRatio.Name = "vGridInvestmentRatio";
@@ -540,6 +550,7 @@ namespace FinancialPlannerClient.PlanOptions
             // 
             this.grpScheme.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.grpScheme.Controls.Add(this.btnReportInvRec);
             this.grpScheme.Controls.Add(this.cmbScheme);
             this.grpScheme.Controls.Add(this.chkSTPApply);
             this.grpScheme.Controls.Add(this.vGridControlSTP);
@@ -554,6 +565,17 @@ namespace FinancialPlannerClient.PlanOptions
             this.grpScheme.Size = new System.Drawing.Size(265, 555);
             this.grpScheme.TabIndex = 25;
             this.grpScheme.Text = "Mutual Fund Scheme";
+            // 
+            // btnReportInvRec
+            // 
+            this.btnReportInvRec.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnReportInvRec.ImageUri.Uri = "ShowWorkTimeOnly;Size16x16";
+            this.btnReportInvRec.Location = new System.Drawing.Point(134, 519);
+            this.btnReportInvRec.Name = "btnReportInvRec";
+            this.btnReportInvRec.Size = new System.Drawing.Size(126, 31);
+            this.btnReportInvRec.TabIndex = 33;
+            this.btnReportInvRec.Text = "Show Report";
+            this.btnReportInvRec.Click += new System.EventHandler(this.btnReportInvRec_Click);
             // 
             // cmbScheme
             // 
@@ -617,12 +639,10 @@ namespace FinancialPlannerClient.PlanOptions
             // 
             // btnAddInvestment
             // 
-            this.btnAddInvestment.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAddInvestment.ImageUri.Uri = "Apply;Size16x16";
             this.btnAddInvestment.Location = new System.Drawing.Point(5, 519);
             this.btnAddInvestment.Name = "btnAddInvestment";
-            this.btnAddInvestment.Size = new System.Drawing.Size(255, 31);
+            this.btnAddInvestment.Size = new System.Drawing.Size(126, 31);
             this.btnAddInvestment.TabIndex = 29;
             this.btnAddInvestment.Text = "Add Investment";
             this.btnAddInvestment.Click += new System.EventHandler(this.btnAddInvestment_Click);
@@ -687,14 +707,6 @@ namespace FinancialPlannerClient.PlanOptions
             this.label4.Size = new System.Drawing.Size(93, 16);
             this.label4.TabIndex = 26;
             this.label4.Text = "Schme Name:";
-            // 
-            // gridColumnThirdHolder
-            // 
-            this.gridColumnThirdHolder.Caption = "ThirdHolder";
-            this.gridColumnThirdHolder.FieldName = "ThirdHolder";
-            this.gridColumnThirdHolder.Name = "gridColumnThirdHolder";
-            this.gridColumnThirdHolder.Visible = true;
-            this.gridColumnThirdHolder.VisibleIndex = 7;
             // 
             // InvestmentRecomendationView
             // 
@@ -817,5 +829,6 @@ namespace FinancialPlannerClient.PlanOptions
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.LabelControl lblEquity;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnThirdHolder;
+        private DevExpress.XtraEditors.SimpleButton btnReportInvRec;
     }
 }
