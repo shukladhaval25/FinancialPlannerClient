@@ -288,12 +288,19 @@
     <Compile Include="Home\frmHome.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Insurance\EstimatedInsuranceCoverageView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Insurance\EstimatedInsuranceCoverageView.Designer.cs">
+      <DependentUpon>EstimatedInsuranceCoverageView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Insurance\InsuranceCalcuation.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Insurance\InsuranceCalcuation.Designer.cs">
       <DependentUpon>InsuranceCalcuation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Insurance\InsuranceCoverageService.cs" />
     <Compile Include="Login\frmXtraLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -952,6 +959,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Home\frmHome.resx">
       <DependentUpon>frmHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Insurance\EstimatedInsuranceCoverageView.resx">
+      <DependentUpon>EstimatedInsuranceCoverageView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Insurance\InsuranceCalcuation.resx">
       <DependentUpon>InsuranceCalcuation.cs</DependentUpon>

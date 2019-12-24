@@ -270,6 +270,8 @@ namespace FinancialPlannerClient.Clients
 
         private void setVisibilityOfFamilyMemberControlBasedOnPermission()
         {
+            if (Program.CurrentUserRolePermission.Name == "Admin")
+                return;
             List<RolePermission> rolePermission = (List<RolePermission>)Program.CurrentUserRolePermission.Permissions;
             RolePermission permission = rolePermission.Find(x => x.FormName == "Data Gathering");
             if (permission != null)
@@ -483,6 +485,8 @@ namespace FinancialPlannerClient.Clients
 
         private void setPermissionForBankAccount()
         {
+            if (Program.CurrentUserRolePermission.Name == "Admin")
+                return;
             List<RolePermission> rolePermission = (List<RolePermission>)Program.CurrentUserRolePermission.Permissions;
             RolePermission permission = rolePermission.Find(x => x.FormName == "Data Gathering");
             if (permission != null)
@@ -654,6 +658,8 @@ namespace FinancialPlannerClient.Clients
         }
         private void setPermissionForExpenses()
         {
+            if (Program.CurrentUserRolePermission.Name == "Admin")
+                return;
             List<RolePermission> rolePermission = (List<RolePermission>)Program.CurrentUserRolePermission.Permissions;
             RolePermission permission = rolePermission.Find(x => x.FormName == "Data Gathering");
             if (permission != null)
@@ -682,6 +688,8 @@ namespace FinancialPlannerClient.Clients
         }
         private void setPermissionForIncome()
         {
+            if (Program.CurrentUserRolePermission.Name == "Admin")
+                return;
             List<RolePermission> rolePermission = (List<RolePermission>)Program.CurrentUserRolePermission.Permissions;
             RolePermission permission = rolePermission.Find(x => x.FormName == "Data Gathering");
             if (permission != null)
@@ -709,6 +717,8 @@ namespace FinancialPlannerClient.Clients
         }
         private void setPermissionForLoan()
         {
+            if (Program.CurrentUserRolePermission.Name == "Admin")
+                return;
             List<RolePermission> rolePermission = (List<RolePermission>)Program.CurrentUserRolePermission.Permissions;
             RolePermission permission = rolePermission.Find(x => x.FormName == "Data Gathering");
             if (permission != null)
@@ -748,6 +758,9 @@ namespace FinancialPlannerClient.Clients
 
         private void setPermissionForNonFinancailAsset()
         {
+            if (Program.CurrentUserRolePermission.Name == "Admin")
+                return;
+
             List<RolePermission> rolePermission = (List<RolePermission>)Program.CurrentUserRolePermission.Permissions;
             RolePermission permission = rolePermission.Find(x => x.FormName == "Data Gathering");
             if (permission != null)

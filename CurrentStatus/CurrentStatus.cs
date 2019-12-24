@@ -1711,6 +1711,9 @@ namespace FinancialPlannerClient.CurrentStatus
 
         private void setPermission(Control control)
         {
+            if (Program.CurrentUserRolePermission.Name == "Admin")
+                return;
+
             List<RolePermission> rolePermission = (List<RolePermission>)Program.CurrentUserRolePermission.Permissions;
             RolePermission permission = rolePermission.Find(x => x.FormName == "Current Status");
 

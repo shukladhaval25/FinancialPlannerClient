@@ -39,10 +39,17 @@
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.btnShowCalculation = new DevExpress.XtraEditors.SimpleButton();
+            this.grpEstimatedInsCoverage = new DevExpress.XtraEditors.GroupControl();
+            this.txtEstimatedIsurnceCoverage = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.gridInsuranceCoverage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewInsuranceCoverage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlFinancialAssert)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewFinancialAsset)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grpEstimatedInsCoverage)).BeginInit();
+            this.grpEstimatedInsCoverage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEstimatedIsurnceCoverage.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // lblContactTitle
@@ -64,10 +71,10 @@
             this.gridInsuranceCoverage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gridInsuranceCoverage.Location = new System.Drawing.Point(12, 47);
+            this.gridInsuranceCoverage.Location = new System.Drawing.Point(12, 27);
             this.gridInsuranceCoverage.MainView = this.gridViewInsuranceCoverage;
             this.gridInsuranceCoverage.Name = "gridInsuranceCoverage";
-            this.gridInsuranceCoverage.Size = new System.Drawing.Size(937, 223);
+            this.gridInsuranceCoverage.Size = new System.Drawing.Size(679, 322);
             this.gridInsuranceCoverage.TabIndex = 8;
             this.gridInsuranceCoverage.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewInsuranceCoverage});
@@ -121,10 +128,10 @@
             // 
             this.gridControlFinancialAssert.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gridControlFinancialAssert.Location = new System.Drawing.Point(12, 276);
+            this.gridControlFinancialAssert.Location = new System.Drawing.Point(12, 355);
             this.gridControlFinancialAssert.MainView = this.gridViewFinancialAsset;
             this.gridControlFinancialAssert.Name = "gridControlFinancialAssert";
-            this.gridControlFinancialAssert.Size = new System.Drawing.Size(937, 174);
+            this.gridControlFinancialAssert.Size = new System.Drawing.Size(679, 174);
             this.gridControlFinancialAssert.TabIndex = 9;
             this.gridControlFinancialAssert.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewFinancialAsset});
@@ -174,11 +181,54 @@
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 2;
             // 
+            // btnShowCalculation
+            // 
+            this.btnShowCalculation.Location = new System.Drawing.Point(78, 77);
+            this.btnShowCalculation.Name = "btnShowCalculation";
+            this.btnShowCalculation.Size = new System.Drawing.Size(102, 23);
+            this.btnShowCalculation.TabIndex = 10;
+            this.btnShowCalculation.Text = "Show Calculation";
+            this.btnShowCalculation.Click += new System.EventHandler(this.btnShowCalculation_Click);
+            // 
+            // grpEstimatedInsCoverage
+            // 
+            this.grpEstimatedInsCoverage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpEstimatedInsCoverage.Controls.Add(this.txtEstimatedIsurnceCoverage);
+            this.grpEstimatedInsCoverage.Controls.Add(this.btnShowCalculation);
+            this.grpEstimatedInsCoverage.Controls.Add(this.labelControl1);
+            this.grpEstimatedInsCoverage.Location = new System.Drawing.Point(698, 27);
+            this.grpEstimatedInsCoverage.Name = "grpEstimatedInsCoverage";
+            this.grpEstimatedInsCoverage.Size = new System.Drawing.Size(252, 107);
+            this.grpEstimatedInsCoverage.TabIndex = 11;
+            this.grpEstimatedInsCoverage.Text = "Insurance";
+            // 
+            // txtEstimatedIsurnceCoverage
+            // 
+            this.txtEstimatedIsurnceCoverage.EditValue = "";
+            this.txtEstimatedIsurnceCoverage.Location = new System.Drawing.Point(5, 51);
+            this.txtEstimatedIsurnceCoverage.Name = "txtEstimatedIsurnceCoverage";
+            this.txtEstimatedIsurnceCoverage.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEstimatedIsurnceCoverage.Properties.Appearance.Options.UseFont = true;
+            this.txtEstimatedIsurnceCoverage.Properties.Appearance.Options.UseTextOptions = true;
+            this.txtEstimatedIsurnceCoverage.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.txtEstimatedIsurnceCoverage.Properties.ReadOnly = true;
+            this.txtEstimatedIsurnceCoverage.Size = new System.Drawing.Size(239, 20);
+            this.txtEstimatedIsurnceCoverage.TabIndex = 3;
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Location = new System.Drawing.Point(29, 32);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(192, 13);
+            this.labelControl1.TabIndex = 2;
+            this.labelControl1.Text = "Estimated Insurance Coverage Amount:";
+            // 
             // InsuranceCalculation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(961, 462);
+            this.ClientSize = new System.Drawing.Size(961, 541);
+            this.Controls.Add(this.grpEstimatedInsCoverage);
             this.Controls.Add(this.gridControlFinancialAssert);
             this.Controls.Add(this.gridInsuranceCoverage);
             this.Controls.Add(this.lblContactTitle);
@@ -189,6 +239,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridViewInsuranceCoverage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlFinancialAssert)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewFinancialAsset)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grpEstimatedInsCoverage)).EndInit();
+            this.grpEstimatedInsCoverage.ResumeLayout(false);
+            this.grpEstimatedInsCoverage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEstimatedIsurnceCoverage.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -206,6 +260,10 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
+        private DevExpress.XtraEditors.SimpleButton btnShowCalculation;
+        private DevExpress.XtraEditors.GroupControl grpEstimatedInsCoverage;
+        private DevExpress.XtraEditors.TextEdit txtEstimatedIsurnceCoverage;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
     }
 }
 
