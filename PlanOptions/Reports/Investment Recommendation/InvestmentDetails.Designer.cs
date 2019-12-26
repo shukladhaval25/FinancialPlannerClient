@@ -36,15 +36,15 @@
             ((object)(40D))}, 1);
             DevExpress.XtraCharts.PieSeriesView pieSeriesView1 = new DevExpress.XtraCharts.PieSeriesView();
             this.Detail = new DevExpress.XtraReports.UI.DetailBand();
+            this.subReportCheque = new DevExpress.XtraReports.UI.XRSubreport();
+            this.subReportSTP = new DevExpress.XtraReports.UI.XRSubreport();
             this.subReportSchemeCategoryWise = new DevExpress.XtraReports.UI.XRSubreport();
             this.subReportInvBreackup = new DevExpress.XtraReports.UI.XRSubreport();
             this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
+            this.lblDebt = new DevExpress.XtraReports.UI.XRLabel();
+            this.lblEquity = new DevExpress.XtraReports.UI.XRLabel();
             this.xrChartAssetAllocation = new DevExpress.XtraReports.UI.XRChart();
             this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
-            this.lblEquity = new DevExpress.XtraReports.UI.XRLabel();
-            this.lblDebt = new DevExpress.XtraReports.UI.XRLabel();
-            this.subReportSTP = new DevExpress.XtraReports.UI.XRSubreport();
-            this.subReportCheque = new DevExpress.XtraReports.UI.XRSubreport();
             ((System.ComponentModel.ISupportInitialize)(this.xrChartAssetAllocation)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(series1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(pieSeriesLabel1)).BeginInit();
@@ -63,6 +63,20 @@
             this.Detail.Name = "Detail";
             this.Detail.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.Detail.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
+            // 
+            // subReportCheque
+            // 
+            this.subReportCheque.Dpi = 100F;
+            this.subReportCheque.LocationFloat = new DevExpress.Utils.PointFloat(10.00001F, 104.5F);
+            this.subReportCheque.Name = "subReportCheque";
+            this.subReportCheque.SizeF = new System.Drawing.SizeF(716.4584F, 23.00001F);
+            // 
+            // subReportSTP
+            // 
+            this.subReportSTP.Dpi = 100F;
+            this.subReportSTP.LocationFloat = new DevExpress.Utils.PointFloat(10.00001F, 72.83334F);
+            this.subReportSTP.Name = "subReportSTP";
+            this.subReportSTP.SizeF = new System.Drawing.SizeF(716.4584F, 23.00001F);
             // 
             // subReportSchemeCategoryWise
             // 
@@ -89,6 +103,24 @@
             this.TopMargin.Name = "TopMargin";
             this.TopMargin.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.TopMargin.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
+            // 
+            // lblDebt
+            // 
+            this.lblDebt.Dpi = 100F;
+            this.lblDebt.LocationFloat = new DevExpress.Utils.PointFloat(584.3333F, 42.87499F);
+            this.lblDebt.Name = "lblDebt";
+            this.lblDebt.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.lblDebt.SizeF = new System.Drawing.SizeF(59.375F, 23F);
+            this.lblDebt.Text = "Debt";
+            // 
+            // lblEquity
+            // 
+            this.lblEquity.Dpi = 100F;
+            this.lblEquity.LocationFloat = new DevExpress.Utils.PointFloat(584.3333F, 20.87499F);
+            this.lblEquity.Name = "lblEquity";
+            this.lblEquity.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.lblEquity.SizeF = new System.Drawing.SizeF(59.375F, 23F);
+            this.lblEquity.Text = "Equity";
             // 
             // xrChartAssetAllocation
             // 
@@ -120,38 +152,6 @@
             this.BottomMargin.Name = "BottomMargin";
             this.BottomMargin.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.BottomMargin.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
-            // 
-            // lblEquity
-            // 
-            this.lblEquity.Dpi = 100F;
-            this.lblEquity.LocationFloat = new DevExpress.Utils.PointFloat(584.3333F, 20.87499F);
-            this.lblEquity.Name = "lblEquity";
-            this.lblEquity.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
-            this.lblEquity.SizeF = new System.Drawing.SizeF(59.375F, 23F);
-            this.lblEquity.Text = "Equity";
-            // 
-            // lblDebt
-            // 
-            this.lblDebt.Dpi = 100F;
-            this.lblDebt.LocationFloat = new DevExpress.Utils.PointFloat(584.3333F, 42.87499F);
-            this.lblDebt.Name = "lblDebt";
-            this.lblDebt.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.lblDebt.SizeF = new System.Drawing.SizeF(59.375F, 23F);
-            this.lblDebt.Text = "Debt";
-            // 
-            // subReportSTP
-            // 
-            this.subReportSTP.Dpi = 100F;
-            this.subReportSTP.LocationFloat = new DevExpress.Utils.PointFloat(10.00001F, 72.83334F);
-            this.subReportSTP.Name = "subReportSTP";
-            this.subReportSTP.SizeF = new System.Drawing.SizeF(716.4584F, 23.00001F);
-            // 
-            // subReportCheque
-            // 
-            this.subReportCheque.Dpi = 100F;
-            this.subReportCheque.LocationFloat = new DevExpress.Utils.PointFloat(10.00001F, 104.5F);
-            this.subReportCheque.Name = "subReportCheque";
-            this.subReportCheque.SizeF = new System.Drawing.SizeF(716.4584F, 23.00001F);
             // 
             // InvestmentDetails
             // 

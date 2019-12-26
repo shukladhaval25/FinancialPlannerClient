@@ -613,6 +613,12 @@
     <Compile Include="PlanOptions\Reports\Investment Recommendation\ChequeDetailsReport.Designer.cs">
       <DependentUpon>ChequeDetailsReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="PlanOptions\Reports\Investment Recommendation\ChequeInFavourOffDetails.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\Investment Recommendation\ChequeInFavourOffDetails.Designer.cs">
+      <DependentUpon>ChequeInFavourOffDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="PlanOptions\Reports\Investment Recommendation\InvBreackup.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -803,7 +809,7 @@
     <Compile Include="TaskManagementSystem\TaskNotificationInfo.cs" />
     <Compile Include="TaskManagementSystem\TaskCommentInfo.cs" />
     <Compile Include="TaskManagementSystem\TaskReports.cs">
-      <SubType>UserControl</SubType>
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="TaskManagementSystem\TaskReports.Designer.cs">
       <DependentUpon>TaskReports.cs</DependentUpon>
@@ -1094,6 +1100,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\Reports\Investment Recommendation\ChequeDetailsReport.resx">
       <DependentUpon>ChequeDetailsReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\Reports\Investment Recommendation\ChequeInFavourOffDetails.resx">
+      <DependentUpon>ChequeInFavourOffDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\Reports\Investment Recommendation\InvBreackup.resx">
       <DependentUpon>InvBreackup.cs</DependentUpon>

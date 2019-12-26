@@ -262,7 +262,7 @@
             this.xrLabel1,
             this.xrTable1});
             this.GroupHeader1.Dpi = 100F;
-            this.GroupHeader1.HeightF = 77.08334F;
+            this.GroupHeader1.HeightF = 76.04166F;
             this.GroupHeader1.Name = "GroupHeader1";
             // 
             // lblTotalAmount
@@ -315,7 +315,7 @@
             this.xrLabel2.Dpi = 100F;
             this.xrLabel2.LocationFloat = new DevExpress.Utils.PointFloat(354.3511F, 0F);
             this.xrLabel2.Name = "xrLabel2";
-            this.xrLabel2.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
+            this.xrLabel2.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel2.SizeF = new System.Drawing.SizeF(375.1073F, 23F);
             this.xrLabel2.StylePriority.UseBackColor = false;
             // 

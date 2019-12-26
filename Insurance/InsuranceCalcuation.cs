@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace FinancialPlannerClient.Insurance
 {
@@ -57,7 +58,7 @@ namespace FinancialPlannerClient.Insurance
             return (List<Loan>)loanInfo.GetAll(this.planner.ID);
         }
 
-        private void InsuranceCalculation_Load(object sender, EventArgs e)
+        private  void InsuranceCalculation_Load(object sender, EventArgs e)
         {
             createTableStructureForInsuranceCoverageRequire();
             createInsuranceCoverateTable();
@@ -72,8 +73,14 @@ namespace FinancialPlannerClient.Insurance
             AddFinancialAssetIntoInsuranceCoverage();
             AddNonFinancialAssetIntoInsuranceCoverage();
             gridControlFinancialAssert.DataSource = dtFinancialAssets;
+            displayEsitmatedInsuranceCoverageRequired();
+        }
+
+        private async void displayEsitmatedInsuranceCoverageRequired()
+        {
             InsuranceCoverageService insuranceCoverageService = new InsuranceCoverageService(client, planner);
-            insuranceCoverageService.CalculateInsuranceCoverNeed();
+            await Task.Run(() => insuranceCoverageService.CalculateInsuranceCoverNeed());
+            picProcessing.Visible = false;
             txtEstimatedIsurnceCoverage.Text = Math.Round(insuranceCoverageService.GetEstimatedInsurnceAmount(), 2).ToString();
         }
 

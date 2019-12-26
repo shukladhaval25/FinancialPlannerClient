@@ -43,6 +43,7 @@
             this.grpEstimatedInsCoverage = new DevExpress.XtraEditors.GroupControl();
             this.txtEstimatedIsurnceCoverage = new DevExpress.XtraEditors.TextEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.picProcessing = new DevExpress.XtraEditors.PictureEdit();
             ((System.ComponentModel.ISupportInitialize)(this.gridInsuranceCoverage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewInsuranceCoverage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlFinancialAssert)).BeginInit();
@@ -50,6 +51,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.grpEstimatedInsCoverage)).BeginInit();
             this.grpEstimatedInsCoverage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtEstimatedIsurnceCoverage.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picProcessing.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // lblContactTitle
@@ -193,6 +195,7 @@
             // grpEstimatedInsCoverage
             // 
             this.grpEstimatedInsCoverage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpEstimatedInsCoverage.Controls.Add(this.picProcessing);
             this.grpEstimatedInsCoverage.Controls.Add(this.txtEstimatedIsurnceCoverage);
             this.grpEstimatedInsCoverage.Controls.Add(this.btnShowCalculation);
             this.grpEstimatedInsCoverage.Controls.Add(this.labelControl1);
@@ -205,23 +208,38 @@
             // txtEstimatedIsurnceCoverage
             // 
             this.txtEstimatedIsurnceCoverage.EditValue = "";
-            this.txtEstimatedIsurnceCoverage.Location = new System.Drawing.Point(5, 51);
+            this.txtEstimatedIsurnceCoverage.Location = new System.Drawing.Point(14, 51);
             this.txtEstimatedIsurnceCoverage.Name = "txtEstimatedIsurnceCoverage";
             this.txtEstimatedIsurnceCoverage.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEstimatedIsurnceCoverage.Properties.Appearance.Options.UseFont = true;
             this.txtEstimatedIsurnceCoverage.Properties.Appearance.Options.UseTextOptions = true;
             this.txtEstimatedIsurnceCoverage.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.txtEstimatedIsurnceCoverage.Properties.ReadOnly = true;
-            this.txtEstimatedIsurnceCoverage.Size = new System.Drawing.Size(239, 20);
+            this.txtEstimatedIsurnceCoverage.Size = new System.Drawing.Size(221, 20);
             this.txtEstimatedIsurnceCoverage.TabIndex = 3;
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(29, 32);
+            this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl1.Appearance.Options.UseFont = true;
+            this.labelControl1.Location = new System.Drawing.Point(14, 32);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(192, 13);
+            this.labelControl1.Size = new System.Drawing.Size(222, 13);
             this.labelControl1.TabIndex = 2;
-            this.labelControl1.Text = "Estimated Insurance Coverage Amount:";
+            this.labelControl1.Text = "Estimated Insurance Coverage Amount";
+            // 
+            // picProcessing
+            // 
+            this.picProcessing.Cursor = System.Windows.Forms.Cursors.Default;
+            this.picProcessing.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.picProcessing.EditValue = global::FinancialPlannerClient.Properties.Resources.processing_gif_image_14;
+            this.picProcessing.Location = new System.Drawing.Point(2, 20);
+            this.picProcessing.Name = "picProcessing";
+            this.picProcessing.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
+            this.picProcessing.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
+            this.picProcessing.Properties.ZoomAccelerationFactor = 1D;
+            this.picProcessing.Size = new System.Drawing.Size(248, 85);
+            this.picProcessing.TabIndex = 11;
             // 
             // InsuranceCalculation
             // 
@@ -243,6 +261,7 @@
             this.grpEstimatedInsCoverage.ResumeLayout(false);
             this.grpEstimatedInsCoverage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtEstimatedIsurnceCoverage.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picProcessing.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -264,6 +283,7 @@
         private DevExpress.XtraEditors.GroupControl grpEstimatedInsCoverage;
         private DevExpress.XtraEditors.TextEdit txtEstimatedIsurnceCoverage;
         private DevExpress.XtraEditors.LabelControl labelControl1;
+        private DevExpress.XtraEditors.PictureEdit picProcessing;
     }
 }
 

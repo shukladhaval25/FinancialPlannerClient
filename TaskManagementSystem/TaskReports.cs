@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
 using System.Data;
+using System.Drawing;
 using System.Text;
 using System.Linq;
 using System.Threading.Tasks;
@@ -11,16 +11,11 @@ using DevExpress.XtraEditors;
 
 namespace FinancialPlannerClient.TaskManagementSystem
 {
-    public partial class TaskReports : DevExpress.XtraEditors.XtraUserControl
+    public partial class TaskReports : DevExpress.XtraEditors.XtraForm
     {
         public TaskReports()
         {
             InitializeComponent();
-        }
-
-        private void TaskReports_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

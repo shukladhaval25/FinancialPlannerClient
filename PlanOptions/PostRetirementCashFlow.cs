@@ -8,6 +8,7 @@ using System;
 using System.Data;
 using System.Diagnostics;
 using System.Reflection;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FinancialPlannerClient.PlanOptions
@@ -44,7 +45,7 @@ namespace FinancialPlannerClient.PlanOptions
             debuggerInfo.ExceptionInfo = ex;
             Logger.LogDebug(debuggerInfo);
         }
-        private void displayClientAndSpouseInfo(CashFlowService cashFlowService)
+        private async void displayClientAndSpouseInfo(CashFlowService cashFlowService)
         {
             lblClient.Text = cashFlowCalculation.ClientName;
             lblClientDOB.Text = cashFlowCalculation.ClientDateOfBirth.ToShortDateString();
@@ -59,19 +60,25 @@ namespace FinancialPlannerClient.PlanOptions
             lblSpouseLifeExp.Text = string.Format("{0} Years", cashFlowCalculation.SpouseLifeExpected.ToString());
             lblSpouseCurrentAge.Text = string.Format("{0} Years", cashFlowCalculation.SpouseCurrentAge.ToString());
 
-            lblCashSurplusAmt.Text = Math.Round(cashFlowService.GetCashFlowSurplusAmount(), 2).ToString("##,###.00"); ;
-            lblCurrentStatusAmt.Text = Math.Round(cashFlowService.GetCurrentStatusAccessFund(), 2).ToString("##,###.00"); ;
+            lblCashSurplusAmt.Text = await Task.Run(() => Math.Round(cashFlowService.GetCashFlowSurplusAmount(), 2).ToString("##,###.00"));
+
+            lblCurrentStatusAmt.Text = await Task.Run(() => Math.Round(cashFlowService.GetCurrentStatusAccessFund(), 2).ToString("##,###.00"));
             double cashSurplusAmt = 0;
             if (double.TryParse(lblCashSurplusAmt.Text, out cashSurplusAmt))
                 lblCorpFundAmt.Text = (cashSurplusAmt + (string.IsNullOrEmpty(lblCurrentStatusAmt.Text) ? 0 :
                    double.Parse(lblCurrentStatusAmt.Text))).ToString("##,###.00"); ;
         }
        
-        private void fillPostRetirementCashFlowData()
+        private async void fillPostRetirementCashFlowData()
         {
-            grdSplitCashFlow.DataSource = postRetirementCashFlowService.GetPostRetirementCashFlowData();
+            grdPostRetirementCashFlow.DataSource = await Task.Run(() => postRetirementCashFlowService.GetPostRetirementCashFlowData());
+            picProcessing.Visible = false;
             gridSplitContainerViewCashFlow.Columns["StartYear"].Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
             gridSplitContainerViewCashFlow.Columns["EstimatedRequireCorpusFund"].DisplayFormat.FormatString = "##,###.##";
+
+            lblEstimatedCorpusFundValue.Text = postRetirementCashFlowService.GetProposeEstimatedCorpusFund().ToString("##,###.00");
+            lblEstimatedCorpusFundValue.Refresh();
+            setGoalCompletionPercentage();
         }
 
 
@@ -80,9 +87,7 @@ namespace FinancialPlannerClient.PlanOptions
             try
             {
                 fillPostRetirementCashFlowData();
-                lblEstimatedCorpusFundValue.Text = postRetirementCashFlowService.GetProposeEstimatedCorpusFund().ToString("##,###.00");
-                lblEstimatedCorpusFundValue.Refresh();
-                setGoalCompletionPercentage();
+                
             }
             catch (Exception ex)
             {
@@ -112,7 +117,7 @@ namespace FinancialPlannerClient.PlanOptions
             try
             {
                 string filePath = System.IO.Path.GetTempPath() + "/" + "PostRetirementCashFlow" + DateTime.Now.Ticks.ToString() + ".xls";
-                grdSplitCashFlow.ExportToXls(filePath);
+                grdPostRetirementCashFlow.ExportToXls(filePath);
                 System.Diagnostics.Process.Start(filePath);
             }
             catch (Exception ex)

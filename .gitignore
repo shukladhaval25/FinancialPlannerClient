@@ -25,3 +25,4 @@ $RECYCLE.BIN/
 /obj/Debug/FinancialPlannerClient.csproj.CoreCompileInputs.cache
 /obj/Debug/FinancialPlannerClient.csprojAssemblyReference.cache
 /Properties/licenses.licx
+/obj/Release

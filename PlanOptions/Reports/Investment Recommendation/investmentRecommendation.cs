@@ -16,6 +16,8 @@ namespace FinancialPlannerClient.PlanOptions.Reports.Investment_Recommendation
             InitializeComponent();
             this.client = client;
             this.planner = planner;
+            lblClient.Text = client.Name;
+            lblPreparationDate.Text = DateTime.Now.ToShortDateString();
         }
 
         private void investmentRecommendation_AfterPrint(object sender, EventArgs e)

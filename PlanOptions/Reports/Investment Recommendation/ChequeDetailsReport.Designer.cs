@@ -31,6 +31,10 @@
             this.components = new System.ComponentModel.Container();
             DevExpress.XtraReports.UI.XRSummary xrSummary1 = new DevExpress.XtraReports.UI.XRSummary();
             this.Detail = new DevExpress.XtraReports.UI.DetailBand();
+            this.xrTableChequeDetails = new DevExpress.XtraReports.UI.XRTable();
+            this.xrTableRow1 = new DevExpress.XtraReports.UI.XRTableRow();
+            this.lblCheque = new DevExpress.XtraReports.UI.XRTableCell();
+            this.lblAmount = new DevExpress.XtraReports.UI.XRTableCell();
             this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
             this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
             this.GroupHeader1 = new DevExpress.XtraReports.UI.GroupHeaderBand();
@@ -46,26 +50,63 @@
             this.lblTotalAmount = new DevExpress.XtraReports.UI.XRTableCell();
             this.unboundSource1 = new DevExpress.Data.UnboundSource(this.components);
             this.unboundSource2 = new DevExpress.Data.UnboundSource(this.components);
-            this.xrTableChequeDetails = new DevExpress.XtraReports.UI.XRTable();
-            this.xrTableRow1 = new DevExpress.XtraReports.UI.XRTableRow();
-            this.lblCheque = new DevExpress.XtraReports.UI.XRTableCell();
-            this.lblAmount = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrLabel2 = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrLabel3 = new DevExpress.XtraReports.UI.XRLabel();
+            ((System.ComponentModel.ISupportInitialize)(this.xrTableChequeDetails)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.unboundSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.unboundSource2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xrTableChequeDetails)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // Detail
             // 
             this.Detail.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.xrLabel3,
+            this.xrLabel2,
             this.xrTableChequeDetails});
             this.Detail.Dpi = 100F;
-            this.Detail.HeightF = 25F;
+            this.Detail.HeightF = 69.79166F;
             this.Detail.Name = "Detail";
             this.Detail.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.Detail.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
+            // 
+            // xrTableChequeDetails
+            // 
+            this.xrTableChequeDetails.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrTableChequeDetails.Dpi = 100F;
+            this.xrTableChequeDetails.LocationFloat = new DevExpress.Utils.PointFloat(10.00001F, 0F);
+            this.xrTableChequeDetails.Name = "xrTableChequeDetails";
+            this.xrTableChequeDetails.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
+            this.xrTableRow1});
+            this.xrTableChequeDetails.SizeF = new System.Drawing.SizeF(487.139F, 25F);
+            this.xrTableChequeDetails.StylePriority.UseBorders = false;
+            // 
+            // xrTableRow1
+            // 
+            this.xrTableRow1.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
+            this.lblCheque,
+            this.lblAmount});
+            this.xrTableRow1.Dpi = 100F;
+            this.xrTableRow1.Name = "xrTableRow1";
+            this.xrTableRow1.Weight = 1D;
+            // 
+            // lblCheque
+            // 
+            this.lblCheque.Dpi = 100F;
+            this.lblCheque.Name = "lblCheque";
+            this.lblCheque.Weight = 1.499999561474203D;
+            // 
+            // lblAmount
+            // 
+            this.lblAmount.Dpi = 100F;
+            this.lblAmount.Name = "lblAmount";
+            this.lblAmount.StylePriority.UseTextAlignment = false;
+            this.lblAmount.Text = "0";
+            this.lblAmount.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
+            this.lblAmount.Weight = 1.4999998747069014D;
             // 
             // TopMargin
             // 
@@ -199,42 +240,23 @@
             this.lblTotalAmount.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
             this.lblTotalAmount.Weight = 0.90000026809332023D;
             // 
-            // xrTableChequeDetails
+            // xrLabel2
             // 
-            this.xrTableChequeDetails.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrTableChequeDetails.Dpi = 100F;
-            this.xrTableChequeDetails.LocationFloat = new DevExpress.Utils.PointFloat(10.00001F, 0F);
-            this.xrTableChequeDetails.Name = "xrTableChequeDetails";
-            this.xrTableChequeDetails.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
-            this.xrTableRow1});
-            this.xrTableChequeDetails.SizeF = new System.Drawing.SizeF(487.139F, 25F);
-            this.xrTableChequeDetails.StylePriority.UseBorders = false;
+            this.xrLabel2.Dpi = 100F;
+            this.xrLabel2.LocationFloat = new DevExpress.Utils.PointFloat(10.00001F, 36.79168F);
+            this.xrLabel2.Name = "xrLabel2";
+            this.xrLabel2.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
+            this.xrLabel2.SizeF = new System.Drawing.SizeF(243.5695F, 23F);
+            this.xrLabel2.Text = "xrLabel2";
             // 
-            // xrTableRow1
+            // xrLabel3
             // 
-            this.xrTableRow1.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
-            this.lblCheque,
-            this.lblAmount});
-            this.xrTableRow1.Dpi = 100F;
-            this.xrTableRow1.Name = "xrTableRow1";
-            this.xrTableRow1.Weight = 1D;
-            // 
-            // lblCheque
-            // 
-            this.lblCheque.Dpi = 100F;
-            this.lblCheque.Name = "lblCheque";
-            this.lblCheque.Weight = 1.499999561474203D;
-            // 
-            // lblAmount
-            // 
-            this.lblAmount.Dpi = 100F;
-            this.lblAmount.Name = "lblAmount";
-            this.lblAmount.StylePriority.UseTextAlignment = false;
-            this.lblAmount.Text = "0";
-            this.lblAmount.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
-            this.lblAmount.Weight = 1.4999998747069014D;
+            this.xrLabel3.Dpi = 100F;
+            this.xrLabel3.LocationFloat = new DevExpress.Utils.PointFloat(253.5695F, 36.79168F);
+            this.xrLabel3.Name = "xrLabel3";
+            this.xrLabel3.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel3.SizeF = new System.Drawing.SizeF(243.5695F, 23F);
+            this.xrLabel3.Text = "xrLabel2";
             // 
             // ChequeDetailsReport
             // 
@@ -247,11 +269,11 @@
             this.DataSource = this.unboundSource1;
             this.Margins = new System.Drawing.Printing.Margins(100, 98, 0, 0);
             this.Version = "16.2";
+            ((System.ComponentModel.ISupportInitialize)(this.xrTableChequeDetails)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.unboundSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.unboundSource2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xrTableChequeDetails)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
 
         }
@@ -278,5 +300,7 @@
         private DevExpress.XtraReports.UI.XRTableCell lblAmount;
         private DevExpress.Data.UnboundSource unboundSource1;
         private DevExpress.Data.UnboundSource unboundSource2;
+        private DevExpress.XtraReports.UI.XRLabel xrLabel3;
+        private DevExpress.XtraReports.UI.XRLabel xrLabel2;
     }
 }

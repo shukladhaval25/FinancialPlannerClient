@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PostRetirementCashFlow));
-            this.grdSplitCashFlow = new DevExpress.XtraGrid.GridControl();
+            this.grdPostRetirementCashFlow = new DevExpress.XtraGrid.GridControl();
             this.gridSplitContainerViewCashFlow = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.progressBarRetGoalCompletion = new DevExpress.XtraEditors.ProgressBarControl();
@@ -64,30 +64,32 @@
             this.lblSpouse = new DevExpress.XtraEditors.LabelControl();
             this.lblClient = new DevExpress.XtraEditors.LabelControl();
             this.btnExport = new DevExpress.XtraEditors.SimpleButton();
-            ((System.ComponentModel.ISupportInitialize)(this.grdSplitCashFlow)).BeginInit();
+            this.picProcessing = new DevExpress.XtraEditors.PictureEdit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdPostRetirementCashFlow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridSplitContainerViewCashFlow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.progressBarRetGoalCompletion.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.separatorControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picProcessing.Properties)).BeginInit();
             this.SuspendLayout();
             // 
-            // grdSplitCashFlow
+            // grdPostRetirementCashFlow
             // 
-            this.grdSplitCashFlow.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.grdPostRetirementCashFlow.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.grdSplitCashFlow.Location = new System.Drawing.Point(6, 119);
-            this.grdSplitCashFlow.MainView = this.gridSplitContainerViewCashFlow;
-            this.grdSplitCashFlow.Name = "grdSplitCashFlow";
-            this.grdSplitCashFlow.Size = new System.Drawing.Size(1140, 396);
-            this.grdSplitCashFlow.TabIndex = 1;
-            this.grdSplitCashFlow.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.grdPostRetirementCashFlow.Location = new System.Drawing.Point(6, 119);
+            this.grdPostRetirementCashFlow.MainView = this.gridSplitContainerViewCashFlow;
+            this.grdPostRetirementCashFlow.Name = "grdPostRetirementCashFlow";
+            this.grdPostRetirementCashFlow.Size = new System.Drawing.Size(1140, 396);
+            this.grdPostRetirementCashFlow.TabIndex = 1;
+            this.grdPostRetirementCashFlow.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridSplitContainerViewCashFlow});
             // 
             // gridSplitContainerViewCashFlow
             // 
-            this.gridSplitContainerViewCashFlow.GridControl = this.grdSplitCashFlow;
+            this.gridSplitContainerViewCashFlow.GridControl = this.grdPostRetirementCashFlow;
             this.gridSplitContainerViewCashFlow.Name = "gridSplitContainerViewCashFlow";
             this.gridSplitContainerViewCashFlow.OptionsBehavior.Editable = false;
             this.gridSplitContainerViewCashFlow.OptionsBehavior.ReadOnly = true;
@@ -261,7 +263,7 @@
             // 
             // lblSpouseCurrentAge
             // 
-            this.lblSpouseCurrentAge.Location = new System.Drawing.Point(547, 67);
+            this.lblSpouseCurrentAge.Location = new System.Drawing.Point(543, 67);
             this.lblSpouseCurrentAge.Name = "lblSpouseCurrentAge";
             this.lblSpouseCurrentAge.Size = new System.Drawing.Size(0, 13);
             this.lblSpouseCurrentAge.TabIndex = 18;
@@ -430,32 +432,49 @@
             this.btnExport.ToolTipTitle = "Export";
             this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
+            // picProcessing
+            // 
+            this.picProcessing.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.picProcessing.Cursor = System.Windows.Forms.Cursors.Default;
+            this.picProcessing.EditValue = global::FinancialPlannerClient.Properties.Resources.processing_gif_image_14;
+            this.picProcessing.Location = new System.Drawing.Point(6, 119);
+            this.picProcessing.Name = "picProcessing";
+            this.picProcessing.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
+            this.picProcessing.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
+            this.picProcessing.Properties.ZoomAccelerationFactor = 1D;
+            this.picProcessing.Size = new System.Drawing.Size(1140, 396);
+            this.picProcessing.TabIndex = 27;
+            // 
             // PostRetirementCashFlow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1158, 522);
+            this.Controls.Add(this.picProcessing);
             this.Controls.Add(this.btnExport);
             this.Controls.Add(this.groupControl1);
-            this.Controls.Add(this.grdSplitCashFlow);
+            this.Controls.Add(this.grdPostRetirementCashFlow);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "PostRetirementCashFlow";
             this.Text = "Cash Flow";
             this.Load += new System.EventHandler(this.PostRetirementCashFlow_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.grdSplitCashFlow)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdPostRetirementCashFlow)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridSplitContainerViewCashFlow)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.progressBarRetGoalCompletion.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.separatorControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picProcessing.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private DevExpress.XtraGrid.GridControl grdSplitCashFlow;
+        private DevExpress.XtraGrid.GridControl grdPostRetirementCashFlow;
         private DevExpress.XtraGrid.Views.Grid.GridView gridSplitContainerViewCashFlow;
         private DevExpress.XtraEditors.GroupControl groupControl1;
         private DevExpress.XtraEditors.LabelControl lblClient;
@@ -490,6 +509,7 @@
         private DevExpress.XtraEditors.ProgressBarControl progressBarRetGoalCompletion;
         private DevExpress.XtraEditors.LabelControl labelControl13;
         private DevExpress.XtraEditors.SimpleButton btnExport;
+        private DevExpress.XtraEditors.PictureEdit picProcessing;
     }
 }
 

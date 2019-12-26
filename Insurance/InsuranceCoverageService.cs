@@ -23,12 +23,10 @@ namespace FinancialPlannerClient.Insurance
         Client client;
         Planner planner;
         PlannerAssumption plannerAssumption;
-        PersonalInformation personalInformation;
         public InsuranceCoverageService(Client client,Planner planner)
         {
             this.client = client;
             this.planner = planner;
-            personalInformation = new ClientPersonalInfo().Get(client.ID);
             plannerAssumption = new PlannerAssumptionInfo().GetAll(planner.ID);           
         }
 
@@ -76,7 +74,7 @@ namespace FinancialPlannerClient.Insurance
 
         private void addRetirementCorpusFundInCoverage(int rowIndex)
         {
-            if (!client.IsMarried)
+            if (plannerAssumption.SpouseLifeExpectancy == 0 )
                 return;
             PlanOptionInfo planOptionInfo = new PlanOptionInfo();
             DataTable planOptionTable = planOptionInfo.GetAll(planner.ID);

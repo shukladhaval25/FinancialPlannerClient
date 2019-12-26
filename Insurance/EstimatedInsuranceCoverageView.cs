@@ -25,11 +25,16 @@ namespace FinancialPlannerClient.Insurance
 
         private void EstimatedInsuranceCoverageView_Load(object sender, EventArgs e)
         {
-            InsuranceCoverageService insuranceCoverageService = new InsuranceCoverageService(client, planner);
-            insuranceCoverageService.CalculateInsuranceCoverNeed();
-            txtEstimatedIsurnceCoverage.Text = Math.Round(insuranceCoverageService.GetEstimatedInsurnceAmount(),2).ToString();
-            gridInsuranceCalculation.DataSource = insuranceCoverageService.GetEstimatedTable();
+            showInsuranceCoverage();
+        }
 
+        private async void showInsuranceCoverage()
+        {
+            InsuranceCoverageService insuranceCoverageService = new InsuranceCoverageService(client, planner);
+            await Task.Run(() => insuranceCoverageService.CalculateInsuranceCoverNeed());
+            lblProcess.Visible = false;
+            txtEstimatedIsurnceCoverage.Text = Math.Round(insuranceCoverageService.GetEstimatedInsurnceAmount(), 2).ToString();
+            gridInsuranceCalculation.DataSource = insuranceCoverageService.GetEstimatedTable();
         }
     }
 }

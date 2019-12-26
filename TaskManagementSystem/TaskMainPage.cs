@@ -209,11 +209,12 @@ namespace FinancialPlannerClient.TaskManagementSystem
             {
                 navigationPageDeshboard.Controls.Clear();
                 TaskReports  taskReports = new TaskReports();
+                taskReports.TopLevel = false;
                 taskReports.Visible = true;
                 navigationPageDeshboard.Name = taskReports.Name;
                 navigationPageDeshboard.Controls.Add(taskReports);
-                taskReports.Dock = DockStyle.Fill;
-                taskReports.Show();
+                //taskReports.Dock = DockStyle.Fill;
+                //taskReports.Show();
                 showNavigationPage(taskReports.Name);
             }
             catch (Exception ex)

@@ -1,4 +1,5 @@
 ﻿using FinancialPlanner.Common;
+using FinancialPlanner.Common.DataConversion;
 using FinancialPlanner.Common.Model;
 using FinancialPlanner.Common.Model.CurrentStatus;
 using FinancialPlanner.Common.Model.PlanOptions;
@@ -15,6 +16,8 @@ using System.Linq;
 using System.Net;
 using System.Reflection;
 using System.Windows.Forms;
+using CurrentStatusToGoal = FinancialPlannerClient.PlanOptions.CurrentStatusToGoal;
+//using CurrentStatusToGoal = FinancialPlanner.Common.Model.PlanOptions.CurrentStatusToGoal;
 
 namespace FinancialPlannerClient.CashFlowManager
 {
@@ -75,16 +78,48 @@ namespace FinancialPlannerClient.CashFlowManager
 
         internal double GetCurrentStatusAccessFund()
         {
-            CurrentStatusInfo currentStatusInfo = new CurrentStatusInfo();
-            double currentStatusFund  = currentStatusInfo.GetFundFromCurrentStatus(_planId, 0);
-            for (int rowIndex= 0; rowIndex <= _dtCashFlow.Rows.Count -1;rowIndex++)
+            double totalAccessCurrentStatusValue = 0;
+            CurrentStatusToGoal csGoal = new CurrentStatusToGoal();
+            DataTable dtCurrentStatustoGoals = csGoal.CurrentStatusToGoalCalculation(_planId);
+            IList<FinancialPlanner.Common.Model.PlanOptions.CurrentStatusToGoal> currentStatusToGoal = new CurrentStatusInfo().GetCurrentStatusToGoal(_optionId, _planId);
+
+            if (currentStatusToGoal != null)
+            {
+
+                DataTable dtGoalMapped = ListtoDataTable.ToDataTable(currentStatusToGoal.ToList());
+                double totalCurrentStatusFund = getTotalCurrentSatusSurplusValue(dtCurrentStatustoGoals);
+                double mappedValueFromCurrentStatusFundByManager = getTotalFundAllocationValue(dtCurrentStatustoGoals, dtGoalMapped);
+                totalAccessCurrentStatusValue = totalCurrentStatusFund - mappedValueFromCurrentStatusFundByManager;
+            }
+            
+            for (int rowIndex = 0; rowIndex <= _dtCashFlow.Rows.Count - 1; rowIndex++)
             {
                 double returnRate = (double)_riskProfileInfo.GetRiskProfileReturnRatio(this._riskProfileId,
                     ((_dtCashFlow.Rows.Count) - rowIndex));
 
-                currentStatusFund = currentStatusFund + ((currentStatusFund * returnRate) / (100 + returnRate));
+                totalAccessCurrentStatusValue = totalAccessCurrentStatusValue + ((totalAccessCurrentStatusValue * returnRate) / (100 + returnRate));
             }
-            return currentStatusFund;
+            return totalAccessCurrentStatusValue;
+        }
+
+        private double getTotalFundAllocationValue(DataTable dtCurrentStatustoGoals,DataTable dtGoalMapped)
+        {
+            double alredyMappedValue = dtCurrentStatustoGoals.AsEnumerable().Sum(x => Convert.ToDouble(x["CurrentStatusMappedAmount"]));
+            double mappedByProjetManager = dtGoalMapped.AsEnumerable().Sum(x => Convert.ToDouble(x["FundAllocation"]));
+            return alredyMappedValue + mappedByProjetManager;
+        }
+
+        private double getTotalCurrentSatusSurplusValue(DataTable dtCurrentStatustoGoals)
+        {
+            double totalCurrentStatusValue = 0;
+            if (dtCurrentStatustoGoals.Rows.Count > 0)
+            {
+                totalCurrentStatusValue = string.IsNullOrEmpty(dtCurrentStatustoGoals.Rows[0]["ExcessFund"].ToString()) ? 0 :
+                double.Parse(dtCurrentStatustoGoals.Rows[0]["ExcessFund"].ToString());
+                double alreadyMappedValue = dtCurrentStatustoGoals.AsEnumerable().Sum(x => Convert.ToDouble(x["CurrentStatusMappedAmount"]));
+                totalCurrentStatusValue = totalCurrentStatusValue + alreadyMappedValue;
+            }
+            return Math.Round(totalCurrentStatusValue, 2);
         }
 
         private void fillLifeInsurance(IList<LifeInsurance> lifeInsurances)
@@ -122,7 +157,7 @@ namespace FinancialPlannerClient.CashFlowManager
                 dataStream.Close();
             }
             var cashFlowResult = jsonSerialization.DeserializeFromString<Result<CashFlow>>(cashFlowJson);
-           
+
             if (cashFlowResult.Value != null)
             {
                 Logger.LogInfo("Get response for get cash flow with option id:" + optionId);
@@ -166,10 +201,10 @@ namespace FinancialPlannerClient.CashFlowManager
                 {
 
                     surplusCashFund = string.IsNullOrEmpty(_dtCashFlow.Rows[_dtCashFlow.Rows.Count - 1]["Cumulative Corpus Fund"].ToString()) ? 0 :
-                        double.Parse(_dtCashFlow.Rows[_dtCashFlow.Rows.Count - 1]["Cumulative Corpus Fund"].ToString());                        
+                        double.Parse(_dtCashFlow.Rows[_dtCashFlow.Rows.Count - 1]["Cumulative Corpus Fund"].ToString());
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 StackTrace st = new StackTrace();
                 StackFrame sf = st.GetFrame(0);
@@ -177,12 +212,12 @@ namespace FinancialPlannerClient.CashFlowManager
                 LogDebug(currentMethodName.Name, ex);
                 MessageBox.Show(ex.ToString());
             }
-            return Math.Round(surplusCashFund,2);
+            return Math.Round(surplusCashFund, 2);
         }
         public DataRow GetLastIncomeAndExpAtRetirementAge()
         {
-            DataRow dr = null ;
-            if (_dtCashFlow != null && _dtCashFlow.Rows.Count >0)
+            DataRow dr = null;
+            if (_dtCashFlow != null && _dtCashFlow.Rows.Count > 0)
             {
                 dr = _dtCashFlow.Rows[_dtCashFlow.Rows.Count - 1];
             }
@@ -222,7 +257,7 @@ namespace FinancialPlannerClient.CashFlowManager
                 addLoansCalculation(years, dr);
                 addGoalsCalculation(years, dr);
                 setSurplusAmount(dr);
-                setComulativeCorpusFund(years, dr,noOfYearsForCalculation);
+                setComulativeCorpusFund(years, dr, noOfYearsForCalculation);
                 _dtCashFlow.Rows.Add(dr);
             }
         }
@@ -231,12 +266,12 @@ namespace FinancialPlannerClient.CashFlowManager
         {
             if (_dtCashFlow.Rows.Count > 0)
             {
-                double previousYearCumulativeCorpusFund = string.IsNullOrEmpty(_dtCashFlow.Rows[_dtCashFlow.Rows.Count - 1]["Cumulative Corpus Fund"].ToString())? 0:
+                double previousYearCumulativeCorpusFund = string.IsNullOrEmpty(_dtCashFlow.Rows[_dtCashFlow.Rows.Count - 1]["Cumulative Corpus Fund"].ToString()) ? 0 :
                     double.Parse(_dtCashFlow.Rows[_dtCashFlow.Rows.Count - 1]["Cumulative Corpus Fund"].ToString());
-                double returnRate =(double) _riskProfileInfo.GetRiskProfileReturnRatio(this._riskProfileId, noOfYearsForCalculation -(years));
+                double returnRate = (double)_riskProfileInfo.GetRiskProfileReturnRatio(this._riskProfileId, noOfYearsForCalculation - (years));
                 double currentYearCorpusFund = (string.IsNullOrEmpty(dr["Corpus Fund"].ToString()) ? 0 : double.Parse(dr["Corpus Fund"].ToString()));
                 double cumulativeCorpusFund = currentYearCorpusFund + previousYearCumulativeCorpusFund + ((previousYearCumulativeCorpusFund * returnRate) / (100));
-                dr["Cumulative Corpus Fund"] = Math.Round(cumulativeCorpusFund,2);
+                dr["Cumulative Corpus Fund"] = Math.Round(cumulativeCorpusFund, 2);
             }
         }
 
@@ -284,8 +319,8 @@ namespace FinancialPlannerClient.CashFlowManager
                     }
                 }
             }
-            dr["Corpus Fund"] = string.IsNullOrEmpty(dr["Corpus Fund"].ToString()) ? 
-                ((surplusAmount > 0) ? Math.Round(surplusAmount,2) : 0) : 
+            dr["Corpus Fund"] = string.IsNullOrEmpty(dr["Corpus Fund"].ToString()) ?
+                ((surplusAmount > 0) ? Math.Round(surplusAmount, 2) : 0) :
                 double.Parse(dr["Corpus Fund"].ToString()) + ((surplusAmount > 0) ? Math.Round(surplusAmount, 2) : 0);
         }
         private void setSurplusAmount(DataRow dr)
@@ -393,7 +428,7 @@ namespace FinancialPlannerClient.CashFlowManager
             }
             dr["Total Income"] = totalIncome;
             dr["Total Tax Deduction"] = totalTaxAmt;
-            dr["Total Post Tax Income"] =  totalPostTaxIncome;
+            dr["Total Post Tax Income"] = totalPostTaxIncome;
         }
 
         private bool isIncomeValidaForYear(Income income, int years, int clientRetYear, int spouseRetYear)
@@ -456,7 +491,7 @@ namespace FinancialPlannerClient.CashFlowManager
                     }
                 }
             }
-            dr["Total Annual Expenses"] = System.Math.Round(totalExpenses,2);
+            dr["Total Annual Expenses"] = System.Math.Round(totalExpenses, 2);
         }
 
         private void addLoansCalculation(int years, DataRow dr)
@@ -482,7 +517,7 @@ namespace FinancialPlannerClient.CashFlowManager
                     }
                 }
             }
-            dr["Total Annual Loans"] = System.Math.Round(totalLoans,2);
+            dr["Total Annual Loans"] = System.Math.Round(totalLoans, 2);
         }
 
         private void addFirstRowData(int rowId)
@@ -740,7 +775,7 @@ namespace FinancialPlannerClient.CashFlowManager
             AddIncomeColumnToDataTable();
             AddExpensesColumnToDataTable();
             AddLoanColumnToDataTable();
-            
+
             _dtCashFlow.Columns.Add("Surplus Amount", typeof(System.Double));
 
             AddGoalColumnToDataTable();
@@ -855,7 +890,7 @@ namespace FinancialPlannerClient.CashFlowManager
             }
             #endregion
         }
-        
+
         private void LogDebug(string methodName, Exception ex)
         {
             DebuggerLogInfo debuggerInfo = new DebuggerLogInfo();

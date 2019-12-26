@@ -35,8 +35,10 @@ namespace FinancialPlannerClient.PlanOptions.Reports.Investment_Recommendation
             STPDetails stpDetails = new STPDetails(this.client, this.planner);
             this.subReportSTP.ReportSource = stpDetails;
 
-            ChequeDetailsReport chequeDetailsReport = new ChequeDetailsReport(this.client, this.planner);
-            this.subReportCheque.ReportSource = chequeDetailsReport;
+            ChequeInFavourOffDetails chequeInFavourOffDetails = new ChequeInFavourOffDetails(this.client, this.planner);
+            this.subReportCheque.ReportSource = chequeInFavourOffDetails;
+            //ChequeDetailsReport chequeDetailsReport = new ChequeDetailsReport(this.client, this.planner);
+            //this.subReportCheque.ReportSource = chequeDetailsReport;
         }
     }
 }
