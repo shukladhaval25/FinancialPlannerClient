@@ -268,7 +268,7 @@ namespace FinancialPlannerClient.CashFlowManager
             {
                 double previousYearCumulativeCorpusFund = string.IsNullOrEmpty(_dtCashFlow.Rows[_dtCashFlow.Rows.Count - 1]["Cumulative Corpus Fund"].ToString()) ? 0 :
                     double.Parse(_dtCashFlow.Rows[_dtCashFlow.Rows.Count - 1]["Cumulative Corpus Fund"].ToString());
-                double returnRate = (double)_riskProfileInfo.GetRiskProfileReturnRatio(this._riskProfileId, noOfYearsForCalculation - (years));
+                double returnRate = (double)_riskProfileInfo.GetRiskProfileReturnRatio(this._riskProfileId, noOfYearsForCalculation - (years - 1));
                 double currentYearCorpusFund = (string.IsNullOrEmpty(dr["Corpus Fund"].ToString()) ? 0 : double.Parse(dr["Corpus Fund"].ToString()));
                 double cumulativeCorpusFund = currentYearCorpusFund + previousYearCumulativeCorpusFund + ((previousYearCumulativeCorpusFund * returnRate) / (100));
                 dr["Cumulative Corpus Fund"] = Math.Round(cumulativeCorpusFund, 2);

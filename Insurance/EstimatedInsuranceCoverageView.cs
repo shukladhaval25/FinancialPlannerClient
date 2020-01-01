@@ -32,7 +32,7 @@ namespace FinancialPlannerClient.Insurance
         {
             InsuranceCoverageService insuranceCoverageService = new InsuranceCoverageService(client, planner);
             await Task.Run(() => insuranceCoverageService.CalculateInsuranceCoverNeed());
-            lblProcess.Visible = false;
+            progressPanel1.Visible = false;
             txtEstimatedIsurnceCoverage.Text = Math.Round(insuranceCoverageService.GetEstimatedInsurnceAmount(), 2).ToString();
             gridInsuranceCalculation.DataSource = insuranceCoverageService.GetEstimatedTable();
         }

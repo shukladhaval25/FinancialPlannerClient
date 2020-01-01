@@ -60,12 +60,12 @@ namespace FinancialPlannerClient.PlanOptions
                 cmbGoals.Tag = goal.Id;
                 lblPriorityNo.Text = goal.Priority.ToString();
                 lblGoalPeriodValue.Text = goal.StartYear;
-                method(goal);
+                displayCalculation(goal);
             }
             else
                 cmbGoals.Tag = 0;
         }
-        private void method(Goals goal)
+        private void displayCalculation(Goals goal)
         {
             try
             {

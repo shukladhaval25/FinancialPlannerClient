@@ -16,6 +16,7 @@ namespace FinancialPlannerClient.TaskManagementSystem
         private readonly string ADD_TASK_API = "TaskController/Add";
         private readonly string UPDATE_TASK_API = "TaskController/Update";
         private readonly string GET_ALL_TASK = "TaskController/GetAll";
+        private readonly string GET_ALL_TAKS_INCLUDING_COMPLETED = "TaskController/GetAllTasks";
         private readonly string GET_NOTIFIED_TASK = "TaskController/NotifiedTasks?userId={0}";
         private readonly string GET_ASSIGNTOME_TASK = "TaskController/AssignTo?userId={0}";
         private readonly string GET_USEROVERDUE_TASK = "TaskController/GetOverDueTask?userId={0}";
@@ -29,7 +30,7 @@ namespace FinancialPlannerClient.TaskManagementSystem
         {
             switch(taskView){
                 case TaskView.GetAll:
-                    return GetAll();
+                    return GetAllTasks();
                 case TaskView.Notified:
                     return notifiedTasks();
                 case TaskView.AssignToMe:
@@ -151,6 +152,44 @@ namespace FinancialPlannerClient.TaskManagementSystem
                 return null;
             }
         }
+
+        public IList<TaskCard> GetAllTasks()
+        {
+            IList<TaskCard> tasks = new List<TaskCard>();
+            try
+            {
+                FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
+                string apiurl = Program.WebServiceUrl + "/" + (GET_ALL_TAKS_INCLUDING_COMPLETED);
+
+                RestAPIExecutor restApiExecutor = new RestAPIExecutor();
+
+                var restResult = restApiExecutor.Execute<IList<TaskCard>>(apiurl, null, "GET");
+
+                if (jsonSerialization.IsValidJson(restResult.ToString()))
+                {
+                    tasks = jsonSerialization.DeserializeFromString<IList<TaskCard>>(restResult.ToString());
+                }
+                return tasks;
+            }
+            catch (System.Net.WebException webException)
+            {
+                if (webException.Message.Equals("The remote server returned an error: (401) Unauthorized."))
+                {
+                    MessageBox.Show("You session has been expired. Please Login again.", "Session Expired", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
+                LogDebug(currentMethodName.Name, ex);
+                return null;
+            }
+        }
+
+
         public int Add(TaskCard taskCard)
         {
             try

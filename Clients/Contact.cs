@@ -36,6 +36,9 @@ namespace FinancialPlannerClient.Clients
 
         private void setVisibilityOfControlBasedOnPermission()
         {
+            if (Program.CurrentUserRolePermission.Name == "Admin")
+                return;
+
             List<RolePermission> rolePermission = (List<RolePermission>)Program.CurrentUserRolePermission.Permissions;
             RolePermission permission = rolePermission.Find(x => x.FormName == this.Text);
             btnSaveContact.Visible = (permission.IsAdd || permission.IsUpdate) ? true : false;

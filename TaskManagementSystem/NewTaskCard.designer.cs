@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewTaskCard));
-            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
             this.lblProject = new DevExpress.XtraEditors.LabelControl();
             this.cmbProject = new DevExpress.XtraEditors.ComboBoxEdit();
             this.cmbCardType = new DevExpress.XtraEditors.ComboBoxEdit();
@@ -131,7 +131,8 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cmbCardType.Properties.Items.AddRange(new object[] {
             "Query",
-            "Task"});
+            "Task",
+            "Transaction"});
             this.cmbCardType.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.cmbCardType.Size = new System.Drawing.Size(439, 20);
             this.cmbCardType.TabIndex = 6;
@@ -357,15 +358,15 @@
             this.btnCloseTask.Location = new System.Drawing.Point(845, 369);
             this.btnCloseTask.Name = "btnCloseTask";
             this.btnCloseTask.Size = new System.Drawing.Size(62, 23);
-            toolTipTitleItem3.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
-            toolTipTitleItem3.Appearance.Options.UseImage = true;
-            toolTipTitleItem3.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem3.Image")));
-            toolTipTitleItem3.Text = "Cancel";
-            toolTipItem3.LeftIndent = 6;
-            toolTipItem3.Text = "To close client information without saving any information click here.";
-            superToolTip3.Items.Add(toolTipTitleItem3);
-            superToolTip3.Items.Add(toolTipItem3);
-            this.btnCloseTask.SuperTip = superToolTip3;
+            toolTipTitleItem1.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            toolTipTitleItem1.Appearance.Options.UseImage = true;
+            toolTipTitleItem1.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem1.Image")));
+            toolTipTitleItem1.Text = "Cancel";
+            toolTipItem1.LeftIndent = 6;
+            toolTipItem1.Text = "To close client information without saving any information click here.";
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            superToolTip1.Items.Add(toolTipItem1);
+            this.btnCloseTask.SuperTip = superToolTip1;
             this.btnCloseTask.TabIndex = 29;
             this.btnCloseTask.Text = "&Close";
             this.btnCloseTask.Click += new System.EventHandler(this.btnCloseTask_Click);
@@ -376,15 +377,15 @@
             this.btnSaveTask.Location = new System.Drawing.Point(782, 369);
             this.btnSaveTask.Name = "btnSaveTask";
             this.btnSaveTask.Size = new System.Drawing.Size(57, 23);
-            toolTipTitleItem4.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
-            toolTipTitleItem4.Appearance.Options.UseImage = true;
-            toolTipTitleItem4.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem4.Image")));
-            toolTipTitleItem4.Text = "Save";
-            toolTipItem4.LeftIndent = 6;
-            toolTipItem4.Text = "To save client infroamtion click here.";
-            superToolTip4.Items.Add(toolTipTitleItem4);
-            superToolTip4.Items.Add(toolTipItem4);
-            this.btnSaveTask.SuperTip = superToolTip4;
+            toolTipTitleItem2.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
+            toolTipTitleItem2.Appearance.Options.UseImage = true;
+            toolTipTitleItem2.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem2.Image")));
+            toolTipTitleItem2.Text = "Save";
+            toolTipItem2.LeftIndent = 6;
+            toolTipItem2.Text = "To save client infroamtion click here.";
+            superToolTip2.Items.Add(toolTipTitleItem2);
+            superToolTip2.Items.Add(toolTipItem2);
+            this.btnSaveTask.SuperTip = superToolTip2;
             this.btnSaveTask.TabIndex = 28;
             this.btnSaveTask.Text = "&Save";
             this.btnSaveTask.Click += new System.EventHandler(this.btnSaveTask_Click);

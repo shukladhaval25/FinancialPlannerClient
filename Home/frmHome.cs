@@ -328,7 +328,6 @@ namespace FinancialPlannerClient.Home
             // mavBarMasterGroup
             // 
             this.mavBarMasterGroup.Caption = "Masters";
-            this.mavBarMasterGroup.Expanded = true;
             this.mavBarMasterGroup.GroupStyle = DevExpress.XtraNavBar.NavBarGroupStyle.LargeIconsText;
             this.mavBarMasterGroup.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemCRMGroup),

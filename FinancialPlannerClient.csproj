@@ -734,6 +734,12 @@
     <Compile Include="PlanOptions\Reports\TableOfContent.Designer.cs">
       <DependentUpon>TableOfContent.cs</DependentUpon>
     </Compile>
+    <Compile Include="PlanOptions\Reports\Tasks\AllTaskReports.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\Tasks\AllTaskReports.Designer.cs">
+      <DependentUpon>AllTaskReports.cs</DependentUpon>
+    </Compile>
     <Compile Include="PlanOptions\Reports\ToTotalAssetRatio.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -1160,6 +1166,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\Reports\TableOfContent.resx">
       <DependentUpon>TableOfContent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\Reports\Tasks\AllTaskReports.resx">
+      <DependentUpon>AllTaskReports.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\Reports\ToTotalAssetRatio.resx">
       <DependentUpon>ToTotalAssetRatio.cs</DependentUpon>

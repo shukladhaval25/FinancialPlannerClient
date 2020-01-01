@@ -32,7 +32,7 @@
             this.txtEstimatedIsurnceCoverage = new DevExpress.XtraEditors.TextEdit();
             this.gridInsuranceCalculation = new DevExpress.XtraGrid.GridControl();
             this.gridViewInsuranceCalculation = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.lblProcess = new DevExpress.XtraEditors.LabelControl();
+            this.progressPanel1 = new DevExpress.XtraWaitForm.ProgressPanel();
             ((System.ComponentModel.ISupportInitialize)(this.txtEstimatedIsurnceCoverage.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridInsuranceCalculation)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewInsuranceCalculation)).BeginInit();
@@ -75,23 +75,26 @@
             this.gridViewInsuranceCalculation.GridControl = this.gridInsuranceCalculation;
             this.gridViewInsuranceCalculation.Name = "gridViewInsuranceCalculation";
             // 
-            // lblProcess
+            // progressPanel1
             // 
-            this.lblProcess.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProcess.Appearance.Options.UseFont = true;
-            this.lblProcess.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.lblProcess.Location = new System.Drawing.Point(373, 13);
-            this.lblProcess.Name = "lblProcess";
-            this.lblProcess.Size = new System.Drawing.Size(564, 19);
-            this.lblProcess.TabIndex = 3;
-            this.lblProcess.Text = "Please wait loading data...";
+            this.progressPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.progressPanel1.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.progressPanel1.Appearance.Options.UseBackColor = true;
+            this.progressPanel1.BarAnimationElementThickness = 2;
+            this.progressPanel1.Location = new System.Drawing.Point(351, 147);
+            this.progressPanel1.Name = "progressPanel1";
+            this.progressPanel1.Size = new System.Drawing.Size(246, 66);
+            this.progressPanel1.TabIndex = 3;
+            this.progressPanel1.Text = "progressPanel1";
             // 
             // EstimatedInsuranceCoverageView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(949, 361);
-            this.Controls.Add(this.lblProcess);
+            this.Controls.Add(this.progressPanel1);
             this.Controls.Add(this.gridInsuranceCalculation);
             this.Controls.Add(this.txtEstimatedIsurnceCoverage);
             this.Controls.Add(this.labelControl1);
@@ -112,6 +115,6 @@
         private DevExpress.XtraEditors.TextEdit txtEstimatedIsurnceCoverage;
         private DevExpress.XtraGrid.GridControl gridInsuranceCalculation;
         private DevExpress.XtraGrid.Views.Grid.GridView gridViewInsuranceCalculation;
-        private DevExpress.XtraEditors.LabelControl lblProcess;
+        private DevExpress.XtraWaitForm.ProgressPanel progressPanel1;
     }
 }

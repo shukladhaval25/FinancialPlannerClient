@@ -439,12 +439,12 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.picProcessing.Cursor = System.Windows.Forms.Cursors.Default;
             this.picProcessing.EditValue = global::FinancialPlannerClient.Properties.Resources.processing_gif_image_14;
-            this.picProcessing.Location = new System.Drawing.Point(6, 119);
+            this.picProcessing.Location = new System.Drawing.Point(498, 195);
             this.picProcessing.Name = "picProcessing";
             this.picProcessing.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
             this.picProcessing.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
             this.picProcessing.Properties.ZoomAccelerationFactor = 1D;
-            this.picProcessing.Size = new System.Drawing.Size(1140, 396);
+            this.picProcessing.Size = new System.Drawing.Size(162, 132);
             this.picProcessing.TabIndex = 27;
             // 
             // PostRetirementCashFlow

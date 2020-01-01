@@ -83,7 +83,7 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             this.repositoryItemComboBoxMemberName.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
 
             this.repositoryItemAMC = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.repositoryItemAMC.EditValueChanged += RepositoryItemAMC_EditValueChanged; ;
+            this.repositoryItemAMC.EditValueChanged += RepositoryItemAMC_EditValueChanged;
             loadAMC();
 
             this.repositoryItemTextEditFolioNumber = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
@@ -95,7 +95,6 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             this.repositoryItemComboBoxToOption = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.repositoryItemComboBoxToOption.Items.AddRange(new string[] { "GR", "WDR", "DD" });
             this.repositoryItemComboBoxToOption.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            loadScheme();
 
             this.repositoryItemTextEditAmount = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.repositoryItemTextEditAmount.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
@@ -295,7 +294,7 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             loadScheme(swp.Amc);
             this.vGridTransaction.Rows["Scheme"].Properties.Value = getSchemeName(swp.Scheme);
             selectedSchemeId = swp.Scheme;
-            //this.vGridTransaction.Rows["ModeOfHolding"].Properties.Value = switchOpt.ModeOfHolding;
+          
             this.vGridTransaction.Rows["Option"].Properties.Value = swp.Options;
            
             this.vGridTransaction.Rows["Amount"].Properties.Value = swp.Amount;
@@ -454,13 +453,12 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
         internal void loadScheme(int amcId)
         {
             SchemeInfo schemeInfo = new SchemeInfo();
-            if (schemes == null)
+            //if (schemes == null)
                 schemes = schemeInfo.GetAll(amcId);
-
-            //repositoryItemComboBoxFromScheme.Items.Clear();
+            repositoryItemComboBoxToScheme.Items.Clear();
             foreach (Scheme scheme in schemes)
             {
-                //repositoryItemComboBoxFromScheme.Items.Add(scheme.Name);
+                repositoryItemComboBoxToScheme.Items.Add(scheme.Name);
             }
         }
 

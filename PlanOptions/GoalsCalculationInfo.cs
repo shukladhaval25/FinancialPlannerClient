@@ -34,6 +34,7 @@ namespace FinancialPlannerClient.PlanOptions
         public GoalCalculationManager GoalCalManager;
         private  GoalsValueCalculationInfo _goalsValueCal;
         private int _optionId;
+        double mappedCurrentStatusValue = 0;
         #region "Constructor"
         public GoalsCalculationInfo(Goals goal, Planner planner, 
             RiskProfileInfo riskProfileInfo, int riskProfileId,int optionId)
@@ -208,7 +209,7 @@ namespace FinancialPlannerClient.PlanOptions
            
             GoalsValueCalculationInfo goalsValueCal = GoalCalManager.GetGoalValueCalculation(_goal);
             goalsValueCal.SetPortfolioValue(GetProfileValue());
-
+            addMappedCurrentStatusValue(goalsValueCal);
             for (int currentYear = _planner.StartDate.Year; currentYear <= goalYear; currentYear++)
             {
                 GoalPlanning goalPlanning =  goalsValueCal.GetGoalPlanning(currentYear);
@@ -222,6 +223,9 @@ namespace FinancialPlannerClient.PlanOptions
                 }
                 DataRow dr = _dtGoalCalculation.NewRow();
                 returnRatio = goalPlanning.GrowthPercentage;
+
+                dr["Calculation Year"] = string.Format("{0} - {1}", currentYear, currentYear + 1);
+
                 dr["Year Left"] = goalPlanning.YearLeft;
                 dr["Loan Instrument"] = 0;
                 double freshInvestment = goalPlanning.ActualFreshInvestment;
@@ -239,7 +243,33 @@ namespace FinancialPlannerClient.PlanOptions
                 _dtGoalCalculation.Rows.Add(dr);
             }
         }
-                
+
+        private void addMappedCurrentStatusValue(GoalsValueCalculationInfo goalsValueCal)
+        {
+            
+            if (mappedCurrentStatusValue > 0)
+            {
+                DataRow dr = _dtGoalCalculation.NewRow();
+                dr["Calculation Year"] = string.Format("{0} - {1}", _planner.StartDate.Year - 1, _planner.StartDate.Year);
+                _dtGoalCalculation.Columns["Year"].AutoIncrementSeed = _planner.StartDate.Year - 1;
+                dr["Portfolio Value"] = mappedCurrentStatusValue;
+
+                int currentYear = _planner.StartDate.Year;
+                GoalPlanning goalPlanning = goalsValueCal.GetGoalPlanning(currentYear);
+                if (goalPlanning == null)
+                {
+                    goalPlanning = new GoalPlanning(_goal);
+                    goalPlanning.Year = currentYear;
+                    goalPlanning.GrowthPercentage = _riskProfileInfo.GetRiskProfileReturnRatio(_riskprofileId, goalPlanning.YearLeft);
+                    goalPlanning.ActualFreshInvestment = 0;
+                }
+                decimal returnRatio = goalPlanning.GrowthPercentage;
+                dr["Portfolio Return"] = returnRatio;
+                _dtGoalCalculation.Rows.Add(dr);
+            }
+
+        }
+
         private double calculatePortfoliioValue(double freshInv, decimal returnRatio)
         {
             double portfolioValue = 0;
@@ -288,6 +318,7 @@ namespace FinancialPlannerClient.PlanOptions
 
         private void setGoalCalculationTableStructure()
         {
+            mappedCurrentStatusValue =  GetProfileValue();
             _dtGoalCalculation.Clear();
             _dtGoalCalculation.Columns.Clear();
             DataColumn dcSrNo = new DataColumn("SrNo",typeof(System.Int16));
@@ -296,9 +327,13 @@ namespace FinancialPlannerClient.PlanOptions
             dcSrNo.AutoIncrementStep = 1;
             _dtGoalCalculation.Columns.Add(dcSrNo);
 
+
+            DataColumn dcDisplayYear = new DataColumn("Calculation Year", typeof(System.String));
+            _dtGoalCalculation.Columns.Add(dcDisplayYear);
+
             DataColumn dcYear = new DataColumn("Year",typeof(System.Int16));
             dcYear.AutoIncrement = true;
-            dcYear.AutoIncrementSeed = _planner.StartDate.Year;
+            dcYear.AutoIncrementSeed = (mappedCurrentStatusValue == 0) ? _planner.StartDate.Year : _planner.StartDate.Year - 1;
             dcYear.AutoIncrementStep = 1;
             _dtGoalCalculation.Columns.Add(dcYear);
 
