@@ -103,6 +103,7 @@ namespace FinancialPlannerClient.Insurance
             
             if (nonFinancialAssets.Count > 0)
             {
+                nonFinancialAssets = nonFinancialAssets.ToList().FindAll(i => i.EligibleForInsuranceCover == true);
                 double totalNonFinancialAsset = 0;
                 if (rowIndex == 0)
                 {

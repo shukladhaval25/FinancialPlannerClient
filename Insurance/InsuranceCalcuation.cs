@@ -89,6 +89,7 @@ namespace FinancialPlannerClient.Insurance
             IList<NonFinancialAsset> nonFinancialAssets = new NonFinancialAssetInfo().GetAll(this.planner.ID);
             if (nonFinancialAssets.Count > 0)
             {
+                nonFinancialAssets = nonFinancialAssets.ToList().FindAll(i => i.EligibleForInsuranceCover == true);
                 double totalNonFinancialAsset = 0;
                 foreach (NonFinancialAsset nonFinancialAsset in nonFinancialAssets)
                 {

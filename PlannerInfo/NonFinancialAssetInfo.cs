@@ -204,6 +204,7 @@ namespace FinancialPlannerClient.PlannerInfo
                     nonFinancialAsset.AssetRealisationYear = dr.Field<string>("AssetRealisationYear");
                     nonFinancialAsset.Description = dr.Field<string>("Description");
                     nonFinancialAsset.GrowthPercentage = decimal.Parse(dr["GrowthPercentage"].ToString());
+                    nonFinancialAsset.EligibleForInsuranceCover = bool.Parse(dr.Field<string>("EligibleForInsuranceCover"));
                     return nonFinancialAsset;
                 }
             }

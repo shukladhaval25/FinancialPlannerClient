@@ -78,6 +78,7 @@ namespace FinancialPlannerClient.PlanOptions
             this.Equity = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.Debt = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.grpScheme = new DevExpress.XtraEditors.GroupControl();
+            this.btnSendInvestmentReport = new DevExpress.XtraEditors.SimpleButton();
             this.btnReportInvRec = new DevExpress.XtraEditors.SimpleButton();
             this.cmbScheme = new DevExpress.XtraEditors.ComboBoxEdit();
             this.chkSTPApply = new DevExpress.XtraEditors.CheckEdit();
@@ -550,6 +551,7 @@ namespace FinancialPlannerClient.PlanOptions
             // 
             this.grpScheme.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.grpScheme.Controls.Add(this.btnSendInvestmentReport);
             this.grpScheme.Controls.Add(this.btnReportInvRec);
             this.grpScheme.Controls.Add(this.cmbScheme);
             this.grpScheme.Controls.Add(this.chkSTPApply);
@@ -566,11 +568,22 @@ namespace FinancialPlannerClient.PlanOptions
             this.grpScheme.TabIndex = 25;
             this.grpScheme.Text = "Mutual Fund Scheme";
             // 
+            // btnSendInvestmentReport
+            // 
+            this.btnSendInvestmentReport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnSendInvestmentReport.ImageUri.Uri = "SendPDF;Size16x16";
+            this.btnSendInvestmentReport.Location = new System.Drawing.Point(5, 521);
+            this.btnSendInvestmentReport.Name = "btnSendInvestmentReport";
+            this.btnSendInvestmentReport.Size = new System.Drawing.Size(255, 31);
+            this.btnSendInvestmentReport.TabIndex = 34;
+            this.btnSendInvestmentReport.Text = "Send This Report To Client";
+            this.btnSendInvestmentReport.Click += new System.EventHandler(this.btnSendInvestmentReport_Click);
+            // 
             // btnReportInvRec
             // 
-            this.btnReportInvRec.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnReportInvRec.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnReportInvRec.ImageUri.Uri = "ShowWorkTimeOnly;Size16x16";
-            this.btnReportInvRec.Location = new System.Drawing.Point(134, 519);
+            this.btnReportInvRec.Location = new System.Drawing.Point(134, 486);
             this.btnReportInvRec.Name = "btnReportInvRec";
             this.btnReportInvRec.Size = new System.Drawing.Size(126, 31);
             this.btnReportInvRec.TabIndex = 33;
@@ -608,7 +621,7 @@ namespace FinancialPlannerClient.PlanOptions
             this.repositoryItemComboBox2,
             this.repositoryItemTextEdit2,
             this.repositoryItemDateEdit2});
-            this.vGridControlSTP.Size = new System.Drawing.Size(255, 138);
+            this.vGridControlSTP.Size = new System.Drawing.Size(255, 160);
             this.vGridControlSTP.TabIndex = 30;
             this.vGridControlSTP.Visible = false;
             // 
@@ -639,8 +652,9 @@ namespace FinancialPlannerClient.PlanOptions
             // 
             // btnAddInvestment
             // 
+            this.btnAddInvestment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnAddInvestment.ImageUri.Uri = "Apply;Size16x16";
-            this.btnAddInvestment.Location = new System.Drawing.Point(5, 519);
+            this.btnAddInvestment.Location = new System.Drawing.Point(5, 486);
             this.btnAddInvestment.Name = "btnAddInvestment";
             this.btnAddInvestment.Size = new System.Drawing.Size(126, 31);
             this.btnAddInvestment.TabIndex = 29;
@@ -830,5 +844,6 @@ namespace FinancialPlannerClient.PlanOptions
         private DevExpress.XtraEditors.LabelControl lblEquity;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnThirdHolder;
         private DevExpress.XtraEditors.SimpleButton btnReportInvRec;
+        private DevExpress.XtraEditors.SimpleButton btnSendInvestmentReport;
     }
 }

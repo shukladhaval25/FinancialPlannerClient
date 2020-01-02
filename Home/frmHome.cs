@@ -3,6 +3,7 @@ using DevExpress.XtraNavBar;
 using FinancialPlanner.Common;
 using FinancialPlanner.Common.Model;
 using FinancialPlanner.Common.Permission;
+using FinancialPlannerClient.Clients.MailService;
 using FinancialPlannerClient.Master;
 using FinancialPlannerClient.Master.TaskMaster;
 using FinancialPlannerClient.ProspectCustomer;
@@ -946,6 +947,14 @@ namespace FinancialPlannerClient.Home
             lblCurrentUser.Text = Program.CurrentUser.UserName;
             displayMenuBasedOnRolePermission();
             timerNotification.Start();
+            setMailServerSettingFromConfiguration();
+        }
+
+        private void setMailServerSettingFromConfiguration()
+        {
+            MailManager mailManager = new MailManager();
+            string host = FinancialPlanner.Common.EmailManager.MailServer.HostName;
+            //if (!FinancialPlanner.Common.EmailManager.MailServer.HostName)
         }
 
         private void displayMenuBasedOnRolePermission()
@@ -1063,7 +1072,7 @@ namespace FinancialPlannerClient.Home
 
         private void navBarItemMFCategory_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
-            Other other = new Other("MFCategory");
+            Other other = new Other("MF Category");
             other.TopLevel = false;
             other.Visible = true;
             homeNavigationPage1.Name = other.Name;

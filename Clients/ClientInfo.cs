@@ -1282,6 +1282,7 @@ namespace FinancialPlannerClient.Clients
             txtAssetRealisationYear.Text = DateTime.Now.Year.ToString();
             txtNonFinancialDesc.Text = "";
             txtNonFinancialGrowthPercentage.Text = Program.GetAssumptionMaster().NonFinancialRateOfReturn.ToString();
+            chkNonFinancialAssetsInsuranceCoverage.Checked = false;
         }
 
         private void btnNonFinancialSave_Click(object sender, EventArgs e)
@@ -1349,6 +1350,7 @@ namespace FinancialPlannerClient.Clients
             nonFinancialAsset.UpdatedBy = Program.CurrentUser.Id;
             nonFinancialAsset.UpdatedByUserName = Program.CurrentUser.UserName;
             nonFinancialAsset.MachineName = Environment.MachineName;
+            nonFinancialAsset.EligibleForInsuranceCover = chkNonFinancialAssetsInsuranceCoverage.Checked;
             return nonFinancialAsset;
         }
 
@@ -1373,7 +1375,7 @@ namespace FinancialPlannerClient.Clients
                 txtSecondaryHolderShare.Text = nonFinancialAsset.SecondaryHolderShare.ToString();
                 cmbOtherHolder.Text = nonFinancialAsset.OtherHolderName;
                 txtOtherShare.Text = nonFinancialAsset.OtherHolderShare.ToString();
-
+                chkNonFinancialAssetsInsuranceCoverage.Checked = nonFinancialAsset.EligibleForInsuranceCover;
 
                 if (nonFinancialAsset.MappedGoalId != 0)
                 {

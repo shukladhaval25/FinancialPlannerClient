@@ -542,6 +542,7 @@
             this.textBox11 = new System.Windows.Forms.TextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
+            this.chkNonFinancialAssetsInsuranceCoverage = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEditDefault)).BeginInit();
             this.tabPlannerDetails.SuspendLayout();
             this.Assumption.SuspendLayout();
@@ -3991,6 +3992,7 @@
             // 
             this.grpNonFinancialAsset.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpNonFinancialAsset.Controls.Add(this.chkNonFinancialAssetsInsuranceCoverage);
             this.grpNonFinancialAsset.Controls.Add(this.txtNonFinancialGrowthPercentage);
             this.grpNonFinancialAsset.Controls.Add(this.label134);
             this.grpNonFinancialAsset.Controls.Add(this.txtAssetRealisationYear);
@@ -4183,7 +4185,7 @@
             this.btnNonFinancialCanel.Location = new System.Drawing.Point(819, 201);
             this.btnNonFinancialCanel.Name = "btnNonFinancialCanel";
             this.btnNonFinancialCanel.Size = new System.Drawing.Size(86, 26);
-            this.btnNonFinancialCanel.TabIndex = 15;
+            this.btnNonFinancialCanel.TabIndex = 16;
             this.btnNonFinancialCanel.Text = "Cancel";
             this.btnNonFinancialCanel.UseVisualStyleBackColor = true;
             this.btnNonFinancialCanel.Click += new System.EventHandler(this.btnNonFinancialCanel_Click);
@@ -4197,7 +4199,7 @@
             this.btnNonFinancialSave.Location = new System.Drawing.Point(727, 201);
             this.btnNonFinancialSave.Name = "btnNonFinancialSave";
             this.btnNonFinancialSave.Size = new System.Drawing.Size(86, 26);
-            this.btnNonFinancialSave.TabIndex = 14;
+            this.btnNonFinancialSave.TabIndex = 15;
             this.btnNonFinancialSave.Text = "Save";
             this.btnNonFinancialSave.UseVisualStyleBackColor = true;
             this.btnNonFinancialSave.Click += new System.EventHandler(this.btnNonFinancialSave_Click);
@@ -4209,7 +4211,7 @@
             this.txtNonFinancialDesc.Location = new System.Drawing.Point(539, 99);
             this.txtNonFinancialDesc.Multiline = true;
             this.txtNonFinancialDesc.Name = "txtNonFinancialDesc";
-            this.txtNonFinancialDesc.Size = new System.Drawing.Size(366, 96);
+            this.txtNonFinancialDesc.Size = new System.Drawing.Size(366, 66);
             this.txtNonFinancialDesc.TabIndex = 13;
             // 
             // label67
@@ -6377,6 +6379,16 @@
             // 
             this.printDialog1.UseEXDialog = true;
             // 
+            // chkNonFinancialAssetsInsuranceCoverage
+            // 
+            this.chkNonFinancialAssetsInsuranceCoverage.AutoSize = true;
+            this.chkNonFinancialAssetsInsuranceCoverage.Location = new System.Drawing.Point(539, 171);
+            this.chkNonFinancialAssetsInsuranceCoverage.Name = "chkNonFinancialAssetsInsuranceCoverage";
+            this.chkNonFinancialAssetsInsuranceCoverage.Size = new System.Drawing.Size(281, 19);
+            this.chkNonFinancialAssetsInsuranceCoverage.TabIndex = 14;
+            this.chkNonFinancialAssetsInsuranceCoverage.Text = "Consider this item as insurance coverage need";
+            this.chkNonFinancialAssetsInsuranceCoverage.UseVisualStyleBackColor = true;
+            // 
             // ClientInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -6979,5 +6991,6 @@
         private System.Windows.Forms.TextBox txtMICR;
         private System.Windows.Forms.Label lblIFSC;
         private System.Windows.Forms.TextBox txtIFSC;
+        private System.Windows.Forms.CheckBox chkNonFinancialAssetsInsuranceCoverage;
     }
 }

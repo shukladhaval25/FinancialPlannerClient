@@ -19,7 +19,7 @@ namespace FinancialPlannerClient.Clients.MailService
         {
             loadApplicationConfig();
             loadSMTPMailServerSetting();
-            loadIMAPServerSetting();
+            //loadIMAPServerSetting();
         }
 
         private void loadIMAPServerSetting()

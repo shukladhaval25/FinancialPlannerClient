@@ -1,11 +1,13 @@
 ﻿using FinancialPlanner.Common;
 using FinancialPlanner.Common.DataConversion;
+using FinancialPlanner.Common.EmailManager;
 using FinancialPlanner.Common.Model;
 using FinancialPlanner.Common.Model.Masters;
 using FinancialPlanner.Common.Model.TaskManagement.MFTransactions;
 using FinancialPlanner.Common.Permission;
 using FinancialPlannerClient.Master;
 using FinancialPlannerClient.Master.TaskMaster;
+using FinancialPlannerClient.PlannerInfo;
 using FinancialPlannerClient.PlanOptions.Reports.Investment_Recommendation;
 using FinancialPlannerClient.TaskManagementSystem;
 using FinancialPlannerClient.TaskManagementSystem.TransactionOptions;
@@ -14,7 +16,9 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Net.Mail;
 using System.Reflection;
 using System.Windows.Forms;
 using Unity;
@@ -753,6 +757,61 @@ namespace FinancialPlannerClient.PlanOptions
             investmentRecommendation investmentRecommendation = new investmentRecommendation(this.currentClient, this.planner);
             DevExpress.XtraReports.UI.ReportPrintTool printTool = new DevExpress.XtraReports.UI.ReportPrintTool(investmentRecommendation);
             printTool.ShowRibbonPreviewDialog();
+        }
+
+        private void btnSendInvestmentReport_Click(object sender, EventArgs e)
+        {
+            ClientContactInfo clientContactInfo = new ClientContactInfo();
+            var contactInfo = clientContactInfo.Get(this.currentClient.ID);
+            if (!isPrimaryEmailSetForClient(contactInfo))
+                return;
+            sendEmailForInvestmentRecommendation(contactInfo.PrimaryEmail);
+
+        }
+
+        private void sendEmailForInvestmentRecommendation(string primaryEmail)
+        {
+            Attachment attachment = getInvestmentRecommendationAsAttachment();
+            MailMessage mailMessage = new MailMessage();
+            mailMessage.From = new MailAddress(MailServer.FromEmail);
+            mailMessage.To.Add(new MailAddress(primaryEmail));
+            mailMessage.Subject = string.Format("Investment Recommendation on : {0}", DateTime.Now.Date);
+            mailMessage.IsBodyHtml = true;
+            mailMessage.Attachments.Add(attachment);
+            mailMessage.Body = "Hi" + this.currentClient.Name  + "," + Environment.NewLine + Environment.NewLine +
+                "Here in attachment we are sending you investment recommendation based on our discussion.Kindly follow your investment based on that to achieve your goals." +
+                 Environment.NewLine + Environment.NewLine +
+                "With Regards," + Environment.NewLine + Environment.NewLine  +"Asccent Finance solution";
+
+            bool isEmailSend = EmailService.SendEmail(mailMessage);
+            if (isEmailSend)
+            {
+                MessageBox.Show("Investment recommendation report send to client on '" + primaryEmail + "'.","Email",MessageBoxButtons.OK,MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Unable to send email to '" + primaryEmail + "'. Check your email configuration setting.","Email",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+        }
+
+        private Attachment getInvestmentRecommendationAsAttachment()
+        {
+            investmentRecommendation investmentRecommendation = new investmentRecommendation(this.currentClient, this.planner);
+            investmentRecommendation.ExportToPdf(Path.Combine(System.IO.Path.GetTempPath(), "InvestmentRecommendation.pdf"));
+            string hostName = MailServer.HostName;
+            Attachment attachment = new Attachment(Path.Combine(System.IO.Path.GetTempPath(), "InvestmentRecommendation.pdf"));
+            attachment.Name = "Investment Recommendation.pdf";
+            return attachment;
+        }
+
+        private static bool isPrimaryEmailSetForClient(ClientContact contactInfo)
+        {
+            if (string.IsNullOrEmpty(contactInfo.PrimaryEmail))
+            {
+                DevExpress.XtraEditors.XtraMessageBox.Show("You can not send this report to client. You require to update client contant details and set primary email option.", "Email", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
+            return true;
         }
     }
 }

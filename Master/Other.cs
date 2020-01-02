@@ -47,7 +47,7 @@ namespace FinancialPlannerClient.Master
                     _otherItems = new AreaImplimenter();
                     setAreaUI();
                     break;
-                case "MFCategory":
+                case "MF Category":
                     _otherItems = new MFCategoryImpl();
                     setSchemeCategoryUI();
                     break;
