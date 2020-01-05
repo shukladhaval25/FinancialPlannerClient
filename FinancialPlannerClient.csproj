@@ -64,6 +64,7 @@
     </Reference>
     <Reference Include="DevExpress.Office.v16.2.Core, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Pdf.v16.2.Core, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Pdf.v16.2.Drawing, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.PivotGrid.v16.2.Core, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Printing.v16.2.Core, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.RichEdit.v16.2.Core, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -84,6 +85,7 @@
     <Reference Include="DevExpress.XtraLayout.v16.2, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraMap.v16.2, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraNavBar.v16.2, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPdfViewer.v16.2, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraPivotGrid.v16.2, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraPrinting.v16.2, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraReports.v16.2, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -384,6 +386,14 @@
     <Compile Include="PlanOptions\InvestmentRecomendationView.Designer.cs">
       <DependentUpon>InvestmentRecomendationView.cs</DependentUpon>
     </Compile>
+    <Compile Include="PlanOptions\InvestmentRecommendationSendInfo.cs" />
+    <Compile Include="PlanOptions\InvRecSendDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\InvRecSendDetails.Designer.cs">
+      <DependentUpon>InvRecSendDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlanOptions\InvRecSendInfo.cs" />
     <Compile Include="PlanOptions\ReportParams.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1013,6 +1023,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\InvestmentRecomendationView.resx">
       <DependentUpon>InvestmentRecomendationView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\InvRecSendDetails.resx">
+      <DependentUpon>InvRecSendDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\ReportParams.resx">
       <DependentUpon>ReportParams.cs</DependentUpon>

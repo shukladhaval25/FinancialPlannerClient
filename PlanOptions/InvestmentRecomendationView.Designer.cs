@@ -93,6 +93,7 @@ namespace FinancialPlannerClient.PlanOptions
             this.repositoryItemDateEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.rdoInvestmentType = new DevExpress.XtraEditors.RadioGroup();
             this.label4 = new System.Windows.Forms.Label();
+            this.btnViewSendDetails = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.lookupAMC.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grpInvRec)).BeginInit();
             this.grpInvRec.SuspendLayout();
@@ -551,6 +552,7 @@ namespace FinancialPlannerClient.PlanOptions
             // 
             this.grpScheme.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.grpScheme.Controls.Add(this.btnViewSendDetails);
             this.grpScheme.Controls.Add(this.btnSendInvestmentReport);
             this.grpScheme.Controls.Add(this.btnReportInvRec);
             this.grpScheme.Controls.Add(this.cmbScheme);
@@ -574,9 +576,9 @@ namespace FinancialPlannerClient.PlanOptions
             this.btnSendInvestmentReport.ImageUri.Uri = "SendPDF;Size16x16";
             this.btnSendInvestmentReport.Location = new System.Drawing.Point(5, 521);
             this.btnSendInvestmentReport.Name = "btnSendInvestmentReport";
-            this.btnSendInvestmentReport.Size = new System.Drawing.Size(255, 31);
+            this.btnSendInvestmentReport.Size = new System.Drawing.Size(126, 31);
             this.btnSendInvestmentReport.TabIndex = 34;
-            this.btnSendInvestmentReport.Text = "Send This Report To Client";
+            this.btnSendInvestmentReport.Text = "Send Email";
             this.btnSendInvestmentReport.Click += new System.EventHandler(this.btnSendInvestmentReport_Click);
             // 
             // btnReportInvRec
@@ -722,6 +724,18 @@ namespace FinancialPlannerClient.PlanOptions
             this.label4.TabIndex = 26;
             this.label4.Text = "Schme Name:";
             // 
+            // btnViewSendDetails
+            // 
+            this.btnViewSendDetails.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnViewSendDetails.ImageUri.Uri = "SendPDF;Size16x16";
+            this.btnViewSendDetails.Location = new System.Drawing.Point(134, 521);
+            this.btnViewSendDetails.Name = "btnViewSendDetails";
+            this.btnViewSendDetails.Size = new System.Drawing.Size(126, 31);
+            this.btnViewSendDetails.TabIndex = 35;
+            this.btnViewSendDetails.Text = "View Send Details";
+            this.btnViewSendDetails.ToolTip = "View details about investment report send.";
+            this.btnViewSendDetails.Click += new System.EventHandler(this.btnViewSendDetails_Click);
+            // 
             // InvestmentRecomendationView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -845,5 +859,6 @@ namespace FinancialPlannerClient.PlanOptions
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnThirdHolder;
         private DevExpress.XtraEditors.SimpleButton btnReportInvRec;
         private DevExpress.XtraEditors.SimpleButton btnSendInvestmentReport;
+        private DevExpress.XtraEditors.SimpleButton btnViewSendDetails;
     }
 }

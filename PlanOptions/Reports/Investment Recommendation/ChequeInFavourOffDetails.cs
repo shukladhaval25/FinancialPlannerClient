@@ -38,17 +38,18 @@ namespace FinancialPlannerClient.PlanOptions.Reports.Investment_Recommendation
             {
                 _dtInvestment.ImportRow(row);
             }
-
-            _dtInvestment = _dtInvestment.AsEnumerable()
-                          .GroupBy(r => r.Field<string>("ChequeInFavourOff"))
-                          .Select(g =>
-                          {
-                              var row = _dtInvestment.NewRow();
-                              row["ChequeInFavourOff"] = g.Key;
-                              row["Amount"] = g.Sum(r => r.Field<double>("Amount"));
-                              return row;
-                          }).CopyToDataTable();
-
+            if (_dtInvestment.Rows.Count > 0)
+            {
+                _dtInvestment = _dtInvestment.AsEnumerable()
+                              .GroupBy(r => r.Field<string>("ChequeInFavourOff"))
+                              .Select(g =>
+                              {
+                                  var row = _dtInvestment.NewRow();
+                                  row["ChequeInFavourOff"] = g.Key;
+                                  row["Amount"] = g.Sum(r => r.Field<double>("Amount"));
+                                  return row;
+                              }).CopyToDataTable();
+            }
 
             _dtInvestment.TableName = "Investment";
             this.DataSource = _dtInvestment;

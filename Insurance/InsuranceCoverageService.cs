@@ -233,11 +233,11 @@ namespace FinancialPlannerClient.Insurance
                 {
                     foreach (Loan loan in loans)
                     {
-                        DataColumn dcLoan = new DataColumn(loan.Description, Type.GetType("System.Double"));
+                        DataColumn dcLoan = new DataColumn(loan.TypeOfLoan, Type.GetType("System.Double"));
                         dtInsurance.Columns.Add(dcLoan);
 
                         DataRow dr = dtInsurance.Rows[rowIndex];
-                        dr[loan.Description] = loan.OutstandingAmt;
+                        dr[loan.TypeOfLoan] = loan.OutstandingAmt;
                         totalLoanAmountDue = totalLoanAmountDue + loan.OutstandingAmt;
                     }
                 }

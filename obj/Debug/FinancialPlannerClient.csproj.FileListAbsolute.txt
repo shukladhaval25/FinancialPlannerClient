@@ -406,3 +406,12 @@ C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\
 C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.Insurance.EstimatedInsuranceCoverageView.resources
 C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.Reports.Investment_Recommendation.ChequeInFavourOffDetails.resources
 C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.Reports.Tasks.AllTaskReports.resources
+C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.InvRecSendDetails.resources
+C:\Application Development\Financial Planner Project\FinancialPlannerClient\bin\Debug\DevExpress.Pdf.v16.2.Drawing.dll
+C:\Application Development\Financial Planner Project\FinancialPlannerClient\bin\Debug\DevExpress.XtraPdfViewer.v16.2.dll
+C:\Application Development\Financial Planner Project\FinancialPlannerClient\bin\Debug\DevExpress.Pdf.v16.2.Drawing.xml
+C:\Application Development\Financial Planner Project\FinancialPlannerClient\bin\Debug\DevExpress.XtraPdfViewer.v16.2.xml
+C:\Application Development\Financial Planner Project\FinancialPlannerClient\bin\Debug\de\DevExpress.XtraPdfViewer.v16.2.resources.dll
+C:\Application Development\Financial Planner Project\FinancialPlannerClient\bin\Debug\es\DevExpress.XtraPdfViewer.v16.2.resources.dll
+C:\Application Development\Financial Planner Project\FinancialPlannerClient\bin\Debug\ja\DevExpress.XtraPdfViewer.v16.2.resources.dll
+C:\Application Development\Financial Planner Project\FinancialPlannerClient\bin\Debug\ru\DevExpress.XtraPdfViewer.v16.2.resources.dll

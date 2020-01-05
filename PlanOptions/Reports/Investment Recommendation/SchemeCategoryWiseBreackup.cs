@@ -40,19 +40,20 @@ namespace FinancialPlannerClient.PlanOptions.Reports.Investment_Recommendation
             {
                 _dtInvestment.ImportRow(row);
             }
+            if (_dtInvestment.Rows.Count > 0)
+            {
+                _dtInvestment = _dtInvestment.AsEnumerable()
+                              .GroupBy(r => r.Field<string>("Category"))
+                              .Select(g =>
+                              {
+                                  var row = _dtInvestment.NewRow();
+                                  row["Category"] = g.Key;
+                                  row["Amount"] = g.Sum(r => r.Field<double>("Amount"));
+                                  return row;
+                              }).CopyToDataTable();
 
-           _dtInvestment = _dtInvestment.AsEnumerable()
-                         .GroupBy(r => r.Field<string>("Category"))
-                         .Select(g =>
-                         {
-                             var row = _dtInvestment.NewRow();
-                             row["Category"] = g.Key;
-                             row["Amount"] = g.Sum(r => r.Field<double>("Amount"));
-                             return row;
-                         }).CopyToDataTable();
-
-            totalAmount = _dtInvestment.AsEnumerable().Sum(x => Convert.ToDouble(x["Amount"]));
-
+                totalAmount = _dtInvestment.AsEnumerable().Sum(x => Convert.ToDouble(x["Amount"]));
+            }
             this.DataSource = _dtInvestment;
             this.DataMember = _dtInvestment.TableName;
 
@@ -63,6 +64,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports.Investment_Recommendation
 
         private void lblAmount_TextChanged(object sender, EventArgs e)
         {
+            if (!string.IsNullOrEmpty(lblAmount.Text))
             lblPercentage.Text = ((double.Parse(lblAmount.Text) * 100) / totalAmount).ToString("#.##") + "%";
         }
     }

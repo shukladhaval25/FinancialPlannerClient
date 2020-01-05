@@ -3,6 +3,7 @@ using FinancialPlanner.Common.DataConversion;
 using FinancialPlanner.Common.EmailManager;
 using FinancialPlanner.Common.Model;
 using FinancialPlanner.Common.Model.Masters;
+using FinancialPlanner.Common.Model.PlanOptions;
 using FinancialPlanner.Common.Model.TaskManagement.MFTransactions;
 using FinancialPlanner.Common.Permission;
 using FinancialPlannerClient.Master;
@@ -766,31 +767,54 @@ namespace FinancialPlannerClient.PlanOptions
             if (!isPrimaryEmailSetForClient(contactInfo))
                 return;
             sendEmailForInvestmentRecommendation(contactInfo.PrimaryEmail);
-
+            AddInvestmentSendRecommendationReport();
         }
 
+        private void AddInvestmentSendRecommendationReport()
+        {
+            string filePath = Path.Combine(System.IO.Path.GetTempPath(), "InvestmentRecommendation.pdf");
+            InvRecommendationSend invRecommendationSend = new InvRecommendationSend();
+            invRecommendationSend.ClientId = this.currentClient.ID;
+            invRecommendationSend.Pid = this.planner.ID;
+            invRecommendationSend.SendDate = DateTime.Now;
+            invRecommendationSend.ReportDataPath = FileConversion.GetStringfromFile(filePath);
+            InvestmentRecommendationSendInfo investmentRecommendationSendInfo = new InvestmentRecommendationSendInfo();
+            bool isSaved = investmentRecommendationSendInfo.AddInvRecommendationSend(invRecommendationSend);
+            if (isSaved)
+            {
+                MessageBox.Show("Investment recommendation send sucessfully");
+            }
+        }
+        
         private void sendEmailForInvestmentRecommendation(string primaryEmail)
         {
-            Attachment attachment = getInvestmentRecommendationAsAttachment();
-            MailMessage mailMessage = new MailMessage();
-            mailMessage.From = new MailAddress(MailServer.FromEmail);
-            mailMessage.To.Add(new MailAddress(primaryEmail));
-            mailMessage.Subject = string.Format("Investment Recommendation on : {0}", DateTime.Now.Date);
-            mailMessage.IsBodyHtml = true;
-            mailMessage.Attachments.Add(attachment);
-            mailMessage.Body = "Hi" + this.currentClient.Name  + "," + Environment.NewLine + Environment.NewLine +
-                "Here in attachment we are sending you investment recommendation based on our discussion.Kindly follow your investment based on that to achieve your goals." +
-                 Environment.NewLine + Environment.NewLine +
-                "With Regards," + Environment.NewLine + Environment.NewLine  +"Asccent Finance solution";
+            try
+            {
+                Attachment attachment = getInvestmentRecommendationAsAttachment();
+                MailMessage mailMessage = new MailMessage();
+                mailMessage.From = new MailAddress(MailServer.FromEmail);
+                mailMessage.To.Add(new MailAddress(primaryEmail));
+                mailMessage.Subject = string.Format("Investment Recommendation on : {0}", DateTime.Now.Date);
+                mailMessage.IsBodyHtml = true;
+                mailMessage.Attachments.Add(attachment);
+                mailMessage.Body = "Hi" + this.currentClient.Name + "," + Environment.NewLine + Environment.NewLine +
+                    "Here in attachment we are sending you investment recommendation based on our discussion.Kindly follow your investment based on that to achieve your goals." +
+                     Environment.NewLine + Environment.NewLine +
+                    "With Regards," + Environment.NewLine + Environment.NewLine + "Asccent Finance solution";
 
-            bool isEmailSend = EmailService.SendEmail(mailMessage);
-            if (isEmailSend)
-            {
-                MessageBox.Show("Investment recommendation report send to client on '" + primaryEmail + "'.","Email",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                bool isEmailSend = EmailService.SendEmail(mailMessage);
+                if (isEmailSend)
+                {
+                    MessageBox.Show("Investment recommendation report send to client on '" + primaryEmail + "'.", "Email", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Unable to send email to '" + primaryEmail + "'. Check your email configuration setting.", "Email", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            else
+            catch(Exception ex)
             {
-                MessageBox.Show("Unable to send email to '" + primaryEmail + "'. Check your email configuration setting.","Email",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                throw ex;
             }
         }
 
@@ -812,6 +836,12 @@ namespace FinancialPlannerClient.PlanOptions
                 return false;
             }
             return true;
+        }
+
+        private void btnViewSendDetails_Click(object sender, EventArgs e)
+        {
+            InvRecSendDetails invRecSendDetails = new InvRecSendDetails(this.currentClient, this.planner);
+            invRecSendDetails.Show();
         }
     }
 }
