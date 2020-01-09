@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EstimatedInsuranceCoverageView));
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.txtEstimatedIsurnceCoverage = new DevExpress.XtraEditors.TextEdit();
             this.gridInsuranceCalculation = new DevExpress.XtraGrid.GridControl();
             this.gridViewInsuranceCalculation = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.progressPanel1 = new DevExpress.XtraWaitForm.ProgressPanel();
+            this.btnExport = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.txtEstimatedIsurnceCoverage.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridInsuranceCalculation)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewInsuranceCalculation)).BeginInit();
@@ -89,11 +91,25 @@
             this.progressPanel1.TabIndex = 3;
             this.progressPanel1.Text = "progressPanel1";
             // 
+            // btnExport
+            // 
+            this.btnExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExport.Image = ((System.Drawing.Image)(resources.GetObject("btnExport.Image")));
+            this.btnExport.Location = new System.Drawing.Point(907, 49);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(23, 23);
+            this.btnExport.TabIndex = 4;
+            this.btnExport.Text = "Export To Excel";
+            this.btnExport.ToolTip = "Export to excel";
+            this.btnExport.ToolTipTitle = "Export";
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            // 
             // EstimatedInsuranceCoverageView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(949, 361);
+            this.Controls.Add(this.btnExport);
             this.Controls.Add(this.progressPanel1);
             this.Controls.Add(this.gridInsuranceCalculation);
             this.Controls.Add(this.txtEstimatedIsurnceCoverage);
@@ -116,5 +132,6 @@
         private DevExpress.XtraGrid.GridControl gridInsuranceCalculation;
         private DevExpress.XtraGrid.Views.Grid.GridView gridViewInsuranceCalculation;
         private DevExpress.XtraWaitForm.ProgressPanel progressPanel1;
+        private DevExpress.XtraEditors.SimpleButton btnExport;
     }
 }

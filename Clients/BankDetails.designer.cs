@@ -60,7 +60,7 @@
             this.btnCancelBankAccount = new DevExpress.XtraEditors.SimpleButton();
             this.btnSaveBankAccount = new DevExpress.XtraEditors.SimpleButton();
             this.label143 = new System.Windows.Forms.Label();
-            this.txtMinReqBalance = new System.Windows.Forms.TextBox();
+            this.txtNominee = new System.Windows.Forms.TextBox();
             this.label139 = new System.Windows.Forms.Label();
             this.grpJoinAccountInfo = new System.Windows.Forms.GroupBox();
             this.txtJoinHolderName = new System.Windows.Forms.TextBox();
@@ -194,7 +194,7 @@
             this.grpBankAccountDetails.Controls.Add(this.btnCancelBankAccount);
             this.grpBankAccountDetails.Controls.Add(this.btnSaveBankAccount);
             this.grpBankAccountDetails.Controls.Add(this.label143);
-            this.grpBankAccountDetails.Controls.Add(this.txtMinReqBalance);
+            this.grpBankAccountDetails.Controls.Add(this.txtNominee);
             this.grpBankAccountDetails.Controls.Add(this.label139);
             this.grpBankAccountDetails.Controls.Add(this.grpJoinAccountInfo);
             this.grpBankAccountDetails.Controls.Add(this.txtBranchContactNo);
@@ -335,29 +335,27 @@
             this.label143.TabIndex = 39;
             this.label143.Text = "Account Holder :";
             // 
-            // txtMinReqBalance
+            // txtNominee
             // 
-            this.txtMinReqBalance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMinReqBalance.Location = new System.Drawing.Point(668, 211);
-            this.txtMinReqBalance.MaxLength = 6;
-            this.txtMinReqBalance.Name = "txtMinReqBalance";
-            this.txtMinReqBalance.Size = new System.Drawing.Size(173, 22);
-            this.txtMinReqBalance.TabIndex = 33;
-            this.txtMinReqBalance.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtMinReqBalance.Visible = false;
-            this.txtMinReqBalance.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMinReqBalance_KeyPress);
-            this.txtMinReqBalance.Validating += new System.ComponentModel.CancelEventHandler(this.txtMinReqBalance_Validating);
+            this.txtNominee.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNominee.Location = new System.Drawing.Point(595, 147);
+            this.txtNominee.MaxLength = 6;
+            this.txtNominee.Name = "txtNominee";
+            this.txtNominee.Size = new System.Drawing.Size(173, 22);
+            this.txtNominee.TabIndex = 33;
+            this.txtNominee.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtNominee.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMinReqBalance_KeyPress);
+            this.txtNominee.Validating += new System.ComponentModel.CancelEventHandler(this.txtMinReqBalance_Validating);
             // 
             // label139
             // 
             this.label139.AutoSize = true;
             this.label139.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label139.Location = new System.Drawing.Point(523, 214);
+            this.label139.Location = new System.Drawing.Point(523, 150);
             this.label139.Name = "label139";
-            this.label139.Size = new System.Drawing.Size(139, 16);
+            this.label139.Size = new System.Drawing.Size(66, 16);
             this.label139.TabIndex = 38;
-            this.label139.Text = "Min. Require Balance:";
-            this.label139.Visible = false;
+            this.label139.Text = "Nominee:";
             // 
             // grpJoinAccountInfo
             // 
@@ -569,7 +567,7 @@
         public DevExpress.XtraEditors.SimpleButton btnAdd;
         private DevExpress.XtraEditors.GroupControl grpBankAccountDetails;
         private System.Windows.Forms.Label label143;
-        private System.Windows.Forms.TextBox txtMinReqBalance;
+        private System.Windows.Forms.TextBox txtNominee;
         private System.Windows.Forms.Label label139;
         private System.Windows.Forms.GroupBox grpJoinAccountInfo;
         private System.Windows.Forms.TextBox txtJoinHolderName;

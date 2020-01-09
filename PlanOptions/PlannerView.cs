@@ -221,7 +221,7 @@ namespace FinancialPlannerClient.PlanOptions
                 txtEndDate.Text = string.Empty;
             else
             {
-                txtEndDate.Text = dtStartDate.DateTime.AddYears(1).ToShortDateString();
+                txtEndDate.Text = dtStartDate.DateTime.AddYears(1).AddDays(-1).ToShortDateString();
             }
         }
 

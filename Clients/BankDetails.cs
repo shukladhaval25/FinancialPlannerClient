@@ -88,7 +88,7 @@ namespace FinancialPlannerClient.Clients
             txtBranchContactNo.Text = "";
             rdoNoJoinAC.Checked = true;
             txtJoinHolderName.Text = "";
-            txtMinReqBalance.Text = "0";
+            txtNominee.Text = "0";
         }
 
         private void btnEditBankAcc_Click(object sender, EventArgs e)
@@ -136,7 +136,7 @@ namespace FinancialPlannerClient.Clients
                 txtBranchContactNo.Text = bankAccount.ContactNo;
                 rdoYesJoinAC.Checked = bankAccount.IsJoinAccount;
                 txtJoinHolderName.Text = bankAccount.JoinHolderName;
-                txtMinReqBalance.Text = bankAccount.MinRequireBalance.ToString();
+                txtNominee.Text = bankAccount.MinRequireBalance.ToString();
                
             }
         }
@@ -182,7 +182,7 @@ namespace FinancialPlannerClient.Clients
             bankACDetails.ContactNo = txtBranchContactNo.Text;
             bankACDetails.IsJoinAccount = rdoYesJoinAC.Checked;
             bankACDetails.JoinHolderName = (rdoYesJoinAC.Checked) ? txtJoinHolderName.Text : string.Empty;
-            bankACDetails.MinRequireBalance = double.Parse(txtMinReqBalance.Text);
+            bankACDetails.MinRequireBalance = double.Parse(txtNominee.Text);
             bankACDetails.CreatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
             bankACDetails.CreatedBy = Program.CurrentUser.Id;
             bankACDetails.UpdatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
@@ -281,8 +281,8 @@ namespace FinancialPlannerClient.Clients
 
         private void txtMinReqBalance_Validating(object sender, CancelEventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtMinReqBalance.Text))
-                e.Cancel = !FinancialPlanner.Common.Validation.IsDigit(txtMinReqBalance.Text);
+            if (!string.IsNullOrEmpty(txtNominee.Text))
+                e.Cancel = !FinancialPlanner.Common.Validation.IsDigit(txtNominee.Text);
         }
 
         private void cmbAccountType_Enter(object sender, EventArgs e)

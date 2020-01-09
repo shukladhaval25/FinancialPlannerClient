@@ -35,7 +35,7 @@ namespace FinancialPlannerClient.Clients
         public Client GetClientById(int clientId)
         {
             FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
-            string apiurl = Program.WebServiceUrl + "/" + CLIENT_BY_ID;
+            string apiurl = Program.WebServiceUrl + "/" + string.Format(CLIENT_BY_ID,clientId);
 
             RestAPIExecutor restApiExecutor = new RestAPIExecutor();
 

@@ -788,6 +788,19 @@
     <Compile Include="ProspectCustomer\ProspectCustomerList.Designer.cs">
       <DependentUpon>ProspectCustomerList.cs</DependentUpon>
     </Compile>
+    <Compile Include="Review\QuarterlyReviewTemplateInfo.cs" />
+    <Compile Include="Review\QuarterlyReviewTemplateView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Review\QuarterlyReviewTemplateView.Designer.cs">
+      <DependentUpon>QuarterlyReviewTemplateView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Review\Reports\QuarterlyReivewData.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Review\Reports\QuarterlyReivewData.Designer.cs">
+      <DependentUpon>QuarterlyReivewData.cs</DependentUpon>
+    </Compile>
     <Compile Include="RiskProfile\DefaultReiskProfile.cs" />
     <Compile Include="RiskProfile\RiskProfileReturn.cs">
       <SubType>Form</SubType>
@@ -1212,6 +1225,12 @@
     <EmbeddedResource Include="ProspectCustomer\ProspectCustomerList.resx">
       <DependentUpon>ProspectCustomerList.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Review\QuarterlyReviewTemplateView.resx">
+      <DependentUpon>QuarterlyReviewTemplateView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Review\Reports\QuarterlyReivewData.resx">
+      <DependentUpon>QuarterlyReivewData.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RiskProfile\RiskProfileReturn.resx">
       <DependentUpon>RiskProfileReturn.cs</DependentUpon>
     </EmbeddedResource>
@@ -1505,6 +1524,7 @@
   <ItemGroup>
     <None Include="Resources\Apps-Notifications-icon.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

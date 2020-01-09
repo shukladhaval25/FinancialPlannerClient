@@ -635,7 +635,7 @@ namespace FinancialPlannerClient.Clients
         private void fillupSessionInfo()
         {
             SessionInfo sessionInfo = new SessionInfo();
-            sessionInfo.fillSessionInfo(dtGridSession);
+            sessionInfo.fillSessionInfo(gridControlSession);
         }
 
         private void fillupGoalsInfo()

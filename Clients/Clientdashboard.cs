@@ -8,6 +8,7 @@ using FinancialPlannerClient.Clients.MailService;
 using FinancialPlannerClient.Insurance;
 using FinancialPlannerClient.PlannerInfo;
 using FinancialPlannerClient.PlanOptions;
+using FinancialPlannerClient.Review;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -619,6 +620,17 @@ namespace FinancialPlannerClient.Clients
             navigationPageOther.Controls.Clear();
             navigationPageOther.Controls.Add(clientInfo);
             showNavigationPage(clientInfo.Name);
+        }
+
+        private void navBarQuarterlyReviewFormat_LinkClicked(object sender, NavBarLinkEventArgs e)
+        {
+            QuarterlyReviewTemplateView quarterlyReviewSendSetting = new QuarterlyReviewTemplateView(this.personalInformation);
+            quarterlyReviewSendSetting.TopLevel = false;
+            quarterlyReviewSendSetting.Visible = true;
+            navigationPageOther.Name = quarterlyReviewSendSetting.Name;
+            navigationPageOther.Controls.Clear();
+            navigationPageOther.Controls.Add(quarterlyReviewSendSetting);
+            showNavigationPage(quarterlyReviewSendSetting.Name);
         }
     }
 }
