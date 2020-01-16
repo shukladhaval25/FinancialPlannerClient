@@ -611,6 +611,18 @@
     <Compile Include="PlanOptions\Reports\IncomeInflowChart.Designer.cs">
       <DependentUpon>IncomeInflowChart.cs</DependentUpon>
     </Compile>
+    <Compile Include="PlanOptions\Reports\Insurance\InsurancePremiumParameters.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\Insurance\InsurancePremiumParameters.Designer.cs">
+      <DependentUpon>InsurancePremiumParameters.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\Insurance\LicPremiumDueDate.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\Insurance\LicPremiumDueDate.Designer.cs">
+      <DependentUpon>LicPremiumDueDate.cs</DependentUpon>
+    </Compile>
     <Compile Include="PlanOptions\Reports\Introduction.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -658,6 +670,12 @@
     </Compile>
     <Compile Include="PlanOptions\Reports\Investment Recommendation\STPDetails.Designer.cs">
       <DependentUpon>STPDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\Investment Recommendation\SwitchDetails.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\Investment Recommendation\SwitchDetails.Designer.cs">
+      <DependentUpon>SwitchDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="PlanOptions\Reports\NetWorthAnalysis.cs">
       <SubType>Component</SubType>
@@ -845,11 +863,13 @@
     </Compile>
     <Compile Include="TaskManagementSystem\TransactionOptions\AdditionalPurchase.cs" />
     <Compile Include="TaskManagementSystem\TransactionOptions\ChangeOfNameTrans.cs" />
+    <Compile Include="TaskManagementSystem\TransactionOptions\Helper\SwitchTypeInvestmentRecommendationHelper.cs" />
     <Compile Include="TaskManagementSystem\TransactionOptions\NominationTrans.cs" />
     <Compile Include="TaskManagementSystem\TransactionOptions\MinorToMajorTrans.cs" />
     <Compile Include="TaskManagementSystem\TransactionOptions\SIPBankChangeTrans.cs" />
     <Compile Include="TaskManagementSystem\TransactionOptions\SignatureChangeTrans.cs" />
     <Compile Include="TaskManagementSystem\TransactionOptions\PanCardUpdateTrans.cs" />
+    <Compile Include="TaskManagementSystem\TransactionOptions\SwitchTypeInvRecommendationView.cs" />
     <Compile Include="TaskManagementSystem\TransactionOptions\TransmissionAfterDeathTrans.cs" />
     <Compile Include="TaskManagementSystem\TransactionOptions\AddressChangeTrans.cs" />
     <Compile Include="TaskManagementSystem\TransactionOptions\ContactUpdateTrans.cs" />
@@ -1127,6 +1147,12 @@
     <EmbeddedResource Include="PlanOptions\Reports\IncomeInflowChart.resx">
       <DependentUpon>IncomeInflowChart.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\Reports\Insurance\InsurancePremiumParameters.resx">
+      <DependentUpon>InsurancePremiumParameters.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\Reports\Insurance\LicPremiumDueDate.resx">
+      <DependentUpon>LicPremiumDueDate.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\Reports\Introduction.resx">
       <DependentUpon>Introduction.cs</DependentUpon>
     </EmbeddedResource>
@@ -1150,6 +1176,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\Reports\Investment Recommendation\STPDetails.resx">
       <DependentUpon>STPDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\Reports\Investment Recommendation\SwitchDetails.resx">
+      <DependentUpon>SwitchDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\Reports\NetWorthAnalysis.resx">
       <DependentUpon>NetWorthAnalysis.cs</DependentUpon>

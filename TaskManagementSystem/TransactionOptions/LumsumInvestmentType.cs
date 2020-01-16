@@ -20,6 +20,7 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
         DevExpress.XtraVerticalGrid.Rows.EditorRow FirstHolder;
         DevExpress.XtraVerticalGrid.Rows.EditorRow SecondHolder;
         DevExpress.XtraVerticalGrid.Rows.EditorRow ThirdHolder;
+        DevExpress.XtraVerticalGrid.Rows.EditorRow Nominee;
 
         public DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEditSchemeName;
         public DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEditAmount;
@@ -28,6 +29,7 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
         public DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBoxSecondHolder;
         public DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBoxFirstHolder;
         public DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBoxThirdHolder;
+        public DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEditNominee;
 
         private void InitializeComponent()
         {
@@ -41,6 +43,7 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             this.SecondHolder = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.FirstHolder = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.ThirdHolder = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.Nominee = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
 
             this.repositoryItemComboBoxSecondHolder = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.repositoryItemComboBoxSecondHolder.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
@@ -60,6 +63,8 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             this.repositoryItemTextEditAmount.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.repositoryItemTextEditAmount.Validating += RepositoryItemTextEditAmount_Validating;
             this.repositoryItemTextEditAmount.EditValueChanged += RepositoryItemTextEditAmount_EditValueChanged;
+
+            this.repositoryItemTextEditNominee = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
 
             // 
             // Scheme Name
@@ -119,6 +124,14 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             this.ThirdHolder.Properties.RowEdit = this.repositoryItemComboBoxThirdHolder;
 
             //
+            // Nominee
+            //
+            this.Nominee.Name = "Nominee";
+            this.Nominee.Properties.Caption = "Nominee";
+            this.Nominee.Properties.FieldName = "Nominee";
+            this.Nominee.Properties.RowEdit = this.repositoryItemTextEditNominee;
+
+            //
             // VGridControl
             //
             this.vGridTransaction.Name = GRID_NAME;
@@ -133,7 +146,8 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
                 this.repositoryItemTextEditChequeInFavourOff,
                 this.repositoryItemComboBoxFirstHolder,
                 this.repositoryItemComboBoxSecondHolder,
-                this.repositoryItemComboBoxThirdHolder
+                this.repositoryItemComboBoxThirdHolder,
+                this.repositoryItemTextEditNominee
             });
 
             this.vGridTransaction.Rows.AddRange(new DevExpress.XtraVerticalGrid.Rows.BaseRow[] {
@@ -143,7 +157,8 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
                 this.ChequeInFavourOff,
                 this.FirstHolder,
                 this.SecondHolder,
-                this.ThirdHolder});
+                this.ThirdHolder,
+                this.Nominee});
             prepareOptionalFieldsList();
 
         }
@@ -189,6 +204,7 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             this.vGridTransaction.Rows["Amount"].Properties.Value = investmentRecomendation.Amount;
             this.vGridTransaction.Rows["ChequeInFavourOff"].Properties.Value = investmentRecomendation.ChequeInFavourOff;
             this.clientId = investmentRecomendation.Cid;
+            this.vGridTransaction.Rows["Nominee"].Properties.Value = investmentRecomendation.Nominee;
             loadMembers();
         }
 
@@ -213,7 +229,8 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
                 investmentRecomendation.ChequeInFavourOff = (this.vGridTransaction.Rows["ChequeInFavourOff"].Properties.Value != null) ?
                     this.vGridTransaction.Rows["ChequeInFavourOff"].Properties.Value.ToString() : string.Empty;
 
-                investmentRecomendation.Amount = double.Parse(this.vGridTransaction.Rows["Amount"].Properties.Value.ToString());               
+                investmentRecomendation.Amount = double.Parse(this.vGridTransaction.Rows["Amount"].Properties.Value.ToString());
+                investmentRecomendation.Nominee = (this.vGridTransaction.Rows["Nominee"].Properties.Value != null) ? this.vGridTransaction.Rows["Nominee"].Properties.Value.ToString() : string.Empty;
             }
             return investmentRecomendation;
         }

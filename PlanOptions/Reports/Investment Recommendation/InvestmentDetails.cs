@@ -37,8 +37,9 @@ namespace FinancialPlannerClient.PlanOptions.Reports.Investment_Recommendation
 
             ChequeInFavourOffDetails chequeInFavourOffDetails = new ChequeInFavourOffDetails(this.client, this.planner);
             this.subReportCheque.ReportSource = chequeInFavourOffDetails;
-            //ChequeDetailsReport chequeDetailsReport = new ChequeDetailsReport(this.client, this.planner);
-            //this.subReportCheque.ReportSource = chequeDetailsReport;
+
+            SwitchDetails switchDetails = new SwitchDetails(this.client, this.planner);
+            this.subReportSwitch.ReportSource = switchDetails;
         }
     }
 }

@@ -56,6 +56,7 @@ namespace FinancialPlannerClient
                 container.RegisterType<ITransactionType, LumsumInvestmentType>("Lumsum");
                 container.RegisterType<ITransactionType, STPTypeRecomendation>("STPRecomendationType");
                 container.RegisterType<ITransactionType, SIPInvestmentRecomendation>("SIPInvestmentRecomendation");
+                container.RegisterType<ITransactionType, SwitchTypeInvRecommendationView>("SwitchTypeInvRecommendation");
                 container.RegisterType<ITransactionType, PanCardUpdateTrans>("PAN Card Update");
                 container.RegisterType<ITransactionType, AddressChangeTrans>("Address Change");
                 container.RegisterType<ITransactionType, TransmissionAfterDeathTrans>("Transmission After Death");

@@ -35,13 +35,16 @@ namespace FinancialPlannerClient.PlanOptions
         private DataTable dtLumsumInvestment = new DataTable();
         private DataTable dtSTPInvestment = new DataTable();
         private DataTable dtSIPInvestment = new DataTable();
+        private DataTable dtSwitchInvestment = new DataTable();
         int amcId;
         LumsumInvestmentRecomendationHelper lumsumInvestmentRecomendationHelper = new LumsumInvestmentRecomendationHelper();
         STPInvestmentRecommendationHelper stpInvestmentRecommendationHelper = new STPInvestmentRecommendationHelper();
         SIPInvestmentRecomendationHelper sipInvestmentRecommendationHelper = new SIPInvestmentRecomendationHelper();
+        SwitchTypeInvestmentRecommendationHelper switchTypeInvestmentRecommendationHelper = new SwitchTypeInvestmentRecommendationHelper();
         InvestmentRecommedationRatioHelper investmentRecommedationRatioHelper = new InvestmentRecommedationRatioHelper();
         private ITransactionType transactionType;
         private STPTypeRecomendation stpTransactionType;
+        private SwitchTypeInvRecommendationView switchTypeInvRecommendationView;
         double lumsumInvestmentAmount = 0;
 
         public IList<Scheme> schemes { get; private set; }
@@ -61,6 +64,29 @@ namespace FinancialPlannerClient.PlanOptions
             loadLumsumInvestment();
             loadSTPInvestment();
             loadSIPInvestment();
+            loadSwitchInvestment();
+        }
+
+        private void loadSwitchInvestment()
+        {
+            List<SwitchTypeInvestmentRecommendation> switchTypeInvestmentRecommendation =
+                 (List<SwitchTypeInvestmentRecommendation>)switchTypeInvestmentRecommendationHelper.GetAll(this.planner.ID);
+            dtSwitchInvestment = ListtoDataTable.ToDataTable(switchTypeInvestmentRecommendation);
+            gridControlSwitch.DataSource = dtSwitchInvestment;
+            gridViewSwitch.Columns["FromSchemeName"].VisibleIndex = 0;
+            gridViewSwitch.Columns["ToSchemeName"].VisibleIndex = 1;
+            gridViewSwitch.Columns["Amount"].VisibleIndex = 2;
+            gridViewSwitch.Columns["Id"].Visible = false;
+            gridViewSwitch.Columns["Cid"].Visible = false;
+            gridViewSwitch.Columns["Pid"].Visible = false;
+            gridViewSwitch.Columns["ToSchemeId"].Visible = false;
+            gridViewSwitch.Columns["CreatedOn"].Visible = false;
+            gridViewSwitch.Columns["CreatedBy"].Visible = false;
+            gridViewSwitch.Columns["UpdatedBy"].Visible = false;
+            gridViewSwitch.Columns["UpdatedOn"].Visible = false;
+            gridViewSwitch.Columns["MachineName"].Visible = false;
+            gridViewSwitch.Columns["UpdatedByUserName"].Visible = false;
+            gridViewSwitch.Columns["FromSchemeId"].Visible = false;
         }
 
         private void setPermission()
@@ -342,6 +368,11 @@ namespace FinancialPlannerClient.PlanOptions
                 MessageBox.Show("Please select scheme name.", "Scheme Require", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
+            setDisplayOption();
+        }
+
+        private void setDisplayOption()
+        {
             if (rdoInvestmentType.SelectedIndex == 0)
             {
                 loadLumpsumValue();
@@ -350,6 +381,11 @@ namespace FinancialPlannerClient.PlanOptions
             else if (rdoInvestmentType.SelectedIndex == 1)
             {
                 loadSIPValue();
+                chkSTPApply.Visible = false;
+            }
+            else if (rdoInvestmentType.SelectedIndex == 2)
+            {
+                loadSwitchInvestmentRecommendation();
                 chkSTPApply.Visible = false;
             }
         }
@@ -416,6 +452,26 @@ namespace FinancialPlannerClient.PlanOptions
                 transactionType.BindDataSource(jsonSerialization.SerializeToString<LumsumInvestmentRecomendation>(investmentRecomendation));
             }
             catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+        private void loadSwitchInvestmentRecommendation()
+        {
+            try
+            {
+                SwitchTypeInvestmentRecommendation switchTypeInvestmentRecommendation = new SwitchTypeInvestmentRecommendation();
+                switchTypeInvestmentRecommendation.Cid = this.currentClient.ID;
+                Scheme selectedScheme = getSelectedScheme(cmbScheme.SelectedText.ToString());
+                switchTypeInvestmentRecommendation.ToSchemeId = selectedScheme.Id;
+                switchTypeInvestmentRecommendation.ToSchemeName = selectedScheme.Name;
+                switchTypeInvRecommendationView = new SwitchTypeInvRecommendationView(amcId);
+                switchTypeInvRecommendationView.setVGridControl(this.vGridTransaction);
+                FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
+
+                switchTypeInvRecommendationView.BindDataSource(jsonSerialization.SerializeToString<SwitchTypeInvestmentRecommendation>(switchTypeInvestmentRecommendation));
+            }
+            catch(Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
@@ -513,21 +569,22 @@ namespace FinancialPlannerClient.PlanOptions
                         }
                         loadLumsumInvestment();
                     }
-                }
-                //else if (rdoInvestmentType.SelectedIndex == 1)
-                //{
-                //    STPTypeInvestmentRecomendation stpInvestmentRecomendation = getSTPInvestment();
-                //    if (stpInvestmentRecommendationHelper.Save(stpInvestmentRecomendation))
-                //    {
-                //        loadSTPInvestment();
-                //    }
-                //}
+                }                
                 else if (rdoInvestmentType.SelectedIndex == 1)
                 {
                     SIPTypeInvestmentRecomendation sIPTypeInvestmentRecomendation = getSIPInvestment();
                     if (sipInvestmentRecommendationHelper.Save(sIPTypeInvestmentRecomendation))
                     {
                         loadSIPInvestment();
+                    }
+                }
+                else if (rdoInvestmentType.SelectedIndex == 2)
+                {
+                    SwitchTypeInvestmentRecommendation switchTypeInvestmentRecommendation = getSwitchTypeInvRecommendation();
+                    if (switchTypeInvestmentRecommendationHelper.Save(switchTypeInvestmentRecommendation))
+                    {
+                        loadSwitchInvestment();
+                        //loadSwitchInvestmentRecommendation();
                     }
                 }
             }
@@ -539,6 +596,26 @@ namespace FinancialPlannerClient.PlanOptions
                 LogDebug(currentMethodName.Name, ex);
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private SwitchTypeInvestmentRecommendation getSwitchTypeInvRecommendation()
+        {
+            SwitchTypeInvestmentRecommendation switchInvestmentRecomendation = new SwitchTypeInvestmentRecommendation();
+            switchInvestmentRecomendation = (SwitchTypeInvestmentRecommendation)this.switchTypeInvRecommendationView.GetTransactionType();
+            switchInvestmentRecomendation.Cid = this.currentClient.ID;
+            Scheme selectedScheme = getSelectedScheme(cmbScheme.SelectedText.ToString());
+            //switchInvestmentRecomendation.FromSchemeId = selectedScheme.Id;
+            //switchInvestmentRecomendation.ToSchemeName = selectedScheme.Name;
+            switchInvestmentRecomendation.ToSchemeId = selectedScheme.Id;
+            switchInvestmentRecomendation.ToSchemeName = selectedScheme.Name;
+            switchInvestmentRecomendation.Pid = this.planner.ID;
+            switchInvestmentRecomendation.CreatedBy = this.currentClient.ID;
+            switchInvestmentRecomendation.CreatedOn = DateTime.Now;
+            switchInvestmentRecomendation.UpdatedBy = this.currentClient.ID;
+            switchInvestmentRecomendation.UpdatedOn = DateTime.Now;
+            switchInvestmentRecomendation.MachineName = Environment.MachineName;
+           
+            return switchInvestmentRecomendation;
         }
 
         private void LogDebug(string methodName, Exception ex)
@@ -842,6 +919,25 @@ namespace FinancialPlannerClient.PlanOptions
         {
             InvRecSendDetails invRecSendDetails = new InvRecSendDetails(this.currentClient, this.planner);
             invRecSendDetails.Show();
+        }
+
+
+        private void btnDeleteSwitch_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SwitchTypeInvestmentRecommendation switchTypeInvestmentRecommendation = getSwitchTypeInvRecommendation();
+
+                if (switchTypeInvestmentRecommendationHelper.Delete(switchTypeInvestmentRecommendation))
+                {
+                    MessageBox.Show("Record deleted sucessfully.");
+                    loadSwitchInvestment();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
     }
 }

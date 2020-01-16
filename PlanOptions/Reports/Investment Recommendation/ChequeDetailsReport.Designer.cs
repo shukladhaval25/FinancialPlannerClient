@@ -50,8 +50,6 @@
             this.lblTotalAmount = new DevExpress.XtraReports.UI.XRTableCell();
             this.unboundSource1 = new DevExpress.Data.UnboundSource(this.components);
             this.unboundSource2 = new DevExpress.Data.UnboundSource(this.components);
-            this.xrLabel2 = new DevExpress.XtraReports.UI.XRLabel();
-            this.xrLabel3 = new DevExpress.XtraReports.UI.XRLabel();
             ((System.ComponentModel.ISupportInitialize)(this.xrTableChequeDetails)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable3)).BeginInit();
@@ -62,11 +60,9 @@
             // Detail
             // 
             this.Detail.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
-            this.xrLabel3,
-            this.xrLabel2,
             this.xrTableChequeDetails});
             this.Detail.Dpi = 100F;
-            this.Detail.HeightF = 69.79166F;
+            this.Detail.HeightF = 25F;
             this.Detail.Name = "Detail";
             this.Detail.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.Detail.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
@@ -130,7 +126,7 @@
             this.xrTable2,
             this.xrLabel1});
             this.GroupHeader1.Dpi = 100F;
-            this.GroupHeader1.HeightF = 79.66665F;
+            this.GroupHeader1.HeightF = 69.66665F;
             this.GroupHeader1.Name = "GroupHeader1";
             // 
             // xrTable2
@@ -142,7 +138,7 @@
             this.xrTable2.Dpi = 100F;
             this.xrTable2.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrTable2.ForeColor = System.Drawing.Color.White;
-            this.xrTable2.LocationFloat = new DevExpress.Utils.PointFloat(10.00001F, 54.24998F);
+            this.xrTable2.LocationFloat = new DevExpress.Utils.PointFloat(10.00001F, 44.66665F);
             this.xrTable2.Name = "xrTable2";
             this.xrTable2.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.xrTableRow2});
@@ -180,7 +176,7 @@
             this.xrLabel1.Dpi = 100F;
             this.xrLabel1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrLabel1.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(10.00001F, 10.00001F);
+            this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(10.00001F, 10F);
             this.xrLabel1.Name = "xrLabel1";
             this.xrLabel1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel1.SizeF = new System.Drawing.SizeF(306.8511F, 23F);
@@ -240,24 +236,6 @@
             this.lblTotalAmount.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
             this.lblTotalAmount.Weight = 0.90000026809332023D;
             // 
-            // xrLabel2
-            // 
-            this.xrLabel2.Dpi = 100F;
-            this.xrLabel2.LocationFloat = new DevExpress.Utils.PointFloat(10.00001F, 36.79168F);
-            this.xrLabel2.Name = "xrLabel2";
-            this.xrLabel2.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
-            this.xrLabel2.SizeF = new System.Drawing.SizeF(243.5695F, 23F);
-            this.xrLabel2.Text = "xrLabel2";
-            // 
-            // xrLabel3
-            // 
-            this.xrLabel3.Dpi = 100F;
-            this.xrLabel3.LocationFloat = new DevExpress.Utils.PointFloat(253.5695F, 36.79168F);
-            this.xrLabel3.Name = "xrLabel3";
-            this.xrLabel3.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel3.SizeF = new System.Drawing.SizeF(243.5695F, 23F);
-            this.xrLabel3.Text = "xrLabel2";
-            // 
             // ChequeDetailsReport
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
@@ -300,7 +278,5 @@
         private DevExpress.XtraReports.UI.XRTableCell lblAmount;
         private DevExpress.Data.UnboundSource unboundSource1;
         private DevExpress.Data.UnboundSource unboundSource2;
-        private DevExpress.XtraReports.UI.XRLabel xrLabel3;
-        private DevExpress.XtraReports.UI.XRLabel xrLabel2;
     }
 }

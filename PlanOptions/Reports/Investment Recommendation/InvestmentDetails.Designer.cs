@@ -36,6 +36,7 @@
             ((object)(40D))}, 1);
             DevExpress.XtraCharts.PieSeriesView pieSeriesView1 = new DevExpress.XtraCharts.PieSeriesView();
             this.Detail = new DevExpress.XtraReports.UI.DetailBand();
+            this.subReportSwitch = new DevExpress.XtraReports.UI.XRSubreport();
             this.subReportCheque = new DevExpress.XtraReports.UI.XRSubreport();
             this.subReportSTP = new DevExpress.XtraReports.UI.XRSubreport();
             this.subReportSchemeCategoryWise = new DevExpress.XtraReports.UI.XRSubreport();
@@ -54,27 +55,35 @@
             // Detail
             // 
             this.Detail.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.subReportSwitch,
             this.subReportCheque,
             this.subReportSTP,
             this.subReportSchemeCategoryWise,
             this.subReportInvBreackup});
             this.Detail.Dpi = 100F;
-            this.Detail.HeightF = 133.3333F;
+            this.Detail.HeightF = 166.6667F;
             this.Detail.Name = "Detail";
             this.Detail.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.Detail.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
             // 
+            // subReportSwitch
+            // 
+            this.subReportSwitch.Dpi = 100F;
+            this.subReportSwitch.LocationFloat = new DevExpress.Utils.PointFloat(10F, 133.6667F);
+            this.subReportSwitch.Name = "subReportSwitch";
+            this.subReportSwitch.SizeF = new System.Drawing.SizeF(716.4584F, 23F);
+            // 
             // subReportCheque
             // 
             this.subReportCheque.Dpi = 100F;
-            this.subReportCheque.LocationFloat = new DevExpress.Utils.PointFloat(10.00001F, 104.5F);
+            this.subReportCheque.LocationFloat = new DevExpress.Utils.PointFloat(10F, 104.5F);
             this.subReportCheque.Name = "subReportCheque";
             this.subReportCheque.SizeF = new System.Drawing.SizeF(716.4584F, 23.00001F);
             // 
             // subReportSTP
             // 
             this.subReportSTP.Dpi = 100F;
-            this.subReportSTP.LocationFloat = new DevExpress.Utils.PointFloat(10.00001F, 72.83334F);
+            this.subReportSTP.LocationFloat = new DevExpress.Utils.PointFloat(10F, 72.83334F);
             this.subReportSTP.Name = "subReportSTP";
             this.subReportSTP.SizeF = new System.Drawing.SizeF(716.4584F, 23.00001F);
             // 
@@ -88,7 +97,7 @@
             // subReportInvBreackup
             // 
             this.subReportInvBreackup.Dpi = 100F;
-            this.subReportInvBreackup.LocationFloat = new DevExpress.Utils.PointFloat(9.999974F, 10.00001F);
+            this.subReportInvBreackup.LocationFloat = new DevExpress.Utils.PointFloat(10F, 10.00001F);
             this.subReportInvBreackup.Name = "subReportInvBreackup";
             this.subReportInvBreackup.SizeF = new System.Drawing.SizeF(716.4584F, 23F);
             // 
@@ -182,5 +191,6 @@
         private DevExpress.XtraReports.UI.XRLabel lblEquity;
         private DevExpress.XtraReports.UI.XRSubreport subReportSTP;
         private DevExpress.XtraReports.UI.XRSubreport subReportCheque;
+        private DevExpress.XtraReports.UI.XRSubreport subReportSwitch;
     }
 }

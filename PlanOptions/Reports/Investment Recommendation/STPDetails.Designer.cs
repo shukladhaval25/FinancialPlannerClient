@@ -153,7 +153,7 @@
             this.xrLabel1,
             this.xrTable1});
             this.GroupHeader1.Dpi = 100F;
-            this.GroupHeader1.HeightF = 90.625F;
+            this.GroupHeader1.HeightF = 80.625F;
             this.GroupHeader1.Name = "GroupHeader1";
             // 
             // xrLabel1
@@ -161,7 +161,7 @@
             this.xrLabel1.Dpi = 100F;
             this.xrLabel1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrLabel1.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(10.00001F, 21.83332F);
+            this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(10.00001F, 10.00001F);
             this.xrLabel1.Name = "xrLabel1";
             this.xrLabel1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel1.SizeF = new System.Drawing.SizeF(719.4584F, 23F);
@@ -177,7 +177,7 @@
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTable1.Dpi = 100F;
             this.xrTable1.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.xrTable1.LocationFloat = new DevExpress.Utils.PointFloat(10.00001F, 64.99999F);
+            this.xrTable1.LocationFloat = new DevExpress.Utils.PointFloat(10.00001F, 55.625F);
             this.xrTable1.Name = "xrTable1";
             this.xrTable1.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.xrTableRow1});

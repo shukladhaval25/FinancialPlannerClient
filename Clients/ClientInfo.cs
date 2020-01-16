@@ -634,7 +634,7 @@ namespace FinancialPlannerClient.Clients
 
         private void fillupSessionInfo()
         {
-            SessionInfo sessionInfo = new SessionInfo();
+            SessionInfo sessionInfo = new SessionInfo(_client.ID);
             sessionInfo.fillSessionInfo(gridControlSession);
         }
 
@@ -2488,6 +2488,48 @@ namespace FinancialPlannerClient.Clients
         private void lookupBank_EditValueChanged(object sender, EventArgs e)
         {
             displayBankValues();
+        }
+
+        private void btnSaveSession_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                List<Sessions> sessions = new List<Sessions>();
+                for (int rowIndex = 0; rowIndex <= gridViewSession.RowCount - 1; rowIndex++)
+                {
+                    bool isSessionCovered = gridViewSession.GetRowCellValue(rowIndex, "IsSessionCovered") == DBNull.Value ? false :
+                                           (bool)gridViewSession.GetRowCellValue(rowIndex, "IsSessionCovered");
+                    if (isSessionCovered)
+                    {
+                        DateTime sessionDate;
+                        DateTime.TryParse(gridViewSession.GetRowCellValue(rowIndex, "SessionDate").ToString(), out sessionDate);
+                        sessions.Add(new Sessions()
+                        {
+                            ClientId = _client.ID,
+                            SessionName = gridViewSession.GetRowCellValue(rowIndex, "Session").ToString(),
+                            IsCoverd = isSessionCovered,
+                            SessionDate = sessionDate,
+                            Notes = gridViewSession.GetRowCellValue(rowIndex, "Note").ToString(),
+                            CreatedBy = Program.CurrentUser.Id,
+                            CreatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss")),
+                            UpdatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss")),
+                            UpdatedBy = Program.CurrentUser.Id,
+                            UpdatedByUserName = Program.CurrentUser.UserName,
+                            MachineName = Environment.MachineName,
+                        });
+                    }
+                }
+
+                if (sessions.Count == 0)
+                    sessions.Add(new Sessions() { ClientId = _client.ID });
+
+                SessionInfo sessionInfo = new SessionInfo(_client.ID);
+                sessionInfo.Save(sessions);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
     }
 }

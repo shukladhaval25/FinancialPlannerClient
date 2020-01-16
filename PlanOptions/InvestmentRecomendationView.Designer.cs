@@ -40,6 +40,9 @@ namespace FinancialPlannerClient.PlanOptions
             DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
             this.lookupAMC = new DevExpress.XtraEditors.LookUpEdit();
             this.lblAMC = new System.Windows.Forms.Label();
             this.grpInvRec = new DevExpress.XtraEditors.GroupControl();
@@ -72,12 +75,17 @@ namespace FinancialPlannerClient.PlanOptions
             this.btnDeleteSIPInvestement = new DevExpress.XtraEditors.SimpleButton();
             this.gridControlSIPInvestment = new DevExpress.XtraGrid.GridControl();
             this.gridViewSIPInvestmentRecomendation = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.SwitchInvestment = new DevExpress.XtraTab.XtraTabPage();
+            this.btnDeleteSwitch = new DevExpress.XtraEditors.SimpleButton();
+            this.gridControlSwitch = new DevExpress.XtraGrid.GridControl();
+            this.gridViewSwitch = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.grpInvestmentOption = new DevExpress.XtraEditors.GroupControl();
             this.vGridInvestmentRatio = new DevExpress.XtraVerticalGrid.VGridControl();
             this.repositoryItemSpinEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit();
             this.Equity = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.Debt = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.grpScheme = new DevExpress.XtraEditors.GroupControl();
+            this.btnViewSendDetails = new DevExpress.XtraEditors.SimpleButton();
             this.btnSendInvestmentReport = new DevExpress.XtraEditors.SimpleButton();
             this.btnReportInvRec = new DevExpress.XtraEditors.SimpleButton();
             this.cmbScheme = new DevExpress.XtraEditors.ComboBoxEdit();
@@ -93,7 +101,6 @@ namespace FinancialPlannerClient.PlanOptions
             this.repositoryItemDateEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.rdoInvestmentType = new DevExpress.XtraEditors.RadioGroup();
             this.label4 = new System.Windows.Forms.Label();
-            this.btnViewSendDetails = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.lookupAMC.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grpInvRec)).BeginInit();
             this.grpInvRec.SuspendLayout();
@@ -115,6 +122,9 @@ namespace FinancialPlannerClient.PlanOptions
             this.SIPInvestement.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlSIPInvestment)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewSIPInvestmentRecomendation)).BeginInit();
+            this.SwitchInvestment.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlSwitch)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewSwitch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grpInvestmentOption)).BeginInit();
             this.grpInvestmentOption.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.vGridInvestmentRatio)).BeginInit();
@@ -171,7 +181,7 @@ namespace FinancialPlannerClient.PlanOptions
             this.grpInvRec.Controls.Add(this.grpScheme);
             this.grpInvRec.Location = new System.Drawing.Point(4, 4);
             this.grpInvRec.Name = "grpInvRec";
-            this.grpInvRec.Size = new System.Drawing.Size(1038, 643);
+            this.grpInvRec.Size = new System.Drawing.Size(1038, 598);
             this.grpInvRec.TabIndex = 10;
             this.grpInvRec.Text = "Investment Recommendation Detail";
             this.grpInvRec.Paint += new System.Windows.Forms.PaintEventHandler(this.grpInvRec_Paint);
@@ -187,7 +197,7 @@ namespace FinancialPlannerClient.PlanOptions
             this.GrpEquityDebtRatio.Location = new System.Drawing.Point(818, 471);
             this.GrpEquityDebtRatio.Name = "GrpEquityDebtRatio";
             this.GrpEquityDebtRatio.ShowCaption = false;
-            this.GrpEquityDebtRatio.Size = new System.Drawing.Size(212, 167);
+            this.GrpEquityDebtRatio.Size = new System.Drawing.Size(212, 122);
             this.GrpEquityDebtRatio.TabIndex = 29;
             this.GrpEquityDebtRatio.Text = "groupControl1";
             // 
@@ -231,7 +241,7 @@ namespace FinancialPlannerClient.PlanOptions
             this.gridControlInvestmenRatio.Location = new System.Drawing.Point(277, 471);
             this.gridControlInvestmenRatio.MainView = this.gridViewInvestmentRatio;
             this.gridControlInvestmenRatio.Name = "gridControlInvestmenRatio";
-            this.gridControlInvestmenRatio.Size = new System.Drawing.Size(535, 167);
+            this.gridControlInvestmenRatio.Size = new System.Drawing.Size(535, 122);
             this.gridControlInvestmenRatio.TabIndex = 28;
             this.gridControlInvestmenRatio.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewInvestmentRatio});
@@ -254,7 +264,8 @@ namespace FinancialPlannerClient.PlanOptions
             this.xtraTabInvestmentRecomendationDetails.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.LumsumInvestment,
             this.STPInvestment,
-            this.SIPInvestement});
+            this.SIPInvestement,
+            this.SwitchInvestment});
             this.xtraTabInvestmentRecomendationDetails.Click += new System.EventHandler(this.xtraTabInvestmentRecomendationDetails_Click);
             // 
             // LumsumInvestment
@@ -494,6 +505,53 @@ namespace FinancialPlannerClient.PlanOptions
             this.gridViewSIPInvestmentRecomendation.OptionsBehavior.Editable = false;
             this.gridViewSIPInvestmentRecomendation.OptionsView.ShowFooter = true;
             // 
+            // SwitchInvestment
+            // 
+            this.SwitchInvestment.Controls.Add(this.btnDeleteSwitch);
+            this.SwitchInvestment.Controls.Add(this.gridControlSwitch);
+            this.SwitchInvestment.Name = "SwitchInvestment";
+            this.SwitchInvestment.Size = new System.Drawing.Size(750, 410);
+            this.SwitchInvestment.Text = "Switch Details";
+            // 
+            // btnDeleteSwitch
+            // 
+            this.btnDeleteSwitch.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnDeleteSwitch.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteSwitch.Image")));
+            this.btnDeleteSwitch.Location = new System.Drawing.Point(361, 378);
+            this.btnDeleteSwitch.Name = "btnDeleteSwitch";
+            this.btnDeleteSwitch.Size = new System.Drawing.Size(25, 23);
+            toolTipTitleItem4.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image3")));
+            toolTipTitleItem4.Appearance.Options.UseImage = true;
+            toolTipTitleItem4.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem4.Image")));
+            toolTipTitleItem4.Text = "Delete";
+            toolTipItem4.LeftIndent = 6;
+            toolTipItem4.Text = "To delete selected investment record click here.";
+            superToolTip4.Items.Add(toolTipTitleItem4);
+            superToolTip4.Items.Add(toolTipItem4);
+            this.btnDeleteSwitch.SuperTip = superToolTip4;
+            this.btnDeleteSwitch.TabIndex = 11;
+            this.btnDeleteSwitch.ToolTip = "Delete";
+            this.btnDeleteSwitch.Click += new System.EventHandler(this.btnDeleteSwitch_Click);
+            // 
+            // gridControlSwitch
+            // 
+            this.gridControlSwitch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gridControlSwitch.Location = new System.Drawing.Point(2, 9);
+            this.gridControlSwitch.MainView = this.gridViewSwitch;
+            this.gridControlSwitch.Name = "gridControlSwitch";
+            this.gridControlSwitch.Size = new System.Drawing.Size(747, 363);
+            this.gridControlSwitch.TabIndex = 10;
+            this.gridControlSwitch.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridViewSwitch});
+            // 
+            // gridViewSwitch
+            // 
+            this.gridViewSwitch.GridControl = this.gridControlSwitch;
+            this.gridViewSwitch.Name = "gridViewSwitch";
+            this.gridViewSwitch.OptionsBehavior.Editable = false;
+            this.gridViewSwitch.OptionsView.ShowFooter = true;
+            // 
             // grpInvestmentOption
             // 
             this.grpInvestmentOption.Controls.Add(this.vGridInvestmentRatio);
@@ -507,7 +565,7 @@ namespace FinancialPlannerClient.PlanOptions
             // 
             // vGridInvestmentRatio
             // 
-            this.vGridInvestmentRatio.Cursor = System.Windows.Forms.Cursors.Default;
+            this.vGridInvestmentRatio.Cursor = System.Windows.Forms.Cursors.SizeWE;
             this.vGridInvestmentRatio.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vGridInvestmentRatio.Location = new System.Drawing.Point(2, 2);
             this.vGridInvestmentRatio.Name = "vGridInvestmentRatio";
@@ -566,15 +624,27 @@ namespace FinancialPlannerClient.PlanOptions
             this.grpScheme.Controls.Add(this.lookupAMC);
             this.grpScheme.Location = new System.Drawing.Point(5, 83);
             this.grpScheme.Name = "grpScheme";
-            this.grpScheme.Size = new System.Drawing.Size(265, 555);
+            this.grpScheme.Size = new System.Drawing.Size(265, 510);
             this.grpScheme.TabIndex = 25;
             this.grpScheme.Text = "Mutual Fund Scheme";
+            // 
+            // btnViewSendDetails
+            // 
+            this.btnViewSendDetails.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnViewSendDetails.ImageUri.Uri = "SendPDF;Size16x16";
+            this.btnViewSendDetails.Location = new System.Drawing.Point(134, 476);
+            this.btnViewSendDetails.Name = "btnViewSendDetails";
+            this.btnViewSendDetails.Size = new System.Drawing.Size(126, 31);
+            this.btnViewSendDetails.TabIndex = 35;
+            this.btnViewSendDetails.Text = "View Send Details";
+            this.btnViewSendDetails.ToolTip = "View details about investment report send.";
+            this.btnViewSendDetails.Click += new System.EventHandler(this.btnViewSendDetails_Click);
             // 
             // btnSendInvestmentReport
             // 
             this.btnSendInvestmentReport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnSendInvestmentReport.ImageUri.Uri = "SendPDF;Size16x16";
-            this.btnSendInvestmentReport.Location = new System.Drawing.Point(5, 521);
+            this.btnSendInvestmentReport.Location = new System.Drawing.Point(5, 476);
             this.btnSendInvestmentReport.Name = "btnSendInvestmentReport";
             this.btnSendInvestmentReport.Size = new System.Drawing.Size(126, 31);
             this.btnSendInvestmentReport.TabIndex = 34;
@@ -585,7 +655,7 @@ namespace FinancialPlannerClient.PlanOptions
             // 
             this.btnReportInvRec.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnReportInvRec.ImageUri.Uri = "ShowWorkTimeOnly;Size16x16";
-            this.btnReportInvRec.Location = new System.Drawing.Point(134, 486);
+            this.btnReportInvRec.Location = new System.Drawing.Point(134, 441);
             this.btnReportInvRec.Name = "btnReportInvRec";
             this.btnReportInvRec.Size = new System.Drawing.Size(126, 31);
             this.btnReportInvRec.TabIndex = 33;
@@ -604,8 +674,8 @@ namespace FinancialPlannerClient.PlanOptions
             // 
             // chkSTPApply
             // 
-            this.chkSTPApply.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.chkSTPApply.Location = new System.Drawing.Point(5, 295);
+            this.chkSTPApply.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.chkSTPApply.Location = new System.Drawing.Point(5, 285);
             this.chkSTPApply.Name = "chkSTPApply";
             this.chkSTPApply.Properties.Caption = "STP apply for selected scheme";
             this.chkSTPApply.Size = new System.Drawing.Size(255, 19);
@@ -617,13 +687,13 @@ namespace FinancialPlannerClient.PlanOptions
             // 
             this.vGridControlSTP.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.vGridControlSTP.Location = new System.Drawing.Point(5, 320);
+            this.vGridControlSTP.Location = new System.Drawing.Point(5, 310);
             this.vGridControlSTP.Name = "vGridControlSTP";
             this.vGridControlSTP.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemComboBox2,
             this.repositoryItemTextEdit2,
             this.repositoryItemDateEdit2});
-            this.vGridControlSTP.Size = new System.Drawing.Size(255, 160);
+            this.vGridControlSTP.Size = new System.Drawing.Size(255, 125);
             this.vGridControlSTP.TabIndex = 30;
             this.vGridControlSTP.Visible = false;
             // 
@@ -656,7 +726,7 @@ namespace FinancialPlannerClient.PlanOptions
             // 
             this.btnAddInvestment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnAddInvestment.ImageUri.Uri = "Apply;Size16x16";
-            this.btnAddInvestment.Location = new System.Drawing.Point(5, 486);
+            this.btnAddInvestment.Location = new System.Drawing.Point(5, 441);
             this.btnAddInvestment.Name = "btnAddInvestment";
             this.btnAddInvestment.Size = new System.Drawing.Size(126, 31);
             this.btnAddInvestment.TabIndex = 29;
@@ -668,13 +738,13 @@ namespace FinancialPlannerClient.PlanOptions
             this.vGridTransaction.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.vGridTransaction.Location = new System.Drawing.Point(5, 151);
+            this.vGridTransaction.Location = new System.Drawing.Point(5, 169);
             this.vGridTransaction.Name = "vGridTransaction";
             this.vGridTransaction.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemComboBox1,
             this.repositoryItemTextEdit1,
             this.repositoryItemDateEdit1});
-            this.vGridTransaction.Size = new System.Drawing.Size(255, 138);
+            this.vGridTransaction.Size = new System.Drawing.Size(255, 108);
             this.vGridTransaction.TabIndex = 28;
             this.vGridTransaction.CellValueChanged += new DevExpress.XtraVerticalGrid.Events.CellValueChangedEventHandler(this.VGridTransaction_CellValueChanged);
             // 
@@ -709,8 +779,9 @@ namespace FinancialPlannerClient.PlanOptions
             this.rdoInvestmentType.Name = "rdoInvestmentType";
             this.rdoInvestmentType.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
             new DevExpress.XtraEditors.Controls.RadioGroupItem(((short)(0)), "Lumsum Investment"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(((short)(2)), "SIP")});
-            this.rdoInvestmentType.Size = new System.Drawing.Size(255, 24);
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(((short)(1)), "SIP"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(((short)(2)), "Switch")});
+            this.rdoInvestmentType.Size = new System.Drawing.Size(255, 43);
             this.rdoInvestmentType.TabIndex = 27;
             this.rdoInvestmentType.SelectedIndexChanged += new System.EventHandler(this.rdoInvestmentType_SelectedIndexChanged);
             // 
@@ -724,23 +795,11 @@ namespace FinancialPlannerClient.PlanOptions
             this.label4.TabIndex = 26;
             this.label4.Text = "Schme Name:";
             // 
-            // btnViewSendDetails
-            // 
-            this.btnViewSendDetails.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnViewSendDetails.ImageUri.Uri = "SendPDF;Size16x16";
-            this.btnViewSendDetails.Location = new System.Drawing.Point(134, 521);
-            this.btnViewSendDetails.Name = "btnViewSendDetails";
-            this.btnViewSendDetails.Size = new System.Drawing.Size(126, 31);
-            this.btnViewSendDetails.TabIndex = 35;
-            this.btnViewSendDetails.Text = "View Send Details";
-            this.btnViewSendDetails.ToolTip = "View details about investment report send.";
-            this.btnViewSendDetails.Click += new System.EventHandler(this.btnViewSendDetails_Click);
-            // 
             // InvestmentRecomendationView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1046, 651);
+            this.ClientSize = new System.Drawing.Size(1046, 606);
             this.Controls.Add(this.grpInvRec);
             this.Name = "InvestmentRecomendationView";
             this.Text = "Investment Recommendation";
@@ -767,6 +826,9 @@ namespace FinancialPlannerClient.PlanOptions
             this.SIPInvestement.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControlSIPInvestment)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewSIPInvestmentRecomendation)).EndInit();
+            this.SwitchInvestment.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlSwitch)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewSwitch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grpInvestmentOption)).EndInit();
             this.grpInvestmentOption.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.vGridInvestmentRatio)).EndInit();
@@ -860,5 +922,9 @@ namespace FinancialPlannerClient.PlanOptions
         private DevExpress.XtraEditors.SimpleButton btnReportInvRec;
         private DevExpress.XtraEditors.SimpleButton btnSendInvestmentReport;
         private DevExpress.XtraEditors.SimpleButton btnViewSendDetails;
+        private DevExpress.XtraTab.XtraTabPage SwitchInvestment;
+        private DevExpress.XtraEditors.SimpleButton btnDeleteSwitch;
+        private DevExpress.XtraGrid.GridControl gridControlSwitch;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridViewSwitch;
     }
 }

@@ -58,7 +58,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports.Investment_Recommendation
             this.DataMember = _dtInvestment.TableName;
 
             this.lblCheque.DataBindings.Add("Text", this.DataSource, "Investment.ChequeInFavourOff");
-            this.xrLabel2.DataBindings.Add("Text", this.DataSource, "Investment.ChequeInFavourOff");
+            //this.xrLabel2.DataBindings.Add("Text", this.DataSource, "Investment.ChequeInFavourOff");
             this.lblAmount.DataBindings.Add("Text", this.DataSource, "Investment.Amount");
             this.lblTotalAmount.DataBindings.Add("Text", this.DataSource, "Investment.Amount");
             lblCheque.Text = "Testing";

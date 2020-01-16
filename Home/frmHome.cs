@@ -6,6 +6,7 @@ using FinancialPlanner.Common.Permission;
 using FinancialPlannerClient.Clients.MailService;
 using FinancialPlannerClient.Master;
 using FinancialPlannerClient.Master.TaskMaster;
+using FinancialPlannerClient.PlanOptions.Reports.Insurance;
 using FinancialPlannerClient.ProspectCustomer;
 using FinancialPlannerClient.TaskManagementSystem;
 using System;
@@ -66,6 +67,12 @@ namespace FinancialPlannerClient.Home
         private System.Windows.Forms.Timer timerNotification;
         private DevExpress.XtraNavBar.NavBarItem navBarItemBank;
         private DevExpress.XtraNavBar.NavBarItem navBarItemMFCategory;
+        private NavBarGroupControlContainer navBarGroupControlContainerReports;
+        private NavBarControl navBarControlReports;
+        private NavBarGroup navBarGroup1;
+        private NavBarItem navBarItemLICPremiumReminder;
+        private NavBarItem navBarItem3;
+        private NavBarGroup navBarGroupReports;
         private const string AUDITLOGCONTROLLER = "Activities/Add";
 
         public frmHome()
@@ -114,6 +121,16 @@ namespace FinancialPlannerClient.Home
             DevExpress.Utils.SuperToolTip superToolTip11 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem14 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem10 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip12 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem15 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem11 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.ToolTipSeparatorItem toolTipSeparatorItem4 = new DevExpress.Utils.ToolTipSeparatorItem();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem16 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip13 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem17 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem12 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.ToolTipSeparatorItem toolTipSeparatorItem5 = new DevExpress.Utils.ToolTipSeparatorItem();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem18 = new DevExpress.Utils.ToolTipTitleItem();
             this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.lblCurrentUser = new DevExpress.XtraEditors.LabelControl();
@@ -141,11 +158,17 @@ namespace FinancialPlannerClient.Home
             this.navBarItemClient = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItemFinancialPlanner = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarMenuGroup = new DevExpress.XtraNavBar.NavBarControl();
+            this.navBarGroupControlContainerReports = new DevExpress.XtraNavBar.NavBarGroupControlContainer();
+            this.navBarControlReports = new DevExpress.XtraNavBar.NavBarControl();
+            this.navBarGroup1 = new DevExpress.XtraNavBar.NavBarGroup();
+            this.navBarItemLICPremiumReminder = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarItem3 = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarGroupTask = new DevExpress.XtraNavBar.NavBarGroup();
             this.navBarItemOld = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItemTask = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarGroupOthers = new DevExpress.XtraNavBar.NavBarGroup();
             this.navBarItemAuditTrail = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarGroupReports = new DevExpress.XtraNavBar.NavBarGroup();
             this.navigationFrame1 = new DevExpress.XtraBars.Navigation.NavigationFrame();
             this.homeNavigationPage1 = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.navigationMasterPage = new DevExpress.XtraBars.Navigation.NavigationPage();
@@ -165,6 +188,9 @@ namespace FinancialPlannerClient.Home
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.navBarMenuGroup)).BeginInit();
+            this.navBarMenuGroup.SuspendLayout();
+            this.navBarGroupControlContainerReports.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.navBarControlReports)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.navigationFrame1)).BeginInit();
             this.navigationFrame1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
@@ -537,12 +563,14 @@ namespace FinancialPlannerClient.Home
             // 
             this.navBarMenuGroup.ActiveGroup = this.mavBarMasterGroup;
             this.navBarMenuGroup.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.navBarMenuGroup.Controls.Add(this.navBarGroupControlContainerReports);
             this.navBarMenuGroup.Dock = System.Windows.Forms.DockStyle.Fill;
             this.navBarMenuGroup.Groups.AddRange(new DevExpress.XtraNavBar.NavBarGroup[] {
             this.mavBarMasterGroup,
             this.navBarGroupClient,
             this.navBarGroupTask,
-            this.navBarGroupOthers});
+            this.navBarGroupOthers,
+            this.navBarGroupReports});
             this.navBarMenuGroup.Items.AddRange(new DevExpress.XtraNavBar.NavBarItem[] {
             this.navBarItemCRMGroup,
             this.navBarItemFestivals,
@@ -570,6 +598,81 @@ namespace FinancialPlannerClient.Home
             this.navBarMenuGroup.Size = new System.Drawing.Size(136, 546);
             this.navBarMenuGroup.TabIndex = 1;
             this.navBarMenuGroup.Text = "navBarControl1";
+            // 
+            // navBarGroupControlContainerReports
+            // 
+            this.navBarGroupControlContainerReports.Appearance.BackColor = System.Drawing.SystemColors.Control;
+            this.navBarGroupControlContainerReports.Appearance.Options.UseBackColor = true;
+            this.navBarGroupControlContainerReports.Controls.Add(this.navBarControlReports);
+            this.navBarGroupControlContainerReports.Name = "navBarGroupControlContainerReports";
+            this.navBarGroupControlContainerReports.Size = new System.Drawing.Size(128, 246);
+            this.navBarGroupControlContainerReports.TabIndex = 0;
+            // 
+            // navBarControlReports
+            // 
+            this.navBarControlReports.ActiveGroup = this.navBarGroup1;
+            this.navBarControlReports.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.navBarControlReports.Groups.AddRange(new DevExpress.XtraNavBar.NavBarGroup[] {
+            this.navBarGroup1});
+            this.navBarControlReports.Items.AddRange(new DevExpress.XtraNavBar.NavBarItem[] {
+            this.navBarItemLICPremiumReminder,
+            this.navBarItem3});
+            this.navBarControlReports.Location = new System.Drawing.Point(0, 0);
+            this.navBarControlReports.Name = "navBarControlReports";
+            this.navBarControlReports.OptionsNavPane.ExpandedWidth = 128;
+            this.navBarControlReports.Size = new System.Drawing.Size(128, 246);
+            this.navBarControlReports.TabIndex = 0;
+            this.navBarControlReports.Text = "Insurance";
+            // 
+            // navBarGroup1
+            // 
+            this.navBarGroup1.Caption = "Insurance";
+            this.navBarGroup1.Expanded = true;
+            this.navBarGroup1.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemLICPremiumReminder),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem3)});
+            this.navBarGroup1.Name = "navBarGroup1";
+            this.navBarGroup1.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarGroup1.SmallImage")));
+            // 
+            // navBarItemLICPremiumReminder
+            // 
+            this.navBarItemLICPremiumReminder.Caption = "LIC Premium Reminder";
+            this.navBarItemLICPremiumReminder.Name = "navBarItemLICPremiumReminder";
+            this.navBarItemLICPremiumReminder.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarItemLICPremiumReminder.SmallImage")));
+            toolTipTitleItem15.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image9")));
+            toolTipTitleItem15.Appearance.Options.UseImage = true;
+            toolTipTitleItem15.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem15.Image")));
+            toolTipTitleItem15.Text = "LIC";
+            toolTipItem11.LeftIndent = 6;
+            toolTipItem11.Text = "LIC premium reminder report.";
+            toolTipTitleItem16.LeftIndent = 6;
+            toolTipTitleItem16.Text = "Premium Reminder ";
+            superToolTip12.Items.Add(toolTipTitleItem15);
+            superToolTip12.Items.Add(toolTipItem11);
+            superToolTip12.Items.Add(toolTipSeparatorItem4);
+            superToolTip12.Items.Add(toolTipTitleItem16);
+            this.navBarItemLICPremiumReminder.SuperTip = superToolTip12;
+            this.navBarItemLICPremiumReminder.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItemLICPremiumReminder_LinkClicked);
+            // 
+            // navBarItem3
+            // 
+            this.navBarItem3.Caption = "GIC Premium Reminder";
+            this.navBarItem3.Name = "navBarItem3";
+            this.navBarItem3.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarItem3.SmallImage")));
+            toolTipTitleItem17.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image10")));
+            toolTipTitleItem17.Appearance.Options.UseImage = true;
+            toolTipTitleItem17.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem17.Image")));
+            toolTipTitleItem17.Text = "General Insurace";
+            toolTipItem12.LeftIndent = 6;
+            toolTipItem12.Text = "Premium reminder report for general insurance company.";
+            toolTipTitleItem18.LeftIndent = 6;
+            toolTipTitleItem18.Text = "Premium Reminder";
+            superToolTip13.Items.Add(toolTipTitleItem17);
+            superToolTip13.Items.Add(toolTipItem12);
+            superToolTip13.Items.Add(toolTipSeparatorItem5);
+            superToolTip13.Items.Add(toolTipTitleItem18);
+            this.navBarItem3.SuperTip = superToolTip13;
+            this.navBarItem3.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItem3_LinkClicked);
             // 
             // navBarGroupTask
             // 
@@ -600,7 +703,6 @@ namespace FinancialPlannerClient.Home
             // navBarGroupOthers
             // 
             this.navBarGroupOthers.Caption = "Tools";
-            this.navBarGroupOthers.Expanded = true;
             this.navBarGroupOthers.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemAuditTrail)});
             this.navBarGroupOthers.Name = "navBarGroupOthers";
@@ -611,6 +713,16 @@ namespace FinancialPlannerClient.Home
             this.navBarItemAuditTrail.Name = "navBarItemAuditTrail";
             this.navBarItemAuditTrail.SmallImage = global::FinancialPlannerClient.Properties.Resources.AuditTrail_301;
             this.navBarItemAuditTrail.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItemAuditTrail_LinkClicked);
+            // 
+            // navBarGroupReports
+            // 
+            this.navBarGroupReports.Caption = "Reports";
+            this.navBarGroupReports.ControlContainer = this.navBarGroupControlContainerReports;
+            this.navBarGroupReports.Expanded = true;
+            this.navBarGroupReports.GroupClientHeight = 250;
+            this.navBarGroupReports.GroupStyle = DevExpress.XtraNavBar.NavBarGroupStyle.ControlContainer;
+            this.navBarGroupReports.Name = "navBarGroupReports";
+            this.navBarGroupReports.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarGroupReports.SmallImage")));
             // 
             // navigationFrame1
             // 
@@ -709,6 +821,9 @@ namespace FinancialPlannerClient.Home
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.navBarMenuGroup)).EndInit();
+            this.navBarMenuGroup.ResumeLayout(false);
+            this.navBarGroupControlContainerReports.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.navBarControlReports)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.navigationFrame1)).EndInit();
             this.navigationFrame1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
@@ -1078,6 +1193,18 @@ namespace FinancialPlannerClient.Home
             homeNavigationPage1.Name = other.Name;
             homeNavigationPage1.Controls.Add(other);
             showNavigationPage(other.Name);
+        }
+
+        private void navBarItemLICPremiumReminder_LinkClicked(object sender, NavBarLinkEventArgs e)
+        {
+            InsurancePremiumParameters insurancePremiumParameters = new InsurancePremiumParameters(ReportType.LIC);
+            insurancePremiumParameters.ShowDialog();
+        }
+
+        private void navBarItem3_LinkClicked(object sender, NavBarLinkEventArgs e)
+        {
+            InsurancePremiumParameters insurancePremiumParameters = new InsurancePremiumParameters(ReportType.GeneralInsurnace);
+            insurancePremiumParameters.ShowDialog();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using FinancialPlanner.Common.DataConversion;
+﻿using FinancialPlanner.Common;
+using FinancialPlanner.Common.DataConversion;
 using FinancialPlanner.Common.Model;
 using FinancialPlanner.Common.Model.Masters;
 using FinancialPlannerClient.PlannerInfo;
@@ -6,8 +7,10 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 
@@ -88,7 +91,7 @@ namespace FinancialPlannerClient.Clients
             txtBranchContactNo.Text = "";
             rdoNoJoinAC.Checked = true;
             txtJoinHolderName.Text = "";
-            txtNominee.Text = "0";
+            txtNominee.Text = "";
         }
 
         private void btnEditBankAcc_Click(object sender, EventArgs e)
@@ -136,7 +139,7 @@ namespace FinancialPlannerClient.Clients
                 txtBranchContactNo.Text = bankAccount.ContactNo;
                 rdoYesJoinAC.Checked = bankAccount.IsJoinAccount;
                 txtJoinHolderName.Text = bankAccount.JoinHolderName;
-                txtNominee.Text = bankAccount.MinRequireBalance.ToString();
+                txtNominee.Text = bankAccount.Nominee;
                
             }
         }
@@ -150,23 +153,42 @@ namespace FinancialPlannerClient.Clients
 
         private void btnSaveBankAccount_Click(object sender, EventArgs e)
         {
-            BankAccountInfo bankAccInfo = new BankAccountInfo();
-            BankAccountDetail bankAcDetails = getBankDetailsData();
-            bool isSaved = false;
-
-            if (bankAcDetails != null && bankAcDetails.Id == 0)
-                isSaved = bankAccInfo.Add(bankAcDetails);
-            else
-                isSaved = bankAccInfo.Update(bankAcDetails);
-
-            if (isSaved)
+            try
             {
-                MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                fillupBankAccountInfo();
-                grpBankAccountDetails.Enabled = false;
+                BankAccountInfo bankAccInfo = new BankAccountInfo();
+                BankAccountDetail bankAcDetails = getBankDetailsData();
+                bool isSaved = false;
+
+                if (bankAcDetails != null && bankAcDetails.Id == 0)
+                    isSaved = bankAccInfo.Add(bankAcDetails);
+                else
+                    isSaved = bankAccInfo.Update(bankAcDetails);
+
+                if (isSaved)
+                {
+                    MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    fillupBankAccountInfo();
+                    grpBankAccountDetails.Enabled = false;
+                }
+                else
+                    MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-                MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch(Exception ex)
+            {
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
+                LogDebug(currentMethodName.Name, ex); MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void LogDebug(string methodName, Exception ex)
+        {
+            DebuggerLogInfo debuggerInfo = new DebuggerLogInfo();
+            debuggerInfo.ClassName = this.GetType().Name;
+            debuggerInfo.Method = methodName;
+            debuggerInfo.ExceptionInfo = ex;
+            Logger.LogDebug(debuggerInfo);
         }
 
         private BankAccountDetail getBankDetailsData()
@@ -182,7 +204,7 @@ namespace FinancialPlannerClient.Clients
             bankACDetails.ContactNo = txtBranchContactNo.Text;
             bankACDetails.IsJoinAccount = rdoYesJoinAC.Checked;
             bankACDetails.JoinHolderName = (rdoYesJoinAC.Checked) ? txtJoinHolderName.Text : string.Empty;
-            bankACDetails.MinRequireBalance = double.Parse(txtNominee.Text);
+            bankACDetails.Nominee = txtNominee.Text;
             bankACDetails.CreatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
             bankACDetails.CreatedBy = Program.CurrentUser.Id;
             bankACDetails.UpdatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
@@ -279,11 +301,11 @@ namespace FinancialPlannerClient.Clients
             }
         }
 
-        private void txtMinReqBalance_Validating(object sender, CancelEventArgs e)
-        {
-            if (!string.IsNullOrEmpty(txtNominee.Text))
-                e.Cancel = !FinancialPlanner.Common.Validation.IsDigit(txtNominee.Text);
-        }
+        //private void txtMinReqBalance_Validating(object sender, CancelEventArgs e)
+        //{
+        //    if (!string.IsNullOrEmpty(txtNominee.Text))
+        //        e.Cancel = !FinancialPlanner.Common.Validation.IsDigit(txtNominee.Text);
+        //}
 
         private void cmbAccountType_Enter(object sender, EventArgs e)
         {

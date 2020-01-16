@@ -49,6 +49,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports.Investment_Recommendation
             this.lblFirstHolder.DataBindings.Add("Text", this.DataSource, "Investment.FirstHolder");
             this.lblSecondHolder.DataBindings.Add("Text", this.DataSource, "Investment.SecondHolder");
             this.lblThirdHolder.DataBindings.Add("Text", this.DataSource, "Investment.ThirdHolder");
+            this.lblNominee.DataBindings.Add("Text", this.DataSource, "Investment.Nominee");
         }
     }
 }

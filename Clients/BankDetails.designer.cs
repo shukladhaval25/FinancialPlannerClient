@@ -339,13 +339,10 @@
             // 
             this.txtNominee.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNominee.Location = new System.Drawing.Point(595, 147);
-            this.txtNominee.MaxLength = 6;
+            this.txtNominee.MaxLength = 50;
             this.txtNominee.Name = "txtNominee";
-            this.txtNominee.Size = new System.Drawing.Size(173, 22);
+            this.txtNominee.Size = new System.Drawing.Size(215, 22);
             this.txtNominee.TabIndex = 33;
-            this.txtNominee.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtNominee.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMinReqBalance_KeyPress);
-            this.txtNominee.Validating += new System.ComponentModel.CancelEventHandler(this.txtMinReqBalance_Validating);
             // 
             // label139
             // 

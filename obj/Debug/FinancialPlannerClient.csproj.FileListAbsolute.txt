@@ -417,3 +417,6 @@ C:\Application Development\Financial Planner Project\FinancialPlannerClient\bin\
 C:\Application Development\Financial Planner Project\FinancialPlannerClient\bin\Debug\ru\DevExpress.XtraPdfViewer.v16.2.resources.dll
 C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.Review.Reports.QuarterlyReivewData.resources
 C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.Review.QuarterlyReviewTemplateView.resources
+C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.Reports.Investment_Recommendation.SwitchDetails.resources
+C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.Reports.Insurance.InsurancePremiumParameters.resources
+C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.Reports.Insurance.LicPremiumDueDate.resources
