@@ -420,3 +420,5 @@ C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\
 C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.Reports.Investment_Recommendation.SwitchDetails.resources
 C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.Reports.Insurance.InsurancePremiumParameters.resources
 C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.Reports.Insurance.LicPremiumDueDate.resources
+C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.Reports.Insurance.LICPolicyMaturity.resources
+C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.Reports.Insurance.GeneralInsurancePremiumReminder.resources

@@ -43,11 +43,28 @@ namespace FinancialPlannerClient.PlanOptions.Reports.Insurance
                 viewGeneralInsuranceReport(dateTimeFrom.Value, dateTimeTo.Value);
                 return;
             }
+
+            if (reportType == ReportType.LICPolicyMaturity)
+            {
+                viewLicPolicyMaturity(dateTimeFrom.Value, dateTimeTo.Value);
+                return;
+            }
+        }
+
+        private void viewLicPolicyMaturity(DateTime from, DateTime to)
+        {
+            LICPolicyMaturity licPolicyMaturity = new LICPolicyMaturity(from, to);
+            DevExpress.XtraReports.UI.ReportPrintTool printTool = new DevExpress.XtraReports.UI.ReportPrintTool(licPolicyMaturity);
+            printTool.ShowRibbonPreview();
+            this.Close();
         }
 
         private void viewGeneralInsuranceReport(DateTime from, DateTime to)
         {
-            
+            GeneralInsurancePremiumReminder generalInsurancePremiumReminder = new GeneralInsurancePremiumReminder(from, to);
+            DevExpress.XtraReports.UI.ReportPrintTool printTool = new DevExpress.XtraReports.UI.ReportPrintTool(generalInsurancePremiumReminder);
+            printTool.ShowRibbonPreview();
+            this.Close();
         }
 
         private void viewLicReport(DateTime from, DateTime to)
@@ -55,6 +72,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports.Insurance
             LicPremiumDueDate licPremiumDueDate = new LicPremiumDueDate(from, to);
             DevExpress.XtraReports.UI.ReportPrintTool printTool = new DevExpress.XtraReports.UI.ReportPrintTool(licPremiumDueDate);
             printTool.ShowRibbonPreview();
+            this.Close();
         }
 
         private bool validateDateRange()
@@ -71,6 +89,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports.Insurance
     public enum ReportType
     {
         LIC,
+        LICPolicyMaturity,
         GeneralInsurnace
     }
 }

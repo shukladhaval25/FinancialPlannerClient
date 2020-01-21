@@ -591,7 +591,7 @@ namespace FinancialPlannerClient.CashFlowManager
                     if ((generalInsurance.IssueDate >= _planner.StartDate &&
                          generalInsurance.IssueDate <= _planner.EndDate) ||
                          (_planner.StartDate >= generalInsurance.IssueDate &&
-                         _planner.EndDate <= generalInsurance.MaturityDate) ||
+                         _planner.EndDate <= generalInsurance.RenewalDate) ||
                          (generalInsurance.IssueDate <= _planner.StartDate))
                     {
                         dr[generalInsurance.Company] = generalInsurance.Premium;

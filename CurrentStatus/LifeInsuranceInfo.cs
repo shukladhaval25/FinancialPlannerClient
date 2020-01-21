@@ -1,5 +1,6 @@
 ﻿using FinancialPlanner.Common;
 using FinancialPlanner.Common.DataConversion;
+using FinancialPlanner.Common.Model;
 using FinancialPlanner.Common.Model.CurrentStatus;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,8 @@ namespace FinancialPlannerClient.CurrentStatus
         const string ADD_LIFEINSURANCE_API = "LifeInsurance/Add";
         const string UPDATE_LIFEINSURANCE_API = "LifeInsurance/Update";
         const string DELETE_LIFEINSURANCE_API = "LifeInsurance/Delete";
+        const string GET_PREMIUM_REMINDER = "PremiumReminder/GetLicPremiumDueDate?fromDate={0}&toDate={1}";
+        const string GET_POLICY_MATURITY = "PremiumReminder/GetLICPolicyMaturity?fromDate={0}&toDate={1}";
 
         DataTable dtLifeInsurance;
         internal IList<LifeInsurance> GetAllLifeInsurance(int planId)
@@ -58,6 +61,81 @@ namespace FinancialPlannerClient.CurrentStatus
                 return null;
             }
         }
+
+        internal IList<LicPremiumReminder> GetLicPremiumReminder(DateTime fromDate,DateTime toDate)
+        {
+            IList<LicPremiumReminder> lifeInsuranceObj = new List<LicPremiumReminder>();
+            try
+            {
+                FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
+                string apiurl = Program.WebServiceUrl + "/" + string.Format(GET_PREMIUM_REMINDER, fromDate.ToString("yyyy-MM-dd") ,toDate.ToString("yyyy-MM-dd"));
+
+                RestAPIExecutor restApiExecutor = new RestAPIExecutor();
+
+                var restResult = restApiExecutor.Execute<IList<LicPremiumReminder>>(apiurl, null, "GET");
+
+                if (jsonSerialization.IsValidJson(restResult.ToString()))
+                {
+                    lifeInsuranceObj = jsonSerialization.DeserializeFromString<IList<LicPremiumReminder>>(restResult.ToString());
+                }
+
+                return lifeInsuranceObj.ToList();
+            }
+            catch (System.Net.WebException webException)
+            {
+                if (webException.Message.Equals("The remote server returned an error: (401) Unauthorized."))
+                {
+                    MessageBox.Show("You session has been expired. Please Login again.", "Session Expired", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
+                LogDebug(currentMethodName.Name, ex);
+                return null;
+            }
+        }
+
+        internal IList<LicPremiumReminder> GetLicPolicyMaturity(DateTime fromDate, DateTime toDate)
+        {
+            IList<LicPremiumReminder> lifeInsuranceObj = new List<LicPremiumReminder>();
+            try
+            {
+                FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
+                string apiurl = Program.WebServiceUrl + "/" + string.Format(GET_POLICY_MATURITY, fromDate.ToString("yyyy-MM-dd"), toDate.ToString("yyyy-MM-dd"));
+
+                RestAPIExecutor restApiExecutor = new RestAPIExecutor();
+
+                var restResult = restApiExecutor.Execute<IList<LicPremiumReminder>>(apiurl, null, "GET");
+
+                if (jsonSerialization.IsValidJson(restResult.ToString()))
+                {
+                    lifeInsuranceObj = jsonSerialization.DeserializeFromString<IList<LicPremiumReminder>>(restResult.ToString());
+                }
+
+                return lifeInsuranceObj.ToList();
+            }
+            catch (System.Net.WebException webException)
+            {
+                if (webException.Message.Equals("The remote server returned an error: (401) Unauthorized."))
+                {
+                    MessageBox.Show("You session has been expired. Please Login again.", "Session Expired", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
+                LogDebug(currentMethodName.Name, ex);
+                return null;
+            }
+        }
+
         internal DataTable GetLifeInsuranceInfo(int plannerId)
         {
             IList<LifeInsurance> lifeInsuranceObj = new List<LifeInsurance>();

@@ -611,11 +611,23 @@
     <Compile Include="PlanOptions\Reports\IncomeInflowChart.Designer.cs">
       <DependentUpon>IncomeInflowChart.cs</DependentUpon>
     </Compile>
+    <Compile Include="PlanOptions\Reports\Insurance\GeneralInsurancePremiumReminder.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\Insurance\GeneralInsurancePremiumReminder.Designer.cs">
+      <DependentUpon>GeneralInsurancePremiumReminder.cs</DependentUpon>
+    </Compile>
     <Compile Include="PlanOptions\Reports\Insurance\InsurancePremiumParameters.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="PlanOptions\Reports\Insurance\InsurancePremiumParameters.Designer.cs">
       <DependentUpon>InsurancePremiumParameters.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\Insurance\LICPolicyMaturity.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\Insurance\LICPolicyMaturity.Designer.cs">
+      <DependentUpon>LICPolicyMaturity.cs</DependentUpon>
     </Compile>
     <Compile Include="PlanOptions\Reports\Insurance\LicPremiumDueDate.cs">
       <SubType>Component</SubType>
@@ -1147,8 +1159,14 @@
     <EmbeddedResource Include="PlanOptions\Reports\IncomeInflowChart.resx">
       <DependentUpon>IncomeInflowChart.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\Reports\Insurance\GeneralInsurancePremiumReminder.resx">
+      <DependentUpon>GeneralInsurancePremiumReminder.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\Reports\Insurance\InsurancePremiumParameters.resx">
       <DependentUpon>InsurancePremiumParameters.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\Reports\Insurance\LICPolicyMaturity.resx">
+      <DependentUpon>LICPolicyMaturity.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\Reports\Insurance\LicPremiumDueDate.resx">
       <DependentUpon>LicPremiumDueDate.cs</DependentUpon>

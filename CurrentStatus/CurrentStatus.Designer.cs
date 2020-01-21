@@ -1831,9 +1831,9 @@
             this.label35.AutoSize = true;
             this.label35.Location = new System.Drawing.Point(20, 112);
             this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(89, 16);
+            this.label35.Size = new System.Drawing.Size(96, 16);
             this.label35.TabIndex = 15;
-            this.label35.Text = "Maturity Date:";
+            this.label35.Text = "Renewal Date:";
             // 
             // label34
             // 

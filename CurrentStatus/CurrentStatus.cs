@@ -2740,9 +2740,9 @@ namespace FinancialPlannerClient.CurrentStatus
                 dtGenralInsIssueDate.Checked = !(System.DBNull.Value == dr["IssueDate"]);
                 if (dtGenralInsIssueDate.Checked)
                     dtGenralInsIssueDate.Value = DateTime.Parse(dr["IssueDate"].ToString());
-                dtGenInsMaturityDate.Checked = !(System.DBNull.Value == dr["MaturityDate"]);
+                dtGenInsMaturityDate.Checked = !(System.DBNull.Value == dr["RenewalDate"]);
                 if (dtGenralInsIssueDate.Checked)
-                    dtGenInsMaturityDate.Value = DateTime.Parse(dr["MaturityDate"].ToString());
+                    dtGenInsMaturityDate.Value = DateTime.Parse(dr["RenewalDate"].ToString());
                 txtGenInsTerm.Text = dr.Field<string>("TermsInYears");
                 txtGenInsPolicyNumber.Text = dr.Field<string>("PolicyNo");
                 cmbGenInsCompany.Text = dr.Field<string>("Company");
@@ -2787,7 +2787,7 @@ namespace FinancialPlannerClient.CurrentStatus
             cmbGeneralInsuranceApplicant.Text = "";
             dtGenralInsIssueDate.Checked = false;
             dtGenralInsIssueDate.Text = "";
-            dtGenInsMaturityDate.Checked = false;
+            //dtGenInsMaturityDate.Checked = false;
             dtGenInsMaturityDate.Text = "";
             txtGenInsTerm.Text = "";
             txtGenInsPolicyNumber.Text = "";
@@ -2864,9 +2864,9 @@ namespace FinancialPlannerClient.CurrentStatus
             else
                 genIns.IssueDate = null;
             if (dtGenInsMaturityDate.Checked)
-                genIns.MaturityDate = DateTime.Parse(dtGenInsMaturityDate.Text);
+                genIns.RenewalDate = DateTime.Parse(dtGenInsMaturityDate.Text);
             else
-                genIns.MachineName = null;
+                genIns.RenewalDate = null;
             genIns.TermsInYears = int.Parse(txtGenInsTerm.Text);
             genIns.PolicyNo = txtGenInsPolicyNumber.Text;
             genIns.Company = cmbGenInsCompany.Text;

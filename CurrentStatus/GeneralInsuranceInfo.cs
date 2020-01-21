@@ -1,5 +1,6 @@
 ﻿using FinancialPlanner.Common;
 using FinancialPlanner.Common.DataConversion;
+using FinancialPlanner.Common.Model;
 using FinancialPlanner.Common.Model.CurrentStatus;
 using System;
 using System.Collections.Generic;
@@ -20,7 +21,7 @@ namespace FinancialPlannerClient.CurrentStatus
         const string ADD_GENERALINSURANCE_API = "GeneralInsurance/Add";
         const string UPDATE_GENERALINSUANCE_API = "GeneralInsurance/Update";
         const string DELETE_GENERALINSURANCE_API = "GeneralInsurance/Delete";
-
+        const string GET_RENEWAL_REMINDER = "PremiumReminder/GetRenewalDueDate?fromDate={0}&toDate={1}";
         DataTable dtGeneralInsurance;
         internal IList<GeneralInsurance> GetAllGeneralInsurances(int planId)
         {
@@ -172,6 +173,43 @@ namespace FinancialPlannerClient.CurrentStatus
                 MethodBase  currentMethodName = sf.GetMethod();
                 LogDebug(currentMethodName.Name, ex);
                 return false;
+            }
+        }
+
+        internal IList<GeneralInsuranceRenewalReminder> GetRenewalReminder(DateTime fromDate, DateTime toDate)
+        {
+            IList<GeneralInsuranceRenewalReminder> generalInsuranceRenewalReminders = new List<GeneralInsuranceRenewalReminder>();
+            try
+            {
+                FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
+                string apiurl = Program.WebServiceUrl + "/" + string.Format(GET_RENEWAL_REMINDER, fromDate.ToString("yyyy-MM-dd"), toDate.ToString("yyyy-MM-dd"));
+
+                RestAPIExecutor restApiExecutor = new RestAPIExecutor();
+
+                var restResult = restApiExecutor.Execute<IList<GeneralInsuranceRenewalReminder>>(apiurl, null, "GET");
+
+                if (jsonSerialization.IsValidJson(restResult.ToString()))
+                {
+                    generalInsuranceRenewalReminders = jsonSerialization.DeserializeFromString<IList<GeneralInsuranceRenewalReminder>>(restResult.ToString());
+                }
+
+                return generalInsuranceRenewalReminders.ToList();
+            }
+            catch (System.Net.WebException webException)
+            {
+                if (webException.Message.Equals("The remote server returned an error: (401) Unauthorized."))
+                {
+                    MessageBox.Show("You session has been expired. Please Login again.", "Session Expired", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
+                LogDebug(currentMethodName.Name, ex);
+                return null;
             }
         }
     }
