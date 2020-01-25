@@ -720,6 +720,12 @@
     <Compile Include="PlanOptions\PlanOptionMaster.Designer.cs">
       <DependentUpon>PlanOptionMaster.cs</DependentUpon>
     </Compile>
+    <Compile Include="PlanOptions\Reports\PPF\PPFMaturityReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\PPF\PPFMaturityReport.Designer.cs">
+      <DependentUpon>PPFMaturityReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="PlanOptions\Reports\RiskProfiling.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -1212,6 +1218,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\PlanOptionMaster.resx">
       <DependentUpon>PlanOptionMaster.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\Reports\PPF\PPFMaturityReport.resx">
+      <DependentUpon>PPFMaturityReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\Reports\RiskProfiling.resx">
       <DependentUpon>RiskProfiling.cs</DependentUpon>

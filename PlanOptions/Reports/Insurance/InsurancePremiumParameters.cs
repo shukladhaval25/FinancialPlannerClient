@@ -8,6 +8,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using FinancialPlanner.Common.Model;
+using FinancialPlannerClient.PlanOptions.Reports.PPF;
 
 namespace FinancialPlannerClient.PlanOptions.Reports.Insurance
 {
@@ -32,23 +34,40 @@ namespace FinancialPlannerClient.PlanOptions.Reports.Insurance
 
         private void viewReport()
         {
+            // LIC Premium Due
             if (reportType == ReportType.LIC)
             {
                 viewLicReport(dateTimeFrom.Value, dateTimeTo.Value);
                 return;
             }
 
+            // General Insurance Renewal
             if (reportType == ReportType.GeneralInsurnace)
             {
                 viewGeneralInsuranceReport(dateTimeFrom.Value, dateTimeTo.Value);
                 return;
             }
 
+            // LIC Maturity
             if (reportType == ReportType.LICPolicyMaturity)
             {
                 viewLicPolicyMaturity(dateTimeFrom.Value, dateTimeTo.Value);
                 return;
             }
+
+            // PPF Maturity
+            if (reportType == ReportType.PPFMaturity)
+            {
+                viewPPFMaturityReport(dateTimeFrom.Value, dateTimeTo.Value);
+            }
+        }
+
+        private void viewPPFMaturityReport(DateTime fromDate, DateTime toDate)
+        {
+            PPFMaturityReport maturityReport = new PPFMaturityReport(fromDate,toDate);
+            DevExpress.XtraReports.UI.ReportPrintTool printTool = new DevExpress.XtraReports.UI.ReportPrintTool(maturityReport);
+            printTool.ShowRibbonPreview();
+            this.Close();
         }
 
         private void viewLicPolicyMaturity(DateTime from, DateTime to)
@@ -90,6 +109,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports.Insurance
     {
         LIC,
         LICPolicyMaturity,
-        GeneralInsurnace
+        GeneralInsurnace,
+        PPFMaturity
     }
 }

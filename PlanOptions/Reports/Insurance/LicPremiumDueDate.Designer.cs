@@ -41,6 +41,7 @@
             this.lblPremiumAmount = new DevExpress.XtraReports.UI.XRTableCell();
             this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
             this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
+            this.xrPictureBox1 = new DevExpress.XtraReports.UI.XRPictureBox();
             this.xrPageInfo1 = new DevExpress.XtraReports.UI.XRPageInfo();
             this.xrLabelTitle = new DevExpress.XtraReports.UI.XRLabel();
             this.ReportHeader = new DevExpress.XtraReports.UI.ReportHeaderBand();
@@ -54,7 +55,6 @@
             this.xrTableCell7 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell6 = new DevExpress.XtraReports.UI.XRTableCell();
             this.formattingRule1 = new DevExpress.XtraReports.UI.FormattingRule();
-            this.xrPictureBox1 = new DevExpress.XtraReports.UI.XRPictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
@@ -137,6 +137,9 @@
             this.lblPremiumDate.Dpi = 100F;
             this.lblPremiumDate.KeepTogether = true;
             this.lblPremiumDate.Name = "lblPremiumDate";
+            this.lblPremiumDate.StylePriority.UseTextAlignment = false;
+            this.lblPremiumDate.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
+            this.lblPremiumDate.TextTrimming = System.Drawing.StringTrimming.Word;
             this.lblPremiumDate.Weight = 0.72011809686217643D;
             // 
             // lblPremiumAmount
@@ -149,8 +152,10 @@
             // 
             // TopMargin
             // 
+            this.TopMargin.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.xrPictureBox1});
             this.TopMargin.Dpi = 100F;
-            this.TopMargin.HeightF = 12F;
+            this.TopMargin.HeightF = 97.93034F;
             this.TopMargin.Name = "TopMargin";
             this.TopMargin.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.TopMargin.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
@@ -158,18 +163,26 @@
             // BottomMargin
             // 
             this.BottomMargin.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
-            this.xrPictureBox1,
             this.xrPageInfo1});
             this.BottomMargin.Dpi = 100F;
-            this.BottomMargin.HeightF = 112.097F;
+            this.BottomMargin.HeightF = 30.54167F;
             this.BottomMargin.Name = "BottomMargin";
             this.BottomMargin.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.BottomMargin.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
             // 
+            // xrPictureBox1
+            // 
+            this.xrPictureBox1.Dpi = 100F;
+            this.xrPictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("xrPictureBox1.Image")));
+            this.xrPictureBox1.LocationFloat = new DevExpress.Utils.PointFloat(412.0833F, 0F);
+            this.xrPictureBox1.Name = "xrPictureBox1";
+            this.xrPictureBox1.SizeF = new System.Drawing.SizeF(248.9931F, 97.93034F);
+            this.xrPictureBox1.Sizing = DevExpress.XtraPrinting.ImageSizeMode.AutoSize;
+            // 
             // xrPageInfo1
             // 
             this.xrPageInfo1.Dpi = 100F;
-            this.xrPageInfo1.LocationFloat = new DevExpress.Utils.PointFloat(899.1964F, 13.79166F);
+            this.xrPageInfo1.LocationFloat = new DevExpress.Utils.PointFloat(897.1131F, 4.833349F);
             this.xrPageInfo1.Name = "xrPageInfo1";
             this.xrPageInfo1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrPageInfo1.SizeF = new System.Drawing.SizeF(59.375F, 23F);
@@ -284,15 +297,6 @@
             // 
             this.formattingRule1.Name = "formattingRule1";
             // 
-            // xrPictureBox1
-            // 
-            this.xrPictureBox1.Dpi = 100F;
-            this.xrPictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("xrPictureBox1.Image")));
-            this.xrPictureBox1.LocationFloat = new DevExpress.Utils.PointFloat(408.9583F, 10.00001F);
-            this.xrPictureBox1.Name = "xrPictureBox1";
-            this.xrPictureBox1.SizeF = new System.Drawing.SizeF(248.9931F, 97.93034F);
-            this.xrPictureBox1.Sizing = DevExpress.XtraPrinting.ImageSizeMode.AutoSize;
-            // 
             // LicPremiumDueDate
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
@@ -303,7 +307,7 @@
             this.FormattingRuleSheet.AddRange(new DevExpress.XtraReports.UI.FormattingRule[] {
             this.formattingRule1});
             this.Landscape = true;
-            this.Margins = new System.Drawing.Printing.Margins(49, 51, 12, 112);
+            this.Margins = new System.Drawing.Printing.Margins(49, 51, 98, 31);
             this.PageHeight = 850;
             this.PageWidth = 1100;
             this.Version = "16.2";

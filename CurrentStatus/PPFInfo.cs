@@ -1,5 +1,6 @@
 ﻿using FinancialPlanner.Common;
 using FinancialPlanner.Common.DataConversion;
+using FinancialPlanner.Common.Model;
 using FinancialPlanner.Common.Model.CurrentStatus;
 using System;
 using System.Collections.Generic;
@@ -7,8 +8,6 @@ using System.Data;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FinancialPlannerClient.CurrentStatus
@@ -20,14 +19,50 @@ namespace FinancialPlannerClient.CurrentStatus
         private readonly string ADD_PPF_API = "PPF/Add";
         private readonly string UPDATE_PPF_API = "PPF/Update";
         private readonly string DELETE_PPF_API = "PPF/Delete";
+        private readonly string PPF_MATURITY = "PPF/GetMaturity?from={0}&to={1}";
 
+        public IList<PPFMaturity> GetPPFMaturity(DateTime from, DateTime to)
+        {
+            IList<PPFMaturity> PPFObj = new List<PPFMaturity>();
+            try
+            {
+                FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
+                string apiurl = Program.WebServiceUrl + "/" + string.Format(PPF_MATURITY, from.ToString("yyyy-MM-dd"), to.ToString("yyyy-MM-dd"));
+
+                RestAPIExecutor restApiExecutor = new RestAPIExecutor();
+
+                var restResult = restApiExecutor.Execute<IList<PPFMaturity>>(apiurl, null, "GET");
+
+                if (jsonSerialization.IsValidJson(restResult.ToString()))
+                {
+                    PPFObj = jsonSerialization.DeserializeFromString<IList<PPFMaturity>>(restResult.ToString());
+                }
+                return PPFObj;
+            }
+            catch (System.Net.WebException webException)
+            {
+                if (webException.Message.Equals("The remote server returned an error: (401) Unauthorized."))
+                {
+                    MessageBox.Show("You session has been expired. Please Login again.", "Session Expired", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
+                LogDebug(currentMethodName.Name, ex);
+                return null;
+            }
+        }
         internal DataTable GetPPFInfo(int planeId)
         {
             IList<PPF> PPFObj = new List<PPF>();
             try
             {
                 FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
-                string apiurl = Program.WebServiceUrl +"/"+ string.Format(GET_ALL,planeId);
+                string apiurl = Program.WebServiceUrl + "/" + string.Format(GET_ALL, planeId);
 
                 RestAPIExecutor restApiExecutor = new RestAPIExecutor();
 
@@ -53,9 +88,9 @@ namespace FinancialPlannerClient.CurrentStatus
             }
             catch (Exception ex)
             {
-                StackTrace st = new StackTrace ();
-                StackFrame sf = st.GetFrame (0);
-                MethodBase  currentMethodName = sf.GetMethod();
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
                 LogDebug(currentMethodName.Name, ex);
                 return null;
             }
@@ -66,16 +101,16 @@ namespace FinancialPlannerClient.CurrentStatus
             try
             {
                 FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
-                string apiurl = Program.WebServiceUrl +"/"+ ADD_PPF_API;
+                string apiurl = Program.WebServiceUrl + "/" + ADD_PPF_API;
                 RestAPIExecutor restApiExecutor = new RestAPIExecutor();
                 var restResult = restApiExecutor.Execute<PPF>(apiurl, PPF, "POST");
                 return true;
             }
             catch (Exception ex)
             {
-                StackTrace st = new StackTrace ();
-                StackFrame sf = st.GetFrame (0);
-                MethodBase  currentMethodName = sf.GetMethod();
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
                 LogDebug(currentMethodName.Name, ex);
                 return false;
             }
@@ -86,16 +121,16 @@ namespace FinancialPlannerClient.CurrentStatus
             try
             {
                 FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
-                string apiurl = Program.WebServiceUrl +"/"+ UPDATE_PPF_API;
+                string apiurl = Program.WebServiceUrl + "/" + UPDATE_PPF_API;
                 RestAPIExecutor restApiExecutor = new RestAPIExecutor();
                 var restResult = restApiExecutor.Execute<PPF>(apiurl, PPF, "POST");
                 return true;
             }
             catch (Exception ex)
             {
-                StackTrace st = new StackTrace ();
-                StackFrame sf = st.GetFrame (0);
-                MethodBase  currentMethodName = sf.GetMethod();
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
                 LogDebug(currentMethodName.Name, ex);
                 return false;
             }
@@ -106,16 +141,16 @@ namespace FinancialPlannerClient.CurrentStatus
             try
             {
                 FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
-                string apiurl = Program.WebServiceUrl +"/"+DELETE_PPF_API;
+                string apiurl = Program.WebServiceUrl + "/" + DELETE_PPF_API;
                 RestAPIExecutor restApiExecutor = new RestAPIExecutor();
                 var restResult = restApiExecutor.Execute<PPF>(apiurl, PPF, "POST");
                 return true;
             }
             catch (Exception ex)
             {
-                StackTrace st = new StackTrace ();
-                StackFrame sf = st.GetFrame (0);
-                MethodBase  currentMethodName = sf.GetMethod();
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
                 LogDebug(currentMethodName.Name, ex);
                 return false;
             }
@@ -127,7 +162,7 @@ namespace FinancialPlannerClient.CurrentStatus
             dtGridPPF.Columns["PID"].Visible = false;
             dtGridPPF.Columns["InvesterName"].HeaderText = "Investor Name";
             dtGridPPF.Columns["AccountNo"].HeaderText = "Account No";
-            dtGridPPF.Columns["Bank"].HeaderText = "Bank";           
+            dtGridPPF.Columns["Bank"].HeaderText = "Bank";
             dtGridPPF.Columns["GoalId"].HeaderText = "Mapped Goal";
             dtGridPPF.Columns["CreatedBy"].Visible = false;
             dtGridPPF.Columns["CreatedOn"].Visible = false;

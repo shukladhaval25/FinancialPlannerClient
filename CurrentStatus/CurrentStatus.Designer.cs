@@ -581,6 +581,7 @@
             this.btnOthersDelete = new System.Windows.Forms.Button();
             this.btnOthersAdd = new System.Windows.Forms.Button();
             this.btnOthersEdit = new System.Windows.Forms.Button();
+            this.chkPPFAccountExtended = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.tabCurrenStatus.SuspendLayout();
             this.LifeInsurance.SuspendLayout();
@@ -4386,6 +4387,7 @@
             // 
             this.grpPPF.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpPPF.Controls.Add(this.chkPPFAccountExtended);
             this.grpPPF.Controls.Add(this.txtPPF_ROI);
             this.grpPPF.Controls.Add(this.label186);
             this.grpPPF.Controls.Add(this.dtPPFMaturityDate);
@@ -4456,6 +4458,7 @@
             this.dtPPFOpeningDate.Name = "dtPPFOpeningDate";
             this.dtPPFOpeningDate.Size = new System.Drawing.Size(154, 22);
             this.dtPPFOpeningDate.TabIndex = 9;
+            this.dtPPFOpeningDate.ValueChanged += new System.EventHandler(this.dtPPFOpeningDate_ValueChanged);
             // 
             // label127
             // 
@@ -6500,6 +6503,16 @@
             this.btnOthersEdit.UseVisualStyleBackColor = true;
             this.btnOthersEdit.Click += new System.EventHandler(this.btnOthersEdit_Click);
             // 
+            // chkPPFAccountExtended
+            // 
+            this.chkPPFAccountExtended.AutoSize = true;
+            this.chkPPFAccountExtended.Location = new System.Drawing.Point(137, 146);
+            this.chkPPFAccountExtended.Name = "chkPPFAccountExtended";
+            this.chkPPFAccountExtended.Size = new System.Drawing.Size(135, 20);
+            this.chkPPFAccountExtended.TabIndex = 49;
+            this.chkPPFAccountExtended.Text = "Account Extended";
+            this.chkPPFAccountExtended.UseVisualStyleBackColor = true;
+            // 
             // CurrentStatus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -7169,5 +7182,6 @@
         private System.Windows.Forms.Button btnOthersEdit;
         private System.Windows.Forms.ComboBox cmbOthersTransactionType;
         private System.Windows.Forms.Label label204;
+        private System.Windows.Forms.CheckBox chkPPFAccountExtended;
     }
 }

@@ -557,6 +557,7 @@ namespace FinancialPlannerClient.CurrentStatus
             txtPPFBranch.Text = "";
             txtPPFCurrentValue.Text = "";
             txtPPF_ROI.Text = "0";
+            chkPPFAccountExtended.Checked = false;
         }
 
         private void displayPPFInfo(DataRow dr)
@@ -581,6 +582,8 @@ namespace FinancialPlannerClient.CurrentStatus
                     cmbPPFGoal.Text = "";
                 }
                 txtPPF_ROI.Text = dr.Field<string>("InvestmentReturnRate");
+                chkPPFAccountExtended.Checked  = dr["IsAccountExtended"] == null ? false : bool.Parse(dr.Field<string>("IsAccountExtended"));
+
             }
         }
 
@@ -627,6 +630,7 @@ namespace FinancialPlannerClient.CurrentStatus
             PPF.UpdatedBy = Program.CurrentUser.Id;
             PPF.MachineName = Environment.MachineName;
             PPF.InvestmentReturnRate = (string.IsNullOrEmpty(txtPPF_ROI.Text) ? 0 : float.Parse(txtPPF_ROI.Text));
+            PPF.IsAccountExtended = chkPPFAccountExtended.Checked;
             return PPF;
         }
 
@@ -3307,5 +3311,13 @@ namespace FinancialPlannerClient.CurrentStatus
                 cmbBondsGoal.Tag = "0";
         }
 
+        private void dtPPFOpeningDate_ValueChanged(object sender, EventArgs e)
+        {
+            if (dtPPFOpeningDate.Value != null)
+            {
+                dtPPFMaturityDate.Value = (chkPPFAccountExtended.Checked) ? dtPPFOpeningDate.Value.AddYears(5) :
+                    dtPPFOpeningDate.Value.AddYears(15);
+            }
+        }
     }
 }

@@ -75,6 +75,7 @@ namespace FinancialPlannerClient.Home
         private NavBarGroup navBarGroupReports;
         private NavBarItem navBarItemLICPolicyMaturity;
         private NavBarSeparatorItem navBarSeparator;
+        private SimpleButton btnPPFMaturity;
         private const string AUDITLOGCONTROLLER = "Activities/Add";
 
         public frmHome()
@@ -164,6 +165,7 @@ namespace FinancialPlannerClient.Home
             this.navBarItemFinancialPlanner = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarMenuGroup = new DevExpress.XtraNavBar.NavBarControl();
             this.navBarGroupControlContainerReports = new DevExpress.XtraNavBar.NavBarGroupControlContainer();
+            this.btnPPFMaturity = new DevExpress.XtraEditors.SimpleButton();
             this.navBarControlReports = new DevExpress.XtraNavBar.NavBarControl();
             this.navBarGroupInsuranceReport = new DevExpress.XtraNavBar.NavBarGroup();
             this.navBarItemLICPremiumReminder = new DevExpress.XtraNavBar.NavBarItem();
@@ -610,15 +612,35 @@ namespace FinancialPlannerClient.Home
             // 
             this.navBarGroupControlContainerReports.Appearance.BackColor = System.Drawing.SystemColors.Control;
             this.navBarGroupControlContainerReports.Appearance.Options.UseBackColor = true;
+            this.navBarGroupControlContainerReports.Controls.Add(this.btnPPFMaturity);
             this.navBarGroupControlContainerReports.Controls.Add(this.navBarControlReports);
             this.navBarGroupControlContainerReports.Name = "navBarGroupControlContainerReports";
-            this.navBarGroupControlContainerReports.Size = new System.Drawing.Size(128, 246);
+            this.navBarGroupControlContainerReports.Size = new System.Drawing.Size(128, 158);
             this.navBarGroupControlContainerReports.TabIndex = 0;
+            // 
+            // btnPPFMaturity
+            // 
+            this.btnPPFMaturity.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPPFMaturity.Image = ((System.Drawing.Image)(resources.GetObject("btnPPFMaturity.Image")));
+            this.btnPPFMaturity.Location = new System.Drawing.Point(3, 1);
+            this.btnPPFMaturity.Name = "btnPPFMaturity";
+            this.btnPPFMaturity.Size = new System.Drawing.Size(122, 23);
+            this.btnPPFMaturity.TabIndex = 1;
+            this.btnPPFMaturity.Text = "PPF Maturity";
+            this.btnPPFMaturity.ToolTip = "PPF Maturity Report";
+            this.btnPPFMaturity.Click += new System.EventHandler(this.btnPPFMaturity_Click);
             // 
             // navBarControlReports
             // 
             this.navBarControlReports.ActiveGroup = this.navBarGroupInsuranceReport;
-            this.navBarControlReports.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.navBarControlReports.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.navBarControlReports.Appearance.Background.BackColor = System.Drawing.Color.Gray;
+            this.navBarControlReports.Appearance.Background.BackColor2 = System.Drawing.Color.DimGray;
+            this.navBarControlReports.Appearance.Background.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.navBarControlReports.Appearance.Background.Options.UseBackColor = true;
+            this.navBarControlReports.Appearance.Background.Options.UseBorderColor = true;
             this.navBarControlReports.Groups.AddRange(new DevExpress.XtraNavBar.NavBarGroup[] {
             this.navBarGroupInsuranceReport});
             this.navBarControlReports.Items.AddRange(new DevExpress.XtraNavBar.NavBarItem[] {
@@ -626,10 +648,10 @@ namespace FinancialPlannerClient.Home
             this.navBarItemGIPremiumReminder,
             this.navBarItemLICPolicyMaturity,
             this.navBarSeparator});
-            this.navBarControlReports.Location = new System.Drawing.Point(0, 0);
+            this.navBarControlReports.Location = new System.Drawing.Point(0, 27);
             this.navBarControlReports.Name = "navBarControlReports";
             this.navBarControlReports.OptionsNavPane.ExpandedWidth = 128;
-            this.navBarControlReports.Size = new System.Drawing.Size(128, 246);
+            this.navBarControlReports.Size = new System.Drawing.Size(128, 128);
             this.navBarControlReports.TabIndex = 0;
             this.navBarControlReports.Text = "Insurance";
             // 
@@ -757,7 +779,7 @@ namespace FinancialPlannerClient.Home
             this.navBarGroupReports.Caption = "Reports";
             this.navBarGroupReports.ControlContainer = this.navBarGroupControlContainerReports;
             this.navBarGroupReports.Expanded = true;
-            this.navBarGroupReports.GroupClientHeight = 250;
+            this.navBarGroupReports.GroupClientHeight = 162;
             this.navBarGroupReports.GroupStyle = DevExpress.XtraNavBar.NavBarGroupStyle.ControlContainer;
             this.navBarGroupReports.Name = "navBarGroupReports";
             this.navBarGroupReports.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarGroupReports.SmallImage")));
@@ -1248,6 +1270,12 @@ namespace FinancialPlannerClient.Home
         private void navBarItemLICPolicyMaturity_LinkClicked(object sender, NavBarLinkEventArgs e)
         {
             InsurancePremiumParameters insurancePremiumParameters = new InsurancePremiumParameters(ReportType.LICPolicyMaturity);
+            insurancePremiumParameters.ShowDialog();
+        }
+
+        private void btnPPFMaturity_Click(object sender, EventArgs e)
+        {
+            InsurancePremiumParameters insurancePremiumParameters = new InsurancePremiumParameters(ReportType.PPFMaturity);
             insurancePremiumParameters.ShowDialog();
         }
     }
