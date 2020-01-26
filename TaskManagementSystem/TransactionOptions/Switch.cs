@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DevExpress.XtraVerticalGrid;
 using FinancialPlanner.Common;
 using FinancialPlanner.Common.Model;
@@ -307,7 +304,7 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             switchOpt = jsonSerialization.DeserializeFromString<FinancialPlanner.Common.Model.TaskManagement.MFTransactions.SwitchOpt>(obj.ToString());
             this.vGridTransaction.Rows["ARN"].Properties.Value = switchOpt.Arn;
 
-            this.vGridTransaction.Rows["ClientGroup"].Properties.Value = getClientName(switchOpt.Cid);
+            this.vGridTransaction.Rows["ClientGroup"].Properties.Value = this.currentClient.Name;
             this.currentClient = ((List<Client>)clients).Find(i => i.Name == this.vGridTransaction.Rows["ClientGroup"].Properties.Value.ToString());
             loadMembers();
             this.vGridTransaction.Rows["MemberName"].Properties.Value = switchOpt.MemberName;
@@ -340,7 +337,7 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             throw new NotImplementedException();
         }
 
-        public void setVGridControl(VGridControl vGrid)
+        public void setVGridControl(VGridControl vGrid,Client client)
         {
             this.vGridTransaction = vGrid;
             this.vGridTransaction.RepositoryItems.Clear();
@@ -352,7 +349,10 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             {
                 this.vGridTransaction.Rows[rowindex].Height = 20;
             }
+            this.currentClient = client;
+            this.vGridTransaction.Rows["ClientGroup"].Properties.Value = this.currentClient.Name;
             this.vGridTransaction.Refresh();
+            loadMembers();
         }
 
         private void LogDebug(string name, Exception ex)
@@ -518,12 +518,6 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
                 dtAMC.Rows.Add(dr);
             }
             return dtAMC;
-        }
-
-        private string getClientName(int cid)
-        {
-            Client client = new Client();
-            return (clients.TryGetValue(clients.FindIndex(i => i.ID == cid), out client)) ? client.Name : string.Empty;
         }
 
         public void SetARN(int arnNo)

@@ -29,7 +29,8 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
 
             sip = jsonSerialization.DeserializeFromString<SIP>(obj.ToString());
             this.vGridTransaction.Rows["AccountType"].Properties.Value = sip.AccounType;
-            this.vGridTransaction.Rows["ClientGroup"].Properties.Value = sIPFresh.getClientName(sip.CID); sIPFresh.currentClient = ((List<Client>) sIPFresh.clients).Find(i => i.Name == this.vGridTransaction.Rows["ClientGroup"].Properties.Value.ToString());
+            this.vGridTransaction.Rows["ClientGroup"].Properties.Value = sIPFresh.currentClient.Name;
+            sIPFresh.currentClient = ((List<Client>) sIPFresh.clients).Find(i => i.Name == this.vGridTransaction.Rows["ClientGroup"].Properties.Value.ToString());
             sIPFresh.loadMembers();
             this.vGridTransaction.Rows["MemberName"].Properties.Value = sip.MemberName;
             this.vGridTransaction.Rows["FolioNumber"].Properties.Value = sip.FolioNo;
@@ -53,11 +54,11 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             throw new NotImplementedException();
         }
 
-        public void setVGridControl(VGridControl vGrid)
+        public void setVGridControl(VGridControl vGrid,Client client)
         {
             this.vGridTransaction = vGrid;
             sIPFresh = new SIPFresh();
-            sIPFresh.setVGridControl(vGrid);
+            sIPFresh.setVGridControl(vGrid,client);
             removeUnwantedFields(vGrid);
         }
         private void removeUnwantedFields(VGridControl vGrid)

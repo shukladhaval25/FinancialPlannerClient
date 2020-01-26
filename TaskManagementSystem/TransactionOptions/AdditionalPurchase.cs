@@ -274,8 +274,8 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             freshPurchase = jsonSerialization.DeserializeFromString<FinancialPlanner.Common.Model.TaskManagement.MFTransactions.FreshPurchase>(obj.ToString());
             this.vGridTransaction.Rows["ARN"].Properties.Value = freshPurchase.Arn;
 
-            this.vGridTransaction.Rows["ClientGroup"].Properties.Value = getClientName(freshPurchase.Cid);
-            freshPurchaseTrans.currentClient = ((List<Client>) freshPurchaseTrans.clients).Find(i => i.Name == this.vGridTransaction.Rows["ClientGroup"].Properties.Value.ToString());
+            this.vGridTransaction.Rows["ClientGroup"].Properties.Value = getClientName();
+            //freshPurchaseTrans.currentClient = ((List<Client>) freshPurchaseTrans.clients).Find(i => i.Name == this.vGridTransaction.Rows["ClientGroup"].Properties.Value.ToString());
             freshPurchaseTrans.loadMembers();
             this.vGridTransaction.Rows["MemberName"].Properties.Value = freshPurchase.MemberName;
             this.vGridTransaction.Rows["FolioNumber"].Properties.Value = freshPurchase.FolioNumber;
@@ -296,11 +296,11 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             return this.vGridTransaction;
         }
 
-        public void setVGridControl(VGridControl vGrid)
+        public void setVGridControl(VGridControl vGrid,Client client)
         {
             this.vGridTransaction = vGrid;
             freshPurchaseTrans = new FreshPurchaseTrans();
-            freshPurchaseTrans.setVGridControl(vGrid);
+            freshPurchaseTrans.setVGridControl(vGrid,client);
             removeUnwantedFields(vGrid);
         }
 
@@ -313,10 +313,11 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             Logger.LogDebug(debuggerInfo);
         }
 
-        private string getClientName(int cid)
+        private string getClientName()
         {
-            Client client = new Client();
-            return (freshPurchaseTrans.clients.TryGetValue(freshPurchaseTrans.clients.FindIndex(i => i.ID == cid), out client)) ? client.Name : string.Empty;
+            //Client client = new Client();
+            //return (freshPurchaseTrans.clients.TryGetValue(freshPurchaseTrans.clients.FindIndex(i => i.ID == cid), out client)) ? client.Name : string.Empty;
+            return freshPurchaseTrans.currentClient.Name;
         }
 
         private void removeUnwantedFields(VGridControl vGrid)

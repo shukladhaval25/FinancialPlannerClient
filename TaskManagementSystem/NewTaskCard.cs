@@ -127,10 +127,17 @@ namespace FinancialPlannerClient.TaskManagementSystem
 
         private void cmbTransactionType_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(cmbClient.Text) && !string.IsNullOrEmpty(cmbTransactionType.Text))
+            {
+                DevExpress.XtraEditors.XtraMessageBox.Show("Please select customer first.", "Customer", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                cmbTransactionType.Text = "";
+                return;
+            }
             try
             {
+                Client client = clients.FirstOrDefault(i => i.Name == cmbClient.Text);
                 transactionType = Program.container.Resolve<ITransactionType>(cmbTransactionType.Text);                
-                transactionType.setVGridControl(this.vGridTransaction);
+                transactionType.setVGridControl(this.vGridTransaction,client);
                 transactionType.SetARN(clientARN.ARNId);
                 splitContainerTransOperation.Panel1.Height = 400;
                 splitContainerTransOperation.PanelVisibility = DevExpress.XtraEditors.SplitPanelVisibility.Both;

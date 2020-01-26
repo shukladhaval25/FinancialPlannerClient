@@ -383,6 +383,7 @@
             this.btnRDEdit = new System.Windows.Forms.Button();
             this.PPF = new System.Windows.Forms.TabPage();
             this.grpPPF = new System.Windows.Forms.GroupBox();
+            this.chkPPFAccountExtended = new System.Windows.Forms.CheckBox();
             this.txtPPF_ROI = new System.Windows.Forms.TextBox();
             this.label186 = new System.Windows.Forms.Label();
             this.dtPPFMaturityDate = new System.Windows.Forms.DateTimePicker();
@@ -581,7 +582,6 @@
             this.btnOthersDelete = new System.Windows.Forms.Button();
             this.btnOthersAdd = new System.Windows.Forms.Button();
             this.btnOthersEdit = new System.Windows.Forms.Button();
-            this.chkPPFAccountExtended = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.tabCurrenStatus.SuspendLayout();
             this.LifeInsurance.SuspendLayout();
@@ -2938,7 +2938,6 @@
             // 
             // txtSharesCurrentValue
             // 
-            this.txtSharesCurrentValue.Enabled = false;
             this.txtSharesCurrentValue.Location = new System.Drawing.Point(337, 117);
             this.txtSharesCurrentValue.Name = "txtSharesCurrentValue";
             this.txtSharesCurrentValue.Size = new System.Drawing.Size(120, 22);
@@ -3260,7 +3259,6 @@
             // 
             // txtBondsCurrentValue
             // 
-            this.txtBondsCurrentValue.Enabled = false;
             this.txtBondsCurrentValue.Location = new System.Drawing.Point(337, 145);
             this.txtBondsCurrentValue.Name = "txtBondsCurrentValue";
             this.txtBondsCurrentValue.Size = new System.Drawing.Size(120, 22);
@@ -4416,6 +4414,16 @@
             this.grpPPF.TabIndex = 42;
             this.grpPPF.TabStop = false;
             this.grpPPF.Text = "PPF";
+            // 
+            // chkPPFAccountExtended
+            // 
+            this.chkPPFAccountExtended.AutoSize = true;
+            this.chkPPFAccountExtended.Location = new System.Drawing.Point(137, 146);
+            this.chkPPFAccountExtended.Name = "chkPPFAccountExtended";
+            this.chkPPFAccountExtended.Size = new System.Drawing.Size(135, 20);
+            this.chkPPFAccountExtended.TabIndex = 49;
+            this.chkPPFAccountExtended.Text = "Account Extended";
+            this.chkPPFAccountExtended.UseVisualStyleBackColor = true;
             // 
             // txtPPF_ROI
             // 
@@ -6502,16 +6510,6 @@
             this.btnOthersEdit.TabIndex = 3;
             this.btnOthersEdit.UseVisualStyleBackColor = true;
             this.btnOthersEdit.Click += new System.EventHandler(this.btnOthersEdit_Click);
-            // 
-            // chkPPFAccountExtended
-            // 
-            this.chkPPFAccountExtended.AutoSize = true;
-            this.chkPPFAccountExtended.Location = new System.Drawing.Point(137, 146);
-            this.chkPPFAccountExtended.Name = "chkPPFAccountExtended";
-            this.chkPPFAccountExtended.Size = new System.Drawing.Size(135, 20);
-            this.chkPPFAccountExtended.TabIndex = 49;
-            this.chkPPFAccountExtended.Text = "Account Extended";
-            this.chkPPFAccountExtended.UseVisualStyleBackColor = true;
             // 
             // CurrentStatus
             // 

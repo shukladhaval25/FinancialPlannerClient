@@ -402,7 +402,7 @@ namespace FinancialPlannerClient.PlanOptions
                 sipInvestmentRecomendation.Category = getCategoryName(selectedScheme.CategoryId);
                 sipInvestmentRecomendation.ChequeInFavourOff = selectedScheme.ChequeInFavourOff;
                 transactionType = Program.container.Resolve<ITransactionType>("SIPInvestmentRecomendation");
-                transactionType.setVGridControl(this.vGridTransaction);
+                transactionType.setVGridControl(this.vGridTransaction,this.currentClient);
                 FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
 
                 transactionType.BindDataSource(jsonSerialization.SerializeToString<SIPTypeInvestmentRecomendation>(sipInvestmentRecomendation));
@@ -423,7 +423,7 @@ namespace FinancialPlannerClient.PlanOptions
                 stpInvestmentRecomendation.SchemeId = selectedScheme.Id;
                 stpInvestmentRecomendation.SchemeName = selectedScheme.Name;
                 stpTransactionType = new STPTypeRecomendation(amcId);
-                stpTransactionType.setVGridControl(this.vGridControlSTP);
+                stpTransactionType.setVGridControl(this.vGridControlSTP,this.currentClient);
                 FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
                 stpInvestmentRecomendation.LumsumAmount = lumsumInvestmentAmount;
                 stpTransactionType.BindDataSource(jsonSerialization.SerializeToString<STPTypeInvestmentRecomendation>(stpInvestmentRecomendation));
@@ -446,7 +446,7 @@ namespace FinancialPlannerClient.PlanOptions
                 investmentRecomendation.Category = getCategoryName(selectedScheme.CategoryId);
                 investmentRecomendation.ChequeInFavourOff = selectedScheme.ChequeInFavourOff;
                 transactionType = Program.container.Resolve<ITransactionType>("Lumsum");
-                transactionType.setVGridControl(this.vGridTransaction);
+                transactionType.setVGridControl(this.vGridTransaction,this.currentClient);
                 FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
 
                 transactionType.BindDataSource(jsonSerialization.SerializeToString<LumsumInvestmentRecomendation>(investmentRecomendation));
@@ -466,7 +466,7 @@ namespace FinancialPlannerClient.PlanOptions
                 switchTypeInvestmentRecommendation.ToSchemeId = selectedScheme.Id;
                 switchTypeInvestmentRecommendation.ToSchemeName = selectedScheme.Name;
                 switchTypeInvRecommendationView = new SwitchTypeInvRecommendationView(amcId);
-                switchTypeInvRecommendationView.setVGridControl(this.vGridTransaction);
+                switchTypeInvRecommendationView.setVGridControl(this.vGridTransaction,this.currentClient);
                 FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
 
                 switchTypeInvRecommendationView.BindDataSource(jsonSerialization.SerializeToString<SwitchTypeInvestmentRecommendation>(switchTypeInvestmentRecommendation));

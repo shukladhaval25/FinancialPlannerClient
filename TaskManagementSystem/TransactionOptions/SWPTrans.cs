@@ -283,7 +283,7 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             swp = jsonSerialization.DeserializeFromString<FinancialPlanner.Common.Model.TaskManagement.MFTransactions.SWP>(obj.ToString());
             this.vGridTransaction.Rows["ARN"].Properties.Value = swp.Arn;
 
-            this.vGridTransaction.Rows["ClientGroup"].Properties.Value = getClientName(swp.Cid);
+            this.vGridTransaction.Rows["ClientGroup"].Properties.Value = this.currentClient.Name;
             this.currentClient = ((List<Client>)clients).Find(i => i.Name == this.vGridTransaction.Rows["ClientGroup"].Properties.Value.ToString());
             loadMembers();
             this.vGridTransaction.Rows["MemberName"].Properties.Value = swp.MemberName;
@@ -315,7 +315,7 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             throw new NotImplementedException();
         }
 
-        public void setVGridControl(VGridControl vGrid)
+        public void setVGridControl(VGridControl vGrid,Client client)
         {
             this.vGridTransaction = vGrid;
             this.vGridTransaction.RepositoryItems.Clear();
@@ -327,7 +327,10 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             {
                 this.vGridTransaction.Rows[rowindex].Height = 20;
             }
+            this.currentClient = client;
+            this.vGridTransaction.Rows["ClientGroup"].Properties.Value = this.currentClient.Name;
             this.vGridTransaction.Refresh();
+            loadMembers();
         }
 
         private void LogDebug(string name, Exception ex)
@@ -486,12 +489,6 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
                 dtAMC.Rows.Add(dr);
             }
             return dtAMC;
-        }
-
-        private string getClientName(int cid)
-        {
-            Client client = new Client();
-            return (clients.TryGetValue(clients.FindIndex(i => i.ID == cid), out client)) ? client.Name : string.Empty;
         }
 
         public void SetARN(int arnNo)

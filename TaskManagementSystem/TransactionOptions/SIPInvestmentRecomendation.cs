@@ -200,7 +200,7 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             //throw new NotImplementedException();
         }
 
-        public void setVGridControl(VGridControl vGrid)
+        public void setVGridControl(VGridControl vGrid,Client client)
         {
             this.vGridTransaction = vGrid;
             this.vGridTransaction.RepositoryItems.Clear();
@@ -212,7 +212,9 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             {
                 this.vGridTransaction.Rows[rowindex].Height = 20;
             }
+            this.clientId = client.ID;
             this.vGridTransaction.Refresh();
+            loadMembers();
         }
         internal void loadMembers()
         {

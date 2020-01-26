@@ -1791,7 +1791,7 @@ namespace FinancialPlannerClient.CurrentStatus
             txtNoOfShares.Text = "0";
             txtSharesMarketPrice.Text = "0";
             txtSharesCurrentValue.Text = "0";
-            calculateAndSetSharesCurrentValue();
+            //calculateAndSetSharesCurrentValue();
             cmbSharesGoal.Tag = "0";
             cmbSharesGoal.Text = "";
             txtSharesFirstHolder.Text = "";
@@ -1811,7 +1811,7 @@ namespace FinancialPlannerClient.CurrentStatus
                 txtNoOfShares.Text = dr["NoOfShares"].ToString();
                 txtSharesMarketPrice.Text = dr["MarketPrice"].ToString();
                 txtSharesCurrentValue.Text = dr["CurrentValue"].ToString();
-                calculateAndSetSharesCurrentValue();
+                //calculateAndSetSharesCurrentValue();
                 if (dr["GoalID"] != null)
                 {
                     cmbSharesGoal.Tag = dr["GoalId"].ToString();
@@ -3142,7 +3142,7 @@ namespace FinancialPlannerClient.CurrentStatus
             txtBondsRate.Text = "0";
             txtBondsUnit.Text = "0";
             txtBondsCurrentValue.Text = "0";
-            calculateAndSetBondsCurrentValue();
+            //calculateAndSetBondsCurrentValue();
             cmbBondsGoal.Tag = "0";
             cmbBondsGoal.Text = "";
             txtBondInvRetRate.Text = "0";
@@ -3184,7 +3184,8 @@ namespace FinancialPlannerClient.CurrentStatus
                 txtBondsUnit.Text = dr.Field<string>("NOOFBOND");
                 txtBondsFaceValue.Text = dr.Field<string>("FaceValue");
                 dtBondsMaturityDate.Value = DateTime.Parse(dr.Field<string>("MaturityDate"));
-                calculateAndSetBondsCurrentValue();
+                txtBondsCurrentValue.Text = dr.Field<string>("CurrentValue");
+                //calculateAndSetBondsCurrentValue();
                 if (dr["GoalID"] != null)
                 {
                     cmbBondsGoal.Tag = dr["GoalId"].ToString();

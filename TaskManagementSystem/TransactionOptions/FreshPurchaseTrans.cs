@@ -99,7 +99,6 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             this.repositoryItemComboBoxClientGroup = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.repositoryItemComboBoxClientGroup.EditValueChanged += RepositoryItemComboBoxClientGroup_SelectedValueChanged;
             this.repositoryItemComboBoxClientGroup.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            loadClients();
             this.repositoryItemComboBoxClientGroup.Validating += RepositoryItemComboBoxClientGroup_Validating;
 
             this.repositoryItemComboBoxMemberName = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
@@ -399,16 +398,16 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             }
         }
 
-        internal void loadClients()
-        {
-            ClientService clientService = new ClientService();
-            clients = clientService.GetAll();
-            repositoryItemComboBoxClientGroup.Items.Clear();
-            foreach(Client client in clients)
-            {
-                repositoryItemComboBoxClientGroup.Items.Add(client.Name);
-            }
-        }
+        //internal void loadClients()
+        //{
+        //    ClientService clientService = new ClientService();
+        //    clients = clientService.GetAll();
+        //    repositoryItemComboBoxClientGroup.Items.Clear();
+        //    foreach(Client client in clients)
+        //    {
+        //        repositoryItemComboBoxClientGroup.Items.Add(client.Name);
+        //    }
+        //}
 
         internal void loadARNValue()
         {
@@ -478,8 +477,8 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             freshPurchase = jsonSerialization.DeserializeFromString<FinancialPlanner.Common.Model.TaskManagement.MFTransactions.FreshPurchase>(obj.ToString());
             this.vGridTransaction.Rows["ARN"].Properties.Value = freshPurchase.Arn;
 
-            this.vGridTransaction.Rows["ClientGroup"].Properties.Value = getClientName(freshPurchase.Cid);
-            this.currentClient = ((List<Client>)clients).Find(i => i.Name == this.vGridTransaction.Rows["ClientGroup"].Properties.Value.ToString());
+            this.vGridTransaction.Rows["ClientGroup"].Properties.Value = getClientName();
+            //this.currentClient = ((List<Client>)clients).Find(i => i.Name == this.vGridTransaction.Rows["ClientGroup"].Properties.Value.ToString());
             loadMembers();
             this.vGridTransaction.Rows["MemberName"].Properties.Value = freshPurchase.MemberName;
             this.vGridTransaction.Rows["SecondHolder"].Properties.Value = freshPurchase.SecondHolder;
@@ -501,10 +500,9 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             this.vGridTransaction.Rows["Remark"].Properties.Value = freshPurchase.Remark;
         }
 
-        private string getClientName(int cid)
-        {
-            Client client = new Client();
-            return (clients.TryGetValue(clients.FindIndex(i => i.ID == cid), out client)) ? client.Name : string.Empty;
+        private string getClientName()
+        {           
+            return this.currentClient.Name;
         }
 
         internal string getSchemeName(int schemeId)
@@ -525,7 +523,7 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             return this.vGridTransaction;
         }
 
-        public void setVGridControl(VGridControl vGrid)
+        public void setVGridControl(VGridControl vGrid,Client client)
         {
             this.vGridTransaction = vGrid;
             this.vGridTransaction.RepositoryItems.Clear();
@@ -538,6 +536,9 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
                 this.vGridTransaction.Rows[rowindex].Height = 20;
             }
             this.vGridTransaction.Refresh();
+            this.currentClient = client;
+            this.vGridTransaction.Rows["ClientGroup"].Properties.Value = this.currentClient.Name;
+            loadMembers();
         }
 
         public object GetTransactionType()

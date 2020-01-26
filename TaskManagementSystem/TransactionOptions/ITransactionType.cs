@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraVerticalGrid;
+using FinancialPlanner.Common.Model;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -10,7 +11,7 @@ namespace FinancialPlannerClient.TaskManagementSystem
 {
     public interface ITransactionType
     {
-        void setVGridControl(VGridControl vGrid);
+        void setVGridControl(VGridControl vGrid,Client client);
         VGridControl GetGridControl();
         void BindDataSource(Object obj);
         object GetTransactionType();

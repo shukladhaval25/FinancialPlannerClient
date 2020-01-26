@@ -293,7 +293,7 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             contactUpdate = jsonSerialization.DeserializeFromString<ContactUpdate>(obj.ToString());
             this.vGridTransaction.Rows["ARN"].Properties.Value = contactUpdate.Arn;
 
-            this.vGridTransaction.Rows["ClientGroup"].Properties.Value = getClientName(contactUpdate.Cid);
+            this.vGridTransaction.Rows["ClientGroup"].Properties.Value = this.currentClient.Name;
             this.currentClient = ((List<Client>)clients).Find(i => i.Name == this.vGridTransaction.Rows["ClientGroup"].Properties.Value.ToString());
             loadMembers();
             this.vGridTransaction.Rows["MemberName"].Properties.Value = contactUpdate.MemberName;            
@@ -345,7 +345,7 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             return true;
         }
 
-        public void setVGridControl(VGridControl vGrid)
+        public void setVGridControl(VGridControl vGrid,Client client)
         {
             this.vGridTransaction = vGrid;
             this.vGridTransaction.RepositoryItems.Clear();
@@ -358,6 +358,9 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
                 this.vGridTransaction.Rows[rowindex].Height = 20;
             }
             this.vGridTransaction.Refresh();
+            this.currentClient = client;
+            this.vGridTransaction.Rows["ClientGroup"].Properties.Value = this.currentClient.Name;
+            loadMembers();
         }
         private void LogDebug(string name, Exception ex)
         {
@@ -366,13 +369,7 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             debuggerInfo.Method = name;
             debuggerInfo.ExceptionInfo = ex;
             Logger.LogDebug(debuggerInfo);
-        }
-
-        private string getClientName(int cid)
-        {
-            Client client = new Client();
-            return (clients.TryGetValue(clients.FindIndex(i => i.ID == cid), out client)) ? client.Name : string.Empty;
-        }
+        }     
 
         public void SetARN(int arnNo)
         {

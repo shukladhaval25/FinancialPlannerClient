@@ -445,7 +445,8 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
 
             sip  = jsonSerialization.DeserializeFromString<SIP>(obj.ToString());
             this.vGridTransaction.Rows["AccountType"].Properties.Value = sip.AccounType;
-            this.vGridTransaction.Rows["ClientGroup"].Properties.Value = getClientName(sip.CID); this.currentClient = ((List<Client>)clients).Find(i => i.Name == this.vGridTransaction.Rows["ClientGroup"].Properties.Value.ToString());
+            this.vGridTransaction.Rows["ClientGroup"].Properties.Value = this.currentClient.Name;
+            this.currentClient = ((List<Client>)clients).Find(i => i.Name == this.vGridTransaction.Rows["ClientGroup"].Properties.Value.ToString());
             loadMembers();
 
             this.vGridTransaction.Rows["MemberName"].Properties.Value = sip.MemberName;
@@ -470,12 +471,6 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             this.vGridTransaction.Rows["Remark"].Properties.Value = sip.Remark;
         }
 
-        internal string getClientName(int cid)
-        {
-            Client client = new Client();
-            return (clients.TryGetValue(clients.FindIndex(i => i.ID == cid), out client)) ? client.Name : string.Empty;
-        }
-
         internal string getSchemeName(int schemeId)
         {
             Scheme scheme = new Scheme();
@@ -487,7 +482,7 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             throw new NotImplementedException();
         }
 
-        public void setVGridControl(VGridControl vGrid)
+        public void setVGridControl(VGridControl vGrid,Client client)
         {
             this.vGridTransaction = vGrid;
             this.vGridTransaction.RepositoryItems.Clear();
@@ -499,7 +494,10 @@ namespace FinancialPlannerClient.TaskManagementSystem.TransactionOptions
             {
                 this.vGridTransaction.Rows[rowindex].Height = 20;
             }
+            this.currentClient = client;
+            this.vGridTransaction.Rows["ClientGroup"].Properties.Value = this.currentClient.Name;
             this.vGridTransaction.Refresh();
+            loadMembers();
         }
 
         public object GetTransactionType()

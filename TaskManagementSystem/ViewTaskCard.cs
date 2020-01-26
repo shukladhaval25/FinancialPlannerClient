@@ -119,11 +119,11 @@ namespace FinancialPlannerClient.TaskManagementSystem
         {
             lblTaskIDTitle.Text = taskCard.TaskId;
             lblTaskIDTitle.Tag = taskCard.Id;
-            cmbProject.Text = taskCard.ProjectName;
-            cmbTransactionType.Text = taskCard.TransactionType;
+            cmbProject.Text = taskCard.ProjectName;           
             cmbCardType.Text = taskCard.Type.ToString() == "0" ? "Query" : "Task";
             cmbClient.Tag = taskCard.CustomerId;
             cmbClient.Text = string.IsNullOrEmpty(taskCard.CustomerName) ? getCustomerName((int)(taskCard.CustomerId)) : taskCard.CustomerName;
+            cmbTransactionType.Text = taskCard.TransactionType;
             txtTitle.Text = taskCard.Title;
             txtCreatedBy.Text = getUserName(taskCard.CreatedBy);
             txtCreatedOn.Text = taskCard.CreatedOn.ToShortDateString();
@@ -226,8 +226,9 @@ namespace FinancialPlannerClient.TaskManagementSystem
         {
             try
             {
+                Client client = clients.FirstOrDefault(i => i.Name == cmbClient.Text);
                 transactionType = Program.container.Resolve<ITransactionType>(cmbTransactionType.Text);
-                transactionType.setVGridControl(this.vGridTransaction);
+                transactionType.setVGridControl(this.vGridTransaction,client);
                 transactionType.BindDataSource(taskCard.TaskTransactionType);
                 splitContainerTransOperation.Panel1.Height = 400;
                 splitContainerTransOperation.PanelVisibility = DevExpress.XtraEditors.SplitPanelVisibility.Both;
