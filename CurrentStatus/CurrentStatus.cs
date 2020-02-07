@@ -2562,6 +2562,8 @@ namespace FinancialPlannerClient.CurrentStatus
             txtRider2Amt.Text = dr.Field<string>("Rider2Amount");
             txtRemarks.Text = dr.Field<string>("Remarks");
             txtAttachPath.Text = dr.Field<string>("AttachmentPath");
+            if (dtLastPremiumPaymentDate.Checked = !(System.DBNull.Value == dr["LastPremiumDate"]))
+                dtLastPremiumPaymentDate.Value = DateTime.Parse(dr["LastPremiumDate"].ToString());
         }
 
         private DataRow getSelectedDataRowForLifeInsurance()
@@ -2625,6 +2627,8 @@ namespace FinancialPlannerClient.CurrentStatus
             txtRider2Amt.Text = "0";
             txtRemarks.Text = "";
             txtAttachPath.Text = "";
+            dtLastPremiumPaymentDate.Checked = false;
+            dtLastPremiumPaymentDate.Text = "";
         }
 
         private void btnEditFamilyMember_Click(object sender, EventArgs e)
@@ -2725,6 +2729,8 @@ namespace FinancialPlannerClient.CurrentStatus
             lifeInsurance.UpdatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
             lifeInsurance.UpdatedBy = Program.CurrentUser.Id;
             lifeInsurance.MachineName = Environment.MachineName;
+            if (dtLastPremiumPaymentDate.Checked)
+                lifeInsurance.LastPremiumDate = dtLastPremiumPaymentDate.Value;
             return lifeInsurance;
         }
 
@@ -3314,11 +3320,24 @@ namespace FinancialPlannerClient.CurrentStatus
 
         private void dtPPFOpeningDate_ValueChanged(object sender, EventArgs e)
         {
+            calculatePPFMaturityDate();
+        }
+
+        private void calculatePPFMaturityDate()
+        {
             if (dtPPFOpeningDate.Value != null)
             {
-                dtPPFMaturityDate.Value = (chkPPFAccountExtended.Checked) ? dtPPFOpeningDate.Value.AddYears(5) :
-                    dtPPFOpeningDate.Value.AddYears(15);
+                DateTime ppfAccountCalStartDate = dtPPFOpeningDate.Value.Month < 4 ?
+                     new DateTime(dtPPFOpeningDate.Value.Year, 4, 1) : new DateTime(dtPPFOpeningDate.Value.Year + 1, 4, 1);
+
+                dtPPFMaturityDate.Value = (chkPPFAccountExtended.Checked) ? ppfAccountCalStartDate.AddYears(5):
+                    ppfAccountCalStartDate.AddYears(15);
             }
         }
+
+        private void chkPPFAccountExtended_CheckedChanged(object sender, EventArgs e)
+        {
+            calculatePPFMaturityDate();
+        }    
     }
 }

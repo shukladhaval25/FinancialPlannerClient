@@ -582,6 +582,8 @@
             this.btnOthersDelete = new System.Windows.Forms.Button();
             this.btnOthersAdd = new System.Windows.Forms.Button();
             this.btnOthersEdit = new System.Windows.Forms.Button();
+            this.dtLastPremiumPaymentDate = new System.Windows.Forms.DateTimePicker();
+            this.label205 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.tabCurrenStatus.SuspendLayout();
             this.LifeInsurance.SuspendLayout();
@@ -854,6 +856,8 @@
             // pnlLifeInsuranceDetail
             // 
             this.pnlLifeInsuranceDetail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlLifeInsuranceDetail.Controls.Add(this.dtLastPremiumPaymentDate);
+            this.pnlLifeInsuranceDetail.Controls.Add(this.label205);
             this.pnlLifeInsuranceDetail.Controls.Add(this.dtAsOnDate);
             this.pnlLifeInsuranceDetail.Controls.Add(this.label45);
             this.pnlLifeInsuranceDetail.Controls.Add(this.txtBalanceUnit);
@@ -946,7 +950,7 @@
             // 
             this.label45.AutoSize = true;
             this.label45.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label45.Location = new System.Drawing.Point(549, 235);
+            this.label45.Location = new System.Drawing.Point(551, 241);
             this.label45.Name = "label45";
             this.label45.Size = new System.Drawing.Size(69, 15);
             this.label45.TabIndex = 68;
@@ -1190,7 +1194,7 @@
             // 
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(549, 214);
+            this.label23.Location = new System.Drawing.Point(551, 214);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(75, 15);
             this.label23.TabIndex = 42;
@@ -4424,6 +4428,7 @@
             this.chkPPFAccountExtended.TabIndex = 49;
             this.chkPPFAccountExtended.Text = "Account Extended";
             this.chkPPFAccountExtended.UseVisualStyleBackColor = true;
+            this.chkPPFAccountExtended.CheckedChanged += new System.EventHandler(this.chkPPFAccountExtended_CheckedChanged);
             // 
             // txtPPF_ROI
             // 
@@ -6511,6 +6516,26 @@
             this.btnOthersEdit.UseVisualStyleBackColor = true;
             this.btnOthersEdit.Click += new System.EventHandler(this.btnOthersEdit_Click);
             // 
+            // dtLastPremiumPaymentDate
+            // 
+            this.dtLastPremiumPaymentDate.Checked = false;
+            this.dtLastPremiumPaymentDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtLastPremiumPaymentDate.Location = new System.Drawing.Point(639, 290);
+            this.dtLastPremiumPaymentDate.Name = "dtLastPremiumPaymentDate";
+            this.dtLastPremiumPaymentDate.ShowCheckBox = true;
+            this.dtLastPremiumPaymentDate.Size = new System.Drawing.Size(147, 21);
+            this.dtLastPremiumPaymentDate.TabIndex = 71;
+            // 
+            // label205
+            // 
+            this.label205.AutoSize = true;
+            this.label205.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label205.Location = new System.Drawing.Point(551, 268);
+            this.label205.Name = "label205";
+            this.label205.Size = new System.Drawing.Size(167, 15);
+            this.label205.TabIndex = 70;
+            this.label205.Text = "Last Premium Payment Date:";
+            // 
             // CurrentStatus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -7181,5 +7206,7 @@
         private System.Windows.Forms.ComboBox cmbOthersTransactionType;
         private System.Windows.Forms.Label label204;
         private System.Windows.Forms.CheckBox chkPPFAccountExtended;
+        private System.Windows.Forms.DateTimePicker dtLastPremiumPaymentDate;
+        private System.Windows.Forms.Label label205;
     }
 }

@@ -2,6 +2,7 @@
 using DevExpress.XtraNavBar;
 using FinancialPlanner.Common;
 using FinancialPlanner.Common.Model;
+using FinancialPlanner.Common.Model.TaskManagement;
 using FinancialPlanner.Common.Permission;
 using FinancialPlannerClient.Clients.MailService;
 using FinancialPlannerClient.Master;
@@ -15,6 +16,7 @@ using System.Diagnostics;
 using System.Net;
 using System.Reflection;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FinancialPlannerClient.Home
@@ -860,8 +862,9 @@ namespace FinancialPlannerClient.Home
             // 
             // timerNotification
             // 
+            this.timerNotification.Enabled = true;
             this.timerNotification.Interval = 60000;
-            this.timerNotification.Tick += new System.EventHandler(this.timerNotification_Tick);
+            this.timerNotification.Tick += new System.EventHandler(this.timerNotification_TickAsync);
             // 
             // frmHome
             // 
@@ -1201,12 +1204,26 @@ namespace FinancialPlannerClient.Home
             showNavigationPage(amcView.Name);
         }
 
-        private void timerNotification_Tick(object sender, EventArgs e)
+        private async void timerNotification_TickAsync(object sender, EventArgs e)
         {
             int count = new TaskNotificationInfo().GetNotification(Program.CurrentUser.Id);
+            IList<TaskReminder> taskReminders = await Task.Run(() => new TaskReminderInfo().GetAllAsync(Program.CurrentUser.Id));
             if (count > 0)
             {
                 displaynotify(count);
+            }
+            promptReminder(taskReminders);
+        }
+
+        private static void promptReminder(IList<TaskReminder> taskReminders)
+        {
+            if (taskReminders.Count > 0)
+            {
+                foreach (TaskReminder taskReminder in taskReminders)
+                {
+                    TaskReminderPromptView reminderPromptView = new TaskReminderPromptView(taskReminder);
+                    reminderPromptView.Show();
+                }
             }
         }
 

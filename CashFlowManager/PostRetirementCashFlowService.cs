@@ -68,8 +68,8 @@ namespace FinancialPlannerClient.CashFlowManager
         private int getRetirementYear()
         {
             int year = cashFlowCalculation.IslientRetirmentAgeForPrimaryCalculation ?
-                 DateTime.Now.Year + (cashFlowCalculation.ClientRetirementAge - cashFlowCalculation.ClientCurrentAge) :
-                 DateTime.Now.Year + (cashFlowCalculation.SpouseRetirementAge - cashFlowCalculation.SpouseCurrentAge);
+                 DateTime.Now.Year + ((cashFlowCalculation.ClientRetirementAge ) - cashFlowCalculation.ClientCurrentAge) :
+                 DateTime.Now.Year + ((cashFlowCalculation.SpouseRetirementAge ) - cashFlowCalculation.SpouseCurrentAge);
             return year;
         }
         private int getExpectedLifeEndYear()

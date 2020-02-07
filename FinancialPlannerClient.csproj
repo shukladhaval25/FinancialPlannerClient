@@ -873,12 +873,26 @@
     <Compile Include="TaskManagementSystem\TaskHistoryInfo.cs" />
     <Compile Include="TaskManagementSystem\TaskNotificationInfo.cs" />
     <Compile Include="TaskManagementSystem\TaskCommentInfo.cs" />
+    <Compile Include="TaskManagementSystem\TaskReminderInfo.cs" />
+    <Compile Include="TaskManagementSystem\TaskReminderPromptView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TaskManagementSystem\TaskReminderPromptView.Designer.cs">
+      <DependentUpon>TaskReminderPromptView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TaskManagementSystem\TaskReminderView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TaskManagementSystem\TaskReminderView.Designer.cs">
+      <DependentUpon>TaskReminderView.cs</DependentUpon>
+    </Compile>
     <Compile Include="TaskManagementSystem\TaskReports.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="TaskManagementSystem\TaskReports.Designer.cs">
       <DependentUpon>TaskReports.cs</DependentUpon>
     </Compile>
+    <Compile Include="TaskManagementSystem\TransactionOptions\Redemtion.cs" />
     <Compile Include="TaskManagementSystem\TransactionOptions\AdditionalPurchase.cs" />
     <Compile Include="TaskManagementSystem\TransactionOptions\ChangeOfNameTrans.cs" />
     <Compile Include="TaskManagementSystem\TransactionOptions\Helper\SwitchTypeInvestmentRecommendationHelper.cs" />
@@ -1323,6 +1337,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TaskManagementSystem\TaskCommentView.resx">
       <DependentUpon>TaskCommentView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TaskManagementSystem\TaskReminderPromptView.resx">
+      <DependentUpon>TaskReminderPromptView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TaskManagementSystem\TaskReminderView.resx">
+      <DependentUpon>TaskReminderView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TaskManagementSystem\TaskReports.resx">
       <DependentUpon>TaskReports.cs</DependentUpon>

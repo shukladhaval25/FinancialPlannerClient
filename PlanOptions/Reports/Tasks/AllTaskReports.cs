@@ -71,6 +71,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports.Tasks
             this.GroupHeader1.GroupFields[0].FieldName = "AssignToName";
             this.lblGroupField.Text = "Assign To:";
             lblGroupFieldValue.DataBindings.Add("Text", this.DataSource, "AssignToName");
+            xrLabelReportTitle.Text = "Assignee wise report";
         }
 
         private void setReportForCustomerWise()
@@ -78,6 +79,8 @@ namespace FinancialPlannerClient.PlanOptions.Reports.Tasks
             this.GroupHeader1.GroupFields[0].FieldName = "CustomerName";
             this.lblGroupField.Text = "Customer:";
             lblGroupFieldValue.DataBindings.Add("Text", this.DataSource, "CustomerName");
+            xrLabelReportTitle.Text = (reportGroupBy == TaskReportGroupBy.ClientWise) ?
+                "Customer wise report" : "Pending task report";
         }
 
         private void setReportForStatusWise()
@@ -85,6 +88,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports.Tasks
             this.GroupHeader1.GroupFields[0].FieldName = "TaskStatus";
             this.lblGroupField.Text = "Task Status:";
             lblGroupFieldValue.DataBindings.Add("Text", this.DataSource, "TaskStatus");
+            xrLabelReportTitle.Text = "Status wise report";
         }
     }
 }

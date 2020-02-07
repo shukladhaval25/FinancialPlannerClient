@@ -60,7 +60,7 @@ namespace FinancialPlannerClient.PlanOptions
         {
             PlannerAssumptionInfo plannerAssumptionInfo = new PlannerAssumptionInfo();
             PlannerAssumption plannerAssumption = plannerAssumptionInfo.GetAll(this.planId);
-            int retirementYear = (client.DOB.Year + plannerAssumption.ClientRetirementAge);
+            int retirementYear = (client.DOB.Year + plannerAssumption.ClientRetirementAge + 1);
             int endOfLifeYear = (client.DOB.Year + plannerAssumption.ClientLifeExpectancy) + 1;
             txtGoalStartYear.Text = retirementYear.ToString();
             txtGoalEndYear.Text = endOfLifeYear.ToString();

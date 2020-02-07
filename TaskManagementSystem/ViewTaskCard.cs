@@ -202,6 +202,7 @@ namespace FinancialPlannerClient.TaskManagementSystem
             {
                 cmbTransactionType.Properties.Items.Add("Fresh Purchase");
                 cmbTransactionType.Properties.Items.Add("Additional Purchase");
+                cmbTransactionType.Properties.Items.Add("Redemption");
                 cmbTransactionType.Properties.Items.Add("Switch");
                 cmbTransactionType.Properties.Items.Add("STP");
                 cmbTransactionType.Properties.Items.Add("SIP Fresh");
@@ -452,6 +453,18 @@ namespace FinancialPlannerClient.TaskManagementSystem
             if (!string.IsNullOrEmpty(cmbOwner.Text))
             {
                 cmbOwner.Tag = users.FirstOrDefault(i => i.UserName == cmbOwner.Text).Id;
+            }
+        }
+
+        private void tabPaneComment_SelectedPageChanged(object sender, DevExpress.XtraBars.Navigation.SelectedPageChangedEventArgs e)
+        {
+            if (e.Page.Caption.Equals("Reminder"))
+            {
+                TaskReminderView taskReminder = new TaskReminderView(this.taskCard.Id);
+                taskReminder.TopLevel = false;
+                taskReminder.Dock = DockStyle.Fill;
+                tabPageReminder.Controls.Add(taskReminder);
+                taskReminder.Visible = true;
             }
         }
     }

@@ -256,6 +256,7 @@
             this.lblClientID.Size = new System.Drawing.Size(27, 16);
             this.lblClientID.TabIndex = 4;
             this.lblClientID.Text = "#Name";
+            this.lblClientID.Visible = false;
             // 
             // pnlNavCtrl
             // 

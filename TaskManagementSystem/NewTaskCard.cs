@@ -33,6 +33,7 @@ namespace FinancialPlannerClient.TaskManagementSystem
             fillupAssignTo();        
             txtCreatedBy.Text = Program.CurrentUser.UserName;
             txtCreatedOn.Text = DateTime.Now.ToString();
+            dtDueDate.Properties.MinValue = DateTime.Now;
         }
 
         private void fillupAssignTo()
@@ -101,6 +102,7 @@ namespace FinancialPlannerClient.TaskManagementSystem
             {
                 cmbTransactionType.Properties.Items.Add("Fresh Purchase");
                 cmbTransactionType.Properties.Items.Add("Additional Purchase");
+                cmbTransactionType.Properties.Items.Add("Redemption");
                 cmbTransactionType.Properties.Items.Add("Switch");
                 cmbTransactionType.Properties.Items.Add("STP");
                 cmbTransactionType.Properties.Items.Add("SIP Fresh");

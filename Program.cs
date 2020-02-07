@@ -44,6 +44,7 @@ namespace FinancialPlannerClient
             {                
                 container.RegisterType<ITransactionType, FreshPurchaseTrans>("Fresh Purchase");
                 container.RegisterType<ITransactionType, AdditionalPurchase>("Additional Purchase");
+                container.RegisterType<ITransactionType, AdditionalPurchase>("Redemption");
                 container.RegisterType<ITransactionType, Switch>("Switch");
                 container.RegisterType<ITransactionType, STPTrans>("STP");
                 container.RegisterType<ITransactionType, SIPFresh>("SIP Fresh");

@@ -103,6 +103,7 @@
             this.layoutViewField_tileViewColumnNewName = new DevExpress.XtraGrid.Views.Layout.LayoutViewField();
             this.layoutViewCard1 = new DevExpress.XtraGrid.Views.Layout.LayoutViewCard();
             this.item1 = new DevExpress.XtraLayout.SimpleSeparator();
+            this.tabPageReminder = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             this.pnlTaskOtherOptions = new System.Windows.Forms.Panel();
             this.splitContainerTransOperation = new DevExpress.XtraEditors.SplitContainerControl();
             this.vGridTransaction = new DevExpress.XtraVerticalGrid.VGridControl();
@@ -415,16 +416,19 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabPaneComment.Controls.Add(this.tabNavigationCommentsPage);
             this.tabPaneComment.Controls.Add(this.tabNavigationHistoryPage);
+            this.tabPaneComment.Controls.Add(this.tabPageReminder);
             this.tabPaneComment.Location = new System.Drawing.Point(0, 0);
             this.tabPaneComment.Name = "tabPaneComment";
             this.tabPaneComment.Pages.AddRange(new DevExpress.XtraBars.Navigation.NavigationPageBase[] {
             this.tabNavigationCommentsPage,
-            this.tabNavigationHistoryPage});
+            this.tabNavigationHistoryPage,
+            this.tabPageReminder});
             this.tabPaneComment.RegularSize = new System.Drawing.Size(616, 332);
             this.tabPaneComment.SelectedPage = this.tabNavigationCommentsPage;
             this.tabPaneComment.Size = new System.Drawing.Size(616, 332);
             this.tabPaneComment.TabIndex = 30;
-            this.tabPaneComment.Text = "Comments";
+            this.tabPaneComment.Tag = "Comments";
+            this.tabPaneComment.SelectedPageChanged += new DevExpress.XtraBars.Navigation.SelectedPageChangedEventHandler(this.tabPaneComment_SelectedPageChanged);
             // 
             // tabNavigationCommentsPage
             // 
@@ -612,7 +616,7 @@
             this.tabNavigationHistoryPage.Caption = "History";
             this.tabNavigationHistoryPage.Controls.Add(this.gridControlHistory);
             this.tabNavigationHistoryPage.Name = "tabNavigationHistoryPage";
-            this.tabNavigationHistoryPage.Size = new System.Drawing.Size(598, 287);
+            this.tabNavigationHistoryPage.Size = new System.Drawing.Size(616, 332);
             // 
             // gridControlHistory
             // 
@@ -620,7 +624,7 @@
             this.gridControlHistory.Location = new System.Drawing.Point(0, 0);
             this.gridControlHistory.MainView = this.layoutViewHistory;
             this.gridControlHistory.Name = "gridControlHistory";
-            this.gridControlHistory.Size = new System.Drawing.Size(598, 287);
+            this.gridControlHistory.Size = new System.Drawing.Size(616, 332);
             this.gridControlHistory.TabIndex = 0;
             this.gridControlHistory.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.layoutViewHistory});
@@ -762,6 +766,12 @@
             this.item1.Name = "item1";
             this.item1.Size = new System.Drawing.Size(473, 6);
             this.item1.Spacing = new DevExpress.XtraLayout.Utils.Padding(2, 2, 2, 2);
+            // 
+            // tabPageReminder
+            // 
+            this.tabPageReminder.Caption = "Reminder";
+            this.tabPageReminder.Name = "tabPageReminder";
+            this.tabPageReminder.Size = new System.Drawing.Size(616, 332);
             // 
             // pnlTaskOtherOptions
             // 
@@ -1216,6 +1226,7 @@
         private DevExpress.XtraLayout.SimpleSeparator item1;
         private DevExpress.XtraEditors.TextEdit txtOtherName;
         private DevExpress.XtraEditors.LabelControl labelControl14;
+        private DevExpress.XtraBars.Navigation.TabNavigationPage tabPageReminder;
     }
 }
 
