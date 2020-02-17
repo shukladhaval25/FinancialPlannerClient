@@ -25,9 +25,12 @@ namespace FinancialPlannerClient.TaskManagementSystem
         private void displayTaskReminders()
         {
             reminders = new TaskReminderInfo().GetTaskReminders(taskId);
-            if (reminders.Count > 0)
+            if (reminders != null)
             {
-                gridControlReminder.DataSource = reminders;
+                if (reminders.Count > 0)
+                {
+                    gridControlReminder.DataSource = reminders;
+                }
             }
         }
 

@@ -425,3 +425,4 @@ C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\
 C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.Reports.PPF.PPFMaturityReport.resources
 C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.TaskManagementSystem.TaskReminderView.resources
 C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.TaskManagementSystem.TaskReminderPromptView.resources
+C:\Application Development\Financial Planner Project\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.Controls.MOM.resources

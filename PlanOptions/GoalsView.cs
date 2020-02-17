@@ -274,7 +274,8 @@ namespace FinancialPlannerClient.PlanOptions
             {
                 int startYear = int.Parse(txtGoalStartYear.Text);
                 int endYear = int.Parse(txtGoalEndYear.Text);
-                int frequency = (string.IsNullOrEmpty(txtGoalRecurrence.Text) ? 1 : int.Parse(txtGoalRecurrence.Text));
+                int frequency = ((string.IsNullOrEmpty(txtGoalRecurrence.Text) ||txtGoalRecurrence.Text == "0") 
+                    ? 1 : int.Parse(txtGoalRecurrence.Text));
                 bool isPriorityAssignDuplicate = false;
                 int currentPriorityNumber = int.Parse(numPriority.Value.ToString());
                 for (int year = startYear; year < endYear;)

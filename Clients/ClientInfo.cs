@@ -35,6 +35,7 @@ namespace FinancialPlannerClient.Clients
         private DataTable _dtDocument;
         private DataTable _dtFMBankDetails = new DataTable();
         private PersonalInformation _personalInfo;
+        private PlannerAssumption plannerAssumption;
         IList<Goals> _goals;
 
         public int PlannerId
@@ -794,7 +795,7 @@ namespace FinancialPlannerClient.Clients
             lblClientTiitle.Text = _client.Name;
             lblSpouseTitle.Text = getSpouseName();
             PlannerAssumptionInfo plannerassumptionInfo = new PlannerAssumptionInfo();
-            PlannerAssumption plannerAssumption = plannerassumptionInfo.GetAll(PlannerId);
+            plannerAssumption = plannerassumptionInfo.GetAll(PlannerId);
             displayPlannerAssumptionData(plannerAssumption);
         }
 
@@ -1696,7 +1697,8 @@ namespace FinancialPlannerClient.Clients
             cmbIncomeBy.Text = "";
             txtExpectedGrowthSalary.Text = "0";
             txtIncomeStartYear.Text = DateTime.Now.Year.ToString();
-            txtIncomeEndYear.Text = "";
+            txtIncomeEndYear.Text = (_client.DOB.Year + plannerAssumption.ClientRetirementAge + 1).ToString();
+            txtincomeGrowthPercentage.Text = plannerAssumption.ClientIncomeRise.ToString();
 
             txtCTC.Tag = "0";
             txtCTC.Text = "0";
@@ -1706,7 +1708,7 @@ namespace FinancialPlannerClient.Clients
             txtOtherDeduction.Text = "0";
             txtNetTakeHome.Text = "0";
             txtNextIncrementMonthYear.Text = "";
-            txtExpectedGrowthSalary.Text = Program.GetAssumptionMaster().IncomeRaiseRatio.ToString();
+            txtExpectedGrowthSalary.Text = plannerAssumption.ClientIncomeRise.ToString();
             txtBonusMonthYear.Text = "";
             txtAnnualBonusAmt.Text = "0";
         }
@@ -1899,9 +1901,10 @@ namespace FinancialPlannerClient.Clients
             txtExpItem.Text = "";
             txtExpAmount.Text = "0";
             txtExpDescription.Text = "";
-            txtExpInflationRate.Text = (Program.GetAssumptionMaster().PreRetirementInflactionRate != null) ?
-                Program.GetAssumptionMaster().PreRetirementInflactionRate.ToString() :
-                string.Empty;
+            txtExpInflationRate.Text = (plannerAssumption.PreRetirementInflactionRate.ToString());
+                //(Program.GetAssumptionMaster().PreRetirementInflactionRate != null) ?
+                //Program.GetAssumptionMaster().PreRetirementInflactionRate.ToString() :
+                //string.Empty;
             chkEligibleForInsuranceCover.Checked = false;
         }
 

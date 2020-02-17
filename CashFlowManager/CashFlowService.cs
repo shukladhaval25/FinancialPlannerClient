@@ -244,8 +244,8 @@ namespace FinancialPlannerClient.CashFlowManager
 
         private void addRowsBasedOnCalculation()
         {
-            int noOfYearsForClient = (_cashFlowCalculation.ClientRetirementAge + 1)- _cashFlowCalculation.ClientCurrentAge;
-            int noOfYearsForSpouse = (_cashFlowCalculation.SpouseRetirementAge + 1) - _cashFlowCalculation.SpouseCurrentAge;
+            int noOfYearsForClient = (_cashFlowCalculation.ClientRetirementAge)- _cashFlowCalculation.ClientCurrentAge;
+            int noOfYearsForSpouse = (_cashFlowCalculation.SpouseRetirementAge) - _cashFlowCalculation.SpouseCurrentAge;
             //int noOfYearsForCalculation = (noOfYearsForClient >= noOfYearsForSpouse) ? noOfYearsForClient : noOfYearsForSpouse;
             int noOfYearsForCalculation = (_cashFlowCalculation.IslientRetirmentAgeForPrimaryCalculation) ? noOfYearsForClient : noOfYearsForSpouse;
             for (int years = 1; years <= noOfYearsForCalculation; years++)

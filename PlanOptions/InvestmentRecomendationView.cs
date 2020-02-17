@@ -800,7 +800,7 @@ namespace FinancialPlannerClient.PlanOptions
         private SIPTypeInvestmentRecomendation getSelectedSIPTypeInvestmentRecommendation()
         {
             SIPTypeInvestmentRecomendation sipInvestmentRecommendation = new SIPTypeInvestmentRecomendation();
-            if (gridViewSTPInvestment.SelectedRowsCount > 0)
+            if (gridViewSIPInvestmentRecomendation.SelectedRowsCount > 0)
             {
                 object obj = gridViewSIPInvestmentRecomendation.GetFocusedRow();
                 sipInvestmentRecommendation.Id = int.Parse(gridViewSIPInvestmentRecomendation.GetFocusedRowCellValue("Id").ToString());

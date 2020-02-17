@@ -55,6 +55,7 @@
             this.label33 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.grpFundAllocation = new DevExpress.XtraEditors.GroupControl();
+            this.lblInformation = new DevExpress.XtraEditors.LabelControl();
             this.btnClosePlanoptions = new DevExpress.XtraEditors.SimpleButton();
             this.btnSavePlanoption = new DevExpress.XtraEditors.SimpleButton();
             this.btnDelete = new DevExpress.XtraEditors.SimpleButton();
@@ -67,7 +68,6 @@
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.txtTotalCurrentStatusSurplusValue = new DevExpress.XtraEditors.TextEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.lblInformation = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlCurrentStatusGoal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCurrentStatusGoal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFundAllocation.Properties)).BeginInit();
@@ -114,6 +114,7 @@
             // 
             // txtFundAllocation
             // 
+            this.txtFundAllocation.Enabled = false;
             this.txtFundAllocation.Location = new System.Drawing.Point(128, 365);
             this.txtFundAllocation.Name = "txtFundAllocation";
             this.txtFundAllocation.Size = new System.Drawing.Size(203, 20);
@@ -121,6 +122,7 @@
             // 
             // cmbCurrentStsatusToGoal
             // 
+            this.cmbCurrentStsatusToGoal.Enabled = false;
             this.cmbCurrentStsatusToGoal.Location = new System.Drawing.Point(128, 339);
             this.cmbCurrentStsatusToGoal.Name = "cmbCurrentStsatusToGoal";
             this.cmbCurrentStsatusToGoal.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -194,6 +196,18 @@
             this.grpFundAllocation.Size = new System.Drawing.Size(467, 404);
             this.grpFundAllocation.TabIndex = 8;
             this.grpFundAllocation.Text = "Fund Allocation To Goal";
+            // 
+            // lblInformation
+            // 
+            this.lblInformation.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInformation.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.lblInformation.Appearance.Options.UseFont = true;
+            this.lblInformation.Appearance.Options.UseForeColor = true;
+            this.lblInformation.Location = new System.Drawing.Point(45, 305);
+            this.lblInformation.Name = "lblInformation";
+            this.lblInformation.Size = new System.Drawing.Size(395, 14);
+            this.lblInformation.TabIndex = 29;
+            this.lblInformation.Text = "(Its require to reopen plan to reflact changes in fund allocation)";
             // 
             // btnClosePlanoptions
             // 
@@ -360,18 +374,6 @@
             this.labelControl1.Size = new System.Drawing.Size(143, 13);
             this.labelControl1.TabIndex = 0;
             this.labelControl1.Text = "Total Current Status Surplus :";
-            // 
-            // lblInformation
-            // 
-            this.lblInformation.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInformation.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.lblInformation.Appearance.Options.UseFont = true;
-            this.lblInformation.Appearance.Options.UseForeColor = true;
-            this.lblInformation.Location = new System.Drawing.Point(45, 305);
-            this.lblInformation.Name = "lblInformation";
-            this.lblInformation.Size = new System.Drawing.Size(395, 14);
-            this.lblInformation.TabIndex = 29;
-            this.lblInformation.Text = "(Its require to reopen plan to reflact changes in fund allocation)";
             // 
             // GoalStatusView
             // 

@@ -5,6 +5,7 @@ using FinancialPlanner.Common.Model;
 using FinancialPlanner.Common.Model.TaskManagement;
 using FinancialPlanner.Common.Permission;
 using FinancialPlannerClient.Clients.MailService;
+using FinancialPlannerClient.Controls;
 using FinancialPlannerClient.Master;
 using FinancialPlannerClient.Master.TaskMaster;
 using FinancialPlannerClient.PlanOptions.Reports.Insurance;
@@ -78,6 +79,7 @@ namespace FinancialPlannerClient.Home
         private NavBarItem navBarItemLICPolicyMaturity;
         private NavBarSeparatorItem navBarSeparator;
         private SimpleButton btnPPFMaturity;
+        private NavBarItem navBarItemMOM;
         private const string AUDITLOGCONTROLLER = "Activities/Add";
 
         public frmHome()
@@ -179,6 +181,7 @@ namespace FinancialPlannerClient.Home
             this.navBarItemTask = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarGroupOthers = new DevExpress.XtraNavBar.NavBarGroup();
             this.navBarItemAuditTrail = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarItemMOM = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarGroupReports = new DevExpress.XtraNavBar.NavBarGroup();
             this.navigationFrame1 = new DevExpress.XtraBars.Navigation.NavigationFrame();
             this.homeNavigationPage1 = new DevExpress.XtraBars.Navigation.NavigationPage();
@@ -602,7 +605,8 @@ namespace FinancialPlannerClient.Home
             this.navBarItemMFScheme,
             this.navBarItemAMC,
             this.navBarItemBank,
-            this.navBarItemMFCategory});
+            this.navBarItemMFCategory,
+            this.navBarItemMOM});
             this.navBarMenuGroup.Location = new System.Drawing.Point(2, 2);
             this.navBarMenuGroup.Name = "navBarMenuGroup";
             this.navBarMenuGroup.OptionsNavPane.ExpandedWidth = 136;
@@ -764,10 +768,13 @@ namespace FinancialPlannerClient.Home
             // 
             // navBarGroupOthers
             // 
-            this.navBarGroupOthers.Caption = "Tools";
+            this.navBarGroupOthers.Caption = "Other Options";
+            this.navBarGroupOthers.Expanded = true;
             this.navBarGroupOthers.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemAuditTrail)});
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemAuditTrail),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemMOM)});
             this.navBarGroupOthers.Name = "navBarGroupOthers";
+            this.navBarGroupOthers.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarGroupOthers.SmallImage")));
             // 
             // navBarItemAuditTrail
             // 
@@ -775,6 +782,14 @@ namespace FinancialPlannerClient.Home
             this.navBarItemAuditTrail.Name = "navBarItemAuditTrail";
             this.navBarItemAuditTrail.SmallImage = global::FinancialPlannerClient.Properties.Resources.AuditTrail_301;
             this.navBarItemAuditTrail.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItemAuditTrail_LinkClicked);
+            // 
+            // navBarItemMOM
+            // 
+            this.navBarItemMOM.Caption = "MOM";
+            this.navBarItemMOM.Name = "navBarItemMOM";
+            this.navBarItemMOM.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarItemMOM.SmallImage")));
+            this.navBarItemMOM.Visible = false;
+            this.navBarItemMOM.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItemMOM_LinkClicked);
             // 
             // navBarGroupReports
             // 
@@ -1212,7 +1227,8 @@ namespace FinancialPlannerClient.Home
             {
                 displaynotify(count);
             }
-            promptReminder(taskReminders);
+            if (taskReminders != null)
+                promptReminder(taskReminders);
         }
 
         private static void promptReminder(IList<TaskReminder> taskReminders)
@@ -1294,6 +1310,16 @@ namespace FinancialPlannerClient.Home
         {
             InsurancePremiumParameters insurancePremiumParameters = new InsurancePremiumParameters(ReportType.PPFMaturity);
             insurancePremiumParameters.ShowDialog();
+        }
+
+        private void navBarItemMOM_LinkClicked(object sender, NavBarLinkEventArgs e)
+        {
+            MOM mon = new MOM();
+            //mon.TopLevel = false;
+            mon.Visible = true;
+            homeNavigationPage1.Name = mon.Name;
+            homeNavigationPage1.Controls.Add(mon);
+            showNavigationPage(mon.Name);
         }
     }
 }

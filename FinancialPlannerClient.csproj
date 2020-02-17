@@ -250,6 +250,12 @@
     <Compile Include="Clients\MailService\MailManagerDeskBoard.Designer.cs">
       <DependentUpon>MailManagerDeskBoard.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\MOM.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\MOM.Designer.cs">
+      <DependentUpon>MOM.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\ProcessContoller.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -1025,6 +1031,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Clients\MailService\MailManagerDeskBoard.resx">
       <DependentUpon>MailManagerDeskBoard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\MOM.resx">
+      <DependentUpon>MOM.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\ProcessContoller.resx">
       <DependentUpon>ProcessContoller.cs</DependentUpon>
