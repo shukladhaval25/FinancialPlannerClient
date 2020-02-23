@@ -1282,7 +1282,7 @@ namespace FinancialPlannerClient.Clients
             txtGoalMappingShare.Text = "0";
             txtAssetRealisationYear.Text = DateTime.Now.Year.ToString();
             txtNonFinancialDesc.Text = "";
-            txtNonFinancialGrowthPercentage.Text = Program.GetAssumptionMaster().NonFinancialRateOfReturn.ToString();
+            txtNonFinancialGrowthPercentage.Text = plannerAssumption.OtherReturnRate.ToString();
             chkNonFinancialAssetsInsuranceCoverage.Checked = false;
         }
 
@@ -1394,6 +1394,7 @@ namespace FinancialPlannerClient.Clients
                 txtAssetRealisationYear.Text = nonFinancialAsset.AssetRealisationYear;
                 txtNonFinancialDesc.Text = nonFinancialAsset.Description;
                 txtNonFinancialGrowthPercentage.Text = nonFinancialAsset.GrowthPercentage.ToString();
+                txtAssetRealisationYear.Text = nonFinancialAsset.AssetRealisationYear;
             }
             else
                 setDefaultNonFinancialAssetValue();
@@ -1901,10 +1902,11 @@ namespace FinancialPlannerClient.Clients
             txtExpItem.Text = "";
             txtExpAmount.Text = "0";
             txtExpDescription.Text = "";
-            txtExpInflationRate.Text = (plannerAssumption.PreRetirementInflactionRate.ToString());
-                //(Program.GetAssumptionMaster().PreRetirementInflactionRate != null) ?
-                //Program.GetAssumptionMaster().PreRetirementInflactionRate.ToString() :
-                //string.Empty;
+            txtExpInflationRate.Text = (plannerAssumption.OngoingExpRise.ToString());
+            //(Program.GetAssumptionMaster().PreRetirementInflactionRate != null) ?
+            //Program.GetAssumptionMaster().PreRetirementInflactionRate.ToString() :
+            //string.Empty;
+            txtExpEndYear.Text = (_client.DOB.Year + plannerAssumption.ClientRetirementAge + 1).ToString();
             chkEligibleForInsuranceCover.Checked = false;
         }
 
@@ -2532,6 +2534,20 @@ namespace FinancialPlannerClient.Clients
             catch(Exception ex)
             {
                 MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void cmbIncomeBy_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbIncomeSource.Tag.ToString() == "0" && cmbIncomeBy.Text.Equals(_personalInfo.Spouse.Name,StringComparison.OrdinalIgnoreCase))
+            {
+                txtExpectedGrowthSalary.Text = plannerAssumption.SpouseIncomeRise.ToString();
+                txtincomeGrowthPercentage.Text = plannerAssumption.SpouseIncomeRise.ToString();
+            }
+            else if (cmbIncomeSource.Tag.ToString() == "0" && cmbIncomeBy.Text.Equals(_personalInfo.Client.Name, StringComparison.OrdinalIgnoreCase))
+            {
+                txtExpectedGrowthSalary.Text = plannerAssumption.ClientIncomeRise.ToString();
+                txtincomeGrowthPercentage.Text = plannerAssumption.ClientIncomeRise.ToString();
             }
         }
     }

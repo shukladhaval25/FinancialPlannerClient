@@ -83,6 +83,7 @@ namespace FinancialPlannerClient.TaskManagementSystem
                         {
                             ViewTaskCard viewTaskCard = new ViewTaskCard(taskCard);
                             viewTaskCard.Show();
+                            this.Close();
                             //controls[0].Controls.Clear();
                             //viewTaskCard.TopLevel = false;
                             //viewTaskCard.Visible = true;
@@ -171,6 +172,11 @@ namespace FinancialPlannerClient.TaskManagementSystem
         private void btnView_Click(object sender, EventArgs e)
         {
             gridViewTasks_DoubleClick(sender, e);
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            fillupTasks();
         }
     }
 

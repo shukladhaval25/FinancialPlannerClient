@@ -4436,6 +4436,7 @@
             this.cmbIncomeBy.Name = "cmbIncomeBy";
             this.cmbIncomeBy.Size = new System.Drawing.Size(257, 23);
             this.cmbIncomeBy.TabIndex = 4;
+            this.cmbIncomeBy.SelectedIndexChanged += new System.EventHandler(this.cmbIncomeBy_SelectedIndexChanged);
             // 
             // btnIncomeCancel
             // 

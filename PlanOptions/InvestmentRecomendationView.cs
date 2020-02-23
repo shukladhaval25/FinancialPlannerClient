@@ -536,9 +536,8 @@ namespace FinancialPlannerClient.PlanOptions
             investmentRecommendationRatio.Pid = this.planner.ID;
             investmentRecommendationRatio.EquityRatio = equityRatio;
             investmentRecommendationRatio.DebtRatio = debtRatio;
-            investmentRecommendationRatio.CreatedBy = this.currentClient.ID;
-            investmentRecommendationRatio.CreatedOn = DateTime.Now;
-            investmentRecommendationRatio.UpdatedBy = this.currentClient.ID;
+            investmentRecommendationRatio.CreatedBy = Program.CurrentUser.Id;            investmentRecommendationRatio.CreatedOn = DateTime.Now;
+            investmentRecommendationRatio.UpdatedBy = Program.CurrentUser.Id;
             investmentRecommendationRatio.UpdatedOn = DateTime.Now;
             investmentRecommendationRatio.MachineName = Environment.MachineName;
             investmentRecommedationRatioHelper.Save(investmentRecommendationRatio);
@@ -609,9 +608,9 @@ namespace FinancialPlannerClient.PlanOptions
             switchInvestmentRecomendation.ToSchemeId = selectedScheme.Id;
             switchInvestmentRecomendation.ToSchemeName = selectedScheme.Name;
             switchInvestmentRecomendation.Pid = this.planner.ID;
-            switchInvestmentRecomendation.CreatedBy = this.currentClient.ID;
+            switchInvestmentRecomendation.CreatedBy = Program.CurrentUser.Id;
             switchInvestmentRecomendation.CreatedOn = DateTime.Now;
-            switchInvestmentRecomendation.UpdatedBy = this.currentClient.ID;
+            switchInvestmentRecomendation.UpdatedBy = Program.CurrentUser.Id;
             switchInvestmentRecomendation.UpdatedOn = DateTime.Now;
             switchInvestmentRecomendation.MachineName = Environment.MachineName;
            
@@ -661,9 +660,9 @@ namespace FinancialPlannerClient.PlanOptions
             sipTypeInvestment.SchemeId = selectedScheme.Id;
             sipTypeInvestment.SchemeName = selectedScheme.Name;
             sipTypeInvestment.Category = getCategoryName(selectedScheme.CategoryId);
-            sipTypeInvestment.CreatedBy = this.currentClient.ID;
+            sipTypeInvestment.CreatedBy = Program.CurrentUser.Id;
             sipTypeInvestment.CreatedOn = DateTime.Now;
-            sipTypeInvestment.UpdatedBy = this.currentClient.ID;
+            sipTypeInvestment.UpdatedBy = Program.CurrentUser.Id;
             sipTypeInvestment.UpdatedOn = DateTime.Now;
             sipTypeInvestment.MachineName = Environment.MachineName;
             return sipTypeInvestment;
@@ -678,9 +677,9 @@ namespace FinancialPlannerClient.PlanOptions
             stpInvestmentRecomendation.SchemeId = selectedScheme.Id;
             stpInvestmentRecomendation.SchemeName = selectedScheme.Name;
             stpInvestmentRecomendation.Pid = this.planner.ID;
-            stpInvestmentRecomendation.CreatedBy = this.currentClient.ID;
+            stpInvestmentRecomendation.CreatedBy = Program.CurrentUser.Id;
             stpInvestmentRecomendation.CreatedOn = DateTime.Now;
-            stpInvestmentRecomendation.UpdatedBy = this.currentClient.ID;
+            stpInvestmentRecomendation.UpdatedBy = Program.CurrentUser.Id;
             stpInvestmentRecomendation.UpdatedOn = DateTime.Now;
             stpInvestmentRecomendation.MachineName = Environment.MachineName;
             if (stpInvestmentRecomendation.Duration > 0)
@@ -705,9 +704,9 @@ namespace FinancialPlannerClient.PlanOptions
             investmentRecomendation.SchemeId = selectedScheme.Id;
             investmentRecomendation.SchemeName = selectedScheme.Name;
             investmentRecomendation.Category = getCategoryName(selectedScheme.CategoryId);
-            investmentRecomendation.CreatedBy = this.currentClient.ID;
+            investmentRecomendation.CreatedBy = Program.CurrentUser.Id;
             investmentRecomendation.CreatedOn = DateTime.Now;
-            investmentRecomendation.UpdatedBy = this.currentClient.ID;
+            investmentRecomendation.UpdatedBy = Program.CurrentUser.Id;
             investmentRecomendation.UpdatedOn = DateTime.Now;
             investmentRecomendation.MachineName = Environment.MachineName;
             return investmentRecomendation;

@@ -28,10 +28,12 @@ namespace FinancialPlannerClient.TaskManagementSystem
                 RestAPIExecutor restApiExecutor = new RestAPIExecutor();
 
                 var restResult = restApiExecutor.Execute<IList<TaskReminder>>(apiurl, null, "GET");
-
-                if (jsonSerialization.IsValidJson(restResult.ToString()))
+                if (restResult != null)
                 {
-                    taskReminders = await Task.Run(() => jsonSerialization.DeserializeFromString<IList<TaskReminder>>(restResult.ToString()));
+                    if (jsonSerialization.IsValidJson(restResult.ToString()))
+                    {
+                        taskReminders = await Task.Run(() => jsonSerialization.DeserializeFromString<IList<TaskReminder>>(restResult.ToString()));
+                    }
                 }
                 return taskReminders;
             }

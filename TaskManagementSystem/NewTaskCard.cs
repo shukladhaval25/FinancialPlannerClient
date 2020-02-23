@@ -33,7 +33,7 @@ namespace FinancialPlannerClient.TaskManagementSystem
             fillupAssignTo();        
             txtCreatedBy.Text = Program.CurrentUser.UserName;
             txtCreatedOn.Text = DateTime.Now.ToString();
-            dtDueDate.Properties.MinValue = DateTime.Now;
+            //dtDueDate.Properties.MinValue = DateTime.Now;
         }
 
         private void fillupAssignTo()

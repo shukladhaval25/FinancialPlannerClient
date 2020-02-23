@@ -124,12 +124,88 @@ namespace FinancialPlannerClient.CashFlowManager
 
                 addIncomeCalculation(i, dr, cashFlowCalculation.ClientRetirementAge, cashFlowCalculation.SpouseRetirementAge);
                 addExpenesCalculation(i, dr);
+                addLoansCalculation(i, dr);
                 _dtRetirementCashFlow.Rows.Add(dr);
             }
             calculateEstimatedRequireCorpusFund();
             Logger.LogInfo("GetPostRetirementCashFlowData call end");
             return _dtRetirementCashFlow;
         }
+
+        private void addLoansCalculation(int i, DataRow dr)
+        {
+            int currentLoanYear = (i - DateTime.Now.Year);
+            int previousYearRowIndex = i - 1;
+            double totalLoans = 0;
+            if (cashFlowCalculation.LstLoans != null)
+            {
+                foreach (Loan loan in cashFlowCalculation.LstLoans)
+                {
+                    decimal totalNoOfYearsForLoan = (Decimal)((Decimal)loan.TermLeftInMonths / 12);
+                    if (currentLoanYear <= totalNoOfYearsForLoan || (totalNoOfYearsForLoan > currentLoanYear - 1 && totalNoOfYearsForLoan < currentLoanYear))
+                    {
+                        double loanAmt = getLoanAmount(previousYearRowIndex, loan);
+                        decimal yearsForLoan = totalNoOfYearsForLoan - Math.Truncate(totalNoOfYearsForLoan);
+                        decimal period = 12 / (12 * (yearsForLoan > 0 ? yearsForLoan : 1));
+                        dr[loan.TypeOfLoan] = (currentLoanYear < totalNoOfYearsForLoan) ? loanAmt :
+                            ((loanAmt) / (double)period);
+                        loanAmt = (currentLoanYear < totalNoOfYearsForLoan) ? loanAmt :
+                            ((loanAmt) / (double)period);
+                        totalLoans = totalLoans + loanAmt;
+                    }
+                }
+            }
+            dr["Total Annual Loans"] = totalLoans;
+
+            //dr["Total Annual Expenses"] = totalExpenses;
+            //corpusFundBalance = corpusFundBalance - (totalLoans);
+            //corpusFundBalance = corpusFundBalance + ((corpusFundBalance * invReturnRate) / 100);
+            //dr["Rem_Corp_Fund"] = Math.Round(corpusFundBalance, 2);
+            //Logger.LogInfo("addExpenesCalculation for post retirment cash flow service end");
+        }
+
+        private double getLoanAmount(int previousYearRowIndex, Loan loan)
+        {
+            //return (previousYearRowIndex > 0) ? double.Parse(_dtRetirementCashFlow.Rows[previousYearRowIndex][loan.TypeOfLoan].ToString()) : 0;
+
+            if (_dtRetirementCashFlow.Rows.Count > 0)
+            {
+                return double.Parse(_dtRetirementCashFlow.Rows[_dtRetirementCashFlow.Rows.Count - 1][loan.TypeOfLoan].ToString());
+            }
+            else
+            {
+                DataRow drLastCashFlow = cashFlowService.GetLastIncomeAndExpAtRetirementAge();
+                double loanAmount  = 0;
+                if (drLastCashFlow != null)
+                    loanAmount = long.Parse(drLastCashFlow[loan.TypeOfLoan].ToString());
+                return loanAmount;
+            }
+
+
+        }
+
+        //Logger.LogInfo("add loan for post retirment cash flow service start");
+        //double totalExpenses = 0;
+        //if (cashFlowCalculation.LstGoals != null)
+        //{
+        //    foreach (Loan loan in cashFlowCalculation.LstGoals)
+        //    {
+        //        if (loan.TypeOfLoan  || int.Parse(loan.) == years)
+        //        {
+        //            double retExp = getPostRetirementExpWithInfluationRate(dr, years, goal);
+        //            dr[goal.Name] = retExp;
+        //            totalExpenses = totalExpenses + retExp;
+        //        }
+        //    }
+        //}
+        //dr["Total Annual Expenses"] = totalExpenses;
+        //corpusFundBalance = corpusFundBalance - (totalExpenses - double.Parse(dr["Total Post Tax Income" +
+        //    ""].ToString()));
+        //corpusFundBalance = corpusFundBalance + ((corpusFundBalance * invReturnRate) / 100);
+        //dr["Rem_Corp_Fund"] = Math.Round(corpusFundBalance, 2);
+        //Logger.LogInfo("addExpenesCalculation for post retirment cash flow service end");
+        // }
+
         public void calculateEstimatedRequireCorpusFund()
         {
             Logger.LogInfo("calculateEstimatedRequireCorpusFund for post retirment cash flow service start");

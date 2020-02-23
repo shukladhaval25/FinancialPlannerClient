@@ -15,6 +15,9 @@ namespace FinancialPlannerClient.PlanOptions
         private const string RETIREMENT_GOAL_TYPE = "Retirement";
         int planId;
         Client client;
+        private PlannerAssumption plannerAssumption;
+        private PersonalInformation _personalInfo;
+
         public GoalsView(int planId,Client client)
         {
             InitializeComponent();
@@ -42,6 +45,7 @@ namespace FinancialPlannerClient.PlanOptions
                 lblOtherAnnualRetirementExp.Visible = true;
                 txtOtherAnnualRetirementExp.Visible = true;
                 txtOtherAnnualRetirementExp.Text = "0";
+                txtInflationRate.Text = plannerAssumption.PreRetirementInflactionRate.ToString();
             }
             else
             {
@@ -62,6 +66,10 @@ namespace FinancialPlannerClient.PlanOptions
             PlannerAssumption plannerAssumption = plannerAssumptionInfo.GetAll(this.planId);
             int retirementYear = (client.DOB.Year + plannerAssumption.ClientRetirementAge + 1);
             int endOfLifeYear = (client.DOB.Year + plannerAssumption.ClientLifeExpectancy) + 1;
+            int spouseLifeYear = (_personalInfo.Spouse.DOB.Year + plannerAssumption.SpouseLifeExpectancy) + 1;
+
+            endOfLifeYear = (endOfLifeYear > spouseLifeYear) ? endOfLifeYear : spouseLifeYear;
+
             txtGoalStartYear.Text = retirementYear.ToString();
             txtGoalEndYear.Text = endOfLifeYear.ToString();
         }
@@ -78,6 +86,17 @@ namespace FinancialPlannerClient.PlanOptions
             rdoGoalType.SelectedIndex = 0;
             navigateToSelectedPage();
             fillupGoalsInfo();
+            if (planId != 0)
+                fillupAssumptionInfo();
+
+            ClientPersonalInfo clientPersonalInfo = new ClientPersonalInfo();
+            _personalInfo = clientPersonalInfo.Get(client.ID);
+        }
+
+        private void fillupAssumptionInfo()
+        {
+            PlannerAssumptionInfo plannerassumptionInfo = new PlannerAssumptionInfo();
+            plannerAssumption = plannerassumptionInfo.GetAll(planId);
         }
 
         private void fillupGoalsInfo()
@@ -203,6 +222,7 @@ namespace FinancialPlannerClient.PlanOptions
             txtLoanForGoalStartYear.Text = "";
             txtLoanForGoalEndYear.Text = "";
             chkEligbileForInsuranceCoverage.Checked = false;
+            
         }
 
         private void btnCloseClientInfo_Click(object sender, EventArgs e)
@@ -224,6 +244,9 @@ namespace FinancialPlannerClient.PlanOptions
                 GoalsInfo goalsInfo = new GoalsInfo();
 
                 bool isSaved = false;
+
+                if (MessageBox.Show("Are you sure that entered inflation rate (%) is correct?", "Inflation Rate",MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                    return;
 
                 if (goals != null && goals.Id == 0)
                     isSaved = goalsInfo.Add(goals);
