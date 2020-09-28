@@ -1352,6 +1352,7 @@ namespace FinancialPlannerClient.Clients
             nonFinancialAsset.UpdatedByUserName = Program.CurrentUser.UserName;
             nonFinancialAsset.MachineName = Environment.MachineName;
             nonFinancialAsset.EligibleForInsuranceCover = chkNonFinancialAssetsInsuranceCoverage.Checked;
+            nonFinancialAsset.AssetRealisationYear = txtAssetRealisationYear.Text;
             return nonFinancialAsset;
         }
 

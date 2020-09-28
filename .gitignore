@@ -26,3 +26,8 @@ $RECYCLE.BIN/
 /obj/Debug/FinancialPlannerClient.csprojAssemblyReference.cache
 /Properties/licenses.licx
 /obj/Release
+/.vs
+/packages
+/UpgradeLog.htm
+/UpgradeLog2.htm
+/FinancialPlannerClient.sln

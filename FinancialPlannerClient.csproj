@@ -50,6 +50,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>FinancialPlannerClient.Program</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="ChilkatDotNet4">
       <HintPath>..\FinancialPlanner.Common\bin\Debug\ChilkatDotNet4.dll</HintPath>
@@ -130,10 +133,10 @@
     <Reference Include="System.Xml" />
     <Reference Include="UIAutomationClient" />
     <Reference Include="Unity.Abstractions, Version=5.11.1.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
-      <HintPath>..\packages\Unity.5.11.1\lib\net45\Unity.Abstractions.dll</HintPath>
+      <HintPath>packages\Unity.5.11.1\lib\net45\Unity.Abstractions.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Container, Version=5.11.1.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
-      <HintPath>..\packages\Unity.5.11.1\lib\net45\Unity.Container.dll</HintPath>
+      <HintPath>packages\Unity.5.11.1\lib\net45\Unity.Container.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
   </ItemGroup>

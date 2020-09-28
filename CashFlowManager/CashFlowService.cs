@@ -391,8 +391,9 @@ namespace FinancialPlannerClient.CashFlowManager
                                 long.TryParse(_dtCashFlow.Rows[years - 1]["(" + income.IncomeBy + ") " + income.Source].ToString(), out amount);
                                 if (amount == 0 && income.StartYear == dr["StartYear"].ToString())
                                     long.TryParse(income.Amount.ToString(), out amount);
+                                else
+                                    amount = amount + (long)((amount * float.Parse(income.ExpectGrowthInPercentage.ToString()) / 100));
 
-                                amount = amount + (long)((amount * float.Parse(income.ExpectGrowthInPercentage.ToString()) / 100));
                                 dr["(" + income.IncomeBy + ") " + income.Source] = amount;
                                 totalIncome = totalIncome + amount;
 
