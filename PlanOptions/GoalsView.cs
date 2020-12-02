@@ -395,7 +395,10 @@ namespace FinancialPlannerClient.PlanOptions
 
         private void txtGoalName_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
-
+            if (txtGoalName.Text.Contains("'")) {
+                XtraMessageBox.Show("Single quote character not allowd here.");
+                e.Cancel = true;
+            }
         }
 
         private void txtGoalCurrentValue_Validating(object sender, System.ComponentModel.CancelEventArgs e)

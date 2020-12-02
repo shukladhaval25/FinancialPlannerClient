@@ -526,6 +526,7 @@
             // 
             this.navBarPlan.Caption = "Planner";
             this.navBarPlan.ControlContainer = this.navBarGroupControlContainer1;
+            this.navBarPlan.Expanded = true;
             this.navBarPlan.GroupClientHeight = 361;
             this.navBarPlan.GroupStyle = DevExpress.XtraNavBar.NavBarGroupStyle.ControlContainer;
             this.navBarPlan.Name = "navBarPlan";

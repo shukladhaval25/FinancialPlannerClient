@@ -3,6 +3,7 @@ using FinancialPlanner.Common.Model;
 using FinancialPlannerClient.PlannerInfo;
 using System;
 using System.Data;
+using System.Linq;
 
 namespace FinancialPlannerClient.CashFlowManager
 {
@@ -90,11 +91,33 @@ namespace FinancialPlannerClient.CashFlowManager
 
             generateIncomeColumns();
             generateExpensesColumns();
+            generateGoalLoans();
             generateLoanColumns();
+            
             _dtRetirementCashFlow.Columns.Add("Rem_Corp_Fund", typeof(System.Double));
             _dtRetirementCashFlow.Columns.Add("EstimatedRequireCorpusFund", typeof(System.Double));
         }
-               
+
+        private void generateGoalLoans()
+        {
+
+            cashFlowCalculation.LstGoals.OrderBy(x => x.Priority);
+
+            foreach (Goals goal in cashFlowCalculation.LstGoals)
+            {
+                //DataColumn dcGoal = new DataColumn(string.Format("{0} - {1}", goal.Priority, goal.Name), typeof(System.Double));
+                //_dtRetirementCashFlow.Columns.Add(dcGoal);
+                //dcGoal.ReadOnly = true;
+                
+                if (goal.LoanForGoal != null && goal.LoanForGoal.EMI > 0 && 
+                    (this.retirementPlanningYearStartFrom <= goal.LoanForGoal.EndYear))
+                {
+                    DataColumn dtLoanForGoal = new DataColumn(string.Format("(Loan EMI - {0})", goal.Name), typeof(System.Double));
+                    _dtRetirementCashFlow.Columns.Add(dtLoanForGoal);
+                }
+            }
+        }
+
         private void generateLoanColumns()
         {
             #region "Loan Calculation"
@@ -124,7 +147,8 @@ namespace FinancialPlannerClient.CashFlowManager
 
                 addIncomeCalculation(i, dr, cashFlowCalculation.ClientRetirementAge, cashFlowCalculation.SpouseRetirementAge);
                 addExpenesCalculation(i, dr);
-                addLoansCalculation(i, dr);
+                //addGoalLoanCalculation(i, dr);
+                addLoansCalculation(i, dr);                
                 _dtRetirementCashFlow.Rows.Add(dr);
             }
             calculateEstimatedRequireCorpusFund();
@@ -132,11 +156,46 @@ namespace FinancialPlannerClient.CashFlowManager
             return _dtRetirementCashFlow;
         }
 
+        private void addGoalLoanCalculation(int i, DataRow dr)
+        {
+            int currentLoanYear = (i - DateTime.Now.Year);
+            int previousYearRowIndex = i - 1;
+            double totalLoans = 0;
+            if (cashFlowCalculation.LstGoals != null)
+            {
+                foreach (Goals goal in cashFlowCalculation.LstGoals)
+                {
+                    if (goal.LoanForGoal != null && goal.LoanForGoal.EMI > 0 &&
+                   (i >= goal.LoanForGoal.StratYear && 
+                   i  <= goal.LoanForGoal.EndYear))
+                    {
+                        dr[string.Format("(Loan EMI - {0})", goal.Name)] = (goal.LoanForGoal.EMI * 12);
+                    }                   
+                }
+            }
+        }
+
         private void addLoansCalculation(int i, DataRow dr)
         {
             int currentLoanYear = (i - DateTime.Now.Year);
             int previousYearRowIndex = i - 1;
             double totalLoans = 0;
+
+            if (cashFlowCalculation.LstGoals != null)
+            {
+                foreach (Goals goal in cashFlowCalculation.LstGoals)
+                {
+                    if (goal.LoanForGoal != null && goal.LoanForGoal.EMI > 0 &&
+                   (i >= goal.LoanForGoal.StratYear &&
+                   i <= goal.LoanForGoal.EndYear))
+                    {
+                        dr[string.Format("(Loan EMI - {0})", goal.Name)] = (goal.LoanForGoal.EMI * 12);
+                        totalLoans = totalLoans + (goal.LoanForGoal.EMI * 12);
+                    }
+                }
+            }
+
+
             if (cashFlowCalculation.LstLoans != null)
             {
                 foreach (Loan loan in cashFlowCalculation.LstLoans)
@@ -227,7 +286,9 @@ namespace FinancialPlannerClient.CashFlowManager
             proposeEstimatedCorpusFundRequire = proposeEstimatedCorpusFundRequire -
                 double.Parse(_dtRetirementCashFlow.Rows[0]["Total Post Tax Income"].ToString());
 
-            proposeEstimatedCorpusFundRequire = (proposeEstimatedCorpusFundRequire * 100) / 106;
+            double investmentReturnRate = 100 + (double) plannerAssumption.PostRetirementInvestmentReturnRate;
+
+            proposeEstimatedCorpusFundRequire = (proposeEstimatedCorpusFundRequire * 100) / investmentReturnRate;
 
 
             double totalExpAmountForFirstRow = (double.Parse(_dtRetirementCashFlow.Rows[0]["Total Annual Expenses"].ToString()));
@@ -423,7 +484,7 @@ namespace FinancialPlannerClient.CashFlowManager
                 if (_dtRetirementCashFlow.Rows.Count > 0)
                 {
                     double previouYearExp = double.Parse(_dtRetirementCashFlow.Rows[_dtRetirementCashFlow.Rows.Count - 1][goal.Name].ToString());
-                    retExp = previouYearExp + ((previouYearExp * double.Parse(plannerAssumption.PostRetirementInflactionRate.ToString())) / 100);
+                    retExp = previouYearExp + ((previouYearExp * double.Parse(plannerAssumption.PostRetirementInflactionRate.ToString())) / 100);                   
                 }
             }
             return retExp;

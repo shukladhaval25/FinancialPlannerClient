@@ -257,8 +257,74 @@ namespace FinancialPlannerClient.CashFlowManager
                 addLoansCalculation(years, dr);
                 addGoalsCalculation(years, dr);
                 setSurplusAmount(dr);
+                validateSurplusAmount(years,dr);           
                 setComulativeCorpusFund(years, dr, noOfYearsForCalculation);
                 _dtCashFlow.Rows.Add(dr);
+            }
+        }
+
+        private void validateSurplusAmount(int years,DataRow dr)
+        {
+            double currentYearSurplusAmount = 0;
+            double.TryParse(dr["Surplus Amount"].ToString(),out currentYearSurplusAmount);
+            if (currentYearSurplusAmount < 0)
+            {
+                double previousYearSurplusAmount = 0;
+                double.TryParse(_dtCashFlow.Rows[years - 1]["Surplus Amount"].ToString(), out previousYearSurplusAmount);
+                if (previousYearSurplusAmount > 0)
+                {
+                    currentYearSurplusAmount = System.Math.Abs(currentYearSurplusAmount);
+                    if (previousYearSurplusAmount >= currentYearSurplusAmount)
+                    {
+
+                        if (_cashFlowCalculation.LstGoals != null)
+                        {
+                            var orderByDescendingResult = from s in _cashFlowCalculation.LstGoals
+                                                          orderby s.Priority descending
+                                                          select s;
+                            double totalAmountSettleFromPreviousYear = 0;
+                            foreach (Goals goal in orderByDescendingResult)
+                            {
+                                double previousYearFundAllocatedAmount = 0;
+                                if (_dtCashFlow.Columns.Contains(string.Format("{0} - {1}", goal.Priority, goal.Name)))
+                                {
+                                    double.TryParse(_dtCashFlow.Rows[years - 1][string.Format("{0} - {1}", goal.Priority, goal.Name)].ToString(), out previousYearFundAllocatedAmount);
+                                    if (previousYearFundAllocatedAmount > 0)
+                                    {
+                                        if (previousYearFundAllocatedAmount > currentYearSurplusAmount)
+                                        {
+                                            totalAmountSettleFromPreviousYear = totalAmountSettleFromPreviousYear + previousYearFundAllocatedAmount;
+                                            _dtCashFlow.Rows[years - 1][string.Format("{0} - {1}", goal.Priority, goal.Name)] =
+                                                totalAmountSettleFromPreviousYear - currentYearSurplusAmount;
+                                            break;
+                                        }
+                                        else
+                                        {
+                                            if (totalAmountSettleFromPreviousYear + previousYearFundAllocatedAmount <= currentYearSurplusAmount)
+                                            {
+                                                _dtCashFlow.Rows[years - 1][string.Format("{0} - {1}", goal.Priority, goal.Name)] = 0;
+                                                totalAmountSettleFromPreviousYear = totalAmountSettleFromPreviousYear + previousYearFundAllocatedAmount;
+                                            }
+                                            else
+                                            {
+                                                //50000             //  48000        //52000
+                                                previousYearFundAllocatedAmount = previousYearFundAllocatedAmount -(currentYearSurplusAmount - totalAmountSettleFromPreviousYear);
+                                                _dtCashFlow.Rows[years - 1][string.Format("{0} - {1}", goal.Priority, goal.Name)] = previousYearFundAllocatedAmount;
+
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        
+                        // actualSurplusAmount = previousYearSurplusAmount - currentYearSurplusAmount;
+                        //_dtCashFlow.Rows[years - 1]["Surplus Amount"] = actualSurplusAmount;
+                         dr["Surplus Amount"] = 0;
+                         dr["Adjusted Amount"] = currentYearSurplusAmount;
+
+                    }
+                }
             }
         }
 
@@ -341,6 +407,7 @@ namespace FinancialPlannerClient.CashFlowManager
                     }
                 }
             }
+            
             dr["Surplus Amount"] = totalPostTaxIncome - (totalExpAmount + totalLoanAmount + totalGoalLoanEMIs);
         }
         private double getSurplusAmount(DataRow dr)
@@ -783,6 +850,7 @@ namespace FinancialPlannerClient.CashFlowManager
 
             _dtCashFlow.Columns.Add("Corpus Fund", typeof(System.Double));
             _dtCashFlow.Columns.Add("Cumulative Corpus Fund", typeof(System.Double));
+            _dtCashFlow.Columns.Add("Adjusted Amount", typeof(System.Double));
         }
 
         private void AddExpensesColumnToDataTable()

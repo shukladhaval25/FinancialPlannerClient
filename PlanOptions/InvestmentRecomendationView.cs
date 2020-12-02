@@ -871,9 +871,12 @@ namespace FinancialPlannerClient.PlanOptions
                 mailMessage.From = new MailAddress(MailServer.FromEmail);
                 mailMessage.To.Add(new MailAddress(primaryEmail));
                 mailMessage.Subject = string.Format("Investment Recommendation on : {0}", DateTime.Now.Date);
-                mailMessage.IsBodyHtml = true;
+                mailMessage.IsBodyHtml = false;
                 mailMessage.Attachments.Add(attachment);
-                mailMessage.Body = "Hi" + this.currentClient.Name + "," + Environment.NewLine + Environment.NewLine +
+                String message = "Hi " + this.currentClient.Name + "," + "\n";
+
+
+                mailMessage.Body = "Hi " + this.currentClient.Name + "," + "\n" + "\n" +
                     "Here in attachment we are sending you investment recommendation based on our discussion.Kindly follow your investment based on that to achieve your goals." +
                      Environment.NewLine + Environment.NewLine +
                     "With Regards," + Environment.NewLine + Environment.NewLine + "Asccent Finance solution";
