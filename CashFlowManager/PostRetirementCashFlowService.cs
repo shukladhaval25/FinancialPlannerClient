@@ -286,9 +286,7 @@ namespace FinancialPlannerClient.CashFlowManager
             proposeEstimatedCorpusFundRequire = proposeEstimatedCorpusFundRequire -
                 double.Parse(_dtRetirementCashFlow.Rows[0]["Total Post Tax Income"].ToString());
 
-            double investmentReturnRate = 100 + (double) plannerAssumption.PostRetirementInvestmentReturnRate;
-
-            proposeEstimatedCorpusFundRequire = (proposeEstimatedCorpusFundRequire * 100) / investmentReturnRate;
+            proposeEstimatedCorpusFundRequire = (proposeEstimatedCorpusFundRequire * 100) / (100 + invReturnRate); ;
 
 
             double totalExpAmountForFirstRow = (double.Parse(_dtRetirementCashFlow.Rows[0]["Total Annual Expenses"].ToString()));

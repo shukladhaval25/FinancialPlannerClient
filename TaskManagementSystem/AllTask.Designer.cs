@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AllTask));
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip8 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem8 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem8 = new DevExpress.Utils.ToolTipItem();
             this.btnClose = new DevExpress.XtraEditors.SimpleButton();
             this.imgTaskGrid = new DevExpress.Utils.ImageCollection(this.components);
             this.grdTasks = new DevExpress.XtraGrid.GridControl();
@@ -79,11 +79,11 @@
             // 
             this.gridViewTasks.Appearance.EvenRow.BorderColor = System.Drawing.Color.WhiteSmoke;
             this.gridViewTasks.Appearance.EvenRow.Options.UseBorderColor = true;
+            this.gridViewTasks.Appearance.FilterPanel.Options.UseTextOptions = true;
             this.gridViewTasks.Appearance.OddRow.BorderColor = System.Drawing.Color.Gainsboro;
             this.gridViewTasks.Appearance.OddRow.Options.UseBorderColor = true;
             this.gridViewTasks.GridControl = this.grdTasks;
             this.gridViewTasks.Name = "gridViewTasks";
-            this.gridViewTasks.OptionsFilter.ShowAllTableValuesInFilterPopup = true;
             this.gridViewTasks.OptionsFind.AlwaysVisible = true;
             this.gridViewTasks.OptionsView.EnableAppearanceEvenRow = true;
             this.gridViewTasks.OptionsView.EnableAppearanceOddRow = true;
@@ -106,15 +106,15 @@
             this.btnRefresh.Location = new System.Drawing.Point(174, 479);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(28, 23);
-            toolTipTitleItem1.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
-            toolTipTitleItem1.Appearance.Options.UseImage = true;
-            toolTipTitleItem1.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem1.Image")));
-            toolTipTitleItem1.Text = "Refesh";
-            toolTipItem1.LeftIndent = 6;
-            toolTipItem1.Text = "To refresh task list.";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            superToolTip1.Items.Add(toolTipItem1);
-            this.btnRefresh.SuperTip = superToolTip1;
+            toolTipTitleItem8.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            toolTipTitleItem8.Appearance.Options.UseImage = true;
+            toolTipTitleItem8.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem8.Image")));
+            toolTipTitleItem8.Text = "Refesh";
+            toolTipItem8.LeftIndent = 6;
+            toolTipItem8.Text = "To refresh task list.";
+            superToolTip8.Items.Add(toolTipTitleItem8);
+            superToolTip8.Items.Add(toolTipItem8);
+            this.btnRefresh.SuperTip = superToolTip8;
             this.btnRefresh.TabIndex = 31;
             this.btnRefresh.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Application;
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);

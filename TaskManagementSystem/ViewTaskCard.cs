@@ -135,6 +135,7 @@ namespace FinancialPlannerClient.TaskManagementSystem
             cmbOwner.Text = string.IsNullOrEmpty(taskCard.OwnerName) ? getUserName((int)(taskCard.Owner)) : taskCard.OwnerName;
             cmbTaskStatus.Text = taskCard.TaskStatus.ToString();
             txtOtherName.Text = taskCard.OtherName;
+            txtDescription.Text = taskCard.Description;
         }
 
         private void fillupAssignTo()

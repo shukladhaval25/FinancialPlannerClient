@@ -49,6 +49,9 @@ namespace FinancialPlannerClient.TaskManagementSystem
         {
             ClientService clientService = new ClientService();
             clients = clientService.GetAll();
+            Client client = new Client();
+            client.Name = "";
+            clients.Insert(0, client);
             cmbClient.Properties.Items.Clear();
             cmbClient.Properties.Items.AddRange(clients.Select(i => i.Name).ToList());
         }
