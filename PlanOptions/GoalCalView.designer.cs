@@ -89,6 +89,7 @@
             // 
             this.progGoalComplition.Location = new System.Drawing.Point(82, 100);
             this.progGoalComplition.Name = "progGoalComplition";
+            this.progGoalComplition.Properties.PercentView = false;
             this.progGoalComplition.Properties.ReadOnly = true;
             this.progGoalComplition.Properties.ShowTitle = true;
             this.progGoalComplition.Size = new System.Drawing.Size(158, 18);

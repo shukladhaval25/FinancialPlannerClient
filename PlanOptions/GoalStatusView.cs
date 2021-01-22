@@ -1,4 +1,5 @@
-﻿using FinancialPlanner.Common;
+﻿using DevExpress.Utils;
+using FinancialPlanner.Common;
 using FinancialPlanner.Common.DataConversion;
 using FinancialPlanner.Common.Model;
 using FinancialPlanner.Common.Model.CurrentStatus;
@@ -23,16 +24,18 @@ namespace FinancialPlannerClient.PlanOptions
         Planner planner;
         private IList<Goals> _goals;
         GoalsCalculationInfo _goalCalculationInfo;
-        CashFlowService cashFlowService = new CashFlowService();
+        CashFlowService cashFlowService;
         DataTable _dtCurrentStatustoGoals = new DataTable();
         DataTable _dtGoalMapped = new DataTable();
         IList<FinancialPlanner.Common.Model.PlanOptions.CurrentStatusToGoal> _currentStatusToGoal =
             new List<FinancialPlanner.Common.Model.PlanOptions.CurrentStatusToGoal>();
         int optionId;
-        public GoalStatusView(Planner planner,int optionId)
+        int riskProfileId;
+        public GoalStatusView(Planner planner,int riskProfileId, int optionId)
         {
             InitializeComponent();
             this.planner = planner;
+            this.riskProfileId = riskProfileId;
             this.optionId = optionId;
             this._goals = new GoalsInfo().GetAll(this.planner.ID);
         }
@@ -70,6 +73,11 @@ namespace FinancialPlannerClient.PlanOptions
                 MethodBase currentMethodName = sf.GetMethod();
                 LogDebug(currentMethodName.Name, ex);
             }
+        }
+
+        internal void setCashFlowService(CashFlowService cashFlowService)
+        {
+            this.cashFlowService = cashFlowService;
         }
 
         private double getTotalFundAllocationValue()
@@ -306,13 +314,21 @@ namespace FinancialPlannerClient.PlanOptions
 
                     if (isSaved)
                     {
-                        MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        WaitDialogForm waitdlg = new WaitDialogForm("Saving Data...");
+                        //Calculate goal complition part.
+                        GoalCalView goalCalView = new GoalCalView(this.planner, this.riskProfileId, this.optionId);
+                        goalCalView.setCashFlowService(cashFlowService);
+                        Goals paramGoal = _goals.FirstOrDefault(i => i.Name == cmbCurrentStsatusToGoal.Text);
+                        double goalPercentge = goalCalView.WithCashFlowAllocationGetGoalComplitionPercentage(paramGoal);
+
                         _currentStatusToGoal.Add(currStatusToGoal);
                         calculateCurrentStatuFund();
                         fillCurrentStatusToGoalData();
                         getGoalStatus();
                         cmbCurrentStsatusToGoal.Enabled = false;
                         txtFundAllocation.Enabled = false;
+
+                        validateGoalComplitionWithCashAllocation(currStatusToGoal, waitdlg, goalPercentge);
                     }
                     else
                         MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -329,6 +345,42 @@ namespace FinancialPlannerClient.PlanOptions
                 StackFrame sf = st.GetFrame(0);
                 MethodBase currentMethodName = sf.GetMethod();
                 LogDebug(currentMethodName.Name, ex);
+            }
+        }
+
+        private void validateGoalComplitionWithCashAllocation(FinancialPlanner.Common.Model.PlanOptions.CurrentStatusToGoal currStatusToGoal, WaitDialogForm waitdlg, double goalPercentge)
+        {
+            if (goalPercentge > 100)
+            {
+                DataTable dtchanges = _dtGoalMapped.GetChanges();
+                Goals goals = this._goals.First(i => i.Id == currStatusToGoal.GoalId);
+                int goalsAfterRetirmentPriorityCount = goals.Category.Equals("Retirement") ?
+                    this._goals.Count(i => i.Pid == currStatusToGoal.PlannerId && i.Priority > goals.Priority) : 0;
+
+                waitdlg.Close();
+                if (goals.Category.Equals("Retirement") && goalsAfterRetirmentPriorityCount == 0)
+                {
+                    MessageBox.Show("Current fund allocation amount is more then require. Based on current allocation selected goal meet " + goalPercentge + "%.", "Excess Cash Allocatation", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                }
+                else
+                {
+                    MessageBox.Show("Current fund allocation amount is more then require. Based on current allocation selected goal meet " + goalPercentge + "%." + System.Environment.NewLine + System.Environment.NewLine + "Transaction abort.", "Excess Cash    Allocatation", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+
+                    WaitDialogForm waitdlgAbort = new WaitDialogForm("Revert changes...");
+                    currStatusToGoal.Id = int.Parse(dtchanges.Rows[0]["ID"].ToString());
+                    bool isResult = new CurrentStatusInfo().DeleteCurrentStatusToGoal(currStatusToGoal);
+                    fillCurrentStatusToGoalData();
+                    calculateCurrentStatuFund();
+                    getGoalStatus();
+                    cmbCurrentStsatusToGoal.Text = "";
+                    txtFundAllocation.Text = "";
+                    waitdlgAbort.Close();
+                }
+            }
+            else
+            {
+                waitdlg.Close();
+                MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -382,6 +434,7 @@ namespace FinancialPlannerClient.PlanOptions
 
         private void btnDeleteCurrentStatusToGoal_Click(object sender, EventArgs e)
         {
+            WaitDialogForm waitdlg;
             try
             {
                 if (gridViewAllocationOfCurrentStatus.SelectedRowsCount > 0)
@@ -390,9 +443,13 @@ namespace FinancialPlannerClient.PlanOptions
                     {
                         FinancialPlanner.Common.Model.PlanOptions.CurrentStatusToGoal currStatusToGoal = getCurrentStatusToGoalData();
                         bool isResult = new CurrentStatusInfo().DeleteCurrentStatusToGoal(currStatusToGoal);
+                        waitdlg = new WaitDialogForm("Deleting Data...");
                         fillCurrentStatusToGoalData();
                         calculateCurrentStatuFund();
                         getGoalStatus();
+                        cmbCurrentStsatusToGoal.Text = "";
+                        txtFundAllocation.Text = "";
+                        waitdlg.Close();
                     }
                 }
                 else

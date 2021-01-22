@@ -65,6 +65,20 @@ namespace FinancialPlannerClient.PlanOptions
             else
                 cmbGoals.Tag = 0;
         }
+        public double WithCashFlowAllocationGetGoalComplitionPercentage(Goals goal)
+        {
+            if (goal != null)
+            {
+                cmbGoals.Tag = goal.Id;
+                lblPriorityNo.Text = goal.Priority.ToString();
+                lblGoalPeriodValue.Text = goal.StartYear;
+                displayCalculation(goal);
+            }
+            else
+                cmbGoals.Tag = 0;
+
+            return getGoalComplitionPercentage();
+        }
         private void displayCalculation(Goals goal)
         {
             try
@@ -89,7 +103,13 @@ namespace FinancialPlannerClient.PlanOptions
                     _dtGoalValue = _goalCalculationInfo.GetGoalCalculation();
                     dtGridGoalValue.DataSource = _dtGoalValue;
                     int goalComplitionPercentage = getGoalComplitionPercentage();
-                    progGoalComplition.EditValue = (goalComplitionPercentage > 100) ? 100 : goalComplitionPercentage;
+                    if (goalComplitionPercentage > 100)
+                        progGoalComplition.Properties.Maximum = goalComplitionPercentage;
+                    else
+                        progGoalComplition.Properties.Maximum = 100;
+
+                    progGoalComplition.EditValue = goalComplitionPercentage;
+                    progGoalComplition.Text  = goalComplitionPercentage.ToString();
                 }
             }
             catch(Exception ex)

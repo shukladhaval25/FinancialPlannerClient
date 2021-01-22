@@ -201,7 +201,8 @@ namespace FinancialPlannerClient.PlanOptions
 
         private void showGoalStatusView()
         {
-            GoalStatusView goalStatusView = new GoalStatusView(this.planner, int.Parse(this.cmbPlanOption.Tag.ToString()));
+            GoalStatusView goalStatusView = new GoalStatusView(this.planner, _riskProfileId, int.Parse(this.cmbPlanOption.Tag.ToString()));
+            goalStatusView.setCashFlowService(cashFlowService);
             goalStatusView.TopLevel = false;
             goalStatusView.Visible = true;
 

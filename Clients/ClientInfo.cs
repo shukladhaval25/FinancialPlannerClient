@@ -1757,7 +1757,7 @@ namespace FinancialPlannerClient.Clients
             income.UpdatedBy = Program.CurrentUser.Id;
             income.UpdatedByUserName = Program.CurrentUser.UserName;
             income.MachineName = System.Environment.MachineName;
-            income.IncomeTax = float.Parse(txtIncomeTax.Text);
+            income.IncomeTax = string.IsNullOrEmpty(txtIncomeTax.Text) ? 0 : float.Parse(txtIncomeTax.Text);
 
             SalaryDetail salaryDet = new SalaryDetail();
             salaryDet.Id = int.Parse(txtCTC.Tag.ToString());

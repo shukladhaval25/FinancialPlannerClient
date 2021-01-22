@@ -259,8 +259,8 @@ namespace FinancialPlannerClient.PlanOptions
                     fillupGoalsInfo();
                     grpGoalsDetail.Enabled = false;
                 }
-                else
-                    MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //else
+                //    MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch(Exception ex)
             {

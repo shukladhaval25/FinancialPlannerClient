@@ -129,6 +129,7 @@ namespace FinancialPlannerClient.PlannerInfo
             }
             catch (Exception ex)
             {
+                MessageBox.Show("Unable to save record." + ex.Message , "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 StackTrace st = new StackTrace ();
                 StackFrame sf = st.GetFrame (0);
                 MethodBase  currentMethodName = sf.GetMethod();
