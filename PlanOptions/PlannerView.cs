@@ -99,7 +99,7 @@ namespace FinancialPlannerClient.PlanOptions
                 txtPlanName.Tag = dr.Field<string>("ID");
                 txtPlanName.Text = dr.Field<string>("Name");
                 dtStartDate.Text = (dr["StartDate"]).ToString();
-                txtEndDate.Text = (dr["EndDate"]).ToString();
+                //txtEndDate.Text = (dr["EndDate"]).ToString();
                 cmbStartMonth.Text = System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(int.Parse(dr["PlannerStartMonth"].ToString()));
                 int accountManagedById;
                 int.TryParse(dr["AccountManagedBy"].ToString(), out accountManagedById);

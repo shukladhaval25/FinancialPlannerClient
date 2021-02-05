@@ -2,6 +2,7 @@
 using FinancialPlanner.Common.Model;
 using FinancialPlannerClient.PlannerInfo;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 
@@ -451,13 +452,19 @@ namespace FinancialPlannerClient.CashFlowManager
             double totalExpenses = 0;
             if (cashFlowCalculation.LstGoals != null)
             {
+                int retirementGoalPriority;
+                IEnumerable<Goals> retirementGoal = cashFlowCalculation.LstGoals.Where(i => i.Category == "Retirement");
+                retirementGoalPriority = (retirementGoal.Count() > 0) ?  retirementGoal.ElementAt(0).Priority : 0 ;
                 foreach (Goals goal in cashFlowCalculation.LstGoals)
                 {
                     if (goal.Category == "Retirement" || int.Parse(goal.StartYear) == years)
                     {
-                        double retExp = getPostRetirementExpWithInfluationRate(dr, years, goal);
-                        dr[goal.Name] = retExp;
-                        totalExpenses = totalExpenses + retExp;
+                        if (goal.Priority >= retirementGoalPriority)
+                        {
+                            double retExp = getPostRetirementExpWithInfluationRate(dr, years, goal);
+                            dr[goal.Name] = retExp;
+                            totalExpenses = totalExpenses + retExp;
+                        }
                     }
                 }
             }

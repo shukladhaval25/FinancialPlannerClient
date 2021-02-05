@@ -133,12 +133,12 @@ namespace FinancialPlannerClient.PlanOptions
             double futureInvestmentRequireValueForGoal = _futureValueOfGoal - (_futureValueOfMappedInstruments +
                 _futureValueOfMappedNonFinancialAssets + getLoanAmount());
             double investmentAmount = futureInvestmentRequireValueForGoal;
-            for (int calculationYear = int.Parse(_goal.StartYear); calculationYear >= _planner.StartDate.Year;
+            for (int calculationYear = int.Parse(_goal.StartYear) ; calculationYear >= _planner.StartDate.Year;
                 calculationYear--)
             {
                 GoalPlanning goalPlanning = new GoalPlanning(_goal);
                 goalPlanning.Year = calculationYear;
-                goalPlanning.GoalFutureValue = futureInvestmentRequireValueForGoal;
+                goalPlanning.GoalFutureValue = futureInvestmentRequireValueForGoal; 
                 goalPlanning.ActualFreshInvestment = (investmentAmount * 100) / (100 + (double)GetGrowthPercentage(goalPlanning.Year));
                 goalPlanning.GoalId = _goal.Id;
                 goalPlanning.GrowthPercentage = GetGrowthPercentage(goalPlanning.Year);
@@ -183,9 +183,10 @@ namespace FinancialPlannerClient.PlanOptions
             double futureInvestmentRequireValueForGoal = _futureValueOfGoal - (_futureValueOfMappedInstruments +
                 _futureValueOfMappedNonFinancialAssets + getLoanAmount());
 
-            GoalPlanning lifoGoalPlanningObj = (investmentYear == this._planner.StartDate.Year) ?
-                GetLIFOGoalPlanning(investmentYear):
-                GetLIFOGoalPlanning(investmentYear + 1);
+            //GoalPlanning lifoGoalPlanningObj = (investmentYear == this._planner.StartDate.Year) ?
+            //    GetLIFOGoalPlanning(investmentYear) :
+            //    GetLIFOGoalPlanning(investmentYear + 1);
+            GoalPlanning lifoGoalPlanningObj = GetLIFOGoalPlanning(investmentYear + 1);
             double currentProfileValue = GetCurrentPortfolioValue();
             if (lifoGoalPlanningObj == null)
                 return investmentAmount;

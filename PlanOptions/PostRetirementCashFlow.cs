@@ -130,5 +130,15 @@ namespace FinancialPlannerClient.PlanOptions
                 System.Windows.Forms.MessageBox.Show("Exception:" + ex.ToString());
             }
         }
+
+        private void lblCurrentStatusAmt_TextChanged(object sender, EventArgs e)
+        {
+            setGoalCompletionPercentage();
+        }
+
+        private void lblCorpFundAmt_TextChanged(object sender, EventArgs e)
+        {
+            setGoalCompletionPercentage();
+        }
     }
 }

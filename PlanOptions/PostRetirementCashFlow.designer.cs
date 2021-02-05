@@ -202,6 +202,7 @@
             this.lblCorpFundAmt.Size = new System.Drawing.Size(111, 10);
             this.lblCorpFundAmt.TabIndex = 25;
             this.lblCorpFundAmt.Text = "0";
+            this.lblCorpFundAmt.TextChanged += new System.EventHandler(this.lblCorpFundAmt_TextChanged);
             // 
             // labelControl12
             // 
@@ -223,6 +224,7 @@
             this.lblCurrentStatusAmt.Size = new System.Drawing.Size(111, 10);
             this.lblCurrentStatusAmt.TabIndex = 23;
             this.lblCurrentStatusAmt.Text = "0";
+            this.lblCurrentStatusAmt.TextChanged += new System.EventHandler(this.lblCurrentStatusAmt_TextChanged);
             // 
             // labelControl11
             // 

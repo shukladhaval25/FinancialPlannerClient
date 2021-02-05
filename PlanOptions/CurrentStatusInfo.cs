@@ -191,7 +191,7 @@ namespace FinancialPlannerClient.CurrentStatus
                     double totalDebtAmount = csCal.DebtMFValue + csCal.FdValue +
                     csCal.RdValue + csCal.SaValue + csCal.NpsDebtValue + csCal.NscValue +
                     csCal.PPFValue + csCal.EPFValue + csCal.SSValue +
-                    csCal.SCSSValue + csCal.BondsValue + csCal.OtherDebtValue;
+                    csCal.SCSSValue + csCal.BondsValue + csCal.OtherDebtValue+ csCal.Others;
 
                     double totalGoldAmount = csCal.GoldValue + csCal.OthersGoldValue;
 
