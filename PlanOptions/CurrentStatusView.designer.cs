@@ -45,11 +45,7 @@
             this.txtGoldAmt = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.txtSAAmt = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
             this.txtDebtNPSAmt = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.txtEquityNPSAmt = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.txtPPFAmt = new System.Windows.Forms.TextBox();
@@ -61,8 +57,6 @@
             this.txtNSCAmt = new System.Windows.Forms.TextBox();
             this.txtBondsAmt = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.txtEquityOtherAmt = new System.Windows.Forms.TextBox();
             this.txtDebOtherAmt = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
@@ -79,6 +73,16 @@
             this.txtTotalDebtAmount = new DevExpress.XtraEditors.TextEdit();
             this.txtTotalGoldAmount = new DevExpress.XtraEditors.TextEdit();
             this.label1 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtEquityNPSAmt = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.txtEquityOtherAmt = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtDebtUlipAmt = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtEquityUlipAmt = new System.Windows.Forms.TextBox();
             this.lblGrandTotal = new DevExpress.XtraEditors.LabelControl();
             this.lblGrandTotalValue = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
@@ -157,11 +161,7 @@
             this.tableLayoutPanel1.Controls.Add(this.txtGoldAmt, 5, 0);
             this.tableLayoutPanel1.Controls.Add(this.label13, 2, 2);
             this.tableLayoutPanel1.Controls.Add(this.txtSAAmt, 3, 2);
-            this.tableLayoutPanel1.Controls.Add(this.label14, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.label15, 2, 4);
             this.tableLayoutPanel1.Controls.Add(this.txtDebtNPSAmt, 3, 5);
-            this.tableLayoutPanel1.Controls.Add(this.label16, 0, 5);
-            this.tableLayoutPanel1.Controls.Add(this.txtEquityNPSAmt, 1, 5);
             this.tableLayoutPanel1.Controls.Add(this.label17, 2, 5);
             this.tableLayoutPanel1.Controls.Add(this.label18, 2, 6);
             this.tableLayoutPanel1.Controls.Add(this.txtPPFAmt, 3, 6);
@@ -173,8 +173,6 @@
             this.tableLayoutPanel1.Controls.Add(this.txtNSCAmt, 3, 9);
             this.tableLayoutPanel1.Controls.Add(this.txtBondsAmt, 3, 10);
             this.tableLayoutPanel1.Controls.Add(this.label22, 2, 10);
-            this.tableLayoutPanel1.Controls.Add(this.label23, 0, 7);
-            this.tableLayoutPanel1.Controls.Add(this.txtEquityOtherAmt, 1, 7);
             this.tableLayoutPanel1.Controls.Add(this.txtDebOtherAmt, 3, 12);
             this.tableLayoutPanel1.Controls.Add(this.label24, 2, 12);
             this.tableLayoutPanel1.Controls.Add(this.label25, 4, 2);
@@ -191,6 +189,16 @@
             this.tableLayoutPanel1.Controls.Add(this.txtTotalDebtAmount, 3, 14);
             this.tableLayoutPanel1.Controls.Add(this.txtTotalGoldAmount, 5, 14);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 15);
+            this.tableLayoutPanel1.Controls.Add(this.label15, 2, 3);
+            this.tableLayoutPanel1.Controls.Add(this.label14, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.txtEquityNPSAmt, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.label16, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.txtEquityOtherAmt, 1, 6);
+            this.tableLayoutPanel1.Controls.Add(this.label23, 0, 6);
+            this.tableLayoutPanel1.Controls.Add(this.label2, 2, 4);
+            this.tableLayoutPanel1.Controls.Add(this.txtDebtUlipAmt, 3, 4);
+            this.tableLayoutPanel1.Controls.Add(this.label3, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.txtEquityUlipAmt, 1, 5);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 37);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 16;
@@ -333,30 +341,6 @@
             this.txtSAAmt.Text = "0";
             this.txtSAAmt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // label14
-            // 
-            this.label14.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.ForeColor = System.Drawing.Color.Navy;
-            this.label14.Location = new System.Drawing.Point(5, 112);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(127, 23);
-            this.label14.TabIndex = 14;
-            this.label14.Text = "Equity Mutual Funds";
-            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label15
-            // 
-            this.label15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.ForeColor = System.Drawing.Color.Navy;
-            this.label15.Location = new System.Drawing.Point(275, 112);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(127, 23);
-            this.label15.TabIndex = 15;
-            this.label15.Text = "Debt Mutual Funds";
-            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // txtDebtNPSAmt
             // 
             this.txtDebtNPSAmt.Location = new System.Drawing.Point(410, 142);
@@ -366,26 +350,6 @@
             this.txtDebtNPSAmt.TabIndex = 16;
             this.txtDebtNPSAmt.Text = "0";
             this.txtDebtNPSAmt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label16
-            // 
-            this.label16.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label16.Location = new System.Drawing.Point(5, 139);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(127, 23);
-            this.label16.TabIndex = 17;
-            this.label16.Text = "NPS Equity Portion";
-            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtEquityNPSAmt
-            // 
-            this.txtEquityNPSAmt.Location = new System.Drawing.Point(140, 142);
-            this.txtEquityNPSAmt.Name = "txtEquityNPSAmt";
-            this.txtEquityNPSAmt.ReadOnly = true;
-            this.txtEquityNPSAmt.Size = new System.Drawing.Size(127, 21);
-            this.txtEquityNPSAmt.TabIndex = 18;
-            this.txtEquityNPSAmt.Text = "0";
-            this.txtEquityNPSAmt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label17
             // 
@@ -496,26 +460,6 @@
             this.label22.TabIndex = 29;
             this.label22.Text = "Bonds";
             this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label23
-            // 
-            this.label23.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label23.Location = new System.Drawing.Point(5, 193);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(127, 23);
-            this.label23.TabIndex = 30;
-            this.label23.Text = "Others";
-            this.label23.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtEquityOtherAmt
-            // 
-            this.txtEquityOtherAmt.Location = new System.Drawing.Point(140, 196);
-            this.txtEquityOtherAmt.Name = "txtEquityOtherAmt";
-            this.txtEquityOtherAmt.ReadOnly = true;
-            this.txtEquityOtherAmt.Size = new System.Drawing.Size(127, 21);
-            this.txtEquityOtherAmt.TabIndex = 31;
-            this.txtEquityOtherAmt.Text = "0";
-            this.txtEquityOtherAmt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtDebOtherAmt
             // 
@@ -703,6 +647,110 @@
             this.label1.Text = "Total Share (%)";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // label15
+            // 
+            this.label15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.Color.Navy;
+            this.label15.Location = new System.Drawing.Point(275, 86);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(127, 23);
+            this.label15.TabIndex = 15;
+            this.label15.Text = "Debt Mutual Funds";
+            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label14
+            // 
+            this.label14.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.Color.Navy;
+            this.label14.Location = new System.Drawing.Point(5, 86);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(127, 23);
+            this.label14.TabIndex = 14;
+            this.label14.Text = "Equity Mutual Funds";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtEquityNPSAmt
+            // 
+            this.txtEquityNPSAmt.Location = new System.Drawing.Point(140, 115);
+            this.txtEquityNPSAmt.Name = "txtEquityNPSAmt";
+            this.txtEquityNPSAmt.ReadOnly = true;
+            this.txtEquityNPSAmt.Size = new System.Drawing.Size(127, 21);
+            this.txtEquityNPSAmt.TabIndex = 18;
+            this.txtEquityNPSAmt.Text = "0";
+            this.txtEquityNPSAmt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label16
+            // 
+            this.label16.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label16.Location = new System.Drawing.Point(5, 112);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(127, 23);
+            this.label16.TabIndex = 17;
+            this.label16.Text = "NPS Equity Portion";
+            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtEquityOtherAmt
+            // 
+            this.txtEquityOtherAmt.Location = new System.Drawing.Point(140, 168);
+            this.txtEquityOtherAmt.Name = "txtEquityOtherAmt";
+            this.txtEquityOtherAmt.ReadOnly = true;
+            this.txtEquityOtherAmt.Size = new System.Drawing.Size(127, 21);
+            this.txtEquityOtherAmt.TabIndex = 31;
+            this.txtEquityOtherAmt.Text = "0";
+            this.txtEquityOtherAmt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label23
+            // 
+            this.label23.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label23.Location = new System.Drawing.Point(5, 165);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(127, 23);
+            this.label23.TabIndex = 30;
+            this.label23.Text = "Others";
+            this.label23.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label2
+            // 
+            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label2.Location = new System.Drawing.Point(275, 112);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(127, 23);
+            this.label2.TabIndex = 48;
+            this.label2.Text = "ULIP";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtDebtUlipAmt
+            // 
+            this.txtDebtUlipAmt.Location = new System.Drawing.Point(410, 115);
+            this.txtDebtUlipAmt.Name = "txtDebtUlipAmt";
+            this.txtDebtUlipAmt.ReadOnly = true;
+            this.txtDebtUlipAmt.Size = new System.Drawing.Size(136, 21);
+            this.txtDebtUlipAmt.TabIndex = 49;
+            this.txtDebtUlipAmt.Text = "0";
+            this.txtDebtUlipAmt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label3
+            // 
+            this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label3.Location = new System.Drawing.Point(5, 139);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(127, 23);
+            this.label3.TabIndex = 50;
+            this.label3.Text = "ULIP";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtEquityUlipAmt
+            // 
+            this.txtEquityUlipAmt.Location = new System.Drawing.Point(140, 142);
+            this.txtEquityUlipAmt.Name = "txtEquityUlipAmt";
+            this.txtEquityUlipAmt.ReadOnly = true;
+            this.txtEquityUlipAmt.Size = new System.Drawing.Size(127, 21);
+            this.txtEquityUlipAmt.TabIndex = 51;
+            this.txtEquityUlipAmt.Text = "0";
+            this.txtEquityUlipAmt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
             // lblGrandTotal
             // 
             this.lblGrandTotal.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -800,6 +848,10 @@
         private DevExpress.XtraEditors.TextEdit txtTotalGoldAmount;
         private DevExpress.XtraEditors.LabelControl lblGrandTotal;
         private System.Windows.Forms.Label lblGrandTotalValue;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtDebtUlipAmt;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtEquityUlipAmt;
     }
 }
 

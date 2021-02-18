@@ -36,9 +36,11 @@ namespace FinancialPlannerClient.PlanOptions
                 txtMFAmt.Text = _csCal.EquityMFvalue.ToString();
                 txtEquityNPSAmt.Text = _csCal.NpsEquityValue.ToString();
                 txtEquityOtherAmt.Text = _csCal.OtherEquityValue.ToString();
+                txtEquityUlipAmt.Text = _csCal.UlipEquityValue.ToString();
                 double totalEquityAmount = getTotalEquityAmount();
 
                 txtDebtMFValue.Text = _csCal.DebtMFValue.ToString();
+                txtDebtUlipAmt.Text = _csCal.UlipDebtValue.ToString();
                 txtFDAmt.Text = _csCal.FdValue.ToString();
                 txtRDAmt.Text = _csCal.RdValue.ToString();
                 txtSAAmt.Text = _csCal.SaValue.ToString();
@@ -93,14 +95,14 @@ namespace FinancialPlannerClient.PlanOptions
 
         private double getTotalEquityAmount()
         {
-            return _csCal.ShresValue + _csCal.EquityMFvalue +
+            return _csCal.ShresValue + _csCal.EquityMFvalue + _csCal.UlipEquityValue +
             _csCal.NpsEquityValue + _csCal.OtherEquityValue;
         }
 
         private double getTotalDebtAmount()
         {
             return _csCal.DebtMFValue + _csCal.FdValue +
-                            _csCal.RdValue + _csCal.SaValue + _csCal.NpsDebtValue +
+                            _csCal.RdValue + _csCal.SaValue + _csCal.NpsDebtValue + _csCal.UlipDebtValue +
                             _csCal.PPFValue + _csCal.EPFValue + _csCal.SSValue + _csCal.BondsValue +
                             _csCal.SCSSValue + _csCal.OtherDebtValue + _csCal.NscValue;
         }

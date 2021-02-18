@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CurrentStatus));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnViewStatus = new System.Windows.Forms.Button();
@@ -42,10 +41,12 @@
             this.dtGridLifeInsurance = new System.Windows.Forms.DataGridView();
             this.grpActionControls = new System.Windows.Forms.GroupBox();
             this.btnDeleteLifeInsurance = new System.Windows.Forms.Button();
-            this.imgCollection = new System.Windows.Forms.ImageList(this.components);
+            this.imgCollection = new System.Windows.Forms.ImageList();
             this.btnAddLifeInsurance = new System.Windows.Forms.Button();
             this.btnEditLifeInsurance = new System.Windows.Forms.Button();
             this.pnlLifeInsuranceDetail = new System.Windows.Forms.Panel();
+            this.dtLastPremiumPaymentDate = new System.Windows.Forms.DateTimePicker();
+            this.label205 = new System.Windows.Forms.Label();
             this.dtAsOnDate = new System.Windows.Forms.DateTimePicker();
             this.label45 = new System.Windows.Forms.Label();
             this.txtBalanceUnit = new System.Windows.Forms.TextBox();
@@ -582,8 +583,6 @@
             this.btnOthersDelete = new System.Windows.Forms.Button();
             this.btnOthersAdd = new System.Windows.Forms.Button();
             this.btnOthersEdit = new System.Windows.Forms.Button();
-            this.dtLastPremiumPaymentDate = new System.Windows.Forms.DateTimePicker();
-            this.label205 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.tabCurrenStatus.SuspendLayout();
             this.LifeInsurance.SuspendLayout();
@@ -935,6 +934,26 @@
             this.pnlLifeInsuranceDetail.Name = "pnlLifeInsuranceDetail";
             this.pnlLifeInsuranceDetail.Size = new System.Drawing.Size(1035, 541);
             this.pnlLifeInsuranceDetail.TabIndex = 1;
+            // 
+            // dtLastPremiumPaymentDate
+            // 
+            this.dtLastPremiumPaymentDate.Checked = false;
+            this.dtLastPremiumPaymentDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtLastPremiumPaymentDate.Location = new System.Drawing.Point(639, 290);
+            this.dtLastPremiumPaymentDate.Name = "dtLastPremiumPaymentDate";
+            this.dtLastPremiumPaymentDate.ShowCheckBox = true;
+            this.dtLastPremiumPaymentDate.Size = new System.Drawing.Size(147, 21);
+            this.dtLastPremiumPaymentDate.TabIndex = 71;
+            // 
+            // label205
+            // 
+            this.label205.AutoSize = true;
+            this.label205.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label205.Location = new System.Drawing.Point(551, 268);
+            this.label205.Name = "label205";
+            this.label205.Size = new System.Drawing.Size(167, 15);
+            this.label205.TabIndex = 70;
+            this.label205.Text = "Last Premium Payment Date:";
             // 
             // dtAsOnDate
             // 
@@ -6303,7 +6322,8 @@
             this.cmbOthersTransactionType.FormattingEnabled = true;
             this.cmbOthersTransactionType.Items.AddRange(new object[] {
             "Equity",
-            "Debt"});
+            "Debt",
+            "Gold"});
             this.cmbOthersTransactionType.Location = new System.Drawing.Point(601, 29);
             this.cmbOthersTransactionType.Name = "cmbOthersTransactionType";
             this.cmbOthersTransactionType.Size = new System.Drawing.Size(320, 24);
@@ -6391,9 +6411,9 @@
             this.label201.AutoSize = true;
             this.label201.Location = new System.Drawing.Point(26, 92);
             this.label201.Name = "label201";
-            this.label201.Size = new System.Drawing.Size(64, 16);
+            this.label201.Size = new System.Drawing.Size(111, 16);
             this.label201.TabIndex = 14;
-            this.label201.Text = "Particular";
+            this.label201.Text = "Instrument Name:";
             // 
             // cmbOthersInvestor
             // 
@@ -6515,26 +6535,6 @@
             this.btnOthersEdit.TabIndex = 3;
             this.btnOthersEdit.UseVisualStyleBackColor = true;
             this.btnOthersEdit.Click += new System.EventHandler(this.btnOthersEdit_Click);
-            // 
-            // dtLastPremiumPaymentDate
-            // 
-            this.dtLastPremiumPaymentDate.Checked = false;
-            this.dtLastPremiumPaymentDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtLastPremiumPaymentDate.Location = new System.Drawing.Point(639, 290);
-            this.dtLastPremiumPaymentDate.Name = "dtLastPremiumPaymentDate";
-            this.dtLastPremiumPaymentDate.ShowCheckBox = true;
-            this.dtLastPremiumPaymentDate.Size = new System.Drawing.Size(147, 21);
-            this.dtLastPremiumPaymentDate.TabIndex = 71;
-            // 
-            // label205
-            // 
-            this.label205.AutoSize = true;
-            this.label205.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label205.Location = new System.Drawing.Point(551, 268);
-            this.label205.Name = "label205";
-            this.label205.Size = new System.Drawing.Size(167, 15);
-            this.label205.TabIndex = 70;
-            this.label205.Text = "Last Premium Payment Date:";
             // 
             // CurrentStatus
             // 

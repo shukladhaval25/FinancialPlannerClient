@@ -412,6 +412,7 @@ namespace FinancialPlannerClient.CashFlowManager
         }
         private double getSurplusAmount(DataRow dr)
         {
+            int calculationYear = int.Parse(dr["StartYear"].ToString());
             double totalPostTaxIncome = double.Parse(dr["Total Post Tax Income"].ToString());
             double totalExpAmount = double.Parse(dr["Total Annual Expenses"].ToString());
             double totalLoanAmount = double.Parse(dr["Total Annual Loans"].ToString());
@@ -423,9 +424,14 @@ namespace FinancialPlannerClient.CashFlowManager
                 {
                     if (goal.LoanForGoal != null)
                     {
-                        double emiAmt = 0;
-                        double.TryParse(dr[string.Format("(Loan EMI - {0})", goal.Name)].ToString(), out emiAmt);
-                        totalGoalLoanEMIs = totalGoalLoanEMIs + emiAmt;
+                        if (calculationYear >= goal.LoanForGoal.StratYear &&
+                            calculationYear < goal.LoanForGoal.EndYear)
+                        {
+                            double emiAmt = 0;
+                            dr[string.Format("(Loan EMI - {0})", goal.Name)] = (goal.LoanForGoal.EMI * 12);
+                            emiAmt = (goal.LoanForGoal.EMI * 12);
+                            totalGoalLoanEMIs = totalGoalLoanEMIs + emiAmt;
+                        }                        
                     }
 
                     double investmentAmt = 0;
