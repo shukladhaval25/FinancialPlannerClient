@@ -1,6 +1,7 @@
 ﻿using FinancialPlanner.Common;
 using FinancialPlanner.Common.DataConversion;
 using FinancialPlanner.Common.Model;
+using FinancialPlannerClient.CashFlowManager;
 using FinancialPlannerClient.CurrentStatus;
 using FinancialPlannerClient.GoalCalculations;
 using FinancialPlannerClient.PlannerInfo;
@@ -35,6 +36,7 @@ namespace FinancialPlannerClient.PlanOptions
         private  GoalsValueCalculationInfo _goalsValueCal;
         private int _optionId;
         double mappedCurrentStatusValue = 0;
+        public CashFlowService CashFlowService { get; set; }
         #region "Constructor"
         public GoalsCalculationInfo(Goals goal, Planner planner, 
             RiskProfileInfo riskProfileInfo, int riskProfileId,int optionId)
@@ -234,7 +236,14 @@ namespace FinancialPlannerClient.PlanOptions
                 if (currentYear == goalYear)
                 {
                     dr["Assets Mapping"] = goalsValueCal.FutureValueOfMappedNonFinancialAssets;
-                    dr["Instrument Mapped"] = goalsValueCal.FutureValueOfMappedInstruments;
+                    if (_goal.Category.Equals("Retirement", StringComparison.OrdinalIgnoreCase))
+                    {
+                        dr["Currest Status Fund"] = 
+                            Math.Round(CashFlowService.GetCurrentStatusAccessFund(), 2);
+                    }
+                    
+                     dr["Instrument Mapped"] = goalsValueCal.FutureValueOfMappedInstruments;
+                   
                 }
                 dr["Portfolio Value"] =
                      calculatePortfoliioValue(freshInvestment,returnRatio);
@@ -357,6 +366,12 @@ namespace FinancialPlannerClient.PlanOptions
 
             DataColumn dcInstrumentMapped = new DataColumn("Instrument Mapped",typeof(System.Double));
             _dtGoalCalculation.Columns.Add(dcInstrumentMapped);
+
+            if (_goal.Category.Equals("Retirement",StringComparison.OrdinalIgnoreCase))
+            {
+                DataColumn dcCurrentStatusFund= new DataColumn("Currest Status Fund", typeof(System.Double));
+                _dtGoalCalculation.Columns.Add(dcCurrentStatusFund);
+            }
 
             DataColumn dcPortfolioReturn = new DataColumn("Portfolio Return",typeof(System.Decimal));
             _dtGoalCalculation.Columns.Add(dcPortfolioReturn);

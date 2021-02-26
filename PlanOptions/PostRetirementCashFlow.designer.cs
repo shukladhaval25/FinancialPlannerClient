@@ -32,7 +32,6 @@
             this.grdPostRetirementCashFlow = new DevExpress.XtraGrid.GridControl();
             this.gridSplitContainerViewCashFlow = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
-            this.progressBarRetGoalCompletion = new DevExpress.XtraEditors.ProgressBarControl();
             this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
             this.lblEstimatedCorpusFundValue = new DevExpress.XtraEditors.LabelControl();
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
@@ -65,13 +64,14 @@
             this.lblClient = new DevExpress.XtraEditors.LabelControl();
             this.btnExport = new DevExpress.XtraEditors.SimpleButton();
             this.picProcessing = new DevExpress.XtraEditors.PictureEdit();
+            this.progressBarRetGoalCompletion = new DevExpress.XtraEditors.ProgressBarControl();
             ((System.ComponentModel.ISupportInitialize)(this.grdPostRetirementCashFlow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridSplitContainerViewCashFlow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.progressBarRetGoalCompletion.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.separatorControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picProcessing.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.progressBarRetGoalCompletion.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // grdPostRetirementCashFlow
@@ -137,15 +137,6 @@
             this.groupControl1.TabIndex = 2;
             this.groupControl1.Text = "Information";
             // 
-            // progressBarRetGoalCompletion
-            // 
-            this.progressBarRetGoalCompletion.EditValue = "0";
-            this.progressBarRetGoalCompletion.Location = new System.Drawing.Point(837, 66);
-            this.progressBarRetGoalCompletion.Name = "progressBarRetGoalCompletion";
-            this.progressBarRetGoalCompletion.Properties.ShowTitle = true;
-            this.progressBarRetGoalCompletion.Size = new System.Drawing.Size(147, 18);
-            this.progressBarRetGoalCompletion.TabIndex = 30;
-            // 
             // labelControl13
             // 
             this.labelControl13.Location = new System.Drawing.Point(869, 40);
@@ -162,9 +153,9 @@
             this.lblEstimatedCorpusFundValue.Appearance.Options.UseTextOptions = true;
             this.lblEstimatedCorpusFundValue.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.lblEstimatedCorpusFundValue.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.lblEstimatedCorpusFundValue.Location = new System.Drawing.Point(1008, 67);
+            this.lblEstimatedCorpusFundValue.Location = new System.Drawing.Point(997, 67);
             this.lblEstimatedCorpusFundValue.Name = "lblEstimatedCorpusFundValue";
-            this.lblEstimatedCorpusFundValue.Size = new System.Drawing.Size(108, 16);
+            this.lblEstimatedCorpusFundValue.Size = new System.Drawing.Size(119, 16);
             this.lblEstimatedCorpusFundValue.TabIndex = 28;
             this.lblEstimatedCorpusFundValue.Text = "0";
             // 
@@ -449,6 +440,16 @@
             this.picProcessing.Size = new System.Drawing.Size(162, 132);
             this.picProcessing.TabIndex = 27;
             // 
+            // progressBarRetGoalCompletion
+            // 
+            this.progressBarRetGoalCompletion.Location = new System.Drawing.Point(844, 66);
+            this.progressBarRetGoalCompletion.Name = "progressBarRetGoalCompletion";
+            this.progressBarRetGoalCompletion.Properties.PercentView = false;
+            this.progressBarRetGoalCompletion.Properties.ReadOnly = true;
+            this.progressBarRetGoalCompletion.Properties.ShowTitle = true;
+            this.progressBarRetGoalCompletion.Size = new System.Drawing.Size(147, 18);
+            this.progressBarRetGoalCompletion.TabIndex = 30;
+            // 
             // PostRetirementCashFlow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -467,9 +468,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.progressBarRetGoalCompletion.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.separatorControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picProcessing.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.progressBarRetGoalCompletion.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -508,10 +509,10 @@
         private DevExpress.XtraEditors.SeparatorControl separatorControl1;
         private DevExpress.XtraEditors.LabelControl lblEstimatedCorpusFundValue;
         private DevExpress.XtraEditors.LabelControl labelControl10;
-        private DevExpress.XtraEditors.ProgressBarControl progressBarRetGoalCompletion;
         private DevExpress.XtraEditors.LabelControl labelControl13;
         private DevExpress.XtraEditors.SimpleButton btnExport;
         private DevExpress.XtraEditors.PictureEdit picProcessing;
+        private DevExpress.XtraEditors.ProgressBarControl progressBarRetGoalCompletion;
     }
 }
 

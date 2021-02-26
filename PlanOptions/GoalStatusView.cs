@@ -367,7 +367,9 @@ namespace FinancialPlannerClient.PlanOptions
                     MessageBox.Show("Current fund allocation amount is more then require. Based on current allocation selected goal meet " + goalPercentge + "%." + System.Environment.NewLine + System.Environment.NewLine + "Transaction abort.", "Excess Cash    Allocatation", MessageBoxButtons.OK, MessageBoxIcon.Stop);
 
                     WaitDialogForm waitdlgAbort = new WaitDialogForm("Revert changes...");
-                    currStatusToGoal.Id = int.Parse(dtchanges.Rows[0]["ID"].ToString());
+                    DataRow[] dataRows = dtchanges.Select("goalname ='" + currStatusToGoal.GoalName + "' and  fundAllocation ='" + currStatusToGoal.FundAllocation + "'");
+                    if (dataRows.Count() > 0)
+                        currStatusToGoal.Id = int.Parse(dataRows[0]["ID"].ToString());          
                     bool isResult = new CurrentStatusInfo().DeleteCurrentStatusToGoal(currStatusToGoal);
                     fillCurrentStatusToGoalData();
                     calculateCurrentStatuFund();
@@ -411,6 +413,7 @@ namespace FinancialPlannerClient.PlanOptions
             currStatusToGoal.OptionId = this.optionId;
             currStatusToGoal.Id = int.Parse(txtFundAllocation.Tag.ToString());
             currStatusToGoal.GoalId = int.Parse(cmbCurrentStsatusToGoal.Tag.ToString());
+            currStatusToGoal.GoalName = cmbCurrentStsatusToGoal.Text;
             currStatusToGoal.FundAllocation = double.Parse(txtFundAllocation.Text);
             currStatusToGoal.CreatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
             currStatusToGoal.CreatedBy = Program.CurrentUser.Id;

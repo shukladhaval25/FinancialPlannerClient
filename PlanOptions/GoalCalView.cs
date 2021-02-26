@@ -91,7 +91,7 @@ namespace FinancialPlannerClient.PlanOptions
                     CashFlow cf = cashFlowService.GetCashFlow(this._planOptionId);
                     _goalCalculationInfo.GoalCalManager = cashFlowService.GoalCalculationMgr;
                 }
-
+                _goalCalculationInfo.CashFlowService = cashFlowService;
                 _dtGoalProfile = _goalCalculationInfo.GetGoalValue(int.Parse(cmbGoals.Tag.ToString()),
                 planner.ID, _riskProfileId,_planOptionId);
                 if (_dtGoalProfile != null && _dtGoalProfile.Rows.Count > 0)
@@ -102,7 +102,9 @@ namespace FinancialPlannerClient.PlanOptions
                     setGoalProfileGrid(goal);
                     _dtGoalValue = _goalCalculationInfo.GetGoalCalculation();
                     dtGridGoalValue.DataSource = _dtGoalValue;
-                    int goalComplitionPercentage = getGoalComplitionPercentage();
+                    int goalComplitionPercentage = (goal.Category.Equals("Retirement", StringComparison.OrdinalIgnoreCase)) ?
+                        getGoalComplitionPercentageWithCurrentStatusAccessFund()
+                        : getGoalComplitionPercentage();
                     if (goalComplitionPercentage > 100)
                         progGoalComplition.Properties.Maximum = goalComplitionPercentage;
                     else
@@ -120,6 +122,21 @@ namespace FinancialPlannerClient.PlanOptions
                 LogDebug(currentMethodName.Name, ex);
                 XtraMessageBox.Show("Error:" + ex.ToString(), "Error");
             }
+        }
+
+        private int getGoalComplitionPercentageWithCurrentStatusAccessFund()
+        {
+            if (_dtGoalProfile != null && _dtGoalValue.Rows.Count > 0)
+            {
+                double portfolioValue = double.Parse(_dtGoalValue.Rows[_dtGoalValue.Rows.Count - 1]["Portfolio value"].ToString());
+                double cashOutFlowValue = double.Parse(_dtGoalValue.Rows[_dtGoalValue.Rows.Count - 1]["Cash outflow Goal Year"].ToString());
+                double assetsMappingValue = double.Parse(_dtGoalValue.Rows[_dtGoalValue.Rows.Count - 1]["Assets Mapping"].ToString());
+                double instrumentValue = double.Parse(_dtGoalValue.Rows[_dtGoalValue.Rows.Count - 1]["Instrument Mapped"].ToString());
+                double loanAmountValue = _dtGoalProfile.Rows[0]["Loan Amount"].ToString() == "" ? 0 : double.Parse(_dtGoalProfile.Rows[0]["Loan Amount"].ToString());
+                double currentStatusAccessFund = Math.Round(cashFlowService.GetCurrentStatusAccessFund(), 2);
+                return int.Parse(Math.Round((portfolioValue + loanAmountValue + currentStatusAccessFund) * 100 / cashOutFlowValue).ToString());
+            }
+            return 0;
         }
 
         private void LogDebug(string methodName, Exception ex)
@@ -168,7 +185,8 @@ namespace FinancialPlannerClient.PlanOptions
                 double assetsMappingValue = double.Parse(_dtGoalValue.Rows[_dtGoalValue.Rows.Count - 1]["Assets Mapping"].ToString());
                 double instrumentValue = double.Parse(_dtGoalValue.Rows[_dtGoalValue.Rows.Count - 1]["Instrument Mapped"].ToString());
                 double loanAmountValue = _dtGoalProfile.Rows[0]["Loan Amount"].ToString() == "" ? 0 : double.Parse(_dtGoalProfile.Rows[0]["Loan Amount"].ToString());
-                return int.Parse(Math.Round((portfolioValue + loanAmountValue) * 100 / cashOutFlowValue).ToString());
+             
+                return int.Parse(Math.Round((portfolioValue + loanAmountValue ) * 100 / cashOutFlowValue).ToString());
             }
             return 0;
         }

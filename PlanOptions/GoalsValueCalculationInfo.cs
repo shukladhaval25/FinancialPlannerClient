@@ -352,7 +352,7 @@ namespace FinancialPlannerClient.PlanOptions
                         PostRetirementCashFlowService postRetirementCashFlowService =
                             new PostRetirementCashFlowService(this._planner, cashFlowService);
                         postRetirementCashFlowService.GetPostRetirementCashFlowData();
-                        futureValueOfGoal = postRetirementCashFlowService.GetProposeEstimatedCorpusFund();
+                        futureValueOfGoal = postRetirementCashFlowService.GetProposeEstimatedCorpusFund();          
                     }
                     else
                     {

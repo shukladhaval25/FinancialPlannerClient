@@ -472,5 +472,75 @@ namespace FinancialPlannerClient.PlanOptions
             if (!string.IsNullOrEmpty(txtOtherAnnualRetirementExp.Text))
                 e.Cancel = !FinancialPlanner.Common.Validation.IsDigit(txtOtherAnnualRetirementExp.Text);
         }
+
+        private void btnCalculateLoan_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtLoanForGoalAmount.Text) &&
+               string.IsNullOrEmpty(txtLoanForGoalEMI.Text) &&
+               string.IsNullOrEmpty(txtLoanForGoalROI.Text) &&
+               string.IsNullOrEmpty(txtLoanForGoalYears.Text))
+            {
+                XtraMessageBox.Show("Please enter require data to calculate loan formula.", "Enter Require Data", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+            CalculationType calculationType = getCalculationType();
+            LoanCalcuation(calculationType);
+        }
+
+        private void LoanCalcuation(CalculationType calculationType)
+        {
+            switch (calculationType)
+            {
+                case CalculationType.OutstandingAmount:
+                    //txtLoanForGoalAmount.Text = presentValue()
+                    break;
+            } 
+        }
+
+        private CalculationType getCalculationType()
+        {
+            if (string.IsNullOrEmpty(txtLoanForGoalAmount.Text) && 
+                !string.IsNullOrEmpty(txtLoanForGoalEMI.Text) && 
+                !string.IsNullOrEmpty(txtLoanForGoalROI.Text) &&
+                !string.IsNullOrEmpty(txtLoanForGoalYears.Text))
+            {
+                return CalculationType.OutstandingAmount;
+            }
+
+            if (!string.IsNullOrEmpty(txtLoanForGoalAmount.Text) &&
+                string.IsNullOrEmpty(txtLoanForGoalEMI.Text) &&
+                !string.IsNullOrEmpty(txtLoanForGoalROI.Text) &&
+                !string.IsNullOrEmpty(txtLoanForGoalYears.Text))
+            {
+                return CalculationType.EMI;
+            }
+
+            if (!string.IsNullOrEmpty(txtLoanForGoalAmount.Text) &&
+                !string.IsNullOrEmpty(txtLoanForGoalEMI.Text) &&
+                !string.IsNullOrEmpty(txtLoanForGoalROI.Text) &&
+                string.IsNullOrEmpty(txtLoanForGoalYears.Text))
+            {
+                return CalculationType.Period;
+            }
+            return CalculationType.None;
+        }
+
+        private static double presentValue(double futureValue, decimal interest_rate, int timePeriodInYears)
+        {
+            //PV = FV / (1 + I)T;
+            interest_rate = interest_rate / 100;
+            decimal presentValue = (decimal)futureValue /
+                ((decimal)Math.Pow((double)(1 + interest_rate), (double)timePeriodInYears));
+
+            return Math.Round((double)presentValue);
+        }
+    }
+
+    public enum CalculationType
+    {
+        OutstandingAmount,
+        EMI,
+        Period,
+        None
     }
 }

@@ -105,10 +105,14 @@ namespace FinancialPlannerClient.PlanOptions
             double estitmatedCorpFund = 0;
             double.TryParse(lblCorpFundAmt.Text, out totalAvailableCorpFund);
             double.TryParse(lblEstimatedCorpusFundValue.Text, out estitmatedCorpFund);
-            if (totalAvailableCorpFund >= estitmatedCorpFund)
-                progressBarRetGoalCompletion.Text = "100";
-            else
-                progressBarRetGoalCompletion.Text = Math.Round(((100 * totalAvailableCorpFund) / estitmatedCorpFund)).ToString();
+            //if (totalAvailableCorpFund >= estitmatedCorpFund)
+            //    progressBarRetGoalCompletion.Text = "100";
+            //else
+            double goalComplitionPercentage = Math.Round(((100 * totalAvailableCorpFund) / estitmatedCorpFund));
+            progressBarRetGoalCompletion.Properties.Maximum = (goalComplitionPercentage > 100) ? int.Parse(goalComplitionPercentage.ToString())  : 100;
+
+            progressBarRetGoalCompletion.EditValue = goalComplitionPercentage.ToString();
+            progressBarRetGoalCompletion.Text = goalComplitionPercentage.ToString();
 
         }
 

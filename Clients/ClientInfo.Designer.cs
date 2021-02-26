@@ -369,6 +369,12 @@
             this.label73 = new System.Windows.Forms.Label();
             this.Income = new System.Windows.Forms.TabPage();
             this.grpIncome = new System.Windows.Forms.GroupBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.rdoFixAmountGrowth = new System.Windows.Forms.RadioButton();
+            this.rdoPercentage = new System.Windows.Forms.RadioButton();
+            this.txtincomeGrowthPercentage = new System.Windows.Forms.TextBox();
+            this.lblExpectedGrowth = new System.Windows.Forms.Label();
+            this.txtExpectedGrowthInAmount = new System.Windows.Forms.TextBox();
             this.label126 = new System.Windows.Forms.Label();
             this.txtIncomeTax = new System.Windows.Forms.TextBox();
             this.cmbIncomeBy = new System.Windows.Forms.ComboBox();
@@ -404,8 +410,6 @@
             this.txtIncomeEndYear = new System.Windows.Forms.TextBox();
             this.label92 = new System.Windows.Forms.Label();
             this.txtIncomeStartYear = new System.Windows.Forms.TextBox();
-            this.label91 = new System.Windows.Forms.Label();
-            this.txtincomeGrowthPercentage = new System.Windows.Forms.TextBox();
             this.label90 = new System.Windows.Forms.Label();
             this.txtAnnualIncome = new System.Windows.Forms.TextBox();
             this.label89 = new System.Windows.Forms.Label();
@@ -605,6 +609,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtGridNonFinancialAssets)).BeginInit();
             this.Income.SuspendLayout();
             this.grpIncome.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.grpSalaryDetails.SuspendLayout();
             this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridIncome)).BeginInit();
@@ -4372,6 +4377,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.grpIncome.BackColor = System.Drawing.Color.Transparent;
+            this.grpIncome.Controls.Add(this.groupBox5);
             this.grpIncome.Controls.Add(this.label126);
             this.grpIncome.Controls.Add(this.txtIncomeTax);
             this.grpIncome.Controls.Add(this.cmbIncomeBy);
@@ -4385,8 +4391,6 @@
             this.grpIncome.Controls.Add(this.txtIncomeEndYear);
             this.grpIncome.Controls.Add(this.label92);
             this.grpIncome.Controls.Add(this.txtIncomeStartYear);
-            this.grpIncome.Controls.Add(this.label91);
-            this.grpIncome.Controls.Add(this.txtincomeGrowthPercentage);
             this.grpIncome.Controls.Add(this.label90);
             this.grpIncome.Controls.Add(this.txtAnnualIncome);
             this.grpIncome.Controls.Add(this.label89);
@@ -4401,11 +4405,77 @@
             this.grpIncome.TabStop = false;
             this.grpIncome.Text = "Income Detail";
             // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.rdoFixAmountGrowth);
+            this.groupBox5.Controls.Add(this.rdoPercentage);
+            this.groupBox5.Controls.Add(this.txtincomeGrowthPercentage);
+            this.groupBox5.Controls.Add(this.lblExpectedGrowth);
+            this.groupBox5.Controls.Add(this.txtExpectedGrowthInAmount);
+            this.groupBox5.Location = new System.Drawing.Point(28, 245);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(383, 81);
+            this.groupBox5.TabIndex = 23;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Growth In Income (Annually)";
+            // 
+            // rdoFixAmountGrowth
+            // 
+            this.rdoFixAmountGrowth.AutoSize = true;
+            this.rdoFixAmountGrowth.Location = new System.Drawing.Point(104, 19);
+            this.rdoFixAmountGrowth.Name = "rdoFixAmountGrowth";
+            this.rdoFixAmountGrowth.Size = new System.Drawing.Size(77, 17);
+            this.rdoFixAmountGrowth.TabIndex = 1;
+            this.rdoFixAmountGrowth.Text = "Fix Amount";
+            this.rdoFixAmountGrowth.UseVisualStyleBackColor = true;
+            // 
+            // rdoPercentage
+            // 
+            this.rdoPercentage.AutoSize = true;
+            this.rdoPercentage.Checked = true;
+            this.rdoPercentage.Location = new System.Drawing.Point(13, 19);
+            this.rdoPercentage.Name = "rdoPercentage";
+            this.rdoPercentage.Size = new System.Drawing.Size(80, 17);
+            this.rdoPercentage.TabIndex = 0;
+            this.rdoPercentage.TabStop = true;
+            this.rdoPercentage.Text = "Percentage";
+            this.rdoPercentage.UseVisualStyleBackColor = true;
+            this.rdoPercentage.CheckedChanged += new System.EventHandler(this.rdoPercentage_CheckedChanged);
+            // 
+            // txtincomeGrowthPercentage
+            // 
+            this.txtincomeGrowthPercentage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtincomeGrowthPercentage.Location = new System.Drawing.Point(188, 40);
+            this.txtincomeGrowthPercentage.Name = "txtincomeGrowthPercentage";
+            this.txtincomeGrowthPercentage.Size = new System.Drawing.Size(189, 21);
+            this.txtincomeGrowthPercentage.TabIndex = 9;
+            this.txtincomeGrowthPercentage.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtincomeGrowthPercentage.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLoanInterestRate_KeyPress);
+            // 
+            // lblExpectedGrowth
+            // 
+            this.lblExpectedGrowth.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblExpectedGrowth.Location = new System.Drawing.Point(6, 43);
+            this.lblExpectedGrowth.Name = "lblExpectedGrowth";
+            this.lblExpectedGrowth.Size = new System.Drawing.Size(175, 35);
+            this.lblExpectedGrowth.TabIndex = 10;
+            this.lblExpectedGrowth.Text = "Expected Growth %";
+            // 
+            // txtExpectedGrowthInAmount
+            // 
+            this.txtExpectedGrowthInAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtExpectedGrowthInAmount.Location = new System.Drawing.Point(188, 40);
+            this.txtExpectedGrowthInAmount.Name = "txtExpectedGrowthInAmount";
+            this.txtExpectedGrowthInAmount.Size = new System.Drawing.Size(189, 21);
+            this.txtExpectedGrowthInAmount.TabIndex = 11;
+            this.txtExpectedGrowthInAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtExpectedGrowthInAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtExpectedGrowthInAmount_KeyPress);
+            // 
             // label126
             // 
             this.label126.AutoSize = true;
             this.label126.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label126.Location = new System.Drawing.Point(25, 277);
+            this.label126.Location = new System.Drawing.Point(25, 219);
             this.label126.Name = "label126";
             this.label126.Size = new System.Drawing.Size(128, 15);
             this.label126.TabIndex = 22;
@@ -4414,7 +4484,7 @@
             // txtIncomeTax
             // 
             this.txtIncomeTax.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIncomeTax.Location = new System.Drawing.Point(154, 276);
+            this.txtIncomeTax.Location = new System.Drawing.Point(154, 218);
             this.txtIncomeTax.Name = "txtIncomeTax";
             this.txtIncomeTax.Size = new System.Drawing.Size(257, 21);
             this.txtIncomeTax.TabIndex = 17;
@@ -4443,7 +4513,7 @@
             this.btnIncomeCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnIncomeCancel.ImageKey = "icons8-cancel-16.png";
             this.btnIncomeCancel.ImageList = this.imageList16x16;
-            this.btnIncomeCancel.Location = new System.Drawing.Point(325, 312);
+            this.btnIncomeCancel.Location = new System.Drawing.Point(325, 332);
             this.btnIncomeCancel.Name = "btnIncomeCancel";
             this.btnIncomeCancel.Size = new System.Drawing.Size(86, 26);
             this.btnIncomeCancel.TabIndex = 19;
@@ -4456,7 +4526,7 @@
             this.btnSaveIncome.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSaveIncome.ImageKey = "icons8-save-close-16.png";
             this.btnSaveIncome.ImageList = this.imageList16x16;
-            this.btnSaveIncome.Location = new System.Drawing.Point(233, 312);
+            this.btnSaveIncome.Location = new System.Drawing.Point(233, 332);
             this.btnSaveIncome.Name = "btnSaveIncome";
             this.btnSaveIncome.Size = new System.Drawing.Size(86, 26);
             this.btnSaveIncome.TabIndex = 18;
@@ -4468,7 +4538,7 @@
             // 
             this.label100.AutoSize = true;
             this.label100.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label100.Location = new System.Drawing.Point(25, 216);
+            this.label100.Location = new System.Drawing.Point(25, 191);
             this.label100.Name = "label100";
             this.label100.Size = new System.Drawing.Size(75, 15);
             this.label100.TabIndex = 17;
@@ -4477,10 +4547,10 @@
             // txtIncomeDescription
             // 
             this.txtIncomeDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIncomeDescription.Location = new System.Drawing.Point(154, 216);
+            this.txtIncomeDescription.Location = new System.Drawing.Point(154, 191);
             this.txtIncomeDescription.Multiline = true;
             this.txtIncomeDescription.Name = "txtIncomeDescription";
-            this.txtIncomeDescription.Size = new System.Drawing.Size(257, 54);
+            this.txtIncomeDescription.Size = new System.Drawing.Size(257, 21);
             this.txtIncomeDescription.TabIndex = 16;
             // 
             // grpSalaryDetails
@@ -4757,7 +4827,7 @@
             // 
             this.label93.AutoSize = true;
             this.label93.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label93.Location = new System.Drawing.Point(25, 190);
+            this.label93.Location = new System.Drawing.Point(25, 165);
             this.label93.Name = "label93";
             this.label93.Size = new System.Drawing.Size(60, 15);
             this.label93.TabIndex = 14;
@@ -4766,7 +4836,7 @@
             // txtIncomeEndYear
             // 
             this.txtIncomeEndYear.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIncomeEndYear.Location = new System.Drawing.Point(154, 189);
+            this.txtIncomeEndYear.Location = new System.Drawing.Point(154, 164);
             this.txtIncomeEndYear.MaxLength = 4;
             this.txtIncomeEndYear.Name = "txtIncomeEndYear";
             this.txtIncomeEndYear.Size = new System.Drawing.Size(257, 21);
@@ -4778,7 +4848,7 @@
             // 
             this.label92.AutoSize = true;
             this.label92.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label92.Location = new System.Drawing.Point(25, 166);
+            this.label92.Location = new System.Drawing.Point(25, 141);
             this.label92.Name = "label92";
             this.label92.Size = new System.Drawing.Size(63, 15);
             this.label92.TabIndex = 12;
@@ -4787,32 +4857,13 @@
             // txtIncomeStartYear
             // 
             this.txtIncomeStartYear.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIncomeStartYear.Location = new System.Drawing.Point(154, 163);
+            this.txtIncomeStartYear.Location = new System.Drawing.Point(154, 138);
             this.txtIncomeStartYear.MaxLength = 4;
             this.txtIncomeStartYear.Name = "txtIncomeStartYear";
             this.txtIncomeStartYear.Size = new System.Drawing.Size(257, 21);
             this.txtIncomeStartYear.TabIndex = 11;
             this.txtIncomeStartYear.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtIncomeStartYear.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrimaryHolderShare_KeyPress);
-            // 
-            // label91
-            // 
-            this.label91.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label91.Location = new System.Drawing.Point(25, 132);
-            this.label91.Name = "label91";
-            this.label91.Size = new System.Drawing.Size(105, 32);
-            this.label91.TabIndex = 10;
-            this.label91.Text = "Expected Growth % (Per Year)";
-            // 
-            // txtincomeGrowthPercentage
-            // 
-            this.txtincomeGrowthPercentage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtincomeGrowthPercentage.Location = new System.Drawing.Point(154, 137);
-            this.txtincomeGrowthPercentage.Name = "txtincomeGrowthPercentage";
-            this.txtincomeGrowthPercentage.Size = new System.Drawing.Size(257, 21);
-            this.txtincomeGrowthPercentage.TabIndex = 9;
-            this.txtincomeGrowthPercentage.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtincomeGrowthPercentage.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLoanInterestRate_KeyPress);
             // 
             // label90
             // 
@@ -6577,6 +6628,8 @@
             this.Income.PerformLayout();
             this.grpIncome.ResumeLayout(false);
             this.grpIncome.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.grpSalaryDetails.ResumeLayout(false);
             this.grpSalaryDetails.PerformLayout();
             this.groupBox6.ResumeLayout(false);
@@ -6871,7 +6924,7 @@
         private System.Windows.Forms.ComboBox cmbIncomeSource;
         private System.Windows.Forms.Label label79;
         private System.Windows.Forms.Label label90;
-        private System.Windows.Forms.Label label91;
+        private System.Windows.Forms.Label lblExpectedGrowth;
         private System.Windows.Forms.TextBox txtincomeGrowthPercentage;
         private System.Windows.Forms.Label label93;
         private System.Windows.Forms.TextBox txtIncomeEndYear;
@@ -7109,5 +7162,9 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit repositoryItemMemoEdit1;
         private DevExpress.XtraEditors.Repository.RepositoryItemRichTextEdit repositoryItemRichTextEdit1;
         private DevExpress.XtraEditors.SimpleButton btnSaveSession;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.RadioButton rdoFixAmountGrowth;
+        private System.Windows.Forms.RadioButton rdoPercentage;
+        private System.Windows.Forms.TextBox txtExpectedGrowthInAmount;
     }
 }

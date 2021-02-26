@@ -1700,7 +1700,9 @@ namespace FinancialPlannerClient.Clients
             txtExpectedGrowthSalary.Text = "0";
             txtIncomeStartYear.Text = DateTime.Now.Year.ToString();
             txtIncomeEndYear.Text = (_client.DOB.Year + plannerAssumption.ClientRetirementAge + 1).ToString();
+            rdoPercentage.Checked = true;
             txtincomeGrowthPercentage.Text = plannerAssumption.ClientIncomeRise.ToString();
+            txtExpectedGrowthInAmount.Text = "0";
 
             txtCTC.Tag = "0";
             txtCTC.Text = "0";
@@ -1749,8 +1751,18 @@ namespace FinancialPlannerClient.Clients
             income.Pid = PlannerId;
             income.IncomeBy = cmbIncomeBy.Text; /*(rdoClientIncome.Checked) ? "Client" : "Spouse";*/
             income.Amount = (txtAnnualBonusAmt.Text == "000.00") ? 0 : double.Parse(txtAnnualIncome.Text);
-            income.ExpectGrowthInPercentage = (txtincomeGrowthPercentage.Text == "") ? 0 :
-                decimal.Parse(txtincomeGrowthPercentage.Text);
+            if (rdoPercentage.Checked)
+            {
+                income.ExpectedGrowthType = "P";
+                income.ExpectGrowthInPercentage = (txtincomeGrowthPercentage.Text == "") ? 0 :
+                    decimal.Parse(txtincomeGrowthPercentage.Text);
+            }
+            else
+            {
+                income.ExpectedGrowthType = "A";
+                income.ExpectGrowthInPercentage = 0;
+                income.ExpectedGrwothInAmount = (string.IsNullOrEmpty(txtExpectedGrowthInAmount.Text) ? 0 : double.Parse(txtExpectedGrowthInAmount.Text));
+            }
             income.StartYear = txtIncomeStartYear.Text;
             income.EndYear = txtIncomeEndYear.Text;
             income.UpdatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
@@ -1798,7 +1810,18 @@ namespace FinancialPlannerClient.Clients
                 cmbIncomeBy.Text = income.IncomeBy;
                 //rdoClientIncome.Checked = income.IncomeBy.ToString().Equals("Client", StringComparison.OrdinalIgnoreCase) ? true : false;
                 //rdoSpouseIncome.Checked = !rdoClientIncome.Checked;
-                txtincomeGrowthPercentage.Text = income.ExpectGrowthInPercentage.ToString();
+                if (income.ExpectedGrowthType == "P")
+                {
+                    rdoPercentage.Checked = true;
+                    rdoFixAmountGrowth.Checked = false;
+                    txtincomeGrowthPercentage.Text = income.ExpectGrowthInPercentage.ToString();
+                }
+                else
+                {
+                    rdoFixAmountGrowth.Checked = true;
+                    rdoPercentage.Checked = false;
+                    txtExpectedGrowthInAmount.Text = income.ExpectedGrwothInAmount.ToString();
+                }
                 txtAnnualIncome.Text = income.Amount.ToString();
                 txtIncomeStartYear.Text = income.StartYear;
                 txtIncomeEndYear.Text = income.EndYear;
@@ -2550,6 +2573,27 @@ namespace FinancialPlannerClient.Clients
                 txtExpectedGrowthSalary.Text = plannerAssumption.ClientIncomeRise.ToString();
                 txtincomeGrowthPercentage.Text = plannerAssumption.ClientIncomeRise.ToString();
             }
+        }
+
+        private void rdoPercentage_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdoPercentage.Checked)
+            {
+                lblExpectedGrowth.Text = "Expected Growth %";
+                txtincomeGrowthPercentage.Visible = true;
+                txtExpectedGrowthInAmount.Visible = false;
+            }
+            else
+            {
+                lblExpectedGrowth.Text = "Expected Growth in Amount";
+                txtincomeGrowthPercentage.Visible = false;
+                txtExpectedGrowthInAmount.Visible = true;
+            }
+        }
+
+        private void txtExpectedGrowthInAmount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
     }
 }
