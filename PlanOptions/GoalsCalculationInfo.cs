@@ -226,7 +226,7 @@ namespace FinancialPlannerClient.PlanOptions
                 DataRow dr = _dtGoalCalculation.NewRow();
                 returnRatio = goalPlanning.GrowthPercentage;
 
-                dr["Calculation Year"] = string.Format("{0} - {1}", currentYear, currentYear + 1);
+                dr["Calculation Year"] = string.Format("{0} - {1}", currentYear, (_planner.StartDate.Year == _planner.EndDate.Year)? currentYear : currentYear + 1);
 
                 dr["Year Left"] = goalPlanning.YearLeft;
                 dr["Loan Instrument"] = 0;

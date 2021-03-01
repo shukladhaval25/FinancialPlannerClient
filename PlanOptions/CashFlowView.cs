@@ -5,6 +5,7 @@ using FinancialPlannerClient.CashFlowManager;
 using System;
 using System.Data;
 using System.Diagnostics;
+using System.Drawing;
 using System.Reflection;
 using System.Windows.Forms;
 
@@ -91,6 +92,29 @@ namespace FinancialPlannerClient.PlanOptions
             debuggerInfo.Method = methodName;
             debuggerInfo.ExceptionInfo = ex;
             Logger.LogDebug(debuggerInfo);
+        }
+
+        private void gridSplitContainerViewCashFlow_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        {
+            //if (e.Column.Caption == "Surplus Amount")
+            //{
+            //    double surplusAmt = 0;
+            //    double.TryParse(e.Value.ToString(), out surplusAmt);
+            //    if (surplusAmt < 0)
+            //        //gridSplitContainerViewCashFlow.GetRow(e.RowHandle).
+            //        e.Appearance.BackColor = Color.Purple;
+            //}
+        }
+
+        private void gridSplitContainerViewCashFlow_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
+        {
+            if (e.Column.ToString() == "Surplus Amount")
+            {
+                double surplusAmt = 0;
+                double.TryParse(e.CellValue.ToString(), out surplusAmt);
+                if (surplusAmt < 0)
+                    e.Appearance.ForeColor  = Color.DarkRed  ;
+            }
         }
     }
 }

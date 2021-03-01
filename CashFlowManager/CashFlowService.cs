@@ -266,7 +266,27 @@ namespace FinancialPlannerClient.CashFlowManager
         private void validateSurplusAmount(int years,DataRow dr)
         {
             double currentYearSurplusAmount = 0;
+            int calculationYear = int.Parse(dr["StartYear"].ToString());
             double.TryParse(dr["Surplus Amount"].ToString(),out currentYearSurplusAmount);
+            double totalGoalLoanEMIs = 0;
+            foreach (Goals goal in _cashFlowCalculation.LstGoals)
+            {
+                if (goal.LoanForGoal != null)
+                {
+                    if (calculationYear >= goal.LoanForGoal.StratYear &&
+                        calculationYear < goal.LoanForGoal.EndYear)
+                    {
+                        double emiAmt = 0;
+                        dr[string.Format("(Loan EMI - {0})", goal.Name)] = (goal.LoanForGoal.EMI * 12);
+                        emiAmt = (goal.LoanForGoal.EMI * 12);
+                        totalGoalLoanEMIs = totalGoalLoanEMIs + emiAmt;
+                    }
+                }
+            }
+
+            currentYearSurplusAmount = currentYearSurplusAmount - totalGoalLoanEMIs;
+
+
             if (currentYearSurplusAmount < 0)
             {
                 double previousYearSurplusAmount = 0;
@@ -296,6 +316,16 @@ namespace FinancialPlannerClient.CashFlowManager
                                             totalAmountSettleFromPreviousYear = totalAmountSettleFromPreviousYear + previousYearFundAllocatedAmount;
                                             _dtCashFlow.Rows[years - 1][string.Format("{0} - {1}", goal.Priority, goal.Name)] =
                                                 totalAmountSettleFromPreviousYear - currentYearSurplusAmount;
+
+                                            GoalsValueCalculationInfo  goalsValueCalculationInfo  =  GoalCalculationMgr.GetGoalValueCalculation(goal);
+
+                                            int calculationyear = int.Parse(_dtCashFlow.Rows[years - 1]["StartYear"].ToString());
+                                            GoalPlanning goalPlanning =   goalsValueCalculationInfo.GetGoalPlanning(calculationyear);
+                                            GoalPlanning updatedGoalPlanning = goalPlanning;
+                                            updatedGoalPlanning.ActualFreshInvestment = totalAmountSettleFromPreviousYear - currentYearSurplusAmount;
+
+
+                                            goalsValueCalculationInfo.UpdateGoalPlanning(goalPlanning,updatedGoalPlanning); 
                                             break;
                                         }
                                         else
@@ -320,7 +350,7 @@ namespace FinancialPlannerClient.CashFlowManager
                         
                         // actualSurplusAmount = previousYearSurplusAmount - currentYearSurplusAmount;
                         //_dtCashFlow.Rows[years - 1]["Surplus Amount"] = actualSurplusAmount;
-                         dr["Surplus Amount"] = 0;
+                        // dr["Surplus Amount"] = 0;
                          dr["Adjusted Amount"] = currentYearSurplusAmount;
 
                     }
@@ -357,9 +387,10 @@ namespace FinancialPlannerClient.CashFlowManager
                         {
                             dr[string.Format("(Loan EMI - {0})", goal.Name)] = (goal.LoanForGoal.EMI * 12);
                             totalLoanEmi = totalLoanEmi + (goal.LoanForGoal.EMI * 12);
+                            surplusAmount = surplusAmount - (goal.LoanForGoal.EMI * 12);
                         }
                     }
-
+                   
                     if (surplusAmount > 0 &&
                          (calculationYear < int.Parse(goal.StartYear)))
                     {
@@ -395,18 +426,18 @@ namespace FinancialPlannerClient.CashFlowManager
             double totalExpAmount = double.Parse(dr["Total Annual Expenses"].ToString());
             double totalLoanAmount = double.Parse(dr["Total Annual Loans"].ToString());
             double totalGoalLoanEMIs = 0;
-            if (_cashFlowCalculation.LstGoals != null)
-            {
-                foreach (Goals goal in _cashFlowCalculation.LstGoals)
-                {
-                    if (goal.LoanForGoal != null)
-                    {
-                        double emiAmt = 0;
-                        double.TryParse(dr[string.Format("(Loan EMI - {0})", goal.Name)].ToString(), out emiAmt);
-                        totalGoalLoanEMIs = totalGoalLoanEMIs + emiAmt;
-                    }
-                }
-            }
+            //if (_cashFlowCalculation.LstGoals != null)
+            //{
+            //    foreach (Goals goal in _cashFlowCalculation.LstGoals)
+            //    {
+            //        if (goal.LoanForGoal != null)
+            //        {
+            //            double emiAmt = 0;
+            //            double.TryParse(dr[string.Format("(Loan EMI - {0})", goal.Name)].ToString(), out emiAmt);
+            //            totalGoalLoanEMIs = totalGoalLoanEMIs + emiAmt;
+            //        }
+            //    }
+            //}
             
             dr["Surplus Amount"] = totalPostTaxIncome - (totalExpAmount + totalLoanAmount + totalGoalLoanEMIs);
         }
@@ -422,17 +453,17 @@ namespace FinancialPlannerClient.CashFlowManager
             {
                 foreach (Goals goal in _cashFlowCalculation.LstGoals)
                 {
-                    if (goal.LoanForGoal != null)
-                    {
-                        if (calculationYear >= goal.LoanForGoal.StratYear &&
-                            calculationYear < goal.LoanForGoal.EndYear)
-                        {
-                            double emiAmt = 0;
-                            dr[string.Format("(Loan EMI - {0})", goal.Name)] = (goal.LoanForGoal.EMI * 12);
-                            emiAmt = (goal.LoanForGoal.EMI * 12);
-                            totalGoalLoanEMIs = totalGoalLoanEMIs + emiAmt;
-                        }                        
-                    }
+                    //if (goal.LoanForGoal != null)
+                    //{
+                    //    if (calculationYear >= goal.LoanForGoal.StratYear &&
+                    //        calculationYear < goal.LoanForGoal.EndYear)
+                    //    {
+                    //        double emiAmt = 0;
+                    //        dr[string.Format("(Loan EMI - {0})", goal.Name)] = (goal.LoanForGoal.EMI * 12);
+                    //        emiAmt = (goal.LoanForGoal.EMI * 12);
+                    //        totalGoalLoanEMIs = totalGoalLoanEMIs + emiAmt;
+                    //    }
+                    //}
 
                     double investmentAmt = 0;
                     double.TryParse(dr[string.Format("{0} - {1}", goal.Priority, goal.Name)].ToString(), out investmentAmt);
@@ -851,7 +882,7 @@ namespace FinancialPlannerClient.CashFlowManager
             dcYear.ReadOnly = true;
             _dtCashFlow.Columns.Add(dcYear);
 
-            DataColumn dcEndYear = new DataColumn("EndYear", typeof(System.Int16), "StartYear + 1");
+            DataColumn dcEndYear = new DataColumn("EndYear", typeof(System.Int16), (_planner.StartDate.Year == _planner.EndDate.Year)? "StartYear" : "StartYear + 1");
             dcEndYear.ReadOnly = true;
             _dtCashFlow.Columns.Add(dcEndYear);
 

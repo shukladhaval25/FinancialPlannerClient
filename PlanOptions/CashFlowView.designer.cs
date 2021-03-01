@@ -57,6 +57,8 @@
             this.gridSplitContainerViewCashFlow.OptionsBehavior.ReadOnly = true;
             this.gridSplitContainerViewCashFlow.OptionsMenu.ShowConditionalFormattingItem = true;
             this.gridSplitContainerViewCashFlow.OptionsView.ColumnAutoWidth = false;
+            this.gridSplitContainerViewCashFlow.RowCellStyle += new DevExpress.XtraGrid.Views.Grid.RowCellStyleEventHandler(this.gridSplitContainerViewCashFlow_RowCellStyle);
+            this.gridSplitContainerViewCashFlow.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gridSplitContainerViewCashFlow_CellValueChanged);
             // 
             // btnExport
             // 

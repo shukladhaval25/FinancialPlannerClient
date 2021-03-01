@@ -303,6 +303,11 @@ namespace FinancialPlannerClient.PlanOptions
                 _goalPlannings.Add(goalPlanning);
         }
 
+        public void UpdateGoalPlanning(GoalPlanning goalPlanning,GoalPlanning updatedGoalPlanningWithValue)
+        {
+            _goalPlannings.Remove(goalPlanning);
+            _goalPlannings.Add(updatedGoalPlanningWithValue);
+        }
         public decimal GetGrowthPercentage(int calculationYear)
         {
             return _riskProfileInfo.GetRiskProfileReturnRatio(_riskProfileId, getRemainingYearBy(calculationYear));

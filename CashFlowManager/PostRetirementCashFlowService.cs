@@ -140,7 +140,7 @@ namespace FinancialPlannerClient.CashFlowManager
             {
                 DataRow dr = _dtRetirementCashFlow.NewRow();
                 dr["StartYear"] = i;
-                dr["EndYear"] = i + 1;
+                dr["EndYear"] = (this.planner.StartDate.Year == this.planner.EndDate.Year ) ? i : i + 1;
                 if (cashFlowCalculation.ClientLifeExpected >= (i - cashFlowCalculation.ClientDateOfBirth.Year))
                     dr["ClientCurrentAge"] = (i - cashFlowCalculation.ClientDateOfBirth.Year);
                 if (cashFlowCalculation.SpouseLifeExpected >= (i - cashFlowCalculation.SpouseDateOfBirth.Year))
