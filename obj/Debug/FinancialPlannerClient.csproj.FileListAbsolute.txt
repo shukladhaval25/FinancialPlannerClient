@@ -574,7 +574,6 @@ C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient
 C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.TaskManagementSystem.CustomAppointmentForm.ja.resources
 C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.TaskManagementSystem.CustomAppointmentForm.ru.resources
 C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.csproj.GenerateResource.cache
-C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.exe.licenses
 C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.csproj.CoreCompileInputs.cache
 C:\Application Softwares\FinancialPlannerClient\obj\Debug\de\FinancialPlannerClient.resources.dll
 C:\Application Softwares\FinancialPlannerClient\obj\Debug\es\FinancialPlannerClient.resources.dll
@@ -584,3 +583,4 @@ C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient
 C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.exe
 C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.pdb
 C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.csprojAssemblyReference.cache
+C:\Application Softwares\FinancialPlannerClient\bin\Debug\Newtonsoft.Json.xml

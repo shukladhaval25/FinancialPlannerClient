@@ -231,18 +231,18 @@ namespace FinancialPlannerClient.PlanOptions
                 dr["Year Left"] = goalPlanning.YearLeft;
                 dr["Loan Instrument"] = 0;
                 double freshInvestment = goalPlanning.ActualFreshInvestment;
-
+               
                 dr["Fresh Investment"] = Math.Round( freshInvestment);
                 if (currentYear == goalYear)
                 {
                     dr["Assets Mapping"] = goalsValueCal.FutureValueOfMappedNonFinancialAssets;
                     if (_goal.Category.Equals("Retirement", StringComparison.OrdinalIgnoreCase))
                     {
-                        dr["Currest Status Fund"] = 
+                        dr["Currest Status Fund"] =
                             Math.Round(CashFlowService.GetCurrentStatusAccessFund(), 2);
                     }
-                    
-                     dr["Instrument Mapped"] = goalsValueCal.FutureValueOfMappedInstruments;
+
+                    dr["Instrument Mapped"] = goalsValueCal.FutureValueOfMappedInstruments;
                    
                 }
                 dr["Portfolio Value"] =

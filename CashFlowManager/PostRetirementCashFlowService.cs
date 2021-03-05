@@ -415,11 +415,11 @@ namespace FinancialPlannerClient.CashFlowManager
                     amount = long.Parse(drLastCashFlow["(" + income.IncomeBy + ") " + income.Source].ToString());
                 else
                 {
-                    int yearDifference = (cashFlowCalculation.ClientCurrentAge > cashFlowCalculation.SpouseCurrentAge) ?
-                        cashFlowCalculation.ClientCurrentAge - cashFlowCalculation.SpouseCurrentAge :
-                        cashFlowCalculation.SpouseCurrentAge - cashFlowCalculation.ClientCurrentAge;
+                    //int yearDifference = (cashFlowCalculation.ClientCurrentAge > cashFlowCalculation.SpouseCurrentAge) ?
+                    //    cashFlowCalculation.ClientCurrentAge - cashFlowCalculation.SpouseCurrentAge :
+                    //    cashFlowCalculation.SpouseCurrentAge - cashFlowCalculation.ClientCurrentAge;
 
-                    amount = (long)futureValue(income.Amount, income.ExpectGrowthInPercentage, ((year - yearDifference) - this.planner.StartDate.Year));
+                    amount = (long)futureValue(income.Amount, income.ExpectGrowthInPercentage, ((year - 1)  - int.Parse(income.StartYear)));
                 }
                 return amount;
             }
