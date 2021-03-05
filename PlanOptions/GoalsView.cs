@@ -18,7 +18,7 @@ namespace FinancialPlannerClient.PlanOptions
         private PlannerAssumption plannerAssumption;
         private PersonalInformation _personalInfo;
 
-        public GoalsView(int planId,Client client)
+        public GoalsView(int planId, Client client)
         {
             InitializeComponent();
             this.planId = planId;
@@ -136,7 +136,7 @@ namespace FinancialPlannerClient.PlanOptions
                     txtGoalRecurrence.Text = "";
                 numPriority.Value = goals.Priority;
                 txtGoalDescription.Text = goals.Description;
-                
+
                 if (goals.LoanForGoal != null)
                 {
                     chkLaonForGoal.Checked = true;
@@ -210,7 +210,7 @@ namespace FinancialPlannerClient.PlanOptions
             txtGoalEndYear.Text = "";
             txtGoalRecurrence.Text = "";
             int maxPriority = string.IsNullOrEmpty(_dtGoals.Compute("Max(Priority)", "").ToString()) ? 0 :
-                int.Parse(_dtGoals.Compute("Max(Priority)","").ToString());
+                int.Parse(_dtGoals.Compute("Max(Priority)", "").ToString());
             numPriority.Text = (maxPriority + 1).ToString();
             txtGoalDescription.Text = "";
             chkLaonForGoal.Checked = false;
@@ -222,7 +222,7 @@ namespace FinancialPlannerClient.PlanOptions
             txtLoanForGoalStartYear.Text = "";
             txtLoanForGoalEndYear.Text = "";
             chkEligbileForInsuranceCoverage.Checked = false;
-            
+
         }
 
         private void btnCloseClientInfo_Click(object sender, EventArgs e)
@@ -245,7 +245,7 @@ namespace FinancialPlannerClient.PlanOptions
 
                 bool isSaved = false;
 
-                if (MessageBox.Show("Are you sure that entered inflation rate (%) is correct?", "Inflation Rate",MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                if (MessageBox.Show("Are you sure that entered inflation rate (%) is correct?", "Inflation Rate", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                     return;
 
                 if (goals != null && goals.Id == 0)
@@ -262,7 +262,7 @@ namespace FinancialPlannerClient.PlanOptions
                 //else
                 //    MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 DevExpress.XtraEditors.XtraMessageBox.Show("Unable to save record." + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -297,13 +297,13 @@ namespace FinancialPlannerClient.PlanOptions
             {
                 int startYear = int.Parse(txtGoalStartYear.Text);
                 int endYear = int.Parse(txtGoalEndYear.Text);
-                int frequency = ((string.IsNullOrEmpty(txtGoalRecurrence.Text) ||txtGoalRecurrence.Text == "0") 
+                int frequency = ((string.IsNullOrEmpty(txtGoalRecurrence.Text) || txtGoalRecurrence.Text == "0")
                     ? 1 : int.Parse(txtGoalRecurrence.Text));
                 bool isPriorityAssignDuplicate = false;
                 int currentPriorityNumber = int.Parse(numPriority.Value.ToString());
                 for (int year = startYear; year < endYear;)
                 {
-                    
+
                     isPriorityAssignDuplicate = isDuplicatePriorityNumber(currentPriorityNumber.ToString());
                     if (isPriorityAssignDuplicate)
                         return false;
@@ -475,6 +475,16 @@ namespace FinancialPlannerClient.PlanOptions
 
         private void btnCalculateLoan_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtGoalCurrentValue.Text) || string.IsNullOrEmpty(txtGoalStartYear.Text) || string.IsNullOrEmpty(txtInflationRate.Text))
+            {
+                XtraMessageBox.Show("Please enter require data like Goal current value,Goal start year, Inflation Rate.", "Enter Require Data", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+            if (string.IsNullOrEmpty(txtGoalLoanPortion.Text))
+            {
+                XtraMessageBox.Show("Please enter loan portion (%) data.", "Enter Require Data", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
             if (string.IsNullOrEmpty(txtLoanForGoalAmount.Text) &&
                string.IsNullOrEmpty(txtLoanForGoalEMI.Text) &&
                string.IsNullOrEmpty(txtLoanForGoalROI.Text) &&
@@ -483,17 +493,37 @@ namespace FinancialPlannerClient.PlanOptions
                 XtraMessageBox.Show("Please enter require data to calculate loan formula.", "Enter Require Data", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
+
             CalculationType calculationType = getCalculationType();
             LoanCalcuation(calculationType);
         }
 
         private void LoanCalcuation(CalculationType calculationType)
         {
+            
+            double currentValueOfLoan = double.Parse(txtGoalCurrentValue.Text);
+          
+
             switch (calculationType)
             {
                 case CalculationType.OutstandingAmount:
                     //txtLoanForGoalAmount.Text = presentValue()
                     break;
+                case CalculationType.EMI:
+                   
+                    
+                    double principalAmount = double.Parse(txtLoanForGoalAmount.Text);
+                    float interestRate = float.Parse(txtLoanForGoalROI.Text)/1200;
+                    int numberOfYears = int.Parse(txtLoanForGoalYears.Text) * 12;
+                    // E = P * r * Math.Pow(1 + r, n) / (Math.Pow(1 + r, n) - 1);
+                    double emi = principalAmount * interestRate * Math.Pow(1 + interestRate,numberOfYears) / (Math.Pow(1 + interestRate, numberOfYears) -1) ;
+                    txtLoanForGoalEMI.Text =  Math.Round(emi).ToString();
+                    break;
+                case CalculationType.Period:
+                    break;
+                case CalculationType.RateOfInterest:
+                    break;
+                
             } 
         }
 
@@ -522,6 +552,15 @@ namespace FinancialPlannerClient.PlanOptions
             {
                 return CalculationType.Period;
             }
+
+            if (!string.IsNullOrEmpty(txtLoanForGoalAmount.Text) &&
+             !string.IsNullOrEmpty(txtLoanForGoalEMI.Text) &&
+             string.IsNullOrEmpty(txtLoanForGoalROI.Text) &&
+             !string.IsNullOrEmpty(txtLoanForGoalYears.Text))
+            {
+                return CalculationType.RateOfInterest;
+            }
+
             return CalculationType.None;
         }
 
@@ -534,6 +573,28 @@ namespace FinancialPlannerClient.PlanOptions
 
             return Math.Round((double)presentValue);
         }
+
+        private static double futureValue(double presentValue, decimal interest_rate, int timePeriodInYears)
+        {
+            //FV = PV * (1 + I)T;
+            interest_rate = interest_rate / 100;
+            double futureValue = presentValue *
+                (Math.Pow((double)(1 + interest_rate), (double)timePeriodInYears));
+
+            return Math.Round(futureValue);
+        }
+
+        private void txtGoalLoanPortion_EditValueChanged(object sender, EventArgs e)
+        {
+            double currentValueOfGoal = double.Parse(txtGoalCurrentValue.Text);
+            double futureValueOfGoal = futureValue(currentValueOfGoal, decimal.Parse(txtInflationRate.Text), int.Parse(txtGoalStartYear.Text) - DateTime.Now.Year);
+            double loanPortion = double.Parse(txtGoalLoanPortion.Text);
+            double futureLoanAmount = (futureValueOfGoal * loanPortion) / 100;
+
+            txtLoanForGoalAmount.Text = futureLoanAmount.ToString();
+
+
+        }
     }
 
     public enum CalculationType
@@ -541,6 +602,7 @@ namespace FinancialPlannerClient.PlanOptions
         OutstandingAmount,
         EMI,
         Period,
+        RateOfInterest,
         None
     }
 }
