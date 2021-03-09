@@ -583,4 +583,5 @@ C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient
 C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.exe
 C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.pdb
 C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.csprojAssemblyReference.cache
+C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.exe.licenses
 C:\Application Softwares\FinancialPlannerClient\bin\Debug\Newtonsoft.Json.xml

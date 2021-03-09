@@ -89,7 +89,9 @@ namespace FinancialPlannerClient.CashFlowManager
                 DataTable dtGoalMapped = ListtoDataTable.ToDataTable(currentStatusToGoal.ToList());
                 double totalCurrentStatusFund = getTotalCurrentSatusSurplusValue(dtCurrentStatustoGoals);
                 double mappedValueFromCurrentStatusFundByManager = getTotalFundAllocationValue(dtCurrentStatustoGoals, dtGoalMapped);
-                totalAccessCurrentStatusValue = totalCurrentStatusFund - mappedValueFromCurrentStatusFundByManager;
+                //TODO: Add Contingency  fund logic
+                double contingency = new CurrentStatusInfo().GetContingencyFund(this._optionId, this._planId).Amount;
+                totalAccessCurrentStatusValue = totalCurrentStatusFund - (mappedValueFromCurrentStatusFundByManager + contingency);
             }
             
             for (int rowIndex = 0; rowIndex <= _dtCashFlow.Rows.Count; rowIndex++)

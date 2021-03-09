@@ -44,6 +44,9 @@
             DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem5 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip6 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem6 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem6 = new DevExpress.Utils.ToolTipItem();
             this.label29 = new System.Windows.Forms.Label();
             this.gridControlCurrentStatusGoal = new DevExpress.XtraGrid.GridControl();
             this.gridViewCurrentStatusGoal = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -62,6 +65,9 @@
             this.btnEdit = new DevExpress.XtraEditors.SimpleButton();
             this.btnAdd = new DevExpress.XtraEditors.SimpleButton();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.btnSaveConfingencyFund = new DevExpress.XtraEditors.SimpleButton();
+            this.txtContingencyfund = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.txtAcessCurrentStautsValue = new DevExpress.XtraEditors.TextEdit();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.txtTotalMappedValue = new DevExpress.XtraEditors.TextEdit();
@@ -78,6 +84,7 @@
             this.grpFundAllocation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtContingencyfund.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAcessCurrentStautsValue.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTotalMappedValue.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTotalCurrentStatusSurplusValue.Properties)).BeginInit();
@@ -96,10 +103,10 @@
             // 
             // gridControlCurrentStatusGoal
             // 
-            this.gridControlCurrentStatusGoal.Location = new System.Drawing.Point(15, 193);
+            this.gridControlCurrentStatusGoal.Location = new System.Drawing.Point(15, 213);
             this.gridControlCurrentStatusGoal.MainView = this.gridViewCurrentStatusGoal;
             this.gridControlCurrentStatusGoal.Name = "gridControlCurrentStatusGoal";
-            this.gridControlCurrentStatusGoal.Size = new System.Drawing.Size(467, 254);
+            this.gridControlCurrentStatusGoal.Size = new System.Drawing.Size(467, 266);
             this.gridControlCurrentStatusGoal.TabIndex = 6;
             this.gridControlCurrentStatusGoal.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewCurrentStatusGoal});
@@ -115,7 +122,7 @@
             // txtFundAllocation
             // 
             this.txtFundAllocation.Enabled = false;
-            this.txtFundAllocation.Location = new System.Drawing.Point(128, 365);
+            this.txtFundAllocation.Location = new System.Drawing.Point(128, 398);
             this.txtFundAllocation.Name = "txtFundAllocation";
             this.txtFundAllocation.Size = new System.Drawing.Size(203, 20);
             this.txtFundAllocation.TabIndex = 16;
@@ -123,7 +130,7 @@
             // cmbCurrentStsatusToGoal
             // 
             this.cmbCurrentStsatusToGoal.Enabled = false;
-            this.cmbCurrentStsatusToGoal.Location = new System.Drawing.Point(128, 339);
+            this.cmbCurrentStsatusToGoal.Location = new System.Drawing.Point(128, 372);
             this.cmbCurrentStsatusToGoal.Name = "cmbCurrentStsatusToGoal";
             this.cmbCurrentStsatusToGoal.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -136,7 +143,7 @@
             this.gridControlAllocationOfCurrentStatus.Location = new System.Drawing.Point(5, 23);
             this.gridControlAllocationOfCurrentStatus.MainView = this.gridViewAllocationOfCurrentStatus;
             this.gridControlAllocationOfCurrentStatus.Name = "gridControlAllocationOfCurrentStatus";
-            this.gridControlAllocationOfCurrentStatus.Size = new System.Drawing.Size(457, 241);
+            this.gridControlAllocationOfCurrentStatus.Size = new System.Drawing.Size(457, 276);
             this.gridControlAllocationOfCurrentStatus.TabIndex = 14;
             this.gridControlAllocationOfCurrentStatus.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewAllocationOfCurrentStatus});
@@ -153,7 +160,7 @@
             // lblLine
             // 
             this.lblLine.BackColor = System.Drawing.Color.Black;
-            this.lblLine.Location = new System.Drawing.Point(7, 331);
+            this.lblLine.Location = new System.Drawing.Point(7, 364);
             this.lblLine.Name = "lblLine";
             this.lblLine.Size = new System.Drawing.Size(453, 1);
             this.lblLine.TabIndex = 13;
@@ -162,7 +169,7 @@
             // label33
             // 
             this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(42, 368);
+            this.label33.Location = new System.Drawing.Point(42, 401);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(80, 13);
             this.label33.TabIndex = 6;
@@ -171,7 +178,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(42, 342);
+            this.label4.Location = new System.Drawing.Point(42, 375);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(28, 13);
             this.label4.TabIndex = 4;
@@ -193,7 +200,7 @@
             this.grpFundAllocation.Controls.Add(this.label33);
             this.grpFundAllocation.Location = new System.Drawing.Point(488, 43);
             this.grpFundAllocation.Name = "grpFundAllocation";
-            this.grpFundAllocation.Size = new System.Drawing.Size(467, 404);
+            this.grpFundAllocation.Size = new System.Drawing.Size(467, 436);
             this.grpFundAllocation.TabIndex = 8;
             this.grpFundAllocation.Text = "Fund Allocation To Goal";
             // 
@@ -203,7 +210,7 @@
             this.lblInformation.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.lblInformation.Appearance.Options.UseFont = true;
             this.lblInformation.Appearance.Options.UseForeColor = true;
-            this.lblInformation.Location = new System.Drawing.Point(45, 305);
+            this.lblInformation.Location = new System.Drawing.Point(45, 338);
             this.lblInformation.Name = "lblInformation";
             this.lblInformation.Size = new System.Drawing.Size(395, 14);
             this.lblInformation.TabIndex = 29;
@@ -213,7 +220,7 @@
             // 
             this.btnClosePlanoptions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClosePlanoptions.Image = ((System.Drawing.Image)(resources.GetObject("btnClosePlanoptions.Image")));
-            this.btnClosePlanoptions.Location = new System.Drawing.Point(361, 368);
+            this.btnClosePlanoptions.Location = new System.Drawing.Point(361, 401);
             this.btnClosePlanoptions.Name = "btnClosePlanoptions";
             this.btnClosePlanoptions.Size = new System.Drawing.Size(88, 23);
             toolTipTitleItem1.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
@@ -233,7 +240,7 @@
             // 
             this.btnSavePlanoption.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSavePlanoption.Image = ((System.Drawing.Image)(resources.GetObject("btnSavePlanoption.Image")));
-            this.btnSavePlanoption.Location = new System.Drawing.Point(361, 339);
+            this.btnSavePlanoption.Location = new System.Drawing.Point(361, 372);
             this.btnSavePlanoption.Name = "btnSavePlanoption";
             this.btnSavePlanoption.Size = new System.Drawing.Size(88, 23);
             toolTipTitleItem2.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
@@ -253,7 +260,7 @@
             // 
             this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
-            this.btnDelete.Location = new System.Drawing.Point(67, 272);
+            this.btnDelete.Location = new System.Drawing.Point(67, 305);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(25, 23);
             toolTipTitleItem3.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
@@ -273,7 +280,7 @@
             // 
             this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEdit.Image = ((System.Drawing.Image)(resources.GetObject("btnEdit.Image")));
-            this.btnEdit.Location = new System.Drawing.Point(36, 272);
+            this.btnEdit.Location = new System.Drawing.Point(36, 305);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(25, 23);
             toolTipTitleItem4.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image3")));
@@ -293,7 +300,7 @@
             // 
             this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
-            this.btnAdd.Location = new System.Drawing.Point(6, 272);
+            this.btnAdd.Location = new System.Drawing.Point(6, 305);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(25, 23);
             toolTipTitleItem5.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image4")));
@@ -313,6 +320,9 @@
             // 
             // panelControl1
             // 
+            this.panelControl1.Controls.Add(this.btnSaveConfingencyFund);
+            this.panelControl1.Controls.Add(this.txtContingencyfund);
+            this.panelControl1.Controls.Add(this.labelControl4);
             this.panelControl1.Controls.Add(this.txtAcessCurrentStautsValue);
             this.panelControl1.Controls.Add(this.labelControl3);
             this.panelControl1.Controls.Add(this.txtTotalMappedValue);
@@ -323,6 +333,46 @@
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(469, 141);
             this.panelControl1.TabIndex = 9;
+            // 
+            // btnSaveConfingencyFund
+            // 
+            this.btnSaveConfingencyFund.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSaveConfingencyFund.Image = ((System.Drawing.Image)(resources.GetObject("btnSaveConfingencyFund.Image")));
+            this.btnSaveConfingencyFund.Location = new System.Drawing.Point(368, 108);
+            this.btnSaveConfingencyFund.Name = "btnSaveConfingencyFund";
+            this.btnSaveConfingencyFund.Size = new System.Drawing.Size(80, 23);
+            toolTipTitleItem6.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image5")));
+            toolTipTitleItem6.Appearance.Options.UseImage = true;
+            toolTipTitleItem6.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem6.Image")));
+            toolTipTitleItem6.Text = "Save";
+            toolTipItem6.LeftIndent = 6;
+            toolTipItem6.Text = "To save fund allocation of current status to goal click here.";
+            superToolTip6.Items.Add(toolTipTitleItem6);
+            superToolTip6.Items.Add(toolTipItem6);
+            this.btnSaveConfingencyFund.SuperTip = superToolTip6;
+            this.btnSaveConfingencyFund.TabIndex = 28;
+            this.btnSaveConfingencyFund.Text = "Save";
+            this.btnSaveConfingencyFund.Click += new System.EventHandler(this.btnSaveConfingencyFund_Click);
+            // 
+            // txtContingencyfund
+            // 
+            this.txtContingencyfund.EditValue = "0";
+            this.txtContingencyfund.Location = new System.Drawing.Point(208, 110);
+            this.txtContingencyfund.Name = "txtContingencyfund";
+            this.txtContingencyfund.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtContingencyfund.Size = new System.Drawing.Size(154, 20);
+            this.txtContingencyfund.TabIndex = 7;
+            this.txtContingencyfund.EditValueChanged += new System.EventHandler(this.txtContingencyfund_EditValueChanged);
+            this.txtContingencyfund.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtContingencyfund_KeyPress);
+            this.txtContingencyfund.Leave += new System.EventHandler(this.txtContingencyfund_Leave);
+            // 
+            // labelControl4
+            // 
+            this.labelControl4.Location = new System.Drawing.Point(37, 113);
+            this.labelControl4.Name = "labelControl4";
+            this.labelControl4.Size = new System.Drawing.Size(89, 13);
+            this.labelControl4.TabIndex = 6;
+            this.labelControl4.Text = "Contingency fund:";
             // 
             // txtAcessCurrentStautsValue
             // 
@@ -379,7 +429,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(961, 459);
+            this.ClientSize = new System.Drawing.Size(961, 491);
             this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.grpFundAllocation);
             this.Controls.Add(this.gridControlCurrentStatusGoal);
@@ -400,6 +450,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtContingencyfund.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAcessCurrentStautsValue.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTotalMappedValue.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTotalCurrentStatusSurplusValue.Properties)).EndInit();
@@ -434,6 +485,9 @@
         private DevExpress.XtraEditors.TextEdit txtTotalCurrentStatusSurplusValue;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.LabelControl lblInformation;
+        private DevExpress.XtraEditors.SimpleButton btnSaveConfingencyFund;
+        private DevExpress.XtraEditors.TextEdit txtContingencyfund;
+        private DevExpress.XtraEditors.LabelControl labelControl4;
     }
 }
 

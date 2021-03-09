@@ -433,6 +433,7 @@
             this.txtGoalLoanPortion.Properties.MaxLength = 3;
             this.txtGoalLoanPortion.Size = new System.Drawing.Size(43, 20);
             this.txtGoalLoanPortion.TabIndex = 33;
+            this.txtGoalLoanPortion.Visible = false;
             this.txtGoalLoanPortion.EditValueChanged += new System.EventHandler(this.txtGoalLoanPortion_EditValueChanged);
             // 
             // label1
@@ -444,6 +445,7 @@
             this.label1.Size = new System.Drawing.Size(105, 17);
             this.label1.TabIndex = 41;
             this.label1.Text = "Loan portion (%):";
+            this.label1.Visible = false;
             // 
             // btnCalculateLoan
             // 
@@ -463,6 +465,7 @@
             this.btnCalculateLoan.SuperTip = superToolTip6;
             this.btnCalculateLoan.TabIndex = 40;
             this.btnCalculateLoan.Text = "Calculate loan details";
+            this.btnCalculateLoan.Visible = false;
             this.btnCalculateLoan.Click += new System.EventHandler(this.btnCalculateLoan_Click);
             // 
             // txtLoanForGoalEndYear

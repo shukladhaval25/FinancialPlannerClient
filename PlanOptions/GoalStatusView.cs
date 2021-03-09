@@ -1,8 +1,10 @@
 ﻿using DevExpress.Utils;
+using DevExpress.XtraEditors;
 using FinancialPlanner.Common;
 using FinancialPlanner.Common.DataConversion;
 using FinancialPlanner.Common.Model;
 using FinancialPlanner.Common.Model.CurrentStatus;
+using FinancialPlanner.Common.Model.PlanOptions;
 using FinancialPlannerClient.CashFlowManager;
 using FinancialPlannerClient.CurrentStatus;
 using FinancialPlannerClient.PlannerInfo;
@@ -64,6 +66,8 @@ namespace FinancialPlannerClient.PlanOptions
                 txtTotalMappedValue.Text = getTotalFundAllocationValue().ToString();
                 txtAcessCurrentStautsValue.Text = (double.Parse(txtTotalCurrentStatusSurplusValue.Text) -
                     double.Parse(txtTotalMappedValue.Text)).ToString();
+                txtContingencyfund.Text = new CurrentStatusInfo().GetContingencyFund(this.optionId, this.planner.ID).Amount.ToString();
+                setAccessFundValue();
             }
             catch(Exception ex)
             {
@@ -552,6 +556,66 @@ namespace FinancialPlannerClient.PlanOptions
                 txtFundAllocation.Text = gridViewAllocationOfCurrentStatus.GetFocusedRowCellValue("FundAllocation").ToString();
                 txtFundAllocation.Tag = gridViewAllocationOfCurrentStatus.GetFocusedRowCellValue("Id").ToString();
             }
+        }
+
+        private void txtContingencyfund_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void txtContingencyfund_EditValueChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void txtContingencyfund_Leave(object sender, EventArgs e)
+        {
+            double contiguencyfundValue = string.IsNullOrEmpty(txtContingencyfund.Text) ? 0 : double.Parse(txtContingencyfund.Text);
+            if (!string.IsNullOrEmpty(txtContingencyfund.Text))
+            {
+                double currentRemainingSurplusFund = string.IsNullOrEmpty(txtAcessCurrentStautsValue.Text) ? 0 : double.Parse(txtAcessCurrentStautsValue.Text);
+                if (currentRemainingSurplusFund < contiguencyfundValue)
+                {
+                    XtraMessageBox.Show("You can not allocate more fund for contigency more then existing surplus value.", "Over value", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtContingencyfund.Focus();
+                    return;
+                }
+            }
+            else
+            {
+                txtAcessCurrentStautsValue.Text = "0";
+            }
+            setAccessFundValue();
+        }
+
+        private void setAccessFundValue()
+        {
+            double contiguencyfundValue = string.IsNullOrEmpty(txtContingencyfund.Text) ? 0 : double.Parse(txtContingencyfund.Text);
+            double totalCurrentStatusSurplus = string.IsNullOrEmpty(txtTotalCurrentStatusSurplusValue.Text) ? 0 : double.Parse(txtTotalCurrentStatusSurplusValue.Text);
+            double totalValueMapped = string.IsNullOrEmpty(txtTotalMappedValue.Text) ? 0 : double.Parse(txtTotalMappedValue.Text);
+
+            double accessFund = totalCurrentStatusSurplus - (totalValueMapped + contiguencyfundValue);
+            txtAcessCurrentStautsValue.Text = accessFund.ToString();
+        }
+
+        private void btnSaveConfingencyFund_Click(object sender, EventArgs e)
+        {
+            bool isSaved = false;
+            ContingencyFund contingencyfund = new ContingencyFund() {
+                OptionId = this.optionId,
+                PlannerId = planner.ID,
+                Amount = double.Parse(txtContingencyfund.Text),
+                UpdatedBy = Program.CurrentUser.Id,
+                UpdatedByUserName = Program.CurrentUser.UserName,
+                MachineName = System.Environment.MachineName
+            };
+            isSaved = new CurrentStatusInfo().UpdateContingencyFund(contingencyfund);
+            if (isSaved)
+            {
+                MessageBox.Show("Contingency fund saved successfully.","Saved",MessageBoxButtons.OK,MessageBoxIcon.Information);
+            }
+            else
+                MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }

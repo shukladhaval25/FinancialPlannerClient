@@ -2,6 +2,7 @@
 using FinancialPlanner.Common.DataConversion;
 using FinancialPlanner.Common.Model;
 using FinancialPlanner.Common.Model.CurrentStatus;
+using FinancialPlanner.Common.Model.PlanOptions;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -27,6 +28,9 @@ namespace FinancialPlannerClient.CurrentStatus
         private readonly string ADD_CURRENT_STATUS_TO_GOAL_API = "CurrentStatusToGoal/Add";
         private readonly string UPDATE_CURRENT_STATUS_TO_GOAL_API = "CurrentStatusToGoal/Update";
         private readonly string DELETE_CURRENT_STATUS_TO_GOAL_API = "CurrentStatusToGoal/Delete";
+
+        private readonly string GET_CONTINGENCY_FUND = "CurrentStatusToGoal/ContingencyFund?optionId={0}&planId={1}";
+        private readonly string UPDATE_CONTINGENCY_FUND = "CurrentStatusToGoal/ContingencyFund";
         //private readonly string GET_ALL_CURRENT_STATUS_API= "CurrentStatusCalculator/Get?plannerId={0}";
 
         public IList<CurrentStatusInstrument> GetMappedInstrument(int plannerId, int goalId)
@@ -297,6 +301,65 @@ namespace FinancialPlannerClient.CurrentStatus
                 StackTrace st = new StackTrace ();
                 StackFrame sf = st.GetFrame (0);
                 MethodBase  currentMethodName = sf.GetMethod();
+                LogDebug(currentMethodName.Name, ex);
+                return false;
+            }
+        }
+
+        public ContingencyFund GetContingencyFund(int optionId, int PlannerId)
+        {
+            ContingencyFund contingencyFund = new ContingencyFund();
+            try
+            {
+                FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
+                string apiurl = Program.WebServiceUrl + "/" + string.Format(GET_CONTINGENCY_FUND, optionId, PlannerId);
+
+                RestAPIExecutor restApiExecutor = new RestAPIExecutor();
+
+                var restResult = restApiExecutor.Execute<ContingencyFund>(apiurl, null, "GET");
+
+                if (jsonSerialization.IsValidJson(restResult.ToString()))
+                {
+                    contingencyFund = jsonSerialization.DeserializeFromString<ContingencyFund>(restResult.ToString());
+                }
+                if (contingencyFund != null)
+                    return contingencyFund;
+                else
+                    return null;
+            }
+            catch (System.Net.WebException webException)
+            {
+                if (webException.Message.Equals("The remote server returned an error: (401) Unauthorized."))
+                {
+                    MessageBox.Show("You session has been expired. Please Login again.", "Session Expired", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
+                LogDebug(currentMethodName.Name, ex);
+                return null;
+            }
+        }
+
+        public bool UpdateContingencyFund(ContingencyFund contingencyFund)
+        {
+            try
+            {
+                FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
+                string apiurl = Program.WebServiceUrl + "/" + UPDATE_CONTINGENCY_FUND;
+                RestAPIExecutor restApiExecutor = new RestAPIExecutor();
+                var restResult = restApiExecutor.Execute<ContingencyFund>(apiurl, contingencyFund, "POST");
+                return true;
+            }
+            catch (Exception ex)
+            {
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
                 LogDebug(currentMethodName.Name, ex);
                 return false;
             }
