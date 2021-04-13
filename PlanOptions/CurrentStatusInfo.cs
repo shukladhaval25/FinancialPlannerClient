@@ -190,14 +190,14 @@ namespace FinancialPlannerClient.CurrentStatus
                 if (csCal != null)
                 {
                     double totalEquityAmount = csCal.ShresValue + csCal.EquityMFvalue +
-                    csCal.NpsEquityValue + csCal.OtherEquityValue;
+                    csCal.NpsEquityValue + csCal.OtherEquityValue + csCal.UlipEquityValue ;
 
                     double totalDebtAmount = csCal.DebtMFValue + csCal.FdValue +
                     csCal.RdValue + csCal.SaValue + csCal.NpsDebtValue + csCal.NscValue +
-                    csCal.PPFValue + csCal.EPFValue + csCal.SSValue +
+                    csCal.PPFValue + csCal.EPFValue + csCal.SSValue + csCal.UlipDebtValue +
                     csCal.SCSSValue + csCal.BondsValue + csCal.OtherDebtValue+ csCal.Others;
 
-                    double totalGoldAmount = csCal.GoldValue + csCal.OthersGoldValue;
+                    double totalGoldAmount =  csCal.OthersGoldValue;
 
                     double totalCurrentStatusAmount = totalEquityAmount + totalDebtAmount + totalGoldAmount;
                     return totalCurrentStatusAmount;

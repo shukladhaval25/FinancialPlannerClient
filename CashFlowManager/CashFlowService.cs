@@ -547,12 +547,10 @@ namespace FinancialPlannerClient.CashFlowManager
             dr["Total Post Tax Income"] = totalPostTaxIncome;
         }
 
-        private bool isIncomeValidaForYear(Income income, int years, int clientRetYear, int spouseRetYear)
+        private bool isIncomeValidaForYear(Income income, int year, int clientRetYear, int spouseRetYear)
         {
             if (income.IncomeBy == _cashFlowCalculation.ClientName)
-                return (clientRetYear >= years) ? true : false;
-            else if (income.IncomeBy == _cashFlowCalculation.SpouseName)
-                return (spouseRetYear >= years) ? true : false;
+                return (clientRetYear >= year) ? true : false;
             else
                 return true;
         }
@@ -575,10 +573,17 @@ namespace FinancialPlannerClient.CashFlowManager
                         {
                             expAmt = exp.Amount;
                         }
-                        double expInflationRate = exp.InflationRate;
-                        double expWithInflaction = expAmt + ((expAmt * expInflationRate) / 100);
-                        dr[exp.Item] = System.Math.Round(expWithInflaction, 2);
-                        totalExpenses = System.Math.Round(totalExpenses + expWithInflaction, 2);
+                        if (expStartYear == (int.Parse(dr["StartYear"].ToString())))
+                        {
+                            dr[exp.Item] = System.Math.Round(expAmt, 2);
+                            totalExpenses = System.Math.Round(totalExpenses + expAmt, 2);
+                        }
+                        else {
+                            double expInflationRate = exp.InflationRate;
+                            double expWithInflaction = expAmt + ((expAmt * expInflationRate) / 100);
+                            dr[exp.Item] = System.Math.Round(expWithInflaction, 2);
+                            totalExpenses = System.Math.Round(totalExpenses + expWithInflaction, 2);
+                        }
                     }
                 }
             }

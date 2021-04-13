@@ -271,7 +271,9 @@ namespace FinancialPlannerClient.CashFlowManager
             Logger.LogInfo("calculateEstimatedRequireCorpusFund for post retirment cash flow service start");
             for (int i = _dtRetirementCashFlow.Rows.Count - 1; i >= 1; i--)
             {
-                double totalExpAmount = (double.Parse(_dtRetirementCashFlow.Rows[i]["Total Annual Expenses"].ToString()) -
+                double totalAnnualExp = double.Parse(_dtRetirementCashFlow.Rows[i]["Total Annual Expenses"].ToString());
+                double totalAnnualLoan = double.Parse(_dtRetirementCashFlow.Rows[i]["Total Annual Loans"].ToString());
+                double totalExpAmount = ((totalAnnualExp + totalAnnualLoan) -
                         double.Parse(_dtRetirementCashFlow.Rows[i]["Total Post Tax Income"].ToString()));
                 //double estimatedCorpusFundValue = getEstimatedCorpusFundWithReturnCalculation(totalExpAmount);
                 if (i == _dtRetirementCashFlow.Rows.Count - 1)
@@ -324,14 +326,14 @@ namespace FinancialPlannerClient.CashFlowManager
         private bool isIncomeValidaForYear(Income income, int years, int clientRetYear, int spouseRetYear)
         {
             if ( !string.IsNullOrEmpty(income.StartYear) && !string.IsNullOrEmpty(income.EndYear) &&
-                int.Parse(income.StartYear) >= years && years <= int.Parse(income.EndYear))
+               years >= int.Parse(income.StartYear) && years <= int.Parse(income.EndYear))
             {
                 return true;
             }
             else
             {
-                if((!string.IsNullOrEmpty(income.StartYear) && string.IsNullOrEmpty(income.EndYear)) && 
-                        (int.Parse(income.StartYear) >= years))
+                if((!string.IsNullOrEmpty(income.StartYear) && string.IsNullOrEmpty(income.EndYear)) &&
+                      years >= (int.Parse(income.StartYear)))
                 {
                     return true;
                 }
@@ -480,18 +482,18 @@ namespace FinancialPlannerClient.CashFlowManager
         {
             double retExp = 0;
             int forYears = years - this.planner.StartDate.Year;
-            if (int.Parse(goal.StartYear) == years)
-            {
+            //if (int.Parse(goal.StartYear) == years)
+            //{
                 retExp = futureValue(goal.Amount + goal.OtherAmount, goal.InflationRate, forYears);
-            }
-            else
-            {
-                if (_dtRetirementCashFlow.Rows.Count > 0)
-                {
-                    double previouYearExp = double.Parse(_dtRetirementCashFlow.Rows[_dtRetirementCashFlow.Rows.Count - 1][goal.Name].ToString());
-                    retExp = previouYearExp + ((previouYearExp * double.Parse(plannerAssumption.PostRetirementInflactionRate.ToString())) / 100);                   
-                }
-            }
+            //}
+            //else
+            //{
+            //    if (_dtRetirementCashFlow.Rows.Count > 0)
+            //    {
+            //        double previouYearExp = double.Parse(_dtRetirementCashFlow.Rows[_dtRetirementCashFlow.Rows.Count - 1][goal.Name].ToString());
+            //        retExp = previouYearExp + ((previouYearExp * double.Parse(plannerAssumption.PostRetirementInflactionRate.ToString())) / 100);                   
+            //    }
+            //}
             return retExp;
         }
         #endregion

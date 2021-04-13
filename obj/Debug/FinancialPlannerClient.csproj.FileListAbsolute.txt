@@ -436,7 +436,6 @@ C:\Application Softwares\FinancialPlannerClient\bin\Debug\ru\FinancialPlannerCli
 C:\Application Softwares\FinancialPlannerClient\bin\Debug\ChilkatDotNet4.dll
 C:\Application Softwares\FinancialPlannerClient\bin\Debug\FinancialPlanner.Common.dll
 C:\Application Softwares\FinancialPlannerClient\bin\Debug\FinancialPlannerServer.exe
-C:\Application Softwares\FinancialPlannerClient\bin\Debug\Newtonsoft.Json.dll
 C:\Application Softwares\FinancialPlannerClient\bin\Debug\Unity.Abstractions.dll
 C:\Application Softwares\FinancialPlannerClient\bin\Debug\Unity.Container.dll
 C:\Application Softwares\FinancialPlannerClient\bin\Debug\FinancialPlannerServer.pdb
@@ -584,4 +583,5 @@ C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient
 C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.pdb
 C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.csprojAssemblyReference.cache
 C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.exe.licenses
+C:\Application Softwares\FinancialPlannerClient\bin\Debug\Newtonsoft.Json.dll
 C:\Application Softwares\FinancialPlannerClient\bin\Debug\Newtonsoft.Json.xml

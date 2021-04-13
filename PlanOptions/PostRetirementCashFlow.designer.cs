@@ -32,6 +32,7 @@
             this.grdPostRetirementCashFlow = new DevExpress.XtraGrid.GridControl();
             this.gridSplitContainerViewCashFlow = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.progressBarRetGoalCompletion = new DevExpress.XtraEditors.ProgressBarControl();
             this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
             this.lblEstimatedCorpusFundValue = new DevExpress.XtraEditors.LabelControl();
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
@@ -64,14 +65,15 @@
             this.lblClient = new DevExpress.XtraEditors.LabelControl();
             this.btnExport = new DevExpress.XtraEditors.SimpleButton();
             this.picProcessing = new DevExpress.XtraEditors.PictureEdit();
-            this.progressBarRetGoalCompletion = new DevExpress.XtraEditors.ProgressBarControl();
+            this.lblAssetMapping = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl15 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.grdPostRetirementCashFlow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridSplitContainerViewCashFlow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.progressBarRetGoalCompletion.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.separatorControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picProcessing.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.progressBarRetGoalCompletion.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // grdPostRetirementCashFlow
@@ -100,6 +102,8 @@
             // 
             this.groupControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupControl1.Controls.Add(this.lblAssetMapping);
+            this.groupControl1.Controls.Add(this.labelControl15);
             this.groupControl1.Controls.Add(this.progressBarRetGoalCompletion);
             this.groupControl1.Controls.Add(this.labelControl13);
             this.groupControl1.Controls.Add(this.lblEstimatedCorpusFundValue);
@@ -133,13 +137,23 @@
             this.groupControl1.Controls.Add(this.lblClient);
             this.groupControl1.Location = new System.Drawing.Point(6, 7);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(1140, 102);
+            this.groupControl1.Size = new System.Drawing.Size(1140, 112);
             this.groupControl1.TabIndex = 2;
             this.groupControl1.Text = "Information";
             // 
+            // progressBarRetGoalCompletion
+            // 
+            this.progressBarRetGoalCompletion.Location = new System.Drawing.Point(846, 59);
+            this.progressBarRetGoalCompletion.Name = "progressBarRetGoalCompletion";
+            this.progressBarRetGoalCompletion.Properties.PercentView = false;
+            this.progressBarRetGoalCompletion.Properties.ReadOnly = true;
+            this.progressBarRetGoalCompletion.Properties.ShowTitle = true;
+            this.progressBarRetGoalCompletion.Size = new System.Drawing.Size(147, 18);
+            this.progressBarRetGoalCompletion.TabIndex = 30;
+            // 
             // labelControl13
             // 
-            this.labelControl13.Location = new System.Drawing.Point(869, 40);
+            this.labelControl13.Location = new System.Drawing.Point(876, 40);
             this.labelControl13.Name = "labelControl13";
             this.labelControl13.Size = new System.Drawing.Size(71, 13);
             this.labelControl13.TabIndex = 29;
@@ -188,7 +202,7 @@
             this.lblCorpFundAmt.Appearance.Options.UseTextOptions = true;
             this.lblCorpFundAmt.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.lblCorpFundAmt.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.lblCorpFundAmt.Location = new System.Drawing.Point(703, 71);
+            this.lblCorpFundAmt.Location = new System.Drawing.Point(703, 64);
             this.lblCorpFundAmt.Name = "lblCorpFundAmt";
             this.lblCorpFundAmt.Size = new System.Drawing.Size(111, 10);
             this.lblCorpFundAmt.TabIndex = 25;
@@ -197,7 +211,7 @@
             // 
             // labelControl12
             // 
-            this.labelControl12.Location = new System.Drawing.Point(611, 71);
+            this.labelControl12.Location = new System.Drawing.Point(611, 64);
             this.labelControl12.Name = "labelControl12";
             this.labelControl12.Size = new System.Drawing.Size(85, 13);
             this.labelControl12.TabIndex = 24;
@@ -210,7 +224,7 @@
             this.lblCurrentStatusAmt.Appearance.Options.UseTextOptions = true;
             this.lblCurrentStatusAmt.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.lblCurrentStatusAmt.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.lblCurrentStatusAmt.Location = new System.Drawing.Point(703, 53);
+            this.lblCurrentStatusAmt.Location = new System.Drawing.Point(703, 46);
             this.lblCurrentStatusAmt.Name = "lblCurrentStatusAmt";
             this.lblCurrentStatusAmt.Size = new System.Drawing.Size(111, 10);
             this.lblCurrentStatusAmt.TabIndex = 23;
@@ -219,7 +233,7 @@
             // 
             // labelControl11
             // 
-            this.labelControl11.Location = new System.Drawing.Point(611, 53);
+            this.labelControl11.Location = new System.Drawing.Point(611, 46);
             this.labelControl11.Name = "labelControl11";
             this.labelControl11.Size = new System.Drawing.Size(98, 13);
             this.labelControl11.TabIndex = 22;
@@ -232,7 +246,7 @@
             this.lblCashSurplusAmt.Appearance.Options.UseTextOptions = true;
             this.lblCashSurplusAmt.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.lblCashSurplusAmt.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.lblCashSurplusAmt.Location = new System.Drawing.Point(703, 34);
+            this.lblCashSurplusAmt.Location = new System.Drawing.Point(703, 27);
             this.lblCashSurplusAmt.Name = "lblCashSurplusAmt";
             this.lblCashSurplusAmt.Size = new System.Drawing.Size(111, 10);
             this.lblCashSurplusAmt.TabIndex = 21;
@@ -240,7 +254,7 @@
             // 
             // labelControl4
             // 
-            this.labelControl4.Location = new System.Drawing.Point(611, 34);
+            this.labelControl4.Location = new System.Drawing.Point(611, 27);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(93, 13);
             this.labelControl4.TabIndex = 20;
@@ -440,15 +454,26 @@
             this.picProcessing.Size = new System.Drawing.Size(162, 132);
             this.picProcessing.TabIndex = 27;
             // 
-            // progressBarRetGoalCompletion
+            // lblAssetMapping
             // 
-            this.progressBarRetGoalCompletion.Location = new System.Drawing.Point(844, 66);
-            this.progressBarRetGoalCompletion.Name = "progressBarRetGoalCompletion";
-            this.progressBarRetGoalCompletion.Properties.PercentView = false;
-            this.progressBarRetGoalCompletion.Properties.ReadOnly = true;
-            this.progressBarRetGoalCompletion.Properties.ShowTitle = true;
-            this.progressBarRetGoalCompletion.Size = new System.Drawing.Size(147, 18);
-            this.progressBarRetGoalCompletion.TabIndex = 30;
+            this.lblAssetMapping.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAssetMapping.Appearance.Options.UseFont = true;
+            this.lblAssetMapping.Appearance.Options.UseTextOptions = true;
+            this.lblAssetMapping.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.lblAssetMapping.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.lblAssetMapping.Location = new System.Drawing.Point(703, 87);
+            this.lblAssetMapping.Name = "lblAssetMapping";
+            this.lblAssetMapping.Size = new System.Drawing.Size(111, 10);
+            this.lblAssetMapping.TabIndex = 32;
+            this.lblAssetMapping.Text = "0";
+            // 
+            // labelControl15
+            // 
+            this.labelControl15.Location = new System.Drawing.Point(611, 84);
+            this.labelControl15.Name = "labelControl15";
+            this.labelControl15.Size = new System.Drawing.Size(74, 13);
+            this.labelControl15.TabIndex = 31;
+            this.labelControl15.Text = "Asset Mapping:";
             // 
             // PostRetirementCashFlow
             // 
@@ -468,9 +493,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.progressBarRetGoalCompletion.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.separatorControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picProcessing.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.progressBarRetGoalCompletion.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -513,6 +538,8 @@
         private DevExpress.XtraEditors.SimpleButton btnExport;
         private DevExpress.XtraEditors.PictureEdit picProcessing;
         private DevExpress.XtraEditors.ProgressBarControl progressBarRetGoalCompletion;
+        private DevExpress.XtraEditors.LabelControl lblAssetMapping;
+        private DevExpress.XtraEditors.LabelControl labelControl15;
     }
 }
 

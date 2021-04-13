@@ -16,12 +16,17 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         private DataTable _dtFamilymember;
         List<FamilyMember> lstFamilyMember;
         DataSet _ds = new DataSet();
-        public FamilyInfoPage(Client client)
+        public FamilyInfoPage(PersonalInformation personalInformation )
         {
             InitializeComponent();
-            this.lblClientName.Text = client.Name;
+            this.lblClientName.Text = personalInformation.Client.Name;
             FamilyMemberInfo familyMemberInfo = new FamilyMemberInfo();
-            lstFamilyMember = (List<FamilyMember>)familyMemberInfo.Get(client.ID);
+            lstFamilyMember = (List<FamilyMember>)familyMemberInfo.Get(personalInformation.Client.ID);
+            lstFamilyMember.Insert(0, new FamilyMember() {Name  = personalInformation.Client.Name,Relationship = "Self",DOB = personalInformation.Client.DOB });
+            if (!string.IsNullOrEmpty(personalInformation.Spouse.Name))
+            {
+                lstFamilyMember.Insert(1, new FamilyMember() { Name = personalInformation.Spouse.Name, Relationship = "spouse", DOB = personalInformation.Spouse.DOB });
+            }
             _dtFamilymember = ListtoDataTable.ToDataTable(lstFamilyMember);
             addAgeColumnToDataTable();
             _ds.Tables.Add(_dtFamilymember);

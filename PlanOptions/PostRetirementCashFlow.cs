@@ -4,7 +4,9 @@ using FinancialPlanner.Common;
 using FinancialPlanner.Common.Model;
 using FinancialPlanner.Common.Model.PlanOptions;
 using FinancialPlannerClient.CashFlowManager;
+using FinancialPlannerClient.PlannerInfo;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
 using System.Reflection;
@@ -17,6 +19,7 @@ namespace FinancialPlannerClient.PlanOptions
     {
         PostRetirementCashFlowService postRetirementCashFlowService;
         CashFlowCalculation cashFlowCalculation;
+        double assetsMappingValue = 0;
         public PostRetirementCashFlow(Planner planner,CashFlowService cashFlowService)
         {
             try
@@ -27,6 +30,26 @@ namespace FinancialPlannerClient.PlanOptions
                 cashFlowCalculation = postRetirementCashFlowService.GetCashFlowCalculationData();
                 displayClientAndSpouseInfo(cashFlowService);
                 postRetirementCashFlowService.SetCorpusFund(double.Parse(lblCorpFundAmt.Text));
+                IList<Goals> goals = new GoalsInfo().GetAll(planner.ID);
+                Goals goal = new Goals();
+                if (goals == null)
+                {
+                    goals = new GoalsInfo().GetAll(planner.ID);
+                }
+
+                if (goals != null)
+                {
+                    foreach (Goals singleGoal in goals)
+                    {
+                        if (singleGoal.Category.Equals("Retirement", StringComparison.OrdinalIgnoreCase))
+                        {
+                            goal = singleGoal;
+                        }
+                    }
+
+                    assetsMappingValue = cashFlowService.GoalCalculationMgr.GetGoalValueCalculation(goal).FutureValueOfMappedNonFinancialAssets;
+                    lblAssetMapping.Text = assetsMappingValue.ToString("##,###.00");
+                }
             }
             catch(Exception ex)
             {
@@ -101,6 +124,7 @@ namespace FinancialPlannerClient.PlanOptions
 
         private void setGoalCompletionPercentage()
         {
+
             double totalAvailableCorpFund = 0;
             double estitmatedCorpFund = 0;
             double.TryParse(lblCorpFundAmt.Text, out totalAvailableCorpFund);
@@ -108,12 +132,15 @@ namespace FinancialPlannerClient.PlanOptions
             //if (totalAvailableCorpFund >= estitmatedCorpFund)
             //    progressBarRetGoalCompletion.Text = "100";
             //else
-            double goalComplitionPercentage = Math.Round(((100 * totalAvailableCorpFund) / estitmatedCorpFund));
-            progressBarRetGoalCompletion.Properties.Maximum = (goalComplitionPercentage > 100) ? int.Parse(goalComplitionPercentage.ToString())  : 100;
+            if (estitmatedCorpFund > 0 && totalAvailableCorpFund > 0)
+            {
+                
+                double goalComplitionPercentage = Math.Round(((100 * (totalAvailableCorpFund + assetsMappingValue)) / estitmatedCorpFund));
+                progressBarRetGoalCompletion.Properties.Maximum = (goalComplitionPercentage > 100) ? int.Parse(goalComplitionPercentage.ToString()) : 100;
 
-            progressBarRetGoalCompletion.EditValue = goalComplitionPercentage.ToString();
-            progressBarRetGoalCompletion.Text = goalComplitionPercentage.ToString();
-
+                progressBarRetGoalCompletion.EditValue = goalComplitionPercentage.ToString();
+                progressBarRetGoalCompletion.Text = goalComplitionPercentage.ToString();
+            }
         }
 
         private void btnExport_Click(object sender, EventArgs e)

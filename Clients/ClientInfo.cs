@@ -2313,7 +2313,7 @@ namespace FinancialPlannerClient.Clients
                 }
 
                 int startYear = 0;
-                if (int.TryParse(txtExpStartYear.Text, out startYear) && int.Parse(txtExpEndYear.Text) <= startYear)
+                if (int.TryParse(txtExpStartYear.Text, out startYear) && int.Parse(txtExpEndYear.Text) < startYear)
                 {
                     DevExpress.XtraEditors.XtraMessageBox.Show("End year should not be less than start year.", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     e.Cancel = true;

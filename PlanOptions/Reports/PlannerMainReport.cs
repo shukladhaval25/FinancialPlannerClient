@@ -66,7 +66,7 @@ namespace FinancialPlannerClient.PlanOptions
                 AssumptionPage assumptionPage = new AssumptionPage(personalInformation, planner.ID);
                 assumptionPage.CreateDocument();
 
-                FamilyInfoPage familyInfo = new FamilyInfoPage(personalInformation.Client);
+                FamilyInfoPage familyInfo = new FamilyInfoPage(personalInformation);
                 familyInfo.CreateDocument();
 
                 FinancialGoalIntro financialGoalIntro = new FinancialGoalIntro(client);

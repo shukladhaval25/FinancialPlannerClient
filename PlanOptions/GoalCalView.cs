@@ -134,7 +134,7 @@ namespace FinancialPlannerClient.PlanOptions
                 double instrumentValue = double.Parse(_dtGoalValue.Rows[_dtGoalValue.Rows.Count - 1]["Instrument Mapped"].ToString());
                 double loanAmountValue = _dtGoalProfile.Rows[0]["Loan Amount"].ToString() == "" ? 0 : double.Parse(_dtGoalProfile.Rows[0]["Loan Amount"].ToString());
                 double currentStatusAccessFund = Math.Round(cashFlowService.GetCurrentStatusAccessFund(), 2);
-                return int.Parse(Math.Round((portfolioValue + loanAmountValue + currentStatusAccessFund) * 100 / cashOutFlowValue).ToString());
+                return int.Parse(Math.Round((portfolioValue + loanAmountValue + currentStatusAccessFund + assetsMappingValue + instrumentValue ) * 100 / cashOutFlowValue).ToString());
             }
             return 0;
         }
@@ -186,7 +186,7 @@ namespace FinancialPlannerClient.PlanOptions
                 double instrumentValue = double.Parse(_dtGoalValue.Rows[_dtGoalValue.Rows.Count - 1]["Instrument Mapped"].ToString());
                 double loanAmountValue = _dtGoalProfile.Rows[0]["Loan Amount"].ToString() == "" ? 0 : double.Parse(_dtGoalProfile.Rows[0]["Loan Amount"].ToString());
              
-                return int.Parse(Math.Round((portfolioValue + loanAmountValue ) * 100 / cashOutFlowValue).ToString());
+                return int.Parse(Math.Round((portfolioValue + loanAmountValue +  assetsMappingValue ) * 100 / cashOutFlowValue).ToString());
             }
             return 0;
         }
