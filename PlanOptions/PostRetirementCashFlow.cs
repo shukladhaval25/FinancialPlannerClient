@@ -46,8 +46,8 @@ namespace FinancialPlannerClient.PlanOptions
                             goal = singleGoal;
                         }
                     }
-
-                    assetsMappingValue = cashFlowService.GoalCalculationMgr.GetGoalValueCalculation(goal).FutureValueOfMappedNonFinancialAssets;
+                    GoalsValueCalculationInfo goalsValueCalculationInfo = cashFlowService.GoalCalculationMgr.GetGoalValueCalculation(goal);
+                    assetsMappingValue = (goalsValueCalculationInfo != null)? goalsValueCalculationInfo.FutureValueOfMappedNonFinancialAssets:0;
                     lblAssetMapping.Text = assetsMappingValue.ToString("##,###.00");
                 }
             }

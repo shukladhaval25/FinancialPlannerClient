@@ -72,10 +72,10 @@ namespace FinancialPlannerClient.PlanOptions
                 FinancialGoalIntro financialGoalIntro = new FinancialGoalIntro(client);
                 financialGoalIntro.CreateDocument();
 
-                FinancialClientGoal financialClientGoal = new FinancialClientGoal(this.planner, this.client);
+                FinancialClientGoal financialClientGoal = new FinancialClientGoal(this.planner, this.client,this.riskprofileId );
                 financialClientGoal.CreateDocument();
 
-                GoalProjectionForComplition goalProjectionForComplition = new GoalProjectionForComplition(this.planner, this.client);
+                GoalProjectionForComplition goalProjectionForComplition = new GoalProjectionForComplition(this.planner, this.client,this.riskprofileId,this.optionId );
                 goalProjectionForComplition.CreateDocument();
 
                 IncomeExpenseAnalysis incomeExpenseAnalysis = new IncomeExpenseAnalysis(this.client, this.planner);
@@ -87,8 +87,8 @@ namespace FinancialPlannerClient.PlanOptions
                 SurplusPeriod surplusPeriod = new SurplusPeriod(this.client, this.planner.ID, this.riskprofileId, this.optionId);
                 surplusPeriod.CreateDocument();
 
-                //NetWorthAnalysis netWorthAnalysis = new NetWorthAnalysis(this.client);
-                //netWorthAnalysis.CreateDocument();
+                NetWorthAnalysis netWorthAnalysis = new NetWorthAnalysis(this.client);
+                netWorthAnalysis.CreateDocument();
 
                 NetWorthStatement netWorthStatement = new NetWorthStatement(this.client, this.planner);
                 netWorthStatement.CreateDocument();
@@ -117,7 +117,7 @@ namespace FinancialPlannerClient.PlanOptions
                     new CurrentFinancialAssetAllocation(this.client, netWorthStatement.GetNetWorth());
                 currentFinancialAssetAllocation.CreateDocument();
 
-                StrategicAssetsCollection strategicAssetsCollection = new StrategicAssetsCollection(this.client);
+                StrategicAssetsCollection strategicAssetsCollection = new StrategicAssetsCollection(this.client,this.riskprofileId);
                 strategicAssetsCollection.CreateDocument();
 
                 SmartGoal smartGoal = new SmartGoal(this.client);
@@ -163,7 +163,7 @@ namespace FinancialPlannerClient.PlanOptions
                 this.Pages.Add(incomeExpenseAnalysis.Pages.First);
                 this.Pages.Add(spendingSavingRatioReport.Pages.First);
                 this.Pages.Add(surplusPeriod.Pages.First);
-                //this.Pages.Add(netWorthAnalysis.Pages.First);
+                this.Pages.Add(netWorthAnalysis.Pages.First);
                 this.Pages.Add(netWorthStatement.Pages.First);
                 this.Pages.Add(toTotalAssetRatio.Pages.First);
                 this.Pages.Add(netWorthYearOnYear.Pages.First);

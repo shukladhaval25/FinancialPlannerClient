@@ -106,7 +106,7 @@ namespace FinancialPlannerClient.PlanOptions
                 if (_dtUser != null)
                 {
                     DataRow[] drUsers = _dtUser.Select("ID =" + accountManagedById);
-                    cmbManagedBy.Text = (drUsers != null) ? drUsers[0]["FirstName"].ToString() : string.Empty;
+                    cmbManagedBy.Text = (drUsers != null && drUsers.Length > 0) ? drUsers[0]["FirstName"].ToString() : string.Empty;
                 }
                 cmbReviewFrequency.Text = dr.Field<string>("ReviewFrequency");
                 memoDescription.Text = dr.Field<string>("Description");

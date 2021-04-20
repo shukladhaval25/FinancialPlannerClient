@@ -40,7 +40,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             if (surplusColumnIndex > 0)
             {
                 int rowIndex = 0;
-                for (int colIndex = surplusColumnIndex + 1; colIndex < _dtcashFlow.Columns.Count - 1; colIndex++)
+                for (int colIndex = surplusColumnIndex + 1; colIndex < _dtcashFlow.Columns.Count - 3; colIndex++)
                 {
                     if (rowIndex <= xrTableCashFlowGoals.Rows.Count - 1)
                     {
@@ -96,7 +96,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
 
         private int getTotalIncomeColumnIndex(DataTable dtcashFlow)
         {
-            int colIndex = dtcashFlow.Columns.IndexOf(TOTAL_INCOME_COLUMN);
+            int colIndex = dtcashFlow.Columns.IndexOf(TOTAL_POST_TAX_INCOME);
             return colIndex > 0 ? colIndex : -1;
         }
 

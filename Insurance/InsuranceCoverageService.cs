@@ -138,21 +138,24 @@ namespace FinancialPlannerClient.Insurance
         private void addLifeInsuranceSumAssured(int rowIndex)
         {
             IList<LifeInsurance> lifeInsurances = new LifeInsuranceInfo().GetAllLifeInsurance(planner.ID);
-            if (lifeInsurances.Count > 0)
+            if (lifeInsurances != null)
             {
-                List<LifeInsurance> lics = lifeInsurances.ToList().FindAll(x => x.Applicant == client.Name);
-
-                if (rowIndex == 0)
+                if (lifeInsurances.Count > 0)
                 {
-                    double totalSumAssured = 0;
-                    foreach (LifeInsurance lic in lics)
-                    {
-                        DataColumn dcLoan = new DataColumn("LIC -" + lic.Applicant, Type.GetType("System.Double"));
-                        dtInsurance.Columns.Add(dcLoan);
+                    List<LifeInsurance> lics = lifeInsurances.ToList().FindAll(x => x.Applicant == client.Name);
 
-                        DataRow dr = dtInsurance.Rows[rowIndex];
-                        dr["LIC -" + lic.Applicant] = lic.SumAssured;
-                        totalSumAssured = totalSumAssured + lic.SumAssured;
+                    if (rowIndex == 0)
+                    {
+                        double totalSumAssured = 0;
+                        foreach (LifeInsurance lic in lics)
+                        {
+                            DataColumn dcLoan = new DataColumn("LIC -" + lic.Applicant, Type.GetType("System.Double"));
+                            dtInsurance.Columns.Add(dcLoan);
+
+                            DataRow dr = dtInsurance.Rows[rowIndex];
+                            dr["LIC -" + lic.Applicant] = lic.SumAssured;
+                            totalSumAssured = totalSumAssured + lic.SumAssured;
+                        }
                     }
                 }
             }

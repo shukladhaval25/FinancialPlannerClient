@@ -206,6 +206,7 @@ namespace FinancialPlannerClient.PlanOptions
             cmbCategory.Text = "";
             txtGoalName.Text = "";
             txtGoalCurrentValue.Text = "0";
+            txtOtherAnnualRetirementExp.Text = "0";
             txtGoalStartYear.Text = "";
             txtGoalEndYear.Text = "";
             txtGoalRecurrence.Text = "";

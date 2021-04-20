@@ -79,7 +79,7 @@ namespace FinancialPlannerClient.PlanOptions
 
             return getGoalComplitionPercentage();
         }
-        private void displayCalculation(Goals goal)
+        public void displayCalculation(Goals goal)
         {
             try
             {
@@ -92,7 +92,7 @@ namespace FinancialPlannerClient.PlanOptions
                     _goalCalculationInfo.GoalCalManager = cashFlowService.GoalCalculationMgr;
                 }
                 _goalCalculationInfo.CashFlowService = cashFlowService;
-                _dtGoalProfile = _goalCalculationInfo.GetGoalValue(int.Parse(cmbGoals.Tag.ToString()),
+                _dtGoalProfile = _goalCalculationInfo.GetGoalValue(int.Parse(goal.Id.ToString()),
                 planner.ID, _riskProfileId,_planOptionId);
                 if (_dtGoalProfile != null && _dtGoalProfile.Rows.Count > 0)
                 {
@@ -102,9 +102,7 @@ namespace FinancialPlannerClient.PlanOptions
                     setGoalProfileGrid(goal);
                     _dtGoalValue = _goalCalculationInfo.GetGoalCalculation();
                     dtGridGoalValue.DataSource = _dtGoalValue;
-                    int goalComplitionPercentage = (goal.Category.Equals("Retirement", StringComparison.OrdinalIgnoreCase)) ?
-                        getGoalComplitionPercentageWithCurrentStatusAccessFund()
-                        : getGoalComplitionPercentage();
+                    int goalComplitionPercentage = GetGoalComplitionPercentage(goal);
                     if (goalComplitionPercentage > 100)
                         progGoalComplition.Properties.Maximum = goalComplitionPercentage;
                     else
@@ -123,6 +121,12 @@ namespace FinancialPlannerClient.PlanOptions
                 XtraMessageBox.Show("Error:" + ex.ToString(), "Error");
             }
         }
+        public int GetGoalComplitionPercentage(Goals goal)
+        {
+          return  (goal.Category.Equals("Retirement", StringComparison.OrdinalIgnoreCase)) ?
+                       getGoalComplitionPercentageWithCurrentStatusAccessFund()
+                       : getGoalComplitionPercentage();
+        }
 
         private int getGoalComplitionPercentageWithCurrentStatusAccessFund()
         {
@@ -134,6 +138,10 @@ namespace FinancialPlannerClient.PlanOptions
                 double instrumentValue = double.Parse(_dtGoalValue.Rows[_dtGoalValue.Rows.Count - 1]["Instrument Mapped"].ToString());
                 double loanAmountValue = _dtGoalProfile.Rows[0]["Loan Amount"].ToString() == "" ? 0 : double.Parse(_dtGoalProfile.Rows[0]["Loan Amount"].ToString());
                 double currentStatusAccessFund = Math.Round(cashFlowService.GetCurrentStatusAccessFund(), 2);
+                if (cashOutFlowValue == 0)
+                {
+
+                }
                 return int.Parse(Math.Round((portfolioValue + loanAmountValue + currentStatusAccessFund + assetsMappingValue + instrumentValue ) * 100 / cashOutFlowValue).ToString());
             }
             return 0;

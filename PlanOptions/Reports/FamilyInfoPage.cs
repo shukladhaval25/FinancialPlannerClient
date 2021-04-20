@@ -22,10 +22,11 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             this.lblClientName.Text = personalInformation.Client.Name;
             FamilyMemberInfo familyMemberInfo = new FamilyMemberInfo();
             lstFamilyMember = (List<FamilyMember>)familyMemberInfo.Get(personalInformation.Client.ID);
-            lstFamilyMember.Insert(0, new FamilyMember() {Name  = personalInformation.Client.Name,Relationship = "Self",DOB = personalInformation.Client.DOB });
+            lstFamilyMember.Insert(0, new FamilyMember() {Name  = personalInformation.Client.Name,Relationship = "Self",DOB = personalInformation.Client.DOB,Occupation = personalInformation.Client.Occupation  });
             if (!string.IsNullOrEmpty(personalInformation.Spouse.Name))
             {
-                lstFamilyMember.Insert(1, new FamilyMember() { Name = personalInformation.Spouse.Name, Relationship = "spouse", DOB = personalInformation.Spouse.DOB });
+                lstFamilyMember.Insert(1, new FamilyMember() { Name = personalInformation.Spouse.Name, Relationship = "spouse", DOB = personalInformation.Spouse.DOB, Occupation = personalInformation.Spouse.Occupation 
+                });
             }
             _dtFamilymember = ListtoDataTable.ToDataTable(lstFamilyMember);
             addAgeColumnToDataTable();

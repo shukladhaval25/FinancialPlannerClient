@@ -482,18 +482,18 @@ namespace FinancialPlannerClient.CashFlowManager
         {
             double retExp = 0;
             int forYears = years - this.planner.StartDate.Year;
-            //if (int.Parse(goal.StartYear) == years)
-            //{
+            if (int.Parse(goal.StartYear) == years)
+            {
                 retExp = futureValue(goal.Amount + goal.OtherAmount, goal.InflationRate, forYears);
-            //}
-            //else
-            //{
-            //    if (_dtRetirementCashFlow.Rows.Count > 0)
-            //    {
-            //        double previouYearExp = double.Parse(_dtRetirementCashFlow.Rows[_dtRetirementCashFlow.Rows.Count - 1][goal.Name].ToString());
-            //        retExp = previouYearExp + ((previouYearExp * double.Parse(plannerAssumption.PostRetirementInflactionRate.ToString())) / 100);                   
-            //    }
-            //}
+            }
+            else
+            {
+                if (_dtRetirementCashFlow.Rows.Count > 0)
+                {
+                    double previouYearExp = double.Parse(_dtRetirementCashFlow.Rows[_dtRetirementCashFlow.Rows.Count - 1][goal.Name].ToString());
+                    retExp = previouYearExp + ((previouYearExp * double.Parse(plannerAssumption.PostRetirementInflactionRate.ToString())) / 100);
+                }
+            }
             return retExp;
         }
         #endregion

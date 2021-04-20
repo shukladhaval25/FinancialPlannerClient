@@ -15,5 +15,9 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             this.lblClientName.Text = client.Name;
         }
 
+        private void TopMargin_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            //this.xrPictureBox2.Image = Image.FromFile("");
+        }
     }
 }

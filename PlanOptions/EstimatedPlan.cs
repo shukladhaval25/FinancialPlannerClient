@@ -103,7 +103,7 @@ namespace FinancialPlannerClient.PlanOptions
             if (val != null)
                 cmbPlanOption.Tag = int.Parse(val[0][0].ToString());
 
-            loadRiskProfileData();
+              loadRiskProfileData();
             RiskProfiledReturnMaster riskProfMaster = _riskProfileMasters.FirstOrDefault(i => i.Id == int.Parse(val[0]["RiskProfileID"].ToString()));
             lblRiskProfileValue.Text = riskProfMaster.Name;
             lblRiskProfileValue.Tag = riskProfMaster.Id;

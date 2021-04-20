@@ -385,7 +385,7 @@ namespace FinancialPlannerClient.CashFlowManager
                     if (goal.LoanForGoal != null)
                     {
                         if (calculationYear >= goal.LoanForGoal.StratYear &&
-                            calculationYear < goal.LoanForGoal.EndYear)
+                            calculationYear <= goal.LoanForGoal.EndYear)
                         {
                             dr[string.Format("(Loan EMI - {0})", goal.Name)] = (goal.LoanForGoal.EMI * 12);
                             totalLoanEmi = totalLoanEmi + (goal.LoanForGoal.EMI * 12);
