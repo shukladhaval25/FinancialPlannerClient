@@ -156,7 +156,7 @@
             // lblClientName
             // 
             this.lblClientName.Dpi = 100F;
-            this.lblClientName.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblClientName.Font = new System.Drawing.Font("Cambria", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblClientName.ForeColor = System.Drawing.Color.Navy;
             this.lblClientName.LocationFloat = new DevExpress.Utils.PointFloat(5F, 51.00002F);
             this.lblClientName.Name = "lblClientName";
@@ -168,12 +168,12 @@
             // ReportTitle
             // 
             this.ReportTitle.Dpi = 100F;
-            this.ReportTitle.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ReportTitle.Font = new System.Drawing.Font("Cambria", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ReportTitle.ForeColor = System.Drawing.Color.Navy;
-            this.ReportTitle.LocationFloat = new DevExpress.Utils.PointFloat(5F, 14.16667F);
+            this.ReportTitle.LocationFloat = new DevExpress.Utils.PointFloat(4.999987F, 14.16667F);
             this.ReportTitle.Name = "ReportTitle";
             this.ReportTitle.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.ReportTitle.SizeF = new System.Drawing.SizeF(143.75F, 23F);
+            this.ReportTitle.SizeF = new System.Drawing.SizeF(237.5F, 23F);
             this.ReportTitle.StylePriority.UseFont = false;
             this.ReportTitle.StylePriority.UseForeColor = false;
             this.ReportTitle.Text = "Financial Plan of";
@@ -205,7 +205,7 @@
             this.xrTable2.BackColor = System.Drawing.Color.Navy;
             this.xrTable2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.xrTable2.Dpi = 100F;
-            this.xrTable2.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrTable2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrTable2.ForeColor = System.Drawing.Color.White;
             this.xrTable2.LocationFloat = new DevExpress.Utils.PointFloat(25F, 466.6666F);
             this.xrTable2.Name = "xrTable2";
@@ -250,7 +250,7 @@
             | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCashFlowGoals.Dpi = 100F;
-            this.xrTableCashFlowGoals.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrTableCashFlowGoals.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrTableCashFlowGoals.LocationFloat = new DevExpress.Utils.PointFloat(25F, 491.6667F);
             this.xrTableCashFlowGoals.Name = "xrTableCashFlowGoals";
             this.xrTableCashFlowGoals.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
@@ -610,7 +610,7 @@
             // xrLabel2
             // 
             this.xrLabel2.Dpi = 100F;
-            this.xrLabel2.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrLabel2.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrLabel2.ForeColor = System.Drawing.Color.RoyalBlue;
             this.xrLabel2.LocationFloat = new DevExpress.Utils.PointFloat(25F, 419.2292F);
             this.xrLabel2.Multiline = true;
@@ -672,7 +672,7 @@
             | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xtTableIncomeExpFlow.Dpi = 100F;
-            this.xtTableIncomeExpFlow.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xtTableIncomeExpFlow.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xtTableIncomeExpFlow.LocationFloat = new DevExpress.Utils.PointFloat(25F, 79.16679F);
             this.xtTableIncomeExpFlow.Name = "xtTableIncomeExpFlow";
             this.xtTableIncomeExpFlow.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
@@ -772,7 +772,7 @@
             this.xrTable1.BackColor = System.Drawing.Color.Navy;
             this.xrTable1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.xrTable1.Dpi = 100F;
-            this.xrTable1.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrTable1.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrTable1.ForeColor = System.Drawing.Color.White;
             this.xrTable1.LocationFloat = new DevExpress.Utils.PointFloat(25F, 54.16667F);
             this.xrTable1.Name = "xrTable1";
@@ -814,7 +814,7 @@
             // xrLabel1
             // 
             this.xrLabel1.Dpi = 100F;
-            this.xrLabel1.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrLabel1.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrLabel1.ForeColor = System.Drawing.Color.RoyalBlue;
             this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(25F, 10.00001F);
             this.xrLabel1.Name = "xrLabel1";

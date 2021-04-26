@@ -86,7 +86,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                 double currentStatusMapAmount = getCurrentStatusFundForMappedGoal(int.Parse(_dtGoals.Rows[i]["Id"].ToString()));
                 _dtGoals.Rows[i]["ProjectionCompleted"] = goalComplitionPercentage;
                 _dtGoals.Rows[i]["GoalAchivedTillDate"] = currentStatusMapAmount;
-                _dtGoals.Rows[i]["GoalReached"] = (currentStatusMapAmount / double.Parse(_dtGoals.Rows[i]["FutureValue"].ToString()));
+                _dtGoals.Rows[i]["GoalReached"] = ((currentStatusMapAmount  * 100)/ double.Parse(_dtGoals.Rows[i]["FutureValue"].ToString()));
 
                 if (_dtGoals.Rows[i]["Recurrence"] != null & int.Parse(_dtGoals.Rows[i]["Recurrence"].ToString()) > 1)
                 {
@@ -102,7 +102,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                                 currentStatusMapAmount = getCurrentStatusFundForMappedGoal(int.Parse(_dtGoals.Rows[i]["ID"].ToString()));
                                 _dtGoals.Rows[innerLoopIndex]["ProjectionCompleted"] = goalComplitionPercentage;
                                 _dtGoals.Rows[innerLoopIndex]["GoalAchivedTillDate"] = currentStatusMapAmount;
-                                _dtGoals.Rows[innerLoopIndex]["GoalReached"] = (currentStatusMapAmount / double.Parse(_dtGoals.Rows[innerLoopIndex]["FutureValue"].ToString()));
+                                _dtGoals.Rows[innerLoopIndex]["GoalReached"] = ((currentStatusMapAmount * 100) / double.Parse(_dtGoals.Rows[innerLoopIndex]["FutureValue"].ToString()));
 
                                 amount = amount + double.Parse(_dtGoals.Rows[innerLoopIndex]["Amount"].ToString());
                                 futureValue = futureValue + double.Parse(_dtGoals.Rows[innerLoopIndex]["FutureValue"].ToString());

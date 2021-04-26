@@ -52,6 +52,15 @@
             this.xrTableRow9 = new DevExpress.XtraReports.UI.XRTableRow();
             this.lblIncomeBy7 = new DevExpress.XtraReports.UI.XRTableCell();
             this.lblAmount7 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrTableRow21 = new DevExpress.XtraReports.UI.XRTableRow();
+            this.xrTableCell18 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrLabelIncomeTaxAmount = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrTableRow23 = new DevExpress.XtraReports.UI.XRTableRow();
+            this.xrTableCell25 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrTableCell28 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrTableRow22 = new DevExpress.XtraReports.UI.XRTableRow();
+            this.xrTableCell26 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrLabelNetTotalIncome = new DevExpress.XtraReports.UI.XRTableCell();
             this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
             this.xrPictureBox1 = new DevExpress.XtraReports.UI.XRPictureBox();
             this.lblClientName = new DevExpress.XtraReports.UI.XRLabel();
@@ -103,15 +112,6 @@
             this.xrTableCell12 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrLabel1 = new DevExpress.XtraReports.UI.XRLabel();
             this.subReportIncomeChart = new DevExpress.XtraReports.UI.XRSubreport();
-            this.xrTableRow21 = new DevExpress.XtraReports.UI.XRTableRow();
-            this.xrTableCell18 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrLabelIncomeTaxAmount = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableRow22 = new DevExpress.XtraReports.UI.XRTableRow();
-            this.xrTableCell26 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrLabelNetTotalIncome = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableRow23 = new DevExpress.XtraReports.UI.XRTableRow();
-            this.xrTableCell25 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell28 = new DevExpress.XtraReports.UI.XRTableCell();
             ((System.ComponentModel.ISupportInitialize)(this.xrTableIncome)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTableExp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable4)).BeginInit();
@@ -132,6 +132,7 @@
             | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableIncome.Dpi = 100F;
+            this.xrTableIncome.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrTableIncome.LocationFloat = new DevExpress.Utils.PointFloat(37.02085F, 90.625F);
             this.xrTableIncome.Name = "xrTableIncome";
             this.xrTableIncome.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
@@ -147,6 +148,7 @@
             this.xrTableRow22});
             this.xrTableIncome.SizeF = new System.Drawing.SizeF(329.1666F, 250F);
             this.xrTableIncome.StylePriority.UseBorders = false;
+            this.xrTableIncome.StylePriority.UseFont = false;
             // 
             // xrTableRow1
             // 
@@ -299,7 +301,7 @@
             // 
             this.lblIncomeBy7.BackColor = System.Drawing.Color.Navy;
             this.lblIncomeBy7.Dpi = 100F;
-            this.lblIncomeBy7.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIncomeBy7.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIncomeBy7.ForeColor = System.Drawing.Color.White;
             this.lblIncomeBy7.Name = "lblIncomeBy7";
             this.lblIncomeBy7.StylePriority.UseBackColor = false;
@@ -313,7 +315,7 @@
             // 
             this.lblAmount7.BackColor = System.Drawing.Color.Navy;
             this.lblAmount7.Dpi = 100F;
-            this.lblAmount7.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAmount7.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAmount7.ForeColor = System.Drawing.Color.White;
             this.lblAmount7.Name = "lblAmount7";
             this.lblAmount7.StylePriority.UseBackColor = false;
@@ -322,6 +324,115 @@
             this.lblAmount7.StylePriority.UseTextAlignment = false;
             this.lblAmount7.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
             this.lblAmount7.Weight = 1.1831077454555463D;
+            // 
+            // xrTableRow21
+            // 
+            this.xrTableRow21.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
+            this.xrTableCell18,
+            this.xrLabelIncomeTaxAmount});
+            this.xrTableRow21.Dpi = 100F;
+            this.xrTableRow21.Name = "xrTableRow21";
+            this.xrTableRow21.Weight = 1D;
+            // 
+            // xrTableCell18
+            // 
+            this.xrTableCell18.BackColor = System.Drawing.Color.White;
+            this.xrTableCell18.Dpi = 100F;
+            this.xrTableCell18.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrTableCell18.ForeColor = System.Drawing.Color.Black;
+            this.xrTableCell18.Name = "xrTableCell18";
+            this.xrTableCell18.StylePriority.UseBackColor = false;
+            this.xrTableCell18.StylePriority.UseFont = false;
+            this.xrTableCell18.StylePriority.UseForeColor = false;
+            this.xrTableCell18.Text = "Income Tax";
+            this.xrTableCell18.Weight = 1.3958334350585937D;
+            // 
+            // xrLabelIncomeTaxAmount
+            // 
+            this.xrLabelIncomeTaxAmount.BackColor = System.Drawing.Color.White;
+            this.xrLabelIncomeTaxAmount.Dpi = 100F;
+            this.xrLabelIncomeTaxAmount.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrLabelIncomeTaxAmount.ForeColor = System.Drawing.Color.Black;
+            this.xrLabelIncomeTaxAmount.Name = "xrLabelIncomeTaxAmount";
+            this.xrLabelIncomeTaxAmount.StylePriority.UseBackColor = false;
+            this.xrLabelIncomeTaxAmount.StylePriority.UseFont = false;
+            this.xrLabelIncomeTaxAmount.StylePriority.UseForeColor = false;
+            this.xrLabelIncomeTaxAmount.StylePriority.UseTextAlignment = false;
+            this.xrLabelIncomeTaxAmount.Text = "0";
+            this.xrLabelIncomeTaxAmount.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+            this.xrLabelIncomeTaxAmount.Weight = 1.1831077454555463D;
+            // 
+            // xrTableRow23
+            // 
+            this.xrTableRow23.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
+            this.xrTableCell25,
+            this.xrTableCell28});
+            this.xrTableRow23.Dpi = 100F;
+            this.xrTableRow23.Name = "xrTableRow23";
+            this.xrTableRow23.Weight = 1D;
+            // 
+            // xrTableCell25
+            // 
+            this.xrTableCell25.BackColor = System.Drawing.Color.White;
+            this.xrTableCell25.Dpi = 100F;
+            this.xrTableCell25.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrTableCell25.ForeColor = System.Drawing.Color.Black;
+            this.xrTableCell25.Name = "xrTableCell25";
+            this.xrTableCell25.StylePriority.UseBackColor = false;
+            this.xrTableCell25.StylePriority.UseFont = false;
+            this.xrTableCell25.StylePriority.UseForeColor = false;
+            this.xrTableCell25.Weight = 1.3958334350585937D;
+            // 
+            // xrTableCell28
+            // 
+            this.xrTableCell28.BackColor = System.Drawing.Color.White;
+            this.xrTableCell28.Dpi = 100F;
+            this.xrTableCell28.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrTableCell28.ForeColor = System.Drawing.Color.Black;
+            this.xrTableCell28.Name = "xrTableCell28";
+            this.xrTableCell28.StylePriority.UseBackColor = false;
+            this.xrTableCell28.StylePriority.UseFont = false;
+            this.xrTableCell28.StylePriority.UseForeColor = false;
+            this.xrTableCell28.StylePriority.UseTextAlignment = false;
+            this.xrTableCell28.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+            this.xrTableCell28.Weight = 1.1831077454555463D;
+            // 
+            // xrTableRow22
+            // 
+            this.xrTableRow22.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
+            this.xrTableCell26,
+            this.xrLabelNetTotalIncome});
+            this.xrTableRow22.Dpi = 100F;
+            this.xrTableRow22.Name = "xrTableRow22";
+            this.xrTableRow22.Weight = 1D;
+            // 
+            // xrTableCell26
+            // 
+            this.xrTableCell26.BackColor = System.Drawing.Color.Navy;
+            this.xrTableCell26.Dpi = 100F;
+            this.xrTableCell26.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrTableCell26.ForeColor = System.Drawing.Color.White;
+            this.xrTableCell26.Name = "xrTableCell26";
+            this.xrTableCell26.StylePriority.UseBackColor = false;
+            this.xrTableCell26.StylePriority.UseFont = false;
+            this.xrTableCell26.StylePriority.UseForeColor = false;
+            this.xrTableCell26.Text = "Net Income/Inflow";
+            this.xrTableCell26.Weight = 1.3958334350585937D;
+            // 
+            // xrLabelNetTotalIncome
+            // 
+            this.xrLabelNetTotalIncome.BackColor = System.Drawing.Color.Navy;
+            this.xrLabelNetTotalIncome.Dpi = 100F;
+            this.xrLabelNetTotalIncome.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrLabelNetTotalIncome.ForeColor = System.Drawing.Color.White;
+            this.xrLabelNetTotalIncome.Name = "xrLabelNetTotalIncome";
+            this.xrLabelNetTotalIncome.StylePriority.UseBackColor = false;
+            this.xrLabelNetTotalIncome.StylePriority.UseFont = false;
+            this.xrLabelNetTotalIncome.StylePriority.UseForeColor = false;
+            this.xrLabelNetTotalIncome.StylePriority.UseTextAlignment = false;
+            this.xrLabelNetTotalIncome.Text = "0";
+            this.xrLabelNetTotalIncome.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+            this.xrLabelNetTotalIncome.Weight = 1.1831077454555463D;
             // 
             // TopMargin
             // 
@@ -347,24 +458,24 @@
             // lblClientName
             // 
             this.lblClientName.Dpi = 100F;
-            this.lblClientName.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblClientName.Font = new System.Drawing.Font("Cambria", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblClientName.ForeColor = System.Drawing.Color.Navy;
-            this.lblClientName.LocationFloat = new DevExpress.Utils.PointFloat(0.5F, 51.00002F);
+            this.lblClientName.LocationFloat = new DevExpress.Utils.PointFloat(0.4999796F, 51.00002F);
             this.lblClientName.Name = "lblClientName";
             this.lblClientName.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.lblClientName.SizeF = new System.Drawing.SizeF(390.625F, 23F);
+            this.lblClientName.SizeF = new System.Drawing.SizeF(492.7084F, 23F);
             this.lblClientName.StylePriority.UseFont = false;
             this.lblClientName.StylePriority.UseForeColor = false;
             // 
             // ReportTitle
             // 
             this.ReportTitle.Dpi = 100F;
-            this.ReportTitle.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ReportTitle.Font = new System.Drawing.Font("Cambria", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ReportTitle.ForeColor = System.Drawing.Color.Navy;
-            this.ReportTitle.LocationFloat = new DevExpress.Utils.PointFloat(0.5F, 14.16667F);
+            this.ReportTitle.LocationFloat = new DevExpress.Utils.PointFloat(0.4999796F, 14.16667F);
             this.ReportTitle.Name = "ReportTitle";
             this.ReportTitle.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.ReportTitle.SizeF = new System.Drawing.SizeF(143.75F, 23F);
+            this.ReportTitle.SizeF = new System.Drawing.SizeF(196.9148F, 25.08334F);
             this.ReportTitle.StylePriority.UseFont = false;
             this.ReportTitle.StylePriority.UseForeColor = false;
             this.ReportTitle.Text = "Financial Plan of";
@@ -416,6 +527,7 @@
             | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableExp.Dpi = 100F;
+            this.xrTableExp.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrTableExp.LocationFloat = new DevExpress.Utils.PointFloat(37.02082F, 411.7499F);
             this.xrTableExp.Name = "xrTableExp";
             this.xrTableExp.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
@@ -431,6 +543,7 @@
             this.xrTableRow17});
             this.xrTableExp.SizeF = new System.Drawing.SizeF(329.1666F, 250F);
             this.xrTableExp.StylePriority.UseBorders = false;
+            this.xrTableExp.StylePriority.UseFont = false;
             // 
             // xrTableRow10
             // 
@@ -652,7 +765,7 @@
             // 
             this.xrTableCell17.BackColor = System.Drawing.Color.Navy;
             this.xrTableCell17.Dpi = 100F;
-            this.xrTableCell17.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrTableCell17.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrTableCell17.ForeColor = System.Drawing.Color.White;
             this.xrTableCell17.Name = "xrTableCell17";
             this.xrTableCell17.StylePriority.UseBackColor = false;
@@ -666,7 +779,7 @@
             // 
             this.lblExpTotal.BackColor = System.Drawing.Color.Navy;
             this.lblExpTotal.Dpi = 100F;
-            this.lblExpTotal.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblExpTotal.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblExpTotal.ForeColor = System.Drawing.Color.White;
             this.lblExpTotal.Name = "lblExpTotal";
             this.lblExpTotal.StylePriority.UseBackColor = false;
@@ -681,7 +794,7 @@
             this.xrTable4.BackColor = System.Drawing.Color.Navy;
             this.xrTable4.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.xrTable4.Dpi = 100F;
-            this.xrTable4.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrTable4.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrTable4.ForeColor = System.Drawing.Color.White;
             this.xrTable4.LocationFloat = new DevExpress.Utils.PointFloat(37.02082F, 386.7499F);
             this.xrTable4.Name = "xrTable4";
@@ -723,7 +836,7 @@
             // xrLabel3
             // 
             this.xrLabel3.Dpi = 100F;
-            this.xrLabel3.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrLabel3.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrLabel3.ForeColor = System.Drawing.Color.RoyalBlue;
             this.xrLabel3.LocationFloat = new DevExpress.Utils.PointFloat(96.39588F, 351.625F);
             this.xrLabel3.Multiline = true;
@@ -737,7 +850,7 @@
             // xrLabel2
             // 
             this.xrLabel2.Dpi = 100F;
-            this.xrLabel2.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrLabel2.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrLabel2.ForeColor = System.Drawing.Color.RoyalBlue;
             this.xrLabel2.LocationFloat = new DevExpress.Utils.PointFloat(114.1042F, 39.50002F);
             this.xrLabel2.Multiline = true;
@@ -780,8 +893,10 @@
             // 
             this.xrTableCell11.BackColor = System.Drawing.Color.Navy;
             this.xrTableCell11.Dpi = 100F;
+            this.xrTableCell11.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrTableCell11.Name = "xrTableCell11";
             this.xrTableCell11.StylePriority.UseBackColor = false;
+            this.xrTableCell11.StylePriority.UseFont = false;
             this.xrTableCell11.Text = "Source Of Income";
             this.xrTableCell11.Weight = 1.7147093661455175D;
             // 
@@ -795,7 +910,7 @@
             // xrLabel1
             // 
             this.xrLabel1.Dpi = 100F;
-            this.xrLabel1.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrLabel1.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrLabel1.ForeColor = System.Drawing.Color.RoyalBlue;
             this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(35.97918F, 10.00001F);
             this.xrLabel1.Multiline = true;
@@ -812,115 +927,6 @@
             this.subReportIncomeChart.LocationFloat = new DevExpress.Utils.PointFloat(396.3958F, 65.625F);
             this.subReportIncomeChart.Name = "subReportIncomeChart";
             this.subReportIncomeChart.SizeF = new System.Drawing.SizeF(330.75F, 250F);
-            // 
-            // xrTableRow21
-            // 
-            this.xrTableRow21.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
-            this.xrTableCell18,
-            this.xrLabelIncomeTaxAmount});
-            this.xrTableRow21.Dpi = 100F;
-            this.xrTableRow21.Name = "xrTableRow21";
-            this.xrTableRow21.Weight = 1D;
-            // 
-            // xrTableCell18
-            // 
-            this.xrTableCell18.BackColor = System.Drawing.Color.White;
-            this.xrTableCell18.Dpi = 100F;
-            this.xrTableCell18.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xrTableCell18.ForeColor = System.Drawing.Color.Black;
-            this.xrTableCell18.Name = "xrTableCell18";
-            this.xrTableCell18.StylePriority.UseBackColor = false;
-            this.xrTableCell18.StylePriority.UseFont = false;
-            this.xrTableCell18.StylePriority.UseForeColor = false;
-            this.xrTableCell18.Text = "Income Tax";
-            this.xrTableCell18.Weight = 1.3958334350585937D;
-            // 
-            // xrLableIncomeTaxAmount
-            // 
-            this.xrLabelIncomeTaxAmount.BackColor = System.Drawing.Color.White;
-            this.xrLabelIncomeTaxAmount.Dpi = 100F;
-            this.xrLabelIncomeTaxAmount.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xrLabelIncomeTaxAmount.ForeColor = System.Drawing.Color.Black;
-            this.xrLabelIncomeTaxAmount.Name = "xrLableIncomeTaxAmount";
-            this.xrLabelIncomeTaxAmount.StylePriority.UseBackColor = false;
-            this.xrLabelIncomeTaxAmount.StylePriority.UseFont = false;
-            this.xrLabelIncomeTaxAmount.StylePriority.UseForeColor = false;
-            this.xrLabelIncomeTaxAmount.StylePriority.UseTextAlignment = false;
-            this.xrLabelIncomeTaxAmount.Text = "0";
-            this.xrLabelIncomeTaxAmount.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-            this.xrLabelIncomeTaxAmount.Weight = 1.1831077454555463D;
-            // 
-            // xrTableRow22
-            // 
-            this.xrTableRow22.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
-            this.xrTableCell26,
-            this.xrLabelNetTotalIncome});
-            this.xrTableRow22.Dpi = 100F;
-            this.xrTableRow22.Name = "xrTableRow22";
-            this.xrTableRow22.Weight = 1D;
-            // 
-            // xrTableCell26
-            // 
-            this.xrTableCell26.BackColor = System.Drawing.Color.Navy;
-            this.xrTableCell26.Dpi = 100F;
-            this.xrTableCell26.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xrTableCell26.ForeColor = System.Drawing.Color.White;
-            this.xrTableCell26.Name = "xrTableCell26";
-            this.xrTableCell26.StylePriority.UseBackColor = false;
-            this.xrTableCell26.StylePriority.UseFont = false;
-            this.xrTableCell26.StylePriority.UseForeColor = false;
-            this.xrTableCell26.Text = "Net Income/Inflow";
-            this.xrTableCell26.Weight = 1.3958334350585937D;
-            // 
-            // xrLabelNetTotalIncome
-            // 
-            this.xrLabelNetTotalIncome.BackColor = System.Drawing.Color.Navy;
-            this.xrLabelNetTotalIncome.Dpi = 100F;
-            this.xrLabelNetTotalIncome.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xrLabelNetTotalIncome.ForeColor = System.Drawing.Color.White;
-            this.xrLabelNetTotalIncome.Name = "xrLabelNetTotalIncome";
-            this.xrLabelNetTotalIncome.StylePriority.UseBackColor = false;
-            this.xrLabelNetTotalIncome.StylePriority.UseFont = false;
-            this.xrLabelNetTotalIncome.StylePriority.UseForeColor = false;
-            this.xrLabelNetTotalIncome.StylePriority.UseTextAlignment = false;
-            this.xrLabelNetTotalIncome.Text = "0";
-            this.xrLabelNetTotalIncome.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-            this.xrLabelNetTotalIncome.Weight = 1.1831077454555463D;
-            // 
-            // xrTableRow23
-            // 
-            this.xrTableRow23.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
-            this.xrTableCell25,
-            this.xrTableCell28});
-            this.xrTableRow23.Dpi = 100F;
-            this.xrTableRow23.Name = "xrTableRow23";
-            this.xrTableRow23.Weight = 1D;
-            // 
-            // xrTableCell25
-            // 
-            this.xrTableCell25.BackColor = System.Drawing.Color.White;
-            this.xrTableCell25.Dpi = 100F;
-            this.xrTableCell25.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xrTableCell25.ForeColor = System.Drawing.Color.Black;
-            this.xrTableCell25.Name = "xrTableCell25";
-            this.xrTableCell25.StylePriority.UseBackColor = false;
-            this.xrTableCell25.StylePriority.UseFont = false;
-            this.xrTableCell25.StylePriority.UseForeColor = false;
-            this.xrTableCell25.Weight = 1.3958334350585937D;
-            // 
-            // xrTableCell28
-            // 
-            this.xrTableCell28.BackColor = System.Drawing.Color.White;
-            this.xrTableCell28.Dpi = 100F;
-            this.xrTableCell28.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xrTableCell28.ForeColor = System.Drawing.Color.Black;
-            this.xrTableCell28.Name = "xrTableCell28";
-            this.xrTableCell28.StylePriority.UseBackColor = false;
-            this.xrTableCell28.StylePriority.UseFont = false;
-            this.xrTableCell28.StylePriority.UseForeColor = false;
-            this.xrTableCell28.StylePriority.UseTextAlignment = false;
-            this.xrTableCell28.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-            this.xrTableCell28.Weight = 1.1831077454555463D;
             // 
             // IncomeExpenseAnalysis
             // 

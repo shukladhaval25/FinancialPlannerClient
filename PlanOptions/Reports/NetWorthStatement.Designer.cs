@@ -204,7 +204,7 @@
             this.xrTable2.BackColor = System.Drawing.Color.Navy;
             this.xrTable2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.xrTable2.Dpi = 100F;
-            this.xrTable2.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrTable2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrTable2.ForeColor = System.Drawing.Color.White;
             this.xrTable2.LocationFloat = new DevExpress.Utils.PointFloat(10.00001F, 45.3125F);
             this.xrTable2.Name = "xrTable2";
@@ -265,7 +265,7 @@
             | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableNetWorth.Dpi = 100F;
-            this.xrTableNetWorth.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrTableNetWorth.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrTableNetWorth.LocationFloat = new DevExpress.Utils.PointFloat(10.00001F, 70.3125F);
             this.xrTableNetWorth.Name = "xrTableNetWorth";
             this.xrTableNetWorth.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
@@ -302,7 +302,7 @@
             // lblIncomeBy0
             // 
             this.lblIncomeBy0.Dpi = 100F;
-            this.lblIncomeBy0.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIncomeBy0.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIncomeBy0.ForeColor = System.Drawing.Color.RoyalBlue;
             this.lblIncomeBy0.Name = "lblIncomeBy0";
             this.lblIncomeBy0.StylePriority.UseFont = false;
@@ -937,7 +937,7 @@
             // xrLabel2
             // 
             this.xrLabel2.Dpi = 100F;
-            this.xrLabel2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrLabel2.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrLabel2.ForeColor = System.Drawing.Color.RoyalBlue;
             this.xrLabel2.LocationFloat = new DevExpress.Utils.PointFloat(4.999987F, 10.00001F);
             this.xrLabel2.Multiline = true;
@@ -972,7 +972,7 @@
             // lblClientName
             // 
             this.lblClientName.Dpi = 100F;
-            this.lblClientName.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblClientName.Font = new System.Drawing.Font("Cambria", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblClientName.ForeColor = System.Drawing.Color.Navy;
             this.lblClientName.LocationFloat = new DevExpress.Utils.PointFloat(5F, 51.00002F);
             this.lblClientName.Name = "lblClientName";
@@ -984,12 +984,12 @@
             // ReportTitle
             // 
             this.ReportTitle.Dpi = 100F;
-            this.ReportTitle.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ReportTitle.Font = new System.Drawing.Font("Cambria", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ReportTitle.ForeColor = System.Drawing.Color.Navy;
-            this.ReportTitle.LocationFloat = new DevExpress.Utils.PointFloat(5F, 14.16667F);
+            this.ReportTitle.LocationFloat = new DevExpress.Utils.PointFloat(4.999987F, 14.16667F);
             this.ReportTitle.Name = "ReportTitle";
             this.ReportTitle.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.ReportTitle.SizeF = new System.Drawing.SizeF(143.75F, 23F);
+            this.ReportTitle.SizeF = new System.Drawing.SizeF(223.9583F, 23F);
             this.ReportTitle.StylePriority.UseFont = false;
             this.ReportTitle.StylePriority.UseForeColor = false;
             this.ReportTitle.Text = "Financial Plan of";

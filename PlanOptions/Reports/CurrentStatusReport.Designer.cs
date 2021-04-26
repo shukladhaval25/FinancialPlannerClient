@@ -30,16 +30,16 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CurrentStatusReport));
             this.Detail = new DevExpress.XtraReports.UI.DetailBand();
+            this.xrSubreport4 = new DevExpress.XtraReports.UI.XRSubreport();
+            this.xrSubreport3 = new DevExpress.XtraReports.UI.XRSubreport();
+            this.xrSubreport2 = new DevExpress.XtraReports.UI.XRSubreport();
+            this.xrSubreportCurrentStatus = new DevExpress.XtraReports.UI.XRSubreport();
             this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
-            this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
             this.ReportTitle = new DevExpress.XtraReports.UI.XRLabel();
             this.lblClientName = new DevExpress.XtraReports.UI.XRLabel();
             this.xrPictureBox1 = new DevExpress.XtraReports.UI.XRPictureBox();
+            this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
             this.xrPageInfo1 = new DevExpress.XtraReports.UI.XRPageInfo();
-            this.xrSubreportCurrentStatus = new DevExpress.XtraReports.UI.XRSubreport();
-            this.xrSubreport2 = new DevExpress.XtraReports.UI.XRSubreport();
-            this.xrSubreport3 = new DevExpress.XtraReports.UI.XRSubreport();
-            this.xrSubreport4 = new DevExpress.XtraReports.UI.XRSubreport();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // Detail
@@ -55,6 +55,34 @@
             this.Detail.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.Detail.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
             // 
+            // xrSubreport4
+            // 
+            this.xrSubreport4.Dpi = 100F;
+            this.xrSubreport4.LocationFloat = new DevExpress.Utils.PointFloat(343.3334F, 96.31252F);
+            this.xrSubreport4.Name = "xrSubreport4";
+            this.xrSubreport4.SizeF = new System.Drawing.SizeF(296.6664F, 25.08332F);
+            // 
+            // xrSubreport3
+            // 
+            this.xrSubreport3.Dpi = 100F;
+            this.xrSubreport3.LocationFloat = new DevExpress.Utils.PointFloat(10.00012F, 96.31252F);
+            this.xrSubreport3.Name = "xrSubreport3";
+            this.xrSubreport3.SizeF = new System.Drawing.SizeF(318.5416F, 25.08332F);
+            // 
+            // xrSubreport2
+            // 
+            this.xrSubreport2.Dpi = 100F;
+            this.xrSubreport2.LocationFloat = new DevExpress.Utils.PointFloat(10.00012F, 47.58332F);
+            this.xrSubreport2.Name = "xrSubreport2";
+            this.xrSubreport2.SizeF = new System.Drawing.SizeF(629.9999F, 25.08332F);
+            // 
+            // xrSubreportCurrentStatus
+            // 
+            this.xrSubreportCurrentStatus.Dpi = 100F;
+            this.xrSubreportCurrentStatus.LocationFloat = new DevExpress.Utils.PointFloat(10.00001F, 10.00001F);
+            this.xrSubreportCurrentStatus.Name = "xrSubreportCurrentStatus";
+            this.xrSubreportCurrentStatus.SizeF = new System.Drawing.SizeF(629.9999F, 25.08332F);
+            // 
             // TopMargin
             // 
             this.TopMargin.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
@@ -67,25 +95,15 @@
             this.TopMargin.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.TopMargin.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
             // 
-            // BottomMargin
-            // 
-            this.BottomMargin.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
-            this.xrPageInfo1});
-            this.BottomMargin.Dpi = 100F;
-            this.BottomMargin.HeightF = 54.16667F;
-            this.BottomMargin.Name = "BottomMargin";
-            this.BottomMargin.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
-            this.BottomMargin.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
-            // 
             // ReportTitle
             // 
             this.ReportTitle.Dpi = 100F;
-            this.ReportTitle.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ReportTitle.Font = new System.Drawing.Font("Cambria", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ReportTitle.ForeColor = System.Drawing.Color.Navy;
-            this.ReportTitle.LocationFloat = new DevExpress.Utils.PointFloat(2.5F, 14.16667F);
+            this.ReportTitle.LocationFloat = new DevExpress.Utils.PointFloat(2.499994F, 14.16667F);
             this.ReportTitle.Name = "ReportTitle";
             this.ReportTitle.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.ReportTitle.SizeF = new System.Drawing.SizeF(143.75F, 23F);
+            this.ReportTitle.SizeF = new System.Drawing.SizeF(225F, 23F);
             this.ReportTitle.StylePriority.UseFont = false;
             this.ReportTitle.StylePriority.UseForeColor = false;
             this.ReportTitle.Text = "Financial Plan of";
@@ -93,7 +111,7 @@
             // lblClientName
             // 
             this.lblClientName.Dpi = 100F;
-            this.lblClientName.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblClientName.Font = new System.Drawing.Font("Cambria", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblClientName.ForeColor = System.Drawing.Color.Navy;
             this.lblClientName.LocationFloat = new DevExpress.Utils.PointFloat(2.5F, 51.00002F);
             this.lblClientName.Name = "lblClientName";
@@ -111,6 +129,16 @@
             this.xrPictureBox1.SizeF = new System.Drawing.SizeF(241.4583F, 100F);
             this.xrPictureBox1.Sizing = DevExpress.XtraPrinting.ImageSizeMode.ZoomImage;
             // 
+            // BottomMargin
+            // 
+            this.BottomMargin.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.xrPageInfo1});
+            this.BottomMargin.Dpi = 100F;
+            this.BottomMargin.HeightF = 54.16667F;
+            this.BottomMargin.Name = "BottomMargin";
+            this.BottomMargin.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
+            this.BottomMargin.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
+            // 
             // xrPageInfo1
             // 
             this.xrPageInfo1.Dpi = 100F;
@@ -119,35 +147,7 @@
             this.xrPageInfo1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrPageInfo1.SizeF = new System.Drawing.SizeF(55.20831F, 23F);
             // 
-            // xrSubreportCurrentStatus
-            // 
-            this.xrSubreportCurrentStatus.Dpi = 100F;
-            this.xrSubreportCurrentStatus.LocationFloat = new DevExpress.Utils.PointFloat(10.00001F, 10.00001F);
-            this.xrSubreportCurrentStatus.Name = "xrSubreportCurrentStatus";
-            this.xrSubreportCurrentStatus.SizeF = new System.Drawing.SizeF(629.9999F, 25.08332F);
-            // 
-            // xrSubreport2
-            // 
-            this.xrSubreport2.Dpi = 100F;
-            this.xrSubreport2.LocationFloat = new DevExpress.Utils.PointFloat(10.00012F, 47.58332F);
-            this.xrSubreport2.Name = "xrSubreport2";
-            this.xrSubreport2.SizeF = new System.Drawing.SizeF(629.9999F, 25.08332F);
-            // 
-            // xrSubreport3
-            // 
-            this.xrSubreport3.Dpi = 100F;
-            this.xrSubreport3.LocationFloat = new DevExpress.Utils.PointFloat(10.00012F, 96.31252F);
-            this.xrSubreport3.Name = "xrSubreport3";
-            this.xrSubreport3.SizeF = new System.Drawing.SizeF(318.5416F, 25.08332F);
-            // 
-            // xrSubreport4
-            // 
-            this.xrSubreport4.Dpi = 100F;
-            this.xrSubreport4.LocationFloat = new DevExpress.Utils.PointFloat(343.3334F, 96.31252F);
-            this.xrSubreport4.Name = "xrSubreport4";
-            this.xrSubreport4.SizeF = new System.Drawing.SizeF(296.6664F, 25.08332F);
-            // 
-            // CurrentStatus
+            // CurrentStatusReport
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
             this.Detail,
