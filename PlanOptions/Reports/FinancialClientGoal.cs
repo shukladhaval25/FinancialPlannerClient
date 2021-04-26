@@ -54,7 +54,8 @@ namespace FinancialPlannerClient.PlanOptions.Reports
 
             for(int i=0;i< _dtGoals.Rows.Count;i++)
             {
-                string goalName = _dtGoals.Rows[i]["Name"].ToString().Substring(0, _dtGoals.Rows[i]["Name"].ToString().Length - 4).Trim();
+                string goalName = (_dtGoals.Rows[i]["Name"].ToString().Length >4) ? _dtGoals.Rows[i]["Name"].ToString().Substring(0, _dtGoals.Rows[i]["Name"].ToString().Length - 4).Trim():
+                 _dtGoals.Rows[i]["Name"].ToString();
                 string goalCategory = _dtGoals.Rows[i]["Category"].ToString();
                 double amount = 0;
                 double futureValue = 0;

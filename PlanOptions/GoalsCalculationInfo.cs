@@ -211,7 +211,7 @@ namespace FinancialPlannerClient.PlanOptions
            
             GoalsValueCalculationInfo goalsValueCal = GoalCalManager.GetGoalValueCalculation(_goal);
             goalsValueCal.SetPortfolioValue(GetProfileValue());
-            addMappedCurrentStatusValue(goalsValueCal);
+            //addMappedCurrentStatusValue(goalsValueCal);
             for (int currentYear = _planner.StartDate.Year; currentYear <= goalYear; currentYear++)
             {
                 GoalPlanning goalPlanning =  goalsValueCal.GetGoalPlanning(currentYear);
@@ -342,7 +342,8 @@ namespace FinancialPlannerClient.PlanOptions
 
             DataColumn dcYear = new DataColumn("Year",typeof(System.Int16));
             dcYear.AutoIncrement = true;
-            dcYear.AutoIncrementSeed = (mappedCurrentStatusValue == 0) ? _planner.StartDate.Year : _planner.StartDate.Year - 1;
+            //dcYear.AutoIncrementSeed = (mappedCurrentStatusValue == 0) ? _planner.StartDate.Year : _planner.StartDate.Year - 1;
+            dcYear.AutoIncrementSeed = _planner.StartDate.Year;
             dcYear.AutoIncrementStep = 1;
             _dtGoalCalculation.Columns.Add(dcYear);
 

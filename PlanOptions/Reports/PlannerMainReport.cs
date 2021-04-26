@@ -72,10 +72,10 @@ namespace FinancialPlannerClient.PlanOptions
                 FinancialGoalIntro financialGoalIntro = new FinancialGoalIntro(client);
                 financialGoalIntro.CreateDocument();
 
-                FinancialClientGoal financialClientGoal = new FinancialClientGoal(this.planner, this.client,this.riskprofileId );
+                FinancialClientGoal financialClientGoal = new FinancialClientGoal(this.planner, this.client, this.riskprofileId);
                 financialClientGoal.CreateDocument();
 
-                GoalProjectionForComplition goalProjectionForComplition = new GoalProjectionForComplition(this.planner, this.client,this.riskprofileId,this.optionId );
+                GoalProjectionForComplition goalProjectionForComplition = new GoalProjectionForComplition(this.planner, this.client, this.riskprofileId, this.optionId);
                 goalProjectionForComplition.CreateDocument();
 
                 IncomeExpenseAnalysis incomeExpenseAnalysis = new IncomeExpenseAnalysis(this.client, this.planner);
@@ -117,7 +117,7 @@ namespace FinancialPlannerClient.PlanOptions
                     new CurrentFinancialAssetAllocation(this.client, netWorthStatement.GetNetWorth());
                 currentFinancialAssetAllocation.CreateDocument();
 
-                StrategicAssetsCollection strategicAssetsCollection = new StrategicAssetsCollection(this.client,this.riskprofileId);
+                StrategicAssetsCollection strategicAssetsCollection = new StrategicAssetsCollection(this.client, this.riskprofileId);
                 strategicAssetsCollection.CreateDocument();
 
                 SmartGoal smartGoal = new SmartGoal(this.client);
@@ -131,11 +131,11 @@ namespace FinancialPlannerClient.PlanOptions
                 {
                     goalsDescriptions = new GoalsDescription[goals.Count];
                     int goalCountIndex = 0;
-                    foreach(Goals goal  in goals)
+                    foreach (Goals goal in goals)
                     {
                         goalsDescriptions[goalCountIndex] = new GoalsDescription();
                         goalsDescriptions[goalCountIndex].SetReportParameter(this.client, this.planner, goal,
-                            this.riskprofileId,this.optionId);
+                            this.riskprofileId, this.optionId);
                         goalsDescriptions[goalCountIndex].CreateDocument();
                         goalCountIndex++;
                     }
@@ -178,7 +178,7 @@ namespace FinancialPlannerClient.PlanOptions
 
                 int goalCount = 0;
                 foreach (Goals goal in goals)
-                {                    
+                {
                     this.Pages.Add(goalsDescriptions[goalCount].Pages.First);
                     goalCount++;
                 }

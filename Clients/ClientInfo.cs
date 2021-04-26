@@ -1699,7 +1699,7 @@ namespace FinancialPlannerClient.Clients
             cmbIncomeBy.Text = "";
             txtExpectedGrowthSalary.Text = "0";
             txtIncomeStartYear.Text = DateTime.Now.Year.ToString();
-            txtIncomeEndYear.Text = (_client.DOB.Year + plannerAssumption.ClientRetirementAge + 1).ToString();
+            txtIncomeEndYear.Text = (_client.DOB.Year + plannerAssumption.ClientRetirementAge).ToString();
             rdoPercentage.Checked = true;
             txtincomeGrowthPercentage.Text = plannerAssumption.ClientIncomeRise.ToString();
             txtExpectedGrowthInAmount.Text = "0";
@@ -1930,7 +1930,7 @@ namespace FinancialPlannerClient.Clients
             //(Program.GetAssumptionMaster().PreRetirementInflactionRate != null) ?
             //Program.GetAssumptionMaster().PreRetirementInflactionRate.ToString() :
             //string.Empty;
-            txtExpEndYear.Text = (_client.DOB.Year + plannerAssumption.ClientRetirementAge + 1).ToString();
+            txtExpEndYear.Text = (_client.DOB.Year + plannerAssumption.ClientRetirementAge).ToString();
             chkEligibleForInsuranceCover.Checked = false;
         }
 

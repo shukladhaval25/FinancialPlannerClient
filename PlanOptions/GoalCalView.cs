@@ -123,9 +123,37 @@ namespace FinancialPlannerClient.PlanOptions
         }
         public int GetGoalComplitionPercentage(Goals goal)
         {
-          return  (goal.Category.Equals("Retirement", StringComparison.OrdinalIgnoreCase)) ?
-                       getGoalComplitionPercentageWithCurrentStatusAccessFund()
-                       : getGoalComplitionPercentage();
+            if (goals == null)
+                goals = new GoalsInfo().GetAll(this.planner.ID);
+
+            Goals retirementGoal = goals.FirstOrDefault(i => i.Category == "Retirement");
+            int retirementGoalPriority = 1000; 
+            if (retirementGoal != null) {
+                retirementGoalPriority = retirementGoal.Priority;
+            }
+            if (goal.Priority > retirementGoalPriority)
+            {
+                PostRetirementCashFlowService postRetirementCashFlowService = new PostRetirementCashFlowService(this.planner, this.cashFlowService);
+                
+                DataTable dataTable =  postRetirementCashFlowService.GetPostRetirementCashFlowData();
+                DataRow[] drs = dataTable.Select("StartYear = '" + goal.StartYear + "'");
+                if (drs.Count() > 0)
+                {
+                    double corpusFund = 0;
+                    double.TryParse(drs[0]["Rem_Corp_Fund"].ToString(), out corpusFund);
+                    if (corpusFund < 0)
+                        return 0;
+                    else
+                        return 100;
+                }
+                return 0;
+            }
+            else
+            {
+                return (goal.Category.Equals("Retirement", StringComparison.OrdinalIgnoreCase)) ?
+                             getGoalComplitionPercentageWithCurrentStatusAccessFund()
+                             : getGoalComplitionPercentage();
+            }
         }
 
         private int getGoalComplitionPercentageWithCurrentStatusAccessFund()

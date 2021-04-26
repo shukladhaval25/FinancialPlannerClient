@@ -766,7 +766,7 @@
             this.lblGrandTotalValue.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblGrandTotalValue.Location = new System.Drawing.Point(521, 510);
             this.lblGrandTotalValue.Name = "lblGrandTotalValue";
-            this.lblGrandTotalValue.Size = new System.Drawing.Size(112, 19);
+            this.lblGrandTotalValue.Size = new System.Drawing.Size(166, 19);
             this.lblGrandTotalValue.TabIndex = 3;
             this.lblGrandTotalValue.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 

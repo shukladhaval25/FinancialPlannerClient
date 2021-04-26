@@ -51,10 +51,10 @@
             this.xrTableCell12 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell7 = new DevExpress.XtraReports.UI.XRTableCell();
             this.GroupFooter1 = new DevExpress.XtraReports.UI.GroupFooterBand();
-            this.xrChartNetWorthYear = new DevExpress.XtraReports.UI.XRChart();
+            this.xChartNetWorth = new DevExpress.XtraReports.UI.XRChart();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xrChartNetWorthYear)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xChartNetWorth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(series1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
@@ -252,30 +252,30 @@
             // GroupFooter1
             // 
             this.GroupFooter1.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
-            this.xrChartNetWorthYear});
+            this.xChartNetWorth});
             this.GroupFooter1.Dpi = 100F;
             this.GroupFooter1.HeightF = 242.2917F;
             this.GroupFooter1.Name = "GroupFooter1";
             // 
-            // xrChartNetWorthYear
+            // xChartNetWorth
             // 
-            this.xrChartNetWorthYear.BorderColor = System.Drawing.Color.Black;
-            this.xrChartNetWorthYear.Borders = DevExpress.XtraPrinting.BorderSide.None;
+            this.xChartNetWorth.BorderColor = System.Drawing.Color.Black;
+            this.xChartNetWorth.Borders = DevExpress.XtraPrinting.BorderSide.None;
             xyDiagram1.AxisX.VisibleInPanesSerializable = "-1";
             xyDiagram1.AxisY.VisibleInPanesSerializable = "-1";
             xyDiagram1.DefaultPane.EnableAxisXScrolling = DevExpress.Utils.DefaultBoolean.False;
             xyDiagram1.DefaultPane.EnableAxisXZooming = DevExpress.Utils.DefaultBoolean.False;
             xyDiagram1.DefaultPane.EnableAxisYScrolling = DevExpress.Utils.DefaultBoolean.False;
             xyDiagram1.DefaultPane.EnableAxisYZooming = DevExpress.Utils.DefaultBoolean.False;
-            this.xrChartNetWorthYear.Diagram = xyDiagram1;
-            this.xrChartNetWorthYear.Dpi = 100F;
-            this.xrChartNetWorthYear.Legend.Name = "Default Legend";
-            this.xrChartNetWorthYear.LocationFloat = new DevExpress.Utils.PointFloat(23.54167F, 10.00001F);
-            this.xrChartNetWorthYear.Name = "xrChartNetWorthYear";
+            this.xChartNetWorth.Diagram = xyDiagram1;
+            this.xChartNetWorth.Dpi = 100F;
+            this.xChartNetWorth.Legend.Name = "Default Legend";
+            this.xChartNetWorth.LocationFloat = new DevExpress.Utils.PointFloat(23.54167F, 10.00001F);
+            this.xChartNetWorth.Name = "xChartNetWorth";
             series1.Name = "Series 1";
-            this.xrChartNetWorthYear.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
+            this.xChartNetWorth.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
         series1};
-            this.xrChartNetWorthYear.SizeF = new System.Drawing.SizeF(599.9999F, 222.2917F);
+            this.xChartNetWorth.SizeF = new System.Drawing.SizeF(599.9999F, 222.2917F);
             // 
             // NetWorthYearOnYear
             // 
@@ -291,7 +291,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(series1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xrChartNetWorthYear)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xChartNetWorth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
 
         }
@@ -318,6 +318,6 @@
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell12;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell7;
         private DevExpress.XtraReports.UI.XRPageInfo xrPageInfo1;
-        private DevExpress.XtraReports.UI.XRChart xrChartNetWorthYear;
+        private DevExpress.XtraReports.UI.XRChart xChartNetWorth;
     }
 }

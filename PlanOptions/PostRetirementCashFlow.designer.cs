@@ -32,6 +32,8 @@
             this.grdPostRetirementCashFlow = new DevExpress.XtraGrid.GridControl();
             this.gridSplitContainerViewCashFlow = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.lblAssetMapping = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl15 = new DevExpress.XtraEditors.LabelControl();
             this.progressBarRetGoalCompletion = new DevExpress.XtraEditors.ProgressBarControl();
             this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
             this.lblEstimatedCorpusFundValue = new DevExpress.XtraEditors.LabelControl();
@@ -65,8 +67,6 @@
             this.lblClient = new DevExpress.XtraEditors.LabelControl();
             this.btnExport = new DevExpress.XtraEditors.SimpleButton();
             this.picProcessing = new DevExpress.XtraEditors.PictureEdit();
-            this.lblAssetMapping = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl15 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.grdPostRetirementCashFlow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridSplitContainerViewCashFlow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
@@ -97,6 +97,7 @@
             this.gridSplitContainerViewCashFlow.OptionsBehavior.ReadOnly = true;
             this.gridSplitContainerViewCashFlow.OptionsMenu.ShowConditionalFormattingItem = true;
             this.gridSplitContainerViewCashFlow.OptionsView.ColumnAutoWidth = false;
+            this.gridSplitContainerViewCashFlow.RowCellStyle += new DevExpress.XtraGrid.Views.Grid.RowCellStyleEventHandler(this.gridSplitContainerViewCashFlow_RowCellStyle);
             // 
             // groupControl1
             // 
@@ -140,6 +141,27 @@
             this.groupControl1.Size = new System.Drawing.Size(1140, 112);
             this.groupControl1.TabIndex = 2;
             this.groupControl1.Text = "Information";
+            // 
+            // lblAssetMapping
+            // 
+            this.lblAssetMapping.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAssetMapping.Appearance.Options.UseFont = true;
+            this.lblAssetMapping.Appearance.Options.UseTextOptions = true;
+            this.lblAssetMapping.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.lblAssetMapping.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.lblAssetMapping.Location = new System.Drawing.Point(703, 87);
+            this.lblAssetMapping.Name = "lblAssetMapping";
+            this.lblAssetMapping.Size = new System.Drawing.Size(111, 10);
+            this.lblAssetMapping.TabIndex = 32;
+            this.lblAssetMapping.Text = "0";
+            // 
+            // labelControl15
+            // 
+            this.labelControl15.Location = new System.Drawing.Point(611, 84);
+            this.labelControl15.Name = "labelControl15";
+            this.labelControl15.Size = new System.Drawing.Size(74, 13);
+            this.labelControl15.TabIndex = 31;
+            this.labelControl15.Text = "Asset Mapping:";
             // 
             // progressBarRetGoalCompletion
             // 
@@ -453,27 +475,6 @@
             this.picProcessing.Properties.ZoomAccelerationFactor = 1D;
             this.picProcessing.Size = new System.Drawing.Size(162, 132);
             this.picProcessing.TabIndex = 27;
-            // 
-            // lblAssetMapping
-            // 
-            this.lblAssetMapping.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAssetMapping.Appearance.Options.UseFont = true;
-            this.lblAssetMapping.Appearance.Options.UseTextOptions = true;
-            this.lblAssetMapping.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.lblAssetMapping.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.lblAssetMapping.Location = new System.Drawing.Point(703, 87);
-            this.lblAssetMapping.Name = "lblAssetMapping";
-            this.lblAssetMapping.Size = new System.Drawing.Size(111, 10);
-            this.lblAssetMapping.TabIndex = 32;
-            this.lblAssetMapping.Text = "0";
-            // 
-            // labelControl15
-            // 
-            this.labelControl15.Location = new System.Drawing.Point(611, 84);
-            this.labelControl15.Name = "labelControl15";
-            this.labelControl15.Size = new System.Drawing.Size(74, 13);
-            this.labelControl15.TabIndex = 31;
-            this.labelControl15.Text = "Asset Mapping:";
             // 
             // PostRetirementCashFlow
             // 

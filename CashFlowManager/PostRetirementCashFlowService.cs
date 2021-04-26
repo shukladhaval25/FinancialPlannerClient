@@ -1,6 +1,7 @@
 ﻿using FinancialPlanner.Common;
 using FinancialPlanner.Common.Model;
 using FinancialPlannerClient.PlannerInfo;
+using FinancialPlannerClient.PlanOptions;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -21,6 +22,7 @@ namespace FinancialPlannerClient.CashFlowManager
         double corpusFundBalance;
         double proposeEstimatedCorpusFundRequire = 0;
         double invReturnRate = 0;
+        double totalCurrentCorpFund = 0;
         private DataTable _dtRetirementCashFlow;
 
         public PostRetirementCashFlowService(Planner planner,
@@ -39,6 +41,11 @@ namespace FinancialPlannerClient.CashFlowManager
             this.expectedLifeEndYear = getExpectedLifeEndYear();
             Logger.LogInfo("Get expected life end year :" + this.expectedLifeEndYear);
             Logger.LogInfo("Post retirement cash flow service constructor call completed");
+
+            Goals retirementGoal = cashFlowCalculation.LstGoals.First(y => y.Category == "Retirement");
+            GoalsValueCalculationInfo goalsValueCalculationInfo = cashFlowService.GoalCalculationMgr.GetGoalValueCalculation(retirementGoal);
+            double assetsMappingValue = (goalsValueCalculationInfo != null) ? goalsValueCalculationInfo.FutureValueOfMappedNonFinancialAssets : 0;
+            totalCurrentCorpFund  =  cashFlowService.GetCashFlowSurplusAmount() + cashFlowService.GetCurrentStatusAccessFund() + assetsMappingValue;
         }
         public CashFlowCalculation GetCashFlowCalculationData()
         {
@@ -97,6 +104,7 @@ namespace FinancialPlannerClient.CashFlowManager
             
             _dtRetirementCashFlow.Columns.Add("Rem_Corp_Fund", typeof(System.Double));
             _dtRetirementCashFlow.Columns.Add("EstimatedRequireCorpusFund", typeof(System.Double));
+           // _dtRetirementCashFlow.Columns.Add("CurrentCorpFund", typeof(System.Double));
         }
 
         private void generateGoalLoans()
@@ -136,6 +144,7 @@ namespace FinancialPlannerClient.CashFlowManager
         {
             Logger.LogInfo("GetPostRetirementCashFlowData call start");
             createRetiremtnCashFlowTable();
+            corpusFundBalance = totalCurrentCorpFund;
             for (int i = retirementPlanningYearStartFrom + 1; i <= expectedLifeEndYear; i++)
             {
                 DataRow dr = _dtRetirementCashFlow.NewRow();
@@ -146,10 +155,27 @@ namespace FinancialPlannerClient.CashFlowManager
                 if (cashFlowCalculation.SpouseLifeExpected >= (i - cashFlowCalculation.SpouseDateOfBirth.Year))
                     dr["SpouseCurrentAge"] = (i - cashFlowCalculation.SpouseDateOfBirth.Year);
 
+              
                 addIncomeCalculation(i, dr, cashFlowCalculation.ClientRetirementAge, cashFlowCalculation.SpouseRetirementAge);
                 addExpenesCalculation(i, dr);
                 //addGoalLoanCalculation(i, dr);
-                addLoansCalculation(i, dr);                
+                addLoansCalculation(i, dr);
+                //if (i == retirementPlanningYearStartFrom + 1)
+                //{
+                //    double totalAnnualExp = double.Parse(dr["Total Annual Expenses"].ToString());
+                //    double totalAnnualLoan = double.Parse(dr["Total Annual Loans"].ToString());
+                //    double totalExpAmount = (
+                //            double.Parse(dr["Total Post Tax Income"].ToString()) - (totalAnnualExp + totalAnnualLoan));
+                //    //dr["CurrentCorpFund"] = totalCurrentCorpFund - totalExpAmount;
+                //}
+                //else {
+                //    double lastYearCurrentCorpFundValue = double.Parse(_dtRetirementCashFlow.Rows[_dtRetirementCashFlow.Rows.Count - 1]["Rem_Corp_Fund"].ToString());
+                //    double totalAnnualExp = double.Parse(_dtRetirementCashFlow.Rows[_dtRetirementCashFlow.Rows.Count  -1]["Total Annual Expenses"].ToString());
+                //    double totalAnnualLoan = double.Parse(_dtRetirementCashFlow.Rows[_dtRetirementCashFlow.Rows.Count - 1]["Total Annual Loans"].ToString());
+                //    double totalExpAmount = (
+                //            double.Parse(_dtRetirementCashFlow.Rows[_dtRetirementCashFlow.Rows.Count - 1]["Total Post Tax Income"].ToString()) - (totalAnnualExp + totalAnnualLoan));
+                //   // dr["CurrentCorpFund"] = lastYearCurrentCorpFundValue + ((lastYearCurrentCorpFundValue * invReturnRate) / 100) - totalExpAmount;
+                //}
                 _dtRetirementCashFlow.Rows.Add(dr);
             }
             calculateEstimatedRequireCorpusFund();
@@ -216,7 +242,12 @@ namespace FinancialPlannerClient.CashFlowManager
                 }
             }
             dr["Total Annual Loans"] = totalLoans;
-
+            double totalExpenses = 0;
+            double.TryParse(dr["Total Annual Expenses"].ToString(), out totalExpenses);
+            corpusFundBalance = corpusFundBalance - ((totalExpenses + totalLoans) - double.Parse(dr["Total Post Tax Income" +
+            ""].ToString()));
+            corpusFundBalance = corpusFundBalance + ((corpusFundBalance * invReturnRate) / 100);
+            dr["Rem_Corp_Fund"] = Math.Round(corpusFundBalance, 2);
             //dr["Total Annual Expenses"] = totalExpenses;
             //corpusFundBalance = corpusFundBalance - (totalLoans);
             //corpusFundBalance = corpusFundBalance + ((corpusFundBalance * invReturnRate) / 100);
@@ -445,6 +476,21 @@ namespace FinancialPlannerClient.CashFlowManager
                     }
                 }
             }
+            IList<Expenses> expenses = new ExpensesInfo().GetAll(this.planner.ID);
+            foreach (Expenses exp in expenses)
+            {
+                int expEndYear = string.IsNullOrEmpty(exp.ExpEndYear) ? DateTime.Now.Year + 100 : int.Parse(exp.ExpEndYear);
+                int expStartYear = string.IsNullOrEmpty(exp.ExpEndYear) ? this.retirementPlanningYearStartFrom : int.Parse(exp.ExpStartYear);
+                if ((expStartYear > this.retirementPlanningYearStartFrom &&
+                  expEndYear <= expectedLifeEndYear) ||
+                   string.IsNullOrEmpty(exp.ExpStartYear))
+                {
+                    DataColumn dcExp = new DataColumn(exp.Item, typeof(System.Double));
+                    dcExp.ReadOnly = true;
+                    _dtRetirementCashFlow.Columns.Add(dcExp);
+                }
+            }
+
             _dtRetirementCashFlow.Columns.Add("Total Annual Expenses", typeof(System.Double));
             #endregion
         }
@@ -470,11 +516,46 @@ namespace FinancialPlannerClient.CashFlowManager
                     }
                 }
             }
+            IList<Expenses> expenses = new ExpensesInfo().GetAll(this.planner.ID);
+            if (expenses != null)
+            {
+                foreach (Expenses exp in expenses)
+                {
+                    int expEndYear = string.IsNullOrEmpty(exp.ExpEndYear) ? DateTime.Now.Year + 100 : int.Parse(exp.ExpEndYear);
+                    int expStartYear = string.IsNullOrEmpty(exp.ExpEndYear) ? years : int.Parse(exp.ExpStartYear);
+                    if ((int.Parse(dr["StartYear"].ToString()) >= expStartYear &&
+                       int.Parse(dr["StartYear"].ToString()) <= expEndYear) ||
+                       string.IsNullOrEmpty(exp.ExpStartYear))
+                    {
+                        double expAmt = 0;
+                        if (_dtRetirementCashFlow.Rows.Count > 0)
+                        {
+                            if (!double.TryParse(_dtRetirementCashFlow.Rows[_dtRetirementCashFlow.Rows.Count - 1][exp.Item].ToString(), out expAmt))
+                            {
+                                expAmt = exp.Amount;
+                            }
+                        }
+                        else
+                        {
+                            expAmt = exp.Amount;
+                        }
+                        if (expStartYear == (int.Parse(dr["StartYear"].ToString())))
+                        {
+                            dr[exp.Item] = System.Math.Round(expAmt, 2);
+                            totalExpenses = System.Math.Round(totalExpenses + expAmt, 2);
+                        }
+                        else
+                        {
+                            double expInflationRate = exp.InflationRate;
+                            double expWithInflaction = expAmt + ((expAmt * expInflationRate) / 100);
+                            dr[exp.Item] = System.Math.Round(expWithInflaction, 2);
+                            totalExpenses = System.Math.Round(totalExpenses + expWithInflaction, 2);
+                        }
+                    }
+                }
+            }
             dr["Total Annual Expenses"] = totalExpenses;
-            corpusFundBalance = corpusFundBalance - (totalExpenses - double.Parse(dr["Total Post Tax Income" +
-                ""].ToString()) );
-            corpusFundBalance = corpusFundBalance + ((corpusFundBalance * invReturnRate) / 100);
-            dr["Rem_Corp_Fund"] = Math.Round(corpusFundBalance, 2) ;
+        
             Logger.LogInfo("addExpenesCalculation for post retirment cash flow service end");
         }
 

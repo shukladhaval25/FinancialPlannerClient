@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
+using System.Drawing;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -170,6 +171,20 @@ namespace FinancialPlannerClient.PlanOptions
         private void lblCorpFundAmt_TextChanged(object sender, EventArgs e)
         {
             setGoalCompletionPercentage();
+        }
+
+        private void gridSplitContainerViewCashFlow_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
+        {
+
+            if (e.Column.ToString() == "Rem_Corp_Fund")
+            {
+                double corpusFund = 0;
+                double.TryParse(e.CellValue.ToString(), out corpusFund);
+                if (corpusFund < 0)
+                {
+                    e.Appearance.ForeColor = Color.DarkRed;
+                }
+            }
         }
     }
 }

@@ -480,7 +480,7 @@ namespace FinancialPlannerClient.Clients
                 PlannerMainReport plannerMainReport = new PlannerMainReport(this.personalInformation, planner, 
                     reportParameters.GetRiskProfileId(), reportParameters.GetOptionId());
                 DevExpress.XtraReports.UI.ReportPrintTool printTool = new DevExpress.XtraReports.UI.ReportPrintTool(plannerMainReport);
-                printTool.ShowRibbonPreviewDialog();
+                printTool.ShowRibbonPreview();
             }           
         }
 
@@ -631,6 +631,17 @@ namespace FinancialPlannerClient.Clients
             navigationPageOther.Controls.Clear();
             navigationPageOther.Controls.Add(quarterlyReviewSendSetting);
             showNavigationPage(quarterlyReviewSendSetting.Name);
+        }
+
+        private void navBarItemNetWorth_LinkClicked(object sender, NavBarLinkEventArgs e)
+        {
+            NetWorthAssets   netWorthAssets   = new NetWorthAssets(this._client);
+            netWorthAssets.TopLevel = false;
+            netWorthAssets.Visible = true;
+            navigationPageOther.Name = netWorthAssets.Name;
+            navigationPageOther.Controls.Clear();
+            navigationPageOther.Controls.Add(netWorthAssets);
+            showNavigationPage(netWorthAssets.Name);
         }
     }
 }

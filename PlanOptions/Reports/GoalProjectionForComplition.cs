@@ -48,11 +48,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             this.lblProjectionCompleted.DataBindings.Add("Text", this.DataSource, "Goals.ProjectionCompleted");
             this.lblGoalAchiveTillDate.DataBindings.Add("Text", this.DataSource, "Goals.GoalAchivedTillDate");
             this.lblGoalReachedPercentage.DataBindings.Add("Text", this.DataSource, "Goals.GoalReached");
-            //this.lblEndYear.DataBindings.Add("Text", this.DataSource, "Goals.EndYear");
-            //this.lblInflation.DataBindings.Add("Text", this.DataSource, "Goals.InflationRate");
-            //this.lblPresentCost.DataBindings.Add("Text", this.DataSource, "Goals.Amount");
-            //this.lblPriority.DataBindings.Add("Text", this.DataSource, "Goals.Priority");
-            //this.lblFutureCost.DataBindings.Add("Text", this.DataSource, "Goals.FutureValue");
+          
         }
 
         private void lblStartYear_TextChanged(object sender, System.EventArgs e)
@@ -75,7 +71,8 @@ namespace FinancialPlannerClient.PlanOptions.Reports
 
             for (int i = 0; i < _dtGoals.Rows.Count; i++)
             {
-                string goalName = _dtGoals.Rows[i]["Name"].ToString().Substring(0, _dtGoals.Rows[i]["Name"].ToString().Length - 4).Trim();
+                string goalName = (_dtGoals.Rows[i]["Name"].ToString().Length > 4) ? _dtGoals.Rows[i]["Name"].ToString().Substring(0, _dtGoals.Rows[i]["Name"].ToString().Length - 4).Trim() :
+              _dtGoals.Rows[i]["Name"].ToString();
                 string goalCategory = _dtGoals.Rows[i]["Category"].ToString();
                 double amount = 0;
                 double projectionCompletedPercentage = 0;

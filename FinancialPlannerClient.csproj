@@ -404,6 +404,13 @@
       <DependentUpon>InvRecSendDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="PlanOptions\InvRecSendInfo.cs" />
+    <Compile Include="PlanOptions\NetWorthAssets.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\NetWorthAssets.Designer.cs">
+      <DependentUpon>NetWorthAssets.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlanOptions\NetWorthInfo.cs" />
     <Compile Include="PlanOptions\ReportParams.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1104,6 +1111,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\InvRecSendDetails.resx">
       <DependentUpon>InvRecSendDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\NetWorthAssets.resx">
+      <DependentUpon>NetWorthAssets.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\ReportParams.resx">
       <DependentUpon>ReportParams.cs</DependentUpon>

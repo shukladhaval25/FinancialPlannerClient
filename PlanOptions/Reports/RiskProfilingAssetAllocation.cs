@@ -20,7 +20,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         DataTable _dtRiskProfile;
         public RiskProfilingAssetAllocation(Client client, int riskprofileId)
         {
-            const int MAXYEARSCOUNT = 5;
+            const int MAXYEARSCOUNT = 6;
             InitializeComponent();
             this.lblClientName.Text = client.Name;
             loadRiskProfileReturnList();
@@ -30,12 +30,11 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             if (dtRiskProfileReturn != null)
             {
                 int rowIndex = 0;
-                for(int year = 0; year <= MAXYEARSCOUNT; year++)
+                for(int year = 1; year < MAXYEARSCOUNT; year++)
                 {
-                    if (year == 4)
-                        continue;
-
-                    DataRow[] dataRows = dtRiskProfileReturn.Select("YearRemaining ='" + year + "'");
+                    int currentYear =  year;                 
+                    
+                    DataRow[] dataRows = dtRiskProfileReturn.Select("YearRemaining ='" + currentYear + "'");
                     if (dataRows.Length  >0)
                     {
                         xrTableRiskProfileAssetAllocation.Rows[rowIndex].Cells[2].Text = dataRows[0]["EquityInvestementRatio"].ToString() + "%";
