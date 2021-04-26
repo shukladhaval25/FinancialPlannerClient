@@ -67,6 +67,8 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                 xrPicGoal.Image = Properties.Resources.Marriage;
             else if (goal.Category == "Retirement")
                 xrPicGoal.Image = Properties.Resources.Retirement;
+            else if (goal.Category == "Asset")
+                xrPicGoal.Image = Properties.Resources.HomeGoal;
         }
 
         private static double futureValue(double presentValue, decimal interest_rate, int timePeriodInYears)

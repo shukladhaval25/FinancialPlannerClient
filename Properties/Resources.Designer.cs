@@ -143,6 +143,16 @@ namespace FinancialPlannerClient.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap HomeGoal {
+            get {
+                object obj = ResourceManager.GetObject("HomeGoal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_access_30 {
             get {
                 object obj = ResourceManager.GetObject("icons8_access_30", resourceCulture);
