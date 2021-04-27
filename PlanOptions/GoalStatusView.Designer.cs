@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GoalStatusView));
             DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GoalStatusView));
             DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
@@ -47,6 +47,9 @@
             DevExpress.Utils.SuperToolTip superToolTip6 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem6 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem6 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip7 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem7 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem7 = new DevExpress.Utils.ToolTipItem();
             this.label29 = new System.Windows.Forms.Label();
             this.gridControlCurrentStatusGoal = new DevExpress.XtraGrid.GridControl();
             this.gridViewCurrentStatusGoal = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -58,6 +61,8 @@
             this.label33 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.grpFundAllocation = new DevExpress.XtraEditors.GroupControl();
+            this.lblEstimatedValue = new System.Windows.Forms.Label();
+            this.btnGetEstimatedValue = new DevExpress.XtraEditors.SimpleButton();
             this.lblInformation = new DevExpress.XtraEditors.LabelControl();
             this.btnClosePlanoptions = new DevExpress.XtraEditors.SimpleButton();
             this.btnSavePlanoption = new DevExpress.XtraEditors.SimpleButton();
@@ -106,7 +111,7 @@
             this.gridControlCurrentStatusGoal.Location = new System.Drawing.Point(15, 213);
             this.gridControlCurrentStatusGoal.MainView = this.gridViewCurrentStatusGoal;
             this.gridControlCurrentStatusGoal.Name = "gridControlCurrentStatusGoal";
-            this.gridControlCurrentStatusGoal.Size = new System.Drawing.Size(467, 266);
+            this.gridControlCurrentStatusGoal.Size = new System.Drawing.Size(467, 295);
             this.gridControlCurrentStatusGoal.TabIndex = 6;
             this.gridControlCurrentStatusGoal.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewCurrentStatusGoal});
@@ -186,6 +191,8 @@
             // 
             // grpFundAllocation
             // 
+            this.grpFundAllocation.Controls.Add(this.lblEstimatedValue);
+            this.grpFundAllocation.Controls.Add(this.btnGetEstimatedValue);
             this.grpFundAllocation.Controls.Add(this.lblInformation);
             this.grpFundAllocation.Controls.Add(this.btnClosePlanoptions);
             this.grpFundAllocation.Controls.Add(this.btnSavePlanoption);
@@ -200,9 +207,37 @@
             this.grpFundAllocation.Controls.Add(this.label33);
             this.grpFundAllocation.Location = new System.Drawing.Point(488, 43);
             this.grpFundAllocation.Name = "grpFundAllocation";
-            this.grpFundAllocation.Size = new System.Drawing.Size(467, 436);
+            this.grpFundAllocation.Size = new System.Drawing.Size(467, 465);
             this.grpFundAllocation.TabIndex = 8;
             this.grpFundAllocation.Text = "Fund Allocation To Goal";
+            // 
+            // lblEstimatedValue
+            // 
+            this.lblEstimatedValue.AutoSize = true;
+            this.lblEstimatedValue.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEstimatedValue.Location = new System.Drawing.Point(232, 433);
+            this.lblEstimatedValue.Name = "lblEstimatedValue";
+            this.lblEstimatedValue.Size = new System.Drawing.Size(0, 19);
+            this.lblEstimatedValue.TabIndex = 31;
+            // 
+            // btnGetEstimatedValue
+            // 
+            this.btnGetEstimatedValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGetEstimatedValue.Location = new System.Drawing.Point(7, 429);
+            this.btnGetEstimatedValue.Name = "btnGetEstimatedValue";
+            this.btnGetEstimatedValue.Size = new System.Drawing.Size(219, 23);
+            toolTipTitleItem1.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            toolTipTitleItem1.Appearance.Options.UseImage = true;
+            toolTipTitleItem1.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem1.Image")));
+            toolTipTitleItem1.Text = "Estimate Value";
+            toolTipItem1.LeftIndent = 6;
+            toolTipItem1.Text = "To get estimated value from currest status to complete goal.";
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            superToolTip1.Items.Add(toolTipItem1);
+            this.btnGetEstimatedValue.SuperTip = superToolTip1;
+            this.btnGetEstimatedValue.TabIndex = 30;
+            this.btnGetEstimatedValue.Text = "Get Estimated value from currest status:";
+            this.btnGetEstimatedValue.Click += new System.EventHandler(this.btnGetEstimatedValue_Click);
             // 
             // lblInformation
             // 
@@ -223,15 +258,15 @@
             this.btnClosePlanoptions.Location = new System.Drawing.Point(361, 401);
             this.btnClosePlanoptions.Name = "btnClosePlanoptions";
             this.btnClosePlanoptions.Size = new System.Drawing.Size(88, 23);
-            toolTipTitleItem1.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
-            toolTipTitleItem1.Appearance.Options.UseImage = true;
-            toolTipTitleItem1.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem1.Image")));
-            toolTipTitleItem1.Text = "Cancel";
-            toolTipItem1.LeftIndent = 6;
-            toolTipItem1.Text = "To close fund allocation to goal click here.";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            superToolTip1.Items.Add(toolTipItem1);
-            this.btnClosePlanoptions.SuperTip = superToolTip1;
+            toolTipTitleItem2.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
+            toolTipTitleItem2.Appearance.Options.UseImage = true;
+            toolTipTitleItem2.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem2.Image")));
+            toolTipTitleItem2.Text = "Cancel";
+            toolTipItem2.LeftIndent = 6;
+            toolTipItem2.Text = "To close fund allocation to goal click here.";
+            superToolTip2.Items.Add(toolTipTitleItem2);
+            superToolTip2.Items.Add(toolTipItem2);
+            this.btnClosePlanoptions.SuperTip = superToolTip2;
             this.btnClosePlanoptions.TabIndex = 28;
             this.btnClosePlanoptions.Text = "Close";
             this.btnClosePlanoptions.Click += new System.EventHandler(this.btnCancelCurrentStatusToGoal_Click);
@@ -243,15 +278,15 @@
             this.btnSavePlanoption.Location = new System.Drawing.Point(361, 372);
             this.btnSavePlanoption.Name = "btnSavePlanoption";
             this.btnSavePlanoption.Size = new System.Drawing.Size(88, 23);
-            toolTipTitleItem2.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
-            toolTipTitleItem2.Appearance.Options.UseImage = true;
-            toolTipTitleItem2.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem2.Image")));
-            toolTipTitleItem2.Text = "Save";
-            toolTipItem2.LeftIndent = 6;
-            toolTipItem2.Text = "To save fund allocation of current status to goal click here.";
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            superToolTip2.Items.Add(toolTipItem2);
-            this.btnSavePlanoption.SuperTip = superToolTip2;
+            toolTipTitleItem3.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
+            toolTipTitleItem3.Appearance.Options.UseImage = true;
+            toolTipTitleItem3.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem3.Image")));
+            toolTipTitleItem3.Text = "Save";
+            toolTipItem3.LeftIndent = 6;
+            toolTipItem3.Text = "To save fund allocation of current status to goal click here.";
+            superToolTip3.Items.Add(toolTipTitleItem3);
+            superToolTip3.Items.Add(toolTipItem3);
+            this.btnSavePlanoption.SuperTip = superToolTip3;
             this.btnSavePlanoption.TabIndex = 27;
             this.btnSavePlanoption.Text = "Save";
             this.btnSavePlanoption.Click += new System.EventHandler(this.btnSaveCurrentStatusToGoal_Click);
@@ -263,15 +298,15 @@
             this.btnDelete.Location = new System.Drawing.Point(67, 305);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(25, 23);
-            toolTipTitleItem3.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
-            toolTipTitleItem3.Appearance.Options.UseImage = true;
-            toolTipTitleItem3.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem3.Image")));
-            toolTipTitleItem3.Text = "Delete plan";
-            toolTipItem3.LeftIndent = 6;
-            toolTipItem3.Text = "To delete selected plan option click here.";
-            superToolTip3.Items.Add(toolTipTitleItem3);
-            superToolTip3.Items.Add(toolTipItem3);
-            this.btnDelete.SuperTip = superToolTip3;
+            toolTipTitleItem4.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image3")));
+            toolTipTitleItem4.Appearance.Options.UseImage = true;
+            toolTipTitleItem4.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem4.Image")));
+            toolTipTitleItem4.Text = "Delete plan";
+            toolTipItem4.LeftIndent = 6;
+            toolTipItem4.Text = "To delete selected plan option click here.";
+            superToolTip4.Items.Add(toolTipTitleItem4);
+            superToolTip4.Items.Add(toolTipItem4);
+            this.btnDelete.SuperTip = superToolTip4;
             this.btnDelete.TabIndex = 19;
             this.btnDelete.ToolTip = "Delete Client";
             this.btnDelete.Click += new System.EventHandler(this.btnDeleteCurrentStatusToGoal_Click);
@@ -283,15 +318,15 @@
             this.btnEdit.Location = new System.Drawing.Point(36, 305);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(25, 23);
-            toolTipTitleItem4.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image3")));
-            toolTipTitleItem4.Appearance.Options.UseImage = true;
-            toolTipTitleItem4.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem4.Image")));
-            toolTipTitleItem4.Text = "Edit Allocation";
-            toolTipItem4.LeftIndent = 6;
-            toolTipItem4.Text = "To modify cash flow allocation to goal click here.";
-            superToolTip4.Items.Add(toolTipTitleItem4);
-            superToolTip4.Items.Add(toolTipItem4);
-            this.btnEdit.SuperTip = superToolTip4;
+            toolTipTitleItem5.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image4")));
+            toolTipTitleItem5.Appearance.Options.UseImage = true;
+            toolTipTitleItem5.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem5.Image")));
+            toolTipTitleItem5.Text = "Edit Allocation";
+            toolTipItem5.LeftIndent = 6;
+            toolTipItem5.Text = "To modify cash flow allocation to goal click here.";
+            superToolTip5.Items.Add(toolTipTitleItem5);
+            superToolTip5.Items.Add(toolTipItem5);
+            this.btnEdit.SuperTip = superToolTip5;
             this.btnEdit.TabIndex = 18;
             this.btnEdit.ToolTip = "Edit Client";
             this.btnEdit.Click += new System.EventHandler(this.btnEditCurrentStatusToGoal_Click);
@@ -303,15 +338,15 @@
             this.btnAdd.Location = new System.Drawing.Point(6, 305);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(25, 23);
-            toolTipTitleItem5.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image4")));
-            toolTipTitleItem5.Appearance.Options.UseImage = true;
-            toolTipTitleItem5.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem5.Image")));
-            toolTipTitleItem5.Text = "Allocate Fund";
-            toolTipItem5.LeftIndent = 6;
-            toolTipItem5.Text = "To add new allocation of current status to goal click here.";
-            superToolTip5.Items.Add(toolTipTitleItem5);
-            superToolTip5.Items.Add(toolTipItem5);
-            this.btnAdd.SuperTip = superToolTip5;
+            toolTipTitleItem6.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image5")));
+            toolTipTitleItem6.Appearance.Options.UseImage = true;
+            toolTipTitleItem6.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem6.Image")));
+            toolTipTitleItem6.Text = "Allocate Fund";
+            toolTipItem6.LeftIndent = 6;
+            toolTipItem6.Text = "To add new allocation of current status to goal click here.";
+            superToolTip6.Items.Add(toolTipTitleItem6);
+            superToolTip6.Items.Add(toolTipItem6);
+            this.btnAdd.SuperTip = superToolTip6;
             this.btnAdd.TabIndex = 17;
             this.btnAdd.ToolTip = "Add new client";
             this.btnAdd.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Application;
@@ -341,15 +376,15 @@
             this.btnSaveConfingencyFund.Location = new System.Drawing.Point(368, 108);
             this.btnSaveConfingencyFund.Name = "btnSaveConfingencyFund";
             this.btnSaveConfingencyFund.Size = new System.Drawing.Size(80, 23);
-            toolTipTitleItem6.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image5")));
-            toolTipTitleItem6.Appearance.Options.UseImage = true;
-            toolTipTitleItem6.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem6.Image")));
-            toolTipTitleItem6.Text = "Save";
-            toolTipItem6.LeftIndent = 6;
-            toolTipItem6.Text = "To save fund allocation of current status to goal click here.";
-            superToolTip6.Items.Add(toolTipTitleItem6);
-            superToolTip6.Items.Add(toolTipItem6);
-            this.btnSaveConfingencyFund.SuperTip = superToolTip6;
+            toolTipTitleItem7.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image6")));
+            toolTipTitleItem7.Appearance.Options.UseImage = true;
+            toolTipTitleItem7.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem7.Image")));
+            toolTipTitleItem7.Text = "Save";
+            toolTipItem7.LeftIndent = 6;
+            toolTipItem7.Text = "To save fund allocation of current status to goal click here.";
+            superToolTip7.Items.Add(toolTipTitleItem7);
+            superToolTip7.Items.Add(toolTipItem7);
+            this.btnSaveConfingencyFund.SuperTip = superToolTip7;
             this.btnSaveConfingencyFund.TabIndex = 28;
             this.btnSaveConfingencyFund.Text = "Save";
             this.btnSaveConfingencyFund.Click += new System.EventHandler(this.btnSaveConfingencyFund_Click);
@@ -429,7 +464,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(961, 491);
+            this.ClientSize = new System.Drawing.Size(961, 520);
             this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.grpFundAllocation);
             this.Controls.Add(this.gridControlCurrentStatusGoal);
@@ -488,6 +523,8 @@
         private DevExpress.XtraEditors.SimpleButton btnSaveConfingencyFund;
         private DevExpress.XtraEditors.TextEdit txtContingencyfund;
         private DevExpress.XtraEditors.LabelControl labelControl4;
+        private System.Windows.Forms.Label lblEstimatedValue;
+        private DevExpress.XtraEditors.SimpleButton btnGetEstimatedValue;
     }
 }
 

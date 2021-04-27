@@ -83,7 +83,7 @@ namespace FinancialPlannerClient.CashFlowManager
         }
         private int getExpectedLifeEndYear()
         {
-            int year = (cashFlowCalculation.ClientDateOfBirth < cashFlowCalculation.SpouseDateOfBirth) ?
+            int year = (cashFlowCalculation.ClientDateOfBirth < cashFlowCalculation.SpouseDateOfBirth &&  !string.IsNullOrEmpty(cashFlowCalculation.SpouseName)) ?
                 DateTime.Now.Year + (cashFlowCalculation.SpouseLifeExpected - cashFlowCalculation.SpouseCurrentAge) :
             DateTime.Now.Year + (cashFlowCalculation.ClientLifeExpected - cashFlowCalculation.ClientCurrentAge);
                 

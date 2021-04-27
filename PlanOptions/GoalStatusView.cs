@@ -8,6 +8,7 @@ using FinancialPlanner.Common.Model.PlanOptions;
 using FinancialPlannerClient.CashFlowManager;
 using FinancialPlannerClient.CurrentStatus;
 using FinancialPlannerClient.PlannerInfo;
+using FinancialPlannerClient.RiskProfile;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -616,6 +617,23 @@ namespace FinancialPlannerClient.PlanOptions
             }
             else
                 MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void btnGetEstimatedValue_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(cmbCurrentStsatusToGoal.Text))
+            {
+                MessageBox.Show("Please select goal first.","Select Goal", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            RiskProfileInfo _riskProfileInfo = new RiskProfileInfo();
+            Goals goal = _goals.FirstOrDefault(i => i.Name == cmbCurrentStsatusToGoal.Text);
+            if (goal != null)
+            {
+                GoalsValueCalculationInfo goalValCalInfo  = this.cashFlowService.GoalCalculationMgr.GetGoalValueCalculation(goal);
+                GoalPlanning  goalPlanning = goalValCalInfo.GetLIFOGoalPlanning(this.planner.StartDate.Year );
+                lblEstimatedValue.Text = goalPlanning.ActualFreshInvestment.ToString();
+            }
         }
     }
 }
