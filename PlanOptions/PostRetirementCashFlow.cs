@@ -69,7 +69,7 @@ namespace FinancialPlannerClient.PlanOptions
             debuggerInfo.ExceptionInfo = ex;
             Logger.LogDebug(debuggerInfo);
         }
-        private async void displayClientAndSpouseInfo(CashFlowService cashFlowService)
+        private void displayClientAndSpouseInfo(CashFlowService cashFlowService)
         {
             lblClient.Text = cashFlowCalculation.ClientName;
             lblClientDOB.Text = cashFlowCalculation.ClientDateOfBirth.ToShortDateString();
@@ -84,9 +84,9 @@ namespace FinancialPlannerClient.PlanOptions
             lblSpouseLifeExp.Text = string.Format("{0} Years", cashFlowCalculation.SpouseLifeExpected.ToString());
             lblSpouseCurrentAge.Text = string.Format("{0} Years", cashFlowCalculation.SpouseCurrentAge.ToString());
 
-            lblCashSurplusAmt.Text = await Task.Run(() => Math.Round(cashFlowService.GetCashFlowSurplusAmount(), 2).ToString("##,###.00"));
+            lblCashSurplusAmt.Text = Math.Round(cashFlowService.GetCashFlowSurplusAmount(), 2).ToString("##,###.00");
 
-            lblCurrentStatusAmt.Text = await Task.Run(() => Math.Round(cashFlowService.GetCurrentStatusAccessFund(), 2).ToString("##,###.00"));
+            lblCurrentStatusAmt.Text = Math.Round(cashFlowService.GetCurrentStatusAccessFund(), 2).ToString("##,###.00");
             double cashSurplusAmt = 0;
             if (double.TryParse(lblCashSurplusAmt.Text, out cashSurplusAmt))
                 lblCorpFundAmt.Text = (cashSurplusAmt + (string.IsNullOrEmpty(lblCurrentStatusAmt.Text) ? 0 :

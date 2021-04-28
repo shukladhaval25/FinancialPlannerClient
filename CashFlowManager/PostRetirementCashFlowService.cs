@@ -145,6 +145,8 @@ namespace FinancialPlannerClient.CashFlowManager
             Logger.LogInfo("GetPostRetirementCashFlowData call start");
             createRetiremtnCashFlowTable();
             corpusFundBalance = totalCurrentCorpFund;
+
+            //First Validate Retirement Goal is complted or not
             for (int i = retirementPlanningYearStartFrom + 1; i <= expectedLifeEndYear; i++)
             {
                 DataRow dr = _dtRetirementCashFlow.NewRow();
@@ -179,8 +181,76 @@ namespace FinancialPlannerClient.CashFlowManager
                 _dtRetirementCashFlow.Rows.Add(dr);
             }
             calculateEstimatedRequireCorpusFund();
+            double goalComplitionPercentage = ((totalCurrentCorpFund * 100) / proposeEstimatedCorpusFundRequire);
+
+            // If retirement goal completed 100% then add other goals which have 
+            // priority after retirement goal and calculate corpus based on that.
+            if (goalComplitionPercentage > 100)
+            {
+                for (int i = retirementPlanningYearStartFrom + 1; i <= expectedLifeEndYear; i++)
+                {
+                    if (!addExpenesCalculationForGoalAfterRetirementPriority(i))
+                    {
+                        break;
+                    }
+                }
+            }
             Logger.LogInfo("GetPostRetirementCashFlowData call end");
             return _dtRetirementCashFlow;
+        }
+
+        private bool addExpenesCalculationForGoalAfterRetirementPriority(int years)
+        {
+            try
+            {
+                Logger.LogInfo("addExpenesCalculation for post retirment cash flow service start");
+                double totalExpenses = 0;
+                if (cashFlowCalculation.LstGoals != null)
+                {
+                    int retirementGoalPriority;
+                    IEnumerable<Goals> retirementGoal = cashFlowCalculation.LstGoals.Where(i => i.Category == "Retirement");
+                    retirementGoalPriority = (retirementGoal.Count() > 0) ? retirementGoal.ElementAt(0).Priority : 0;
+                    var goals = cashFlowCalculation.LstGoals.Where(x => int.Parse(x.StartYear) == years);
+                    foreach (Goals goal in goals)
+                    {
+                        if (goal.Category != "Retirement" && int.Parse(goal.StartYear) == years)
+                        {
+                            if (goal.Priority >= retirementGoalPriority)
+                            {
+                                DataRow dr = _dtRetirementCashFlow.Select("StartYear = " + years)[0];
+                                double retExp = getPostRetirementExpWithInfluationRate(
+                                    dr, years, goal);
+
+                                double remaingCorpFund = double.Parse(dr["Rem_Corp_Fund"].ToString());
+                                if ((remaingCorpFund - retExp) > 0)
+                                {
+                                    totalExpenses = double.Parse(dr["Total Annual Expenses"].ToString());
+                                    totalExpenses = totalExpenses + retExp;
+                                    dr[goal.Name] = retExp;
+                                    dr["Total Annual Expenses"] = totalExpenses;
+                                    calculateEstimatedRequireCorpusFund();
+                                    double goalComplitionPercentage = ((totalCurrentCorpFund * 100) / proposeEstimatedCorpusFundRequire);
+
+                                    // If retirement goal completed 100% then add other goals which have 
+                                    // priority after retirement goal and calculate corpus based on that.
+                                    if (goalComplitionPercentage < 100)
+                                    {
+                                        dr[goal.Name] = DBNull.Value ;
+                                        dr["Total Annual Expenses"] = totalExpenses - retExp;
+                                        calculateEstimatedRequireCorpusFund();
+                                        return false;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                return true;
+            }catch(Exception ex)
+            {
+                Logger.LogDebug(ex.ToString());
+                return false;
+            }
         }
 
         private void addGoalLoanCalculation(int i, DataRow dr)
@@ -471,26 +541,28 @@ namespace FinancialPlannerClient.CashFlowManager
                     if (goal.Category == "Retirement" || int.Parse(goal.StartYear) > this.retirementPlanningYearStartFrom)
                     {
                         DataColumn dcExp = new DataColumn(goal.Name, typeof(System.Double));
-                        dcExp.ReadOnly = true;
+                        //dcExp.ReadOnly = true;
                         _dtRetirementCashFlow.Columns.Add(dcExp);
                     }
                 }
             }
             IList<Expenses> expenses = new ExpensesInfo().GetAll(this.planner.ID);
-            foreach (Expenses exp in expenses)
+            if (expenses != null)
             {
-                int expEndYear = string.IsNullOrEmpty(exp.ExpEndYear) ? DateTime.Now.Year + 100 : int.Parse(exp.ExpEndYear);
-                int expStartYear = string.IsNullOrEmpty(exp.ExpEndYear) ? this.retirementPlanningYearStartFrom : int.Parse(exp.ExpStartYear);
-                if ((expStartYear > this.retirementPlanningYearStartFrom &&
-                  expEndYear <= expectedLifeEndYear) ||
-                   string.IsNullOrEmpty(exp.ExpStartYear))
+                foreach (Expenses exp in expenses)
                 {
-                    DataColumn dcExp = new DataColumn(exp.Item, typeof(System.Double));
-                    dcExp.ReadOnly = true;
-                    _dtRetirementCashFlow.Columns.Add(dcExp);
+                    int expEndYear = string.IsNullOrEmpty(exp.ExpEndYear) ? DateTime.Now.Year + 100 : int.Parse(exp.ExpEndYear);
+                    int expStartYear = string.IsNullOrEmpty(exp.ExpEndYear) ? this.retirementPlanningYearStartFrom : int.Parse(exp.ExpStartYear);
+                    if ((expStartYear > this.retirementPlanningYearStartFrom &&
+                      expEndYear <= expectedLifeEndYear) ||
+                       string.IsNullOrEmpty(exp.ExpStartYear))
+                    {
+                        DataColumn dcExp = new DataColumn(exp.Item, typeof(System.Double));
+                        dcExp.ReadOnly = true;
+                        _dtRetirementCashFlow.Columns.Add(dcExp);
+                    }
                 }
             }
-
             _dtRetirementCashFlow.Columns.Add("Total Annual Expenses", typeof(System.Double));
             #endregion
         }
@@ -505,15 +577,22 @@ namespace FinancialPlannerClient.CashFlowManager
                 retirementGoalPriority = (retirementGoal.Count() > 0) ?  retirementGoal.ElementAt(0).Priority : 0 ;
                 foreach (Goals goal in cashFlowCalculation.LstGoals)
                 {
-                    if (goal.Category == "Retirement" || int.Parse(goal.StartYear) == years)
+                    if (goal.Category == "Retirement")
                     {
-                        if (goal.Priority >= retirementGoalPriority)
-                        {
-                            double retExp = getPostRetirementExpWithInfluationRate(dr, years, goal);
-                            dr[goal.Name] = retExp;
-                            totalExpenses = totalExpenses + retExp;
-                        }
+                        double retExp = getPostRetirementExpWithInfluationRate(dr, years, goal);
+                        dr[goal.Name] = retExp;
+                        totalExpenses = totalExpenses + retExp;
                     }
+
+                    //if (goal.Category == "Retirement" || int.Parse(goal.StartYear) == years)
+                    //{
+                    //    if (goal.Priority >= retirementGoalPriority)
+                    //    {
+                    //        double retExp = getPostRetirementExpWithInfluationRate(dr, years, goal);
+                    //        dr[goal.Name] = retExp;
+                    //        totalExpenses = totalExpenses + retExp;
+                    //    }
+                    //}
                 }
             }
             IList<Expenses> expenses = new ExpensesInfo().GetAll(this.planner.ID);

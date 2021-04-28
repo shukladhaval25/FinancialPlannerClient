@@ -133,6 +133,8 @@ namespace FinancialPlannerClient.PlanOptions
             }
             if (goal.Priority > retirementGoalPriority)
             {
+
+                lblPriorityAfterRetirementGoalTitle.Visible = true;
                 PostRetirementCashFlowService postRetirementCashFlowService = new PostRetirementCashFlowService(this.planner, this.cashFlowService);
                 
                 DataTable dataTable =  postRetirementCashFlowService.GetPostRetirementCashFlowData();
@@ -140,8 +142,8 @@ namespace FinancialPlannerClient.PlanOptions
                 if (drs.Count() > 0)
                 {
                     double corpusFund = 0;
-                    double.TryParse(drs[0]["Rem_Corp_Fund"].ToString(), out corpusFund);
-                    if (corpusFund < 0)
+                    double.TryParse(drs[0][goal.Name].ToString(), out corpusFund);
+                    if (corpusFund <= 0)
                         return 0;
                     else
                         return 100;
@@ -150,6 +152,7 @@ namespace FinancialPlannerClient.PlanOptions
             }
             else
             {
+                lblPriorityAfterRetirementGoalTitle.Visible = false;
                 return (goal.Category.Equals("Retirement", StringComparison.OrdinalIgnoreCase)) ?
                              getGoalComplitionPercentageWithCurrentStatusAccessFund()
                              : getGoalComplitionPercentage();

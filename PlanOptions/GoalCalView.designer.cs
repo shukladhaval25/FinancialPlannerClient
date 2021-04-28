@@ -45,6 +45,7 @@
             this.dtGridGoalValue = new DevExpress.XtraGrid.GridControl();
             this.gridViewGoalValue = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.btnExport = new DevExpress.XtraEditors.SimpleButton();
+            this.lblPriorityAfterRetirementGoalTitle = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.grpGoalInfo)).BeginInit();
             this.grpGoalInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cmbGoals.Properties)).BeginInit();
@@ -226,11 +227,25 @@
             this.btnExport.ToolTipTitle = "Export";
             this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
+            // lblPriorityAfterRetirementGoalTitle
+            // 
+            this.lblPriorityAfterRetirementGoalTitle.AutoSize = true;
+            this.lblPriorityAfterRetirementGoalTitle.BackColor = System.Drawing.Color.White;
+            this.lblPriorityAfterRetirementGoalTitle.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPriorityAfterRetirementGoalTitle.ForeColor = System.Drawing.Color.Maroon;
+            this.lblPriorityAfterRetirementGoalTitle.Location = new System.Drawing.Point(536, 112);
+            this.lblPriorityAfterRetirementGoalTitle.Name = "lblPriorityAfterRetirementGoalTitle";
+            this.lblPriorityAfterRetirementGoalTitle.Size = new System.Drawing.Size(359, 18);
+            this.lblPriorityAfterRetirementGoalTitle.TabIndex = 26;
+            this.lblPriorityAfterRetirementGoalTitle.Text = "This goal has set priority after retirement goal.";
+            this.lblPriorityAfterRetirementGoalTitle.Visible = false;
+            // 
             // GoalCalView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1177, 508);
+            this.Controls.Add(this.lblPriorityAfterRetirementGoalTitle);
             this.Controls.Add(this.btnExport);
             this.Controls.Add(this.dtGridGoalValue);
             this.Controls.Add(this.grpGoalInfo);
@@ -249,6 +264,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtGridGoalValue)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewGoalValue)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -270,6 +286,7 @@
         private DevExpress.XtraGrid.Views.Grid.GridView gridViewGoalValue;
         private DevExpress.XtraGrid.Views.Grid.GridView gridViewGoalProfile;
         private DevExpress.XtraEditors.SimpleButton btnExport;
+        private System.Windows.Forms.Label lblPriorityAfterRetirementGoalTitle;
     }
 }
 
