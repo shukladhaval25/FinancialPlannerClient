@@ -1,5 +1,7 @@
-﻿using DevExpress.XtraEditors;
+﻿using DevExpress.LookAndFeel;
+using DevExpress.XtraEditors;
 using DevExpress.XtraNavBar;
+using DevExpress.XtraReports.UI;
 using FinancialPlanner.Common;
 using FinancialPlanner.Common.DataConversion;
 using FinancialPlanner.Common.Model;
@@ -477,11 +479,20 @@ namespace FinancialPlannerClient.Clients
             ReportParams reportParameters = new ReportParams(this.planner.ID);
             if (reportParameters.ShowDialog() == DialogResult.OK)
             {
-                PlannerMainReport plannerMainReport = new PlannerMainReport(this.personalInformation, planner, 
+
+                //XtraReport report = new XtraReport();
+                //report.LoadLayout("C:\\Application Softwares\\FinancialPlannerClient\\bin\\Debug\\PlannerMainReport.repx");
+                //report.ShowPreview();
+
+
+           
+                PlannerMainReport plannerMainReport = new PlannerMainReport(this.personalInformation, planner,
                     reportParameters.GetRiskProfileId(), reportParameters.GetOptionId());
+                plannerMainReport.LoadLayout("C:\\Application Softwares\\FinancialPlannerClient\\bin\\Debug\\PlannerMainReport.repx");
                 DevExpress.XtraReports.UI.ReportPrintTool printTool = new DevExpress.XtraReports.UI.ReportPrintTool(plannerMainReport);
+
                 printTool.ShowRibbonPreview();
-            }           
+            }
         }
 
         private void navBarItemOtherInformation_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)

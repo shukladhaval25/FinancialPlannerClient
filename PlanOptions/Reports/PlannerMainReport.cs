@@ -64,6 +64,7 @@ namespace FinancialPlannerClient.PlanOptions
                 scopeOfPlancs.CreateDocument();
 
                 AssumptionPage assumptionPage = new AssumptionPage(personalInformation, planner.ID);
+                assumptionPage.LoadLayout("C:\\Application Softwares\\FinancialPlannerClient\\bin\\Debug\\AssumptionPage.repx");
                 assumptionPage.CreateDocument();
 
                 FamilyInfoPage familyInfo = new FamilyInfoPage(personalInformation);
