@@ -259,10 +259,60 @@ namespace FinancialPlannerClient.CashFlowManager
                 addLoansCalculation(years, dr);
                 addGoalsCalculation(years, dr);
                 setSurplusAmount(dr);
-                validateSurplusAmount(years,dr);           
+                //validateSurplusAmount(years,dr);
+                setComulativeCorpusFundIfSurplusAmountIsNegative(years, dr);
                 setComulativeCorpusFund(years, dr, noOfYearsForCalculation);
                 _dtCashFlow.Rows.Add(dr);
             }
+        }
+
+        private void setComulativeCorpusFundIfSurplusAmountIsNegative(int years, DataRow dr)
+        {
+            double currentYearSurplusAmount = 0;
+            int calculationYear = int.Parse(dr["StartYear"].ToString());
+            double.TryParse(dr["Surplus Amount"].ToString(), out currentYearSurplusAmount);
+            double totalGoalLoanEMIs = 0;
+
+            if (currentYearSurplusAmount > 0)
+            {
+                foreach (Goals goal in _cashFlowCalculation.LstGoals)
+                {
+                    if (goal.LoanForGoal != null)
+                    {
+                        if (calculationYear >= goal.LoanForGoal.StratYear &&
+                            calculationYear < goal.LoanForGoal.EndYear)
+                        {
+                            double emiAmt = 0;
+                            dr[string.Format("(Loan EMI - {0})", goal.Name)] = (goal.LoanForGoal.EMI * 12);
+                            emiAmt = (goal.LoanForGoal.EMI * 12);
+                            totalGoalLoanEMIs = totalGoalLoanEMIs + emiAmt;
+                        }
+                    }
+                }
+                currentYearSurplusAmount = currentYearSurplusAmount - totalGoalLoanEMIs;
+            }
+
+            if (currentYearSurplusAmount < 0)
+            {
+                for(int index = _dtCashFlow.Rows.Count -1; index > 0; index--)
+                {
+                    double previousYearCorpusFund = 0;
+                    double.TryParse(_dtCashFlow.Rows[index]["Cumulative Corpus Fund"].ToString(),out previousYearCorpusFund);
+                    if (previousYearCorpusFund > 0 && (previousYearCorpusFund - System.Math.Abs(currentYearSurplusAmount)) > 0)
+                    {
+                        _dtCashFlow.Rows[index]["Cumulative Corpus Fund"] = previousYearCorpusFund - System.Math.Abs(currentYearSurplusAmount);
+                        double previousYearAdjustedAmount = 0;
+                        double.TryParse(_dtCashFlow.Rows[index]["Adjusted Amount"].ToString(), out previousYearAdjustedAmount);
+                        _dtCashFlow.Rows[index]["Adjusted Amount"] = previousYearAdjustedAmount + System.Math.Abs(currentYearSurplusAmount);
+                        break;
+                    }
+                    //else
+                    //{
+
+                    //}
+                }
+            }
+            
         }
 
         private void validateSurplusAmount(int years,DataRow dr)
