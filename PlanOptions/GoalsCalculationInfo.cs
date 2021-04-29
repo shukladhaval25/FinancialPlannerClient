@@ -281,12 +281,11 @@ namespace FinancialPlannerClient.PlanOptions
 
         private double calculatePortfoliioValue(double freshInv, decimal returnRatio)
         {
+            DataTable dtCashFlow = this.CashFlowService.GetCashFlowTable();
             double portfolioValue = 0;
             if (_dtGoalCalculation.Rows.Count > 0)
             {
-                portfolioValue = double.Parse(_dtGoalCalculation.Rows[_dtGoalCalculation.Rows.Count - 1]["Portfolio Value"].ToString());
-                portfolioValue = portfolioValue + freshInv + ((portfolioValue * (double)returnRatio) / 100);
-                double goalFutureValue = GetGoalFutureValue(_goal);                
+                portfolioValue = settleAdjustedAmountFromCashFlowForRetirementGoal(freshInv, returnRatio, dtCashFlow, portfolioValue);
             }
             else
             {
@@ -294,6 +293,42 @@ namespace FinancialPlannerClient.PlanOptions
                 portfolioValue = portfolioValue + freshInv + ((portfolioValue * (double)returnRatio) / 100);
             }
             return System.Math.Round(portfolioValue);
+        }
+
+        private double settleAdjustedAmountFromCashFlowForRetirementGoal(double freshInv, decimal returnRatio, DataTable dtCashFlow, double portfolioValue)
+        {
+            if (_goal.Category == "Retirement")
+            {
+                DataRow[] drs = dtCashFlow.Select("StartYear ='" + _dtGoalCalculation.Rows[_dtGoalCalculation.Rows.Count - 1]["Year"].ToString() + "'");
+                if (drs != null)
+                {
+                    DataRow dr = drs[0];
+                    double adjustedAmount = 0;
+                    double.TryParse(dr["Adjusted Amount"].ToString(), out adjustedAmount);
+                    if (adjustedAmount > 0)
+                    {
+                        portfolioValue = double.Parse(_dtGoalCalculation.Rows[_dtGoalCalculation.Rows.Count - 1]["Portfolio Value"].ToString());
+                        portfolioValue = portfolioValue - adjustedAmount;
+                        portfolioValue = (portfolioValue + freshInv) + ((portfolioValue * (double)returnRatio) / 100);
+                        double goalFutureValue = GetGoalFutureValue(_goal);
+                    }
+                    else
+                    {
+                        portfolioValue = double.Parse(_dtGoalCalculation.Rows[_dtGoalCalculation.Rows.Count - 1]["Portfolio Value"].ToString());
+                        portfolioValue = portfolioValue + freshInv + ((portfolioValue * (double)returnRatio) / 100);
+                        double goalFutureValue = GetGoalFutureValue(_goal);
+                    }
+
+                }
+            }
+            else
+            {
+                portfolioValue = double.Parse(_dtGoalCalculation.Rows[_dtGoalCalculation.Rows.Count - 1]["Portfolio Value"].ToString());
+                portfolioValue = portfolioValue + freshInv + ((portfolioValue * (double)returnRatio) / 100);
+                double goalFutureValue = GetGoalFutureValue(_goal);
+            }
+
+            return portfolioValue;
         }
 
         private decimal getRiskProfileReturnRatio(int yearRemaining)

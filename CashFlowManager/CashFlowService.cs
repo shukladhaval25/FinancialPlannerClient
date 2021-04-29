@@ -186,6 +186,11 @@ namespace FinancialPlannerClient.CashFlowManager
             return _dtCashFlow;
         }
 
+        public DataTable GetCashFlowTable()
+        {
+            return _dtCashFlow;
+        }
+
         public CashFlowCalculation GetCashFlowCalculation()
         {
             return _cashFlowCalculation;
