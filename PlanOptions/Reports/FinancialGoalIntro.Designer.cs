@@ -40,6 +40,8 @@
             this.xrPictureBox1 = new DevExpress.XtraReports.UI.XRPictureBox();
             this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
             this.xrPageInfo1 = new DevExpress.XtraReports.UI.XRPageInfo();
+            this.xrPanel3 = new DevExpress.XtraReports.UI.XRPanel();
+            this.xrPanel1 = new DevExpress.XtraReports.UI.XRPanel();
             ((System.ComponentModel.ISupportInitialize)(this.xrRichText1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
@@ -49,9 +51,10 @@
             this.xrLabel2,
             this.xrRichText1,
             this.xrPictureBox2,
-            this.xrLabel1});
+            this.xrLabel1,
+            this.xrPanel3});
             this.Detail.Dpi = 100F;
-            this.Detail.HeightF = 551.2292F;
+            this.Detail.HeightF = 902.2708F;
             this.Detail.Name = "Detail";
             this.Detail.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.Detail.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
@@ -108,9 +111,10 @@
             this.TopMargin.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
             this.ReportTitle,
             this.lblClientName,
-            this.xrPictureBox1});
+            this.xrPictureBox1,
+            this.xrPanel1});
             this.TopMargin.Dpi = 100F;
-            this.TopMargin.HeightF = 100F;
+            this.TopMargin.HeightF = 105.8332F;
             this.TopMargin.Name = "TopMargin";
             this.TopMargin.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.TopMargin.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
@@ -168,13 +172,45 @@
             this.xrPageInfo1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrPageInfo1.SizeF = new System.Drawing.SizeF(55.20831F, 23F);
             // 
+            // xrPanel3
+            // 
+            this.xrPanel3.AnchorHorizontal = ((DevExpress.XtraReports.UI.HorizontalAnchorStyles)((DevExpress.XtraReports.UI.HorizontalAnchorStyles.Left | DevExpress.XtraReports.UI.HorizontalAnchorStyles.Right)));
+            this.xrPanel3.AnchorVertical = ((DevExpress.XtraReports.UI.VerticalAnchorStyles)((DevExpress.XtraReports.UI.VerticalAnchorStyles.Top | DevExpress.XtraReports.UI.VerticalAnchorStyles.Bottom)));
+            this.xrPanel3.BorderColor = System.Drawing.Color.Navy;
+            this.xrPanel3.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
+            this.xrPanel3.BorderWidth = 2F;
+            this.xrPanel3.CanGrow = false;
+            this.xrPanel3.Dpi = 100F;
+            this.xrPanel3.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
+            this.xrPanel3.Name = "xrPanel3";
+            this.xrPanel3.SizeF = new System.Drawing.SizeF(650F, 902.2708F);
+            this.xrPanel3.StylePriority.UseBorderColor = false;
+            this.xrPanel3.StylePriority.UseBorders = false;
+            this.xrPanel3.StylePriority.UseBorderWidth = false;
+            // 
+            // xrPanel1
+            // 
+            this.xrPanel1.AnchorHorizontal = ((DevExpress.XtraReports.UI.HorizontalAnchorStyles)((DevExpress.XtraReports.UI.HorizontalAnchorStyles.Left | DevExpress.XtraReports.UI.HorizontalAnchorStyles.Right)));
+            this.xrPanel1.AnchorVertical = ((DevExpress.XtraReports.UI.VerticalAnchorStyles)((DevExpress.XtraReports.UI.VerticalAnchorStyles.Top | DevExpress.XtraReports.UI.VerticalAnchorStyles.Bottom)));
+            this.xrPanel1.BorderColor = System.Drawing.Color.Navy;
+            this.xrPanel1.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
+            this.xrPanel1.BorderWidth = 2F;
+            this.xrPanel1.CanGrow = false;
+            this.xrPanel1.Dpi = 100F;
+            this.xrPanel1.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
+            this.xrPanel1.Name = "xrPanel1";
+            this.xrPanel1.SizeF = new System.Drawing.SizeF(650F, 105.8332F);
+            this.xrPanel1.StylePriority.UseBorderColor = false;
+            this.xrPanel1.StylePriority.UseBorders = false;
+            this.xrPanel1.StylePriority.UseBorderWidth = false;
+            // 
             // FinancialGoalIntro
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
             this.Detail,
             this.TopMargin,
             this.BottomMargin});
-            this.Margins = new System.Drawing.Printing.Margins(100, 100, 100, 45);
+            this.Margins = new System.Drawing.Printing.Margins(100, 100, 106, 45);
             this.Version = "16.2";
             ((System.ComponentModel.ISupportInitialize)(this.xrRichText1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
@@ -194,5 +230,7 @@
         private DevExpress.XtraReports.UI.XRLabel xrLabel2;
         private DevExpress.XtraReports.UI.XRRichText xrRichText1;
         private DevExpress.XtraReports.UI.XRPageInfo xrPageInfo1;
+        private DevExpress.XtraReports.UI.XRPanel xrPanel3;
+        private DevExpress.XtraReports.UI.XRPanel xrPanel1;
     }
 }

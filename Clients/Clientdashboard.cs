@@ -488,7 +488,7 @@ namespace FinancialPlannerClient.Clients
            
                 PlannerMainReport plannerMainReport = new PlannerMainReport(this.personalInformation, planner,
                     reportParameters.GetRiskProfileId(), reportParameters.GetOptionId());
-                plannerMainReport.LoadLayout("C:\\Application Softwares\\FinancialPlannerClient\\bin\\Debug\\PlannerMainReport.repx");
+                //plannerMainReport.LoadLayout("C:\\Application Softwares\\FinancialPlannerClient\\bin\\Debug\\PlannerMainReport.repx");
                 DevExpress.XtraReports.UI.ReportPrintTool printTool = new DevExpress.XtraReports.UI.ReportPrintTool(plannerMainReport);
 
                 printTool.ShowRibbonPreview();

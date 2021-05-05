@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ScopeOfPlancs));
             this.Detail = new DevExpress.XtraReports.UI.DetailBand();
             this.xrPanel1 = new DevExpress.XtraReports.UI.XRPanel();
+            this.xrLabel1 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrRichTextContent = new DevExpress.XtraReports.UI.XRRichText();
             this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
             this.xrPanel2 = new DevExpress.XtraReports.UI.XRPanel();
@@ -39,7 +40,6 @@
             this.lblClientName = new DevExpress.XtraReports.UI.XRLabel();
             this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
             this.xrPageInfo1 = new DevExpress.XtraReports.UI.XRPageInfo();
-            this.xrLabel1 = new DevExpress.XtraReports.UI.XRLabel();
             ((System.ComponentModel.ISupportInitialize)(this.xrRichTextContent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
@@ -48,7 +48,7 @@
             this.Detail.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
             this.xrPanel1});
             this.Detail.Dpi = 100F;
-            this.Detail.HeightF = 951.25F;
+            this.Detail.HeightF = 879.375F;
             this.Detail.Name = "Detail";
             this.Detail.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.Detail.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
@@ -66,10 +66,25 @@
             this.xrPanel1.Dpi = 100F;
             this.xrPanel1.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
             this.xrPanel1.Name = "xrPanel1";
-            this.xrPanel1.SizeF = new System.Drawing.SizeF(650F, 941.25F);
+            this.xrPanel1.SizeF = new System.Drawing.SizeF(650F, 803.75F);
             this.xrPanel1.StylePriority.UseBorderColor = false;
             this.xrPanel1.StylePriority.UseBorders = false;
             this.xrPanel1.StylePriority.UseBorderWidth = false;
+            // 
+            // xrLabel1
+            // 
+            this.xrLabel1.Borders = DevExpress.XtraPrinting.BorderSide.None;
+            this.xrLabel1.Dpi = 100F;
+            this.xrLabel1.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrLabel1.ForeColor = System.Drawing.Color.Navy;
+            this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(9.999974F, 10.00001F);
+            this.xrLabel1.Name = "xrLabel1";
+            this.xrLabel1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel1.SizeF = new System.Drawing.SizeF(629.9999F, 40.00002F);
+            this.xrLabel1.StylePriority.UseBorders = false;
+            this.xrLabel1.StylePriority.UseFont = false;
+            this.xrLabel1.StylePriority.UseForeColor = false;
+            this.xrLabel1.Text = "The scope of your Financial Plan";
             // 
             // xrRichTextContent
             // 
@@ -176,21 +191,6 @@
             this.xrPageInfo1.Name = "xrPageInfo1";
             this.xrPageInfo1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrPageInfo1.SizeF = new System.Drawing.SizeF(55.20831F, 23F);
-            // 
-            // xrLabel1
-            // 
-            this.xrLabel1.Borders = DevExpress.XtraPrinting.BorderSide.None;
-            this.xrLabel1.Dpi = 100F;
-            this.xrLabel1.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xrLabel1.ForeColor = System.Drawing.Color.Navy;
-            this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(9.999974F, 10.00001F);
-            this.xrLabel1.Name = "xrLabel1";
-            this.xrLabel1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel1.SizeF = new System.Drawing.SizeF(629.9999F, 40.00002F);
-            this.xrLabel1.StylePriority.UseBorders = false;
-            this.xrLabel1.StylePriority.UseFont = false;
-            this.xrLabel1.StylePriority.UseForeColor = false;
-            this.xrLabel1.Text = "The scope of your Financial Plan";
             // 
             // ScopeOfPlancs
             // 

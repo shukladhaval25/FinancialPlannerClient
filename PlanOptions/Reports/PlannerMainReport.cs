@@ -64,7 +64,7 @@ namespace FinancialPlannerClient.PlanOptions
                 scopeOfPlancs.CreateDocument();
 
                 AssumptionPage assumptionPage = new AssumptionPage(personalInformation, planner.ID);
-                assumptionPage.LoadLayout("C:\\Application Softwares\\FinancialPlannerClient\\bin\\Debug\\AssumptionPage.repx");
+                //assumptionPage.LoadLayout("C:\\Application Softwares\\FinancialPlannerClient\\bin\\Debug\\AssumptionPage.repx");
                 assumptionPage.CreateDocument();
 
                 FamilyInfoPage familyInfo = new FamilyInfoPage(personalInformation);
@@ -73,7 +73,7 @@ namespace FinancialPlannerClient.PlanOptions
                 FinancialGoalIntro financialGoalIntro = new FinancialGoalIntro(client);
                 financialGoalIntro.CreateDocument();
 
-                FinancialClientGoal financialClientGoal = new FinancialClientGoal(this.planner, this.client, this.riskprofileId);
+                FinancialClientGoal financialClientGoal = new FinancialClientGoal(this.planner, this.client, this.riskprofileId,this.optionId);
                 financialClientGoal.CreateDocument();
 
                 GoalProjectionForComplition goalProjectionForComplition = new GoalProjectionForComplition(this.planner, this.client, this.riskprofileId, this.optionId);

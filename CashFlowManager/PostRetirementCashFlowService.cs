@@ -553,7 +553,7 @@ namespace FinancialPlannerClient.CashFlowManager
                 {
                     int expEndYear = string.IsNullOrEmpty(exp.ExpEndYear) ? DateTime.Now.Year + 100 : int.Parse(exp.ExpEndYear);
                     int expStartYear = string.IsNullOrEmpty(exp.ExpEndYear) ? this.retirementPlanningYearStartFrom : int.Parse(exp.ExpStartYear);
-                    if ((expStartYear > this.retirementPlanningYearStartFrom &&
+                    if ((this.retirementPlanningYearStartFrom > expStartYear  &&
                       expEndYear <= expectedLifeEndYear) ||
                        string.IsNullOrEmpty(exp.ExpStartYear))
                     {

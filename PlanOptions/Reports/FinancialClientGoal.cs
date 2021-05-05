@@ -1,6 +1,9 @@
 ﻿using FinancialPlanner.Common.DataConversion;
 using FinancialPlanner.Common.Model;
+using FinancialPlanner.Common.Model.PlanOptions;
+using FinancialPlannerClient.CashFlowManager;
 using FinancialPlannerClient.PlannerInfo;
+using FinancialPlannerClient.RiskProfile;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -16,24 +19,28 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         DataTable dtGroupOfGoals = new DataTable();
         List<Goals> lstGoal;
         int riskProfileId;
-        public FinancialClientGoal(Planner planner,Client client,int riskProfileID)
+        int optionId;
+        Client client;
+        public FinancialClientGoal(Planner planner, Client client, int riskProfileID, int optionId)
         {
             InitializeComponent();
             this.planner = planner;
+            this.client = client;
             this.lblClientName.Text = client.Name;
             this.riskProfileId = riskProfileID;
-          
+            this.optionId = optionId;
+
             GoalsInfo GoalsInfo = new GoalsInfo();
             lstGoal = (List<Goals>)GoalsInfo.GetAll(planner.ID);
             _dtGoals = ListtoDataTable.ToDataTable(lstGoal);
-        
+
             addFutureValueIntoDataTable();
 
             groupTogetherRecurrenceGoal();
+            DataTable dtTable = _dtGoals.Select("Category <> 'Retirement'", "Priority").CopyToDataTable();
 
-
-            this.DataSource = _dtGoals;
-            this.DataMember = _dtGoals.TableName;
+            this.DataSource = dtTable;
+            this.DataMember = dtTable.TableName;
 
             this.lblName.DataBindings.Add("Text", this.DataSource, "Goals.Name");
             this.lblStartYear.DataBindings.Add("Text", this.DataSource, "Goals.StartYear");
@@ -44,7 +51,40 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             this.lblFutureCost.DataBindings.Add("Text", this.DataSource, "Goals.FutureValue");
             this.lblRecurrence.DataBindings.Add("Text", this.DataSource, "Goals.Recurrence");
 
+
+            DataRow[] drs = _dtGoals.Select("Category = 'Retirement'");
+            if (drs.Count() > 0)
+            {
+                this.xrRetirementGoal.Text = drs[0]["Name"].ToString();
+                this.lblRetirementStartYear.Text = drs[0]["StartYear"].ToString();
+                this.lblRetirementEndYear.Text = drs[0]["EndYear"].ToString();
+                this.lblRetirementInflation.Text = drs[0]["InflationRate"].ToString();
+               
+                this.lblRetirementPriority.Text = drs[0]["Priority"].ToString();
+               
+                //this.lblFirstYearRetirementExp.Text = drs[0]["FutureValue"].ToString();
+                CashFlowService cashFlowService = new CashFlowService();
+                cashFlowService.GenerateCashFlow(this.client.ID, this.planner.ID, this.riskProfileId);
+                Goals retirementGoal = lstGoal.FirstOrDefault(x => x.Category.Equals("Retirement"));
+                RiskProfileInfo _riskProfileInfo = new RiskProfileInfo();
+                GoalsCalculationInfo _goalCalculationInfo =
+                        new GoalsCalculationInfo(retirementGoal, planner, _riskProfileInfo, this.riskProfileId, this.optionId);
+                CashFlow cf = cashFlowService.GetCashFlow(this.optionId);
+                _goalCalculationInfo.GoalCalManager = cashFlowService.GoalCalculationMgr;
+              
+                _goalCalculationInfo.CashFlowService = cashFlowService;
+                DataTable dtGoalValue = _goalCalculationInfo.GetGoalValue(int.Parse(retirementGoal.Id.ToString()),
+                planner.ID, this.riskProfileId, this.optionId);
+                if (dtGoalValue.Rows.Count > 0)
+                {
+                    this.lblFirstYearRetirementExp.Text = dtGoalValue.Rows[0]["FirstYearExpenseOnRetirementYear"].ToString();
+                    this.lblRetirementFutureCost.Text = dtGoalValue.Rows[0]["GoalValue"].ToString();
+                    this.lblRetirementPresentCost.Text = dtGoalValue.Rows[0]["CurrentValue"].ToString();
+                    lblTotalCorpusNeeded.Text = string.Format(lblTotalCorpusNeeded.Text, (int.Parse(retirementGoal.EndYear) - int.Parse(retirementGoal.StartYear)));
+                }
+            }
         }
+        
 
         private void groupTogetherRecurrenceGoal()
         {
@@ -161,11 +201,17 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                     xrGroupLabel.Text = string.Format("{0} {1} or Rs.{2} each", lblRecurrence.Text, lblName.Text,(double.Parse(lblPresentCost.Text) / int.Parse(lblRecurrence.Text)));
                     xrGroupLabel2.Text = string.Format("Total fund need for {0} {1}", lblRecurrence.Text, lblName.Text);
                     xrGroupTable.HeightF = 25;
+                    xrGroupLabel.BackColor = System.Drawing.Color.LightGreen;
+                    xrGroupLabel2.BackColor = System.Drawing.Color.LightGreen; 
                 }
                 else
                 {
-                    xrGroupTable.Visible = false;
-                    xrGroupTable.HeightF = 0;
+                    xrGroupTable.Visible = true;
+                    xrGroupLabel.Text = "";
+                    xrGroupLabel2.Text = "";
+                    xrGroupLabel.BackColor = System.Drawing.Color.White;
+                    xrGroupLabel2.BackColor = System.Drawing.Color.White;
+                    //xrGroupTable.HeightF = 0;
                 }
             }
         }
