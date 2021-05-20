@@ -68,10 +68,10 @@ namespace FinancialPlannerClient.CurrentStatus
         private DataTable defaultTableStructure()
         {
             dtMFTrans = new DataTable();
-            DataColumn dcId = new DataColumn("Id", typeof(System.Int16));
+            DataColumn dcId = new DataColumn("Id", typeof(System.Int64 ));
             dtMFTrans.Columns.Add(dcId);
 
-            DataColumn dcMFId = new DataColumn("MFId", typeof(System.Int16));
+            DataColumn dcMFId = new DataColumn("MFId", typeof(System.Int64));
             dtMFTrans.Columns.Add(dcMFId);
 
             DataColumn dcNav = new DataColumn("NAV", typeof(System.Double));

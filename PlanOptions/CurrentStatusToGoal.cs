@@ -77,7 +77,7 @@ namespace FinancialPlannerClient.PlanOptions
             if (_dtmoneyToGoals == null)
                 _dtmoneyToGoals = new DataTable();
 
-            DataColumn dcId = new DataColumn("GoalId",typeof(System.Int16));
+            DataColumn dcId = new DataColumn("GoalId",typeof(System.Int64));
             dcId.ReadOnly = true;
             _dtmoneyToGoals.Columns.Add(dcId);
 

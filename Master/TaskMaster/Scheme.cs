@@ -60,7 +60,7 @@ namespace FinancialPlannerClient.Master.TaskMaster
         private DataTable convertSchemeCategoriesToDataTable(IList<SchemeCategory> schemeCategories)
         {
             DataTable dtCategory = new DataTable();
-            dtCategory.Columns.Add("Id", Type.GetType("System.Int16"));
+            dtCategory.Columns.Add("Id", Type.GetType("System.Int64"));
             dtCategory.Columns.Add("Name", Type.GetType("System.String"));
             foreach(SchemeCategory schemeCategory in schemeCategories)
             {

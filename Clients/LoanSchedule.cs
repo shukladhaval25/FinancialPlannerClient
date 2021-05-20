@@ -77,7 +77,7 @@ namespace FinancialPlannerClient.Clients
         private void createLoanSchedulerTable()
         {
             dtLoanScheduler = new DataTable();
-            dtLoanScheduler.Columns.Add("Sr.No", typeof(System.Int16));
+            dtLoanScheduler.Columns.Add("Sr.No", typeof(System.Int64));
             dtLoanScheduler.Columns.Add("Enstallment Date", typeof(System.DateTime));
             dtLoanScheduler.Columns.Add("BeginingPrincipalAmount", typeof(System.Double));
             dtLoanScheduler.Columns.Add("EMI", typeof(System.Double));

@@ -155,7 +155,7 @@ namespace FinancialPlannerClient.RiskProfile
         {
             _dtRiskProfileReturn.Columns.Clear();
             _dtRiskProfileReturn.Clear();
-            DataColumn dcId = new DataColumn("ID",typeof(System.Int16));
+            DataColumn dcId = new DataColumn("ID",typeof(System.Int64));
             _dtRiskProfileReturn.Columns.Add(dcId);
 
             DataColumn dcRiskProfileId = new DataColumn("RiskProfileId",typeof(System.Int16));
