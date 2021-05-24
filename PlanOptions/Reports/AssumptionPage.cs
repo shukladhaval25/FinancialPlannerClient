@@ -18,7 +18,7 @@ namespace FinancialPlannerClient.PlanOptions
             lblClientNameForIncome.Text = lblClientName.Text;
             lblSpouseNameForIncome.Text = personalInformation.Spouse.Name;
            
-            lblInsurance.Text = string.Format(lblInsurance.Text, lblClientName.Text, lblSpouseNameForIncome.Text ," 8");
+            lblInsurance.Text = string.Format(lblInsurance.Text, lblClientName.Text, lblSpouseNameForIncome.Text ," 7");
         }
 
         private void Detail_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
@@ -37,6 +37,7 @@ namespace FinancialPlannerClient.PlanOptions
             lblExpRaise.Text = string.Format(lblExpRaise.Text, plannerAssumption.OngoingExpRise);
             lblClientIncomeRaise.Text = string.Format("{0} %", plannerAssumption.ClientIncomeRise);
             lblSpouseIncomeRaise.Text = string.Format("{0} %", plannerAssumption.ClientIncomeRise);
+            lblNote.Text = plannerAssumption.Decription;
         }
     }
 }

@@ -16,7 +16,8 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         DataTable dtNetWorth = new DataTable();
         const string FINANCIAL_ASSETS = "Financial Assets";
         const string FD_RD_SAVING = "Fixed Deposit/Savings";
-        const string MF = "Mutual Fund";
+        const string EMF = "Equity Mutual Fund";
+        const string DMF = "Dept Mutual Fund";
         const string PPF = "PPF";
         const string BONDS = "Bonds";
         const string SS = "Sukanya Sum. Account";
@@ -248,10 +249,12 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         {
             MutualFundInfo mutualFundInfo = new MutualFundInfo();
             double totalMFValue = 0;
+            double totalDMFValue = 0;
             DataTable dtMF = mutualFundInfo.GetMutualFundInfo(this.planner.ID);
             if (dtMF != null && dtMF.Rows.Count > 0)
             {
-                totalMFValue = dtMF.AsEnumerable().Sum(x => Convert.ToDouble(x["NAV"]) * Convert.ToDouble(x["Units"]));
+                totalMFValue = dtMF.AsEnumerable().Sum(x => (Convert.ToDouble(x["CurrentValue"]) * Convert.ToDouble(x["EquityRatio"])) / 100);
+                //Convert.ToDouble(x["NAV"]) * Convert.ToDouble(x["Units"]));
                 //double.Parse(dtMF.Compute("sum(NAV * Units)", string.Empty).ToString());
             }
 
@@ -259,10 +262,26 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             {
                 DataRow drNetWorth = dtNetWorth.NewRow();
                 drNetWorth["Group"] = FINANCIAL_ASSETS;
-                drNetWorth["Title"] = MF;
+                drNetWorth["Title"] = EMF;
                 drNetWorth["Amount"] = totalMFValue;
                 dtNetWorth.Rows.Add(drNetWorth);
             }
+
+            if (dtMF != null && dtMF.Rows.Count > 0)
+            {
+                totalDMFValue = dtMF.AsEnumerable().Sum(x => (Convert.ToDouble(x["CurrentValue"]) * Convert.ToDouble(x["DebtRatio"])) / 100);
+                //Convert.ToDouble(x["NAV"]) * Convert.ToDouble(x["Units"]));
+                //double.Parse(dtMF.Compute("sum(NAV * Units)", string.Empty).ToString());
+            }
+            if (totalDMFValue > 0)
+            {
+                DataRow drNetWorth = dtNetWorth.NewRow();
+                drNetWorth["Group"] = FINANCIAL_ASSETS;
+                drNetWorth["Title"] = DMF;
+                drNetWorth["Amount"] = totalDMFValue;
+                dtNetWorth.Rows.Add(drNetWorth);
+            }
+
         }
         #endregion
 

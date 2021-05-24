@@ -203,6 +203,16 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             return Math.Round((double)futureValue);
         }
 
+        private void lblGoalReachedPercentage_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            lblGoalReachedPercentage.Text = lblGoalReachedPercentage.Text + " %";
+        }
+
+        private void lblProjectionCompleted_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            lblProjectionCompleted.Text = lblProjectionCompleted.Text + " %";
+        }
+
         private double getCurrentStatusFundForMappedGoal(int goalId)
         {
             CurrentStatusInfo csInfo = new CurrentStatusInfo();

@@ -515,7 +515,14 @@ namespace FinancialPlannerClient.CashFlowManager
                 DataRow drLastCashFlow = cashFlowService.GetLastIncomeAndExpAtRetirementAge();
                 long amount = 0;
                 if (drLastCashFlow != null)
-                    amount = long.Parse(drLastCashFlow["(" + income.IncomeBy + ") " + income.Source].ToString());
+                    if (!string.IsNullOrEmpty(drLastCashFlow["(" + income.IncomeBy + ") " + income.Source].ToString()))
+                    {
+                        amount = long.Parse(drLastCashFlow["(" + income.IncomeBy + ") " + income.Source].ToString());
+                    }
+                    else
+                    {
+                        amount = (long)futureValue(income.Amount, income.ExpectGrowthInPercentage, ((year - 1) - int.Parse(income.StartYear)));
+                    }
                 else
                 {
                     //int yearDifference = (cashFlowCalculation.ClientCurrentAge > cashFlowCalculation.SpouseCurrentAge) ?
@@ -553,7 +560,7 @@ namespace FinancialPlannerClient.CashFlowManager
                 {
                     int expEndYear = string.IsNullOrEmpty(exp.ExpEndYear) ? DateTime.Now.Year + 100 : int.Parse(exp.ExpEndYear);
                     int expStartYear = string.IsNullOrEmpty(exp.ExpEndYear) ? this.retirementPlanningYearStartFrom : int.Parse(exp.ExpStartYear);
-                    if ((this.retirementPlanningYearStartFrom > expStartYear  &&
+                    if (((this.retirementPlanningYearStartFrom > expStartYear || expStartYear > this.retirementPlanningYearStartFrom) &&
                       expEndYear <= expectedLifeEndYear) ||
                        string.IsNullOrEmpty(exp.ExpStartYear))
                     {
@@ -606,29 +613,43 @@ namespace FinancialPlannerClient.CashFlowManager
                        int.Parse(dr["StartYear"].ToString()) <= expEndYear) ||
                        string.IsNullOrEmpty(exp.ExpStartYear))
                     {
-                        double expAmt = 0;
-                        if (_dtRetirementCashFlow.Rows.Count > 0)
+                        if (_dtRetirementCashFlow.Columns.Contains(exp.Item))
                         {
-                            if (!double.TryParse(_dtRetirementCashFlow.Rows[_dtRetirementCashFlow.Rows.Count - 1][exp.Item].ToString(), out expAmt))
+                            double expAmt = 0;
+                            if (_dtRetirementCashFlow.Rows.Count > 0)
+                            {
+                                //if (_dtRetirementCashFlow.Columns.Contains(exp.Item))
+                                //{
+                                if (!double.TryParse(_dtRetirementCashFlow.Rows[_dtRetirementCashFlow.Rows.Count - 1][exp.Item].ToString(), out expAmt))
+                                {
+                                    expAmt = exp.Amount;
+                                }
+                                //}
+                                //else
+                                //{
+                                //    expAmt = 0;
+                                //}
+                            }
+                            else if (cashFlowService.GetCashFlowTable().Rows.Count > 0 && cashFlowService.GetCashFlowTable().Columns.Contains(exp.Item.ToString()))
+                            {
+                                expAmt = double.Parse(cashFlowService.GetCashFlowTable().Rows[cashFlowService.GetCashFlowTable().Rows.Count - 1][exp.Item.ToString()].ToString());
+                            }
+                            else
                             {
                                 expAmt = exp.Amount;
                             }
-                        }
-                        else
-                        {
-                            expAmt = exp.Amount;
-                        }
-                        if (expStartYear == (int.Parse(dr["StartYear"].ToString())))
-                        {
-                            dr[exp.Item] = System.Math.Round(expAmt, 2);
-                            totalExpenses = System.Math.Round(totalExpenses + expAmt, 2);
-                        }
-                        else
-                        {
-                            double expInflationRate = exp.InflationRate;
-                            double expWithInflaction = expAmt + ((expAmt * expInflationRate) / 100);
-                            dr[exp.Item] = System.Math.Round(expWithInflaction, 2);
-                            totalExpenses = System.Math.Round(totalExpenses + expWithInflaction, 2);
+                            if (expStartYear == (int.Parse(dr["StartYear"].ToString())))
+                            {
+                                dr[exp.Item] = System.Math.Round(expAmt, 2);
+                                totalExpenses = System.Math.Round(totalExpenses + expAmt, 2);
+                            }
+                            else
+                            {
+                                double expInflationRate = exp.InflationRate;
+                                double expWithInflaction = expAmt + ((expAmt * expInflationRate) / 100);
+                                dr[exp.Item] = System.Math.Round(expWithInflaction, 2);
+                                totalExpenses = System.Math.Round(totalExpenses + expWithInflaction, 2);
+                            }
                         }
                     }
                 }

@@ -73,12 +73,14 @@
             this.lblParticular.BackColor = System.Drawing.Color.LemonChiffon;
             this.lblParticular.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.lblParticular.Dpi = 100F;
+            this.lblParticular.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblParticular.LocationFloat = new DevExpress.Utils.PointFloat(10.00001F, 0F);
             this.lblParticular.Name = "lblParticular";
             this.lblParticular.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.lblParticular.SizeF = new System.Drawing.SizeF(200F, 25F);
             this.lblParticular.StylePriority.UseBackColor = false;
             this.lblParticular.StylePriority.UseBorders = false;
+            this.lblParticular.StylePriority.UseFont = false;
             this.lblParticular.StylePriority.UsePadding = false;
             this.lblParticular.StylePriority.UseTextAlignment = false;
             this.lblParticular.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
@@ -88,12 +90,14 @@
             this.lblPercentageValue.BackColor = System.Drawing.Color.LemonChiffon;
             this.lblPercentageValue.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.lblPercentageValue.Dpi = 100F;
+            this.lblPercentageValue.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPercentageValue.LocationFloat = new DevExpress.Utils.PointFloat(210F, 0F);
             this.lblPercentageValue.Name = "lblPercentageValue";
             this.lblPercentageValue.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.lblPercentageValue.SizeF = new System.Drawing.SizeF(111.7188F, 25F);
             this.lblPercentageValue.StylePriority.UseBackColor = false;
             this.lblPercentageValue.StylePriority.UseBorders = false;
+            this.lblPercentageValue.StylePriority.UseFont = false;
             this.lblPercentageValue.StylePriority.UsePadding = false;
             this.lblPercentageValue.StylePriority.UseTextAlignment = false;
             xrSummary1.Func = DevExpress.XtraReports.UI.SummaryFunc.Percentage;
@@ -106,12 +110,14 @@
             this.lblAmount.BackColor = System.Drawing.Color.LemonChiffon;
             this.lblAmount.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.lblAmount.Dpi = 100F;
+            this.lblAmount.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAmount.LocationFloat = new DevExpress.Utils.PointFloat(321.7187F, 0F);
             this.lblAmount.Name = "lblAmount";
             this.lblAmount.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.lblAmount.SizeF = new System.Drawing.SizeF(146.8749F, 25F);
             this.lblAmount.StylePriority.UseBackColor = false;
             this.lblAmount.StylePriority.UseBorders = false;
+            this.lblAmount.StylePriority.UseFont = false;
             this.lblAmount.StylePriority.UsePadding = false;
             this.lblAmount.StylePriority.UseTextAlignment = false;
             this.lblAmount.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
@@ -135,7 +141,7 @@
             // xrLabel1
             // 
             this.xrLabel1.Dpi = 100F;
-            this.xrLabel1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrLabel1.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrLabel1.ForeColor = System.Drawing.Color.RoyalBlue;
             this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(10.00001F, 10.00001F);
             this.xrLabel1.Multiline = true;
@@ -165,7 +171,7 @@
             | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrLblGroupAssets.Dpi = 100F;
-            this.xrLblGroupAssets.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrLblGroupAssets.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrLblGroupAssets.LocationFloat = new DevExpress.Utils.PointFloat(110F, 9.25F);
             this.xrLblGroupAssets.Name = "xrLblGroupAssets";
             this.xrLblGroupAssets.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -183,7 +189,7 @@
             | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrLabel6.Dpi = 100F;
-            this.xrLabel6.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrLabel6.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrLabel6.LocationFloat = new DevExpress.Utils.PointFloat(321.7186F, 49.91668F);
             this.xrLabel6.Name = "xrLabel6";
             this.xrLabel6.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -202,7 +208,7 @@
             | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrLabel4.Dpi = 100F;
-            this.xrLabel4.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrLabel4.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrLabel4.LocationFloat = new DevExpress.Utils.PointFloat(210F, 49.91665F);
             this.xrLabel4.Name = "xrLabel4";
             this.xrLabel4.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -220,7 +226,7 @@
             | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrLabel3.Dpi = 100F;
-            this.xrLabel3.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrLabel3.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrLabel3.LocationFloat = new DevExpress.Utils.PointFloat(10.00001F, 9.25F);
             this.xrLabel3.Name = "xrLabel3";
             this.xrLabel3.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -239,7 +245,7 @@
             | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrLabel2.Dpi = 100F;
-            this.xrLabel2.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrLabel2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrLabel2.LocationFloat = new DevExpress.Utils.PointFloat(10.00001F, 49.91665F);
             this.xrLabel2.Name = "xrLabel2";
             this.xrLabel2.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -276,10 +282,12 @@
             // lblTotalGroupAmt
             // 
             this.lblTotalGroupAmt.Dpi = 100F;
+            this.lblTotalGroupAmt.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalGroupAmt.LocationFloat = new DevExpress.Utils.PointFloat(321.7187F, 0F);
             this.lblTotalGroupAmt.Name = "lblTotalGroupAmt";
             this.lblTotalGroupAmt.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.lblTotalGroupAmt.SizeF = new System.Drawing.SizeF(146.8749F, 23F);
+            this.lblTotalGroupAmt.StylePriority.UseFont = false;
             this.lblTotalGroupAmt.StylePriority.UseTextAlignment = false;
             xrSummary2.FormatString = "{0:#,#.00}";
             xrSummary2.Running = DevExpress.XtraReports.UI.SummaryRunning.Group;
@@ -289,10 +297,12 @@
             // lblTotalGroupPerValue
             // 
             this.lblTotalGroupPerValue.Dpi = 100F;
+            this.lblTotalGroupPerValue.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalGroupPerValue.LocationFloat = new DevExpress.Utils.PointFloat(210F, 0F);
             this.lblTotalGroupPerValue.Name = "lblTotalGroupPerValue";
             this.lblTotalGroupPerValue.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.lblTotalGroupPerValue.SizeF = new System.Drawing.SizeF(111.7188F, 23F);
+            this.lblTotalGroupPerValue.StylePriority.UseFont = false;
             this.lblTotalGroupPerValue.StylePriority.UseTextAlignment = false;
             xrSummary3.FormatString = "{0:0.00%}";
             xrSummary3.Func = DevExpress.XtraReports.UI.SummaryFunc.Percentage;
@@ -304,10 +314,12 @@
             // lblGroupTitle
             // 
             this.lblGroupTitle.Dpi = 100F;
+            this.lblGroupTitle.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblGroupTitle.LocationFloat = new DevExpress.Utils.PointFloat(10.00001F, 0F);
             this.lblGroupTitle.Name = "lblGroupTitle";
             this.lblGroupTitle.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.lblGroupTitle.SizeF = new System.Drawing.SizeF(200F, 23F);
+            this.lblGroupTitle.StylePriority.UseFont = false;
             this.lblGroupTitle.Text = "{0} Total :";
             // 
             // PageFooter
@@ -322,19 +334,23 @@
             // xrLabel5
             // 
             this.xrLabel5.Dpi = 100F;
+            this.xrLabel5.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrLabel5.LocationFloat = new DevExpress.Utils.PointFloat(10.00001F, 5.541674F);
             this.xrLabel5.Name = "xrLabel5";
             this.xrLabel5.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel5.SizeF = new System.Drawing.SizeF(311.7187F, 23F);
+            this.xrLabel5.StylePriority.UseFont = false;
             this.xrLabel5.Text = "Final Total";
             // 
             // lblPageTotal
             // 
             this.lblPageTotal.Dpi = 100F;
+            this.lblPageTotal.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPageTotal.LocationFloat = new DevExpress.Utils.PointFloat(321.7187F, 5.541674F);
             this.lblPageTotal.Name = "lblPageTotal";
             this.lblPageTotal.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.lblPageTotal.SizeF = new System.Drawing.SizeF(146.8749F, 23F);
+            this.lblPageTotal.StylePriority.UseFont = false;
             this.lblPageTotal.StylePriority.UseTextAlignment = false;
             xrSummary4.FormatString = "{0:#,#.00}";
             xrSummary4.Running = DevExpress.XtraReports.UI.SummaryRunning.Report;

@@ -12,7 +12,8 @@ namespace FinancialPlannerClient.PlanOptions.Reports
     {
         DataTable dtNetWorth;
         const string FD_RD_SAVING = "Fixed Deposit/Savings";
-        const string MF = "Mutual Fund";
+        const string EMF = "Equity Mutual Fund";
+        const string DMF = "Dept Mutual Fund";
         const string PPF = "PPF";
         const string BONDS = "Bonds";
         const string SS = "Sukanya Sum. Account";
@@ -44,7 +45,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
 
         private void setEquityData(ref int rowIndexForEquity, ref double totalEquityValue, int indexRow)
         {
-            if (dtNetWorth.Rows[indexRow]["Title"].ToString() == MF ||
+            if (dtNetWorth.Rows[indexRow]["Title"].ToString() == EMF ||
                 dtNetWorth.Rows[indexRow]["Title"].ToString() == SHARES)
             {
                 xrTableEquity.Rows[rowIndexForEquity].Cells[0].Text = dtNetWorth.Rows[indexRow]["Title"].ToString();
@@ -60,6 +61,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             if (dtNetWorth.Rows[indexRow]["Title"].ToString() ==  FD_RD_SAVING ||
                 dtNetWorth.Rows[indexRow]["Title"].ToString() == BONDS ||
                 dtNetWorth.Rows[indexRow]["Title"].ToString() == PPF ||
+                dtNetWorth.Rows[indexRow]["Title"].ToString() == DMF ||
                 dtNetWorth.Rows[indexRow]["Title"].ToString() == SS)
             {
                 xrTableDebt.Rows[rowIndexForDebt].Cells[0].Text = dtNetWorth.Rows[indexRow]["Title"].ToString();

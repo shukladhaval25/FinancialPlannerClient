@@ -83,7 +83,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                 {
                     DataRow dataRowLoan = _dtExpenses.NewRow();
                     dataRowLoan["Item"] = dr["TypeOfLoan"];
-                    dataRowLoan["Amount"] = dr["Emis"];
+                    dataRowLoan["Amount"] = double.Parse(dr["Emis"].ToString()) * 12;
                     _dtExpenses.Rows.Add(dataRowLoan);
                     //xrTableExp.Rows[index].Cells[0].Text = dr["TypeOfLoan"].ToString();
                     //xrTableExp.Rows[index].Cells[1].Text = dr["Emis"].ToString();
@@ -94,8 +94,9 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             foreach (DataRow dr in _dtExpenses.Rows)
             {
                 xrTableExp.Rows[index].Cells[0].Text = dr["Item"].ToString();
-                xrTableExp.Rows[index].Cells[1].Text = dr["Amount"].ToString();
-                totalExpenses = totalExpenses + double.Parse(dr["Amount"].ToString());
+                double exp = (dr["OccuranceType"].ToString().Equals("Monthly") ? double.Parse(dr["Amount"].ToString()) * 12 : double.Parse(dr["Amount"].ToString()));
+                xrTableExp.Rows[index].Cells[1].Text = exp.ToString();
+                totalExpenses = totalExpenses + exp;
                 index++;
             }           
 

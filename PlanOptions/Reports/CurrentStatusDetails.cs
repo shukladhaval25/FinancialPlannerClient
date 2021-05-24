@@ -10,7 +10,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
 {
     public partial class CurrentStatusDetails : DevExpress.XtraReports.UI.XtraReport
     {
-        private const string MF = "Mutual Fund";
+        private const string EMF = "Equity Mutual Fund";
         private const string SHARES = "Shares";
         private const string EQUITY = "Equity";
         private const string DEBT = "Debt";
@@ -25,7 +25,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             this.DataSource = dtCurrentStatus;
             this.DataMember = dtCurrentStatus.TableName;
                         
-            var rowsToUpdate =  this.dtCurrentStatus.AsEnumerable().Where(r => r.Field<string>("Title") == MF || 
+            var rowsToUpdate =  this.dtCurrentStatus.AsEnumerable().Where(r => r.Field<string>("Title") == EMF || 
                 r.Field<string>("Title") == SHARES);
 
             foreach (var row in rowsToUpdate)
@@ -33,7 +33,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                 row.SetField("Group", EQUITY);                
             }
 
-            var rowsToUpdateForDebt = this.dtCurrentStatus.AsEnumerable().Where(r => r.Field<string>("Title") != MF &&
+            var rowsToUpdateForDebt = this.dtCurrentStatus.AsEnumerable().Where(r => r.Field<string>("Title") != EMF &&
                r.Field<string>("Title") != SHARES);
 
             foreach (var row in rowsToUpdateForDebt)

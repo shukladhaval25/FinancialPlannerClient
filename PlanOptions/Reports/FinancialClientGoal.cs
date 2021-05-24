@@ -32,16 +32,25 @@ namespace FinancialPlannerClient.PlanOptions.Reports
 
             GoalsInfo GoalsInfo = new GoalsInfo();
             lstGoal = (List<Goals>)GoalsInfo.GetAll(planner.ID);
+            lstGoal = lstGoal.OrderBy(x => x.Priority).ToList();
             _dtGoals = ListtoDataTable.ToDataTable(lstGoal);
 
             addFutureValueIntoDataTable();
 
             groupTogetherRecurrenceGoal();
             DataTable dtTable = _dtGoals.Select("Category <> 'Retirement'", "Priority").CopyToDataTable();
+            DataTable dtCloned = dtTable.Clone();
+            dtCloned.Columns["Priority"].DataType = typeof(Int32);
+            foreach (DataRow row in dtTable.Rows)
+            {
+                dtCloned.ImportRow(row);
+            }
 
-            this.DataSource = dtTable;
-            this.DataMember = dtTable.TableName;
+            dtCloned = dtCloned.Select("", "Priority").CopyToDataTable();
 
+            this.DataSource = dtCloned;
+            this.DataMember = dtCloned.TableName;
+            
             this.lblName.DataBindings.Add("Text", this.DataSource, "Goals.Name");
             this.lblStartYear.DataBindings.Add("Text", this.DataSource, "Goals.StartYear");
             this.lblEndYear.DataBindings.Add("Text", this.DataSource, "Goals.EndYear");
@@ -51,14 +60,13 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             this.lblFutureCost.DataBindings.Add("Text", this.DataSource, "Goals.FutureValue");
             this.lblRecurrence.DataBindings.Add("Text", this.DataSource, "Goals.Recurrence");
 
-
             DataRow[] drs = _dtGoals.Select("Category = 'Retirement'");
             if (drs.Count() > 0)
             {
                 this.xrRetirementGoal.Text = drs[0]["Name"].ToString();
                 this.lblRetirementStartYear.Text = drs[0]["StartYear"].ToString();
                 this.lblRetirementEndYear.Text = drs[0]["EndYear"].ToString();
-                this.lblRetirementInflation.Text = drs[0]["InflationRate"].ToString();
+                this.lblRetirementInflation.Text = drs[0]["InflationRate"].ToString() + " %";
                
                 this.lblRetirementPriority.Text = drs[0]["Priority"].ToString();
                
@@ -191,29 +199,58 @@ namespace FinancialPlannerClient.PlanOptions.Reports
 
         private void lblRecurrence_AfterPrint(object sender, EventArgs e)
         {
-
             if (!string.IsNullOrEmpty(lblRecurrence.Text))
             {
                 if (int.Parse(lblRecurrence.Text) > 1)
                 {
                     xrGroupTable.Visible = true;
                     this.lblName.DataBindings.Add("Text", this.DataSource, "Goals.Name");
-                    xrGroupLabel.Text = string.Format("{0} {1} or Rs.{2} each", lblRecurrence.Text, lblName.Text,(double.Parse(lblPresentCost.Text) / int.Parse(lblRecurrence.Text)));
+                    xrGroupLabel.Text = string.Format("{0} {1} or Rs.{2} each", lblRecurrence.Text, lblName.Text, (double.Parse(lblPresentCost.Text) / int.Parse(lblRecurrence.Text)));
                     xrGroupLabel2.Text = string.Format("Total fund need for {0} {1}", lblRecurrence.Text, lblName.Text);
                     xrGroupTable.HeightF = 25;
                     xrGroupLabel.BackColor = System.Drawing.Color.LightGreen;
-                    xrGroupLabel2.BackColor = System.Drawing.Color.LightGreen; 
+                    xrGroupLabel2.BackColor = System.Drawing.Color.LightGreen;
                 }
                 else
                 {
-                    xrGroupTable.Visible = true;
-                    xrGroupLabel.Text = "";
-                    xrGroupLabel2.Text = "";
-                    xrGroupLabel.BackColor = System.Drawing.Color.White;
-                    xrGroupLabel2.BackColor = System.Drawing.Color.White;
-                    //xrGroupTable.HeightF = 0;
+                    xrGroupTable.Visible = false;
+                    //xrGroupLabel.Text = "";
+                    //xrGroupLabel2.Text = "";
+                    //xrGroupLabel.BackColor = System.Drawing.Color.White;
+                    //xrGroupLabel2.BackColor = System.Drawing.Color.White;
+                    xrGroupTable.HeightF = 0;
                 }
             }
+        }
+
+        private void lblInflation_AfterPrint(object sender, EventArgs e)
+        {
+            lblInflation.Text = lblInflation.Text + " %";
+        }
+
+        private void lblInflation_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            lblInflation.Text = lblInflation.Text + " %";
+        }
+
+        private void lblRecurrence_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            
+        }
+
+        private void lblFutureCost_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            //lblFutureCost.Text = string.Format(lblFutureCost.Text,"#,###");
+        }
+
+        private void lblPresentCost_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            //lblPresentCost.Text = string.Format(lblPresentCost.Text, "#,###");
+        }
+
+        private void xrGroupLabel_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+
         }
     }
 }

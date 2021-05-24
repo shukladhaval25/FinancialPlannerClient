@@ -158,18 +158,21 @@ namespace FinancialPlannerClient.CurrentStatus
 
         internal void SetGrid(DataGridView dtGridPPF)
         {
-            dtGridPPF.Columns["ID"].Visible = false;
-            dtGridPPF.Columns["PID"].Visible = false;
-            dtGridPPF.Columns["InvesterName"].HeaderText = "Investor Name";
-            dtGridPPF.Columns["AccountNo"].HeaderText = "Account No";
-            dtGridPPF.Columns["Bank"].HeaderText = "Bank";
-            dtGridPPF.Columns["GoalId"].HeaderText = "Mapped Goal";
-            dtGridPPF.Columns["CreatedBy"].Visible = false;
-            dtGridPPF.Columns["CreatedOn"].Visible = false;
-            dtGridPPF.Columns["UpdatedBy"].Visible = false;
-            dtGridPPF.Columns["UpdatedOn"].Visible = false;
-            dtGridPPF.Columns["UpdatedByUserName"].Visible = false;
-            dtGridPPF.Columns["MachineName"].Visible = false;
+            if (dtGridPPF.Rows.Count > 0)
+            {
+                dtGridPPF.Columns["ID"].Visible = false;
+                dtGridPPF.Columns["PID"].Visible = false;
+                dtGridPPF.Columns["InvesterName"].HeaderText = "Investor Name";
+                dtGridPPF.Columns["AccountNo"].HeaderText = "Account No";
+                dtGridPPF.Columns["Bank"].HeaderText = "Bank";
+                dtGridPPF.Columns["GoalId"].HeaderText = "Mapped Goal";
+                dtGridPPF.Columns["CreatedBy"].Visible = false;
+                dtGridPPF.Columns["CreatedOn"].Visible = false;
+                dtGridPPF.Columns["UpdatedBy"].Visible = false;
+                dtGridPPF.Columns["UpdatedOn"].Visible = false;
+                dtGridPPF.Columns["UpdatedByUserName"].Visible = false;
+                dtGridPPF.Columns["MachineName"].Visible = false;
+            }
         }
 
         private void LogDebug(string methodName, Exception ex)

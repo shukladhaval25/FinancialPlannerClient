@@ -6,6 +6,7 @@ using FinancialPlannerClient.PlannerInfo;
 using FinancialPlannerClient.RiskProfile;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Diagnostics;
 using System.Reflection;
 
@@ -363,10 +364,20 @@ namespace FinancialPlannerClient.PlanOptions
                     {
                         int years = getRemainingYearsFromPlanStartYear();
                         futureValueOfGoal = futureValue(_goal.Amount + _goal.OtherAmount, _goal.InflationRate, years);
+                        //double totalPostReirementExp = getPostRetirementExpTotal();
                     }
                 }
             }
             return futureValueOfGoal;
+        }
+
+        private double getPostRetirementExpTotal()
+        {
+            PostRetirementCashFlowService postRetirementCashFlowService =
+                             new PostRetirementCashFlowService(this._planner, cashFlowService);
+            DataTable dtPostRetirementCashFlow =  postRetirementCashFlowService.GetPostRetirementCashFlowData();
+            CashFlowCalculation cashFlowCalculation = cashFlowService.GetCashFlowCalculation();
+            return 0;
         }
 
         private double getTotalMappedInstrumentValue()
