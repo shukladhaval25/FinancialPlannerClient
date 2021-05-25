@@ -229,6 +229,7 @@
             this.xrTableCell14.Dpi = 100F;
             this.xrTableCell14.Name = "xrTableCell14";
             this.xrTableCell14.Weight = 1.210527120723885D;
+            this.xrTableCell14.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.xrTableCell14_BeforePrint);
             // 
             // xrTableRow9
             // 
@@ -252,6 +253,7 @@
             this.xrTableCell16.StylePriority.UseTextAlignment = false;
             this.xrTableCell16.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
             this.xrTableCell16.Weight = 1.210527120723885D;
+            this.xrTableCell16.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.xrTableCell16_BeforePrint);
             // 
             // xrTableRow10
             // 
@@ -275,6 +277,7 @@
             this.xrTableCell18.StylePriority.UseTextAlignment = false;
             this.xrTableCell18.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
             this.xrTableCell18.Weight = 1.210527120723885D;
+            this.xrTableCell18.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.xrTableCell18_BeforePrint);
             // 
             // xrTableRow11
             // 
@@ -298,6 +301,7 @@
             this.xrTableCell20.StylePriority.UseTextAlignment = false;
             this.xrTableCell20.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
             this.xrTableCell20.Weight = 1.210527120723885D;
+            this.xrTableCell20.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.xrTableCell20_BeforePrint);
             // 
             // xrTableRow12
             // 
@@ -321,6 +325,7 @@
             this.xrTableCell22.StylePriority.UseTextAlignment = false;
             this.xrTableCell22.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
             this.xrTableCell22.Weight = 1.210527120723885D;
+            this.xrTableCell22.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.xrTableCell22_BeforePrint);
             // 
             // xrTableRow13
             // 
@@ -344,6 +349,7 @@
             this.xrTableCell24.StylePriority.UseTextAlignment = false;
             this.xrTableCell24.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
             this.xrTableCell24.Weight = 1.210527120723885D;
+            this.xrTableCell24.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.xrTableCell24_BeforePrint);
             // 
             // xrTableRow14
             // 
@@ -367,6 +373,7 @@
             this.xrTableCell26.StylePriority.UseTextAlignment = false;
             this.xrTableCell26.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
             this.xrTableCell26.Weight = 1.210527120723885D;
+            this.xrTableCell26.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.xrTableCell26_BeforePrint);
             // 
             // xrTableRow15
             // 
@@ -390,6 +397,7 @@
             this.xrTableCell28.StylePriority.UseTextAlignment = false;
             this.xrTableCell28.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
             this.xrTableCell28.Weight = 1.210527120723885D;
+            this.xrTableCell28.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.xrTableCell28_BeforePrint);
             // 
             // xrTableRow16
             // 
@@ -413,6 +421,7 @@
             this.xrTableCell30.StylePriority.UseTextAlignment = false;
             this.xrTableCell30.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
             this.xrTableCell30.Weight = 1.210527120723885D;
+            this.xrTableCell30.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.xrTableCell30_BeforePrint);
             // 
             // xrTableRow17
             // 
@@ -451,6 +460,7 @@
             this.lblDebtTotal.StylePriority.UseTextAlignment = false;
             this.lblDebtTotal.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
             this.lblDebtTotal.Weight = 1.210527120723885D;
+            this.lblDebtTotal.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.lblDebtTotal_BeforePrint);
             // 
             // xrTableEquity
             // 
@@ -497,6 +507,7 @@
             this.lblNetWorth.Dpi = 100F;
             this.lblNetWorth.Name = "lblNetWorth";
             this.lblNetWorth.Weight = 1.210527120723885D;
+            this.lblNetWorth.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.lblNetWorth_BeforePrint);
             // 
             // xrTableRow2
             // 
@@ -520,6 +531,7 @@
             this.xrTableCell2.StylePriority.UseTextAlignment = false;
             this.xrTableCell2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
             this.xrTableCell2.Weight = 1.210527120723885D;
+            this.xrTableCell2.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.xrTableCell2_BeforePrint);
             // 
             // xrTableRow3
             // 
@@ -543,6 +555,7 @@
             this.xrTableCell4.StylePriority.UseTextAlignment = false;
             this.xrTableCell4.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
             this.xrTableCell4.Weight = 1.210527120723885D;
+            this.xrTableCell4.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.xrTableCell4_BeforePrint);
             // 
             // xrTableRow4
             // 
@@ -566,6 +579,7 @@
             this.xrTableCell6.StylePriority.UseTextAlignment = false;
             this.xrTableCell6.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
             this.xrTableCell6.Weight = 1.210527120723885D;
+            this.xrTableCell6.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.xrTableCell6_BeforePrint);
             // 
             // xrTableRow5
             // 
@@ -589,6 +603,7 @@
             this.xrTableCell8.StylePriority.UseTextAlignment = false;
             this.xrTableCell8.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
             this.xrTableCell8.Weight = 1.210527120723885D;
+            this.xrTableCell8.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.xrTableCell8_BeforePrint);
             // 
             // xrTableRow6
             // 
@@ -623,6 +638,7 @@
             this.lblEquityTotal.StylePriority.UseTextAlignment = false;
             this.lblEquityTotal.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
             this.lblEquityTotal.Weight = 1.210527120723885D;
+            this.lblEquityTotal.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.lblEquityTotal_BeforePrint);
             // 
             // xrTable2
             // 

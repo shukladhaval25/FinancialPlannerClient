@@ -293,6 +293,7 @@
             xrSummary2.Running = DevExpress.XtraReports.UI.SummaryRunning.Group;
             this.lblTotalGroupAmt.Summary = xrSummary2;
             this.lblTotalGroupAmt.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+            this.lblTotalGroupAmt.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.lblTotalGroupAmt_BeforePrint);
             // 
             // lblTotalGroupPerValue
             // 
@@ -356,6 +357,7 @@
             xrSummary4.Running = DevExpress.XtraReports.UI.SummaryRunning.Report;
             this.lblPageTotal.Summary = xrSummary4;
             this.lblPageTotal.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+            this.lblPageTotal.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.lblPageTotal_BeforePrint);
             // 
             // CurrentStatusDetails
             // 

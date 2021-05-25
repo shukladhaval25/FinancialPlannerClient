@@ -1,6 +1,7 @@
 ﻿using FinancialPlanner.Common.Model;
 using FinancialPlanner.Common.Model.PlanOptions;
 using FinancialPlannerClient.CashFlowManager;
+using System;
 using System.Data;
 using System.Drawing;
 
@@ -84,6 +85,118 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         {
             int colIndex = dtcashFlow.Columns.IndexOf(TOTAL_ANNAUL_LOAN_COLUMN);
             return colIndex > 0 ? colIndex : -1;
+        }
+
+        private void lblCashFlowForGoal1_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(lblCashFlowForGoal1.Text))
+            {
+                lblCashFlowForGoal1.Text = String.Format("{0:#,###}", double.Parse(lblCashFlowForGoal1.Text));
+            }
+        }
+
+        private void lblCashFlowForGoal2_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(lblCashFlowForGoal2.Text))
+            {
+                lblCashFlowForGoal2.Text = String.Format("{0:#,###}", double.Parse(lblCashFlowForGoal2.Text));
+            }
+        }
+
+        private void lblCashFlowForGoal3_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(lblCashFlowForGoal3.Text))
+            {
+                lblCashFlowForGoal3.Text = String.Format("{0:#,###}", double.Parse(lblCashFlowForGoal3.Text));
+            }
+        }
+
+        private void lblCashFlowForGoal4_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(lblCashFlowForGoal4.Text))
+            {
+                lblCashFlowForGoal4.Text = String.Format("{0:#,###}", double.Parse(lblCashFlowForGoal4.Text));
+            }
+        }
+
+        private void lblCashFlowForGoal5_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(lblCashFlowForGoal5.Text))
+            {
+                lblCashFlowForGoal5.Text = String.Format("{0:#,###}", double.Parse(lblCashFlowForGoal5.Text));
+            }
+        }
+
+        private void lblCashFlowForGoal6_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            //if (!string.IsNullOrEmpty(lblCashFlowForGoal3.Text))
+            //{
+            //    lblCashFlowForGoal6.Text = String.Format("{0:#,###}", double.Parse(lblCashFlowForGoal6.Text));
+            //}
+        }
+
+        private void lblCashFlowForGoal7_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(lblCashFlowForGoal7.Text))
+            {
+                lblCashFlowForGoal7.Text = String.Format("{0:#,###}", double.Parse(lblCashFlowForGoal7.Text));
+            }
+        }
+
+        private void lblCashFlowForGoal8_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(lblCashFlowForGoal8.Text))
+            {
+                lblCashFlowForGoal8.Text = String.Format("{0:#,###}", double.Parse(lblCashFlowForGoal8.Text));
+            }
+        }
+
+        private void xrTableCell14_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(xrTableCell14.Text))
+            {
+                xrTableCell14.Text = String.Format("{0:#,###}", double.Parse(xrTableCell14.Text));
+            }
+        }
+
+        private void xrTableCell18_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(xrTableCell18.Text))
+            {
+                xrTableCell18.Text = String.Format("{0:#,###}", double.Parse(xrTableCell18.Text));
+            }
+        }
+
+        private void xrTableCell16_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(xrTableCell16.Text))
+            {
+                xrTableCell16.Text = String.Format("{0:#,###}", double.Parse(xrTableCell16.Text));
+            }
+        }
+
+        private void xrTableCell9_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(xrTableCell9.Text))
+            {
+                xrTableCell9.Text = String.Format("{0:#,###}", double.Parse(xrTableCell9.Text));
+            }
+        }
+
+        private void xrTableCell11_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(xrTableCell11.Text))
+            {
+                xrTableCell11.Text = String.Format("{0:#,###}", double.Parse(xrTableCell11.Text));
+            }
+        }
+
+        private void lblTotalSurplusForGoals_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(lblTotalSurplusForGoals.Text))
+            {
+                lblTotalSurplusForGoals.Text = String.Format("{0:#,###}", double.Parse(lblTotalSurplusForGoals.Text));
+            }
         }
 
         private void loadTotalIncomeDataAndSetChart()

@@ -172,6 +172,7 @@
             this.lblGoalAchiveTillDate.StylePriority.UseTextAlignment = false;
             this.lblGoalAchiveTillDate.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.lblGoalAchiveTillDate.Weight = 0.62036230778943535D;
+            this.lblGoalAchiveTillDate.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.lblGoalAchiveTillDate_BeforePrint);
             // 
             // lblGoalReachedPercentage
             // 

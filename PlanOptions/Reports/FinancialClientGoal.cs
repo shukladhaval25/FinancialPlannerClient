@@ -241,16 +241,32 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         private void lblFutureCost_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
             //lblFutureCost.Text = string.Format(lblFutureCost.Text,"#,###");
+            lblFutureCost.Text = String.Format("{0:#,###}", double.Parse(lblFutureCost.Text));
         }
 
         private void lblPresentCost_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            //lblPresentCost.Text = string.Format(lblPresentCost.Text, "#,###");
+            lblPresentCost.Text = String.Format("{0:#,###}", double.Parse(lblPresentCost.Text));
         }
 
         private void xrGroupLabel_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
 
+        }
+
+        private void lblRetirementPresentCost_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            lblRetirementPresentCost.Text = String.Format("{0:#,###}", double.Parse(lblRetirementPresentCost.Text));
+        }
+
+        private void lblRetirementFutureCost_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            lblRetirementFutureCost.Text = String.Format("{0:#,###}", double.Parse(lblRetirementFutureCost.Text));
+        }
+
+        private void lblFirstYearRetirementExp_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            lblFirstYearRetirementExp.Text = String.Format("{0:#,###}", double.Parse(lblFirstYearRetirementExp.Text));
         }
     }
 }

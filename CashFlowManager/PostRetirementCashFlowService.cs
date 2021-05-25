@@ -632,7 +632,13 @@ namespace FinancialPlannerClient.CashFlowManager
                             }
                             else if (cashFlowService.GetCashFlowTable().Rows.Count > 0 && cashFlowService.GetCashFlowTable().Columns.Contains(exp.Item.ToString()))
                             {
-                                expAmt = double.Parse(cashFlowService.GetCashFlowTable().Rows[cashFlowService.GetCashFlowTable().Rows.Count - 1][exp.Item.ToString()].ToString());
+                                if (cashFlowService.GetCashFlowTable().Rows[cashFlowService.GetCashFlowTable().Rows.Count - 1][exp.Item.ToString()].ToString() != "") {
+                                    expAmt = double.Parse(cashFlowService.GetCashFlowTable().Rows[cashFlowService.GetCashFlowTable().Rows.Count - 1][exp.Item.ToString()].ToString());
+                                }
+                                else
+                                {
+                                    expAmt = exp.Amount;
+                                }
                             }
                             else
                             {

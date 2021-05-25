@@ -108,5 +108,163 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             expenseOutFlowChart.CreateDocument();
             this.xrSubreportExp.ReportSource = expenseOutFlowChart;
         }
+
+        private void lblAmount0_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            lblAmount0.Text = String.Format("{0:#,###}", double.Parse(lblAmount0.Text));
+        }
+
+        private void lblAmount1_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(lblAmount1.Text))
+            {
+                lblAmount1.Text = String.Format("{0:#,###}", double.Parse(lblAmount1.Text));
+            }
+        }
+
+        private void lblAmount2_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(lblAmount2.Text))
+            {
+                lblAmount2.Text = String.Format("{0:#,###}", double.Parse(lblAmount2.Text));
+            }
+        }
+
+        private void lblAmount3_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(lblAmount3.Text))
+            {
+                lblAmount3.Text = String.Format("{0:#,###}", double.Parse(lblAmount3.Text));
+            }
+        }
+
+        private void lblAmount5_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(lblAmount5.Text))
+            {
+                lblAmount5.Text = String.Format("{0:#,###}", double.Parse(lblAmount5.Text));
+            }
+        }
+
+        private void lblAmount6_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(lblAmount6.Text))
+            {
+                lblAmount6.Text = String.Format("{0:#,###}", double.Parse(lblAmount6.Text));
+            }
+        }
+
+        private void lblAmount7_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(lblAmount7.Text))
+            {
+                lblAmount7.Text = String.Format("{0:#,###}", double.Parse(lblAmount7.Text));
+            }
+        }
+
+        private void xrLabelIncomeTaxAmount_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(xrLabelIncomeTaxAmount.Text))
+            {
+                xrLabelIncomeTaxAmount.Text = String.Format("{0:#,###}", double.Parse(xrLabelIncomeTaxAmount.Text));
+            }
+        }
+
+        private void xrTableCell28_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(xrTableCell28.Text))
+            {
+                xrTableCell28.Text = String.Format("{0:#,###}", double.Parse(xrTableCell28.Text));
+            }
+        }
+
+        private void xrTableCell2_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(xrTableCell2.Text))
+            { 
+                xrTableCell2.Text = String.Format("{0:#,###}", double.Parse(xrTableCell2.Text));
+            }
+        }
+
+        private void xrTableCell4_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(xrTableCell4.Text))
+            {
+                xrTableCell4.Text = String.Format("{0:#,###}", double.Parse(xrTableCell4.Text));
+            }
+        }
+
+        private void xrTableCell6_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(xrTableCell6.Text))
+            {
+                xrTableCell6.Text = String.Format("{0:#,###}", double.Parse(xrTableCell6.Text));
+            }
+        }
+
+        private void xrTableCell8_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+
+            if (!string.IsNullOrEmpty(xrTableCell8.Text))
+            {
+                xrTableCell8.Text = String.Format("{0:#,###}", double.Parse(xrTableCell8.Text));
+            }
+        }
+
+        private void xrTableCell10_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(xrTableCell10.Text))
+            {
+                xrTableCell10.Text = String.Format("{0:#,###}", double.Parse(xrTableCell10.Text));
+            }
+        }
+
+        private void xrTableCell14_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(xrTableCell14.Text))
+            {
+                xrTableCell14.Text = String.Format("{0:#,###}", double.Parse(xrTableCell14.Text));
+            }
+        }
+
+        private void xrTableCell16_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(xrTableCell16.Text))
+            {
+                xrTableCell16.Text = String.Format("{0:#,###}", double.Parse(xrTableCell16.Text));
+            }
+        }
+
+        private void xrTableCell24_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(xrTableCell24.Text))
+            {
+                xrTableCell24.Text = String.Format("{0:#,###}", double.Parse(xrTableCell24.Text));
+            }
+        }
+
+        private void xrTableCell22_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(xrTableCell22.Text))
+            {
+                xrTableCell22.Text = String.Format("{0:#,###}", double.Parse(xrTableCell22.Text));
+            }
+        }
+
+        private void lblExpTotal_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(lblExpTotal.Text))
+            {
+                lblExpTotal.Text = String.Format("{0:#,###}", double.Parse(lblExpTotal.Text));
+            }
+        }
+
+        private void xrLabelNetTotalIncome_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(xrLabelNetTotalIncome.Text))
+            {
+                xrLabelNetTotalIncome.Text = String.Format("{0:#,###}", double.Parse(xrLabelNetTotalIncome.Text));
+            }
+        }
     }
 }

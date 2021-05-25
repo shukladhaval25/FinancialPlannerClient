@@ -65,6 +65,22 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                 .Sum(x => Convert.ToDouble(x["Amount"]));
         }
 
+        private void lblTotalGroupAmt_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(lblTotalGroupAmt.Text))
+            {
+                lblTotalGroupAmt.Text = String.Format("{0:#,###}", double.Parse(lblTotalGroupAmt.Text));
+            }
+        }
+
+        private void lblPageTotal_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(lblPageTotal.Text))
+            {
+                lblPageTotal.Text = String.Format("{0:#,###}", double.Parse(lblPageTotal.Text));
+            }
+        }
+
         private void lblPercentageValue_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
             //lblPercentageValue.Text = (System.Math.Round((double.Parse(lblAmount.Text) * 100) / totalAmount)).ToString() + " %"; 
@@ -72,6 +88,10 @@ namespace FinancialPlannerClient.PlanOptions.Reports
 
         private void lblTotalGroupPerValue_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
+            if (!string.IsNullOrEmpty(lblTotalGroupPerValue.Text))
+            {
+                lblTotalGroupPerValue.Text = String.Format("{0:#,###}", double.Parse(lblTotalGroupPerValue.Text));
+            }
             //lblTotalGroupPerValue.Text = (System.Math.Round((double.Parse(lblTotalGroupAmt.Text) * 100) / totalAmount)).ToString() + " %";
         }
     }

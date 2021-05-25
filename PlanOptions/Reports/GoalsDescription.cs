@@ -121,5 +121,45 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             debuggerInfo.ExceptionInfo = ex;
             Logger.LogDebug(debuggerInfo);
         }
+
+        private void lblPresentValue_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(lblPresentValue.Text))
+            {
+                lblPresentValue.Text = String.Format("{0:#,###}", double.Parse(lblPresentValue.Text));
+            }
+        }
+
+        private void lblGoalFutureValue_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(lblGoalFutureValue.Text))
+            {
+                lblGoalFutureValue.Text = String.Format("{0:#,###}", double.Parse(lblGoalFutureValue.Text));
+            }
+        }
+
+        private void lblMappedAssets_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(lblMappedAssets.Text))
+            {
+                lblMappedAssets.Text = String.Format("{0:#,###}", double.Parse(lblMappedAssets.Text));
+            }
+        }
+
+        private void lblLoanAmt_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(lblLoanAmt.Text))
+            {
+                lblLoanAmt.Text = String.Format("{0:#,###}", double.Parse(lblLoanAmt.Text));
+            }
+        }
+
+        private void lblCurrentSurplus_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(lblCurrentSurplus.Text))
+            {
+                lblCurrentSurplus.Text = String.Format("{0:#,###}", double.Parse(lblCurrentSurplus.Text));
+            }
+        }
     }
 }

@@ -299,7 +299,7 @@ namespace FinancialPlannerClient.CashFlowManager
 
             if (currentYearSurplusAmount < 0)
             {
-                for(int index = _dtCashFlow.Rows.Count -1; index > 0; index--)
+                for(int index = _dtCashFlow.Rows.Count -1; index >= 0; index--)
                 {
                     double previousYearCorpusFund = 0;
                     double.TryParse(_dtCashFlow.Rows[index]["Cumulative Corpus Fund"].ToString(),out previousYearCorpusFund);
@@ -311,13 +311,17 @@ namespace FinancialPlannerClient.CashFlowManager
                         _dtCashFlow.Rows[index]["Adjusted Amount"] = previousYearAdjustedAmount + System.Math.Abs(currentYearSurplusAmount);
                         break;
                     }
-                    //else
-                    //{
-
-                    //}
+                    else
+                    {
+                        dr["Corpus Fund"] = currentYearSurplusAmount;
+                        if (_dtCashFlow.Rows.Count == 1)
+                        {
+                            dr["Cumulative Corpus Fund"] = currentYearSurplusAmount + double.Parse(_dtCashFlow.Rows[_dtCashFlow.Rows.Count - 1]["Corpus Fund"].ToString());
+                            break;
+                        }
+                    }
                 }
             }
-            
         }
 
         private void validateSurplusAmount(int years,DataRow dr)
@@ -423,7 +427,9 @@ namespace FinancialPlannerClient.CashFlowManager
                     double.Parse(_dtCashFlow.Rows[_dtCashFlow.Rows.Count - 1]["Cumulative Corpus Fund"].ToString());
                 double returnRate = (double)_riskProfileInfo.GetRiskProfileReturnRatio(this._riskProfileId, noOfYearsForCalculation - (years - 1));
                 double currentYearCorpusFund = (string.IsNullOrEmpty(dr["Corpus Fund"].ToString()) ? 0 : double.Parse(dr["Corpus Fund"].ToString()));
-                double cumulativeCorpusFund = currentYearCorpusFund + previousYearCumulativeCorpusFund + ((previousYearCumulativeCorpusFund * returnRate) / (100));
+                double cumulativeCorpusFund = 0;
+                cumulativeCorpusFund = ((currentYearCorpusFund + previousYearCumulativeCorpusFund) > 0) ?
+                currentYearCorpusFund + previousYearCumulativeCorpusFund + ((previousYearCumulativeCorpusFund * returnRate) / (100)) : (currentYearCorpusFund + previousYearCumulativeCorpusFund);
                 dr["Cumulative Corpus Fund"] = Math.Round(cumulativeCorpusFund, 2);
             }
         }
@@ -710,6 +716,8 @@ namespace FinancialPlannerClient.CashFlowManager
                 double totalLoanEmi = addGoals(dr, totalpostTaxIncome, totalExpenses, totalLoan);
 
                 dr["Surplus Amount"] = totalpostTaxIncome - (totalExpenses + totalLoan + totalLoanEmi);
+                dr["Corpus Fund"] = totalpostTaxIncome - (totalExpenses + totalLoan + totalLoanEmi);
+                dr["Cumulative Corpus Fund"] = totalpostTaxIncome - (totalExpenses + totalLoan + totalLoanEmi);
                 _dtCashFlow.Rows.Add(dr);
             }
             catch (Exception ex)

@@ -213,6 +213,11 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             lblProjectionCompleted.Text = lblProjectionCompleted.Text + " %";
         }
 
+        private void lblGoalAchiveTillDate_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            lblGoalAchiveTillDate.Text = String.Format("{0:#,###}", double.Parse(lblGoalAchiveTillDate.Text));
+        }
+
         private double getCurrentStatusFundForMappedGoal(int goalId)
         {
             CurrentStatusInfo csInfo = new CurrentStatusInfo();

@@ -72,5 +72,133 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                 rowIndexForDebt++;
             }
         }
+
+        private void lblNetWorth_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(lblNetWorth.Text))
+            {
+                lblNetWorth.Text = String.Format("{0:#,###}", double.Parse(lblNetWorth.Text));
+            }
+        }
+
+        private void xrTableCell2_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(xrTableCell2.Text))
+            {
+                xrTableCell2.Text = String.Format("{0:#,###}", double.Parse(xrTableCell2.Text));
+            }
+        }
+
+        private void xrTableCell4_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(xrTableCell4.Text))
+            {
+                xrTableCell4.Text = String.Format("{0:#,###}", double.Parse(xrTableCell4.Text));
+            }
+        }
+
+        private void xrTableCell6_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(xrTableCell6.Text))
+            {
+                xrTableCell6.Text = String.Format("{0:#,###}", double.Parse(xrTableCell6.Text));
+            }
+        }
+
+        private void xrTableCell8_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(xrTableCell8.Text))
+            {
+                xrTableCell8.Text = String.Format("{0:#,###}", double.Parse(xrTableCell8.Text));
+            }
+        }
+
+        private void lblEquityTotal_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(lblEquityTotal.Text))
+            {
+                lblEquityTotal.Text = String.Format("{0:#,###}", double.Parse(lblEquityTotal.Text));
+            }
+        }
+
+        private void xrTableCell14_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(xrTableCell14.Text))
+            {
+                xrTableCell14.Text = String.Format("{0:#,###}", double.Parse(xrTableCell14.Text));
+            }
+        }
+
+        private void xrTableCell16_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(xrTableCell16.Text))
+            {
+                xrTableCell16.Text = String.Format("{0:#,###}", double.Parse(xrTableCell16.Text));
+            }
+        }
+
+        private void xrTableCell18_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(xrTableCell18.Text))
+            {
+                xrTableCell18.Text = String.Format("{0:#,###}", double.Parse(xrTableCell18.Text));
+            }
+        }
+
+        private void xrTableCell20_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(xrTableCell20.Text))
+            {
+                xrTableCell20.Text = String.Format("{0:#,###}", double.Parse(xrTableCell20.Text));
+            }
+        }
+
+        private void xrTableCell22_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(xrTableCell22.Text))
+            {
+                xrTableCell22.Text = String.Format("{0:#,###}", double.Parse(xrTableCell22.Text));
+            }
+        }
+
+        private void xrTableCell24_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(xrTableCell24.Text))
+            {
+                xrTableCell24.Text = String.Format("{0:#,###}", double.Parse(xrTableCell24.Text));
+            }
+        }
+
+        private void xrTableCell26_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(xrTableCell26.Text))
+            {
+                xrTableCell26.Text = String.Format("{0:#,###}", double.Parse(xrTableCell26.Text));
+            }
+        }
+
+        private void xrTableCell28_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(xrTableCell28.Text))
+            {
+                xrTableCell28.Text = String.Format("{0:#,###}", double.Parse(xrTableCell28.Text));
+            }
+        }
+
+        private void xrTableCell30_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(xrTableCell30.Text))
+            {
+                xrTableCell30.Text = String.Format("{0:#,###}", double.Parse(xrTableCell30.Text));
+            }
+        }
+
+        private void lblDebtTotal_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(lblDebtTotal.Text))
+            {
+                lblDebtTotal.Text = String.Format("{0:#,###}", double.Parse(lblDebtTotal.Text));
+            }
+        }
     }
 }
