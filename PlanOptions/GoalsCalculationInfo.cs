@@ -233,6 +233,13 @@ namespace FinancialPlannerClient.PlanOptions
                 double freshInvestment = goalPlanning.ActualFreshInvestment;
                
                 dr["Fresh Investment"] = Math.Round( freshInvestment);
+
+                if (_goal.Category.Equals("Retirement") && freshInvestment == 0)
+                {
+                     freshInvestment = getFreshInvestmentForRetirementIfSurplusIsNegative(currentYear);
+                    dr["Fresh Investment"] = Math.Round(freshInvestment);
+                }
+
                 if (currentYear == goalYear)
                 {
                     dr["Assets Mapping"] = goalsValueCal.FutureValueOfMappedNonFinancialAssets;
@@ -251,6 +258,17 @@ namespace FinancialPlannerClient.PlanOptions
                 dr["Portfolio Return"] = returnRatio;
                 _dtGoalCalculation.Rows.Add(dr);
             }
+        }
+
+        private double getFreshInvestmentForRetirementIfSurplusIsNegative(int currentYear)
+        {
+            DataRow[] dr = this.CashFlowService.GetCashFlowTable().Select("StartYear = '" + currentYear + "'");
+            if (dr.Count() > 0)
+            {
+                double investmentAmt = (string.IsNullOrEmpty(dr[0][string.Format("{0} - {1}", _goal.Priority, _goal.Name)].ToString())) ? 0 : double.Parse((dr[0][string.Format("{0} - {1}", _goal.Priority, _goal.Name)].ToString()));
+                 return investmentAmt;
+            }
+            return 0;
         }
 
         private void addMappedCurrentStatusValue(GoalsValueCalculationInfo goalsValueCal)
@@ -290,7 +308,14 @@ namespace FinancialPlannerClient.PlanOptions
             else
             {
                 portfolioValue = GetProfileValue();
-                portfolioValue = portfolioValue + freshInv + ((portfolioValue * (double)returnRatio) / 100);
+                if (freshInv > 0)
+                {
+                    portfolioValue = portfolioValue + freshInv + ((portfolioValue * (double)returnRatio) / 100);
+                }
+                else
+                {
+                    portfolioValue = portfolioValue + freshInv;
+                }
             }
             return System.Math.Round(portfolioValue);
         }
@@ -300,7 +325,7 @@ namespace FinancialPlannerClient.PlanOptions
             if (_goal.Category == "Retirement")
             {
                 DataRow[] drs = dtCashFlow.Select("StartYear ='" + _dtGoalCalculation.Rows[_dtGoalCalculation.Rows.Count - 1]["Year"].ToString() + "'");
-                if (drs != null)
+                if (drs != null && drs.Count() > 0)
                 {
                     DataRow dr = drs[0];
                     double adjustedAmount = 0;
@@ -315,10 +340,30 @@ namespace FinancialPlannerClient.PlanOptions
                     else
                     {
                         portfolioValue = double.Parse(_dtGoalCalculation.Rows[_dtGoalCalculation.Rows.Count - 1]["Portfolio Value"].ToString());
-                        portfolioValue = portfolioValue + freshInv + ((portfolioValue * (double)returnRatio) / 100);
+                        if (portfolioValue >= 0 && freshInv > 0)
+                        {
+                            portfolioValue = portfolioValue + freshInv + ((portfolioValue * (double)returnRatio) / 100);
+                        }
+                        else
+                        {
+                            portfolioValue = portfolioValue + freshInv;
+                        }
                         double goalFutureValue = GetGoalFutureValue(_goal);
                     }
 
+                }
+                else
+                {
+                    portfolioValue = double.Parse(_dtGoalCalculation.Rows[_dtGoalCalculation.Rows.Count - 1]["Portfolio Value"].ToString());
+                    if (portfolioValue >= 0 && freshInv >= 0)
+                    {
+                        portfolioValue = portfolioValue + freshInv + ((portfolioValue * (double)returnRatio) / 100);
+                    }
+                    else
+                    {
+                        portfolioValue = portfolioValue + freshInv;
+                    }
+                    double goalFutureValue = GetGoalFutureValue(_goal);
                 }
             }
             else

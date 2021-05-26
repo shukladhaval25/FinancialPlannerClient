@@ -314,6 +314,11 @@ namespace FinancialPlannerClient.CashFlowManager
                     else
                     {
                         dr["Corpus Fund"] = currentYearSurplusAmount;
+                        Goals goal = _cashFlowCalculation.LstGoals.First(x => x.Category == "Retirement");
+                        if (goal != null)
+                        {
+                            dr[string.Format("{0} - {1}", goal.Priority, goal.Name)] = currentYearSurplusAmount;
+                        }
                         if (_dtCashFlow.Rows.Count == 1)
                         {
                             dr["Cumulative Corpus Fund"] = currentYearSurplusAmount + double.Parse(_dtCashFlow.Rows[_dtCashFlow.Rows.Count - 1]["Corpus Fund"].ToString());
@@ -714,10 +719,29 @@ namespace FinancialPlannerClient.CashFlowManager
                 double totalExpenses = addExpenses(dr);
                 double totalLoan = addLoans(dr);
                 double totalLoanEmi = addGoals(dr, totalpostTaxIncome, totalExpenses, totalLoan);
-
                 dr["Surplus Amount"] = totalpostTaxIncome - (totalExpenses + totalLoan + totalLoanEmi);
-                dr["Corpus Fund"] = totalpostTaxIncome - (totalExpenses + totalLoan + totalLoanEmi);
-                dr["Cumulative Corpus Fund"] = totalpostTaxIncome - (totalExpenses + totalLoan + totalLoanEmi);
+
+                Goals goal = _cashFlowCalculation.LstGoals.First(x => x.Category == "Retirement");
+                if (goal != null)
+                {
+                    if (dr[string.Format("{0} - {1}", goal.Priority, goal.Name)].ToString() != "")
+                    {
+                        dr["Corpus Fund"] = double.Parse(dr[string.Format("{0} - {1}", goal.Priority, goal.Name)].ToString());
+                        dr["Cumulative Corpus Fund"] = double.Parse(dr[string.Format("{0} - {1}", goal.Priority, goal.Name)].ToString());
+                    }
+                    else
+                    {
+                        dr["Corpus Fund"] = 0;
+                        dr["Cumulative Corpus Fund"] = 0;
+                    }
+                }
+                if (totalpostTaxIncome - (totalExpenses + totalLoan + totalLoanEmi) < 0)
+                {
+                    if (goal != null)
+                    {
+                        dr[string.Format("{0} - {1}", goal.Priority, goal.Name)] = totalpostTaxIncome - (totalExpenses + totalLoan + totalLoanEmi);
+                    }
+                }
                 _dtCashFlow.Rows.Add(dr);
             }
             catch (Exception ex)

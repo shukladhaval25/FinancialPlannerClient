@@ -133,7 +133,7 @@ namespace FinancialPlannerClient.PlanOptions
             //if (totalAvailableCorpFund >= estitmatedCorpFund)
             //    progressBarRetGoalCompletion.Text = "100";
             //else
-            if (estitmatedCorpFund > 0 && totalAvailableCorpFund > 0)
+            if (estitmatedCorpFund > 0 && totalAvailableCorpFund != 0)
             {
                 
                 double goalComplitionPercentage = Math.Round(((100 * (totalAvailableCorpFund + assetsMappingValue)) / estitmatedCorpFund));
