@@ -102,54 +102,71 @@ namespace FinancialPlannerClient.PlanOptions.Reports
 
             for(int i=0;i< _dtGoals.Rows.Count;i++)
             {
-                string goalName = (_dtGoals.Rows[i]["Name"].ToString().Length >4) ? _dtGoals.Rows[i]["Name"].ToString().Substring(0, _dtGoals.Rows[i]["Name"].ToString().Length - 4).Trim():
+                string goalName = (_dtGoals.Rows[i]["Name"].ToString().Length > 4) ? _dtGoals.Rows[i]["Name"].ToString().Substring(0, _dtGoals.Rows[i]["Name"].ToString().Length - 4).Trim() :
                  _dtGoals.Rows[i]["Name"].ToString();
-                string goalCategory = _dtGoals.Rows[i]["Category"].ToString();
-                double amount = 0;
-                double futureValue = 0;
-                string endYear = "";
 
-                if (_dtGoals.Rows[i]["Recurrence"] != null & int.Parse(_dtGoals.Rows[i]["Recurrence"].ToString()) > 1 )
+                goalName = setGoalNameWithRecurranceValidation(i, goalName);
+                if (!groupOfGoal.Contains(goalName))
                 {
-                    //amount = amount + double.Parse(_dtGoals.Rows[i]["Amount"].ToString());
-                    //futureValue = futureValue + double.Parse(_dtGoals.Rows[i]["FutureValue"].ToString());
-                    for (int innerLoopIndex = i; innerLoopIndex < this._dtGoals.Rows.Count; innerLoopIndex++)
+                    string goalCategory = _dtGoals.Rows[i]["Category"].ToString();
+                    double amount = 0;
+                    double futureValue = 0;
+                    string endYear = "";
+                    int recurrence = 0;
+
+                    if (_dtGoals.Rows[i]["Recurrence"] != null & int.Parse(_dtGoals.Rows[i]["Recurrence"].ToString()) >= 1)
                     {
-                        if (_dtGoals.Rows[i]["Recurrence"].ToString().Equals(_dtGoals.Rows[innerLoopIndex]["Recurrence"].ToString()) &&
-                            _dtGoals.Rows[innerLoopIndex]["Category"].ToString().Equals(goalCategory) &&
-                            _dtGoals.Rows[innerLoopIndex]["Name"].ToString().Substring(0, _dtGoals.Rows[innerLoopIndex]["Name"].ToString().Length - 4).Trim().Equals(goalName))
+                        //amount = amount + double.Parse(_dtGoals.Rows[i]["Amount"].ToString());
+                        //futureValue = futureValue + double.Parse(_dtGoals.Rows[i]["FutureValue"].ToString());
+                        for (int innerLoopIndex = i; innerLoopIndex < this._dtGoals.Rows.Count; innerLoopIndex++)
                         {
-                            amount = amount + double.Parse(_dtGoals.Rows[innerLoopIndex]["Amount"].ToString());
-                            futureValue = futureValue + double.Parse(_dtGoals.Rows[innerLoopIndex]["FutureValue"].ToString());
-                            //dtGroupOfGoals.Rows.Add(_dtGoals.Rows[innerLoopIndex]);
-                            endYear = _dtGoals.Rows[innerLoopIndex]["StartYear"].ToString();
+                            if (_dtGoals.Rows[i]["Recurrence"].ToString().Equals(_dtGoals.Rows[innerLoopIndex]["Recurrence"].ToString()) &&
+                                _dtGoals.Rows[innerLoopIndex]["Category"].ToString().Equals(goalCategory) &&
+                                _dtGoals.Rows[innerLoopIndex]["Name"].ToString().Substring(0, _dtGoals.Rows[innerLoopIndex]["Name"].ToString().Length - 4).Trim().Equals(goalName))
+                            {
+                                amount = amount + double.Parse(_dtGoals.Rows[innerLoopIndex]["Amount"].ToString());
+                                futureValue = futureValue + double.Parse(_dtGoals.Rows[innerLoopIndex]["FutureValue"].ToString());
+                                //dtGroupOfGoals.Rows.Add(_dtGoals.Rows[innerLoopIndex]);
+                                endYear = _dtGoals.Rows[innerLoopIndex]["StartYear"].ToString();
+                                recurrence++;
+                            }
+                            else
+                            {
+                                if (_dtGoals.Rows[innerLoopIndex]["Name"].ToString().Trim().Equals(goalName.Trim()))
+                                {
+                                    amount = amount + double.Parse(_dtGoals.Rows[i]["Amount"].ToString());
+                                    futureValue = futureValue + double.Parse(_dtGoals.Rows[i]["FutureValue"].ToString());
+                                    endYear = _dtGoals.Rows[i]["StartYear"].ToString();
+                                }
+                            }
+                        }
+                        if (!groupOfGoal.Contains(goalName))
+                        {
+                            groupOfGoal.Add(goalName);
+                            DataRow dr = dtGroupOfGoals.NewRow();
+                            dr["Name"] = goalName;
+                            dr["Category"] = goalCategory;
+                            dr["Amount"] = amount;
+                            dr["FutureValue"] = futureValue;
+                            dr["StartYear"] = _dtGoals.Rows[i]["StartYear"];
+                            dr["EndYear"] = endYear;
+                            dr["Priority"] = _dtGoals.Rows[i]["Priority"];
+                            dr["Recurrence"] = recurrence;  //_dtGoals.Rows[i]["Recurrence"];
+                            dr["InflationRate"] = _dtGoals.Rows[i]["InflationRate"];
+                            dtGroupOfGoals.Rows.Add(dr);
                         }
                     }
-                    if (!groupOfGoal.Contains(goalName))
-                    {
-                        groupOfGoal.Add(goalName);
-                        DataRow dr = dtGroupOfGoals.NewRow();
-                        dr["Name"] = goalName;
-                        dr["Category"] = goalCategory;
-                        dr["Amount"] = amount;
-                        dr["FutureValue"] = futureValue;
-                        dr["StartYear"] = _dtGoals.Rows[i]["StartYear"];
-                        dr["EndYear"] = endYear;
-                        dr["Priority"] = _dtGoals.Rows[i]["Priority"];
-                        dr["Recurrence"] = _dtGoals.Rows[i]["Recurrence"];
-                        dr["InflationRate"] = _dtGoals.Rows[i]["InflationRate"];
-                        dtGroupOfGoals.Rows.Add(dr);
-                    }
                 }
             }
-            for (int i = _dtGoals.Rows.Count-1; i > 0; i--)
-            {
-                int recurrenceValue =0;
-                if (int.TryParse(_dtGoals.Rows[i]["Recurrence"].ToString(),out recurrenceValue )  &&  recurrenceValue > 1)
-                {
-                    _dtGoals.Rows.RemoveAt(i);
-                }
-            }
+            _dtGoals.Clear();
+            //for (int i = _dtGoals.Rows.Count-1; i > 0; i--)
+            //{
+            //    int recurrenceValue =0;
+            //    if (int.TryParse(_dtGoals.Rows[i]["Recurrence"].ToString(),out recurrenceValue )  &&  recurrenceValue >= 1)
+            //    {
+            //        _dtGoals.Rows.RemoveAt(i);
+            //    }
+            //}
 
             foreach(DataRow dataRow in dtGroupOfGoals.Rows)
             {
@@ -165,6 +182,19 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                 dr["InflationRate"] = dataRow["InflationRate"];
                 _dtGoals.Rows.Add(dr);
             }
+        }
+
+        private string setGoalNameWithRecurranceValidation(int i, string goalName)
+        {
+            string getGoalYearFormName = (_dtGoals.Rows[i]["Name"].ToString().Length > 4) ? _dtGoals.Rows[i]["Name"].ToString().Substring(_dtGoals.Rows[i]["Name"].ToString().Length - 4).Trim() :
+                _dtGoals.Rows[i]["Name"].ToString();
+            int year = 0;
+            if (!int.TryParse(getGoalYearFormName, out year))
+            {
+                goalName = _dtGoals.Rows[i]["Name"].ToString();
+            }
+
+            return goalName;
         }
 
         private void addFutureValueIntoDataTable()
@@ -207,7 +237,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                     this.lblName.DataBindings.Add("Text", this.DataSource, "Goals.Name");
                     xrGroupLabel.Text = string.Format("{0} {1} or Rs.{2} each", lblRecurrence.Text, lblName.Text, (double.Parse(lblPresentCost.Text) / int.Parse(lblRecurrence.Text)));
                     xrGroupLabel2.Text = string.Format("Total fund need for {0} {1}", lblRecurrence.Text, lblName.Text);
-                    xrGroupTable.HeightF = 25;
+                    //xrGroupTable.HeightF = 25;
                     xrGroupLabel.BackColor = System.Drawing.Color.LightGreen;
                     xrGroupLabel2.BackColor = System.Drawing.Color.LightGreen;
                 }
@@ -218,7 +248,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                     //xrGroupLabel2.Text = "";
                     //xrGroupLabel.BackColor = System.Drawing.Color.White;
                     //xrGroupLabel2.BackColor = System.Drawing.Color.White;
-                    xrGroupTable.HeightF = 0;
+                    //xrGroupTable.HeightF = 0;
                 }
             }
         }

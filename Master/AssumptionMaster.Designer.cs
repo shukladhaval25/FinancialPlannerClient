@@ -50,6 +50,8 @@
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
             this.grpClient = new DevExpress.XtraEditors.GroupControl();
+            this.txtPostRetirementInvReturn = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.txtPostRetirementInfationRate = new DevExpress.XtraEditors.TextEdit();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.txtPreRetirmentInflationRate = new DevExpress.XtraEditors.TextEdit();
@@ -60,8 +62,8 @@
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.btnSaveAssumption = new DevExpress.XtraEditors.SimpleButton();
             this.btnCloseClientInfo = new DevExpress.XtraEditors.SimpleButton();
-            this.txtPostRetirementInvReturn = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
+            this.txtInsuranceRateOfReturn = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
@@ -78,11 +80,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtDebt.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grpClient)).BeginInit();
             this.grpClient.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPostRetirementInvReturn.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPostRetirementInfationRate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPreRetirmentInflationRate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtRetirementAge.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLifeExpectancy.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPostRetirementInvReturn.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtInsuranceRateOfReturn.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // lblContactTitle
@@ -115,6 +118,8 @@
             // 
             // groupControl4
             // 
+            this.groupControl4.Controls.Add(this.txtInsuranceRateOfReturn);
+            this.groupControl4.Controls.Add(this.labelControl9);
             this.groupControl4.Controls.Add(this.txtNonFinancialRaise);
             this.groupControl4.Controls.Add(this.labelControl15);
             this.groupControl4.Location = new System.Drawing.Point(417, 233);
@@ -126,7 +131,7 @@
             // txtNonFinancialRaise
             // 
             this.txtNonFinancialRaise.EditValue = "";
-            this.txtNonFinancialRaise.Location = new System.Drawing.Point(240, 57);
+            this.txtNonFinancialRaise.Location = new System.Drawing.Point(252, 57);
             this.txtNonFinancialRaise.Name = "txtNonFinancialRaise";
             this.txtNonFinancialRaise.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.txtNonFinancialRaise.Properties.MaxLength = 6;
@@ -299,6 +304,30 @@
             this.grpClient.TabIndex = 4;
             this.grpClient.Text = "Client && Spouse Related";
             // 
+            // txtPostRetirementInvReturn
+            // 
+            this.txtPostRetirementInvReturn.EditValue = "";
+            this.txtPostRetirementInvReturn.Location = new System.Drawing.Point(257, 139);
+            this.txtPostRetirementInvReturn.Name = "txtPostRetirementInvReturn";
+            this.txtPostRetirementInvReturn.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.txtPostRetirementInvReturn.Properties.MaxLength = 6;
+            this.txtPostRetirementInvReturn.Properties.NullValuePrompt = "Please enter value for this field its require.";
+            this.txtPostRetirementInvReturn.Properties.ValidateOnEnterKey = true;
+            this.txtPostRetirementInvReturn.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtPostRetirementInvReturn.Size = new System.Drawing.Size(100, 20);
+            this.txtPostRetirementInvReturn.TabIndex = 9;
+            this.txtPostRetirementInvReturn.Validating += new System.ComponentModel.CancelEventHandler(this.txtPostRetirementInvReturn_Validating);
+            // 
+            // labelControl5
+            // 
+            this.labelControl5.AutoEllipsis = true;
+            this.labelControl5.LineVisible = true;
+            this.labelControl5.Location = new System.Drawing.Point(61, 142);
+            this.labelControl5.Name = "labelControl5";
+            this.labelControl5.Size = new System.Drawing.Size(192, 13);
+            this.labelControl5.TabIndex = 8;
+            this.labelControl5.Text = "Post Retirement investment return (%):";
+            // 
             // txtPostRetirementInfationRate
             // 
             this.txtPostRetirementInfationRate.EditValue = "";
@@ -420,29 +449,27 @@
             this.btnCloseClientInfo.Text = "Close";
             this.btnCloseClientInfo.Click += new System.EventHandler(this.btnCloseClientInfo_Click);
             // 
-            // txtPostRetirementInvReturn
+            // txtInsuranceRateOfReturn
             // 
-            this.txtPostRetirementInvReturn.EditValue = "";
-            this.txtPostRetirementInvReturn.Location = new System.Drawing.Point(257, 139);
-            this.txtPostRetirementInvReturn.Name = "txtPostRetirementInvReturn";
-            this.txtPostRetirementInvReturn.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.txtPostRetirementInvReturn.Properties.MaxLength = 6;
-            this.txtPostRetirementInvReturn.Properties.NullValuePrompt = "Please enter value for this field its require.";
-            this.txtPostRetirementInvReturn.Properties.ValidateOnEnterKey = true;
-            this.txtPostRetirementInvReturn.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtPostRetirementInvReturn.Size = new System.Drawing.Size(100, 20);
-            this.txtPostRetirementInvReturn.TabIndex = 9;
-            this.txtPostRetirementInvReturn.Validating += new System.ComponentModel.CancelEventHandler(this.txtPostRetirementInvReturn_Validating);
+            this.txtInsuranceRateOfReturn.EditValue = "";
+            this.txtInsuranceRateOfReturn.Location = new System.Drawing.Point(252, 83);
+            this.txtInsuranceRateOfReturn.Name = "txtInsuranceRateOfReturn";
+            this.txtInsuranceRateOfReturn.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.txtInsuranceRateOfReturn.Properties.MaxLength = 6;
+            this.txtInsuranceRateOfReturn.Properties.NullValuePrompt = "Please enter value for this field its require.";
+            this.txtInsuranceRateOfReturn.Properties.ValidateOnEnterKey = true;
+            this.txtInsuranceRateOfReturn.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtInsuranceRateOfReturn.Size = new System.Drawing.Size(100, 20);
+            this.txtInsuranceRateOfReturn.TabIndex = 3;
+            this.txtInsuranceRateOfReturn.Validating += new System.ComponentModel.CancelEventHandler(this.txtInsuranceRateOfReturn_Validating);
             // 
-            // labelControl5
+            // labelControl9
             // 
-            this.labelControl5.AutoEllipsis = true;
-            this.labelControl5.LineVisible = true;
-            this.labelControl5.Location = new System.Drawing.Point(61, 142);
-            this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(192, 13);
-            this.labelControl5.TabIndex = 8;
-            this.labelControl5.Text = "Post Retirement investment return (%):";
+            this.labelControl9.Location = new System.Drawing.Point(61, 86);
+            this.labelControl9.Name = "labelControl9";
+            this.labelControl9.Size = new System.Drawing.Size(188, 13);
+            this.labelControl9.TabIndex = 2;
+            this.labelControl9.Text = "insurance proceeds rate of return (%):";
             // 
             // AssumptionMasters
             // 
@@ -478,11 +505,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.grpClient)).EndInit();
             this.grpClient.ResumeLayout(false);
             this.grpClient.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPostRetirementInvReturn.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPostRetirementInfationRate.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPreRetirmentInflationRate.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtRetirementAge.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLifeExpectancy.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPostRetirementInvReturn.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtInsuranceRateOfReturn.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -519,6 +547,8 @@
         private DevExpress.XtraEditors.SimpleButton btnCloseClientInfo;
         private DevExpress.XtraEditors.TextEdit txtPostRetirementInvReturn;
         private DevExpress.XtraEditors.LabelControl labelControl5;
+        private DevExpress.XtraEditors.TextEdit txtInsuranceRateOfReturn;
+        private DevExpress.XtraEditors.LabelControl labelControl9;
     }
 }
 

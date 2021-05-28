@@ -395,7 +395,7 @@ namespace FinancialPlannerClient.PlanOptions
                     totalCurrentStatuToGoalValue = totalCurrentStatuToGoalValue + currentStatusToGoal.FundAllocation;
             }
             totalCurrentStatuToGoalValue = futureValue(totalCurrentStatuToGoalValue,
-                CURREN_STATUS_TO_GOAL_MAPPED_RETURN_REATE_IN_PERCENTAGE, getRemainingYearsFromPlanStartYear());
+                growthPercentage, getRemainingYearsFromPlanStartYear());
             return instumentMappedCurrentValue + totalCurrentStatuToGoalValue;
         }
 

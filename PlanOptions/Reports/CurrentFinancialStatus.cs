@@ -11,7 +11,9 @@ namespace FinancialPlannerClient.PlanOptions.Reports
     public partial class CurrentFinancialStatus : DevExpress.XtraReports.UI.XtraReport
     {
         DataTable dtNetWorth;
-        const string FD_RD_SAVING = "Fixed Deposit/Savings";
+        const string FD = "Fixed Deposit";
+        const string RD = "Recurring Deposit";
+        const string SA = "Saving Account";
         const string EMF = "Equity Mutual Fund";
         const string DMF = "Dept Mutual Fund";
         const string PPF = "PPF";
@@ -58,7 +60,9 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         }
         private void setDebtData(ref int rowIndexForDebt, ref double totalDebtValue, int indexRow)
         {
-            if (dtNetWorth.Rows[indexRow]["Title"].ToString() ==  FD_RD_SAVING ||
+            if (dtNetWorth.Rows[indexRow]["Title"].ToString() ==  FD ||
+                dtNetWorth.Rows[indexRow]["Title"].ToString() == RD ||
+                dtNetWorth.Rows[indexRow]["Title"].ToString() == SA ||
                 dtNetWorth.Rows[indexRow]["Title"].ToString() == BONDS ||
                 dtNetWorth.Rows[indexRow]["Title"].ToString() == PPF ||
                 dtNetWorth.Rows[indexRow]["Title"].ToString() == DMF ||

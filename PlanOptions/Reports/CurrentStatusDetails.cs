@@ -81,6 +81,14 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             }
         }
 
+        private void lblAmount_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(lblAmount.Text))
+            {
+                lblAmount.Text = String.Format("{0:#,###}", double.Parse(lblAmount.Text));
+            }
+        }
+
         private void lblPercentageValue_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
             //lblPercentageValue.Text = (System.Math.Round((double.Parse(lblAmount.Text) * 100) / totalAmount)).ToString() + " %"; 

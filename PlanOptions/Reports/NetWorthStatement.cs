@@ -15,7 +15,9 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         Planner planner;
         DataTable dtNetWorth = new DataTable();
         const string FINANCIAL_ASSETS = "Financial Assets";
-        const string FD_RD_SAVING = "Fixed Deposit/Savings";
+        const string FD = "Fixed Deposit";
+        const string RD = "Recurring Deposit";
+        const string SA = "Saving Account";
         const string EMF = "Equity Mutual Fund";
         const string DMF = "Dept Mutual Fund";
         const string PPF = "PPF";
@@ -288,20 +290,28 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         #region "Bank"
         private void getTotalBankBalance()
         {
-            double totalBankAmount = getFDAmount();
-            totalBankAmount = totalBankAmount + getRDAmount();
-            totalBankAmount = totalBankAmount + getSavingAccountAmount();
-            if (totalBankAmount > 0)
+            double fdAmount = getFDAmount();
+            double rdAmount = getRDAmount();
+            double saAmount = getSavingAccountAmount();
+            if (fdAmount > 0)
             {
-                addBankAmountToNetWorth(totalBankAmount);
+                addBankAmountToNetWorth(FD,fdAmount);
+            }
+            if (rdAmount > 0)
+            {
+                addBankAmountToNetWorth(RD, rdAmount);
+            }
+            if (saAmount  > 0)
+            {
+                addBankAmountToNetWorth(SA, saAmount);
             }
         }
 
-        private void addBankAmountToNetWorth(double totalBankAmount)
+        private void addBankAmountToNetWorth(string accountType, double totalBankAmount)
         {
             DataRow drNetWorth = dtNetWorth.NewRow();
             drNetWorth["Group"] = FINANCIAL_ASSETS;
-            drNetWorth["Title"] = FD_RD_SAVING;
+            drNetWorth["Title"] = accountType;
             drNetWorth["Amount"] = Math.Round(totalBankAmount);
             dtNetWorth.Rows.Add(drNetWorth);
         }

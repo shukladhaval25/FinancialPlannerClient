@@ -121,6 +121,7 @@
             this.lblAmount.StylePriority.UsePadding = false;
             this.lblAmount.StylePriority.UseTextAlignment = false;
             this.lblAmount.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
+            this.lblAmount.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.lblAmount_BeforePrint);
             // 
             // TopMargin
             // 
