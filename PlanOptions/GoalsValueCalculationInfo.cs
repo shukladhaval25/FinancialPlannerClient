@@ -71,7 +71,7 @@ namespace FinancialPlannerClient.PlanOptions
         public double FirstYearExpenseOnRetirementYear {
             get => _firstYearExpenseOnRetirementYear; }
 
-        public double GetCurrentPortfolioValue()
+                public double GetCurrentPortfolioValue()
         {
             double totalCashInvestmentUptoNow = 0;
             double currentPortFoliovalue = _portfolioValue;
@@ -98,8 +98,8 @@ namespace FinancialPlannerClient.PlanOptions
                     currentPortFoliovalue = currentPortFoliovalue +
                          ((currentPortFoliovalue * interestRate) / 100);
                     if (_goalPlannings.Count > 0  && (currentYear > _goalPlannings[0].Year))
-                            break;                    
-                }                    
+                        break;
+                }
             }
             _currentPortfolioValue = currentPortFoliovalue;
             return _currentPortfolioValue;
@@ -139,7 +139,7 @@ namespace FinancialPlannerClient.PlanOptions
             {
                 GoalPlanning goalPlanning = new GoalPlanning(_goal);
                 goalPlanning.Year = calculationYear;
-                goalPlanning.GoalFutureValue = futureInvestmentRequireValueForGoal; 
+                goalPlanning.GoalFutureValue = futureInvestmentRequireValueForGoal;
                 goalPlanning.ActualFreshInvestment = (investmentAmount * 100) / (100 + (double)GetGrowthPercentage(goalPlanning.Year));
                 goalPlanning.GoalId = _goal.Id;
                 goalPlanning.GrowthPercentage = GetGrowthPercentage(goalPlanning.Year);
@@ -202,13 +202,13 @@ namespace FinancialPlannerClient.PlanOptions
                 goalPlanning.GrowthPercentage = GetGrowthPercentage(investmentYear);
 
                 AddGoalPlanning(goalPlanning);
-                return investmentAmount - goalPlanning.ActualFreshInvestment;                
+                return investmentAmount - goalPlanning.ActualFreshInvestment;
             }
 
             double profileValue = (currentProfileValue + investmentAmount);
 
             if ( profileValue < lifoGoalPlanningObj.ActualFreshInvestment)
-            {                               
+            {
                 GoalPlanning goalPlanning = new GoalPlanning(_goal);
                 goalPlanning.GoalId = _goal.Id;
                 goalPlanning.Year = investmentYear;
@@ -221,15 +221,13 @@ namespace FinancialPlannerClient.PlanOptions
             }
             else
             {
-
-                double currentInvestmentRequire = (lifoGoalPlanningObj.ActualFreshInvestment - currentProfileValue);
-                if (System.Math.Round(currentInvestmentRequire) > 0 && ((currentProfileValue + currentInvestmentRequire) <= lifoGoalPlanningObj.ActualFreshInvestment))
+                if (Math.Round(investmentAmount) <= Math.Round(lifoGoalPlanningObj.ActualFreshInvestment) && _futureValueOfMappedInstruments > 0)
                 {
                     GoalPlanning goalPlanning = new GoalPlanning(_goal);
                     goalPlanning.GoalId = _goal.Id;
                     goalPlanning.Year = investmentYear;
                     goalPlanning.GoalFutureValue = _futureValueOfGoal;
-                    goalPlanning.ActualFreshInvestment = currentInvestmentRequire;
+                    goalPlanning.ActualFreshInvestment = investmentAmount;
                     goalPlanning.GrowthPercentage = GetGrowthPercentage(investmentYear);
 
                     AddGoalPlanning(goalPlanning);
@@ -237,15 +235,31 @@ namespace FinancialPlannerClient.PlanOptions
                 }
                 else
                 {
-                    GoalPlanning goalPlanning = new GoalPlanning(_goal);
-                    goalPlanning.GoalId = _goal.Id;
-                    goalPlanning.Year = investmentYear;
-                    goalPlanning.GoalFutureValue = _futureValueOfGoal;
-                    goalPlanning.ActualFreshInvestment = 0;
-                    goalPlanning.GrowthPercentage = GetGrowthPercentage(investmentYear);
+                    double currentInvestmentRequire = (lifoGoalPlanningObj.ActualFreshInvestment - currentProfileValue);
+                    if (System.Math.Round(currentInvestmentRequire) > 0 && ((currentProfileValue + currentInvestmentRequire) <= lifoGoalPlanningObj.ActualFreshInvestment))
+                    {
+                        GoalPlanning goalPlanning = new GoalPlanning(_goal);
+                        goalPlanning.GoalId = _goal.Id;
+                        goalPlanning.Year = investmentYear;
+                        goalPlanning.GoalFutureValue = _futureValueOfGoal;
+                        goalPlanning.ActualFreshInvestment = currentInvestmentRequire;
+                        goalPlanning.GrowthPercentage = GetGrowthPercentage(investmentYear);
 
-                    AddGoalPlanning(goalPlanning);
-                    return investmentAmount - goalPlanning.ActualFreshInvestment;
+                        AddGoalPlanning(goalPlanning);
+                        return investmentAmount - goalPlanning.ActualFreshInvestment;
+                    }
+                    else
+                    {
+                        GoalPlanning goalPlanning = new GoalPlanning(_goal);
+                        goalPlanning.GoalId = _goal.Id;
+                        goalPlanning.Year = investmentYear;
+                        goalPlanning.GoalFutureValue = _futureValueOfGoal;
+                        goalPlanning.ActualFreshInvestment = 0;
+                        goalPlanning.GrowthPercentage = GetGrowthPercentage(investmentYear);
+
+                        AddGoalPlanning(goalPlanning);
+                        return investmentAmount - goalPlanning.ActualFreshInvestment;
+                    }
                 }
             }
             //double investmentReturnValueOnGoalYear = getInvestmentReturnValueAtGoalYear(investmentYear, investmentAmount);
@@ -358,7 +372,7 @@ namespace FinancialPlannerClient.PlanOptions
                         PostRetirementCashFlowService postRetirementCashFlowService =
                             new PostRetirementCashFlowService(this._planner, cashFlowService);
                         postRetirementCashFlowService.GetPostRetirementCashFlowData();
-                        futureValueOfGoal = postRetirementCashFlowService.GetProposeEstimatedCorpusFund();          
+                        futureValueOfGoal = postRetirementCashFlowService.GetProposeEstimatedCorpusFund();
                     }
                     else
                     {
@@ -385,7 +399,7 @@ namespace FinancialPlannerClient.PlanOptions
 
             //double instumentMappedCurrentValue =  csInfo.GetFundFromCurrentStatus(_planner.ID, _goal.Id);
             double instumentMappedCurrentValue = csInfo.GetFundFromCurrentStatus(_planner.ID, _goal.Id);
-            IList<FinancialPlanner.Common.Model.PlanOptions.CurrentStatusToGoal>  currentStatusToGoals = csInfo.GetCurrentStatusToGoal(this._optionId, this._planner.ID);
+            IList<FinancialPlanner.Common.Model.PlanOptions.CurrentStatusToGoal> currentStatusToGoals = csInfo.GetCurrentStatusToGoal(this._optionId, this._planner.ID);
 
             double totalCurrentStatuToGoalValue = 0;
             foreach (FinancialPlanner.Common.Model.PlanOptions.CurrentStatusToGoal currentStatusToGoal
@@ -394,8 +408,13 @@ namespace FinancialPlannerClient.PlanOptions
                 if (currentStatusToGoal.GoalId == _goal.Id)
                     totalCurrentStatuToGoalValue = totalCurrentStatuToGoalValue + currentStatusToGoal.FundAllocation;
             }
-            totalCurrentStatuToGoalValue = futureValue(totalCurrentStatuToGoalValue,
-                growthPercentage, getRemainingYearsFromPlanStartYear());
+            for (int remainingYear = (getRemainingYearsFromPlanStartYear() - 1); remainingYear >= 0; remainingYear--)
+            {
+                decimal growthRate = _riskProfileInfo.GetRiskProfileReturnRatio(_riskProfileId, remainingYear);
+                totalCurrentStatuToGoalValue = totalCurrentStatuToGoalValue +
+                    ((totalCurrentStatuToGoalValue * double.Parse(growthRate.ToString())) / 100);
+
+            }
             return instumentMappedCurrentValue + totalCurrentStatuToGoalValue;
         }
 

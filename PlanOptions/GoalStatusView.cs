@@ -623,16 +623,45 @@ namespace FinancialPlannerClient.PlanOptions
         {
             if (string.IsNullOrEmpty(cmbCurrentStsatusToGoal.Text))
             {
-                MessageBox.Show("Please select goal first.","Select Goal", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Please select goal first.", "Select Goal", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             RiskProfileInfo _riskProfileInfo = new RiskProfileInfo();
             Goals goal = _goals.FirstOrDefault(i => i.Name == cmbCurrentStsatusToGoal.Text);
             if (goal != null)
             {
-                GoalsValueCalculationInfo goalValCalInfo  = this.cashFlowService.GoalCalculationMgr.GetGoalValueCalculation(goal);
-                GoalPlanning  goalPlanning = goalValCalInfo.GetLIFOGoalPlanning(this.planner.StartDate.Year );
+                GoalsValueCalculationInfo goalValCalInfo = this.cashFlowService.GoalCalculationMgr.GetGoalValueCalculation(goal);
+                GoalPlanning goalPlanning = goalValCalInfo.GetLIFOGoalPlanning(this.planner.StartDate.Year);
                 lblEstimatedValue.Text = goalPlanning.ActualFreshInvestment.ToString();
+
+                GoalCalView goalCalView = new GoalCalView(this.planner, this.riskProfileId, this.optionId);
+                goalCalView.setCashFlowService(cashFlowService);
+                Goals paramGoal = _goals.FirstOrDefault(i => i.Name == cmbCurrentStsatusToGoal.Text);
+                DataTable dtGoalValue = goalCalView.GetGoalsValueTable(paramGoal);
+                dtGoalValue.Columns.Add("EstimatedValue", typeof(System.Double));
+                double goalComplitionValue = (dtGoalValue.Rows.Count > 0) ?
+                    double.Parse(dtGoalValue.Rows[dtGoalValue.Rows.Count - 1]["Cash outflow Goal Year"].ToString())
+                    : 0;
+                for (int rowIndex = dtGoalValue.Rows.Count - 2; rowIndex >= 0; rowIndex--)
+                {
+                    double portfolioValue, freshInvestment = 0;
+                    double portFolioReturnRate = 0;
+
+                    double.TryParse(dtGoalValue.Rows[rowIndex]["Portfolio Value"].ToString(), out portfolioValue);
+                    double.TryParse(dtGoalValue.Rows[rowIndex]["Fresh Investment"].ToString(), out freshInvestment);
+                    double.TryParse(dtGoalValue.Rows[rowIndex]["Portfolio Return"].ToString(), out portFolioReturnRate);
+
+                    double diffAmount = (rowIndex == dtGoalValue.Rows.Count - 2) ?
+                        goalComplitionValue - freshInvestment :
+                        double.Parse(dtGoalValue.Rows[rowIndex]["EstimatedValue"].ToString()) - freshInvestment;
+
+                    double estimatedPreviousYearPorfolioValue = (diffAmount * 100) / (100 + portFolioReturnRate);
+                    if (rowIndex > 0)
+                        dtGoalValue.Rows[rowIndex - 1]["EstimatedValue"] = estimatedPreviousYearPorfolioValue;
+
+                }
+                lblEstimatedValue.Text = (dtGoalValue.Rows.Count > 0) ? dtGoalValue.Rows[0]["EstimatedValue"].ToString() :
+                    goalPlanning.ActualFreshInvestment.ToString();
             }
         }
     }
