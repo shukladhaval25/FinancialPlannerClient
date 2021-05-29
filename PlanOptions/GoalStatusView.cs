@@ -599,6 +599,12 @@ namespace FinancialPlannerClient.PlanOptions
             txtAcessCurrentStautsValue.Text = accessFund.ToString();
         }
 
+        public double GetAccessFundValueForRetirementCorpus()
+        {
+            getGoalStatus();
+            return double.Parse(txtAcessCurrentStautsValue.Text);
+        }
+
         private void btnSaveConfingencyFund_Click(object sender, EventArgs e)
         {
             bool isSaved = false;

@@ -125,7 +125,9 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                                     if (_dtGoals.Rows[innerLoopIndex]["Name"].ToString().Trim().Equals(goalName.Trim()))
                                     {
                                         amount = amount + double.Parse(_dtGoals.Rows[i]["Amount"].ToString());
-                                        futureValue = futureValue + double.Parse(_dtGoals.Rows[i]["FutureValue"].ToString());
+                                        futureValue = (_dtGoals.Rows[innerLoopIndex]["Category"].ToString().Trim().Equals("Retirement")) ? retirementEstimatedCorpusFund :
+                                            futureValue + double.Parse(_dtGoals.Rows[i]["FutureValue"].ToString());
+
                                         totalGoalReacedPercentage = totalGoalReacedPercentage + int.Parse(_dtGoals.Rows[i]["GoalReached"].ToString());
                                         projectionCompletedPercentage = projectionCompletedPercentage + double.Parse(_dtGoals.Rows[i]["ProjectionCompleted"].ToString());
                                         //dtGroupOfGoals.Rows.Add(_dtGoals.Rows[innerLoopIndex]);
@@ -161,14 +163,6 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                 }
             }
             _dtGoals.Clear();
-            //for (int i = _dtGoals.Rows.Count - 1; i > 0; i--)
-            //{
-            //    int recurrenceValue = 0;
-            //    if (int.TryParse(_dtGoals.Rows[i]["Recurrence"].ToString(), out recurrenceValue) && recurrenceValue > 1)
-            //    {
-            //        _dtGoals.Rows.RemoveAt(i);
-            //    }
-            //}
 
             foreach (DataRow dataRow in dtGroupOfGoals.Rows)
             {
@@ -261,10 +255,11 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         private double getCurrentStatusFundForMappedGoal(int goalId)
         {
             Goals goal =  lstGoal.First(i => i.Id == goalId);
-            //if (goal.Category.Equals("Retirement"))
-            //{
-            //    return this.retirementEstimatedCorpusFund;
-            //}
+            if (goal.Category.Equals("Retirement"))
+            {
+                GoalStatusView goalStatusView = new GoalStatusView(this.planner,this.riskProfileId,this.optionId);
+                return goalStatusView.GetAccessFundValueForRetirementCorpus();
+            }
             CurrentStatusInfo csInfo = new CurrentStatusInfo();
             IList<FinancialPlanner.Common.Model.PlanOptions.CurrentStatusToGoal>  currentStatusToGoals =  csInfo.GetCurrentStatusToGoal(this.optionId, this.planner.ID);
            IEnumerable<FinancialPlanner.Common.Model.PlanOptions.CurrentStatusToGoal> currentStatusToGoalLst = currentStatusToGoals.Where(i => i.GoalId == goalId);
