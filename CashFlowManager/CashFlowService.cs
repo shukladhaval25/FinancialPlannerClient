@@ -892,7 +892,7 @@ namespace FinancialPlannerClient.CashFlowManager
 
                         GoalsValueCalculationInfo goalValCalInfo = new GoalsValueCalculationInfo(goal, _planner, _riskProfileInfo, _riskProfileId, this._optionId, this);
                         GoalsCalculationInfo goalcalInfo = new GoalsCalculationInfo(goal, _planner, _riskProfileInfo, _riskProfileId, _optionId);
-                        goalValCalInfo.SetPortfolioValue(goalcalInfo.GetProfileValue());
+                        //goalValCalInfo.SetPortfolioValue(goalcalInfo.GetProfileValue());
                         GoalCalculationMgr.AddGoalValueCalculation(goalValCalInfo);
 
                         double surplusAmountAfterInvestment = goalValCalInfo.SetInvestmentToAchiveGoal(_planner.StartDate.Year, surplusCashFund);

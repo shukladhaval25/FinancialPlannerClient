@@ -29,12 +29,14 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AssumptionMasters));
-            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
             this.lblContactTitle = new DevExpress.XtraEditors.LabelControl();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
+            this.txtInsuranceRateOfReturn = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
             this.txtNonFinancialRaise = new DevExpress.XtraEditors.TextEdit();
             this.labelControl15 = new DevExpress.XtraEditors.LabelControl();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
@@ -62,12 +64,11 @@
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.btnSaveAssumption = new DevExpress.XtraEditors.SimpleButton();
             this.btnCloseClientInfo = new DevExpress.XtraEditors.SimpleButton();
-            this.txtInsuranceRateOfReturn = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
             this.groupControl4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtInsuranceRateOfReturn.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNonFinancialRaise.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
             this.groupControl3.SuspendLayout();
@@ -85,7 +86,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtPreRetirmentInflationRate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtRetirementAge.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLifeExpectancy.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtInsuranceRateOfReturn.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // lblContactTitle
@@ -127,6 +127,28 @@
             this.groupControl4.Size = new System.Drawing.Size(390, 154);
             this.groupControl4.TabIndex = 7;
             this.groupControl4.Text = "Others";
+            // 
+            // txtInsuranceRateOfReturn
+            // 
+            this.txtInsuranceRateOfReturn.EditValue = "";
+            this.txtInsuranceRateOfReturn.Location = new System.Drawing.Point(252, 83);
+            this.txtInsuranceRateOfReturn.Name = "txtInsuranceRateOfReturn";
+            this.txtInsuranceRateOfReturn.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.txtInsuranceRateOfReturn.Properties.MaxLength = 6;
+            this.txtInsuranceRateOfReturn.Properties.NullValuePrompt = "Please enter value for this field its require.";
+            this.txtInsuranceRateOfReturn.Properties.ValidateOnEnterKey = true;
+            this.txtInsuranceRateOfReturn.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtInsuranceRateOfReturn.Size = new System.Drawing.Size(100, 20);
+            this.txtInsuranceRateOfReturn.TabIndex = 3;
+            this.txtInsuranceRateOfReturn.Validating += new System.ComponentModel.CancelEventHandler(this.txtInsuranceRateOfReturn_Validating);
+            // 
+            // labelControl9
+            // 
+            this.labelControl9.Location = new System.Drawing.Point(61, 86);
+            this.labelControl9.Name = "labelControl9";
+            this.labelControl9.Size = new System.Drawing.Size(182, 13);
+            this.labelControl9.TabIndex = 2;
+            this.labelControl9.Text = "Rate of return for insurnce calculation";
             // 
             // txtNonFinancialRaise
             // 
@@ -425,15 +447,15 @@
             this.btnSaveAssumption.Location = new System.Drawing.Point(367, 426);
             this.btnSaveAssumption.Name = "btnSaveAssumption";
             this.btnSaveAssumption.Size = new System.Drawing.Size(57, 23);
-            toolTipTitleItem2.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
-            toolTipTitleItem2.Appearance.Options.UseImage = true;
-            toolTipTitleItem2.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem2.Image")));
-            toolTipTitleItem2.Text = "Save";
-            toolTipItem2.LeftIndent = 6;
-            toolTipItem2.Text = "To save client contact infroamtion click here.";
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            superToolTip2.Items.Add(toolTipItem2);
-            this.btnSaveAssumption.SuperTip = superToolTip2;
+            toolTipTitleItem1.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            toolTipTitleItem1.Appearance.Options.UseImage = true;
+            toolTipTitleItem1.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem1.Image")));
+            toolTipTitleItem1.Text = "Save";
+            toolTipItem1.LeftIndent = 6;
+            toolTipItem1.Text = "To save client contact infroamtion click here.";
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            superToolTip1.Items.Add(toolTipItem1);
+            this.btnSaveAssumption.SuperTip = superToolTip1;
             this.btnSaveAssumption.TabIndex = 13;
             this.btnSaveAssumption.Text = "Save";
             this.btnSaveAssumption.Click += new System.EventHandler(this.btnSaveAssumption_Click);
@@ -448,28 +470,6 @@
             this.btnCloseClientInfo.TabIndex = 23;
             this.btnCloseClientInfo.Text = "Close";
             this.btnCloseClientInfo.Click += new System.EventHandler(this.btnCloseClientInfo_Click);
-            // 
-            // txtInsuranceRateOfReturn
-            // 
-            this.txtInsuranceRateOfReturn.EditValue = "";
-            this.txtInsuranceRateOfReturn.Location = new System.Drawing.Point(252, 83);
-            this.txtInsuranceRateOfReturn.Name = "txtInsuranceRateOfReturn";
-            this.txtInsuranceRateOfReturn.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.txtInsuranceRateOfReturn.Properties.MaxLength = 6;
-            this.txtInsuranceRateOfReturn.Properties.NullValuePrompt = "Please enter value for this field its require.";
-            this.txtInsuranceRateOfReturn.Properties.ValidateOnEnterKey = true;
-            this.txtInsuranceRateOfReturn.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtInsuranceRateOfReturn.Size = new System.Drawing.Size(100, 20);
-            this.txtInsuranceRateOfReturn.TabIndex = 3;
-            this.txtInsuranceRateOfReturn.Validating += new System.ComponentModel.CancelEventHandler(this.txtInsuranceRateOfReturn_Validating);
-            // 
-            // labelControl9
-            // 
-            this.labelControl9.Location = new System.Drawing.Point(61, 86);
-            this.labelControl9.Name = "labelControl9";
-            this.labelControl9.Size = new System.Drawing.Size(188, 13);
-            this.labelControl9.TabIndex = 2;
-            this.labelControl9.Text = "insurance proceeds rate of return (%):";
             // 
             // AssumptionMasters
             // 
@@ -490,6 +490,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).EndInit();
             this.groupControl4.ResumeLayout(false);
             this.groupControl4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtInsuranceRateOfReturn.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNonFinancialRaise.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
             this.groupControl3.ResumeLayout(false);
@@ -510,7 +511,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtPreRetirmentInflationRate.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtRetirementAge.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLifeExpectancy.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtInsuranceRateOfReturn.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }

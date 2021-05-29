@@ -130,7 +130,10 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                                         projectionCompletedPercentage = projectionCompletedPercentage + double.Parse(_dtGoals.Rows[i]["ProjectionCompleted"].ToString());
                                         //dtGroupOfGoals.Rows.Add(_dtGoals.Rows[innerLoopIndex]);
                                         endYear = _dtGoals.Rows[i]["StartYear"].ToString();
+                                        currentStatusMapAmount = getCurrentStatusFundForMappedGoal(int.Parse(_dtGoals.Rows[innerLoopIndex]["ID"].ToString()));
+                                        totalCurrentStatusMapValue = totalCurrentStatusMapValue + currentStatusMapAmount;
                                         recurrence++;
+                                        break;
                                     }
                                 }
                             }
@@ -144,8 +147,9 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                             dr["Amount"] = amount;
                             dr["FutureValue"] = futureValue;
                             dr["ProjectionCompleted"] = (projectionCompletedPercentage > 0) ? (projectionCompletedPercentage / recurrence) : 0;
-                            dr["GoalAchivedTillDate"] = (totalCurrentStatusMapValue > 0) ? (totalCurrentStatusMapValue / recurrence) : 0;
-                            dr["GoalReached"] = (totalGoalReacedPercentage > 0) ? (totalGoalReacedPercentage / recurrence) : 0;
+                            dr["GoalAchivedTillDate"] = totalCurrentStatusMapValue;
+                            dr["GoalReached"] = (totalCurrentStatusMapValue > 0) ?
+                                (totalCurrentStatusMapValue * 100) / futureValue : 0;
                             dr["StartYear"] = _dtGoals.Rows[i]["StartYear"];
                             dr["EndYear"] = endYear;
                             dr["Priority"] = _dtGoals.Rows[i]["Priority"];

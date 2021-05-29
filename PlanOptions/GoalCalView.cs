@@ -79,6 +79,21 @@ namespace FinancialPlannerClient.PlanOptions
 
             return getGoalComplitionPercentage();
         }
+
+        public DataTable GetGoalsValueTable(Goals goal)
+        {
+            if (goal != null)
+            {
+                cmbGoals.Tag = goal.Id;
+                lblPriorityNo.Text = goal.Priority.ToString();
+                lblGoalPeriodValue.Text = goal.StartYear;
+                displayCalculation(goal);
+            }
+            else
+                cmbGoals.Tag = 0;
+
+            return _dtGoalValue;
+        }
         public void displayCalculation(Goals goal)
         {
             try
