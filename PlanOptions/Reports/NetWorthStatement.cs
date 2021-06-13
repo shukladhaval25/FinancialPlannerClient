@@ -64,6 +64,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             dtNetWorth.Columns.Add("Amount", typeof(System.Double));
             dtNetWorth.Columns.Add("Liability", typeof(System.String));
             dtNetWorth.Columns.Add("LaibilityAmount", typeof(System.Double));
+            dtNetWorth.Columns.Add("Description", typeof(System.String));
         }
 
         private void generateReport()
@@ -132,7 +133,15 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                 }
                 if (groupTitle != LIABILITY)
                 {
-                    xrTableNetWorth.Rows[rowIndex].Cells[0].Text = dr[1].ToString();
+                    if (dr["Title"].ToString().Equals(OTHERS_EQUITY) || dr["Title"].ToString().Equals(OTHERS_DEBT) ||
+                        dr["Title"].ToString().Equals(OTHERS_GOLD))
+                    {
+                        xrTableNetWorth.Rows[rowIndex].Cells[0].Text = dr["Description"].ToString();
+                    }
+                    else
+                    {
+                        xrTableNetWorth.Rows[rowIndex].Cells[0].Text = dr[1].ToString();
+                    }
                     xrTableNetWorth.Rows[rowIndex].Cells[1].Text = dr[2].ToString();
                 }
                 else
@@ -282,6 +291,23 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             DataTable dtMF = mutualFundInfo.GetMutualFundInfo(this.planner.ID);
             if (dtMF != null && dtMF.Rows.Count > 0)
             {
+                //foreach (DataRow dr in dtMF.Rows)
+                //{
+                //    totalMFValue =  ((Convert.ToDouble(dr["CurrentValue"]) * Convert.ToDouble(dr["EquityRatio"])) / 100);
+
+                //    totalDMFValue = ((Convert.ToDouble(dr["CurrentValue"]) * Convert.ToDouble(dr["DebtRatio"])) / 100);
+
+                //    if (totalMFValue > 0)
+                //    {
+                //        DataRow drNetWorth = dtNetWorth.NewRow();
+                //        drNetWorth["Group"] = FINANCIAL_ASSETS;
+                //        drNetWorth["Title"] = EMF;
+                //        drNetWorth["Amount"] = Math.Round(totalMFValue);
+                //        drNetWorth["Description"] = dr[""]
+                //        dtNetWorth.Rows.Add(drNetWorth);
+                //    }
+
+                //}
                 totalMFValue = dtMF.AsEnumerable().Sum(x => (Convert.ToDouble(x["CurrentValue"]) * Convert.ToDouble(x["EquityRatio"])) / 100);
                 //Convert.ToDouble(x["NAV"]) * Convert.ToDouble(x["Units"]));
                 //double.Parse(dtMF.Compute("sum(NAV * Units)", string.Empty).ToString());
@@ -707,48 +733,93 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             double totalOthersDebValue = 0;
             double totalOthersGold = 0;
             DataTable dtOthers = othersInfo.GetOthersInfo(this.planner.ID);
-            if (dtOthers != null && dtOthers.Rows.Count > 0)
+            foreach(DataRow dr in dtOthers.Rows)
             {
-                //totalOthersEquityValue
-                totalOthersEquityValue = dtOthers.Select("TransactionType = 'Equity'").Sum(x => Convert.ToDouble(x["Amount"]));
-            }
+                if (dr["TransactionType"].ToString().Equals("Equity"))
+                {
+                    totalOthersEquityValue = Convert.ToDouble(dr["Amount"].ToString());
+                    if (totalOthersEquityValue > 0)
+                    {
+                        DataRow drNetWorth = dtNetWorth.NewRow();
+                        drNetWorth["Group"] = FINANCIAL_ASSETS;
+                        drNetWorth["Title"] = OTHERS_EQUITY;
+                        drNetWorth["Amount"] = Math.Round(totalOthersEquityValue);
+                        drNetWorth["Decription"] = dr["Particular"].ToString();
+                        dtNetWorth.Rows.Add(drNetWorth);
+                    }
+                }
+                else if (dr["TransactionType"].ToString().Equals("Debt"))
+                {
+                    totalOthersDebValue = Convert.ToDouble(dr["Amount"].ToString());
+                    if (totalOthersDebValue > 0)
+                    {
+                        DataRow drNetWorth = dtNetWorth.NewRow();
+                        drNetWorth["Group"] = FINANCIAL_ASSETS;
+                        drNetWorth["Title"] = OTHERS_DEBT;
+                        ;
+                        drNetWorth["Amount"] = Math.Round(totalOthersDebValue);
+                        drNetWorth["Description"] = dr["Particular"].ToString();
+                        dtNetWorth.Rows.Add(drNetWorth);
+                    }
+                }
+                else if (dr["TransactionType"].ToString().Equals("Gold"))
+                {
+                    totalOthersGold = Convert.ToDouble(dr["Amount"].ToString());
+                    if (totalOthersGold > 0)
+                    {
+                        DataRow drNetWorth = dtNetWorth.NewRow();
+                        drNetWorth["Group"] = FINANCIAL_ASSETS;
+                        drNetWorth["Title"] = OTHERS_GOLD;
+                        ;
+                        drNetWorth["Amount"] = Math.Round(totalOthersGold);
+                        drNetWorth["Description"] = dr["Particular"].ToString();
+                        dtNetWorth.Rows.Add(drNetWorth);
+                    }
+                }
 
-            if (totalOthersEquityValue > 0)
-            {
-                DataRow drNetWorth = dtNetWorth.NewRow();
-                drNetWorth["Group"] = FINANCIAL_ASSETS;
-                drNetWorth["Title"] = OTHERS_EQUITY;
-                drNetWorth["Amount"] = Math.Round(totalOthersEquityValue);
-                dtNetWorth.Rows.Add(drNetWorth);
             }
+//            if (dtOthers != null && dtOthers.Rows.Count > 0)
+//            {
+//                //totalOthersEquityValue
+//                totalOthersEquityValue = dtOthers.Select("TransactionType = 'Equity'").Sum(x => Convert.ToDouble(x["Amount"]));
+//            }
 
-            if (dtOthers != null && dtOthers.Rows.Count > 0)
-            {
-                totalOthersDebValue = dtOthers.Select("TransactionType = 'Debt'").Sum(x => Convert.ToDouble(x["Amount"]));
-            }
-            if (totalOthersDebValue > 0)
-            {
-                DataRow drNetWorth = dtNetWorth.NewRow();
-                drNetWorth["Group"] = FINANCIAL_ASSETS;
-                drNetWorth["Title"] = OTHERS_DEBT;
-;
-                drNetWorth["Amount"] = Math.Round(totalOthersDebValue);
-                dtNetWorth.Rows.Add(drNetWorth);
-            }
+//            if (totalOthersEquityValue > 0)
+//            {
+//                DataRow drNetWorth = dtNetWorth.NewRow();
+//                drNetWorth["Group"] = FINANCIAL_ASSETS;
+//                drNetWorth["Title"] = OTHERS_EQUITY;
+//                drNetWorth["Amount"] = Math.Round(totalOthersEquityValue);
+//                dtNetWorth.Rows.Add(drNetWorth);
+//            }
 
-            if (dtOthers != null && dtOthers.Rows.Count > 0)
-            {
-                totalOthersGold = dtOthers.Select("TransactionType = 'Gold'").Sum(x => Convert.ToDouble(x["Amount"]));
-            }
-            if (totalOthersGold > 0)
-            {
-                DataRow drNetWorth = dtNetWorth.NewRow();
-                drNetWorth["Group"] = FINANCIAL_ASSETS;
-                drNetWorth["Title"] = OTHERS_GOLD;
-;
-                drNetWorth["Amount"] = Math.Round(totalOthersGold);
-                dtNetWorth.Rows.Add(drNetWorth);
-            }
+//            if (dtOthers != null && dtOthers.Rows.Count > 0)
+//            {
+//                totalOthersDebValue = dtOthers.Select("TransactionType = 'Debt'").Sum(x => Convert.ToDouble(x["Amount"]));
+//            }
+//            if (totalOthersDebValue > 0)
+//            {
+//                DataRow drNetWorth = dtNetWorth.NewRow();
+//                drNetWorth["Group"] = FINANCIAL_ASSETS;
+//                drNetWorth["Title"] = OTHERS_DEBT;
+//;
+//                drNetWorth["Amount"] = Math.Round(totalOthersDebValue);
+//                dtNetWorth.Rows.Add(drNetWorth);
+//            }
+
+//            if (dtOthers != null && dtOthers.Rows.Count > 0)
+//            {
+//                totalOthersGold = dtOthers.Select("TransactionType = 'Gold'").Sum(x => Convert.ToDouble(x["Amount"]));
+//            }
+//            if (totalOthersGold > 0)
+//            {
+//                DataRow drNetWorth = dtNetWorth.NewRow();
+//                drNetWorth["Group"] = FINANCIAL_ASSETS;
+//                drNetWorth["Title"] = OTHERS_GOLD;
+//;
+//                drNetWorth["Amount"] = Math.Round(totalOthersGold);
+//                dtNetWorth.Rows.Add(drNetWorth);
+//            }
 
         }
         #endregion

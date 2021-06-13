@@ -161,7 +161,8 @@ namespace FinancialPlannerClient.PlanOptions
                         double corpusFund = 0;
                         double.TryParse(drs[0][goal.Name].ToString(), out corpusFund);
                         if (corpusFund <= 0)
-                            return 0;
+                            // Gola which has priority after retirement and is not completed
+                            return getGoalComplitionPercentage();  
                         else
                             return 100;
                     }
