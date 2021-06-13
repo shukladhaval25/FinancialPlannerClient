@@ -12,7 +12,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
     {
         DataTable dtNetWorth;
         const string FD = "Fixed Deposit";
-        const string RD = "Recurring Deposit";
+        const string RD = "Recurring Deposit";
         const string SA = "Saving Account";
         const string EMF = "Equity Mutual Fund";
         const string DMF = "Dept Mutual Fund";
@@ -20,6 +20,20 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         const string BONDS = "Bonds";
         const string SS = "Sukanya Sum. Account";
         const string SHARES = "Shares";
+
+        const string NPS_EQUITY = "NPS Equity";
+        const string ULIP_EQUITY = "ULIP Equity";
+        const string OTHERS_EQUITY = "Others Equity";
+
+        const string ULIPS_DEBT = "ULIP Dept";
+        const string NPS_DEPT = "NPS Dept";
+        const string OTHERS_DEBT = "Others Dept";
+        const string EPF = "EPF";
+        const string NSC = "NSC";
+        const string SCSS = "SCSS";
+
+        const string GOLD = "Gold";
+        const string OTHERS_GOLD = "Others";
         public CurrentFinancialStatus(Client client,DataTable dataTable)
         {
             InitializeComponent();
@@ -48,7 +62,10 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         private void setEquityData(ref int rowIndexForEquity, ref double totalEquityValue, int indexRow)
         {
             if (dtNetWorth.Rows[indexRow]["Title"].ToString() == EMF ||
-                dtNetWorth.Rows[indexRow]["Title"].ToString() == SHARES)
+                dtNetWorth.Rows[indexRow]["Title"].ToString() == SHARES ||
+                dtNetWorth.Rows[indexRow]["Title"].ToString() == NPS_EQUITY  ||
+                dtNetWorth.Rows[indexRow]["Title"].ToString() == ULIP_EQUITY ||
+                dtNetWorth.Rows[indexRow]["Title"].ToString() == OTHERS_EQUITY )
             {
                 xrTableEquity.Rows[rowIndexForEquity].Cells[0].Text = dtNetWorth.Rows[indexRow]["Title"].ToString();
                 xrTableEquity.Rows[rowIndexForEquity].Cells[1].Text = dtNetWorth.Rows[indexRow]["Amount"].ToString();
@@ -61,12 +78,18 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         private void setDebtData(ref int rowIndexForDebt, ref double totalDebtValue, int indexRow)
         {
             if (dtNetWorth.Rows[indexRow]["Title"].ToString() ==  FD ||
-                dtNetWorth.Rows[indexRow]["Title"].ToString() == RD ||
+                dtNetWorth.Rows[indexRow]["Title"].ToString().Trim() == RD.Trim() ||
                 dtNetWorth.Rows[indexRow]["Title"].ToString() == SA ||
                 dtNetWorth.Rows[indexRow]["Title"].ToString() == BONDS ||
                 dtNetWorth.Rows[indexRow]["Title"].ToString() == PPF ||
                 dtNetWorth.Rows[indexRow]["Title"].ToString() == DMF ||
-                dtNetWorth.Rows[indexRow]["Title"].ToString() == SS)
+                dtNetWorth.Rows[indexRow]["Title"].ToString() == SS ||
+                dtNetWorth.Rows[indexRow]["Title"].ToString() == ULIPS_DEBT ||
+                dtNetWorth.Rows[indexRow]["Title"].ToString() == NPS_DEPT ||
+                dtNetWorth.Rows[indexRow]["Title"].ToString() == OTHERS_DEBT  ||
+                dtNetWorth.Rows[indexRow]["Title"].ToString() == EPF ||
+                dtNetWorth.Rows[indexRow]["Title"].ToString() == NSC ||
+                dtNetWorth.Rows[indexRow]["Title"].ToString() == SCSS)
             {
                 xrTableDebt.Rows[rowIndexForDebt].Cells[0].Text = dtNetWorth.Rows[indexRow]["Title"].ToString();
                 xrTableDebt.Rows[rowIndexForDebt].Cells[1].Text = dtNetWorth.Rows[indexRow]["Amount"].ToString();
@@ -202,6 +225,46 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             if (!string.IsNullOrEmpty(lblDebtTotal.Text))
             {
                 lblDebtTotal.Text = String.Format("{0:#,###}", double.Parse(lblDebtTotal.Text));
+            }
+        }
+
+        private void xrTableCell32_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(xrTableCell32.Text))
+            {
+                xrTableCell32.Text = String.Format("{0:#,###}", double.Parse(xrTableCell32.Text));
+            }
+        }
+
+        private void xrTableCell34_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(xrTableCell34.Text))
+            {
+                xrTableCell34.Text = String.Format("{0:#,###}", double.Parse(xrTableCell34.Text));
+            }
+        }
+
+        private void xrTableCell36_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(xrTableCell36.Text))
+            {
+                xrTableCell36.Text = String.Format("{0:#,###}", double.Parse(xrTableCell36.Text));
+            }
+        }
+
+        private void xrTableCell40_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(xrTableCell40.Text))
+            {
+                xrTableCell40.Text = String.Format("{0:#,###}", double.Parse(xrTableCell40.Text));
+            }
+        }
+
+        private void xrTableCell38_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(xrTableCell38.Text))
+            {
+                xrTableCell38.Text = String.Format("{0:#,###}", double.Parse(xrTableCell38.Text));
             }
         }
     }

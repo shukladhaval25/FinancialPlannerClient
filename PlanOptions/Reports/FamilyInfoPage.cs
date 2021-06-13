@@ -22,6 +22,8 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             this.lblClientName.Text = personalInformation.Client.Name;
             FamilyMemberInfo familyMemberInfo = new FamilyMemberInfo();
             lstFamilyMember = (List<FamilyMember>)familyMemberInfo.Get(personalInformation.Client.ID);
+            lstFamilyMember =  lstFamilyMember.FindAll( i => i.IsHuf == false);
+            
             lstFamilyMember.Insert(0, new FamilyMember() {Name  = personalInformation.Client.Name,Relationship = "Self",DOB = personalInformation.Client.DOB,Occupation = personalInformation.Client.Occupation  });
             if (!string.IsNullOrEmpty(personalInformation.Spouse.Name))
             {
@@ -32,7 +34,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             addAgeColumnToDataTable();
             _ds.Tables.Add(_dtFamilymember);
             _dtFamilymember = ListtoDataTable.ToDataTable(lstFamilyMember);
-
+            
             this.DataSource = _ds;
             this.DataMember = _ds.Tables[0].TableName;
             

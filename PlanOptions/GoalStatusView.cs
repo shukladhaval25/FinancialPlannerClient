@@ -661,12 +661,24 @@ namespace FinancialPlannerClient.PlanOptions
                         goalComplitionValue - freshInvestment :
                         double.Parse(dtGoalValue.Rows[rowIndex]["EstimatedValue"].ToString()) - freshInvestment;
 
-                    double estimatedPreviousYearPorfolioValue = (diffAmount * 100) / (100 + portFolioReturnRate);
+                  
                     if (rowIndex > 0)
+                    {
+                        //double firstYearFreshInvestment = 0;
+                        //double.TryParse(dtGoalValue.Rows[rowIndex - 1]["Fresh Investment"].ToString(), out firstYearFreshInvestment);
+                        double estimatedPreviousYearPorfolioValue = (diffAmount * 100) / (100 + portFolioReturnRate);
                         dtGoalValue.Rows[rowIndex - 1]["EstimatedValue"] = estimatedPreviousYearPorfolioValue;
+                    }
+                    if (rowIndex == 0)
+                    {
+                        double estimatedPreviousYearPorfolioValue = diffAmount;
+                        dtGoalValue.Rows[rowIndex]["EstimatedValue"] = estimatedPreviousYearPorfolioValue;
+                    }
 
                 }
-                lblEstimatedValue.Text = (dtGoalValue.Rows.Count > 0) ? dtGoalValue.Rows[0]["EstimatedValue"].ToString() :
+                lblEstimatedValue.Text = (dtGoalValue.Rows.Count > 0) ? 
+                    (string.IsNullOrEmpty(dtGoalValue.Rows[0]["EstimatedValue"].ToString()) ? "0":
+                    dtGoalValue.Rows[0]["EstimatedValue"].ToString()) :
                     goalPlanning.ActualFreshInvestment.ToString();
             }
         }

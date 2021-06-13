@@ -245,6 +245,7 @@ namespace FinancialPlannerClient.PlannerInfo
                     fm.Pancard = dr.Field<string>("PanCard");
                     fm.AadharCard = dr.Field<string>("AadharCard");
                     fm.Occupation = dr.Field<string>("Occupation");
+                    fm.IsHuf = bool.Parse(dr["IsHuf"].ToString());
                     return fm;
                 }
             }

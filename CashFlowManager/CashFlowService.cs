@@ -446,6 +446,7 @@ namespace FinancialPlannerClient.CashFlowManager
             double surplusAmount = getSurplusAmount(dr);
             if (_cashFlowCalculation.LstGoals != null)
             {
+                int maxGoalPriorityNumber = _cashFlowCalculation.LstGoals.Max(r => r.Priority);
                 foreach (Goals goal in _cashFlowCalculation.LstGoals)
                 {
                     if (goal.LoanForGoal != null)
@@ -471,9 +472,20 @@ namespace FinancialPlannerClient.CashFlowManager
                         }
                         GoalsCalculationInfo goalcalInfo = new GoalsCalculationInfo(goal, _planner, _riskProfileInfo, _riskProfileId, _optionId);
                         goalValCalInfo.SetPortfolioValue(goalcalInfo.GetProfileValue());
-                        double surplusAmountAfterInvestment = goalValCalInfo.SetInvestmentToAchiveGoal(calculationYear, surplusAmount);
-                        dr[string.Format("{0} - {1}", goal.Priority, goal.Name)] = Math.Round(surplusAmount - surplusAmountAfterInvestment, 2,
-                                                 MidpointRounding.ToEven);
+                        double surplusAmountAfterInvestment;
+                        if (goal.Category == "Retirement" && goal.Priority == maxGoalPriorityNumber)
+                        {
+                            surplusAmountAfterInvestment = goalValCalInfo.SetInvestmentToRetirementGoalWhenRetirementHasLastPriority(calculationYear, surplusAmount);
+                            dr[string.Format("{0} - {1}", goal.Priority, goal.Name)] = Math.Round(surplusAmount, 2, MidpointRounding.ToEven);
+                            surplusAmountAfterInvestment = 0;
+                        }
+                        else
+                        {
+                            surplusAmountAfterInvestment = goalValCalInfo.SetInvestmentToAchiveGoal(calculationYear, surplusAmount);
+                            dr[string.Format("{0} - {1}", goal.Priority, goal.Name)] = Math.Round(surplusAmount - surplusAmountAfterInvestment, 2,
+                                                MidpointRounding.ToEven);
+                        }
+                       
                         surplusAmount = surplusAmountAfterInvestment;
 
                     }

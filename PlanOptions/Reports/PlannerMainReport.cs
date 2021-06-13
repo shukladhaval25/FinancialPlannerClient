@@ -162,8 +162,10 @@ namespace FinancialPlannerClient.PlanOptions
                 this.Pages.Add(financialClientGoal.Pages.First);
                 this.Pages.Add(goalProjectionForComplition.Pages.First);
                 this.Pages.Add(incomeExpenseAnalysis.Pages.First);
-                this.Pages.Add(spendingSavingRatioReport.Pages.First);
+                
                 this.Pages.Add(surplusPeriod.Pages.First);
+                this.Pages.Add(spendingSavingRatioReport.Pages.First);
+
                 this.Pages.Add(netWorthAnalysis.Pages.First);
                 this.Pages.Add(netWorthStatement.Pages.First);
                 this.Pages.Add(toTotalAssetRatio.Pages.First);

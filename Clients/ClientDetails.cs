@@ -101,6 +101,8 @@ namespace FinancialPlannerClient.Clients
             cmbRating.Text = this._client.Rating;
             cmbClientType.Text = this._client.ClientType;
             cmbResiStatus.Text = this._client.ResiStatus;
+            chkClientActiveStatus.Checked = this._client.IsActive;
+            txtNote.Text = this._client.Note;
         }
 
         private Image converToImageFromBase64String(string base64String)
@@ -283,7 +285,9 @@ namespace FinancialPlannerClient.Clients
                 ImagePath = _client.ImagePath,
                 Rating = cmbRating.Text,
                 ClientType = cmbClientType.Text,
-                ResiStatus = cmbResiStatus.Text
+                ResiStatus = cmbResiStatus.Text,
+                IsActive = chkClientActiveStatus.Checked,
+                Note = txtNote.Text 
             };
             return client;
         }
@@ -373,6 +377,11 @@ namespace FinancialPlannerClient.Clients
             bankDetails.ShowDialog();
             showBankDetails();
             showSpouseBankDetails();
+        }
+
+        private void chkClientActiveStatus_CheckedChanged(object sender, EventArgs e)
+        {
+            chkClientActiveStatus.BackColor = (chkClientActiveStatus.Checked) ? Color.LimeGreen  : Color.Gray;
         }
     }
 }

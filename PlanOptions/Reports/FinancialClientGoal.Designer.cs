@@ -635,7 +635,7 @@
             this.xrLabel2.StylePriority.UseBorderWidth = false;
             this.xrLabel2.StylePriority.UseFont = false;
             this.xrLabel2.StylePriority.UseForeColor = false;
-            this.xrLabel2.Text = "First Year Expens on year of Retirement";
+            this.xrLabel2.Text = "First Year Expense on year of Retirement";
             // 
             // xrRetirementTable
             // 

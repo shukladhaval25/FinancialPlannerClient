@@ -26,6 +26,22 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         const string SHARES = "Shares";
         const string REAL_ESTATE = "Real Estate";
         const string LIABILITY = "LIABILITY";
+
+        const string NPS_EQUITY = "NPS Equity";
+        const string ULIP_EQUITY = "ULIP Equity";
+        const string OTHERS_EQUITY = "Others Equity";
+
+        const string ULIPS_DEBT = "ULIP Dept";
+        const string NPS_DEPT = "NPS Dept";
+        const string OTHERS_DEBT = "Others Dept";
+        const string EPF = "EPF";
+        const string NSC = "NSC";
+        const string SCSS = "SCSS";
+
+        const string GOLD = "Gold";
+        const string OTHERS_GOLD = "Others";
+
+
         double totalAssetsValue, totalLiabilitiesValue;
         public NetWorthStatement(Client client, Planner planner)
         {
@@ -58,8 +74,19 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             getBondsBalance();
             getSSSBalance();
             getSharesBalance();
+           
+            
+
+            getNPSBalance();
+            getULIPBalance();
+            getOthersBalance();
+            getEPFBalance();
+            getNSCBalance();
+            getSCSSBalance();
             getFixedAssetsBalance();
+
             getLiabilitiesValue();
+
             setDataForReport();
             setTotal();
             setGraph();
@@ -78,7 +105,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             double.TryParse(dtNetWorth.Compute("Sum(Amount)", string.Empty).ToString(), out totalOfSumAmount);
             totalAssetsValue = totalOfSumAmount;
             totalLiabilitiesValue = dtNetWorth.Compute("Sum(LaibilityAmount)", string.Empty) != DBNull.Value ?
-                double.Parse(dtNetWorth.Compute("Sum(LaibilityAmount)",string.Empty).ToString()) : 0;
+                double.Parse(dtNetWorth.Compute("Sum(LaibilityAmount)", string.Empty).ToString()) : 0;
             lblTotalAssets.Text = totalAssetsValue.ToString("#,###");
             lblTotalLiabilities.Text = totalLiabilitiesValue.ToString("#,###");
         }
@@ -295,13 +322,13 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             double saAmount = getSavingAccountAmount();
             if (fdAmount > 0)
             {
-                addBankAmountToNetWorth(FD,fdAmount);
+                addBankAmountToNetWorth(FD, fdAmount);
             }
             if (rdAmount > 0)
             {
                 addBankAmountToNetWorth(RD, rdAmount);
             }
-            if (saAmount  > 0)
+            if (saAmount > 0)
             {
                 addBankAmountToNetWorth(SA, saAmount);
             }
@@ -593,5 +620,267 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         }
         #endregion
 
+        #region "NPS"
+        private void getNPSBalance()
+        {            
+            NPSInfo npsInfo = new NPSInfo();
+            double totalNPSEquityValue = 0;
+            double totalNPSDebValue = 0;
+            DataTable dtNPS = npsInfo.GetNPSInfo(this.planner.ID);
+            if (dtNPS != null && dtNPS.Rows.Count > 0)
+            {
+                totalNPSEquityValue = dtNPS.AsEnumerable().Sum(x => (Convert.ToDouble(x["CurrentValue"]) * Convert.ToDouble(x["EquityRatio"])) / 100);
+            }
+
+            if (totalNPSEquityValue > 0)
+            {
+                DataRow drNetWorth = dtNetWorth.NewRow();
+                drNetWorth["Group"] = FINANCIAL_ASSETS;
+                drNetWorth["Title"] = NPS_EQUITY;
+                drNetWorth["Amount"] = Math.Round(totalNPSEquityValue);
+                dtNetWorth.Rows.Add(drNetWorth);
+            }
+
+            if (dtNPS != null && dtNPS.Rows.Count > 0)
+            {
+                totalNPSDebValue = dtNPS.AsEnumerable().Sum(x => (Convert.ToDouble(x["CurrentValue"]) * Convert.ToDouble(x["DebtRatio"])) / 100);
+            }
+            if (totalNPSDebValue > 0)
+            {
+                DataRow drNetWorth = dtNetWorth.NewRow();
+                drNetWorth["Group"] = FINANCIAL_ASSETS;
+                drNetWorth["Title"] = NPS_DEPT;
+;
+                drNetWorth["Amount"] = Math.Round(totalNPSDebValue);
+                dtNetWorth.Rows.Add(drNetWorth);
+            }
+        }
+        #endregion
+
+        #region "ULIP"
+        private void getULIPBalance()
+        {
+            ULIPInfo ulipInfo = new ULIPInfo();
+            double totalUlipEquityValue = 0;
+            double totalUlipDebValue = 0;
+            DataTable dtUlip = ulipInfo.GetULIPInfo(this.planner.ID);
+            if (dtUlip != null && dtUlip.Rows.Count > 0)
+            {
+                totalUlipEquityValue = dtUlip.AsEnumerable().Sum(x => ((Convert.ToDouble(x["NAV"]) * Convert.ToDouble(x["Units"])) * Convert.ToDouble(x["EquityRatio"])) / 100);
+                //Convert.ToDouble(x["NAV"]) * Convert.ToDouble(x["Units"]));
+                //double.Parse(dtMF.Compute("sum(NAV * Units)", string.Empty).ToString());
+            }
+
+            if (totalUlipEquityValue > 0)
+            {
+                DataRow drNetWorth = dtNetWorth.NewRow();
+                drNetWorth["Group"] = FINANCIAL_ASSETS;
+                drNetWorth["Title"] = ULIP_EQUITY ;
+                drNetWorth["Amount"] = Math.Round(totalUlipEquityValue);
+                dtNetWorth.Rows.Add(drNetWorth);
+            }
+
+            if (dtUlip != null && dtUlip.Rows.Count > 0)
+            {
+                totalUlipDebValue = dtUlip.AsEnumerable().Sum(x => ((Convert.ToDouble(x["NAV"]) * Convert.ToDouble(x["Units"])) * Convert.ToDouble(x["DebtRatio"])) / 100);
+                //Convert.ToDouble(x["NAV"]) * Convert.ToDouble(x["Units"]));
+                //double.Parse(dtMF.Compute("sum(NAV * Units)", string.Empty).ToString());
+            }
+            if (totalUlipDebValue > 0)
+            {
+                DataRow drNetWorth = dtNetWorth.NewRow();
+                drNetWorth["Group"] = FINANCIAL_ASSETS;
+                drNetWorth["Title"] = ULIPS_DEBT
+;
+                drNetWorth["Amount"] = Math.Round(totalUlipDebValue);
+                dtNetWorth.Rows.Add(drNetWorth);
+            }
+
+        }
+        #endregion
+
+        #region "Ohers"
+        private void getOthersBalance()
+        {
+            OthersInfo  othersInfo = new OthersInfo();
+            double totalOthersEquityValue = 0;
+            double totalOthersDebValue = 0;
+            double totalOthersGold = 0;
+            DataTable dtOthers = othersInfo.GetOthersInfo(this.planner.ID);
+            if (dtOthers != null && dtOthers.Rows.Count > 0)
+            {
+                //totalOthersEquityValue
+                totalOthersEquityValue = dtOthers.Select("TransactionType = 'Equity'").Sum(x => Convert.ToDouble(x["Amount"]));
+            }
+
+            if (totalOthersEquityValue > 0)
+            {
+                DataRow drNetWorth = dtNetWorth.NewRow();
+                drNetWorth["Group"] = FINANCIAL_ASSETS;
+                drNetWorth["Title"] = OTHERS_EQUITY;
+                drNetWorth["Amount"] = Math.Round(totalOthersEquityValue);
+                dtNetWorth.Rows.Add(drNetWorth);
+            }
+
+            if (dtOthers != null && dtOthers.Rows.Count > 0)
+            {
+                totalOthersDebValue = dtOthers.Select("TransactionType = 'Debt'").Sum(x => Convert.ToDouble(x["Amount"]));
+            }
+            if (totalOthersDebValue > 0)
+            {
+                DataRow drNetWorth = dtNetWorth.NewRow();
+                drNetWorth["Group"] = FINANCIAL_ASSETS;
+                drNetWorth["Title"] = OTHERS_DEBT;
+;
+                drNetWorth["Amount"] = Math.Round(totalOthersDebValue);
+                dtNetWorth.Rows.Add(drNetWorth);
+            }
+
+            if (dtOthers != null && dtOthers.Rows.Count > 0)
+            {
+                totalOthersGold = dtOthers.Select("TransactionType = 'Gold'").Sum(x => Convert.ToDouble(x["Amount"]));
+            }
+            if (totalOthersGold > 0)
+            {
+                DataRow drNetWorth = dtNetWorth.NewRow();
+                drNetWorth["Group"] = FINANCIAL_ASSETS;
+                drNetWorth["Title"] = OTHERS_GOLD;
+;
+                drNetWorth["Amount"] = Math.Round(totalOthersGold);
+                dtNetWorth.Rows.Add(drNetWorth);
+            }
+
+        }
+        #endregion
+
+        #region "EPF"
+        private void getEPFBalance()
+        {
+            EPFInfo npsInfo = new EPFInfo();
+            double totalEPFValue = 0;
+            DataTable dtEPF = npsInfo.GetEPFInfo(this.planner.ID);
+            if (dtEPF != null && dtEPF.Rows.Count > 0)
+            {
+                totalEPFValue = dtEPF.AsEnumerable().Sum(x => Convert.ToDouble(x["Amount"]));
+            }
+
+            if (totalEPFValue > 0)
+            {
+                DataRow drNetWorth = dtNetWorth.NewRow();
+                drNetWorth["Group"] = FINANCIAL_ASSETS;
+                drNetWorth["Title"] = EPF;
+                drNetWorth["Amount"] = Math.Round(totalEPFValue);
+                dtNetWorth.Rows.Add(drNetWorth);
+            }
+        }
+        #endregion
+
+        #region "NSC"
+        private void getNSCBalance()
+        {
+            NSCInfo npsInfo = new NSCInfo();
+            double totalNSCValue = 0;
+            DataTable dtNSC = npsInfo.GetNSCInfo(this.planner.ID);
+            if (dtNSC != null && dtNSC.Rows.Count > 0)
+            {
+                totalNSCValue = dtNSC.AsEnumerable().Sum(x => Convert.ToDouble(x["CurrentValue"]));
+            }
+
+            if (totalNSCValue > 0)
+            {
+                DataRow drNetWorth = dtNetWorth.NewRow();
+                drNetWorth["Group"] = FINANCIAL_ASSETS;
+                drNetWorth["Title"] = NSC;
+                drNetWorth["Amount"] = Math.Round(totalNSCValue);
+                dtNetWorth.Rows.Add(drNetWorth);
+            }
+        }
+
+        private void xrTableCell60_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(xrTableCell60.Text))
+            {
+                xrTableCell60.Text = String.Format("{0:#,###}", double.Parse(xrTableCell60.Text));
+            }
+        }
+
+        private void xrTableCell58_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(xrTableCell58.Text))
+            {
+                xrTableCell58.Text = String.Format("{0:#,###}", double.Parse(xrTableCell58.Text));
+            }
+        }
+
+        private void xrTableCell62_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(xrTableCell62.Text))
+            {
+                xrTableCell62.Text = String.Format("{0:#,###}", double.Parse(xrTableCell62.Text));
+            }
+        }
+
+        private void xrTableCell70_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(xrTableCell70.Text))
+            {
+                xrTableCell70.Text = String.Format("{0:#,###}", double.Parse(xrTableCell70.Text));
+            }
+        }
+
+        private void xrTableCell66_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(xrTableCell66.Text))
+            {
+                xrTableCell66.Text = String.Format("{0:#,###}", double.Parse(xrTableCell66.Text));
+            }
+        }
+
+        private void xrTableCell64_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(xrTableCell64.Text))
+            {
+                xrTableCell64.Text = String.Format("{0:#,###}", double.Parse(xrTableCell64.Text));
+            }
+        }
+
+        private void xrTableCell72_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(xrTableCell72.Text))
+            {
+                xrTableCell72.Text = String.Format("{0:#,###}", double.Parse(xrTableCell72.Text));
+            }
+        }
+
+        private void xrTableCell68_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(xrTableCell68.Text))
+            {
+                xrTableCell68.Text = String.Format("{0:#,###}", double.Parse(xrTableCell68.Text));
+            }
+        }
+        #endregion
+
+        #region "SCSS"
+        private void getSCSSBalance()
+        {
+            SCSSInfo npsInfo = new SCSSInfo();
+            double totalSCSSValue = 0;
+            DataTable dtSCSS = npsInfo.GetSCSSInfo(this.planner.ID);
+            if (dtSCSS != null && dtSCSS.Rows.Count > 0)
+            {
+                totalSCSSValue = dtSCSS.AsEnumerable().Sum(x => Convert.ToDouble(x["CurrentValue"]));
+            }
+
+            if (totalSCSSValue > 0)
+            {
+                DataRow drNetWorth = dtNetWorth.NewRow();
+                drNetWorth["Group"] = FINANCIAL_ASSETS;
+                drNetWorth["Title"] = SCSS;
+                drNetWorth["Amount"] = Math.Round(totalSCSSValue);
+                dtNetWorth.Rows.Add(drNetWorth);
+            }
+        }
+        #endregion
     }
 }

@@ -361,6 +361,7 @@ namespace FinancialPlannerClient.Clients
             familymember.Pancard = txtFMPANCard.Text;
             familymember.AadharCard = txtFMAdharCard.Text;
             familymember.Occupation = txtFMOccuption.Text;
+            familymember.IsHuf = chkHUF.Checked;
             return familymember;
         }
 
@@ -396,6 +397,7 @@ namespace FinancialPlannerClient.Clients
                 txtFMAdharCard.Text = familymember.AadharCard;
                 txtFMOccuption.Text = familymember.Occupation;
                 displayBankDetailsOfFamilyMember(familymember.Id);
+                chkHUF.Checked = familymember.IsHuf;
             }
             else
             {
@@ -2567,11 +2569,13 @@ namespace FinancialPlannerClient.Clients
             {
                 txtExpectedGrowthSalary.Text = plannerAssumption.SpouseIncomeRise.ToString();
                 txtincomeGrowthPercentage.Text = plannerAssumption.SpouseIncomeRise.ToString();
+                txtIncomeEndYear.Text = (_client.DOB.Year + plannerAssumption.SpouseRetirementAge).ToString();
             }
             else if (cmbIncomeSource.Tag.ToString() == "0" && cmbIncomeBy.Text.Equals(_personalInfo.Client.Name, StringComparison.OrdinalIgnoreCase))
             {
                 txtExpectedGrowthSalary.Text = plannerAssumption.ClientIncomeRise.ToString();
                 txtincomeGrowthPercentage.Text = plannerAssumption.ClientIncomeRise.ToString();
+                txtIncomeEndYear.Text = (_client.DOB.Year + plannerAssumption.ClientRetirementAge).ToString();
             }
         }
 

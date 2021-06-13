@@ -150,18 +150,25 @@ namespace FinancialPlannerClient.PlanOptions
             {
 
                 lblPriorityAfterRetirementGoalTitle.Visible = true;
-                PostRetirementCashFlowService postRetirementCashFlowService = new PostRetirementCashFlowService(this.planner, this.cashFlowService);
-                
-                DataTable dataTable =  postRetirementCashFlowService.GetPostRetirementCashFlowData();
-                DataRow[] drs = dataTable.Select("StartYear = '" + goal.StartYear + "'");
-                if (drs.Count() > 0)
+                if (int.Parse(goal.StartYear) >= int.Parse(retirementGoal.StartYear))
                 {
-                    double corpusFund = 0;
-                    double.TryParse(drs[0][goal.Name].ToString(), out corpusFund);
-                    if (corpusFund <= 0)
-                        return 0;
-                    else
-                        return 100;
+                    PostRetirementCashFlowService postRetirementCashFlowService = new PostRetirementCashFlowService(this.planner, this.cashFlowService);
+
+                    DataTable dataTable = postRetirementCashFlowService.GetPostRetirementCashFlowData();
+                    DataRow[] drs = dataTable.Select("StartYear = '" + goal.StartYear + "'");
+                    if (drs.Count() > 0)
+                    {
+                        double corpusFund = 0;
+                        double.TryParse(drs[0][goal.Name].ToString(), out corpusFund);
+                        if (corpusFund <= 0)
+                            return 0;
+                        else
+                            return 100;
+                    }
+                }
+                else
+                {
+                    return getGoalComplitionPercentage();
                 }
                 return 0;
             }

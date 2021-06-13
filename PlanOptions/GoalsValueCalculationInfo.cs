@@ -312,6 +312,19 @@ namespace FinancialPlannerClient.PlanOptions
 
         }
 
+        public double SetInvestmentToRetirementGoalWhenRetirementHasLastPriority(int investmentYear, double investmentAmount)
+        {
+            GoalPlanning goalPlanning = new GoalPlanning(_goal);
+            goalPlanning.GoalId = _goal.Id;
+            goalPlanning.Year = investmentYear;
+            goalPlanning.GoalFutureValue = _futureValueOfGoal;
+            goalPlanning.ActualFreshInvestment = 0;
+            goalPlanning.GrowthPercentage = GetGrowthPercentage(investmentYear);
+
+            AddGoalPlanning(goalPlanning);
+            return investmentAmount - goalPlanning.ActualFreshInvestment;
+        }
+
         public void AddGoalPlanning(GoalPlanning goalPlanning)
         {
             if (goalPlanning != null)
