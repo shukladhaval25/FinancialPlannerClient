@@ -466,7 +466,9 @@ namespace FinancialPlannerClient.CashFlowManager
                         try
                         {
                             long amount = getIncomeAmount(income,years);
-                            amount = amount + (long)((amount * float.Parse(income.ExpectGrowthInPercentage.ToString()) / 100));
+                            if (income.StartYear != years.ToString())                            
+                                amount = amount + (long)((amount * float.Parse(income.ExpectGrowthInPercentage.ToString()) / 100));
+                            
                             dr["(" + income.IncomeBy + ") " + income.Source] = amount;
                             totalIncome = totalIncome + amount;
 
