@@ -91,7 +91,14 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                 dtNetWorth.Rows[indexRow]["Title"].ToString() == NSC ||
                 dtNetWorth.Rows[indexRow]["Title"].ToString() == SCSS)
             {
-                xrTableDebt.Rows[rowIndexForDebt].Cells[0].Text = dtNetWorth.Rows[indexRow]["Title"].ToString();
+                if (dtNetWorth.Rows[indexRow]["Title"].ToString() == OTHERS_DEBT)
+                {
+                    xrTableDebt.Rows[rowIndexForDebt].Cells[0].Text = dtNetWorth.Rows[indexRow]["Description"].ToString();
+                }
+                else
+                {
+                    xrTableDebt.Rows[rowIndexForDebt].Cells[0].Text = dtNetWorth.Rows[indexRow]["Title"].ToString();
+                }
                 xrTableDebt.Rows[rowIndexForDebt].Cells[1].Text = dtNetWorth.Rows[indexRow]["Amount"].ToString();
                 if ((dtNetWorth.Rows[indexRow]["Amount"].ToString() != null))
                     totalDebtValue = totalDebtValue +

@@ -79,5 +79,12 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             return dtPoko;
         }
 
+        private void lblNetWorth_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(lblNetWorth.Text))
+            {
+                lblNetWorth.Text = String.Format("{0:#,###}", double.Parse(lblNetWorth.Text));
+            }
+        }
     }
 }

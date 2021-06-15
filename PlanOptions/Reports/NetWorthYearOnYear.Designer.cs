@@ -107,7 +107,9 @@
             this.lblYear.Dpi = 100F;
             this.lblYear.Name = "lblYear";
             this.lblYear.StylePriority.UseBorders = false;
+            this.lblYear.StylePriority.UseTextAlignment = false;
             this.lblYear.Text = "lblYear";
+            this.lblYear.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
             this.lblYear.Weight = 1.2749996281481755D;
             // 
             // lblNetWorth
@@ -116,8 +118,9 @@
             this.lblNetWorth.Name = "lblNetWorth";
             this.lblNetWorth.StylePriority.UseTextAlignment = false;
             this.lblNetWorth.Text = "lblNetWorth";
-            this.lblNetWorth.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
+            this.lblNetWorth.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
             this.lblNetWorth.Weight = 0.86249996101553461D;
+            this.lblNetWorth.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.lblNetWorth_BeforePrint);
             // 
             // lblCWI
             // 
@@ -125,7 +128,7 @@
             this.lblCWI.Name = "lblCWI";
             this.lblCWI.StylePriority.UseTextAlignment = false;
             this.lblCWI.Text = "lblCWI";
-            this.lblCWI.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+            this.lblCWI.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
             this.lblCWI.Weight = 0.86250041083628992D;
             // 
             // xrPanel3

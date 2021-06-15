@@ -645,8 +645,13 @@ namespace FinancialPlannerClient.PlanOptions
                 Goals paramGoal = _goals.FirstOrDefault(i => i.Name == cmbCurrentStsatusToGoal.Text);
                 DataTable dtGoalValue = goalCalView.GetGoalsValueTable(paramGoal);
                 dtGoalValue.Columns.Add("EstimatedValue", typeof(System.Double));
+                double assetsMappingValue = 0;
+                assetsMappingValue =(dtGoalValue.Rows.Count > 0 && !dtGoalValue.Rows[dtGoalValue.Rows.Count -1]["Assets Mapping"].ToString().Equals("")) ?
+                    double.Parse (dtGoalValue.Rows[dtGoalValue.Rows.Count - 1]["Assets Mapping"].ToString()) :
+                   0;
+
                 double goalComplitionValue = (dtGoalValue.Rows.Count > 0) ?
-                    double.Parse(dtGoalValue.Rows[dtGoalValue.Rows.Count - 1]["Cash outflow Goal Year"].ToString())
+                    (double.Parse(dtGoalValue.Rows[dtGoalValue.Rows.Count - 1]["Cash outflow Goal Year"].ToString()) - assetsMappingValue)
                     : 0;
                 for (int rowIndex = dtGoalValue.Rows.Count - 2; rowIndex >= 0; rowIndex--)
                 {
