@@ -273,14 +273,14 @@ namespace FinancialPlannerClient.PlanOptions
             this.LumsumInvestment.Controls.Add(this.btnDeleteLumsum);
             this.LumsumInvestment.Controls.Add(this.gridControlLumsumInvestment);
             this.LumsumInvestment.Name = "LumsumInvestment";
-            this.LumsumInvestment.Size = new System.Drawing.Size(750, 410);
+            this.LumsumInvestment.Size = new System.Drawing.Size(754, 405);
             this.LumsumInvestment.Text = "Lumsum Investment";
             // 
             // btnDeleteLumsum
             // 
             this.btnDeleteLumsum.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnDeleteLumsum.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteLumsum.Image")));
-            this.btnDeleteLumsum.Location = new System.Drawing.Point(365, 379);
+            this.btnDeleteLumsum.Location = new System.Drawing.Point(367, 374);
             this.btnDeleteLumsum.Name = "btnDeleteLumsum";
             this.btnDeleteLumsum.Size = new System.Drawing.Size(25, 23);
             toolTipTitleItem1.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
@@ -305,7 +305,7 @@ namespace FinancialPlannerClient.PlanOptions
             this.gridControlLumsumInvestment.Name = "gridControlLumsumInvestment";
             this.gridControlLumsumInvestment.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemButtonEdit1});
-            this.gridControlLumsumInvestment.Size = new System.Drawing.Size(747, 370);
+            this.gridControlLumsumInvestment.Size = new System.Drawing.Size(751, 370);
             this.gridControlLumsumInvestment.TabIndex = 0;
             this.gridControlLumsumInvestment.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewLumsumInvestment});
@@ -565,7 +565,7 @@ namespace FinancialPlannerClient.PlanOptions
             // 
             // vGridInvestmentRatio
             // 
-            this.vGridInvestmentRatio.Cursor = System.Windows.Forms.Cursors.SizeWE;
+            this.vGridInvestmentRatio.Cursor = System.Windows.Forms.Cursors.Default;
             this.vGridInvestmentRatio.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vGridInvestmentRatio.Location = new System.Drawing.Point(2, 2);
             this.vGridInvestmentRatio.Name = "vGridInvestmentRatio";
@@ -678,7 +678,7 @@ namespace FinancialPlannerClient.PlanOptions
             this.chkSTPApply.Location = new System.Drawing.Point(5, 285);
             this.chkSTPApply.Name = "chkSTPApply";
             this.chkSTPApply.Properties.Caption = "STP apply for selected scheme";
-            this.chkSTPApply.Size = new System.Drawing.Size(255, 19);
+            this.chkSTPApply.Size = new System.Drawing.Size(255, 21);
             this.chkSTPApply.TabIndex = 31;
             this.chkSTPApply.Visible = false;
             this.chkSTPApply.CheckedChanged += new System.EventHandler(this.chkSTPApply_CheckedChanged);

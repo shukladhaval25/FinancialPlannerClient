@@ -184,6 +184,11 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             }
         }
 
+        internal DataTable GetGoalsByGroup()
+        {
+            return _dtGoals;
+        }
+
         private string setGoalNameWithRecurranceValidation(int i, string goalName)
         {
             string getGoalYearFormName = (_dtGoals.Rows[i]["Name"].ToString().Length > 4) ? _dtGoals.Rows[i]["Name"].ToString().Substring(_dtGoals.Rows[i]["Name"].ToString().Length - 4).Trim() :

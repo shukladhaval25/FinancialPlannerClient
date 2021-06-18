@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Diagnostics;
+using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
 using DevExpress.Utils;
 using FinancialPlanner.Common;
+using FinancialPlanner.Common.DataConversion;
 using FinancialPlanner.Common.Model;
 using FinancialPlannerClient.PlannerInfo;
 using FinancialPlannerClient.PlanOptions.Reports;
@@ -127,19 +130,52 @@ namespace FinancialPlannerClient.PlanOptions
                 CurrentStatusReport currentStatus = new CurrentStatusReport(netWorthStatement.GetNetWorth());
                 currentStatus.CreateDocument();
 
+
+                DataTable dtGroupByGoals =  financialClientGoal.GetGoalsByGroup();
                 GoalsDescription[] goalsDescriptions = null;
-                if (this.goals != null && this.goals.Count > 0)
+                if (dtGroupByGoals.Rows.Count > 0)
                 {
-                    goalsDescriptions = new GoalsDescription[goals.Count];
+
+                    DataTable dtTempGoal = ListtoDataTable.ToDataTable(this.goals.ToList());
+
+                    addFutureValueIntoDataTable(dtTempGoal);
+
+
+                    goalsDescriptions = new GoalsDescription[dtGroupByGoals.Rows.Count];
                     int goalCountIndex = 0;
-                    foreach (Goals goal in goals)
+                    for (int index =0; index <= dtGroupByGoals.Rows.Count -1; index++)
                     {
+                        DataTable _dtGoals;
+                       DataRow[] dataRows   = dtTempGoal.Select("Name like '" + 
+                          dtGroupByGoals.Rows[index]["Name"].ToString() + "%' and Recurrence <> '0'" );
+                        if (dataRows.Count() == 0)
+                        {
+                            _dtGoals = dtTempGoal.Select("Name like '" +
+                          dtGroupByGoals.Rows[index]["Name"].ToString() +"%'").CopyToDataTable();
+                        }
+                        else
+                        {
+                            _dtGoals = dtTempGoal.Select("Name like '" +
+                          dtGroupByGoals.Rows[index]["Name"].ToString() + "%' and Recurrence <> '0'").CopyToDataTable();
+                        }
+                        //    ListtoDataTable.ToDataTable(
+                        //goals.Where(x => x.Name.StartsWith(dtGroupByGoals.Rows[index]["Name"].ToString())).ToList());
                         goalsDescriptions[goalCountIndex] = new GoalsDescription();
-                        goalsDescriptions[goalCountIndex].SetReportParameter(this.client, this.planner, goal,
-                            this.riskprofileId, this.optionId);
+                        goalsDescriptions[goalCountIndex].SetReportParameter(this.client, this.planner, _dtGoals,
+                           this.riskprofileId, this.optionId,this.goals.ToList());
                         goalsDescriptions[goalCountIndex].CreateDocument();
                         goalCountIndex++;
                     }
+
+
+                    //foreach (Goals goal in goals)
+                    //{
+                    //    goalsDescriptions[goalCountIndex] = new GoalsDescription();
+                    //    goalsDescriptions[goalCountIndex].SetReportParameter(this.client, this.planner, goal,
+                    //        this.riskprofileId, this.optionId);
+                    //    goalsDescriptions[goalCountIndex].CreateDocument();
+                    //    goalCountIndex++;
+                    //}
                 }
 
                 AssetAllocationTitle assetAllocationTitle = new AssetAllocationTitle(this.client);
@@ -179,11 +215,9 @@ namespace FinancialPlannerClient.PlanOptions
                 this.Pages.Add(strategicAssetsCollection.Pages.First);
                 this.Pages.Add(smartGoal.Pages.First);
 
-                int goalCount = 0;
-                foreach (Goals goal in goals)
+                for (int index = 0; index <= dtGroupByGoals.Rows.Count - 1; index++)
                 {
-                    this.Pages.Add(goalsDescriptions[goalCount].Pages.First);
-                    goalCount++;
+                    this.Pages.Add(goalsDescriptions[index].Pages.First);
                 }
 
                 this.Pages.Add(assetAllocationTitle.Pages.First);
@@ -210,6 +244,28 @@ namespace FinancialPlannerClient.PlanOptions
             debuggerInfo.Method = methodName;
             debuggerInfo.ExceptionInfo = ex;
             Logger.LogDebug(debuggerInfo);
+        }
+
+        private void addFutureValueIntoDataTable(DataTable _dtGoals)
+        {
+            _dtGoals.Columns.Add("FutureValue", typeof(System.Double));
+            foreach (DataRow dr in _dtGoals.Rows)
+            {
+                int years = (!string.IsNullOrEmpty(dr["StartYear"].ToString())) ?
+                int.Parse(dr["StartYear"].ToString()) - planner.StartDate.Year : 0;
+                dr["FutureValue"] = futureValue(double.Parse(dr["Amount"].ToString()),
+                    decimal.Parse(dr["InflationRate"].ToString()), years);
+            }
+        }
+
+        private static double futureValue(double presentValue, decimal interest_rate, int timePeriodInYears)
+        {
+            //FV = PV * (1 + I)T;
+            interest_rate = interest_rate / 100;
+            decimal futureValue = (decimal)presentValue *
+                ((decimal)Math.Pow((double)(1 + interest_rate), (double)timePeriodInYears));
+
+            return Math.Round((double)futureValue);
         }
     }
 }

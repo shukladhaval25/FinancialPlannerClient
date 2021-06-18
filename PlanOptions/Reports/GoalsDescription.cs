@@ -11,6 +11,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Reflection;
 using FinancialPlanner.Common;
+using System.Collections.Generic;
 
 namespace FinancialPlannerClient.PlanOptions.Reports
 {
@@ -23,6 +24,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         int optionId;
         private DataTable _dtGoalProfile;
         private DataTable _dtcashFlow;
+        private DataTable _dtGoals;
 
         public GoalsDescription()
         {
@@ -160,6 +162,49 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             {
                 lblCurrentSurplus.Text = String.Format("{0:#,###}", double.Parse(lblCurrentSurplus.Text));
             }
+        }
+
+        internal void SetReportParameter(Client client, Planner planner, DataTable dtGoals, int riskProfileId, int optionId, List<Goals> goals)
+        {
+            this.lblClientName.Text = client.Name;
+            this._dtGoals = dtGoals;
+            this.planner = planner;
+            this.riskProfileId = riskProfileId;
+            this.optionId = optionId;
+            this.client = client;
+            this.goal = goals.Find(i => i.Name == _dtGoals.Rows[0]["Name"].ToString());
+            bindFields();
+        }
+
+        private void bindFields()
+        {
+            this.DataSource = _dtGoals;
+            this.DataMember = _dtGoals.TableName;
+
+            lblGoalName.DataBindings.Add("Text", this.DataSource, "Goals.Name");
+            lblGoalSetYear.DataBindings.Add("Text", this.DataSource, "Goals.StartYear");
+            lblNameOfGoal.DataBindings.Add("Text", this.DataSource, "Goals.Name");
+            lblPresentValue.DataBindings.Add("Text", this.DataSource, "Goals.Amount");
+            lblGoalYear.DataBindings.Add("Text", this.DataSource, "Goals.StartYear");
+            lblGoalInflation.DataBindings.Add("Text", this.DataSource, "Goals.InflationRate");
+            lblGoalFutureValue.DataBindings.Add("Text", this.DataSource, "Goals.FutureValue");
+
+            RiskProfileInfo riskprofileInfo = new RiskProfileInfo();
+            //this.goal = new Goals()
+            //{
+            //    Id = int.Parse(_dtGoals.Rows[0]["Id"].ToString()),
+            //    Amount = double.Parse(_dtGoals.Rows[0]["Amount"].ToString()),
+            //    Category = _dtGoals.Rows[0]["Category"].ToString(),
+            //    EndYear = _dtGoals.Rows[0]["EndYear"].ToString(),
+            //    StartYear = _dtGoals.Rows[0]["StartYear"].ToString(),
+            //    InflationRate = decimal.Parse(_dtGoals.Rows[0]["InflationRate"].ToString()),
+            //    Priority = int.Parse(_dtGoals.Rows[0]["Priority"].ToString())
+            //};
+            double returnRate = (double)riskprofileInfo.GetRiskProfileReturnRatio(this.riskProfileId,
+                    (int.Parse(this.goal.StartYear) - this.planner.StartDate.Year));
+            lblTaxReturn.Text = string.Format(lblTaxReturn.Text, returnRate.ToString(), this.planner.StartDate.Year.ToString());
+            setImageForGoal(goal);
+            goalCalculation(goal);
         }
     }
 }
