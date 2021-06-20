@@ -288,7 +288,7 @@ namespace FinancialPlannerClient.Insurance
                         DataColumn dcExp = new DataColumn(exp.Item, Type.GetType("System.Double"));
                         dtInsurance.Columns.Add(dcExp);
                         DataRow dr = dtInsurance.Rows[rowIndex];
-                        dr[exp.Item] = exp.Amount;
+                        dr[exp.Item] =(exp.OccuranceType == 0) ? (exp.Amount * 12) : exp.Amount;
                     }
                     else
                     {

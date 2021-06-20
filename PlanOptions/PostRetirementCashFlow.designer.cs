@@ -67,6 +67,8 @@
             this.lblClient = new DevExpress.XtraEditors.LabelControl();
             this.btnExport = new DevExpress.XtraEditors.SimpleButton();
             this.picProcessing = new DevExpress.XtraEditors.PictureEdit();
+            this.lblInstrumentMappedValue = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl16 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.grdPostRetirementCashFlow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridSplitContainerViewCashFlow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
@@ -81,10 +83,10 @@
             this.grdPostRetirementCashFlow.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.grdPostRetirementCashFlow.Location = new System.Drawing.Point(6, 119);
+            this.grdPostRetirementCashFlow.Location = new System.Drawing.Point(6, 138);
             this.grdPostRetirementCashFlow.MainView = this.gridSplitContainerViewCashFlow;
             this.grdPostRetirementCashFlow.Name = "grdPostRetirementCashFlow";
-            this.grdPostRetirementCashFlow.Size = new System.Drawing.Size(1140, 396);
+            this.grdPostRetirementCashFlow.Size = new System.Drawing.Size(1140, 377);
             this.grdPostRetirementCashFlow.TabIndex = 1;
             this.grdPostRetirementCashFlow.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridSplitContainerViewCashFlow});
@@ -103,6 +105,8 @@
             // 
             this.groupControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupControl1.Controls.Add(this.lblInstrumentMappedValue);
+            this.groupControl1.Controls.Add(this.labelControl16);
             this.groupControl1.Controls.Add(this.lblAssetMapping);
             this.groupControl1.Controls.Add(this.labelControl15);
             this.groupControl1.Controls.Add(this.progressBarRetGoalCompletion);
@@ -138,7 +142,7 @@
             this.groupControl1.Controls.Add(this.lblClient);
             this.groupControl1.Location = new System.Drawing.Point(6, 7);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(1140, 112);
+            this.groupControl1.Size = new System.Drawing.Size(1140, 125);
             this.groupControl1.TabIndex = 2;
             this.groupControl1.Text = "Information";
             // 
@@ -149,7 +153,7 @@
             this.lblAssetMapping.Appearance.Options.UseTextOptions = true;
             this.lblAssetMapping.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.lblAssetMapping.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.lblAssetMapping.Location = new System.Drawing.Point(703, 87);
+            this.lblAssetMapping.Location = new System.Drawing.Point(703, 86);
             this.lblAssetMapping.Name = "lblAssetMapping";
             this.lblAssetMapping.Size = new System.Drawing.Size(111, 10);
             this.lblAssetMapping.TabIndex = 32;
@@ -214,7 +218,7 @@
             this.separatorControl1.LineOrientation = System.Windows.Forms.Orientation.Vertical;
             this.separatorControl1.Location = new System.Drawing.Point(820, 22);
             this.separatorControl1.Name = "separatorControl1";
-            this.separatorControl1.Size = new System.Drawing.Size(20, 78);
+            this.separatorControl1.Size = new System.Drawing.Size(20, 99);
             this.separatorControl1.TabIndex = 26;
             // 
             // lblCorpFundAmt
@@ -287,7 +291,7 @@
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label1.Location = new System.Drawing.Point(598, 21);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(2, 80);
+            this.label1.Size = new System.Drawing.Size(2, 95);
             this.label1.TabIndex = 19;
             // 
             // lblSpouseCurrentAge
@@ -355,7 +359,7 @@
             this.lblLine.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.lblLine.Location = new System.Drawing.Point(303, 20);
             this.lblLine.Name = "lblLine";
-            this.lblLine.Size = new System.Drawing.Size(2, 81);
+            this.lblLine.Size = new System.Drawing.Size(2, 96);
             this.lblLine.TabIndex = 10;
             // 
             // lblSpouseRetirementAge
@@ -452,7 +456,7 @@
             // 
             this.btnExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExport.Image = ((System.Drawing.Image)(resources.GetObject("btnExport.Image")));
-            this.btnExport.Location = new System.Drawing.Point(1117, 125);
+            this.btnExport.Location = new System.Drawing.Point(1117, 143);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(23, 23);
             this.btnExport.TabIndex = 26;
@@ -475,6 +479,27 @@
             this.picProcessing.Properties.ZoomAccelerationFactor = 1D;
             this.picProcessing.Size = new System.Drawing.Size(162, 132);
             this.picProcessing.TabIndex = 27;
+            // 
+            // lblInstrumentMappedValue
+            // 
+            this.lblInstrumentMappedValue.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInstrumentMappedValue.Appearance.Options.UseFont = true;
+            this.lblInstrumentMappedValue.Appearance.Options.UseTextOptions = true;
+            this.lblInstrumentMappedValue.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.lblInstrumentMappedValue.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.lblInstrumentMappedValue.Location = new System.Drawing.Point(715, 105);
+            this.lblInstrumentMappedValue.Name = "lblInstrumentMappedValue";
+            this.lblInstrumentMappedValue.Size = new System.Drawing.Size(99, 10);
+            this.lblInstrumentMappedValue.TabIndex = 34;
+            this.lblInstrumentMappedValue.Text = "0";
+            // 
+            // labelControl16
+            // 
+            this.labelControl16.Location = new System.Drawing.Point(611, 102);
+            this.labelControl16.Name = "labelControl16";
+            this.labelControl16.Size = new System.Drawing.Size(98, 13);
+            this.labelControl16.TabIndex = 33;
+            this.labelControl16.Text = "Instrument Mapped:";
             // 
             // PostRetirementCashFlow
             // 
@@ -541,6 +566,8 @@
         private DevExpress.XtraEditors.ProgressBarControl progressBarRetGoalCompletion;
         private DevExpress.XtraEditors.LabelControl lblAssetMapping;
         private DevExpress.XtraEditors.LabelControl labelControl15;
+        private DevExpress.XtraEditors.LabelControl lblInstrumentMappedValue;
+        private DevExpress.XtraEditors.LabelControl labelControl16;
     }
 }
 

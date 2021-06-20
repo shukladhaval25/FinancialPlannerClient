@@ -21,6 +21,7 @@ namespace FinancialPlannerClient.PlanOptions
         PostRetirementCashFlowService postRetirementCashFlowService;
         CashFlowCalculation cashFlowCalculation;
         double assetsMappingValue = 0;
+        double instumentMappingValue = 0;
         public PostRetirementCashFlow(Planner planner,CashFlowService cashFlowService)
         {
             try
@@ -49,7 +50,10 @@ namespace FinancialPlannerClient.PlanOptions
                     }
                     GoalsValueCalculationInfo goalsValueCalculationInfo = cashFlowService.GoalCalculationMgr.GetGoalValueCalculation(goal);
                     assetsMappingValue = (goalsValueCalculationInfo != null)? goalsValueCalculationInfo.FutureValueOfMappedNonFinancialAssets:0;
+                    instumentMappingValue = (goalsValueCalculationInfo != null) ?
+                        goalsValueCalculationInfo.FutureValueOfMappedInstruments : 0;
                     lblAssetMapping.Text = assetsMappingValue.ToString("##,###.00");
+                    lblInstrumentMappedValue.Text = instumentMappingValue.ToString("##,###.00");
                 }
             }
             catch(Exception ex)
@@ -136,7 +140,7 @@ namespace FinancialPlannerClient.PlanOptions
             if (estitmatedCorpFund > 0 && totalAvailableCorpFund != 0)
             {
                 
-                double goalComplitionPercentage = Math.Round(((100 * (totalAvailableCorpFund + assetsMappingValue)) / estitmatedCorpFund));
+                double goalComplitionPercentage = Math.Round(((100 * (totalAvailableCorpFund + assetsMappingValue + instumentMappingValue )) / estitmatedCorpFund));
                 progressBarRetGoalCompletion.Properties.Maximum = (goalComplitionPercentage > 100) ? int.Parse(goalComplitionPercentage.ToString()) : 100;
 
                 progressBarRetGoalCompletion.EditValue = goalComplitionPercentage.ToString();
