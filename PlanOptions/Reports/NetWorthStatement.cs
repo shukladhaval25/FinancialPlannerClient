@@ -19,7 +19,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         const string RD = "Recurring Deposit";
         const string SA = "Saving Account";
         const string EMF = "Equity Mutual Fund";
-        const string DMF = "Dept Mutual Fund";
+        const string DMF = "Debt Mutual Fund";
         const string PPF = "PPF";
         const string BONDS = "Bonds";
         const string SS = "Sukanya Sum. Account";
@@ -31,9 +31,9 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         const string ULIP_EQUITY = "ULIP Equity";
         const string OTHERS_EQUITY = "Others Equity";
 
-        const string ULIPS_DEBT = "ULIP Dept";
-        const string NPS_DEPT = "NPS Dept";
-        const string OTHERS_DEBT = "Others Dept";
+        const string ULIPS_DEBT = "ULIP Debt";
+        const string NPS_DEPT = "NPS Debt";
+        const string OTHERS_DEBT = "Others Debt";
         const string EPF = "EPF";
         const string NSC = "NSC";
         const string SCSS = "SCSS";

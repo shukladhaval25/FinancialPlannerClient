@@ -103,7 +103,10 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                             {
                                 if (_dtGoals.Rows[i]["Recurrence"].ToString().Equals(_dtGoals.Rows[innerLoopIndex]["Recurrence"].ToString()) &&
                                     _dtGoals.Rows[innerLoopIndex]["Category"].ToString().Equals(goalCategory) &&
-                                    _dtGoals.Rows[innerLoopIndex]["Name"].ToString().Substring(0, _dtGoals.Rows[innerLoopIndex]["Name"].ToString().Length - 4).Trim().Equals(goalName))
+                                    _dtGoals.Rows[innerLoopIndex]["Name"].ToString().Substring(0,
+                                     (_dtGoals.Rows[innerLoopIndex]["Name"].ToString().Length > 4) ?
+                                    _dtGoals.Rows[innerLoopIndex]["Name"].ToString().Length - 4 :
+                                    _dtGoals.Rows[innerLoopIndex]["Name"].ToString().Length).Trim().Equals(goalName))
                                 {
                                     goalComplitionPercentage = getGoalComlitionPercentage(innerLoopIndex, goalCalView);
                                     currentStatusMapAmount = getCurrentStatusFundForMappedGoal(int.Parse(_dtGoals.Rows[innerLoopIndex]["ID"].ToString()));

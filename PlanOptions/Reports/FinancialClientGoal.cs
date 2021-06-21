@@ -65,7 +65,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             {
                 this.xrRetirementGoal.Text = drs[0]["Name"].ToString();
                 this.lblRetirementStartYear.Text = drs[0]["StartYear"].ToString();
-                this.lblRetirementEndYear.Text = drs[0]["EndYear"].ToString();
+                
                 this.lblRetirementInflation.Text = drs[0]["InflationRate"].ToString() + " %";
                
                 this.lblRetirementPriority.Text = drs[0]["Priority"].ToString();
@@ -89,6 +89,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                     this.lblRetirementFutureCost.Text = dtGoalValue.Rows[0]["GoalValue"].ToString();
                     this.lblRetirementPresentCost.Text = dtGoalValue.Rows[0]["CurrentValue"].ToString();
                     lblTotalCorpusNeeded.Text = string.Format(lblTotalCorpusNeeded.Text, (int.Parse(retirementGoal.EndYear) - int.Parse(retirementGoal.StartYear)));
+                    this.lblRetirementEndYear.Text = retirementGoal.EndYear;
                 }
             }
         }
@@ -122,7 +123,11 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                         {
                             if (_dtGoals.Rows[i]["Recurrence"].ToString().Equals(_dtGoals.Rows[innerLoopIndex]["Recurrence"].ToString()) &&
                                 _dtGoals.Rows[innerLoopIndex]["Category"].ToString().Equals(goalCategory) &&
-                                _dtGoals.Rows[innerLoopIndex]["Name"].ToString().Substring(0, _dtGoals.Rows[innerLoopIndex]["Name"].ToString().Length - 4).Trim().Equals(goalName))
+                                _dtGoals.Rows[innerLoopIndex]["Name"].ToString().Substring(0, 
+                                (_dtGoals.Rows[innerLoopIndex]["Name"].ToString().Length > 4)?
+                                 _dtGoals.Rows[innerLoopIndex]["Name"].ToString().Length - 4 :
+                                 _dtGoals.Rows[innerLoopIndex]["Name"].ToString().Length
+                                ).Trim().Equals(goalName))
                             {
                                 amount = amount + double.Parse(_dtGoals.Rows[innerLoopIndex]["Amount"].ToString());
                                 futureValue = futureValue + double.Parse(_dtGoals.Rows[innerLoopIndex]["FutureValue"].ToString());
@@ -240,7 +245,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                 {
                     xrGroupTable.Visible = true;
                     this.lblName.DataBindings.Add("Text", this.DataSource, "Goals.Name");
-                    xrGroupLabel.Text = string.Format("{0} {1} or Rs.{2} each", lblRecurrence.Text, lblName.Text, (double.Parse(lblPresentCost.Text) / int.Parse(lblRecurrence.Text)));
+                    xrGroupLabel.Text = string.Format("{0} {1} of Rs.{2} each", lblRecurrence.Text, lblName.Text, (double.Parse(lblPresentCost.Text) / int.Parse(lblRecurrence.Text)));
                     xrGroupLabel2.Text = string.Format("Total fund need for {0} {1}", lblRecurrence.Text, lblName.Text);
                     //xrGroupTable.HeightF = 25;
                     xrGroupLabel.BackColor = System.Drawing.Color.LightGreen;
@@ -249,11 +254,6 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                 else
                 {
                     xrGroupTable.Visible = false;
-                    //xrGroupLabel.Text = "";
-                    //xrGroupLabel2.Text = "";
-                    //xrGroupLabel.BackColor = System.Drawing.Color.White;
-                    //xrGroupLabel2.BackColor = System.Drawing.Color.White;
-                    //xrGroupTable.HeightF = 0;
                 }
             }
         }
@@ -275,7 +275,6 @@ namespace FinancialPlannerClient.PlanOptions.Reports
 
         private void lblFutureCost_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            //lblFutureCost.Text = string.Format(lblFutureCost.Text,"#,###");
             lblFutureCost.Text = String.Format("{0:#,###}", double.Parse(lblFutureCost.Text));
         }
 

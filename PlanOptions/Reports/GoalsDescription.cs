@@ -206,5 +206,10 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             setImageForGoal(goal);
             goalCalculation(goal);
         }
+
+        private void lblGoalInflation_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            lblGoalInflation.Text = lblGoalInflation.Text + " %";
+        }
     }
 }

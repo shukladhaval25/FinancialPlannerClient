@@ -128,7 +128,7 @@
             this.lblCWI.Name = "lblCWI";
             this.lblCWI.StylePriority.UseTextAlignment = false;
             this.lblCWI.Text = "lblCWI";
-            this.lblCWI.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
+            this.lblCWI.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
             this.lblCWI.Weight = 0.86250041083628992D;
             // 
             // xrPanel3

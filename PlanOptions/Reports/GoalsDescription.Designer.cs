@@ -222,6 +222,7 @@
             this.lblGoalInflation.Dpi = 100F;
             this.lblGoalInflation.Name = "lblGoalInflation";
             this.lblGoalInflation.Weight = 0.60111161763751442D;
+            this.lblGoalInflation.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.lblGoalInflation_BeforePrint);
             // 
             // lblGoalFutureValue
             // 
