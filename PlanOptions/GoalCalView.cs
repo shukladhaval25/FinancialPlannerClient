@@ -117,6 +117,11 @@ namespace FinancialPlannerClient.PlanOptions
                     setGoalProfileGrid(goal);
                     _dtGoalValue = _goalCalculationInfo.GetGoalCalculation();
                     dtGridGoalValue.DataSource = _dtGoalValue;
+
+
+                    //To settle income / expencse calcution in retirement goal this method added.
+                    setEstimatedCorpusFundForRetirementGoalWithIncomeExpCalcuation(goal);
+
                     int goalComplitionPercentage = GetGoalComplitionPercentage(goal);
                     if (goalComplitionPercentage > 100)
                         progGoalComplition.Properties.Maximum = goalComplitionPercentage;
@@ -124,7 +129,7 @@ namespace FinancialPlannerClient.PlanOptions
                         progGoalComplition.Properties.Maximum = 100;
 
                     progGoalComplition.EditValue = goalComplitionPercentage;
-                    progGoalComplition.Text  = goalComplitionPercentage.ToString();
+                    progGoalComplition.Text = goalComplitionPercentage.ToString();
                 }
             }
             catch(Exception ex)
@@ -136,6 +141,21 @@ namespace FinancialPlannerClient.PlanOptions
                 XtraMessageBox.Show("Error:" + ex.ToString(), "Error");
             }
         }
+
+        private void setEstimatedCorpusFundForRetirementGoalWithIncomeExpCalcuation(Goals goal)
+        {
+            if (goal.Category == "Retirement")
+            {
+                PostRetirementCashFlowService postRetirementCashFlowService = new PostRetirementCashFlowService(this.planner, this.cashFlowService);
+
+                DataTable dataTable = postRetirementCashFlowService.GetPostRetirementCashFlowData();
+                double estimatedCorpusFund = postRetirementCashFlowService.GetProposeEstimatedCorpusFund();
+                _dtGoalProfile.Rows[0]["FirstYearExpenseOnRetirementYear"] = estimatedCorpusFund;
+                _dtGoalProfile.Rows[0]["GoalValue"] = estimatedCorpusFund;
+                _dtGoalValue.Rows[_dtGoalValue.Rows.Count - 1]["Cash outflow Goal Year"] = estimatedCorpusFund;
+            }
+        }
+
         public int GetGoalComplitionPercentage(Goals goal)
         {
             if (goals == null)

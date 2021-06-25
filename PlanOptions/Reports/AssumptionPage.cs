@@ -36,7 +36,7 @@ namespace FinancialPlannerClient.PlanOptions
             lblRealEstateReturn.Text = string.Format("{0} %", plannerAssumption.OtherReturnRate);
             lblExpRaise.Text = string.Format(lblExpRaise.Text, plannerAssumption.OngoingExpRise);
             lblClientIncomeRaise.Text = string.Format("{0} %", plannerAssumption.ClientIncomeRise);
-            lblSpouseIncomeRaise.Text = string.Format("{0} %", plannerAssumption.ClientIncomeRise);
+            lblSpouseIncomeRaise.Text = string.Format("{0} %", plannerAssumption.SpouseIncomeRise );
 
             AssumptionMaster assumptionMaster = Program.GetAssumptionMaster();
             lblInsurance.Text = string.Format(lblInsurance.Text, lblClientName.Text, lblSpouseNameForIncome.Text, assumptionMaster.InsuranceReturnRate);

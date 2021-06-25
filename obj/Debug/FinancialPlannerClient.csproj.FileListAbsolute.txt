@@ -585,4 +585,3 @@ C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient
 C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.exe.licenses
 C:\Application Softwares\FinancialPlannerClient\bin\Debug\Newtonsoft.Json.dll
 C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.NetWorthAssets.resources
-C:\Application Softwares\FinancialPlannerClient\bin\Debug\Newtonsoft.Json.xml

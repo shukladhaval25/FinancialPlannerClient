@@ -55,6 +55,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             }
             lblEquityTotal.Text = totalEquityValue.ToString();
             lblDebtTotal.Text = totalDebtValue.ToString();
+            lblTotalValue.Text = (totalEquityValue + totalDebtValue).ToString();
             xrChartCurrentStatus.Series[0].Points[0].Values = new double[] { totalEquityValue };
             xrChartCurrentStatus.Series[0].Points[1].Values = new double[] { totalDebtValue };
         }
@@ -273,6 +274,11 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             {
                 xrTableCell38.Text = String.Format("{0:#,###}", double.Parse(xrTableCell38.Text));
             }
+        }
+
+        private void lblTotalValue_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            lblTotalValue.Text = String.Format("{0:#,###}", double.Parse(lblTotalValue.Text));
         }
     }
 }

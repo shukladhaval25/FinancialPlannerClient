@@ -182,7 +182,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             this.DataMember = _dtGoals.TableName;
 
             lblGoalName.DataBindings.Add("Text", this.DataSource, "Goals.Name");
-            lblGoalSetYear.DataBindings.Add("Text", this.DataSource, "Goals.StartYear");
+            lblGoalSetYear.Text = this.planner.StartDate.Year.ToString();
             lblNameOfGoal.DataBindings.Add("Text", this.DataSource, "Goals.Name");
             lblPresentValue.DataBindings.Add("Text", this.DataSource, "Goals.Amount");
             lblGoalYear.DataBindings.Add("Text", this.DataSource, "Goals.StartYear");

@@ -532,7 +532,7 @@
             this.xrTableCell9.Dpi = 100F;
             this.xrTableCell9.Name = "xrTableCell9";
             this.xrTableCell9.StylePriority.UseBackColor = false;
-            this.xrTableCell9.Text = "Goal set year ";
+            this.xrTableCell9.Text = "Current Year";
             this.xrTableCell9.Weight = 0.70692899401201748D;
             // 
             // xrTableCell10

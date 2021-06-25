@@ -93,7 +93,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             }
             foreach (DataRow dr in _dtExpenses.Rows)
             {
-                if (dr["ExpStartYear"].ToString().Equals(DateTime.Now.Year.ToString()))
+                if (dr["ExpStartYear"].ToString().Equals(DateTime.Now.Year.ToString()) || string.IsNullOrEmpty(dr["ExpStartYear"].ToString()))
                 {
                     xrTableExp.Rows[index].Cells[0].Text = dr["Item"].ToString();
                     double exp = (dr["OccuranceType"].ToString().Equals("Monthly") ? double.Parse(dr["Amount"].ToString()) * 12 : double.Parse(dr["Amount"].ToString()));
