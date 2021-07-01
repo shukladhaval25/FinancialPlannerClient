@@ -397,7 +397,7 @@
             this.chkEligbileForInsuranceCoverage.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkEligbileForInsuranceCoverage.Properties.Appearance.Options.UseFont = true;
             this.chkEligbileForInsuranceCoverage.Properties.Caption = "Consider this item as insurance coverage need";
-            this.chkEligbileForInsuranceCoverage.Size = new System.Drawing.Size(302, 19);
+            this.chkEligbileForInsuranceCoverage.Size = new System.Drawing.Size(302, 21);
             this.chkEligbileForInsuranceCoverage.TabIndex = 59;
             // 
             // grpLoanForGoal
@@ -616,7 +616,7 @@
             this.chkLaonForGoal.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkLaonForGoal.Properties.Appearance.Options.UseFont = true;
             this.chkLaonForGoal.Properties.Caption = "Loan require to complete Goal";
-            this.chkLaonForGoal.Size = new System.Drawing.Size(220, 19);
+            this.chkLaonForGoal.Size = new System.Drawing.Size(220, 21);
             this.chkLaonForGoal.TabIndex = 57;
             this.chkLaonForGoal.CheckedChanged += new System.EventHandler(this.chkLaonForGoal_CheckedChanged);
             // 
