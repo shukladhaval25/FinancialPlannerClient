@@ -61,6 +61,43 @@ namespace FinancialPlannerClient.CurrentStatus
             }
         }
 
+        internal IList<RecurringDeposit> GetRecurringDeposits(int planeId)
+        {
+            IList<RecurringDeposit> RecurringDepositObj = new List<RecurringDeposit>();
+            try
+            {
+                FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
+                string apiurl = Program.WebServiceUrl + "/" + string.Format(GET_ALL, planeId);
+
+                RestAPIExecutor restApiExecutor = new RestAPIExecutor();
+
+                var restResult = restApiExecutor.Execute<IList<RecurringDeposit>>(apiurl, null, "GET");
+
+                if (jsonSerialization.IsValidJson(restResult.ToString()))
+                {
+                    RecurringDepositObj = jsonSerialization.DeserializeFromString<IList<RecurringDeposit>>(restResult.ToString());
+                }
+              
+                return RecurringDepositObj;
+            }
+            catch (System.Net.WebException webException)
+            {
+                if (webException.Message.Equals("The remote server returned an error: (401) Unauthorized."))
+                {
+                    MessageBox.Show("You session has been expired. Please Login again.", "Session Expired", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
+                LogDebug(currentMethodName.Name, ex);
+                return null;
+            }
+        }
+
         internal bool Add(RecurringDeposit RecurringDeposit)
         {
             try

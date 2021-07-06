@@ -654,5 +654,11 @@ namespace FinancialPlannerClient.Clients
             navigationPageOther.Controls.Add(netWorthAssets);
             showNavigationPage(netWorthAssets.Name);
         }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            PlannerDataMigration plannerDataMigration = new PlannerDataMigration(this._client, this.planner);
+            plannerDataMigration.Show();
+        }
     }
 }

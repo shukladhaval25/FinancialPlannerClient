@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CurrentStatus));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnViewStatus = new System.Windows.Forms.Button();
@@ -41,7 +42,7 @@
             this.dtGridLifeInsurance = new System.Windows.Forms.DataGridView();
             this.grpActionControls = new System.Windows.Forms.GroupBox();
             this.btnDeleteLifeInsurance = new System.Windows.Forms.Button();
-            this.imgCollection = new System.Windows.Forms.ImageList();
+            this.imgCollection = new System.Windows.Forms.ImageList(this.components);
             this.btnAddLifeInsurance = new System.Windows.Forms.Button();
             this.btnEditLifeInsurance = new System.Windows.Forms.Button();
             this.pnlLifeInsuranceDetail = new System.Windows.Forms.Panel();

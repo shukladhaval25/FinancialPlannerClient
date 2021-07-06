@@ -93,5 +93,15 @@ namespace FinancialPlannerClient.AuditTrail
                     dataRow["TypeImg"] = Properties.Resources.icons8_padlock_16;
             }
         }
+
+        private static double presentValue(double futureValue, decimal interest_rate, int timePeriodInYears)
+        {
+            //PV = FV / (1 + I)T;
+            interest_rate = interest_rate / 100;
+            decimal presentValue = (decimal)futureValue /
+                ((decimal)Math.Pow((double)(1 + interest_rate), (double)timePeriodInYears));
+
+            return Math.Round((double)presentValue);
+        }
     }
 }

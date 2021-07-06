@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>FinancialPlannerClient</RootNamespace>
     <AssemblyName>FinancialPlannerClient</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <NuGetPackageImportStamp>
@@ -109,12 +109,14 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\FinancialPlanner.Common\bin\Debug\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.DirectoryServices" />
@@ -411,6 +413,12 @@
       <DependentUpon>NetWorthAssets.cs</DependentUpon>
     </Compile>
     <Compile Include="PlanOptions\NetWorthInfo.cs" />
+    <Compile Include="PlanOptions\PlannerDataMigration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\PlannerDataMigration.Designer.cs">
+      <DependentUpon>PlannerDataMigration.cs</DependentUpon>
+    </Compile>
     <Compile Include="PlanOptions\ReportParams.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1114,6 +1122,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\NetWorthAssets.resx">
       <DependentUpon>NetWorthAssets.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\PlannerDataMigration.resx">
+      <DependentUpon>PlannerDataMigration.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\ReportParams.resx">
       <DependentUpon>ReportParams.cs</DependentUpon>

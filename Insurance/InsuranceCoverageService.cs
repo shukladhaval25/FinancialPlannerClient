@@ -14,20 +14,24 @@ using System.Threading.Tasks;
 namespace FinancialPlannerClient.Insurance
 {
     internal class InsuranceCoverageService
-    {       
+    {
+        private const int singlePersonRetirmentCorpusPercentage = 70;
         int currentYear = DateTime.Now.Year;
         DataTable dtInsurance = new DataTable();
         double totalLoanAmountDue = 0;
         private double proposeEstimatedInsuranceRequire = 0;
-        private int invReturnRate = 0;
+        private double insuranceReturnRate = 0;
         Client client;
         Planner planner;
         PlannerAssumption plannerAssumption;
+        IList<Expenses> expenses;
         public InsuranceCoverageService(Client client,Planner planner)
         {
             this.client = client;
             this.planner = planner;
-            plannerAssumption = new PlannerAssumptionInfo().GetAll(planner.ID);           
+            plannerAssumption = new PlannerAssumptionInfo().GetAll(planner.ID);
+            AssumptionMaster  assumptionMaster = Program.GetAssumptionMaster();
+            insuranceReturnRate = double.Parse(assumptionMaster.InsuranceReturnRate.ToString());
         }
 
         public void CalculateInsuranceCoverNeed()
@@ -88,7 +92,13 @@ namespace FinancialPlannerClient.Insurance
                 postRetirementCashFlowService.GetPostRetirementCashFlowData();
                 postRetirementCashFlowService.calculateEstimatedRequireCorpusFund();
                 double totalEstimatedRetirementCorpusFund = Math.Round(postRetirementCashFlowService.GetProposeEstimatedCorpusFund(), 2);
-                double estimatedRetirementCorpusForSinglePerson = (totalEstimatedRetirementCorpusFund * 70) / 100;
+
+                double estimatedRetirementCorpusForSinglePerson = 
+                    (totalEstimatedRetirementCorpusFund * singlePersonRetirmentCorpusPercentage) / 100;
+
+                int remainYearsForRetirement = plannerAssumption.ClientRetirementAge - (currentYear - client.DOB.Year);
+
+                estimatedRetirementCorpusForSinglePerson = presentValue(estimatedRetirementCorpusForSinglePerson, this.plannerAssumption.PostRetirementInvestmentReturnRate, remainYearsForRetirement);
                 
                     DataColumn dcFinancialAssets = new DataColumn("RetirementCorpus", Type.GetType("System.Double"));
                     dtInsurance.Columns.Add(dcFinancialAssets);
@@ -168,10 +178,11 @@ namespace FinancialPlannerClient.Insurance
                 DataColumn dcExp = new DataColumn("EstimatedRequireInsurance", Type.GetType("System.Double"));
                 dtInsurance.Columns.Add(dcExp);
             }
+            // double[] expValues = getExpneses(dtInsurance);
             for (int i = dtInsurance.Rows.Count - 1; i >= 1; i--)
             {
                 double totalExpAmount = (double.Parse(dtInsurance.Rows[i]["TotalCoverageRequire"].ToString()));
-                
+
                 if (i == dtInsurance.Rows.Count - 1)
                     dtInsurance.Rows[i]["EstimatedRequireInsurance"] = 0;
                 dtInsurance.Rows[i - 1]["EstimatedRequireInsurance"] = Math.Round(totalExpAmount +
@@ -189,9 +200,40 @@ namespace FinancialPlannerClient.Insurance
             proposeEstimatedInsuranceRequire = proposeEstimatedInsuranceRequire + totalExpAmountForFirstRow;
         }
 
+        private double[] getExpneses(DataTable dtInsurance)
+        {
+           Dictionary<string, double[]> keyPairExpenses = new Dictionary<string, double[]>();
+            double[] expensesValue = new double[dtInsurance.Rows.Count];
+
+            //expenses[i] = double.Parse(dtInsurance.Rows[i][""].ToString());
+            for (int rowIndex = 0; rowIndex <= dtInsurance.Rows.Count - 1; rowIndex++)
+            {
+                int cy = dtInsurance.Rows[rowIndex].Field<int>("Year");
+                if (expenses.Count > 0)
+                {
+                    List<Expenses> exps = expenses.ToList().FindAll(i => i.EligibleForInsuranceCoverage && (int.Parse(i.ExpStartYear) <= cy) && (i.ExpEndYear == "" || (i.ExpEndYear != null && cy <= int.Parse(i.ExpEndYear))));
+
+                    foreach (Expenses exp in exps)
+                    {
+                        if (dtInsurance.Columns.Contains(exp.Item))
+                        {
+                            if (keyPairExpenses.ContainsKey(exp.Item))
+                            {
+                                double[] currentExpes;
+                                keyPairExpenses.TryGetValue(exp.Item, out currentExpes);
+                                
+                            }
+                        }
+                    }
+                }
+
+            }
+            return expensesValue;
+        }
+
         private double getEstimatedCorpusFundWithReturnCalculation(double value)
         {
-            return (value * 100) / (100 + invReturnRate);
+            return (value * 100) / (100 + insuranceReturnRate);
         }
 
         private void addTotalExpCovergeRequire(int rowindex)
@@ -276,7 +318,7 @@ namespace FinancialPlannerClient.Insurance
         {
             #region "Exp"
             int cy = dtInsurance.Rows[rowIndex].Field<int>("Year");
-            IList<Expenses> expenses = new ExpensesInfo().GetAll(planner.ID);
+            expenses = new ExpensesInfo().GetAll(planner.ID);
             if (expenses.Count > 0)
             {
                 List<Expenses> exps = expenses.ToList().FindAll(i => i.EligibleForInsuranceCoverage && (int.Parse(i.ExpStartYear) <= cy) && (i.ExpEndYear == "" || (i.ExpEndYear != null && cy <= int.Parse(i.ExpEndYear))));
@@ -319,6 +361,10 @@ namespace FinancialPlannerClient.Insurance
                 ((decimal)Math.Pow((double)(1 + interest_rate), (double)timePeriodInYears));
 
             return Math.Round((double)presentValue);
+        }
+        private double npvValue(ref double[] values)
+        {
+            return  Microsoft.VisualBasic.Financial.NPV(double.Parse(plannerAssumption.PreRetirementInflactionRate.ToString()),ref values);
         }
     }
 }

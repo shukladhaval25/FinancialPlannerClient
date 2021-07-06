@@ -62,6 +62,44 @@ namespace FinancialPlannerClient.CurrentStatus
             }
         }
 
+        internal IList<SavingAccount> GetSavingAccounts(int planeId)
+        {
+            IList<SavingAccount> SavingAccountObj = new List<SavingAccount>();
+            try
+            {
+                FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
+                string apiurl = Program.WebServiceUrl + "/" + string.Format(GET_ALL, planeId);
+
+                RestAPIExecutor restApiExecutor = new RestAPIExecutor();
+
+                var restResult = restApiExecutor.Execute<IList<SavingAccount>>(apiurl, null, "GET");
+
+                if (jsonSerialization.IsValidJson(restResult.ToString()))
+                {
+                    SavingAccountObj = jsonSerialization.DeserializeFromString<IList<SavingAccount>>(restResult.ToString());
+                }
+               
+                return SavingAccountObj;
+            }
+            catch (System.Net.WebException webException)
+            {
+                if (webException.Message.Equals("The remote server returned an error: (401) Unauthorized."))
+                {
+                    MessageBox.Show("You session has been expired. Please Login again.", "Session Expired", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
+                LogDebug(currentMethodName.Name, ex);
+                return null;
+            }
+        }
+
+
         internal bool Add(SavingAccount SavingAccount)
         {
             try
