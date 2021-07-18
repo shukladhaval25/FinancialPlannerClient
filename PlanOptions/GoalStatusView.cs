@@ -633,7 +633,7 @@ namespace FinancialPlannerClient.PlanOptions
                 return;
             }
             RiskProfileInfo _riskProfileInfo = new RiskProfileInfo();
-            Goals goal = _goals.FirstOrDefault(i => i.Name == cmbCurrentStsatusToGoal.Text);
+            Goals goal = _goals.FirstOrDefault(i => i.Id.ToString() == cmbCurrentStsatusToGoal.Tag.ToString());
             if (goal != null)
             {
                 GoalsValueCalculationInfo goalValCalInfo = this.cashFlowService.GoalCalculationMgr.GetGoalValueCalculation(goal);
@@ -642,7 +642,7 @@ namespace FinancialPlannerClient.PlanOptions
 
                 GoalCalView goalCalView = new GoalCalView(this.planner, this.riskProfileId, this.optionId);
                 goalCalView.setCashFlowService(cashFlowService);
-                Goals paramGoal = _goals.FirstOrDefault(i => i.Name == cmbCurrentStsatusToGoal.Text);
+                Goals paramGoal = _goals.FirstOrDefault(i => i.Id.ToString() == cmbCurrentStsatusToGoal.Tag.ToString());
                 DataTable dtGoalValue = goalCalView.GetGoalsValueTable(paramGoal);
                 dtGoalValue.Columns.Add("EstimatedValue", typeof(System.Double));
                 double assetsMappingValue = 0;
@@ -676,7 +676,8 @@ namespace FinancialPlannerClient.PlanOptions
                     }
                     if (rowIndex == 0)
                     {
-                        double estimatedPreviousYearPorfolioValue = diffAmount;
+                        double estimatedPreviousYearPorfolioValue = (freshInvestment == 0) ? diffAmount :
+                             (diffAmount * 100) / (100 + portFolioReturnRate);
                         dtGoalValue.Rows[rowIndex]["EstimatedValue"] = estimatedPreviousYearPorfolioValue;
                     }
 

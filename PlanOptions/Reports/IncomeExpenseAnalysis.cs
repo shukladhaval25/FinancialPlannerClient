@@ -79,7 +79,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             _dtLoan = ListtoDataTable.ToDataTable(lstNonFinancialAsset);
             foreach (DataRow dr in _dtLoan.Rows)
             {
-                if (DateTime.Parse(dr["LoanStartDate"].ToString()).Year  ==  DateTime.Now.Year )
+                if (DateTime.Parse(dr["LoanStartDate"].ToString()).Year  <= planner.StartDate.Year  )
                 {
                     DataRow dataRowLoan = _dtExpenses.NewRow();
                     dataRowLoan["Item"] = dr["TypeOfLoan"];

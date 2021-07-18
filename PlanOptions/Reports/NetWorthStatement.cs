@@ -744,7 +744,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                         drNetWorth["Group"] = FINANCIAL_ASSETS;
                         drNetWorth["Title"] = OTHERS_EQUITY;
                         drNetWorth["Amount"] = Math.Round(totalOthersEquityValue);
-                        drNetWorth["Decription"] = dr["Particular"].ToString();
+                        drNetWorth["Description"] = dr["Particular"].ToString();
                         dtNetWorth.Rows.Add(drNetWorth);
                     }
                 }

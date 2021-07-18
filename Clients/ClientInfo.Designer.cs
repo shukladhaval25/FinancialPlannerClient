@@ -60,6 +60,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
@@ -558,6 +561,7 @@
             this.textBox11 = new System.Windows.Forms.TextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
+            this.btnOpenDocument = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEditDefault)).BeginInit();
             this.tabPlannerDetails.SuspendLayout();
             this.Assumption.SuspendLayout();
@@ -6226,11 +6230,12 @@
             // 
             // grpDocsControl
             // 
+            this.grpDocsControl.Controls.Add(this.btnOpenDocument);
             this.grpDocsControl.Controls.Add(this.btnRemoveDoc);
             this.grpDocsControl.Controls.Add(this.btnAddDoc);
-            this.grpDocsControl.Location = new System.Drawing.Point(259, 386);
+            this.grpDocsControl.Location = new System.Drawing.Point(13, 386);
             this.grpDocsControl.Name = "grpDocsControl";
-            this.grpDocsControl.Size = new System.Drawing.Size(73, 38);
+            this.grpDocsControl.Size = new System.Drawing.Size(319, 38);
             this.grpDocsControl.TabIndex = 9;
             this.grpDocsControl.TabStop = false;
             // 
@@ -6411,15 +6416,15 @@
             this.btnSaveSession.Location = new System.Drawing.Point(16, 457);
             this.btnSaveSession.Name = "btnSaveSession";
             this.btnSaveSession.Size = new System.Drawing.Size(57, 23);
-            toolTipTitleItem1.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
-            toolTipTitleItem1.Appearance.Options.UseImage = true;
-            toolTipTitleItem1.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem1.Image")));
-            toolTipTitleItem1.Text = "Save";
-            toolTipItem1.LeftIndent = 6;
-            toolTipItem1.Text = "Save session.";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            superToolTip1.Items.Add(toolTipItem1);
-            this.btnSaveSession.SuperTip = superToolTip1;
+            toolTipTitleItem2.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
+            toolTipTitleItem2.Appearance.Options.UseImage = true;
+            toolTipTitleItem2.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem2.Image")));
+            toolTipTitleItem2.Text = "Save";
+            toolTipItem2.LeftIndent = 6;
+            toolTipItem2.Text = "Save session.";
+            superToolTip2.Items.Add(toolTipTitleItem2);
+            superToolTip2.Items.Add(toolTipItem2);
+            this.btnSaveSession.SuperTip = superToolTip2;
             this.btnSaveSession.TabIndex = 42;
             this.btnSaveSession.Text = "Save";
             this.btnSaveSession.Click += new System.EventHandler(this.btnSaveSession_Click);
@@ -6550,6 +6555,26 @@
             // printDialog1
             // 
             this.printDialog1.UseEXDialog = true;
+            // 
+            // btnOpenDocument
+            // 
+            this.btnOpenDocument.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOpenDocument.Image = ((System.Drawing.Image)(resources.GetObject("btnOpenDocument.Image")));
+            this.btnOpenDocument.Location = new System.Drawing.Point(196, 9);
+            this.btnOpenDocument.Name = "btnOpenDocument";
+            this.btnOpenDocument.Size = new System.Drawing.Size(117, 23);
+            toolTipTitleItem1.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            toolTipTitleItem1.Appearance.Options.UseImage = true;
+            toolTipTitleItem1.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem1.Image")));
+            toolTipTitleItem1.Text = "Save";
+            toolTipItem1.LeftIndent = 6;
+            toolTipItem1.Text = "Save session.";
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            superToolTip1.Items.Add(toolTipItem1);
+            this.btnOpenDocument.SuperTip = superToolTip1;
+            this.btnOpenDocument.TabIndex = 43;
+            this.btnOpenDocument.Text = "Open Document";
+            this.btnOpenDocument.Click += new System.EventHandler(this.btnOpenDocument_Click);
             // 
             // ClientInfo
             // 
@@ -7177,5 +7202,6 @@
         private System.Windows.Forms.RadioButton rdoPercentage;
         private System.Windows.Forms.TextBox txtExpectedGrowthInAmount;
         private System.Windows.Forms.CheckBox chkHUF;
+        private DevExpress.XtraEditors.SimpleButton btnOpenDocument;
     }
 }

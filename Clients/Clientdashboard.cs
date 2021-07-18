@@ -40,7 +40,7 @@ namespace FinancialPlannerClient.Clients
         
 
         #region "ClientInfo variables"
-        private Client _client;
+        internal Client _client;
         private DataTable _dtBankAccount;
         private const string UPDATE_CLIENT_API = "Client/Update";
         PersonalInformation personalInformation;
@@ -49,7 +49,7 @@ namespace FinancialPlannerClient.Clients
         #region "Planner Variables"
         private readonly string GET_PLAN_BY_CLIENTID_API = "Planner/GetByClientId?id={0}";
         private List<Planner> _planners = new List<Planner>();
-        private Planner planner;
+        internal Planner planner;
         #endregion
 
         public Clientdashboard(Client client)
@@ -487,7 +487,7 @@ namespace FinancialPlannerClient.Clients
 
            
                 PlannerMainReport plannerMainReport = new PlannerMainReport(this.personalInformation, planner,
-                    reportParameters.GetRiskProfileId(), reportParameters.GetOptionId());
+                    reportParameters.GetRiskProfileId(), reportParameters.GetOptionId(),reportParameters.txtRecomendation.Text);
                 //plannerMainReport.LoadLayout("C:\\Application Softwares\\FinancialPlannerClient\\bin\\Debug\\PlannerMainReport.repx");
                 DevExpress.XtraReports.UI.ReportPrintTool printTool = new DevExpress.XtraReports.UI.ReportPrintTool(plannerMainReport);
 

@@ -105,7 +105,7 @@ namespace FinancialPlannerClient.PlanOptions
                 int.TryParse(dr["AccountManagedBy"].ToString(), out accountManagedById);
                 if (_dtUser != null)
                 {
-                    DataRow[] drUsers = _dtUser.Select("ID =" + accountManagedById);
+                    DataRow[] drUsers = _dtUser.Select("ID ='" + accountManagedById + "'");
                     cmbManagedBy.Text = (drUsers != null && drUsers.Length > 0) ? drUsers[0]["FirstName"].ToString() : string.Empty;
                 }
                 cmbReviewFrequency.Text = dr.Field<string>("ReviewFrequency");
@@ -134,7 +134,7 @@ namespace FinancialPlannerClient.PlanOptions
             txtEndDate.Text = "";
             cmbStartMonth.Text = "";
             cmbEndMonth.Text = "";
-            cmbManagedBy.Text = Program.CurrentUser.UserName;
+            cmbManagedBy.Text = Program.CurrentUser.FirstName;
             cmbReviewFrequency.Text = "";
             memoDescription.Text = "";
             pnlPlannerInfo.Enabled = true;
@@ -322,6 +322,15 @@ namespace FinancialPlannerClient.PlanOptions
             {
                 Clientdashboard parentForm = (Clientdashboard)this.ParentForm;
                 parentForm.LoadPlanData();
+                if (this.DialogResult == DialogResult.OK)
+                {
+                    if (DevExpress.XtraEditors.XtraMessageBox.Show("Do you want to migrate date from previous plan to current plan?",
+                      "Data Migration", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        PlannerDataMigration plannerDataMigration = new PlannerDataMigration(parentForm._client, parentForm.planner);
+                        plannerDataMigration.Show();
+                    }
+                }
             }
             catch(Exception ex)
             {

@@ -83,6 +83,7 @@
             this.xrPictureBox2 = new DevExpress.XtraReports.UI.XRPictureBox();
             this.xrLabel1 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrPanel1 = new DevExpress.XtraReports.UI.XRPanel();
+            this.lblNote = new DevExpress.XtraReports.UI.XRLabel();
             this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
             this.xrPanel2 = new DevExpress.XtraReports.UI.XRPanel();
             this.xrPictureBox3 = new DevExpress.XtraReports.UI.XRPictureBox();
@@ -90,7 +91,6 @@
             this.lblClientName = new DevExpress.XtraReports.UI.XRLabel();
             this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
             this.xrPageInfo1 = new DevExpress.XtraReports.UI.XRPageInfo();
-            this.lblNote = new DevExpress.XtraReports.UI.XRLabel();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
@@ -542,6 +542,20 @@
             this.xrPanel1.StylePriority.UseBorders = false;
             this.xrPanel1.StylePriority.UseBorderWidth = false;
             // 
+            // lblNote
+            // 
+            this.lblNote.Borders = DevExpress.XtraPrinting.BorderSide.None;
+            this.lblNote.Dpi = 100F;
+            this.lblNote.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNote.ForeColor = System.Drawing.Color.Black;
+            this.lblNote.LocationFloat = new DevExpress.Utils.PointFloat(45.41661F, 618.75F);
+            this.lblNote.Name = "lblNote";
+            this.lblNote.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.lblNote.SizeF = new System.Drawing.SizeF(573.9585F, 130.2917F);
+            this.lblNote.StylePriority.UseBorders = false;
+            this.lblNote.StylePriority.UseFont = false;
+            this.lblNote.StylePriority.UseForeColor = false;
+            // 
             // TopMargin
             // 
             this.TopMargin.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
@@ -632,20 +646,6 @@
             this.xrPageInfo1.Name = "xrPageInfo1";
             this.xrPageInfo1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrPageInfo1.SizeF = new System.Drawing.SizeF(55.20831F, 23F);
-            // 
-            // lblNote
-            // 
-            this.lblNote.Borders = DevExpress.XtraPrinting.BorderSide.None;
-            this.lblNote.Dpi = 100F;
-            this.lblNote.Font = new System.Drawing.Font("Cambria", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNote.ForeColor = System.Drawing.Color.Navy;
-            this.lblNote.LocationFloat = new DevExpress.Utils.PointFloat(45.41661F, 618.75F);
-            this.lblNote.Name = "lblNote";
-            this.lblNote.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.lblNote.SizeF = new System.Drawing.SizeF(573.9585F, 130.2917F);
-            this.lblNote.StylePriority.UseBorders = false;
-            this.lblNote.StylePriority.UseFont = false;
-            this.lblNote.StylePriority.UseForeColor = false;
             // 
             // AssumptionPage
             // 

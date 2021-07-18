@@ -817,6 +817,12 @@
     <Compile Include="PlanOptions\Reports\ToTotalAssetRatio.Designer.cs">
       <DependentUpon>ToTotalAssetRatio.cs</DependentUpon>
     </Compile>
+    <Compile Include="PlanOptions\Reports\Recomendation.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\Recomendation.Designer.cs">
+      <DependentUpon>Recomendation.cs</DependentUpon>
+    </Compile>
     <Compile Include="PlanOptions\Reports\WhatIsPlan.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -1303,6 +1309,9 @@
     <EmbeddedResource Include="PlanOptions\Reports\ToTotalAssetRatio.resx">
       <DependentUpon>ToTotalAssetRatio.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\Reports\Recomendation.resx">
+      <DependentUpon>Recomendation.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\Reports\WhatIsPlan.resx">
       <DependentUpon>WhatIsPlan.cs</DependentUpon>
     </EmbeddedResource>
@@ -1636,6 +1645,42 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Report\HomeGoal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Report\CardGoalAbove10Lakh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Report\CarGoalBetween5To10Lakh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Report\CarGoalupto5Lakh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Report\EducationGoal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Report\FinancialGoals.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Report\FurnitureGoal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Report\HolidayGoal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Report\HospitalGoal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Report\InstrumentForHospitalGoal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Report\MarriageGoal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Report\OthersGoal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Report\RetirementGoal.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

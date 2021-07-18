@@ -178,7 +178,7 @@ namespace FinancialPlannerClient.Insurance
                 DataColumn dcExp = new DataColumn("EstimatedRequireInsurance", Type.GetType("System.Double"));
                 dtInsurance.Columns.Add(dcExp);
             }
-            // double[] expValues = getExpneses(dtInsurance);
+            double[] expValues = getExpneses(dtInsurance);
             for (int i = dtInsurance.Rows.Count - 1; i >= 1; i--)
             {
                 double totalExpAmount = (double.Parse(dtInsurance.Rows[i]["TotalCoverageRequire"].ToString()));
@@ -202,7 +202,24 @@ namespace FinancialPlannerClient.Insurance
 
         private double[] getExpneses(DataTable dtInsurance)
         {
-           Dictionary<string, double[]> keyPairExpenses = new Dictionary<string, double[]>();
+            double[] expValues;
+            foreach (DataColumn dataColumn in dtInsurance.Columns)
+            {
+                expValues = new double[dtInsurance.Rows.Count];
+                if (expenses.Count(i => i.Item == dataColumn.ColumnName) > 0)
+                {
+                    for (int rowindex = 0; rowindex <= dtInsurance.Rows.Count - 1; rowindex++)
+                    {
+                        expValues[rowindex] = double.Parse(dtInsurance.Rows[rowindex][dataColumn.ColumnName].ToString());
+                    }
+                    double npv = npvValue(ref expValues);
+                }
+            }
+
+
+
+
+            Dictionary<string, double[]> keyPairExpenses = new Dictionary<string, double[]>();
             double[] expensesValue = new double[dtInsurance.Rows.Count];
 
             //expenses[i] = double.Parse(dtInsurance.Rows[i][""].ToString());

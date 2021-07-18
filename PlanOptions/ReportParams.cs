@@ -19,6 +19,7 @@ namespace FinancialPlannerClient.PlanOptions
         {
             InitializeComponent();
             this.planId = planId;
+            txtRecomendation.Text = "* We recommended maintaining Rs.6 lakhs as contingency fund." + System.Environment.NewLine + System.Environment.NewLine + "* Your annual Investment considering your income and expenses will be RS. 7.60 Lakhs for next 1 Year.";
         }
         public int GetOptionId()
         {
@@ -71,6 +72,11 @@ namespace FinancialPlannerClient.PlanOptions
                 return;
             }
             this.DialogResult = DialogResult.OK;
+        }
+
+        private void txtRecomendation_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

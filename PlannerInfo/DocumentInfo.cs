@@ -121,14 +121,13 @@ namespace FinancialPlannerClient.PlannerInfo
             Logger.LogDebug(debuggerInfo);
         }
 
-        internal bool Add(Document Document)
+        internal bool Add(Document document)
         {
             try
             {
-                FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
                 string apiurl = Program.WebServiceUrl +"/"+ ADD_Document_API;
                 RestAPIExecutor restApiExecutor = new RestAPIExecutor();
-                var restResult = restApiExecutor.Execute<Document>(apiurl, Document, "POST");
+                var restResult = restApiExecutor.Execute<Document>(apiurl, document, "POST");
                 return true;
             }
             catch (Exception ex)
@@ -140,14 +139,14 @@ namespace FinancialPlannerClient.PlannerInfo
                 return false;
             }
         }
-        internal bool Update(Document Document)
+        internal bool Update(Document document)
         {
             try
             {
                 FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
                 string apiurl = Program.WebServiceUrl +"/"+ UPDATE_Document_API;
                 RestAPIExecutor restApiExecutor = new RestAPIExecutor();
-                var restResult = restApiExecutor.Execute<Document>(apiurl, Document, "POST");
+                var restResult = restApiExecutor.Execute<Document>(apiurl, document, "POST");
 
                 return true;
             }
@@ -193,7 +192,8 @@ namespace FinancialPlannerClient.PlannerInfo
                     Document.Pid = int.Parse(dr.Field<string>("PID"));
                     Document.Name = dr.Field<string>("Name");
                     Document.Path = dr.Field<string>("Path");
-                    Document.Category = dr.Field<string>("Category");     
+                    Document.Category = dr.Field<string>("Category");
+                    Document.Data = dr.Field<string>("Data");
                     return Document;
                 }
             }

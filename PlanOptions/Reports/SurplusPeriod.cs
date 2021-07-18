@@ -45,7 +45,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                 {
                     if (rowIndex <= xrTableCashFlowGoals.Rows.Count - 1)
                     {
-                        xrTableCashFlowGoals.Rows[rowIndex].Cells[0].Text = _dtcashFlow.Columns[colIndex].Caption;
+                        xrTableCashFlowGoals.Rows[rowIndex].Cells[0].Text = _dtcashFlow.Columns[colIndex].Caption.Substring(_dtcashFlow.Columns[colIndex].Caption.IndexOf("-") +  1 );
                         if (!string.IsNullOrEmpty(_dtcashFlow.Rows[0][colIndex].ToString()))
                         {
                             xrTableCashFlowGoals.Rows[rowIndex].Cells[1].Text = System.Math.Round(double.Parse(_dtcashFlow.Rows[0][colIndex].ToString())).ToString();

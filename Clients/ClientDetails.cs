@@ -383,5 +383,12 @@ namespace FinancialPlannerClient.Clients
         {
             chkClientActiveStatus.BackColor = (chkClientActiveStatus.Checked) ? Color.LimeGreen  : Color.Gray;
         }
+
+        private void btnClearImage_Click(object sender, EventArgs e)
+        {
+            this._client.ImageData = null;
+            this._client.ImagePath = null;
+            ClientImageInfo.Image = Properties.Resources.icons8_customer_30;
+        }
     }
 }

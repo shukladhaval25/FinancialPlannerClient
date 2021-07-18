@@ -387,14 +387,14 @@ namespace FinancialPlannerClient.CashFlowManager
             proposeEstimatedCorpusFundRequire = System.Math.Round(
                 double.Parse(_dtRetirementCashFlow.Rows[0]["EstimatedRequireCorpusFund"].ToString()),2);
 
+            proposeEstimatedCorpusFundRequire = (proposeEstimatedCorpusFundRequire * 100) / (100 + invReturnRate);
+
             proposeEstimatedCorpusFundRequire = proposeEstimatedCorpusFundRequire -
                 double.Parse(_dtRetirementCashFlow.Rows[0]["Total Post Tax Income"].ToString());
 
-            proposeEstimatedCorpusFundRequire = (proposeEstimatedCorpusFundRequire * 100) / (100 + invReturnRate); ;
-
-
-            double totalExpAmountForFirstRow = (double.Parse(_dtRetirementCashFlow.Rows[0]["Total Annual Expenses"].ToString()));
+            double totalExpAmountForFirstRow = (double.Parse(_dtRetirementCashFlow.Rows[0]["Total Annual Expenses"].ToString())) + (double.Parse(_dtRetirementCashFlow.Rows[0]["Total Annual Loans"].ToString()));
             proposeEstimatedCorpusFundRequire = proposeEstimatedCorpusFundRequire + totalExpAmountForFirstRow;
+
             Logger.LogInfo("calculateEstimatedRequireCorpusFund for post retirment cash flow service end");
         }
         #region "Income Section"

@@ -84,6 +84,9 @@
             this.xrTableRow17 = new DevExpress.XtraReports.UI.XRTableRow();
             this.xrTableCell31 = new DevExpress.XtraReports.UI.XRTableCell();
             this.lblDebtTotal = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrTableRow23 = new DevExpress.XtraReports.UI.XRTableRow();
+            this.xrTableCell41 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.lblTotalValue = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableEquity = new DevExpress.XtraReports.UI.XRTable();
             this.xrTableRow1 = new DevExpress.XtraReports.UI.XRTableRow();
             this.lblYear = new DevExpress.XtraReports.UI.XRTableCell();
@@ -122,9 +125,6 @@
             this.ReportTitle = new DevExpress.XtraReports.UI.XRLabel();
             this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
             this.xrPageInfo1 = new DevExpress.XtraReports.UI.XRPageInfo();
-            this.xrTableRow23 = new DevExpress.XtraReports.UI.XRTableRow();
-            this.xrTableCell41 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.lblTotalValue = new DevExpress.XtraReports.UI.XRTableCell();
             ((System.ComponentModel.ISupportInitialize)(this.xrChartCurrentStatus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(series1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(pieSeriesLabel1)).BeginInit();
@@ -556,6 +556,45 @@
             this.lblDebtTotal.Weight = 1.210527120723885D;
             this.lblDebtTotal.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.lblDebtTotal_BeforePrint);
             // 
+            // xrTableRow23
+            // 
+            this.xrTableRow23.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
+            this.xrTableCell41,
+            this.lblTotalValue});
+            this.xrTableRow23.Dpi = 100F;
+            this.xrTableRow23.Name = "xrTableRow23";
+            this.xrTableRow23.Weight = 1D;
+            // 
+            // xrTableCell41
+            // 
+            this.xrTableCell41.BackColor = System.Drawing.Color.Navy;
+            this.xrTableCell41.Dpi = 100F;
+            this.xrTableCell41.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrTableCell41.ForeColor = System.Drawing.Color.White;
+            this.xrTableCell41.Name = "xrTableCell41";
+            this.xrTableCell41.StylePriority.UseBackColor = false;
+            this.xrTableCell41.StylePriority.UseFont = false;
+            this.xrTableCell41.StylePriority.UseForeColor = false;
+            this.xrTableCell41.StylePriority.UseTextAlignment = false;
+            this.xrTableCell41.Text = "Total:";
+            this.xrTableCell41.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+            this.xrTableCell41.Weight = 1.7894735626235372D;
+            // 
+            // lblTotalValue
+            // 
+            this.lblTotalValue.BackColor = System.Drawing.Color.Navy;
+            this.lblTotalValue.Dpi = 100F;
+            this.lblTotalValue.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalValue.ForeColor = System.Drawing.Color.White;
+            this.lblTotalValue.Name = "lblTotalValue";
+            this.lblTotalValue.StylePriority.UseBackColor = false;
+            this.lblTotalValue.StylePriority.UseFont = false;
+            this.lblTotalValue.StylePriority.UseForeColor = false;
+            this.lblTotalValue.StylePriority.UseTextAlignment = false;
+            this.lblTotalValue.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+            this.lblTotalValue.Weight = 1.210527120723885D;
+            this.lblTotalValue.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.lblTotalValue_BeforePrint);
+            // 
             // xrTableEquity
             // 
             this.xrTableEquity.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
@@ -951,45 +990,6 @@
             this.xrPageInfo1.Name = "xrPageInfo1";
             this.xrPageInfo1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrPageInfo1.SizeF = new System.Drawing.SizeF(55.20831F, 23F);
-            // 
-            // xrTableRow23
-            // 
-            this.xrTableRow23.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
-            this.xrTableCell41,
-            this.lblTotalValue});
-            this.xrTableRow23.Dpi = 100F;
-            this.xrTableRow23.Name = "xrTableRow23";
-            this.xrTableRow23.Weight = 1D;
-            // 
-            // xrTableCell41
-            // 
-            this.xrTableCell41.BackColor = System.Drawing.Color.Navy;
-            this.xrTableCell41.Dpi = 100F;
-            this.xrTableCell41.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xrTableCell41.ForeColor = System.Drawing.Color.White;
-            this.xrTableCell41.Name = "xrTableCell41";
-            this.xrTableCell41.StylePriority.UseBackColor = false;
-            this.xrTableCell41.StylePriority.UseFont = false;
-            this.xrTableCell41.StylePriority.UseForeColor = false;
-            this.xrTableCell41.StylePriority.UseTextAlignment = false;
-            this.xrTableCell41.Text = "Total:";
-            this.xrTableCell41.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            this.xrTableCell41.Weight = 1.7894735626235372D;
-            // 
-            // lblTotalValue
-            // 
-            this.lblTotalValue.BackColor = System.Drawing.Color.Navy;
-            this.lblTotalValue.Dpi = 100F;
-            this.lblTotalValue.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalValue.ForeColor = System.Drawing.Color.White;
-            this.lblTotalValue.Name = "lblTotalValue";
-            this.lblTotalValue.StylePriority.UseBackColor = false;
-            this.lblTotalValue.StylePriority.UseFont = false;
-            this.lblTotalValue.StylePriority.UseForeColor = false;
-            this.lblTotalValue.StylePriority.UseTextAlignment = false;
-            this.lblTotalValue.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-            this.lblTotalValue.Weight = 1.210527120723885D;
-            this.lblTotalValue.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.lblTotalValue_BeforePrint);
             // 
             // CurrentFinancialStatus
             // 

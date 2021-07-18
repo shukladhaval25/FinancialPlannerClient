@@ -10,13 +10,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FinancialPlannerClient.Clients
@@ -46,7 +43,7 @@ namespace FinancialPlannerClient.Clients
         {
             InitializeComponent();
         }
-        public ClientInfo(Client client,bool forNewDesing = false)
+        public ClientInfo(Client client, bool forNewDesing = false)
         {
             InitializeComponent();
             _plannerId = 0;
@@ -54,7 +51,7 @@ namespace FinancialPlannerClient.Clients
             setViewForNewDesing(forNewDesing);
         }
 
-        public ClientInfo(int plannerId, Client client,bool forNewDesing = false)
+        public ClientInfo(int plannerId, Client client, bool forNewDesing = false)
         {
             InitializeComponent();
             _plannerId = plannerId;
@@ -63,7 +60,7 @@ namespace FinancialPlannerClient.Clients
         }
         public void setViewForNewDesing(bool isNewDesing)
         {
-            if (isNewDesing )
+            if (isNewDesing)
             {
                 List<TabPage> lstTabPages = new List<TabPage>();
                 for (int i = 0; i < tabPlannerDetails.TabPages.Count; i++)
@@ -157,7 +154,7 @@ namespace FinancialPlannerClient.Clients
 
         private void btnUpload_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtDocumentPath.Text) || string.IsNullOrEmpty(txtDocumentName.Text)  ||
+            if (string.IsNullOrEmpty(txtDocumentPath.Text) || string.IsNullOrEmpty(txtDocumentName.Text) ||
                 string.IsNullOrEmpty(cmbDocumentCategory.Text))
             {
                 MessageBox.Show("Please enter all require information.", "Validate Data", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -172,7 +169,7 @@ namespace FinancialPlannerClient.Clients
 
             if (doc != null && doc.Id == 0)
                 isSaved = docInfo.Add(doc);
-            
+
             if (isSaved)
             {
                 MessageBox.Show("Uploaded successfully.", "Upload", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -228,7 +225,7 @@ namespace FinancialPlannerClient.Clients
             if (MessageBox.Show("Are you sure, you want to delete this record?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 DocumentInfo docInfo = new DocumentInfo();
-                Document doc = docInfo.GetDocumentInfo(dtGridDocuments,_dtDocument);
+                Document doc = docInfo.GetDocumentInfo(dtGridDocuments, _dtDocument);
                 docInfo.Delete(doc);
                 grpDocumentDetails.Enabled = false;
                 fillupDocumentInfo();
@@ -237,7 +234,7 @@ namespace FinancialPlannerClient.Clients
 
         private void dtGridDocuments_SelectionChanged(object sender, EventArgs e)
         {
-            Document document = new DocumentInfo().GetDocumentInfo(dtGridDocuments,_dtDocument);
+            Document document = new DocumentInfo().GetDocumentInfo(dtGridDocuments, _dtDocument);
             displayDocumentInfo(document);
         }
 
@@ -262,7 +259,7 @@ namespace FinancialPlannerClient.Clients
                 _dtFamilymember.Clear();
 
             FamilyMemberInfo familyMemberInfo = new FamilyMemberInfo();
-            List<FamilyMember> lstFamilyMember =(List<FamilyMember>) familyMemberInfo.Get(_client.ID);
+            List<FamilyMember> lstFamilyMember = (List<FamilyMember>)familyMemberInfo.Get(_client.ID);
             _dtFamilymember = ListtoDataTable.ToDataTable(lstFamilyMember);
             dtGridFamilyMember.DataSource = _dtFamilymember;
             fillupBankMaster();
@@ -292,7 +289,7 @@ namespace FinancialPlannerClient.Clients
         private void fillupBankMaster()
         {
             BankInfo bankInfo = new BankInfo();
-            List<Bank> banks = (List<Bank>) bankInfo.GetAll();
+            List<Bank> banks = (List<Bank>)bankInfo.GetAll();
             DataTable dtBank = ListtoDataTable.ToDataTable(banks);
             lookupBank.Properties.DataSource = dtBank;
             lookupBank.Properties.ValueMember = "Id";
@@ -320,7 +317,7 @@ namespace FinancialPlannerClient.Clients
 
         private void btnFamilyMemberSave_Click(object sender, EventArgs e)
         {
-            
+
 
             FamilyMemberInfo familyMemberInfo = new FamilyMemberInfo();
             FamilyMember familyMember = getFamilyMemberData();
@@ -367,7 +364,7 @@ namespace FinancialPlannerClient.Clients
 
         private void btnEditFamilyMember_Click(object sender, EventArgs e)
         {
-            FamilyMember familymember = new FamilyMemberInfo().GetFamilyMemberInfo(dtGridFamilyMember,_dtFamilymember);
+            FamilyMember familymember = new FamilyMemberInfo().GetFamilyMemberInfo(dtGridFamilyMember, _dtFamilymember);
             displayFamilyMemberData(familymember);
             grpFamilyMemberDetail.Enabled = true;
         }
@@ -389,7 +386,7 @@ namespace FinancialPlannerClient.Clients
                     dtFamilyMemberDOB.Checked = false;
                     dtFamilyMemberDOB.Text = "";
                 }
-                
+
                 rdoFamilyMemberDependentYes.Checked = familymember.IsDependent;
                 txtChildrenClass.Text = familymember.ChildrenClass;
                 txtFamilyMemberDesc.Text = familymember.Description;
@@ -412,7 +409,7 @@ namespace FinancialPlannerClient.Clients
             List<FamilyMemberBank> lstFamilyMemberBank = (List<FamilyMemberBank>)familyMemberInfo.GetFamilyMemberBank(accountHolderId);
             _dtFMBankDetails = ListtoDataTable.ToDataTable(lstFamilyMemberBank);
             _dtFMBankDetails.Columns.Add("BankName");
-            foreach(FamilyMemberBank fmBank in lstFamilyMemberBank)
+            foreach (FamilyMemberBank fmBank in lstFamilyMemberBank)
             {
                 DataRow[] dtRow = _dtFMBankDetails.Select("Id = " + fmBank.Id);
                 if (dtRow != null)
@@ -433,7 +430,7 @@ namespace FinancialPlannerClient.Clients
             else
                 setDefaultFamilyMemberBankValue();
         }
-            private void setDefaultFamilyMemberData()
+        private void setDefaultFamilyMemberData()
         {
             txtFamilyMemberName.Tag = "";
             txtFamilyMemberName.Text = "";
@@ -446,7 +443,7 @@ namespace FinancialPlannerClient.Clients
             txtFMAdharCard.Text = "";
             txtFMOccuption.Text = "";
         }
-        
+
         private void dtGridFamilyMember_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (dtGridFamilyMember.Columns[e.ColumnIndex].Name == "IsDependent")
@@ -463,7 +460,7 @@ namespace FinancialPlannerClient.Clients
 
                 FamilyMemberInfo familyMemberInfo = new FamilyMemberInfo();
                 FamilyMember familymember =
-                    familyMemberInfo.GetFamilyMemberInfo(dtGridFamilyMember,_dtFamilymember);
+                    familyMemberInfo.GetFamilyMemberInfo(dtGridFamilyMember, _dtFamilymember);
                 familyMemberInfo.Delete(familymember);
                 fillupFamilyMemberInfo();
             }
@@ -481,7 +478,7 @@ namespace FinancialPlannerClient.Clients
             {
                 _dtBankAccount = ListtoDataTable.ToDataTable(bankAcDetails.ToList());
                 dtGridBankAccount.DataSource = _dtBankAccount;
-                bankAccountInfo.setGrid(dtGridBankAccount);                
+                bankAccountInfo.setGrid(dtGridBankAccount);
             }
             fillListOfAccountHolders();
         }
@@ -544,7 +541,7 @@ namespace FinancialPlannerClient.Clients
             if (MessageBox.Show("Are you sure, you want to delete this record?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 BankAccountInfo bankAcInfo = new BankAccountInfo();
-                BankAccountDetail bankAcDetail = bankAcInfo.GetBankAccountInfo(dtGridBankAccount,_dtBankAccount);
+                BankAccountDetail bankAcDetail = bankAcInfo.GetBankAccountInfo(dtGridBankAccount, _dtBankAccount);
                 bankAcInfo.Delete(bankAcDetail);
                 fillupBankAccountInfo();
             }
@@ -559,7 +556,7 @@ namespace FinancialPlannerClient.Clients
         }
         private void dtGridBankAccount_SelectionChanged(object sender, EventArgs e)
         {
-            BankAccountDetail bankAccount = new BankAccountInfo().GetBankAccountInfo(dtGridBankAccount,_dtBankAccount);
+            BankAccountDetail bankAccount = new BankAccountInfo().GetBankAccountInfo(dtGridBankAccount, _dtBankAccount);
             displayBankAccountData(bankAccount);
         }
 
@@ -584,7 +581,7 @@ namespace FinancialPlannerClient.Clients
         private void btnCancelBankAccount_Click(object sender, EventArgs e)
         {
             grpBankAccountDetails.Enabled = false;
-            BankAccountDetail bankAccount = new BankAccountInfo().GetBankAccountInfo(dtGridBankAccount,_dtBankAccount);
+            BankAccountDetail bankAccount = new BankAccountInfo().GetBankAccountInfo(dtGridBankAccount, _dtBankAccount);
             displayBankAccountData(bankAccount);
         }
 
@@ -633,7 +630,7 @@ namespace FinancialPlannerClient.Clients
             return bankACDetails;
         }
 
-    #endregion
+        #endregion
 
         private void fillupSessionInfo()
         {
@@ -644,7 +641,7 @@ namespace FinancialPlannerClient.Clients
         private void fillupGoalsInfo()
         {
             GoalsInfo GoalsInfo = new GoalsInfo();
-            List<Goals> lstIncome =(List<Goals>) GoalsInfo.GetAll(PlannerId);
+            List<Goals> lstIncome = (List<Goals>)GoalsInfo.GetAll(PlannerId);
             _dtGoals = ListtoDataTable.ToDataTable(lstIncome);
             dtGridGoal.DataSource = _dtGoals;
             GoalsInfo.FillGrid(dtGridGoal);
@@ -654,7 +651,7 @@ namespace FinancialPlannerClient.Clients
         {
             setPermissionForExpenses();
             ExpensesInfo expensesInfo = new ExpensesInfo();
-            List<Expenses> lstIncome =(List<Expenses>) expensesInfo.GetAll(PlannerId);
+            List<Expenses> lstIncome = (List<Expenses>)expensesInfo.GetAll(PlannerId);
             _dtExpenses = ListtoDataTable.ToDataTable(lstIncome);
             dtGridExpenses.DataSource = _dtExpenses;
             expensesInfo.FillGrid(dtGridExpenses);
@@ -683,7 +680,7 @@ namespace FinancialPlannerClient.Clients
         {
             setPermissionForIncome();
             IncomeInfo incomeInfo = new IncomeInfo();
-            List<Income> lstIncome =(List<Income>) incomeInfo.GetAll(PlannerId);
+            List<Income> lstIncome = (List<Income>)incomeInfo.GetAll(PlannerId);
             _dtIncome = ListtoDataTable.ToDataTable(lstIncome);
             dtGridIncome.DataSource = _dtIncome;
             incomeInfo.FillGrid(dtGridIncome);
@@ -713,7 +710,7 @@ namespace FinancialPlannerClient.Clients
         {
             setPermissionForLoan();
             LoanInfo loanInfo = new LoanInfo();
-            List<Loan> lstNonFinancialAsset =(List<Loan>) loanInfo.GetAll(PlannerId);
+            List<Loan> lstNonFinancialAsset = (List<Loan>)loanInfo.GetAll(PlannerId);
             _dtLoan = ListtoDataTable.ToDataTable(lstNonFinancialAsset);
             dtGridLoan.DataSource = _dtLoan;
             loanInfo.FillGrid(dtGridLoan);
@@ -742,7 +739,7 @@ namespace FinancialPlannerClient.Clients
         {
             setPermissionForNonFinancailAsset();
             fillNonFinancialAssetsGoals();
-            FamilyMemberInfo familyMemInfo =  new FamilyMemberInfo();
+            FamilyMemberInfo familyMemInfo = new FamilyMemberInfo();
             familyMemInfo.FillFamilyMemberInCombo(_client.ID, cmbOtherHolder);
             cmbPrimaryHolder.Text = _client.Name;
             cmbSecondaryHolder.Text = getSpouseName();
@@ -753,10 +750,10 @@ namespace FinancialPlannerClient.Clients
                 _dtNonFinancialAsset.Clear();
 
             NonFinancialAssetInfo nonFinancialAssetInfo = new NonFinancialAssetInfo();
-            List<NonFinancialAsset> lstNonFinancialAsset =(List<NonFinancialAsset>) nonFinancialAssetInfo.GetAll(PlannerId);
+            List<NonFinancialAsset> lstNonFinancialAsset = (List<NonFinancialAsset>)nonFinancialAssetInfo.GetAll(PlannerId);
             _dtNonFinancialAsset = ListtoDataTable.ToDataTable(lstNonFinancialAsset);
             dtGridNonFinancialAssets.DataSource = _dtNonFinancialAsset;
-            nonFinancialAssetInfo.FillGrid(dtGridNonFinancialAssets);            
+            nonFinancialAssetInfo.FillGrid(dtGridNonFinancialAssets);
         }
 
         private void setPermissionForNonFinancailAsset()
@@ -791,7 +788,7 @@ namespace FinancialPlannerClient.Clients
             cmbMappingGoal.Items.Add("");
         }
 
-        
+
         private void fillupAssumptionInfo()
         {
             lblClientTiitle.Text = _client.Name;
@@ -842,7 +839,7 @@ namespace FinancialPlannerClient.Clients
 
         #region "Other Information"
         private void fillupOtherInfo()
-        {            
+        {
             loadCRMGroups();
             loadFestivals();
         }
@@ -854,17 +851,17 @@ namespace FinancialPlannerClient.Clients
             IList<Festivals> festivals = festivalInfo.GetAll();
 
             ClientFestivalInfo clientFestivalInfo = new ClientFestivalInfo();
-            var result =  clientFestivalInfo.Get(_client.ID);
+            var result = clientFestivalInfo.Get(_client.ID);
 
             int index = 0;
-            foreach(Festivals festival in festivals)
+            foreach (Festivals festival in festivals)
             {
                 lstchkFestivals.Items.Add(festival.Name);
-                ClientFestivals cfs =  result.FirstOrDefault(i => i.Festival == festival.Name);
+                ClientFestivals cfs = result.FirstOrDefault(i => i.Festival == festival.Name);
                 if (cfs != null)
                     lstchkFestivals.SetItemChecked(index, true);
                 index++;
-            }       
+            }
         }
 
         private void loadCRMGroups()
@@ -874,13 +871,13 @@ namespace FinancialPlannerClient.Clients
             IList<CRMGroup> crmGroups = crmGroupInfo.GetAll();
 
             ClientCRMGroupinfo clientCRMGroupInfo = new ClientCRMGroupinfo();
-            var result =  clientCRMGroupInfo.Get(_client.ID);
+            var result = clientCRMGroupInfo.Get(_client.ID);
 
             int index = 0;
             foreach (CRMGroup crmGroup in crmGroups)
             {
                 lstchkCRMGroups.Items.Add(crmGroup.Name);
-                ClientCRMGroup  cfs =  result.FirstOrDefault(i => i.Festival == crmGroup.Name);
+                ClientCRMGroup cfs = result.FirstOrDefault(i => i.Festival == crmGroup.Name);
                 if (cfs != null)
                     lstchkCRMGroups.SetItemChecked(index, true);
                 index++;
@@ -889,9 +886,9 @@ namespace FinancialPlannerClient.Clients
 
         private void btnSaveFestivals_Click(object sender, EventArgs e)
         {
-            var items =   lstchkFestivals.CheckedItems;
+            var items = lstchkFestivals.CheckedItems;
             IList<ClientFestivals> festivals = new List<ClientFestivals>();
-            foreach(var item in items)
+            foreach (var item in items)
             {
                 ClientFestivals festivalsObj = new ClientFestivals();
                 festivalsObj.Cid = _client.ID;
@@ -909,7 +906,7 @@ namespace FinancialPlannerClient.Clients
         }
         private void btnSaveCRMGroups_Click(object sender, EventArgs e)
         {
-            var items =   lstchkCRMGroups.CheckedItems;
+            var items = lstchkCRMGroups.CheckedItems;
             IList<ClientCRMGroup> clienCRMGroups = new List<ClientCRMGroup>();
             foreach (var item in items)
             {
@@ -978,7 +975,7 @@ namespace FinancialPlannerClient.Clients
             ClientContactInfo clientContactInfo = new ClientContactInfo();
             var contactInfo = clientContactInfo.Get(_client.ID);
             fillupClientAreaList();
-            fillupContactInfo(contactInfo);            
+            fillupContactInfo(contactInfo);
         }
 
         private void fillupClientAreaList()
@@ -1022,7 +1019,7 @@ namespace FinancialPlannerClient.Clients
         }
 
         private void fillupPersonalDetails()
-        {           
+        {
             fillClientPersonalDetails(_personalInfo.Client);
             if (_personalInfo.Client.IsMarried)
                 fillSpousePersonalDetails(_personalInfo.Spouse);
@@ -1263,7 +1260,7 @@ namespace FinancialPlannerClient.Clients
             return clientEmployment;
         }
 
-       
+
         private void btnAddNFA_Click(object sender, EventArgs e)
         {
             grpNonFinancialAsset.Enabled = true;
@@ -1321,7 +1318,7 @@ namespace FinancialPlannerClient.Clients
                 MessageBox.Show("Asset sharing ration must not be more then 100%.", "Sharing Ration", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return false;
             }
-            else if (string.IsNullOrEmpty(txtNonFinancialGrowthPercentage.Text) )
+            else if (string.IsNullOrEmpty(txtNonFinancialGrowthPercentage.Text))
             {
                 MessageBox.Show("Please enter growth percentage value.", "Growth Percentage", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return false;
@@ -1361,7 +1358,7 @@ namespace FinancialPlannerClient.Clients
         private void btnEditNFA_Click(object sender, EventArgs e)
         {
             NonFinancialAsset nonFinancialAsset =
-                new NonFinancialAssetInfo().GetNonFinancialAssetInfo(dtGridNonFinancialAssets,_dtNonFinancialAsset);
+                new NonFinancialAssetInfo().GetNonFinancialAssetInfo(dtGridNonFinancialAssets, _dtNonFinancialAsset);
             displayNonFinancialAsset(nonFinancialAsset);
             grpNonFinancialAsset.Enabled = true;
         }
@@ -1417,7 +1414,7 @@ namespace FinancialPlannerClient.Clients
             {
                 NonFinancialAssetInfo nonFinancialAssetInfo = new NonFinancialAssetInfo();
                 NonFinancialAsset nonFinancialAsset =
-                    nonFinancialAssetInfo.GetNonFinancialAssetInfo(dtGridNonFinancialAssets,_dtNonFinancialAsset);
+                    nonFinancialAssetInfo.GetNonFinancialAssetInfo(dtGridNonFinancialAssets, _dtNonFinancialAsset);
                 nonFinancialAssetInfo.Delete(nonFinancialAsset);
                 fillupNonFinancialAssetInfo();
             }
@@ -1426,7 +1423,7 @@ namespace FinancialPlannerClient.Clients
         private void dtGridNonFinancialAssets_SelectionChanged(object sender, EventArgs e)
         {
             NonFinancialAsset nonFinancialAsset =
-                new NonFinancialAssetInfo().GetNonFinancialAssetInfo(dtGridNonFinancialAssets,_dtNonFinancialAsset);
+                new NonFinancialAssetInfo().GetNonFinancialAssetInfo(dtGridNonFinancialAssets, _dtNonFinancialAsset);
             displayNonFinancialAsset(nonFinancialAsset);
         }
 
@@ -1434,7 +1431,7 @@ namespace FinancialPlannerClient.Clients
         {
             grpNonFinancialAsset.Enabled = false;
             NonFinancialAsset nonFinancialAsset =
-                new NonFinancialAssetInfo().GetNonFinancialAssetInfo(dtGridNonFinancialAssets,_dtNonFinancialAsset);
+                new NonFinancialAssetInfo().GetNonFinancialAssetInfo(dtGridNonFinancialAssets, _dtNonFinancialAsset);
             displayNonFinancialAsset(nonFinancialAsset);
         }
         private void txtPrimaryHolderShare_KeyPress(object sender, KeyPressEventArgs e)
@@ -1531,13 +1528,13 @@ namespace FinancialPlannerClient.Clients
             loan.UpdatedBy = Program.CurrentUser.Id;
             loan.UpdatedByUserName = Program.CurrentUser.UserName;
             loan.MachineName = Environment.MachineName;
-            loan.LoanStartDate =  dtLoanStartDate.Value;
+            loan.LoanStartDate = dtLoanStartDate.Value;
             return loan;
         }
 
         private void btnUpdateLoan_Click(object sender, EventArgs e)
         {
-            Loan loan = new LoanInfo().GetLonInfo(dtGridLoan,_dtLoan);
+            Loan loan = new LoanInfo().GetLonInfo(dtGridLoan, _dtLoan);
             displayLoanData(loan);
             grpLoanDetails.Enabled = true;
         }
@@ -1569,7 +1566,7 @@ namespace FinancialPlannerClient.Clients
             if (MessageBox.Show("Are you sure, you want to delete this record?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 LoanInfo loanInfo = new LoanInfo();
-                Loan loan =loanInfo.GetLonInfo(dtGridLoan,_dtLoan);
+                Loan loan = loanInfo.GetLonInfo(dtGridLoan, _dtLoan);
                 loanInfo.Delete(loan);
                 fillupLoanInfo();
             }
@@ -1578,13 +1575,13 @@ namespace FinancialPlannerClient.Clients
         private void btnCancelLoan_Click(object sender, EventArgs e)
         {
             grpLoanDetails.Enabled = false;
-            Loan loan = new LoanInfo().GetLonInfo(dtGridLoan,_dtLoan);
+            Loan loan = new LoanInfo().GetLonInfo(dtGridLoan, _dtLoan);
             displayLoanData(loan);
         }
 
         private void dtGridLoan_SelectionChanged(object sender, EventArgs e)
         {
-            Loan loan = new LoanInfo().GetLonInfo(dtGridLoan,_dtLoan);
+            Loan loan = new LoanInfo().GetLonInfo(dtGridLoan, _dtLoan);
             displayLoanData(loan);
             if (loan != null)
                 btnLoanSchedule.Enabled = true;
@@ -1602,7 +1599,7 @@ namespace FinancialPlannerClient.Clients
             grpSalaryDetails.Enabled = true;
         }
 
-         private string getSpouseName()
+        private string getSpouseName()
         {
             if (!string.IsNullOrEmpty(txtSpouseName.Text))
                 return txtSpouseName.Text;
@@ -1798,7 +1795,7 @@ namespace FinancialPlannerClient.Clients
 
         private void btnEditIncome_Click(object sender, EventArgs e)
         {
-            Income income = new IncomeInfo().GetIncomeInfo(dtGridIncome,_dtIncome);
+            Income income = new IncomeInfo().GetIncomeInfo(dtGridIncome, _dtIncome);
             displayIncomeData(income);
             grpIncome.Enabled = true;
         }
@@ -1850,7 +1847,7 @@ namespace FinancialPlannerClient.Clients
 
         private void dtGridIncome_SelectionChanged(object sender, EventArgs e)
         {
-            Income income = new IncomeInfo().GetIncomeInfo(dtGridIncome,_dtIncome);
+            Income income = new IncomeInfo().GetIncomeInfo(dtGridIncome, _dtIncome);
             displayIncomeData(income);
         }
 
@@ -1872,7 +1869,7 @@ namespace FinancialPlannerClient.Clients
                 FamilyMember familymember = new FamilyMemberInfo().GetFamilyMemberInfo(dtGridFamilyMember, _dtFamilymember);
                 displayFamilyMemberData(familymember);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
@@ -1880,20 +1877,20 @@ namespace FinancialPlannerClient.Clients
 
         private void btnIncomeCancel_Click(object sender, EventArgs e)
         {
-            FamilyMember familymember = new FamilyMemberInfo().GetFamilyMemberInfo(dtGridFamilyMember,_dtFamilymember);
+            FamilyMember familymember = new FamilyMemberInfo().GetFamilyMemberInfo(dtGridFamilyMember, _dtFamilymember);
             displayFamilyMemberData(familymember);
             grpIncome.Enabled = false;
         }
 
         private void dtGridExpenses_SelectionChanged(object sender, EventArgs e)
         {
-            Expenses expenses = new ExpensesInfo().GetExpensesInfo(dtGridExpenses,_dtExpenses);
+            Expenses expenses = new ExpensesInfo().GetExpensesInfo(dtGridExpenses, _dtExpenses);
             displayExpensesData(expenses);
         }
 
         private void btnEditExpenses_Click(object sender, EventArgs e)
         {
-            Expenses expenses = new ExpensesInfo().GetExpensesInfo(dtGridExpenses,_dtExpenses);
+            Expenses expenses = new ExpensesInfo().GetExpensesInfo(dtGridExpenses, _dtExpenses);
             displayExpensesData(expenses);
             grpExpenseDetails.Enabled = true;
         }
@@ -1997,7 +1994,7 @@ namespace FinancialPlannerClient.Clients
         private void btnCacelExp_Click(object sender, EventArgs e)
         {
             grpExpenseDetails.Enabled = false;
-            Expenses expenses = new ExpensesInfo().GetExpensesInfo(dtGridExpenses,_dtExpenses);
+            Expenses expenses = new ExpensesInfo().GetExpensesInfo(dtGridExpenses, _dtExpenses);
             displayExpensesData(expenses);
         }
 
@@ -2011,7 +2008,7 @@ namespace FinancialPlannerClient.Clients
             else
                 setAllClientsView();
 
-            
+
         }
 
         private void setAllClientsView()
@@ -2021,8 +2018,8 @@ namespace FinancialPlannerClient.Clients
             {
                 lstTabPages.Add(tabPlannerDetails.TabPages[i]);
             }
-                      
-            foreach(TabPage tpage in lstTabPages)
+
+            foreach (TabPage tpage in lstTabPages)
             {
                 if (tpage.Name != "PersonalInfo" && tpage.Name != "FamilyInfo" && tpage.Name != "BankAccount")
                     tabPlannerDetails.TabPages.RemoveByKey(tpage.Name);
@@ -2097,7 +2094,7 @@ namespace FinancialPlannerClient.Clients
 
         private void btnEditGoal_Click(object sender, EventArgs e)
         {
-            Goals goals = new GoalsInfo().GetGoalsInfo(dtGridGoal,_dtGoals);
+            Goals goals = new GoalsInfo().GetGoalsInfo(dtGridGoal, _dtGoals);
             displayGoalsData(goals);
             grpGoalsDetail.Enabled = true;
         }
@@ -2219,7 +2216,7 @@ namespace FinancialPlannerClient.Clients
 
         private void dtGridGoal_SelectionChanged(object sender, EventArgs e)
         {
-            Goals goals = new GoalsInfo().GetGoalsInfo(dtGridGoal,_dtGoals);
+            Goals goals = new GoalsInfo().GetGoalsInfo(dtGridGoal, _dtGoals);
             displayGoalsData(goals);
         }
 
@@ -2237,7 +2234,7 @@ namespace FinancialPlannerClient.Clients
 
         private void btnGoalCancel_Click(object sender, EventArgs e)
         {
-            Goals goals = new GoalsInfo().GetGoalsInfo(dtGridGoal,_dtGoals);
+            Goals goals = new GoalsInfo().GetGoalsInfo(dtGridGoal, _dtGoals);
             displayGoalsData(goals);
             grpGoalsDetail.Enabled = false;
         }
@@ -2327,7 +2324,7 @@ namespace FinancialPlannerClient.Clients
 
         private void dtLoanStartDate_Validating(object sender, CancelEventArgs e)
         {
-            
+
         }
 
         private void btnLoanSchedule_Click(object sender, EventArgs e)
@@ -2557,7 +2554,7 @@ namespace FinancialPlannerClient.Clients
                 SessionInfo sessionInfo = new SessionInfo(_client.ID);
                 sessionInfo.Save(sessions);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
@@ -2565,11 +2562,11 @@ namespace FinancialPlannerClient.Clients
 
         private void cmbIncomeBy_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbIncomeSource.Tag.ToString() == "0" && cmbIncomeBy.Text.Equals(_personalInfo.Spouse.Name,StringComparison.OrdinalIgnoreCase))
+            if (cmbIncomeSource.Tag.ToString() == "0" && cmbIncomeBy.Text.Equals(_personalInfo.Spouse.Name, StringComparison.OrdinalIgnoreCase))
             {
                 txtExpectedGrowthSalary.Text = plannerAssumption.SpouseIncomeRise.ToString();
                 txtincomeGrowthPercentage.Text = plannerAssumption.SpouseIncomeRise.ToString();
-                txtIncomeEndYear.Text = (_client.DOB.Year + plannerAssumption.SpouseRetirementAge).ToString();
+                txtIncomeEndYear.Text = (_personalInfo.Spouse.DOB.Year + plannerAssumption.SpouseRetirementAge).ToString();
             }
             else if (cmbIncomeSource.Tag.ToString() == "0" && cmbIncomeBy.Text.Equals(_personalInfo.Client.Name, StringComparison.OrdinalIgnoreCase))
             {
@@ -2598,6 +2595,32 @@ namespace FinancialPlannerClient.Clients
         private void txtExpectedGrowthInAmount_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void btnOpenDocument_Click(object sender, EventArgs e)
+        {
+            DocumentInfo docInfo = new DocumentInfo();
+            Document doc = docInfo.GetDocumentInfo(dtGridDocuments, _dtDocument);
+            if (string.IsNullOrEmpty(doc.Path))
+            {
+                MessageBox.Show("File path not found");
+                return;
+            }
+            string documentPath = doc.Path;
+            string fullPath;
+            string filename = System.IO.Path.GetFileName(documentPath);
+            fullPath = Path.Combine(Path.GetTempPath(), filename);
+
+            byte[] byteArray = Convert.FromBase64String(doc.Data);
+
+            MemoryStream stream = new MemoryStream(byteArray);
+
+            using (FileStream fs = new FileStream(fullPath, FileMode.OpenOrCreate))
+            {
+                stream.CopyTo(fs);
+                fs.Flush();
+            }
+            System.Diagnostics.Process.Start(fullPath);
         }
     }
 }

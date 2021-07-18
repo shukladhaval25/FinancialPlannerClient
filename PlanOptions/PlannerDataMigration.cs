@@ -153,6 +153,13 @@ namespace FinancialPlannerClient.PlanOptions
                 DevExpress.XtraEditors.XtraMessageBox.Show("Source and destination plan both are same. Can not migration data from same plan", "Migration Data", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
+
+            if (sourcePlanner.StartDate > currentPlanner.StartDate)
+            {
+                DevExpress.XtraEditors.XtraMessageBox.Show("Source plan start date shoule be less then current plan start date", "Migration Data", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
             DataRow[] dataRows = dtMigrationModule.Select("IsSelected = True");
             if (dataRows.Length > 0)
             {
@@ -813,7 +820,10 @@ namespace FinancialPlannerClient.PlanOptions
                         try
                         {
                             income.Pid = this.currentPlanner.ID;
-                            income.Amount = futureValue(income.Amount, income.ExpectGrowthInPercentage, int.Parse(income.StartYear) - currentPlanner.StartDate.Year);
+                            if (int.Parse(income.StartYear) <= currentPlanner.StartDate.Year)
+                            {
+                                income.Amount = futureValue(income.Amount, income.ExpectGrowthInPercentage, currentPlanner.StartDate.Year - int.Parse(income.StartYear));
+                            }
                             incomeInfo.Add(income);
                         }
                         catch (Exception ex)
@@ -851,12 +861,12 @@ namespace FinancialPlannerClient.PlanOptions
                         goal.Pid = this.currentPlanner.ID;
 
                         // Set Amount based on calculation.
-                        goal.Amount = futureValue(goal.Amount, goal.InflationRate, (currentPlanner.StartDate.Year - int.Parse(goal.StartYear)));
+                        goal.Amount = futureValue(goal.Amount, goal.InflationRate,currentPlanner.StartDate.Year - this.sourcePlanner.StartDate.Year);
 
                         // Set Other Amount based on calculation.
                         if (goal.OtherAmount > 0)
                         {
-                            goal.OtherAmount = futureValue(goal.OtherAmount, goal.InflationRate, (currentPlanner.StartDate.Year - int.Parse(goal.StartYear)));
+                            goal.OtherAmount = futureValue(goal.OtherAmount, goal.InflationRate, (currentPlanner.StartDate.Year - sourcePlanner.StartDate.Year));
                         }
 
                         delegateUpdateAllValues(dataRow, int.Parse(dataRow["Status"].ToString()) + processIncrementalValue, "In Progress", "");

@@ -302,14 +302,17 @@ namespace FinancialPlannerClient.PlanOptions
                     ? 1 : int.Parse(txtGoalRecurrence.Text));
                 bool isPriorityAssignDuplicate = false;
                 int currentPriorityNumber = int.Parse(numPriority.Value.ToString());
-                for (int year = startYear; year < endYear;)
+                if (cmbCategory.Text != "Retirement")
                 {
+                    for (int year = startYear; year < endYear;)
+                    {
 
-                    isPriorityAssignDuplicate = isDuplicatePriorityNumber(currentPriorityNumber.ToString());
-                    if (isPriorityAssignDuplicate)
-                        return false;
-                    currentPriorityNumber++;
-                    year = year + frequency;
+                        isPriorityAssignDuplicate = isDuplicatePriorityNumber(currentPriorityNumber.ToString());
+                        if (isPriorityAssignDuplicate)
+                            return false;
+                        currentPriorityNumber++;
+                        year = year + frequency;
+                    }
                 }
                 return true;
             }

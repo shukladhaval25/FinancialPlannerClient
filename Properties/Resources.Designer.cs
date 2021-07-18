@@ -113,9 +113,49 @@ namespace FinancialPlannerClient.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap CardGoalAbove10Lakh {
+            get {
+                object obj = ResourceManager.GetObject("CardGoalAbove10Lakh", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap CarGoalBetween5To10Lakh {
+            get {
+                object obj = ResourceManager.GetObject("CarGoalBetween5To10Lakh", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap CarGoalupto5Lakh {
+            get {
+                object obj = ResourceManager.GetObject("CarGoalupto5Lakh", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap EducationGoal {
             get {
                 object obj = ResourceManager.GetObject("EducationGoal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap EducationGoal1 {
+            get {
+                object obj = ResourceManager.GetObject("EducationGoal1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -133,6 +173,16 @@ namespace FinancialPlannerClient.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap FinancialGoals {
+            get {
+                object obj = ResourceManager.GetObject("FinancialGoals", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ForeignTrip {
             get {
                 object obj = ResourceManager.GetObject("ForeignTrip", resourceCulture);
@@ -143,9 +193,49 @@ namespace FinancialPlannerClient.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap FurnitureGoal {
+            get {
+                object obj = ResourceManager.GetObject("FurnitureGoal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap HolidayGoal {
+            get {
+                object obj = ResourceManager.GetObject("HolidayGoal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap HomeGoal {
             get {
                 object obj = ResourceManager.GetObject("HomeGoal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap HomeGoal1 {
+            get {
+                object obj = ResourceManager.GetObject("HomeGoal1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap HospitalGoal {
+            get {
+                object obj = ResourceManager.GetObject("HospitalGoal", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -533,6 +623,16 @@ namespace FinancialPlannerClient.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap InstrumentForHospitalGoal {
+            get {
+                object obj = ResourceManager.GetObject("InstrumentForHospitalGoal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap marguerite_daisy_beautiful_beauty {
             get {
                 object obj = ResourceManager.GetObject("marguerite-daisy-beautiful-beauty", resourceCulture);
@@ -556,6 +656,16 @@ namespace FinancialPlannerClient.Properties {
         internal static System.Drawing.Bitmap Marriage {
             get {
                 object obj = ResourceManager.GetObject("Marriage", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MarriageGoal {
+            get {
+                object obj = ResourceManager.GetObject("MarriageGoal", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -593,6 +703,16 @@ namespace FinancialPlannerClient.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap OthersGoal {
+            get {
+                object obj = ResourceManager.GetObject("OthersGoal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap processing_gif_image_14 {
             get {
                 object obj = ResourceManager.GetObject("processing-gif-image-14", resourceCulture);
@@ -616,6 +736,16 @@ namespace FinancialPlannerClient.Properties {
         internal static System.Drawing.Bitmap Retirement {
             get {
                 object obj = ResourceManager.GetObject("Retirement", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap RetirementGoal {
+            get {
+                object obj = ResourceManager.GetObject("RetirementGoal", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

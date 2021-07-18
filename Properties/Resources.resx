@@ -322,4 +322,43 @@
   <data name="HomeGoal" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Report\HomeGoal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="CardGoalAbove10Lakh" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Report\CardGoalAbove10Lakh.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CarGoalBetween5To10Lakh" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Report\CarGoalBetween5To10Lakh.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CarGoalupto5Lakh" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Report\CarGoalupto5Lakh.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EducationGoal1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Report\EducationGoal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FinancialGoals" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Report\FinancialGoals.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FurnitureGoal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Report\FurnitureGoal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="HolidayGoal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Report\HolidayGoal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="HomeGoal1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Report\HomeGoal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="HospitalGoal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Report\HospitalGoal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="InstrumentForHospitalGoal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Report\InstrumentForHospitalGoal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MarriageGoal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Report\MarriageGoal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="OthersGoal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Report\OthersGoal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RetirementGoal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Report\RetirementGoal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

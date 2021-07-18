@@ -150,7 +150,7 @@ namespace FinancialPlannerClient.PlanOptions
 
                 DataTable dataTable = postRetirementCashFlowService.GetPostRetirementCashFlowData();
                 double estimatedCorpusFund = postRetirementCashFlowService.GetProposeEstimatedCorpusFund();
-                _dtGoalProfile.Rows[0]["FirstYearExpenseOnRetirementYear"] = estimatedCorpusFund;
+                //_dtGoalProfile.Rows[0]["FirstYearExpenseOnRetirementYear"] = estimatedCorpusFund;
                 _dtGoalProfile.Rows[0]["GoalValue"] = estimatedCorpusFund;
                 _dtGoalValue.Rows[_dtGoalValue.Rows.Count - 1]["Cash outflow Goal Year"] = estimatedCorpusFund;
             }

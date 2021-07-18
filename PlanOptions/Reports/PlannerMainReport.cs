@@ -22,8 +22,9 @@ namespace FinancialPlannerClient.PlanOptions
         PersonalInformation personalInformation;
         int riskprofileId, optionId;
         IList<Goals> goals;
+        string recomendationNote;
        
-        public PlannerMainReport(PersonalInformation personalInformation, Planner planner,int riskProfileId,int optionId)
+        public PlannerMainReport(PersonalInformation personalInformation, Planner planner,int riskProfileId,int optionId,string recomendation="")
         {
             InitializeComponent();
             this.personalInformation = personalInformation;
@@ -34,6 +35,7 @@ namespace FinancialPlannerClient.PlanOptions
             this.lblClientName.Text = this.client.Name;
             this.lblPreparedFor.Text = this.client.Name;
             this.lblPreparedOn.Text = this.planner.StartDate.ToShortDateString();
+            this.recomendationNote = recomendation;
             fillGoals(planner);
         }
 
@@ -129,8 +131,7 @@ namespace FinancialPlannerClient.PlanOptions
 
                 CurrentStatusReport currentStatus = new CurrentStatusReport(netWorthStatement.GetNetWorth());
                 currentStatus.CreateDocument();
-
-
+               
                 DataTable dtGroupByGoals =  financialClientGoal.GetGoalsByGroup();
                 GoalsDescription[] goalsDescriptions = null;
                 if (dtGroupByGoals.Rows.Count > 0)
@@ -147,7 +148,7 @@ namespace FinancialPlannerClient.PlanOptions
                     {
                         DataTable _dtGoals;
                        DataRow[] dataRows   = dtTempGoal.Select("Name like '" + 
-                          dtGroupByGoals.Rows[index]["Name"].ToString() + "%' and Recurrence <> '0'" );
+                          dtGroupByGoals.Rows[index]["Name"].ToString() + "%' and Recurrence <> '0' and Category ='" + dtGroupByGoals.Rows[index]["Category"] +"'" );
                         if (dataRows.Count() == 0)
                         {
                             _dtGoals = dtTempGoal.Select("Name like '" +
@@ -156,7 +157,7 @@ namespace FinancialPlannerClient.PlanOptions
                         else
                         {
                             _dtGoals = dtTempGoal.Select("Name like '" +
-                          dtGroupByGoals.Rows[index]["Name"].ToString() + "%' and Recurrence <> '0'").CopyToDataTable();
+                          dtGroupByGoals.Rows[index]["Name"].ToString() + "%' and Recurrence <> '0' and Category ='" + dtGroupByGoals.Rows[index]["Category"] + "'").CopyToDataTable();
                         }
                         //    ListtoDataTable.ToDataTable(
                         //goals.Where(x => x.Name.StartsWith(dtGroupByGoals.Rows[index]["Name"].ToString())).ToList());
@@ -183,6 +184,9 @@ namespace FinancialPlannerClient.PlanOptions
 
                 ActionPlan actionPlan = new ActionPlan(this.client, this.planner);
                 actionPlan.CreateDocument();
+
+                Recomendation recomendation = new Recomendation(this.client,this.recomendationNote);
+                recomendation.CreateDocument();
 
                 // Enable this property to maintain continuous page numbering 
                 PrintingSystem.ContinuousPageNumbering = true;
@@ -222,7 +226,8 @@ namespace FinancialPlannerClient.PlanOptions
 
                 this.Pages.Add(assetAllocationTitle.Pages.First);
                 this.Pages.Add(actionPlan.Pages.First);
-                this.Pages.Add(currentStatus.Pages.First);
+                this.Pages.Add(recomendation.Pages.First);
+                //this.Pages.Add(currentStatus.Pages.First);
 
                 waitdlg.Close();
             }
@@ -253,6 +258,7 @@ namespace FinancialPlannerClient.PlanOptions
             {
                 int years = (!string.IsNullOrEmpty(dr["StartYear"].ToString())) ?
                 int.Parse(dr["StartYear"].ToString()) - planner.StartDate.Year : 0;
+                dr["Amount"] = double.Parse(dr["Amount"].ToString()) + double.Parse(dr["OtherAmount"].ToString());
                 dr["FutureValue"] = futureValue(double.Parse(dr["Amount"].ToString()),
                     decimal.Parse(dr["InflationRate"].ToString()), years);
             }

@@ -116,7 +116,7 @@ namespace FinancialPlannerClient.PlanOptions
             _optionId = optionId;
             this.cashFlowService = cashFlowService;
             growthPercentage = _riskProfileInfo.GetRiskProfileReturnRatio(_riskProfileId, getRemainingYearsFromPlanStartYear());
-            _firstYearExpenseOnRetirementYear = getGoalFutureValue((goal.Category.Equals("Retirement")? true: false));
+            _firstYearExpenseOnRetirementYear = getGoalFutureValue(false);
             _futureValueOfGoal = getGoalFutureValue();
             _currentValueOfGoal = getGoalCurrentValue();
             _futureValueOfMappedInstruments = getTotalMappedInstrumentValue();

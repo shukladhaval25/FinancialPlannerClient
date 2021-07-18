@@ -30,6 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Clientdashboard));
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
@@ -58,9 +61,6 @@
             DevExpress.Utils.SuperToolTip superToolTip10 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem11 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem10 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
             this.panelMenu = new DevExpress.XtraEditors.PanelControl();
             this.lblClientID = new DevExpress.XtraEditors.LabelControl();
             this.pnlNavCtrl = new DevExpress.XtraEditors.PanelControl();
@@ -72,6 +72,7 @@
             this.navBarItemFamily = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItemClientARN = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarGroupControlContainer1 = new DevExpress.XtraNavBar.NavBarGroupControlContainer();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.navBarControlPlanner = new DevExpress.XtraNavBar.NavBarControl();
             this.navBarGroupPlannerData = new DevExpress.XtraNavBar.NavBarGroup();
             this.navBarItemAssumptions = new DevExpress.XtraNavBar.NavBarItem();
@@ -177,7 +178,6 @@
             this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.gridBand1 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.panelMenu)).BeginInit();
             this.panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlNavCtrl)).BeginInit();
@@ -361,6 +361,25 @@
             this.navBarGroupControlContainer1.Size = new System.Drawing.Size(160, 357);
             this.navBarGroupControlContainer1.TabIndex = 0;
             // 
+            // simpleButton1
+            // 
+            this.simpleButton1.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.Image")));
+            this.simpleButton1.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.simpleButton1.Location = new System.Drawing.Point(7, 49);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(44, 23);
+            toolTipTitleItem1.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            toolTipTitleItem1.Appearance.Options.UseImage = true;
+            toolTipTitleItem1.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem1.Image")));
+            toolTipTitleItem1.Text = "Data Migration";
+            toolTipItem1.LeftIndent = 6;
+            toolTipItem1.Text = "To migrate data from source plan to current plan click here.";
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            superToolTip1.Items.Add(toolTipItem1);
+            this.simpleButton1.SuperTip = superToolTip1;
+            this.simpleButton1.TabIndex = 4;
+            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
+            // 
             // navBarControlPlanner
             // 
             this.navBarControlPlanner.ActiveGroup = this.navBarGroupPlannerData;
@@ -380,10 +399,10 @@
             this.navBarItemInsurance,
             this.navBarItemInvRecomm,
             this.navBarItemNetWorth});
-            this.navBarControlPlanner.Location = new System.Drawing.Point(-1, 81);
+            this.navBarControlPlanner.Location = new System.Drawing.Point(-1, 78);
             this.navBarControlPlanner.Name = "navBarControlPlanner";
             this.navBarControlPlanner.OptionsNavPane.ExpandedWidth = 157;
-            this.navBarControlPlanner.Size = new System.Drawing.Size(157, 276);
+            this.navBarControlPlanner.Size = new System.Drawing.Size(157, 279);
             this.navBarControlPlanner.TabIndex = 3;
             this.navBarControlPlanner.Text = "navBarControl1";
             // 
@@ -1467,25 +1486,6 @@
             this.gridBand1.Caption = "gridBand1";
             this.gridBand1.Name = "gridBand1";
             this.gridBand1.VisibleIndex = -1;
-            // 
-            // simpleButton1
-            // 
-            this.simpleButton1.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.Image")));
-            this.simpleButton1.Location = new System.Drawing.Point(7, 49);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(24, 23);
-            toolTipTitleItem1.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
-            toolTipTitleItem1.Appearance.Options.UseImage = true;
-            toolTipTitleItem1.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem1.Image")));
-            toolTipTitleItem1.Text = "Planner Details";
-            toolTipItem1.LeftIndent = 6;
-            toolTipItem1.Text = "To view more details about planner information click here.";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            superToolTip1.Items.Add(toolTipItem1);
-            this.simpleButton1.SuperTip = superToolTip1;
-            this.simpleButton1.TabIndex = 4;
-            this.simpleButton1.Text = "More Details";
-            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // Clientdashboard
             // 

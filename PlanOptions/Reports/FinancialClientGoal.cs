@@ -246,7 +246,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                     xrGroupTable.Visible = true;
                     this.lblName.DataBindings.Add("Text", this.DataSource, "Goals.Name");
                     xrGroupLabel.Text = string.Format("{0} {1} of Rs.{2} each", lblRecurrence.Text, lblName.Text, (double.Parse(lblPresentCost.Text) / int.Parse(lblRecurrence.Text)));
-                    xrGroupLabel2.Text = string.Format("Total fund need for {0} {1}", lblRecurrence.Text, lblName.Text);
+                    xrGroupLabel2.Text ="Total fund needed";
                     //xrGroupTable.HeightF = 25;
                     xrGroupLabel.BackColor = System.Drawing.Color.LightGreen;
                     xrGroupLabel2.BackColor = System.Drawing.Color.LightGreen;
