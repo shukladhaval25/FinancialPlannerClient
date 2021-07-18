@@ -25,12 +25,12 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             double baseCWIAmout = 0;
             for(int rowCount = 0; rowCount <= dtNetWorth.Rows.Count - 1; rowCount++)
             {
-                if (rowCount == 0)
+                if (double.Parse(dtNetWorth.Rows[rowCount]["Amount"].ToString()) > 0 && baseCWIAmout == 0)
                 {
                     dtNetWorth.Rows[rowCount]["CWI"] = 100;
                     baseCWIAmout = double.Parse(dtNetWorth.Rows[rowCount]["Amount"].ToString());
                 }
-                else
+                else if (baseCWIAmout > 0)
                 {
                     double currentNetWothAmount = double.Parse(dtNetWorth.Rows[rowCount]["Amount"].ToString());
                     dtNetWorth.Rows[rowCount]["CWI"] = (currentNetWothAmount * 100) / baseCWIAmout;

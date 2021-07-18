@@ -57,15 +57,15 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
             DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
             this.tileViewColumnId = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.tileViewColumnBankName = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.tileViewColumnAccountNo = new DevExpress.XtraGrid.Columns.TileViewColumn();
@@ -533,6 +533,7 @@
             this.DocumentInfo = new System.Windows.Forms.TabPage();
             this.label146 = new System.Windows.Forms.Label();
             this.grpDocsControl = new System.Windows.Forms.GroupBox();
+            this.btnOpenDocument = new DevExpress.XtraEditors.SimpleButton();
             this.btnRemoveDoc = new System.Windows.Forms.Button();
             this.btnAddDoc = new System.Windows.Forms.Button();
             this.grpDocumentDetails = new System.Windows.Forms.GroupBox();
@@ -561,7 +562,6 @@
             this.textBox11 = new System.Windows.Forms.TextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
-            this.btnOpenDocument = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEditDefault)).BeginInit();
             this.tabPlannerDetails.SuspendLayout();
             this.Assumption.SuspendLayout();
@@ -6239,6 +6239,26 @@
             this.grpDocsControl.TabIndex = 9;
             this.grpDocsControl.TabStop = false;
             // 
+            // btnOpenDocument
+            // 
+            this.btnOpenDocument.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOpenDocument.Image = ((System.Drawing.Image)(resources.GetObject("btnOpenDocument.Image")));
+            this.btnOpenDocument.Location = new System.Drawing.Point(196, 9);
+            this.btnOpenDocument.Name = "btnOpenDocument";
+            this.btnOpenDocument.Size = new System.Drawing.Size(117, 23);
+            toolTipTitleItem1.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            toolTipTitleItem1.Appearance.Options.UseImage = true;
+            toolTipTitleItem1.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem1.Image")));
+            toolTipTitleItem1.Text = "Save";
+            toolTipItem1.LeftIndent = 6;
+            toolTipItem1.Text = "Save session.";
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            superToolTip1.Items.Add(toolTipItem1);
+            this.btnOpenDocument.SuperTip = superToolTip1;
+            this.btnOpenDocument.TabIndex = 43;
+            this.btnOpenDocument.Text = "Open Document";
+            this.btnOpenDocument.Click += new System.EventHandler(this.btnOpenDocument_Click);
+            // 
             // btnRemoveDoc
             // 
             this.btnRemoveDoc.ImageIndex = 1;
@@ -6556,32 +6576,13 @@
             // 
             this.printDialog1.UseEXDialog = true;
             // 
-            // btnOpenDocument
-            // 
-            this.btnOpenDocument.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOpenDocument.Image = ((System.Drawing.Image)(resources.GetObject("btnOpenDocument.Image")));
-            this.btnOpenDocument.Location = new System.Drawing.Point(196, 9);
-            this.btnOpenDocument.Name = "btnOpenDocument";
-            this.btnOpenDocument.Size = new System.Drawing.Size(117, 23);
-            toolTipTitleItem1.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
-            toolTipTitleItem1.Appearance.Options.UseImage = true;
-            toolTipTitleItem1.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem1.Image")));
-            toolTipTitleItem1.Text = "Save";
-            toolTipItem1.LeftIndent = 6;
-            toolTipItem1.Text = "Save session.";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            superToolTip1.Items.Add(toolTipItem1);
-            this.btnOpenDocument.SuperTip = superToolTip1;
-            this.btnOpenDocument.TabIndex = 43;
-            this.btnOpenDocument.Text = "Open Document";
-            this.btnOpenDocument.Click += new System.EventHandler(this.btnOpenDocument_Click);
-            // 
             // ClientInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(972, 632);
             this.Controls.Add(this.tabPlannerDetails);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.MinimizeBox = false;
             this.Name = "ClientInfo";
             this.Text = "Planner Details";

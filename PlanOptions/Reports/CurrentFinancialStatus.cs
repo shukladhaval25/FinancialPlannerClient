@@ -88,11 +88,12 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                 dtNetWorth.Rows[indexRow]["Title"].ToString() == ULIPS_DEBT ||
                 dtNetWorth.Rows[indexRow]["Title"].ToString() == NPS_DEPT ||
                 dtNetWorth.Rows[indexRow]["Title"].ToString() == OTHERS_DEBT  ||
+                dtNetWorth.Rows[indexRow]["Title"].ToString() == OTHERS_GOLD ||
                 dtNetWorth.Rows[indexRow]["Title"].ToString() == EPF ||
                 dtNetWorth.Rows[indexRow]["Title"].ToString() == NSC ||
                 dtNetWorth.Rows[indexRow]["Title"].ToString() == SCSS)
             {
-                if (dtNetWorth.Rows[indexRow]["Title"].ToString() == OTHERS_DEBT)
+                if (dtNetWorth.Rows[indexRow]["Title"].ToString() == OTHERS_DEBT || dtNetWorth.Rows[indexRow]["Title"].ToString() == OTHERS_GOLD)
                 {
                     xrTableDebt.Rows[rowIndexForDebt].Cells[0].Text = dtNetWorth.Rows[indexRow]["Description"].ToString();
                 }

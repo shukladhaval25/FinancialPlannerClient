@@ -182,7 +182,7 @@
             this.grdGoalProfile.MainView = this.gridViewGoalProfile;
             this.grdGoalProfile.Name = "grdGoalProfile";
             this.grdGoalProfile.ShowOnlyPredefinedDetails = true;
-            this.grdGoalProfile.Size = new System.Drawing.Size(902, 124);
+            this.grdGoalProfile.Size = new System.Drawing.Size(746, 124);
             this.grdGoalProfile.TabIndex = 23;
             this.grdGoalProfile.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewGoalProfile});
@@ -203,7 +203,7 @@
             this.dtGridGoalValue.Location = new System.Drawing.Point(12, 142);
             this.dtGridGoalValue.MainView = this.gridViewGoalValue;
             this.dtGridGoalValue.Name = "dtGridGoalValue";
-            this.dtGridGoalValue.Size = new System.Drawing.Size(1153, 354);
+            this.dtGridGoalValue.Size = new System.Drawing.Size(997, 354);
             this.dtGridGoalValue.TabIndex = 24;
             this.dtGridGoalValue.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewGoalValue});
@@ -218,7 +218,7 @@
             // 
             this.btnExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExport.Image = ((System.Drawing.Image)(resources.GetObject("btnExport.Image")));
-            this.btnExport.Location = new System.Drawing.Point(1136, 147);
+            this.btnExport.Location = new System.Drawing.Point(980, 147);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(23, 23);
             this.btnExport.TabIndex = 25;
@@ -244,7 +244,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1177, 508);
+            this.ClientSize = new System.Drawing.Size(1021, 508);
             this.Controls.Add(this.lblPriorityAfterRetirementGoalTitle);
             this.Controls.Add(this.btnExport);
             this.Controls.Add(this.dtGridGoalValue);
@@ -253,6 +253,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "GoalCalView";
             this.Text = "Goal Calculation";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.GoalCalView_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grpGoalInfo)).EndInit();
             this.grpGoalInfo.ResumeLayout(false);
