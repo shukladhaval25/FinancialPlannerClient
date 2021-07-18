@@ -209,22 +209,34 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             lblGoalYear.DataBindings.Add("Text", this.DataSource, "Goals.StartYear");
             lblGoalInflation.DataBindings.Add("Text", this.DataSource, "Goals.InflationRate");
             lblGoalFutureValue.DataBindings.Add("Text", this.DataSource, "Goals.FutureValue");
-            //lblRetirementCorpus.DataBindings.Add("Text",this.DataSource,G)
+            lblGoalFutureValueSum.DataBindings.Add("Text", this.DataSource, "Goals.FutureValue");
+            if (this.goal.Category.Equals("Retirement"))
+            {
+                lblRetirementCorpus.Visible = true;
+                lblRetirementCorpusValue.Visible = true;
+                lblRetirementCorpusSum.Visible = true;
+                PostRetirementCashFlowService postRetirementCashFlowService;
+                CashFlowService cashFlowService = new CashFlowService();
+                cashFlowService.GenerateCashFlow(client.ID, planner.ID, riskProfileId);
+                postRetirementCashFlowService = new PostRetirementCashFlowService(planner, cashFlowService);
+                postRetirementCashFlowService.GetPostRetirementCashFlowData();
+                postRetirementCashFlowService.calculateEstimatedRequireCorpusFund();
+                double totalEstimatedRetirementCorpusFund = Math.Round(postRetirementCashFlowService.GetProposeEstimatedCorpusFund(), 2);
+                lblRetirementCorpusValue.Text = totalEstimatedRetirementCorpusFund.ToString();
+                lblRetirementCorpusSum.Text = totalEstimatedRetirementCorpusFund.ToString();
+                //lblRetirementCorpus.DataBindings.Add("Text", this.DataSource, G)
+            }
+            
 
             RiskProfileInfo riskprofileInfo = new RiskProfileInfo();
-            //this.goal = new Goals()
-            //{
-            //    Id = int.Parse(_dtGoals.Rows[0]["Id"].ToString()),
-            //    Amount = double.Parse(_dtGoals.Rows[0]["Amount"].ToString()),
-            //    Category = _dtGoals.Rows[0]["Category"].ToString(),
-            //    EndYear = _dtGoals.Rows[0]["EndYear"].ToString(),
-            //    StartYear = _dtGoals.Rows[0]["StartYear"].ToString(),
-            //    InflationRate = decimal.Parse(_dtGoals.Rows[0]["InflationRate"].ToString()),
-            //    Priority = int.Parse(_dtGoals.Rows[0]["Priority"].ToString())
-            //};
-            double returnRate = (double)riskprofileInfo.GetRiskProfileReturnRatio(this.riskProfileId,
+           
+            RiskProfiledReturn riskProfiledReturn = riskprofileInfo.GetResikProfile(this.riskProfileId,
                     (int.Parse(this.goal.StartYear) - this.planner.StartDate.Year));
+            double returnRate = double.Parse(riskProfiledReturn.AverageInvestemetReturn.ToString());
+           
             lblTaxReturn.Text = string.Format(lblTaxReturn.Text, returnRate.ToString(), this.planner.StartDate.Year.ToString());
+            lblEquity.Text = riskProfiledReturn.EquityInvestementRatio.ToString();
+            lblDebt.Text = riskProfiledReturn.DebtInvestementRatio.ToString();
             setImageForGoal(goal);
             goalCalculation(goal);
         }
@@ -232,6 +244,22 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         private void lblGoalInflation_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
             lblGoalInflation.Text = lblGoalInflation.Text + " %";
+        }
+
+        private void lblRetirementCorpusSum_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(lblRetirementCorpusSum.Text))
+            {
+                lblRetirementCorpusSum.Text = String.Format("{0:#,###}", double.Parse(lblRetirementCorpusSum.Text));
+            }
+        }
+
+        private void lblRetirementCorpusValue_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(lblRetirementCorpusValue.Text))
+            {
+                lblRetirementCorpusValue.Text = String.Format("{0:#,###}", double.Parse(lblRetirementCorpusValue.Text));
+            }
         }
     }
 }

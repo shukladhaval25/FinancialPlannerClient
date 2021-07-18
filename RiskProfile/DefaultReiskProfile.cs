@@ -109,7 +109,7 @@ namespace FinancialPlannerClient.RiskProfile
         public decimal GetRiskProfileReturnRatio(int RiskProfileId,int yearRemaining)
         {
             if (yearRemaining == 0)
-                return 0;
+                yearRemaining = 1;
 
             if (_dtRiskProfileReturn.Rows.Count == 0)
                 GetRiskProfileReturnById(RiskProfileId);
@@ -125,31 +125,50 @@ namespace FinancialPlannerClient.RiskProfile
             return 0;
         }
 
-        //private void setDefaultValueBasedonRemainingYears()
-        //{            
-        //    for(int i =0; i<= DEFAULT_YEARS;i++)
-        //    {
-        //        RiskProfiledReturn riskProfileReturn = new RiskProfiledReturn();
-        //        riskProfileReturn.YearRemaining = i;
-        //        riskProfileReturn.ForeingInvestmentRatio = 0;
-        //        riskProfileReturn.EquityInvestementRatio = 0;
-        //        riskProfileReturn.DebtInvestementRatio = 0;
-        //        riskProfileReturn.ForeingInvestementReaturn = 0;
-        //        riskProfileReturn.EquityInvestementReturn = 0;
-        //        riskProfileReturn.DebtInvestementReturn = 0;
+        public RiskProfiledReturn GetResikProfile(int RiskProfileId, int yearRemaining)
+        {
+            if (yearRemaining == 0)
+                yearRemaining = 1;
 
-        //        DataRow drRiskProfRetun = _dtRiskProfileReturn.NewRow();
-        //        drRiskProfRetun["YearRemaining"] = riskProfileReturn.YearRemaining;
-        //        drRiskProfRetun["ForeingInvestmentRatio"] = riskProfileReturn.ForeingInvestmentRatio;
-        //        drRiskProfRetun["EquityInvestementRatio"] = riskProfileReturn.EquityInvestementRatio;
-        //        drRiskProfRetun["DebtInvestementRatio"] = riskProfileReturn.DebtInvestementRatio;
-        //        drRiskProfRetun["ForeingInvestementReaturn"] = riskProfileReturn.ForeingInvestementReaturn;
-        //        drRiskProfRetun["EquityInvestementReturn"] = riskProfileReturn.EquityInvestementReturn;
-        //        drRiskProfRetun["DebtInvestementReturn"] = riskProfileReturn.DebtInvestementReturn;
-        //        drRiskProfRetun["AverageInvestementReturn"] = riskProfileReturn.AverageInvestemetReturn;
-        //        _dtRiskProfileReturn.Rows.Add(drRiskProfRetun);
-        //    }           
-        //}
+            if (_dtRiskProfileReturn.Rows.Count == 0)
+                GetRiskProfileReturnById(RiskProfileId);
+
+            RiskProfiledReturn riskProfiledReturn = new RiskProfiledReturn();
+            try
+            {
+                DataRow[] drs = _dtRiskProfileReturn.Select(string.Format("RiskProfileId ='{0}' and YearRemaining = '{1}'", RiskProfileId, yearRemaining));
+                if (drs != null)
+                {
+                    foreach (var dr in drs)
+                    {
+                        riskProfiledReturn = convertToRiskProfileDetailsObject(dr);
+                        return riskProfiledReturn;
+                    }
+                }
+            }catch(Exception ex)
+            {
+                MessageBox.Show("Error:" + ex.ToString());
+            }
+
+            return riskProfiledReturn;
+        }
+
+        private RiskProfiledReturn convertToRiskProfileDetailsObject(DataRow dr)
+        {
+            RiskProfiledReturn riskProfile = new RiskProfiledReturn();
+            //riskProfile.Id = dr.Field<int>("ID");
+            riskProfile.RiskProfileId = int.Parse(dr["RiskProfileID"].ToString());
+            riskProfile.YearRemaining = int.Parse(dr["YearRemaining"].ToString());
+            riskProfile.ForeingInvestmentRatio = decimal.Parse(dr["ForeingInvestmentRatio"].ToString());
+            riskProfile.EquityInvestementRatio = decimal.Parse(dr["EquityInvestementRatio"].ToString());
+            riskProfile.DebtInvestementRatio = decimal.Parse(dr["DebtInvestementRatio"].ToString());
+
+            riskProfile.ForeingInvestementReaturn = decimal.Parse(dr["ForeingInvestementReaturn"].ToString());
+            riskProfile.EquityInvestementReturn = decimal.Parse(dr["EquityInvestementReturn"].ToString());
+            riskProfile.DebtInvestementReturn = decimal.Parse(dr["DebtInvestementReturn"].ToString());
+            return riskProfile;
+        }
+
 
         private void setDefaultColumnsForRiskPrifleReturn()
         {
@@ -184,10 +203,6 @@ namespace FinancialPlannerClient.RiskProfile
 
             DataColumn dcAvgReturn = new DataColumn("AverageInvestementReturn", typeof(System.Decimal));
 
-            //DataColumn dcAvgReturn = new DataColumn("AverageInvestementReturn",typeof(System.Decimal),
-            //    ("((ForeingInvestmentRatio * ForeingInvestementReaturn) / 100) + " +
-            //      "((EquityInvestementRatio * EquityInvestementReturn) / 100)  + " +
-            //      "((DebtInvestementRatio * DebtInvestementReturn) / 100)"));
             dcAvgReturn.ReadOnly = false;
             _dtRiskProfileReturn.Columns.Add(dcAvgReturn);
 

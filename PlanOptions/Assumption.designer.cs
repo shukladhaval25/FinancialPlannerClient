@@ -86,7 +86,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.txtPlannerAssumptionDescription = new DevExpress.XtraEditors.MemoEdit();
+            this.txtPlannerAssumptionDescription = new DevExpress.XtraEditors.RichTextEdit();
             this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             this.groupBox1.SuspendLayout();
             this.pnlAssumption.SuspendLayout();
@@ -738,7 +738,7 @@
         private DevExpress.XtraEditors.TextEdit txtEquityReturn;
         private DevExpress.XtraEditors.TextEdit txtDebtReturn;
         private DevExpress.XtraEditors.TextEdit txtOtherReturn;
-        private DevExpress.XtraEditors.MemoEdit txtPlannerAssumptionDescription;
+        private DevExpress.XtraEditors.RichTextEdit txtPlannerAssumptionDescription;
         private DevExpress.XtraEditors.SimpleButton btnSaveAssumption;
         private DevExpress.XtraEditors.TextEdit txtOngoingExpRise;
         private System.Windows.Forms.Label label19;

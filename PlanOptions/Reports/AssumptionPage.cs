@@ -40,7 +40,7 @@ namespace FinancialPlannerClient.PlanOptions
 
             AssumptionMaster assumptionMaster = Program.GetAssumptionMaster();
             lblInsurance.Text = string.Format(lblInsurance.Text, lblClientName.Text, lblSpouseNameForIncome.Text, assumptionMaster.InsuranceReturnRate);
-            lblNote.Text = plannerAssumption.Decription;
+            lblNote.Rtf = plannerAssumption.Decription;
         }
     }
 }

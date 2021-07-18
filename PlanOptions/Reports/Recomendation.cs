@@ -13,7 +13,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         {
             InitializeComponent();
             this.lblClientName.Text = client.Name;
-            this.lblRecomendation.Text = recomendationNote;
+            this.lblRecomendation.Rtf = recomendationNote;
         }
 
     }

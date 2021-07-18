@@ -137,7 +137,7 @@
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableIncome.Dpi = 100F;
             this.xrTableIncome.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xrTableIncome.LocationFloat = new DevExpress.Utils.PointFloat(37.02085F, 90.625F);
+            this.xrTableIncome.LocationFloat = new DevExpress.Utils.PointFloat(37.02084F, 90.625F);
             this.xrTableIncome.Name = "xrTableIncome";
             this.xrTableIncome.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.xrTableRow1,
@@ -150,7 +150,7 @@
             this.xrTableRow21,
             this.xrTableRow23,
             this.xrTableRow22});
-            this.xrTableIncome.SizeF = new System.Drawing.SizeF(329.1666F, 250F);
+            this.xrTableIncome.SizeF = new System.Drawing.SizeF(293.7499F, 250F);
             this.xrTableIncome.StylePriority.UseBorders = false;
             this.xrTableIncome.StylePriority.UseFont = false;
             // 
@@ -560,9 +560,9 @@
             // xrSubreportExp
             // 
             this.xrSubreportExp.Dpi = 100F;
-            this.xrSubreportExp.LocationFloat = new DevExpress.Utils.PointFloat(378.6874F, 411.7499F);
+            this.xrSubreportExp.LocationFloat = new DevExpress.Utils.PointFloat(346.3958F, 411.7499F);
             this.xrSubreportExp.Name = "xrSubreportExp";
-            this.xrSubreportExp.SizeF = new System.Drawing.SizeF(330.75F, 275F);
+            this.xrSubreportExp.SizeF = new System.Drawing.SizeF(363.0415F, 275F);
             // 
             // xrTableExp
             // 
@@ -584,7 +584,7 @@
             this.xrTableRow20,
             this.xrTableRow19,
             this.xrTableRow17});
-            this.xrTableExp.SizeF = new System.Drawing.SizeF(329.1666F, 250F);
+            this.xrTableExp.SizeF = new System.Drawing.SizeF(293.75F, 250F);
             this.xrTableExp.StylePriority.UseBorders = false;
             this.xrTableExp.StylePriority.UseFont = false;
             // 
@@ -856,7 +856,7 @@
             this.xrTable4.Name = "xrTable4";
             this.xrTable4.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.xrTableRow18});
-            this.xrTable4.SizeF = new System.Drawing.SizeF(329.1666F, 25F);
+            this.xrTable4.SizeF = new System.Drawing.SizeF(293.75F, 25F);
             this.xrTable4.StylePriority.UseBackColor = false;
             this.xrTable4.StylePriority.UseBorderColor = false;
             this.xrTable4.StylePriority.UseFont = false;
@@ -887,14 +887,14 @@
             this.xrTableCell20.Dpi = 100F;
             this.xrTableCell20.Name = "xrTableCell20";
             this.xrTableCell20.Text = "Amount (Rs)";
-            this.xrTableCell20.Weight = 1.8042834276694195D;
+            this.xrTableCell20.Weight = 1.4256581369608938D;
             // 
             // xrLabel3
             // 
             this.xrLabel3.Dpi = 100F;
             this.xrLabel3.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrLabel3.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.xrLabel3.LocationFloat = new DevExpress.Utils.PointFloat(96.39587F, 376.625F);
+            this.xrLabel3.LocationFloat = new DevExpress.Utils.PointFloat(55.77084F, 372.4583F);
             this.xrLabel3.Multiline = true;
             this.xrLabel3.Name = "xrLabel3";
             this.xrLabel3.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -928,7 +928,7 @@
             this.xrTable2.Name = "xrTable2";
             this.xrTable2.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.xrTableRow7});
-            this.xrTable2.SizeF = new System.Drawing.SizeF(329.1666F, 25F);
+            this.xrTable2.SizeF = new System.Drawing.SizeF(293.7499F, 25F);
             this.xrTable2.StylePriority.UseBackColor = false;
             this.xrTable2.StylePriority.UseBorderColor = false;
             this.xrTable2.StylePriority.UseFont = false;
@@ -961,7 +961,7 @@
             this.xrTableCell12.Dpi = 100F;
             this.xrTableCell12.Name = "xrTableCell12";
             this.xrTableCell12.Text = "Amount (Rs)";
-            this.xrTableCell12.Weight = 1.4533866714258981D;
+            this.xrTableCell12.Weight = 1.112515602942596D;
             // 
             // xrLabel1
             // 
@@ -980,9 +980,9 @@
             // subReportIncomeChart
             // 
             this.subReportIncomeChart.Dpi = 100F;
-            this.subReportIncomeChart.LocationFloat = new DevExpress.Utils.PointFloat(378.6874F, 65.625F);
+            this.subReportIncomeChart.LocationFloat = new DevExpress.Utils.PointFloat(346.3958F, 65.625F);
             this.subReportIncomeChart.Name = "subReportIncomeChart";
-            this.subReportIncomeChart.SizeF = new System.Drawing.SizeF(330.75F, 250F);
+            this.subReportIncomeChart.SizeF = new System.Drawing.SizeF(363.0415F, 275F);
             // 
             // xrPanel1
             // 

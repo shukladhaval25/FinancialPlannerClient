@@ -81,7 +81,7 @@
             this.xrChart1,
             this.xrPanel2});
             this.PageHeader.Dpi = 100F;
-            this.PageHeader.HeightF = 227.7084F;
+            this.PageHeader.HeightF = 272.5001F;
             this.PageHeader.Name = "PageHeader";
             // 
             // xrChart1
@@ -106,7 +106,7 @@
             legend1.Visibility = DevExpress.Utils.DefaultBoolean.True;
             this.xrChart1.Legends.AddRange(new DevExpress.XtraCharts.Legend[] {
             legend1});
-            this.xrChart1.LocationFloat = new DevExpress.Utils.PointFloat(10.00001F, 10.41667F);
+            this.xrChart1.LocationFloat = new DevExpress.Utils.PointFloat(0F, 5.000003F);
             this.xrChart1.Name = "xrChart1";
             this.xrChart1.PaletteBaseColorNumber = 4;
             this.xrChart1.PaletteName = "Apex";
@@ -122,7 +122,7 @@
             series1.View = pieSeriesView1;
             this.xrChart1.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
         series1};
-            this.xrChart1.SizeF = new System.Drawing.SizeF(351.0417F, 210F);
+            this.xrChart1.SizeF = new System.Drawing.SizeF(371.9999F, 262.0834F);
             chartTitle1.Text = "Income /Inflow";
             this.xrChart1.Titles.AddRange(new DevExpress.XtraCharts.ChartTitle[] {
             chartTitle1});
@@ -132,13 +132,13 @@
             this.xrPanel2.AnchorHorizontal = ((DevExpress.XtraReports.UI.HorizontalAnchorStyles)((DevExpress.XtraReports.UI.HorizontalAnchorStyles.Left | DevExpress.XtraReports.UI.HorizontalAnchorStyles.Right)));
             this.xrPanel2.AnchorVertical = ((DevExpress.XtraReports.UI.VerticalAnchorStyles)((DevExpress.XtraReports.UI.VerticalAnchorStyles.Top | DevExpress.XtraReports.UI.VerticalAnchorStyles.Bottom)));
             this.xrPanel2.BorderColor = System.Drawing.Color.Navy;
-            this.xrPanel2.Borders = DevExpress.XtraPrinting.BorderSide.Right;
+            this.xrPanel2.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.xrPanel2.BorderWidth = 2F;
             this.xrPanel2.CanGrow = false;
             this.xrPanel2.Dpi = 100F;
             this.xrPanel2.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
             this.xrPanel2.Name = "xrPanel2";
-            this.xrPanel2.SizeF = new System.Drawing.SizeF(377F, 227.7084F);
+            this.xrPanel2.SizeF = new System.Drawing.SizeF(377F, 272.5001F);
             this.xrPanel2.StylePriority.UseBorderColor = false;
             this.xrPanel2.StylePriority.UseBorders = false;
             this.xrPanel2.StylePriority.UseBorderWidth = false;

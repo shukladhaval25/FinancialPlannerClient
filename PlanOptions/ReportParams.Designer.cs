@@ -28,39 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.grpParams = new DevExpress.XtraEditors.GroupControl();
-            this.txtRecomendation = new System.Windows.Forms.TextBox();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.btnOk = new DevExpress.XtraEditors.SimpleButton();
             this.cmbPlanOption = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.txtRecomendation = new DevExpress.XtraEditors.RichTextEdit();
+            this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.grpParams)).BeginInit();
             this.grpParams.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cmbPlanOption.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtRecomendation.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
             this.SuspendLayout();
             // 
             // grpParams
             // 
-            this.grpParams.Controls.Add(this.txtRecomendation);
             this.grpParams.Controls.Add(this.labelControl2);
             this.grpParams.Controls.Add(this.btnOk);
             this.grpParams.Controls.Add(this.cmbPlanOption);
             this.grpParams.Controls.Add(this.labelControl1);
+            this.grpParams.Controls.Add(this.txtRecomendation);
             this.grpParams.Location = new System.Drawing.Point(12, 12);
             this.grpParams.Name = "grpParams";
             this.grpParams.Size = new System.Drawing.Size(390, 243);
             this.grpParams.TabIndex = 0;
-            // 
-            // txtRecomendation
-            // 
-            this.txtRecomendation.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRecomendation.Location = new System.Drawing.Point(16, 92);
-            this.txtRecomendation.MaxLength = 500;
-            this.txtRecomendation.Multiline = true;
-            this.txtRecomendation.Name = "txtRecomendation";
-            this.txtRecomendation.Size = new System.Drawing.Size(353, 108);
-            this.txtRecomendation.TabIndex = 30;
-            this.txtRecomendation.TextChanged += new System.EventHandler(this.txtRecomendation_TextChanged);
             // 
             // labelControl2
             // 
@@ -98,6 +91,16 @@
             this.labelControl1.TabIndex = 0;
             this.labelControl1.Text = "Plan Option:";
             // 
+            // txtRecomendation
+            // 
+            this.txtRecomendation.Location = new System.Drawing.Point(16, 92);
+            this.txtRecomendation.Name = "txtRecomendation";
+            this.txtRecomendation.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRecomendation.Properties.Appearance.Options.UseFont = true;
+            this.txtRecomendation.Size = new System.Drawing.Size(353, 111);
+            this.txtRecomendation.TabIndex = 30;
+            this.txtRecomendation.TextChanged += new System.EventHandler(this.txtRecomendation_TextChanged);
+            // 
             // ReportParams
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -115,6 +118,8 @@
             this.grpParams.ResumeLayout(false);
             this.grpParams.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cmbPlanOption.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtRecomendation.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -126,7 +131,9 @@
         private DevExpress.XtraEditors.ComboBoxEdit cmbPlanOption;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.LabelControl labelControl2;
-        internal System.Windows.Forms.TextBox txtRecomendation;
+        internal DevExpress.XtraEditors.RichTextEdit txtRecomendation;
+        private DevExpress.Utils.Behaviors.BehaviorManager behaviorManager1;
+
     }
 }
 
