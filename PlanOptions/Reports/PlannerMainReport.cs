@@ -148,7 +148,8 @@ namespace FinancialPlannerClient.PlanOptions
                     {
                         DataTable _dtGoals;
                        DataRow[] dataRows   = dtTempGoal.Select("Name like '" + 
-                          dtGroupByGoals.Rows[index]["Name"].ToString() + "%' and Recurrence <> '0' and Category ='" + dtGroupByGoals.Rows[index]["Category"] +"'" );
+                          dtGroupByGoals.Rows[index]["Name"].ToString() + "%' and" +
+                          " LEN(TRIM(Name))  = " + dtGroupByGoals.Rows[index]["Name"].ToString().Length +" and  Recurrence <> '0' and Category ='" + dtGroupByGoals.Rows[index]["Category"] +"'" );
                         if (dataRows.Count() == 0)
                         {
                             _dtGoals = dtTempGoal.Select("Name like '" +
@@ -157,7 +158,8 @@ namespace FinancialPlannerClient.PlanOptions
                         else
                         {
                             _dtGoals = dtTempGoal.Select("Name like '" +
-                          dtGroupByGoals.Rows[index]["Name"].ToString() + "%' and Recurrence <> '0' and Category ='" + dtGroupByGoals.Rows[index]["Category"] + "'").CopyToDataTable();
+                          dtGroupByGoals.Rows[index]["Name"].ToString() + "%'  and" +
+                          " LEN(TRIM(Name))  = " + dtGroupByGoals.Rows[index]["Name"].ToString().Length + " and Recurrence <> '0' and Category ='" + dtGroupByGoals.Rows[index]["Category"] + "'").CopyToDataTable();
                         }
                         //    ListtoDataTable.ToDataTable(
                         //goals.Where(x => x.Name.StartsWith(dtGroupByGoals.Rows[index]["Name"].ToString())).ToList());

@@ -15,6 +15,7 @@ namespace FinancialPlannerClient.PlanOptions
         int planId;
         int optionId;
         int riskProfileId;
+        public ReportOption Option { get; set; }
         public ReportParams(int planId)
         {
             InitializeComponent();
@@ -71,6 +72,7 @@ namespace FinancialPlannerClient.PlanOptions
                 DevExpress.XtraEditors.XtraMessageBox.Show("Please select option.", "Invalid Option", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
+            this.Option = ReportOption.Preview;
             this.DialogResult = DialogResult.OK;
         }
 
@@ -78,5 +80,22 @@ namespace FinancialPlannerClient.PlanOptions
         {
 
         }
+
+        private void btnSendFinancialPlannerReport_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(cmbPlanOption.Text))
+            {
+                DevExpress.XtraEditors.XtraMessageBox.Show("Please select option.", "Invalid Option", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            this.Option = ReportOption.SendMail;
+            this.DialogResult = DialogResult.OK;
+        }
+    }
+
+    public enum ReportOption
+    {
+        Preview,
+        SendMail
     }
 }

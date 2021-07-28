@@ -31,6 +31,7 @@ namespace FinancialPlannerClient.Insurance
             progressPanel1.Visible = false;
             txtEstimatedIsurnceCoverage.Text = Math.Round(insuranceCoverageService.GetEstimatedInsurnceAmount(), 2).ToString();
             gridInsuranceCalculation.DataSource = insuranceCoverageService.GetEstimatedTable();
+            gridInsuranceCoverage.DataSource = insuranceCoverageService.GetInsurnaceCoverage();
         }
 
         private void btnExport_Click(object sender, EventArgs e)

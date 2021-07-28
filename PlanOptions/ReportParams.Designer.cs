@@ -28,23 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.grpParams = new DevExpress.XtraEditors.GroupControl();
+            this.btnSendFinancialPlannerReport = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.btnOk = new DevExpress.XtraEditors.SimpleButton();
             this.cmbPlanOption = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.txtRecomendation = new DevExpress.XtraEditors.RichTextEdit();
-            this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.grpParams)).BeginInit();
             this.grpParams.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cmbPlanOption.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtRecomendation.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
             this.SuspendLayout();
             // 
             // grpParams
             // 
+            this.grpParams.Controls.Add(this.btnSendFinancialPlannerReport);
             this.grpParams.Controls.Add(this.labelControl2);
             this.grpParams.Controls.Add(this.btnOk);
             this.grpParams.Controls.Add(this.cmbPlanOption);
@@ -54,6 +53,17 @@
             this.grpParams.Name = "grpParams";
             this.grpParams.Size = new System.Drawing.Size(390, 243);
             this.grpParams.TabIndex = 0;
+            // 
+            // btnSendFinancialPlannerReport
+            // 
+            this.btnSendFinancialPlannerReport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnSendFinancialPlannerReport.ImageUri.Uri = "SendPDF;Size16x16";
+            this.btnSendFinancialPlannerReport.Location = new System.Drawing.Point(281, 213);
+            this.btnSendFinancialPlannerReport.Name = "btnSendFinancialPlannerReport";
+            this.btnSendFinancialPlannerReport.Size = new System.Drawing.Size(88, 23);
+            this.btnSendFinancialPlannerReport.TabIndex = 35;
+            this.btnSendFinancialPlannerReport.Text = "Send Email";
+            this.btnSendFinancialPlannerReport.Click += new System.EventHandler(this.btnSendFinancialPlannerReport_Click);
             // 
             // labelControl2
             // 
@@ -65,7 +75,7 @@
             // 
             // btnOk
             // 
-            this.btnOk.Location = new System.Drawing.Point(153, 209);
+            this.btnOk.Location = new System.Drawing.Point(16, 213);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(75, 23);
             this.btnOk.TabIndex = 2;
@@ -119,7 +129,6 @@
             this.grpParams.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cmbPlanOption.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtRecomendation.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -128,12 +137,11 @@
 
         private DevExpress.XtraEditors.GroupControl grpParams;
         private DevExpress.XtraEditors.SimpleButton btnOk;
-        private DevExpress.XtraEditors.ComboBoxEdit cmbPlanOption;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         internal DevExpress.XtraEditors.RichTextEdit txtRecomendation;
-        private DevExpress.Utils.Behaviors.BehaviorManager behaviorManager1;
-
+        private DevExpress.XtraEditors.SimpleButton btnSendFinancialPlannerReport;
+        internal DevExpress.XtraEditors.ComboBoxEdit cmbPlanOption;
     }
 }
 

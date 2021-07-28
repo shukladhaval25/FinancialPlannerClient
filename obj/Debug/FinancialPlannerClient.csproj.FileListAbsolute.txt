@@ -587,3 +587,4 @@ C:\Application Softwares\FinancialPlannerClient\bin\Debug\FinancialPlannerServer
 C:\Application Softwares\FinancialPlannerClient\bin\Debug\FinancialPlannerServer.pdb
 C:\Application Softwares\FinancialPlannerClient\bin\Debug\FinancialPlannerServer.exe.config
 C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.Reports.Recomendation.resources
+C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.FinancialPlannerSendEmailConfiguration.resources

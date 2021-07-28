@@ -3,7 +3,6 @@ using DevExpress.XtraEditors;
 using FinancialPlanner.Common;
 using FinancialPlanner.Common.DataConversion;
 using FinancialPlanner.Common.Model;
-using FinancialPlanner.Common.Model.CurrentStatus;
 using FinancialPlanner.Common.Model.PlanOptions;
 using FinancialPlannerClient.CashFlowManager;
 using FinancialPlannerClient.CurrentStatus;
@@ -11,13 +10,10 @@ using FinancialPlannerClient.PlannerInfo;
 using FinancialPlannerClient.RiskProfile;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
-using System.Drawing;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 using System.Windows.Forms;
 
 namespace FinancialPlannerClient.PlanOptions
@@ -34,7 +30,7 @@ namespace FinancialPlannerClient.PlanOptions
             new List<FinancialPlanner.Common.Model.PlanOptions.CurrentStatusToGoal>();
         int optionId;
         int riskProfileId;
-        public GoalStatusView(Planner planner,int riskProfileId, int optionId)
+        public GoalStatusView(Planner planner, int riskProfileId, int optionId)
         {
             InitializeComponent();
             this.planner = planner;
@@ -70,7 +66,7 @@ namespace FinancialPlannerClient.PlanOptions
                 txtContingencyfund.Text = new CurrentStatusInfo().GetContingencyFund(this.optionId, this.planner.ID).Amount.ToString();
                 setAccessFundValue();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 DevExpress.XtraEditors.XtraMessageBox.Show(ex.StackTrace.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 StackTrace st = new StackTrace();
@@ -104,7 +100,7 @@ namespace FinancialPlannerClient.PlanOptions
                 double alreadyMappedValue = _dtCurrentStatustoGoals.AsEnumerable().Sum(x => Convert.ToDouble(x["CurrentStatusMappedAmount"]));
                 totalCurrentStatusValue = totalCurrentStatusValue + alreadyMappedValue;
             }
-            return Math.Round(totalCurrentStatusValue,2);
+            return Math.Round(totalCurrentStatusValue, 2);
         }
 
         private void LogDebug(string methodName, Exception ex)
@@ -188,7 +184,7 @@ namespace FinancialPlannerClient.PlanOptions
                     }
                 }
 
-                _currentStatusToGoal = new CurrentStatusInfo().GetCurrentStatusToGoal(this.optionId,this.planner.ID);
+                _currentStatusToGoal = new CurrentStatusInfo().GetCurrentStatusToGoal(this.optionId, this.planner.ID);
                 if (_currentStatusToGoal != null)
                 {
                     _dtGoalMapped = ListtoDataTable.ToDataTable(_currentStatusToGoal.ToList());
@@ -209,7 +205,7 @@ namespace FinancialPlannerClient.PlanOptions
                     //gridViewAllocationOfCurrentStatus.Columns["ID"].Visible = false;
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 DevExpress.XtraEditors.XtraMessageBox.Show(ex.StackTrace.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 StackTrace st = new StackTrace();
@@ -343,7 +339,7 @@ namespace FinancialPlannerClient.PlanOptions
                     DevExpress.XtraEditors.XtraMessageBox.Show("Fund allocation should not be more then access fund.", "Exceed Fund", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 DevExpress.XtraEditors.XtraMessageBox.Show(ex.StackTrace.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 StackTrace st = new StackTrace();
@@ -374,7 +370,7 @@ namespace FinancialPlannerClient.PlanOptions
                     WaitDialogForm waitdlgAbort = new WaitDialogForm("Revert changes...");
                     DataRow[] dataRows = dtchanges.Select("goalname ='" + currStatusToGoal.GoalName + "' and  fundAllocation ='" + currStatusToGoal.FundAllocation + "'");
                     if (dataRows.Count() > 0)
-                        currStatusToGoal.Id = int.Parse(dataRows[0]["ID"].ToString());          
+                        currStatusToGoal.Id = int.Parse(dataRows[0]["ID"].ToString());
                     bool isResult = new CurrentStatusInfo().DeleteCurrentStatusToGoal(currStatusToGoal);
                     fillCurrentStatusToGoalData();
                     calculateCurrentStatuFund();
@@ -404,7 +400,7 @@ namespace FinancialPlannerClient.PlanOptions
             {
                 return (double.Parse(txtAcessCurrentStautsValue.Text) > double.Parse(txtFundAllocation.Text));
             }
-            catch(Exception ex)
+            catch (Exception)
             {
                 return false;
             }
@@ -463,7 +459,7 @@ namespace FinancialPlannerClient.PlanOptions
                 else
                     DevExpress.XtraEditors.XtraMessageBox.Show("Please select row to delete record.");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 DevExpress.XtraEditors.XtraMessageBox.Show(ex.StackTrace.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 StackTrace st = new StackTrace();
@@ -566,7 +562,7 @@ namespace FinancialPlannerClient.PlanOptions
 
         private void txtContingencyfund_EditValueChanged(object sender, EventArgs e)
         {
-           
+
         }
 
         private void txtContingencyfund_Leave(object sender, EventArgs e)
@@ -608,7 +604,8 @@ namespace FinancialPlannerClient.PlanOptions
         private void btnSaveConfingencyFund_Click(object sender, EventArgs e)
         {
             bool isSaved = false;
-            ContingencyFund contingencyfund = new ContingencyFund() {
+            ContingencyFund contingencyfund = new ContingencyFund()
+            {
                 OptionId = this.optionId,
                 PlannerId = planner.ID,
                 Amount = double.Parse(txtContingencyfund.Text),
@@ -619,7 +616,7 @@ namespace FinancialPlannerClient.PlanOptions
             isSaved = new CurrentStatusInfo().UpdateContingencyFund(contingencyfund);
             if (isSaved)
             {
-                MessageBox.Show("Contingency fund saved successfully.","Saved",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                MessageBox.Show("Contingency fund saved successfully.", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
                 MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -646,46 +643,58 @@ namespace FinancialPlannerClient.PlanOptions
                 DataTable dtGoalValue = goalCalView.GetGoalsValueTable(paramGoal);
                 dtGoalValue.Columns.Add("EstimatedValue", typeof(System.Double));
                 double assetsMappingValue = 0;
-                assetsMappingValue =(dtGoalValue.Rows.Count > 0 && !dtGoalValue.Rows[dtGoalValue.Rows.Count -1]["Assets Mapping"].ToString().Equals("")) ?
-                    double.Parse (dtGoalValue.Rows[dtGoalValue.Rows.Count - 1]["Assets Mapping"].ToString()) :
+                assetsMappingValue = (dtGoalValue.Rows.Count > 0 && !dtGoalValue.Rows[dtGoalValue.Rows.Count - 1]["Assets Mapping"].ToString().Equals("")) ?
+                    double.Parse(dtGoalValue.Rows[dtGoalValue.Rows.Count - 1]["Assets Mapping"].ToString()) :
                    0;
 
                 double goalComplitionValue = (dtGoalValue.Rows.Count > 0) ?
                     (double.Parse(dtGoalValue.Rows[dtGoalValue.Rows.Count - 1]["Cash outflow Goal Year"].ToString()) - assetsMappingValue)
                     : 0;
-                for (int rowIndex = dtGoalValue.Rows.Count - 2; rowIndex >= 0; rowIndex--)
+                double goalActualComplitionValue = 0;
+                for (int rowIndex = dtGoalValue.Rows.Count - 1; rowIndex >= 0; rowIndex--)
                 {
                     double portfolioValue, freshInvestment = 0;
                     double portFolioReturnRate = 0;
+                    double previousYearExpectedPortfilioValue = 0;
+                    double afterDebugFreshInvestmentValue = 0;
+
+                    int previousYearRowIndex = rowIndex - 1;
+
 
                     double.TryParse(dtGoalValue.Rows[rowIndex]["Portfolio Value"].ToString(), out portfolioValue);
+
                     double.TryParse(dtGoalValue.Rows[rowIndex]["Fresh Investment"].ToString(), out freshInvestment);
-                    double.TryParse(dtGoalValue.Rows[rowIndex]["Portfolio Return"].ToString(), out portFolioReturnRate);
 
-                    double diffAmount = (rowIndex == dtGoalValue.Rows.Count - 2) ?
-                        goalComplitionValue - freshInvestment :
-                        double.Parse(dtGoalValue.Rows[rowIndex]["EstimatedValue"].ToString()) - freshInvestment;
-
-                  
-                    if (rowIndex > 0)
+                    if (goalActualComplitionValue == 0 && rowIndex == dtGoalValue.Rows.Count - 1)
                     {
-                        //double firstYearFreshInvestment = 0;
-                        //double.TryParse(dtGoalValue.Rows[rowIndex - 1]["Fresh Investment"].ToString(), out firstYearFreshInvestment);
-                        double estimatedPreviousYearPorfolioValue = (diffAmount * 100) / (100 + portFolioReturnRate);
-                        dtGoalValue.Rows[rowIndex - 1]["EstimatedValue"] = estimatedPreviousYearPorfolioValue;
+                        double.TryParse(dtGoalValue.Rows[rowIndex]["Portfolio Return"].ToString(), out portFolioReturnRate);
+                        double.TryParse(dtGoalValue.Rows[rowIndex]["Cash outflow Goal Year"].ToString(), out goalActualComplitionValue);
+                        dtGoalValue.Rows[previousYearRowIndex]["EstimatedValue"] = (goalActualComplitionValue * 100) / (100 + portFolioReturnRate);
+                        goalActualComplitionValue = (goalActualComplitionValue * 100) / (100 + portFolioReturnRate);
                     }
-                    if (rowIndex == 0)
+                    else if (rowIndex > 0 && goalActualComplitionValue > 0)
                     {
-                        double estimatedPreviousYearPorfolioValue = (freshInvestment == 0) ? diffAmount :
-                             (diffAmount * 100) / (100 + portFolioReturnRate);
-                        dtGoalValue.Rows[rowIndex]["EstimatedValue"] = estimatedPreviousYearPorfolioValue;
-                    }
+                        double.TryParse(dtGoalValue.Rows[rowIndex]["Portfolio Return"].ToString(), out portFolioReturnRate);
+                        afterDebugFreshInvestmentValue = goalActualComplitionValue - freshInvestment;
+                        previousYearExpectedPortfilioValue = (afterDebugFreshInvestmentValue * 100) / (100 + portFolioReturnRate);
 
+                        goalActualComplitionValue = previousYearExpectedPortfilioValue;
+                        if (previousYearRowIndex >= 0)
+                            dtGoalValue.Rows[previousYearRowIndex]["EstimatedValue"] = goalActualComplitionValue;
+                    }
+                    else if (rowIndex == 0)
+                    {
+                        double.TryParse(dtGoalValue.Rows[rowIndex]["Portfolio Return"].ToString(), out portFolioReturnRate);
+                        if (freshInvestment > 0)
+                        {
+                            goalActualComplitionValue = goalActualComplitionValue - freshInvestment;
+                            goalActualComplitionValue = (goalActualComplitionValue * 100) / (100 + portFolioReturnRate);
+                        }
+                        dtGoalValue.Rows[rowIndex]["EstimatedValue"] = goalActualComplitionValue;
+                    }
                 }
-                lblEstimatedValue.Text = (dtGoalValue.Rows.Count > 0) ? 
-                    (string.IsNullOrEmpty(dtGoalValue.Rows[0]["EstimatedValue"].ToString()) ? "0":
-                    dtGoalValue.Rows[0]["EstimatedValue"].ToString()) :
-                    goalPlanning.ActualFreshInvestment.ToString();
+               
+                lblEstimatedValue.Text = goalActualComplitionValue.ToString();
             }
         }
     }

@@ -392,6 +392,12 @@
     <Compile Include="PlannerInfo\ClientFestivalInfo.cs" />
     <Compile Include="PlannerInfo\DocumentInfo.cs" />
     <Compile Include="Master\FestivalsInfo.cs" />
+    <Compile Include="PlanOptions\FinancialPlannerSendEmailConfiguration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\FinancialPlannerSendEmailConfiguration.Designer.cs">
+      <DependentUpon>FinancialPlannerSendEmailConfiguration.cs</DependentUpon>
+    </Compile>
     <Compile Include="PlanOptions\InvestmentRecomendationView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1119,6 +1125,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Master\TaskMaster\ARNView.resx">
       <DependentUpon>ARNView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\FinancialPlannerSendEmailConfiguration.resx">
+      <DependentUpon>FinancialPlannerSendEmailConfiguration.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\InvestmentRecomendationView.resx">
       <DependentUpon>InvestmentRecomendationView.cs</DependentUpon>

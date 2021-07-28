@@ -41,17 +41,17 @@
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.btnShowCalculation = new DevExpress.XtraEditors.SimpleButton();
             this.grpEstimatedInsCoverage = new DevExpress.XtraEditors.GroupControl();
+            this.picProcessing = new DevExpress.XtraEditors.PictureEdit();
             this.txtEstimatedIsurnceCoverage = new DevExpress.XtraEditors.TextEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.picProcessing = new DevExpress.XtraEditors.PictureEdit();
             ((System.ComponentModel.ISupportInitialize)(this.gridInsuranceCoverage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewInsuranceCoverage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlFinancialAssert)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewFinancialAsset)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grpEstimatedInsCoverage)).BeginInit();
             this.grpEstimatedInsCoverage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtEstimatedIsurnceCoverage.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picProcessing.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEstimatedIsurnceCoverage.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // lblContactTitle
@@ -205,6 +205,19 @@
             this.grpEstimatedInsCoverage.TabIndex = 11;
             this.grpEstimatedInsCoverage.Text = "Insurance";
             // 
+            // picProcessing
+            // 
+            this.picProcessing.Cursor = System.Windows.Forms.Cursors.Default;
+            this.picProcessing.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.picProcessing.EditValue = global::FinancialPlannerClient.Properties.Resources.processing_gif_image_14;
+            this.picProcessing.Location = new System.Drawing.Point(2, 20);
+            this.picProcessing.Name = "picProcessing";
+            this.picProcessing.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
+            this.picProcessing.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
+            this.picProcessing.Properties.ZoomAccelerationFactor = 1D;
+            this.picProcessing.Size = new System.Drawing.Size(248, 85);
+            this.picProcessing.TabIndex = 11;
+            // 
             // txtEstimatedIsurnceCoverage
             // 
             this.txtEstimatedIsurnceCoverage.EditValue = "";
@@ -228,19 +241,6 @@
             this.labelControl1.TabIndex = 2;
             this.labelControl1.Text = "Estimated Insurance Coverage Amount";
             // 
-            // picProcessing
-            // 
-            this.picProcessing.Cursor = System.Windows.Forms.Cursors.Default;
-            this.picProcessing.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.picProcessing.EditValue = global::FinancialPlannerClient.Properties.Resources.processing_gif_image_14;
-            this.picProcessing.Location = new System.Drawing.Point(2, 20);
-            this.picProcessing.Name = "picProcessing";
-            this.picProcessing.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
-            this.picProcessing.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
-            this.picProcessing.Properties.ZoomAccelerationFactor = 1D;
-            this.picProcessing.Size = new System.Drawing.Size(248, 85);
-            this.picProcessing.TabIndex = 11;
-            // 
             // InsuranceCalculation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -260,8 +260,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.grpEstimatedInsCoverage)).EndInit();
             this.grpEstimatedInsCoverage.ResumeLayout(false);
             this.grpEstimatedInsCoverage.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtEstimatedIsurnceCoverage.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picProcessing.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEstimatedIsurnceCoverage.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }

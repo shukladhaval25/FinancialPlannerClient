@@ -226,7 +226,10 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                 lblRetirementCorpusSum.Text = totalEstimatedRetirementCorpusFund.ToString();
                 //lblRetirementCorpus.DataBindings.Add("Text", this.DataSource, G)
             }
-            
+            if (_dtGoals.Rows.Count == 1)
+            {
+                xrTableTotal.Visible = false;
+            }
 
             RiskProfileInfo riskprofileInfo = new RiskProfileInfo();
            
@@ -260,6 +263,16 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             {
                 lblRetirementCorpusValue.Text = String.Format("{0:#,###}", double.Parse(lblRetirementCorpusValue.Text));
             }
+        }
+
+        private void lblEquity_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            lblEquity.Text = lblEquity.Text + " %";
+        }
+
+        private void lblDebt_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            lblDebt.Text = lblDebt.Text + " %";
         }
     }
 }

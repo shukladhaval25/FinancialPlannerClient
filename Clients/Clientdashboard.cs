@@ -485,13 +485,17 @@ namespace FinancialPlannerClient.Clients
                 //report.ShowPreview();
 
 
-           
                 PlannerMainReport plannerMainReport = new PlannerMainReport(this.personalInformation, planner,
                     reportParameters.GetRiskProfileId(), reportParameters.GetOptionId(),reportParameters.txtRecomendation.Text);
                 //plannerMainReport.LoadLayout("C:\\Application Softwares\\FinancialPlannerClient\\bin\\Debug\\PlannerMainReport.repx");
                 DevExpress.XtraReports.UI.ReportPrintTool printTool = new DevExpress.XtraReports.UI.ReportPrintTool(plannerMainReport);
-
-                printTool.ShowRibbonPreview();
+                if (reportParameters.Option == ReportOption.Preview)
+                    printTool.ShowRibbonPreview();
+                else if (reportParameters.Option == ReportOption.SendMail)
+                {
+                    FinancialPlannerSendEmailConfiguration financialPlannerSendEmailConfiguration = new FinancialPlannerSendEmailConfiguration(plannerMainReport,this._client,reportParameters.cmbPlanOption.Text);
+                    financialPlannerSendEmailConfiguration.Show();
+                }
             }
         }
 
