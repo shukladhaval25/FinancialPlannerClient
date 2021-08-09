@@ -103,13 +103,15 @@ namespace FinancialPlannerClient.RiskProfile
             else
                 MessageBox.Show(restResult.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+            DataRow[] drs = _dtRiskProfileReturn.Select(string.Format("YearRemaining = '0'"));
+            drs[0]["AverageInvestemetReturn"] = 0;
             return _dtRiskProfileReturn;
         }
 
         public decimal GetRiskProfileReturnRatio(int RiskProfileId,int yearRemaining)
         {
             if (yearRemaining == 0)
-                yearRemaining = 1;
+                return 0;
 
             if (_dtRiskProfileReturn.Rows.Count == 0)
                 GetRiskProfileReturnById(RiskProfileId);
@@ -127,9 +129,6 @@ namespace FinancialPlannerClient.RiskProfile
 
         public RiskProfiledReturn GetResikProfile(int RiskProfileId, int yearRemaining)
         {
-            if (yearRemaining == 0)
-                yearRemaining = 1;
-
             if (_dtRiskProfileReturn.Rows.Count == 0)
                 GetRiskProfileReturnById(RiskProfileId);
 

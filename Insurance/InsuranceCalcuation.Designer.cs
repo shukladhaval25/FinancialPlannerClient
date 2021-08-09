@@ -105,8 +105,6 @@
             this.gridColumnCategory.Caption = "Category";
             this.gridColumnCategory.FieldName = "Category";
             this.gridColumnCategory.Name = "gridColumnCategory";
-            this.gridColumnCategory.Visible = true;
-            this.gridColumnCategory.VisibleIndex = 0;
             // 
             // gridColumnContent
             // 
@@ -114,7 +112,7 @@
             this.gridColumnContent.FieldName = "Content";
             this.gridColumnContent.Name = "gridColumnContent";
             this.gridColumnContent.Visible = true;
-            this.gridColumnContent.VisibleIndex = 1;
+            this.gridColumnContent.VisibleIndex = 0;
             // 
             // gridColumnAmount
             // 
@@ -124,7 +122,7 @@
             this.gridColumnAmount.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Amount", "Grand Total={0:0.##}")});
             this.gridColumnAmount.Visible = true;
-            this.gridColumnAmount.VisibleIndex = 2;
+            this.gridColumnAmount.VisibleIndex = 1;
             // 
             // gridControlFinancialAssert
             // 

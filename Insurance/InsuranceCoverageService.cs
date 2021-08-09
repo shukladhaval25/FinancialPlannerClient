@@ -42,6 +42,7 @@ namespace FinancialPlannerClient.Insurance
         {
             dtInsuranceCoverage.Columns.Add("Item");
             dtInsuranceCoverage.Columns.Add("Amount", Type.GetType("System.Double"));
+            dtInsuranceCoverage.Columns.Add("Category");
 
             DataColumn dcYear = new DataColumn("Year", Type.GetType("System.Int32"));
             dtInsurance.Columns.Add(dcYear);
@@ -85,7 +86,7 @@ namespace FinancialPlannerClient.Insurance
         }
         public double GetEstimatedInsurnceAmount()
         {
-            return proposeEstimatedInsuranceRequire;
+            return Math.Round(proposeEstimatedInsuranceRequire);
         }
 
         private void addRetirementCorpusFundInCoverage(int rowIndex)
@@ -202,14 +203,17 @@ namespace FinancialPlannerClient.Insurance
                         double.Parse(dtInsurance.Rows[i]["EstimatedRequireInsurance"].ToString())
                     ), 2);
             }
-            proposeEstimatedInsuranceRequire = System.Math.Round(
-                double.Parse(dtInsurance.Rows[0]["EstimatedRequireInsurance"].ToString()), 2);
+            if (dtInsurance.Rows.Count > 0)
+            {
+                proposeEstimatedInsuranceRequire = System.Math.Round(
+                    double.Parse(dtInsurance.Rows[0]["EstimatedRequireInsurance"].ToString()), 2);
 
-            proposeEstimatedInsuranceRequire = (proposeEstimatedInsuranceRequire * 100) / (100 + insuranceReturnRate);
+                proposeEstimatedInsuranceRequire = (proposeEstimatedInsuranceRequire * 100) / (100 + insuranceReturnRate);
 
-            double totalExpAmountForFirstRow = (double.Parse(dtInsurance.Rows[0]["TotalCoverageRequire"].ToString()));
-            proposeEstimatedInsuranceRequire = proposeEstimatedInsuranceRequire + totalExpAmountForFirstRow;
-            double[] expValues = getExpneses(dtInsurance);
+                double totalExpAmountForFirstRow = (double.Parse(dtInsurance.Rows[0]["TotalCoverageRequire"].ToString()));
+                proposeEstimatedInsuranceRequire = proposeEstimatedInsuranceRequire + totalExpAmountForFirstRow;
+                double[] expValues = getExpneses(dtInsurance);
+            }
         }
 
         private double[] getExpneses(DataTable dtInsurance)
@@ -230,12 +234,16 @@ namespace FinancialPlannerClient.Insurance
                     {
                         for (int rowindex = 0; rowindex <= dtInsurance.Rows.Count - 1; rowindex++)
                         {
-                            expValues[rowindex] = double.Parse(dtInsurance.Rows[rowindex][dataColumn.ColumnName].ToString());
+                            if (!string.IsNullOrEmpty(dtInsurance.Rows[rowindex][dataColumn.ColumnName].ToString()))
+                            {
+                                expValues[rowindex] = double.Parse(dtInsurance.Rows[rowindex][dataColumn.ColumnName].ToString());
+                            }
                         }
                         double npv = npvValue(npvReturnRate, ref expValues);
                         DataRow dataRow = dtInsuranceCoverage.NewRow();
                         dataRow["Item"] = dataColumn.ColumnName.ToString();
                         dataRow["Amount"] = Math.Round(npv);
+                        dataRow["Category"] = "01";
                         dtInsuranceCoverage.Rows.Add(dataRow);
                         totalExpenses = totalExpenses + npv;
                     }
@@ -243,24 +251,37 @@ namespace FinancialPlannerClient.Insurance
                     {
                         DataRow dataRow = dtInsuranceCoverage.NewRow();
                         dataRow["Item"] = dataColumn.ColumnName.ToString();
-                        dataRow["Amount"] = Math.Round(double.Parse(dtInsurance.Rows[0][dataColumn.ColumnName].ToString()));
-                        dtInsuranceCoverage.Rows.Add(dataRow);
+                        double amount = 0;
+                        double.TryParse(dtInsurance.Rows[0][dataColumn.ColumnName].ToString(), out amount);
+                        dataRow["Amount"] = Math.Round(amount);
+                        
                         if ((goalsResult.Count(x => x.Name == dataColumn.ColumnName.ToString()) > 0) ||
                             (loansResult.Count(x => x.TypeOfLoan == dataColumn.ColumnName.ToString()) > 0) ||
                             dataColumn.ColumnName.Equals("RetirementCorpus"))
                         {
-                            totalExpenses = totalExpenses + Math.Round(double.Parse(dtInsurance.Rows[0][dataColumn.ColumnName].ToString()));
+                            double expenes = 0;
+                            double.TryParse(dtInsurance.Rows[0][dataColumn.ColumnName].ToString(), out expenes);
+                            totalExpenses = totalExpenses + Math.Round(expenes);
+                            dataRow["Category"] = "01";
                         }
                         else
                         {
                             totalExistingCoverage = totalExistingCoverage + Math.Round(double.Parse(dtInsurance.Rows[0][dataColumn.ColumnName].ToString()));
+                            dataRow["Category"] = "02";
                         }
+                        dtInsuranceCoverage.Rows.Add(dataRow);
                     }
                 }
             }
             double totalCoverageRequire = totalExpenses - totalExistingCoverage;
-            DataRow[] drs = dtInsuranceCoverage.Select("Item = '" + "TotalCoverageRequire" + "'");
-            drs[0]["Amount"] = (totalCoverageRequire > 0) ? totalCoverageRequire : 0;
+            //dtInsurance.Columns.Add("TotalCoverageRequire", Type.GetType("System.Double"));
+            DataRow dataRowTotalCoverageRequire = dtInsuranceCoverage.NewRow();
+            dataRowTotalCoverageRequire["Item"] = "Total Coverage Require";
+            dataRowTotalCoverageRequire["Category"] = "03";
+            proposeEstimatedInsuranceRequire = (totalCoverageRequire > 0) ? totalCoverageRequire : 0;
+            dataRowTotalCoverageRequire["Amount"] = Math.Round(proposeEstimatedInsuranceRequire);
+
+            dtInsuranceCoverage.Rows.Add(dataRowTotalCoverageRequire);
             //dtInsuranceCoverage.Rows[0]["TotalCoverageRequire"] = (totalCoverageRequire > 0) ? totalCoverageRequire : 0;
 
 

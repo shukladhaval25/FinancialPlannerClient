@@ -476,7 +476,7 @@ namespace FinancialPlannerClient.Clients
 
         private void navBarItemReport_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
-            ReportParams reportParameters = new ReportParams(this.planner.ID);
+            ReportParams reportParameters = new ReportParams(this.planner);
             if (reportParameters.ShowDialog() == DialogResult.OK)
             {
 

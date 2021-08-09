@@ -46,13 +46,16 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                     if (rowIndex <= xrTableCashFlowGoals.Rows.Count - 1)
                     {
                         xrTableCashFlowGoals.Rows[rowIndex].Cells[0].Text = _dtcashFlow.Columns[colIndex].Caption.Substring(_dtcashFlow.Columns[colIndex].Caption.IndexOf("-") +  1 );
-                        if (!string.IsNullOrEmpty(_dtcashFlow.Rows[0][colIndex].ToString()))
+                        double amount = 0;
+                        double.TryParse(_dtcashFlow.Rows[0][colIndex].ToString(), out amount);
+                        if (!string.IsNullOrEmpty(_dtcashFlow.Rows[0][colIndex].ToString()) && amount > 0)
                         {
                             xrTableCashFlowGoals.Rows[rowIndex].Cells[1].Text = System.Math.Round(double.Parse(_dtcashFlow.Rows[0][colIndex].ToString())).ToString();
                             totalCashFlowAllocation = totalCashFlowAllocation + double.Parse(_dtcashFlow.Rows[0][colIndex].ToString());
+                            rowIndex++;
                         }
+                        
                     }
-                    rowIndex++;
                 }
                 lblTotalSurplusForGoals.Text = totalCashFlowAllocation.ToString("#,###");
                 lblTotalSurplusForGoals.ForeColor = Color.White;

@@ -115,7 +115,7 @@ namespace FinancialPlannerClient.PlanOptions
             //this.Text = "Form1";
 
             // Get the c:\ directory.
-            System.IO.DirectoryInfo dir = new System.IO.DirectoryInfo(@"C:\Users\shukl\AppData\Local\Temp");
+            //System.IO.DirectoryInfo dir = new System.IO.DirectoryInfo(@"C:\Users\shukl\AppData\Local\Temp");
 
             //ListViewItem item;
             //listView1.BeginUpdate();

@@ -71,7 +71,7 @@
             this.Detail.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
             this.xrPanel3});
             this.Detail.Dpi = 100F;
-            this.Detail.HeightF = 25.62485F;
+            this.Detail.HeightF = 33.95818F;
             this.Detail.Name = "Detail";
             this.Detail.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.Detail.StylePriority.UseBorders = false;
@@ -90,7 +90,7 @@
             this.xrPanel3.Dpi = 100F;
             this.xrPanel3.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
             this.xrPanel3.Name = "xrPanel3";
-            this.xrPanel3.SizeF = new System.Drawing.SizeF(650F, 25.62485F);
+            this.xrPanel3.SizeF = new System.Drawing.SizeF(650F, 33.95818F);
             this.xrPanel3.StylePriority.UseBorderColor = false;
             this.xrPanel3.StylePriority.UseBorders = false;
             this.xrPanel3.StylePriority.UseBorderWidth = false;
@@ -104,11 +104,11 @@
             this.xrTable1.BorderWidth = 1F;
             this.xrTable1.Dpi = 100F;
             this.xrTable1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xrTable1.LocationFloat = new DevExpress.Utils.PointFloat(31.25F, 0F);
+            this.xrTable1.LocationFloat = new DevExpress.Utils.PointFloat(10.00002F, 0F);
             this.xrTable1.Name = "xrTable1";
             this.xrTable1.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.xrTableRow1});
-            this.xrTable1.SizeF = new System.Drawing.SizeF(608.75F, 25F);
+            this.xrTable1.SizeF = new System.Drawing.SizeF(630F, 33.95818F);
             this.xrTable1.StylePriority.UseBorderColor = false;
             this.xrTable1.StylePriority.UseBorders = false;
             this.xrTable1.StylePriority.UseBorderWidth = false;
@@ -132,15 +132,16 @@
             | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.lblName.Dpi = 100F;
+            this.lblName.Multiline = true;
             this.lblName.Name = "lblName";
             this.lblName.StylePriority.UseBorders = false;
-            this.lblName.Weight = 1.5991127649122676D;
+            this.lblName.Weight = 2.1660431931585D;
             // 
             // lblRelationship
             // 
             this.lblRelationship.Dpi = 100F;
             this.lblRelationship.Name = "lblRelationship";
-            this.lblRelationship.Weight = 1.3631785595511239D;
+            this.lblRelationship.Weight = 0.96533234463950746D;
             // 
             // lblAge
             // 
@@ -282,11 +283,11 @@
             this.xrTable2.Dpi = 100F;
             this.xrTable2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrTable2.ForeColor = System.Drawing.Color.White;
-            this.xrTable2.LocationFloat = new DevExpress.Utils.PointFloat(31.25002F, 75F);
+            this.xrTable2.LocationFloat = new DevExpress.Utils.PointFloat(9.999973F, 75F);
             this.xrTable2.Name = "xrTable2";
             this.xrTable2.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.xrTableRow2});
-            this.xrTable2.SizeF = new System.Drawing.SizeF(592.7083F, 25F);
+            this.xrTable2.SizeF = new System.Drawing.SizeF(613.9583F, 25F);
             this.xrTable2.StylePriority.UseBackColor = false;
             this.xrTable2.StylePriority.UseBorderColor = false;
             this.xrTable2.StylePriority.UseFont = false;
@@ -312,14 +313,14 @@
             this.xrTableCell5.Name = "xrTableCell5";
             this.xrTableCell5.StylePriority.UseBackColor = false;
             this.xrTableCell5.Text = "Name";
-            this.xrTableCell5.Weight = 1.9342707850064578D;
+            this.xrTableCell5.Weight = 2.6200243295482739D;
             // 
             // xrTableCell6
             // 
             this.xrTableCell6.Dpi = 100F;
             this.xrTableCell6.Name = "xrTableCell6";
             this.xrTableCell6.Text = "Relationship";
-            this.xrTableCell6.Weight = 1.6734354004143204D;
+            this.xrTableCell6.Weight = 1.1922049764933023D;
             // 
             // xrTableCell7
             // 

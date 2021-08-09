@@ -746,8 +746,12 @@ namespace FinancialPlannerClient.CashFlowManager
                 double totalLoanEmi = addGoals(dr, totalpostTaxIncome, totalExpenses, totalLoan);
                 dr["Surplus Amount"] = totalpostTaxIncome - (totalExpenses + totalLoan + totalLoanEmi);
 
-                Goals goal = _cashFlowCalculation.LstGoals.First(x => x.Category == "Retirement");
-                if (goal != null)
+                Goals goal = new Goals();
+                int retirementGoalCount = _cashFlowCalculation.LstGoals.Count(x => x.Category == "Retirement");
+                if (retirementGoalCount > 0)
+                    goal = _cashFlowCalculation.LstGoals.First(x => x.Category == "Retirement");
+
+                if (goal != null && retirementGoalCount > 0)
                 {
                     if (dr[string.Format("{0} - {1}", goal.Priority, goal.Name)].ToString() != "")
                     {

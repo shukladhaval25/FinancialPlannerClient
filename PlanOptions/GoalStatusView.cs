@@ -669,6 +669,10 @@ namespace FinancialPlannerClient.PlanOptions
                     {
                         double.TryParse(dtGoalValue.Rows[rowIndex]["Portfolio Return"].ToString(), out portFolioReturnRate);
                         double.TryParse(dtGoalValue.Rows[rowIndex]["Cash outflow Goal Year"].ToString(), out goalActualComplitionValue);
+                        if (goal.LoanForGoal != null && goal.LoanForGoal.LoanAmount > 0)
+                        {
+                            goalActualComplitionValue = goalActualComplitionValue - goal.LoanForGoal.LoanAmount;
+                        }
                         dtGoalValue.Rows[previousYearRowIndex]["EstimatedValue"] = (goalActualComplitionValue * 100) / (100 + portFolioReturnRate);
                         goalActualComplitionValue = (goalActualComplitionValue * 100) / (100 + portFolioReturnRate);
                     }

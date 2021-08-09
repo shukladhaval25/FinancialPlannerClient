@@ -2510,7 +2510,7 @@ namespace FinancialPlannerClient.CurrentStatus
         private void cmbPlan_SelectedValueChanged(object sender, EventArgs e)
         {
             var val = _dtPlan.Select("NAME ='" + cmbPlan.Text + "'");
-            _planeId = int.Parse(val[0][0].ToString());
+            _planeId = int.Parse(val[0]["ID"].ToString());
             fillLifeInsuranceInfo();
         }
 

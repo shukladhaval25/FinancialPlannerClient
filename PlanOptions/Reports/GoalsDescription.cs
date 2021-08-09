@@ -21,6 +21,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         private DataTable _dtGoalProfile;
         private DataTable _dtcashFlow;
         private DataTable _dtGoals;
+        double equityRation, debtRatio = 0;
 
         public GoalsDescription()
         {
@@ -238,10 +239,19 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             double returnRate = double.Parse(riskProfiledReturn.AverageInvestemetReturn.ToString());
            
             lblTaxReturn.Text = string.Format(lblTaxReturn.Text, returnRate.ToString(), this.planner.StartDate.Year.ToString());
-            lblEquity.Text = riskProfiledReturn.EquityInvestementRatio.ToString();
-            lblDebt.Text = riskProfiledReturn.DebtInvestementRatio.ToString();
+            equityRation = double.Parse(riskProfiledReturn.EquityInvestementRatio.ToString());
+            debtRatio = double.Parse(riskProfiledReturn.DebtInvestementRatio.ToString());
+           
             setImageForGoal(goal);
             goalCalculation(goal);
+            setChart();
+        }
+
+        private void setChart()
+        {
+            //throw new NotImplementedException();
+            xrChartAssetAllocation.Series[0].Points[0].Values = new double[] { equityRation };
+            xrChartAssetAllocation.Series[0].Points[1].Values = new double[] { debtRatio };
         }
 
         private void lblGoalInflation_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
@@ -267,12 +277,12 @@ namespace FinancialPlannerClient.PlanOptions.Reports
 
         private void lblEquity_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            lblEquity.Text = lblEquity.Text + " %";
+            lblEquity.Text = equityRation  + " %";
         }
 
         private void lblDebt_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            lblDebt.Text = lblDebt.Text + " %";
+            lblDebt.Text = debtRatio + " %";
         }
     }
 }

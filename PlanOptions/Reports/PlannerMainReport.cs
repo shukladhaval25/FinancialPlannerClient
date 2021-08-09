@@ -81,7 +81,9 @@ namespace FinancialPlannerClient.PlanOptions
                 FinancialClientGoal financialClientGoal = new FinancialClientGoal(this.planner, this.client, this.riskprofileId, this.optionId);
                 financialClientGoal.CreateDocument();
 
-                GoalProjectionForComplition goalProjectionForComplition = new GoalProjectionForComplition(this.planner, this.client, this.riskprofileId, this.optionId,double.Parse(financialClientGoal.lblRetirementFutureCost.Text));
+                double retirementFutureCost = 0;
+                double.TryParse(financialClientGoal.lblRetirementFutureCost.Text, out retirementFutureCost);
+                GoalProjectionForComplition goalProjectionForComplition = new GoalProjectionForComplition(this.planner, this.client, this.riskprofileId, this.optionId, retirementFutureCost);
                 goalProjectionForComplition.CreateDocument();
 
                 IncomeExpenseAnalysis incomeExpenseAnalysis = new IncomeExpenseAnalysis(this.client, this.planner);
@@ -144,30 +146,37 @@ namespace FinancialPlannerClient.PlanOptions
 
                     goalsDescriptions = new GoalsDescription[dtGroupByGoals.Rows.Count];
                     int goalCountIndex = 0;
-                    for (int index =0; index <= dtGroupByGoals.Rows.Count -1; index++)
+                    try
                     {
-                        DataTable _dtGoals;
-                       DataRow[] dataRows   = dtTempGoal.Select("Name like '" + 
-                          dtGroupByGoals.Rows[index]["Name"].ToString() + "%' and" +
-                          " LEN(TRIM(Name))  = " + dtGroupByGoals.Rows[index]["Name"].ToString().Length +" and  Recurrence <> '0' and Category ='" + dtGroupByGoals.Rows[index]["Category"] +"'" );
-                        if (dataRows.Count() == 0)
+                        for (int index = 0; index <= dtGroupByGoals.Rows.Count - 1; index++)
                         {
-                            _dtGoals = dtTempGoal.Select("Name like '" +
-                          dtGroupByGoals.Rows[index]["Name"].ToString() +"%'").CopyToDataTable();
+                            DataTable _dtGoals;
+                            DataRow[] dataRows = dtTempGoal.Select("Name like '" +
+                               dtGroupByGoals.Rows[index]["Name"].ToString() + "%' and" +
+                               " LEN(TRIM(Name))  = " + dtGroupByGoals.Rows[index]["Name"].ToString().Length + " and  Recurrence <> '0' and Category ='" + dtGroupByGoals.Rows[index]["Category"] + "'");
+                            if (dataRows.Count() == 0)
+                            {
+                                _dtGoals = dtTempGoal.Select("Name like '" +
+                              dtGroupByGoals.Rows[index]["Name"].ToString().Trim() + "%'").CopyToDataTable();
+                            }
+                            else
+                            {
+                                _dtGoals = dtTempGoal.Select("Name like '" +
+                              dtGroupByGoals.Rows[index]["Name"].ToString().Trim() + "%'  and" +
+                              " LEN(TRIM(Name))  = " + dtGroupByGoals.Rows[index]["Name"].ToString().Length + " and Recurrence <> '0' and Category ='" + dtGroupByGoals.Rows[index]["Category"] + "'").CopyToDataTable();
+                            }
+                            //    ListtoDataTable.ToDataTable(
+                            //goals.Where(x => x.Name.StartsWith(dtGroupByGoals.Rows[index]["Name"].ToString())).ToList());
+                            goalsDescriptions[goalCountIndex] = new GoalsDescription();
+                            goalsDescriptions[goalCountIndex].SetReportParameter(this.client, this.planner, _dtGoals,
+                               this.riskprofileId, this.optionId, this.goals.ToList());
+                            goalsDescriptions[goalCountIndex].CreateDocument();
+                            goalCountIndex++;
                         }
-                        else
-                        {
-                            _dtGoals = dtTempGoal.Select("Name like '" +
-                          dtGroupByGoals.Rows[index]["Name"].ToString() + "%'  and" +
-                          " LEN(TRIM(Name))  = " + dtGroupByGoals.Rows[index]["Name"].ToString().Length + " and Recurrence <> '0' and Category ='" + dtGroupByGoals.Rows[index]["Category"] + "'").CopyToDataTable();
-                        }
-                        //    ListtoDataTable.ToDataTable(
-                        //goals.Where(x => x.Name.StartsWith(dtGroupByGoals.Rows[index]["Name"].ToString())).ToList());
-                        goalsDescriptions[goalCountIndex] = new GoalsDescription();
-                        goalsDescriptions[goalCountIndex].SetReportParameter(this.client, this.planner, _dtGoals,
-                           this.riskprofileId, this.optionId,this.goals.ToList());
-                        goalsDescriptions[goalCountIndex].CreateDocument();
-                        goalCountIndex++;
+                    }
+                    catch(Exception ex)
+                    {
+                        MessageBox.Show(ex.ToString());
                     }
 
 

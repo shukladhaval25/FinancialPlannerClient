@@ -290,17 +290,23 @@ namespace FinancialPlannerClient.PlanOptions.Reports
 
         private void lblRetirementPresentCost_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            lblRetirementPresentCost.Text = String.Format("{0:#,###}", double.Parse(lblRetirementPresentCost.Text));
+            double retirementPresentCost = 0;
+            double.TryParse(lblRetirementPresentCost.Text, out retirementPresentCost);
+            lblRetirementPresentCost.Text = String.Format("{0:#,###}",retirementPresentCost);
         }
 
         private void lblRetirementFutureCost_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            lblRetirementFutureCost.Text = String.Format("{0:#,###}", double.Parse(lblRetirementFutureCost.Text));
+            double retirementFutureCost = 0;
+            double.TryParse(lblRetirementFutureCost.Text, out retirementFutureCost);
+            lblRetirementFutureCost.Text = String.Format("{0:#,###}", retirementFutureCost);
         }
 
         private void lblFirstYearRetirementExp_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            lblFirstYearRetirementExp.Text = String.Format("{0:#,###}", double.Parse(lblFirstYearRetirementExp.Text));
+            double firstYearRetirement = 0;
+            double.TryParse(lblFirstYearRetirementExp.Text, out firstYearRetirement);
+            lblFirstYearRetirementExp.Text = String.Format("{0:#,###}",  firstYearRetirement);
         }
     }
 }

@@ -37,6 +37,9 @@
             this.btnExport = new DevExpress.XtraEditors.SimpleButton();
             this.gridInsuranceCoverage = new DevExpress.XtraGrid.GridControl();
             this.gridViewInsuranceCoverage = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumnCategory = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumnContent = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumnAmount = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.txtEstimatedIsurnceCoverage.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridInsuranceCalculation)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewInsuranceCalculation)).BeginInit();
@@ -71,10 +74,11 @@
             this.gridInsuranceCalculation.Location = new System.Drawing.Point(13, 43);
             this.gridInsuranceCalculation.MainView = this.gridViewInsuranceCalculation;
             this.gridInsuranceCalculation.Name = "gridInsuranceCalculation";
-            this.gridInsuranceCalculation.Size = new System.Drawing.Size(930, 189);
+            this.gridInsuranceCalculation.Size = new System.Drawing.Size(930, 45);
             this.gridInsuranceCalculation.TabIndex = 2;
             this.gridInsuranceCalculation.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewInsuranceCalculation});
+            this.gridInsuranceCalculation.Visible = false;
             // 
             // gridViewInsuranceCalculation
             // 
@@ -106,24 +110,64 @@
             this.btnExport.Text = "Export To Excel";
             this.btnExport.ToolTip = "Export to excel";
             this.btnExport.ToolTipTitle = "Export";
+            this.btnExport.Visible = false;
             this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
             // gridInsuranceCoverage
             // 
-            this.gridInsuranceCoverage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.gridInsuranceCoverage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gridInsuranceCoverage.Location = new System.Drawing.Point(13, 238);
+            this.gridInsuranceCoverage.Location = new System.Drawing.Point(12, 49);
             this.gridInsuranceCoverage.MainView = this.gridViewInsuranceCoverage;
             this.gridInsuranceCoverage.Name = "gridInsuranceCoverage";
-            this.gridInsuranceCoverage.Size = new System.Drawing.Size(930, 233);
-            this.gridInsuranceCoverage.TabIndex = 5;
+            this.gridInsuranceCoverage.Size = new System.Drawing.Size(931, 422);
+            this.gridInsuranceCoverage.TabIndex = 9;
             this.gridInsuranceCoverage.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewInsuranceCoverage});
             // 
             // gridViewInsuranceCoverage
             // 
+            this.gridViewInsuranceCoverage.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumnCategory,
+            this.gridColumnContent,
+            this.gridColumnAmount});
             this.gridViewInsuranceCoverage.GridControl = this.gridInsuranceCoverage;
+            this.gridViewInsuranceCoverage.GroupCount = 1;
+            this.gridViewInsuranceCoverage.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Amount", this.gridColumnAmount, "Group Total ={0:0.##}")});
             this.gridViewInsuranceCoverage.Name = "gridViewInsuranceCoverage";
+            this.gridViewInsuranceCoverage.OptionsBehavior.ReadOnly = true;
+            this.gridViewInsuranceCoverage.OptionsView.GroupFooterShowMode = DevExpress.XtraGrid.Views.Grid.GroupFooterShowMode.VisibleAlways;
+            this.gridViewInsuranceCoverage.OptionsView.ShowFooter = true;
+            this.gridViewInsuranceCoverage.OptionsView.ShowGroupedColumns = true;
+            this.gridViewInsuranceCoverage.OptionsView.ShowGroupPanel = false;
+            this.gridViewInsuranceCoverage.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gridColumnCategory, DevExpress.Data.ColumnSortOrder.Ascending),
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gridColumnContent, DevExpress.Data.ColumnSortOrder.Ascending)});
+            // 
+            // gridColumnCategory
+            // 
+            this.gridColumnCategory.Caption = "Category";
+            this.gridColumnCategory.FieldName = "Category";
+            this.gridColumnCategory.Name = "gridColumnCategory";
+            this.gridColumnCategory.OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.False;
+            // 
+            // gridColumnContent
+            // 
+            this.gridColumnContent.Caption = "Content";
+            this.gridColumnContent.FieldName = "Item";
+            this.gridColumnContent.Name = "gridColumnContent";
+            this.gridColumnContent.Visible = true;
+            this.gridColumnContent.VisibleIndex = 0;
+            // 
+            // gridColumnAmount
+            // 
+            this.gridColumnAmount.Caption = "Amount";
+            this.gridColumnAmount.FieldName = "Amount";
+            this.gridColumnAmount.Name = "gridColumnAmount";
+            this.gridColumnAmount.Visible = true;
+            this.gridColumnAmount.VisibleIndex = 1;
             // 
             // EstimatedInsuranceCoverageView
             // 
@@ -131,13 +175,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(949, 483);
             this.Controls.Add(this.progressPanel1);
-            this.Controls.Add(this.gridInsuranceCoverage);
             this.Controls.Add(this.btnExport);
             this.Controls.Add(this.gridInsuranceCalculation);
             this.Controls.Add(this.txtEstimatedIsurnceCoverage);
             this.Controls.Add(this.labelControl1);
+            this.Controls.Add(this.gridInsuranceCoverage);
             this.Name = "EstimatedInsuranceCoverageView";
-            this.Text = "EstimatedInsuranceCoverageView";
+            this.Text = "aa";
             this.Load += new System.EventHandler(this.EstimatedInsuranceCoverageView_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txtEstimatedIsurnceCoverage.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridInsuranceCalculation)).EndInit();
@@ -159,5 +203,8 @@
         private DevExpress.XtraEditors.SimpleButton btnExport;
         private DevExpress.XtraGrid.GridControl gridInsuranceCoverage;
         private DevExpress.XtraGrid.Views.Grid.GridView gridViewInsuranceCoverage;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumnCategory;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumnContent;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumnAmount;
     }
 }

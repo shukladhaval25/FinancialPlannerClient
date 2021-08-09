@@ -346,14 +346,14 @@ namespace FinancialPlannerClient.PlanOptions
                         }
                         else
                         {
-                            if ((portfolioValue + freshInv) > 0)
-                            {
-                                portfolioValue = portfolioValue + freshInv + ((portfolioValue * (double)returnRatio) / 100);
-                            }
-                            else
-                            {
+                            //if ((portfolioValue + freshInv) > 0)
+                            //{
+                            //    portfolioValue = portfolioValue + freshInv + ((portfolioValue * (double)returnRatio) / 100);
+                            //}
+                            //else
+                            //{
                                 portfolioValue = portfolioValue + freshInv;
-                            }
+                            //}
                         }
                         double goalFutureValue = GetGoalFutureValue(_goal);
                     }
