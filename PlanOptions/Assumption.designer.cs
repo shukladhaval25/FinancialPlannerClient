@@ -660,6 +660,10 @@
             // 
             this.txtPlannerAssumptionDescription.Location = new System.Drawing.Point(43, 521);
             this.txtPlannerAssumptionDescription.Name = "txtPlannerAssumptionDescription";
+            this.txtPlannerAssumptionDescription.Properties.Appearance.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPlannerAssumptionDescription.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.txtPlannerAssumptionDescription.Properties.Appearance.Options.UseFont = true;
+            this.txtPlannerAssumptionDescription.Properties.Appearance.Options.UseForeColor = true;
             this.txtPlannerAssumptionDescription.Size = new System.Drawing.Size(599, 53);
             this.txtPlannerAssumptionDescription.TabIndex = 12;
             // 

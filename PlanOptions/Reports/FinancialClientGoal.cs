@@ -38,7 +38,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             addFutureValueIntoDataTable();
 
             groupTogetherRecurrenceGoal();
-            DataTable dtTable = _dtGoals.Select("Category <> 'Retirement'", "Priority").CopyToDataTable();
+            DataTable dtTable = _dtGoals.Select("Category <> 'Retirement'", "Recurrence DESC").CopyToDataTable();
             DataTable dtCloned = dtTable.Clone();
             dtCloned.Columns["Priority"].DataType = typeof(Int32);
             foreach (DataRow row in dtTable.Rows)
@@ -46,7 +46,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                 dtCloned.ImportRow(row);
             }
 
-            dtCloned = dtCloned.Select("", "Priority").CopyToDataTable();
+            dtCloned = dtCloned.Select("", "Recurrence DESC").CopyToDataTable();
 
             this.DataSource = dtCloned;
             this.DataMember = dtCloned.TableName;
@@ -59,6 +59,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             this.lblPriority.DataBindings.Add("Text", this.DataSource, "Goals.Priority");
             this.lblFutureCost.DataBindings.Add("Text", this.DataSource, "Goals.FutureValue");
             this.lblRecurrence.DataBindings.Add("Text", this.DataSource, "Goals.Recurrence");
+            this.lblGoalCategory.DataBindings.Add("Text", this.DataSource, "Goals.Category");
 
             DataRow[] drs = _dtGoals.Select("Category = 'Retirement'");
             if (drs.Count() > 0)
@@ -245,7 +246,9 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                 {
                     xrGroupTable.Visible = true;
                     this.lblName.DataBindings.Add("Text", this.DataSource, "Goals.Name");
-                    xrGroupLabel.Text = string.Format("{0} {1} of Rs.{2} each", lblRecurrence.Text, lblName.Text, (double.Parse(lblPresentCost.Text) / int.Parse(lblRecurrence.Text)));
+                    string occurance = (lblGoalCategory.Text == "Vehicale") ? lblRecurrence.Text : "" ;
+                    xrGroupLabel.Text = string.Format("{0} {1} of Rs.{2} each", occurance, lblName.Text, (double.Parse(lblPresentCost.Text) / int.Parse(lblRecurrence.Text)));
+
                     xrGroupLabel2.Text ="Total fund needed";
                     //xrGroupTable.HeightF = 25;
                     xrGroupLabel.BackColor = System.Drawing.Color.LightGreen;

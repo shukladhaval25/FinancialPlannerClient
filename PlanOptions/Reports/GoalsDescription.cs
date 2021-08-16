@@ -52,7 +52,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             double returnRate = (double)riskprofileInfo.GetRiskProfileReturnRatio(this.riskProfileId,
                     (int.Parse(this.goal.StartYear) - this.planner.StartDate.Year));
             lblTaxReturn.Text = string.Format(lblTaxReturn.Text, returnRate.ToString(), this.planner.StartDate.Year.ToString());
-            lblNote.Text = this.goal.Description;
+           
             setImageForGoal(goal);
             goalCalculation(goal);
         }
@@ -241,7 +241,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             lblTaxReturn.Text = string.Format(lblTaxReturn.Text, returnRate.ToString(), this.planner.StartDate.Year.ToString());
             equityRation = double.Parse(riskProfiledReturn.EquityInvestementRatio.ToString());
             debtRatio = double.Parse(riskProfiledReturn.DebtInvestementRatio.ToString());
-           
+            lblNote.Text = this.goal.Description;
             setImageForGoal(goal);
             goalCalculation(goal);
             setChart();

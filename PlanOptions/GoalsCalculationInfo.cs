@@ -214,29 +214,30 @@ namespace FinancialPlannerClient.PlanOptions
             //addMappedCurrentStatusValue(goalsValueCal);
             for (int currentYear = _planner.StartDate.Year; currentYear <= goalYear; currentYear++)
             {
-                GoalPlanning goalPlanning =  goalsValueCal.GetGoalPlanning(currentYear);
+                GoalPlanning goalPlanning = goalsValueCal.GetGoalPlanning(currentYear);
                 if (goalPlanning == null)
                 {
                     goalPlanning = new GoalPlanning(_goal);
                     goalPlanning.Year = currentYear;
                     goalPlanning.GrowthPercentage = _riskProfileInfo.GetRiskProfileReturnRatio(_riskprofileId, goalPlanning.YearLeft);
                     goalPlanning.ActualFreshInvestment = 0;
-                    
+
                 }
                 DataRow dr = _dtGoalCalculation.NewRow();
                 returnRatio = goalPlanning.GrowthPercentage;
 
-                dr["Calculation Year"] = string.Format("{0} - {1}", currentYear, (_planner.StartDate.Year == _planner.EndDate.Year)? currentYear : currentYear + 1);
+                dr["Calculation Year"] = string.Format("{0} - {1}", currentYear, (_planner.StartDate.Year == _planner.EndDate.Year) ? currentYear : currentYear + 1);
 
                 dr["Year Left"] = goalPlanning.YearLeft;
                 dr["Loan Instrument"] = 0;
                 double freshInvestment = goalPlanning.ActualFreshInvestment;
-               
-                dr["Fresh Investment"] = Math.Round( freshInvestment);
+                freshInvestment = getFreshInvestmentValuewithRetirementCorpusFund(currentYear, freshInvestment);
+
+                dr["Fresh Investment"] = Math.Round(freshInvestment);
 
                 if (_goal.Category.Equals("Retirement") && freshInvestment == 0)
                 {
-                     freshInvestment = getFreshInvestmentForRetirementIfSurplusIsNegative(currentYear);
+                    freshInvestment = getFreshInvestmentForRetirementIfSurplusIsNegative(currentYear);
                     dr["Fresh Investment"] = Math.Round(freshInvestment);
                 }
 
@@ -250,14 +251,30 @@ namespace FinancialPlannerClient.PlanOptions
                     }
 
                     dr["Instrument Mapped"] = goalsValueCal.FutureValueOfMappedInstruments;
-                   
+
                 }
                 dr["Portfolio Value"] =
-                     calculatePortfoliioValue(freshInvestment,returnRatio);
+                     calculatePortfoliioValue(freshInvestment, returnRatio);
                 dr["Cash outflow Goal Year"] = (currentYear == goalYear) ? goalsValueCal.FutureValueOfGoal : 0;
                 dr["Portfolio Return"] = returnRatio;
                 _dtGoalCalculation.Rows.Add(dr);
             }
+        }
+
+        private double getFreshInvestmentValuewithRetirementCorpusFund(int currentYear, double freshInvestment)
+        {
+            if (freshInvestment == 0 && _goal.Category.Equals("Retirement"))
+            {
+                DataRow[] drs = CashFlowService.GetCashFlowTable().Select("StartYear =" + currentYear);
+                if (drs.Count() > 0)
+                {
+                    double corpusFund = 0;
+                    double.TryParse(drs[0]["Corpus Fund"].ToString(), out corpusFund);
+                    freshInvestment = corpusFund;
+                }
+            }
+
+            return freshInvestment;
         }
 
         private double getFreshInvestmentForRetirementIfSurplusIsNegative(int currentYear)

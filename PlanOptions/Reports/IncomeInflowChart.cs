@@ -30,6 +30,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             IncomeInfo incomeInfo = new IncomeInfo();
             List<Income> lstIncome = (List<Income>)incomeInfo.GetAll(this.planner.ID);
             _dtIncome = ListtoDataTable.ToDataTable(lstIncome);
+            _dtIncome = _dtIncome.Select("StartYear ='" + DateTime.Now.Year.ToString() + "'").CopyToDataTable();
             this.DataSource = _dtIncome;
             this.DataMember = _dtIncome.TableName;
             xrChart1.DataSource = this.DataSource;
