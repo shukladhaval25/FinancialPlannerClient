@@ -673,6 +673,10 @@ namespace FinancialPlannerClient.PlanOptions
                         {
                             goalActualComplitionValue = goalActualComplitionValue - goal.LoanForGoal.LoanAmount;
                         }
+                        double assetsMapping = 0;
+                        double.TryParse(dtGoalValue.Rows[rowIndex]["Assets Mapping"].ToString(), out assetsMapping);
+                        goalActualComplitionValue = goalActualComplitionValue - assetsMapping;
+
                         dtGoalValue.Rows[previousYearRowIndex]["EstimatedValue"] = (goalActualComplitionValue * 100) / (100 + portFolioReturnRate);
                         goalActualComplitionValue = (goalActualComplitionValue * 100) / (100 + portFolioReturnRate);
                     }

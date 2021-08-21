@@ -590,13 +590,15 @@ namespace FinancialPlannerClient.PlanOptions
 
         private void txtGoalLoanPortion_EditValueChanged(object sender, EventArgs e)
         {
-            double currentValueOfGoal = double.Parse(txtGoalCurrentValue.Text);
-            double futureValueOfGoal = futureValue(currentValueOfGoal, decimal.Parse(txtInflationRate.Text), int.Parse(txtGoalStartYear.Text) - DateTime.Now.Year);
-            double loanPortion = double.Parse(txtGoalLoanPortion.Text);
-            double futureLoanAmount = (futureValueOfGoal * loanPortion) / 100;
+            if (!string.IsNullOrEmpty(txtGoalLoanPortion.Text))
+            {
+                double currentValueOfGoal = double.Parse(txtGoalCurrentValue.Text);
+                double futureValueOfGoal = futureValue(currentValueOfGoal, decimal.Parse(txtInflationRate.Text), int.Parse(txtGoalStartYear.Text) - DateTime.Now.Year);
+                double loanPortion = double.Parse(txtGoalLoanPortion.Text);
+                double futureLoanAmount = (futureValueOfGoal * loanPortion) / 100;
 
-            txtLoanForGoalAmount.Text = futureLoanAmount.ToString();
-
+                txtLoanForGoalAmount.Text = futureLoanAmount.ToString();
+            }
 
         }
     }

@@ -397,7 +397,7 @@
             this.chkEligbileForInsuranceCoverage.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkEligbileForInsuranceCoverage.Properties.Appearance.Options.UseFont = true;
             this.chkEligbileForInsuranceCoverage.Properties.Caption = "Consider this item as insurance coverage need";
-            this.chkEligbileForInsuranceCoverage.Size = new System.Drawing.Size(302, 21);
+            this.chkEligbileForInsuranceCoverage.Size = new System.Drawing.Size(302, 19);
             this.chkEligbileForInsuranceCoverage.TabIndex = 59;
             // 
             // grpLoanForGoal
@@ -433,7 +433,6 @@
             this.txtGoalLoanPortion.Properties.MaxLength = 3;
             this.txtGoalLoanPortion.Size = new System.Drawing.Size(43, 20);
             this.txtGoalLoanPortion.TabIndex = 33;
-            this.txtGoalLoanPortion.Visible = false;
             this.txtGoalLoanPortion.EditValueChanged += new System.EventHandler(this.txtGoalLoanPortion_EditValueChanged);
             // 
             // label1
@@ -445,7 +444,6 @@
             this.label1.Size = new System.Drawing.Size(105, 17);
             this.label1.TabIndex = 41;
             this.label1.Text = "Loan portion (%):";
-            this.label1.Visible = false;
             // 
             // btnCalculateLoan
             // 
@@ -465,7 +463,6 @@
             this.btnCalculateLoan.SuperTip = superToolTip6;
             this.btnCalculateLoan.TabIndex = 40;
             this.btnCalculateLoan.Text = "Calculate loan details";
-            this.btnCalculateLoan.Visible = false;
             this.btnCalculateLoan.Click += new System.EventHandler(this.btnCalculateLoan_Click);
             // 
             // txtLoanForGoalEndYear
@@ -616,7 +613,7 @@
             this.chkLaonForGoal.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkLaonForGoal.Properties.Appearance.Options.UseFont = true;
             this.chkLaonForGoal.Properties.Caption = "Loan require to complete Goal";
-            this.chkLaonForGoal.Size = new System.Drawing.Size(220, 21);
+            this.chkLaonForGoal.Size = new System.Drawing.Size(220, 19);
             this.chkLaonForGoal.TabIndex = 57;
             this.chkLaonForGoal.CheckedChanged += new System.EventHandler(this.chkLaonForGoal_CheckedChanged);
             // 

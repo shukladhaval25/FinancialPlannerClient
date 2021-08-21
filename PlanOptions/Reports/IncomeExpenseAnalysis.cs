@@ -45,7 +45,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             {
                 if (dr["StartYear"].ToString().Equals(DateTime.Now.Year.ToString()))
                 {
-                    xrTableIncome.Rows[index].Cells[0].Text = dr["IncomeBy"].ToString();
+                    xrTableIncome.Rows[index].Cells[0].Text = dr["Source"].ToString() + " - " +  dr["IncomeBy"].ToString();
                     double income = double.Parse(dr["Amount"].ToString());
                     double incomeTax = double.Parse(dr["IncomeTax"].ToString());
                     //double postTaxIncome = (income - ((income * incomeTax) / 100));

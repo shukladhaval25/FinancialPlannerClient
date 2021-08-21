@@ -41,6 +41,7 @@
             this.lblInflation = new DevExpress.XtraReports.UI.XRTableCell();
             this.lblFutureCost = new DevExpress.XtraReports.UI.XRTableCell();
             this.lblRecurrence = new DevExpress.XtraReports.UI.XRTableCell();
+            this.lblGoalCategory = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrGroupTable = new DevExpress.XtraReports.UI.XRTable();
             this.xrTableRow3 = new DevExpress.XtraReports.UI.XRTableRow();
             this.xrTableCell2 = new DevExpress.XtraReports.UI.XRTableCell();
@@ -87,7 +88,6 @@
             this.formattingRule1 = new DevExpress.XtraReports.UI.FormattingRule();
             this.xrControlStyle1 = new DevExpress.XtraReports.UI.XRControlStyle();
             this.ReportFooter = new DevExpress.XtraReports.UI.ReportFooterBand();
-            this.lblGoalCategory = new DevExpress.XtraReports.UI.XRTableCell();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrGroupTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).BeginInit();
@@ -237,6 +237,15 @@
             this.lblRecurrence.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.lblRecurrence_BeforePrint);
             this.lblRecurrence.AfterPrint += new System.EventHandler(this.lblRecurrence_AfterPrint);
             // 
+            // lblGoalCategory
+            // 
+            this.lblGoalCategory.Dpi = 100F;
+            this.lblGoalCategory.Name = "lblGoalCategory";
+            this.lblGoalCategory.StylePriority.UseTextAlignment = false;
+            this.lblGoalCategory.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+            this.lblGoalCategory.Visible = false;
+            this.lblGoalCategory.Weight = 0.09291955101376409D;
+            // 
             // xrGroupTable
             // 
             this.xrGroupTable.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -300,7 +309,7 @@
             // 
             // xrGroupLabel
             // 
-            this.xrGroupLabel.BackColor = System.Drawing.Color.LightGreen;
+            this.xrGroupLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.xrGroupLabel.Dpi = 100F;
             this.xrGroupLabel.Multiline = true;
             this.xrGroupLabel.Name = "xrGroupLabel";
@@ -322,7 +331,7 @@
             // 
             // xrGroupLabel2
             // 
-            this.xrGroupLabel2.BackColor = System.Drawing.Color.LightGreen;
+            this.xrGroupLabel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.xrGroupLabel2.Dpi = 100F;
             this.xrGroupLabel2.Multiline = true;
             this.xrGroupLabel2.Name = "xrGroupLabel2";
@@ -566,7 +575,7 @@
             // 
             // lblTotalCorpusNeeded
             // 
-            this.lblTotalCorpusNeeded.BackColor = System.Drawing.Color.LightGreen;
+            this.lblTotalCorpusNeeded.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.lblTotalCorpusNeeded.BorderColor = System.Drawing.Color.Black;
             this.lblTotalCorpusNeeded.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
             | DevExpress.XtraPrinting.BorderSide.Right) 
@@ -781,15 +790,6 @@
             this.ReportFooter.Dpi = 100F;
             this.ReportFooter.HeightF = 7.291667F;
             this.ReportFooter.Name = "ReportFooter";
-            // 
-            // lblGoalCategory
-            // 
-            this.lblGoalCategory.Dpi = 100F;
-            this.lblGoalCategory.Name = "lblGoalCategory";
-            this.lblGoalCategory.StylePriority.UseTextAlignment = false;
-            this.lblGoalCategory.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-            this.lblGoalCategory.Visible = false;
-            this.lblGoalCategory.Weight = 0.09291955101376409D;
             // 
             // FinancialClientGoal
             // 
