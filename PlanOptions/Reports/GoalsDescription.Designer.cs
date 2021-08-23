@@ -167,7 +167,7 @@
             // xrTable1
             // 
             this.xrTable1.BackColor = System.Drawing.Color.White;
-            this.xrTable1.BorderColor = System.Drawing.Color.Black;
+            this.xrTable1.BorderColor = System.Drawing.Color.DarkGray;
             this.xrTable1.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
             | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
@@ -397,6 +397,7 @@
             // 
             // xrTableEquity
             // 
+            this.xrTableEquity.BorderColor = System.Drawing.Color.DarkGray;
             this.xrTableEquity.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
             | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
@@ -409,6 +410,7 @@
             this.xrTableRow2,
             this.xrTableRow5});
             this.xrTableEquity.SizeF = new System.Drawing.SizeF(298.9583F, 49.99999F);
+            this.xrTableEquity.StylePriority.UseBorderColor = false;
             this.xrTableEquity.StylePriority.UseBorders = false;
             this.xrTableEquity.StylePriority.UseBorderWidth = false;
             this.xrTableEquity.StylePriority.UseFont = false;
@@ -466,7 +468,7 @@
             // xrTable2
             // 
             this.xrTable2.BackColor = System.Drawing.Color.Navy;
-            this.xrTable2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.xrTable2.BorderColor = System.Drawing.Color.DarkGray;
             this.xrTable2.Dpi = 100F;
             this.xrTable2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrTable2.ForeColor = System.Drawing.Color.White;

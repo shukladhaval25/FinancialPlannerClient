@@ -202,6 +202,7 @@
             // 
             // xrTable1
             // 
+            this.xrTable1.BorderColor = System.Drawing.Color.DarkGray;
             this.xrTable1.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
             | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
@@ -213,6 +214,7 @@
             this.xrTableRow3,
             this.xrTableRow4});
             this.xrTable1.SizeF = new System.Drawing.SizeF(237.5001F, 50F);
+            this.xrTable1.StylePriority.UseBorderColor = false;
             this.xrTable1.StylePriority.UseBorders = false;
             this.xrTable1.StylePriority.UseFont = false;
             // 
@@ -444,6 +446,7 @@
             // 
             // xrTableIncome
             // 
+            this.xrTableIncome.BorderColor = System.Drawing.Color.DarkGray;
             this.xrTableIncome.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
             | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
@@ -455,6 +458,7 @@
             this.xrTableRow1,
             this.xrTableRow2});
             this.xrTableIncome.SizeF = new System.Drawing.SizeF(216.6668F, 50F);
+            this.xrTableIncome.StylePriority.UseBorderColor = false;
             this.xrTableIncome.StylePriority.UseBorders = false;
             this.xrTableIncome.StylePriority.UseFont = false;
             // 

@@ -284,6 +284,7 @@
             // 
             // xrTableNetWorth
             // 
+            this.xrTableNetWorth.BorderColor = System.Drawing.Color.DarkGray;
             this.xrTableNetWorth.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
             | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
@@ -312,6 +313,7 @@
             this.xrTableRow19,
             this.xrTableRow16});
             this.xrTableNetWorth.SizeF = new System.Drawing.SizeF(613.5419F, 475F);
+            this.xrTableNetWorth.StylePriority.UseBorderColor = false;
             this.xrTableNetWorth.StylePriority.UseBorders = false;
             this.xrTableNetWorth.StylePriority.UseFont = false;
             // 
@@ -1168,7 +1170,7 @@
             this.xrLabel2.Dpi = 100F;
             this.xrLabel2.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrLabel2.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.xrLabel2.LocationFloat = new DevExpress.Utils.PointFloat(4.999987F, 10.00001F);
+            this.xrLabel2.LocationFloat = new DevExpress.Utils.PointFloat(11.00003F, 10.00001F);
             this.xrLabel2.Multiline = true;
             this.xrLabel2.Name = "xrLabel2";
             this.xrLabel2.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);

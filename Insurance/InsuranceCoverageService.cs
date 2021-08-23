@@ -252,15 +252,29 @@ namespace FinancialPlannerClient.Insurance
                         DataRow dataRow = dtInsuranceCoverage.NewRow();
                         dataRow["Item"] = dataColumn.ColumnName.ToString();
                         double amount = 0;
-                        double.TryParse(dtInsurance.Rows[0][dataColumn.ColumnName].ToString(), out amount);
-                        dataRow["Amount"] = Math.Round(amount);
+                        
+                       
                         
                         if ((goalsResult.Count(x => x.Name == dataColumn.ColumnName.ToString()) > 0) ||
                             (loansResult.Count(x => x.TypeOfLoan == dataColumn.ColumnName.ToString()) > 0) ||
                             dataColumn.ColumnName.Equals("RetirementCorpus"))
                         {
                             double expenes = 0;
-                            double.TryParse(dtInsurance.Rows[0][dataColumn.ColumnName].ToString(), out expenes);
+                            Goals singleGoal = goalsResult.FirstOrDefault(x => x.Name == dataColumn.ColumnName.ToString());
+                            if (singleGoal != null)
+                            {
+                                DataRow[] dataRows = dtInsurance.Select("Year ='" + singleGoal.StartYear + "'");
+                                double.TryParse(dataRows[0][dataColumn.ColumnName].ToString(), out expenes);
+
+                                double.TryParse(dataRows[0][dataColumn.ColumnName].ToString(), out amount);
+                                dataRow["Amount"] = Math.Round(amount);
+                            }
+                            else
+                            {
+                                double.TryParse(dtInsurance.Rows[0][dataColumn.ColumnName].ToString(), out expenes);
+                                double.TryParse(dtInsurance.Rows[0][dataColumn.ColumnName].ToString(), out amount);
+                                dataRow["Amount"] = Math.Round(amount);
+                            }
                             totalExpenses = totalExpenses + Math.Round(expenes);
                             dataRow["Category"] = "01";
                         }

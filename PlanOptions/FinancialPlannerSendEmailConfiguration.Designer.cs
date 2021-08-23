@@ -48,6 +48,8 @@
             this.txtToEmail = new DevExpress.XtraEditors.TextEdit();
             this.txtEmaiBody = new DevExpress.XtraEditors.MemoEdit();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
+            this.txtCC = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.grpParams)).BeginInit();
             this.grpParams.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grpAttachments)).BeginInit();
@@ -60,6 +62,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtSubject.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtToEmail.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmaiBody.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCC.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // grpParams
@@ -67,6 +70,8 @@
             this.grpParams.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpParams.Controls.Add(this.labelControl4);
+            this.grpParams.Controls.Add(this.txtCC);
             this.grpParams.Controls.Add(this.grpAttachments);
             this.grpParams.Controls.Add(this.labelControl3);
             this.grpParams.Controls.Add(this.txtSubject);
@@ -226,7 +231,7 @@
             this.txtToEmail.Location = new System.Drawing.Point(109, 42);
             this.txtToEmail.Name = "txtToEmail";
             this.txtToEmail.Properties.ReadOnly = true;
-            this.txtToEmail.Size = new System.Drawing.Size(671, 20);
+            this.txtToEmail.Size = new System.Drawing.Size(324, 20);
             this.txtToEmail.TabIndex = 36;
             // 
             // txtEmaiBody
@@ -246,6 +251,22 @@
             this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             this.imageList1.Images.SetKeyName(0, "pdfIcon32x32.png");
+            // 
+            // labelControl4
+            // 
+            this.labelControl4.Location = new System.Drawing.Point(439, 45);
+            this.labelControl4.Name = "labelControl4";
+            this.labelControl4.Size = new System.Drawing.Size(18, 13);
+            this.labelControl4.TabIndex = 42;
+            this.labelControl4.Text = "CC:";
+            // 
+            // txtCC
+            // 
+            this.txtCC.Location = new System.Drawing.Point(463, 42);
+            this.txtCC.Name = "txtCC";
+            this.txtCC.Properties.ReadOnly = true;
+            this.txtCC.Size = new System.Drawing.Size(317, 20);
+            this.txtCC.TabIndex = 43;
             // 
             // FinancialPlannerSendEmailConfiguration
             // 
@@ -270,6 +291,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtSubject.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtToEmail.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmaiBody.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCC.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -294,5 +316,7 @@
         private DevExpress.XtraEditors.PictureEdit picProcessing;
         private DevExpress.XtraEditors.MemoEdit txtEmaiBody;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageEdit repositoryItemImageEdit2;
+        private DevExpress.XtraEditors.LabelControl labelControl4;
+        private DevExpress.XtraEditors.TextEdit txtCC;
     }
 }

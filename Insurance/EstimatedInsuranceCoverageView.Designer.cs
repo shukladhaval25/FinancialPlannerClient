@@ -181,7 +181,7 @@
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.gridInsuranceCoverage);
             this.Name = "EstimatedInsuranceCoverageView";
-            this.Text = "aa";
+            this.Text = "Estimated Insurance Coverage";
             this.Load += new System.EventHandler(this.EstimatedInsuranceCoverageView_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txtEstimatedIsurnceCoverage.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridInsuranceCalculation)).EndInit();

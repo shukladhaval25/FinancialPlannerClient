@@ -80,6 +80,10 @@ namespace FinancialPlannerClient.PlanOptions
                 MailMessage mailMessage = new MailMessage();
                 mailMessage.From = new MailAddress(MailServer.FromEmail);
                 mailMessage.To.Add(new MailAddress(txtToEmail.Text));
+                if (!string.IsNullOrEmpty(txtCC.Text))
+                {
+                    mailMessage.CC.Add(new MailAddress(txtCC.Text));
+                }
                 mailMessage.Subject = txtSubject.Text;
                 mailMessage.IsBodyHtml = false;
                 //mailMessage.Attachments.Add(attachment);
