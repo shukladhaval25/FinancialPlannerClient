@@ -145,7 +145,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         {
             if (!string.IsNullOrEmpty(lblPresentValue.Text))
             {
-                lblPresentValue.Text = String.Format("{0:#,###}", double.Parse(lblPresentValue.Text));
+                lblPresentValue.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblPresentValue.Text).ToString("N2", PlannerMainReport.Info);
                 if (this.goal.Category.Equals("Vehicale", StringComparison.OrdinalIgnoreCase))
                 {
 
@@ -157,7 +157,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         {
             if (!string.IsNullOrEmpty(lblGoalFutureValue.Text))
             {
-                lblGoalFutureValue.Text = String.Format("{0:#,###}", double.Parse(lblGoalFutureValue.Text));
+                lblGoalFutureValue.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblGoalFutureValue.Text).ToString("N2", PlannerMainReport.Info);
             }
         }
 
@@ -165,23 +165,23 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         {
             if (!string.IsNullOrEmpty(lblMappedAssets.Text))
             {
-                lblMappedAssets.Text = String.Format("{0:#,###}", double.Parse(lblMappedAssets.Text));
+                lblMappedAssets.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblMappedAssets.Text).ToString("N2", PlannerMainReport.Info);
             }
         }
 
         private void lblLoanAmt_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            if (!string.IsNullOrEmpty(lblLoanAmt.Text))
+            if (!string.IsNullOrEmpty(lblLoanAmt.Text)  && !lblLoanAmt.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                lblLoanAmt.Text = String.Format("{0:#,###}", double.Parse(lblLoanAmt.Text));
+                lblLoanAmt.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblLoanAmt.Text).ToString("N2", PlannerMainReport.Info);
             }
         }
 
         private void lblCurrentSurplus_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            if (!string.IsNullOrEmpty(lblCurrentSurplus.Text))
+            if (!string.IsNullOrEmpty(lblCurrentSurplus.Text) && !lblCurrentSurplus.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                lblCurrentSurplus.Text = String.Format("{0:#,###}", double.Parse(lblCurrentSurplus.Text));
+                lblCurrentSurplus.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblCurrentSurplus.Text).ToString("N2", PlannerMainReport.Info);
             }
         }
 
@@ -261,23 +261,39 @@ namespace FinancialPlannerClient.PlanOptions.Reports
 
         private void lblRetirementCorpusSum_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            if (!string.IsNullOrEmpty(lblRetirementCorpusSum.Text))
+            if (!string.IsNullOrEmpty(lblRetirementCorpusSum.Text) && !lblRetirementCorpusSum.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                lblRetirementCorpusSum.Text = String.Format("{0:#,###}", double.Parse(lblRetirementCorpusSum.Text));
+                lblRetirementCorpusSum.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblRetirementCorpusSum.Text).ToString("N2", PlannerMainReport.Info);
             }
         }
 
         private void lblRetirementCorpusValue_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            if (!string.IsNullOrEmpty(lblRetirementCorpusValue.Text))
+            if (!string.IsNullOrEmpty(lblRetirementCorpusValue.Text) && !lblRetirementCorpusValue.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                lblRetirementCorpusValue.Text = String.Format("{0:#,###}", double.Parse(lblRetirementCorpusValue.Text));
+                lblRetirementCorpusValue.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblRetirementCorpusValue.Text).ToString("N2", PlannerMainReport.Info);
             }
         }
 
         private void lblEquity_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
             lblEquity.Text = equityRation  + " %";
+        }
+
+        private void lblPresentValueSum_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(lblPresentValueSum.Text) && !lblPresentValueSum.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
+            {
+                lblPresentValueSum.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblPresentValueSum.Text).ToString("N2", PlannerMainReport.Info);
+            }
+        }
+
+        private void lblGoalFutureValueSum_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(lblGoalFutureValueSum.Text) && !lblGoalFutureValueSum.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
+            {
+                lblGoalFutureValueSum.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblGoalFutureValueSum.Text).ToString("N2", PlannerMainReport.Info);
+            }
         }
 
         private void lblDebt_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)

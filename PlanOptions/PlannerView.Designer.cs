@@ -72,6 +72,8 @@
             this.btnAdd = new DevExpress.XtraEditors.SimpleButton();
             this.btnClosePlanoptions = new DevExpress.XtraEditors.SimpleButton();
             this.btnSavePlanoption = new DevExpress.XtraEditors.SimpleButton();
+            this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
+            this.txtCurrencySymbol = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.lstPlanner)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabPlanner)).BeginInit();
             this.tabPlanner.SuspendLayout();
@@ -90,6 +92,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.cmbReviewFrequency.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.memoDescription.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbManagedBy.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCurrencySymbol.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // labelControl1
@@ -140,6 +143,7 @@
             // 
             // pnlPlannerInfo
             // 
+            this.pnlPlannerInfo.Controls.Add(this.labelControl10);
             this.pnlPlannerInfo.Controls.Add(this.labelControl2);
             this.pnlPlannerInfo.Controls.Add(this.cmbEndMonth);
             this.pnlPlannerInfo.Controls.Add(this.txtPlanName);
@@ -150,6 +154,7 @@
             this.pnlPlannerInfo.Controls.Add(this.labelControl5);
             this.pnlPlannerInfo.Controls.Add(this.labelControl4);
             this.pnlPlannerInfo.Controls.Add(this.txtEndDate);
+            this.pnlPlannerInfo.Controls.Add(this.txtCurrencySymbol);
             this.pnlPlannerInfo.Location = new System.Drawing.Point(6, 3);
             this.pnlPlannerInfo.Name = "pnlPlannerInfo";
             this.pnlPlannerInfo.Size = new System.Drawing.Size(546, 171);
@@ -460,6 +465,24 @@
             this.btnSavePlanoption.Text = "Save";
             this.btnSavePlanoption.Click += new System.EventHandler(this.btnSavePlanoption_Click);
             // 
+            // labelControl10
+            // 
+            this.labelControl10.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
+            this.labelControl10.Location = new System.Drawing.Point(25, 141);
+            this.labelControl10.Name = "labelControl10";
+            this.labelControl10.Size = new System.Drawing.Size(91, 13);
+            this.labelControl10.TabIndex = 10;
+            this.labelControl10.Text = "Currency Symbol:";
+            // 
+            // txtCurrencySymbol
+            // 
+            this.txtCurrencySymbol.EditValue = "";
+            this.txtCurrencySymbol.Location = new System.Drawing.Point(122, 138);
+            this.txtCurrencySymbol.Name = "txtCurrencySymbol";
+            this.txtCurrencySymbol.Properties.MaxLength = 3;
+            this.txtCurrencySymbol.Size = new System.Drawing.Size(37, 20);
+            this.txtCurrencySymbol.TabIndex = 11;
+            // 
             // PlannerView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -499,6 +522,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.cmbReviewFrequency.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.memoDescription.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbManagedBy.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCurrencySymbol.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -534,6 +558,8 @@
         private DevExpress.XtraEditors.PanelControl pnlManager;
         private DevExpress.XtraEditors.LabelControl labelControl9;
         private DevExpress.XtraEditors.ComboBoxEdit cmbReviewFrequency;
+        private DevExpress.XtraEditors.LabelControl labelControl10;
+        private DevExpress.XtraEditors.TextEdit txtCurrencySymbol;
     }
 }
 

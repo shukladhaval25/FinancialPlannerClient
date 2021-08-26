@@ -111,6 +111,7 @@
             series1.Label = pieSeriesLabel1;
             series1.LabelsVisibility = DevExpress.Utils.DefaultBoolean.True;
             series1.Name = "Series 1";
+            seriesPoint1.ColorSerializable = "#8DB3E2";
             seriesPoint2.ColorSerializable = "#FF8040";
             series1.Points.AddRange(new DevExpress.XtraCharts.SeriesPoint[] {
             seriesPoint1,

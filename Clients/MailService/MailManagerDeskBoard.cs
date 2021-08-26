@@ -109,7 +109,7 @@ namespace FinancialPlannerClient.Clients.MailService
                     }
                     else if (dr.Field<string>("SettingName") == "POP3_IMPS_Port")
                     {
-                        MailServer.POP3_IMPS_HostPort = (dr.Field<string>("SettingValue"));
+                        MailServer.POP3_IMPS_HostPort = int.Parse((dr.Field<string>("SettingValue")));
                     }
                 }
             }

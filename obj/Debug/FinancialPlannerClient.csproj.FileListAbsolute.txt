@@ -535,7 +535,6 @@ C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient
 C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.Reports.RiskTolanceScore.resources
 C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.Reports.ScopeOfPlancs.resources
 C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.Reports.SmartGoal.resources
-C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.Reports.SpendingSavingRatioReport.resources
 C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.Reports.StrategicAssetsCollection.resources
 C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.Reports.SurplusPeriod.resources
 C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.Reports.TableOfContent.resources
@@ -588,3 +587,4 @@ C:\Application Softwares\FinancialPlannerClient\bin\Debug\FinancialPlannerServer
 C:\Application Softwares\FinancialPlannerClient\bin\Debug\FinancialPlannerServer.exe.config
 C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.Reports.Recomendation.resources
 C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.FinancialPlannerSendEmailConfiguration.resources
+C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.Reports.SpendingSavingRatioReport.resources

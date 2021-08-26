@@ -395,241 +395,241 @@ namespace FinancialPlannerClient.PlanOptions.Reports
 
         private void lblAmount0_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            if (!string.IsNullOrEmpty(lblAmount0.Text))
+            if (!string.IsNullOrEmpty(lblAmount0.Text) && !lblAmount0.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                lblAmount0.Text = String.Format("{0:#,###}", double.Parse(lblAmount0.Text));
+                lblAmount0.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblAmount0.Text).ToString("N2", PlannerMainReport.Info);
             }
         }
 
         private void lblAmount1_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            if (!string.IsNullOrEmpty(lblAmount1.Text))
+            if (!string.IsNullOrEmpty(lblAmount1.Text) && !lblAmount1.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                lblAmount1.Text = String.Format("{0:#,###}", double.Parse(lblAmount1.Text));
+                lblAmount1.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblAmount1.Text).ToString("N2", PlannerMainReport.Info);
             }
         }
 
         private void lblAmount2_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            if (!string.IsNullOrEmpty(lblAmount2.Text))
+            if (!string.IsNullOrEmpty(lblAmount2.Text) && !lblAmount2.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                lblAmount2.Text = String.Format("{0:#,###}", double.Parse(lblAmount2.Text));
+                lblAmount2.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblAmount2.Text).ToString("N2", PlannerMainReport.Info);
             }
         }
 
         private void xrTableCell10_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            if (!string.IsNullOrEmpty(xrTableCell10.Text))
+            if (!string.IsNullOrEmpty(xrTableCell10.Text) && !xrTableCell10.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                xrTableCell10.Text = String.Format("{0:#,###}", double.Parse(xrTableCell10.Text));
+                xrTableCell10.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(xrTableCell10.Text).ToString("N2", PlannerMainReport.Info);
             }
         }
 
         private void xrTableCell16_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            if (!string.IsNullOrEmpty(xrTableCell16.Text))
+            if (!string.IsNullOrEmpty(xrTableCell16.Text) && !xrTableCell16.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                xrTableCell16.Text = String.Format("{0:#,###}", double.Parse(xrTableCell16.Text));
+                xrTableCell16.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(xrTableCell16.Text).ToString("N2", PlannerMainReport.Info);
             }
         }
 
         private void xrTableCell20_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            if (!string.IsNullOrEmpty(xrTableCell20.Text))
+            if (!string.IsNullOrEmpty(xrTableCell20.Text) && !xrTableCell20.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                xrTableCell20.Text = String.Format("{0:#,###}", double.Parse(xrTableCell20.Text));
+                xrTableCell20.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(xrTableCell20.Text).ToString("N2", PlannerMainReport.Info);
             }
         }
 
         private void xrTableCell24_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            if (!string.IsNullOrEmpty(xrTableCell24.Text))
+            if (!string.IsNullOrEmpty(xrTableCell24.Text) && !xrTableCell24.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                xrTableCell24.Text = String.Format("{0:#,###}", double.Parse(xrTableCell24.Text));
+                xrTableCell24.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(xrTableCell24.Text).ToString("N2", PlannerMainReport.Info);
             }
         }
 
         private void xrTableCell28_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            if (!string.IsNullOrEmpty(xrTableCell28.Text))
+            if (!string.IsNullOrEmpty(xrTableCell28.Text) && !xrTableCell28.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                xrTableCell28.Text = String.Format("{0:#,###}", double.Parse(xrTableCell28.Text));
+                xrTableCell28.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(xrTableCell28.Text).ToString("N2", PlannerMainReport.Info);
             }
         }
 
         private void xrTableCell32_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            if (!string.IsNullOrEmpty(xrTableCell32.Text))
+            if (!string.IsNullOrEmpty(xrTableCell32.Text) && !xrTableCell32.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                xrTableCell32.Text = String.Format("{0:#,###}", double.Parse(xrTableCell32.Text));
+                xrTableCell32.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(xrTableCell32.Text).ToString("N2", PlannerMainReport.Info);
             }
         }
 
         private void xrTableCell36_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            if (!string.IsNullOrEmpty(xrTableCell36.Text))
+            if (!string.IsNullOrEmpty(xrTableCell36.Text) && !xrTableCell36.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                xrTableCell36.Text = String.Format("{0:#,###}", double.Parse(xrTableCell36.Text));
+                xrTableCell36.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(xrTableCell36.Text).ToString("N2", PlannerMainReport.Info);
             }
         }
 
         private void xrTableCell40_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            if (!string.IsNullOrEmpty(xrTableCell40.Text))
+            if (!string.IsNullOrEmpty(xrTableCell40.Text) && !xrTableCell40.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                xrTableCell40.Text = String.Format("{0:#,###}", double.Parse(xrTableCell40.Text));
+                xrTableCell40.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(xrTableCell40.Text).ToString("N2", PlannerMainReport.Info);
             }
         }
 
         private void xrTableCell52_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            if (!string.IsNullOrEmpty(xrTableCell52.Text))
+            if (!string.IsNullOrEmpty(xrTableCell52.Text) && !xrTableCell52.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                xrTableCell52.Text = String.Format("{0:#,###}", double.Parse(xrTableCell52.Text));
+                xrTableCell52.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(xrTableCell52.Text).ToString("N2", PlannerMainReport.Info);
             }
         }
 
         private void xrTableCell44_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            if (!string.IsNullOrEmpty(xrTableCell44.Text))
+            if (!string.IsNullOrEmpty(xrTableCell44.Text) && !xrTableCell44.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                xrTableCell44.Text = String.Format("{0:#,###}", double.Parse(xrTableCell44.Text));
+                xrTableCell44.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(xrTableCell44.Text).ToString("N2", PlannerMainReport.Info);
             }
         }
 
         private void xrTableCell48_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            if (!string.IsNullOrEmpty(xrTableCell48.Text))
+            if (!string.IsNullOrEmpty(xrTableCell48.Text) && !xrTableCell48.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                xrTableCell48.Text = String.Format("{0:#,###}", double.Parse(xrTableCell48.Text));
+                xrTableCell48.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(xrTableCell48.Text).ToString("N2", PlannerMainReport.Info);
             }
         }
 
         private void lblTotalAssets_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            if (!string.IsNullOrEmpty(lblTotalAssets.Text))
+            if (!string.IsNullOrEmpty(lblTotalAssets.Text) && !lblTotalAssets.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                lblTotalAssets.Text = String.Format("{0:#,###}", double.Parse(lblTotalAssets.Text));
+                lblTotalAssets.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblTotalAssets.Text).ToString("N2", PlannerMainReport.Info);
             }
         }
 
         private void lblTotalLiabilities_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            if (!string.IsNullOrEmpty(lblTotalLiabilities.Text))
+            if (!string.IsNullOrEmpty(lblTotalLiabilities.Text) && !lblTotalLiabilities.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                lblTotalLiabilities.Text = String.Format("{0:#,###}", double.Parse(lblTotalLiabilities.Text));
+                lblTotalLiabilities.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblTotalLiabilities.Text).ToString("N2", PlannerMainReport.Info);
             }
         }
 
         private void xrTableCell50_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            if (!string.IsNullOrEmpty(xrTableCell50.Text))
+            if (!string.IsNullOrEmpty(xrTableCell50.Text) && !xrTableCell50.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                xrTableCell50.Text = String.Format("{0:#,###}", double.Parse(xrTableCell50.Text));
+                xrTableCell50.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(xrTableCell50.Text).ToString("N2", PlannerMainReport.Info);
             }
         }
 
         private void xrTableCell46_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            if (!string.IsNullOrEmpty(xrTableCell46.Text))
+            if (!string.IsNullOrEmpty(xrTableCell46.Text) && !xrTableCell46.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                xrTableCell46.Text = String.Format("{0:#,###}", double.Parse(xrTableCell46.Text));
+                xrTableCell46.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(xrTableCell46.Text).ToString("N2", PlannerMainReport.Info);
             }
         }
 
         private void xrTableCell54_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            if (!string.IsNullOrEmpty(xrTableCell54.Text))
+            if (!string.IsNullOrEmpty(xrTableCell54.Text) && !xrTableCell54.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                xrTableCell54.Text = String.Format("{0:#,###}", double.Parse(xrTableCell54.Text));
+                xrTableCell54.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(xrTableCell54.Text).ToString("N2", PlannerMainReport.Info);
             }
         }
 
         private void xrTableCell42_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            if (!string.IsNullOrEmpty(xrTableCell42.Text))
+            if (!string.IsNullOrEmpty(xrTableCell42.Text) && !xrTableCell54.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                xrTableCell42.Text = String.Format("{0:#,###}", double.Parse(xrTableCell42.Text));
+                xrTableCell42.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(xrTableCell42.Text).ToString("N2", PlannerMainReport.Info);
             }
         }
 
         private void xrTableCell38_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            if (!string.IsNullOrEmpty(xrTableCell38.Text))
+            if (!string.IsNullOrEmpty(xrTableCell38.Text) && !xrTableCell38.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                xrTableCell38.Text = String.Format("{0:#,###}", double.Parse(xrTableCell38.Text));
+                xrTableCell38.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(xrTableCell38.Text).ToString("N2", PlannerMainReport.Info);
             }
         }
 
         private void xrTableCell34_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            if (!string.IsNullOrEmpty(xrTableCell34.Text))
+            if (!string.IsNullOrEmpty(xrTableCell34.Text) && !xrTableCell34.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                xrTableCell34.Text = String.Format("{0:#,###}", double.Parse(xrTableCell34.Text));
+                xrTableCell34.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(xrTableCell34.Text).ToString("N2", PlannerMainReport.Info);
             }
         }
 
         private void xrTableCell30_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            if (!string.IsNullOrEmpty(xrTableCell30.Text))
+            if (!string.IsNullOrEmpty(xrTableCell30.Text) && !xrTableCell30.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                xrTableCell30.Text = String.Format("{0:#,###}", double.Parse(xrTableCell30.Text));
+                xrTableCell30.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(xrTableCell30.Text).ToString("N2", PlannerMainReport.Info);
             }
         }
 
         private void xrTableCell26_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            if (!string.IsNullOrEmpty(xrTableCell26.Text))
+            if (!string.IsNullOrEmpty(xrTableCell26.Text) && !xrTableCell26.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                xrTableCell26.Text = String.Format("{0:#,###}", double.Parse(xrTableCell26.Text));
+                xrTableCell26.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(xrTableCell26.Text).ToString("N2", PlannerMainReport.Info);
             }
         }
 
         private void xrTableCell22_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            if (!string.IsNullOrEmpty(xrTableCell22.Text))
+            if (!string.IsNullOrEmpty(xrTableCell22.Text) && !xrTableCell22.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                xrTableCell22.Text = String.Format("{0:#,###}", double.Parse(xrTableCell22.Text));
+                xrTableCell22.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(xrTableCell22.Text).ToString("N2", PlannerMainReport.Info);
             }
         }
 
         private void xrTableCell18_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            if (!string.IsNullOrEmpty(xrTableCell18.Text))
+            if (!string.IsNullOrEmpty(xrTableCell18.Text) && !xrTableCell18.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                xrTableCell18.Text = String.Format("{0:#,###}", double.Parse(xrTableCell18.Text));
+                xrTableCell18.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(xrTableCell18.Text).ToString("N2", PlannerMainReport.Info);
             }
         }
 
         private void xrTableCell14_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            if (!string.IsNullOrEmpty(xrTableCell14.Text))
+            if (!string.IsNullOrEmpty(xrTableCell14.Text) && !xrTableCell14.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                xrTableCell14.Text = String.Format("{0:#,###}", double.Parse(xrTableCell14.Text));
+                xrTableCell14.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(xrTableCell14.Text).ToString("N2", PlannerMainReport.Info);
             }
         }
 
         private void xrTableCell6_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            if (!string.IsNullOrEmpty(xrTableCell6.Text))
+            if (!string.IsNullOrEmpty(xrTableCell6.Text) && !xrTableCell6.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                xrTableCell6.Text = String.Format("{0:#,###}", double.Parse(xrTableCell6.Text));
+                xrTableCell6.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(xrTableCell6.Text).ToString("N2", PlannerMainReport.Info);
             }
         }
 
         private void xrTableCell5_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            if (!string.IsNullOrEmpty(xrTableCell5.Text))
+            if (!string.IsNullOrEmpty(xrTableCell5.Text) && !xrTableCell5.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                xrTableCell5.Text = String.Format("{0:#,###}", double.Parse(xrTableCell5.Text));
+                xrTableCell5.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(xrTableCell5.Text).ToString("N2", PlannerMainReport.Info);
             }
         }
 
         private void xrTableCell4_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            if (!string.IsNullOrEmpty(xrTableCell4.Text))
+            if (!string.IsNullOrEmpty(xrTableCell4.Text)  && !xrTableCell4.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                xrTableCell4.Text = String.Format("{0:#,###}", double.Parse(xrTableCell4.Text));
+                xrTableCell4.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(xrTableCell4.Text).ToString("N2", PlannerMainReport.Info);
             }
         }
 

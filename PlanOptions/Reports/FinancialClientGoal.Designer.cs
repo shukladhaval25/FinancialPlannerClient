@@ -575,7 +575,7 @@
             // 
             // lblTotalCorpusNeeded
             // 
-            this.lblTotalCorpusNeeded.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(255)))), ((int)(((byte)(230)))));
+            this.lblTotalCorpusNeeded.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(255)))), ((int)(((byte)(200)))));
             this.lblTotalCorpusNeeded.BorderColor = System.Drawing.Color.DarkGray;
             this.lblTotalCorpusNeeded.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
             | DevExpress.XtraPrinting.BorderSide.Right) 

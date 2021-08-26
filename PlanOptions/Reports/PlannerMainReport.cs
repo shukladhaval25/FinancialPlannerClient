@@ -18,23 +18,24 @@ namespace FinancialPlannerClient.PlanOptions
     public partial class PlannerMainReport : DevExpress.XtraReports.UI.XtraReport
     {
         Client client;
-        Planner planner;
+        public static Planner planner;
         PersonalInformation personalInformation;
         int riskprofileId, optionId;
         IList<Goals> goals;
         string recomendationNote;
-       
-        public PlannerMainReport(PersonalInformation personalInformation, Planner planner,int riskProfileId,int optionId,string recomendation="")
+        public static System.Globalization.CultureInfo Info;
+        public PlannerMainReport(PersonalInformation personalInformation, Planner plannerObj,int riskProfileId,int optionId,string recomendation="")
         {
             InitializeComponent();
+            Info = System.Globalization.CultureInfo.GetCultureInfo("en-IN");
             this.personalInformation = personalInformation;
             this.client = personalInformation.Client;
-            this.planner = planner;
+            planner = plannerObj;
             this.riskprofileId = riskProfileId;
             this.optionId = optionId;
             this.lblClientName.Text = this.client.Name;
             this.lblPreparedFor.Text = this.client.Name;
-            this.lblPreparedOn.Text = this.planner.StartDate.ToShortDateString();
+            this.lblPreparedOn.Text = planner.StartDate.ToShortDateString();
             this.recomendationNote = recomendation;
             fillGoals(planner);
         }
@@ -78,27 +79,35 @@ namespace FinancialPlannerClient.PlanOptions
                 FinancialGoalIntro financialGoalIntro = new FinancialGoalIntro(client);
                 financialGoalIntro.CreateDocument();
 
-                FinancialClientGoal financialClientGoal = new FinancialClientGoal(this.planner, this.client, this.riskprofileId, this.optionId);
+                FinancialClientGoal financialClientGoal = new FinancialClientGoal(planner, this.client, this.riskprofileId, this.optionId);
                 financialClientGoal.CreateDocument();
 
                 double retirementFutureCost = 0;
-                double.TryParse(financialClientGoal.lblRetirementFutureCost.Text, out retirementFutureCost);
-                GoalProjectionForComplition goalProjectionForComplition = new GoalProjectionForComplition(this.planner, this.client, this.riskprofileId, this.optionId, retirementFutureCost);
+                if (financialClientGoal.lblRetirementFutureCost.Text.StartsWith(planner.CurrencySymbol))
+                {
+                    double.TryParse(financialClientGoal.lblRetirementFutureCost.Text.Substring(planner.CurrencySymbol.Length),out retirementFutureCost);
+                }
+                else
+                {
+                    double.TryParse(financialClientGoal.lblRetirementFutureCost.Text, out retirementFutureCost);
+                }
+                
+                GoalProjectionForComplition goalProjectionForComplition = new GoalProjectionForComplition(planner, this.client, this.riskprofileId, this.optionId, retirementFutureCost);
                 goalProjectionForComplition.CreateDocument();
 
-                IncomeExpenseAnalysis incomeExpenseAnalysis = new IncomeExpenseAnalysis(this.client, this.planner);
+                IncomeExpenseAnalysis incomeExpenseAnalysis = new IncomeExpenseAnalysis(this.client, planner);
                 incomeExpenseAnalysis.CreateDocument();
 
-                SpendingSavingRatioReport spendingSavingRatioReport = new SpendingSavingRatioReport(this.client, this.planner.ID, this.riskprofileId, this.optionId);
+                SpendingSavingRatioReport spendingSavingRatioReport = new SpendingSavingRatioReport(this.client, planner.ID, this.riskprofileId, this.optionId);
                 spendingSavingRatioReport.CreateDocument();
 
-                SurplusPeriod surplusPeriod = new SurplusPeriod(this.client, this.planner.ID, this.riskprofileId, this.optionId);
+                SurplusPeriod surplusPeriod = new SurplusPeriod(this.client, planner.ID, this.riskprofileId, this.optionId);
                 surplusPeriod.CreateDocument();
 
                 NetWorthAnalysis netWorthAnalysis = new NetWorthAnalysis(this.client);
                 netWorthAnalysis.CreateDocument();
 
-                NetWorthStatement netWorthStatement = new NetWorthStatement(this.client, this.planner);
+                NetWorthStatement netWorthStatement = new NetWorthStatement(this.client, planner);
                 netWorthStatement.CreateDocument();
 
                 ToTotalAssetRatio toTotalAssetRatio = new ToTotalAssetRatio(this.client, netWorthStatement.GetNetWorth());
@@ -168,7 +177,7 @@ namespace FinancialPlannerClient.PlanOptions
                             //    ListtoDataTable.ToDataTable(
                             //goals.Where(x => x.Name.StartsWith(dtGroupByGoals.Rows[index]["Name"].ToString())).ToList());
                             goalsDescriptions[goalCountIndex] = new GoalsDescription();
-                            goalsDescriptions[goalCountIndex].SetReportParameter(this.client, this.planner, _dtGoals,
+                            goalsDescriptions[goalCountIndex].SetReportParameter(this.client, planner, _dtGoals,
                                this.riskprofileId, this.optionId, this.goals.ToList());
                             goalsDescriptions[goalCountIndex].CreateDocument();
                             goalCountIndex++;
@@ -193,7 +202,7 @@ namespace FinancialPlannerClient.PlanOptions
                 AssetAllocationTitle assetAllocationTitle = new AssetAllocationTitle(this.client);
                 assetAllocationTitle.CreateDocument();
 
-                ActionPlan actionPlan = new ActionPlan(this.client, this.planner);
+                ActionPlan actionPlan = new ActionPlan(this.client, planner);
                 actionPlan.CreateDocument();
 
                 Recomendation recomendation = new Recomendation(this.client,this.recomendationNote);

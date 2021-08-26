@@ -81,9 +81,9 @@ namespace FinancialPlannerClient.PlanOptions.Reports
 
         private void lblNetWorth_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            if (!string.IsNullOrEmpty(lblNetWorth.Text))
+            if (!string.IsNullOrEmpty(lblNetWorth.Text) && !lblNetWorth.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                lblNetWorth.Text = String.Format("{0:#,###}", double.Parse(lblNetWorth.Text));
+                lblNetWorth.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblNetWorth.Text).ToString("N2", PlannerMainReport.Info);
             }
         }
     }

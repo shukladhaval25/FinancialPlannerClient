@@ -134,25 +134,33 @@
             this.lblName.Dpi = 100F;
             this.lblName.Multiline = true;
             this.lblName.Name = "lblName";
+            this.lblName.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 0, 0, 0, 100F);
             this.lblName.StylePriority.UseBorders = false;
+            this.lblName.StylePriority.UsePadding = false;
             this.lblName.Weight = 2.1660431931585D;
             // 
             // lblRelationship
             // 
             this.lblRelationship.Dpi = 100F;
             this.lblRelationship.Name = "lblRelationship";
+            this.lblRelationship.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 0, 0, 0, 100F);
+            this.lblRelationship.StylePriority.UsePadding = false;
             this.lblRelationship.Weight = 0.96533234463950746D;
             // 
             // lblAge
             // 
             this.lblAge.Dpi = 100F;
             this.lblAge.Name = "lblAge";
+            this.lblAge.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 0, 0, 0, 100F);
+            this.lblAge.StylePriority.UsePadding = false;
             this.lblAge.Weight = 0.71483038930629028D;
             // 
             // lblOccupation
             // 
             this.lblOccupation.Dpi = 100F;
             this.lblOccupation.Name = "lblOccupation";
+            this.lblOccupation.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 0, 0, 0, 100F);
+            this.lblOccupation.StylePriority.UsePadding = false;
             this.lblOccupation.Weight = 1.0390036761297776D;
             // 
             // lblDOB
@@ -256,7 +264,7 @@
             // 
             this.xrLabel1.Dpi = 100F;
             this.xrLabel1.Font = new System.Drawing.Font("Calibri", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xrLabel1.ForeColor = System.Drawing.Color.Navy;
+            this.xrLabel1.ForeColor = System.Drawing.Color.RoyalBlue;
             this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(10.00001F, 10.00001F);
             this.xrLabel1.Multiline = true;
             this.xrLabel1.Name = "xrLabel1";
@@ -278,7 +286,7 @@
             // 
             // xrTable2
             // 
-            this.xrTable2.BackColor = System.Drawing.Color.Navy;
+            this.xrTable2.BackColor = System.Drawing.Color.MediumBlue;
             this.xrTable2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.xrTable2.Dpi = 100F;
             this.xrTable2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -308,7 +316,7 @@
             // 
             // xrTableCell5
             // 
-            this.xrTableCell5.BackColor = System.Drawing.Color.Navy;
+            this.xrTableCell5.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.xrTableCell5.Dpi = 100F;
             this.xrTableCell5.Name = "xrTableCell5";
             this.xrTableCell5.StylePriority.UseBackColor = false;
@@ -317,15 +325,19 @@
             // 
             // xrTableCell6
             // 
+            this.xrTableCell6.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.xrTableCell6.Dpi = 100F;
             this.xrTableCell6.Name = "xrTableCell6";
+            this.xrTableCell6.StylePriority.UseBackColor = false;
             this.xrTableCell6.Text = "Relationship";
             this.xrTableCell6.Weight = 1.1922049764933023D;
             // 
             // xrTableCell7
             // 
+            this.xrTableCell7.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.xrTableCell7.Dpi = 100F;
             this.xrTableCell7.Name = "xrTableCell7";
+            this.xrTableCell7.StylePriority.UseBackColor = false;
             this.xrTableCell7.StylePriority.UseTextAlignment = false;
             this.xrTableCell7.Text = "Age";
             this.xrTableCell7.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
@@ -333,8 +345,10 @@
             // 
             // xrTableCell8
             // 
+            this.xrTableCell8.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.xrTableCell8.Dpi = 100F;
             this.xrTableCell8.Name = "xrTableCell8";
+            this.xrTableCell8.StylePriority.UseBackColor = false;
             this.xrTableCell8.Text = "Occupation";
             this.xrTableCell8.Weight = 1.25676903045896D;
             // 

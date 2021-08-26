@@ -150,6 +150,7 @@
             this.xrTable1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrTable1.LocationFloat = new DevExpress.Utils.PointFloat(25.52083F, 577.9374F);
             this.xrTable1.Name = "xrTable1";
+            this.xrTable1.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 100F);
             this.xrTable1.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.xrTableRow1,
             this.xrTableRow3});
@@ -157,6 +158,7 @@
             this.xrTable1.StylePriority.UseBorderColor = false;
             this.xrTable1.StylePriority.UseBorders = false;
             this.xrTable1.StylePriority.UseFont = false;
+            this.xrTable1.StylePriority.UsePadding = false;
             // 
             // xrTableRow1
             // 
@@ -294,6 +296,7 @@
             series1.Label = pieSeriesLabel1;
             series1.LabelsVisibility = DevExpress.Utils.DefaultBoolean.True;
             series1.Name = "Series 1";
+            seriesPoint1.ColorSerializable = "#8DB3E2";
             seriesPoint2.ColorSerializable = "#FF8040";
             series1.Points.AddRange(new DevExpress.XtraCharts.SeriesPoint[] {
             seriesPoint1,
@@ -345,6 +348,7 @@
             series2.Label = pieSeriesLabel2;
             series2.LabelsVisibility = DevExpress.Utils.DefaultBoolean.True;
             series2.Name = "Series 1";
+            seriesPoint3.ColorSerializable = "#8DB3E2";
             seriesPoint4.ColorSerializable = "#FF8040";
             series2.Points.AddRange(new DevExpress.XtraCharts.SeriesPoint[] {
             seriesPoint3,
@@ -420,6 +424,7 @@
             this.xrTableEquity.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrTableEquity.LocationFloat = new DevExpress.Utils.PointFloat(25.52083F, 268.75F);
             this.xrTableEquity.Name = "xrTableEquity";
+            this.xrTableEquity.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 100F);
             this.xrTableEquity.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.xrTableRow2,
             this.xrTableRow5});
@@ -427,6 +432,7 @@
             this.xrTableEquity.StylePriority.UseBorderColor = false;
             this.xrTableEquity.StylePriority.UseBorders = false;
             this.xrTableEquity.StylePriority.UseFont = false;
+            this.xrTableEquity.StylePriority.UsePadding = false;
             // 
             // xrTableRow2
             // 

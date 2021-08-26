@@ -96,7 +96,7 @@
             // 
             this.xrLabel1.Dpi = 100F;
             this.xrLabel1.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xrLabel1.ForeColor = System.Drawing.Color.Navy;
+            this.xrLabel1.ForeColor = System.Drawing.Color.RoyalBlue;
             this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(4.999987F, 10.00001F);
             this.xrLabel1.Multiline = true;
             this.xrLabel1.Name = "xrLabel1";

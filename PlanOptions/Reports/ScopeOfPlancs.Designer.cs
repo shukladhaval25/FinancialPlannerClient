@@ -76,7 +76,7 @@
             this.xrLabel1.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.xrLabel1.Dpi = 100F;
             this.xrLabel1.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xrLabel1.ForeColor = System.Drawing.Color.Navy;
+            this.xrLabel1.ForeColor = System.Drawing.Color.RoyalBlue;
             this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(9.999974F, 10.00001F);
             this.xrLabel1.Name = "xrLabel1";
             this.xrLabel1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -93,10 +93,10 @@
             this.xrRichTextContent.BorderWidth = 2F;
             this.xrRichTextContent.Dpi = 100F;
             this.xrRichTextContent.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xrRichTextContent.LocationFloat = new DevExpress.Utils.PointFloat(9.999974F, 50.00003F);
+            this.xrRichTextContent.LocationFloat = new DevExpress.Utils.PointFloat(9.999974F, 52.00003F);
             this.xrRichTextContent.Name = "xrRichTextContent";
             this.xrRichTextContent.SerializableRtfString = resources.GetString("xrRichTextContent.SerializableRtfString");
-            this.xrRichTextContent.SizeF = new System.Drawing.SizeF(629.9999F, 658.3334F);
+            this.xrRichTextContent.SizeF = new System.Drawing.SizeF(629.9999F, 658.3331F);
             this.xrRichTextContent.StylePriority.UseBorderColor = false;
             this.xrRichTextContent.StylePriority.UseBorders = false;
             this.xrRichTextContent.StylePriority.UseBorderWidth = false;

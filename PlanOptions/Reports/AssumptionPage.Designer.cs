@@ -116,6 +116,7 @@
             this.xrTable1.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrTable1.LocationFloat = new DevExpress.Utils.PointFloat(45.41661F, 247.9167F);
             this.xrTable1.Name = "xrTable1";
+            this.xrTable1.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 0, 0, 0, 100F);
             this.xrTable1.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.xrTableRow1,
             this.xrTableRow2,
@@ -132,6 +133,7 @@
             this.xrTableRow13});
             this.xrTable1.SizeF = new System.Drawing.SizeF(573.9584F, 348.3334F);
             this.xrTable1.StylePriority.UseFont = false;
+            this.xrTable1.StylePriority.UsePadding = false;
             // 
             // xrTableRow1
             // 
@@ -514,7 +516,7 @@
             // 
             this.xrLabel1.Dpi = 100F;
             this.xrLabel1.Font = new System.Drawing.Font("Cambria", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xrLabel1.ForeColor = System.Drawing.Color.Navy;
+            this.xrLabel1.ForeColor = System.Drawing.Color.RoyalBlue;
             this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(10.00001F, 10.00001F);
             this.xrLabel1.Name = "xrLabel1";
             this.xrLabel1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -551,12 +553,13 @@
             this.lblNote.ForeColor = System.Drawing.Color.Black;
             this.lblNote.LocationFloat = new DevExpress.Utils.PointFloat(45.41661F, 618.75F);
             this.lblNote.Name = "lblNote";
-            this.lblNote.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.lblNote.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 2, 0, 0, 100F);
             this.lblNote.SerializableRtfString = resources.GetString("lblNote.SerializableRtfString");
             this.lblNote.SizeF = new System.Drawing.SizeF(573.9585F, 130.2917F);
             this.lblNote.StylePriority.UseBorders = false;
             this.lblNote.StylePriority.UseFont = false;
             this.lblNote.StylePriority.UseForeColor = false;
+            this.lblNote.StylePriority.UsePadding = false;
             // 
             // TopMargin
             // 

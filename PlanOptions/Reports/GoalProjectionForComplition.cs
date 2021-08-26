@@ -252,7 +252,10 @@ namespace FinancialPlannerClient.PlanOptions.Reports
 
         private void lblGoalAchiveTillDate_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            lblGoalAchiveTillDate.Text = String.Format("{0:#,###}", double.Parse(lblGoalAchiveTillDate.Text));
+            if (!string.IsNullOrEmpty(lblGoalAchiveTillDate.Text) && !lblGoalAchiveTillDate.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
+            {
+                lblGoalAchiveTillDate.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblGoalAchiveTillDate.Text).ToString("N2", PlannerMainReport.Info);
+            }
         }
 
         private double getCurrentStatusFundForMappedGoal(int goalId)

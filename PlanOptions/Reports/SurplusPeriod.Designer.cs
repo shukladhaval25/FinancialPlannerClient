@@ -316,6 +316,8 @@
             // 
             this.lblGoal1.Dpi = 100F;
             this.lblGoal1.Name = "lblGoal1";
+            this.lblGoal1.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 0, 0, 0, 100F);
+            this.lblGoal1.StylePriority.UsePadding = false;
             this.lblGoal1.Weight = 1.1099245996061993D;
             // 
             // lblCashFlowForGoal1
@@ -340,6 +342,8 @@
             // 
             this.lblGoal2.Dpi = 100F;
             this.lblGoal2.Name = "lblGoal2";
+            this.lblGoal2.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 0, 0, 0, 100F);
+            this.lblGoal2.StylePriority.UsePadding = false;
             this.lblGoal2.Weight = 1.1099245996061993D;
             // 
             // lblCashFlowForGoal2
@@ -364,6 +368,8 @@
             // 
             this.lblGoal3.Dpi = 100F;
             this.lblGoal3.Name = "lblGoal3";
+            this.lblGoal3.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 0, 0, 0, 100F);
+            this.lblGoal3.StylePriority.UsePadding = false;
             this.lblGoal3.Weight = 1.1099245996061993D;
             // 
             // lblCashFlowForGoal3
@@ -388,6 +394,8 @@
             // 
             this.lblGoal4.Dpi = 100F;
             this.lblGoal4.Name = "lblGoal4";
+            this.lblGoal4.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 0, 0, 0, 100F);
+            this.lblGoal4.StylePriority.UsePadding = false;
             this.lblGoal4.Weight = 1.1099245996061993D;
             // 
             // lblCashFlowForGoal4
@@ -412,6 +420,8 @@
             // 
             this.lblGoal5.Dpi = 100F;
             this.lblGoal5.Name = "lblGoal5";
+            this.lblGoal5.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 0, 0, 0, 100F);
+            this.lblGoal5.StylePriority.UsePadding = false;
             this.lblGoal5.Weight = 1.1099245996061993D;
             // 
             // lblCashFlowForGoal5
@@ -436,6 +446,8 @@
             // 
             this.lblGoal6.Dpi = 100F;
             this.lblGoal6.Name = "lblGoal6";
+            this.lblGoal6.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 0, 0, 0, 100F);
+            this.lblGoal6.StylePriority.UsePadding = false;
             this.lblGoal6.Weight = 1.1099245996061993D;
             // 
             // lblCashFlowForGoal6
@@ -460,6 +472,8 @@
             // 
             this.lblGoal7.Dpi = 100F;
             this.lblGoal7.Name = "lblGoal7";
+            this.lblGoal7.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 0, 0, 0, 100F);
+            this.lblGoal7.StylePriority.UsePadding = false;
             this.lblGoal7.Weight = 1.1099245996061993D;
             // 
             // lblCashFlowForGoal7
@@ -484,6 +498,8 @@
             // 
             this.lblGoal8.Dpi = 100F;
             this.lblGoal8.Name = "lblGoal8";
+            this.lblGoal8.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 0, 0, 0, 100F);
+            this.lblGoal8.StylePriority.UsePadding = false;
             this.lblGoal8.Weight = 1.1099245996061993D;
             // 
             // lblCashFlowForGoal8
@@ -508,6 +524,8 @@
             // 
             this.xrTableCell13.Dpi = 100F;
             this.xrTableCell13.Name = "xrTableCell13";
+            this.xrTableCell13.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 0, 0, 0, 100F);
+            this.xrTableCell13.StylePriority.UsePadding = false;
             this.xrTableCell13.Weight = 1.1099245996061993D;
             // 
             // xrTableCell14
@@ -532,6 +550,8 @@
             // 
             this.xrTableCell17.Dpi = 100F;
             this.xrTableCell17.Name = "xrTableCell17";
+            this.xrTableCell17.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 0, 0, 0, 100F);
+            this.xrTableCell17.StylePriority.UsePadding = false;
             this.xrTableCell17.Weight = 1.1099245996061993D;
             // 
             // xrTableCell18
@@ -556,6 +576,8 @@
             // 
             this.xrTableCell15.Dpi = 100F;
             this.xrTableCell15.Name = "xrTableCell15";
+            this.xrTableCell15.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 0, 0, 0, 100F);
+            this.xrTableCell15.StylePriority.UsePadding = false;
             this.xrTableCell15.Weight = 1.1099245996061993D;
             // 
             // xrTableCell16
@@ -580,6 +602,8 @@
             // 
             this.xrTableCell8.Dpi = 100F;
             this.xrTableCell8.Name = "xrTableCell8";
+            this.xrTableCell8.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 0, 0, 0, 100F);
+            this.xrTableCell8.StylePriority.UsePadding = false;
             this.xrTableCell8.Weight = 1.1099245996061993D;
             // 
             // xrTableCell9
@@ -604,6 +628,8 @@
             // 
             this.xrTableCell10.Dpi = 100F;
             this.xrTableCell10.Name = "xrTableCell10";
+            this.xrTableCell10.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 0, 0, 0, 100F);
+            this.xrTableCell10.StylePriority.UsePadding = false;
             this.xrTableCell10.Weight = 1.1099245996061993D;
             // 
             // xrTableCell11
@@ -743,6 +769,8 @@
             // 
             this.xrTableCell3.Dpi = 100F;
             this.xrTableCell3.Name = "xrTableCell3";
+            this.xrTableCell3.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 0, 0, 0, 100F);
+            this.xrTableCell3.StylePriority.UsePadding = false;
             this.xrTableCell3.Text = "Total Income/Inflow";
             this.xrTableCell3.Weight = 1.1099245996061993D;
             // 
@@ -753,6 +781,7 @@
             this.lblTotalIncome.StylePriority.UseTextAlignment = false;
             this.lblTotalIncome.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
             this.lblTotalIncome.Weight = 0.75083166874687146D;
+            this.lblTotalIncome.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.lblTotalIncome_BeforePrint);
             // 
             // xrTableRow6
             // 
@@ -767,6 +796,8 @@
             // 
             this.xrTableCell5.Dpi = 100F;
             this.xrTableCell5.Name = "xrTableCell5";
+            this.xrTableCell5.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 0, 0, 0, 100F);
+            this.xrTableCell5.StylePriority.UsePadding = false;
             this.xrTableCell5.Text = "Total Expense/Outflow";
             this.xrTableCell5.Weight = 1.1099245996061993D;
             // 
@@ -777,6 +808,7 @@
             this.lblTotalExp.StylePriority.UseTextAlignment = false;
             this.lblTotalExp.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
             this.lblTotalExp.Weight = 0.75083166874687146D;
+            this.lblTotalExp.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.lblTotalExp_BeforePrint);
             // 
             // xrTableRow1
             // 

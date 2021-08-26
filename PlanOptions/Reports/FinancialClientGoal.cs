@@ -247,7 +247,18 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                     xrGroupTable.Visible = true;
                     this.lblName.DataBindings.Add("Text", this.DataSource, "Goals.Name");
                     string occurance = (lblGoalCategory.Text == "Vehicale") ? lblRecurrence.Text : "" ;
-                    xrGroupLabel.Text = string.Format("{0} {1} of Rs.{2} each", occurance, lblName.Text, (double.Parse(lblPresentCost.Text) / int.Parse(lblRecurrence.Text)));
+                    string currencySymbol = string.IsNullOrEmpty(PlannerMainReport.planner.CurrencySymbol) ? "Rs." : PlannerMainReport.planner.CurrencySymbol;
+                    double presentCost = 0;
+                    if (lblPresentCost.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
+                    {
+                        double.TryParse(lblPresentCost.Text.Substring(PlannerMainReport.planner.CurrencySymbol.Length), out presentCost);
+                    }
+                    else
+                    {
+                        double.TryParse(lblPresentCost.Text, out presentCost);
+                    }
+                    xrGroupLabel.Text = string.Format("{0} {1} of {2}{3} each", occurance, lblName.Text, currencySymbol,
+                    ( presentCost / int.Parse(lblRecurrence.Text)).ToString("N2", PlannerMainReport.Info));
 
                     xrGroupLabel2.Text ="Total fund needed";
                    
@@ -276,12 +287,18 @@ namespace FinancialPlannerClient.PlanOptions.Reports
 
         private void lblFutureCost_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            lblFutureCost.Text = String.Format("{0:#,###}", double.Parse(lblFutureCost.Text));
+            if (!string.IsNullOrEmpty(lblFutureCost.Text))
+            {
+                lblFutureCost.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblFutureCost.Text).ToString("N2", PlannerMainReport.Info);
+            }
         }
 
         private void lblPresentCost_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            lblPresentCost.Text = String.Format("{0:#,###}", double.Parse(lblPresentCost.Text));
+            if (!string.IsNullOrEmpty(lblPresentCost.Text))
+            {
+                lblPresentCost.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblPresentCost.Text).ToString("N2", PlannerMainReport.Info);
+            }
         }
 
         private void xrGroupLabel_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
@@ -293,21 +310,21 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         {
             double retirementPresentCost = 0;
             double.TryParse(lblRetirementPresentCost.Text, out retirementPresentCost);
-            lblRetirementPresentCost.Text = String.Format("{0:#,###}",retirementPresentCost);
+            lblRetirementPresentCost.Text = PlannerMainReport.planner.CurrencySymbol + retirementPresentCost.ToString("N2", PlannerMainReport.Info);
         }
 
         private void lblRetirementFutureCost_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
             double retirementFutureCost = 0;
             double.TryParse(lblRetirementFutureCost.Text, out retirementFutureCost);
-            lblRetirementFutureCost.Text = String.Format("{0:#,###}", retirementFutureCost);
+            lblRetirementFutureCost.Text = PlannerMainReport.planner.CurrencySymbol + retirementFutureCost.ToString("N2", PlannerMainReport.Info);
         }
 
         private void lblFirstYearRetirementExp_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
             double firstYearRetirement = 0;
             double.TryParse(lblFirstYearRetirementExp.Text, out firstYearRetirement);
-            lblFirstYearRetirementExp.Text = String.Format("{0:#,###}",  firstYearRetirement);
+            lblFirstYearRetirementExp.Text = PlannerMainReport.planner.CurrencySymbol + firstYearRetirement.ToString("N2", PlannerMainReport.Info);
         }
     }
 }

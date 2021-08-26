@@ -231,6 +231,8 @@
             // 
             this.xrTableCell1.Dpi = 100F;
             this.xrTableCell1.Name = "xrTableCell1";
+            this.xrTableCell1.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 0, 0, 0, 100F);
+            this.xrTableCell1.StylePriority.UsePadding = false;
             this.xrTableCell1.Text = "Total Asset";
             this.xrTableCell1.Weight = 1.1099245996061993D;
             // 
@@ -255,6 +257,8 @@
             // 
             this.xrTableCell3.Dpi = 100F;
             this.xrTableCell3.Name = "xrTableCell3";
+            this.xrTableCell3.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 0, 0, 0, 100F);
+            this.xrTableCell3.StylePriority.UsePadding = false;
             this.xrTableCell3.Text = "Real Estate";
             this.xrTableCell3.Weight = 1.1099245996061993D;
             // 
@@ -475,6 +479,8 @@
             // 
             this.lblIncomeBy0.Dpi = 100F;
             this.lblIncomeBy0.Name = "lblIncomeBy0";
+            this.lblIncomeBy0.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 0, 0, 0, 100F);
+            this.lblIncomeBy0.StylePriority.UsePadding = false;
             this.lblIncomeBy0.Text = "Total Asset";
             this.lblIncomeBy0.Weight = 1.1099245996061993D;
             // 
@@ -499,6 +505,8 @@
             // 
             this.lblIncomeBy1.Dpi = 100F;
             this.lblIncomeBy1.Name = "lblIncomeBy1";
+            this.lblIncomeBy1.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 0, 0, 0, 100F);
+            this.lblIncomeBy1.StylePriority.UsePadding = false;
             this.lblIncomeBy1.Text = "Liability";
             this.lblIncomeBy1.Weight = 1.1099245996061993D;
             // 

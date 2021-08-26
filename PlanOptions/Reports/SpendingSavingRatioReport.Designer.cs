@@ -76,7 +76,6 @@
             this.xrLabel4 = new DevExpress.XtraReports.UI.XRLabel();
             this.charDebtIncome = new DevExpress.XtraReports.UI.XRChart();
             this.chartTotalRatio = new DevExpress.XtraReports.UI.XRChart();
-            this.lblBestPractice = new DevExpress.XtraReports.UI.XRLabel();
             this.xrTableIncome = new DevExpress.XtraReports.UI.XRTable();
             this.xrTableRow1 = new DevExpress.XtraReports.UI.XRTableRow();
             this.lblIncomeBy0 = new DevExpress.XtraReports.UI.XRTableCell();
@@ -95,6 +94,7 @@
             this.xrLabel1 = new DevExpress.XtraReports.UI.XRLabel();
             this.chartSpendingSavingRatio = new DevExpress.XtraReports.UI.XRChart();
             this.xrPanel1 = new DevExpress.XtraReports.UI.XRPanel();
+            this.lblBestPractice = new DevExpress.XtraReports.UI.XRLabel();
             this.PageFooter = new DevExpress.XtraReports.UI.PageFooterBand();
             this.xrPageInfo1 = new DevExpress.XtraReports.UI.XRPageInfo();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
@@ -209,7 +209,6 @@
             this.xrLabel4,
             this.charDebtIncome,
             this.chartTotalRatio,
-            this.lblBestPractice,
             this.xrTableIncome,
             this.xrTable2,
             this.xrLabel2,
@@ -350,7 +349,7 @@
             this.xrLabel4.Dpi = 100F;
             this.xrLabel4.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.xrLabel4.LocationFloat = new DevExpress.Utils.PointFloat(247.5F, 532.2084F);
+            this.xrLabel4.LocationFloat = new DevExpress.Utils.PointFloat(250.9582F, 532.2084F);
             this.xrLabel4.Multiline = true;
             this.xrLabel4.Name = "xrLabel4";
             this.xrLabel4.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -417,24 +416,6 @@
             this.chartTotalRatio.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
         series2};
             this.chartTotalRatio.SizeF = new System.Drawing.SizeF(292.4998F, 160.5F);
-            // 
-            // lblBestPractice
-            // 
-            this.lblBestPractice.BackColor = System.Drawing.Color.Silver;
-            this.lblBestPractice.Dpi = 100F;
-            this.lblBestPractice.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBestPractice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.lblBestPractice.LocationFloat = new DevExpress.Utils.PointFloat(247.5001F, 339.5833F);
-            this.lblBestPractice.Multiline = true;
-            this.lblBestPractice.Name = "lblBestPractice";
-            this.lblBestPractice.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.lblBestPractice.SizeF = new System.Drawing.SizeF(99.99998F, 75F);
-            this.lblBestPractice.StylePriority.UseBackColor = false;
-            this.lblBestPractice.StylePriority.UseFont = false;
-            this.lblBestPractice.StylePriority.UseForeColor = false;
-            this.lblBestPractice.StylePriority.UseTextAlignment = false;
-            this.lblBestPractice.Text = "Best Practice \r\n30-40%";
-            this.lblBestPractice.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
             // xrTableIncome
             // 
@@ -637,6 +618,8 @@
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrPanel1.BorderWidth = 2F;
             this.xrPanel1.CanGrow = false;
+            this.xrPanel1.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.lblBestPractice});
             this.xrPanel1.Dpi = 100F;
             this.xrPanel1.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
             this.xrPanel1.Name = "xrPanel1";
@@ -644,6 +627,24 @@
             this.xrPanel1.StylePriority.UseBorderColor = false;
             this.xrPanel1.StylePriority.UseBorders = false;
             this.xrPanel1.StylePriority.UseBorderWidth = false;
+            // 
+            // lblBestPractice
+            // 
+            this.lblBestPractice.BackColor = System.Drawing.Color.Silver;
+            this.lblBestPractice.Dpi = 100F;
+            this.lblBestPractice.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBestPractice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.lblBestPractice.LocationFloat = new DevExpress.Utils.PointFloat(247.5001F, 339.5833F);
+            this.lblBestPractice.Multiline = true;
+            this.lblBestPractice.Name = "lblBestPractice";
+            this.lblBestPractice.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.lblBestPractice.SizeF = new System.Drawing.SizeF(99.99997F, 75F);
+            this.lblBestPractice.StylePriority.UseBackColor = false;
+            this.lblBestPractice.StylePriority.UseFont = false;
+            this.lblBestPractice.StylePriority.UseForeColor = false;
+            this.lblBestPractice.StylePriority.UseTextAlignment = false;
+            this.lblBestPractice.Text = "Best Practice \r\n30-40%";
+            this.lblBestPractice.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
             // PageFooter
             // 

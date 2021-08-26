@@ -28,9 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FinancialPlannerSendEmailConfiguration));
             this.grpParams = new DevExpress.XtraEditors.GroupControl();
+            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
+            this.txtCC = new DevExpress.XtraEditors.TextEdit();
             this.grpAttachments = new DevExpress.XtraEditors.GroupControl();
             this.picProcessing = new DevExpress.XtraEditors.PictureEdit();
             this.grdAttachment = new DevExpress.XtraGrid.GridControl();
@@ -47,11 +48,10 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.txtToEmail = new DevExpress.XtraEditors.TextEdit();
             this.txtEmaiBody = new DevExpress.XtraEditors.MemoEdit();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
-            this.txtCC = new DevExpress.XtraEditors.TextEdit();
+            this.imageList1 = new System.Windows.Forms.ImageList();
             ((System.ComponentModel.ISupportInitialize)(this.grpParams)).BeginInit();
             this.grpParams.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCC.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grpAttachments)).BeginInit();
             this.grpAttachments.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picProcessing.Properties)).BeginInit();
@@ -62,7 +62,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtSubject.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtToEmail.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmaiBody.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCC.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // grpParams
@@ -84,6 +83,21 @@
             this.grpParams.Name = "grpParams";
             this.grpParams.Size = new System.Drawing.Size(796, 559);
             this.grpParams.TabIndex = 1;
+            // 
+            // labelControl4
+            // 
+            this.labelControl4.Location = new System.Drawing.Point(439, 45);
+            this.labelControl4.Name = "labelControl4";
+            this.labelControl4.Size = new System.Drawing.Size(18, 13);
+            this.labelControl4.TabIndex = 42;
+            this.labelControl4.Text = "CC:";
+            // 
+            // txtCC
+            // 
+            this.txtCC.Location = new System.Drawing.Point(463, 42);
+            this.txtCC.Name = "txtCC";
+            this.txtCC.Size = new System.Drawing.Size(317, 20);
+            this.txtCC.TabIndex = 43;
             // 
             // grpAttachments
             // 
@@ -239,7 +253,7 @@
             this.txtEmaiBody.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtEmaiBody.Location = new System.Drawing.Point(11, 130);
+            this.txtEmaiBody.Location = new System.Drawing.Point(16, 126);
             this.txtEmaiBody.Name = "txtEmaiBody";
             this.txtEmaiBody.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmaiBody.Properties.Appearance.Options.UseFont = true;
@@ -251,22 +265,6 @@
             this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             this.imageList1.Images.SetKeyName(0, "pdfIcon32x32.png");
-            // 
-            // labelControl4
-            // 
-            this.labelControl4.Location = new System.Drawing.Point(439, 45);
-            this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(18, 13);
-            this.labelControl4.TabIndex = 42;
-            this.labelControl4.Text = "CC:";
-            // 
-            // txtCC
-            // 
-            this.txtCC.Location = new System.Drawing.Point(463, 42);
-            this.txtCC.Name = "txtCC";
-            this.txtCC.Properties.ReadOnly = true;
-            this.txtCC.Size = new System.Drawing.Size(317, 20);
-            this.txtCC.TabIndex = 43;
             // 
             // FinancialPlannerSendEmailConfiguration
             // 
@@ -281,6 +279,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.grpParams)).EndInit();
             this.grpParams.ResumeLayout(false);
             this.grpParams.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCC.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grpAttachments)).EndInit();
             this.grpAttachments.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picProcessing.Properties)).EndInit();
@@ -291,7 +290,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtSubject.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtToEmail.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmaiBody.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCC.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }

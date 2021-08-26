@@ -169,6 +169,8 @@
             // 
             this.xrTableCell3.Dpi = 100F;
             this.xrTableCell3.Name = "xrTableCell3";
+            this.xrTableCell3.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 0, 0, 0, 100F);
+            this.xrTableCell3.StylePriority.UsePadding = false;
             this.xrTableCell3.Text = "Equity";
             this.xrTableCell3.Weight = 1.5490891272341738D;
             // 
@@ -214,6 +216,8 @@
             // 
             this.xrTableCell5.Dpi = 100F;
             this.xrTableCell5.Name = "xrTableCell5";
+            this.xrTableCell5.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 0, 0, 0, 100F);
+            this.xrTableCell5.StylePriority.UsePadding = false;
             this.xrTableCell5.Text = "Debt";
             this.xrTableCell5.Weight = 1.5490891272341738D;
             // 

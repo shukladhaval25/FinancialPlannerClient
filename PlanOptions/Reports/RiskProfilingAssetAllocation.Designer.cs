@@ -132,6 +132,8 @@
             // 
             this.lblIncomeBy0.Dpi = 100F;
             this.lblIncomeBy0.Name = "lblIncomeBy0";
+            this.lblIncomeBy0.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 0, 0, 0, 100F);
+            this.lblIncomeBy0.StylePriority.UsePadding = false;
             this.lblIncomeBy0.Text = "0 Year";
             this.lblIncomeBy0.Weight = 1.0870728186174798D;
             // 
@@ -139,6 +141,8 @@
             // 
             this.lblAmount0.Dpi = 100F;
             this.lblAmount0.Name = "lblAmount0";
+            this.lblAmount0.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 0, 0, 0, 100F);
+            this.lblAmount0.StylePriority.UsePadding = false;
             this.lblAmount0.StylePriority.UseTextAlignment = false;
             this.lblAmount0.Text = "1 Year";
             this.lblAmount0.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
@@ -184,6 +188,8 @@
             // 
             this.lblIncomeBy1.Dpi = 100F;
             this.lblIncomeBy1.Name = "lblIncomeBy1";
+            this.lblIncomeBy1.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 0, 0, 0, 100F);
+            this.lblIncomeBy1.StylePriority.UsePadding = false;
             this.lblIncomeBy1.Text = "1 Year";
             this.lblIncomeBy1.Weight = 1.0870728186174798D;
             // 
@@ -191,6 +197,8 @@
             // 
             this.lblAmount1.Dpi = 100F;
             this.lblAmount1.Name = "lblAmount1";
+            this.lblAmount1.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 0, 0, 0, 100F);
+            this.lblAmount1.StylePriority.UsePadding = false;
             this.lblAmount1.StylePriority.UseTextAlignment = false;
             this.lblAmount1.Text = "2 Years";
             this.lblAmount1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
@@ -236,6 +244,8 @@
             // 
             this.lblIncomeBy2.Dpi = 100F;
             this.lblIncomeBy2.Name = "lblIncomeBy2";
+            this.lblIncomeBy2.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 0, 0, 0, 100F);
+            this.lblIncomeBy2.StylePriority.UsePadding = false;
             this.lblIncomeBy2.Text = "2 Years";
             this.lblIncomeBy2.Weight = 1.0870730577153713D;
             // 
@@ -243,6 +253,8 @@
             // 
             this.lblAmount2.Dpi = 100F;
             this.lblAmount2.Name = "lblAmount2";
+            this.lblAmount2.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 0, 0, 0, 100F);
+            this.lblAmount2.StylePriority.UsePadding = false;
             this.lblAmount2.StylePriority.UseTextAlignment = false;
             this.lblAmount2.Text = "3 Years";
             this.lblAmount2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
@@ -288,6 +300,8 @@
             // 
             this.lblIncomeBy3.Dpi = 100F;
             this.lblIncomeBy3.Name = "lblIncomeBy3";
+            this.lblIncomeBy3.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 0, 0, 0, 100F);
+            this.lblIncomeBy3.StylePriority.UsePadding = false;
             this.lblIncomeBy3.Text = "3 Years";
             this.lblIncomeBy3.Weight = 1.0870730577153713D;
             // 
@@ -295,6 +309,8 @@
             // 
             this.lblAmount3.Dpi = 100F;
             this.lblAmount3.Name = "lblAmount3";
+            this.lblAmount3.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 0, 0, 0, 100F);
+            this.lblAmount3.StylePriority.UsePadding = false;
             this.lblAmount3.StylePriority.UseTextAlignment = false;
             this.lblAmount3.Text = "5 Years";
             this.lblAmount3.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
@@ -340,6 +356,8 @@
             // 
             this.lblIncomeBy4.Dpi = 100F;
             this.lblIncomeBy4.Name = "lblIncomeBy4";
+            this.lblIncomeBy4.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 0, 0, 0, 100F);
+            this.lblIncomeBy4.StylePriority.UsePadding = false;
             this.lblIncomeBy4.Text = "5 Years & Above";
             this.lblIncomeBy4.Weight = 1.0870728186174798D;
             // 
@@ -347,6 +365,8 @@
             // 
             this.lbAmount4.Dpi = 100F;
             this.lbAmount4.Name = "lbAmount4";
+            this.lbAmount4.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 0, 0, 0, 100F);
+            this.lbAmount4.StylePriority.UsePadding = false;
             this.lbAmount4.StylePriority.UseTextAlignment = false;
             this.lbAmount4.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
             this.lbAmount4.Weight = 1.0124111427344535D;

@@ -69,7 +69,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         {
             if (!string.IsNullOrEmpty(lblTotalGroupAmt.Text))
             {
-                lblTotalGroupAmt.Text = String.Format("{0:#,###}", double.Parse(lblTotalGroupAmt.Text));
+                lblTotalGroupAmt.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblTotalGroupAmt.Text).ToString("N2", PlannerMainReport.Info);
             }
         }
 
@@ -77,7 +77,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         {
             if (!string.IsNullOrEmpty(lblPageTotal.Text))
             {
-                lblPageTotal.Text = String.Format("{0:#,###}", double.Parse(lblPageTotal.Text));
+                lblPageTotal.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblPageTotal.Text).ToString("N2", PlannerMainReport.Info);
             }
         }
 
@@ -85,7 +85,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         {
             if (!string.IsNullOrEmpty(lblAmount.Text))
             {
-                lblAmount.Text = String.Format("{0:#,###}", double.Parse(lblAmount.Text));
+                lblAmount.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblAmount.Text).ToString("N2", PlannerMainReport.Info);
             }
         }
 
@@ -98,7 +98,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         {
             if (!string.IsNullOrEmpty(lblTotalGroupPerValue.Text))
             {
-                lblTotalGroupPerValue.Text = String.Format("{0:#,###}", double.Parse(lblTotalGroupPerValue.Text));
+                lblTotalGroupPerValue.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblTotalGroupPerValue.Text).ToString("N2", PlannerMainReport.Info);
             }
             //lblTotalGroupPerValue.Text = (System.Math.Round((double.Parse(lblTotalGroupAmt.Text) * 100) / totalAmount)).ToString() + " %";
         }

@@ -6,7 +6,9 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Reflection;
 using System.Text;
@@ -110,6 +112,7 @@ namespace FinancialPlannerClient.PlanOptions
                 }
                 cmbReviewFrequency.Text = dr.Field<string>("ReviewFrequency");
                 memoDescription.Text = dr.Field<string>("Description");
+                txtCurrencySymbol.Text = dr.Field<string>("CurrencySymbol");
             }
             pnlPlannerInfo.Enabled = true;
             pnlManager.Enabled = true;
@@ -171,7 +174,8 @@ namespace FinancialPlannerClient.PlanOptions
                     MachineName = System.Environment.MachineName,
                     PlannerStartMonth = cmbStartMonth.SelectedIndex + 1,
                     Description = memoDescription.Text,
-                    ReviewFrequency = cmbReviewFrequency.Text
+                    ReviewFrequency = cmbReviewFrequency.Text,
+                    CurrencySymbol = txtCurrencySymbol.Text 
                 };
                 if (int.TryParse(cmbManagedBy.Tag.ToString(), out accountManagedById))
                     planner.AccountManagedBy = accountManagedById;

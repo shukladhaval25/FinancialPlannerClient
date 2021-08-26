@@ -58,7 +58,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                         
                     }
                 }
-                lblTotalSurplusForGoals.Text = totalCashFlowAllocation.ToString("#,###");
+                lblTotalSurplusForGoals.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(totalCashFlowAllocation.ToString("N2", PlannerMainReport.Info)); 
                 lblTotalSurplusForGoals.ForeColor = Color.White;
             }
         }
@@ -81,7 +81,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             if (totalLoanAmountColumnIndex > 0)
                 value = value + (double.Parse(_dtcashFlow.Rows[0][totalLoanAmountColumnIndex].ToString()));
 
-            lblTotalExp.Text = value.ToString("#,###");
+            lblTotalExp.Text = value.ToString();
             xrChartSurplusForPeriod.Series[0].Points[1].Values = new double[] { value };
         }
 
@@ -93,41 +93,41 @@ namespace FinancialPlannerClient.PlanOptions.Reports
 
         private void lblCashFlowForGoal1_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            if (!string.IsNullOrEmpty(lblCashFlowForGoal1.Text))
+            if (!string.IsNullOrEmpty(lblCashFlowForGoal1.Text) && !lblCashFlowForGoal1.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                lblCashFlowForGoal1.Text = String.Format("{0:#,###}", double.Parse(lblCashFlowForGoal1.Text));
+                lblCashFlowForGoal1.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblCashFlowForGoal1.Text).ToString("N2", PlannerMainReport.Info);
             }
         }
 
         private void lblCashFlowForGoal2_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            if (!string.IsNullOrEmpty(lblCashFlowForGoal2.Text))
+            if (!string.IsNullOrEmpty(lblCashFlowForGoal2.Text) && !lblCashFlowForGoal2.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                lblCashFlowForGoal2.Text = String.Format("{0:#,###}", double.Parse(lblCashFlowForGoal2.Text));
+                lblCashFlowForGoal2.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblCashFlowForGoal2.Text).ToString("N2", PlannerMainReport.Info);
             }
         }
 
         private void lblCashFlowForGoal3_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            if (!string.IsNullOrEmpty(lblCashFlowForGoal3.Text))
+            if (!string.IsNullOrEmpty(lblCashFlowForGoal3.Text) && !lblCashFlowForGoal3.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                lblCashFlowForGoal3.Text = String.Format("{0:#,###}", double.Parse(lblCashFlowForGoal3.Text));
+                lblCashFlowForGoal3.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblCashFlowForGoal3.Text).ToString("N2", PlannerMainReport.Info);
             }
         }
 
         private void lblCashFlowForGoal4_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            if (!string.IsNullOrEmpty(lblCashFlowForGoal4.Text))
+            if (!string.IsNullOrEmpty(lblCashFlowForGoal4.Text) && !lblCashFlowForGoal4.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                lblCashFlowForGoal4.Text = String.Format("{0:#,###}", double.Parse(lblCashFlowForGoal4.Text));
+                lblCashFlowForGoal4.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblCashFlowForGoal4.Text).ToString("N2", PlannerMainReport.Info);
             }
         }
 
         private void lblCashFlowForGoal5_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            if (!string.IsNullOrEmpty(lblCashFlowForGoal5.Text))
+            if (!string.IsNullOrEmpty(lblCashFlowForGoal5.Text) && !lblCashFlowForGoal5.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                lblCashFlowForGoal5.Text = String.Format("{0:#,###}", double.Parse(lblCashFlowForGoal5.Text));
+                lblCashFlowForGoal5.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblCashFlowForGoal5.Text).ToString("N2", PlannerMainReport.Info);
             }
         }
 
@@ -141,65 +141,81 @@ namespace FinancialPlannerClient.PlanOptions.Reports
 
         private void lblCashFlowForGoal7_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            if (!string.IsNullOrEmpty(lblCashFlowForGoal7.Text))
+            if (!string.IsNullOrEmpty(lblCashFlowForGoal7.Text) && !lblCashFlowForGoal7.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                lblCashFlowForGoal7.Text = String.Format("{0:#,###}", double.Parse(lblCashFlowForGoal7.Text));
+                lblCashFlowForGoal7.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblCashFlowForGoal7.Text).ToString("N2", PlannerMainReport.Info);
             }
         }
 
         private void lblCashFlowForGoal8_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            if (!string.IsNullOrEmpty(lblCashFlowForGoal8.Text))
+            if (!string.IsNullOrEmpty(lblCashFlowForGoal8.Text) && !lblCashFlowForGoal8.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                lblCashFlowForGoal8.Text = String.Format("{0:#,###}", double.Parse(lblCashFlowForGoal8.Text));
+                lblCashFlowForGoal8.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblCashFlowForGoal8.Text).ToString("N2", PlannerMainReport.Info);
             }
         }
 
         private void xrTableCell14_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            if (!string.IsNullOrEmpty(xrTableCell14.Text))
+            if (!string.IsNullOrEmpty(xrTableCell14.Text) && !xrTableCell14.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                xrTableCell14.Text = String.Format("{0:#,###}", double.Parse(xrTableCell14.Text));
+                xrTableCell14.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(xrTableCell14.Text).ToString("N2", PlannerMainReport.Info);
             }
         }
 
         private void xrTableCell18_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            if (!string.IsNullOrEmpty(xrTableCell18.Text))
+            if (!string.IsNullOrEmpty(xrTableCell18.Text) && !xrTableCell18.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                xrTableCell18.Text = String.Format("{0:#,###}", double.Parse(xrTableCell18.Text));
+                xrTableCell18.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(xrTableCell18.Text).ToString("N2", PlannerMainReport.Info);
             }
         }
 
         private void xrTableCell16_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            if (!string.IsNullOrEmpty(xrTableCell16.Text))
+            if (!string.IsNullOrEmpty(xrTableCell16.Text) && !xrTableCell16.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                xrTableCell16.Text = String.Format("{0:#,###}", double.Parse(xrTableCell16.Text));
+                xrTableCell16.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(xrTableCell16.Text).ToString("N2", PlannerMainReport.Info);
             }
         }
 
         private void xrTableCell9_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            if (!string.IsNullOrEmpty(xrTableCell9.Text))
+            if (!string.IsNullOrEmpty(xrTableCell9.Text) && !xrTableCell9.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                xrTableCell9.Text = String.Format("{0:#,###}", double.Parse(xrTableCell9.Text));
+                xrTableCell9.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(xrTableCell9.Text).ToString("N2", PlannerMainReport.Info);
             }
         }
 
         private void xrTableCell11_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            if (!string.IsNullOrEmpty(xrTableCell11.Text))
+            if (!string.IsNullOrEmpty(xrTableCell11.Text) && !xrTableCell11.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                xrTableCell11.Text = String.Format("{0:#,###}", double.Parse(xrTableCell11.Text));
+                xrTableCell11.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(xrTableCell11.Text).ToString("N2", PlannerMainReport.Info);
             }
         }
 
         private void lblTotalSurplusForGoals_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            if (!string.IsNullOrEmpty(lblTotalSurplusForGoals.Text))
+            if (!string.IsNullOrEmpty(lblTotalSurplusForGoals.Text) && !lblTotalSurplusForGoals.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                lblTotalSurplusForGoals.Text = String.Format("{0:#,###}", double.Parse(lblTotalSurplusForGoals.Text));
+                lblTotalSurplusForGoals.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblTotalSurplusForGoals.Text).ToString("N2", PlannerMainReport.Info);
+            }
+        }
+
+        private void lblTotalIncome_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(lblTotalIncome.Text) && !lblTotalIncome.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
+            {
+                lblTotalIncome.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblTotalIncome.Text).ToString("N2", PlannerMainReport.Info);
+            }
+        }
+
+        private void lblTotalExp_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(lblTotalExp.Text) && !lblTotalExp.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
+            {
+                lblTotalExp.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblTotalExp.Text).ToString("N2", PlannerMainReport.Info);
             }
         }
 
@@ -207,7 +223,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         {
             int totalIncomeColumnIndex = getTotalIncomeColumnIndex(_dtcashFlow);
             double value = (double.Parse(_dtcashFlow.Rows[0][totalIncomeColumnIndex].ToString()));
-            lblTotalIncome.Text = value.ToString("#,###");
+            lblTotalIncome.Text = value.ToString();
             xrChartSurplusForPeriod.Series[0].Points[0].Values = new double[] { value };
         }
 
