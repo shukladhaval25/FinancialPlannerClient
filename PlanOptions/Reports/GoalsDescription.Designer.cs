@@ -111,7 +111,7 @@
             this.xrLabel4 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel6 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel8 = new DevExpress.XtraReports.UI.XRLabel();
-            this.xrLabel10 = new DevExpress.XtraReports.UI.XRLabel();
+            this.lblGoalNote = new DevExpress.XtraReports.UI.XRLabel();
             this.lblNote = new DevExpress.XtraReports.UI.XRLabel();
             this.xrTableTotal = new DevExpress.XtraReports.UI.XRTable();
             this.xrTableRow3 = new DevExpress.XtraReports.UI.XRTableRow();
@@ -1008,7 +1008,7 @@
             this.xrLabel4,
             this.xrLabel6,
             this.xrLabel8,
-            this.xrLabel10,
+            this.lblGoalNote,
             this.xrTable2,
             this.lblTaxReturn,
             this.xrTableEquity,
@@ -1158,30 +1158,30 @@
             this.xrLabel8.Text = "C) Current Year Surplus :";
             this.xrLabel8.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
             // 
-            // xrLabel10
+            // lblGoalNote
             // 
-            this.xrLabel10.BackColor = System.Drawing.Color.Silver;
-            this.xrLabel10.BorderColor = System.Drawing.Color.Black;
-            this.xrLabel10.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid;
-            this.xrLabel10.Borders = DevExpress.XtraPrinting.BorderSide.None;
-            this.xrLabel10.BorderWidth = 1F;
-            this.xrLabel10.Dpi = 100F;
-            this.xrLabel10.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xrLabel10.ForeColor = System.Drawing.Color.Black;
-            this.xrLabel10.LocationFloat = new DevExpress.Utils.PointFloat(341.0413F, 351.8998F);
-            this.xrLabel10.Name = "xrLabel10";
-            this.xrLabel10.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 2, 0, 0, 100F);
-            this.xrLabel10.SizeF = new System.Drawing.SizeF(384.3751F, 48.96667F);
-            this.xrLabel10.StylePriority.UseBackColor = false;
-            this.xrLabel10.StylePriority.UseBorderColor = false;
-            this.xrLabel10.StylePriority.UseBorderDashStyle = false;
-            this.xrLabel10.StylePriority.UseBorders = false;
-            this.xrLabel10.StylePriority.UseBorderWidth = false;
-            this.xrLabel10.StylePriority.UseFont = false;
-            this.xrLabel10.StylePriority.UseForeColor = false;
-            this.xrLabel10.StylePriority.UsePadding = false;
-            this.xrLabel10.StylePriority.UseTextAlignment = false;
-            this.xrLabel10.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+            this.lblGoalNote.BackColor = System.Drawing.Color.Silver;
+            this.lblGoalNote.BorderColor = System.Drawing.Color.Black;
+            this.lblGoalNote.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid;
+            this.lblGoalNote.Borders = DevExpress.XtraPrinting.BorderSide.None;
+            this.lblGoalNote.BorderWidth = 1F;
+            this.lblGoalNote.Dpi = 100F;
+            this.lblGoalNote.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGoalNote.ForeColor = System.Drawing.Color.Maroon;
+            this.lblGoalNote.LocationFloat = new DevExpress.Utils.PointFloat(341.0413F, 351.8998F);
+            this.lblGoalNote.Name = "lblGoalNote";
+            this.lblGoalNote.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 2, 0, 0, 100F);
+            this.lblGoalNote.SizeF = new System.Drawing.SizeF(384.3751F, 48.96667F);
+            this.lblGoalNote.StylePriority.UseBackColor = false;
+            this.lblGoalNote.StylePriority.UseBorderColor = false;
+            this.lblGoalNote.StylePriority.UseBorderDashStyle = false;
+            this.lblGoalNote.StylePriority.UseBorders = false;
+            this.lblGoalNote.StylePriority.UseBorderWidth = false;
+            this.lblGoalNote.StylePriority.UseFont = false;
+            this.lblGoalNote.StylePriority.UseForeColor = false;
+            this.lblGoalNote.StylePriority.UsePadding = false;
+            this.lblGoalNote.StylePriority.UseTextAlignment = false;
+            this.lblGoalNote.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
             // 
             // lblNote
             // 
@@ -1451,6 +1451,6 @@
         private DevExpress.XtraReports.UI.XRLabel xrLabel4;
         private DevExpress.XtraReports.UI.XRLabel xrLabel6;
         private DevExpress.XtraReports.UI.XRLabel xrLabel8;
-        private DevExpress.XtraReports.UI.XRLabel xrLabel10;
+        private DevExpress.XtraReports.UI.XRLabel lblGoalNote;
     }
 }

@@ -1,12 +1,15 @@
 ﻿using FinancialPlanner.Common;
+using FinancialPlanner.Common.DataConversion;
 using FinancialPlanner.Common.Model;
 using FinancialPlanner.Common.Model.PlanOptions;
 using FinancialPlannerClient.CashFlowManager;
+using FinancialPlannerClient.CurrentStatus;
 using FinancialPlannerClient.RiskProfile;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
+using System.Linq;
 using System.Reflection;
 
 namespace FinancialPlannerClient.PlanOptions.Reports
@@ -21,6 +24,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         private DataTable _dtGoalProfile;
         private DataTable _dtcashFlow;
         private DataTable _dtGoals;
+        private DataTable _dtGoalProjectionComplition;
         double equityRation, debtRatio = 0;
 
         public GoalsDescription()
@@ -52,7 +56,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             double returnRate = (double)riskprofileInfo.GetRiskProfileReturnRatio(this.riskProfileId,
                     (int.Parse(this.goal.StartYear) - this.planner.StartDate.Year));
             lblTaxReturn.Text = string.Format(lblTaxReturn.Text, returnRate.ToString(), this.planner.StartDate.Year.ToString());
-           
+
             setImageForGoal(goal);
             goalCalculation(goal);
         }
@@ -171,7 +175,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
 
         private void lblLoanAmt_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            if (!string.IsNullOrEmpty(lblLoanAmt.Text)  && !lblLoanAmt.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
+            if (!string.IsNullOrEmpty(lblLoanAmt.Text) && !lblLoanAmt.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
                 lblLoanAmt.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblLoanAmt.Text).ToString("N2", PlannerMainReport.Info);
             }
@@ -185,7 +189,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             }
         }
 
-        internal void SetReportParameter(Client client, Planner planner, DataTable dtGoals, int riskProfileId, int optionId, List<Goals> goals)
+        internal void SetReportParameter(Client client, Planner planner, DataTable dtGoals, int riskProfileId, int optionId, List<Goals> goals, DataTable dtGoalProjectionComplition)
         {
             this.lblClientName.Text = client.Name;
             this._dtGoals = dtGoals;
@@ -194,6 +198,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             this.optionId = optionId;
             this.client = client;
             this.goal = goals.Find(i => i.Name == _dtGoals.Rows[0]["Name"].ToString());
+            this._dtGoalProjectionComplition = dtGoalProjectionComplition;
             bindFields();
         }
 
@@ -233,11 +238,11 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             }
 
             RiskProfileInfo riskprofileInfo = new RiskProfileInfo();
-           
+
             RiskProfiledReturn riskProfiledReturn = riskprofileInfo.GetResikProfile(this.riskProfileId,
                     (int.Parse(this.goal.StartYear) - this.planner.StartDate.Year));
             double returnRate = double.Parse(riskProfiledReturn.AverageInvestemetReturn.ToString());
-           
+
             lblTaxReturn.Text = string.Format(lblTaxReturn.Text, returnRate.ToString(), this.planner.StartDate.Year.ToString());
             equityRation = double.Parse(riskProfiledReturn.EquityInvestementRatio.ToString());
             debtRatio = double.Parse(riskProfiledReturn.DebtInvestementRatio.ToString());
@@ -245,6 +250,44 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             setImageForGoal(goal);
             goalCalculation(goal);
             setChart();
+
+            setGoalProjectionComplitionNote();
+            IList<FinancialPlanner.Common.Model.PlanOptions.CurrentStatusToGoal> _currentStatusToGoal;
+            _currentStatusToGoal = new CurrentStatusInfo().GetCurrentStatusToGoal(this.optionId, this.planner.ID);
+            if (_currentStatusToGoal != null)
+            {
+                DataTable _dtGoalMapped = ListtoDataTable.ToDataTable(_currentStatusToGoal.ToList());
+                DataRow[] drs = _dtGoalMapped.Select("GoalId = '" + goal.Id + "'");
+                if (drs.Length > 0)
+                {
+                    lblCurrentSurplus.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(drs[0]["FundAllocation"].ToString()).ToString("N2", PlannerMainReport.Info);
+                }
+            }
+        }
+
+        private void setGoalProjectionComplitionNote()
+        {
+            DataRow[] drs = _dtGoalProjectionComplition.Select("Name ='" + goal.Name + "'");
+            if (drs.Length > 0)
+            {
+                if (drs[0]["ProjectionCompleted"] != DBNull.Value)
+                {
+                    double projectionCompltion = 0;
+                    double.TryParse(drs[0]["ProjectionCompleted"].ToString(), out projectionCompltion);
+                    if (projectionCompltion == 0)
+                    {
+                        lblGoalNote.Text = "Note: We are not able to complete this goal due to insufficient resources.";
+                    }
+                    else
+                    {
+                        lblGoalNote.Text = "";
+                    }
+                }
+            }
+            else
+            {
+                lblGoalNote.Text = "";
+            }
         }
 
         private void setChart()
@@ -277,7 +320,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
 
         private void lblEquity_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            lblEquity.Text = equityRation  + " %";
+            lblEquity.Text = equityRation + " %";
         }
 
         private void lblPresentValueSum_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)

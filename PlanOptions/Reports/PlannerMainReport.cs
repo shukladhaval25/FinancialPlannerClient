@@ -177,8 +177,9 @@ namespace FinancialPlannerClient.PlanOptions
                             //    ListtoDataTable.ToDataTable(
                             //goals.Where(x => x.Name.StartsWith(dtGroupByGoals.Rows[index]["Name"].ToString())).ToList());
                             goalsDescriptions[goalCountIndex] = new GoalsDescription();
+                            DataTable dtGoalProjectComplition = goalProjectionForComplition.GetGoalProjectionTable();
                             goalsDescriptions[goalCountIndex].SetReportParameter(this.client, planner, _dtGoals,
-                               this.riskprofileId, this.optionId, this.goals.ToList());
+                               this.riskprofileId, this.optionId, this.goals.ToList(),dtGoalProjectComplition);
                             goalsDescriptions[goalCountIndex].CreateDocument();
                             goalCountIndex++;
                         }
