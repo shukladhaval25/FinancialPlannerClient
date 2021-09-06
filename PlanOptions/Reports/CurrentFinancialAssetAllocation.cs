@@ -17,25 +17,27 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         const string BONDS = "Bonds";
         const string SS = "Sukanya Sum. Account";
         const string SHARES = "Shares";
-        public CurrentFinancialAssetAllocation(Client client, DataTable dataTable)
+        CurrentFinancialStatus currentFinancialStatus;
+        public CurrentFinancialAssetAllocation(Client client, DataTable dataTable, CurrentFinancialStatus currentFinancialStatus)
         {
             InitializeComponent();
             this.lblClientName.Text = client.Name;
             this.dtNetWorth = dataTable;
+            this.currentFinancialStatus = currentFinancialStatus;
             setReportData();
         }
 
         private void setReportData()
         {
-            int rowIndexForEquity = 1;
-            int rowIndexForDebt = 1;
-            double totalEquityValue = 0;
-            double totalDebtValue = 0;
-            for (int indexRow = 0; indexRow <= dtNetWorth.Rows.Count - 1; indexRow++)
-            {
-                setEquityData(ref rowIndexForEquity, ref totalEquityValue, indexRow);
-                setDebtData(ref rowIndexForDebt, ref totalDebtValue, indexRow);
-            }
+            //int rowIndexForEquity = 1;
+            //int rowIndexForDebt = 1;
+            double totalEquityValue = currentFinancialStatus.GetTotalEquityValue();
+            double totalDebtValue = currentFinancialStatus.GetTotalDebtValue();
+            //for (int indexRow = 0; indexRow <= dtNetWorth.Rows.Count - 1; indexRow++)
+            //{
+            //    setEquityData(ref rowIndexForEquity, ref totalEquityValue, indexRow);
+            //    setDebtData(ref rowIndexForDebt, ref totalDebtValue, indexRow);
+            //}
             
             xrChartCurrentStatus.Series[0].Points[0].Values = new double[] { totalEquityValue };
             xrChartCurrentStatus.Series[0].Points[1].Values = new double[] { totalDebtValue };

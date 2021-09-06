@@ -35,7 +35,7 @@ namespace FinancialPlannerClient.PlanOptions
             this.optionId = optionId;
             this.lblClientName.Text = this.client.Name;
             this.lblPreparedFor.Text = this.client.Name;
-            this.lblPreparedOn.Text = planner.StartDate.ToShortDateString();
+            this.lblPreparedOn.Text = planner.StartDate.ToString("dd-MMM-yyyy");
             this.recomendationNote = recomendation;
             fillGoals(planner);
         }
@@ -131,7 +131,7 @@ namespace FinancialPlannerClient.PlanOptions
                 riskProfilingAssetAllocation.CreateDocument();
 
                 CurrentFinancialAssetAllocation currentFinancialAssetAllocation =
-                    new CurrentFinancialAssetAllocation(this.client, netWorthStatement.GetNetWorth());
+                    new CurrentFinancialAssetAllocation(this.client, netWorthStatement.GetNetWorth(), currentFinancialStatus);
                 currentFinancialAssetAllocation.CreateDocument();
 
                 StrategicAssetsCollection strategicAssetsCollection = new StrategicAssetsCollection(this.client, this.riskprofileId);
@@ -227,9 +227,10 @@ namespace FinancialPlannerClient.PlanOptions
                 this.Pages.Add(surplusPeriod.Pages.First);
                 this.Pages.Add(spendingSavingRatioReport.Pages.First);
 
+                this.Pages.Add(toTotalAssetRatio.Pages.First);
                 this.Pages.Add(netWorthAnalysis.Pages.First);
                 this.Pages.Add(netWorthStatement.Pages.First);
-                this.Pages.Add(toTotalAssetRatio.Pages.First);
+               
                 this.Pages.Add(netWorthYearOnYear.Pages.First);
                 this.Pages.Add(currentFinancialStatus.Pages.First);
                 this.Pages.Add(riskProfiling.Pages.First);

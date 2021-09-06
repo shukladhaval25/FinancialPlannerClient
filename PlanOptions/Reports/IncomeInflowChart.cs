@@ -30,7 +30,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             IncomeInfo incomeInfo = new IncomeInfo();
             List<Income> lstIncome = (List<Income>)incomeInfo.GetAll(this.planner.ID);
             _dtIncome = ListtoDataTable.ToDataTable(lstIncome);
-            _dtIncome = _dtIncome.Select("StartYear ='" + DateTime.Now.Year.ToString() + "'").CopyToDataTable();
+            _dtIncome = _dtIncome.Select("StartYear <='" + DateTime.Now.Year.ToString() + "' and EndYear >='" + DateTime.Now.Year.ToString() + "'").CopyToDataTable();
             this.DataSource = _dtIncome;
             this.DataMember = _dtIncome.TableName;
             xrChart1.DataSource = this.DataSource;
@@ -38,14 +38,17 @@ namespace FinancialPlannerClient.PlanOptions.Reports
 
             xrChart1.Series[0].Points.Clear();
             xrChart1.Legend.CustomItems.Clear();
+            
             int index = 0;
             foreach (DataRow dr in _dtIncome.Rows)
             {
                 SeriesPoint seriesPoint = new SeriesPoint(dr["IncomeBy"].ToString(), new double[] { double.Parse(dr["Amount"].ToString())});
-                seriesPoint.Color = (index == 0) ? System.Drawing.Color.Blue : (index == 1) ? System.Drawing.Color.OrangeRed :
+
+                seriesPoint.Color = (index == 0) ? System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(64))))) : 
+                    (index == 1) ? System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(179)))), ((int)(((byte)(226))))) :
                     (index == 2) ? System.Drawing.Color.Green : (index == 3) ? System.Drawing.Color.Indigo :
                     (index == 4) ? System.Drawing.Color.LightSkyBlue : (index == 5) ? System.Drawing.Color.Magenta :
-                    (index == 6) ? System.Drawing.Color.MediumSlateBlue : System.Drawing.Color.Red ;
+                    (index == 6) ? System.Drawing.Color.MediumSlateBlue : System.Drawing.Color.Red;
                 xrChart1.Series[0].Points.Add(seriesPoint);
                 xrChart1.Legend.CustomItems.Insert(index, new CustomLegendItem(dr["IncomeBy"].ToString()));
                 xrChart1.Legend.CustomItems[index].MarkerColor = seriesPoint.Color; // xrChart1.Series[0].Points[index].Color;

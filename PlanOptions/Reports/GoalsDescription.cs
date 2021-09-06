@@ -149,7 +149,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         {
             if (!string.IsNullOrEmpty(lblPresentValue.Text))
             {
-                lblPresentValue.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblPresentValue.Text).ToString("N2", PlannerMainReport.Info);
+                lblPresentValue.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblPresentValue.Text).ToString("N0", PlannerMainReport.Info);
                 if (this.goal.Category.Equals("Vehicale", StringComparison.OrdinalIgnoreCase))
                 {
 
@@ -161,7 +161,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         {
             if (!string.IsNullOrEmpty(lblGoalFutureValue.Text))
             {
-                lblGoalFutureValue.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblGoalFutureValue.Text).ToString("N2", PlannerMainReport.Info);
+                lblGoalFutureValue.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblGoalFutureValue.Text).ToString("N0", PlannerMainReport.Info);
             }
         }
 
@@ -169,7 +169,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         {
             if (!string.IsNullOrEmpty(lblMappedAssets.Text))
             {
-                lblMappedAssets.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblMappedAssets.Text).ToString("N2", PlannerMainReport.Info);
+                lblMappedAssets.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblMappedAssets.Text).ToString("N0", PlannerMainReport.Info);
             }
         }
 
@@ -177,7 +177,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         {
             if (!string.IsNullOrEmpty(lblLoanAmt.Text) && !lblLoanAmt.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                lblLoanAmt.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblLoanAmt.Text).ToString("N2", PlannerMainReport.Info);
+                lblLoanAmt.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblLoanAmt.Text).ToString("N0", PlannerMainReport.Info);
             }
         }
 
@@ -185,7 +185,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         {
             if (!string.IsNullOrEmpty(lblCurrentSurplus.Text) && !lblCurrentSurplus.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                lblCurrentSurplus.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblCurrentSurplus.Text).ToString("N2", PlannerMainReport.Info);
+                lblCurrentSurplus.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblCurrentSurplus.Text).ToString("N0", PlannerMainReport.Info);
             }
         }
 
@@ -252,22 +252,59 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             setChart();
 
             setGoalProjectionComplitionNote();
-            IList<FinancialPlanner.Common.Model.PlanOptions.CurrentStatusToGoal> _currentStatusToGoal;
-            _currentStatusToGoal = new CurrentStatusInfo().GetCurrentStatusToGoal(this.optionId, this.planner.ID);
-            if (_currentStatusToGoal != null)
+            setCurrentStatusFundAllocationValue();
+            setFreshInvestmentInGoal();
+        }
+
+        private void setFreshInvestmentInGoal()
+        {
+            DataRow[] drs = _dtcashFlow.Select("StartYear ='" + this.planner.StartDate.Year + "'");
+            double value = 0;
+            double totalValue = 0;
+            if (drs.Count() > 0)
             {
-                DataTable _dtGoalMapped = ListtoDataTable.ToDataTable(_currentStatusToGoal.ToList());
-                DataRow[] drs = _dtGoalMapped.Select("GoalId = '" + goal.Id + "'");
-                if (drs.Length > 0)
+                for(int rowcount = 0; rowcount < _dtGoals.Rows.Count; rowcount++)
                 {
-                    lblCurrentSurplus.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(drs[0]["FundAllocation"].ToString()).ToString("N2", PlannerMainReport.Info);
+                    for(int colCount =0; colCount < _dtcashFlow.Columns.Count; colCount++)
+                    {
+                        if (_dtcashFlow.Columns[colCount].ToString().Contains(_dtGoals.Rows[rowcount]["Name"].ToString()))
+                        {
+                            double.TryParse(drs[0][colCount].ToString(), out value);
+                            totalValue = totalValue + value;
+                        }
+                    }
+                }
+            }
+            lblCurrentSurplus.Text = PlannerMainReport.planner.CurrencySymbol + totalValue.ToString("N0", PlannerMainReport.Info);
+        }
+
+        private void setCurrentStatusFundAllocationValue()
+        {
+            //IList<FinancialPlanner.Common.Model.PlanOptions.CurrentStatusToGoal> _currentStatusToGoal = new CurrentStatusInfo().GetCurrentStatusToGoal(this.optionId, this.planner.ID);
+            //if (_currentStatusToGoal != null)
+            //{
+            //    DataTable _dtGoalMapped = ListtoDataTable.ToDataTable(_currentStatusToGoal.ToList());
+            //    DataRow[] drs = _dtGoalMapped.Select("GoalName = '" + goal.Name + "'");
+            //    if (drs.Length > 0)
+            //    {
+            //        lblMappedAssets.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(drs[0]["FundAllocation"].ToString()).ToString("N0", PlannerMainReport.Info);
+            //    }
+            //}
+            string goalName = (goal.Name.Length > 4) ? goal.Name.Substring(0, goal.Name.Length - 4) : goal.Name;
+            DataRow[] drs = _dtGoalProjectionComplition.Select("Name like '" + goalName.Trim() + "%'");
+            if (drs.Length > 0)
+            {
+                if (drs[0]["GoalAchivedTillDate"] != DBNull.Value)
+                {
+                    lblMappedAssets.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(drs[0]["GoalAchivedTillDate"].ToString()).ToString("N0", PlannerMainReport.Info);
                 }
             }
         }
 
         private void setGoalProjectionComplitionNote()
         {
-            DataRow[] drs = _dtGoalProjectionComplition.Select("Name ='" + goal.Name + "'");
+            string goalName = (goal.Name.Length > 4) ? goal.Name.Substring(0, goal.Name.Length - 4) : goal.Name;
+            DataRow[] drs = _dtGoalProjectionComplition.Select("Name like '" + goalName.Trim() + "%'");
             if (drs.Length > 0)
             {
                 if (drs[0]["ProjectionCompleted"] != DBNull.Value)
@@ -276,17 +313,17 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                     double.TryParse(drs[0]["ProjectionCompleted"].ToString(), out projectionCompltion);
                     if (projectionCompltion == 0)
                     {
-                        lblGoalNote.Text = "Note: We are not able to complete this goal due to insufficient resources.";
+                        lblNote.Text = "Note: We are not able to complete this goal due to insufficient resources.";
                     }
-                    else
+                    else if (lblNote.Text.Length  == 0)
                     {
-                        lblGoalNote.Text = "";
+                        lblNote.Text = "";
                     }
                 }
             }
-            else
+            else if (lblNote.Text.Length == 0)
             {
-                lblGoalNote.Text = "";
+                lblNote.Text = "";
             }
         }
 
@@ -306,7 +343,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         {
             if (!string.IsNullOrEmpty(lblRetirementCorpusSum.Text) && !lblRetirementCorpusSum.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                lblRetirementCorpusSum.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblRetirementCorpusSum.Text).ToString("N2", PlannerMainReport.Info);
+                lblRetirementCorpusSum.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblRetirementCorpusSum.Text).ToString("N0", PlannerMainReport.Info);
             }
         }
 
@@ -314,7 +351,11 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         {
             if (!string.IsNullOrEmpty(lblRetirementCorpusValue.Text) && !lblRetirementCorpusValue.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                lblRetirementCorpusValue.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblRetirementCorpusValue.Text).ToString("N2", PlannerMainReport.Info);
+                lblRetirementCorpusValue.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblRetirementCorpusValue.Text).ToString("N0", PlannerMainReport.Info);
+            }
+            else if (!string.IsNullOrEmpty(lblRetirementCorpusValue.Text) && string.IsNullOrEmpty(PlannerMainReport.planner.CurrencySymbol))
+            {
+                lblRetirementCorpusValue.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblRetirementCorpusValue.Text).ToString("N0", PlannerMainReport.Info);
             }
         }
 
@@ -327,7 +368,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         {
             if (!string.IsNullOrEmpty(lblPresentValueSum.Text) && !lblPresentValueSum.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                lblPresentValueSum.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblPresentValueSum.Text).ToString("N2", PlannerMainReport.Info);
+                lblPresentValueSum.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblPresentValueSum.Text).ToString("N0", PlannerMainReport.Info);
             }
         }
 
@@ -335,7 +376,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         {
             if (!string.IsNullOrEmpty(lblGoalFutureValueSum.Text) && !lblGoalFutureValueSum.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                lblGoalFutureValueSum.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblGoalFutureValueSum.Text).ToString("N2", PlannerMainReport.Info);
+                lblGoalFutureValueSum.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblGoalFutureValueSum.Text).ToString("N0", PlannerMainReport.Info);
             }
         }
 

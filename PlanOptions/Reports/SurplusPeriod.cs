@@ -58,7 +58,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                         
                     }
                 }
-                lblTotalSurplusForGoals.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(totalCashFlowAllocation.ToString("N2", PlannerMainReport.Info)); 
+                lblTotalSurplusForGoals.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(totalCashFlowAllocation.ToString("N0", PlannerMainReport.Info)); 
                 lblTotalSurplusForGoals.ForeColor = Color.White;
             }
         }
@@ -66,7 +66,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         private void loadSurplusAndSetChart()
         {
             double val = (double.Parse(_dtcashFlow.Rows[0][SURPLUS_AMOUNT].ToString()));
-            lblTotalSurplus.Text = val.ToString("#,###");
+            lblTotalSurplus.Text = PlannerMainReport.planner.CurrencySymbol + val.ToString("N0", PlannerMainReport.Info);
             lblTotalSurplus.ForeColor = Color.White;
             xrChartSurplusForPeriod.Series[0].Points[2].Values = new double[] { val };
         }
@@ -95,7 +95,11 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         {
             if (!string.IsNullOrEmpty(lblCashFlowForGoal1.Text) && !lblCashFlowForGoal1.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                lblCashFlowForGoal1.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblCashFlowForGoal1.Text).ToString("N2", PlannerMainReport.Info);
+                lblCashFlowForGoal1.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblCashFlowForGoal1.Text).ToString("N0", PlannerMainReport.Info);
+            }
+            else if (!string.IsNullOrEmpty(lblCashFlowForGoal1.Text))
+            {
+                lblCashFlowForGoal1.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblCashFlowForGoal1.Text).ToString("N0", PlannerMainReport.Info);
             }
         }
 
@@ -103,7 +107,11 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         {
             if (!string.IsNullOrEmpty(lblCashFlowForGoal2.Text) && !lblCashFlowForGoal2.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                lblCashFlowForGoal2.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblCashFlowForGoal2.Text).ToString("N2", PlannerMainReport.Info);
+                lblCashFlowForGoal2.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblCashFlowForGoal2.Text).ToString("N0", PlannerMainReport.Info);
+            }
+            else if (!string.IsNullOrEmpty(lblCashFlowForGoal2.Text))
+            {
+                lblCashFlowForGoal2.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblCashFlowForGoal2.Text).ToString("N0", PlannerMainReport.Info);
             }
         }
 
@@ -111,7 +119,11 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         {
             if (!string.IsNullOrEmpty(lblCashFlowForGoal3.Text) && !lblCashFlowForGoal3.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                lblCashFlowForGoal3.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblCashFlowForGoal3.Text).ToString("N2", PlannerMainReport.Info);
+                lblCashFlowForGoal3.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblCashFlowForGoal3.Text).ToString("N0", PlannerMainReport.Info);
+            }
+            else if (!string.IsNullOrEmpty(lblCashFlowForGoal3.Text))
+            {
+                lblCashFlowForGoal3.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblCashFlowForGoal3.Text).ToString("N0", PlannerMainReport.Info);
             }
         }
 
@@ -119,7 +131,11 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         {
             if (!string.IsNullOrEmpty(lblCashFlowForGoal4.Text) && !lblCashFlowForGoal4.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                lblCashFlowForGoal4.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblCashFlowForGoal4.Text).ToString("N2", PlannerMainReport.Info);
+                lblCashFlowForGoal4.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblCashFlowForGoal4.Text).ToString("N0", PlannerMainReport.Info);
+            }
+            else if (!string.IsNullOrEmpty(lblCashFlowForGoal4.Text))
+            {
+                lblCashFlowForGoal4.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblCashFlowForGoal4.Text).ToString("N0", PlannerMainReport.Info);
             }
         }
 
@@ -127,23 +143,35 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         {
             if (!string.IsNullOrEmpty(lblCashFlowForGoal5.Text) && !lblCashFlowForGoal5.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                lblCashFlowForGoal5.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblCashFlowForGoal5.Text).ToString("N2", PlannerMainReport.Info);
+                lblCashFlowForGoal5.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblCashFlowForGoal5.Text).ToString("N0", PlannerMainReport.Info);
+            }
+            else if (!string.IsNullOrEmpty(lblCashFlowForGoal5.Text))
+            {
+                lblCashFlowForGoal5.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblCashFlowForGoal5.Text).ToString("N0", PlannerMainReport.Info);
             }
         }
 
         private void lblCashFlowForGoal6_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            //if (!string.IsNullOrEmpty(lblCashFlowForGoal3.Text))
-            //{
-            //    lblCashFlowForGoal6.Text = String.Format("{0:#,###}", double.Parse(lblCashFlowForGoal6.Text));
-            //}
+            if (!string.IsNullOrEmpty(lblCashFlowForGoal6.Text) && !lblCashFlowForGoal6.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
+            {
+                lblCashFlowForGoal6.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblCashFlowForGoal6.Text).ToString("N0", PlannerMainReport.Info);
+            }
+            else if (!string.IsNullOrEmpty(lblCashFlowForGoal6.Text))
+            {
+                lblCashFlowForGoal6.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblCashFlowForGoal6.Text).ToString("N0", PlannerMainReport.Info);
+            }
         }
 
         private void lblCashFlowForGoal7_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
             if (!string.IsNullOrEmpty(lblCashFlowForGoal7.Text) && !lblCashFlowForGoal7.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                lblCashFlowForGoal7.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblCashFlowForGoal7.Text).ToString("N2", PlannerMainReport.Info);
+                lblCashFlowForGoal7.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblCashFlowForGoal7.Text).ToString("N0", PlannerMainReport.Info);
+            }
+            else if (!string.IsNullOrEmpty(lblCashFlowForGoal7.Text))
+            {
+                lblCashFlowForGoal7.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblCashFlowForGoal7.Text).ToString("N0", PlannerMainReport.Info);
             }
         }
 
@@ -151,7 +179,11 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         {
             if (!string.IsNullOrEmpty(lblCashFlowForGoal8.Text) && !lblCashFlowForGoal8.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                lblCashFlowForGoal8.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblCashFlowForGoal8.Text).ToString("N2", PlannerMainReport.Info);
+                lblCashFlowForGoal8.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblCashFlowForGoal8.Text).ToString("N0", PlannerMainReport.Info);
+            }
+            else if (!string.IsNullOrEmpty(lblCashFlowForGoal8.Text))
+            {
+                lblCashFlowForGoal8.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblCashFlowForGoal8.Text).ToString("N0", PlannerMainReport.Info);
             }
         }
 
@@ -159,7 +191,11 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         {
             if (!string.IsNullOrEmpty(xrTableCell14.Text) && !xrTableCell14.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                xrTableCell14.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(xrTableCell14.Text).ToString("N2", PlannerMainReport.Info);
+                xrTableCell14.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(xrTableCell14.Text).ToString("N0", PlannerMainReport.Info);
+            }
+            else if (!string.IsNullOrEmpty(xrTableCell14.Text))
+            {
+                xrTableCell14.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(xrTableCell14.Text).ToString("N0", PlannerMainReport.Info);
             }
         }
 
@@ -167,7 +203,11 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         {
             if (!string.IsNullOrEmpty(xrTableCell18.Text) && !xrTableCell18.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                xrTableCell18.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(xrTableCell18.Text).ToString("N2", PlannerMainReport.Info);
+                xrTableCell18.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(xrTableCell18.Text).ToString("N0", PlannerMainReport.Info);
+            }
+            else if (!string.IsNullOrEmpty(xrTableCell18.Text))
+            {
+                xrTableCell18.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(xrTableCell18.Text).ToString("N0", PlannerMainReport.Info);
             }
         }
 
@@ -175,7 +215,11 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         {
             if (!string.IsNullOrEmpty(xrTableCell16.Text) && !xrTableCell16.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                xrTableCell16.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(xrTableCell16.Text).ToString("N2", PlannerMainReport.Info);
+                xrTableCell16.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(xrTableCell16.Text).ToString("N0", PlannerMainReport.Info);
+            }
+            else if (!string.IsNullOrEmpty(xrTableCell16.Text))
+            {
+                xrTableCell16.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(xrTableCell16.Text).ToString("N0", PlannerMainReport.Info);
             }
         }
 
@@ -183,7 +227,11 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         {
             if (!string.IsNullOrEmpty(xrTableCell9.Text) && !xrTableCell9.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                xrTableCell9.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(xrTableCell9.Text).ToString("N2", PlannerMainReport.Info);
+                xrTableCell9.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(xrTableCell9.Text).ToString("N0", PlannerMainReport.Info);
+            }
+            else if (!string.IsNullOrEmpty(xrTableCell9.Text))
+            {
+                xrTableCell9.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(xrTableCell9.Text).ToString("N0", PlannerMainReport.Info);
             }
         }
 
@@ -191,7 +239,11 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         {
             if (!string.IsNullOrEmpty(xrTableCell11.Text) && !xrTableCell11.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                xrTableCell11.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(xrTableCell11.Text).ToString("N2", PlannerMainReport.Info);
+                xrTableCell11.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(xrTableCell11.Text).ToString("N0", PlannerMainReport.Info);
+            }
+            else if (!string.IsNullOrEmpty(xrTableCell11.Text))
+            {
+                xrTableCell11.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(xrTableCell11.Text).ToString("N0", PlannerMainReport.Info);
             }
         }
 
@@ -199,7 +251,11 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         {
             if (!string.IsNullOrEmpty(lblTotalSurplusForGoals.Text) && !lblTotalSurplusForGoals.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                lblTotalSurplusForGoals.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblTotalSurplusForGoals.Text).ToString("N2", PlannerMainReport.Info);
+                lblTotalSurplusForGoals.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblTotalSurplusForGoals.Text).ToString("N0", PlannerMainReport.Info);
+            }
+            else if (!string.IsNullOrEmpty(lblTotalSurplusForGoals.Text))
+            {
+                lblTotalSurplusForGoals.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblTotalSurplusForGoals.Text).ToString("N0", PlannerMainReport.Info);
             }
         }
 
@@ -207,7 +263,11 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         {
             if (!string.IsNullOrEmpty(lblTotalIncome.Text) && !lblTotalIncome.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                lblTotalIncome.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblTotalIncome.Text).ToString("N2", PlannerMainReport.Info);
+                lblTotalIncome.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblTotalIncome.Text).ToString("N0", PlannerMainReport.Info);
+            }
+            else if (!string.IsNullOrEmpty(lblTotalIncome.Text))
+            {
+                lblTotalIncome.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblTotalIncome.Text).ToString("N0", PlannerMainReport.Info);
             }
         }
 
@@ -215,7 +275,11 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         {
             if (!string.IsNullOrEmpty(lblTotalExp.Text) && !lblTotalExp.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                lblTotalExp.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblTotalExp.Text).ToString("N2", PlannerMainReport.Info);
+                lblTotalExp.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblTotalExp.Text).ToString("N0", PlannerMainReport.Info);
+            }
+            else if (!string.IsNullOrEmpty(lblTotalExp.Text))
+            {
+                lblTotalExp.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblTotalExp.Text).ToString("N0", PlannerMainReport.Info);
             }
         }
 

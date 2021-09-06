@@ -259,7 +259,11 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         {
             if (!string.IsNullOrEmpty(lblGoalAchiveTillDate.Text) && !lblGoalAchiveTillDate.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                lblGoalAchiveTillDate.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblGoalAchiveTillDate.Text).ToString("N2", PlannerMainReport.Info);
+                lblGoalAchiveTillDate.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblGoalAchiveTillDate.Text).ToString("N0", PlannerMainReport.Info);
+            }
+            else if (!string.IsNullOrEmpty(lblGoalAchiveTillDate.Text))
+            {
+                lblGoalAchiveTillDate.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblGoalAchiveTillDate.Text).ToString("N0", PlannerMainReport.Info);
             }
         }
 

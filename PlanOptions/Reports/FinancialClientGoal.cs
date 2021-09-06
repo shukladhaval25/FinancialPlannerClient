@@ -70,8 +70,9 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                 this.lblRetirementInflation.Text = drs[0]["InflationRate"].ToString() + " %";
                
                 this.lblRetirementPriority.Text = drs[0]["Priority"].ToString();
-               
+
                 //this.lblFirstYearRetirementExp.Text = drs[0]["FutureValue"].ToString();
+                PostRetirementCashFlowService postRetirementCashFlowService;
                 CashFlowService cashFlowService = new CashFlowService();
                 cashFlowService.GenerateCashFlow(this.client.ID, this.planner.ID, this.riskProfileId);
                 Goals retirementGoal = lstGoal.FirstOrDefault(x => x.Category.Equals("Retirement"));
@@ -87,7 +88,12 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                 if (dtGoalValue.Rows.Count > 0)
                 {
                     this.lblFirstYearRetirementExp.Text = dtGoalValue.Rows[0]["FirstYearExpenseOnRetirementYear"].ToString();
-                    this.lblRetirementFutureCost.Text = dtGoalValue.Rows[0]["GoalValue"].ToString();
+
+                    postRetirementCashFlowService = new PostRetirementCashFlowService(planner, cashFlowService);
+                    postRetirementCashFlowService.GetPostRetirementCashFlowData();
+                    postRetirementCashFlowService.calculateEstimatedRequireCorpusFund();
+                    double totalEstimatedRetirementCorpusFund = Math.Round(postRetirementCashFlowService.GetProposeEstimatedCorpusFund(), 2);
+                    this.lblRetirementFutureCost.Text = totalEstimatedRetirementCorpusFund.ToString(); //dtGoalValue.Rows[0]["GoalValue"].ToString();
                     this.lblRetirementPresentCost.Text = dtGoalValue.Rows[0]["CurrentValue"].ToString();
                     lblTotalCorpusNeeded.Text = string.Format(lblTotalCorpusNeeded.Text, (int.Parse(retirementGoal.EndYear) - int.Parse(retirementGoal.StartYear)));
                     this.lblRetirementEndYear.Text = retirementGoal.EndYear;
@@ -257,9 +263,15 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                     {
                         double.TryParse(lblPresentCost.Text, out presentCost);
                     }
-                    xrGroupLabel.Text = string.Format("{0} {1} of {2}{3} each", occurance, lblName.Text, currencySymbol,
-                    ( presentCost / int.Parse(lblRecurrence.Text)).ToString("N2", PlannerMainReport.Info));
-
+                    if (lblGoalCategory.Text == "Vehicale")
+                    {
+                        xrGroupLabel.Text = string.Format("{0} {1} of {2}{3} each", occurance, lblName.Text, currencySymbol,
+                        (presentCost / int.Parse(lblRecurrence.Text)).ToString("N0", PlannerMainReport.Info));
+                    }
+                    else
+                    {
+                        xrGroupLabel.Text = string.Format("{0} {1} Per Annum For {2} years", currencySymbol, (presentCost / int.Parse(lblRecurrence.Text)).ToString("N0", PlannerMainReport.Info), lblRecurrence.Text);
+                    }
                     xrGroupLabel2.Text ="Total fund needed";
                    
                 }
@@ -289,7 +301,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         {
             if (!string.IsNullOrEmpty(lblFutureCost.Text))
             {
-                lblFutureCost.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblFutureCost.Text).ToString("N2", PlannerMainReport.Info);
+                lblFutureCost.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblFutureCost.Text).ToString("N0", PlannerMainReport.Info);
             }
         }
 
@@ -297,7 +309,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         {
             if (!string.IsNullOrEmpty(lblPresentCost.Text))
             {
-                lblPresentCost.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblPresentCost.Text).ToString("N2", PlannerMainReport.Info);
+                lblPresentCost.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblPresentCost.Text).ToString("N0", PlannerMainReport.Info);
             }
         }
 
@@ -310,21 +322,21 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         {
             double retirementPresentCost = 0;
             double.TryParse(lblRetirementPresentCost.Text, out retirementPresentCost);
-            lblRetirementPresentCost.Text = PlannerMainReport.planner.CurrencySymbol + retirementPresentCost.ToString("N2", PlannerMainReport.Info);
+            lblRetirementPresentCost.Text = PlannerMainReport.planner.CurrencySymbol + retirementPresentCost.ToString("N0", PlannerMainReport.Info);
         }
 
         private void lblRetirementFutureCost_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
             double retirementFutureCost = 0;
             double.TryParse(lblRetirementFutureCost.Text, out retirementFutureCost);
-            lblRetirementFutureCost.Text = PlannerMainReport.planner.CurrencySymbol + retirementFutureCost.ToString("N2", PlannerMainReport.Info);
+            lblRetirementFutureCost.Text = PlannerMainReport.planner.CurrencySymbol + retirementFutureCost.ToString("N0", PlannerMainReport.Info);
         }
 
         private void lblFirstYearRetirementExp_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
             double firstYearRetirement = 0;
             double.TryParse(lblFirstYearRetirementExp.Text, out firstYearRetirement);
-            lblFirstYearRetirementExp.Text = PlannerMainReport.planner.CurrencySymbol + firstYearRetirement.ToString("N2", PlannerMainReport.Info);
+            lblFirstYearRetirementExp.Text = PlannerMainReport.planner.CurrencySymbol + firstYearRetirement.ToString("N0", PlannerMainReport.Info);
         }
     }
 }

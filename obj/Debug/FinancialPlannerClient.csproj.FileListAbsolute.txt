@@ -588,3 +588,4 @@ C:\Application Softwares\FinancialPlannerClient\bin\Debug\FinancialPlannerServer
 C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.Reports.Recomendation.resources
 C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.FinancialPlannerSendEmailConfiguration.resources
 C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.Reports.SpendingSavingRatioReport.resources
+C:\Application Softwares\FinancialPlannerClient\bin\Debug\Newtonsoft.Json.xml

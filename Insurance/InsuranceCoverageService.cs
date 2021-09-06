@@ -22,7 +22,7 @@ namespace FinancialPlannerClient.Insurance
         double totalLoanAmountDue = 0;
         private double proposeEstimatedInsuranceRequire = 0;
         private double insuranceReturnRate = 0;
-        const decimal npvReturnRate = 8;
+        const decimal npvReturnRate = 7;
         Client client;
         Planner planner;
         PlannerAssumption plannerAssumption;
@@ -404,7 +404,7 @@ namespace FinancialPlannerClient.Insurance
                         DataColumn dcExp = new DataColumn(goal.Name, Type.GetType("System.Double"));
                         dtInsurance.Columns.Add(dcExp);
                         DataRow dr = dtInsurance.Rows[rowIndex];
-                        dr[goal.Name] = futureValue(goal.Amount, (decimal)goal.InflationRate, int.Parse(goal.StartYear) - currentYear);
+                        dr[goal.Name] = goal.Amount; //futureValue(goal.Amount, (decimal)goal.InflationRate, int.Parse(goal.StartYear) - currentYear);
                     }
                 }
             }

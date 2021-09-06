@@ -35,10 +35,11 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             foreach (DataRow dr in _dtExpenses.Rows)
             {
                 SeriesPoint seriesPoint = new SeriesPoint(dr["Item"].ToString(), new double[] { double.Parse(dr["Amount"].ToString()) });
-                seriesPoint.Color = (index == 0) ? System.Drawing.Color.Blue : (index == 1) ? System.Drawing.Color.OrangeRed :
-                    (index == 2) ? System.Drawing.Color.Green : (index == 3) ? System.Drawing.Color.Indigo :
-                    (index == 4) ? System.Drawing.Color.LightSkyBlue : (index == 5) ? System.Drawing.Color.Magenta :
-                    (index == 6) ? System.Drawing.Color.MediumSlateBlue : System.Drawing.Color.Red;
+                seriesPoint.Color = (index == 0) ? System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(64))))) :
+                   (index == 1) ? System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(179)))), ((int)(((byte)(226))))) :
+                   (index == 2) ? System.Drawing.Color.Green : (index == 3) ? System.Drawing.Color.Indigo :
+                   (index == 4) ? System.Drawing.Color.LightSkyBlue : (index == 5) ? System.Drawing.Color.Magenta :
+                   (index == 6) ? System.Drawing.Color.MediumSlateBlue : System.Drawing.Color.Red;
                 xrChart1.Series[0].Points.Add(seriesPoint);
                 xrChart1.Legend.CustomItems.Insert(index, new CustomLegendItem(dr["Item"].ToString()));
                 xrChart1.Legend.CustomItems[index].MarkerColor = seriesPoint.Color;

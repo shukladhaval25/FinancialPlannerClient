@@ -83,7 +83,11 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         {
             if (!string.IsNullOrEmpty(lblNetWorth.Text) && !lblNetWorth.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
             {
-                lblNetWorth.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblNetWorth.Text).ToString("N2", PlannerMainReport.Info);
+                lblNetWorth.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblNetWorth.Text).ToString("N0", PlannerMainReport.Info);
+            }
+            else if (!string.IsNullOrEmpty(lblNetWorth.Text) && string.IsNullOrEmpty((PlannerMainReport.planner.CurrencySymbol)))
+            {
+                lblNetWorth.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblNetWorth.Text).ToString("N0", PlannerMainReport.Info);
             }
         }
     }
