@@ -1314,7 +1314,7 @@ namespace FinancialPlannerClient.Home
 
         private void navBarItemMOM_LinkClicked(object sender, NavBarLinkEventArgs e)
         {
-            MOM mon = new MOM();
+            MOMControl mon = new MOMControl();
             //mon.TopLevel = false;
             mon.Visible = true;
             homeNavigationPage1.Name = mon.Name;

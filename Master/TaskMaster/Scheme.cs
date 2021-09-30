@@ -240,5 +240,33 @@ namespace FinancialPlannerClient.Master.TaskMaster
                 }
             }            
         }
+
+        private void txtName_Leave(object sender, EventArgs e)
+        {
+            if (txtName.Tag.ToString() == "0")
+            {
+                if (!validateSchemeNameWithINRNo())
+                {
+                    MessageBox.Show("Either similar name scheme or ISN number already exist. Please validate that.");
+                    txtName.Focus();
+                }
+            }
+        }
+
+        private bool validateSchemeNameWithINRNo()
+        {
+            string InrNo = "";
+            if (txtName.Text.Contains("("))
+            {
+                InrNo = txtName.Text.Substring(txtName.Text.LastIndexOf("(") + 1);
+            }
+            else
+            {
+                InrNo = txtName.Text;
+            }
+
+            int rowCount = dtScheme.Select("Name like '%" + InrNo + "%'").Count();
+            return rowCount == 0 ? true : false;
+        }
     }
 }

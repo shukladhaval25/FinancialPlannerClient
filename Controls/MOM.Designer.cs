@@ -1,6 +1,6 @@
 ﻿namespace FinancialPlannerClient.Controls
 {
-    partial class MOM
+    partial class MOMControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MOM));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MOMControl));
             this.grpMOM = new DevExpress.XtraEditors.GroupControl();
             this.gridControlMOM = new DevExpress.XtraGrid.GridControl();
             this.gridViewMOM = new DevExpress.XtraGrid.Views.Grid.GridView();

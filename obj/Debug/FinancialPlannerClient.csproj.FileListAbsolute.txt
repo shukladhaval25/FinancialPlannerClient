@@ -459,7 +459,6 @@ C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient
 C:\Application Softwares\FinancialPlannerClient\obj\Debug\DXApplication1.NewTask.resources
 C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.Clients.LoanSchedule.resources
 C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.Clients.MailService.MailManagerDeskBoard.resources
-C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.Controls.MOM.resources
 C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.Controls.ProcessContoller.resources
 C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.Controls.SingleProcess.resources
 C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.CurrentStatus.ClientCurrentStatusList.resources
@@ -589,3 +588,6 @@ C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient
 C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.FinancialPlannerSendEmailConfiguration.resources
 C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.Reports.SpendingSavingRatioReport.resources
 C:\Application Softwares\FinancialPlannerClient\bin\Debug\Newtonsoft.Json.xml
+C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.MOM.frmMOM.resources
+C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.Controls.MOMControl.resources
+C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlannerInfo.FeesInvoiceView.resources

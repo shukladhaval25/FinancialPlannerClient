@@ -45,10 +45,10 @@
             DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem5 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem6 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.SuperToolTip superToolTip6 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem7 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem6 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem6 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem7 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.SuperToolTip superToolTip7 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem8 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem7 = new DevExpress.Utils.ToolTipItem();
@@ -61,6 +61,9 @@
             DevExpress.Utils.SuperToolTip superToolTip10 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem11 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem10 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip11 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem12 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem11 = new DevExpress.Utils.ToolTipItem();
             this.panelMenu = new DevExpress.XtraEditors.PanelControl();
             this.lblClientID = new DevExpress.XtraEditors.LabelControl();
             this.pnlNavCtrl = new DevExpress.XtraEditors.PanelControl();
@@ -88,6 +91,9 @@
             this.navBarItemInsurance = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItemInvRecomm = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItemNetWorth = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarGroupOthers = new DevExpress.XtraNavBar.NavBarGroup();
+            this.navBarItemMOM = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarItemFeesInvoice = new DevExpress.XtraNavBar.NavBarItem();
             this.btnViewPlann = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.cmbPlanner = new DevExpress.XtraEditors.ComboBoxEdit();
@@ -385,7 +391,8 @@
             this.navBarControlPlanner.ActiveGroup = this.navBarGroupPlannerData;
             this.navBarControlPlanner.Groups.AddRange(new DevExpress.XtraNavBar.NavBarGroup[] {
             this.navBarGroupPlannerData,
-            this.navBarGroupPlanOption});
+            this.navBarGroupPlanOption,
+            this.navBarGroupOthers});
             this.navBarControlPlanner.Items.AddRange(new DevExpress.XtraNavBar.NavBarItem[] {
             this.navBarItemAssumptions,
             this.navBarItemGoals,
@@ -398,7 +405,9 @@
             this.navBarItemRiskProfile,
             this.navBarItemInsurance,
             this.navBarItemInvRecomm,
-            this.navBarItemNetWorth});
+            this.navBarItemNetWorth,
+            this.navBarItemMOM,
+            this.navBarItemFeesInvoice});
             this.navBarControlPlanner.Location = new System.Drawing.Point(-1, 78);
             this.navBarControlPlanner.Name = "navBarControlPlanner";
             this.navBarControlPlanner.OptionsNavPane.ExpandedWidth = 157;
@@ -409,7 +418,6 @@
             // navBarGroupPlannerData
             // 
             this.navBarGroupPlannerData.Caption = "Planner Data";
-            this.navBarGroupPlannerData.Expanded = true;
             this.navBarGroupPlannerData.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemAssumptions),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemGoals),
@@ -464,7 +472,6 @@
             // navBarGroupPlanOption
             // 
             this.navBarGroupPlanOption.Caption = "Plan Option";
-            this.navBarGroupPlanOption.Expanded = true;
             this.navBarGroupPlanOption.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemRiskProfile),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemEstimatedPlan),
@@ -519,21 +526,53 @@
             this.navBarItemNetWorth.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarItemNetWorth.SmallImage")));
             this.navBarItemNetWorth.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItemNetWorth_LinkClicked);
             // 
+            // navBarGroupOthers
+            // 
+            this.navBarGroupOthers.Caption = "Others";
+            this.navBarGroupOthers.Expanded = true;
+            this.navBarGroupOthers.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemMOM),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemFeesInvoice)});
+            this.navBarGroupOthers.Name = "navBarGroupOthers";
+            // 
+            // navBarItemMOM
+            // 
+            this.navBarItemMOM.Caption = "MOM";
+            this.navBarItemMOM.Name = "navBarItemMOM";
+            this.navBarItemMOM.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarItemMOM.SmallImage")));
+            this.navBarItemMOM.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItemMOM_LinkClicked);
+            // 
+            // navBarItemFeesInvoice
+            // 
+            this.navBarItemFeesInvoice.Caption = "Fees Invoice";
+            this.navBarItemFeesInvoice.Name = "navBarItemFeesInvoice";
+            this.navBarItemFeesInvoice.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarItemFeesInvoice.SmallImage")));
+            toolTipTitleItem2.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
+            toolTipTitleItem2.Appearance.Options.UseImage = true;
+            toolTipTitleItem2.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem2.Image")));
+            toolTipTitleItem2.Text = "Fees Invoice";
+            toolTipItem2.LeftIndent = 6;
+            toolTipItem2.Text = "To view fees invoie information click here.";
+            superToolTip2.Items.Add(toolTipTitleItem2);
+            superToolTip2.Items.Add(toolTipItem2);
+            this.navBarItemFeesInvoice.SuperTip = superToolTip2;
+            this.navBarItemFeesInvoice.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItemFeesInvoice_LinkClicked);
+            // 
             // btnViewPlann
             // 
             this.btnViewPlann.Image = ((System.Drawing.Image)(resources.GetObject("btnViewPlann.Image")));
             this.btnViewPlann.Location = new System.Drawing.Point(57, 50);
             this.btnViewPlann.Name = "btnViewPlann";
             this.btnViewPlann.Size = new System.Drawing.Size(95, 23);
-            toolTipTitleItem2.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
-            toolTipTitleItem2.Appearance.Options.UseImage = true;
-            toolTipTitleItem2.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem2.Image")));
-            toolTipTitleItem2.Text = "Planner Details";
-            toolTipItem2.LeftIndent = 6;
-            toolTipItem2.Text = "To view more details about planner information click here.";
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            superToolTip2.Items.Add(toolTipItem2);
-            this.btnViewPlann.SuperTip = superToolTip2;
+            toolTipTitleItem3.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
+            toolTipTitleItem3.Appearance.Options.UseImage = true;
+            toolTipTitleItem3.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem3.Image")));
+            toolTipTitleItem3.Text = "Planner Details";
+            toolTipItem3.LeftIndent = 6;
+            toolTipItem3.Text = "To view more details about planner information click here.";
+            superToolTip3.Items.Add(toolTipTitleItem3);
+            superToolTip3.Items.Add(toolTipItem3);
+            this.btnViewPlann.SuperTip = superToolTip3;
             this.btnViewPlann.TabIndex = 2;
             this.btnViewPlann.Text = "More Details";
             this.btnViewPlann.Click += new System.EventHandler(this.btnViewPlann_Click);
@@ -606,12 +645,12 @@
             this.navBarQuarterlyReviewFormat.Caption = "Quaterly Review";
             this.navBarQuarterlyReviewFormat.Name = "navBarQuarterlyReviewFormat";
             this.navBarQuarterlyReviewFormat.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarQuarterlyReviewFormat.SmallImage")));
-            toolTipTitleItem3.Text = "Quaterly Reivew Format";
-            toolTipItem3.LeftIndent = 6;
-            toolTipItem3.Text = "To send quaterly review select require options to send details.";
-            superToolTip3.Items.Add(toolTipTitleItem3);
-            superToolTip3.Items.Add(toolTipItem3);
-            this.navBarQuarterlyReviewFormat.SuperTip = superToolTip3;
+            toolTipTitleItem4.Text = "Quaterly Reivew Format";
+            toolTipItem4.LeftIndent = 6;
+            toolTipItem4.Text = "To send quaterly review select require options to send details.";
+            superToolTip4.Items.Add(toolTipTitleItem4);
+            superToolTip4.Items.Add(toolTipItem4);
+            this.navBarQuarterlyReviewFormat.SuperTip = superToolTip4;
             this.navBarQuarterlyReviewFormat.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarQuarterlyReviewFormat_LinkClicked);
             // 
             // grpClient
@@ -635,15 +674,15 @@
             this.btnShowDashborad.Location = new System.Drawing.Point(130, 101);
             this.btnShowDashborad.Name = "btnShowDashborad";
             this.btnShowDashborad.Size = new System.Drawing.Size(31, 23);
-            toolTipTitleItem4.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
-            toolTipTitleItem4.Appearance.Options.UseImage = true;
-            toolTipTitleItem4.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem4.Image")));
-            toolTipTitleItem4.Text = "Client Dashborad";
-            toolTipItem4.LeftIndent = 6;
-            toolTipItem4.Text = "To view client dashboard information click here.";
-            superToolTip4.Items.Add(toolTipTitleItem4);
-            superToolTip4.Items.Add(toolTipItem4);
-            this.btnShowDashborad.SuperTip = superToolTip4;
+            toolTipTitleItem5.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image3")));
+            toolTipTitleItem5.Appearance.Options.UseImage = true;
+            toolTipTitleItem5.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem5.Image")));
+            toolTipTitleItem5.Text = "Client Dashborad";
+            toolTipItem5.LeftIndent = 6;
+            toolTipItem5.Text = "To view client dashboard information click here.";
+            superToolTip5.Items.Add(toolTipTitleItem5);
+            superToolTip5.Items.Add(toolTipItem5);
+            this.btnShowDashborad.SuperTip = superToolTip5;
             this.btnShowDashborad.TabIndex = 3;
             this.btnShowDashborad.Click += new System.EventHandler(this.btnShowDashborad_Click);
             // 
@@ -653,15 +692,15 @@
             this.btnViewClientInfo.Location = new System.Drawing.Point(3, 101);
             this.btnViewClientInfo.Name = "btnViewClientInfo";
             this.btnViewClientInfo.Size = new System.Drawing.Size(88, 23);
-            toolTipTitleItem5.Text = "View Details";
-            toolTipItem5.LeftIndent = 6;
-            toolTipItem5.Text = "To view detail information about client click here.";
-            toolTipTitleItem6.LeftIndent = 6;
-            toolTipTitleItem6.Text = "Client Detail information";
-            superToolTip5.Items.Add(toolTipTitleItem5);
-            superToolTip5.Items.Add(toolTipItem5);
-            superToolTip5.Items.Add(toolTipTitleItem6);
-            this.btnViewClientInfo.SuperTip = superToolTip5;
+            toolTipTitleItem6.Text = "View Details";
+            toolTipItem6.LeftIndent = 6;
+            toolTipItem6.Text = "To view detail information about client click here.";
+            toolTipTitleItem7.LeftIndent = 6;
+            toolTipTitleItem7.Text = "Client Detail information";
+            superToolTip6.Items.Add(toolTipTitleItem6);
+            superToolTip6.Items.Add(toolTipItem6);
+            superToolTip6.Items.Add(toolTipTitleItem7);
+            this.btnViewClientInfo.SuperTip = superToolTip6;
             this.btnViewClientInfo.TabIndex = 2;
             this.btnViewClientInfo.Text = "View Details";
             this.btnViewClientInfo.Click += new System.EventHandler(this.btnViewClientInfo_Click);
@@ -972,12 +1011,12 @@
             this.navigationPageEmployee.Controls.Add(this.lblEmployeeTitle);
             this.navigationPageEmployee.Name = "navigationPageEmployee";
             this.navigationPageEmployee.Size = new System.Drawing.Size(1004, 599);
-            toolTipTitleItem7.Text = "Employee Infomation";
-            toolTipItem6.LeftIndent = 6;
-            toolTipItem6.Text = "View client employee information.";
-            superToolTip6.Items.Add(toolTipTitleItem7);
-            superToolTip6.Items.Add(toolTipItem6);
-            this.navigationPageEmployee.SuperTip = superToolTip6;
+            toolTipTitleItem8.Text = "Employee Infomation";
+            toolTipItem7.LeftIndent = 6;
+            toolTipItem7.Text = "View client employee information.";
+            superToolTip7.Items.Add(toolTipTitleItem8);
+            superToolTip7.Items.Add(toolTipItem7);
+            this.navigationPageEmployee.SuperTip = superToolTip7;
             this.navigationPageEmployee.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.navigationPageClient_ControlRemoved);
             // 
             // lblEmployeeTitle
@@ -1039,15 +1078,15 @@
             this.btnCloseClientInfo.Location = new System.Drawing.Point(764, 520);
             this.btnCloseClientInfo.Name = "btnCloseClientInfo";
             this.btnCloseClientInfo.Size = new System.Drawing.Size(62, 23);
-            toolTipTitleItem8.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image3")));
-            toolTipTitleItem8.Appearance.Options.UseImage = true;
-            toolTipTitleItem8.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem8.Image")));
-            toolTipTitleItem8.Text = "Cancel";
-            toolTipItem7.LeftIndent = 6;
-            toolTipItem7.Text = "To close client information without saving any information click here.";
-            superToolTip7.Items.Add(toolTipTitleItem8);
-            superToolTip7.Items.Add(toolTipItem7);
-            this.btnCloseClientInfo.SuperTip = superToolTip7;
+            toolTipTitleItem9.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image4")));
+            toolTipTitleItem9.Appearance.Options.UseImage = true;
+            toolTipTitleItem9.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem9.Image")));
+            toolTipTitleItem9.Text = "Cancel";
+            toolTipItem8.LeftIndent = 6;
+            toolTipItem8.Text = "To close client information without saving any information click here.";
+            superToolTip8.Items.Add(toolTipTitleItem9);
+            superToolTip8.Items.Add(toolTipItem8);
+            this.btnCloseClientInfo.SuperTip = superToolTip8;
             this.btnCloseClientInfo.TabIndex = 22;
             this.btnCloseClientInfo.Text = "Close";
             this.btnCloseClientInfo.Click += new System.EventHandler(this.btnCloseClientInfo_Click);
@@ -1059,15 +1098,15 @@
             this.btnSaveClient.Location = new System.Drawing.Point(701, 520);
             this.btnSaveClient.Name = "btnSaveClient";
             this.btnSaveClient.Size = new System.Drawing.Size(57, 23);
-            toolTipTitleItem9.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image4")));
-            toolTipTitleItem9.Appearance.Options.UseImage = true;
-            toolTipTitleItem9.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem9.Image")));
-            toolTipTitleItem9.Text = "Save";
-            toolTipItem8.LeftIndent = 6;
-            toolTipItem8.Text = "To save client infroamtion click here.";
-            superToolTip8.Items.Add(toolTipTitleItem9);
-            superToolTip8.Items.Add(toolTipItem8);
-            this.btnSaveClient.SuperTip = superToolTip8;
+            toolTipTitleItem10.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image5")));
+            toolTipTitleItem10.Appearance.Options.UseImage = true;
+            toolTipTitleItem10.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem10.Image")));
+            toolTipTitleItem10.Text = "Save";
+            toolTipItem9.LeftIndent = 6;
+            toolTipItem9.Text = "To save client infroamtion click here.";
+            superToolTip9.Items.Add(toolTipTitleItem10);
+            superToolTip9.Items.Add(toolTipItem9);
+            this.btnSaveClient.SuperTip = superToolTip9;
             this.btnSaveClient.TabIndex = 21;
             this.btnSaveClient.Text = "Save";
             this.btnSaveClient.Click += new System.EventHandler(this.btnSaveClient_Click);
@@ -1078,15 +1117,15 @@
             this.btnChangeImage.Location = new System.Drawing.Point(78, 158);
             this.btnChangeImage.Name = "btnChangeImage";
             this.btnChangeImage.Size = new System.Drawing.Size(83, 21);
-            toolTipTitleItem10.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image5")));
-            toolTipTitleItem10.Appearance.Options.UseImage = true;
-            toolTipTitleItem10.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem10.Image")));
-            toolTipTitleItem10.Text = "Change Image";
-            toolTipItem9.LeftIndent = 6;
-            toolTipItem9.Text = "To change client image click here.";
-            superToolTip9.Items.Add(toolTipTitleItem10);
-            superToolTip9.Items.Add(toolTipItem9);
-            this.btnChangeImage.SuperTip = superToolTip9;
+            toolTipTitleItem11.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image6")));
+            toolTipTitleItem11.Appearance.Options.UseImage = true;
+            toolTipTitleItem11.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem11.Image")));
+            toolTipTitleItem11.Text = "Change Image";
+            toolTipItem10.LeftIndent = 6;
+            toolTipItem10.Text = "To change client image click here.";
+            superToolTip10.Items.Add(toolTipTitleItem11);
+            superToolTip10.Items.Add(toolTipItem10);
+            this.btnChangeImage.SuperTip = superToolTip10;
             this.btnChangeImage.TabIndex = 19;
             this.btnChangeImage.Text = "Change";
             this.btnChangeImage.Click += new System.EventHandler(this.btnChangeImage_Click);
@@ -1111,15 +1150,15 @@
             this.btnViewBankInfo.Location = new System.Drawing.Point(798, 5);
             this.btnViewBankInfo.Name = "btnViewBankInfo";
             this.btnViewBankInfo.Size = new System.Drawing.Size(20, 14);
-            toolTipTitleItem11.Appearance.Image = global::FinancialPlannerClient.Properties.Resources.icons8_museum_16;
-            toolTipTitleItem11.Appearance.Options.UseImage = true;
-            toolTipTitleItem11.Image = global::FinancialPlannerClient.Properties.Resources.icons8_museum_16;
-            toolTipTitleItem11.Text = "Bank Details";
-            toolTipItem10.LeftIndent = 6;
-            toolTipItem10.Text = "To view bank details click here.";
-            superToolTip10.Items.Add(toolTipTitleItem11);
-            superToolTip10.Items.Add(toolTipItem10);
-            this.btnViewBankInfo.SuperTip = superToolTip10;
+            toolTipTitleItem12.Appearance.Image = global::FinancialPlannerClient.Properties.Resources.icons8_museum_16;
+            toolTipTitleItem12.Appearance.Options.UseImage = true;
+            toolTipTitleItem12.Image = global::FinancialPlannerClient.Properties.Resources.icons8_museum_16;
+            toolTipTitleItem12.Text = "Bank Details";
+            toolTipItem11.LeftIndent = 6;
+            toolTipItem11.Text = "To view bank details click here.";
+            superToolTip11.Items.Add(toolTipTitleItem12);
+            superToolTip11.Items.Add(toolTipItem11);
+            this.btnViewBankInfo.SuperTip = superToolTip11;
             this.btnViewBankInfo.TabIndex = 1;
             this.btnViewBankInfo.Text = "View Details";
             // 
@@ -1674,5 +1713,8 @@
         private DevExpress.XtraNavBar.NavBarItem navBarQuarterlyReviewFormat;
         private DevExpress.XtraNavBar.NavBarItem navBarItemNetWorth;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraNavBar.NavBarGroup navBarGroupOthers;
+        private DevExpress.XtraNavBar.NavBarItem navBarItemMOM;
+        private DevExpress.XtraNavBar.NavBarItem navBarItemFeesInvoice;
     }
 }

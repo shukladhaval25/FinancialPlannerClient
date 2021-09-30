@@ -13,12 +13,12 @@ using FinancialPlanner.Common.Model;
 
 namespace FinancialPlannerClient.Controls
 {
-    public partial class MOM : DevExpress.XtraEditors.XtraUserControl
+    public partial class MOMControl : DevExpress.XtraEditors.XtraUserControl
     {
         IList<Client> clients;
         DataTable dtMon = new DataTable();
         
-        public MOM()
+        public MOMControl()
         {
             InitializeComponent();
         }

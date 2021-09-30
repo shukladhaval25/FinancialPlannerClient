@@ -133,7 +133,7 @@
             this.xrTable1.BorderWidth = 1F;
             this.xrTable1.Dpi = 100F;
             this.xrTable1.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xrTable1.LocationFloat = new DevExpress.Utils.PointFloat(6.500117F, 37.5F);
+            this.xrTable1.LocationFloat = new DevExpress.Utils.PointFloat(6.500109F, 37.5F);
             this.xrTable1.Name = "xrTable1";
             this.xrTable1.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.xrTableRow1});
@@ -170,7 +170,7 @@
             this.lblName.Name = "lblName";
             this.lblName.StylePriority.UseBorders = false;
             this.lblName.StylePriority.UseBorderWidth = false;
-            this.lblName.Weight = 1.6355600103309236D;
+            this.lblName.Weight = 1.6315353351781299D;
             // 
             // lblStartYear
             // 
@@ -180,7 +180,7 @@
             this.lblStartYear.StylePriority.UseBorderWidth = false;
             this.lblStartYear.StylePriority.UseTextAlignment = false;
             this.lblStartYear.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
-            this.lblStartYear.Weight = 0.59030038937482676D;
+            this.lblStartYear.Weight = 0.59432506452762035D;
             // 
             // lblEndYear
             // 
@@ -215,7 +215,7 @@
             this.lblInflation.Name = "lblInflation";
             this.lblInflation.StylePriority.UseTextAlignment = false;
             this.lblInflation.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
-            this.lblInflation.Weight = 0.76852882947355061D;
+            this.lblInflation.Weight = 0.764503785777636D;
             this.lblInflation.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.lblInflation_BeforePrint);
             this.lblInflation.AfterPrint += new System.EventHandler(this.lblInflation_AfterPrint);
             // 
@@ -226,7 +226,7 @@
             this.lblFutureCost.Name = "lblFutureCost";
             this.lblFutureCost.StylePriority.UseTextAlignment = false;
             this.lblFutureCost.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
-            this.lblFutureCost.Weight = 1.0103962782086122D;
+            this.lblFutureCost.Weight = 1.0144213219045268D;
             this.lblFutureCost.XlsxFormatString = "#,##";
             this.lblFutureCost.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.lblFutureCost_BeforePrint);
             // 
@@ -258,7 +258,7 @@
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrGroupTable.BorderWidth = 0.8F;
             this.xrGroupTable.Dpi = 100F;
-            this.xrGroupTable.LocationFloat = new DevExpress.Utils.PointFloat(7.000033F, 0F);
+            this.xrGroupTable.LocationFloat = new DevExpress.Utils.PointFloat(6.500109F, 0F);
             this.xrGroupTable.Name = "xrGroupTable";
             this.xrGroupTable.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.xrTableRow3});
@@ -641,7 +641,7 @@
             this.xrLabel2.Dpi = 100F;
             this.xrLabel2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrLabel2.ForeColor = System.Drawing.Color.Black;
-            this.xrLabel2.LocationFloat = new DevExpress.Utils.PointFloat(7.000017F, 28.16664F);
+            this.xrLabel2.LocationFloat = new DevExpress.Utils.PointFloat(6.500109F, 28.16664F);
             this.xrLabel2.Name = "xrLabel2";
             this.xrLabel2.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel2.SizeF = new System.Drawing.SizeF(425.1949F, 23F);
@@ -661,7 +661,7 @@
             this.xrRetirementTable.BorderWidth = 1F;
             this.xrRetirementTable.Dpi = 100F;
             this.xrRetirementTable.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xrRetirementTable.LocationFloat = new DevExpress.Utils.PointFloat(7.000031F, 2.166621F);
+            this.xrRetirementTable.LocationFloat = new DevExpress.Utils.PointFloat(6.500109F, 2.166621F);
             this.xrRetirementTable.Name = "xrRetirementTable";
             this.xrRetirementTable.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.xrTableRow4});

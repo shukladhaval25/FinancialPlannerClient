@@ -61,7 +61,7 @@
             this.comboBoxEdit7 = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
             this.btnAddProject = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.btnAddClient = new DevExpress.XtraEditors.SimpleButton();
             this.btnCloseTask = new DevExpress.XtraEditors.SimpleButton();
             this.btnSaveTask = new DevExpress.XtraEditors.SimpleButton();
             this.cmbTransactionType = new DevExpress.XtraEditors.ComboBoxEdit();
@@ -343,14 +343,16 @@
             this.btnAddProject.Name = "btnAddProject";
             this.btnAddProject.Size = new System.Drawing.Size(25, 22);
             this.btnAddProject.TabIndex = 4;
+            this.btnAddProject.Click += new System.EventHandler(this.btnAddProject_Click);
             // 
-            // simpleButton1
+            // btnAddClient
             // 
-            this.simpleButton1.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.Image")));
-            this.simpleButton1.Location = new System.Drawing.Point(542, 30);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(25, 22);
-            this.simpleButton1.TabIndex = 2;
+            this.btnAddClient.Image = ((System.Drawing.Image)(resources.GetObject("btnAddClient.Image")));
+            this.btnAddClient.Location = new System.Drawing.Point(542, 30);
+            this.btnAddClient.Name = "btnAddClient";
+            this.btnAddClient.Size = new System.Drawing.Size(25, 22);
+            this.btnAddClient.TabIndex = 2;
+            this.btnAddClient.Click += new System.EventHandler(this.btnAddClient_Click);
             // 
             // btnCloseTask
             // 
@@ -556,7 +558,7 @@
             this.Controls.Add(this.lblTransactionTypeTitle);
             this.Controls.Add(this.btnCloseTask);
             this.Controls.Add(this.btnSaveTask);
-            this.Controls.Add(this.simpleButton1);
+            this.Controls.Add(this.btnAddClient);
             this.Controls.Add(this.btnAddProject);
             this.Controls.Add(this.labelControl12);
             this.Controls.Add(this.labelControl10);
@@ -644,7 +646,7 @@
         private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit7;
         private DevExpress.XtraEditors.LabelControl labelControl12;
         private DevExpress.XtraEditors.SimpleButton btnAddProject;
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraEditors.SimpleButton btnAddClient;
         private DevExpress.XtraEditors.SimpleButton btnCloseTask;
         private DevExpress.XtraEditors.SimpleButton btnSaveTask;
         private DevExpress.XtraEditors.ComboBoxEdit cmbTransactionType;

@@ -30,9 +30,11 @@ namespace FinancialPlannerClient.TaskManagementSystem
         {
             fillupProjectCombobox();
             fillupCustomer();
-            fillupAssignTo();        
+            fillupAssignTo();
+            cmbTaskStatus.Text = "Backlog";
             txtCreatedBy.Text = Program.CurrentUser.UserName;
             txtCreatedOn.Text = DateTime.Now.ToString();
+            cmbOwner.Text = Program.CurrentUser.UserName;
             //dtDueDate.Properties.MinValue = DateTime.Now;
         }
 
@@ -103,16 +105,28 @@ namespace FinancialPlannerClient.TaskManagementSystem
             cmbTransactionType.Properties.Items.Clear();
             if (cmbProject.Text == MUTUALFUND)
             {
-                cmbTransactionType.Properties.Items.Add("Fresh Purchase");
+                
                 cmbTransactionType.Properties.Items.Add("Additional Purchase");
-                cmbTransactionType.Properties.Items.Add("Redemption");
+                cmbTransactionType.Properties.Items.Add("New SIP");
+                
                 cmbTransactionType.Properties.Items.Add("Switch");
-                cmbTransactionType.Properties.Items.Add("STP");
-                cmbTransactionType.Properties.Items.Add("SIP Fresh");
-                cmbTransactionType.Properties.Items.Add("SIP Old");
                 cmbTransactionType.Properties.Items.Add("SWP");
-                cmbTransactionType.Properties.Items.Add("STP Cancellation");
-                cmbTransactionType.Properties.Items.Add("SIP Cancellation");
+                cmbTransactionType.Properties.Items.Add("STP");
+                cmbTransactionType.Properties.Items.Add("Redemption");
+                cmbTransactionType.Properties.Items.Add("STP Pause");
+                cmbTransactionType.Properties.Items.Add("SIP Pause");
+                cmbTransactionType.Properties.Items.Add("SWP Pause");
+
+                cmbTransactionType.Properties.Items.Add("STP Cancel");
+                cmbTransactionType.Properties.Items.Add("SIP Cancel");
+                cmbTransactionType.Properties.Items.Add("Fresh Purchase");
+
+                //cmbTransactionType.Properties.Items.Add("STP Cancellation");
+                //cmbTransactionType.Properties.Items.Add("SIP Cancellation");
+                
+            }
+            else
+            {
                 cmbTransactionType.Properties.Items.Add("Bank Change Request");
                 cmbTransactionType.Properties.Items.Add("Contact Update");
                 cmbTransactionType.Properties.Items.Add("PAN Card Update");
@@ -123,10 +137,7 @@ namespace FinancialPlannerClient.TaskManagementSystem
                 cmbTransactionType.Properties.Items.Add("Minor To Major");
                 cmbTransactionType.Properties.Items.Add("Change of Name");
                 cmbTransactionType.Properties.Items.Add("Nomination");
-            }
-            else
-            {
-                hideTransactionTypePanel();
+                //hideTransactionTypePanel();
             }
         }
 
@@ -226,7 +237,7 @@ namespace FinancialPlannerClient.TaskManagementSystem
             if (cmbProject.Text == MUTUALFUND)
             {
                 if (!string.IsNullOrEmpty(cmbProject.Text) && !string.IsNullOrEmpty(cmbTransactionType.Text) &&
-                    !string.IsNullOrEmpty(cmbCardType.Text) && !string.IsNullOrEmpty(txtTitle.Text))
+                    !string.IsNullOrEmpty(cmbCardType.Text))
                 {
                     return true;
                 }
@@ -276,6 +287,18 @@ namespace FinancialPlannerClient.TaskManagementSystem
         private void btnCloseTask_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnAddClient_Click(object sender, EventArgs e)
+        {
+            ClientDetails clientDetails = new ClientDetails(new Client());
+            clientDetails.ShowDialog();
+        }
+
+        private void btnAddProject_Click(object sender, EventArgs e)
+        {
+            NewProject newProject = new NewProject();
+            newProject.ShowDialog();
         }
     }
 }

@@ -11,6 +11,7 @@ using FinancialPlannerClient.Insurance;
 using FinancialPlannerClient.PlannerInfo;
 using FinancialPlannerClient.PlanOptions;
 using FinancialPlannerClient.Review;
+using FinancialPlannerClient.MOM;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -663,6 +664,28 @@ namespace FinancialPlannerClient.Clients
         {
             PlannerDataMigration plannerDataMigration = new PlannerDataMigration(this._client, this.planner);
             plannerDataMigration.Show();
+        }
+
+        private void navBarItemMOM_LinkClicked(object sender, NavBarLinkEventArgs e)
+        {
+            frmMOM frmMOM  = new frmMOM(this._client);
+            frmMOM.TopLevel = false;
+            frmMOM.Visible = true;
+            navigationPageOther.Name = frmMOM.Name;
+            navigationPageOther.Controls.Clear();
+            navigationPageOther.Controls.Add(frmMOM);
+            showNavigationPage(frmMOM.Name);
+        }
+
+        private void navBarItemFeesInvoice_LinkClicked(object sender, NavBarLinkEventArgs e)
+        {
+            FeesInvoiceView feesInvoice = new FeesInvoiceView(this._client);
+            feesInvoice.TopLevel = false;
+            feesInvoice.Visible = true;
+            navigationPageOther.Name = feesInvoice.Name;
+            navigationPageOther.Controls.Clear();
+            navigationPageOther.Controls.Add(feesInvoice);
+            showNavigationPage(feesInvoice.Name);
         }
     }
 }

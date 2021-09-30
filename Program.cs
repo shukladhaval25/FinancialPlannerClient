@@ -47,11 +47,16 @@ namespace FinancialPlannerClient
                 container.RegisterType<ITransactionType, AdditionalPurchase>("Redemption");
                 container.RegisterType<ITransactionType, Switch>("Switch");
                 container.RegisterType<ITransactionType, STPTrans>("STP");
-                container.RegisterType<ITransactionType, SIPFresh>("SIP Fresh");
+                container.RegisterType<ITransactionType, SIPFresh>("New SIP");
                 container.RegisterType<ITransactionType, SIPOld>("SIP Old");
                 container.RegisterType<ITransactionType, SWPTrans>("SWP");
-                container.RegisterType<ITransactionType, STPCancellationTrans>("STP Cancellation");
-                container.RegisterType<ITransactionType, SIPCancellationTrans>("SIP Cancellation");
+
+                container.RegisterType<ITransactionType, SWPTrans>("SWP Pause");
+                container.RegisterType<ITransactionType, STPCancellationTrans>("STP Pause");
+                container.RegisterType<ITransactionType, SIPCancellationTrans>("SIP Pause");
+             
+                container.RegisterType<ITransactionType, STPCancellationTrans>("STP Cancel");
+                container.RegisterType<ITransactionType, SIPCancellationTrans>("SIP Cancel");
                 container.RegisterType<ITransactionType, BankChangeRequestTrans>("Bank Change Request");
                 container.RegisterType<ITransactionType, ContactUpdateTrans>("Contact Update");
                 container.RegisterType<ITransactionType, LumsumInvestmentType>("Lumsum");

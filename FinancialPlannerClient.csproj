@@ -385,12 +385,26 @@
       <DependentUpon>ARNView.cs</DependentUpon>
     </Compile>
     <Compile Include="Master\UserServiceHelper.cs" />
+    <Compile Include="MOM\frmMOM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MOM\frmMOM.Designer.cs">
+      <DependentUpon>frmMOM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MOM\MOMInfo.cs" />
     <Compile Include="Permissions\PermissionInfo.cs" />
     <Compile Include="PlannerInfo\BankAccountInfo.cs" />
     <Compile Include="PlannerInfo\ClientCRMGroupinfo.cs" />
     <Compile Include="PlannerInfo\ClientFestivalInfo.cs" />
     <Compile Include="PlannerInfo\DocumentInfo.cs" />
     <Compile Include="Master\FestivalsInfo.cs" />
+    <Compile Include="PlanOptions\FeesInvoiceInfo.cs" />
+    <Compile Include="PlanOptions\FeesInvoiceView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\FeesInvoiceView.Designer.cs">
+      <DependentUpon>FeesInvoiceView.cs</DependentUpon>
+    </Compile>
     <Compile Include="PlanOptions\FinancialPlannerSendEmailConfiguration.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1125,6 +1139,12 @@
     <EmbeddedResource Include="Master\TaskMaster\ARNView.resx">
       <DependentUpon>ARNView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MOM\frmMOM.resx">
+      <DependentUpon>frmMOM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\FeesInvoiceView.resx">
+      <DependentUpon>FeesInvoiceView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\FinancialPlannerSendEmailConfiguration.resx">
       <DependentUpon>FinancialPlannerSendEmailConfiguration.cs</DependentUpon>
     </EmbeddedResource>
@@ -1690,6 +1710,7 @@
   <ItemGroup>
     <None Include="Resources\Report\RetirementGoal.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

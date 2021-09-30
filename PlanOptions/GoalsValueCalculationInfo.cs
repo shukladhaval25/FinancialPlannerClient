@@ -97,8 +97,8 @@ namespace FinancialPlannerClient.PlanOptions
 
                     currentPortFoliovalue = currentPortFoliovalue +
                          ((currentPortFoliovalue * interestRate) / 100);
-                    if (_goalPlannings.Count > 0  && (currentYear > _goalPlannings[0].Year))
-                        break;
+                    //if (_goalPlannings.Count > 0  && (currentYear > _goalPlannings[0].Year))
+                    //    break;
                 }
             }
             _currentPortfolioValue = currentPortFoliovalue;

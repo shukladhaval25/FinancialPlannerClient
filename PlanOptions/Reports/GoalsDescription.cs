@@ -1,14 +1,14 @@
-﻿using FinancialPlanner.Common;
-using FinancialPlanner.Common.DataConversion;
+﻿using DevExpress.XtraReports.UI;
+using FinancialPlanner.Common;
 using FinancialPlanner.Common.Model;
 using FinancialPlanner.Common.Model.PlanOptions;
 using FinancialPlannerClient.CashFlowManager;
-using FinancialPlannerClient.CurrentStatus;
 using FinancialPlannerClient.RiskProfile;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
+using System.Drawing;
 using System.Linq;
 using System.Reflection;
 
@@ -169,13 +169,30 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         {
             if (!string.IsNullOrEmpty(lblMappedAssets.Text))
             {
-                lblMappedAssets.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblMappedAssets.Text).ToString("N0", PlannerMainReport.Info);
+                if (lblMappedAssets.Text == "0" || lblMappedAssets.Text == "NIL")
+                {
+                    lblMappedAssets.Text = "NIL";
+                }
+                else
+                {
+                    lblMappedAssets.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblMappedAssets.Text).ToString("N0", PlannerMainReport.Info);
+                }
             }
         }
 
         private void lblLoanAmt_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
+            if (lblLoanAmt.Text == "0" || lblLoanAmt.Text == "NIL")
+            {
+                lblLoanAmt.Text = "NIL";
+                return;
+            }
+
             if (!string.IsNullOrEmpty(lblLoanAmt.Text) && !lblLoanAmt.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
+            {
+                lblLoanAmt.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblLoanAmt.Text).ToString("N0", PlannerMainReport.Info);
+            }
+            else if (!string.IsNullOrEmpty(lblLoanAmt.Text) && string.IsNullOrEmpty((PlannerMainReport.planner.CurrencySymbol)))
             {
                 lblLoanAmt.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblLoanAmt.Text).ToString("N0", PlannerMainReport.Info);
             }
@@ -183,7 +200,17 @@ namespace FinancialPlannerClient.PlanOptions.Reports
 
         private void lblCurrentSurplus_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
+            if (lblCurrentSurplus.Text == "0" || lblCurrentSurplus.Text == "NIL")
+            {
+                lblCurrentSurplus.Text = "NIL";
+                return;
+            }
+
             if (!string.IsNullOrEmpty(lblCurrentSurplus.Text) && !lblCurrentSurplus.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
+            {
+                lblCurrentSurplus.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblCurrentSurplus.Text).ToString("N0", PlannerMainReport.Info);
+            }
+            else if (!string.IsNullOrEmpty(lblCurrentSurplus.Text) && string.IsNullOrEmpty((PlannerMainReport.planner.CurrencySymbol)))
             {
                 lblCurrentSurplus.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblCurrentSurplus.Text).ToString("N0", PlannerMainReport.Info);
             }
@@ -263,9 +290,9 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             double totalValue = 0;
             if (drs.Count() > 0)
             {
-                for(int rowcount = 0; rowcount < _dtGoals.Rows.Count; rowcount++)
+                for (int rowcount = 0; rowcount < _dtGoals.Rows.Count; rowcount++)
                 {
-                    for(int colCount =0; colCount < _dtcashFlow.Columns.Count; colCount++)
+                    for (int colCount = 0; colCount < _dtcashFlow.Columns.Count; colCount++)
                     {
                         if (_dtcashFlow.Columns[colCount].ToString().Contains(_dtGoals.Rows[rowcount]["Name"].ToString()))
                         {
@@ -315,7 +342,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                     {
                         lblNote.Text = "Note: We are not able to complete this goal due to insufficient resources.";
                     }
-                    else if (lblNote.Text.Length  == 0)
+                    else if (lblNote.Text.Length == 0)
                     {
                         lblNote.Text = "";
                     }
@@ -378,6 +405,22 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             {
                 lblGoalFutureValueSum.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblGoalFutureValueSum.Text).ToString("N0", PlannerMainReport.Info);
             }
+        }
+
+        private void Detail_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            //xrPanelDetail.HeightF = this.Detail.HeightF - 50;
+        }
+
+        private void GoalsDescription_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            XRCrossBandBox cbBox = new XRCrossBandBox() { BorderWidth =1,BorderColor = Color.Black };
+            cbBox.StartBand = this.TopMargin;
+            cbBox.EndBand = this.BottomMargin;
+            cbBox.StartPointF = new PointF(0, 0);
+            cbBox.EndPointF = new PointF(0, this.BottomMargin.HeightF);
+            cbBox.WidthF = this.PageWidth - 75;
+            this.CrossBandControls.Add(cbBox);
         }
 
         private void lblDebt_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
