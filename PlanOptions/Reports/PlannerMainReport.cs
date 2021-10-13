@@ -1,16 +1,16 @@
-﻿using System;
+﻿using DevExpress.Utils;
+using FinancialPlanner.Common;
+using FinancialPlanner.Common.DataConversion;
+using FinancialPlanner.Common.Model;
+using FinancialPlannerClient.PlannerInfo;
+using FinancialPlannerClient.PlanOptions.Reports;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
-using DevExpress.Utils;
-using FinancialPlanner.Common;
-using FinancialPlanner.Common.DataConversion;
-using FinancialPlanner.Common.Model;
-using FinancialPlannerClient.PlannerInfo;
-using FinancialPlannerClient.PlanOptions.Reports;
 
 
 namespace FinancialPlannerClient.PlanOptions
@@ -24,7 +24,36 @@ namespace FinancialPlannerClient.PlanOptions
         IList<Goals> goals;
         string recomendationNote;
         public static System.Globalization.CultureInfo Info;
-        public PlannerMainReport(PersonalInformation personalInformation, Planner plannerObj,int riskProfileId,int optionId,string recomendation="")
+        public bool blnTableOfContent = true;
+        public bool blnIntroduction = true;
+        public bool blnWhatIsPlan = true;
+        public bool blnScopeOfPlan = true;
+        public bool blnAssumption = true;
+        public bool blnFamilyIntroduction = true;
+        public bool blnFinancialGoalIntroduction = true;
+        public bool blnClientFinancialGoals = true;
+        public bool blnGoalProjectionComplition = true;
+        public bool blnIncomeExpAnalysis = true;
+        public bool blnSpendingSavingRatio = true;
+        public bool blnSurplusPeriod = true;
+        public bool blnNetWorthAnalysis = true;
+        public bool blnNetWorthStatemet = true;
+        public bool blnTotalAssetRatio = true;
+        public bool blnNetWortYearOnYear = true;
+        public bool blnCurrentFinancialStatus = true;
+        public bool blnRiskProfilling = true;
+        public bool blnRiskProfillingAssetAllocatin = true;
+        public bool blnCurrentFinancialAssetAllocation = true;
+        public bool blnStrategicAssetAllocation = true;
+        public bool blnSmartGoal = true;
+        public bool blnCurrentStatusReport = true;
+        public bool blnGoalDescription = true;
+        public bool blnAssetAllocationTitle = true;
+        public bool blnActionPlan = true;
+        public bool blnRecomendation = true;
+        ReportParams reportParams;
+
+        public PlannerMainReport(PersonalInformation personalInformation, Planner plannerObj, int riskProfileId, int optionId, string recomendation = "", ReportParams reportParameters = null)
         {
             InitializeComponent();
             Info = System.Globalization.CultureInfo.GetCultureInfo("en-IN");
@@ -37,7 +66,44 @@ namespace FinancialPlannerClient.PlanOptions
             this.lblPreparedFor.Text = this.client.Name;
             this.lblPreparedOn.Text = planner.StartDate.ToString("dd-MMM-yyyy");
             this.recomendationNote = recomendation;
+            this.reportParams = reportParameters;
+            setDisplayParamaters();
             fillGoals(planner);
+
+        }
+
+        private void setDisplayParamaters()
+        {
+            if (this.reportParams.frmReportPage != null)
+            {
+                blnTableOfContent = this.reportParams.frmReportPage.blnTableOfContent;
+                blnIntroduction = this.reportParams.frmReportPage.blnIntroduction;
+                blnWhatIsPlan = this.reportParams.frmReportPage.blnWhatIsPlan;
+                blnScopeOfPlan = this.reportParams.frmReportPage.blnScopeOfPlan;
+                blnAssumption = this.reportParams.frmReportPage.blnAssumption;
+                blnFamilyIntroduction = this.reportParams.frmReportPage.blnFamilyIntroduction;
+                blnFinancialGoalIntroduction = this.reportParams.frmReportPage.blnFinancialGoalIntroduction;
+                blnClientFinancialGoals = this.reportParams.frmReportPage.blnClientFinancialGoals;
+                blnGoalProjectionComplition = this.reportParams.frmReportPage.blnGoalProjectionComplition;
+                blnIncomeExpAnalysis = this.reportParams.frmReportPage.blnIncomeExpAnalysis;
+                blnSpendingSavingRatio = this.reportParams.frmReportPage.blnSpendingSavingRatio;
+                blnSurplusPeriod = this.reportParams.frmReportPage.blnSurplusPeriod;
+                blnNetWorthAnalysis = this.reportParams.frmReportPage.blnNetWorthAnalysis;
+                blnNetWorthStatemet = this.reportParams.frmReportPage.blnNetWorthStatemet;
+                blnTotalAssetRatio = this.reportParams.frmReportPage.blnTotalAssetRatio;
+                blnNetWortYearOnYear = this.reportParams.frmReportPage.blnNetWortYearOnYear;
+                blnCurrentFinancialStatus = this.reportParams.frmReportPage.blnCurrentFinancialStatus;
+                blnRiskProfilling = this.reportParams.frmReportPage.blnRiskProfilling;
+                blnRiskProfillingAssetAllocatin = this.reportParams.frmReportPage.blnRiskProfillingAssetAllocatin;
+                blnCurrentFinancialAssetAllocation = this.reportParams.frmReportPage.blnCurrentFinancialAssetAllocation;
+                blnStrategicAssetAllocation = this.reportParams.frmReportPage.blnStrategicAssetAllocation;
+                blnSmartGoal = this.reportParams.frmReportPage.blnSmartGoal;
+                blnCurrentStatusReport = this.reportParams.frmReportPage.blnCurrentStatusReport;
+                blnGoalDescription = this.reportParams.frmReportPage.blnGoalDescription;
+                blnAssetAllocationTitle = this.reportParams.frmReportPage.blnAssetAllocationTitle;
+                blnActionPlan = this.reportParams.frmReportPage.blnActionPlan;
+                blnRecomendation = this.reportParams.frmReportPage.blnRecomendation;
+            }
         }
 
         private void fillGoals(Planner planner)
@@ -48,104 +114,194 @@ namespace FinancialPlannerClient.PlanOptions
 
         private void Detail_AfterPrint(object sender, EventArgs e)
         {
-           
+
             //this.lblPreparedBy.Text = this.planner.p
         }
 
         private void PlannerMainReport_AfterPrint(object sender, EventArgs e)
         {
             WaitDialogForm waitdlg = new WaitDialogForm("Loading Report...");
+            CurrentFinancialAssetAllocation currentFinancialAssetAllocation;
+            CurrentStatusReport currentStatus;
+            NetWorthStatement netWorthStatement;
+            CurrentFinancialStatus currentFinancialStatus;
             try
             {
-                TableOfContent tableOfContent = new TableOfContent(client);
-                tableOfContent.CreateDocument();
+                if (blnTableOfContent)
+                {
+                    TableOfContent tableOfContent = new TableOfContent(client);
+                    tableOfContent.CreateDocument();
+                    this.Pages.AddRange(tableOfContent.Pages);
+                }
 
-                Introduction introduction = new Introduction(client);
-                introduction.CreateDocument();
+                if (blnIntroduction)
+                {
+                    Introduction introduction = new Introduction(client);
+                    introduction.CreateDocument();
+                    this.Pages.AddRange(introduction.Pages);
+                }
 
-                WhatIsPlan whatIsPlan = new WhatIsPlan(client);
-                whatIsPlan.CreateDocument();
+                if (blnWhatIsPlan)
+                {
+                    WhatIsPlan whatIsPlan = new WhatIsPlan(client);
+                    whatIsPlan.CreateDocument();
+                    this.Pages.AddRange(whatIsPlan.Pages);
+                }
 
-                ScopeOfPlancs scopeOfPlancs = new ScopeOfPlancs(client);
-                scopeOfPlancs.CreateDocument();
+                if (blnScopeOfPlan)
+                {
+                    ScopeOfPlancs scopeOfPlancs = new ScopeOfPlancs(client);
+                    scopeOfPlancs.CreateDocument();
+                    this.Pages.AddRange(scopeOfPlancs.Pages);
+                }
 
-                AssumptionPage assumptionPage = new AssumptionPage(personalInformation, planner.ID);
-                //assumptionPage.LoadLayout("C:\\Application Softwares\\FinancialPlannerClient\\bin\\Debug\\AssumptionPage.repx");
-                assumptionPage.CreateDocument();
+                if (blnAssumption)
+                {
+                    AssumptionPage assumptionPage = new AssumptionPage(personalInformation, planner.ID);
+                    //assumptionPage.LoadLayout("C:\\Application Softwares\\FinancialPlannerClient\\bin\\Debug\\AssumptionPage.repx");
+                    assumptionPage.CreateDocument();
+                    this.Pages.AddRange(assumptionPage.Pages);
+                }
 
-                FamilyInfoPage familyInfo = new FamilyInfoPage(personalInformation);
-                familyInfo.CreateDocument();
+                if (blnFamilyIntroduction)
+                {
+                    FamilyInfoPage familyInfo = new FamilyInfoPage(personalInformation);
+                    familyInfo.CreateDocument();
+                    this.Pages.AddRange(familyInfo.Pages);
+                }
 
-                FinancialGoalIntro financialGoalIntro = new FinancialGoalIntro(client);
-                financialGoalIntro.CreateDocument();
+                if (blnFinancialGoalIntroduction)
+                {
+                    FinancialGoalIntro financialGoalIntro = new FinancialGoalIntro(client);
+                    financialGoalIntro.CreateDocument();
+                    this.Pages.AddRange(financialGoalIntro.Pages);
+                }
 
                 FinancialClientGoal financialClientGoal = new FinancialClientGoal(planner, this.client, this.riskprofileId, this.optionId);
                 financialClientGoal.CreateDocument();
+                if (blnClientFinancialGoals)
+                {
+                    this.Pages.AddRange(financialClientGoal.Pages);
+                }
 
                 double retirementFutureCost = 0;
                 if (financialClientGoal.lblRetirementFutureCost.Text.StartsWith(planner.CurrencySymbol))
                 {
-                    double.TryParse(financialClientGoal.lblRetirementFutureCost.Text.Substring(planner.CurrencySymbol.Length),out retirementFutureCost);
+                    double.TryParse(financialClientGoal.lblRetirementFutureCost.Text.Substring(planner.CurrencySymbol.Length), out retirementFutureCost);
                 }
                 else
                 {
                     double.TryParse(financialClientGoal.lblRetirementFutureCost.Text, out retirementFutureCost);
                 }
-                
+
+
                 GoalProjectionForComplition goalProjectionForComplition = new GoalProjectionForComplition(planner, this.client, this.riskprofileId, this.optionId, retirementFutureCost);
                 goalProjectionForComplition.CreateDocument();
+                if (blnGoalProjectionComplition)
+                {
+                    this.Pages.AddRange(goalProjectionForComplition.Pages);
+                }
 
-                IncomeExpenseAnalysis incomeExpenseAnalysis = new IncomeExpenseAnalysis(this.client, planner);
-                incomeExpenseAnalysis.CreateDocument();
 
-                SpendingSavingRatioReport spendingSavingRatioReport = new SpendingSavingRatioReport(this.client, planner.ID, this.riskprofileId, this.optionId);
-                spendingSavingRatioReport.CreateDocument();
+                if (blnIncomeExpAnalysis)
+                {
+                    IncomeExpenseAnalysis incomeExpenseAnalysis = new IncomeExpenseAnalysis(this.client, planner);
+                    incomeExpenseAnalysis.CreateDocument();
+                    this.Pages.AddRange(incomeExpenseAnalysis.Pages);
+                }
 
-                SurplusPeriod surplusPeriod = new SurplusPeriod(this.client, planner.ID, this.riskprofileId, this.optionId);
-                surplusPeriod.CreateDocument();
+                if (blnSurplusPeriod)
+                {
+                    SurplusPeriod surplusPeriod = new SurplusPeriod(this.client, planner.ID, this.riskprofileId, this.optionId);
+                    surplusPeriod.CreateDocument();
+                    this.Pages.AddRange(surplusPeriod.Pages);
+                }
 
-                NetWorthAnalysis netWorthAnalysis = new NetWorthAnalysis(this.client);
-                netWorthAnalysis.CreateDocument();
 
-                NetWorthStatement netWorthStatement = new NetWorthStatement(this.client, planner);
+                if (blnSpendingSavingRatio)
+                {
+                    SpendingSavingRatioReport spendingSavingRatioReport = new SpendingSavingRatioReport(this.client, planner.ID, this.riskprofileId, this.optionId);
+                    spendingSavingRatioReport.CreateDocument();
+                    this.Pages.AddRange(spendingSavingRatioReport.Pages);
+                }
+
+
+
+                netWorthStatement = new NetWorthStatement(this.client, planner);
                 netWorthStatement.CreateDocument();
+                if (blnTotalAssetRatio)
+                {
+                    ToTotalAssetRatio toTotalAssetRatio = new ToTotalAssetRatio(this.client, netWorthStatement.GetNetWorth());
+                    toTotalAssetRatio.CreateDocument();
+                    this.Pages.AddRange(toTotalAssetRatio.Pages);
+                }
 
-                ToTotalAssetRatio toTotalAssetRatio = new ToTotalAssetRatio(this.client, netWorthStatement.GetNetWorth());
-                toTotalAssetRatio.CreateDocument();
+                if (blnNetWorthAnalysis)
+                {
+                    NetWorthAnalysis netWorthAnalysis = new NetWorthAnalysis(this.client);
+                    netWorthAnalysis.CreateDocument();
+                    this.Pages.AddRange(netWorthAnalysis.Pages);
+                }
 
-                NetWorthYearOnYear netWorthYearOnYear = new NetWorthYearOnYear(this.client, null);
-                netWorthYearOnYear.CreateDocument();
+                if (blnNetWorthStatemet)
+                {
+                    this.Pages.AddRange(netWorthStatement.Pages);
+                }
 
-                CurrentFinancialStatus currentFinancialStatus = new CurrentFinancialStatus(this.client, netWorthStatement.GetNetWorth());
+                if (blnNetWortYearOnYear)
+                {
+                    NetWorthYearOnYear netWorthYearOnYear = new NetWorthYearOnYear(this.client, null);
+                    netWorthYearOnYear.CreateDocument();
+                    this.Pages.AddRange(netWorthYearOnYear.Pages);
+                }
+
+                currentFinancialStatus = new CurrentFinancialStatus(this.client, netWorthStatement.GetNetWorth());
                 currentFinancialStatus.CreateDocument();
+                if (blnCurrentFinancialStatus)
+                {
+                    this.Pages.AddRange(currentFinancialStatus.Pages);
+                }
 
-                RiskProfiling riskProfiling = new RiskProfiling(this.client);
-                riskProfiling.CreateDocument();
 
-                //RiskTolanceScore riskTolanceScore = new RiskTolanceScore(personalInformation);
-                //riskTolanceScore.CreateDocument();
+                if (blnRiskProfilling)
+                {
+                    RiskProfiling riskProfiling = new RiskProfiling(this.client);
+                    riskProfiling.CreateDocument();
+                    this.Pages.AddRange(riskProfiling.Pages);
+                }
 
-                //Skip some pages here. 
+                if (blnRiskProfillingAssetAllocatin)
+                {
+                    RiskProfilingAssetAllocation riskProfilingAssetAllocation = new RiskProfilingAssetAllocation(this.client, this.riskprofileId);
+                    riskProfilingAssetAllocation.CreateDocument();
+                    this.Pages.AddRange(riskProfilingAssetAllocation.Pages);
+                }
 
-                RiskProfilingAssetAllocation riskProfilingAssetAllocation = new RiskProfilingAssetAllocation(this.client, this.riskprofileId);
-                riskProfilingAssetAllocation.CreateDocument();
-
-                CurrentFinancialAssetAllocation currentFinancialAssetAllocation =
+                if (blnCurrentFinancialAssetAllocation)
+                {
+                    currentFinancialAssetAllocation =
                     new CurrentFinancialAssetAllocation(this.client, netWorthStatement.GetNetWorth(), currentFinancialStatus);
-                currentFinancialAssetAllocation.CreateDocument();
+                    currentFinancialAssetAllocation.CreateDocument();
+                    this.Pages.AddRange(currentFinancialAssetAllocation.Pages);
+                }
 
-                StrategicAssetsCollection strategicAssetsCollection = new StrategicAssetsCollection(this.client, this.riskprofileId);
-                strategicAssetsCollection.CreateDocument();
+                if (blnStrategicAssetAllocation)
+                {
+                    StrategicAssetsCollection strategicAssetsCollection = new StrategicAssetsCollection(this.client, this.riskprofileId);
+                    strategicAssetsCollection.CreateDocument();
+                    this.Pages.AddRange(strategicAssetsCollection.Pages);
+                }
+                
+                if (blnSmartGoal)
+                {
+                    SmartGoal smartGoal = new SmartGoal(this.client);
+                    smartGoal.CreateDocument();
+                    this.Pages.AddRange(smartGoal.Pages);
+                }
 
-                SmartGoal smartGoal = new SmartGoal(this.client);
-                smartGoal.CreateDocument();
-
-                CurrentStatusReport currentStatus = new CurrentStatusReport(netWorthStatement.GetNetWorth());
-                currentStatus.CreateDocument();
-               
-                DataTable dtGroupByGoals =  financialClientGoal.GetGoalsByGroup();
+                DataTable dtGroupByGoals = financialClientGoal.GetGoalsByGroup();
                 GoalsDescription[] goalsDescriptions = null;
-                if (dtGroupByGoals.Rows.Count > 0)
+                if (dtGroupByGoals.Rows.Count > 0 && blnGoalDescription)
                 {
 
                     DataTable dtTempGoal = ListtoDataTable.ToDataTable(this.goals.ToList());
@@ -179,76 +335,80 @@ namespace FinancialPlannerClient.PlanOptions
                             goalsDescriptions[goalCountIndex] = new GoalsDescription();
                             DataTable dtGoalProjectComplition = goalProjectionForComplition.GetGoalProjectionTable();
                             goalsDescriptions[goalCountIndex].SetReportParameter(this.client, planner, _dtGoals,
-                               this.riskprofileId, this.optionId, this.goals.ToList(),dtGoalProjectComplition);
+                               this.riskprofileId, this.optionId, this.goals.ToList(), dtGoalProjectComplition);
                             goalsDescriptions[goalCountIndex].CreateDocument();
+                            this.Pages.AddRange(goalsDescriptions[goalCountIndex].Pages);
                             goalCountIndex++;
                         }
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
                         MessageBox.Show(ex.ToString());
                     }
-
-
-                    //foreach (Goals goal in goals)
-                    //{
-                    //    goalsDescriptions[goalCountIndex] = new GoalsDescription();
-                    //    goalsDescriptions[goalCountIndex].SetReportParameter(this.client, this.planner, goal,
-                    //        this.riskprofileId, this.optionId);
-                    //    goalsDescriptions[goalCountIndex].CreateDocument();
-                    //    goalCountIndex++;
-                    //}
                 }
 
-                AssetAllocationTitle assetAllocationTitle = new AssetAllocationTitle(this.client);
-                assetAllocationTitle.CreateDocument();
+                if (blnAssetAllocationTitle)
+                {
+                    AssetAllocationTitle assetAllocationTitle = new AssetAllocationTitle(this.client);
+                    assetAllocationTitle.CreateDocument();
+                    this.Pages.AddRange(assetAllocationTitle.Pages);
+                }
+                if (blnActionPlan)
+                {
+                    ActionPlan actionPlan = new ActionPlan(this.client, planner);
+                    actionPlan.CreateDocument();
+                    this.Pages.AddRange(actionPlan.Pages);
+                }
 
-                ActionPlan actionPlan = new ActionPlan(this.client, planner);
-                actionPlan.CreateDocument();
+                if (blnRecomendation)
+                {
+                    Recomendation recomendation = new Recomendation(this.client, this.recomendationNote);
+                    recomendation.CreateDocument();
+                    this.Pages.AddRange(recomendation.Pages);
+                }
 
-                Recomendation recomendation = new Recomendation(this.client,this.recomendationNote);
-                recomendation.CreateDocument();
+                //if (blnCurrentStatusReport)
+                //{
+                //    currentStatus = new CurrentStatusReport(netWorthStatement.GetNetWorth());
+                //    currentStatus.CreateDocument();
+                //}
 
                 // Enable this property to maintain continuous page numbering 
                 PrintingSystem.ContinuousPageNumbering = true;
 
                 // Add all pages of the 2nd report to the end of the 1st report.             
-                this.Pages.Add(tableOfContent.Pages.First);
-                this.Pages.Add(introduction.Pages.First);
-                this.Pages.Add(whatIsPlan.Pages.First);
-                this.Pages.Add(scopeOfPlancs.Pages.First);
-                this.Pages.Add(assumptionPage.Pages.First);
-                this.Pages.Add(familyInfo.Pages.First);
-                this.Pages.Add(financialGoalIntro.Pages.First);
-                this.Pages.Add(financialClientGoal.Pages.First);
-                this.Pages.Add(goalProjectionForComplition.Pages.First);
-                this.Pages.Add(incomeExpenseAnalysis.Pages.First);
-                
-                this.Pages.Add(surplusPeriod.Pages.First);
-                this.Pages.Add(spendingSavingRatioReport.Pages.First);
 
-                this.Pages.Add(toTotalAssetRatio.Pages.First);
-                this.Pages.Add(netWorthAnalysis.Pages.First);
-                this.Pages.Add(netWorthStatement.Pages.First);
-               
-                this.Pages.Add(netWorthYearOnYear.Pages.First);
-                this.Pages.Add(currentFinancialStatus.Pages.First);
-                this.Pages.Add(riskProfiling.Pages.First);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 //this.Pages.Add(riskTolanceScore.Pages.First);
                 //Some page skip here.
-                this.Pages.Add(riskProfilingAssetAllocation.Pages.First);
-                this.Pages.Add(currentFinancialAssetAllocation.Pages.First);
-                this.Pages.Add(strategicAssetsCollection.Pages.First);
-                this.Pages.Add(smartGoal.Pages.First);
 
-                for (int index = 0; index <= dtGroupByGoals.Rows.Count - 1; index++)
-                {
-                    this.Pages.Add(goalsDescriptions[index].Pages.First);
-                }
+                
+                
+               
 
-                this.Pages.Add(assetAllocationTitle.Pages.First);
-                this.Pages.Add(actionPlan.Pages.First);
-                this.Pages.Add(recomendation.Pages.First);
+                
+
+             
+               
+                
                 //this.Pages.Add(currentStatus.Pages.First);
 
                 waitdlg.Close();

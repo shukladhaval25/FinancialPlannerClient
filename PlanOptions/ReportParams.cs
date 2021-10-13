@@ -15,6 +15,7 @@ namespace FinancialPlannerClient.PlanOptions
     {
         DataTable _dtOption = new DataTable();
         private const string UPDATE_PLAN_API = "Planner/Update";
+        internal frmReportPageOption frmReportPage;
         //int planId;
         int optionId;
         int riskProfileId;
@@ -126,6 +127,12 @@ namespace FinancialPlannerClient.PlanOptions
             }
             this.Option = ReportOption.SendMail;
             this.DialogResult = DialogResult.OK;
+        }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            frmReportPage = new frmReportPageOption();
+            frmReportPage.ShowDialog();
         }
     }
 

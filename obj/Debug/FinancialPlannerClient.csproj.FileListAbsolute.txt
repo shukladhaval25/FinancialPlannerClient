@@ -591,3 +591,6 @@ C:\Application Softwares\FinancialPlannerClient\bin\Debug\Newtonsoft.Json.xml
 C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.MOM.frmMOM.resources
 C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.Controls.MOMControl.resources
 C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlannerInfo.FeesInvoiceView.resources
+C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.MOM.MOMReportView.resources
+C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.FeesInvoiceReportView.resources
+C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.frmReportPageOption.resources

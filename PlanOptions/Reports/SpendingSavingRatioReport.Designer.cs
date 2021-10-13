@@ -264,17 +264,21 @@
             // 
             this.xrTableCell1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(117)))), ((int)(((byte)(181)))));
             this.xrTableCell1.Dpi = 100F;
+            this.xrTableCell1.Font = new System.Drawing.Font("Cambria", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrTableCell1.Name = "xrTableCell1";
             this.xrTableCell1.StylePriority.UseBackColor = false;
+            this.xrTableCell1.StylePriority.UseFont = false;
             this.xrTableCell1.Text = "Head";
-            this.xrTableCell1.Weight = 1.1332229895319368D;
+            this.xrTableCell1.Weight = 1.3634857751003973D;
             // 
             // xrTableCell2
             // 
             this.xrTableCell2.Dpi = 100F;
+            this.xrTableCell2.Font = new System.Drawing.Font("Cambria", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrTableCell2.Name = "xrTableCell2";
+            this.xrTableCell2.StylePriority.UseFont = false;
             this.xrTableCell2.Text = "Percentage";
-            this.xrTableCell2.Weight = 1.1526198309459432D;
+            this.xrTableCell2.Weight = 0.92235704537748275D;
             // 
             // xrTable3
             // 
@@ -283,7 +287,7 @@
             | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTable3.Dpi = 100F;
-            this.xrTable3.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrTable3.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrTable3.LocationFloat = new DevExpress.Utils.PointFloat(9.999911F, 547.2085F);
             this.xrTable3.Name = "xrTable3";
             this.xrTable3.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
@@ -346,7 +350,7 @@
             // 
             this.xrLabel4.BackColor = System.Drawing.Color.Silver;
             this.xrLabel4.Dpi = 100F;
-            this.xrLabel4.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrLabel4.Font = new System.Drawing.Font("Cambria", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.xrLabel4.LocationFloat = new DevExpress.Utils.PointFloat(250.9582F, 532.2084F);
             this.xrLabel4.Multiline = true;
@@ -405,7 +409,7 @@
             this.chartTotalRatio.Dpi = 100F;
             this.chartTotalRatio.Legend.Name = "Default Legend";
             this.chartTotalRatio.Legend.Visibility = DevExpress.Utils.DefaultBoolean.False;
-            this.chartTotalRatio.LocationFloat = new DevExpress.Utils.PointFloat(347.5001F, 276.0417F);
+            this.chartTotalRatio.LocationFloat = new DevExpress.Utils.PointFloat(358.9583F, 276.0417F);
             this.chartTotalRatio.Name = "chartTotalRatio";
             series2.Name = "Series 1";
             series2.Points.AddRange(new DevExpress.XtraCharts.SeriesPoint[] {
@@ -414,7 +418,7 @@
             seriesPoint6});
             this.chartTotalRatio.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
         series2};
-            this.chartTotalRatio.SizeF = new System.Drawing.SizeF(292.4998F, 160.5F);
+            this.chartTotalRatio.SizeF = new System.Drawing.SizeF(281.0416F, 160.5F);
             // 
             // xrTableIncome
             // 
@@ -423,7 +427,7 @@
             | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableIncome.Dpi = 100F;
-            this.xrTableIncome.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrTableIncome.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrTableIncome.LocationFloat = new DevExpress.Utils.PointFloat(10.00001F, 339.5833F);
             this.xrTableIncome.Name = "xrTableIncome";
             this.xrTableIncome.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
@@ -539,24 +543,28 @@
             // 
             this.xrTableCell11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(117)))), ((int)(((byte)(181)))));
             this.xrTableCell11.Dpi = 100F;
+            this.xrTableCell11.Font = new System.Drawing.Font("Cambria", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrTableCell11.Name = "xrTableCell11";
             this.xrTableCell11.StylePriority.UseBackColor = false;
+            this.xrTableCell11.StylePriority.UseFont = false;
             this.xrTableCell11.Text = "Head";
-            this.xrTableCell11.Weight = 1.1332229895319368D;
+            this.xrTableCell11.Weight = 1.3634840127840482D;
             // 
             // xrTableCell12
             // 
             this.xrTableCell12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(117)))), ((int)(((byte)(181)))));
             this.xrTableCell12.Dpi = 100F;
+            this.xrTableCell12.Font = new System.Drawing.Font("Cambria", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrTableCell12.Name = "xrTableCell12";
             this.xrTableCell12.StylePriority.UseBackColor = false;
+            this.xrTableCell12.StylePriority.UseFont = false;
             this.xrTableCell12.Text = "Percentage";
-            this.xrTableCell12.Weight = 1.1526198309459432D;
+            this.xrTableCell12.Weight = 0.92235880769383183D;
             // 
             // xrLabel2
             // 
             this.xrLabel2.Dpi = 100F;
-            this.xrLabel2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrLabel2.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(117)))), ((int)(((byte)(181)))));
             this.xrLabel2.LocationFloat = new DevExpress.Utils.PointFloat(10.00001F, 276.0417F);
             this.xrLabel2.Multiline = true;
@@ -570,13 +578,13 @@
             // xrLabel1
             // 
             this.xrLabel1.Dpi = 100F;
-            this.xrLabel1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrLabel1.Font = new System.Drawing.Font("Cambria", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(117)))), ((int)(((byte)(181)))));
-            this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(7.916721F, 10.00001F);
+            this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(0F, 10.00001F);
             this.xrLabel1.Multiline = true;
             this.xrLabel1.Name = "xrLabel1";
             this.xrLabel1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel1.SizeF = new System.Drawing.SizeF(356.2501F, 26.12498F);
+            this.xrLabel1.SizeF = new System.Drawing.SizeF(382.2916F, 26.12498F);
             this.xrLabel1.StylePriority.UseFont = false;
             this.xrLabel1.StylePriority.UseForeColor = false;
             this.xrLabel1.Text = "Spending/Saving Ratio to total Earnings\r\n";
@@ -633,13 +641,13 @@
             // 
             this.lblBestPractice.BackColor = System.Drawing.Color.Silver;
             this.lblBestPractice.Dpi = 100F;
-            this.lblBestPractice.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBestPractice.Font = new System.Drawing.Font("Cambria", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBestPractice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.lblBestPractice.LocationFloat = new DevExpress.Utils.PointFloat(247.5001F, 339.5833F);
+            this.lblBestPractice.LocationFloat = new DevExpress.Utils.PointFloat(250.9582F, 339.5833F);
             this.lblBestPractice.Multiline = true;
             this.lblBestPractice.Name = "lblBestPractice";
             this.lblBestPractice.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.lblBestPractice.SizeF = new System.Drawing.SizeF(99.99997F, 75F);
+            this.lblBestPractice.SizeF = new System.Drawing.SizeF(100.0001F, 65.00018F);
             this.lblBestPractice.StylePriority.UseBackColor = false;
             this.lblBestPractice.StylePriority.UseFont = false;
             this.lblBestPractice.StylePriority.UseForeColor = false;

@@ -16,10 +16,40 @@ namespace FinancialPlannerClient.PlannerInfo
     {
         const string GET_ALL_NON_FINANCIAL_ASSET_API = "NonFinancialAsset/GetAll?plannerId={0}";
         const string GET_ALL_BY_ID_API = "NonFinancialAsset/GetById?id={0},plannerId={1}";
+        const string GET_ALL_BY_MAPPED_GOAL_ID = "NonFinancialAsset/MappedGoal?mappedGoalId={0}";
         const string ADD_NON_FINANCIAL_API = "NonFinancialAsset/Add";
         const string UPDATE_NON_FINANCIAL_API = "NonFinancialAsset/Update";
         const string DELETE_NON_FINANCIAL_API = "NonFinancialAsset/Delete";
         DataTable _dtNonFinancialAsset;
+
+        public IList<NonFinancialAsset> GetWithMappedGoal(int mappedGoalId)
+        {
+            IList<NonFinancialAsset> nonFinancialAssetObj = new List<NonFinancialAsset>();
+            try
+            {
+                FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
+                string apiurl = Program.WebServiceUrl + "/" + string.Format(GET_ALL_BY_MAPPED_GOAL_ID, mappedGoalId);
+
+                RestAPIExecutor restApiExecutor = new RestAPIExecutor();
+
+                var restResult = restApiExecutor.Execute<IList<NonFinancialAsset>>(apiurl, null, "GET");
+
+                if (jsonSerialization.IsValidJson(restResult.ToString()))
+                {
+                    nonFinancialAssetObj = jsonSerialization.DeserializeFromString<IList<NonFinancialAsset>>(restResult.ToString());
+                }
+                return nonFinancialAssetObj;
+            }
+            catch (Exception ex)
+            {
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
+                LogDebug(currentMethodName.Name, ex);
+                return null;
+            }
+        }
+
         public IList<NonFinancialAsset> GetAll(int plannerId)
         {
             IList<NonFinancialAsset> nonFinancialAssetObj = new List<NonFinancialAsset>();

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.XtraGrid.Views.Grid;
 using FinancialPlanner.Common;
 using FinancialPlanner.Common.DataConversion;
 using FinancialPlanner.Common.Model;
@@ -35,7 +36,13 @@ namespace FinancialPlannerClient.PlannerInfo
         private void btnAdd_Click(object sender, EventArgs e)
         {
             int currentYear = DateTime.Now.Year;
-            string invoiceNo = string.Format("{0}-{1}/{2}", currentYear, currentYear + 1, 1);
+            int currentMonth = DateTime.Now.Month;
+            if (currentMonth == 1 || currentMonth == 2 || currentMonth == 3)
+            {
+                currentYear = currentYear - 1;
+            }
+
+            string invoiceNo = feesInvoiceInfo.GetMaxId(string.Format("{0}-{1}", currentYear, (currentYear + 1).ToString().Substring(2)));
             txtInvoiceNo.Text = invoiceNo;
             txtInvoiceNo.Tag = 0;
             if (dtInvoiceDetails == null)
@@ -235,6 +242,36 @@ namespace FinancialPlannerClient.PlannerInfo
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void gridViewInvoiceDetails_InitNewRow(object sender, DevExpress.XtraGrid.Views.Grid.InitNewRowEventArgs e)
+        {
+            GridView view = sender as GridView;
+            view.SetRowCellValue(e.RowHandle, view.Columns["Particulars"], "Suitability Analysis, Insurance Analysis & Succession Planning");
+        }
+
+        private void btnPreviewInvoice_Click(object sender, EventArgs e)
+        {
+          if (!string.IsNullOrEmpty(txtInvoiceNo.Text))
+            {
+                FeesInvoiceTransacation transaction =  feesInvoiceTransacations.First(x => x.InvoiceNo == txtInvoiceNo.Text);
+                FeesInvoiceReportView momReportView = new FeesInvoiceReportView(transaction,this.client);
+                DevExpress.XtraReports.UI.ReportPrintTool printTool = new DevExpress.XtraReports.UI.ReportPrintTool(momReportView);
+                printTool.ShowRibbonPreview();
+            }
+        }
+
+        private void btnSendInvoiceReport_Click(object sender, EventArgs e)
+        {
+               if (!string.IsNullOrEmpty(txtInvoiceNo.Text))
+            {
+                FeesInvoiceTransacation transaction = feesInvoiceTransacations.First(x => x.InvoiceNo == txtInvoiceNo.Text);
+                FeesInvoiceReportView feesInvoiceReport = new FeesInvoiceReportView(transaction, this.client);
+                DevExpress.XtraReports.UI.ReportPrintTool printTool = new DevExpress.XtraReports.UI.ReportPrintTool(feesInvoiceReport);
+                //printTool.ShowRibbonPreview();
+                FinancialPlannerSendEmailConfiguration financialPlannerSendEmailConfiguration = new FinancialPlannerSendEmailConfiguration(feesInvoiceReport, this.client);
+                financialPlannerSendEmailConfiguration.Show();
+            }
         }
     }
 }

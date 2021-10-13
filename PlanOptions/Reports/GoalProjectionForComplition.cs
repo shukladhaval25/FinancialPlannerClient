@@ -35,6 +35,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             _dtGoals = ListtoDataTable.ToDataTable(lstGoal);
             _dtGoals.Columns.Add("ProjectionCompleted", typeof(System.Int64));
             _dtGoals.Columns.Add("GoalAchivedTillDate", typeof(System.Double));
+            _dtGoals.Columns.Add("MappedFromCurrentStatus", typeof(System.Double));
             _dtGoals.Columns.Add("GoalReached", typeof(System.Int64));
 
             addFutureValueIntoDataTable();
@@ -85,11 +86,15 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                     double futureValue = 0;
                     string endYear = "";
                     double totalCurrentStatusMapValue = 0;
+                    double totalOnlyForMappedCurrentStatusValue = 0;
                     int totalGoalReacedPercentage = 0;
                     GoalCalView goalCalView = new GoalCalView(this.planner, this.riskProfileId, this.optionId);
 
                     int goalComplitionPercentage = getGoalComlitionPercentage(i, goalCalView);
-                    double currentStatusMapAmount = getCurrentStatusFundForMappedGoal(int.Parse(_dtGoals.Rows[i]["Id"].ToString()));
+                    int goalId = int.Parse(_dtGoals.Rows[i]["Id"].ToString());
+                    double currentStatusMapAmount = getCurrentStatusFundForMappedGoal(goalId);
+                    _dtGoals.Rows[i]["MappedFromCurrentStatus"] = currentStatusMapAmount;
+                    currentStatusMapAmount = currentStatusMapAmount + getNonFinancialAssetMapping(goalId);
                     _dtGoals.Rows[i]["ProjectionCompleted"] = goalComplitionPercentage;
                     _dtGoals.Rows[i]["GoalAchivedTillDate"] = currentStatusMapAmount;
                     _dtGoals.Rows[i]["GoalReached"] = ((currentStatusMapAmount * 100) / double.Parse(_dtGoals.Rows[i]["FutureValue"].ToString()));
@@ -110,7 +115,13 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                                 {
                                     goalComplitionPercentage = getGoalComlitionPercentage(innerLoopIndex, goalCalView);
                                     currentStatusMapAmount = getCurrentStatusFundForMappedGoal(int.Parse(_dtGoals.Rows[innerLoopIndex]["ID"].ToString()));
+                                    _dtGoals.Rows[i]["MappedFromCurrentStatus"] = currentStatusMapAmount;
+                                    totalOnlyForMappedCurrentStatusValue = totalOnlyForMappedCurrentStatusValue + currentStatusMapAmount;
+
                                     _dtGoals.Rows[innerLoopIndex]["ProjectionCompleted"] = goalComplitionPercentage;
+
+                                    currentStatusMapAmount = currentStatusMapAmount + getNonFinancialAssetMapping(int.Parse(_dtGoals.Rows[innerLoopIndex]["ID"].ToString()));
+
                                     _dtGoals.Rows[innerLoopIndex]["GoalAchivedTillDate"] = currentStatusMapAmount;
                                     _dtGoals.Rows[innerLoopIndex]["GoalReached"] = ((currentStatusMapAmount * 100) / double.Parse(_dtGoals.Rows[innerLoopIndex]["FutureValue"].ToString()));
 
@@ -136,6 +147,11 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                                         //dtGroupOfGoals.Rows.Add(_dtGoals.Rows[innerLoopIndex]);
                                         endYear = _dtGoals.Rows[i]["StartYear"].ToString();
                                         currentStatusMapAmount = getCurrentStatusFundForMappedGoal(int.Parse(_dtGoals.Rows[innerLoopIndex]["ID"].ToString()));
+                                        _dtGoals.Rows[i]["MappedFromCurrentStatus"] = currentStatusMapAmount;
+                                        totalOnlyForMappedCurrentStatusValue = totalOnlyForMappedCurrentStatusValue + currentStatusMapAmount;
+
+                                        currentStatusMapAmount = currentStatusMapAmount +  getNonFinancialAssetMapping(int.Parse(_dtGoals.Rows[innerLoopIndex]["ID"].ToString()));
+
                                         totalCurrentStatusMapValue = totalCurrentStatusMapValue + currentStatusMapAmount;
                                         recurrence++;
                                         break;
@@ -153,6 +169,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                             dr["FutureValue"] = futureValue;
                             dr["ProjectionCompleted"] = (projectionCompletedPercentage > 0) ? (projectionCompletedPercentage / recurrence) : 0;
                             dr["GoalAchivedTillDate"] = totalCurrentStatusMapValue;
+                            dr["MappedFromCurrentStatus"] = totalOnlyForMappedCurrentStatusValue;
                             dr["GoalReached"] = (totalCurrentStatusMapValue > 0) ?
                                 (totalCurrentStatusMapValue * 100) / futureValue : 0;
                             dr["StartYear"] = _dtGoals.Rows[i]["StartYear"];
@@ -185,6 +202,29 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                 dr["GoalReached"] = dataRow["GoalReached"];
                 _dtGoals.Rows.Add(dr);
             }
+        }
+
+        private double getNonFinancialAssetMapping(int goalId)
+        {
+            NonFinancialAssetInfo nonFinancialAssetInfo = new NonFinancialAssetInfo();
+            IList<NonFinancialAsset> nonFinancialAssets = nonFinancialAssetInfo.GetWithMappedGoal(goalId);
+            double sumOfNonFinancialAsset = 0;
+            if (nonFinancialAssets != null)
+            {
+                foreach (NonFinancialAsset nfa in nonFinancialAssets)
+                {
+                    double primaryHolderShare = (nfa.CurrentValue * nfa.PrimaryholderShare) / 100;
+                    double secondaryHolderShare = (nfa.CurrentValue * nfa.SecondaryHolderShare) / 100;
+                    double assetsMappingShare = ((primaryHolderShare + secondaryHolderShare) * nfa.AssetMappingShare) / 100;
+
+                    //int timePeriod = getRemainingYearsFromPlanStartYear();
+                    //decimal inflationRate = nfa.GrowthPercentage;
+                    sumOfNonFinancialAsset = sumOfNonFinancialAsset + assetsMappingShare;
+                    //futureValue(assetsMappingShare, inflationRate, timePeriod);
+                }
+              
+            }
+            return sumOfNonFinancialAsset;
         }
 
         internal DataTable GetGoalProjectionTable()

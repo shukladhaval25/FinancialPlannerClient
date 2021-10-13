@@ -385,6 +385,12 @@
       <DependentUpon>ARNView.cs</DependentUpon>
     </Compile>
     <Compile Include="Master\UserServiceHelper.cs" />
+    <Compile Include="MOM\MOMReportView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MOM\MOMReportView.Designer.cs">
+      <DependentUpon>MOMReportView.cs</DependentUpon>
+    </Compile>
     <Compile Include="MOM\frmMOM.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -411,6 +417,12 @@
     <Compile Include="PlanOptions\FinancialPlannerSendEmailConfiguration.Designer.cs">
       <DependentUpon>FinancialPlannerSendEmailConfiguration.cs</DependentUpon>
     </Compile>
+    <Compile Include="PlanOptions\frmReportPageOption.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\frmReportPageOption.Designer.cs">
+      <DependentUpon>frmReportPageOption.cs</DependentUpon>
+    </Compile>
     <Compile Include="PlanOptions\InvestmentRecomendationView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -425,6 +437,9 @@
       <DependentUpon>InvRecSendDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="PlanOptions\InvRecSendInfo.cs" />
+    <Compile Include="PlanOptions\FeesInvoiceReportView.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="PlanOptions\NetWorthAssets.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1139,6 +1154,9 @@
     <EmbeddedResource Include="Master\TaskMaster\ARNView.resx">
       <DependentUpon>ARNView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MOM\MOMReportView.resx">
+      <DependentUpon>MOMReportView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MOM\frmMOM.resx">
       <DependentUpon>frmMOM.cs</DependentUpon>
     </EmbeddedResource>
@@ -1148,12 +1166,16 @@
     <EmbeddedResource Include="PlanOptions\FinancialPlannerSendEmailConfiguration.resx">
       <DependentUpon>FinancialPlannerSendEmailConfiguration.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\frmReportPageOption.resx">
+      <DependentUpon>frmReportPageOption.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\InvestmentRecomendationView.resx">
       <DependentUpon>InvestmentRecomendationView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\InvRecSendDetails.resx">
       <DependentUpon>InvRecSendDetails.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\FeesInvoiceReportView.resx" />
     <EmbeddedResource Include="PlanOptions\NetWorthAssets.resx">
       <DependentUpon>NetWorthAssets.cs</DependentUpon>
     </EmbeddedResource>

@@ -71,7 +71,7 @@
             this.Detail.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
             this.xrPanel3});
             this.Detail.Dpi = 100F;
-            this.Detail.HeightF = 31.87485F;
+            this.Detail.HeightF = 42.29152F;
             this.Detail.Name = "Detail";
             this.Detail.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.Detail.StylePriority.UseBorders = false;
@@ -90,7 +90,7 @@
             this.xrPanel3.Dpi = 100F;
             this.xrPanel3.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
             this.xrPanel3.Name = "xrPanel3";
-            this.xrPanel3.SizeF = new System.Drawing.SizeF(650F, 31.87485F);
+            this.xrPanel3.SizeF = new System.Drawing.SizeF(650F, 42.29152F);
             this.xrPanel3.StylePriority.UseBorderColor = false;
             this.xrPanel3.StylePriority.UseBorders = false;
             this.xrPanel3.StylePriority.UseBorderWidth = false;
@@ -104,15 +104,17 @@
             this.xrTable1.BorderWidth = 1F;
             this.xrTable1.Dpi = 100F;
             this.xrTable1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xrTable1.LocationFloat = new DevExpress.Utils.PointFloat(10.00002F, 1.999996F);
+            this.xrTable1.LocationFloat = new DevExpress.Utils.PointFloat(10.00002F, 1.999982F);
             this.xrTable1.Name = "xrTable1";
             this.xrTable1.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.xrTableRow1});
-            this.xrTable1.SizeF = new System.Drawing.SizeF(630F, 27.70818F);
+            this.xrTable1.SizeF = new System.Drawing.SizeF(630F, 40.29153F);
             this.xrTable1.StylePriority.UseBorderColor = false;
             this.xrTable1.StylePriority.UseBorders = false;
             this.xrTable1.StylePriority.UseBorderWidth = false;
             this.xrTable1.StylePriority.UseFont = false;
+            this.xrTable1.StylePriority.UseTextAlignment = false;
+            this.xrTable1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
             // 
             // xrTableRow1
             // 
@@ -137,7 +139,7 @@
             this.lblName.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 0, 0, 0, 100F);
             this.lblName.StylePriority.UseBorders = false;
             this.lblName.StylePriority.UsePadding = false;
-            this.lblName.Weight = 2.1660431931585D;
+            this.lblName.Weight = 1.8427939835607892D;
             // 
             // lblRelationship
             // 
@@ -145,7 +147,7 @@
             this.lblRelationship.Name = "lblRelationship";
             this.lblRelationship.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 0, 0, 0, 100F);
             this.lblRelationship.StylePriority.UsePadding = false;
-            this.lblRelationship.Weight = 0.96533234463950746D;
+            this.lblRelationship.Weight = 1.0565049838213345D;
             // 
             // lblAge
             // 
@@ -153,7 +155,7 @@
             this.lblAge.Name = "lblAge";
             this.lblAge.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 0, 0, 0, 100F);
             this.lblAge.StylePriority.UsePadding = false;
-            this.lblAge.Weight = 0.71483038930629028D;
+            this.lblAge.Weight = 0.65681145917472838D;
             // 
             // lblOccupation
             // 
@@ -161,7 +163,7 @@
             this.lblOccupation.Name = "lblOccupation";
             this.lblOccupation.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 0, 0, 0, 100F);
             this.lblOccupation.StylePriority.UsePadding = false;
-            this.lblOccupation.Weight = 1.0390036761297776D;
+            this.lblOccupation.Weight = 1.3290991766772229D;
             // 
             // lblDOB
             // 
@@ -322,7 +324,7 @@
             this.xrTableCell5.StylePriority.UseBackColor = false;
             this.xrTableCell5.StylePriority.UseBorderColor = false;
             this.xrTableCell5.Text = "Name";
-            this.xrTableCell5.Weight = 2.6200243295482739D;
+            this.xrTableCell5.Weight = 2.2290252140258131D;
             // 
             // xrTableCell6
             // 
@@ -333,7 +335,7 @@
             this.xrTableCell6.StylePriority.UseBackColor = false;
             this.xrTableCell6.StylePriority.UseBorderColor = false;
             this.xrTableCell6.Text = "Relationship";
-            this.xrTableCell6.Weight = 1.1922049764933023D;
+            this.xrTableCell6.Weight = 1.277937997225403D;
             // 
             // xrTableCell7
             // 
@@ -346,7 +348,7 @@
             this.xrTableCell7.StylePriority.UseTextAlignment = false;
             this.xrTableCell7.Text = "Age";
             this.xrTableCell7.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell7.Weight = 0.84010314071332193D;
+            this.xrTableCell7.Weight = 0.79447309796300314D;
             // 
             // xrTableCell8
             // 
@@ -357,7 +359,7 @@
             this.xrTableCell8.StylePriority.UseBackColor = false;
             this.xrTableCell8.StylePriority.UseBorderColor = false;
             this.xrTableCell8.Text = "Occupation";
-            this.xrTableCell8.Weight = 1.25676903045896D;
+            this.xrTableCell8.Weight = 1.6076651679996385D;
             // 
             // xrPanel1
             // 

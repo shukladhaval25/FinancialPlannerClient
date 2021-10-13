@@ -2,6 +2,7 @@
 using FinancialPlanner.Common.Model;
 using FinancialPlanner.Common.Model.TaskManagement;
 using FinancialPlannerClient.Master;
+using FinancialPlannerClient.PlanOptions;
 using FinancialPlannerClient.TaskManagementSystem;
 using System;
 using System.Collections.Generic;
@@ -40,6 +41,7 @@ namespace FinancialPlannerClient.MOM
             repositoryItemComboBoxResponsibility.Items.Clear();
             repositoryItemComboBoxResponsibility.Items.Add("Client");
             repositoryItemComboBoxResponsibility.Items.Add("Ascent Finance Solution");
+            repositoryItemComboBoxResponsibility.Items.Add("Both");
 
             UserServiceHelper userServiceHelper = new UserServiceHelper();
             users = userServiceHelper.GetAll();
@@ -69,7 +71,7 @@ namespace FinancialPlannerClient.MOM
                 //gridViewMOMPoints.Columns["EmpId"].Visible = false;
                 gridViewMOMPoints.Columns["UserName"].VisibleIndex = 2;
                 gridViewMOMPoints.Columns["UserName"].Caption = "Employee";
-                gridViewMOMPoints.Columns["DiscussedPoint"].Width = 90;
+                gridViewMOMPoints.Columns["DiscussedPoint"].Width = 280;
             }
         }
 
@@ -108,6 +110,18 @@ namespace FinancialPlannerClient.MOM
                 int Mid = int.Parse(dtMeetingDate.Tag.ToString());
                 MOMTransaction transaction =  mOMTransactions.First(i => i.MId == Mid);
                 dtMOMPoints = ListtoDataTable.ToDataTable(transaction.MOMPoints.ToList());
+                foreach(DataRow dataRow in dtMOMPoints.Rows)
+                {
+                    TaskCardService taskCardService = new TaskCardService();
+                    IList<TaskCard> taskCards = taskCardService.GetTaskByTaskId(dataRow["TaskId"].ToString());
+                    if (taskCards != null)
+                    {
+                        if (taskCards.Count > 0)
+                        {
+                            dataRow["TaskStatus"] = taskCards[0].TaskStatus.ToString();
+                        }
+                    }
+                }
                 gridMOMPoints.DataSource = dtMOMPoints;
                 //gridViewMOMPoints.Columns["Id"].Visible = false;
                 //gridViewMOMPoints.Columns["MId"].Visible = false;
@@ -134,7 +148,7 @@ namespace FinancialPlannerClient.MOM
                 {
                     if (taskCards.Count > 0)
                     {
-                        gridViewMOMPoints.SetRowCellValue(e.RowHandle,"EmpId", taskCards[0].TaskStatus.ToString());
+                        gridViewMOMPoints.SetRowCellValue(e.RowHandle,"TaskStatus", taskCards[0].TaskStatus.ToString());
                     }
                 }
             }
@@ -244,11 +258,13 @@ namespace FinancialPlannerClient.MOM
                 point.MId = momTransaction.MId;
                 point.DiscussedPoint = gridViewMOMPoints.GetRowCellValue(rowIndex, "DiscussedPoint").ToString();
                 point.Responsibility = gridViewMOMPoints.GetRowCellValue(rowIndex, "Responsibility").ToString();
+                point.FutureAction  = gridViewMOMPoints.GetRowCellValue(rowIndex, "FutureAction").ToString();
 
                 int.TryParse(gridViewMOMPoints.GetRowCellValue(rowIndex, "EmpId").ToString(), out EmpId);
                 point.EmpId  =  EmpId;
 
                 point.TaskId = gridViewMOMPoints.GetRowCellValue(rowIndex, "TaskId").ToString();
+                //point.TaskSatus = gridViewMOMPoints.GetRowCellValue(rowIndex, "TaskStatus").ToString();
                 momTransaction.MOMPoints.Add(point);
             }
             return momTransaction;
@@ -257,7 +273,7 @@ namespace FinancialPlannerClient.MOM
         private bool isValidateRecord()
         {
             if ((dtMeetingDate.Value != null) && !string.IsNullOrEmpty(txtMeetingType.Text) &&
-                    !string.IsNullOrEmpty(txtClientName.Text) && !string.IsNullOrEmpty(txtDuration.Text))
+                    !string.IsNullOrEmpty(txtClientName.Text))
             {
                 return true;
             }
@@ -290,6 +306,40 @@ namespace FinancialPlannerClient.MOM
                 }
             }
 
+        }
+
+        private void btnPreviewMOM_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int Mid = int.Parse(dtMeetingDate.Tag.ToString());
+                MOMTransaction transaction = mOMTransactions.First(i => i.MId == Mid);
+                if (transaction != null)
+                {
+                    MOMReportView momReportView = new MOMReportView(transaction);
+                    DevExpress.XtraReports.UI.ReportPrintTool printTool = new DevExpress.XtraReports.UI.ReportPrintTool(momReportView);
+                    printTool.ShowRibbonPreview();
+                }
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
+
+        private void btnSendInvestmentReport_Click(object sender, EventArgs e)
+        {
+            MOMReportView momReportView;
+            int Mid = int.Parse(dtMeetingDate.Tag.ToString());
+            MOMTransaction transaction = mOMTransactions.First(i => i.MId == Mid);
+            if (transaction != null)
+            {
+                momReportView = new MOMReportView(transaction);
+                DevExpress.XtraReports.UI.ReportPrintTool printTool = new DevExpress.XtraReports.UI.ReportPrintTool(momReportView);
+                FinancialPlannerSendEmailConfiguration financialPlannerSendEmailConfiguration = new FinancialPlannerSendEmailConfiguration(momReportView, this.client);
+                financialPlannerSendEmailConfiguration.Show();
+            }
+           
         }
     }
 }

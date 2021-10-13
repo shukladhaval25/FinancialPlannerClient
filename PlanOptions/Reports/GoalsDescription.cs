@@ -3,6 +3,7 @@ using FinancialPlanner.Common;
 using FinancialPlanner.Common.Model;
 using FinancialPlanner.Common.Model.PlanOptions;
 using FinancialPlannerClient.CashFlowManager;
+using FinancialPlannerClient.PlannerInfo;
 using FinancialPlannerClient.RiskProfile;
 using System;
 using System.Collections.Generic;
@@ -56,7 +57,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             double returnRate = (double)riskprofileInfo.GetRiskProfileReturnRatio(this.riskProfileId,
                     (int.Parse(this.goal.StartYear) - this.planner.StartDate.Year));
             lblTaxReturn.Text = string.Format(lblTaxReturn.Text, returnRate.ToString(), this.planner.StartDate.Year.ToString());
-
+            this.GroupHeader1.GroupFields[0].FieldName = this.goal.Name;
             setImageForGoal(goal);
             goalCalculation(goal);
         }
@@ -169,7 +170,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         {
             if (!string.IsNullOrEmpty(lblMappedAssets.Text))
             {
-                if (lblMappedAssets.Text == "0" || lblMappedAssets.Text == "NIL")
+                if (lblMappedAssets.Text == "0" || lblMappedAssets.Text == "NIL" || lblMappedAssets.Text == "")
                 {
                     lblMappedAssets.Text = "NIL";
                 }
@@ -182,7 +183,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
 
         private void lblLoanAmt_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            if (lblLoanAmt.Text == "0" || lblLoanAmt.Text == "NIL")
+            if (lblLoanAmt.Text == "0" || lblLoanAmt.Text == "NIL" || lblLoanAmt.Text == "")
             {
                 lblLoanAmt.Text = "NIL";
                 return;
@@ -200,7 +201,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
 
         private void lblCurrentSurplus_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            if (lblCurrentSurplus.Text == "0" || lblCurrentSurplus.Text == "NIL")
+            if (lblCurrentSurplus.Text == "0" || lblCurrentSurplus.Text == "NIL" || lblCurrentSurplus.Text =="")
             {
                 lblCurrentSurplus.Text = "NIL";
                 return;
@@ -259,6 +260,12 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                 lblRetirementCorpusSum.Text = totalEstimatedRetirementCorpusFund.ToString();
                 //lblRetirementCorpus.DataBindings.Add("Text", this.DataSource, G)
             }
+            else
+            {
+                lblGoalFutureValue.WidthF = lblGoalFutureValue.WidthF + lblRetirementCorpusValue.WidthF;
+                lblGoalValuetitle.WidthF = lblGoalValuetitle.WidthF + lblRetirementCorpus.WidthF ;
+                lblGoalFutureValueSum.WidthF = lblGoalFutureValueSum.WidthF + lblRetirementCorpusSum.WidthF;
+            }
             if (_dtGoals.Rows.Count == 1)
             {
                 xrTableTotal.Visible = false;
@@ -281,6 +288,39 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             setGoalProjectionComplitionNote();
             setCurrentStatusFundAllocationValue();
             setFreshInvestmentInGoal();
+            setNonFinancialAssetsMappingValue();
+        }
+
+        private void setNonFinancialAssetsMappingValue()
+        {
+            NonFinancialAssetInfo nonFinancialAssetInfo = new NonFinancialAssetInfo();
+            IList<NonFinancialAsset> nonFinancialAssets = nonFinancialAssetInfo.GetWithMappedGoal(this.goal.Id);
+            double sumOfNonFinancialAsset = 0;
+            if (nonFinancialAssets != null)
+            {
+                foreach (NonFinancialAsset nfa in nonFinancialAssets)
+                {
+                    double primaryHolderShare = (nfa.CurrentValue * nfa.PrimaryholderShare) / 100;
+                    double secondaryHolderShare = (nfa.CurrentValue * nfa.SecondaryHolderShare) / 100;
+                    double assetsMappingShare = ((primaryHolderShare + secondaryHolderShare) * nfa.AssetMappingShare) / 100;
+
+                    //int timePeriod = getRemainingYearsFromPlanStartYear();
+                    //decimal inflationRate = nfa.GrowthPercentage;
+                    sumOfNonFinancialAsset = sumOfNonFinancialAsset + assetsMappingShare;
+                    //futureValue(assetsMappingShare, inflationRate, timePeriod);
+                }
+                lblNonFinancialAssets.Text = sumOfNonFinancialAsset.ToString();
+            }
+            //return sumOfNonFinancialAsset;
+        }
+
+        private int getRemainingYearsFromPlanStartYear()
+        {
+            if (int.Parse(this.goal.StartYear) > this.planner.StartDate.Year)
+            {
+                return int.Parse(this.goal.StartYear) - this.planner.StartDate.Year;
+            }
+            return 0;
         }
 
         private void setFreshInvestmentInGoal()
@@ -294,7 +334,11 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                 {
                     for (int colCount = 0; colCount < _dtcashFlow.Columns.Count; colCount++)
                     {
-                        if (_dtcashFlow.Columns[colCount].ToString().Contains(_dtGoals.Rows[rowcount]["Name"].ToString()))
+                        string columnName = _dtcashFlow.Columns[colCount].ToString().Contains("-") ?
+                            _dtcashFlow.Columns[colCount].ToString().Substring(_dtcashFlow.Columns[colCount].ToString().IndexOf("-") + 1):
+                            _dtcashFlow.Columns[colCount].ToString();
+
+                        if (columnName.Trim().Equals(_dtGoals.Rows[rowcount]["Name"].ToString().Trim()))
                         {
                             double.TryParse(drs[0][colCount].ToString(), out value);
                             totalValue = totalValue + value;
@@ -307,23 +351,23 @@ namespace FinancialPlannerClient.PlanOptions.Reports
 
         private void setCurrentStatusFundAllocationValue()
         {
-            //IList<FinancialPlanner.Common.Model.PlanOptions.CurrentStatusToGoal> _currentStatusToGoal = new CurrentStatusInfo().GetCurrentStatusToGoal(this.optionId, this.planner.ID);
-            //if (_currentStatusToGoal != null)
-            //{
-            //    DataTable _dtGoalMapped = ListtoDataTable.ToDataTable(_currentStatusToGoal.ToList());
-            //    DataRow[] drs = _dtGoalMapped.Select("GoalName = '" + goal.Name + "'");
-            //    if (drs.Length > 0)
-            //    {
-            //        lblMappedAssets.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(drs[0]["FundAllocation"].ToString()).ToString("N0", PlannerMainReport.Info);
-            //    }
-            //}
-            string goalName = (goal.Name.Length > 4) ? goal.Name.Substring(0, goal.Name.Length - 4) : goal.Name;
+            int number;
+            string goalName;
+            if (goal.Name.Length > 4 && int.TryParse(goal.Name.Substring(goal.Name.LastIndexOf(" ") + 1),out number))
+            {
+                goalName = goal.Name.Substring(0, goal.Name.Length - 4);
+            }
+            else
+            {
+                goalName = goal.Name;
+            }
+           
             DataRow[] drs = _dtGoalProjectionComplition.Select("Name like '" + goalName.Trim() + "%'");
             if (drs.Length > 0)
             {
                 if (drs[0]["GoalAchivedTillDate"] != DBNull.Value)
                 {
-                    lblMappedAssets.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(drs[0]["GoalAchivedTillDate"].ToString()).ToString("N0", PlannerMainReport.Info);
+                    lblMappedAssets.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(drs[0]["MappedFromCurrentStatus"].ToString()).ToString("N0", PlannerMainReport.Info);
                 }
             }
         }
@@ -421,6 +465,21 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             cbBox.EndPointF = new PointF(0, this.BottomMargin.HeightF);
             cbBox.WidthF = this.PageWidth - 75;
             this.CrossBandControls.Add(cbBox);
+        }
+
+        private void lblNonFinancialAssets_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(lblMappedAssets.Text))
+            {
+                if (lblNonFinancialAssets.Text == "0" || lblNonFinancialAssets.Text == "NIL" || lblNonFinancialAssets.Text == "")
+                {
+                    lblNonFinancialAssets.Text = "NIL";
+                }
+                else
+                {
+                    lblNonFinancialAssets.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblNonFinancialAssets.Text).ToString("N0", PlannerMainReport.Info);
+                }
+            }
         }
 
         private void lblDebt_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)

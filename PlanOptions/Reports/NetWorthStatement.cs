@@ -1191,6 +1191,54 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                 xrTableCell86.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(xrTableCell86.Text).ToString("N0", PlannerMainReport.Info);
             }
         }
+
+        private void xrTableCell94_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(xrTableCell94.Text) && !xrTableCell94.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
+            {
+                xrTableCell94.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(xrTableCell94.Text).ToString("N0", PlannerMainReport.Info);
+            }
+            else if (!string.IsNullOrEmpty(xrTableCell94.Text) && string.IsNullOrEmpty((PlannerMainReport.planner.CurrencySymbol)))
+            {
+                xrTableCell94.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(xrTableCell94.Text).ToString("N0", PlannerMainReport.Info);
+            }
+        }
+
+        private void xrTableCell96_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(xrTableCell96.Text) && !xrTableCell96.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
+            {
+                xrTableCell96.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(xrTableCell96.Text).ToString("N0", PlannerMainReport.Info);
+            }
+            else if (!string.IsNullOrEmpty(xrTableCell96.Text) && string.IsNullOrEmpty((PlannerMainReport.planner.CurrencySymbol)))
+            {
+                xrTableCell96.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(xrTableCell96.Text).ToString("N0", PlannerMainReport.Info);
+            }
+        }
+
+        private void xrTableCell100_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(xrTableCell100.Text) && !xrTableCell100.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
+            {
+                xrTableCell100.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(xrTableCell100.Text).ToString("N0", PlannerMainReport.Info);
+            }
+            else if (!string.IsNullOrEmpty(xrTableCell100.Text) && string.IsNullOrEmpty((PlannerMainReport.planner.CurrencySymbol)))
+            {
+                xrTableCell100.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(xrTableCell100.Text).ToString("N0", PlannerMainReport.Info);
+            }
+        }
+
+        private void xrTableCell98_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(xrTableCell98.Text) && !xrTableCell98.Text.StartsWith(PlannerMainReport.planner.CurrencySymbol))
+            {
+                xrTableCell98.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(xrTableCell98.Text).ToString("N0", PlannerMainReport.Info);
+            }
+            else if (!string.IsNullOrEmpty(xrTableCell98.Text) && string.IsNullOrEmpty((PlannerMainReport.planner.CurrencySymbol)))
+            {
+                xrTableCell98.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(xrTableCell98.Text).ToString("N0", PlannerMainReport.Info);
+            }
+        }
         #endregion
 
         #region "SCSS"

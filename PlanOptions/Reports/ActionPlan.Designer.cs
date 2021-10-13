@@ -282,7 +282,7 @@
             // 
             this.lblPeriod.Dpi = 100F;
             this.lblPeriod.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPeriod.LocationFloat = new DevExpress.Utils.PointFloat(302.7083F, 63.49999F);
+            this.lblPeriod.LocationFloat = new DevExpress.Utils.PointFloat(250.9167F, 63.49999F);
             this.lblPeriod.Name = "lblPeriod";
             this.lblPeriod.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.lblPeriod.SizeF = new System.Drawing.SizeF(292.7083F, 23F);
@@ -295,7 +295,7 @@
             this.xrLabel2.LocationFloat = new DevExpress.Utils.PointFloat(10.00001F, 63.49999F);
             this.xrLabel2.Name = "xrLabel2";
             this.xrLabel2.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel2.SizeF = new System.Drawing.SizeF(292.7083F, 23F);
+            this.xrLabel2.SizeF = new System.Drawing.SizeF(237.5F, 23F);
             this.xrLabel2.StylePriority.UseFont = false;
             this.xrLabel2.Text = "ACTION PLAN FOR THE PERIOD OF";
             // 

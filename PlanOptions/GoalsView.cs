@@ -158,13 +158,17 @@ namespace FinancialPlannerClient.PlanOptions
 
         private void displayLaonForGoalData(Goals goals)
         {
-            txtLoanForGoalAmount.Text = goals.LoanForGoal.LoanAmount.ToString("#,##0.00");
+            
+            txtLoanForGoalAmount.Text = goals.LoanForGoal.LoanAmount.ToString("N0", PlannerMainReport.Info);
             txtLoanForGoalAmount.Tag = goals.LoanForGoal.Id.ToString();
-            txtLoanForGoalEMI.Text = goals.LoanForGoal.EMI.ToString("#,##0.00");
+            txtLoanForGoalEMI.Text = goals.LoanForGoal.EMI.ToString("N0", PlannerMainReport.Info);
             txtLoanForGoalROI.Text = goals.LoanForGoal.ROI.ToString();
             txtLoanForGoalYears.Text = goals.LoanForGoal.LoanYears.ToString();
             txtLoanForGoalStartYear.Text = goals.LoanForGoal.StratYear.ToString();
             txtLoanForGoalEndYear.Text = goals.LoanForGoal.EndYear.ToString();
+            txtGoalLoanPortion.Text = goals.LoanForGoal.LoanPortion.ToString();
+            //txtGoalLoanPortion.Text = (((100 * goals.Amount) / goals.LoanForGoal.LoanAmount)).ToString();
+
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -377,6 +381,7 @@ namespace FinancialPlannerClient.PlanOptions
             goalLoan.UpdatedBy = Program.CurrentUser.Id;
             goalLoan.UpdatedByUserName = Program.CurrentUser.UserName;
             goalLoan.MachineName = Environment.MachineName;
+            goalLoan.LoanPortion = int.Parse(txtGoalLoanPortion.Text);
             return goalLoan;
         }
 

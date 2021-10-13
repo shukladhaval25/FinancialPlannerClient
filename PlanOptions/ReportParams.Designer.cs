@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.grpParams = new DevExpress.XtraEditors.GroupControl();
+            this.btnReportPage = new DevExpress.XtraEditors.SimpleButton();
             this.btnSendFinancialPlannerReport = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.btnOk = new DevExpress.XtraEditors.SimpleButton();
@@ -43,6 +44,7 @@
             // 
             // grpParams
             // 
+            this.grpParams.Controls.Add(this.btnReportPage);
             this.grpParams.Controls.Add(this.btnSendFinancialPlannerReport);
             this.grpParams.Controls.Add(this.labelControl2);
             this.grpParams.Controls.Add(this.btnOk);
@@ -53,6 +55,16 @@
             this.grpParams.Name = "grpParams";
             this.grpParams.Size = new System.Drawing.Size(390, 243);
             this.grpParams.TabIndex = 0;
+            // 
+            // btnReportPage
+            // 
+            this.btnReportPage.ImageUri.Uri = "CustomizeGrid;Size16x16";
+            this.btnReportPage.Location = new System.Drawing.Point(97, 213);
+            this.btnReportPage.Name = "btnReportPage";
+            this.btnReportPage.Size = new System.Drawing.Size(94, 23);
+            this.btnReportPage.TabIndex = 36;
+            this.btnReportPage.Text = "Page Setting";
+            this.btnReportPage.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // btnSendFinancialPlannerReport
             // 
@@ -142,6 +154,7 @@
         internal DevExpress.XtraEditors.RichTextEdit txtRecomendation;
         private DevExpress.XtraEditors.SimpleButton btnSendFinancialPlannerReport;
         internal DevExpress.XtraEditors.ComboBoxEdit cmbPlanOption;
+        private DevExpress.XtraEditors.SimpleButton btnReportPage;
     }
 }
 

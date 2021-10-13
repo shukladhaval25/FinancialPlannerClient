@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FinancialPlannerSendEmailConfiguration));
             this.grpParams = new DevExpress.XtraEditors.GroupControl();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
@@ -48,7 +49,8 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.txtToEmail = new DevExpress.XtraEditors.TextEdit();
             this.txtEmaiBody = new DevExpress.XtraEditors.MemoEdit();
-            this.imageList1 = new System.Windows.Forms.ImageList();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.grpParams)).BeginInit();
             this.grpParams.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtCC.Properties)).BeginInit();
@@ -62,6 +64,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtSubject.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtToEmail.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmaiBody.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
             this.SuspendLayout();
             // 
             // grpParams
@@ -123,6 +126,7 @@
             this.picProcessing.Properties.ZoomAccelerationFactor = 1D;
             this.picProcessing.Size = new System.Drawing.Size(760, 64);
             this.picProcessing.TabIndex = 12;
+            this.picProcessing.DoubleClick += new System.EventHandler(this.picProcessing_DoubleClick);
             // 
             // grdAttachment
             // 
@@ -150,6 +154,7 @@
             this.gridViewAttachment.Name = "gridViewAttachment";
             this.gridViewAttachment.OptionsBehavior.Editable = false;
             this.gridViewAttachment.OptionsView.ShowGroupPanel = false;
+            this.gridViewAttachment.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gridViewAttachment_RowClick);
             this.gridViewAttachment.CustomRowCellEdit += new DevExpress.XtraGrid.Views.Grid.CustomRowCellEditEventHandler(this.gridViewAttachment_CustomRowCellEdit);
             // 
             // gridColumnImg
@@ -244,7 +249,6 @@
             // 
             this.txtToEmail.Location = new System.Drawing.Point(109, 42);
             this.txtToEmail.Name = "txtToEmail";
-            this.txtToEmail.Properties.ReadOnly = true;
             this.txtToEmail.Size = new System.Drawing.Size(324, 20);
             this.txtToEmail.TabIndex = 36;
             // 
@@ -290,6 +294,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtSubject.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtToEmail.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmaiBody.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -316,5 +321,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemImageEdit repositoryItemImageEdit2;
         private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraEditors.TextEdit txtCC;
+        private DevExpress.Utils.Behaviors.BehaviorManager behaviorManager1;
     }
 }

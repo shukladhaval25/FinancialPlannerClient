@@ -59,6 +59,8 @@
             this.gridViewMoM = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.grpMOMInfo = new DevExpress.XtraEditors.GroupControl();
+            this.btnPreviewMOM = new DevExpress.XtraEditors.SimpleButton();
+            this.btnSendInvestmentReport = new DevExpress.XtraEditors.SimpleButton();
             this.btnRemoveMoMPoints = new DevExpress.XtraEditors.SimpleButton();
             this.btnAddMoMPoints = new DevExpress.XtraEditors.SimpleButton();
             this.btnClose = new DevExpress.XtraEditors.SimpleButton();
@@ -70,7 +72,6 @@
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.txtClientName = new DevExpress.XtraEditors.TextEdit();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.txtMeetingType = new DevExpress.XtraEditors.TextEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.dtMeetingDate = new System.Windows.Forms.DateTimePicker();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
@@ -79,6 +80,7 @@
             this.gridColumnId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnMId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnDiscussPoint = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumnFutureActionPlan = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnResponsibility = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemComboBoxResponsibility = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.gridColumnEmployeeName = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -89,6 +91,7 @@
             this.gridColumnAddTask = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemButtonAddTask = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.txtNotes = new DevExpress.XtraEditors.MemoEdit();
+            this.txtMeetingType = new DevExpress.XtraEditors.ComboBoxEdit();
             ((System.ComponentModel.ISupportInitialize)(this.grpOptions)).BeginInit();
             this.grpOptions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridMOM)).BeginInit();
@@ -99,13 +102,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkIsImportantMeeting.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDuration.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtClientName.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMeetingType.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridMOMPoints)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewMOMPoints)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBoxResponsibility)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBoxEmployee)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonAddTask)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNotes.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMeetingType.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // grpOptions
@@ -205,6 +208,8 @@
             this.grpMOMInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpMOMInfo.Controls.Add(this.btnPreviewMOM);
+            this.grpMOMInfo.Controls.Add(this.btnSendInvestmentReport);
             this.grpMOMInfo.Controls.Add(this.btnRemoveMoMPoints);
             this.grpMOMInfo.Controls.Add(this.btnAddMoMPoints);
             this.grpMOMInfo.Controls.Add(this.btnClose);
@@ -216,17 +221,39 @@
             this.grpMOMInfo.Controls.Add(this.labelControl4);
             this.grpMOMInfo.Controls.Add(this.txtClientName);
             this.grpMOMInfo.Controls.Add(this.labelControl3);
-            this.grpMOMInfo.Controls.Add(this.txtMeetingType);
             this.grpMOMInfo.Controls.Add(this.labelControl2);
             this.grpMOMInfo.Controls.Add(this.dtMeetingDate);
             this.grpMOMInfo.Controls.Add(this.labelControl1);
             this.grpMOMInfo.Controls.Add(this.gridMOMPoints);
             this.grpMOMInfo.Controls.Add(this.txtNotes);
+            this.grpMOMInfo.Controls.Add(this.txtMeetingType);
             this.grpMOMInfo.Location = new System.Drawing.Point(12, 267);
             this.grpMOMInfo.Name = "grpMOMInfo";
             this.grpMOMInfo.Size = new System.Drawing.Size(1133, 290);
             this.grpMOMInfo.TabIndex = 2;
             this.grpMOMInfo.Text = "MOM Information";
+            // 
+            // btnPreviewMOM
+            // 
+            this.btnPreviewMOM.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnPreviewMOM.ImageUri.Uri = "Preview;Size16x16";
+            this.btnPreviewMOM.Location = new System.Drawing.Point(161, 222);
+            this.btnPreviewMOM.Name = "btnPreviewMOM";
+            this.btnPreviewMOM.Size = new System.Drawing.Size(76, 23);
+            this.btnPreviewMOM.TabIndex = 36;
+            this.btnPreviewMOM.Text = "Preview";
+            this.btnPreviewMOM.Click += new System.EventHandler(this.btnPreviewMOM_Click);
+            // 
+            // btnSendInvestmentReport
+            // 
+            this.btnSendInvestmentReport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnSendInvestmentReport.ImageUri.Uri = "SendPDF;Size16x16";
+            this.btnSendInvestmentReport.Location = new System.Drawing.Point(67, 222);
+            this.btnSendInvestmentReport.Name = "btnSendInvestmentReport";
+            this.btnSendInvestmentReport.Size = new System.Drawing.Size(88, 23);
+            this.btnSendInvestmentReport.TabIndex = 35;
+            this.btnSendInvestmentReport.Text = "Send Email";
+            this.btnSendInvestmentReport.Click += new System.EventHandler(this.btnSendInvestmentReport_Click);
             // 
             // btnRemoveMoMPoints
             // 
@@ -314,11 +341,11 @@
             // 
             // labelControl5
             // 
-            this.labelControl5.Location = new System.Drawing.Point(21, 146);
+            this.labelControl5.Location = new System.Drawing.Point(23, 146);
             this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(86, 13);
+            this.labelControl5.Size = new System.Drawing.Size(27, 13);
             this.labelControl5.TabIndex = 15;
-            this.labelControl5.Text = "Meeting Duration:";
+            this.labelControl5.Text = "Note:";
             // 
             // txtDuration
             // 
@@ -329,7 +356,7 @@
             // 
             // labelControl4
             // 
-            this.labelControl4.Location = new System.Drawing.Point(21, 120);
+            this.labelControl4.Location = new System.Drawing.Point(23, 120);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(86, 13);
             this.labelControl4.TabIndex = 13;
@@ -345,22 +372,15 @@
             // 
             // labelControl3
             // 
-            this.labelControl3.Location = new System.Drawing.Point(21, 94);
+            this.labelControl3.Location = new System.Drawing.Point(23, 94);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(61, 13);
             this.labelControl3.TabIndex = 11;
             this.labelControl3.Text = "Client Name:";
             // 
-            // txtMeetingType
-            // 
-            this.txtMeetingType.Location = new System.Drawing.Point(113, 65);
-            this.txtMeetingType.Name = "txtMeetingType";
-            this.txtMeetingType.Size = new System.Drawing.Size(255, 20);
-            this.txtMeetingType.TabIndex = 10;
-            // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(22, 68);
+            this.labelControl2.Location = new System.Drawing.Point(23, 68);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(69, 13);
             this.labelControl2.TabIndex = 9;
@@ -404,6 +424,7 @@
             this.gridColumnId,
             this.gridColumnMId,
             this.gridColumnDiscussPoint,
+            this.gridColumnFutureActionPlan,
             this.gridColumnResponsibility,
             this.gridColumnEmployeeName,
             this.gridColumnEmployeeId,
@@ -439,6 +460,15 @@
             this.gridColumnDiscussPoint.Name = "gridColumnDiscussPoint";
             this.gridColumnDiscussPoint.Visible = true;
             this.gridColumnDiscussPoint.VisibleIndex = 0;
+            this.gridColumnDiscussPoint.Width = 119;
+            // 
+            // gridColumnFutureActionPlan
+            // 
+            this.gridColumnFutureActionPlan.Caption = "Future Action Plan";
+            this.gridColumnFutureActionPlan.FieldName = "FutureAction";
+            this.gridColumnFutureActionPlan.Name = "gridColumnFutureActionPlan";
+            this.gridColumnFutureActionPlan.Visible = true;
+            this.gridColumnFutureActionPlan.VisibleIndex = 3;
             // 
             // gridColumnResponsibility
             // 
@@ -448,6 +478,7 @@
             this.gridColumnResponsibility.Name = "gridColumnResponsibility";
             this.gridColumnResponsibility.Visible = true;
             this.gridColumnResponsibility.VisibleIndex = 1;
+            this.gridColumnResponsibility.Width = 82;
             // 
             // repositoryItemComboBoxResponsibility
             // 
@@ -462,12 +493,13 @@
             // 
             // gridColumnEmployeeName
             // 
-            this.gridColumnEmployeeName.Caption = "Employee Name";
+            this.gridColumnEmployeeName.Caption = "Employee";
             this.gridColumnEmployeeName.ColumnEdit = this.repositoryItemComboBoxEmployee;
             this.gridColumnEmployeeName.FieldName = "UserName";
             this.gridColumnEmployeeName.Name = "gridColumnEmployeeName";
             this.gridColumnEmployeeName.Visible = true;
             this.gridColumnEmployeeName.VisibleIndex = 2;
+            this.gridColumnEmployeeName.Width = 70;
             // 
             // repositoryItemComboBoxEmployee
             // 
@@ -488,7 +520,8 @@
             this.gridColumnTaskId.FieldName = "TaskId";
             this.gridColumnTaskId.Name = "gridColumnTaskId";
             this.gridColumnTaskId.Visible = true;
-            this.gridColumnTaskId.VisibleIndex = 3;
+            this.gridColumnTaskId.VisibleIndex = 4;
+            this.gridColumnTaskId.Width = 119;
             // 
             // gridColumnTaskStatus
             // 
@@ -496,7 +529,8 @@
             this.gridColumnTaskStatus.FieldName = "TaskStatus";
             this.gridColumnTaskStatus.Name = "gridColumnTaskStatus";
             this.gridColumnTaskStatus.Visible = true;
-            this.gridColumnTaskStatus.VisibleIndex = 4;
+            this.gridColumnTaskStatus.VisibleIndex = 5;
+            this.gridColumnTaskStatus.Width = 119;
             // 
             // gridColumnAddTask
             // 
@@ -507,7 +541,8 @@
             this.gridColumnAddTask.OptionsEditForm.Caption = "Add Task";
             this.gridColumnAddTask.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowAlways;
             this.gridColumnAddTask.Visible = true;
-            this.gridColumnAddTask.VisibleIndex = 5;
+            this.gridColumnAddTask.VisibleIndex = 6;
+            this.gridColumnAddTask.Width = 72;
             // 
             // repositoryItemButtonAddTask
             // 
@@ -525,6 +560,20 @@
             this.txtNotes.Size = new System.Drawing.Size(255, 72);
             this.txtNotes.TabIndex = 16;
             // 
+            // txtMeetingType
+            // 
+            this.txtMeetingType.Location = new System.Drawing.Point(113, 65);
+            this.txtMeetingType.Name = "txtMeetingType";
+            this.txtMeetingType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtMeetingType.Properties.Items.AddRange(new object[] {
+            "Annual Review-2nd meeting",
+            "Quarterly Review",
+            "Annual Review-1st meeting",
+            "Other Discussion"});
+            this.txtMeetingType.Size = new System.Drawing.Size(255, 20);
+            this.txtMeetingType.TabIndex = 10;
+            // 
             // frmMOM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -534,7 +583,6 @@
             this.Controls.Add(this.grpOptions);
             this.Name = "frmMOM";
             this.Text = "Moments of Meeting";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmMOM_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grpOptions)).EndInit();
             this.grpOptions.ResumeLayout(false);
@@ -547,13 +595,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkIsImportantMeeting.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDuration.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtClientName.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMeetingType.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridMOMPoints)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewMOMPoints)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBoxResponsibility)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBoxEmployee)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonAddTask)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNotes.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMeetingType.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -567,7 +615,6 @@
         private DevExpress.XtraEditors.GroupControl grpMOMInfo;
         private DevExpress.XtraGrid.GridControl gridMOMPoints;
         private DevExpress.XtraGrid.Views.Grid.GridView gridViewMOMPoints;
-        private DevExpress.XtraEditors.TextEdit txtMeetingType;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private System.Windows.Forms.DateTimePicker dtMeetingDate;
         private DevExpress.XtraEditors.LabelControl labelControl1;
@@ -598,5 +645,9 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBoxEmployee;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnAddTask;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonAddTask;
+        private DevExpress.XtraEditors.ComboBoxEdit txtMeetingType;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumnFutureActionPlan;
+        private DevExpress.XtraEditors.SimpleButton btnSendInvestmentReport;
+        private DevExpress.XtraEditors.SimpleButton btnPreviewMOM;
     }
 }

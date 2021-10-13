@@ -1,6 +1,7 @@
 ﻿using FinancialPlanner.Common;
 using FinancialPlanner.Common.EmailManager;
 using FinancialPlanner.Common.Model;
+using FinancialPlannerClient.MOM;
 using FinancialPlannerClient.PlannerInfo;
 using System;
 using System.Collections.Generic;
@@ -19,16 +20,38 @@ namespace FinancialPlannerClient.PlanOptions
     public partial class FinancialPlannerSendEmailConfiguration : DevExpress.XtraEditors.XtraForm
     {
         PlannerMainReport plannerMainReport;
+        MOMReportView mOMReportView;
+        FeesInvoiceReportView feesInvoiceReportView;
         internal Client client;
         string plannerOption;
         DataTable dtAttachment;
         string filePath;
+        readonly string attachmentType;
+
+        public FinancialPlannerSendEmailConfiguration(FeesInvoiceReportView feesInvoiceReport, Client client)
+        {
+            InitializeComponent();
+            this.feesInvoiceReportView = feesInvoiceReport;
+            this.client = client;
+            this.attachmentType = "FeesInvoice";
+        }
+
+
         public FinancialPlannerSendEmailConfiguration(PlannerMainReport plannerMainReport, Client client, string plannerOption)
         {
             InitializeComponent();
             this.plannerMainReport = plannerMainReport;
             this.client = client;
             this.plannerOption = plannerOption;
+            this.attachmentType = "Planner";
+        }
+
+        public FinancialPlannerSendEmailConfiguration(MOMReportView reportView, Client client)
+        {
+            InitializeComponent();
+            this.mOMReportView = reportView;
+            this.client = client;
+            this.attachmentType = "MOM";
         }
 
         private void FinancialPlannerSendEmailConfiguration_Load(object sender, EventArgs e)
@@ -36,7 +59,84 @@ namespace FinancialPlannerClient.PlanOptions
             ClientContactInfo clientContactInfo = new ClientContactInfo();
             var contactInfo = clientContactInfo.Get(client.ID);
             txtToEmail.Text = contactInfo.PrimaryEmail;
-            exportReport();
+            if (this.attachmentType.Equals("Planner"))
+            {
+                exportReport();
+            }
+            else if (this.attachmentType.Equals("MOM"))
+            {
+                exportMOM();
+            }
+            else if (this.attachmentType.Equals("FeesInvoice"))
+            {
+                exportFeesInvoice();
+            }
+        }
+
+        private async void exportFeesInvoice()
+        {
+            try
+            {
+                string tempPath = Path.GetTempPath();
+                string fileName = string.Format("{0}-{1}-{2}.{3}", this.client.ID, "FeesInvoice", DateTime.Now.Year + DateTime.Now.Month + DateTime.Now.Day + DateTime.Now.Hour + DateTime.Now.Minute, "pdf");
+
+                filePath = Path.Combine(tempPath, fileName);
+                await Task.Run(() => this.feesInvoiceReportView.ExportToPdf(filePath));
+                dtAttachment = new DataTable();
+                dtAttachment.Columns.Add("FileName");
+                dtAttachment.Columns.Add("FilePath");
+
+                DataRow dr = dtAttachment.NewRow();
+                dr["FileName"] = fileName;
+                dr["FilePath"] = filePath;
+                dtAttachment.Rows.Add(dr);
+
+                Icon fileIcon = getIcon(filePath);
+
+                grdAttachment.DataSource = dtAttachment;
+                picProcessing.Visible = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error occured while exporting report." + ex.ToString());
+            }
+            finally
+            {
+                btnSendFinancialPlannerReport.Enabled = true;
+            }
+        }
+
+        private async void exportMOM()
+        {
+            try
+            {
+                string tempPath = Path.GetTempPath();
+                string fileName = string.Format("{0}-{1}-{2}.{3}", this.client.ID, "MOM", DateTime.Now.Year + DateTime.Now.Month + DateTime.Now.Day + DateTime.Now.Hour + DateTime.Now.Minute, "pdf");
+
+                filePath = Path.Combine(tempPath, fileName);
+                await Task.Run(() => this.mOMReportView.ExportToPdf(filePath));
+                dtAttachment = new DataTable();
+                dtAttachment.Columns.Add("FileName");
+                dtAttachment.Columns.Add("FilePath");
+
+                DataRow dr = dtAttachment.NewRow();
+                dr["FileName"] = fileName;
+                dr["FilePath"] = filePath;
+                dtAttachment.Rows.Add(dr);
+
+                Icon fileIcon = getIcon(filePath);
+
+                grdAttachment.DataSource = dtAttachment;
+                picProcessing.Visible = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error occured while exporting report." + ex.ToString());
+            }
+            finally
+            {
+                btnSendFinancialPlannerReport.Enabled = true;
+            }
         }
 
         private async void exportReport()
@@ -92,7 +192,7 @@ namespace FinancialPlannerClient.PlanOptions
                 bool isEmailSend = EmailService.SendEmailWithChilkat(mailMessage, filePath);
                 if (isEmailSend)
                 {
-                    MessageBox.Show("Financial Plan send successfully to '" + txtToEmail.Text + "'.", "Email", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Email send successfully to '" + txtToEmail.Text + "'.", "Email", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
@@ -155,6 +255,19 @@ namespace FinancialPlannerClient.PlanOptions
             if (gridViewAttachment.Columns[0].Name == "Img")
             {
                 //e.CellValue = getIcon(filePath);
+            }
+        }
+
+        private void picProcessing_DoubleClick(object sender, EventArgs e)
+        {
+          
+        }
+
+        private void gridViewAttachment_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(filePath))
+            {
+                System.Diagnostics.Process.Start(filePath);
             }
         }
         //public static System.Drawing.Icon GetFileIcon(string name, IconSize size,

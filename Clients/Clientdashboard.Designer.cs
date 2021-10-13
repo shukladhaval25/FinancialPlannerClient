@@ -472,6 +472,7 @@
             // navBarGroupPlanOption
             // 
             this.navBarGroupPlanOption.Caption = "Plan Option";
+            this.navBarGroupPlanOption.Expanded = true;
             this.navBarGroupPlanOption.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemRiskProfile),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemEstimatedPlan),

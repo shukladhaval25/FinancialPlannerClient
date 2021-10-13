@@ -59,6 +59,8 @@
             this.btnAddMoMPoints = new DevExpress.XtraEditors.SimpleButton();
             this.btnRemoveMoMPoints = new DevExpress.XtraEditors.SimpleButton();
             this.groupFeesInvoiceInfo = new DevExpress.XtraEditors.GroupControl();
+            this.btnPreviewInvoice = new DevExpress.XtraEditors.SimpleButton();
+            this.btnSendInvoiceReport = new DevExpress.XtraEditors.SimpleButton();
             this.btnRemoveParticulars = new DevExpress.XtraEditors.SimpleButton();
             this.btnAddParticulras = new DevExpress.XtraEditors.SimpleButton();
             this.dtInvoiceDate = new System.Windows.Forms.DateTimePicker();
@@ -133,6 +135,8 @@
             this.groupFeesInvoiceInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupFeesInvoiceInfo.Controls.Add(this.btnPreviewInvoice);
+            this.groupFeesInvoiceInfo.Controls.Add(this.btnSendInvoiceReport);
             this.groupFeesInvoiceInfo.Controls.Add(this.btnRemoveParticulars);
             this.groupFeesInvoiceInfo.Controls.Add(this.btnAddParticulras);
             this.groupFeesInvoiceInfo.Controls.Add(this.dtInvoiceDate);
@@ -146,6 +150,28 @@
             this.groupFeesInvoiceInfo.Name = "groupFeesInvoiceInfo";
             this.groupFeesInvoiceInfo.Size = new System.Drawing.Size(688, 398);
             this.groupFeesInvoiceInfo.TabIndex = 30;
+            // 
+            // btnPreviewInvoice
+            // 
+            this.btnPreviewInvoice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnPreviewInvoice.ImageUri.Uri = "Preview;Size16x16";
+            this.btnPreviewInvoice.Location = new System.Drawing.Point(203, 337);
+            this.btnPreviewInvoice.Name = "btnPreviewInvoice";
+            this.btnPreviewInvoice.Size = new System.Drawing.Size(76, 23);
+            this.btnPreviewInvoice.TabIndex = 38;
+            this.btnPreviewInvoice.Text = "Preview";
+            this.btnPreviewInvoice.Click += new System.EventHandler(this.btnPreviewInvoice_Click);
+            // 
+            // btnSendInvoiceReport
+            // 
+            this.btnSendInvoiceReport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnSendInvoiceReport.ImageUri.Uri = "SendPDF;Size16x16";
+            this.btnSendInvoiceReport.Location = new System.Drawing.Point(109, 337);
+            this.btnSendInvoiceReport.Name = "btnSendInvoiceReport";
+            this.btnSendInvoiceReport.Size = new System.Drawing.Size(88, 23);
+            this.btnSendInvoiceReport.TabIndex = 37;
+            this.btnSendInvoiceReport.Text = "Send Email";
+            this.btnSendInvoiceReport.Click += new System.EventHandler(this.btnSendInvoiceReport_Click);
             // 
             // btnRemoveParticulars
             // 
@@ -270,8 +296,12 @@
             this.gridViewInvoiceDetails.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.True;
             this.gridViewInvoiceDetails.OptionsBehavior.EditingMode = DevExpress.XtraGrid.Views.Grid.GridEditingMode.EditForm;
             this.gridViewInvoiceDetails.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.MouseDown;
+            this.gridViewInvoiceDetails.OptionsDetail.SmartDetailHeight = true;
+            this.gridViewInvoiceDetails.OptionsEditForm.FormCaptionFormat = "Invoice Particulars Detail";
+            this.gridViewInvoiceDetails.OptionsEditForm.PopupEditFormWidth = 500;
             this.gridViewInvoiceDetails.OptionsEditForm.ShowUpdateCancelPanel = DevExpress.Utils.DefaultBoolean.True;
             this.gridViewInvoiceDetails.OptionsView.ShowGroupPanel = false;
+            this.gridViewInvoiceDetails.InitNewRow += new DevExpress.XtraGrid.Views.Grid.InitNewRowEventHandler(this.gridViewInvoiceDetails_InitNewRow);
             // 
             // gridColumnId
             // 
@@ -476,5 +506,7 @@
         public DevExpress.XtraEditors.SimpleButton btnEdit;
         public DevExpress.XtraEditors.SimpleButton btnAdd;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnCId;
+        private DevExpress.XtraEditors.SimpleButton btnPreviewInvoice;
+        private DevExpress.XtraEditors.SimpleButton btnSendInvoiceReport;
     }
 }

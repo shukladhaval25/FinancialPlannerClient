@@ -13,6 +13,7 @@ namespace FinancialPlannerClient.PlanOptions
     internal class FeesInvoiceInfo
     {
         const string GET_ALL_FEES_INVOICE_API = "FeesInvoice/GetAll?clientId={0}";
+        const string GET_MAX_ID = "FeesInvoice/GetMaxInvoiceId?year={0}";
         const string ADD_FEES_INVOICE = "FeesInvoice/Add";
         const string UPDATE_FEES_INVOICE_API = "FeesInvoice/Update";
         const string DELETE_FEES_INVOICE_DETAILS_API = "FeesInvoiceDetails/Delete?Id={0}";
@@ -35,6 +36,43 @@ namespace FinancialPlannerClient.PlanOptions
                     feesInvoiceTransacations = jsonSerialization.DeserializeFromString<IList<FeesInvoiceTransacation>>(restResult.ToString());
                 }
                 return feesInvoiceTransacations;
+            }
+            catch (System.Net.WebException webException)
+            {
+                if (webException.Message.Equals("The remote server returned an error: (401) Unauthorized."))
+                {
+                    MessageBox.Show("You session has been expired. Please Login again.", "Session Expired", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
+                LogDebug(currentMethodName.Name, ex);
+                return null;
+            }
+        }
+
+
+        internal string GetMaxId(string year)
+        {
+            string maxId="";
+            try
+            {
+                FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
+                string apiurl = Program.WebServiceUrl + "/" + string.Format(GET_MAX_ID, year);
+
+                RestAPIExecutor restApiExecutor = new RestAPIExecutor();
+
+                var restResult = restApiExecutor.Execute<string>(apiurl, null, "GET");
+
+                if (restResult != null)
+                {
+                    maxId = restResult.ToString();
+                }
+                return maxId;
             }
             catch (System.Net.WebException webException)
             {
