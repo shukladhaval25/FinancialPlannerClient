@@ -680,7 +680,7 @@ namespace FinancialPlannerClient.Clients
 
         private void navBarItemFeesInvoice_LinkClicked(object sender, NavBarLinkEventArgs e)
         {
-            FeesInvoiceView feesInvoice = new FeesInvoiceView(this._client);
+            FeesInvoiceView feesInvoice = new FeesInvoiceView(this._client,this.planner);
             feesInvoice.TopLevel = false;
             feesInvoice.Visible = true;
             navigationPageOther.Name = feesInvoice.Name;

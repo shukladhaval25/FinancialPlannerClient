@@ -16,11 +16,16 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         DataTable _dtGoals = new DataTable();
         Planner planner = new Planner();
         int years;
+        int maxGoalPriority;
         DataTable dtGroupOfGoals = new DataTable();
         List<Goals> lstGoal;
         int riskProfileId;
         int optionId;
         Client client;
+        public FinancialClientGoal()
+        {
+            InitializeComponent();
+        }
         public FinancialClientGoal(Planner planner, Client client, int riskProfileID, int optionId)
         {
             InitializeComponent();
@@ -30,75 +35,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             this.riskProfileId = riskProfileID;
             this.optionId = optionId;
 
-            GoalsInfo GoalsInfo = new GoalsInfo();
-            lstGoal = (List<Goals>)GoalsInfo.GetAll(planner.ID);
-            lstGoal = lstGoal.OrderBy(x => x.Priority).ToList();
-            _dtGoals = ListtoDataTable.ToDataTable(lstGoal);
-
-            addFutureValueIntoDataTable();
-
-            groupTogetherRecurrenceGoal();
-            DataTable dtTable = _dtGoals.Select("Category <> 'Retirement'", "Recurrence DESC").CopyToDataTable();
-            DataTable dtCloned = dtTable.Clone();
-            dtCloned.Columns["Priority"].DataType = typeof(Int32);
-            foreach (DataRow row in dtTable.Rows)
-            {
-                dtCloned.ImportRow(row);
-            }
-
-            dtCloned = dtCloned.Select("", "Recurrence DESC").CopyToDataTable();
-
-            this.DataSource = dtCloned;
-            this.DataMember = dtCloned.TableName;
-            
-            this.lblName.DataBindings.Add("Text", this.DataSource, "Goals.Name");
-            this.lblStartYear.DataBindings.Add("Text", this.DataSource, "Goals.StartYear");
-            this.lblEndYear.DataBindings.Add("Text", this.DataSource, "Goals.EndYear");
-            this.lblInflation.DataBindings.Add("Text", this.DataSource, "Goals.InflationRate");
-            this.lblPresentCost.DataBindings.Add("Text", this.DataSource, "Goals.Amount");
-            this.lblPriority.DataBindings.Add("Text", this.DataSource, "Goals.Priority");
-            this.lblFutureCost.DataBindings.Add("Text", this.DataSource, "Goals.FutureValue");
-            this.lblRecurrence.DataBindings.Add("Text", this.DataSource, "Goals.Recurrence");
-            this.lblGoalCategory.DataBindings.Add("Text", this.DataSource, "Goals.Category");
-
-            DataRow[] drs = _dtGoals.Select("Category = 'Retirement'");
-            if (drs.Count() > 0)
-            {
-                this.xrRetirementGoal.Text = drs[0]["Name"].ToString();
-                this.lblRetirementStartYear.Text = drs[0]["StartYear"].ToString();
-                
-                this.lblRetirementInflation.Text = drs[0]["InflationRate"].ToString() + " %";
-               
-                this.lblRetirementPriority.Text = drs[0]["Priority"].ToString();
-
-                //this.lblFirstYearRetirementExp.Text = drs[0]["FutureValue"].ToString();
-                PostRetirementCashFlowService postRetirementCashFlowService;
-                CashFlowService cashFlowService = new CashFlowService();
-                cashFlowService.GenerateCashFlow(this.client.ID, this.planner.ID, this.riskProfileId);
-                Goals retirementGoal = lstGoal.FirstOrDefault(x => x.Category.Equals("Retirement"));
-                RiskProfileInfo _riskProfileInfo = new RiskProfileInfo();
-                GoalsCalculationInfo _goalCalculationInfo =
-                        new GoalsCalculationInfo(retirementGoal, planner, _riskProfileInfo, this.riskProfileId, this.optionId);
-                CashFlow cf = cashFlowService.GetCashFlow(this.optionId);
-                _goalCalculationInfo.GoalCalManager = cashFlowService.GoalCalculationMgr;
-              
-                _goalCalculationInfo.CashFlowService = cashFlowService;
-                DataTable dtGoalValue = _goalCalculationInfo.GetGoalValue(int.Parse(retirementGoal.Id.ToString()),
-                planner.ID, this.riskProfileId, this.optionId);
-                if (dtGoalValue.Rows.Count > 0)
-                {
-                    this.lblFirstYearRetirementExp.Text = dtGoalValue.Rows[0]["FirstYearExpenseOnRetirementYear"].ToString();
-
-                    postRetirementCashFlowService = new PostRetirementCashFlowService(planner, cashFlowService);
-                    postRetirementCashFlowService.GetPostRetirementCashFlowData();
-                    postRetirementCashFlowService.calculateEstimatedRequireCorpusFund();
-                    double totalEstimatedRetirementCorpusFund = Math.Round(postRetirementCashFlowService.GetProposeEstimatedCorpusFund(), 2);
-                    this.lblRetirementFutureCost.Text = totalEstimatedRetirementCorpusFund.ToString(); //dtGoalValue.Rows[0]["GoalValue"].ToString();
-                    this.lblRetirementPresentCost.Text = dtGoalValue.Rows[0]["CurrentValue"].ToString();
-                    lblTotalCorpusNeeded.Text = string.Format(lblTotalCorpusNeeded.Text, (int.Parse(retirementGoal.EndYear) - int.Parse(retirementGoal.StartYear)));
-                    this.lblRetirementEndYear.Text = retirementGoal.EndYear;
-                }
-            }
+          
         }
         
 
@@ -284,12 +221,18 @@ namespace FinancialPlannerClient.PlanOptions.Reports
 
         private void lblInflation_AfterPrint(object sender, EventArgs e)
         {
-            lblInflation.Text = lblInflation.Text + " %";
+            //lblInflation.Text = lblInflation.Text + " %";
+           
         }
 
         private void lblInflation_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
             lblInflation.Text = lblInflation.Text + " %";
+            if (lblPriority.Text == maxGoalPriority.ToString())
+            {
+                lblInflation.Text = "";
+            }
+
         }
 
         private void lblRecurrence_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
@@ -303,6 +246,10 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             {
                 lblFutureCost.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblFutureCost.Text).ToString("N0", PlannerMainReport.Info);
             }
+            if (string.IsNullOrEmpty(lblPriority.Text))
+            {
+                lblFutureCost.Text = "";
+            }
         }
 
         private void lblPresentCost_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
@@ -310,6 +257,10 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             if (!string.IsNullOrEmpty(lblPresentCost.Text))
             {
                 lblPresentCost.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblPresentCost.Text).ToString("N0", PlannerMainReport.Info);
+            }
+            if (string.IsNullOrEmpty(lblPriority.Text))
+            {
+                lblPresentCost.Text = "";
             }
         }
 
@@ -337,6 +288,108 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             double firstYearRetirement = 0;
             double.TryParse(lblFirstYearRetirementExp.Text, out firstYearRetirement);
             lblFirstYearRetirementExp.Text = PlannerMainReport.planner.CurrencySymbol + firstYearRetirement.ToString("N0", PlannerMainReport.Info);
+        }
+
+        private void FinancialClientGoal_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            GoalsInfo GoalsInfo = new GoalsInfo();
+            lstGoal = (List<Goals>)GoalsInfo.GetAll(planner.ID);
+            lstGoal = lstGoal.OrderBy(x => x.Priority).ToList();
+            maxGoalPriority = lstGoal[lstGoal.Count - 1].Priority;
+            maxGoalPriority = maxGoalPriority + 1;
+            Goals dummyGoal = new Goals();
+            dummyGoal.Name = "";
+            dummyGoal.Id = 999999;
+            dummyGoal.Recurrence = 1;
+            dummyGoal.Category = "";
+            dummyGoal.StartYear = "";
+            dummyGoal.EndYear = "";
+            dummyGoal.Priority = maxGoalPriority;
+            lstGoal.Add(dummyGoal);
+            _dtGoals = ListtoDataTable.ToDataTable(lstGoal);
+
+            addFutureValueIntoDataTable();
+
+            groupTogetherRecurrenceGoal();
+            DataTable dtTable = _dtGoals.Select("Category <> 'Retirement'", "Recurrence DESC").CopyToDataTable();
+            DataTable dtCloned = dtTable.Clone();
+            dtCloned.Columns["Priority"].DataType = typeof(Int32);
+            foreach (DataRow row in dtTable.Rows)
+            {
+                dtCloned.ImportRow(row);
+            }
+
+            dtCloned = dtCloned.Select("", "Priority ASC").CopyToDataTable();
+
+            this.DataSource = dtCloned;
+            this.DataMember = dtCloned.TableName;
+
+            this.lblName.DataBindings.Add("Text", this.DataSource, "Goals.Name");
+            this.lblStartYear.DataBindings.Add("Text", this.DataSource, "Goals.StartYear");
+            this.lblEndYear.DataBindings.Add("Text", this.DataSource, "Goals.EndYear");
+            this.lblInflation.DataBindings.Add("Text", this.DataSource, "Goals.InflationRate");
+            this.lblPresentCost.DataBindings.Add("Text", this.DataSource, "Goals.Amount");
+            this.lblPriority.DataBindings.Add("Text", this.DataSource, "Goals.Priority");
+            this.lblFutureCost.DataBindings.Add("Text", this.DataSource, "Goals.FutureValue");
+            this.lblRecurrence.DataBindings.Add("Text", this.DataSource, "Goals.Recurrence");
+            this.lblGoalCategory.DataBindings.Add("Text", this.DataSource, "Goals.Category");
+
+            DataRow[] drs = _dtGoals.Select("Category = 'Retirement'");
+            if (drs.Count() > 0)
+            {
+                this.xrRetirementGoal.Text = drs[0]["Name"].ToString();
+                this.lblRetirementStartYear.Text = drs[0]["StartYear"].ToString();
+
+                this.lblRetirementInflation.Text = drs[0]["InflationRate"].ToString() + " %";
+
+                this.lblRetirementPriority.Text = drs[0]["Priority"].ToString();
+
+                //this.lblFirstYearRetirementExp.Text = drs[0]["FutureValue"].ToString();
+                PostRetirementCashFlowService postRetirementCashFlowService;
+                CashFlowService cashFlowService = new CashFlowService();
+                cashFlowService.GenerateCashFlow(this.client.ID, this.planner.ID, this.riskProfileId);
+                Goals retirementGoal = lstGoal.FirstOrDefault(x => x.Category.Equals("Retirement"));
+                RiskProfileInfo _riskProfileInfo = new RiskProfileInfo();
+                GoalsCalculationInfo _goalCalculationInfo =
+                        new GoalsCalculationInfo(retirementGoal, planner, _riskProfileInfo, this.riskProfileId, this.optionId);
+                CashFlow cf = cashFlowService.GetCashFlow(this.optionId);
+                _goalCalculationInfo.GoalCalManager = cashFlowService.GoalCalculationMgr;
+
+                _goalCalculationInfo.CashFlowService = cashFlowService;
+                DataTable dtGoalValue = _goalCalculationInfo.GetGoalValue(int.Parse(retirementGoal.Id.ToString()),
+                planner.ID, this.riskProfileId, this.optionId);
+                if (dtGoalValue.Rows.Count > 0)
+                {
+                    this.lblFirstYearRetirementExp.Text = dtGoalValue.Rows[0]["FirstYearExpenseOnRetirementYear"].ToString();
+
+                    postRetirementCashFlowService = new PostRetirementCashFlowService(planner, cashFlowService);
+                    postRetirementCashFlowService.GetPostRetirementCashFlowData();
+                    postRetirementCashFlowService.calculateEstimatedRequireCorpusFund();
+                    double totalEstimatedRetirementCorpusFund = Math.Round(postRetirementCashFlowService.GetProposeEstimatedCorpusFund(), 2);
+                    this.lblRetirementFutureCost.Text = totalEstimatedRetirementCorpusFund.ToString(); //dtGoalValue.Rows[0]["GoalValue"].ToString();
+                    this.lblRetirementPresentCost.Text = dtGoalValue.Rows[0]["CurrentValue"].ToString();
+                    lblTotalCorpusNeeded.Text = string.Format(lblTotalCorpusNeeded.Text, (int.Parse(retirementGoal.EndYear) - int.Parse(retirementGoal.StartYear)));
+                    this.lblRetirementEndYear.Text = retirementGoal.EndYear;
+                }
+            }
+        }
+
+        private void lblPriority_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (lblPriority.Text == maxGoalPriority.ToString())
+            {
+                lblPriority.Text = "";
+            }
+        }
+
+        private void lblPresentCost_AfterPrint(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void lblFutureCost_AfterPrint(object sender, EventArgs e)
+        {
+           
         }
     }
 }

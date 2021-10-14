@@ -18,6 +18,7 @@ namespace FinancialPlannerClient.PlannerInfo
     public partial class FeesInvoiceView : DevExpress.XtraEditors.XtraForm
     {
         private Client client;
+        private Planner planner;
         DataTable dtInvoice = new DataTable();
         DataTable dtInvoiceDetails;
         FeesInvoiceInfo feesInvoiceInfo;
@@ -27,10 +28,11 @@ namespace FinancialPlannerClient.PlannerInfo
             InitializeComponent();
         }
 
-        public FeesInvoiceView(Client client)
+        public FeesInvoiceView(Client client,Planner planner)
         {
-            this.client = client;
             InitializeComponent();
+            this.client = client;
+            this.planner = planner;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -41,7 +43,7 @@ namespace FinancialPlannerClient.PlannerInfo
             {
                 currentYear = currentYear - 1;
             }
-
+            dtInvoiceDate.Text = DateTime.Now.ToShortDateString();
             string invoiceNo = feesInvoiceInfo.GetMaxId(string.Format("{0}-{1}", currentYear, (currentYear + 1).ToString().Substring(2)));
             txtInvoiceNo.Text = invoiceNo;
             txtInvoiceNo.Tag = 0;
@@ -247,7 +249,8 @@ namespace FinancialPlannerClient.PlannerInfo
         private void gridViewInvoiceDetails_InitNewRow(object sender, DevExpress.XtraGrid.Views.Grid.InitNewRowEventArgs e)
         {
             GridView view = sender as GridView;
-            view.SetRowCellValue(e.RowHandle, view.Columns["Particulars"], "Suitability Analysis, Insurance Analysis & Succession Planning");
+            string defaultValue = "Suitability Analysis, Insurance Analysis &Succession Planning" + System.Environment.NewLine + string.Format("({0} to {1})", this.planner.StartDate.ToShortDateString(), this.planner.EndDate.ToShortDateString());
+            view.SetRowCellValue(e.RowHandle, view.Columns["Particulars"], defaultValue);
         }
 
         private void btnPreviewInvoice_Click(object sender, EventArgs e)

@@ -311,6 +311,8 @@
             // 
             // gridColumnParticulars
             // 
+            this.gridColumnParticulars.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumnParticulars.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
             this.gridColumnParticulars.Caption = "Particulars";
             this.gridColumnParticulars.FieldName = "Particulars";
             this.gridColumnParticulars.Name = "gridColumnParticulars";

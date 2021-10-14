@@ -79,7 +79,7 @@ namespace FinancialPlannerClient.PlanOptions
                 "Surplus Period",
                 "NetWorth Analysis",
                 "NetWorth Statement",
-                "ToTotal Asset Ratio",
+                "Total Asset Ratio",
                 "NetWorth Year On Year",
                 "Current Financial Status",
                 "Risk Profiling",
@@ -166,7 +166,7 @@ namespace FinancialPlannerClient.PlanOptions
                 case "NetWorth Statement":
                     blnNetWorthStatemet = isSelected;
                     break;
-                case "ToTotal Asset Ratio":
+                case "Total Asset Ratio":
                     blnTotalAssetRatio = isSelected;
                     break;
                 case "NetWorth Year On Year":

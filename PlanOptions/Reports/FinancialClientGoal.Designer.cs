@@ -174,21 +174,23 @@
             // 
             // lblStartYear
             // 
-            this.lblStartYear.BorderWidth = 0.8F;
+            this.lblStartYear.BorderWidth = 1F;
             this.lblStartYear.Dpi = 100F;
             this.lblStartYear.Name = "lblStartYear";
             this.lblStartYear.StylePriority.UseBorderWidth = false;
             this.lblStartYear.StylePriority.UseTextAlignment = false;
             this.lblStartYear.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
-            this.lblStartYear.Weight = 0.59432506452762035D;
+            this.lblStartYear.Weight = 0.59030002083170574D;
             // 
             // lblEndYear
             // 
+            this.lblEndYear.BorderWidth = 1F;
             this.lblEndYear.Dpi = 100F;
             this.lblEndYear.Name = "lblEndYear";
+            this.lblEndYear.StylePriority.UseBorderWidth = false;
             this.lblEndYear.StylePriority.UseTextAlignment = false;
             this.lblEndYear.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
-            this.lblEndYear.Weight = 0.65264261610308094D;
+            this.lblEndYear.Weight = 0.65666765979899555D;
             // 
             // lblPriority
             // 
@@ -197,17 +199,21 @@
             this.lblPriority.StylePriority.UseTextAlignment = false;
             this.lblPriority.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
             this.lblPriority.Weight = 0.54874273021237141D;
+            this.lblPriority.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.lblPriority_BeforePrint);
             // 
             // lblPresentCost
             // 
             this.lblPresentCost.Dpi = 100F;
             this.lblPresentCost.Multiline = true;
             this.lblPresentCost.Name = "lblPresentCost";
+            this.lblPresentCost.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 5, 0, 0, 100F);
+            this.lblPresentCost.StylePriority.UsePadding = false;
             this.lblPresentCost.StylePriority.UseTextAlignment = false;
             this.lblPresentCost.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
             this.lblPresentCost.Weight = 0.90449816177210818D;
             this.lblPresentCost.XlsxFormatString = "#,##";
             this.lblPresentCost.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.lblPresentCost_BeforePrint);
+            this.lblPresentCost.AfterPrint += new System.EventHandler(this.lblPresentCost_AfterPrint);
             // 
             // lblInflation
             // 
@@ -224,11 +230,14 @@
             this.lblFutureCost.Dpi = 100F;
             this.lblFutureCost.Multiline = true;
             this.lblFutureCost.Name = "lblFutureCost";
+            this.lblFutureCost.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 5, 0, 0, 100F);
+            this.lblFutureCost.StylePriority.UsePadding = false;
             this.lblFutureCost.StylePriority.UseTextAlignment = false;
             this.lblFutureCost.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
             this.lblFutureCost.Weight = 1.0144213219045268D;
             this.lblFutureCost.XlsxFormatString = "#,##";
             this.lblFutureCost.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.lblFutureCost_BeforePrint);
+            this.lblFutureCost.AfterPrint += new System.EventHandler(this.lblFutureCost_AfterPrint);
             // 
             // lblRecurrence
             // 
@@ -621,13 +630,14 @@
             this.lblFirstYearRetirementExp.ForeColor = System.Drawing.Color.Black;
             this.lblFirstYearRetirementExp.LocationFloat = new DevExpress.Utils.PointFloat(432.1949F, 28.16665F);
             this.lblFirstYearRetirementExp.Name = "lblFirstYearRetirementExp";
-            this.lblFirstYearRetirementExp.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.lblFirstYearRetirementExp.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 5, 0, 0, 100F);
             this.lblFirstYearRetirementExp.SizeF = new System.Drawing.SizeF(112.3468F, 23F);
             this.lblFirstYearRetirementExp.StylePriority.UseBorderColor = false;
             this.lblFirstYearRetirementExp.StylePriority.UseBorders = false;
             this.lblFirstYearRetirementExp.StylePriority.UseBorderWidth = false;
             this.lblFirstYearRetirementExp.StylePriority.UseFont = false;
             this.lblFirstYearRetirementExp.StylePriority.UseForeColor = false;
+            this.lblFirstYearRetirementExp.StylePriority.UsePadding = false;
             this.lblFirstYearRetirementExp.StylePriority.UseTextAlignment = false;
             this.lblFirstYearRetirementExp.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
             this.lblFirstYearRetirementExp.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.lblFirstYearRetirementExp_BeforePrint);
@@ -711,7 +721,7 @@
             this.lblRetirementEndYear.Name = "lblRetirementEndYear";
             this.lblRetirementEndYear.StylePriority.UseTextAlignment = false;
             this.lblRetirementEndYear.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.lblRetirementEndYear.Weight = 0.65823529585159235D;
+            this.lblRetirementEndYear.Weight = 0.66229452130010824D;
             // 
             // lblRetirementPriority
             // 
@@ -719,15 +729,17 @@
             this.lblRetirementPriority.Name = "lblRetirementPriority";
             this.lblRetirementPriority.StylePriority.UseTextAlignment = false;
             this.lblRetirementPriority.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.lblRetirementPriority.Weight = 0.5534450807761887D;
+            this.lblRetirementPriority.Weight = 0.55344501882598041D;
             // 
             // lblRetirementPresentCost
             // 
             this.lblRetirementPresentCost.Dpi = 100F;
             this.lblRetirementPresentCost.Name = "lblRetirementPresentCost";
+            this.lblRetirementPresentCost.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 5, 0, 0, 100F);
+            this.lblRetirementPresentCost.StylePriority.UsePadding = false;
             this.lblRetirementPresentCost.StylePriority.UseTextAlignment = false;
             this.lblRetirementPresentCost.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-            this.lblRetirementPresentCost.Weight = 0.91224873628356451D;
+            this.lblRetirementPresentCost.Weight = 0.912249046034606D;
             this.lblRetirementPresentCost.XlsxFormatString = "#,##";
             this.lblRetirementPresentCost.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.lblRetirementPresentCost_BeforePrint);
             // 
@@ -737,12 +749,14 @@
             this.lblRetirementInflation.Name = "lblRetirementInflation";
             this.lblRetirementInflation.StylePriority.UseTextAlignment = false;
             this.lblRetirementInflation.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.lblRetirementInflation.Weight = 0.77511550727843859D;
+            this.lblRetirementInflation.Weight = 0.77105603402908951D;
             // 
             // lblRetirementFutureCost
             // 
             this.lblRetirementFutureCost.Dpi = 100F;
             this.lblRetirementFutureCost.Name = "lblRetirementFutureCost";
+            this.lblRetirementFutureCost.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 5, 0, 0, 100F);
+            this.lblRetirementFutureCost.StylePriority.UsePadding = false;
             this.lblRetirementFutureCost.StylePriority.UseTextAlignment = false;
             this.lblRetirementFutureCost.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
             this.lblRetirementFutureCost.Weight = 1.0115308529002529D;
@@ -819,6 +833,7 @@
             this.StyleSheet.AddRange(new DevExpress.XtraReports.UI.XRControlStyle[] {
             this.xrControlStyle1});
             this.Version = "16.2";
+            this.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.FinancialClientGoal_BeforePrint);
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrGroupTable)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).EndInit();

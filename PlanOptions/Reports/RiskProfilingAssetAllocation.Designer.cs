@@ -88,8 +88,8 @@
             this.Detail.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
             this.xrTableRiskProfileAssetAllocation,
             this.xrTable2,
-            this.lblRichTxtContent,
             this.xrLabel1,
+            this.lblRichTxtContent,
             this.xrPanel1});
             this.Detail.Dpi = 100F;
             this.Detail.HeightF = 850F;
@@ -467,10 +467,10 @@
             // 
             this.lblRichTxtContent.Dpi = 100F;
             this.lblRichTxtContent.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRichTxtContent.LocationFloat = new DevExpress.Utils.PointFloat(10.00001F, 54.21874F);
+            this.lblRichTxtContent.LocationFloat = new DevExpress.Utils.PointFloat(10.00001F, 49.0104F);
             this.lblRichTxtContent.Name = "lblRichTxtContent";
             this.lblRichTxtContent.SerializableRtfString = resources.GetString("lblRichTxtContent.SerializableRtfString");
-            this.lblRichTxtContent.SizeF = new System.Drawing.SizeF(630F, 136.3542F);
+            this.lblRichTxtContent.SizeF = new System.Drawing.SizeF(630F, 141.5625F);
             this.lblRichTxtContent.StylePriority.UseFont = false;
             // 
             // xrLabel1

@@ -751,6 +751,22 @@ namespace FinancialPlannerClient.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to * Looking at your current circumstances we have profiled you as {0} investor so we suggest holding {1} of investments in Equity and {2} in Debt.
+        ///
+        ///* To reduce the risk in equity we have adopted strategic asset allocation and value averaging.
+        ///
+        ///* As the goal comes closer we will be also reducing our equity expose as under:
+        ///
+        ///
+        ///.
+        /// </summary>
+        internal static string RiskProfileAssetAllocation {
+            get {
+                return ResourceManager.GetString("RiskProfileAssetAllocation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Roles___30 {

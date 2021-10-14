@@ -10,6 +10,7 @@ using FinancialPlanner.Common;
 using System.Collections.Generic;
 using FinancialPlanner.Common.DataConversion;
 using System.Windows.Forms;
+using System.Text;
 
 namespace FinancialPlannerClient.PlanOptions.Reports
 {
@@ -45,9 +46,22 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                 }
 
                 DataRow[] drs = _dtRiskProfile.Select("ID ='" + riskprofileId + "'");
-                lblRichTxtContent.Text = string.Format(lblRichTxtContent.Text, drs[0]["Name"].ToString(),
-                    xrTableRiskProfileAssetAllocation.Rows[4].Cells[2].Text,
-                    xrTableRiskProfileAssetAllocation.Rows[4].Cells[3].Text);
+             
+                System.Windows.Forms.RichTextBox richTextBox = new System.Windows.Forms.RichTextBox();
+                richTextBox.Font = new System.Drawing.Font("Calibri", 11.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                richTextBox.SelectedText = "* Looking at your current circumstances we have profiled you as ";
+                richTextBox.SelectionFont = new Font(richTextBox.Font, FontStyle.Bold);
+                richTextBox.SelectedText = drs[0]["Name"].ToString();
+                richTextBox.SelectionFont = new Font(richTextBox.Font, FontStyle.Regular);
+                richTextBox.SelectedText = " investor so we " + string.Format("suggestholding {0} of investments in Equity and {1} in Debt.", xrTableRiskProfileAssetAllocation.Rows[4].Cells[2].Text,
+                  xrTableRiskProfileAssetAllocation.Rows[4].Cells[3].Text)  +  Environment.NewLine + Environment.NewLine;
+                richTextBox.SelectedText = "* To reduce the risk in equity we have adopted strategic asset allocation and value averaging." + Environment.NewLine + Environment.NewLine + "* As the goal comes closer we will be also reducing our equity expose as under:";
+
+                //richTextBox.SelectionFont = new Font(richTextBox.Font, FontStyle.Bold);
+                //richTextBox.SelectedText = xrTableRiskProfileAssetAllocation.Rows[4].Cells[3].Text;
+                ((XRRichText)this.FindControl("lblRichTxtContent", true)).Rtf = richTextBox.Rtf;
+
+
             }
         }
         private void loadRiskProfileReturnList()

@@ -225,6 +225,7 @@ namespace FinancialPlannerClient.MOM
                 if (isSucess)
                 {
                     DevExpress.XtraEditors.XtraMessageBox.Show("Record saved sucessfully.", "Save", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    fillMOM();
                 }
                 else
                 {
