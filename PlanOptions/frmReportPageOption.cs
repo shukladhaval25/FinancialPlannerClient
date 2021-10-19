@@ -40,7 +40,7 @@ namespace FinancialPlannerClient.PlanOptions
         public bool blnAssetAllocationTitle { get; set; }
         public bool blnActionPlan { get; set; }
         public bool blnRecomendation { get; set; }
-
+        public bool blnExecutionSheet { get; set; }
         public frmReportPageOption()
         {
             InitializeComponent();
@@ -91,7 +91,8 @@ namespace FinancialPlannerClient.PlanOptions
                 "Goal Description",
                 "Asset Allocation Title",
                 "ActionPlan",
-                "Recomendation"
+                "Recomendation",
+                "ExecutionSheet"
             };
 
             foreach(string page in pages)
@@ -204,6 +205,9 @@ namespace FinancialPlannerClient.PlanOptions
                     break;
                 case "Recomendation":
                     blnRecomendation = isSelected;
+                    break;
+                case "ExecutionSheet":
+                    blnExecutionSheet = isSelected;
                     break;
             }
         }

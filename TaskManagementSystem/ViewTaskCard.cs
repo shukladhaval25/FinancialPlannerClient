@@ -27,7 +27,7 @@ namespace FinancialPlannerClient.TaskManagementSystem
         IList<TaskHistory> taskHistories = new List<TaskHistory>();
 
         private readonly string MUTUALFUND = "Mutual Fund";
-
+        const string CUSTOMERSUPPORT = "Customer Support";
         //public ViewTaskCard()
         //{
         //    InitializeComponent();
@@ -239,7 +239,7 @@ namespace FinancialPlannerClient.TaskManagementSystem
                 //cmbTransactionType.Properties.Items.Add("Change of Name");
                 //cmbTransactionType.Properties.Items.Add("Nomination");
             }
-            else
+            else if (cmbProject.Text == CUSTOMERSUPPORT)
             {
                 cmbTransactionType.Properties.Items.Add("Bank Change Request");
                 cmbTransactionType.Properties.Items.Add("Contact Update");
@@ -251,8 +251,17 @@ namespace FinancialPlannerClient.TaskManagementSystem
                 cmbTransactionType.Properties.Items.Add("Minor To Major");
                 cmbTransactionType.Properties.Items.Add("Change of Name");
                 cmbTransactionType.Properties.Items.Add("Nomination");
-                //hideTransactionTypePanel();
             }
+            else
+            {
+                hideTransactionTypePanel();
+            }
+        }
+
+        private void hideTransactionTypePanel()
+        {
+            this.vGridTransaction.Rows.Clear();
+            splitContainerTransOperation.PanelVisibility = DevExpress.XtraEditors.SplitPanelVisibility.Panel2;
         }
 
         private void cmbTransactionType_SelectedIndexChanged(object sender, EventArgs e)

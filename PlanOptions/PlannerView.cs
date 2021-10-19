@@ -113,6 +113,18 @@ namespace FinancialPlannerClient.PlanOptions
                 cmbReviewFrequency.Text = dr.Field<string>("ReviewFrequency");
                 memoDescription.Text = dr.Field<string>("Description");
                 txtCurrencySymbol.Text = dr.Field<string>("CurrencySymbol");
+                float equityRatio = 0;
+                float debtRatio = 0;
+                if (dr["EquityRatio"] != DBNull.Value) {
+                    float.TryParse(dr["EquityRatio"].ToString(), out equityRatio);
+                }
+                txtEquityRatio.Text = equityRatio.ToString();
+                if (dr["DebtRatio"] != DBNull.Value)
+                {
+                    float.TryParse(dr["DebtRatio"].ToString(), out debtRatio);
+                }
+                txtDebtRatio.Text = debtRatio.ToString();
+
             }
             pnlPlannerInfo.Enabled = true;
             pnlManager.Enabled = true;
@@ -175,7 +187,9 @@ namespace FinancialPlannerClient.PlanOptions
                     PlannerStartMonth = cmbStartMonth.SelectedIndex + 1,
                     Description = memoDescription.Text,
                     ReviewFrequency = cmbReviewFrequency.Text,
-                    CurrencySymbol = txtCurrencySymbol.Text 
+                    CurrencySymbol = txtCurrencySymbol.Text,
+                    EquityRatio = string.IsNullOrEmpty(txtEquityRatio.Text) ? 0 : float.Parse(txtEquityRatio.Text),
+                    DebtRatio = string.IsNullOrEmpty(txtDebtRatio.Text) ? 0 : float.Parse(txtDebtRatio.Text)
                 };
                 if (int.TryParse(cmbManagedBy.Tag.ToString(), out accountManagedById))
                     planner.AccountManagedBy = accountManagedById;

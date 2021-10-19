@@ -51,9 +51,9 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                 richTextBox.Font = new System.Drawing.Font("Calibri", 11.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
                 richTextBox.SelectedText = "* Looking at your current circumstances we have profiled you as ";
                 richTextBox.SelectionFont = new Font(richTextBox.Font, FontStyle.Bold);
-                richTextBox.SelectedText = drs[0]["Name"].ToString();
+                richTextBox.SelectedText = drs[0]["Name"].ToString() + " investor"; 
                 richTextBox.SelectionFont = new Font(richTextBox.Font, FontStyle.Regular);
-                richTextBox.SelectedText = " investor so we " + string.Format("suggestholding {0} of investments in Equity and {1} in Debt.", xrTableRiskProfileAssetAllocation.Rows[4].Cells[2].Text,
+                richTextBox.SelectedText = " so we " + string.Format("suggestholding {0} of investments in Equity and {1} in Debt.", xrTableRiskProfileAssetAllocation.Rows[4].Cells[2].Text,
                   xrTableRiskProfileAssetAllocation.Rows[4].Cells[3].Text)  +  Environment.NewLine + Environment.NewLine;
                 richTextBox.SelectedText = "* To reduce the risk in equity we have adopted strategic asset allocation and value averaging." + Environment.NewLine + Environment.NewLine + "* As the goal comes closer we will be also reducing our equity expose as under:";
 

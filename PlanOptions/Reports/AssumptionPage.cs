@@ -1,4 +1,5 @@
-﻿using FinancialPlanner.Common.Model;
+﻿using DevExpress.XtraReports.UI;
+using FinancialPlanner.Common.Model;
 using FinancialPlannerClient.PlannerInfo;
 
 namespace FinancialPlannerClient.PlanOptions
@@ -40,7 +41,14 @@ namespace FinancialPlannerClient.PlanOptions
 
             AssumptionMaster assumptionMaster = Program.GetAssumptionMaster();
             lblInsurance.Text = string.Format(lblInsurance.Text, lblClientName.Text, lblSpouseNameForIncome.Text, assumptionMaster.InsuranceReturnRate);
-            lblNote.Rtf = plannerAssumption.Decription;
+
+            System.Windows.Forms.RichTextBox richTextBox = new System.Windows.Forms.RichTextBox();
+            richTextBox.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            richTextBox.Text = plannerAssumption.Decription.ToString();
+            
+            ((XRRichText)this.FindControl("lblNote", true)).Rtf = richTextBox.Text ;
+
+            //lblNote.Rtf = plannerAssumption.Decription;
         }
     }
 }

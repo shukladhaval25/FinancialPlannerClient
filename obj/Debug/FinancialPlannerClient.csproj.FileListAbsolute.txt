@@ -594,3 +594,5 @@ C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient
 C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.MOM.MOMReportView.resources
 C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.FeesInvoiceReportView.resources
 C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.frmReportPageOption.resources
+C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.Reports.ExecutionSheetTable.resources
+C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.RecomendationView.resources

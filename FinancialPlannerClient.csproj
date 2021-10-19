@@ -453,6 +453,12 @@
     <Compile Include="PlanOptions\PlannerDataMigration.Designer.cs">
       <DependentUpon>PlannerDataMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="PlanOptions\RecomendationView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\RecomendationView.Designer.cs">
+      <DependentUpon>RecomendationView.cs</DependentUpon>
+    </Compile>
     <Compile Include="PlanOptions\ReportParams.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -622,6 +628,7 @@
     <Compile Include="PlanOptions\Reports\CurrentStatusDetails.Designer.cs">
       <DependentUpon>CurrentStatusDetails.cs</DependentUpon>
     </Compile>
+    <Compile Include="PlanOptions\Reports\ExecutionSheetInfo.cs" />
     <Compile Include="PlanOptions\Reports\FamilyInfoPage.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -759,6 +766,12 @@
     </Compile>
     <Compile Include="PlanOptions\Reports\NetWorthStatement.Designer.cs">
       <DependentUpon>NetWorthStatement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\ExecutionSheetTable.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\ExecutionSheetTable.Designer.cs">
+      <DependentUpon>ExecutionSheetTable.cs</DependentUpon>
     </Compile>
     <Compile Include="PlanOptions\Reports\NetWorthYearOnYear.cs">
       <SubType>Component</SubType>
@@ -1182,6 +1195,9 @@
     <EmbeddedResource Include="PlanOptions\PlannerDataMigration.resx">
       <DependentUpon>PlannerDataMigration.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\RecomendationView.resx">
+      <DependentUpon>RecomendationView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\ReportParams.resx">
       <DependentUpon>ReportParams.cs</DependentUpon>
     </EmbeddedResource>
@@ -1313,6 +1329,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\Reports\NetWorthStatement.resx">
       <DependentUpon>NetWorthStatement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\Reports\ExecutionSheetTable.resx">
+      <DependentUpon>ExecutionSheetTable.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\Reports\NetWorthYearOnYear.resx">
       <DependentUpon>NetWorthYearOnYear.cs</DependentUpon>

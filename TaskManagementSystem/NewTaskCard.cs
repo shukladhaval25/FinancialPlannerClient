@@ -21,6 +21,8 @@ namespace FinancialPlannerClient.TaskManagementSystem
         ClientARN clientARN;
         private ITransactionType transactionType;
         const string MUTUALFUND = "Mutual Fund";
+        const string CUSTOMERSUPPORT = "Customer Support";
+
         public NewTaskCard()
         {
             InitializeComponent();
@@ -125,7 +127,7 @@ namespace FinancialPlannerClient.TaskManagementSystem
                 //cmbTransactionType.Properties.Items.Add("SIP Cancellation");
                 
             }
-            else
+            else if (cmbProject.Text == CUSTOMERSUPPORT)
             {
                 cmbTransactionType.Properties.Items.Add("Bank Change Request");
                 cmbTransactionType.Properties.Items.Add("Contact Update");
@@ -137,7 +139,11 @@ namespace FinancialPlannerClient.TaskManagementSystem
                 cmbTransactionType.Properties.Items.Add("Minor To Major");
                 cmbTransactionType.Properties.Items.Add("Change of Name");
                 cmbTransactionType.Properties.Items.Add("Nomination");
-                //hideTransactionTypePanel();
+                
+            }
+            else
+            {
+                hideTransactionTypePanel();
             }
         }
 

@@ -122,7 +122,9 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                 planner.ID, riskProfileId, optionId);
                 if (_dtGoalProfile != null && _dtGoalProfile.Rows.Count > 0)
                 {
-                    lblLoanAmt.Text = _dtGoalProfile.Rows[0]["Loan Amount"].ToString();
+                    if (_dtGoalProfile.Rows[0]["Start Year"].ToString().Equals(this.planner.StartDate.Year.ToString())){
+                        lblLoanAmt.Text = _dtGoalProfile.Rows[0]["Loan Amount"].ToString();
+                    }
                     DataTable _dtGoalValue = _goalCalculationInfo.GetGoalCalculation();
                     lblMappedAssets.Text = _dtGoalValue.Rows[_dtGoalValue.Rows.Count - 1]["Assets Mapping"].ToString();
                     DataRow[] drs = _dtGoalValue.Select("Year ='" + this.planner.StartDate.Year + "'");

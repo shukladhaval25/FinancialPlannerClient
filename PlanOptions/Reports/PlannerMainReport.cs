@@ -51,6 +51,7 @@ namespace FinancialPlannerClient.PlanOptions
         public bool blnAssetAllocationTitle = true;
         public bool blnActionPlan = true;
         public bool blnRecomendation = true;
+        public bool blnExecutionSheet = true;
         ReportParams reportParams;
 
         public PlannerMainReport(PersonalInformation personalInformation, Planner plannerObj, int riskProfileId, int optionId, string recomendation = "", ReportParams reportParameters = null)
@@ -103,6 +104,7 @@ namespace FinancialPlannerClient.PlanOptions
                 blnAssetAllocationTitle = this.reportParams.frmReportPage.blnAssetAllocationTitle;
                 blnActionPlan = this.reportParams.frmReportPage.blnActionPlan;
                 blnRecomendation = this.reportParams.frmReportPage.blnRecomendation;
+                blnExecutionSheet = this.reportParams.frmReportPage.blnExecutionSheet;
             }
         }
 
@@ -125,6 +127,7 @@ namespace FinancialPlannerClient.PlanOptions
             CurrentStatusReport currentStatus;
             NetWorthStatement netWorthStatement;
             CurrentFinancialStatus currentFinancialStatus;
+            ExecutionSheetInfo executionSheetInfo = new ExecutionSheetInfo();
             try
             {
                 if (blnTableOfContent)
@@ -315,30 +318,33 @@ namespace FinancialPlannerClient.PlanOptions
                     {
                         for (int index = 0; index <= dtGroupByGoals.Rows.Count - 1; index++)
                         {
-                            DataTable _dtGoals;
-                            DataRow[] dataRows = dtTempGoal.Select("Name like '" +
-                               dtGroupByGoals.Rows[index]["Name"].ToString() + "%' and" +
-                               " LEN(TRIM(Name))  = " + dtGroupByGoals.Rows[index]["Name"].ToString().Length + " and  Recurrence <> '0' and Category ='" + dtGroupByGoals.Rows[index]["Category"] + "'");
-                            if (dataRows.Count() == 0)
+                            if (!string.IsNullOrEmpty(dtGroupByGoals.Rows[index]["Name"].ToString()))
                             {
-                                _dtGoals = dtTempGoal.Select("Name like '" +
-                              dtGroupByGoals.Rows[index]["Name"].ToString().Trim() + "%'").CopyToDataTable();
+                                DataTable _dtGoals;
+                                DataRow[] dataRows = dtTempGoal.Select("Name like '" +
+                                   dtGroupByGoals.Rows[index]["Name"].ToString() + "%' and" +
+                                   " LEN(TRIM(Name))  = " + dtGroupByGoals.Rows[index]["Name"].ToString().Length + " and  Recurrence <> '0' and Category ='" + dtGroupByGoals.Rows[index]["Category"] + "'");
+                                if (dataRows.Count() == 0)
+                                {
+                                    _dtGoals = dtTempGoal.Select("Name like '" +
+                                  dtGroupByGoals.Rows[index]["Name"].ToString().Trim() + "%'").CopyToDataTable();
+                                }
+                                else
+                                {
+                                    _dtGoals = dtTempGoal.Select("Name like '" +
+                                  dtGroupByGoals.Rows[index]["Name"].ToString().Trim() + "%'  and" +
+                                  " LEN(TRIM(Name))  = " + dtGroupByGoals.Rows[index]["Name"].ToString().Length + " and Recurrence <> '0' and Category ='" + dtGroupByGoals.Rows[index]["Category"] + "'").CopyToDataTable();
+                                }
+                                //    ListtoDataTable.ToDataTable(
+                                //goals.Where(x => x.Name.StartsWith(dtGroupByGoals.Rows[index]["Name"].ToString())).ToList());
+                                goalsDescriptions[goalCountIndex] = new GoalsDescription();
+                                DataTable dtGoalProjectComplition = goalProjectionForComplition.GetGoalProjectionTable();
+                                goalsDescriptions[goalCountIndex].SetReportParameter(this.client, planner, _dtGoals,
+                                   this.riskprofileId, this.optionId, this.goals.ToList(), dtGoalProjectComplition);
+                                goalsDescriptions[goalCountIndex].CreateDocument();
+                                this.Pages.AddRange(goalsDescriptions[goalCountIndex].Pages);
+                                goalCountIndex++;
                             }
-                            else
-                            {
-                                _dtGoals = dtTempGoal.Select("Name like '" +
-                              dtGroupByGoals.Rows[index]["Name"].ToString().Trim() + "%'  and" +
-                              " LEN(TRIM(Name))  = " + dtGroupByGoals.Rows[index]["Name"].ToString().Length + " and Recurrence <> '0' and Category ='" + dtGroupByGoals.Rows[index]["Category"] + "'").CopyToDataTable();
-                            }
-                            //    ListtoDataTable.ToDataTable(
-                            //goals.Where(x => x.Name.StartsWith(dtGroupByGoals.Rows[index]["Name"].ToString())).ToList());
-                            goalsDescriptions[goalCountIndex] = new GoalsDescription();
-                            DataTable dtGoalProjectComplition = goalProjectionForComplition.GetGoalProjectionTable();
-                            goalsDescriptions[goalCountIndex].SetReportParameter(this.client, planner, _dtGoals,
-                               this.riskprofileId, this.optionId, this.goals.ToList(), dtGoalProjectComplition);
-                            goalsDescriptions[goalCountIndex].CreateDocument();
-                            this.Pages.AddRange(goalsDescriptions[goalCountIndex].Pages);
-                            goalCountIndex++;
                         }
                     }
                     catch (Exception ex)
@@ -353,9 +359,15 @@ namespace FinancialPlannerClient.PlanOptions
                     assetAllocationTitle.CreateDocument();
                     this.Pages.AddRange(assetAllocationTitle.Pages);
                 }
+
+                if (blnActionPlan || blnExecutionSheet)
+                {
+                    executionSheetInfo = new ExecutionSheetInfo(this.client, planner, this.optionId, this.riskprofileId);                    
+                }
+
                 if (blnActionPlan)
                 {
-                    ActionPlan actionPlan = new ActionPlan(this.client, planner);
+                    ActionPlan actionPlan = new ActionPlan(this.client,executionSheetInfo.GetExeuctionSheetTable(),planner);
                     actionPlan.CreateDocument();
                     this.Pages.AddRange(actionPlan.Pages);
                 }
@@ -366,6 +378,14 @@ namespace FinancialPlannerClient.PlanOptions
                     recomendation.CreateDocument();
                     this.Pages.AddRange(recomendation.Pages);
                 }
+
+                if (blnExecutionSheet)
+                {
+                    ExecutionSheetTable executionSheetTable = new ExecutionSheetTable(this.client, executionSheetInfo.GetExeuctionSheetTable());
+                    executionSheetTable.CreateDocument();
+                    this.Pages.AddRange(executionSheetTable.Pages);
+                }
+
 
                 //if (blnCurrentStatusReport)
                 //{

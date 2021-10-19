@@ -49,6 +49,7 @@
             this.tabPlanner = new DevExpress.XtraBars.Navigation.TabPane();
             this.tabNavigationPagePlanner = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             this.pnlPlannerInfo = new DevExpress.XtraEditors.PanelControl();
+            this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.cmbEndMonth = new DevExpress.XtraEditors.ComboBoxEdit();
             this.txtPlanName = new DevExpress.XtraEditors.TextEdit();
@@ -59,6 +60,7 @@
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.txtEndDate = new DevExpress.XtraEditors.TextEdit();
+            this.txtCurrencySymbol = new DevExpress.XtraEditors.TextEdit();
             this.tabNavigationPageManagedBy = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             this.pnlManager = new DevExpress.XtraEditors.PanelControl();
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
@@ -72,8 +74,11 @@
             this.btnAdd = new DevExpress.XtraEditors.SimpleButton();
             this.btnClosePlanoptions = new DevExpress.XtraEditors.SimpleButton();
             this.btnSavePlanoption = new DevExpress.XtraEditors.SimpleButton();
-            this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
-            this.txtCurrencySymbol = new DevExpress.XtraEditors.TextEdit();
+            this.tabInvestmentAllocation = new DevExpress.XtraBars.Navigation.TabNavigationPage();
+            this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
+            this.txtEquityRatio = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
+            this.txtDebtRatio = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.lstPlanner)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabPlanner)).BeginInit();
             this.tabPlanner.SuspendLayout();
@@ -86,13 +91,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtStartDate.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtStartDate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEndDate.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCurrencySymbol.Properties)).BeginInit();
             this.tabNavigationPageManagedBy.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlManager)).BeginInit();
             this.pnlManager.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cmbReviewFrequency.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.memoDescription.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbManagedBy.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCurrencySymbol.Properties)).BeginInit();
+            this.tabInvestmentAllocation.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEquityRatio.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDebtRatio.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // labelControl1
@@ -120,11 +128,13 @@
             // 
             this.tabPlanner.Controls.Add(this.tabNavigationPagePlanner);
             this.tabPlanner.Controls.Add(this.tabNavigationPageManagedBy);
+            this.tabPlanner.Controls.Add(this.tabInvestmentAllocation);
             this.tabPlanner.Location = new System.Drawing.Point(206, 41);
             this.tabPlanner.Name = "tabPlanner";
             this.tabPlanner.Pages.AddRange(new DevExpress.XtraBars.Navigation.NavigationPageBase[] {
             this.tabNavigationPagePlanner,
-            this.tabNavigationPageManagedBy});
+            this.tabNavigationPageManagedBy,
+            this.tabInvestmentAllocation});
             this.tabPlanner.RegularSize = new System.Drawing.Size(570, 225);
             this.tabPlanner.SelectedPage = this.tabNavigationPagePlanner;
             this.tabPlanner.Size = new System.Drawing.Size(570, 225);
@@ -159,6 +169,15 @@
             this.pnlPlannerInfo.Name = "pnlPlannerInfo";
             this.pnlPlannerInfo.Size = new System.Drawing.Size(546, 171);
             this.pnlPlannerInfo.TabIndex = 10;
+            // 
+            // labelControl10
+            // 
+            this.labelControl10.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
+            this.labelControl10.Location = new System.Drawing.Point(25, 141);
+            this.labelControl10.Name = "labelControl10";
+            this.labelControl10.Size = new System.Drawing.Size(91, 13);
+            this.labelControl10.TabIndex = 10;
+            this.labelControl10.Text = "Currency Symbol:";
             // 
             // labelControl2
             // 
@@ -277,6 +296,15 @@
             this.txtEndDate.Properties.ReadOnly = true;
             this.txtEndDate.Size = new System.Drawing.Size(178, 20);
             this.txtEndDate.TabIndex = 5;
+            // 
+            // txtCurrencySymbol
+            // 
+            this.txtCurrencySymbol.EditValue = "";
+            this.txtCurrencySymbol.Location = new System.Drawing.Point(122, 138);
+            this.txtCurrencySymbol.Name = "txtCurrencySymbol";
+            this.txtCurrencySymbol.Properties.MaxLength = 3;
+            this.txtCurrencySymbol.Size = new System.Drawing.Size(37, 20);
+            this.txtCurrencySymbol.TabIndex = 11;
             // 
             // tabNavigationPageManagedBy
             // 
@@ -465,23 +493,45 @@
             this.btnSavePlanoption.Text = "Save";
             this.btnSavePlanoption.Click += new System.EventHandler(this.btnSavePlanoption_Click);
             // 
-            // labelControl10
+            // tabInvestmentAllocation
             // 
-            this.labelControl10.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
-            this.labelControl10.Location = new System.Drawing.Point(25, 141);
-            this.labelControl10.Name = "labelControl10";
-            this.labelControl10.Size = new System.Drawing.Size(91, 13);
-            this.labelControl10.TabIndex = 10;
-            this.labelControl10.Text = "Currency Symbol:";
+            this.tabInvestmentAllocation.Caption = "Investment Allocation with us";
+            this.tabInvestmentAllocation.Controls.Add(this.labelControl12);
+            this.tabInvestmentAllocation.Controls.Add(this.txtDebtRatio);
+            this.tabInvestmentAllocation.Controls.Add(this.labelControl11);
+            this.tabInvestmentAllocation.Controls.Add(this.txtEquityRatio);
+            this.tabInvestmentAllocation.Name = "tabInvestmentAllocation";
+            this.tabInvestmentAllocation.Size = new System.Drawing.Size(552, 177);
             // 
-            // txtCurrencySymbol
+            // labelControl11
             // 
-            this.txtCurrencySymbol.EditValue = "";
-            this.txtCurrencySymbol.Location = new System.Drawing.Point(122, 138);
-            this.txtCurrencySymbol.Name = "txtCurrencySymbol";
-            this.txtCurrencySymbol.Properties.MaxLength = 3;
-            this.txtCurrencySymbol.Size = new System.Drawing.Size(37, 20);
-            this.txtCurrencySymbol.TabIndex = 11;
+            this.labelControl11.Location = new System.Drawing.Point(147, 27);
+            this.labelControl11.Name = "labelControl11";
+            this.labelControl11.Size = new System.Drawing.Size(62, 13);
+            this.labelControl11.TabIndex = 2;
+            this.labelControl11.Text = "Equity Ratio:";
+            // 
+            // txtEquityRatio
+            // 
+            this.txtEquityRatio.Location = new System.Drawing.Point(244, 24);
+            this.txtEquityRatio.Name = "txtEquityRatio";
+            this.txtEquityRatio.Size = new System.Drawing.Size(66, 20);
+            this.txtEquityRatio.TabIndex = 3;
+            // 
+            // labelControl12
+            // 
+            this.labelControl12.Location = new System.Drawing.Point(147, 53);
+            this.labelControl12.Name = "labelControl12";
+            this.labelControl12.Size = new System.Drawing.Size(55, 13);
+            this.labelControl12.TabIndex = 4;
+            this.labelControl12.Text = "Debt Ratio:";
+            // 
+            // txtDebtRatio
+            // 
+            this.txtDebtRatio.Location = new System.Drawing.Point(244, 50);
+            this.txtDebtRatio.Name = "txtDebtRatio";
+            this.txtDebtRatio.Size = new System.Drawing.Size(66, 20);
+            this.txtDebtRatio.TabIndex = 5;
             // 
             // PlannerView
             // 
@@ -516,13 +566,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtStartDate.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtStartDate.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEndDate.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCurrencySymbol.Properties)).EndInit();
             this.tabNavigationPageManagedBy.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pnlManager)).EndInit();
             this.pnlManager.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.cmbReviewFrequency.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.memoDescription.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbManagedBy.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCurrencySymbol.Properties)).EndInit();
+            this.tabInvestmentAllocation.ResumeLayout(false);
+            this.tabInvestmentAllocation.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEquityRatio.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDebtRatio.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -560,6 +614,11 @@
         private DevExpress.XtraEditors.ComboBoxEdit cmbReviewFrequency;
         private DevExpress.XtraEditors.LabelControl labelControl10;
         private DevExpress.XtraEditors.TextEdit txtCurrencySymbol;
+        private DevExpress.XtraBars.Navigation.TabNavigationPage tabInvestmentAllocation;
+        private DevExpress.XtraEditors.LabelControl labelControl12;
+        private DevExpress.XtraEditors.TextEdit txtDebtRatio;
+        private DevExpress.XtraEditors.LabelControl labelControl11;
+        private DevExpress.XtraEditors.TextEdit txtEquityRatio;
     }
 }
 

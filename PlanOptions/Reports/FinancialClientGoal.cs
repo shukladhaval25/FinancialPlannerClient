@@ -135,7 +135,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
 
         internal DataTable GetGoalsByGroup()
         {
-            return _dtGoals;
+           return _dtGoals;
         }
 
         private string setGoalNameWithRecurranceValidation(int i, string goalName)
@@ -228,9 +228,10 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         private void lblInflation_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
             lblInflation.Text = lblInflation.Text + " %";
-            if (lblPriority.Text == maxGoalPriority.ToString())
+            if (string.IsNullOrEmpty(lblPriority.Text))
             {
                 lblInflation.Text = "";
+                lblName.Visible = false;
             }
 
         }
@@ -249,7 +250,9 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             if (string.IsNullOrEmpty(lblPriority.Text))
             {
                 lblFutureCost.Text = "";
+                xrTable1.Visible = false;
             }
+           
         }
 
         private void lblPresentCost_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)

@@ -688,5 +688,16 @@ namespace FinancialPlannerClient.Clients
             navigationPageOther.Controls.Add(feesInvoice);
             showNavigationPage(feesInvoice.Name);
         }
+
+        private void navBarItemRecomendation_LinkClicked(object sender, NavBarLinkEventArgs e)
+        {
+            RecomendationView recomendationView = new RecomendationView(this._client, this.planner);
+            recomendationView.TopLevel = false;
+            recomendationView.Visible = true;
+            navigationPageOther.Name = recomendationView.Name;
+            navigationPageOther.Controls.Clear();
+            navigationPageOther.Controls.Add(recomendationView);
+            showNavigationPage(recomendationView.Name);
+        }
     }
 }

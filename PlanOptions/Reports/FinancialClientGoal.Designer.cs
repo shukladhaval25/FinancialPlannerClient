@@ -119,7 +119,7 @@
             this.xrPanel4.Dpi = 100F;
             this.xrPanel4.LocationFloat = new DevExpress.Utils.PointFloat(4.999987F, 0F);
             this.xrPanel4.Name = "xrPanel4";
-            this.xrPanel4.SizeF = new System.Drawing.SizeF(790F, 73.95834F);
+            this.xrPanel4.SizeF = new System.Drawing.SizeF(776F, 73.95834F);
             this.xrPanel4.StylePriority.UseBorderColor = false;
             this.xrPanel4.StylePriority.UseBorders = false;
             this.xrPanel4.StylePriority.UseBorderWidth = false;
@@ -334,7 +334,7 @@
             this.xrGroupLabel.StylePriority.UseBorderWidth = false;
             this.xrGroupLabel.StylePriority.UseTextAlignment = false;
             this.xrGroupLabel.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
-            this.xrGroupLabel.Weight = 1.914311788139212D;
+            this.xrGroupLabel.Weight = 1.9179990349733453D;
             this.xrGroupLabel.XlsxFormatString = "#,##";
             this.xrGroupLabel.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.xrGroupLabel_BeforePrint);
             // 
@@ -346,7 +346,7 @@
             this.xrTableCell13.StylePriority.UseBorderWidth = false;
             this.xrTableCell13.StylePriority.UseTextAlignment = false;
             this.xrTableCell13.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell13.Weight = 0.70399876881352808D;
+            this.xrTableCell13.Weight = 0.70031152197939461D;
             // 
             // xrGroupLabel2
             // 
@@ -390,7 +390,7 @@
             this.xrPanel1.Dpi = 100F;
             this.xrPanel1.LocationFloat = new DevExpress.Utils.PointFloat(4.999987F, 0F);
             this.xrPanel1.Name = "xrPanel1";
-            this.xrPanel1.SizeF = new System.Drawing.SizeF(790F, 115F);
+            this.xrPanel1.SizeF = new System.Drawing.SizeF(776F, 115F);
             this.xrPanel1.StylePriority.UseBorderColor = false;
             this.xrPanel1.StylePriority.UseBorders = false;
             this.xrPanel1.StylePriority.UseBorderWidth = false;
@@ -581,7 +581,7 @@
             this.xrPanel3.Dpi = 100F;
             this.xrPanel3.LocationFloat = new DevExpress.Utils.PointFloat(4.999987F, 0F);
             this.xrPanel3.Name = "xrPanel3";
-            this.xrPanel3.SizeF = new System.Drawing.SizeF(790F, 83.33334F);
+            this.xrPanel3.SizeF = new System.Drawing.SizeF(776F, 83.33334F);
             this.xrPanel3.StylePriority.UseBorderColor = false;
             this.xrPanel3.StylePriority.UseBorders = false;
             this.xrPanel3.StylePriority.UseBorderWidth = false;
@@ -654,7 +654,7 @@
             this.xrLabel2.LocationFloat = new DevExpress.Utils.PointFloat(6.500109F, 28.16664F);
             this.xrLabel2.Name = "xrLabel2";
             this.xrLabel2.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel2.SizeF = new System.Drawing.SizeF(425.1949F, 23F);
+            this.xrLabel2.SizeF = new System.Drawing.SizeF(425.6947F, 23F);
             this.xrLabel2.StylePriority.UseBorderColor = false;
             this.xrLabel2.StylePriority.UseBorders = false;
             this.xrLabel2.StylePriority.UseBorderWidth = false;
@@ -798,7 +798,7 @@
             this.xrPanel2.Dpi = 100F;
             this.xrPanel2.LocationFloat = new DevExpress.Utils.PointFloat(4.999987F, 0F);
             this.xrPanel2.Name = "xrPanel2";
-            this.xrPanel2.SizeF = new System.Drawing.SizeF(790F, 100.4168F);
+            this.xrPanel2.SizeF = new System.Drawing.SizeF(776F, 100.4168F);
             this.xrPanel2.StylePriority.UseBorderColor = false;
             this.xrPanel2.StylePriority.UseBorders = false;
             this.xrPanel2.StylePriority.UseBorderWidth = false;
@@ -829,7 +829,7 @@
             this.ReportFooter});
             this.FormattingRuleSheet.AddRange(new DevExpress.XtraReports.UI.FormattingRule[] {
             this.formattingRule1});
-            this.Margins = new System.Drawing.Printing.Margins(28, 0, 115, 41);
+            this.Margins = new System.Drawing.Printing.Margins(28, 14, 115, 41);
             this.StyleSheet.AddRange(new DevExpress.XtraReports.UI.XRControlStyle[] {
             this.xrControlStyle1});
             this.Version = "16.2";
