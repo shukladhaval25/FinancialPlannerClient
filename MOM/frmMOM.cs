@@ -190,7 +190,7 @@ namespace FinancialPlannerClient.MOM
             }
             catch(Exception ex)
             {
-
+                MessageBox.Show(ex.ToString());
             }
         }
 

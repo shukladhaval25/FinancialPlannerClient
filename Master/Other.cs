@@ -51,12 +51,18 @@ namespace FinancialPlannerClient.Master
                     _otherItems = new MFCategoryImpl();
                     setSchemeCategoryUI();
                     break;
+                case "InsuranceCompany":
+                    _otherItems = new InsuranceCompanyImplimenter();
+                    setInsurnceCompanyUI();
+                    break;
             }            
             _otherItems.LoadData(gridControlOthers);
             
             if (gridViewOthers.Columns.Count > 0 && this.Text != "Festivals Master")
                 gridViewOthers.Columns[0].Width = 220;
         }
+
+       
 
         private void ApplyPermission(string option)
         {
@@ -219,6 +225,40 @@ namespace FinancialPlannerClient.Master
         }
         #endregion
 
+        #region "Insurance Company"
+
+        private void setInsurnceCompanyUI()
+        {
+            this.Text = "Insurance Company";
+            lblReligion.Visible = false;
+            txtReligion.Visible = false;
+        }
+
+        private void saveInsuranceCompany()
+        {
+            InsuranceCompany insuranceCompany = getInsuraceCompanyData();
+            if (_otherItems.Save(insuranceCompany))
+            {
+                MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                _otherItems.LoadData(gridControlOthers);
+                grpItem.Enabled = false;
+            }
+            else
+            {
+                MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private InsuranceCompany getInsuraceCompanyData()
+        {
+            InsuranceCompany insuranceCompany = new InsuranceCompany();
+            insuranceCompany.Name = txtName.Text;
+
+            return insuranceCompany;
+        }
+
+        #endregion
+
         private void gridViewOthers_SelectionChanged(object sender, DevExpress.Data.SelectionChangedEventArgs e)
         {
            
@@ -256,9 +296,12 @@ namespace FinancialPlannerClient.Master
             {
                 saveCategory();
             }
-
+            else if (this.Text == "Insurance Company")
+            {
+                saveInsuranceCompany();
+            }
         }
-
+      
         private void btnDelete_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Are you sure, you want to delete this record?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -286,6 +329,13 @@ namespace FinancialPlannerClient.Master
                     SchemeCategory schemeCategory = getSchemeCategoryData();
                     _otherItems.Delete(schemeCategory);
                 }
+                else if (this.Text == "Insurance Company")
+                {
+                    //saveInsuranceCompany();
+                    InsuranceCompany insuranceCompany = new InsuranceCompany() { Id = (txtName.Tag.ToString() == "") ? 0 : int.Parse(txtName.Tag.ToString()), Name = txtName.Text };
+                    _otherItems.Delete(insuranceCompany);
+                    _otherItems.LoadData(gridControlOthers);
+                }
             }
         }
 
@@ -298,7 +348,7 @@ namespace FinancialPlannerClient.Master
                     txtName.Text = gridViewOthers.GetFocusedRowCellValue(gridViewOthers.Columns[1]).ToString();  //dtGridOther.SelectedRows[0].Cells[1].Value.ToString();
                     txtReligion.Text = gridViewOthers.GetFocusedRowCellValue(gridViewOthers.Columns[0]).ToString();
                 }
-                else if (this.Text == "Category")
+                else if (this.Text == "Category" || this.Text == "Insurance Company")
                 {
                     txtName.Text = gridViewOthers.GetFocusedRowCellValue(gridViewOthers.Columns[1]).ToString(); 
                     txtName.Tag = gridViewOthers.GetFocusedRowCellValue(gridViewOthers.Columns[0]).ToString();
@@ -306,6 +356,11 @@ namespace FinancialPlannerClient.Master
                 else
                     txtName.Text = gridViewOthers.GetFocusedRowCellValue(gridViewOthers.Columns[0]).ToString();
             }
+        }
+
+        private void Other_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

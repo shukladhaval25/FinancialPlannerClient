@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FinancialPlanner.Common.Model.Masters;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -40,6 +41,8 @@ namespace FinancialPlannerClient.PlanOptions
         public bool blnAssetAllocationTitle { get; set; }
         public bool blnActionPlan { get; set; }
         public bool blnRecomendation { get; set; }
+        ReportPageSettingInfo reportPageSettingInfo;
+        IList<ReportPageSetting> reportPageSettings;
         public bool blnExecutionSheet { get; set; }
         public frmReportPageOption()
         {
@@ -48,9 +51,12 @@ namespace FinancialPlannerClient.PlanOptions
 
         private void frmReportPageOption_Load(object sender, EventArgs e)
         {
+            reportPageSettingInfo = new ReportPageSettingInfo();
+            reportPageSettings = reportPageSettingInfo.GetAll();
             dtReportPages = new DataTable();
             generateReportPages();
             bindDataTable();
+
         }
 
         private void bindDataTable()
@@ -98,7 +104,8 @@ namespace FinancialPlannerClient.PlanOptions
             foreach(string page in pages)
             {
                 DataRow dr = dtReportPages.NewRow();
-                dr["IsSelected"] = true;
+                ReportPageSetting report = reportPageSettings.First(x => x.ReportPageName.Equals(page.Trim()));
+                dr["IsSelected"] = (report != null) ? report.IsSelected : true;
                 dr["Page"] = page.ToString();
                 dtReportPages.Rows.Add(dr);
             }
@@ -210,6 +217,13 @@ namespace FinancialPlannerClient.PlanOptions
                     blnExecutionSheet = isSelected;
                     break;
             }
+            if (chkRememberSetting.Checked)
+            {
+                
+                ReportPageSetting reportSetting = new ReportPageSetting() { ReportPageName = value,IsSelected = isSelected };
+                reportPageSettingInfo.Update(reportSetting);
+            }
+
         }
-        }
+    }
 }

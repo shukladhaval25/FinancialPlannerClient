@@ -253,7 +253,8 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             if (goal != null)
             {
                 CashFlowService cashFlowService = new CashFlowService();
-                cashFlowService.GenerateCashFlow(this.client.ID, this.planner.ID, this.riskProfileId);
+                cashFlowService.GetCashFlow(this.optionId);
+                cashFlowService.GenerateCashFlow(this.client.ID, this.planner.ID, this.riskProfileId );
                 CashFlow cf = cashFlowService.GetCashFlow(this.optionId);
 
                 goalCalView.setCashFlowService(cashFlowService);

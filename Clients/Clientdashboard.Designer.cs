@@ -36,6 +36,9 @@
             DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
@@ -64,9 +67,6 @@
             DevExpress.Utils.SuperToolTip superToolTip12 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem13 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem12 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
             this.panelMenu = new DevExpress.XtraEditors.PanelControl();
             this.lblClientID = new DevExpress.XtraEditors.LabelControl();
             this.pnlNavCtrl = new DevExpress.XtraEditors.PanelControl();
@@ -97,6 +97,7 @@
             this.navBarGroupOthers = new DevExpress.XtraNavBar.NavBarGroup();
             this.navBarItemMOM = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItemFeesInvoice = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarItemRecomendation = new DevExpress.XtraNavBar.NavBarItem();
             this.btnViewPlann = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.cmbPlanner = new DevExpress.XtraEditors.ComboBoxEdit();
@@ -187,7 +188,6 @@
             this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.gridBand1 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.navBarItemRecomendation = new DevExpress.XtraNavBar.NavBarItem();
             ((System.ComponentModel.ISupportInitialize)(this.panelMenu)).BeginInit();
             this.panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlNavCtrl)).BeginInit();
@@ -564,6 +564,23 @@
             superToolTip2.Items.Add(toolTipItem2);
             this.navBarItemFeesInvoice.SuperTip = superToolTip2;
             this.navBarItemFeesInvoice.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItemFeesInvoice_LinkClicked);
+            // 
+            // navBarItemRecomendation
+            // 
+            this.navBarItemRecomendation.Caption = "Recomendation";
+            this.navBarItemRecomendation.Name = "navBarItemRecomendation";
+            this.navBarItemRecomendation.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarItemRecomendation.SmallImage")));
+            toolTipTitleItem3.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
+            toolTipTitleItem3.Appearance.Options.UseImage = true;
+            toolTipTitleItem3.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem3.Image")));
+            toolTipTitleItem3.Text = "Recomendation";
+            toolTipItem3.LeftIndent = 6;
+            toolTipItem3.Text = "To set recomendation for Insurance, Personal Accident and other details click her" +
+    "e.";
+            superToolTip3.Items.Add(toolTipTitleItem3);
+            superToolTip3.Items.Add(toolTipItem3);
+            this.navBarItemRecomendation.SuperTip = superToolTip3;
+            this.navBarItemRecomendation.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItemRecomendation_LinkClicked);
             // 
             // btnViewPlann
             // 
@@ -1007,6 +1024,7 @@
             // navigationPageContactInfo
             // 
             this.navigationPageContactInfo.AutoScroll = true;
+            this.navigationPageContactInfo.Caption = "navigationPageContactInfo";
             this.navigationPageContactInfo.Name = "navigationPageContactInfo";
             this.navigationPageContactInfo.Size = new System.Drawing.Size(1004, 599);
             this.navigationPageContactInfo.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.navigationPageClient_ControlRemoved);
@@ -1531,23 +1549,6 @@
             this.gridBand1.Caption = "gridBand1";
             this.gridBand1.Name = "gridBand1";
             this.gridBand1.VisibleIndex = -1;
-            // 
-            // navBarItemRecomendation
-            // 
-            this.navBarItemRecomendation.Caption = "Recomendation";
-            this.navBarItemRecomendation.Name = "navBarItemRecomendation";
-            this.navBarItemRecomendation.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarItemRecomendation.SmallImage")));
-            toolTipTitleItem3.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
-            toolTipTitleItem3.Appearance.Options.UseImage = true;
-            toolTipTitleItem3.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem3.Image")));
-            toolTipTitleItem3.Text = "Recomendation";
-            toolTipItem3.LeftIndent = 6;
-            toolTipItem3.Text = "To set recomendation for Insurance, Personal Accident and other details click her" +
-    "e.";
-            superToolTip3.Items.Add(toolTipTitleItem3);
-            superToolTip3.Items.Add(toolTipItem3);
-            this.navBarItemRecomendation.SuperTip = superToolTip3;
-            this.navBarItemRecomendation.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItemRecomendation_LinkClicked);
             // 
             // Clientdashboard
             // 

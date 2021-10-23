@@ -28,11 +28,17 @@ namespace FinancialPlannerClient.PlanOptions
 
         private const string USERAPI = "User";
         DataTable _dtUser;
-
-        public PlannerView(PersonalInformation personalInformation)
+        Planner currentPlanner;
+        public PlannerView(PersonalInformation personalInformation,Planner planner)
         {
             InitializeComponent();
             this.personalInformation = personalInformation;
+            this.currentPlanner = planner;
+        }
+
+        public Planner GetCurrentPlanner()
+        {
+            return this.currentPlanner;
         }
 
         private void PlannerView_Load(object sender, EventArgs e)
@@ -218,6 +224,15 @@ namespace FinancialPlannerClient.PlanOptions
                     {
                         MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.DialogResult = DialogResult.OK;
+                        if (planner.ID == this.currentPlanner.ID)
+                        {
+                            this.currentPlanner.PlannerStartMonth =planner.PlannerStartMonth;
+                            this.currentPlanner.Description = planner.Description;
+                            this.currentPlanner.ReviewFrequency = planner.ReviewFrequency;
+                            this.currentPlanner.CurrencySymbol = planner.CurrencySymbol;
+                            this.currentPlanner.EquityRatio = planner.EquityRatio;
+                            this.currentPlanner.DebtRatio = planner.DebtRatio;
+                        }
                         this.Close();
                     }
                 }

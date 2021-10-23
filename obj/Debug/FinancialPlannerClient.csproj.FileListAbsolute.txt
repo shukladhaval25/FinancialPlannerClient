@@ -490,7 +490,6 @@ C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient
 C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.CurrentStatusView.resources
 C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.PlanOptions.resources
 C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.GoalCalView.resources
-C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.Reports.ActionPlan.resources
 C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.Reports.AssetAllocationTitle.resources
 C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.AssumptionPage.resources
 C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.ClientPlanOptionList.resources
@@ -596,3 +595,6 @@ C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient
 C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.frmReportPageOption.resources
 C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.Reports.ExecutionSheetTable.resources
 C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.RecomendationView.resources
+C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.Reports.TermInsurancePage.resources
+C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.Reports.TermInsurance.resources
+C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.Reports.OtherRecommendation.resources

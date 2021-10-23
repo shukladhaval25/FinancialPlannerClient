@@ -71,7 +71,7 @@ namespace FinancialPlannerClient.PlanOptions
         public double FirstYearExpenseOnRetirementYear {
             get => _firstYearExpenseOnRetirementYear; }
 
-                public double GetCurrentPortfolioValue()
+        public double GetCurrentPortfolioValue()
         {
             double totalCashInvestmentUptoNow = 0;
             double currentPortFoliovalue = _portfolioValue;
@@ -94,6 +94,40 @@ namespace FinancialPlannerClient.PlanOptions
                 {
                     double interestRate = (lifoGoalPlanningObj.GrowthPercentage != null) ?
                         (double) lifoGoalPlanningObj.GrowthPercentage : 0;
+
+                    currentPortFoliovalue = currentPortFoliovalue +
+                         ((currentPortFoliovalue * interestRate) / 100);
+                    //if (_goalPlannings.Count > 0  && (currentYear > _goalPlannings[0].Year))
+                    //    break;
+                }
+            }
+            _currentPortfolioValue = currentPortFoliovalue;
+            return _currentPortfolioValue;
+        }
+
+        private double GetCurrentPortfolioValue(int presentYear)
+        {
+            double totalCashInvestmentUptoNow = 0;
+            double currentPortFoliovalue = _portfolioValue;
+            for (int currentYear = _planner.StartDate.Year; currentYear <= presentYear; currentYear++)
+            {
+                GoalPlanning goalPlanning = GetGoalPlanning(currentYear);
+                //GoalPlanning previousYearGoalPlanning = GetGoalPlanning(currentYear-1);
+                GoalPlanning lifoGoalPlanningObj = GetLIFOGoalPlanning(currentYear);
+                if (goalPlanning != null)
+                {
+                    //currentPortFoliovalue = currentPortFoliovalue + goalPlanning.ActualFreshInvestment;
+                    double interestRate = (lifoGoalPlanningObj.GrowthPercentage != null) ?
+                        (double)lifoGoalPlanningObj.GrowthPercentage : 0;
+
+                    currentPortFoliovalue = currentPortFoliovalue +
+                        ((currentPortFoliovalue * interestRate) / 100) +
+                        goalPlanning.ActualFreshInvestment;
+                }
+                else
+                {
+                    double interestRate = (lifoGoalPlanningObj.GrowthPercentage != null) ?
+                        (double)lifoGoalPlanningObj.GrowthPercentage : 0;
 
                     currentPortFoliovalue = currentPortFoliovalue +
                          ((currentPortFoliovalue * interestRate) / 100);
@@ -188,7 +222,9 @@ namespace FinancialPlannerClient.PlanOptions
             //    GetLIFOGoalPlanning(investmentYear) :
             //    GetLIFOGoalPlanning(investmentYear + 1);
             GoalPlanning lifoGoalPlanningObj = GetLIFOGoalPlanning(investmentYear + 1);
-            double currentProfileValue = GetCurrentPortfolioValue();
+            //double currentProfileValue = GetCurrentPortfolioValue();
+            double currentProfileValue = GetCurrentPortfolioValue(investmentYear);
+
             if (lifoGoalPlanningObj == null)
                 return investmentAmount;
 

@@ -50,7 +50,7 @@ namespace FinancialPlannerClient.Clients
         #region "Planner Variables"
         private readonly string GET_PLAN_BY_CLIENTID_API = "Planner/GetByClientId?id={0}";
         private List<Planner> _planners = new List<Planner>();
-        internal Planner planner;
+        public Planner planner;
         #endregion
 
         public Clientdashboard(Client client)
@@ -340,6 +340,10 @@ namespace FinancialPlannerClient.Clients
                     }
                 }
             }
+            else
+            {
+                this.planner = new Planner();
+            }
         }
         #endregion
 
@@ -542,13 +546,13 @@ namespace FinancialPlannerClient.Clients
 
         private void btnViewPlann_Click(object sender, EventArgs e)
         {
-            PlannerView plannerView = new PlannerView(this.personalInformation);
+            PlannerView plannerView = new PlannerView(this.personalInformation,this.planner);
             plannerView.TopLevel = false;
             plannerView.Visible = true;
             navigationPageOther.Name = plannerView.Name;
             navigationPageOther.Controls.Clear();
             navigationPageOther.Controls.Add(plannerView);
-            showNavigationPage(plannerView.Name);
+            this.planner = plannerView.GetCurrentPlanner();
         }
 
         private void navBarItemRiskProfile_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)

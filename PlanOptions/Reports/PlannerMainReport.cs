@@ -283,7 +283,7 @@ namespace FinancialPlannerClient.PlanOptions
                 if (blnCurrentFinancialAssetAllocation)
                 {
                     currentFinancialAssetAllocation =
-                    new CurrentFinancialAssetAllocation(this.client, netWorthStatement.GetNetWorth(), currentFinancialStatus);
+                    new CurrentFinancialAssetAllocation(this.client, netWorthStatement.GetNetWorth(), currentFinancialStatus,this.riskprofileId);
                     currentFinancialAssetAllocation.CreateDocument();
                     this.Pages.AddRange(currentFinancialAssetAllocation.Pages);
                 }
@@ -355,9 +355,9 @@ namespace FinancialPlannerClient.PlanOptions
 
                 if (blnAssetAllocationTitle)
                 {
-                    AssetAllocationTitle assetAllocationTitle = new AssetAllocationTitle(this.client);
-                    assetAllocationTitle.CreateDocument();
-                    this.Pages.AddRange(assetAllocationTitle.Pages);
+                    //TermInsurancePage assetAllocationTitle = new TermInsurancePage(this.client);
+                    //assetAllocationTitle.CreateDocument();
+                    //this.Pages.AddRange(assetAllocationTitle.Pages);
                 }
 
                 if (blnActionPlan || blnExecutionSheet)
@@ -367,7 +367,7 @@ namespace FinancialPlannerClient.PlanOptions
 
                 if (blnActionPlan)
                 {
-                    ActionPlan actionPlan = new ActionPlan(this.client,executionSheetInfo.GetExeuctionSheetTable(),planner);
+                    TermInsurancePage actionPlan = new TermInsurancePage(this.client,executionSheetInfo.GetExeuctionSheetTable(),planner,this.riskprofileId);
                     actionPlan.CreateDocument();
                     this.Pages.AddRange(actionPlan.Pages);
                 }

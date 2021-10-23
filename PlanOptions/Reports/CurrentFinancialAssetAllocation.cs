@@ -5,6 +5,7 @@ using System.ComponentModel;
 using DevExpress.XtraReports.UI;
 using FinancialPlanner.Common.Model;
 using System.Data;
+using FinancialPlannerClient.RiskProfile;
 
 namespace FinancialPlannerClient.PlanOptions.Reports
 {
@@ -18,12 +19,14 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         const string SS = "Sukanya Sum. Account";
         const string SHARES = "Shares";
         CurrentFinancialStatus currentFinancialStatus;
-        public CurrentFinancialAssetAllocation(Client client, DataTable dataTable, CurrentFinancialStatus currentFinancialStatus)
+        int riskprofileId;
+        public CurrentFinancialAssetAllocation(Client client, DataTable dataTable, CurrentFinancialStatus currentFinancialStatus,int riskProfileId)
         {
             InitializeComponent();
             this.lblClientName.Text = client.Name;
             this.dtNetWorth = dataTable;
             this.currentFinancialStatus = currentFinancialStatus;
+            this.riskprofileId = riskProfileId;
             setReportData();
         }
 
@@ -43,6 +46,20 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             xrChartCurrentStatus.Series[0].Points[1].Values = new double[] { totalDebtValue };
             lblEquity.Text = ((totalEquityValue * 100) / (totalEquityValue + totalDebtValue)).ToString("###.##") + "%";
             lblDebt.Text = ((totalDebtValue * 100) / (totalEquityValue + totalDebtValue)).ToString("###.##")  + "%";
+
+            RiskProfileInfo riskProfile = new RiskProfileInfo();
+            DataTable dtRiskProfileReturn = riskProfile.GetRiskProfileReturnById(riskprofileId);
+            int currentYear = 5;
+
+            DataRow[] dataRows = dtRiskProfileReturn.Select("YearRemaining ='" + currentYear + "'");
+            if (dataRows.Length > 0)
+            {
+                lblDesiredEquityAllocationRatio.Text = dataRows[0]["EquityInvestementRatio"].ToString() + "%";
+                lblDesiredDebtAllocationRatio.Text = dataRows[0]["DebtInvestementRatio"].ToString() + "%";
+
+                xrChartDesireAllocation.Series[0].Points[0].Values = new double[] { double.Parse(dataRows[0]["EquityInvestementRatio"].ToString()) };
+                xrChartDesireAllocation.Series[0].Points[1].Values = new double[] { double.Parse(dataRows[0]["DebtInvestementRatio"].ToString()) };
+            }
         }
 
         private void setEquityData(ref int rowIndexForEquity, ref double totalEquityValue, int indexRow)

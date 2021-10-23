@@ -30,14 +30,16 @@
         {
             this.gridControlReport = new DevExpress.XtraGrid.GridControl();
             this.gridViewReport = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumnIsSelected = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.gridColumnPage = new DevExpress.XtraGrid.Columns.GridColumn();
             this.lblContactTitle = new DevExpress.XtraEditors.LabelControl();
             this.btnApply = new DevExpress.XtraEditors.SimpleButton();
-            this.gridColumnIsSelected = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumnPage = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.chkRememberSetting = new DevExpress.XtraEditors.CheckEdit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlReport)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewReport)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkRememberSetting.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // gridControlReport
@@ -64,10 +66,31 @@
             this.gridViewReport.Name = "gridViewReport";
             this.gridViewReport.OptionsView.ShowGroupPanel = false;
             // 
+            // gridColumnIsSelected
+            // 
+            this.gridColumnIsSelected.Caption = "Select";
+            this.gridColumnIsSelected.ColumnEdit = this.repositoryItemCheckEdit1;
+            this.gridColumnIsSelected.FieldName = "IsSelected";
+            this.gridColumnIsSelected.Name = "gridColumnIsSelected";
+            this.gridColumnIsSelected.Visible = true;
+            this.gridColumnIsSelected.VisibleIndex = 0;
+            this.gridColumnIsSelected.Width = 57;
+            // 
             // repositoryItemCheckEdit1
             // 
             this.repositoryItemCheckEdit1.AutoHeight = false;
             this.repositoryItemCheckEdit1.Name = "repositoryItemCheckEdit1";
+            // 
+            // gridColumnPage
+            // 
+            this.gridColumnPage.Caption = "Report Page";
+            this.gridColumnPage.FieldName = "Page";
+            this.gridColumnPage.Name = "gridColumnPage";
+            this.gridColumnPage.OptionsColumn.AllowEdit = false;
+            this.gridColumnPage.OptionsColumn.ReadOnly = true;
+            this.gridColumnPage.Visible = true;
+            this.gridColumnPage.VisibleIndex = 1;
+            this.gridColumnPage.Width = 718;
             // 
             // lblContactTitle
             // 
@@ -92,32 +115,20 @@
             this.btnApply.Text = "Apply";
             this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
             // 
-            // gridColumnIsSelected
+            // chkRememberSetting
             // 
-            this.gridColumnIsSelected.Caption = "Select";
-            this.gridColumnIsSelected.ColumnEdit = this.repositoryItemCheckEdit1;
-            this.gridColumnIsSelected.FieldName = "IsSelected";
-            this.gridColumnIsSelected.Name = "gridColumnIsSelected";
-            this.gridColumnIsSelected.Visible = true;
-            this.gridColumnIsSelected.VisibleIndex = 0;
-            this.gridColumnIsSelected.Width = 57;
-            // 
-            // gridColumnPage
-            // 
-            this.gridColumnPage.Caption = "Report Page";
-            this.gridColumnPage.FieldName = "Page";
-            this.gridColumnPage.Name = "gridColumnPage";
-            this.gridColumnPage.OptionsColumn.AllowEdit = false;
-            this.gridColumnPage.OptionsColumn.ReadOnly = true;
-            this.gridColumnPage.Visible = true;
-            this.gridColumnPage.VisibleIndex = 1;
-            this.gridColumnPage.Width = 718;
+            this.chkRememberSetting.Location = new System.Drawing.Point(439, 442);
+            this.chkRememberSetting.Name = "chkRememberSetting";
+            this.chkRememberSetting.Properties.Caption = "Remember this changes next time";
+            this.chkRememberSetting.Size = new System.Drawing.Size(190, 19);
+            this.chkRememberSetting.TabIndex = 10;
             // 
             // frmReportPageOption
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(799, 475);
+            this.Controls.Add(this.chkRememberSetting);
             this.Controls.Add(this.btnApply);
             this.Controls.Add(this.lblContactTitle);
             this.Controls.Add(this.gridControlReport);
@@ -127,6 +138,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControlReport)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewReport)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkRememberSetting.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -140,5 +152,6 @@
         private DevExpress.XtraEditors.SimpleButton btnApply;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnIsSelected;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnPage;
+        private DevExpress.XtraEditors.CheckEdit chkRememberSetting;
     }
 }

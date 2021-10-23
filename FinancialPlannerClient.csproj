@@ -327,6 +327,8 @@
       <DependentUpon>BankView.cs</DependentUpon>
     </Compile>
     <Compile Include="Master\ClientRatingImplimenter.cs" />
+    <Compile Include="Master\InsuranceCompanyImplimenter.cs" />
+    <Compile Include="Master\InsuranceCompanyInfo.cs" />
     <Compile Include="Master\MFCategoryImpl.cs" />
     <Compile Include="Master\Other.cs">
       <SubType>Form</SubType>
@@ -423,6 +425,7 @@
     <Compile Include="PlanOptions\frmReportPageOption.Designer.cs">
       <DependentUpon>frmReportPageOption.cs</DependentUpon>
     </Compile>
+    <Compile Include="PlanOptions\InsuranceRecomendationInfo.cs" />
     <Compile Include="PlanOptions\InvestmentRecomendationView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -459,6 +462,7 @@
     <Compile Include="PlanOptions\RecomendationView.Designer.cs">
       <DependentUpon>RecomendationView.cs</DependentUpon>
     </Compile>
+    <Compile Include="PlanOptions\ReportPageSettingInfo.cs" />
     <Compile Include="PlanOptions\ReportParams.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -518,6 +522,12 @@
     </Compile>
     <Compile Include="PlanOptions\Reports\ActionPlan.Designer.cs">
       <DependentUpon>ActionPlan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\TermInsurancePage.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\TermInsurancePage.Designer.cs">
+      <DependentUpon>TermInsurancePage.cs</DependentUpon>
     </Compile>
     <Compile Include="PlanOptions\Reports\AssetAllocationTitle.cs">
       <SubType>Component</SubType>
@@ -869,6 +879,12 @@
     </Compile>
     <Compile Include="PlanOptions\Reports\Recomendation.Designer.cs">
       <DependentUpon>Recomendation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\OtherRecommendation.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\OtherRecommendation.Designer.cs">
+      <DependentUpon>OtherRecommendation.cs</DependentUpon>
     </Compile>
     <Compile Include="PlanOptions\Reports\WhatIsPlan.cs">
       <SubType>Component</SubType>
@@ -1228,6 +1244,9 @@
     <EmbeddedResource Include="PlanOptions\Reports\ActionPlan.resx">
       <DependentUpon>ActionPlan.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\Reports\TermInsurancePage.resx">
+      <DependentUpon>TermInsurancePage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\Reports\AssetAllocationTitle.resx">
       <DependentUpon>AssetAllocationTitle.cs</DependentUpon>
     </EmbeddedResource>
@@ -1380,6 +1399,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\Reports\Recomendation.resx">
       <DependentUpon>Recomendation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\Reports\OtherRecommendation.resx">
+      <DependentUpon>OtherRecommendation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\Reports\WhatIsPlan.resx">
       <DependentUpon>WhatIsPlan.cs</DependentUpon>

@@ -1,6 +1,6 @@
 ﻿namespace FinancialPlannerClient.PlanOptions.Reports
 {
-    partial class ActionPlan
+    partial class TermInsurancePage
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ActionPlan));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TermInsurancePage));
             this.Detail = new DevExpress.XtraReports.UI.DetailBand();
             this.xrlblExeuctionDebtRatio = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel10 = new DevExpress.XtraReports.UI.XRLabel();
@@ -429,7 +429,6 @@
             this.lblequityValue.StylePriority.UseForeColor = false;
             this.lblequityValue.StylePriority.UsePadding = false;
             this.lblequityValue.StylePriority.UseTextAlignment = false;
-            this.lblequityValue.Text = "50%";
             this.lblequityValue.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
             // xrLabel8
@@ -485,7 +484,6 @@
             this.lblDebtValue.StylePriority.UseForeColor = false;
             this.lblDebtValue.StylePriority.UsePadding = false;
             this.lblDebtValue.StylePriority.UseTextAlignment = false;
-            this.lblDebtValue.Text = "50%";
             this.lblDebtValue.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
             // xrPanel1
