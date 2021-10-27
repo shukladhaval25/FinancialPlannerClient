@@ -98,6 +98,7 @@
             // 
             // xrLabel1
             // 
+            this.xrLabel1.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.xrLabel1.Dpi = 100F;
             this.xrLabel1.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(117)))), ((int)(((byte)(181)))));
@@ -106,6 +107,7 @@
             this.xrLabel1.Name = "xrLabel1";
             this.xrLabel1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel1.SizeF = new System.Drawing.SizeF(239.5833F, 26.12498F);
+            this.xrLabel1.StylePriority.UseBorders = false;
             this.xrLabel1.StylePriority.UseFont = false;
             this.xrLabel1.StylePriority.UseForeColor = false;
             this.xrLabel1.Text = "Other Recommendations:";

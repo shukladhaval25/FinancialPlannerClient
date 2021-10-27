@@ -390,5 +390,18 @@ namespace FinancialPlannerClient.PlanOptions
                 MessageBox.Show(ex.ToString());
             }
         }
+
+        private void tabRecomendation_SelectedPageIndexChanged(object sender, EventArgs e)
+        {
+            if (tabRecomendation.SelectedPageIndex == 1)
+            {
+                loadPersonalAccidentalInsuranceInformation();
+            }
+        }
+
+        private void loadPersonalAccidentalInsuranceInformation()
+        {
+            
+        }
     }
 }

@@ -86,7 +86,13 @@ namespace FinancialPlannerClient.PlanOptions
                 DevExpress.XtraEditors.XtraMessageBox.Show("Please select option.", "Invalid Option", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-
+            if (frmReportPage == null)
+            {
+                frmReportPage = new frmReportPageOption();
+                frmReportPage.GetAndDisplayReportPageSeting();
+                frmReportPage.btnApply_Click(sender, e);
+                frmReportPage.Close();
+            }
            string apiurl = Program.WebServiceUrl + "/" + UPDATE_PLAN_API;
             FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
             planner.Recommendation = txtRecomendation.Text;

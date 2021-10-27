@@ -122,10 +122,10 @@ namespace FinancialPlannerClient.TaskManagementSystem
                 cmbTransactionType.Properties.Items.Add("STP Cancel");
                 cmbTransactionType.Properties.Items.Add("SIP Cancel");
                 cmbTransactionType.Properties.Items.Add("Fresh Purchase");
-
+                cmbTransactionType.Properties.Items.Add("Others");
                 //cmbTransactionType.Properties.Items.Add("STP Cancellation");
                 //cmbTransactionType.Properties.Items.Add("SIP Cancellation");
-                
+
             }
             else if (cmbProject.Text == CUSTOMERSUPPORT)
             {
@@ -139,7 +139,8 @@ namespace FinancialPlannerClient.TaskManagementSystem
                 cmbTransactionType.Properties.Items.Add("Minor To Major");
                 cmbTransactionType.Properties.Items.Add("Change of Name");
                 cmbTransactionType.Properties.Items.Add("Nomination");
-                
+                cmbTransactionType.Properties.Items.Add("Others");
+
             }
             else
             {
@@ -157,12 +158,20 @@ namespace FinancialPlannerClient.TaskManagementSystem
             }
             try
             {
-                Client client = clients.FirstOrDefault(i => i.Name == cmbClient.Text);
-                transactionType = Program.container.Resolve<ITransactionType>(cmbTransactionType.Text);                
-                transactionType.setVGridControl(this.vGridTransaction,client);
-                transactionType.SetARN(clientARN.ARNId);
-                splitContainerTransOperation.Panel1.Height = 400;
-                splitContainerTransOperation.PanelVisibility = DevExpress.XtraEditors.SplitPanelVisibility.Both;
+                if (cmbTransactionType.Text.Equals("Others"))
+                {
+                    hideTransactionTypePanel();
+                }
+                else
+                {
+                    Client client = clients.FirstOrDefault(i => i.Name == cmbClient.Text);
+                    transactionType = Program.container.Resolve<ITransactionType>(cmbTransactionType.Text);
+                    transactionType.setVGridControl(this.vGridTransaction, client);
+                    transactionType.SetARN(clientARN.ARNId);
+                    splitContainerTransOperation.Panel1.Height = 400;
+                    splitContainerTransOperation.PanelVisibility = DevExpress.XtraEditors.SplitPanelVisibility.Both;
+                }
+                
             }
             catch (Unity.ResolutionFailedException)
             {
@@ -227,7 +236,7 @@ namespace FinancialPlannerClient.TaskManagementSystem
             taskCard.Description = txtDescription.Text;
             taskCard.MachineName = System.Environment.MachineName;
             taskCard.OtherName = txtOthenThenClient.Text;
-            if (cmbProject.Text == MUTUALFUND)
+            if ((cmbProject.Text == MUTUALFUND || cmbProject.Text == CUSTOMERSUPPORT) && !cmbTransactionType.Text.Equals("Others"))
                 taskCard.TaskTransactionType = getTransactionType();
             
             return taskCard;

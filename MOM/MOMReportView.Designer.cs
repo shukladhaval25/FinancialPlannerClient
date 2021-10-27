@@ -41,6 +41,7 @@
             this.lblStatus = new DevExpress.XtraReports.UI.XRTableCell();
             this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
             this.xrPanel2 = new DevExpress.XtraReports.UI.XRPanel();
+            this.lblTitle = new DevExpress.XtraReports.UI.XRLabel();
             this.xrPictureBox1 = new DevExpress.XtraReports.UI.XRPictureBox();
             this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
             this.xrPageInfo1 = new DevExpress.XtraReports.UI.XRPageInfo();
@@ -59,7 +60,8 @@
             this.PageFooter = new DevExpress.XtraReports.UI.PageFooterBand();
             this.GroupFooter1 = new DevExpress.XtraReports.UI.GroupFooterBand();
             this.xrPanel4 = new DevExpress.XtraReports.UI.XRPanel();
-            this.lblClientName = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrLabel1 = new DevExpress.XtraReports.UI.XRLabel();
+            this.lblClient = new DevExpress.XtraReports.UI.XRLabel();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
@@ -72,7 +74,7 @@
             this.Detail.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
             this.xrPanel3});
             this.Detail.Dpi = 100F;
-            this.Detail.HeightF = 45.41652F;
+            this.Detail.HeightF = 68.33318F;
             this.Detail.Name = "Detail";
             this.Detail.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.Detail.StylePriority.UseBorders = false;
@@ -91,7 +93,7 @@
             this.xrPanel3.Dpi = 100F;
             this.xrPanel3.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
             this.xrPanel3.Name = "xrPanel3";
-            this.xrPanel3.SizeF = new System.Drawing.SizeF(999F, 45.41652F);
+            this.xrPanel3.SizeF = new System.Drawing.SizeF(999F, 68.33318F);
             this.xrPanel3.StylePriority.UseBorderColor = false;
             this.xrPanel3.StylePriority.UseBorders = false;
             this.xrPanel3.StylePriority.UseBorderWidth = false;
@@ -109,7 +111,7 @@
             this.xrTable1.Name = "xrTable1";
             this.xrTable1.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.xrTableRow1});
-            this.xrTable1.SizeF = new System.Drawing.SizeF(931.4586F, 44.4582F);
+            this.xrTable1.SizeF = new System.Drawing.SizeF(931.4586F, 68.33318F);
             this.xrTable1.StylePriority.UseBorderColor = false;
             this.xrTable1.StylePriority.UseBorders = false;
             this.xrTable1.StylePriority.UseBorderWidth = false;
@@ -139,7 +141,7 @@
             this.lblDate.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 0, 0, 0, 100F);
             this.lblDate.StylePriority.UseBorders = false;
             this.lblDate.StylePriority.UsePadding = false;
-            this.lblDate.Weight = 0.6575454247488548D;
+            this.lblDate.Weight = 0.58615460775176287D;
             // 
             // lblTypeOfMeeting
             // 
@@ -147,7 +149,7 @@
             this.lblTypeOfMeeting.Name = "lblTypeOfMeeting";
             this.lblTypeOfMeeting.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 0, 0, 0, 100F);
             this.lblTypeOfMeeting.StylePriority.UsePadding = false;
-            this.lblTypeOfMeeting.Weight = 1.0436470035178538D;
+            this.lblTypeOfMeeting.Weight = 1.1150378205149458D;
             // 
             // lblPointsDiscussed
             // 
@@ -161,10 +163,11 @@
             // lblFutureAction
             // 
             this.lblFutureAction.Dpi = 100F;
+            this.lblFutureAction.Multiline = true;
             this.lblFutureAction.Name = "lblFutureAction";
             this.lblFutureAction.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 0, 0, 0, 100F);
             this.lblFutureAction.StylePriority.UsePadding = false;
-            this.lblFutureAction.Weight = 0.86494457889179432D;
+            this.lblFutureAction.Weight = 1.1647859161608738D;
             // 
             // lblResponsibility
             // 
@@ -172,7 +175,7 @@
             this.lblResponsibility.Name = "lblResponsibility";
             this.lblResponsibility.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 0, 0, 0, 100F);
             this.lblResponsibility.StylePriority.UsePadding = false;
-            this.lblResponsibility.Weight = 1.2714512623231724D;
+            this.lblResponsibility.Weight = 0.971609925054093D;
             // 
             // lblStatus
             // 
@@ -200,7 +203,9 @@
             this.xrPanel2.BorderWidth = 1F;
             this.xrPanel2.CanGrow = false;
             this.xrPanel2.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
-            this.lblClientName,
+            this.lblClient,
+            this.xrLabel1,
+            this.lblTitle,
             this.xrPictureBox1});
             this.xrPanel2.Dpi = 100F;
             this.xrPanel2.LocationFloat = new DevExpress.Utils.PointFloat(0F, 5.000008F);
@@ -209,6 +214,21 @@
             this.xrPanel2.StylePriority.UseBorderColor = false;
             this.xrPanel2.StylePriority.UseBorders = false;
             this.xrPanel2.StylePriority.UseBorderWidth = false;
+            // 
+            // lblTitle
+            // 
+            this.lblTitle.Borders = DevExpress.XtraPrinting.BorderSide.None;
+            this.lblTitle.Dpi = 100F;
+            this.lblTitle.Font = new System.Drawing.Font("Cambria", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(117)))), ((int)(((byte)(181)))));
+            this.lblTitle.LocationFloat = new DevExpress.Utils.PointFloat(18.95833F, 31.45833F);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.lblTitle.SizeF = new System.Drawing.SizeF(192.2917F, 22.99999F);
+            this.lblTitle.StylePriority.UseBorders = false;
+            this.lblTitle.StylePriority.UseFont = false;
+            this.lblTitle.StylePriority.UseForeColor = false;
+            this.lblTitle.Text = "Minutes of Meeting";
             // 
             // xrPictureBox1
             // 
@@ -242,10 +262,9 @@
             // PageHeader
             // 
             this.PageHeader.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
-            this.xrTable2,
             this.xrPanel1});
             this.PageHeader.Dpi = 100F;
-            this.PageHeader.HeightF = 128.6248F;
+            this.PageHeader.HeightF = 73.41646F;
             this.PageHeader.Name = "PageHeader";
             // 
             // xrTable2
@@ -255,7 +274,7 @@
             this.xrTable2.Dpi = 100F;
             this.xrTable2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrTable2.ForeColor = System.Drawing.Color.White;
-            this.xrTable2.LocationFloat = new DevExpress.Utils.PointFloat(18.95833F, 66.54167F);
+            this.xrTable2.LocationFloat = new DevExpress.Utils.PointFloat(18.95833F, 10.00001F);
             this.xrTable2.Name = "xrTable2";
             this.xrTable2.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.xrTableRow2});
@@ -289,7 +308,7 @@
             this.xrTableCell5.StylePriority.UseBackColor = false;
             this.xrTableCell5.StylePriority.UseBorderColor = false;
             this.xrTableCell5.Text = "Date";
-            this.xrTableCell5.Weight = 0.7709697527304995D;
+            this.xrTableCell5.Weight = 0.68726407416332513D;
             // 
             // xrTableCell6
             // 
@@ -300,7 +319,7 @@
             this.xrTableCell6.StylePriority.UseBackColor = false;
             this.xrTableCell6.StylePriority.UseBorderColor = false;
             this.xrTableCell6.Text = "Type of Meeting";
-            this.xrTableCell6.Weight = 1.2236726711887824D;
+            this.xrTableCell6.Weight = 1.3073783497559568D;
             // 
             // xrTableCell7
             // 
@@ -324,7 +343,7 @@
             this.xrTableCell8.StylePriority.UseBackColor = false;
             this.xrTableCell8.StylePriority.UseBorderColor = false;
             this.xrTableCell8.Text = "Future Action Plans";
-            this.xrTableCell8.Weight = 1.0141458027809178D;
+            this.xrTableCell8.Weight = 1.3657078503165117D;
             // 
             // xrTableCell1
             // 
@@ -335,7 +354,7 @@
             this.xrTableCell1.StylePriority.UseBackColor = false;
             this.xrTableCell1.StylePriority.UseBorderColor = false;
             this.xrTableCell1.Text = "Responsibility";
-            this.xrTableCell1.Weight = 1.4907715023654666D;
+            this.xrTableCell1.Weight = 1.1392094548298728D;
             // 
             // xrTableCell2
             // 
@@ -357,10 +376,12 @@
             | DevExpress.XtraPrinting.BorderSide.Right)));
             this.xrPanel1.BorderWidth = 1F;
             this.xrPanel1.CanGrow = false;
+            this.xrPanel1.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.xrTable2});
             this.xrPanel1.Dpi = 100F;
             this.xrPanel1.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
             this.xrPanel1.Name = "xrPanel1";
-            this.xrPanel1.SizeF = new System.Drawing.SizeF(999F, 128.6248F);
+            this.xrPanel1.SizeF = new System.Drawing.SizeF(999F, 73.41646F);
             this.xrPanel1.StylePriority.UseBorderColor = false;
             this.xrPanel1.StylePriority.UseBorders = false;
             this.xrPanel1.StylePriority.UseBorderWidth = false;
@@ -400,20 +421,34 @@
             this.xrPanel4.StylePriority.UseBorders = false;
             this.xrPanel4.StylePriority.UseBorderWidth = false;
             // 
-            // lblClientName
+            // xrLabel1
             // 
-            this.lblClientName.Borders = DevExpress.XtraPrinting.BorderSide.None;
-            this.lblClientName.Dpi = 100F;
-            this.lblClientName.Font = new System.Drawing.Font("Cambria", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblClientName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(117)))), ((int)(((byte)(181)))));
-            this.lblClientName.LocationFloat = new DevExpress.Utils.PointFloat(18.95833F, 42.91666F);
-            this.lblClientName.Name = "lblClientName";
-            this.lblClientName.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.lblClientName.SizeF = new System.Drawing.SizeF(366.25F, 23F);
-            this.lblClientName.StylePriority.UseBorders = false;
-            this.lblClientName.StylePriority.UseFont = false;
-            this.lblClientName.StylePriority.UseForeColor = false;
-            this.lblClientName.Text = "Minutes of Meeting";
+            this.xrLabel1.Borders = DevExpress.XtraPrinting.BorderSide.None;
+            this.xrLabel1.Dpi = 100F;
+            this.xrLabel1.Font = new System.Drawing.Font("Cambria", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(117)))), ((int)(((byte)(181)))));
+            this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(215.1802F, 31.45833F);
+            this.xrLabel1.Name = "xrLabel1";
+            this.xrLabel1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel1.SizeF = new System.Drawing.SizeF(11.04173F, 22.99999F);
+            this.xrLabel1.StylePriority.UseBorders = false;
+            this.xrLabel1.StylePriority.UseFont = false;
+            this.xrLabel1.StylePriority.UseForeColor = false;
+            this.xrLabel1.Text = "-";
+            // 
+            // lblClient
+            // 
+            this.lblClient.Borders = DevExpress.XtraPrinting.BorderSide.None;
+            this.lblClient.Dpi = 100F;
+            this.lblClient.Font = new System.Drawing.Font("Cambria", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblClient.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(117)))), ((int)(((byte)(181)))));
+            this.lblClient.LocationFloat = new DevExpress.Utils.PointFloat(230.2219F, 31.45833F);
+            this.lblClient.Name = "lblClient";
+            this.lblClient.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.lblClient.SizeF = new System.Drawing.SizeF(428.7501F, 22.99999F);
+            this.lblClient.StylePriority.UseBorders = false;
+            this.lblClient.StylePriority.UseFont = false;
+            this.lblClient.StylePriority.UseForeColor = false;
             // 
             // MOMReportView
             // 
@@ -469,6 +504,8 @@
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell2;
         private DevExpress.XtraReports.UI.XRTableCell lblDate;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell5;
-        private DevExpress.XtraReports.UI.XRLabel lblClientName;
+        private DevExpress.XtraReports.UI.XRLabel lblTitle;
+        private DevExpress.XtraReports.UI.XRLabel lblClient;
+        private DevExpress.XtraReports.UI.XRLabel xrLabel1;
     }
 }

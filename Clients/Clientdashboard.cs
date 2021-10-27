@@ -342,7 +342,7 @@ namespace FinancialPlannerClient.Clients
             }
             else
             {
-                this.planner = new Planner();
+                //this.planner = new Planner();
             }
         }
         #endregion

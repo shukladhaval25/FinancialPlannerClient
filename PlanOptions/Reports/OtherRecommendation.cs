@@ -19,6 +19,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             this.client = client;
             this.planner = planner;
             this.lblClientName.Text = client.Name;
+            generateData();
         }
 
         private void generateData()
@@ -33,7 +34,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
 
             if (insuranceRecomendationTransactions != null)
             {
-                if (insuranceRecomendationTransactions.Count > 0)
+                if (insuranceRecomendationTransactions.Count == 0)
                 {
                     xrSubreportInsuranceRecommendation.Visible = false;
                     xrSubreportInsuranceRecommendation.ReportSource = null;

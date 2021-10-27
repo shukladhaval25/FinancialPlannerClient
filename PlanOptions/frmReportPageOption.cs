@@ -51,12 +51,17 @@ namespace FinancialPlannerClient.PlanOptions
 
         private void frmReportPageOption_Load(object sender, EventArgs e)
         {
+            GetAndDisplayReportPageSeting();
+
+        }
+
+        public void GetAndDisplayReportPageSeting()
+        {
             reportPageSettingInfo = new ReportPageSettingInfo();
             reportPageSettings = reportPageSettingInfo.GetAll();
             dtReportPages = new DataTable();
             generateReportPages();
             bindDataTable();
-
         }
 
         private void bindDataTable()
@@ -98,7 +103,8 @@ namespace FinancialPlannerClient.PlanOptions
                 "Asset Allocation Title",
                 "ActionPlan",
                 "Recomendation",
-                "ExecutionSheet"
+                "ExecutionSheet",
+                "Other Recommendation"
             };
 
             foreach(string page in pages)
@@ -111,7 +117,7 @@ namespace FinancialPlannerClient.PlanOptions
             }
         }
 
-        private void btnApply_Click(object sender, EventArgs e)
+        internal void btnApply_Click(object sender, EventArgs e)
         {
             try
             {

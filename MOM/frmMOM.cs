@@ -42,6 +42,7 @@ namespace FinancialPlannerClient.MOM
             repositoryItemComboBoxResponsibility.Items.Add("Client");
             repositoryItemComboBoxResponsibility.Items.Add("Ascent Finance Solution");
             repositoryItemComboBoxResponsibility.Items.Add("Both");
+            repositoryItemComboBoxResponsibility.Items.Add("NA");
 
             UserServiceHelper userServiceHelper = new UserServiceHelper();
             users = userServiceHelper.GetAll();
@@ -317,7 +318,7 @@ namespace FinancialPlannerClient.MOM
                 MOMTransaction transaction = mOMTransactions.First(i => i.MId == Mid);
                 if (transaction != null)
                 {
-                    MOMReportView momReportView = new MOMReportView(transaction);
+                    MOMReportView momReportView = new MOMReportView(transaction,this.client);
                     DevExpress.XtraReports.UI.ReportPrintTool printTool = new DevExpress.XtraReports.UI.ReportPrintTool(momReportView);
                     printTool.ShowRibbonPreview();
                 }
@@ -335,7 +336,7 @@ namespace FinancialPlannerClient.MOM
             MOMTransaction transaction = mOMTransactions.First(i => i.MId == Mid);
             if (transaction != null)
             {
-                momReportView = new MOMReportView(transaction);
+                momReportView = new MOMReportView(transaction,this.client);
                 DevExpress.XtraReports.UI.ReportPrintTool printTool = new DevExpress.XtraReports.UI.ReportPrintTool(momReportView);
                 FinancialPlannerSendEmailConfiguration financialPlannerSendEmailConfiguration = new FinancialPlannerSendEmailConfiguration(momReportView, this.client);
                 financialPlannerSendEmailConfiguration.Show();

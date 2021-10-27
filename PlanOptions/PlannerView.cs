@@ -232,6 +232,7 @@ namespace FinancialPlannerClient.PlanOptions
                             this.currentPlanner.CurrencySymbol = planner.CurrencySymbol;
                             this.currentPlanner.EquityRatio = planner.EquityRatio;
                             this.currentPlanner.DebtRatio = planner.DebtRatio;
+                            
                         }
                         this.Close();
                     }

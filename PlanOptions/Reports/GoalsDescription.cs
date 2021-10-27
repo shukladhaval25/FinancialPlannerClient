@@ -348,7 +348,14 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                     }
                 }
             }
-            lblCurrentSurplus.Text = PlannerMainReport.planner.CurrencySymbol + totalValue.ToString("N0", PlannerMainReport.Info);
+            if (totalValue > 0)
+            {
+                lblCurrentSurplus.Text = PlannerMainReport.planner.CurrencySymbol + totalValue.ToString("N0", PlannerMainReport.Info);
+            }
+            else
+            {
+                lblCurrentSurplus.Text = "NIL";
+            }
         }
 
         private void setCurrentStatusFundAllocationValue()

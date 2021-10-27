@@ -14,12 +14,13 @@ namespace FinancialPlannerClient.MOM
     public partial class MOMReportView : DevExpress.XtraReports.UI.XtraReport
     {
         private DataTable _dtMOMPoints;
-        
+        Client client;
         DataSet _ds = new DataSet();
-        public MOMReportView(MOMTransaction transaction)
+        public MOMReportView(MOMTransaction transaction,Client client)
         {
             InitializeComponent();
-            
+            this.client = client;
+            lblClient.Text = client.Name;
             _dtMOMPoints = ListtoDataTable.ToDataTable(transaction.MOMPoints);
             _dtMOMPoints.TableName = "MOM";
             

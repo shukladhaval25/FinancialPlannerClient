@@ -79,7 +79,14 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                 dtNetWorth.Rows[indexRow]["Title"].ToString() == ULIP_EQUITY ||
                 dtNetWorth.Rows[indexRow]["Title"].ToString() == OTHERS_EQUITY )
             {
-                xrTableEquity.Rows[rowIndexForEquity].Cells[0].Text = dtNetWorth.Rows[indexRow]["Title"].ToString();
+                if (dtNetWorth.Rows[indexRow]["Title"].ToString() == OTHERS_EQUITY)
+                {
+                    xrTableEquity.Rows[rowIndexForEquity].Cells[0].Text = dtNetWorth.Rows[indexRow]["Description"].ToString();
+                }
+                else
+                {
+                    xrTableEquity.Rows[rowIndexForEquity].Cells[0].Text = dtNetWorth.Rows[indexRow]["Title"].ToString();
+                }
                 xrTableEquity.Rows[rowIndexForEquity].Cells[1].Text = dtNetWorth.Rows[indexRow]["Amount"].ToString();
                 if ((dtNetWorth.Rows[indexRow]["Amount"].ToString() != null))
                     totalEquityValue = totalEquityValue +

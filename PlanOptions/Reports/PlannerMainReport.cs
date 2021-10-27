@@ -52,6 +52,7 @@ namespace FinancialPlannerClient.PlanOptions
         public bool blnActionPlan = true;
         public bool blnRecomendation = true;
         public bool blnExecutionSheet = true;
+        public bool blnOtherRecommendation = true;
         ReportParams reportParams;
 
         public PlannerMainReport(PersonalInformation personalInformation, Planner plannerObj, int riskProfileId, int optionId, string recomendation = "", ReportParams reportParameters = null)
@@ -105,6 +106,7 @@ namespace FinancialPlannerClient.PlanOptions
                 blnActionPlan = this.reportParams.frmReportPage.blnActionPlan;
                 blnRecomendation = this.reportParams.frmReportPage.blnRecomendation;
                 blnExecutionSheet = this.reportParams.frmReportPage.blnExecutionSheet;
+                //blnOtherRecommendation = 
             }
         }
 
@@ -326,8 +328,7 @@ namespace FinancialPlannerClient.PlanOptions
                                    " LEN(TRIM(Name))  = " + dtGroupByGoals.Rows[index]["Name"].ToString().Length + " and  Recurrence <> '0' and Category ='" + dtGroupByGoals.Rows[index]["Category"] + "'");
                                 if (dataRows.Count() == 0)
                                 {
-                                    _dtGoals = dtTempGoal.Select("Name like '" +
-                                  dtGroupByGoals.Rows[index]["Name"].ToString().Trim() + "%'").CopyToDataTable();
+                                    _dtGoals = setDataBasedOnSearchCriteria(dtGroupByGoals, dtTempGoal, index);
                                 }
                                 else
                                 {
@@ -386,12 +387,17 @@ namespace FinancialPlannerClient.PlanOptions
                     this.Pages.AddRange(executionSheetTable.Pages);
                 }
 
-
-                //if (blnCurrentStatusReport)
-                //{
-                //    currentStatus = new CurrentStatusReport(netWorthStatement.GetNetWorth());
-                //    currentStatus.CreateDocument();
-                //}
+                if (blnOtherRecommendation)
+                {
+                    OtherRecommendation otherRecommendation = new OtherRecommendation(this.client, planner);
+                    otherRecommendation.CreateDocument();
+                    this.Pages.AddRange(otherRecommendation.Pages);
+                }
+                if (blnCurrentStatusReport)
+                {
+                    currentStatus = new CurrentStatusReport(netWorthStatement.GetNetWorth());
+                    currentStatus.CreateDocument();
+                }
 
                 // Enable this property to maintain continuous page numbering 
                 PrintingSystem.ContinuousPageNumbering = true;
@@ -442,6 +448,24 @@ namespace FinancialPlannerClient.PlanOptions
                 LogDebug(currentMethodName.Name, ex);
                 MessageBox.Show("Error occured while generating report." + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private static DataTable setDataBasedOnSearchCriteria(DataTable dtGroupByGoals, DataTable dtTempGoal, int index)
+        {
+            DataTable _dtGoals;
+            int length = dtGroupByGoals.Rows[index]["Name"].ToString().Trim().Length + 5;
+            DataRow[] drs = dtTempGoal.Select("Name like '" +
+             dtGroupByGoals.Rows[index]["Name"].ToString().Trim() + "%'  AND LEN(TRIM(NAME)) = " + length);
+            if (drs.Length > 0)
+            {
+                _dtGoals = drs.CopyToDataTable();
+            }
+            else
+            {
+                _dtGoals = dtTempGoal.Select("Name like '" + dtGroupByGoals.Rows[index]["Name"].ToString().Trim() + "%'").CopyToDataTable();
+            }
+
+            return _dtGoals;
         }
 
         private void LogDebug(string methodName, Exception ex)
