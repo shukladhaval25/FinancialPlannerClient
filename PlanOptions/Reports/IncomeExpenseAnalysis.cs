@@ -62,6 +62,17 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                 }
                
             }
+
+
+            if (this.planner.FaceType.Equals("D"))
+            {
+                // Add logic for retirement exp with distribution face.
+                double income = 0;
+                xrTableIncome.Rows[index].Cells[0].Text = "Distribution face Income";
+                xrTableIncome.Rows[index].Cells[1].Text = income.ToString();
+                totalIncome = totalIncome + income;
+            }
+            
             lblAmount7.Text = totalIncome.ToString();
             xrLabelIncomeTaxAmount.Text = totalIncomeTaxAmount.ToString();
             xrLabelNetTotalIncome.Text = (totalIncome - totalIncomeTaxAmount).ToString();
@@ -116,13 +127,24 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                     totalExpenses = totalExpenses + exp;
                     index++;
                 }
-            }           
+            }
+
+            if (this.planner.FaceType.Equals("D"))
+            {
+                // Add logic for retirement exp with distribution face.
+                double exp = 0;
+                xrTableExp.Rows[index].Cells[0].Text = "Distribution face exp";
+                xrTableExp.Rows[index].Cells[1].Text = exp.ToString();
+                totalExpenses = totalExpenses + exp;
+            }
+
 
             lblExpTotal.Text = totalExpenses.ToString();
             ExpenseOutFlowChart expenseOutFlowChart = new ExpenseOutFlowChart(_dtExpenses);
             expenseOutFlowChart.CreateDocument();
             this.xrSubreportExp.ReportSource = expenseOutFlowChart;
         }
+       
 
         private void lblAmount0_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {

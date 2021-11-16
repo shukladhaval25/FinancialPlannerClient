@@ -96,9 +96,12 @@ namespace FinancialPlannerClient.CashFlowManager
 
             for (int rowIndex = 0; rowIndex <= _dtCashFlow.Rows.Count; rowIndex++)
             {
-                double returnRate = (double)_riskProfileInfo.GetRiskProfileReturnRatio(this._riskProfileId,
-                    ((_dtCashFlow.Rows.Count) - rowIndex));
-
+                double returnRate = 0;
+                if (_dtCashFlow.Rows.Count > 1)
+                {
+                    returnRate = (double)_riskProfileInfo.GetRiskProfileReturnRatio(this._riskProfileId,
+                        ((_dtCashFlow.Rows.Count) - rowIndex));
+                }
                 totalAccessCurrentStatusValue = totalAccessCurrentStatusValue + (totalAccessCurrentStatusValue * (returnRate / 100));
             }
             return totalAccessCurrentStatusValue;

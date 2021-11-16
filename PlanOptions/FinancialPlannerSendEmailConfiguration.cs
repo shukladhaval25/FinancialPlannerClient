@@ -34,6 +34,23 @@ namespace FinancialPlannerClient.PlanOptions
             this.feesInvoiceReportView = feesInvoiceReport;
             this.client = client;
             this.attachmentType = "FeesInvoice";
+
+            txtSubject.Text = "Invoice";
+            string momEmailBodyText = "Dear Sir/Mam," + Environment.NewLine + Environment.NewLine + "Greetings from Ascent Financial Solutions." + Environment.NewLine + Environment.NewLine + Environment.NewLine +
+                "Find attach the Annual Fees Invoice for the year " + DateTime.Now.Year.ToString() +
+                Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine +
+                "We value your relationship with us and are committed to provide excellent Financial Solutions and services." + Environment.NewLine + Environment.NewLine + "Thanks & Regards," + Environment.NewLine + Environment.NewLine +
+                "Financial Planning Team" + Environment.NewLine + Environment.NewLine +
+                "ASCENT FINANCIAL SOLUTIONS" + Environment.NewLine +
+                "315 - 316 Notus IT Park," + Environment.NewLine +
+                "Sarabhai Campus," + Environment.NewLine +
+                "Genda Circle, Vadodara, Gujarat 390 023." + Environment.NewLine +
+                "Mob.: 9512538387 / 9512538382" + Environment.NewLine + Environment.NewLine +
+
+                "Tele.: 0265 2961205" + Environment.NewLine + Environment.NewLine +
+                "http://www.ascentsolutions.in";
+            txtEmaiBody.Text = momEmailBodyText;
+            txtCC.Text = "financialsolutionsascent@gmail.com";
         }
 
 
@@ -44,6 +61,23 @@ namespace FinancialPlannerClient.PlanOptions
             this.client = client;
             this.plannerOption = plannerOption;
             this.attachmentType = "Planner";
+
+            txtSubject.Text = "Financial Plan Presentation";
+            string momEmailBodyText = "Dear Sir/Mam," + Environment.NewLine + Environment.NewLine + "Greetings from Ascent Financial Solutions." + Environment.NewLine + Environment.NewLine + Environment.NewLine +
+                "Find attach the Financial Plan Presentation for the year " + DateTime.Now.Year.ToString() +
+                Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine +
+                "We value your relationship with us and are committed to provide excellent Financial Solutions and services." + Environment.NewLine + Environment.NewLine + "Thanks & Regards," + Environment.NewLine + Environment.NewLine +
+                "Financial Planning Team" + Environment.NewLine + Environment.NewLine +
+                "ASCENT FINANCIAL SOLUTIONS" + Environment.NewLine +
+                "315 - 316 Notus IT Park," + Environment.NewLine +
+                "Sarabhai Campus," + Environment.NewLine +
+                "Genda Circle, Vadodara, Gujarat 390 023." + Environment.NewLine +
+                "Mob.: 9512538387 / 9512538382" + Environment.NewLine + Environment.NewLine +
+
+                "Tele.: 0265 2961205" + Environment.NewLine + Environment.NewLine +
+                "http://www.ascentsolutions.in";
+            txtEmaiBody.Text = momEmailBodyText;
+            txtCC.Text = "financialsolutionsascent@gmail.com";
         }
 
         public FinancialPlannerSendEmailConfiguration(MOMReportView reportView, Client client)
@@ -52,6 +86,22 @@ namespace FinancialPlannerClient.PlanOptions
             this.mOMReportView = reportView;
             this.client = client;
             this.attachmentType = "MOM";
+            txtSubject.Text = "Minutes Of Meeting";
+            string momEmailBodyText = "Dear Sir/Mam," + Environment.NewLine + Environment.NewLine + "Greetings from Ascent Financial Solutions." + Environment.NewLine + Environment.NewLine + Environment.NewLine +
+                "Find attach the Minutes Of Meeting held as on" +
+                Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine +
+                "We value your relationship with us and are committed to provide excellent Financial Solutions and services." + Environment.NewLine + Environment.NewLine + "Thanks & Regards," + Environment.NewLine + Environment.NewLine +
+                "Financial Planning Team" + Environment.NewLine + Environment.NewLine +
+                "ASCENT FINANCIAL SOLUTIONS" + Environment.NewLine +
+                "315 - 316 Notus IT Park," + Environment.NewLine +
+                "Sarabhai Campus," + Environment.NewLine +
+                "Genda Circle, Vadodara, Gujarat 390 023." + Environment.NewLine +
+                "Mob.: 9512538387 / 9512538382" + Environment.NewLine + Environment.NewLine +
+
+                "Tele.: 0265 2961205" + Environment.NewLine + Environment.NewLine +
+                "http://www.ascentsolutions.in";
+            txtEmaiBody.Text = momEmailBodyText;
+            txtCC.Text = "lohana_prakash@ascentsolutions.in";
         }
 
         private void FinancialPlannerSendEmailConfiguration_Load(object sender, EventArgs e)

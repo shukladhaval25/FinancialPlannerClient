@@ -29,36 +29,42 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RecomendationView));
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem5 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip6 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem6 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem6 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip7 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem7 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem7 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip8 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem8 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem8 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip9 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem9 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem9 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip10 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem10 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem10 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.SuperToolTip superToolTip11 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem11 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem11 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.SuperToolTip superToolTip12 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem12 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem12 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip13 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem13 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem13 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip14 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem14 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem14 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip15 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem15 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem15 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip16 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem16 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem16 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip17 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem17 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem17 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip18 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem18 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem18 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip19 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem19 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem19 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip20 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem20 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem20 = new DevExpress.Utils.ToolTipItem();
             this.tabRecomendation = new DevExpress.XtraBars.Navigation.TabPane();
             this.tabNavigationPageInsuranceRecomendation = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             this.btnDelete = new DevExpress.XtraEditors.SimpleButton();
@@ -100,6 +106,20 @@
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.tabNavigationPageOthers = new DevExpress.XtraBars.Navigation.TabNavigationPage();
+            this.btnCloseOthers = new DevExpress.XtraEditors.SimpleButton();
+            this.btnSaveOthers = new DevExpress.XtraEditors.SimpleButton();
+            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
+            this.txtOtherDescription = new DevExpress.XtraEditors.MemoEdit();
+            this.chkOtherRecommendation = new DevExpress.XtraEditors.CheckEdit();
+            this.separatorControl3 = new DevExpress.XtraEditors.SeparatorControl();
+            this.separatorControl4 = new DevExpress.XtraEditors.SeparatorControl();
+            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
+            this.txtMedicalDescription = new DevExpress.XtraEditors.MemoEdit();
+            this.chkMedicalInsurance = new DevExpress.XtraEditors.CheckEdit();
+            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
+            this.txtPropertiesDescription = new DevExpress.XtraEditors.MemoEdit();
+            this.chkPropertiesInsurance = new DevExpress.XtraEditors.CheckEdit();
+            this.separatorControl1 = new DevExpress.XtraEditors.SeparatorControl();
             ((System.ComponentModel.ISupportInitialize)(this.tabRecomendation)).BeginInit();
             this.tabRecomendation.SuspendLayout();
             this.tabNavigationPageInsuranceRecomendation.SuspendLayout();
@@ -117,6 +137,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControlPersonalAccident)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewPersonalAccident)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCmbClientSpouse)).BeginInit();
+            this.tabNavigationPageOthers.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtOtherDescription.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkOtherRecommendation.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.separatorControl3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.separatorControl4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMedicalDescription.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkMedicalInsurance.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPropertiesDescription.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkPropertiesInsurance.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.separatorControl1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabRecomendation
@@ -131,9 +161,9 @@
             this.tabNavigationPageInsuranceRecomendation,
             this.tabNavigationPagePersonalAccident,
             this.tabNavigationPageOthers});
-            this.tabRecomendation.RegularSize = new System.Drawing.Size(869, 426);
+            this.tabRecomendation.RegularSize = new System.Drawing.Size(869, 438);
             this.tabRecomendation.SelectedPage = this.tabNavigationPageInsuranceRecomendation;
-            this.tabRecomendation.Size = new System.Drawing.Size(869, 426);
+            this.tabRecomendation.Size = new System.Drawing.Size(869, 438);
             this.tabRecomendation.TabIndex = 30;
             this.tabRecomendation.Text = "Insurance Recomendation";
             this.tabRecomendation.SelectedPageIndexChanged += new System.EventHandler(this.tabRecomendation_SelectedPageIndexChanged);
@@ -151,21 +181,21 @@
             this.tabNavigationPageInsuranceRecomendation.ItemShowMode = DevExpress.XtraBars.Navigation.ItemShowMode.ImageAndText;
             this.tabNavigationPageInsuranceRecomendation.Name = "tabNavigationPageInsuranceRecomendation";
             this.tabNavigationPageInsuranceRecomendation.Properties.ShowMode = DevExpress.XtraBars.Navigation.ItemShowMode.ImageAndText;
-            this.tabNavigationPageInsuranceRecomendation.Size = new System.Drawing.Size(856, 378);
+            this.tabNavigationPageInsuranceRecomendation.Size = new System.Drawing.Size(856, 390);
             // 
             // btnDelete
             // 
             this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
-            this.btnDelete.Location = new System.Drawing.Point(154, 348);
+            this.btnDelete.Location = new System.Drawing.Point(130, 348);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(25, 23);
-            toolTipTitleItem11.Text = "Delete MOM";
-            toolTipItem11.LeftIndent = 6;
-            toolTipItem11.Text = "To delete selected MOM record click here.";
-            superToolTip11.Items.Add(toolTipTitleItem11);
-            superToolTip11.Items.Add(toolTipItem11);
-            this.btnDelete.SuperTip = superToolTip11;
+            toolTipTitleItem1.Text = "Delete MOM";
+            toolTipItem1.LeftIndent = 6;
+            toolTipItem1.Text = "To delete selected MOM record click here.";
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            superToolTip1.Items.Add(toolTipItem1);
+            this.btnDelete.SuperTip = superToolTip1;
             this.btnDelete.TabIndex = 13;
             this.btnDelete.ToolTip = "Delete Client";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -174,15 +204,15 @@
             // 
             this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEdit.Image = ((System.Drawing.Image)(resources.GetObject("btnEdit.Image")));
-            this.btnEdit.Location = new System.Drawing.Point(123, 348);
+            this.btnEdit.Location = new System.Drawing.Point(99, 348);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(25, 23);
-            toolTipTitleItem12.Text = "Edit MOM";
-            toolTipItem12.LeftIndent = 6;
-            toolTipItem12.Text = "To modify selected MOM information click here.";
-            superToolTip12.Items.Add(toolTipTitleItem12);
-            superToolTip12.Items.Add(toolTipItem12);
-            this.btnEdit.SuperTip = superToolTip12;
+            toolTipTitleItem2.Text = "Edit MOM";
+            toolTipItem2.LeftIndent = 6;
+            toolTipItem2.Text = "To modify selected MOM information click here.";
+            superToolTip2.Items.Add(toolTipTitleItem2);
+            superToolTip2.Items.Add(toolTipItem2);
+            this.btnEdit.SuperTip = superToolTip2;
             this.btnEdit.TabIndex = 12;
             this.btnEdit.ToolTip = "Edit Client";
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
@@ -191,15 +221,15 @@
             // 
             this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
-            this.btnAdd.Location = new System.Drawing.Point(92, 348);
+            this.btnAdd.Location = new System.Drawing.Point(68, 348);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(25, 23);
-            toolTipTitleItem13.Text = "New MOM\r\n";
-            toolTipItem13.LeftIndent = 6;
-            toolTipItem13.Text = "To add new MOM inforamtion click here.";
-            superToolTip13.Items.Add(toolTipTitleItem13);
-            superToolTip13.Items.Add(toolTipItem13);
-            this.btnAdd.SuperTip = superToolTip13;
+            toolTipTitleItem3.Text = "New MOM\r\n";
+            toolTipItem3.LeftIndent = 6;
+            toolTipItem3.Text = "To add new MOM inforamtion click here.";
+            superToolTip3.Items.Add(toolTipTitleItem3);
+            superToolTip3.Items.Add(toolTipItem3);
+            this.btnAdd.SuperTip = superToolTip3;
             this.btnAdd.TabIndex = 11;
             this.btnAdd.ToolTip = "Add new client";
             this.btnAdd.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Application;
@@ -239,12 +269,12 @@
             this.btnRemoveInsRecDetail.Location = new System.Drawing.Point(315, 288);
             this.btnRemoveInsRecDetail.Name = "btnRemoveInsRecDetail";
             this.btnRemoveInsRecDetail.Size = new System.Drawing.Size(25, 23);
-            toolTipTitleItem14.Text = "Delete MOM point";
-            toolTipItem14.LeftIndent = 6;
-            toolTipItem14.Text = "To delete selected point of MOM record click here.";
-            superToolTip14.Items.Add(toolTipTitleItem14);
-            superToolTip14.Items.Add(toolTipItem14);
-            this.btnRemoveInsRecDetail.SuperTip = superToolTip14;
+            toolTipTitleItem4.Text = "Delete MOM point";
+            toolTipItem4.LeftIndent = 6;
+            toolTipItem4.Text = "To delete selected point of MOM record click here.";
+            superToolTip4.Items.Add(toolTipTitleItem4);
+            superToolTip4.Items.Add(toolTipItem4);
+            this.btnRemoveInsRecDetail.SuperTip = superToolTip4;
             this.btnRemoveInsRecDetail.TabIndex = 6;
             this.btnRemoveInsRecDetail.ToolTip = "Delete Client";
             this.btnRemoveInsRecDetail.Click += new System.EventHandler(this.btnRemoveInsRecDetail_Click);
@@ -256,12 +286,12 @@
             this.btnAddInsRecDetail.Location = new System.Drawing.Point(284, 288);
             this.btnAddInsRecDetail.Name = "btnAddInsRecDetail";
             this.btnAddInsRecDetail.Size = new System.Drawing.Size(25, 23);
-            toolTipTitleItem15.Text = "New MOM point";
-            toolTipItem15.LeftIndent = 6;
-            toolTipItem15.Text = "To add new point for mom inforamtion click here.";
-            superToolTip15.Items.Add(toolTipTitleItem15);
-            superToolTip15.Items.Add(toolTipItem15);
-            this.btnAddInsRecDetail.SuperTip = superToolTip15;
+            toolTipTitleItem5.Text = "New MOM point";
+            toolTipItem5.LeftIndent = 6;
+            toolTipItem5.Text = "To add new point for mom inforamtion click here.";
+            superToolTip5.Items.Add(toolTipTitleItem5);
+            superToolTip5.Items.Add(toolTipItem5);
+            this.btnAddInsRecDetail.SuperTip = superToolTip5;
             this.btnAddInsRecDetail.TabIndex = 5;
             this.btnAddInsRecDetail.ToolTip = "Add new client";
             this.btnAddInsRecDetail.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Application;
@@ -385,15 +415,12 @@
             this.btnClose.Location = new System.Drawing.Point(325, 323);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(62, 23);
-            toolTipTitleItem16.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
-            toolTipTitleItem16.Appearance.Options.UseImage = true;
-            toolTipTitleItem16.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem16.Image")));
-            toolTipTitleItem16.Text = "Cancel";
-            toolTipItem16.LeftIndent = 6;
-            toolTipItem16.Text = "To close client rating without saving any information click here.";
-            superToolTip16.Items.Add(toolTipTitleItem16);
-            superToolTip16.Items.Add(toolTipItem16);
-            this.btnClose.SuperTip = superToolTip16;
+            toolTipTitleItem6.Text = "Cancel";
+            toolTipItem6.LeftIndent = 6;
+            toolTipItem6.Text = "To close client rating without saving any information click here.";
+            superToolTip6.Items.Add(toolTipTitleItem6);
+            superToolTip6.Items.Add(toolTipItem6);
+            this.btnClose.SuperTip = superToolTip6;
             this.btnClose.TabIndex = 8;
             this.btnClose.Text = "Close";
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -405,15 +432,15 @@
             this.btnSave.Location = new System.Drawing.Point(262, 323);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(57, 23);
-            toolTipTitleItem17.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
-            toolTipTitleItem17.Appearance.Options.UseImage = true;
-            toolTipTitleItem17.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem17.Image")));
-            toolTipTitleItem17.Text = "Save";
-            toolTipItem17.LeftIndent = 6;
-            toolTipItem17.Text = "To save record click here.";
-            superToolTip17.Items.Add(toolTipTitleItem17);
-            superToolTip17.Items.Add(toolTipItem17);
-            this.btnSave.SuperTip = superToolTip17;
+            toolTipTitleItem7.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            toolTipTitleItem7.Appearance.Options.UseImage = true;
+            toolTipTitleItem7.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem7.Image")));
+            toolTipTitleItem7.Text = "Save";
+            toolTipItem7.LeftIndent = 6;
+            toolTipItem7.Text = "To save record click here.";
+            superToolTip7.Items.Add(toolTipTitleItem7);
+            superToolTip7.Items.Add(toolTipItem7);
+            this.btnSave.SuperTip = superToolTip7;
             this.btnSave.TabIndex = 7;
             this.btnSave.Text = "Save";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -465,21 +492,21 @@
             this.tabNavigationPagePersonalAccident.Controls.Add(this.gridControlPersonalAccident);
             this.tabNavigationPagePersonalAccident.Image = ((System.Drawing.Image)(resources.GetObject("tabNavigationPagePersonalAccident.Image")));
             this.tabNavigationPagePersonalAccident.Name = "tabNavigationPagePersonalAccident";
-            this.tabNavigationPagePersonalAccident.Size = new System.Drawing.Size(851, 378);
+            this.tabNavigationPagePersonalAccident.Size = new System.Drawing.Size(851, 390);
             // 
             // btnPersonalAccidentDelete
             // 
             this.btnPersonalAccidentDelete.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnPersonalAccidentDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnPersonalAccidentDelete.Image")));
-            this.btnPersonalAccidentDelete.Location = new System.Drawing.Point(49, 271);
+            this.btnPersonalAccidentDelete.Location = new System.Drawing.Point(445, 343);
             this.btnPersonalAccidentDelete.Name = "btnPersonalAccidentDelete";
             this.btnPersonalAccidentDelete.Size = new System.Drawing.Size(25, 23);
-            toolTipTitleItem18.Text = "Delete MOM point";
-            toolTipItem18.LeftIndent = 6;
-            toolTipItem18.Text = "To delete selected point of MOM record click here.";
-            superToolTip18.Items.Add(toolTipTitleItem18);
-            superToolTip18.Items.Add(toolTipItem18);
-            this.btnPersonalAccidentDelete.SuperTip = superToolTip18;
+            toolTipTitleItem8.Text = "Delete MOM point";
+            toolTipItem8.LeftIndent = 6;
+            toolTipItem8.Text = "To delete selected point of MOM record click here.";
+            superToolTip8.Items.Add(toolTipTitleItem8);
+            superToolTip8.Items.Add(toolTipItem8);
+            this.btnPersonalAccidentDelete.SuperTip = superToolTip8;
             this.btnPersonalAccidentDelete.TabIndex = 28;
             this.btnPersonalAccidentDelete.ToolTip = "Delete Client";
             this.btnPersonalAccidentDelete.Click += new System.EventHandler(this.btnPersonalAccidentDelete_Click);
@@ -488,15 +515,15 @@
             // 
             this.btnPersonalAccidentAdd.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnPersonalAccidentAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnPersonalAccidentAdd.Image")));
-            this.btnPersonalAccidentAdd.Location = new System.Drawing.Point(18, 271);
+            this.btnPersonalAccidentAdd.Location = new System.Drawing.Point(414, 343);
             this.btnPersonalAccidentAdd.Name = "btnPersonalAccidentAdd";
             this.btnPersonalAccidentAdd.Size = new System.Drawing.Size(25, 23);
-            toolTipTitleItem19.Text = "New MOM point";
-            toolTipItem19.LeftIndent = 6;
-            toolTipItem19.Text = "To add new point for mom inforamtion click here.";
-            superToolTip19.Items.Add(toolTipTitleItem19);
-            superToolTip19.Items.Add(toolTipItem19);
-            this.btnPersonalAccidentAdd.SuperTip = superToolTip19;
+            toolTipTitleItem9.Text = "New MOM point";
+            toolTipItem9.LeftIndent = 6;
+            toolTipItem9.Text = "To add new point for mom inforamtion click here.";
+            superToolTip9.Items.Add(toolTipTitleItem9);
+            superToolTip9.Items.Add(toolTipItem9);
+            this.btnPersonalAccidentAdd.SuperTip = superToolTip9;
             this.btnPersonalAccidentAdd.TabIndex = 27;
             this.btnPersonalAccidentAdd.ToolTip = "Add new client";
             this.btnPersonalAccidentAdd.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Application;
@@ -507,26 +534,24 @@
             // 
             this.btnPersonalAccidentSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPersonalAccidentSave.Image = ((System.Drawing.Image)(resources.GetObject("btnPersonalAccidentSave.Image")));
-            this.btnPersonalAccidentSave.Location = new System.Drawing.Point(775, 271);
+            this.btnPersonalAccidentSave.Location = new System.Drawing.Point(775, 343);
             this.btnPersonalAccidentSave.Name = "btnPersonalAccidentSave";
             this.btnPersonalAccidentSave.Size = new System.Drawing.Size(57, 23);
-            toolTipTitleItem20.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
-            toolTipTitleItem20.Appearance.Options.UseImage = true;
-            toolTipTitleItem20.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem20.Image")));
-            toolTipTitleItem20.Text = "Save";
-            toolTipItem20.LeftIndent = 6;
-            toolTipItem20.Text = "To save record click here.";
-            superToolTip20.Items.Add(toolTipTitleItem20);
-            superToolTip20.Items.Add(toolTipItem20);
-            this.btnPersonalAccidentSave.SuperTip = superToolTip20;
+            toolTipTitleItem10.Text = "Save";
+            toolTipItem10.LeftIndent = 6;
+            toolTipItem10.Text = "To save record click here.";
+            superToolTip10.Items.Add(toolTipTitleItem10);
+            superToolTip10.Items.Add(toolTipItem10);
+            this.btnPersonalAccidentSave.SuperTip = superToolTip10;
             this.btnPersonalAccidentSave.TabIndex = 29;
             this.btnPersonalAccidentSave.Text = "Save";
+            this.btnPersonalAccidentSave.Visible = false;
             // 
             // labelControl1
             // 
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Location = new System.Drawing.Point(270, 40);
+            this.labelControl1.Location = new System.Drawing.Point(267, 23);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(341, 23);
             this.labelControl1.TabIndex = 26;
@@ -536,12 +561,12 @@
             // 
             this.gridControlPersonalAccident.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gridControlPersonalAccident.Location = new System.Drawing.Point(15, 69);
+            this.gridControlPersonalAccident.Location = new System.Drawing.Point(15, 57);
             this.gridControlPersonalAccident.MainView = this.gridViewPersonalAccident;
             this.gridControlPersonalAccident.Name = "gridControlPersonalAccident";
             this.gridControlPersonalAccident.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCmbClientSpouse});
-            this.gridControlPersonalAccident.Size = new System.Drawing.Size(817, 196);
+            this.gridControlPersonalAccident.Size = new System.Drawing.Size(817, 271);
             this.gridControlPersonalAccident.TabIndex = 5;
             this.gridControlPersonalAccident.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewPersonalAccident});
@@ -563,6 +588,7 @@
             this.gridViewPersonalAccident.OptionsEditForm.ShowUpdateCancelPanel = DevExpress.Utils.DefaultBoolean.True;
             this.gridViewPersonalAccident.OptionsView.ShowGroupPanel = false;
             this.gridViewPersonalAccident.RowHeight = 50;
+            this.gridViewPersonalAccident.RowUpdated += new DevExpress.XtraGrid.Views.Base.RowObjectEventHandler(this.gridViewPersonalAccident_RowUpdated);
             // 
             // gridColumn1
             // 
@@ -574,7 +600,7 @@
             // 
             this.gridPersonName.Caption = "Name Of Life Insured";
             this.gridPersonName.ColumnEdit = this.repositoryItemCmbClientSpouse;
-            this.gridPersonName.FieldName = "PersonName";
+            this.gridPersonName.FieldName = "Name";
             this.gridPersonName.Name = "gridPersonName";
             this.gridPersonName.Visible = true;
             this.gridPersonName.VisibleIndex = 0;
@@ -616,15 +642,174 @@
             // tabNavigationPageOthers
             // 
             this.tabNavigationPageOthers.Caption = "Others";
+            this.tabNavigationPageOthers.Controls.Add(this.btnCloseOthers);
+            this.tabNavigationPageOthers.Controls.Add(this.btnSaveOthers);
+            this.tabNavigationPageOthers.Controls.Add(this.labelControl5);
+            this.tabNavigationPageOthers.Controls.Add(this.txtOtherDescription);
+            this.tabNavigationPageOthers.Controls.Add(this.chkOtherRecommendation);
+            this.tabNavigationPageOthers.Controls.Add(this.separatorControl3);
+            this.tabNavigationPageOthers.Controls.Add(this.separatorControl4);
+            this.tabNavigationPageOthers.Controls.Add(this.labelControl4);
+            this.tabNavigationPageOthers.Controls.Add(this.txtMedicalDescription);
+            this.tabNavigationPageOthers.Controls.Add(this.chkMedicalInsurance);
+            this.tabNavigationPageOthers.Controls.Add(this.labelControl3);
+            this.tabNavigationPageOthers.Controls.Add(this.txtPropertiesDescription);
+            this.tabNavigationPageOthers.Controls.Add(this.chkPropertiesInsurance);
+            this.tabNavigationPageOthers.Controls.Add(this.separatorControl1);
             this.tabNavigationPageOthers.Image = ((System.Drawing.Image)(resources.GetObject("tabNavigationPageOthers.Image")));
             this.tabNavigationPageOthers.Name = "tabNavigationPageOthers";
-            this.tabNavigationPageOthers.Size = new System.Drawing.Size(869, 426);
+            this.tabNavigationPageOthers.Size = new System.Drawing.Size(851, 390);
+            // 
+            // btnCloseOthers
+            // 
+            this.btnCloseOthers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCloseOthers.Image = ((System.Drawing.Image)(resources.GetObject("btnCloseOthers.Image")));
+            this.btnCloseOthers.Location = new System.Drawing.Point(422, 273);
+            this.btnCloseOthers.Name = "btnCloseOthers";
+            this.btnCloseOthers.Size = new System.Drawing.Size(62, 23);
+            toolTipTitleItem11.Text = "Cancel";
+            toolTipItem11.LeftIndent = 6;
+            toolTipItem11.Text = "To close client rating without saving any information click here.";
+            superToolTip11.Items.Add(toolTipTitleItem11);
+            superToolTip11.Items.Add(toolTipItem11);
+            this.btnCloseOthers.SuperTip = superToolTip11;
+            this.btnCloseOthers.TabIndex = 50;
+            this.btnCloseOthers.Text = "Close";
+            this.btnCloseOthers.Click += new System.EventHandler(this.btnCloseOthers_Click);
+            // 
+            // btnSaveOthers
+            // 
+            this.btnSaveOthers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSaveOthers.Image = ((System.Drawing.Image)(resources.GetObject("btnSaveOthers.Image")));
+            this.btnSaveOthers.Location = new System.Drawing.Point(359, 273);
+            this.btnSaveOthers.Name = "btnSaveOthers";
+            this.btnSaveOthers.Size = new System.Drawing.Size(57, 23);
+            toolTipTitleItem12.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
+            toolTipTitleItem12.Appearance.Options.UseImage = true;
+            toolTipTitleItem12.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem12.Image")));
+            toolTipTitleItem12.Text = "Save";
+            toolTipItem12.LeftIndent = 6;
+            toolTipItem12.Text = "To save record click here.";
+            superToolTip12.Items.Add(toolTipTitleItem12);
+            superToolTip12.Items.Add(toolTipItem12);
+            this.btnSaveOthers.SuperTip = superToolTip12;
+            this.btnSaveOthers.TabIndex = 49;
+            this.btnSaveOthers.Text = "Save";
+            this.btnSaveOthers.Click += new System.EventHandler(this.btnSaveOthers_Click);
+            // 
+            // labelControl5
+            // 
+            this.labelControl5.Location = new System.Drawing.Point(43, 218);
+            this.labelControl5.Name = "labelControl5";
+            this.labelControl5.Size = new System.Drawing.Size(57, 13);
+            this.labelControl5.TabIndex = 43;
+            this.labelControl5.Text = "Description:";
+            // 
+            // txtOtherDescription
+            // 
+            this.txtOtherDescription.Enabled = false;
+            this.txtOtherDescription.Location = new System.Drawing.Point(106, 209);
+            this.txtOtherDescription.Name = "txtOtherDescription";
+            this.txtOtherDescription.Size = new System.Drawing.Size(714, 38);
+            this.txtOtherDescription.TabIndex = 42;
+            // 
+            // chkOtherRecommendation
+            // 
+            this.chkOtherRecommendation.Location = new System.Drawing.Point(18, 180);
+            this.chkOtherRecommendation.Name = "chkOtherRecommendation";
+            this.chkOtherRecommendation.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkOtherRecommendation.Properties.Appearance.Options.UseFont = true;
+            this.chkOtherRecommendation.Properties.Caption = "Other Recommendation";
+            this.chkOtherRecommendation.Size = new System.Drawing.Size(204, 23);
+            this.chkOtherRecommendation.TabIndex = 41;
+            this.chkOtherRecommendation.CheckedChanged += new System.EventHandler(this.chkOtherRecommendation_CheckedChanged);
+            // 
+            // separatorControl3
+            // 
+            this.separatorControl3.AutoSizeMode = true;
+            this.separatorControl3.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.separatorControl3.Location = new System.Drawing.Point(18, 247);
+            this.separatorControl3.Name = "separatorControl3";
+            this.separatorControl3.Size = new System.Drawing.Size(817, 20);
+            this.separatorControl3.TabIndex = 44;
+            // 
+            // separatorControl4
+            // 
+            this.separatorControl4.AutoSizeMode = true;
+            this.separatorControl4.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.separatorControl4.Location = new System.Drawing.Point(18, 161);
+            this.separatorControl4.Name = "separatorControl4";
+            this.separatorControl4.Size = new System.Drawing.Size(817, 20);
+            this.separatorControl4.TabIndex = 40;
+            // 
+            // labelControl4
+            // 
+            this.labelControl4.Location = new System.Drawing.Point(43, 135);
+            this.labelControl4.Name = "labelControl4";
+            this.labelControl4.Size = new System.Drawing.Size(57, 13);
+            this.labelControl4.TabIndex = 38;
+            this.labelControl4.Text = "Description:";
+            // 
+            // txtMedicalDescription
+            // 
+            this.txtMedicalDescription.Enabled = false;
+            this.txtMedicalDescription.Location = new System.Drawing.Point(106, 124);
+            this.txtMedicalDescription.Name = "txtMedicalDescription";
+            this.txtMedicalDescription.Size = new System.Drawing.Size(714, 38);
+            this.txtMedicalDescription.TabIndex = 37;
+            // 
+            // chkMedicalInsurance
+            // 
+            this.chkMedicalInsurance.Location = new System.Drawing.Point(18, 97);
+            this.chkMedicalInsurance.Name = "chkMedicalInsurance";
+            this.chkMedicalInsurance.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkMedicalInsurance.Properties.Appearance.Options.UseFont = true;
+            this.chkMedicalInsurance.Properties.Caption = "Medical Insurance";
+            this.chkMedicalInsurance.Size = new System.Drawing.Size(204, 23);
+            this.chkMedicalInsurance.TabIndex = 36;
+            this.chkMedicalInsurance.CheckedChanged += new System.EventHandler(this.chkMedicalInsurance_CheckedChanged);
+            // 
+            // labelControl3
+            // 
+            this.labelControl3.Location = new System.Drawing.Point(43, 56);
+            this.labelControl3.Name = "labelControl3";
+            this.labelControl3.Size = new System.Drawing.Size(57, 13);
+            this.labelControl3.TabIndex = 33;
+            this.labelControl3.Text = "Description:";
+            // 
+            // txtPropertiesDescription
+            // 
+            this.txtPropertiesDescription.Enabled = false;
+            this.txtPropertiesDescription.Location = new System.Drawing.Point(106, 43);
+            this.txtPropertiesDescription.Name = "txtPropertiesDescription";
+            this.txtPropertiesDescription.Size = new System.Drawing.Size(714, 38);
+            this.txtPropertiesDescription.TabIndex = 11;
+            // 
+            // chkPropertiesInsurance
+            // 
+            this.chkPropertiesInsurance.Location = new System.Drawing.Point(18, 14);
+            this.chkPropertiesInsurance.Name = "chkPropertiesInsurance";
+            this.chkPropertiesInsurance.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkPropertiesInsurance.Properties.Appearance.Options.UseFont = true;
+            this.chkPropertiesInsurance.Properties.Caption = "Properties Insurance";
+            this.chkPropertiesInsurance.Size = new System.Drawing.Size(204, 23);
+            this.chkPropertiesInsurance.TabIndex = 10;
+            this.chkPropertiesInsurance.CheckedChanged += new System.EventHandler(this.chkPropertiesInsurance_CheckedChanged);
+            // 
+            // separatorControl1
+            // 
+            this.separatorControl1.AutoSizeMode = true;
+            this.separatorControl1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.separatorControl1.Location = new System.Drawing.Point(18, 80);
+            this.separatorControl1.Name = "separatorControl1";
+            this.separatorControl1.Size = new System.Drawing.Size(817, 20);
+            this.separatorControl1.TabIndex = 35;
             // 
             // RecomendationView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(876, 450);
+            this.ClientSize = new System.Drawing.Size(876, 456);
             this.Controls.Add(this.tabRecomendation);
             this.Name = "RecomendationView";
             this.Text = "Recommendation";
@@ -649,6 +834,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControlPersonalAccident)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewPersonalAccident)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCmbClientSpouse)).EndInit();
+            this.tabNavigationPageOthers.ResumeLayout(false);
+            this.tabNavigationPageOthers.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtOtherDescription.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkOtherRecommendation.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.separatorControl3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.separatorControl4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMedicalDescription.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkMedicalInsurance.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPropertiesDescription.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkPropertiesInsurance.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.separatorControl1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -696,5 +892,19 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemCmbClientSpouse;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
+        private DevExpress.XtraEditors.LabelControl labelControl3;
+        private DevExpress.XtraEditors.MemoEdit txtPropertiesDescription;
+        private DevExpress.XtraEditors.CheckEdit chkPropertiesInsurance;
+        private DevExpress.XtraEditors.SimpleButton btnCloseOthers;
+        private DevExpress.XtraEditors.SimpleButton btnSaveOthers;
+        private DevExpress.XtraEditors.LabelControl labelControl5;
+        private DevExpress.XtraEditors.MemoEdit txtOtherDescription;
+        private DevExpress.XtraEditors.CheckEdit chkOtherRecommendation;
+        private DevExpress.XtraEditors.SeparatorControl separatorControl3;
+        private DevExpress.XtraEditors.SeparatorControl separatorControl4;
+        private DevExpress.XtraEditors.LabelControl labelControl4;
+        private DevExpress.XtraEditors.MemoEdit txtMedicalDescription;
+        private DevExpress.XtraEditors.CheckEdit chkMedicalInsurance;
+        private DevExpress.XtraEditors.SeparatorControl separatorControl1;
     }
 }

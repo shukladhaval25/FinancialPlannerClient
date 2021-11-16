@@ -2248,9 +2248,40 @@ namespace FinancialPlannerClient.Clients
         private void cmbMappingGoal_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cmbMappingGoal.Text != "")
-                cmbMappingGoal.Tag = _goals.FirstOrDefault(i => i.Name == cmbMappingGoal.Text).Id;
+            {
+                Goals goal = _goals.FirstOrDefault(i => i.Name == cmbMappingGoal.Text);
+                cmbMappingGoal.Tag = goal.Id;
+                txtAssetRealisationYear.Text = goal.StartYear;
+            }
             else
                 cmbMappingGoal.Tag = "0";
+            calculateMappedValueAndOtherValues();
+        }
+        private double futureValueOfMappedNonFinanceAsset(int goalId, double pv, decimal growthRate, int mappedRatio)
+        {
+            double fv = 0;
+
+            GoalsInfo GoalsInfo = new GoalsInfo();
+            List<Goals> goals = (List<Goals>)GoalsInfo.GetAll(this.PlannerId);
+            Goals goal = goals.Find(i => i.Id == goalId);
+            if (goal != null)
+            {
+                int yearDiff = int.Parse(goal.StartYear) - DateTime.Now.Year;
+                ;
+                fv = futureValue(pv, growthRate, yearDiff);
+            }
+            lblRamingAmtVal.Text = (fv - ((fv * mappedRatio) / 100)).ToString();
+            return ((fv * mappedRatio) / 100);
+        }
+
+        private static double futureValue(double presentValue, decimal interest_rate, int timePeriodInYears)
+        {
+            //FV = PV * (1 + I)T;
+            interest_rate = interest_rate / 100;
+            double futureValue = presentValue *
+                (Math.Pow((double)(1 + interest_rate), (double)timePeriodInYears));
+
+            return Math.Round(futureValue);
         }
 
         private void chkLaonForGoal_CheckedChanged(object sender, EventArgs e)
@@ -2621,6 +2652,45 @@ namespace FinancialPlannerClient.Clients
                 fs.Flush();
             }
             System.Diagnostics.Process.Start(fullPath);
+        }
+
+        private void txtGoalMappingShare_Leave(object sender, EventArgs e)
+        {
+            calculateMappedValueAndOtherValues();
+        }
+
+        private void calculateMappedValueAndOtherValues()
+        {
+            if (!string.IsNullOrEmpty(txtGoalMappingShare.Text) && !string.IsNullOrEmpty(cmbMappingGoal.Tag.ToString()) &&
+                !string.IsNullOrEmpty(txtNonFinancialGrowthPercentage.Text) &&
+                !string.IsNullOrEmpty(txtAssetCurrentCost.Text)
+                )
+            {
+                int goalId = int.Parse(cmbMappingGoal.Tag.ToString());
+
+                double fv = futureValueOfMappedNonFinanceAsset(goalId, double.Parse(txtAssetCurrentCost.Text), decimal.Parse(txtNonFinancialGrowthPercentage.Text), int.Parse(txtGoalMappingShare.Text));
+                lblFVMappedGoal.Text = fv.ToString();
+                //lblRamingAmtVal.Text = ((fv * int.Parse(txtGoalMappingShare.Text)) / 100).ToString();
+            }
+            else
+            {
+                lblFVMappedGoal.Text = "0";
+                lblRamingAmtVal.Text = "0";
+            }
+
+            if (string.IsNullOrEmpty(cmbMappingGoal.Tag.ToString()) || cmbMappingGoal.Tag.ToString() == "0")
+            {
+                grpFVMappedGoals.Visible = false;
+            }
+            else
+            {
+                grpFVMappedGoals.Visible = true;
+            }
+        }
+
+        private void txtNonFinancialGrowthPercentage_Leave(object sender, EventArgs e)
+        {
+            calculateMappedValueAndOtherValues();
         }
     }
 }

@@ -126,7 +126,7 @@
             // 
             // xrTable1
             // 
-            this.xrTable1.BorderColor = System.Drawing.Color.DarkGray;
+            this.xrTable1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.xrTable1.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
             | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
@@ -261,9 +261,8 @@
             // 
             // xrGroupTable
             // 
-            this.xrGroupTable.BorderColor = System.Drawing.Color.DarkGray;
-            this.xrGroupTable.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
+            this.xrGroupTable.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.xrGroupTable.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrGroupTable.BorderWidth = 0.8F;
             this.xrGroupTable.Dpi = 100F;
@@ -605,10 +604,10 @@
             this.lblTotalCorpusNeeded.Dpi = 100F;
             this.lblTotalCorpusNeeded.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalCorpusNeeded.ForeColor = System.Drawing.Color.Black;
-            this.lblTotalCorpusNeeded.LocationFloat = new DevExpress.Utils.PointFloat(643.1758F, 48.91666F);
+            this.lblTotalCorpusNeeded.LocationFloat = new DevExpress.Utils.PointFloat(628.0416F, 48.91666F);
             this.lblTotalCorpusNeeded.Name = "lblTotalCorpusNeeded";
             this.lblTotalCorpusNeeded.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.lblTotalCorpusNeeded.SizeF = new System.Drawing.SizeF(123.3244F, 45.25003F);
+            this.lblTotalCorpusNeeded.SizeF = new System.Drawing.SizeF(138.4587F, 45.25002F);
             this.lblTotalCorpusNeeded.StylePriority.UseBackColor = false;
             this.lblTotalCorpusNeeded.StylePriority.UseBorderColor = false;
             this.lblTotalCorpusNeeded.StylePriority.UseBorders = false;
@@ -644,7 +643,7 @@
             // 
             // xrLabel2
             // 
-            this.xrLabel2.BorderColor = System.Drawing.Color.DarkGray;
+            this.xrLabel2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.xrLabel2.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrLabel2.BorderWidth = 1F;
@@ -664,7 +663,7 @@
             // 
             // xrRetirementTable
             // 
-            this.xrRetirementTable.BorderColor = System.Drawing.Color.DarkGray;
+            this.xrRetirementTable.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.xrRetirementTable.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
             | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));

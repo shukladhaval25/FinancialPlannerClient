@@ -1,6 +1,7 @@
 ﻿using FinancialPlanner.Common;
 using FinancialPlanner.Common.DataConversion;
 using FinancialPlanner.Common.Model;
+using FinancialPlanner.Common.Model.CurrentStatus;
 using FinancialPlannerClient.CashFlowManager;
 using FinancialPlannerClient.CurrentStatus;
 using FinancialPlannerClient.GoalCalculations;
@@ -426,6 +427,17 @@ namespace FinancialPlannerClient.PlanOptions
                 return (string.IsNullOrEmpty(dr[0]["FundAllocation"].ToString())) ?
                     0  : double.Parse(dr[0]["FundAllocation"].ToString());
             }
+
+            //IList<CurrentStatusInstrument> currentStatusInstruments = new CurrentStatusInfo().GetMappedInstrument(_plannerId, _goal.Id);
+            //foreach (CurrentStatusInstrument currentStatusInstrument in currentStatusInstruments)
+            //{
+            //    if (currentStatusInstrument.GoalId == _goal.Id)
+            //    {
+            //        //totalMappedInstrumentValue = totalMappedInstrumentValue + currentStatusInstrument.Amount;
+            //        //totalMappedInstrumentValue = totalMappedInstrumentValue + ((totalMappedInstrumentValue * double.Parse(currentStatusInstrument.Roi.ToString())) / 100);
+            //        return currentStatusInstrument.Amount;
+            //    }
+            //}
             return 0;
         }
 

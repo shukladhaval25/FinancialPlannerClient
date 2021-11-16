@@ -1,5 +1,7 @@
 ﻿using FinancialPlanner.Common.DataConversion;
 using FinancialPlanner.Common.Model;
+using FinancialPlanner.Common.Model.CurrentStatus;
+using FinancialPlannerClient.CurrentStatus;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -11,10 +13,14 @@ namespace FinancialPlannerClient.PlanOptions
     {
         Client _client;
         DataTable dtNetWorht;
-        public NetWorthAssets(Client client)
+        Planner planner;
+        CurrentStatusCalculation _csCal;
+        CurrentStatusInfo _csInfo = new CurrentStatusInfo();
+        public NetWorthAssets(Client client,Planner planner)
         {
             InitializeComponent();
             this._client = client;
+            this.planner = planner;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -150,6 +156,45 @@ namespace FinancialPlannerClient.PlanOptions
                 NetWorth netWorth = getNetWorthInfomation();
                 displayNetworthData(netWorth);
             }
+        }
+
+        private void txtYear_Leave(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtYear.Text))
+            {
+                if (planner.StartDate.Year.ToString() == txtYear.Text)
+                {
+                    _csCal = _csInfo.GetAllCurrestStatus(this.planner.ID);
+                    double totalEquityAmount = getTotalEquityAmount();
+                    double totalGoldAmount = getTotalGoldAmount();
+                    double totalDebtAmount = getTotalDebtAmount();
+                    displayTotalAmount(totalEquityAmount, totalDebtAmount, totalGoldAmount);
+                }
+            }
+        }
+
+        private void displayTotalAmount(double totalEquityAmount, double totalDebtAmount, double totalGoldAmount)
+        {
+            txtNetWorth.Text = (totalEquityAmount + totalDebtAmount + totalGoldAmount).ToString("#,###,##");
+        }
+
+        private double getTotalGoldAmount()
+        {
+            return _csCal.GoldValue + _csCal.OthersGoldValue;
+        }
+
+        private double getTotalEquityAmount()
+        {
+            return _csCal.ShresValue + _csCal.EquityMFvalue + _csCal.UlipEquityValue +
+            _csCal.NpsEquityValue + _csCal.OtherEquityValue;
+        }
+
+        private double getTotalDebtAmount()
+        {
+            return _csCal.DebtMFValue + _csCal.FdValue +
+                            _csCal.RdValue + _csCal.SaValue + _csCal.NpsDebtValue + _csCal.UlipDebtValue +
+                            _csCal.PPFValue + _csCal.EPFValue + _csCal.SSValue + _csCal.BondsValue +
+                            _csCal.SCSSValue + _csCal.OtherDebtValue + _csCal.NscValue;
         }
     }
 }

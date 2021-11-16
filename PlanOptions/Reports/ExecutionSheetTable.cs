@@ -19,12 +19,13 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         Client client;
         DataTable dtExeuctionTable;
         DataSet ds = new DataSet();
-        public ExecutionSheetTable(Client client,DataTable dataTable )
+        public ExecutionSheetTable(Client client,DataTable dataTable, Planner planner)
         {
             InitializeComponent();
             this.lblClientName.Text = client.Name;
             this.client = client;
             this.dtExeuctionTable = dataTable;
+            this.planner = planner;
 
             displayExecutionData();
         }
@@ -33,6 +34,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         {
             //ExecutionSheetInfo executionSheetInfo = new ExecutionSheetInfo(this.client, this.planner, this.optionId, this.riskProfileId);
             //dtExeuctionTable = executionSheetInfo.GetExeuctionSheetTable();
+            lblTitle.Text = string.Format("Asset Allocation for next one year based on Goals ({0} to {1})", this.planner.StartDate.ToShortDateString(), this.planner.EndDate.ToShortDateString());
             dtExeuctionTable.TableName = "ExecutionSheet";
             ds.Tables.Add(dtExeuctionTable);
             this.DataSource = ds;

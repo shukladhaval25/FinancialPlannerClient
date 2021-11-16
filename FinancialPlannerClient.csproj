@@ -450,6 +450,8 @@
       <DependentUpon>NetWorthAssets.cs</DependentUpon>
     </Compile>
     <Compile Include="PlanOptions\NetWorthInfo.cs" />
+    <Compile Include="PlanOptions\OtherRecommendationSettingInfo.cs" />
+    <Compile Include="PlanOptions\PersonalAccidentalInsuranceInfo.cs" />
     <Compile Include="PlanOptions\PlannerDataMigration.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -522,6 +524,18 @@
     </Compile>
     <Compile Include="PlanOptions\Reports\ActionPlan.Designer.cs">
       <DependentUpon>ActionPlan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\PersonalAccidentInsurance.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\PersonalAccidentInsurance.Designer.cs">
+      <DependentUpon>PersonalAccidentInsurance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\OthersRecommendationPage.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\OthersRecommendationPage.Designer.cs">
+      <DependentUpon>OthersRecommendationPage.cs</DependentUpon>
     </Compile>
     <Compile Include="PlanOptions\Reports\TermInsurancePage.cs">
       <SubType>Component</SubType>
@@ -1243,6 +1257,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\Reports\ActionPlan.resx">
       <DependentUpon>ActionPlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\Reports\PersonalAccidentInsurance.resx">
+      <DependentUpon>PersonalAccidentInsurance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\Reports\OthersRecommendationPage.resx">
+      <DependentUpon>OthersRecommendationPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\Reports\TermInsurancePage.resx">
       <DependentUpon>TermInsurancePage.cs</DependentUpon>

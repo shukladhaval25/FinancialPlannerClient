@@ -220,6 +220,7 @@
             this.txtYear.Properties.NullValuePromptShowForEmptyValue = true;
             this.txtYear.Size = new System.Drawing.Size(214, 20);
             this.txtYear.TabIndex = 1;
+            this.txtYear.Leave += new System.EventHandler(this.txtYear_Leave);
             // 
             // labelControl1
             // 

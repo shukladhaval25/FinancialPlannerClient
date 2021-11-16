@@ -130,6 +130,7 @@ namespace FinancialPlannerClient.PlanOptions
                     float.TryParse(dr["DebtRatio"].ToString(), out debtRatio);
                 }
                 txtDebtRatio.Text = debtRatio.ToString();
+                rdoFaceType.SelectedIndex = (dr["FaceType"].ToString().Equals("A")) ? 0 : 1;
 
             }
             pnlPlannerInfo.Enabled = true;
@@ -160,6 +161,7 @@ namespace FinancialPlannerClient.PlanOptions
             memoDescription.Text = "";
             pnlPlannerInfo.Enabled = true;
             pnlManager.Enabled = true;
+            rdoFaceType.SelectedIndex = 0;
         }
 
         private void btnSavePlanoption_Click(object sender, EventArgs e)
@@ -195,7 +197,8 @@ namespace FinancialPlannerClient.PlanOptions
                     ReviewFrequency = cmbReviewFrequency.Text,
                     CurrencySymbol = txtCurrencySymbol.Text,
                     EquityRatio = string.IsNullOrEmpty(txtEquityRatio.Text) ? 0 : float.Parse(txtEquityRatio.Text),
-                    DebtRatio = string.IsNullOrEmpty(txtDebtRatio.Text) ? 0 : float.Parse(txtDebtRatio.Text)
+                    DebtRatio = string.IsNullOrEmpty(txtDebtRatio.Text) ? 0 : float.Parse(txtDebtRatio.Text),
+                    FaceType = (rdoFaceType.SelectedIndex == 0) ? "A" : "D"
                 };
                 if (int.TryParse(cmbManagedBy.Tag.ToString(), out accountManagedById))
                     planner.AccountManagedBy = accountManagedById;
@@ -226,13 +229,14 @@ namespace FinancialPlannerClient.PlanOptions
                         this.DialogResult = DialogResult.OK;
                         if (planner.ID == this.currentPlanner.ID)
                         {
-                            this.currentPlanner.PlannerStartMonth =planner.PlannerStartMonth;
+                            this.currentPlanner.PlannerStartMonth = planner.PlannerStartMonth;
                             this.currentPlanner.Description = planner.Description;
                             this.currentPlanner.ReviewFrequency = planner.ReviewFrequency;
                             this.currentPlanner.CurrencySymbol = planner.CurrencySymbol;
                             this.currentPlanner.EquityRatio = planner.EquityRatio;
                             this.currentPlanner.DebtRatio = planner.DebtRatio;
-                            
+                            this.currentPlanner.FaceType = planner.FaceType;
+
                         }
                         this.Close();
                     }

@@ -1,8 +1,10 @@
 ﻿using DevExpress.XtraEditors;
 using FinancialPlanner.Common;
 using FinancialPlanner.Common.Model;
+using FinancialPlanner.Common.Model.CurrentStatus;
 using FinancialPlanner.Common.Model.PlanOptions;
 using FinancialPlannerClient.CashFlowManager;
+using FinancialPlannerClient.CurrentStatus;
 using FinancialPlannerClient.PlannerInfo;
 using FinancialPlannerClient.RiskProfile;
 using System;
@@ -77,7 +79,7 @@ namespace FinancialPlannerClient.PlanOptions
             else
                 cmbGoals.Tag = 0;
 
-            return getGoalComplitionPercentage();
+            return getGoalComplitionPercentage(goal);
         }
 
         public DataTable GetGoalsValueTable(Goals goal)
@@ -182,14 +184,14 @@ namespace FinancialPlannerClient.PlanOptions
                         double.TryParse(drs[0][goal.Name].ToString(), out corpusFund);
                         if (corpusFund <= 0)
                             // Gola which has priority after retirement and is not completed
-                            return getGoalComplitionPercentage();  
+                            return getGoalComplitionPercentage(goal);  
                         else
                             return 100;
                     }
                 }
                 else
                 {
-                    return getGoalComplitionPercentage();
+                    return getGoalComplitionPercentage(goal);
                 }
                 return 0;
             }
@@ -198,7 +200,7 @@ namespace FinancialPlannerClient.PlanOptions
                 lblPriorityAfterRetirementGoalTitle.Visible = false;
                 return (goal.Category.Equals("Retirement", StringComparison.OrdinalIgnoreCase)) ?
                              getGoalComplitionPercentageWithCurrentStatusAccessFund()
-                             : getGoalComplitionPercentage();
+                             : getGoalComplitionPercentage(goal);
             }
         }
 
@@ -258,7 +260,7 @@ namespace FinancialPlannerClient.PlanOptions
                 gridViewGoalProfile.Columns["FirstYearExpenseOnRetirementYear"].Visible = false;
         }
 
-        private int getGoalComplitionPercentage()
+        private int getGoalComplitionPercentage(Goals goal)
         {
             if (_dtGoalProfile != null && _dtGoalValue.Rows.Count > 0)
             {
@@ -267,8 +269,26 @@ namespace FinancialPlannerClient.PlanOptions
                 double assetsMappingValue = double.Parse(_dtGoalValue.Rows[_dtGoalValue.Rows.Count - 1]["Assets Mapping"].ToString());
                 double instrumentValue = double.Parse(_dtGoalValue.Rows[_dtGoalValue.Rows.Count - 1]["Instrument Mapped"].ToString());
                 double loanAmountValue = _dtGoalProfile.Rows[0]["Loan Amount"].ToString() == "" ? 0 : double.Parse(_dtGoalProfile.Rows[0]["Loan Amount"].ToString());
-             
-                return int.Parse(Math.Round((portfolioValue + loanAmountValue +  assetsMappingValue ) * 100 / cashOutFlowValue).ToString());
+
+                bool isInstrumentMapped = false;
+                IList<CurrentStatusInstrument> currentStatusInstruments = new CurrentStatusInfo().GetMappedInstrument(this.planner.ID, goal.Id);
+                foreach (CurrentStatusInstrument currentStatusInstrument in currentStatusInstruments)
+                {
+                    if (currentStatusInstrument.GoalId == goal.Id)
+                    {
+                        //totalMappedInstrumentValue = totalMappedInstrumentValue + currentStatusInstrument.Amount;
+                        //totalMappedInstrumentValue = totalMappedInstrumentValue + ((totalMappedInstrumentValue * double.Parse(currentStatusInstrument.Roi.ToString())) / 100);
+                        isInstrumentMapped = true;
+                    }
+                }
+                if (isInstrumentMapped)
+                {
+                    return int.Parse(Math.Round((portfolioValue + loanAmountValue + assetsMappingValue + instrumentValue) * 100 / cashOutFlowValue).ToString());
+                }
+                else
+                {
+                    return int.Parse(Math.Round((portfolioValue + loanAmountValue + assetsMappingValue) * 100 / cashOutFlowValue).ToString());
+                }
             }
             return 0;
         }

@@ -552,6 +552,7 @@ namespace FinancialPlannerClient.Clients
             navigationPageOther.Name = plannerView.Name;
             navigationPageOther.Controls.Clear();
             navigationPageOther.Controls.Add(plannerView);
+            showNavigationPage(plannerView.Name);
             this.planner = plannerView.GetCurrentPlanner();
         }
 
@@ -656,7 +657,7 @@ namespace FinancialPlannerClient.Clients
 
         private void navBarItemNetWorth_LinkClicked(object sender, NavBarLinkEventArgs e)
         {
-            NetWorthAssets   netWorthAssets   = new NetWorthAssets(this._client);
+            NetWorthAssets   netWorthAssets   = new NetWorthAssets(this._client,this.planner);
             netWorthAssets.TopLevel = false;
             netWorthAssets.Visible = true;
             navigationPageOther.Name = netWorthAssets.Name;

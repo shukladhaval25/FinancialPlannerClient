@@ -570,7 +570,9 @@
             "Annual Review-2nd meeting",
             "Quarterly Review",
             "Annual Review-1st meeting",
-            "Other Discussion"});
+            "Other Discussion",
+            "Data Gathering Session",
+            "Financial Plan Presentation"});
             this.txtMeetingType.Size = new System.Drawing.Size(255, 20);
             this.txtMeetingType.TabIndex = 10;
             // 

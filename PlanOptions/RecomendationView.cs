@@ -54,13 +54,13 @@ namespace FinancialPlannerClient.PlanOptions
             addInsuranceCompanyList();
             fillInsuranceRecomendationGrid();
 
-            fillPersonalInsuranceInformation();
+            //fillPersonalInsuranceInformation();
         }
 
         private void fillPersonalInsuranceInformation()
         {
             gridControlPersonalAccident.DataSource = dtPersonalAccident;
-            gridViewPersonalAccident.AddNewRow();
+            //gridViewPersonalAccident.AddNewRow();
         }
 
         private void createPersonalAccidentTable()
@@ -367,7 +367,7 @@ namespace FinancialPlannerClient.PlanOptions
 
                     if (id > 0)
                     {
-                        //isDelete = insuranceRecomendationInfo.DeleteRecomendationDetail(insuranceCompanyName, id);
+                        isDelete = new PersonalAccidentalInsuranceInfo().DeleteRecomendationDetail(id);
                     }
                     else
                     {
@@ -397,11 +397,164 @@ namespace FinancialPlannerClient.PlanOptions
             {
                 loadPersonalAccidentalInsuranceInformation();
             }
+            else if (tabRecomendation.SelectedPageIndex == 2)
+            {
+                loadOtherRecommendationInformation();
+            }
+        }
+
+        private void loadOtherRecommendationInformation()
+        {
+            IList<OtherRecommendationSetting> otherRecommendationSettings = new List<OtherRecommendationSetting>();
+
+            OtherRecommendationSettingInfo otherRecommendationSettingInfo = new OtherRecommendationSettingInfo();
+            otherRecommendationSettings = otherRecommendationSettingInfo.GetAll(this.planner.ID);
+            if (otherRecommendationSettings != null)
+            {
+                foreach(OtherRecommendationSetting otherRecommendationSetting in otherRecommendationSettings)
+                {
+                    if (otherRecommendationSetting.Title.Trim().Equals(chkPropertiesInsurance.Text))
+                    {
+                        chkPropertiesInsurance.Checked = otherRecommendationSetting.IsSelected;
+                        txtPropertiesDescription.Text = otherRecommendationSetting.Description;
+                    }
+                    else if (otherRecommendationSetting.Title.Trim().Equals(chkMedicalInsurance.Text))
+                    {
+                        chkMedicalInsurance.Checked = otherRecommendationSetting.IsSelected;
+                        txtMedicalDescription.Text = otherRecommendationSetting.Description;
+                    }
+                    else if (otherRecommendationSetting.Title.Trim().Equals(chkOtherRecommendation.Text))
+                    {
+                        chkOtherRecommendation.Checked = otherRecommendationSetting.IsSelected;
+                        txtOtherDescription.Text = otherRecommendationSetting.Description;
+                    }
+                }
+            }
+
         }
 
         private void loadPersonalAccidentalInsuranceInformation()
         {
-            
+            PersonalAccidentalInsuranceInfo personalAccidentalInsuranceInfo = new PersonalAccidentalInsuranceInfo();
+            IList<PersonalAccidentInsurance> personalAccidentInsurances = personalAccidentalInsuranceInfo.GetAll(this.planner.ID);
+            dtPersonalAccident = ListtoDataTable.ToDataTable(personalAccidentInsurances.ToList());
+            gridControlPersonalAccident.DataSource = dtPersonalAccident;
+        }
+
+        private void gridViewPersonalAccident_RowUpdated(object sender, DevExpress.XtraGrid.Views.Base.RowObjectEventArgs e)
+        {
+            try
+            {
+                PersonalAccidentInsurance personalAccidentInsurance = new PersonalAccidentInsurance();
+
+                if (((System.Data.DataRowView)e.Row).Row.ItemArray[0] == DBNull.Value )
+                {
+                    personalAccidentInsurance.Id = 0;
+                }
+                else
+                {
+                    int.Parse(((System.Data.DataRowView)e.Row).Row.ItemArray[0].ToString());
+                }
+                personalAccidentInsurance.Name = ((System.Data.DataRowView)e.Row).Row.ItemArray[2].ToString();
+                personalAccidentInsurance.PId = this.planner.ID;
+                personalAccidentInsurance.InsuranceCompanyName = ((System.Data.DataRowView)e.Row).Row.ItemArray[3].ToString();
+                personalAccidentInsurance.SumAssured = ((System.Data.DataRowView)e.Row).Row.ItemArray[4].ToString();
+                personalAccidentInsurance.Premium = string.IsNullOrEmpty(((System.Data.DataRowView)e.Row).Row.ItemArray[5].ToString()) ? 0 :
+                    double.Parse(((System.Data.DataRowView)e.Row).Row.ItemArray[5].ToString());
+                bool isSaved = false;
+                if (personalAccidentInsurance.Id == 0)
+                {
+                    isSaved = new PersonalAccidentalInsuranceInfo().Add(personalAccidentInsurance);
+                }
+                else
+                {
+                    isSaved = new PersonalAccidentalInsuranceInfo().Update(personalAccidentInsurance);
+                }
+                if (isSaved)
+                {
+                    //DevExpress.XtraEditors.XtraMessageBox.Show("Record save successfully.",
+                    // "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //loadPersonalAccidentalInsuranceInformation();
+                }
+                else
+                {
+                    DevExpress.XtraEditors.XtraMessageBox.Show("Unable to save record.",
+                      "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                DevExpress.XtraEditors.XtraMessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void chkPropertiesInsurance_CheckedChanged(object sender, EventArgs e)
+        {
+            txtPropertiesDescription.Enabled = chkPropertiesInsurance.Checked;
+        }
+
+        private void chkMedicalInsurance_CheckedChanged(object sender, EventArgs e)
+        {
+            txtMedicalDescription.Enabled = chkMedicalInsurance.Checked;
+        }
+
+        private void chkOtherRecommendation_CheckedChanged(object sender, EventArgs e)
+        {
+            txtOtherDescription.Enabled = chkOtherRecommendation.Checked;
+        }
+
+        private void btnCloseOthers_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnSaveOthers_Click(object sender, EventArgs e)
+        {
+            IList<OtherRecommendationSetting> otherRecommendationSettings = getDataForOtherRecommendation();
+
+            OtherRecommendationSettingInfo otherRecommendationSettingInfo = new OtherRecommendationSettingInfo();
+            bool IsSaved = false;
+            IsSaved = otherRecommendationSettingInfo.Update(otherRecommendationSettings);
+            if (IsSaved)
+            {
+                DevExpress.XtraEditors.XtraMessageBox.Show("Record saved sucessfully.", "Save", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                loadOtherRecommendationInformation();
+            }
+            else
+            {
+                DevExpress.XtraEditors.XtraMessageBox.Show("Unable to saved this record.", "Save", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private IList<OtherRecommendationSetting> getDataForOtherRecommendation()
+        {
+            IList<OtherRecommendationSetting> otherRecommendationSettings = new List<OtherRecommendationSetting>();
+            string[] titles = new string[] { chkPropertiesInsurance.Text, chkMedicalInsurance.Text, chkOtherRecommendation.Text };
+            foreach (string value in titles)
+            {
+                OtherRecommendationSetting otherRecommendationSetting = new OtherRecommendationSetting();
+                otherRecommendationSetting.PID = this.planner.ID;
+                if (value.Equals(chkPropertiesInsurance.Text))
+                {
+                    otherRecommendationSetting.IsSelected = chkPropertiesInsurance.Checked;
+                    otherRecommendationSetting.Description = txtPropertiesDescription.Text;
+                    otherRecommendationSetting.Title = chkPropertiesInsurance.Text;
+                }
+                else if (value.Equals(chkMedicalInsurance.Text))
+                {
+                    otherRecommendationSetting.IsSelected = chkMedicalInsurance.Checked;
+                    otherRecommendationSetting.Description  = txtMedicalDescription.Text;
+                    otherRecommendationSetting.Title = chkMedicalInsurance.Text;
+                }
+                else if (value.Equals(chkOtherRecommendation.Text))
+                {
+                    otherRecommendationSetting.IsSelected = chkOtherRecommendation.Checked;
+                    otherRecommendationSetting.Description = txtOtherDescription.Text;
+                    otherRecommendationSetting.Title = chkOtherRecommendation.Text;
+                }
+                otherRecommendationSettings.Add(otherRecommendationSetting);
+            }
+            return otherRecommendationSettings;
         }
     }
 }

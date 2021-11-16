@@ -41,6 +41,7 @@ namespace FinancialPlannerClient.PlanOptions
         public bool blnAssetAllocationTitle { get; set; }
         public bool blnActionPlan { get; set; }
         public bool blnRecomendation { get; set; }
+        public bool blnOtherRecommendation { get; set; }
         ReportPageSettingInfo reportPageSettingInfo;
         IList<ReportPageSetting> reportPageSettings;
         public bool blnExecutionSheet { get; set; }
@@ -221,6 +222,9 @@ namespace FinancialPlannerClient.PlanOptions
                     break;
                 case "ExecutionSheet":
                     blnExecutionSheet = isSelected;
+                    break;
+                case "Other Recommendation":
+                    blnOtherRecommendation = isSelected;
                     break;
             }
             if (chkRememberSetting.Checked)

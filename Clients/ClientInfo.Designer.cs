@@ -36,9 +36,6 @@
             DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement10 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
             DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement11 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
             DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement12 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -48,6 +45,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -343,6 +343,11 @@
             this.btnAddNFA = new System.Windows.Forms.Button();
             this.btnEditNFA = new System.Windows.Forms.Button();
             this.grpNonFinancialAsset = new System.Windows.Forms.GroupBox();
+            this.grpFVMappedGoals = new System.Windows.Forms.GroupBox();
+            this.lblRamingAmtVal = new System.Windows.Forms.Label();
+            this.label164 = new System.Windows.Forms.Label();
+            this.lblFVMappedGoal = new System.Windows.Forms.Label();
+            this.label91 = new System.Windows.Forms.Label();
             this.chkNonFinancialAssetsInsuranceCoverage = new System.Windows.Forms.CheckBox();
             this.txtNonFinancialGrowthPercentage = new System.Windows.Forms.TextBox();
             this.label134 = new System.Windows.Forms.Label();
@@ -611,6 +616,7 @@
             this.NonFinancialAssets.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.grpNonFinancialAsset.SuspendLayout();
+            this.grpFVMappedGoals.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridNonFinancialAssets)).BeginInit();
             this.Income.SuspendLayout();
             this.grpIncome.SuspendLayout();
@@ -3206,34 +3212,34 @@
             // 
             this.dtGridFamilyMember.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle25.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle25.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle25.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle25.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle25.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle25.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtGridFamilyMember.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle28.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle28.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle28.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle28.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle28.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtGridFamilyMember.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle28;
             this.dtGridFamilyMember.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle26.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle26.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle26.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtGridFamilyMember.DefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle29.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle29.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle29.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle29.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle29.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle29.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtGridFamilyMember.DefaultCellStyle = dataGridViewCellStyle29;
             this.dtGridFamilyMember.Location = new System.Drawing.Point(6, 52);
             this.dtGridFamilyMember.Name = "dtGridFamilyMember";
             this.dtGridFamilyMember.ReadOnly = true;
-            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle27.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle27.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle27.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle27.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle27.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtGridFamilyMember.RowHeadersDefaultCellStyle = dataGridViewCellStyle27;
+            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle30.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle30.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle30.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle30.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtGridFamilyMember.RowHeadersDefaultCellStyle = dataGridViewCellStyle30;
             this.dtGridFamilyMember.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtGridFamilyMember.Size = new System.Drawing.Size(938, 208);
             this.dtGridFamilyMember.TabIndex = 2;
@@ -3570,34 +3576,34 @@
             // 
             this.dtGridBankAccount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle28.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle28.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle28.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle28.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle28.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtGridBankAccount.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle28;
+            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle31.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle31.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle31.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle31.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle31.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle31.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtGridBankAccount.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle31;
             this.dtGridBankAccount.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle29.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle29.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle29.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle29.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle29.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle29.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtGridBankAccount.DefaultCellStyle = dataGridViewCellStyle29;
+            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle32.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle32.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle32.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle32.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle32.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle32.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtGridBankAccount.DefaultCellStyle = dataGridViewCellStyle32;
             this.dtGridBankAccount.Location = new System.Drawing.Point(9, 43);
             this.dtGridBankAccount.Name = "dtGridBankAccount";
             this.dtGridBankAccount.ReadOnly = true;
-            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle30.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle30.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle30.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle30.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtGridBankAccount.RowHeadersDefaultCellStyle = dataGridViewCellStyle30;
+            dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle33.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle33.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle33.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle33.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle33.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle33.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtGridBankAccount.RowHeadersDefaultCellStyle = dataGridViewCellStyle33;
             this.dtGridBankAccount.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtGridBankAccount.Size = new System.Drawing.Size(938, 208);
             this.dtGridBankAccount.TabIndex = 12;
@@ -3921,34 +3927,34 @@
             // 
             this.dtGridLoan.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle31.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle31.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle31.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle31.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle31.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle31.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtGridLoan.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle31;
+            dataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle34.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle34.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle34.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle34.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle34.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle34.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtGridLoan.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle34;
             this.dtGridLoan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle32.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle32.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle32.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle32.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle32.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle32.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtGridLoan.DefaultCellStyle = dataGridViewCellStyle32;
+            dataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle35.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle35.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle35.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle35.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle35.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle35.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtGridLoan.DefaultCellStyle = dataGridViewCellStyle35;
             this.dtGridLoan.Location = new System.Drawing.Point(10, 48);
             this.dtGridLoan.Name = "dtGridLoan";
             this.dtGridLoan.ReadOnly = true;
-            dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle33.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle33.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle33.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle33.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle33.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle33.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtGridLoan.RowHeadersDefaultCellStyle = dataGridViewCellStyle33;
+            dataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle36.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle36.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle36.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle36.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle36.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle36.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtGridLoan.RowHeadersDefaultCellStyle = dataGridViewCellStyle36;
             this.dtGridLoan.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtGridLoan.Size = new System.Drawing.Size(938, 208);
             this.dtGridLoan.TabIndex = 9;
@@ -4029,6 +4035,7 @@
             // 
             this.grpNonFinancialAsset.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpNonFinancialAsset.Controls.Add(this.grpFVMappedGoals);
             this.grpNonFinancialAsset.Controls.Add(this.chkNonFinancialAssetsInsuranceCoverage);
             this.grpNonFinancialAsset.Controls.Add(this.txtNonFinancialGrowthPercentage);
             this.grpNonFinancialAsset.Controls.Add(this.label134);
@@ -4059,15 +4066,63 @@
             this.grpNonFinancialAsset.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpNonFinancialAsset.Location = new System.Drawing.Point(10, 310);
             this.grpNonFinancialAsset.Name = "grpNonFinancialAsset";
-            this.grpNonFinancialAsset.Size = new System.Drawing.Size(938, 255);
+            this.grpNonFinancialAsset.Size = new System.Drawing.Size(938, 269);
             this.grpNonFinancialAsset.TabIndex = 3;
             this.grpNonFinancialAsset.TabStop = false;
             this.grpNonFinancialAsset.Text = "Non-Financial Assets Detail";
             // 
+            // grpFVMappedGoals
+            // 
+            this.grpFVMappedGoals.Controls.Add(this.lblRamingAmtVal);
+            this.grpFVMappedGoals.Controls.Add(this.label164);
+            this.grpFVMappedGoals.Controls.Add(this.lblFVMappedGoal);
+            this.grpFVMappedGoals.Controls.Add(this.label91);
+            this.grpFVMappedGoals.Location = new System.Drawing.Point(15, 220);
+            this.grpFVMappedGoals.Name = "grpFVMappedGoals";
+            this.grpFVMappedGoals.Size = new System.Drawing.Size(588, 43);
+            this.grpFVMappedGoals.TabIndex = 23;
+            this.grpFVMappedGoals.TabStop = false;
+            // 
+            // lblRamingAmtVal
+            // 
+            this.lblRamingAmtVal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRamingAmtVal.Location = new System.Drawing.Point(453, 14);
+            this.lblRamingAmtVal.Name = "lblRamingAmtVal";
+            this.lblRamingAmtVal.Size = new System.Drawing.Size(116, 26);
+            this.lblRamingAmtVal.TabIndex = 22;
+            this.lblRamingAmtVal.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label164
+            // 
+            this.label164.AutoSize = true;
+            this.label164.Location = new System.Drawing.Point(304, 17);
+            this.label164.Name = "label164";
+            this.label164.Size = new System.Drawing.Size(103, 15);
+            this.label164.TabIndex = 21;
+            this.label164.Text = "Remaing Amount";
+            // 
+            // lblFVMappedGoal
+            // 
+            this.lblFVMappedGoal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFVMappedGoal.Location = new System.Drawing.Point(182, 14);
+            this.lblFVMappedGoal.Name = "lblFVMappedGoal";
+            this.lblFVMappedGoal.Size = new System.Drawing.Size(116, 26);
+            this.lblFVMappedGoal.TabIndex = 20;
+            this.lblFVMappedGoal.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label91
+            // 
+            this.label91.AutoSize = true;
+            this.label91.Location = new System.Drawing.Point(9, 17);
+            this.label91.Name = "label91";
+            this.label91.Size = new System.Drawing.Size(167, 15);
+            this.label91.TabIndex = 19;
+            this.label91.Text = "Future Value of Mapped Goal";
+            // 
             // chkNonFinancialAssetsInsuranceCoverage
             // 
             this.chkNonFinancialAssetsInsuranceCoverage.AutoSize = true;
-            this.chkNonFinancialAssetsInsuranceCoverage.Location = new System.Drawing.Point(539, 171);
+            this.chkNonFinancialAssetsInsuranceCoverage.Location = new System.Drawing.Point(539, 152);
             this.chkNonFinancialAssetsInsuranceCoverage.Name = "chkNonFinancialAssetsInsuranceCoverage";
             this.chkNonFinancialAssetsInsuranceCoverage.Size = new System.Drawing.Size(281, 19);
             this.chkNonFinancialAssetsInsuranceCoverage.TabIndex = 14;
@@ -4076,7 +4131,7 @@
             // 
             // txtNonFinancialGrowthPercentage
             // 
-            this.txtNonFinancialGrowthPercentage.Location = new System.Drawing.Point(660, 48);
+            this.txtNonFinancialGrowthPercentage.Location = new System.Drawing.Point(660, 29);
             this.txtNonFinancialGrowthPercentage.MaxLength = 3;
             this.txtNonFinancialGrowthPercentage.Name = "txtNonFinancialGrowthPercentage";
             this.txtNonFinancialGrowthPercentage.Size = new System.Drawing.Size(55, 21);
@@ -4084,11 +4139,12 @@
             this.txtNonFinancialGrowthPercentage.Text = "0";
             this.txtNonFinancialGrowthPercentage.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtNonFinancialGrowthPercentage.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrimaryHolderShare_KeyPress);
+            this.txtNonFinancialGrowthPercentage.Leave += new System.EventHandler(this.txtNonFinancialGrowthPercentage_Leave);
             // 
             // label134
             // 
             this.label134.AutoSize = true;
-            this.label134.Location = new System.Drawing.Point(536, 48);
+            this.label134.Location = new System.Drawing.Point(536, 29);
             this.label134.Name = "label134";
             this.label134.Size = new System.Drawing.Size(125, 15);
             this.label134.TabIndex = 22;
@@ -4096,7 +4152,7 @@
             // 
             // txtAssetRealisationYear
             // 
-            this.txtAssetRealisationYear.Location = new System.Drawing.Point(446, 215);
+            this.txtAssetRealisationYear.Location = new System.Drawing.Point(446, 196);
             this.txtAssetRealisationYear.MaxLength = 4;
             this.txtAssetRealisationYear.Name = "txtAssetRealisationYear";
             this.txtAssetRealisationYear.Size = new System.Drawing.Size(55, 21);
@@ -4107,7 +4163,7 @@
             // label76
             // 
             this.label76.AutoSize = true;
-            this.label76.Location = new System.Drawing.Point(266, 218);
+            this.label76.Location = new System.Drawing.Point(266, 199);
             this.label76.Name = "label76";
             this.label76.Size = new System.Drawing.Size(177, 15);
             this.label76.TabIndex = 20;
@@ -4115,7 +4171,7 @@
             // 
             // txtGoalMappingShare
             // 
-            this.txtGoalMappingShare.Location = new System.Drawing.Point(207, 215);
+            this.txtGoalMappingShare.Location = new System.Drawing.Point(207, 196);
             this.txtGoalMappingShare.MaxLength = 3;
             this.txtGoalMappingShare.Name = "txtGoalMappingShare";
             this.txtGoalMappingShare.Size = new System.Drawing.Size(48, 21);
@@ -4124,11 +4180,12 @@
             this.txtGoalMappingShare.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtGoalMappingShare.TextChanged += new System.EventHandler(this.txtGoalMappingShare_TextChanged);
             this.txtGoalMappingShare.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtGoalMappingShare_KeyPress);
+            this.txtGoalMappingShare.Leave += new System.EventHandler(this.txtGoalMappingShare_Leave);
             // 
             // label75
             // 
             this.label75.AutoSize = true;
-            this.label75.Location = new System.Drawing.Point(21, 218);
+            this.label75.Location = new System.Drawing.Point(21, 199);
             this.label75.Name = "label75";
             this.label75.Size = new System.Drawing.Size(164, 15);
             this.label75.TabIndex = 18;
@@ -4136,7 +4193,7 @@
             // 
             // txtOtherShare
             // 
-            this.txtOtherShare.Location = new System.Drawing.Point(444, 157);
+            this.txtOtherShare.Location = new System.Drawing.Point(444, 138);
             this.txtOtherShare.MaxLength = 3;
             this.txtOtherShare.Name = "txtOtherShare";
             this.txtOtherShare.Size = new System.Drawing.Size(57, 21);
@@ -4148,7 +4205,7 @@
             // label68
             // 
             this.label68.AutoSize = true;
-            this.label68.Location = new System.Drawing.Point(21, 161);
+            this.label68.Location = new System.Drawing.Point(21, 142);
             this.label68.Name = "label68";
             this.label68.Size = new System.Drawing.Size(146, 15);
             this.label68.TabIndex = 17;
@@ -4157,7 +4214,7 @@
             // cmbOtherHolder
             // 
             this.cmbOtherHolder.FormattingEnabled = true;
-            this.cmbOtherHolder.Location = new System.Drawing.Point(207, 157);
+            this.cmbOtherHolder.Location = new System.Drawing.Point(207, 138);
             this.cmbOtherHolder.Name = "cmbOtherHolder";
             this.cmbOtherHolder.Size = new System.Drawing.Size(231, 23);
             this.cmbOtherHolder.TabIndex = 7;
@@ -4165,7 +4222,7 @@
             // cmbMappingGoal
             // 
             this.cmbMappingGoal.FormattingEnabled = true;
-            this.cmbMappingGoal.Location = new System.Drawing.Point(207, 186);
+            this.cmbMappingGoal.Location = new System.Drawing.Point(207, 167);
             this.cmbMappingGoal.Name = "cmbMappingGoal";
             this.cmbMappingGoal.Size = new System.Drawing.Size(294, 23);
             this.cmbMappingGoal.Sorted = true;
@@ -4174,7 +4231,7 @@
             // 
             // txtSecondaryHolderShare
             // 
-            this.txtSecondaryHolderShare.Location = new System.Drawing.Point(444, 128);
+            this.txtSecondaryHolderShare.Location = new System.Drawing.Point(444, 109);
             this.txtSecondaryHolderShare.MaxLength = 3;
             this.txtSecondaryHolderShare.Name = "txtSecondaryHolderShare";
             this.txtSecondaryHolderShare.Size = new System.Drawing.Size(57, 21);
@@ -4186,7 +4243,7 @@
             // label74
             // 
             this.label74.AutoSize = true;
-            this.label74.Location = new System.Drawing.Point(21, 132);
+            this.label74.Location = new System.Drawing.Point(21, 113);
             this.label74.Name = "label74";
             this.label74.Size = new System.Drawing.Size(167, 15);
             this.label74.TabIndex = 14;
@@ -4197,14 +4254,14 @@
             this.cmbSecondaryHolder.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
             this.cmbSecondaryHolder.Enabled = false;
             this.cmbSecondaryHolder.FormattingEnabled = true;
-            this.cmbSecondaryHolder.Location = new System.Drawing.Point(207, 128);
+            this.cmbSecondaryHolder.Location = new System.Drawing.Point(207, 109);
             this.cmbSecondaryHolder.Name = "cmbSecondaryHolder";
             this.cmbSecondaryHolder.Size = new System.Drawing.Size(231, 23);
             this.cmbSecondaryHolder.TabIndex = 5;
             // 
             // txtPrimaryHolderShare
             // 
-            this.txtPrimaryHolderShare.Location = new System.Drawing.Point(444, 100);
+            this.txtPrimaryHolderShare.Location = new System.Drawing.Point(444, 81);
             this.txtPrimaryHolderShare.MaxLength = 3;
             this.txtPrimaryHolderShare.Name = "txtPrimaryHolderShare";
             this.txtPrimaryHolderShare.Size = new System.Drawing.Size(57, 21);
@@ -4215,7 +4272,7 @@
             // 
             // txtAssetCurrentCost
             // 
-            this.txtAssetCurrentCost.Location = new System.Drawing.Point(207, 72);
+            this.txtAssetCurrentCost.Location = new System.Drawing.Point(207, 53);
             this.txtAssetCurrentCost.MaxLength = 12;
             this.txtAssetCurrentCost.Name = "txtAssetCurrentCost";
             this.txtAssetCurrentCost.Size = new System.Drawing.Size(294, 21);
@@ -4229,7 +4286,7 @@
             this.btnNonFinancialCanel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnNonFinancialCanel.ImageKey = "icons8-cancel-16.png";
             this.btnNonFinancialCanel.ImageList = this.imageList16x16;
-            this.btnNonFinancialCanel.Location = new System.Drawing.Point(819, 201);
+            this.btnNonFinancialCanel.Location = new System.Drawing.Point(734, 188);
             this.btnNonFinancialCanel.Name = "btnNonFinancialCanel";
             this.btnNonFinancialCanel.Size = new System.Drawing.Size(86, 26);
             this.btnNonFinancialCanel.TabIndex = 16;
@@ -4243,7 +4300,7 @@
             this.btnNonFinancialSave.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnNonFinancialSave.ImageKey = "icons8-save-close-16.png";
             this.btnNonFinancialSave.ImageList = this.imageList16x16;
-            this.btnNonFinancialSave.Location = new System.Drawing.Point(727, 201);
+            this.btnNonFinancialSave.Location = new System.Drawing.Point(642, 188);
             this.btnNonFinancialSave.Name = "btnNonFinancialSave";
             this.btnNonFinancialSave.Size = new System.Drawing.Size(86, 26);
             this.btnNonFinancialSave.TabIndex = 15;
@@ -4255,7 +4312,7 @@
             // 
             this.txtNonFinancialDesc.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtNonFinancialDesc.Location = new System.Drawing.Point(539, 99);
+            this.txtNonFinancialDesc.Location = new System.Drawing.Point(539, 80);
             this.txtNonFinancialDesc.Multiline = true;
             this.txtNonFinancialDesc.Name = "txtNonFinancialDesc";
             this.txtNonFinancialDesc.Size = new System.Drawing.Size(366, 66);
@@ -4264,7 +4321,7 @@
             // label67
             // 
             this.label67.AutoSize = true;
-            this.label67.Location = new System.Drawing.Point(536, 75);
+            this.label67.Location = new System.Drawing.Point(536, 56);
             this.label67.Name = "label67";
             this.label67.Size = new System.Drawing.Size(48, 15);
             this.label67.TabIndex = 10;
@@ -4273,7 +4330,7 @@
             // label69
             // 
             this.label69.AutoSize = true;
-            this.label69.Location = new System.Drawing.Point(21, 189);
+            this.label69.Location = new System.Drawing.Point(21, 170);
             this.label69.Name = "label69";
             this.label69.Size = new System.Drawing.Size(112, 15);
             this.label69.TabIndex = 6;
@@ -4282,7 +4339,7 @@
             // label70
             // 
             this.label70.AutoSize = true;
-            this.label70.Location = new System.Drawing.Point(21, 103);
+            this.label70.Location = new System.Drawing.Point(21, 84);
             this.label70.Name = "label70";
             this.label70.Size = new System.Drawing.Size(158, 15);
             this.label70.TabIndex = 4;
@@ -4293,7 +4350,7 @@
             this.cmbPrimaryHolder.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
             this.cmbPrimaryHolder.Enabled = false;
             this.cmbPrimaryHolder.FormattingEnabled = true;
-            this.cmbPrimaryHolder.Location = new System.Drawing.Point(207, 99);
+            this.cmbPrimaryHolder.Location = new System.Drawing.Point(207, 80);
             this.cmbPrimaryHolder.Name = "cmbPrimaryHolder";
             this.cmbPrimaryHolder.Size = new System.Drawing.Size(231, 23);
             this.cmbPrimaryHolder.TabIndex = 3;
@@ -4301,7 +4358,7 @@
             // label71
             // 
             this.label71.AutoSize = true;
-            this.label71.Location = new System.Drawing.Point(21, 72);
+            this.label71.Location = new System.Drawing.Point(21, 53);
             this.label71.Name = "label71";
             this.label71.Size = new System.Drawing.Size(99, 15);
             this.label71.TabIndex = 2;
@@ -4309,7 +4366,7 @@
             // 
             // txtAssetName
             // 
-            this.txtAssetName.Location = new System.Drawing.Point(207, 48);
+            this.txtAssetName.Location = new System.Drawing.Point(207, 29);
             this.txtAssetName.Name = "txtAssetName";
             this.txtAssetName.Size = new System.Drawing.Size(294, 21);
             this.txtAssetName.TabIndex = 1;
@@ -4317,7 +4374,7 @@
             // label72
             // 
             this.label72.AutoSize = true;
-            this.label72.Location = new System.Drawing.Point(21, 45);
+            this.label72.Location = new System.Drawing.Point(21, 26);
             this.label72.Name = "label72";
             this.label72.Size = new System.Drawing.Size(89, 15);
             this.label72.TabIndex = 0;
@@ -4327,34 +4384,34 @@
             // 
             this.dtGridNonFinancialAssets.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle34.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle34.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle34.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle34.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle34.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle34.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtGridNonFinancialAssets.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle34;
+            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle25.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle25.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle25.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle25.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle25.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle25.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtGridNonFinancialAssets.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle25;
             this.dtGridNonFinancialAssets.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle35.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle35.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle35.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle35.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle35.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle35.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtGridNonFinancialAssets.DefaultCellStyle = dataGridViewCellStyle35;
+            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle26.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle26.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle26.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtGridNonFinancialAssets.DefaultCellStyle = dataGridViewCellStyle26;
             this.dtGridNonFinancialAssets.Location = new System.Drawing.Point(10, 54);
             this.dtGridNonFinancialAssets.Name = "dtGridNonFinancialAssets";
             this.dtGridNonFinancialAssets.ReadOnly = true;
-            dataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle36.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle36.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle36.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle36.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle36.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle36.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtGridNonFinancialAssets.RowHeadersDefaultCellStyle = dataGridViewCellStyle36;
+            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle27.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle27.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle27.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle27.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle27.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtGridNonFinancialAssets.RowHeadersDefaultCellStyle = dataGridViewCellStyle27;
             this.dtGridNonFinancialAssets.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtGridNonFinancialAssets.Size = new System.Drawing.Size(938, 208);
             this.dtGridNonFinancialAssets.TabIndex = 1;
@@ -6659,6 +6716,8 @@
             this.groupBox2.ResumeLayout(false);
             this.grpNonFinancialAsset.ResumeLayout(false);
             this.grpNonFinancialAsset.PerformLayout();
+            this.grpFVMappedGoals.ResumeLayout(false);
+            this.grpFVMappedGoals.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridNonFinancialAssets)).EndInit();
             this.Income.ResumeLayout(false);
             this.Income.PerformLayout();
@@ -7204,5 +7263,10 @@
         private System.Windows.Forms.TextBox txtExpectedGrowthInAmount;
         private System.Windows.Forms.CheckBox chkHUF;
         private DevExpress.XtraEditors.SimpleButton btnOpenDocument;
+        private System.Windows.Forms.GroupBox grpFVMappedGoals;
+        private System.Windows.Forms.Label lblRamingAmtVal;
+        private System.Windows.Forms.Label label164;
+        private System.Windows.Forms.Label lblFVMappedGoal;
+        private System.Windows.Forms.Label label91;
     }
 }

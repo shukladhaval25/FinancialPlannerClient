@@ -229,14 +229,14 @@
             this.lblGoalSetYear.Name = "lblGoalSetYear";
             this.lblGoalSetYear.StylePriority.UseBackColor = false;
             this.lblGoalSetYear.StylePriority.UseBorders = false;
-            this.lblGoalSetYear.Weight = 0.70692899401201748D;
+            this.lblGoalSetYear.Weight = 0.50363979033436512D;
             // 
             // lblNameOfGoal
             // 
             this.lblNameOfGoal.Dpi = 100F;
             this.lblNameOfGoal.Multiline = true;
             this.lblNameOfGoal.Name = "lblNameOfGoal";
-            this.lblNameOfGoal.Weight = 0.84410368139251835D;
+            this.lblNameOfGoal.Weight = 1.0473928850701706D;
             // 
             // lblPresentValue
             // 
@@ -542,7 +542,7 @@
             this.xrTableCell9.Name = "xrTableCell9";
             this.xrTableCell9.StylePriority.UseBackColor = false;
             this.xrTableCell9.Text = "Current Year";
-            this.xrTableCell9.Weight = 0.70692899401201748D;
+            this.xrTableCell9.Weight = 0.503637253598635D;
             // 
             // xrNameOfGoalLabel
             // 
@@ -550,7 +550,7 @@
             this.xrNameOfGoalLabel.Multiline = true;
             this.xrNameOfGoalLabel.Name = "xrNameOfGoalLabel";
             this.xrNameOfGoalLabel.Text = "Name of Goal";
-            this.xrNameOfGoalLabel.Weight = 0.84411344231043672D;
+            this.xrNameOfGoalLabel.Weight = 1.0474051827238191D;
             // 
             // xrTableCell11
             // 

@@ -1,5 +1,6 @@
 ﻿using FinancialPlanner.Common;
 using FinancialPlanner.Common.Model;
+using FinancialPlanner.Common.Model.CurrentStatus;
 using FinancialPlannerClient.CashFlowManager;
 using FinancialPlannerClient.CurrentStatus;
 using FinancialPlannerClient.PlannerInfo;
@@ -263,7 +264,24 @@ namespace FinancialPlannerClient.PlanOptions
                     goalPlanning.GoalId = _goal.Id;
                     goalPlanning.Year = investmentYear;
                     goalPlanning.GoalFutureValue = _futureValueOfGoal;
-                    goalPlanning.ActualFreshInvestment = investmentAmount;
+                    //goalPlanning.ActualFreshInvestment = (lifoGoalPlanningObj.ActualFreshInvestment - currentProfileValue) > 0 ? (lifoGoalPlanningObj.ActualFreshInvestment - currentProfileValue) : investmentAmount;
+
+                    bool isInstrumentMapped = false;
+                    IList<CurrentStatusInstrument> currentStatusInstruments = new CurrentStatusInfo().GetMappedInstrument(this._planner.ID, _goal.Id );
+                    foreach (CurrentStatusInstrument currentStatusInstrument in currentStatusInstruments)
+                    {
+                        if (currentStatusInstrument.GoalId == _goal.Id)
+                        {
+                            isInstrumentMapped = true;
+                        }
+                    }
+                    if (isInstrumentMapped)
+                    {
+                        goalPlanning.ActualFreshInvestment = (lifoGoalPlanningObj.ActualFreshInvestment - currentProfileValue) > 0 ? (lifoGoalPlanningObj.ActualFreshInvestment - currentProfileValue) : investmentAmount;
+                    }
+                    else 
+                        goalPlanning.ActualFreshInvestment = investmentAmount;
+
                     goalPlanning.GrowthPercentage = GetGrowthPercentage(investmentYear);
 
                     AddGoalPlanning(goalPlanning);
@@ -451,6 +469,7 @@ namespace FinancialPlannerClient.PlanOptions
             IList<FinancialPlanner.Common.Model.PlanOptions.CurrentStatusToGoal> currentStatusToGoals = csInfo.GetCurrentStatusToGoal(this._optionId, this._planner.ID);
 
             double totalCurrentStatuToGoalValue = 0;
+            double totalMappedInstrumentValue = 0;
             foreach (FinancialPlanner.Common.Model.PlanOptions.CurrentStatusToGoal currentStatusToGoal
                 in currentStatusToGoals)
             {
@@ -464,7 +483,17 @@ namespace FinancialPlannerClient.PlanOptions
                     ((totalCurrentStatuToGoalValue * double.Parse(growthRate.ToString())) / 100);
 
             }
-            return instumentMappedCurrentValue + totalCurrentStatuToGoalValue;
+
+            //IList<CurrentStatusInstrument> currentStatusInstruments = csInfo.GetMappedInstrument(this._planner.ID, _goal.Id);
+            //foreach (CurrentStatusInstrument currentStatusInstrument in currentStatusInstruments)
+            //{
+            //    if (currentStatusInstrument.GoalId == _goal.Id)
+            //    {
+            //        totalMappedInstrumentValue = totalMappedInstrumentValue + currentStatusInstrument.Amount;
+            //        //totalMappedInstrumentValue = totalMappedInstrumentValue + ((totalMappedInstrumentValue * double.Parse(currentStatusInstrument.Roi.ToString())) / 100);
+            //    }
+            //}
+            return instumentMappedCurrentValue + totalCurrentStatuToGoalValue + totalMappedInstrumentValue;
         }
 
         private double getFutureValueOfMappedNonFinancialAsset()

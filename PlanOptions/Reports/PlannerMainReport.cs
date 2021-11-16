@@ -106,7 +106,7 @@ namespace FinancialPlannerClient.PlanOptions
                 blnActionPlan = this.reportParams.frmReportPage.blnActionPlan;
                 blnRecomendation = this.reportParams.frmReportPage.blnRecomendation;
                 blnExecutionSheet = this.reportParams.frmReportPage.blnExecutionSheet;
-                //blnOtherRecommendation = 
+                blnOtherRecommendation = this.reportParams.frmReportPage.blnOtherRecommendation;
             }
         }
 
@@ -382,10 +382,17 @@ namespace FinancialPlannerClient.PlanOptions
 
                 if (blnExecutionSheet)
                 {
-                    ExecutionSheetTable executionSheetTable = new ExecutionSheetTable(this.client, executionSheetInfo.GetExeuctionSheetTable());
+                    ExecutionSheetTable executionSheetTable = new ExecutionSheetTable(this.client, executionSheetInfo.GetExeuctionSheetTable(), planner);
                     executionSheetTable.CreateDocument();
                     this.Pages.AddRange(executionSheetTable.Pages);
                 }
+
+
+                ////if (blnCurrentStatusReport)
+                ////{
+                ////    currentStatus = new CurrentStatusReport(netWorthStatement.GetNetWorth());
+                ////    currentStatus.CreateDocument();
+                ////}
 
                 if (blnOtherRecommendation)
                 {
@@ -393,11 +400,7 @@ namespace FinancialPlannerClient.PlanOptions
                     otherRecommendation.CreateDocument();
                     this.Pages.AddRange(otherRecommendation.Pages);
                 }
-                if (blnCurrentStatusReport)
-                {
-                    currentStatus = new CurrentStatusReport(netWorthStatement.GetNetWorth());
-                    currentStatus.CreateDocument();
-                }
+
 
                 // Enable this property to maintain continuous page numbering 
                 PrintingSystem.ContinuousPageNumbering = true;

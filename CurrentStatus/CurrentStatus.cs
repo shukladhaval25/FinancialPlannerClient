@@ -2564,6 +2564,7 @@ namespace FinancialPlannerClient.CurrentStatus
             txtAttachPath.Text = dr.Field<string>("AttachmentPath");
             if (dtLastPremiumPaymentDate.Checked = !(System.DBNull.Value == dr["LastPremiumDate"]))
                 dtLastPremiumPaymentDate.Value = DateTime.Parse(dr["LastPremiumDate"].ToString());
+            chkLICSetReminderForPremium.Checked = bool.Parse(dr["SetReminder"].ToString());
         }
 
         private DataRow getSelectedDataRowForLifeInsurance()
@@ -2731,6 +2732,8 @@ namespace FinancialPlannerClient.CurrentStatus
             lifeInsurance.MachineName = Environment.MachineName;
             if (dtLastPremiumPaymentDate.Checked)
                 lifeInsurance.LastPremiumDate = dtLastPremiumPaymentDate.Value;
+            lifeInsurance.SetReminder = chkLICSetReminderForPremium.Checked;
+            
             return lifeInsurance;
         }
 
@@ -2763,6 +2766,7 @@ namespace FinancialPlannerClient.CurrentStatus
                 txtGenInsPremium.Text = dr.Field<string>("Premium");
                 txtGenInsRemark.Text = dr.Field<string>("Remark");
                 txtGenInsAttachmentPath.Text = dr.Field<string>("AttachmentPath");
+                chkGISetReminderForPremium.Checked = bool.Parse(dr["SetReminder"].ToString());
             }
         }
 
@@ -2809,6 +2813,7 @@ namespace FinancialPlannerClient.CurrentStatus
             txtGenInsPremium.Text = "";
             txtGenInsRemark.Text = "";
             txtGenInsAttachmentPath.Text = "";
+            chkGISetReminderForPremium.Checked = false;
         }
 
         private void btnGenInsEdit_Click(object sender, EventArgs e)
@@ -2883,7 +2888,7 @@ namespace FinancialPlannerClient.CurrentStatus
             genIns.Policy = cmbGenInsPolicy.Text;
             genIns.Type = cmbGenInsType.Text;
             genIns.SumAssured = double.Parse(txtGenInsSumAssured.Text);
-            genIns.Bonus = double.Parse(txtGenInsBonus.Text);
+            genIns.Bonus = (string.IsNullOrEmpty(txtGenInsBonus.Text)) ? 0 :  double.Parse(txtGenInsBonus.Text);
             genIns.Premium = double.Parse(txtGenInsPremium.Text);
             genIns.Remark = txtGenInsRemark.Text;
             genIns.AttachmentPath = txtGenInsAttachmentPath.Text;
@@ -2891,6 +2896,7 @@ namespace FinancialPlannerClient.CurrentStatus
             genIns.UpdatedBy = Program.CurrentUser.Id;
             genIns.UpdatedByUserName = Program.CurrentUser.UserName;
             genIns.MachineName = System.Environment.MachineName;
+            genIns.SetReminder = chkGISetReminderForPremium.Checked;
             return genIns;
         }
 

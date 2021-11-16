@@ -30,9 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OtherRecommendation));
             this.Detail = new DevExpress.XtraReports.UI.DetailBand();
-            this.xrSubreportOthers = new DevExpress.XtraReports.UI.XRSubreport();
-            this.xrSubreportPersonalAccident = new DevExpress.XtraReports.UI.XRSubreport();
             this.xrSubreportInsuranceRecommendation = new DevExpress.XtraReports.UI.XRSubreport();
+            this.xrSubreportPersonalAccident = new DevExpress.XtraReports.UI.XRSubreport();
+            this.xrSubreportOthers = new DevExpress.XtraReports.UI.XRSubreport();
             this.xrPanel1 = new DevExpress.XtraReports.UI.XRPanel();
             this.xrLabel1 = new DevExpress.XtraReports.UI.XRLabel();
             this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
@@ -47,37 +47,37 @@
             // Detail
             // 
             this.Detail.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
-            this.xrSubreportOthers,
-            this.xrSubreportPersonalAccident,
             this.xrSubreportInsuranceRecommendation,
+            this.xrSubreportPersonalAccident,
+            this.xrSubreportOthers,
             this.xrPanel1});
             this.Detail.Dpi = 100F;
-            this.Detail.HeightF = 777.7084F;
+            this.Detail.HeightF = 940.8331F;
             this.Detail.Name = "Detail";
             this.Detail.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.Detail.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
-            // 
-            // xrSubreportOthers
-            // 
-            this.xrSubreportOthers.Dpi = 100F;
-            this.xrSubreportOthers.LocationFloat = new DevExpress.Utils.PointFloat(10.0001F, 614.5001F);
-            this.xrSubreportOthers.Name = "xrSubreportOthers";
-            this.xrSubreportOthers.SizeF = new System.Drawing.SizeF(695.9998F, 155.2083F);
-            // 
-            // xrSubreportPersonalAccident
-            // 
-            this.xrSubreportPersonalAccident.Dpi = 100F;
-            this.xrSubreportPersonalAccident.LocationFloat = new DevExpress.Utils.PointFloat(9.999959F, 455.7083F);
-            this.xrSubreportPersonalAccident.Name = "xrSubreportPersonalAccident";
-            this.xrSubreportPersonalAccident.SizeF = new System.Drawing.SizeF(695.9998F, 155.2083F);
             // 
             // xrSubreportInsuranceRecommendation
             // 
             this.xrSubreportInsuranceRecommendation.CanShrink = true;
             this.xrSubreportInsuranceRecommendation.Dpi = 100F;
-            this.xrSubreportInsuranceRecommendation.LocationFloat = new DevExpress.Utils.PointFloat(10.00001F, 45.41667F);
+            this.xrSubreportInsuranceRecommendation.LocationFloat = new DevExpress.Utils.PointFloat(11.0002F, 42F);
             this.xrSubreportInsuranceRecommendation.Name = "xrSubreportInsuranceRecommendation";
             this.xrSubreportInsuranceRecommendation.SizeF = new System.Drawing.SizeF(695.9998F, 407.2916F);
+            // 
+            // xrSubreportPersonalAccident
+            // 
+            this.xrSubreportPersonalAccident.Dpi = 100F;
+            this.xrSubreportPersonalAccident.LocationFloat = new DevExpress.Utils.PointFloat(11.0002F, 452.2916F);
+            this.xrSubreportPersonalAccident.Name = "xrSubreportPersonalAccident";
+            this.xrSubreportPersonalAccident.SizeF = new System.Drawing.SizeF(695.9998F, 177.0831F);
+            // 
+            // xrSubreportOthers
+            // 
+            this.xrSubreportOthers.Dpi = 100F;
+            this.xrSubreportOthers.LocationFloat = new DevExpress.Utils.PointFloat(9.999959F, 632.833F);
+            this.xrSubreportOthers.Name = "xrSubreportOthers";
+            this.xrSubreportOthers.SizeF = new System.Drawing.SizeF(695.9998F, 298.0001F);
             // 
             // xrPanel1
             // 
@@ -91,7 +91,7 @@
             this.xrPanel1.Dpi = 100F;
             this.xrPanel1.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
             this.xrPanel1.Name = "xrPanel1";
-            this.xrPanel1.SizeF = new System.Drawing.SizeF(715.9999F, 777.7084F);
+            this.xrPanel1.SizeF = new System.Drawing.SizeF(715.9999F, 940.8331F);
             this.xrPanel1.StylePriority.UseBorderColor = false;
             this.xrPanel1.StylePriority.UseBorders = false;
             this.xrPanel1.StylePriority.UseBorderWidth = false;
@@ -188,7 +188,7 @@
             this.BottomMargin.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
             this.xrPageInfo1});
             this.BottomMargin.Dpi = 100F;
-            this.BottomMargin.HeightF = 41.45832F;
+            this.BottomMargin.HeightF = 37.29165F;
             this.BottomMargin.Name = "BottomMargin";
             this.BottomMargin.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.BottomMargin.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
@@ -207,7 +207,7 @@
             this.Detail,
             this.TopMargin,
             this.BottomMargin});
-            this.Margins = new System.Drawing.Printing.Margins(63, 66, 99, 41);
+            this.Margins = new System.Drawing.Printing.Margins(63, 66, 99, 37);
             this.Version = "16.2";
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
 

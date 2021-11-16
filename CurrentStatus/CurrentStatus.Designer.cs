@@ -584,6 +584,8 @@
             this.btnOthersDelete = new System.Windows.Forms.Button();
             this.btnOthersAdd = new System.Windows.Forms.Button();
             this.btnOthersEdit = new System.Windows.Forms.Button();
+            this.chkLICSetReminderForPremium = new System.Windows.Forms.CheckBox();
+            this.chkGISetReminderForPremium = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.tabCurrenStatus.SuspendLayout();
             this.LifeInsurance.SuspendLayout();
@@ -856,6 +858,7 @@
             // pnlLifeInsuranceDetail
             // 
             this.pnlLifeInsuranceDetail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlLifeInsuranceDetail.Controls.Add(this.chkLICSetReminderForPremium);
             this.pnlLifeInsuranceDetail.Controls.Add(this.dtLastPremiumPaymentDate);
             this.pnlLifeInsuranceDetail.Controls.Add(this.label205);
             this.pnlLifeInsuranceDetail.Controls.Add(this.dtAsOnDate);
@@ -1658,6 +1661,7 @@
             // 
             this.grpGeneralInsurance.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpGeneralInsurance.Controls.Add(this.chkGISetReminderForPremium);
             this.grpGeneralInsurance.Controls.Add(this.cmbGenInsType);
             this.grpGeneralInsurance.Controls.Add(this.label46);
             this.grpGeneralInsurance.Controls.Add(this.label43);
@@ -1899,7 +1903,7 @@
             this.btnGenInsCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnGenInsCancel.ImageKey = "icons8-cancel-16.png";
             this.btnGenInsCancel.ImageList = this.imgCollection;
-            this.btnGenInsCancel.Location = new System.Drawing.Point(679, 206);
+            this.btnGenInsCancel.Location = new System.Drawing.Point(604, 240);
             this.btnGenInsCancel.Name = "btnGenInsCancel";
             this.btnGenInsCancel.Size = new System.Drawing.Size(86, 26);
             this.btnGenInsCancel.TabIndex = 14;
@@ -1912,7 +1916,7 @@
             this.btnGenInsSave.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnGenInsSave.ImageKey = "icons8-save-close-16.png";
             this.btnGenInsSave.ImageList = this.imgCollection;
-            this.btnGenInsSave.Location = new System.Drawing.Point(587, 206);
+            this.btnGenInsSave.Location = new System.Drawing.Point(512, 240);
             this.btnGenInsSave.Name = "btnGenInsSave";
             this.btnGenInsSave.Size = new System.Drawing.Size(86, 26);
             this.btnGenInsSave.TabIndex = 13;
@@ -6537,6 +6541,26 @@
             this.btnOthersEdit.UseVisualStyleBackColor = true;
             this.btnOthersEdit.Click += new System.EventHandler(this.btnOthersEdit_Click);
             // 
+            // chkLICSetReminderForPremium
+            // 
+            this.chkLICSetReminderForPremium.AutoSize = true;
+            this.chkLICSetReminderForPremium.Location = new System.Drawing.Point(554, 319);
+            this.chkLICSetReminderForPremium.Name = "chkLICSetReminderForPremium";
+            this.chkLICSetReminderForPremium.Size = new System.Drawing.Size(156, 19);
+            this.chkLICSetReminderForPremium.TabIndex = 72;
+            this.chkLICSetReminderForPremium.Text = "Set Reminder Premium";
+            this.chkLICSetReminderForPremium.UseVisualStyleBackColor = true;
+            // 
+            // chkGISetReminderForPremium
+            // 
+            this.chkGISetReminderForPremium.AutoSize = true;
+            this.chkGISetReminderForPremium.Location = new System.Drawing.Point(477, 206);
+            this.chkGISetReminderForPremium.Name = "chkGISetReminderForPremium";
+            this.chkGISetReminderForPremium.Size = new System.Drawing.Size(165, 20);
+            this.chkGISetReminderForPremium.TabIndex = 73;
+            this.chkGISetReminderForPremium.Text = "Set Reminder Premium";
+            this.chkGISetReminderForPremium.UseVisualStyleBackColor = true;
+            // 
             // CurrentStatus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -7209,5 +7233,7 @@
         private System.Windows.Forms.CheckBox chkPPFAccountExtended;
         private System.Windows.Forms.DateTimePicker dtLastPremiumPaymentDate;
         private System.Windows.Forms.Label label205;
+        private System.Windows.Forms.CheckBox chkLICSetReminderForPremium;
+        private System.Windows.Forms.CheckBox chkGISetReminderForPremium;
     }
 }

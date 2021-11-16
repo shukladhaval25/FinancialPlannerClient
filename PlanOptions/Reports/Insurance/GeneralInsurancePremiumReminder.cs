@@ -35,5 +35,13 @@ namespace FinancialPlannerClient.PlanOptions.Reports.Insurance
             this.lblPremiumDate.DataBindings.Add("Text", this.DataSource, "RenewalDate");
             this.lblPremiumAmount.DataBindings.Add("Text", this.DataSource, "PremiumAmount");
         }
+
+        private void lblPremiumAmount_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(lblPremiumAmount.Text))
+            {
+                lblPremiumAmount.Text = double.Parse(lblPremiumAmount.Text).ToString("N0", PlannerMainReport.Info);
+            }
+        }
     }
 }

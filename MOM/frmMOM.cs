@@ -40,7 +40,7 @@ namespace FinancialPlannerClient.MOM
 
             repositoryItemComboBoxResponsibility.Items.Clear();
             repositoryItemComboBoxResponsibility.Items.Add("Client");
-            repositoryItemComboBoxResponsibility.Items.Add("Ascent Finance Solution");
+            repositoryItemComboBoxResponsibility.Items.Add("Ascent");
             repositoryItemComboBoxResponsibility.Items.Add("Both");
             repositoryItemComboBoxResponsibility.Items.Add("NA");
 
@@ -135,7 +135,7 @@ namespace FinancialPlannerClient.MOM
         {
             if (e.Column.Caption == "Employee")
             {
-                User user = users.First(i => i.UserName == e.Value.ToString());
+                User user = users.FirstOrDefault(i => i.UserName == e.Value.ToString());
                 if (user != null)
                 {
                     gridViewMOMPoints.SetRowCellValue(e.RowHandle, "EmpId", user.Id);

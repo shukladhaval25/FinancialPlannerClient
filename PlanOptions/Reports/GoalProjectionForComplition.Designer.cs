@@ -69,7 +69,7 @@
             this.Detail.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
             this.xrPanel3});
             this.Detail.Dpi = 100F;
-            this.Detail.HeightF = 27.08333F;
+            this.Detail.HeightF = 36.45833F;
             this.Detail.Name = "Detail";
             this.Detail.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.Detail.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
@@ -87,7 +87,7 @@
             this.xrPanel3.Dpi = 100F;
             this.xrPanel3.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
             this.xrPanel3.Name = "xrPanel3";
-            this.xrPanel3.SizeF = new System.Drawing.SizeF(759F, 27.08333F);
+            this.xrPanel3.SizeF = new System.Drawing.SizeF(759F, 36.45833F);
             this.xrPanel3.StylePriority.UseBorderColor = false;
             this.xrPanel3.StylePriority.UseBorders = false;
             this.xrPanel3.StylePriority.UseBorderWidth = false;
@@ -105,7 +105,7 @@
             this.xrTable1.Name = "xrTable1";
             this.xrTable1.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.xrTableRow1});
-            this.xrTable1.SizeF = new System.Drawing.SizeF(719.0499F, 25F);
+            this.xrTable1.SizeF = new System.Drawing.SizeF(719.0499F, 36.45833F);
             this.xrTable1.StylePriority.UseBorderColor = false;
             this.xrTable1.StylePriority.UseBorders = false;
             this.xrTable1.StylePriority.UseBorderWidth = false;
@@ -136,8 +136,9 @@
             // lblName
             // 
             this.lblName.Dpi = 100F;
+            this.lblName.Multiline = true;
             this.lblName.Name = "lblName";
-            this.lblName.Weight = 1.2571569706406547D;
+            this.lblName.Weight = 1.6627849192888282D;
             // 
             // lblStartYear
             // 
@@ -145,7 +146,7 @@
             this.lblStartYear.Name = "lblStartYear";
             this.lblStartYear.StylePriority.UseTextAlignment = false;
             this.lblStartYear.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.lblStartYear.Weight = 0.4152289083434213D;
+            this.lblStartYear.Weight = 0.552852439795916D;
             this.lblStartYear.TextChanged += new System.EventHandler(this.lblStartYear_TextChanged);
             // 
             // lblYearLeft
@@ -154,7 +155,7 @@
             this.lblYearLeft.Name = "lblYearLeft";
             this.lblYearLeft.StylePriority.UseTextAlignment = false;
             this.lblYearLeft.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.lblYearLeft.Weight = 0.62082613386776853D;
+            this.lblYearLeft.Weight = 0.48516308241484807D;
             // 
             // lblProjectionCompleted
             // 
@@ -162,7 +163,7 @@
             this.lblProjectionCompleted.Name = "lblProjectionCompleted";
             this.lblProjectionCompleted.StylePriority.UseTextAlignment = false;
             this.lblProjectionCompleted.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.lblProjectionCompleted.Weight = 0.87372971761315288D;
+            this.lblProjectionCompleted.Weight = 0.734145600057279D;
             this.lblProjectionCompleted.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.lblProjectionCompleted_BeforePrint);
             // 
             // lblGoalAchiveTillDate
@@ -171,7 +172,7 @@
             this.lblGoalAchiveTillDate.Name = "lblGoalAchiveTillDate";
             this.lblGoalAchiveTillDate.StylePriority.UseTextAlignment = false;
             this.lblGoalAchiveTillDate.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.lblGoalAchiveTillDate.Weight = 0.62036230778943535D;
+            this.lblGoalAchiveTillDate.Weight = 0.64933533101418717D;
             this.lblGoalAchiveTillDate.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.lblGoalAchiveTillDate_BeforePrint);
             // 
             // lblGoalReachedPercentage
@@ -180,7 +181,7 @@
             this.lblGoalReachedPercentage.Name = "lblGoalReachedPercentage";
             this.lblGoalReachedPercentage.StylePriority.UseTextAlignment = false;
             this.lblGoalReachedPercentage.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.lblGoalReachedPercentage.Weight = 1.1972381032144652D;
+            this.lblGoalReachedPercentage.Weight = 0.90026076889783946D;
             this.lblGoalReachedPercentage.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.lblGoalReachedPercentage_BeforePrint);
             // 
             // TopMargin
@@ -355,14 +356,14 @@
             this.xrTableCell5.Name = "xrTableCell5";
             this.xrTableCell5.StylePriority.UseBackColor = false;
             this.xrTableCell5.Text = "Goal";
-            this.xrTableCell5.Weight = 2.0193624691500749D;
+            this.xrTableCell5.Weight = 2.6630069658938855D;
             // 
             // xrTableCell6
             // 
             this.xrTableCell6.Dpi = 100F;
             this.xrTableCell6.Name = "xrTableCell6";
             this.xrTableCell6.Text = "Goal Year";
-            this.xrTableCell6.Weight = 0.6588786842375185D;
+            this.xrTableCell6.Weight = 0.87725712602798855D;
             // 
             // xrTableCell7
             // 
@@ -372,28 +373,28 @@
             this.xrTableCell7.StylePriority.UseTextAlignment = false;
             this.xrTableCell7.Text = " Year\r\nLeft";
             this.xrTableCell7.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell7.Weight = 0.98511632050092923D;
+            this.xrTableCell7.Weight = 0.76984839971990837D;
             // 
             // xrTableCell8
             // 
             this.xrTableCell8.Dpi = 100F;
             this.xrTableCell8.Name = "xrTableCell8";
             this.xrTableCell8.Text = "Projection % Completed";
-            this.xrTableCell8.Weight = 1.3864204002534846D;
+            this.xrTableCell8.Weight = 1.1649302589070398D;
             // 
             // xrTableCell4
             // 
             this.xrTableCell4.Dpi = 100F;
             this.xrTableCell4.Name = "xrTableCell4";
             this.xrTableCell4.Text = "Goal achieve till Date";
-            this.xrTableCell4.Weight = 0.98438008813305855D;
+            this.xrTableCell4.Weight = 1.0303546830173458D;
             // 
             // xrTableCell10
             // 
             this.xrTableCell10.Dpi = 100F;
             this.xrTableCell10.Name = "xrTableCell10";
             this.xrTableCell10.Text = "% of Goal Reached";
-            this.xrTableCell10.Weight = 1.8997593329913391D;
+            this.xrTableCell10.Weight = 1.428519861700237D;
             // 
             // GroupFooter1
             // 

@@ -114,7 +114,7 @@
             // 
             this.xrTable1.Dpi = 100F;
             this.xrTable1.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xrTable1.LocationFloat = new DevExpress.Utils.PointFloat(45.41661F, 247.9167F);
+            this.xrTable1.LocationFloat = new DevExpress.Utils.PointFloat(33.95827F, 247.9167F);
             this.xrTable1.Name = "xrTable1";
             this.xrTable1.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 0, 0, 0, 100F);
             this.xrTable1.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
@@ -131,7 +131,7 @@
             this.xrTableRow11,
             this.xrTableRow12,
             this.xrTableRow13});
-            this.xrTable1.SizeF = new System.Drawing.SizeF(573.9584F, 348.3334F);
+            this.xrTable1.SizeF = new System.Drawing.SizeF(585.4167F, 348.3334F);
             this.xrTable1.StylePriority.UseFont = false;
             this.xrTable1.StylePriority.UsePadding = false;
             // 
@@ -148,6 +148,7 @@
             // xrTableCell1
             // 
             this.xrTableCell1.Dpi = 100F;
+            this.xrTableCell1.EditOptions.Enabled = true;
             this.xrTableCell1.Multiline = true;
             this.xrTableCell1.Name = "xrTableCell1";
             this.xrTableCell1.Text = "1. Retirement age:";
@@ -156,6 +157,7 @@
             // lblClientNameForRet
             // 
             this.lblClientNameForRet.Dpi = 100F;
+            this.lblClientNameForRet.EditOptions.Enabled = true;
             this.lblClientNameForRet.Name = "lblClientNameForRet";
             this.lblClientNameForRet.Text = "lblClientNameForRet";
             this.lblClientNameForRet.Weight = 1.5880217368972793D;
@@ -185,6 +187,7 @@
             // lblSpouseNameForRet
             // 
             this.lblSpouseNameForRet.Dpi = 100F;
+            this.lblSpouseNameForRet.EditOptions.Enabled = true;
             this.lblSpouseNameForRet.Name = "lblSpouseNameForRet";
             this.lblSpouseNameForRet.Text = "lblSpouseNameForRet";
             this.lblSpouseNameForRet.Weight = 1.5880217368972793D;
@@ -208,6 +211,7 @@
             // xrTableCell7
             // 
             this.xrTableCell7.Dpi = 100F;
+            this.xrTableCell7.EditOptions.Enabled = true;
             this.xrTableCell7.Name = "xrTableCell7";
             this.xrTableCell7.Text = "2. Life Expectancy:";
             this.xrTableCell7.Weight = 1D;
@@ -215,6 +219,7 @@
             // lblClientNameLifeExp
             // 
             this.lblClientNameLifeExp.Dpi = 100F;
+            this.lblClientNameLifeExp.EditOptions.Enabled = true;
             this.lblClientNameLifeExp.Name = "lblClientNameLifeExp";
             this.lblClientNameLifeExp.Text = "lblClientNameLifeExp";
             this.lblClientNameLifeExp.Weight = 1.5880217368972793D;
@@ -244,6 +249,7 @@
             // lblSpouseLifeExp
             // 
             this.lblSpouseLifeExp.Dpi = 100F;
+            this.lblSpouseLifeExp.EditOptions.Enabled = true;
             this.lblSpouseLifeExp.Name = "lblSpouseLifeExp";
             this.lblSpouseLifeExp.Text = "lblSpouseLifeExp";
             this.lblSpouseLifeExp.Weight = 1.5880217368972793D;
@@ -267,6 +273,7 @@
             // xrTableCell13
             // 
             this.xrTableCell13.Dpi = 100F;
+            this.xrTableCell13.EditOptions.Enabled = true;
             this.xrTableCell13.Name = "xrTableCell13";
             this.xrTableCell13.Text = "3. Rate of Inflation:";
             this.xrTableCell13.Weight = 1D;
@@ -274,6 +281,7 @@
             // xrTableCell14
             // 
             this.xrTableCell14.Dpi = 100F;
+            this.xrTableCell14.EditOptions.Enabled = true;
             this.xrTableCell14.Name = "xrTableCell14";
             this.xrTableCell14.Text = "Pre Retirement";
             this.xrTableCell14.Weight = 1.5880217368972793D;
@@ -303,6 +311,7 @@
             // xrTableCell17
             // 
             this.xrTableCell17.Dpi = 100F;
+            this.xrTableCell17.EditOptions.Enabled = true;
             this.xrTableCell17.Name = "xrTableCell17";
             this.xrTableCell17.Text = "Post Retirement";
             this.xrTableCell17.Weight = 1.5880217368972793D;
@@ -326,6 +335,7 @@
             // xrTableCell19
             // 
             this.xrTableCell19.Dpi = 100F;
+            this.xrTableCell19.EditOptions.Enabled = true;
             this.xrTableCell19.Name = "xrTableCell19";
             this.xrTableCell19.Text = "4. Post Tax";
             this.xrTableCell19.Weight = 1D;
@@ -333,6 +343,7 @@
             // xrTableCell20
             // 
             this.xrTableCell20.Dpi = 100F;
+            this.xrTableCell20.EditOptions.Enabled = true;
             this.xrTableCell20.Name = "xrTableCell20";
             this.xrTableCell20.Text = "Equity";
             this.xrTableCell20.Weight = 1.5880217368972793D;
@@ -356,6 +367,7 @@
             // xrTableCell22
             // 
             this.xrTableCell22.Dpi = 100F;
+            this.xrTableCell22.EditOptions.Enabled = true;
             this.xrTableCell22.Name = "xrTableCell22";
             this.xrTableCell22.Text = "Rate of Return from";
             this.xrTableCell22.Weight = 1D;
@@ -363,6 +375,7 @@
             // xrTableCell23
             // 
             this.xrTableCell23.Dpi = 100F;
+            this.xrTableCell23.EditOptions.Enabled = true;
             this.xrTableCell23.Name = "xrTableCell23";
             this.xrTableCell23.Text = "Debt";
             this.xrTableCell23.Weight = 1.5880217368972793D;
@@ -392,6 +405,7 @@
             // xrTableCell26
             // 
             this.xrTableCell26.Dpi = 100F;
+            this.xrTableCell26.EditOptions.Enabled = true;
             this.xrTableCell26.Name = "xrTableCell26";
             this.xrTableCell26.Text = "Real Estate";
             this.xrTableCell26.Weight = 1.5880217368972793D;
@@ -413,6 +427,7 @@
             // lblExpRaise
             // 
             this.lblExpRaise.Dpi = 100F;
+            this.lblExpRaise.EditOptions.Enabled = true;
             this.lblExpRaise.Name = "lblExpRaise";
             this.lblExpRaise.Text = "5. Regular ongoing expenses of raise by {0}% p.a till retirement.";
             this.lblExpRaise.Weight = 3D;
@@ -430,6 +445,7 @@
             // xrTableCell31
             // 
             this.xrTableCell31.Dpi = 100F;
+            this.xrTableCell31.EditOptions.Enabled = true;
             this.xrTableCell31.Name = "xrTableCell31";
             this.xrTableCell31.Text = "6. Annual rise in income of:";
             this.xrTableCell31.Weight = 1D;
@@ -437,6 +453,7 @@
             // lblClientNameForIncome
             // 
             this.lblClientNameForIncome.Dpi = 100F;
+            this.lblClientNameForIncome.EditOptions.Enabled = true;
             this.lblClientNameForIncome.Name = "lblClientNameForIncome";
             this.lblClientNameForIncome.Weight = 1.5880217368972793D;
             // 
@@ -459,12 +476,14 @@
             // xrTableCell34
             // 
             this.xrTableCell34.Dpi = 100F;
+            this.xrTableCell34.EditOptions.Enabled = true;
             this.xrTableCell34.Name = "xrTableCell34";
             this.xrTableCell34.Weight = 1D;
             // 
             // lblSpouseNameForIncome
             // 
             this.lblSpouseNameForIncome.Dpi = 100F;
+            this.lblSpouseNameForIncome.EditOptions.Enabled = true;
             this.lblSpouseNameForIncome.Name = "lblSpouseNameForIncome";
             this.lblSpouseNameForIncome.Weight = 1.5880217368972793D;
             // 
@@ -488,8 +507,11 @@
             this.lblInsurance.EditOptions.Enabled = true;
             this.lblInsurance.Multiline = true;
             this.lblInsurance.Name = "lblInsurance";
+            this.lblInsurance.StylePriority.UseTextAlignment = false;
             this.lblInsurance.Text = "7. In case of unfortunate event of death of {0} and/or {1} insurance proceeds wil" +
     "l be deployed at rate of return of {2}%.";
+            this.lblInsurance.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
+            this.lblInsurance.TextTrimming = System.Drawing.StringTrimming.None;
             this.lblInsurance.Weight = 3D;
             // 
             // xrLabel2
@@ -551,11 +573,11 @@
             this.lblNote.Dpi = 100F;
             this.lblNote.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNote.ForeColor = System.Drawing.Color.Black;
-            this.lblNote.LocationFloat = new DevExpress.Utils.PointFloat(45.41661F, 618.75F);
+            this.lblNote.LocationFloat = new DevExpress.Utils.PointFloat(33.95827F, 643.625F);
             this.lblNote.Name = "lblNote";
             this.lblNote.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 2, 0, 0, 100F);
             this.lblNote.SerializableRtfString = resources.GetString("lblNote.SerializableRtfString");
-            this.lblNote.SizeF = new System.Drawing.SizeF(573.9585F, 130.2917F);
+            this.lblNote.SizeF = new System.Drawing.SizeF(585.4169F, 108.4167F);
             this.lblNote.StylePriority.UseBorders = false;
             this.lblNote.StylePriority.UseFont = false;
             this.lblNote.StylePriority.UseForeColor = false;
@@ -623,6 +645,7 @@
             // 
             this.lblClientName.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.lblClientName.Dpi = 100F;
+            this.lblClientName.EditOptions.Enabled = true;
             this.lblClientName.Font = new System.Drawing.Font("Cambria", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblClientName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(117)))), ((int)(((byte)(181)))));
             this.lblClientName.LocationFloat = new DevExpress.Utils.PointFloat(4.999987F, 51.00002F);
