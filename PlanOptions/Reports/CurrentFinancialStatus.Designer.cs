@@ -229,7 +229,7 @@
             // 
             // xrTableEquity
             // 
-            this.xrTableEquity.BorderColor = System.Drawing.Color.DarkGray;
+            this.xrTableEquity.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.xrTableEquity.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
             | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
@@ -720,7 +720,7 @@
             // xrTable2
             // 
             this.xrTable2.BackColor = System.Drawing.Color.Navy;
-            this.xrTable2.BorderColor = System.Drawing.Color.DarkGray;
+            this.xrTable2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.xrTable2.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.xrTable2.BorderWidth = 1F;
             this.xrTable2.Dpi = 100F;
@@ -805,7 +805,7 @@
             // xrTable1
             // 
             this.xrTable1.BackColor = System.Drawing.Color.Navy;
-            this.xrTable1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.xrTable1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.xrTable1.Dpi = 100F;
             this.xrTable1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrTable1.ForeColor = System.Drawing.Color.White;
@@ -848,15 +848,17 @@
             // xrTableCell43
             // 
             this.xrTableCell43.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(117)))), ((int)(((byte)(181)))));
+            this.xrTableCell43.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.xrTableCell43.Dpi = 100F;
             this.xrTableCell43.Name = "xrTableCell43";
             this.xrTableCell43.StylePriority.UseBackColor = false;
+            this.xrTableCell43.StylePriority.UseBorders = false;
             this.xrTableCell43.Text = "Amount (Rs.)";
             this.xrTableCell43.Weight = 0.92235774663698655D;
             // 
             // xrTableDebt
             // 
-            this.xrTableDebt.BorderColor = System.Drawing.Color.DarkGray;
+            this.xrTableDebt.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.xrTableDebt.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
             | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));

@@ -279,7 +279,7 @@
             // 
             // xrTableNetWorth
             // 
-            this.xrTableNetWorth.BorderColor = System.Drawing.Color.DarkGray;
+            this.xrTableNetWorth.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.xrTableNetWorth.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
             | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));

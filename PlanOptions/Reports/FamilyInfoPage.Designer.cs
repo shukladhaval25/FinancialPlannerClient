@@ -71,7 +71,7 @@
             this.Detail.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
             this.xrPanel3});
             this.Detail.Dpi = 100F;
-            this.Detail.HeightF = 42.29152F;
+            this.Detail.HeightF = 44.37485F;
             this.Detail.Name = "Detail";
             this.Detail.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.Detail.StylePriority.UseBorders = false;
@@ -90,14 +90,14 @@
             this.xrPanel3.Dpi = 100F;
             this.xrPanel3.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
             this.xrPanel3.Name = "xrPanel3";
-            this.xrPanel3.SizeF = new System.Drawing.SizeF(650F, 42.29152F);
+            this.xrPanel3.SizeF = new System.Drawing.SizeF(650F, 44.37485F);
             this.xrPanel3.StylePriority.UseBorderColor = false;
             this.xrPanel3.StylePriority.UseBorders = false;
             this.xrPanel3.StylePriority.UseBorderWidth = false;
             // 
             // xrTable1
             // 
-            this.xrTable1.BorderColor = System.Drawing.Color.DarkGray;
+            this.xrTable1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.xrTable1.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
             | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
@@ -144,6 +144,7 @@
             // lblRelationship
             // 
             this.lblRelationship.Dpi = 100F;
+            this.lblRelationship.Multiline = true;
             this.lblRelationship.Name = "lblRelationship";
             this.lblRelationship.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 0, 0, 0, 100F);
             this.lblRelationship.StylePriority.UsePadding = false;
@@ -152,6 +153,7 @@
             // lblAge
             // 
             this.lblAge.Dpi = 100F;
+            this.lblAge.Multiline = true;
             this.lblAge.Name = "lblAge";
             this.lblAge.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 0, 0, 0, 100F);
             this.lblAge.StylePriority.UsePadding = false;
@@ -160,6 +162,7 @@
             // lblOccupation
             // 
             this.lblOccupation.Dpi = 100F;
+            this.lblOccupation.Multiline = true;
             this.lblOccupation.Name = "lblOccupation";
             this.lblOccupation.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 0, 0, 0, 100F);
             this.lblOccupation.StylePriority.UsePadding = false;

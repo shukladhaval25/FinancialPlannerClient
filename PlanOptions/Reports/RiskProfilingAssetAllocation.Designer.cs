@@ -68,8 +68,8 @@
             this.xrTableCell1 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell2 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell3 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.lblRichTxtContent = new DevExpress.XtraReports.UI.XRRichText();
             this.xrLabel1 = new DevExpress.XtraReports.UI.XRLabel();
+            this.lblRichTxtContent = new DevExpress.XtraReports.UI.XRRichText();
             this.xrPanel1 = new DevExpress.XtraReports.UI.XRPanel();
             this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
             this.xrPanel2 = new DevExpress.XtraReports.UI.XRPanel();
@@ -99,7 +99,7 @@
             // 
             // xrTableRiskProfileAssetAllocation
             // 
-            this.xrTableRiskProfileAssetAllocation.BorderColor = System.Drawing.Color.DarkGray;
+            this.xrTableRiskProfileAssetAllocation.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.xrTableRiskProfileAssetAllocation.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
             | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
@@ -463,16 +463,6 @@
             this.xrTableCell3.Text = "Weight";
             this.xrTableCell3.Weight = 0.97113771555271733D;
             // 
-            // lblRichTxtContent
-            // 
-            this.lblRichTxtContent.Dpi = 100F;
-            this.lblRichTxtContent.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRichTxtContent.LocationFloat = new DevExpress.Utils.PointFloat(10.00001F, 49.0104F);
-            this.lblRichTxtContent.Name = "lblRichTxtContent";
-            this.lblRichTxtContent.SerializableRtfString = resources.GetString("lblRichTxtContent.SerializableRtfString");
-            this.lblRichTxtContent.SizeF = new System.Drawing.SizeF(630F, 141.5625F);
-            this.lblRichTxtContent.StylePriority.UseFont = false;
-            // 
             // xrLabel1
             // 
             this.xrLabel1.Dpi = 100F;
@@ -486,6 +476,16 @@
             this.xrLabel1.StylePriority.UseFont = false;
             this.xrLabel1.StylePriority.UseForeColor = false;
             this.xrLabel1.Text = "Your Risk Profiling and Asset Allocation\r\n";
+            // 
+            // lblRichTxtContent
+            // 
+            this.lblRichTxtContent.Dpi = 100F;
+            this.lblRichTxtContent.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRichTxtContent.LocationFloat = new DevExpress.Utils.PointFloat(10.00001F, 49.0104F);
+            this.lblRichTxtContent.Name = "lblRichTxtContent";
+            this.lblRichTxtContent.SerializableRtfString = resources.GetString("lblRichTxtContent.SerializableRtfString");
+            this.lblRichTxtContent.SizeF = new System.Drawing.SizeF(630F, 141.5625F);
+            this.lblRichTxtContent.StylePriority.UseFont = false;
             // 
             // xrPanel1
             // 
