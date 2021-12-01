@@ -61,23 +61,23 @@
             // 
             this.xrSubreportInsuranceRecommendation.CanShrink = true;
             this.xrSubreportInsuranceRecommendation.Dpi = 100F;
-            this.xrSubreportInsuranceRecommendation.LocationFloat = new DevExpress.Utils.PointFloat(11.0002F, 42F);
+            this.xrSubreportInsuranceRecommendation.LocationFloat = new DevExpress.Utils.PointFloat(11.0002F, 34F);
             this.xrSubreportInsuranceRecommendation.Name = "xrSubreportInsuranceRecommendation";
-            this.xrSubreportInsuranceRecommendation.SizeF = new System.Drawing.SizeF(695.9998F, 407.2916F);
+            this.xrSubreportInsuranceRecommendation.SizeF = new System.Drawing.SizeF(695.9998F, 441.3749F);
             // 
             // xrSubreportPersonalAccident
             // 
             this.xrSubreportPersonalAccident.Dpi = 100F;
-            this.xrSubreportPersonalAccident.LocationFloat = new DevExpress.Utils.PointFloat(11.0002F, 452.2916F);
+            this.xrSubreportPersonalAccident.LocationFloat = new DevExpress.Utils.PointFloat(11.0002F, 478.3749F);
             this.xrSubreportPersonalAccident.Name = "xrSubreportPersonalAccident";
             this.xrSubreportPersonalAccident.SizeF = new System.Drawing.SizeF(695.9998F, 177.0831F);
             // 
             // xrSubreportOthers
             // 
             this.xrSubreportOthers.Dpi = 100F;
-            this.xrSubreportOthers.LocationFloat = new DevExpress.Utils.PointFloat(9.999959F, 632.833F);
+            this.xrSubreportOthers.LocationFloat = new DevExpress.Utils.PointFloat(11F, 659.9164F);
             this.xrSubreportOthers.Name = "xrSubreportOthers";
-            this.xrSubreportOthers.SizeF = new System.Drawing.SizeF(695.9998F, 298.0001F);
+            this.xrSubreportOthers.SizeF = new System.Drawing.SizeF(695.9998F, 270.9167F);
             // 
             // xrPanel1
             // 
@@ -102,7 +102,7 @@
             this.xrLabel1.Dpi = 100F;
             this.xrLabel1.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(117)))), ((int)(((byte)(181)))));
-            this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(10.0001F, 10.00001F);
+            this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(12.0001F, 4.00001F);
             this.xrLabel1.Multiline = true;
             this.xrLabel1.Name = "xrLabel1";
             this.xrLabel1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);

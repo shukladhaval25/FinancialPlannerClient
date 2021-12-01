@@ -20,6 +20,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         const string SA = "Saving Account";
         const string EMF = "Equity Mutual Fund";
         const string DMF = "Debt Mutual Fund";
+        const string GMF = "Gold Mutual Fund";
         const string PPF = "PPF";
         const string BONDS = "Bonds";
         const string SS = "Sukanya Sum. Account";
@@ -289,29 +290,11 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             MutualFundInfo mutualFundInfo = new MutualFundInfo();
             double totalMFValue = 0;
             double totalDMFValue = 0;
+            double totalGoldMFValue = 0;
             DataTable dtMF = mutualFundInfo.GetMutualFundInfo(this.planner.ID);
             if (dtMF != null && dtMF.Rows.Count > 0)
             {
-                //foreach (DataRow dr in dtMF.Rows)
-                //{
-                //    totalMFValue =  ((Convert.ToDouble(dr["CurrentValue"]) * Convert.ToDouble(dr["EquityRatio"])) / 100);
-
-                //    totalDMFValue = ((Convert.ToDouble(dr["CurrentValue"]) * Convert.ToDouble(dr["DebtRatio"])) / 100);
-
-                //    if (totalMFValue > 0)
-                //    {
-                //        DataRow drNetWorth = dtNetWorth.NewRow();
-                //        drNetWorth["Group"] = FINANCIAL_ASSETS;
-                //        drNetWorth["Title"] = EMF;
-                //        drNetWorth["Amount"] = Math.Round(totalMFValue);
-                //        drNetWorth["Description"] = dr[""]
-                //        dtNetWorth.Rows.Add(drNetWorth);
-                //    }
-
-                //}
                 totalMFValue = dtMF.AsEnumerable().Sum(x => (Convert.ToDouble(x["CurrentValue"]) * Convert.ToDouble(x["EquityRatio"])) / 100);
-                //Convert.ToDouble(x["NAV"]) * Convert.ToDouble(x["Units"]));
-                //double.Parse(dtMF.Compute("sum(NAV * Units)", string.Empty).ToString());
             }
 
             if (totalMFValue > 0)
@@ -326,8 +309,6 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             if (dtMF != null && dtMF.Rows.Count > 0)
             {
                 totalDMFValue = dtMF.AsEnumerable().Sum(x => (Convert.ToDouble(x["CurrentValue"]) * Convert.ToDouble(x["DebtRatio"])) / 100);
-                //Convert.ToDouble(x["NAV"]) * Convert.ToDouble(x["Units"]));
-                //double.Parse(dtMF.Compute("sum(NAV * Units)", string.Empty).ToString());
             }
             if (totalDMFValue > 0)
             {
@@ -335,6 +316,19 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                 drNetWorth["Group"] = FINANCIAL_ASSETS;
                 drNetWorth["Title"] = DMF;
                 drNetWorth["Amount"] = Math.Round(totalDMFValue);
+                dtNetWorth.Rows.Add(drNetWorth);
+            }
+
+            if (dtMF != null && dtMF.Rows.Count > 0)
+            {
+                totalGoldMFValue = dtMF.AsEnumerable().Sum(x => (Convert.ToDouble(x["CurrentValue"]) * Convert.ToDouble(x["GoldRatio"])) / 100);
+            }
+            if (totalGoldMFValue > 0)
+            {
+                DataRow drNetWorth = dtNetWorth.NewRow();
+                drNetWorth["Group"] = FINANCIAL_ASSETS;
+                drNetWorth["Title"] = GMF;
+                drNetWorth["Amount"] = Math.Round(totalGoldMFValue);
                 dtNetWorth.Rows.Add(drNetWorth);
             }
 

@@ -38,7 +38,17 @@ namespace FinancialPlannerClient.PlanOptions
             lblSpouseTitle.Text = spouseName;
             PlannerAssumptionInfo plannerassumptionInfo = new PlannerAssumptionInfo();
             PlannerAssumption plannerAssumption = plannerassumptionInfo.GetAll(planner.ID);
+            AssumptionConfig assumptionConfig = plannerassumptionInfo.GetAssumptionConfig(planner.ID);
             displayPlannerAssumptionData(plannerAssumption);
+            displayAssumptionConfiguration(assumptionConfig);
+        }
+
+        private void displayAssumptionConfiguration(AssumptionConfig assumptionConfig)
+        {
+            chkRateOfInflation.Checked = assumptionConfig.RateOfInflation;
+            chkRegularOngoingExpRaise.Checked = assumptionConfig.RegularOngoingExp;
+            chkPostTaxReturn.Checked = assumptionConfig.PostTaxRateOfReturn;
+            chkPostRetirementInvReturn.Checked = assumptionConfig.PostRetirementInvestmentReturn;
         }
 
         private void displayPlannerAssumptionData(PlannerAssumption plannerAssumption)
@@ -101,8 +111,19 @@ namespace FinancialPlannerClient.PlanOptions
 
                 if (isSaved)
                 {
-                    DevExpress.XtraEditors.XtraMessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    fillupAssumptionInfo();
+                    isSaved = PlannerAssumptionInfo.UpdateAssumptionConfig(new AssumptionConfig()
+                    {
+                        PlannerId = this.planner.ID,
+                        RateOfInflation = chkRateOfInflation.Checked,
+                        PostRetirementInvestmentReturn = chkPostRetirementInvReturn.Checked,
+                        PostTaxRateOfReturn = chkPostTaxReturn.Checked,
+                        RegularOngoingExp =  chkRegularOngoingExpRaise.Checked
+                    });
+                    if (isSaved)
+                    {
+                        DevExpress.XtraEditors.XtraMessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        fillupAssumptionInfo();
+                    }
                 }
                 else
                     DevExpress.XtraEditors.XtraMessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -176,6 +197,11 @@ namespace FinancialPlannerClient.PlanOptions
             txtIncomeRiseForSpouse.Text = assumptionMaster.IncomeRaiseRatio.ToString();
             txtOngoingExpRise.Text = assumptionMaster.OngoingExpRise.ToString();
             txtPostRetirementInvestmentReturnRate.Text = assumptionMaster.PostRetirementInvestmentReturnRate.ToString();
+
+            chkRateOfInflation.Checked = true;
+            chkRegularOngoingExpRaise.Checked = true;
+            chkPostTaxReturn.Checked = true;
+            chkRateOfInflation.Checked = true;
         }
 
         private void txtSpouseLifeExp_Validating(object sender, CancelEventArgs e)

@@ -49,6 +49,8 @@
             this.tabPlanner = new DevExpress.XtraBars.Navigation.TabPane();
             this.tabNavigationPagePlanner = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             this.pnlPlannerInfo = new DevExpress.XtraEditors.PanelControl();
+            this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
+            this.rdoFaceType = new DevExpress.XtraEditors.RadioGroup();
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.cmbEndMonth = new DevExpress.XtraEditors.ComboBoxEdit();
@@ -79,14 +81,13 @@
             this.btnAdd = new DevExpress.XtraEditors.SimpleButton();
             this.btnClosePlanoptions = new DevExpress.XtraEditors.SimpleButton();
             this.btnSavePlanoption = new DevExpress.XtraEditors.SimpleButton();
-            this.rdoFaceType = new DevExpress.XtraEditors.RadioGroup();
-            this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.lstPlanner)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabPlanner)).BeginInit();
             this.tabPlanner.SuspendLayout();
             this.tabNavigationPagePlanner.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlPlannerInfo)).BeginInit();
             this.pnlPlannerInfo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.rdoFaceType.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbEndMonth.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPlanName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbStartMonth.Properties)).BeginInit();
@@ -103,7 +104,6 @@
             this.tabInvestmentAllocation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtDebtRatio.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEquityRatio.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rdoFaceType.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // labelControl1
@@ -174,6 +174,25 @@
             this.pnlPlannerInfo.Name = "pnlPlannerInfo";
             this.pnlPlannerInfo.Size = new System.Drawing.Size(546, 171);
             this.pnlPlannerInfo.TabIndex = 10;
+            // 
+            // labelControl13
+            // 
+            this.labelControl13.Location = new System.Drawing.Point(322, 10);
+            this.labelControl13.Name = "labelControl13";
+            this.labelControl13.Size = new System.Drawing.Size(60, 13);
+            this.labelControl13.TabIndex = 29;
+            this.labelControl13.Text = "Phase Type:";
+            // 
+            // rdoFaceType
+            // 
+            this.rdoFaceType.EditValue = 'A';
+            this.rdoFaceType.Location = new System.Drawing.Point(337, 29);
+            this.rdoFaceType.Name = "rdoFaceType";
+            this.rdoFaceType.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
+            new DevExpress.XtraEditors.Controls.RadioGroupItem('A', "Accumulation phase"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem('D', "Distribution phase")});
+            this.rdoFaceType.Size = new System.Drawing.Size(151, 48);
+            this.rdoFaceType.TabIndex = 28;
             // 
             // labelControl10
             // 
@@ -538,25 +557,6 @@
             this.btnSavePlanoption.Text = "Save";
             this.btnSavePlanoption.Click += new System.EventHandler(this.btnSavePlanoption_Click);
             // 
-            // rdoFaceType
-            // 
-            this.rdoFaceType.EditValue = 'A';
-            this.rdoFaceType.Location = new System.Drawing.Point(337, 29);
-            this.rdoFaceType.Name = "rdoFaceType";
-            this.rdoFaceType.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
-            new DevExpress.XtraEditors.Controls.RadioGroupItem('A', "Accumulation Face"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem('D', "Distribution face")});
-            this.rdoFaceType.Size = new System.Drawing.Size(151, 48);
-            this.rdoFaceType.TabIndex = 28;
-            // 
-            // labelControl13
-            // 
-            this.labelControl13.Location = new System.Drawing.Point(322, 10);
-            this.labelControl13.Name = "labelControl13";
-            this.labelControl13.Size = new System.Drawing.Size(54, 13);
-            this.labelControl13.TabIndex = 29;
-            this.labelControl13.Text = "Face Type:";
-            // 
             // PlannerView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -584,6 +584,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pnlPlannerInfo)).EndInit();
             this.pnlPlannerInfo.ResumeLayout(false);
             this.pnlPlannerInfo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.rdoFaceType.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbEndMonth.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPlanName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbStartMonth.Properties)).EndInit();
@@ -601,7 +602,6 @@
             this.tabInvestmentAllocation.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtDebtRatio.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEquityRatio.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rdoFaceType.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

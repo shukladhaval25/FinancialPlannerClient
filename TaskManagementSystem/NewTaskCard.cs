@@ -22,6 +22,13 @@ namespace FinancialPlannerClient.TaskManagementSystem
         private ITransactionType transactionType;
         const string MUTUALFUND = "Mutual Fund";
         const string CUSTOMERSUPPORT = "Customer Support";
+        Client currentClient;
+
+        public NewTaskCard(Client client)
+        {
+            InitializeComponent();
+            currentClient = client;
+        }
 
         public NewTaskCard()
         {
@@ -58,6 +65,10 @@ namespace FinancialPlannerClient.TaskManagementSystem
             clients.Insert(0, client);
             cmbClient.Properties.Items.Clear();
             cmbClient.Properties.Items.AddRange(clients.Select(i => i.Name).ToList());
+            if (currentClient != null)
+            {
+                cmbClient.SelectedItem = currentClient.Name;
+            }
         }
 
         private void fillupProjectCombobox()

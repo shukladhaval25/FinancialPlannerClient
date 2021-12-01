@@ -16,6 +16,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         const string SA = "Saving Account";
         const string EMF = "Equity Mutual Fund";
         const string DMF = "Debt Mutual Fund";
+        const string GMF = "Gold Mutual Fund";
         const string PPF = "PPF";
         const string BONDS = "Bonds";
         const string SS = "Sukanya Sum. Account";
@@ -102,6 +103,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                 dtNetWorth.Rows[indexRow]["Title"].ToString() == BONDS ||
                 dtNetWorth.Rows[indexRow]["Title"].ToString() == PPF ||
                 dtNetWorth.Rows[indexRow]["Title"].ToString() == DMF ||
+                 dtNetWorth.Rows[indexRow]["Title"].ToString() == GMF ||
                 dtNetWorth.Rows[indexRow]["Title"].ToString() == SS ||
                 dtNetWorth.Rows[indexRow]["Title"].ToString() == ULIPS_DEBT ||
                 dtNetWorth.Rows[indexRow]["Title"].ToString() == NPS_DEPT ||

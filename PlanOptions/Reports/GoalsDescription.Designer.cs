@@ -359,12 +359,16 @@
             // xrTableCell21
             // 
             this.xrTableCell21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(117)))), ((int)(((byte)(181)))));
+            this.xrTableCell21.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.xrTableCell21.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.xrTableCell21.Dpi = 100F;
             this.xrTableCell21.Name = "xrTableCell21";
             this.xrTableCell21.StylePriority.UseBackColor = false;
+            this.xrTableCell21.StylePriority.UseBorderColor = false;
+            this.xrTableCell21.StylePriority.UseBorders = false;
             this.xrTableCell21.StylePriority.UseTextAlignment = false;
             this.xrTableCell21.Text = "Return Expectation";
-            this.xrTableCell21.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+            this.xrTableCell21.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell21.Weight = 0.99476281795144117D;
             // 
             // xrTableEquity
@@ -443,6 +447,7 @@
             // 
             this.xrTable2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(117)))), ((int)(((byte)(181)))));
             this.xrTable2.BorderColor = System.Drawing.Color.DarkGray;
+            this.xrTable2.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.xrTable2.Dpi = 100F;
             this.xrTable2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrTable2.ForeColor = System.Drawing.Color.White;
@@ -453,6 +458,7 @@
             this.xrTable2.SizeF = new System.Drawing.SizeF(298.9583F, 39.58333F);
             this.xrTable2.StylePriority.UseBackColor = false;
             this.xrTable2.StylePriority.UseBorderColor = false;
+            this.xrTable2.StylePriority.UseBorders = false;
             this.xrTable2.StylePriority.UseFont = false;
             this.xrTable2.StylePriority.UseForeColor = false;
             this.xrTable2.StylePriority.UseTextAlignment = false;

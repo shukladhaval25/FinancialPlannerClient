@@ -9,6 +9,10 @@ using System.Collections.Generic;
 using FinancialPlanner.Common.DataConversion;
 using System.Data;
 using DevExpress.XtraCharts;
+using System.Diagnostics;
+using System.Reflection;
+using FinancialPlanner.Common;
+using System.Linq;
 
 namespace FinancialPlannerClient.PlanOptions.Reports
 {
@@ -20,15 +24,98 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         DataTable _dtExpenses;
         DataTable _dtLoan;
         List<Income> lstIncome;
+        double distributedFaceRetirementAmount = 0;
+       
         public IncomeExpenseAnalysis(Client client,Planner planner)
         {
             InitializeComponent();
             this.client = client;
             this.planner = planner;
             this.lblClientName.Text = client.Name;
+            if (planner.FaceType.Equals("D"))
+            {
+                getRetirementGoal();
+            }
             getIncomeData();
             getExpenseData();
         }
+
+        private void getRetirementGoal()
+        {
+            IList<Goals> goals = new GoalsInfo().GetAll(this.planner.ID);
+            if (goals.Count > 0)
+            {
+                foreach(Goals goal in goals)
+                {
+                    if (goal.Category.Equals("Retirement"))
+                    {
+                        distributedFaceRetirementAmount  = getGoalFutureValue(false, goal);
+                    }
+                }
+            }
+        }
+
+        private double getGoalFutureValue(bool includeRetirementCase,Goals _goal)
+        {
+            double futureValueOfGoal = 0;
+            if (_goal != null)
+            {
+                if (_goal.Category != "Retirement")
+                {
+                    int years = getRemainingYearsFromPlanStartYear(_goal);
+                    futureValueOfGoal = futureValue(_goal.Amount + _goal.OtherAmount, _goal.InflationRate, years);
+                }
+                else
+                {
+                        int years = getRemainingYearsFromPlanStartYear(_goal);
+                        futureValueOfGoal = futureValue(_goal.Amount + _goal.OtherAmount, _goal.InflationRate, years);
+                        //double totalPostReirementExp = getPostRetirementExpTotal();
+                }
+            }
+            return futureValueOfGoal;
+        }
+
+        private double futureValue(double presentValue, decimal interest_rate, int timePeriodInYears)
+        {
+            try
+            {
+                //FV = PV * (1 + I)T;
+                interest_rate = interest_rate / 100;
+                decimal futureValue = (decimal)presentValue *
+                    ((decimal)Math.Pow((double)(1 + interest_rate), (double)timePeriodInYears));
+
+                return Math.Round((double)futureValue);
+            }
+            catch (Exception ex)
+            {
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
+                LogDebug(currentMethodName.Name, ex);
+                return 0;
+            }
+        }
+
+        private void LogDebug(string methodName, Exception ex)
+        {
+            DebuggerLogInfo debuggerInfo = new DebuggerLogInfo
+            {
+                ClassName = this.GetType().Name,
+                Method = methodName,
+                ExceptionInfo = ex
+            };
+            Logger.LogDebug(debuggerInfo);
+        }
+
+        private int getRemainingYearsFromPlanStartYear(Goals goal)
+        {
+            if (int.Parse(goal.StartYear) > this.planner.StartDate.Year)
+            {
+                return int.Parse(goal.StartYear) - this.planner.StartDate.Year;
+            }
+            return 0;
+        }
+
         private void getIncomeData()
         {
             IncomeInfo incomeInfo = new IncomeInfo();
@@ -37,6 +124,28 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             DataRow[] drs = _dtIncome.Select("StartYear <='" + DateTime.Now.Year.ToString() + "' and EndYear >='" + DateTime.Now.Year.ToString() + "'");
             if (drs.Length > 0)
             _dtIncome = _dtIncome.Select("StartYear <='" + DateTime.Now.Year.ToString() + "' and EndYear >='" + DateTime.Now.Year.ToString() + "'").CopyToDataTable();
+
+
+
+            if (this.planner.FaceType.Equals("D"))
+            {
+                double totalIncomeValue =_dtIncome.AsEnumerable().Sum(x => Convert.ToDouble(x["Amount"]));
+                double income =0;
+                if (distributedFaceRetirementAmount >= totalIncomeValue)
+                {
+                    income = distributedFaceRetirementAmount - totalIncomeValue;
+                    DataRow dr = _dtIncome.NewRow();
+                    dr["Source"] = "Withdrawal from Portfolio";
+                    dr["IncomeBy"] = this.client.Name;
+                    dr["Amount"] = income;
+                    dr["StartYear"] = DateTime.Now.Year;
+                    dr["EndYear"] = DateTime.Now.Year;
+                    dr["IncomeTax"] = "0";
+                    _dtIncome.Rows.Add(dr);
+                }
+            }
+
+
             this.DataSource = _dtIncome;
             this.DataMember = _dtIncome.TableName;
             
@@ -47,7 +156,14 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             {
                 if  ( int.Parse(dr["StartYear"].ToString()) <= (DateTime.Now.Year) && int.Parse(dr["EndYear"].ToString()) >= (DateTime.Now.Year))
                 {
-                    xrTableIncome.Rows[index].Cells[0].Text = dr["Source"].ToString() + " - " +  dr["IncomeBy"].ToString();
+                    if (dr["Source"].ToString().Equals("Withdrawal from Portfolio"))
+                    {
+                        xrTableIncome.Rows[index].Cells[0].Text = dr["Source"].ToString();
+                    }
+                    else
+                    {
+                        xrTableIncome.Rows[index].Cells[0].Text = dr["Source"].ToString() + " - " + dr["IncomeBy"].ToString();
+                    }
                     double income = double.Parse(dr["Amount"].ToString());
                     double incomeTax = double.Parse(dr["IncomeTax"].ToString());
                     //double postTaxIncome = (income - ((income * incomeTax) / 100));
@@ -64,19 +180,11 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             }
 
 
-            if (this.planner.FaceType.Equals("D"))
-            {
-                // Add logic for retirement exp with distribution face.
-                double income = 0;
-                xrTableIncome.Rows[index].Cells[0].Text = "Distribution face Income";
-                xrTableIncome.Rows[index].Cells[1].Text = income.ToString();
-                totalIncome = totalIncome + income;
-            }
             
             lblAmount7.Text = totalIncome.ToString();
             xrLabelIncomeTaxAmount.Text = totalIncomeTaxAmount.ToString();
             xrLabelNetTotalIncome.Text = (totalIncome - totalIncomeTaxAmount).ToString();
-            IncomeInflowChart incomeInflowChart = new IncomeInflowChart(this.client, this.planner);
+            IncomeInflowChart incomeInflowChart = new IncomeInflowChart(_dtIncome);
             incomeInflowChart.CreateDocument();
             this.subReportIncomeChart.ReportSource = incomeInflowChart;
         }
@@ -92,6 +200,21 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             LoanInfo loanInfo = new LoanInfo();
             List<Loan> lstNonFinancialAsset = (List<Loan>)loanInfo.GetAll(this.planner.ID);
             _dtLoan = ListtoDataTable.ToDataTable(lstNonFinancialAsset);
+
+            if (this.planner.FaceType.Equals("D"))
+            {
+                double exp = distributedFaceRetirementAmount;
+                DataRow dr = _dtExpenses.NewRow();
+                dr["Item"] = "Ongoing expense";
+                dr["OccuranceType"] = "Yearly";
+                dr["Amount"] = exp;
+                dr["ExpStartYear"] = DateTime.Now.Year;
+                dr["ExpEndYear"] = DateTime.Now.Year;
+                _dtExpenses.Rows.Add(dr);
+            }
+
+
+
             foreach (DataRow dr in _dtLoan.Rows)
             {
                 if (DateTime.Parse(dr["LoanStartDate"].ToString()).Year  <= planner.StartDate.Year  )
@@ -128,17 +251,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                     index++;
                 }
             }
-
-            if (this.planner.FaceType.Equals("D"))
-            {
-                // Add logic for retirement exp with distribution face.
-                double exp = 0;
-                xrTableExp.Rows[index].Cells[0].Text = "Distribution face exp";
-                xrTableExp.Rows[index].Cells[1].Text = exp.ToString();
-                totalExpenses = totalExpenses + exp;
-            }
-
-
+            
             lblExpTotal.Text = totalExpenses.ToString();
             ExpenseOutFlowChart expenseOutFlowChart = new ExpenseOutFlowChart(_dtExpenses);
             expenseOutFlowChart.CreateDocument();

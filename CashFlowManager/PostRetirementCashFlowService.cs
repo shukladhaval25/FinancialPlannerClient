@@ -274,7 +274,8 @@ namespace FinancialPlannerClient.CashFlowManager
 
         private void addLoansCalculation(int i, DataRow dr)
         {
-            int currentLoanYear = (i - DateTime.Now.Year);
+            int currentLoanYear =  (i - DateTime.Now.Year);
+         
             int previousYearRowIndex = i - 1;
             double totalLoans = 0;
 
@@ -298,12 +299,12 @@ namespace FinancialPlannerClient.CashFlowManager
                 foreach (Loan loan in cashFlowCalculation.LstLoans)
                 {
                     decimal totalNoOfYearsForLoan = (Decimal)((Decimal)loan.TermLeftInMonths / 12);
-                    if (currentLoanYear <= totalNoOfYearsForLoan || (totalNoOfYearsForLoan > currentLoanYear && totalNoOfYearsForLoan < currentLoanYear))
+                    if (currentLoanYear < totalNoOfYearsForLoan || (totalNoOfYearsForLoan > currentLoanYear && totalNoOfYearsForLoan < currentLoanYear))
                     {
                         double loanAmt = getLoanAmount(previousYearRowIndex, loan);
                         decimal yearsForLoan = totalNoOfYearsForLoan - Math.Truncate(totalNoOfYearsForLoan);
                         decimal period = 12 / (12 * (yearsForLoan > 0 ? yearsForLoan : 1));
-                        dr[loan.TypeOfLoan] = (currentLoanYear < totalNoOfYearsForLoan) ? loanAmt :
+                        dr[loan.TypeOfLoan] = (currentLoanYear < (totalNoOfYearsForLoan - 1)) ? loanAmt :
                             ((loanAmt) / (double)period);
                         loanAmt = (currentLoanYear < totalNoOfYearsForLoan) ? loanAmt :
                             ((loanAmt) / (double)period);

@@ -73,9 +73,12 @@ namespace FinancialPlannerClient.Insurance
             AddFinancialAssetIntoInsuranceCoverage();
             AddNonFinancialAssetIntoInsuranceCoverage();
             gridControlFinancialAssert.DataSource = dtFinancialAssets;
+            txtExistingInsuranceSumAssured.Text = "0";
+
             displayEsitmatedInsuranceCoverageRequired();
         }
 
+        
         private async void displayEsitmatedInsuranceCoverageRequired()
         {
             InsuranceCoverageService insuranceCoverageService = new InsuranceCoverageService(client, planner);

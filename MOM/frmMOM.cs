@@ -39,7 +39,7 @@ namespace FinancialPlannerClient.MOM
             }
 
             repositoryItemComboBoxResponsibility.Items.Clear();
-            repositoryItemComboBoxResponsibility.Items.Add("Client");
+            repositoryItemComboBoxResponsibility.Items.Add(this.client.Name);
             repositoryItemComboBoxResponsibility.Items.Add("Ascent");
             repositoryItemComboBoxResponsibility.Items.Add("Both");
             repositoryItemComboBoxResponsibility.Items.Add("NA");
@@ -197,7 +197,7 @@ namespace FinancialPlannerClient.MOM
 
         private void repositoryItemButtonAddTask_Click(object sender, EventArgs e)
         {
-            NewTaskCard newTask = new NewTaskCard();
+            NewTaskCard newTask = new NewTaskCard(this.client);
             newTask.StartPosition = FormStartPosition.CenterParent;
             newTask.ShowDialog();
         }

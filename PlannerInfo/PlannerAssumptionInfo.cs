@@ -16,8 +16,12 @@ namespace FinancialPlannerClient.PlannerInfo
     {
         const string GET_ALL_PlannerAssumption_API = "PlannerAssumption/GetAll?plannerId={0}";
         const string UPDATE_PlannerAssumption_API = "PlannerAssumption/Update";
+
+        const string GET_ALL_ASSUMPTION_CONFIG_API = "AssumptionConfig/GetAll?plannerId={0}";
+        const string UPDATE_ASSUMPTION_CONFIG_API = "AssumptionConfig/Update";
         DataTable _dtPlannerAssumption;
 
+        #region "Planner Assumption"
         internal PlannerAssumption GetAll(int plannerId)
         {
             PlannerAssumption PlannerAssumptionObj = new PlannerAssumption();
@@ -75,6 +79,66 @@ namespace FinancialPlannerClient.PlannerInfo
             }
         }
 
+        #endregion
+
+        #region "Assumption config"
+        internal AssumptionConfig GetAssumptionConfig(int plannerId)
+        {
+            AssumptionConfig assumptionConfig = new AssumptionConfig();
+            try
+            {
+                FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
+                string apiurl = Program.WebServiceUrl + "/" + string.Format(GET_ALL_ASSUMPTION_CONFIG_API, plannerId);
+
+                RestAPIExecutor restApiExecutor = new RestAPIExecutor();
+
+                var restResult = restApiExecutor.Execute<IList<AssumptionConfig>>(apiurl, null, "GET");
+
+                if (jsonSerialization.IsValidJson(restResult.ToString()))
+                {
+                    assumptionConfig = jsonSerialization.DeserializeFromString<AssumptionConfig>(restResult.ToString());
+                }
+                return assumptionConfig;
+            }
+            catch (System.Net.WebException webException)
+            {
+                if (webException.Message.Equals("The remote server returned an error: (401) Unauthorized."))
+                {
+                    MessageBox.Show("You session has been expired. Please Login again.", "Session Expired", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
+                LogDebug(currentMethodName.Name, ex);
+                return null;
+            }
+        }
+
+        internal bool UpdateAssumptionConfig(AssumptionConfig assumptionConfig)
+        {
+            try
+            {
+                FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
+                string apiurl = Program.WebServiceUrl + "/" + UPDATE_ASSUMPTION_CONFIG_API;
+                RestAPIExecutor restApiExecutor = new RestAPIExecutor();
+                var restResult = restApiExecutor.Execute<AssumptionConfig>(apiurl, assumptionConfig, "POST");
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
+                LogDebug(currentMethodName.Name, ex);
+                return false;
+            }
+        }
+        #endregion
         private void LogDebug(string methodName, Exception ex)
         {
             DebuggerLogInfo debuggerInfo = new DebuggerLogInfo();

@@ -95,16 +95,16 @@
             // xrlblExeuctionDebtRatio
             // 
             this.xrlblExeuctionDebtRatio.BackColor = System.Drawing.Color.Transparent;
-            this.xrlblExeuctionDebtRatio.BorderColor = System.Drawing.Color.DarkGray;
+            this.xrlblExeuctionDebtRatio.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.xrlblExeuctionDebtRatio.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid;
             this.xrlblExeuctionDebtRatio.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
             | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrlblExeuctionDebtRatio.BorderWidth = 1F;
+            this.xrlblExeuctionDebtRatio.BorderWidth = 0.8F;
             this.xrlblExeuctionDebtRatio.Dpi = 100F;
             this.xrlblExeuctionDebtRatio.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrlblExeuctionDebtRatio.ForeColor = System.Drawing.Color.Black;
-            this.xrlblExeuctionDebtRatio.LocationFloat = new DevExpress.Utils.PointFloat(167.5836F, 477.8646F);
+            this.xrlblExeuctionDebtRatio.LocationFloat = new DevExpress.Utils.PointFloat(167.5836F, 478.8647F);
             this.xrlblExeuctionDebtRatio.Name = "xrlblExeuctionDebtRatio";
             this.xrlblExeuctionDebtRatio.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrlblExeuctionDebtRatio.SizeF = new System.Drawing.SizeF(135.1247F, 28.64581F);
@@ -122,16 +122,16 @@
             // xrLabel10
             // 
             this.xrLabel10.BackColor = System.Drawing.Color.Transparent;
-            this.xrLabel10.BorderColor = System.Drawing.Color.DarkGray;
+            this.xrLabel10.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.xrLabel10.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid;
             this.xrLabel10.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
             | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrLabel10.BorderWidth = 1F;
+            this.xrLabel10.BorderWidth = 0.8F;
             this.xrLabel10.Dpi = 100F;
             this.xrLabel10.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrLabel10.ForeColor = System.Drawing.Color.Black;
-            this.xrLabel10.LocationFloat = new DevExpress.Utils.PointFloat(35.00004F, 477.8646F);
+            this.xrLabel10.LocationFloat = new DevExpress.Utils.PointFloat(35.00004F, 478.8647F);
             this.xrLabel10.Name = "xrLabel10";
             this.xrLabel10.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 2, 0, 0, 100F);
             this.xrLabel10.SizeF = new System.Drawing.SizeF(132.5836F, 28.64581F);
@@ -150,12 +150,12 @@
             // xrlblEecutionEquityRatio
             // 
             this.xrlblEecutionEquityRatio.BackColor = System.Drawing.Color.Transparent;
-            this.xrlblEecutionEquityRatio.BorderColor = System.Drawing.Color.DarkGray;
+            this.xrlblEecutionEquityRatio.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.xrlblEecutionEquityRatio.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid;
             this.xrlblEecutionEquityRatio.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
             | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrlblEecutionEquityRatio.BorderWidth = 1F;
+            this.xrlblEecutionEquityRatio.BorderWidth = 0.8F;
             this.xrlblEecutionEquityRatio.Dpi = 100F;
             this.xrlblEecutionEquityRatio.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrlblEecutionEquityRatio.ForeColor = System.Drawing.Color.Black;
@@ -178,12 +178,12 @@
             // xrLabel12
             // 
             this.xrLabel12.BackColor = System.Drawing.Color.Transparent;
-            this.xrLabel12.BorderColor = System.Drawing.Color.DarkGray;
+            this.xrLabel12.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.xrLabel12.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid;
             this.xrLabel12.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
             | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrLabel12.BorderWidth = 1F;
+            this.xrLabel12.BorderWidth = 0.8F;
             this.xrLabel12.Dpi = 100F;
             this.xrLabel12.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrLabel12.ForeColor = System.Drawing.Color.Black;
@@ -206,12 +206,12 @@
             // xrLabel13
             // 
             this.xrLabel13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(117)))), ((int)(((byte)(181)))));
-            this.xrLabel13.BorderColor = System.Drawing.Color.DarkGray;
+            this.xrLabel13.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.xrLabel13.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid;
             this.xrLabel13.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
             | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrLabel13.BorderWidth = 1F;
+            this.xrLabel13.BorderWidth = 0.8F;
             this.xrLabel13.Dpi = 100F;
             this.xrLabel13.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrLabel13.ForeColor = System.Drawing.Color.Black;
@@ -234,12 +234,12 @@
             // xrLabel14
             // 
             this.xrLabel14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(117)))), ((int)(((byte)(181)))));
-            this.xrLabel14.BorderColor = System.Drawing.Color.DarkGray;
+            this.xrLabel14.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.xrLabel14.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid;
             this.xrLabel14.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
             | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrLabel14.BorderWidth = 1F;
+            this.xrLabel14.BorderWidth = 0.8F;
             this.xrLabel14.Dpi = 100F;
             this.xrLabel14.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrLabel14.ForeColor = System.Drawing.Color.Black;
@@ -443,7 +443,7 @@
             this.xrLabel8.Dpi = 100F;
             this.xrLabel8.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrLabel8.ForeColor = System.Drawing.Color.Black;
-            this.xrLabel8.LocationFloat = new DevExpress.Utils.PointFloat(35.00001F, 269.7917F);
+            this.xrLabel8.LocationFloat = new DevExpress.Utils.PointFloat(35.00001F, 270.7917F);
             this.xrLabel8.Name = "xrLabel8";
             this.xrLabel8.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 2, 0, 0, 100F);
             this.xrLabel8.SizeF = new System.Drawing.SizeF(132.5836F, 28.64581F);
@@ -471,7 +471,7 @@
             this.lblDebtValue.Dpi = 100F;
             this.lblDebtValue.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDebtValue.ForeColor = System.Drawing.Color.Black;
-            this.lblDebtValue.LocationFloat = new DevExpress.Utils.PointFloat(167.5836F, 269.7917F);
+            this.lblDebtValue.LocationFloat = new DevExpress.Utils.PointFloat(167.5836F, 270.7917F);
             this.lblDebtValue.Name = "lblDebtValue";
             this.lblDebtValue.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.lblDebtValue.SizeF = new System.Drawing.SizeF(135.1247F, 28.64581F);
@@ -514,12 +514,12 @@
             // xrLabel9
             // 
             this.xrLabel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(117)))), ((int)(((byte)(181)))));
-            this.xrLabel9.BorderColor = System.Drawing.Color.DarkGray;
+            this.xrLabel9.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.xrLabel9.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid;
             this.xrLabel9.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
             | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrLabel9.BorderWidth = 1F;
+            this.xrLabel9.BorderWidth = 0.8F;
             this.xrLabel9.Dpi = 100F;
             this.xrLabel9.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrLabel9.ForeColor = System.Drawing.Color.Black;
@@ -542,12 +542,12 @@
             // xrLabel11
             // 
             this.xrLabel11.BackColor = System.Drawing.Color.Transparent;
-            this.xrLabel11.BorderColor = System.Drawing.Color.DarkGray;
+            this.xrLabel11.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.xrLabel11.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid;
             this.xrLabel11.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
             | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrLabel11.BorderWidth = 1F;
+            this.xrLabel11.BorderWidth = 0.8F;
             this.xrLabel11.Dpi = 100F;
             this.xrLabel11.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrLabel11.ForeColor = System.Drawing.Color.Black;
@@ -570,12 +570,12 @@
             // xrLabel15
             // 
             this.xrLabel15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(117)))), ((int)(((byte)(181)))));
-            this.xrLabel15.BorderColor = System.Drawing.Color.DarkGray;
+            this.xrLabel15.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.xrLabel15.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid;
             this.xrLabel15.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
             | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrLabel15.BorderWidth = 1F;
+            this.xrLabel15.BorderWidth = 0.8F;
             this.xrLabel15.Dpi = 100F;
             this.xrLabel15.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrLabel15.ForeColor = System.Drawing.Color.Black;
@@ -598,16 +598,16 @@
             // lblDebtRatioWithUS
             // 
             this.lblDebtRatioWithUS.BackColor = System.Drawing.Color.Transparent;
-            this.lblDebtRatioWithUS.BorderColor = System.Drawing.Color.DarkGray;
+            this.lblDebtRatioWithUS.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.lblDebtRatioWithUS.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid;
             this.lblDebtRatioWithUS.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
             | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.lblDebtRatioWithUS.BorderWidth = 1F;
+            this.lblDebtRatioWithUS.BorderWidth = 0.8F;
             this.lblDebtRatioWithUS.Dpi = 100F;
             this.lblDebtRatioWithUS.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDebtRatioWithUS.ForeColor = System.Drawing.Color.Black;
-            this.lblDebtRatioWithUS.LocationFloat = new DevExpress.Utils.PointFloat(167.5836F, 650.2604F);
+            this.lblDebtRatioWithUS.LocationFloat = new DevExpress.Utils.PointFloat(167.5836F, 651.2604F);
             this.lblDebtRatioWithUS.Name = "lblDebtRatioWithUS";
             this.lblDebtRatioWithUS.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.lblDebtRatioWithUS.SizeF = new System.Drawing.SizeF(135.1247F, 28.64581F);
@@ -625,12 +625,12 @@
             // lblEquityRatioWithUS
             // 
             this.lblEquityRatioWithUS.BackColor = System.Drawing.Color.Transparent;
-            this.lblEquityRatioWithUS.BorderColor = System.Drawing.Color.DarkGray;
+            this.lblEquityRatioWithUS.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.lblEquityRatioWithUS.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid;
             this.lblEquityRatioWithUS.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
             | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.lblEquityRatioWithUS.BorderWidth = 1F;
+            this.lblEquityRatioWithUS.BorderWidth = 0.8F;
             this.lblEquityRatioWithUS.Dpi = 100F;
             this.lblEquityRatioWithUS.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEquityRatioWithUS.ForeColor = System.Drawing.Color.Black;
@@ -652,16 +652,16 @@
             // xrLabel18
             // 
             this.xrLabel18.BackColor = System.Drawing.Color.Transparent;
-            this.xrLabel18.BorderColor = System.Drawing.Color.DarkGray;
+            this.xrLabel18.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.xrLabel18.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid;
             this.xrLabel18.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
             | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrLabel18.BorderWidth = 1F;
+            this.xrLabel18.BorderWidth = 0.8F;
             this.xrLabel18.Dpi = 100F;
             this.xrLabel18.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrLabel18.ForeColor = System.Drawing.Color.Black;
-            this.xrLabel18.LocationFloat = new DevExpress.Utils.PointFloat(35.00004F, 650.2604F);
+            this.xrLabel18.LocationFloat = new DevExpress.Utils.PointFloat(35.00004F, 651.2604F);
             this.xrLabel18.Name = "xrLabel18";
             this.xrLabel18.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 2, 0, 0, 100F);
             this.xrLabel18.SizeF = new System.Drawing.SizeF(132.5836F, 28.64581F);
@@ -725,10 +725,10 @@
             this.lblClientName.Dpi = 100F;
             this.lblClientName.Font = new System.Drawing.Font("Cambria", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblClientName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(117)))), ((int)(((byte)(181)))));
-            this.lblClientName.LocationFloat = new DevExpress.Utils.PointFloat(9.999969F, 57.66668F);
+            this.lblClientName.LocationFloat = new DevExpress.Utils.PointFloat(9.999974F, 57.66668F);
             this.lblClientName.Name = "lblClientName";
             this.lblClientName.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.lblClientName.SizeF = new System.Drawing.SizeF(390.625F, 23F);
+            this.lblClientName.SizeF = new System.Drawing.SizeF(379.1667F, 23F);
             this.lblClientName.StylePriority.UseBorders = false;
             this.lblClientName.StylePriority.UseFont = false;
             this.lblClientName.StylePriority.UseForeColor = false;

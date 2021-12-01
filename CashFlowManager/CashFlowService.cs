@@ -438,6 +438,10 @@ namespace FinancialPlannerClient.CashFlowManager
                 double cumulativeCorpusFund = 0;
                 cumulativeCorpusFund = ((currentYearCorpusFund + previousYearCumulativeCorpusFund) > 0) ?
                 currentYearCorpusFund + previousYearCumulativeCorpusFund + ((previousYearCumulativeCorpusFund * returnRate) / (100)) : (currentYearCorpusFund + previousYearCumulativeCorpusFund);
+                if (cumulativeCorpusFund < 0)
+                {
+                    MessageBox.Show("Cumulative Corpus Fund is going nagative for the year (" + dr["StartYear"].ToString() + "). Please review goals once again (e.g Loan EMIs).","Review Goals",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                }
                 dr["Cumulative Corpus Fund"] = Math.Round(cumulativeCorpusFund, 2);
             }
         }

@@ -1,4 +1,5 @@
 ﻿using DevExpress.Utils;
+using DevExpress.XtraGrid.Views.Grid;
 using FinancialPlanner.Common;
 using FinancialPlanner.Common.Model.PlanOptions;
 using FinancialPlannerClient.CashFlowManager;
@@ -114,6 +115,17 @@ namespace FinancialPlannerClient.PlanOptions
                 double.TryParse(e.CellValue.ToString(), out surplusAmt);
                 if (surplusAmt < 0)
                     e.Appearance.ForeColor  = Color.DarkRed  ;
+            }
+            if (e.Column.ToString().Equals("Cumulative Corpus Fund"))
+            {
+                GridView view = sender as GridView;
+                double surplusAmt = 0;
+                double.TryParse(e.CellValue.ToString(), out surplusAmt);
+                if (surplusAmt < 0)
+                {
+                    e.Appearance.ForeColor = Color.Red;
+                    e.Appearance.BackColor = Color.DarkOrange;
+                }
             }
         }
     }

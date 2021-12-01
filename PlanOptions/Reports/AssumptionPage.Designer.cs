@@ -32,7 +32,7 @@
             this.Detail = new DevExpress.XtraReports.UI.DetailBand();
             this.xrTable1 = new DevExpress.XtraReports.UI.XRTable();
             this.xrTableRow1 = new DevExpress.XtraReports.UI.XRTableRow();
-            this.xrTableCell1 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.lblRetirementAge = new DevExpress.XtraReports.UI.XRTableCell();
             this.lblClientNameForRet = new DevExpress.XtraReports.UI.XRTableCell();
             this.lblClientRetAge = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableRow2 = new DevExpress.XtraReports.UI.XRTableRow();
@@ -56,21 +56,21 @@
             this.xrTableCell17 = new DevExpress.XtraReports.UI.XRTableCell();
             this.lblPostRetInfRate = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableRow7 = new DevExpress.XtraReports.UI.XRTableRow();
-            this.xrTableCell19 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell20 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.lblPostTaxTitle1 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.lblPostTaxEquity = new DevExpress.XtraReports.UI.XRTableCell();
             this.lblEquityReturn = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableRow8 = new DevExpress.XtraReports.UI.XRTableRow();
-            this.xrTableCell22 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell23 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.lblPostTaxTitle2 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.lblPostTaxDebt = new DevExpress.XtraReports.UI.XRTableCell();
             this.lblDebtReturn = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableRow9 = new DevExpress.XtraReports.UI.XRTableRow();
             this.xrTableCell25 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell26 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.lblPostTaxRealEstate = new DevExpress.XtraReports.UI.XRTableCell();
             this.lblRealEstateReturn = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableRow10 = new DevExpress.XtraReports.UI.XRTableRow();
             this.lblExpRaise = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableRow11 = new DevExpress.XtraReports.UI.XRTableRow();
-            this.xrTableCell31 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.lblAnnualRaiseIncome = new DevExpress.XtraReports.UI.XRTableCell();
             this.lblClientNameForIncome = new DevExpress.XtraReports.UI.XRTableCell();
             this.lblClientIncomeRaise = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableRow12 = new DevExpress.XtraReports.UI.XRTableRow();
@@ -138,21 +138,21 @@
             // xrTableRow1
             // 
             this.xrTableRow1.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
-            this.xrTableCell1,
+            this.lblRetirementAge,
             this.lblClientNameForRet,
             this.lblClientRetAge});
             this.xrTableRow1.Dpi = 100F;
             this.xrTableRow1.Name = "xrTableRow1";
             this.xrTableRow1.Weight = 1D;
             // 
-            // xrTableCell1
+            // lblRetirementAge
             // 
-            this.xrTableCell1.Dpi = 100F;
-            this.xrTableCell1.EditOptions.Enabled = true;
-            this.xrTableCell1.Multiline = true;
-            this.xrTableCell1.Name = "xrTableCell1";
-            this.xrTableCell1.Text = "1. Retirement age:";
-            this.xrTableCell1.Weight = 1D;
+            this.lblRetirementAge.Dpi = 100F;
+            this.lblRetirementAge.EditOptions.Enabled = true;
+            this.lblRetirementAge.Multiline = true;
+            this.lblRetirementAge.Name = "lblRetirementAge";
+            this.lblRetirementAge.Text = "1. Retirement age:";
+            this.lblRetirementAge.Weight = 1D;
             // 
             // lblClientNameForRet
             // 
@@ -325,28 +325,28 @@
             // xrTableRow7
             // 
             this.xrTableRow7.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
-            this.xrTableCell19,
-            this.xrTableCell20,
+            this.lblPostTaxTitle1,
+            this.lblPostTaxEquity,
             this.lblEquityReturn});
             this.xrTableRow7.Dpi = 100F;
             this.xrTableRow7.Name = "xrTableRow7";
             this.xrTableRow7.Weight = 1D;
             // 
-            // xrTableCell19
+            // lblPostTaxTitle1
             // 
-            this.xrTableCell19.Dpi = 100F;
-            this.xrTableCell19.EditOptions.Enabled = true;
-            this.xrTableCell19.Name = "xrTableCell19";
-            this.xrTableCell19.Text = "4. Post Tax";
-            this.xrTableCell19.Weight = 1D;
+            this.lblPostTaxTitle1.Dpi = 100F;
+            this.lblPostTaxTitle1.EditOptions.Enabled = true;
+            this.lblPostTaxTitle1.Name = "lblPostTaxTitle1";
+            this.lblPostTaxTitle1.Text = "4. Post Tax";
+            this.lblPostTaxTitle1.Weight = 1D;
             // 
-            // xrTableCell20
+            // lblPostTaxEquity
             // 
-            this.xrTableCell20.Dpi = 100F;
-            this.xrTableCell20.EditOptions.Enabled = true;
-            this.xrTableCell20.Name = "xrTableCell20";
-            this.xrTableCell20.Text = "Equity";
-            this.xrTableCell20.Weight = 1.5880217368972793D;
+            this.lblPostTaxEquity.Dpi = 100F;
+            this.lblPostTaxEquity.EditOptions.Enabled = true;
+            this.lblPostTaxEquity.Name = "lblPostTaxEquity";
+            this.lblPostTaxEquity.Text = "Equity";
+            this.lblPostTaxEquity.Weight = 1.5880217368972793D;
             // 
             // lblEquityReturn
             // 
@@ -357,28 +357,28 @@
             // xrTableRow8
             // 
             this.xrTableRow8.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
-            this.xrTableCell22,
-            this.xrTableCell23,
+            this.lblPostTaxTitle2,
+            this.lblPostTaxDebt,
             this.lblDebtReturn});
             this.xrTableRow8.Dpi = 100F;
             this.xrTableRow8.Name = "xrTableRow8";
             this.xrTableRow8.Weight = 1D;
             // 
-            // xrTableCell22
+            // lblPostTaxTitle2
             // 
-            this.xrTableCell22.Dpi = 100F;
-            this.xrTableCell22.EditOptions.Enabled = true;
-            this.xrTableCell22.Name = "xrTableCell22";
-            this.xrTableCell22.Text = "Rate of Return from";
-            this.xrTableCell22.Weight = 1D;
+            this.lblPostTaxTitle2.Dpi = 100F;
+            this.lblPostTaxTitle2.EditOptions.Enabled = true;
+            this.lblPostTaxTitle2.Name = "lblPostTaxTitle2";
+            this.lblPostTaxTitle2.Text = "Rate of Return from";
+            this.lblPostTaxTitle2.Weight = 1D;
             // 
-            // xrTableCell23
+            // lblPostTaxDebt
             // 
-            this.xrTableCell23.Dpi = 100F;
-            this.xrTableCell23.EditOptions.Enabled = true;
-            this.xrTableCell23.Name = "xrTableCell23";
-            this.xrTableCell23.Text = "Debt";
-            this.xrTableCell23.Weight = 1.5880217368972793D;
+            this.lblPostTaxDebt.Dpi = 100F;
+            this.lblPostTaxDebt.EditOptions.Enabled = true;
+            this.lblPostTaxDebt.Name = "lblPostTaxDebt";
+            this.lblPostTaxDebt.Text = "Debt";
+            this.lblPostTaxDebt.Weight = 1.5880217368972793D;
             // 
             // lblDebtReturn
             // 
@@ -390,7 +390,7 @@
             // 
             this.xrTableRow9.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
             this.xrTableCell25,
-            this.xrTableCell26,
+            this.lblPostTaxRealEstate,
             this.lblRealEstateReturn});
             this.xrTableRow9.Dpi = 100F;
             this.xrTableRow9.Name = "xrTableRow9";
@@ -402,13 +402,13 @@
             this.xrTableCell25.Name = "xrTableCell25";
             this.xrTableCell25.Weight = 1D;
             // 
-            // xrTableCell26
+            // lblPostTaxRealEstate
             // 
-            this.xrTableCell26.Dpi = 100F;
-            this.xrTableCell26.EditOptions.Enabled = true;
-            this.xrTableCell26.Name = "xrTableCell26";
-            this.xrTableCell26.Text = "Real Estate";
-            this.xrTableCell26.Weight = 1.5880217368972793D;
+            this.lblPostTaxRealEstate.Dpi = 100F;
+            this.lblPostTaxRealEstate.EditOptions.Enabled = true;
+            this.lblPostTaxRealEstate.Name = "lblPostTaxRealEstate";
+            this.lblPostTaxRealEstate.Text = "Real Estate";
+            this.lblPostTaxRealEstate.Weight = 1.5880217368972793D;
             // 
             // lblRealEstateReturn
             // 
@@ -435,20 +435,20 @@
             // xrTableRow11
             // 
             this.xrTableRow11.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
-            this.xrTableCell31,
+            this.lblAnnualRaiseIncome,
             this.lblClientNameForIncome,
             this.lblClientIncomeRaise});
             this.xrTableRow11.Dpi = 100F;
             this.xrTableRow11.Name = "xrTableRow11";
             this.xrTableRow11.Weight = 1D;
             // 
-            // xrTableCell31
+            // lblAnnualRaiseIncome
             // 
-            this.xrTableCell31.Dpi = 100F;
-            this.xrTableCell31.EditOptions.Enabled = true;
-            this.xrTableCell31.Name = "xrTableCell31";
-            this.xrTableCell31.Text = "6. Annual rise in income of:";
-            this.xrTableCell31.Weight = 1D;
+            this.lblAnnualRaiseIncome.Dpi = 100F;
+            this.lblAnnualRaiseIncome.EditOptions.Enabled = true;
+            this.lblAnnualRaiseIncome.Name = "lblAnnualRaiseIncome";
+            this.lblAnnualRaiseIncome.Text = "6. Annual rise in income of:";
+            this.lblAnnualRaiseIncome.Weight = 1D;
             // 
             // lblClientNameForIncome
             // 
@@ -517,6 +517,7 @@
             // xrLabel2
             // 
             this.xrLabel2.Dpi = 100F;
+            this.xrLabel2.EditOptions.Enabled = true;
             this.xrLabel2.Font = new System.Drawing.Font("Cambria", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrLabel2.LocationFloat = new DevExpress.Utils.PointFloat(10.00001F, 196.8334F);
             this.xrLabel2.Name = "xrLabel2";
@@ -573,7 +574,7 @@
             this.lblNote.Dpi = 100F;
             this.lblNote.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNote.ForeColor = System.Drawing.Color.Black;
-            this.lblNote.LocationFloat = new DevExpress.Utils.PointFloat(33.95827F, 643.625F);
+            this.lblNote.LocationFloat = new DevExpress.Utils.PointFloat(33.95808F, 608.2083F);
             this.lblNote.Name = "lblNote";
             this.lblNote.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 2, 0, 0, 100F);
             this.lblNote.SerializableRtfString = resources.GetString("lblNote.SerializableRtfString");
@@ -697,7 +698,7 @@
         private DevExpress.XtraReports.UI.XRLabel lblClientName;
         private DevExpress.XtraReports.UI.XRTable xrTable1;
         private DevExpress.XtraReports.UI.XRTableRow xrTableRow1;
-        private DevExpress.XtraReports.UI.XRTableCell xrTableCell1;
+        private DevExpress.XtraReports.UI.XRTableCell lblRetirementAge;
         private DevExpress.XtraReports.UI.XRTableCell lblClientNameForRet;
         private DevExpress.XtraReports.UI.XRTableCell lblClientRetAge;
         private DevExpress.XtraReports.UI.XRTableRow xrTableRow2;
@@ -721,21 +722,21 @@
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell17;
         private DevExpress.XtraReports.UI.XRTableCell lblPostRetInfRate;
         private DevExpress.XtraReports.UI.XRTableRow xrTableRow7;
-        private DevExpress.XtraReports.UI.XRTableCell xrTableCell19;
-        private DevExpress.XtraReports.UI.XRTableCell xrTableCell20;
+        private DevExpress.XtraReports.UI.XRTableCell lblPostTaxTitle1;
+        private DevExpress.XtraReports.UI.XRTableCell lblPostTaxEquity;
         private DevExpress.XtraReports.UI.XRTableCell lblEquityReturn;
         private DevExpress.XtraReports.UI.XRTableRow xrTableRow8;
-        private DevExpress.XtraReports.UI.XRTableCell xrTableCell22;
-        private DevExpress.XtraReports.UI.XRTableCell xrTableCell23;
+        private DevExpress.XtraReports.UI.XRTableCell lblPostTaxTitle2;
+        private DevExpress.XtraReports.UI.XRTableCell lblPostTaxDebt;
         private DevExpress.XtraReports.UI.XRTableCell lblDebtReturn;
         private DevExpress.XtraReports.UI.XRTableRow xrTableRow9;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell25;
-        private DevExpress.XtraReports.UI.XRTableCell xrTableCell26;
+        private DevExpress.XtraReports.UI.XRTableCell lblPostTaxRealEstate;
         private DevExpress.XtraReports.UI.XRTableCell lblRealEstateReturn;
         private DevExpress.XtraReports.UI.XRTableRow xrTableRow10;
         private DevExpress.XtraReports.UI.XRTableCell lblExpRaise;
         private DevExpress.XtraReports.UI.XRTableRow xrTableRow11;
-        private DevExpress.XtraReports.UI.XRTableCell xrTableCell31;
+        private DevExpress.XtraReports.UI.XRTableCell lblAnnualRaiseIncome;
         private DevExpress.XtraReports.UI.XRTableCell lblClientNameForIncome;
         private DevExpress.XtraReports.UI.XRTableCell lblClientIncomeRaise;
         private DevExpress.XtraReports.UI.XRTableRow xrTableRow12;

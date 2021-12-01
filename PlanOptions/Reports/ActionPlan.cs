@@ -26,6 +26,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             this.client = client;
             this.dataTable = dataTable;
             this.riskprofileId = riskProfileId;
+            lblClientName.Text = this.client.Name;
             lblPeriod.Text = planner.StartDate.ToShortDateString() + " - " + planner.EndDate.ToShortDateString();
             lblEquityRatioWithUS.Text = planner.EquityRatio.ToString() + "%";
             lblDebtRatioWithUS.Text = planner.DebtRatio.ToString() + "%";

@@ -45,7 +45,7 @@ namespace FinancialPlannerClient.PlanOptions
                 "315 - 316 Notus IT Park," + Environment.NewLine +
                 "Sarabhai Campus," + Environment.NewLine +
                 "Genda Circle, Vadodara, Gujarat 390 023." + Environment.NewLine +
-                "Mob.: 9512538387 / 9512538382" + Environment.NewLine + Environment.NewLine +
+                "Mob.: 9512538707 / 9512538382" + Environment.NewLine + Environment.NewLine +
 
                 "Tele.: 0265 2961205" + Environment.NewLine + Environment.NewLine +
                 "http://www.ascentsolutions.in";
@@ -72,7 +72,7 @@ namespace FinancialPlannerClient.PlanOptions
                 "315 - 316 Notus IT Park," + Environment.NewLine +
                 "Sarabhai Campus," + Environment.NewLine +
                 "Genda Circle, Vadodara, Gujarat 390 023." + Environment.NewLine +
-                "Mob.: 9512538387 / 9512538382" + Environment.NewLine + Environment.NewLine +
+                "Mob.: 9512538707 / 9512538382" + Environment.NewLine + Environment.NewLine +
 
                 "Tele.: 0265 2961205" + Environment.NewLine + Environment.NewLine +
                 "http://www.ascentsolutions.in";
@@ -96,7 +96,7 @@ namespace FinancialPlannerClient.PlanOptions
                 "315 - 316 Notus IT Park," + Environment.NewLine +
                 "Sarabhai Campus," + Environment.NewLine +
                 "Genda Circle, Vadodara, Gujarat 390 023." + Environment.NewLine +
-                "Mob.: 9512538387 / 9512538382" + Environment.NewLine + Environment.NewLine +
+                "Mob.: 9512538707 / 9512538382" + Environment.NewLine + Environment.NewLine +
 
                 "Tele.: 0265 2961205" + Environment.NewLine + Environment.NewLine +
                 "http://www.ascentsolutions.in";

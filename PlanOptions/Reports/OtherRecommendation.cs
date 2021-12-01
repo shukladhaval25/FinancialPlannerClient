@@ -136,6 +136,8 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             xrSubreportInsuranceRecommendation.HeightF = 0;
             xrSubreportPersonalAccident.TopF = xrSubreportInsuranceRecommendation.TopF;
             xrSubreportPersonalAccident.LeftF = xrSubreportInsuranceRecommendation.LeftF;
+            xrSubreportOthers.TopF = xrSubreportPersonalAccident.TopF + 180;
+            xrSubreportOthers.LeftF = xrSubreportPersonalAccident.LeftF;
         }
     }
 }

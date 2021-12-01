@@ -44,6 +44,10 @@
             this.picProcessing = new DevExpress.XtraEditors.PictureEdit();
             this.txtEstimatedIsurnceCoverage = new DevExpress.XtraEditors.TextEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.txtExistingInsuranceSumAssured = new DevExpress.XtraEditors.TextEdit();
+            this.btnExistingSumAssured = new DevExpress.XtraEditors.SimpleButton();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.gridInsuranceCoverage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewInsuranceCoverage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlFinancialAssert)).BeginInit();
@@ -52,6 +56,9 @@
             this.grpEstimatedInsCoverage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picProcessing.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEstimatedIsurnceCoverage.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
+            this.groupControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtExistingInsuranceSumAssured.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // lblContactTitle
@@ -239,11 +246,56 @@
             this.labelControl1.TabIndex = 2;
             this.labelControl1.Text = "Estimated Insurance Coverage Amount";
             // 
+            // groupControl1
+            // 
+            this.groupControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupControl1.Controls.Add(this.txtExistingInsuranceSumAssured);
+            this.groupControl1.Controls.Add(this.btnExistingSumAssured);
+            this.groupControl1.Controls.Add(this.labelControl2);
+            this.groupControl1.Location = new System.Drawing.Point(697, 138);
+            this.groupControl1.Name = "groupControl1";
+            this.groupControl1.Size = new System.Drawing.Size(252, 107);
+            this.groupControl1.TabIndex = 12;
+            this.groupControl1.Text = "Insurance";
+            this.groupControl1.Visible = false;
+            // 
+            // txtExistingInsuranceSumAssured
+            // 
+            this.txtExistingInsuranceSumAssured.EditValue = "";
+            this.txtExistingInsuranceSumAssured.Location = new System.Drawing.Point(14, 51);
+            this.txtExistingInsuranceSumAssured.Name = "txtExistingInsuranceSumAssured";
+            this.txtExistingInsuranceSumAssured.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtExistingInsuranceSumAssured.Properties.Appearance.Options.UseFont = true;
+            this.txtExistingInsuranceSumAssured.Properties.Appearance.Options.UseTextOptions = true;
+            this.txtExistingInsuranceSumAssured.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.txtExistingInsuranceSumAssured.Properties.ReadOnly = true;
+            this.txtExistingInsuranceSumAssured.Size = new System.Drawing.Size(221, 20);
+            this.txtExistingInsuranceSumAssured.TabIndex = 3;
+            // 
+            // btnExistingSumAssured
+            // 
+            this.btnExistingSumAssured.Location = new System.Drawing.Point(79, 77);
+            this.btnExistingSumAssured.Name = "btnExistingSumAssured";
+            this.btnExistingSumAssured.Size = new System.Drawing.Size(102, 23);
+            this.btnExistingSumAssured.TabIndex = 10;
+            this.btnExistingSumAssured.Text = "Save";
+            // 
+            // labelControl2
+            // 
+            this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl2.Appearance.Options.UseFont = true;
+            this.labelControl2.Location = new System.Drawing.Point(14, 32);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(224, 13);
+            this.labelControl2.TabIndex = 2;
+            this.labelControl2.Text = "Existing insurance sum assured amount";
+            // 
             // InsuranceCalculation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(961, 541);
+            this.Controls.Add(this.groupControl1);
             this.Controls.Add(this.grpEstimatedInsCoverage);
             this.Controls.Add(this.gridControlFinancialAssert);
             this.Controls.Add(this.gridInsuranceCoverage);
@@ -260,6 +312,10 @@
             this.grpEstimatedInsCoverage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picProcessing.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEstimatedIsurnceCoverage.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
+            this.groupControl1.ResumeLayout(false);
+            this.groupControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtExistingInsuranceSumAssured.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -282,6 +338,10 @@
         private DevExpress.XtraEditors.TextEdit txtEstimatedIsurnceCoverage;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.PictureEdit picProcessing;
+        private DevExpress.XtraEditors.GroupControl groupControl1;
+        private DevExpress.XtraEditors.TextEdit txtExistingInsuranceSumAssured;
+        private DevExpress.XtraEditors.SimpleButton btnExistingSumAssured;
+        private DevExpress.XtraEditors.LabelControl labelControl2;
     }
 }
 

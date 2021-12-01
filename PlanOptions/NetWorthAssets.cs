@@ -2,6 +2,7 @@
 using FinancialPlanner.Common.Model;
 using FinancialPlanner.Common.Model.CurrentStatus;
 using FinancialPlannerClient.CurrentStatus;
+using FinancialPlannerClient.PlannerInfo;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -175,7 +176,43 @@ namespace FinancialPlannerClient.PlanOptions
 
         private void displayTotalAmount(double totalEquityAmount, double totalDebtAmount, double totalGoldAmount)
         {
-            txtNetWorth.Text = (totalEquityAmount + totalDebtAmount + totalGoldAmount).ToString("#,###,##");
+            double totalCurrentStatusAmt = 0;
+            totalCurrentStatusAmt = (totalEquityAmount + totalDebtAmount + totalGoldAmount);
+
+            double totalMappedInstrumentAmount = 0;
+            IList<Goals> goals = new GoalsInfo().GetAll(this.planner.ID);
+            foreach (Goals goal in goals)
+            {
+                IList<CurrentStatusInstrument> currentStatusInstruments = new CurrentStatusInfo().GetMappedInstrument(this.planner.ID, goal.Id);
+                foreach (CurrentStatusInstrument currentStatusInstrument in currentStatusInstruments)
+                {
+                    if (currentStatusInstrument.GoalId == goal.Id)
+                    {
+                        totalMappedInstrumentAmount = totalMappedInstrumentAmount + currentStatusInstrument.Amount;
+                    }
+                }
+            }
+            totalCurrentStatusAmt = totalCurrentStatusAmt - totalMappedInstrumentAmount;
+
+            //Non Financial Assets
+            double nonFinancialAssetsTotal = 0;
+            NonFinancialAssetInfo nonFinancialAssetInfo = new NonFinancialAssetInfo();
+            List<NonFinancialAsset> lstNonFinancialAsset = (List<NonFinancialAsset>)nonFinancialAssetInfo.GetAll(this.planner.ID);
+            foreach (NonFinancialAsset nonFinancialAsset in lstNonFinancialAsset)
+            {
+                nonFinancialAssetsTotal = nonFinancialAssetsTotal + nonFinancialAsset.CurrentValue;
+            }
+
+            // Loans
+            double loansAmountTotal = 0;
+            LoanInfo loanInfo = new LoanInfo();
+            var loans = loanInfo.GetAll(this.planner.ID);
+            foreach(Loan loan in loans)
+            {
+                loansAmountTotal = loansAmountTotal + loan.OutstandingAmt;
+            }
+
+            txtNetWorth.Text = ((totalCurrentStatusAmt + nonFinancialAssetsTotal) - loansAmountTotal) .ToString("#,###,##");
         }
 
         private double getTotalGoldAmount()

@@ -99,7 +99,7 @@
             this.Detail.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
             this.xrPanel4});
             this.Detail.Dpi = 100F;
-            this.Detail.HeightF = 73.95834F;
+            this.Detail.HeightF = 78.125F;
             this.Detail.Name = "Detail";
             this.Detail.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.Detail.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
@@ -119,7 +119,7 @@
             this.xrPanel4.Dpi = 100F;
             this.xrPanel4.LocationFloat = new DevExpress.Utils.PointFloat(4.999987F, 0F);
             this.xrPanel4.Name = "xrPanel4";
-            this.xrPanel4.SizeF = new System.Drawing.SizeF(776F, 73.95834F);
+            this.xrPanel4.SizeF = new System.Drawing.SizeF(776F, 78.125F);
             this.xrPanel4.StylePriority.UseBorderColor = false;
             this.xrPanel4.StylePriority.UseBorders = false;
             this.xrPanel4.StylePriority.UseBorderWidth = false;
@@ -133,7 +133,7 @@
             this.xrTable1.BorderWidth = 1F;
             this.xrTable1.Dpi = 100F;
             this.xrTable1.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xrTable1.LocationFloat = new DevExpress.Utils.PointFloat(6.500109F, 37.5F);
+            this.xrTable1.LocationFloat = new DevExpress.Utils.PointFloat(6.500109F, 39.5F);
             this.xrTable1.Name = "xrTable1";
             this.xrTable1.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.xrTableRow1});
@@ -262,11 +262,10 @@
             // xrGroupTable
             // 
             this.xrGroupTable.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.xrGroupTable.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrGroupTable.BorderWidth = 0.8F;
+            this.xrGroupTable.Borders = DevExpress.XtraPrinting.BorderSide.None;
+            this.xrGroupTable.BorderWidth = 0F;
             this.xrGroupTable.Dpi = 100F;
-            this.xrGroupTable.LocationFloat = new DevExpress.Utils.PointFloat(6.500109F, 0F);
+            this.xrGroupTable.LocationFloat = new DevExpress.Utils.PointFloat(6.500109F, 1F);
             this.xrGroupTable.Name = "xrGroupTable";
             this.xrGroupTable.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.xrTableRow3});
@@ -292,9 +291,7 @@
             // xrTableCell2
             // 
             this.xrTableCell2.BorderColor = System.Drawing.Color.DarkGray;
-            this.xrTableCell2.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrTableCell2.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.xrTableCell2.BorderWidth = 1F;
             this.xrTableCell2.Dpi = 100F;
             this.xrTableCell2.Name = "xrTableCell2";
@@ -311,7 +308,7 @@
             this.xrTableCell3.StylePriority.UseBorderWidth = false;
             this.xrTableCell3.StylePriority.UseTextAlignment = false;
             this.xrTableCell3.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell3.Weight = 0.54073522725043843D;
+            this.xrTableCell3.Weight = 0.47210794070131967D;
             // 
             // xrTableCell9
             // 
@@ -319,21 +316,27 @@
             this.xrTableCell9.Name = "xrTableCell9";
             this.xrTableCell9.StylePriority.UseTextAlignment = false;
             this.xrTableCell9.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell9.Weight = 0.014749873975575735D;
+            this.xrTableCell9.Weight = 0.068627047861043039D;
             // 
             // xrGroupLabel
             // 
             this.xrGroupLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(255)))), ((int)(((byte)(230)))));
+            this.xrGroupLabel.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrGroupLabel.BorderWidth = 1F;
             this.xrGroupLabel.Dpi = 100F;
+            this.xrGroupLabel.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrGroupLabel.Multiline = true;
             this.xrGroupLabel.Name = "xrGroupLabel";
             this.xrGroupLabel.StyleName = "xrControlStyle1";
             this.xrGroupLabel.StylePriority.UseBackColor = false;
+            this.xrGroupLabel.StylePriority.UseBorders = false;
             this.xrGroupLabel.StylePriority.UseBorderWidth = false;
+            this.xrGroupLabel.StylePriority.UseFont = false;
             this.xrGroupLabel.StylePriority.UseTextAlignment = false;
             this.xrGroupLabel.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
-            this.xrGroupLabel.Weight = 1.9179990349733453D;
+            this.xrGroupLabel.Weight = 1.9327491476369967D;
             this.xrGroupLabel.XlsxFormatString = "#,##";
             this.xrGroupLabel.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.xrGroupLabel_BeforePrint);
             // 
@@ -345,21 +348,27 @@
             this.xrTableCell13.StylePriority.UseBorderWidth = false;
             this.xrTableCell13.StylePriority.UseTextAlignment = false;
             this.xrTableCell13.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell13.Weight = 0.70031152197939461D;
+            this.xrTableCell13.Weight = 0.70031129691397109D;
             // 
             // xrGroupLabel2
             // 
             this.xrGroupLabel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(255)))), ((int)(((byte)(230)))));
+            this.xrGroupLabel2.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrGroupLabel2.BorderWidth = 1F;
             this.xrGroupLabel2.Dpi = 100F;
+            this.xrGroupLabel2.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrGroupLabel2.Multiline = true;
             this.xrGroupLabel2.Name = "xrGroupLabel2";
             this.xrGroupLabel2.StylePriority.UseBackColor = false;
             this.xrGroupLabel2.StylePriority.UseBorderColor = false;
+            this.xrGroupLabel2.StylePriority.UseBorders = false;
             this.xrGroupLabel2.StylePriority.UseBorderWidth = false;
+            this.xrGroupLabel2.StylePriority.UseFont = false;
             this.xrGroupLabel2.StylePriority.UseTextAlignment = false;
             this.xrGroupLabel2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
-            this.xrGroupLabel2.Weight = 0.92555774613612651D;
+            this.xrGroupLabel2.Weight = 0.92555797120155D;
             this.xrGroupLabel2.XlsxFormatString = "#,##";
             // 
             // TopMargin
@@ -880,7 +889,6 @@
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell2;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell3;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell9;
-        private DevExpress.XtraReports.UI.XRTableCell xrTableCell13;
         private DevExpress.XtraReports.UI.XRTableCell xrGroupLabel2;
         private DevExpress.XtraReports.UI.XRTable xrTable1;
         private DevExpress.XtraReports.UI.XRTableRow xrTableRow1;
@@ -902,5 +910,6 @@
         public DevExpress.XtraReports.UI.XRTableCell lblRetirementFutureCost;
         private DevExpress.XtraReports.UI.XRTableCell xrGroupLabel;
         private DevExpress.XtraReports.UI.XRTableCell lblGoalCategory;
+        private DevExpress.XtraReports.UI.XRTableCell xrTableCell13;
     }
 }

@@ -30,14 +30,18 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Assumption));
-            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pnlAssumption = new System.Windows.Forms.Panel();
+            this.chkPostRetirementInvReturn = new DevExpress.XtraEditors.CheckEdit();
+            this.chkRegularOngoingExpRaise = new DevExpress.XtraEditors.CheckEdit();
+            this.chkPostTaxReturn = new DevExpress.XtraEditors.CheckEdit();
+            this.chkRateOfInflation = new DevExpress.XtraEditors.CheckEdit();
             this.txtPostRetirementInvestmentReturnRate = new DevExpress.XtraEditors.TextEdit();
             this.label24 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
@@ -90,6 +94,10 @@
             this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             this.groupBox1.SuspendLayout();
             this.pnlAssumption.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkPostRetirementInvReturn.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkRegularOngoingExpRaise.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkPostTaxReturn.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkRateOfInflation.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPostRetirementInvestmentReturnRate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtOngoingExpRise.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtOtherReturn.Properties)).BeginInit();
@@ -121,6 +129,10 @@
             // 
             // pnlAssumption
             // 
+            this.pnlAssumption.Controls.Add(this.chkPostRetirementInvReturn);
+            this.pnlAssumption.Controls.Add(this.chkRegularOngoingExpRaise);
+            this.pnlAssumption.Controls.Add(this.chkPostTaxReturn);
+            this.pnlAssumption.Controls.Add(this.chkRateOfInflation);
             this.pnlAssumption.Controls.Add(this.txtPostRetirementInvestmentReturnRate);
             this.pnlAssumption.Controls.Add(this.label24);
             this.pnlAssumption.Controls.Add(this.label25);
@@ -156,6 +168,46 @@
             this.pnlAssumption.Size = new System.Drawing.Size(724, 609);
             this.pnlAssumption.TabIndex = 0;
             // 
+            // chkPostRetirementInvReturn
+            // 
+            this.chkPostRetirementInvReturn.Location = new System.Drawing.Point(30, 469);
+            this.chkPostRetirementInvReturn.Name = "chkPostRetirementInvReturn";
+            this.chkPostRetirementInvReturn.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkPostRetirementInvReturn.Properties.Appearance.Options.UseFont = true;
+            this.chkPostRetirementInvReturn.Properties.Caption = "Post Retirement Investment Return";
+            this.chkPostRetirementInvReturn.Size = new System.Drawing.Size(17, 19);
+            this.chkPostRetirementInvReturn.TabIndex = 73;
+            // 
+            // chkRegularOngoingExpRaise
+            // 
+            this.chkRegularOngoingExpRaise.Location = new System.Drawing.Point(30, 443);
+            this.chkRegularOngoingExpRaise.Name = "chkRegularOngoingExpRaise";
+            this.chkRegularOngoingExpRaise.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkRegularOngoingExpRaise.Properties.Appearance.Options.UseFont = true;
+            this.chkRegularOngoingExpRaise.Properties.Caption = "Regular ongin expenses raise";
+            this.chkRegularOngoingExpRaise.Size = new System.Drawing.Size(17, 19);
+            this.chkRegularOngoingExpRaise.TabIndex = 72;
+            // 
+            // chkPostTaxReturn
+            // 
+            this.chkPostTaxReturn.Location = new System.Drawing.Point(30, 335);
+            this.chkPostTaxReturn.Name = "chkPostTaxReturn";
+            this.chkPostTaxReturn.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkPostTaxReturn.Properties.Appearance.Options.UseFont = true;
+            this.chkPostTaxReturn.Properties.Caption = "Post Tax Return";
+            this.chkPostTaxReturn.Size = new System.Drawing.Size(17, 19);
+            this.chkPostTaxReturn.TabIndex = 71;
+            // 
+            // chkRateOfInflation
+            // 
+            this.chkRateOfInflation.Location = new System.Drawing.Point(30, 258);
+            this.chkRateOfInflation.Name = "chkRateOfInflation";
+            this.chkRateOfInflation.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkRateOfInflation.Properties.Appearance.Options.UseFont = true;
+            this.chkRateOfInflation.Properties.Caption = "Rate of Inflation";
+            this.chkRateOfInflation.Size = new System.Drawing.Size(17, 19);
+            this.chkRateOfInflation.TabIndex = 70;
+            // 
             // txtPostRetirementInvestmentReturnRate
             // 
             this.txtPostRetirementInvestmentReturnRate.Location = new System.Drawing.Point(282, 472);
@@ -190,15 +242,15 @@
             this.btnAdd.Location = new System.Drawing.Point(262, 578);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(57, 23);
-            toolTipTitleItem3.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
-            toolTipTitleItem3.Appearance.Options.UseImage = true;
-            toolTipTitleItem3.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem3.Image")));
-            toolTipTitleItem3.Text = "New Client";
-            toolTipItem3.LeftIndent = 6;
-            toolTipItem3.Text = "To add new client inforamtion click here.";
-            superToolTip3.Items.Add(toolTipTitleItem3);
-            superToolTip3.Items.Add(toolTipItem3);
-            this.btnAdd.SuperTip = superToolTip3;
+            toolTipTitleItem1.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            toolTipTitleItem1.Appearance.Options.UseImage = true;
+            toolTipTitleItem1.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem1.Image")));
+            toolTipTitleItem1.Text = "New Client";
+            toolTipItem1.LeftIndent = 6;
+            toolTipItem1.Text = "To add new client inforamtion click here.";
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            superToolTip1.Items.Add(toolTipItem1);
+            this.btnAdd.SuperTip = superToolTip1;
             this.btnAdd.TabIndex = 66;
             this.btnAdd.Text = "&Add";
             this.btnAdd.ToolTip = "Add new client";
@@ -241,15 +293,15 @@
             this.btnSaveAssumption.Location = new System.Drawing.Point(325, 578);
             this.btnSaveAssumption.Name = "btnSaveAssumption";
             this.btnSaveAssumption.Size = new System.Drawing.Size(57, 23);
-            toolTipTitleItem4.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
-            toolTipTitleItem4.Appearance.Options.UseImage = true;
-            toolTipTitleItem4.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem4.Image")));
-            toolTipTitleItem4.Text = "Save";
-            toolTipItem4.LeftIndent = 6;
-            toolTipItem4.Text = "To save client contact infroamtion click here.";
-            superToolTip4.Items.Add(toolTipTitleItem4);
-            superToolTip4.Items.Add(toolTipItem4);
-            this.btnSaveAssumption.SuperTip = superToolTip4;
+            toolTipTitleItem2.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
+            toolTipTitleItem2.Appearance.Options.UseImage = true;
+            toolTipTitleItem2.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem2.Image")));
+            toolTipTitleItem2.Text = "Save";
+            toolTipItem2.LeftIndent = 6;
+            toolTipItem2.Text = "To save client contact infroamtion click here.";
+            superToolTip2.Items.Add(toolTipTitleItem2);
+            superToolTip2.Items.Add(toolTipItem2);
+            this.btnSaveAssumption.SuperTip = superToolTip2;
             this.btnSaveAssumption.TabIndex = 13;
             this.btnSaveAssumption.Text = "&Save";
             this.btnSaveAssumption.Click += new System.EventHandler(this.btnSaveAssumption_Click);
@@ -589,7 +641,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(53, 259);
+            this.label5.Location = new System.Drawing.Point(51, 259);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(108, 15);
             this.label5.TabIndex = 7;
@@ -684,6 +736,10 @@
             this.groupBox1.ResumeLayout(false);
             this.pnlAssumption.ResumeLayout(false);
             this.pnlAssumption.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkPostRetirementInvReturn.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkRegularOngoingExpRaise.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkPostTaxReturn.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkRateOfInflation.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPostRetirementInvestmentReturnRate.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtOngoingExpRise.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtOtherReturn.Properties)).EndInit();
@@ -760,6 +816,10 @@
         private DevExpress.XtraEditors.TextEdit txtPostRetirementInvestmentReturnRate;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label25;
+        private DevExpress.XtraEditors.CheckEdit chkPostRetirementInvReturn;
+        private DevExpress.XtraEditors.CheckEdit chkRegularOngoingExpRaise;
+        private DevExpress.XtraEditors.CheckEdit chkPostTaxReturn;
+        private DevExpress.XtraEditors.CheckEdit chkRateOfInflation;
     }
 }
 
