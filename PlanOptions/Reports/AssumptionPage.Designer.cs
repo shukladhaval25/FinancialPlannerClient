@@ -504,6 +504,7 @@
             // lblInsurance
             // 
             this.lblInsurance.Dpi = 100F;
+            this.lblInsurance.EditOptions.EditorName = "OnlyLetters";
             this.lblInsurance.EditOptions.Enabled = true;
             this.lblInsurance.Multiline = true;
             this.lblInsurance.Name = "lblInsurance";
@@ -538,6 +539,8 @@
             // xrLabel1
             // 
             this.xrLabel1.Dpi = 100F;
+            this.xrLabel1.EditOptions.EditorName = "OnlyLetters";
+            this.xrLabel1.EditOptions.Enabled = true;
             this.xrLabel1.Font = new System.Drawing.Font("Cambria", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(117)))), ((int)(((byte)(181)))));
             this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(10.00001F, 10.00001F);
@@ -646,6 +649,7 @@
             // 
             this.lblClientName.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.lblClientName.Dpi = 100F;
+            this.lblClientName.EditOptions.EditorName = "OnlyLetters";
             this.lblClientName.EditOptions.Enabled = true;
             this.lblClientName.Font = new System.Drawing.Font("Cambria", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblClientName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(117)))), ((int)(((byte)(181)))));

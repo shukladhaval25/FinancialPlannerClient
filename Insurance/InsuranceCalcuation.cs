@@ -1,12 +1,16 @@
-﻿using FinancialPlanner.Common.Model;
+﻿using FinancialPlanner.Common;
+using FinancialPlanner.Common.Model;
 using FinancialPlanner.Common.Model.CurrentStatus;
 using FinancialPlannerClient.CurrentStatus;
 using FinancialPlannerClient.PlannerInfo;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace FinancialPlannerClient.Insurance
 {
@@ -29,7 +33,7 @@ namespace FinancialPlannerClient.Insurance
             PlannerAssumptionInfo plannerAssumptionInfo = new PlannerAssumptionInfo();
             plannerAssumption = plannerAssumptionInfo.GetAll(this.planner.ID);
             clientCurrentAge = (planner.StartDate.Year - client.DOB.Year);
-            clientRetirementYear = planner.StartDate.Year +  (plannerAssumption.ClientRetirementAge - clientCurrentAge);
+            clientRetirementYear = planner.StartDate.Year + (plannerAssumption.ClientRetirementAge - clientCurrentAge);
         }
         private List<Expenses> GetExpenses()
         {
@@ -42,8 +46,8 @@ namespace FinancialPlannerClient.Insurance
         {
             List<Goals> goals = new List<Goals>();
             GoalsInfo goalsInfo = new GoalsInfo();
-            goals = (List<Goals>) goalsInfo.GetAll(this.planner.ID);
-            return goals;         
+            goals = (List<Goals>)goalsInfo.GetAll(this.planner.ID);
+            return goals;
         }
 
         private IList<LifeInsurance> GetInsurances()
@@ -58,7 +62,7 @@ namespace FinancialPlannerClient.Insurance
             return (List<Loan>)loanInfo.GetAll(this.planner.ID);
         }
 
-        private  void InsuranceCalculation_Load(object sender, EventArgs e)
+        private void InsuranceCalculation_Load(object sender, EventArgs e)
         {
             createTableStructureForInsuranceCoverageRequire();
             createInsuranceCoverateTable();
@@ -74,17 +78,36 @@ namespace FinancialPlannerClient.Insurance
             AddNonFinancialAssetIntoInsuranceCoverage();
             gridControlFinancialAssert.DataSource = dtFinancialAssets;
             txtExistingInsuranceSumAssured.Text = "0";
-
+            getExistingInsuranceInformation();
             displayEsitmatedInsuranceCoverageRequired();
         }
 
-        
+        private void getExistingInsuranceInformation()
+        {
+            ExistingInsuranceInfo existingInsuranceInfo = new ExistingInsuranceInfo();
+            ExistingInsurance existingInsurance = existingInsuranceInfo.GetAll(this.planner.ID);
+            if (existingInsurance != null)
+            {
+                txtExistingInsuranceSumAssured.Text = existingInsurance.ExistingSumAssuredAmount.ToString();
+            }
+            else
+            {
+                txtExistingInsuranceSumAssured.Text = "0";
+            }
+        }
+
         private async void displayEsitmatedInsuranceCoverageRequired()
         {
             InsuranceCoverageService insuranceCoverageService = new InsuranceCoverageService(client, planner);
             await Task.Run(() => insuranceCoverageService.CalculateInsuranceCoverNeed());
             picProcessing.Visible = false;
             txtEstimatedIsurnceCoverage.Text = Math.Round(insuranceCoverageService.GetEstimatedInsurnceAmount(), 2).ToString();
+            grpFinalEstimatedInsurace.Visible = true;
+            double estimatedInsuranceAmount;
+            double existingInsuranceCoverage = 0;
+            double.TryParse(txtEstimatedIsurnceCoverage.Text, out estimatedInsuranceAmount);
+            double.TryParse(txtExistingInsuranceSumAssured.Text, out existingInsuranceCoverage);
+            txtFinalInsuranceRequire.Text = (estimatedInsuranceAmount > existingInsuranceCoverage) ? (estimatedInsuranceAmount - existingInsuranceCoverage).ToString() : "0";
         }
 
         private void AddNonFinancialAssetIntoInsuranceCoverage()
@@ -110,9 +133,9 @@ namespace FinancialPlannerClient.Insurance
         {
             DataColumn dcYear = new DataColumn("Year", typeof(System.Int16));
             dtInsuranceCoverageRequire.Columns.Add(dcYear);
-            for(int year = clientCurrentAge; year <= clientRetirementYear;year++)
+            for (int year = clientCurrentAge; year <= clientRetirementYear; year++)
             {
-                DataRow dr =  dtInsuranceCoverageRequire.NewRow();
+                DataRow dr = dtInsuranceCoverageRequire.NewRow();
                 dr["Year"] = year;
                 dtInsuranceCoverageRequire.Rows.Add(dr);
             }
@@ -184,12 +207,12 @@ namespace FinancialPlannerClient.Insurance
         private void AddExpenesIntoInsuranceCoverage()
         {
             List<Expenses> expenses = GetExpenses().Where(x => x.EligibleForInsuranceCoverage).ToList();
-            foreach(Expenses exp in expenses)
+            foreach (Expenses exp in expenses)
             {
                 DataRow dataRow = dtInsuranceCoverage.NewRow();
                 dataRow["Category"] = "Expense";
                 dataRow["Content"] = exp.Item;
-                dataRow["Amount"] =  GetExpensesCoverage(exp); //Needs to be calculate
+                dataRow["Amount"] = GetExpensesCoverage(exp); //Needs to be calculate
                 dtInsuranceCoverage.Rows.Add(dataRow);
             }
         }
@@ -197,7 +220,7 @@ namespace FinancialPlannerClient.Insurance
         private double GetExpensesCoverage(Expenses exp)
         {
             Double currentAmount = (exp.OccuranceType == ExpenseType.Yearly) ? exp.Amount : (exp.Amount * 12);
-           
+
             int yearsDiff = (this.client.DOB.Year + plannerAssumption.ClientRetirementAge) - planner.StartDate.Year;
             double fvExp = futureValue(currentAmount, plannerAssumption.PreRetirementInflactionRate, yearsDiff);
             totalAmountRequireInFuture = totalAmountRequireInFuture + fvExp;
@@ -214,7 +237,7 @@ namespace FinancialPlannerClient.Insurance
             dtInsuranceCoverageRequire.Columns.Add(dcExp);
             dtInsuranceCoverageRequire.Columns.Add(dcExpInflationRate);
             int rowCount = 0;
-            foreach(DataRow dr in dtInsuranceCoverageRequire.Rows)
+            foreach (DataRow dr in dtInsuranceCoverageRequire.Rows)
             {
                 //exp.ExpStartYear;
                 //exp.ExpEndYear
@@ -264,8 +287,48 @@ namespace FinancialPlannerClient.Insurance
 
         private void btnShowCalculation_Click(object sender, EventArgs e)
         {
-            EstimatedInsuranceCoverageView estimatedInsuranceCoverageView = new EstimatedInsuranceCoverageView(this.client,this.planner);
+            EstimatedInsuranceCoverageView estimatedInsuranceCoverageView = new EstimatedInsuranceCoverageView(this.client, this.planner);
             estimatedInsuranceCoverageView.Show();
+        }
+
+        private void btnExistingSumAssured_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(txtExistingInsuranceSumAssured.Text))
+                {
+                    DevExpress.XtraEditors.XtraMessageBox.Show("Please enter valid existing insurance sum assured amount.", "Enter Data", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+                    return;
+                }
+
+                ExistingInsurance existingInsurance = new ExistingInsurance()
+                {
+                    PID = this.planner.ID,
+                    ExistingSumAssuredAmount = double.Parse(txtExistingInsuranceSumAssured.Text)
+                };
+
+                bool isSaved = new ExistingInsuranceInfo().Update(existingInsurance);
+                if (isSaved)
+                {
+                    DevExpress.XtraEditors.XtraMessageBox.Show("Record save successfully.", "Record Saved", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                DevExpress.XtraEditors.XtraMessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
+                LogDebug(currentMethodName.Name, ex);
+            }
+        }
+        private void LogDebug(string methodName, Exception ex)
+        {
+            DebuggerLogInfo debuggerInfo = new DebuggerLogInfo();
+            debuggerInfo.ClassName = this.GetType().Name;
+            debuggerInfo.Method = methodName;
+            debuggerInfo.ExceptionInfo = ex;
+            Logger.LogDebug(debuggerInfo);
         }
     }
 }

@@ -26,16 +26,30 @@ namespace FinancialPlannerClient.PlanOptions
         {
             PlannerAssumptionInfo plannerassumptionInfo = new PlannerAssumptionInfo();
             PlannerAssumption plannerAssumption = plannerassumptionInfo.GetAll(this.plannerId);
+
+            AssumptionConfig assumptionConfig = plannerassumptionInfo.GetAssumptionConfig(this.plannerId);
+
             lblClientRetAge.Text = string.Format("{0} Years", plannerAssumption.ClientRetirementAge);
             lblSpouseRetAge.Text = string.Format("{0} Years", plannerAssumption.SpouseRetirementAge);
             lblClientLifeExpVal.Text = string.Format("{0} Years", plannerAssumption.ClientLifeExpectancy);
             lblSpouseLifeExpVal.Text = string.Format("{0} Years", plannerAssumption.SpouseLifeExpectancy);
-            lblPreRetInfRate.Text = string.Format("{0} %", plannerAssumption.PreRetirementInflactionRate);
-            lblPostRetInfRate.Text = string.Format("{0} %", plannerAssumption.PostRetirementInflactionRate);
-            lblEquityReturn.Text = string.Format("{0} %", plannerAssumption.EquityReturnRate);
-            lblDebtReturn.Text = string.Format("{0} %", plannerAssumption.DebtReturnRate);
-            lblRealEstateReturn.Text = string.Format("{0} %", plannerAssumption.OtherReturnRate);
-            lblExpRaise.Text = string.Format(lblExpRaise.Text, plannerAssumption.OngoingExpRise);
+            if (assumptionConfig.RateOfInflation)
+            {
+                lblPreRetInfRate.Text = string.Format("{0} %", plannerAssumption.PreRetirementInflactionRate);
+                lblPostRetInfRate.Text = string.Format("{0} %", plannerAssumption.PostRetirementInflactionRate);
+            }
+            if (assumptionConfig.PostTaxRateOfReturn)
+            {
+                lblEquityReturn.Text = string.Format("{0} %", plannerAssumption.EquityReturnRate);
+                lblDebtReturn.Text = string.Format("{0} %", plannerAssumption.DebtReturnRate);
+                lblRealEstateReturn.Text = string.Format("{0} %", plannerAssumption.OtherReturnRate);
+            }
+
+            if (assumptionConfig.RegularOngoingExp)
+            {
+                lblExpRaise.Text = string.Format(lblExpRaise.Text, plannerAssumption.OngoingExpRise);
+            }
+
             lblClientIncomeRaise.Text = string.Format("{0} %", plannerAssumption.ClientIncomeRise);
             lblSpouseIncomeRaise.Text = string.Format("{0} %", plannerAssumption.SpouseIncomeRise );
 

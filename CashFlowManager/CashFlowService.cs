@@ -94,7 +94,7 @@ namespace FinancialPlannerClient.CashFlowManager
                 totalAccessCurrentStatusValue = totalCurrentStatusFund - (mappedValueFromCurrentStatusFundByManager + contingency);
             }
 
-            for (int rowIndex = 0; rowIndex <= _dtCashFlow.Rows.Count; rowIndex++)
+            for (int rowIndex = ((this._planner.StartDate.Year == this._planner.EndDate.Year) ? 1 : 0); rowIndex <= _dtCashFlow.Rows.Count; rowIndex++)
             {
                 double returnRate = 0;
                 if (_dtCashFlow.Rows.Count > 1)

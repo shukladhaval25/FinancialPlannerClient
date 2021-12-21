@@ -823,6 +823,7 @@ namespace FinancialPlannerClient.PlanOptions
                             if (int.Parse(income.StartYear) <= currentPlanner.StartDate.Year)
                             {
                                 income.Amount = futureValue(income.Amount, income.ExpectGrowthInPercentage, currentPlanner.StartDate.Year - int.Parse(income.StartYear));
+                                income.StartYear = currentPlanner.StartDate.Year.ToString();
                             }
                             incomeInfo.Add(income);
                         }

@@ -306,7 +306,7 @@ namespace FinancialPlannerClient.CashFlowManager
                         decimal period = 12 / (12 * (yearsForLoan > 0 ? yearsForLoan : 1));
                         dr[loan.TypeOfLoan] = (currentLoanYear < (totalNoOfYearsForLoan - 1)) ? loanAmt :
                             ((loanAmt) / (double)period);
-                        loanAmt = (currentLoanYear < totalNoOfYearsForLoan) ? loanAmt :
+                        loanAmt = (currentLoanYear < (totalNoOfYearsForLoan - 1)) ? loanAmt :
                             ((loanAmt) / (double)period);
                         totalLoans = totalLoans + loanAmt;
                     }

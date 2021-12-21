@@ -39,7 +39,6 @@
             this.progressBarRetGoalCompletion = new DevExpress.XtraEditors.ProgressBarControl();
             this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
             this.lblEstimatedCorpusFundValue = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             this.separatorControl1 = new DevExpress.XtraEditors.SeparatorControl();
             this.lblCorpFundAmt = new DevExpress.XtraEditors.LabelControl();
             this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
@@ -67,8 +66,10 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.lblSpouse = new DevExpress.XtraEditors.LabelControl();
             this.lblClient = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             this.btnExport = new DevExpress.XtraEditors.SimpleButton();
             this.picProcessing = new DevExpress.XtraEditors.PictureEdit();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.grdPostRetirementCashFlow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridSplitContainerViewCashFlow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
@@ -105,6 +106,7 @@
             // 
             this.groupControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupControl1.Controls.Add(this.simpleButton1);
             this.groupControl1.Controls.Add(this.lblInstrumentMappedValue);
             this.groupControl1.Controls.Add(this.labelControl16);
             this.groupControl1.Controls.Add(this.lblAssetMapping);
@@ -112,7 +114,6 @@
             this.groupControl1.Controls.Add(this.progressBarRetGoalCompletion);
             this.groupControl1.Controls.Add(this.labelControl13);
             this.groupControl1.Controls.Add(this.lblEstimatedCorpusFundValue);
-            this.groupControl1.Controls.Add(this.separatorControl1);
             this.groupControl1.Controls.Add(this.lblCorpFundAmt);
             this.groupControl1.Controls.Add(this.labelControl12);
             this.groupControl1.Controls.Add(this.lblCurrentStatusAmt);
@@ -140,6 +141,7 @@
             this.groupControl1.Controls.Add(this.lblSpouse);
             this.groupControl1.Controls.Add(this.lblClient);
             this.groupControl1.Controls.Add(this.labelControl10);
+            this.groupControl1.Controls.Add(this.separatorControl1);
             this.groupControl1.Location = new System.Drawing.Point(6, 7);
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Size = new System.Drawing.Size(940, 125);
@@ -219,24 +221,12 @@
             this.lblEstimatedCorpusFundValue.TabIndex = 28;
             this.lblEstimatedCorpusFundValue.Text = "0";
             // 
-            // labelControl10
-            // 
-            this.labelControl10.Appearance.Options.UseTextOptions = true;
-            this.labelControl10.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.labelControl10.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
-            this.labelControl10.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.labelControl10.Location = new System.Drawing.Point(758, 74);
-            this.labelControl10.Name = "labelControl10";
-            this.labelControl10.Size = new System.Drawing.Size(156, 26);
-            this.labelControl10.TabIndex = 27;
-            this.labelControl10.Text = "Estimated Require Corpus Fund";
-            // 
             // separatorControl1
             // 
             this.separatorControl1.AutoSizeMode = true;
             this.separatorControl1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.separatorControl1.LineOrientation = System.Windows.Forms.Orientation.Vertical;
-            this.separatorControl1.Location = new System.Drawing.Point(738, 22);
+            this.separatorControl1.Location = new System.Drawing.Point(739, 22);
             this.separatorControl1.Name = "separatorControl1";
             this.separatorControl1.Size = new System.Drawing.Size(20, 99);
             this.separatorControl1.TabIndex = 26;
@@ -472,6 +462,18 @@
             this.lblClient.TabIndex = 0;
             this.lblClient.Text = "Client Details";
             // 
+            // labelControl10
+            // 
+            this.labelControl10.Appearance.Options.UseTextOptions = true;
+            this.labelControl10.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.labelControl10.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
+            this.labelControl10.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.labelControl10.Location = new System.Drawing.Point(758, 74);
+            this.labelControl10.Name = "labelControl10";
+            this.labelControl10.Size = new System.Drawing.Size(156, 26);
+            this.labelControl10.TabIndex = 27;
+            this.labelControl10.Text = "Estimated Require Corpus Fund";
+            // 
             // btnExport
             // 
             this.btnExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -499,6 +501,18 @@
             this.picProcessing.Properties.ZoomAccelerationFactor = 1D;
             this.picProcessing.Size = new System.Drawing.Size(0, 122);
             this.picProcessing.TabIndex = 27;
+            // 
+            // simpleButton1
+            // 
+            this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButton1.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.Image")));
+            this.simpleButton1.Location = new System.Drawing.Point(909, 23);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(23, 23);
+            this.simpleButton1.TabIndex = 35;
+            this.simpleButton1.Text = "Export To Excel";
+            this.simpleButton1.ToolTip = "Export to excel";
+            this.simpleButton1.ToolTipTitle = "Export";
             // 
             // PostRetirementCashFlow
             // 
@@ -567,6 +581,7 @@
         private DevExpress.XtraEditors.LabelControl labelControl15;
         private DevExpress.XtraEditors.LabelControl lblInstrumentMappedValue;
         private DevExpress.XtraEditors.LabelControl labelControl16;
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
     }
 }
 

@@ -100,6 +100,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                             dr["StartYear"] = _dtGoals.Rows[i]["StartYear"];
                             dr["EndYear"] = endYear;
                             dr["Priority"] = _dtGoals.Rows[i]["Priority"];
+                            dr["PriorityDisplay"] = (recurrence > 1)? _dtGoals.Rows[i]["Priority"].ToString() + " - " + (int.Parse(_dtGoals.Rows[i]["Priority"].ToString()) + recurrence - 1): _dtGoals.Rows[i]["Priority"];
                             dr["Recurrence"] = recurrence;  //_dtGoals.Rows[i]["Recurrence"];
                             dr["InflationRate"] = _dtGoals.Rows[i]["InflationRate"];
                             dtGroupOfGoals.Rows.Add(dr);
@@ -108,15 +109,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                 }
             }
             _dtGoals.Clear();
-            //for (int i = _dtGoals.Rows.Count-1; i > 0; i--)
-            //{
-            //    int recurrenceValue =0;
-            //    if (int.TryParse(_dtGoals.Rows[i]["Recurrence"].ToString(),out recurrenceValue )  &&  recurrenceValue >= 1)
-            //    {
-            //        _dtGoals.Rows.RemoveAt(i);
-            //    }
-            //}
-
+           
             foreach(DataRow dataRow in dtGroupOfGoals.Rows)
             {
                 DataRow dr =  _dtGoals.NewRow();
@@ -127,6 +120,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                 dr["StartYear"] = dataRow["StartYear"];
                 dr["EndYear"] = dataRow["EndYear"];
                 dr["Priority"] = dataRow["Priority"];
+                dr["PriorityDisplay"] = dataRow["PriorityDisplay"];
                 dr["Recurrence"] = dataRow["Recurrence"];
                 dr["InflationRate"] = dataRow["InflationRate"];
                 _dtGoals.Rows.Add(dr);
@@ -310,7 +304,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             dummyGoal.Priority = maxGoalPriority;
             lstGoal.Add(dummyGoal);
             _dtGoals = ListtoDataTable.ToDataTable(lstGoal);
-
+            _dtGoals.Columns.Add("PriorityDisplay");
             addFutureValueIntoDataTable();
 
             groupTogetherRecurrenceGoal();
@@ -332,7 +326,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             this.lblEndYear.DataBindings.Add("Text", this.DataSource, "Goals.EndYear");
             this.lblInflation.DataBindings.Add("Text", this.DataSource, "Goals.InflationRate");
             this.lblPresentCost.DataBindings.Add("Text", this.DataSource, "Goals.Amount");
-            this.lblPriority.DataBindings.Add("Text", this.DataSource, "Goals.Priority");
+            this.lblPriority.DataBindings.Add("Text", this.DataSource, "Goals.PriorityDisplay");
             this.lblFutureCost.DataBindings.Add("Text", this.DataSource, "Goals.FutureValue");
             this.lblRecurrence.DataBindings.Add("Text", this.DataSource, "Goals.Recurrence");
             this.lblGoalCategory.DataBindings.Add("Text", this.DataSource, "Goals.Category");

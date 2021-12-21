@@ -307,6 +307,7 @@
     <Compile Include="Insurance\EstimatedInsuranceCoverageView.Designer.cs">
       <DependentUpon>EstimatedInsuranceCoverageView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Insurance\ExistingInsuranceInfo.cs" />
     <Compile Include="Insurance\InsuranceCalcuation.cs">
       <SubType>Form</SubType>
     </Compile>
