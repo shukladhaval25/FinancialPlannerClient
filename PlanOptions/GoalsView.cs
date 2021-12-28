@@ -14,15 +14,20 @@ namespace FinancialPlannerClient.PlanOptions
         private DataTable _dtGoals;
         private const string RETIREMENT_GOAL_TYPE = "Retirement";
         int planId;
+        Planner planner;
         Client client;
         private PlannerAssumption plannerAssumption;
         private PersonalInformation _personalInfo;
 
-        public GoalsView(int planId, Client client)
+        public GoalsView(Planner planner, Client client)
         {
             InitializeComponent();
-            this.planId = planId;
+            this.planner = planner;
+            this.planId = planner.ID;
             this.client = client;
+            btnAdd.Visible = !this.planner.IsPlanLocked;
+            btnDelete.Visible = !this.planner.IsPlanLocked;
+            btnSaveClientGoal.Visible = !this.planner.IsPlanLocked;
         }
 
         private void chkLaonForGoal_CheckedChanged(object sender, EventArgs e)
@@ -605,6 +610,11 @@ namespace FinancialPlannerClient.PlanOptions
                 txtLoanForGoalAmount.Text = futureLoanAmount.ToString();
             }
 
+        }
+
+        private void gridViewGoals_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            btnEdit_Click(sender, e);
         }
     }
 

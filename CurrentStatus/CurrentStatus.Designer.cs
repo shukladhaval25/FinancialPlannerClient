@@ -46,6 +46,7 @@
             this.btnAddLifeInsurance = new System.Windows.Forms.Button();
             this.btnEditLifeInsurance = new System.Windows.Forms.Button();
             this.pnlLifeInsuranceDetail = new System.Windows.Forms.Panel();
+            this.chkLICSetReminderForPremium = new System.Windows.Forms.CheckBox();
             this.dtLastPremiumPaymentDate = new System.Windows.Forms.DateTimePicker();
             this.label205 = new System.Windows.Forms.Label();
             this.dtAsOnDate = new System.Windows.Forms.DateTimePicker();
@@ -124,6 +125,7 @@
             this.btnGenInsAdd = new System.Windows.Forms.Button();
             this.btnGenInsEdit = new System.Windows.Forms.Button();
             this.grpGeneralInsurance = new System.Windows.Forms.GroupBox();
+            this.chkGISetReminderForPremium = new System.Windows.Forms.CheckBox();
             this.cmbGenInsType = new System.Windows.Forms.ComboBox();
             this.label46 = new System.Windows.Forms.Label();
             this.label43 = new System.Windows.Forms.Label();
@@ -584,8 +586,6 @@
             this.btnOthersDelete = new System.Windows.Forms.Button();
             this.btnOthersAdd = new System.Windows.Forms.Button();
             this.btnOthersEdit = new System.Windows.Forms.Button();
-            this.chkLICSetReminderForPremium = new System.Windows.Forms.CheckBox();
-            this.chkGISetReminderForPremium = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.tabCurrenStatus.SuspendLayout();
             this.LifeInsurance.SuspendLayout();
@@ -680,6 +680,7 @@
             this.btnViewStatus.TabIndex = 4;
             this.btnViewStatus.Text = "View Information";
             this.btnViewStatus.UseVisualStyleBackColor = true;
+            this.btnViewStatus.Visible = false;
             // 
             // cmbPlan
             // 
@@ -689,6 +690,7 @@
             this.cmbPlan.Name = "cmbPlan";
             this.cmbPlan.Size = new System.Drawing.Size(279, 21);
             this.cmbPlan.TabIndex = 3;
+            this.cmbPlan.Visible = false;
             this.cmbPlan.SelectedValueChanged += new System.EventHandler(this.cmbPlan_SelectedValueChanged);
             // 
             // label3
@@ -699,6 +701,7 @@
             this.label3.Size = new System.Drawing.Size(52, 13);
             this.label3.TabIndex = 2;
             this.label3.Text = "Plan Info:";
+            this.label3.Visible = false;
             // 
             // lblclientNameVal
             // 
@@ -747,7 +750,7 @@
             this.tabCurrenStatus.Location = new System.Drawing.Point(13, 77);
             this.tabCurrenStatus.Name = "tabCurrenStatus";
             this.tabCurrenStatus.SelectedIndex = 0;
-            this.tabCurrenStatus.Size = new System.Drawing.Size(1329, 575);
+            this.tabCurrenStatus.Size = new System.Drawing.Size(1090, 575);
             this.tabCurrenStatus.TabIndex = 1;
             this.tabCurrenStatus.SelectedIndexChanged += new System.EventHandler(this.tabCurrenStatus_SelectedIndexChanged);
             // 
@@ -758,7 +761,7 @@
             this.LifeInsurance.Location = new System.Drawing.Point(4, 24);
             this.LifeInsurance.Name = "LifeInsurance";
             this.LifeInsurance.Padding = new System.Windows.Forms.Padding(3);
-            this.LifeInsurance.Size = new System.Drawing.Size(1321, 547);
+            this.LifeInsurance.Size = new System.Drawing.Size(1082, 547);
             this.LifeInsurance.TabIndex = 0;
             this.LifeInsurance.Text = "Life Insurance";
             this.LifeInsurance.UseVisualStyleBackColor = true;
@@ -777,8 +780,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.pnlLifeInsuranceDetail);
-            this.splitContainer1.Size = new System.Drawing.Size(1315, 541);
-            this.splitContainer1.SplitterDistance = 276;
+            this.splitContainer1.Size = new System.Drawing.Size(1076, 541);
+            this.splitContainer1.SplitterDistance = 225;
             this.splitContainer1.TabIndex = 9;
             // 
             // dtGridLifeInsurance
@@ -791,7 +794,7 @@
             this.dtGridLifeInsurance.Name = "dtGridLifeInsurance";
             this.dtGridLifeInsurance.ReadOnly = true;
             this.dtGridLifeInsurance.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtGridLifeInsurance.Size = new System.Drawing.Size(263, 498);
+            this.dtGridLifeInsurance.Size = new System.Drawing.Size(212, 498);
             this.dtGridLifeInsurance.TabIndex = 0;
             this.dtGridLifeInsurance.SelectionChanged += new System.EventHandler(this.dtGridLifeInsurance_SelectionChanged);
             // 
@@ -801,7 +804,7 @@
             this.grpActionControls.Controls.Add(this.btnDeleteLifeInsurance);
             this.grpActionControls.Controls.Add(this.btnAddLifeInsurance);
             this.grpActionControls.Controls.Add(this.btnEditLifeInsurance);
-            this.grpActionControls.Location = new System.Drawing.Point(156, 497);
+            this.grpActionControls.Location = new System.Drawing.Point(105, 497);
             this.grpActionControls.Name = "grpActionControls";
             this.grpActionControls.Size = new System.Drawing.Size(111, 38);
             this.grpActionControls.TabIndex = 8;
@@ -936,8 +939,18 @@
             this.pnlLifeInsuranceDetail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnlLifeInsuranceDetail.Location = new System.Drawing.Point(0, 0);
             this.pnlLifeInsuranceDetail.Name = "pnlLifeInsuranceDetail";
-            this.pnlLifeInsuranceDetail.Size = new System.Drawing.Size(1035, 541);
+            this.pnlLifeInsuranceDetail.Size = new System.Drawing.Size(847, 541);
             this.pnlLifeInsuranceDetail.TabIndex = 1;
+            // 
+            // chkLICSetReminderForPremium
+            // 
+            this.chkLICSetReminderForPremium.AutoSize = true;
+            this.chkLICSetReminderForPremium.Location = new System.Drawing.Point(554, 319);
+            this.chkLICSetReminderForPremium.Name = "chkLICSetReminderForPremium";
+            this.chkLICSetReminderForPremium.Size = new System.Drawing.Size(156, 19);
+            this.chkLICSetReminderForPremium.TabIndex = 72;
+            this.chkLICSetReminderForPremium.Text = "Set Reminder Premium";
+            this.chkLICSetReminderForPremium.UseVisualStyleBackColor = true;
             // 
             // dtLastPremiumPaymentDate
             // 
@@ -1022,7 +1035,7 @@
             this.btnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCancel.ImageKey = "icons8-cancel-16.png";
             this.btnCancel.ImageList = this.imgCollection;
-            this.btnCancel.Location = new System.Drawing.Point(451, 441);
+            this.btnCancel.Location = new System.Drawing.Point(263, 441);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(86, 26);
             this.btnCancel.TabIndex = 63;
@@ -1036,7 +1049,7 @@
             this.btnPersonalDetailSave.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnPersonalDetailSave.ImageKey = "icons8-save-close-16.png";
             this.btnPersonalDetailSave.ImageList = this.imgCollection;
-            this.btnPersonalDetailSave.Location = new System.Drawing.Point(359, 441);
+            this.btnPersonalDetailSave.Location = new System.Drawing.Point(171, 441);
             this.btnPersonalDetailSave.Name = "btnPersonalDetailSave";
             this.btnPersonalDetailSave.Size = new System.Drawing.Size(86, 26);
             this.btnPersonalDetailSave.TabIndex = 62;
@@ -1607,18 +1620,17 @@
             this.GeneralInsurance.Location = new System.Drawing.Point(4, 24);
             this.GeneralInsurance.Name = "GeneralInsurance";
             this.GeneralInsurance.Padding = new System.Windows.Forms.Padding(3);
-            this.GeneralInsurance.Size = new System.Drawing.Size(1321, 547);
+            this.GeneralInsurance.Size = new System.Drawing.Size(1082, 547);
             this.GeneralInsurance.TabIndex = 1;
             this.GeneralInsurance.Text = "General Insurance";
             this.GeneralInsurance.UseVisualStyleBackColor = true;
             // 
             // grpGenIsuranceControl
             // 
-            this.grpGenIsuranceControl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.grpGenIsuranceControl.Controls.Add(this.btnGenInsDelete);
             this.grpGenIsuranceControl.Controls.Add(this.btnGenInsAdd);
             this.grpGenIsuranceControl.Controls.Add(this.btnGenInsEdit);
-            this.grpGenIsuranceControl.Location = new System.Drawing.Point(1196, 215);
+            this.grpGenIsuranceControl.Location = new System.Drawing.Point(817, 215);
             this.grpGenIsuranceControl.Name = "grpGenIsuranceControl";
             this.grpGenIsuranceControl.Size = new System.Drawing.Size(111, 38);
             this.grpGenIsuranceControl.TabIndex = 11;
@@ -1694,10 +1706,20 @@
             this.grpGeneralInsurance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpGeneralInsurance.Location = new System.Drawing.Point(6, 255);
             this.grpGeneralInsurance.Name = "grpGeneralInsurance";
-            this.grpGeneralInsurance.Size = new System.Drawing.Size(1317, 293);
+            this.grpGeneralInsurance.Size = new System.Drawing.Size(922, 293);
             this.grpGeneralInsurance.TabIndex = 10;
             this.grpGeneralInsurance.TabStop = false;
             this.grpGeneralInsurance.Text = "General Insurance";
+            // 
+            // chkGISetReminderForPremium
+            // 
+            this.chkGISetReminderForPremium.AutoSize = true;
+            this.chkGISetReminderForPremium.Location = new System.Drawing.Point(477, 206);
+            this.chkGISetReminderForPremium.Name = "chkGISetReminderForPremium";
+            this.chkGISetReminderForPremium.Size = new System.Drawing.Size(165, 20);
+            this.chkGISetReminderForPremium.TabIndex = 73;
+            this.chkGISetReminderForPremium.Text = "Set Reminder Premium";
+            this.chkGISetReminderForPremium.UseVisualStyleBackColor = true;
             // 
             // cmbGenInsType
             // 
@@ -1942,14 +1964,12 @@
             // 
             // dtGridGeneralInsurance
             // 
-            this.dtGridGeneralInsurance.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.dtGridGeneralInsurance.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGridGeneralInsurance.Location = new System.Drawing.Point(6, 46);
             this.dtGridGeneralInsurance.Name = "dtGridGeneralInsurance";
             this.dtGridGeneralInsurance.ReadOnly = true;
             this.dtGridGeneralInsurance.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtGridGeneralInsurance.Size = new System.Drawing.Size(1301, 163);
+            this.dtGridGeneralInsurance.Size = new System.Drawing.Size(922, 163);
             this.dtGridGeneralInsurance.TabIndex = 9;
             this.dtGridGeneralInsurance.SelectionChanged += new System.EventHandler(this.dtGridGeneralInsurance_SelectionChanged);
             // 
@@ -1974,7 +1994,7 @@
             this.MutualFund.Location = new System.Drawing.Point(4, 24);
             this.MutualFund.Name = "MutualFund";
             this.MutualFund.Padding = new System.Windows.Forms.Padding(3);
-            this.MutualFund.Size = new System.Drawing.Size(1321, 547);
+            this.MutualFund.Size = new System.Drawing.Size(1082, 547);
             this.MutualFund.TabIndex = 2;
             this.MutualFund.Text = "MF";
             this.MutualFund.ToolTipText = "Mutual Fund";
@@ -2027,7 +2047,7 @@
             this.grpMF.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpMF.Location = new System.Drawing.Point(3, 249);
             this.grpMF.Name = "grpMF";
-            this.grpMF.Size = new System.Drawing.Size(1301, 293);
+            this.grpMF.Size = new System.Drawing.Size(1062, 293);
             this.grpMF.TabIndex = 15;
             this.grpMF.TabStop = false;
             this.grpMF.Text = "Mutual Fund Details";
@@ -2398,14 +2418,12 @@
             // 
             // dtGridMF
             // 
-            this.dtGridMF.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.dtGridMF.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGridMF.Location = new System.Drawing.Point(14, 40);
             this.dtGridMF.Name = "dtGridMF";
             this.dtGridMF.ReadOnly = true;
             this.dtGridMF.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtGridMF.Size = new System.Drawing.Size(1290, 163);
+            this.dtGridMF.Size = new System.Drawing.Size(963, 163);
             this.dtGridMF.TabIndex = 13;
             this.dtGridMF.SelectionChanged += new System.EventHandler(this.dtGridMF_SelectionChanged);
             // 
@@ -2422,11 +2440,10 @@
             // 
             // grpMFControls
             // 
-            this.grpMFControls.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.grpMFControls.Controls.Add(this.btnDeleteMF);
             this.grpMFControls.Controls.Add(this.btnAddMF);
             this.grpMFControls.Controls.Add(this.btnEditMF);
-            this.grpMFControls.Location = new System.Drawing.Point(1193, 209);
+            this.grpMFControls.Location = new System.Drawing.Point(866, 209);
             this.grpMFControls.Name = "grpMFControls";
             this.grpMFControls.Size = new System.Drawing.Size(111, 38);
             this.grpMFControls.TabIndex = 14;
@@ -2473,7 +2490,7 @@
             this.NPS.Controls.Add(this.grpNPSControls);
             this.NPS.Location = new System.Drawing.Point(4, 24);
             this.NPS.Name = "NPS";
-            this.NPS.Size = new System.Drawing.Size(1321, 547);
+            this.NPS.Size = new System.Drawing.Size(1082, 547);
             this.NPS.TabIndex = 3;
             this.NPS.Text = "NPS";
             this.NPS.UseVisualStyleBackColor = true;
@@ -2510,9 +2527,9 @@
             this.grpNPS.Controls.Add(this.label75);
             this.grpNPS.Enabled = false;
             this.grpNPS.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grpNPS.Location = new System.Drawing.Point(2, 248);
+            this.grpNPS.Location = new System.Drawing.Point(3, 248);
             this.grpNPS.Name = "grpNPS";
-            this.grpNPS.Size = new System.Drawing.Size(1317, 293);
+            this.grpNPS.Size = new System.Drawing.Size(1068, 293);
             this.grpNPS.TabIndex = 19;
             this.grpNPS.TabStop = false;
             this.grpNPS.Text = "NPS";
@@ -2764,14 +2781,12 @@
             // 
             // dtGridNPS
             // 
-            this.dtGridNPS.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.dtGridNPS.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGridNPS.Location = new System.Drawing.Point(2, 39);
             this.dtGridNPS.Name = "dtGridNPS";
             this.dtGridNPS.ReadOnly = true;
             this.dtGridNPS.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtGridNPS.Size = new System.Drawing.Size(1301, 163);
+            this.dtGridNPS.Size = new System.Drawing.Size(1069, 163);
             this.dtGridNPS.TabIndex = 17;
             this.dtGridNPS.SelectionChanged += new System.EventHandler(this.dtGridNPS_SelectionChanged);
             // 
@@ -2788,11 +2803,10 @@
             // 
             // grpNPSControls
             // 
-            this.grpNPSControls.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.grpNPSControls.Controls.Add(this.btnDeleteNPS);
             this.grpNPSControls.Controls.Add(this.btnAddNPS);
             this.grpNPSControls.Controls.Add(this.btnEditNPS);
-            this.grpNPSControls.Location = new System.Drawing.Point(1192, 208);
+            this.grpNPSControls.Location = new System.Drawing.Point(960, 208);
             this.grpNPSControls.Name = "grpNPSControls";
             this.grpNPSControls.Size = new System.Drawing.Size(111, 38);
             this.grpNPSControls.TabIndex = 18;
@@ -2839,7 +2853,7 @@
             this.Shares.Controls.Add(this.grpSharesControl);
             this.Shares.Location = new System.Drawing.Point(4, 24);
             this.Shares.Name = "Shares";
-            this.Shares.Size = new System.Drawing.Size(1321, 547);
+            this.Shares.Size = new System.Drawing.Size(1082, 547);
             this.Shares.TabIndex = 4;
             this.Shares.Text = "Shares";
             this.Shares.UseVisualStyleBackColor = true;
@@ -2876,7 +2890,7 @@
             this.grpShares.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpShares.Location = new System.Drawing.Point(2, 246);
             this.grpShares.Name = "grpShares";
-            this.grpShares.Size = new System.Drawing.Size(1317, 293);
+            this.grpShares.Size = new System.Drawing.Size(1000, 293);
             this.grpShares.TabIndex = 23;
             this.grpShares.TabStop = false;
             this.grpShares.Text = "Shares";
@@ -3101,14 +3115,12 @@
             // 
             // dtGridShares
             // 
-            this.dtGridShares.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.dtGridShares.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGridShares.Location = new System.Drawing.Point(14, 37);
             this.dtGridShares.Name = "dtGridShares";
             this.dtGridShares.ReadOnly = true;
             this.dtGridShares.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtGridShares.Size = new System.Drawing.Size(1278, 163);
+            this.dtGridShares.Size = new System.Drawing.Size(988, 163);
             this.dtGridShares.TabIndex = 21;
             this.dtGridShares.SelectionChanged += new System.EventHandler(this.dtGridShares_SelectionChanged);
             // 
@@ -3125,11 +3137,10 @@
             // 
             // grpSharesControl
             // 
-            this.grpSharesControl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.grpSharesControl.Controls.Add(this.btnSharesDelete);
             this.grpSharesControl.Controls.Add(this.btnSharesAdd);
             this.grpSharesControl.Controls.Add(this.btnSharesEdit);
-            this.grpSharesControl.Location = new System.Drawing.Point(1192, 206);
+            this.grpSharesControl.Location = new System.Drawing.Point(891, 206);
             this.grpSharesControl.Name = "grpSharesControl";
             this.grpSharesControl.Size = new System.Drawing.Size(111, 38);
             this.grpSharesControl.TabIndex = 22;
@@ -3176,7 +3187,7 @@
             this.Bonds.Controls.Add(this.grpBondsControl);
             this.Bonds.Location = new System.Drawing.Point(4, 24);
             this.Bonds.Name = "Bonds";
-            this.Bonds.Size = new System.Drawing.Size(1321, 547);
+            this.Bonds.Size = new System.Drawing.Size(1082, 547);
             this.Bonds.TabIndex = 5;
             this.Bonds.Text = "Bonds";
             this.Bonds.UseVisualStyleBackColor = true;
@@ -3211,7 +3222,7 @@
             this.grpBonds.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpBonds.Location = new System.Drawing.Point(7, 246);
             this.grpBonds.Name = "grpBonds";
-            this.grpBonds.Size = new System.Drawing.Size(1317, 293);
+            this.grpBonds.Size = new System.Drawing.Size(940, 293);
             this.grpBonds.TabIndex = 27;
             this.grpBonds.TabStop = false;
             this.grpBonds.Text = "Bonds";
@@ -3421,14 +3432,12 @@
             // 
             // dtGridBonds
             // 
-            this.dtGridBonds.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.dtGridBonds.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGridBonds.Location = new System.Drawing.Point(-4, 37);
             this.dtGridBonds.Name = "dtGridBonds";
             this.dtGridBonds.ReadOnly = true;
             this.dtGridBonds.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtGridBonds.Size = new System.Drawing.Size(1301, 163);
+            this.dtGridBonds.Size = new System.Drawing.Size(951, 163);
             this.dtGridBonds.TabIndex = 25;
             this.dtGridBonds.SelectionChanged += new System.EventHandler(this.dtGridBonds_SelectionChanged);
             // 
@@ -3445,11 +3454,10 @@
             // 
             // grpBondsControl
             // 
-            this.grpBondsControl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.grpBondsControl.Controls.Add(this.btnDeleteBonds);
             this.grpBondsControl.Controls.Add(this.btnAddBonds);
             this.grpBondsControl.Controls.Add(this.btnEditBonds);
-            this.grpBondsControl.Location = new System.Drawing.Point(1197, 206);
+            this.grpBondsControl.Location = new System.Drawing.Point(836, 206);
             this.grpBondsControl.Name = "grpBondsControl";
             this.grpBondsControl.Size = new System.Drawing.Size(111, 38);
             this.grpBondsControl.TabIndex = 26;
@@ -3496,7 +3504,7 @@
             this.SavingAC.Controls.Add(this.grpSavingACControls);
             this.SavingAC.Location = new System.Drawing.Point(4, 24);
             this.SavingAC.Name = "SavingAC";
-            this.SavingAC.Size = new System.Drawing.Size(1321, 547);
+            this.SavingAC.Size = new System.Drawing.Size(1082, 547);
             this.SavingAC.TabIndex = 6;
             this.SavingAC.Text = "Saving A/C";
             this.SavingAC.UseVisualStyleBackColor = true;
@@ -3525,7 +3533,7 @@
             this.grpSa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpSa.Location = new System.Drawing.Point(7, 246);
             this.grpSa.Name = "grpSa";
-            this.grpSa.Size = new System.Drawing.Size(1301, 293);
+            this.grpSa.Size = new System.Drawing.Size(924, 293);
             this.grpSa.TabIndex = 31;
             this.grpSa.TabStop = false;
             this.grpSa.Text = "Saving Account";
@@ -3679,14 +3687,12 @@
             // 
             // dtGridSavingAccount
             // 
-            this.dtGridSavingAccount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.dtGridSavingAccount.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGridSavingAccount.Location = new System.Drawing.Point(-4, 37);
             this.dtGridSavingAccount.Name = "dtGridSavingAccount";
             this.dtGridSavingAccount.ReadOnly = true;
             this.dtGridSavingAccount.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtGridSavingAccount.Size = new System.Drawing.Size(1312, 163);
+            this.dtGridSavingAccount.Size = new System.Drawing.Size(935, 163);
             this.dtGridSavingAccount.TabIndex = 29;
             this.dtGridSavingAccount.SelectionChanged += new System.EventHandler(this.dtGridSavingAccount_SelectionChanged);
             // 
@@ -3703,11 +3709,10 @@
             // 
             // grpSavingACControls
             // 
-            this.grpSavingACControls.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.grpSavingACControls.Controls.Add(this.btnDeleteSA);
             this.grpSavingACControls.Controls.Add(this.btnAddSA);
             this.grpSavingACControls.Controls.Add(this.btnEditSA);
-            this.grpSavingACControls.Location = new System.Drawing.Point(1197, 206);
+            this.grpSavingACControls.Location = new System.Drawing.Point(820, 206);
             this.grpSavingACControls.Name = "grpSavingACControls";
             this.grpSavingACControls.Size = new System.Drawing.Size(111, 38);
             this.grpSavingACControls.TabIndex = 30;
@@ -3754,7 +3759,7 @@
             this.FD.Controls.Add(this.grpFDControls);
             this.FD.Location = new System.Drawing.Point(4, 24);
             this.FD.Name = "FD";
-            this.FD.Size = new System.Drawing.Size(1321, 547);
+            this.FD.Size = new System.Drawing.Size(1082, 547);
             this.FD.TabIndex = 7;
             this.FD.Text = "FD";
             this.FD.ToolTipText = "Fixed Deposite";
@@ -3790,7 +3795,7 @@
             this.grpFD.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpFD.Location = new System.Drawing.Point(7, 235);
             this.grpFD.Name = "grpFD";
-            this.grpFD.Size = new System.Drawing.Size(1301, 304);
+            this.grpFD.Size = new System.Drawing.Size(898, 304);
             this.grpFD.TabIndex = 35;
             this.grpFD.TabStop = false;
             this.grpFD.Text = "Fixed Deposit";
@@ -3995,14 +4000,12 @@
             // 
             // dtGridFD
             // 
-            this.dtGridFD.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.dtGridFD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGridFD.Location = new System.Drawing.Point(-4, 37);
             this.dtGridFD.Name = "dtGridFD";
             this.dtGridFD.ReadOnly = true;
             this.dtGridFD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtGridFD.Size = new System.Drawing.Size(1312, 152);
+            this.dtGridFD.Size = new System.Drawing.Size(909, 152);
             this.dtGridFD.TabIndex = 33;
             this.dtGridFD.SelectionChanged += new System.EventHandler(this.dtGridFD_SelectionChanged);
             // 
@@ -4019,11 +4022,10 @@
             // 
             // grpFDControls
             // 
-            this.grpFDControls.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.grpFDControls.Controls.Add(this.btnFDDelete);
             this.grpFDControls.Controls.Add(this.btnFDAdd);
             this.grpFDControls.Controls.Add(this.btnFDEdit);
-            this.grpFDControls.Location = new System.Drawing.Point(1197, 195);
+            this.grpFDControls.Location = new System.Drawing.Point(794, 195);
             this.grpFDControls.Name = "grpFDControls";
             this.grpFDControls.Size = new System.Drawing.Size(111, 38);
             this.grpFDControls.TabIndex = 34;
@@ -4070,7 +4072,7 @@
             this.RD.Controls.Add(this.grpRDControls);
             this.RD.Location = new System.Drawing.Point(4, 24);
             this.RD.Name = "RD";
-            this.RD.Size = new System.Drawing.Size(1321, 547);
+            this.RD.Size = new System.Drawing.Size(1082, 547);
             this.RD.TabIndex = 8;
             this.RD.Text = "RD";
             this.RD.ToolTipText = "Recurring Deposite";
@@ -4108,7 +4110,7 @@
             this.grpRD.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpRD.Location = new System.Drawing.Point(15, 235);
             this.grpRD.Name = "grpRD";
-            this.grpRD.Size = new System.Drawing.Size(1301, 304);
+            this.grpRD.Size = new System.Drawing.Size(1004, 304);
             this.grpRD.TabIndex = 39;
             this.grpRD.TabStop = false;
             this.grpRD.Text = "Fixed Deposit";
@@ -4329,14 +4331,12 @@
             // 
             // dtGridRD
             // 
-            this.dtGridRD.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.dtGridRD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtGridRD.Location = new System.Drawing.Point(4, 37);
+            this.dtGridRD.Location = new System.Drawing.Point(-4, 37);
             this.dtGridRD.Name = "dtGridRD";
             this.dtGridRD.ReadOnly = true;
             this.dtGridRD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtGridRD.Size = new System.Drawing.Size(1312, 152);
+            this.dtGridRD.Size = new System.Drawing.Size(1023, 152);
             this.dtGridRD.TabIndex = 37;
             this.dtGridRD.SelectionChanged += new System.EventHandler(this.dtGridRD_SelectionChanged);
             // 
@@ -4353,11 +4353,10 @@
             // 
             // grpRDControls
             // 
-            this.grpRDControls.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.grpRDControls.Controls.Add(this.btnRDDelete);
             this.grpRDControls.Controls.Add(this.btnRDAdd);
             this.grpRDControls.Controls.Add(this.btnRDEdit);
-            this.grpRDControls.Location = new System.Drawing.Point(1205, 195);
+            this.grpRDControls.Location = new System.Drawing.Point(908, 195);
             this.grpRDControls.Name = "grpRDControls";
             this.grpRDControls.Size = new System.Drawing.Size(111, 38);
             this.grpRDControls.TabIndex = 38;
@@ -4404,7 +4403,7 @@
             this.PPF.Controls.Add(this.grpPPFControls);
             this.PPF.Location = new System.Drawing.Point(4, 24);
             this.PPF.Name = "PPF";
-            this.PPF.Size = new System.Drawing.Size(1321, 547);
+            this.PPF.Size = new System.Drawing.Size(1082, 547);
             this.PPF.TabIndex = 9;
             this.PPF.Text = "PPF";
             this.PPF.UseVisualStyleBackColor = true;
@@ -4438,7 +4437,7 @@
             this.grpPPF.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpPPF.Location = new System.Drawing.Point(8, 237);
             this.grpPPF.Name = "grpPPF";
-            this.grpPPF.Size = new System.Drawing.Size(1297, 304);
+            this.grpPPF.Size = new System.Drawing.Size(940, 304);
             this.grpPPF.TabIndex = 42;
             this.grpPPF.TabStop = false;
             this.grpPPF.Text = "PPF";
@@ -4637,14 +4636,12 @@
             // 
             // dtGridPPF
             // 
-            this.dtGridPPF.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.dtGridPPF.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGridPPF.Location = new System.Drawing.Point(8, 41);
             this.dtGridPPF.Name = "dtGridPPF";
             this.dtGridPPF.ReadOnly = true;
             this.dtGridPPF.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtGridPPF.Size = new System.Drawing.Size(1297, 152);
+            this.dtGridPPF.Size = new System.Drawing.Size(940, 152);
             this.dtGridPPF.TabIndex = 40;
             this.dtGridPPF.SelectionChanged += new System.EventHandler(this.dtGridPPF_SelectionChanged);
             // 
@@ -4661,11 +4658,10 @@
             // 
             // grpPPFControls
             // 
-            this.grpPPFControls.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.grpPPFControls.Controls.Add(this.btnDeletePPF);
             this.grpPPFControls.Controls.Add(this.btnADDPPF);
             this.grpPPFControls.Controls.Add(this.btnEditPPF);
-            this.grpPPFControls.Location = new System.Drawing.Point(1194, 199);
+            this.grpPPFControls.Location = new System.Drawing.Point(837, 199);
             this.grpPPFControls.Name = "grpPPFControls";
             this.grpPPFControls.Size = new System.Drawing.Size(111, 38);
             this.grpPPFControls.TabIndex = 41;
@@ -4713,21 +4709,19 @@
             this.Sukanya.Location = new System.Drawing.Point(4, 24);
             this.Sukanya.Name = "Sukanya";
             this.Sukanya.Padding = new System.Windows.Forms.Padding(3);
-            this.Sukanya.Size = new System.Drawing.Size(1321, 547);
+            this.Sukanya.Size = new System.Drawing.Size(1082, 547);
             this.Sukanya.TabIndex = 10;
             this.Sukanya.Text = "Sukanya Samrudhi";
             this.Sukanya.UseVisualStyleBackColor = true;
             // 
             // dtGridSS
             // 
-            this.dtGridSS.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.dtGridSS.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGridSS.Location = new System.Drawing.Point(8, 34);
             this.dtGridSS.Name = "dtGridSS";
             this.dtGridSS.ReadOnly = true;
             this.dtGridSS.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtGridSS.Size = new System.Drawing.Size(1297, 152);
+            this.dtGridSS.Size = new System.Drawing.Size(998, 152);
             this.dtGridSS.TabIndex = 46;
             this.dtGridSS.SelectionChanged += new System.EventHandler(this.dtGridSS_SelectionChanged);
             // 
@@ -4768,7 +4762,7 @@
             this.grpSS.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpSS.Location = new System.Drawing.Point(14, 232);
             this.grpSS.Name = "grpSS";
-            this.grpSS.Size = new System.Drawing.Size(1291, 240);
+            this.grpSS.Size = new System.Drawing.Size(992, 240);
             this.grpSS.TabIndex = 44;
             this.grpSS.TabStop = false;
             this.grpSS.Text = "Suknya Samrudhi";
@@ -4940,11 +4934,10 @@
             // 
             // grpSSControls
             // 
-            this.grpSSControls.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.grpSSControls.Controls.Add(this.btnDeleteSS);
             this.grpSSControls.Controls.Add(this.btnAddSS);
             this.grpSSControls.Controls.Add(this.btnEditSS);
-            this.grpSSControls.Location = new System.Drawing.Point(1194, 192);
+            this.grpSSControls.Location = new System.Drawing.Point(895, 192);
             this.grpSSControls.Name = "grpSSControls";
             this.grpSSControls.Size = new System.Drawing.Size(111, 38);
             this.grpSSControls.TabIndex = 43;
@@ -4992,21 +4985,19 @@
             this.SCSS.Location = new System.Drawing.Point(4, 24);
             this.SCSS.Name = "SCSS";
             this.SCSS.Padding = new System.Windows.Forms.Padding(3);
-            this.SCSS.Size = new System.Drawing.Size(1321, 547);
+            this.SCSS.Size = new System.Drawing.Size(1082, 547);
             this.SCSS.TabIndex = 11;
             this.SCSS.Text = "SCSS Account";
             this.SCSS.UseVisualStyleBackColor = true;
             // 
             // dtGridSCSS
             // 
-            this.dtGridSCSS.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.dtGridSCSS.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGridSCSS.Location = new System.Drawing.Point(8, 39);
             this.dtGridSCSS.Name = "dtGridSCSS";
             this.dtGridSCSS.ReadOnly = true;
             this.dtGridSCSS.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtGridSCSS.Size = new System.Drawing.Size(1297, 179);
+            this.dtGridSCSS.Size = new System.Drawing.Size(1022, 179);
             this.dtGridSCSS.TabIndex = 50;
             this.dtGridSCSS.SelectionChanged += new System.EventHandler(this.dtGridSCSS_SelectionChanged);
             // 
@@ -5047,7 +5038,7 @@
             this.grpSCSS.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpSCSS.Location = new System.Drawing.Point(8, 268);
             this.grpSCSS.Name = "grpSCSS";
-            this.grpSCSS.Size = new System.Drawing.Size(1297, 273);
+            this.grpSCSS.Size = new System.Drawing.Size(1022, 273);
             this.grpSCSS.TabIndex = 48;
             this.grpSCSS.TabStop = false;
             this.grpSCSS.Text = "SCSS";
@@ -5219,11 +5210,10 @@
             // 
             // grpSCSSControls
             // 
-            this.grpSCSSControls.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.grpSCSSControls.Controls.Add(this.btnSCSSDelete);
             this.grpSCSSControls.Controls.Add(this.btnSCSSAdd);
             this.grpSCSSControls.Controls.Add(this.btnSCSSEdit);
-            this.grpSCSSControls.Location = new System.Drawing.Point(1194, 224);
+            this.grpSCSSControls.Location = new System.Drawing.Point(919, 224);
             this.grpSCSSControls.Name = "grpSCSSControls";
             this.grpSCSSControls.Size = new System.Drawing.Size(111, 38);
             this.grpSCSSControls.TabIndex = 47;
@@ -5270,21 +5260,19 @@
             this.NSC.Controls.Add(this.grpNSCControls);
             this.NSC.Location = new System.Drawing.Point(4, 24);
             this.NSC.Name = "NSC";
-            this.NSC.Size = new System.Drawing.Size(1321, 547);
+            this.NSC.Size = new System.Drawing.Size(1082, 547);
             this.NSC.TabIndex = 12;
             this.NSC.Text = "NSC / KYP";
             this.NSC.UseVisualStyleBackColor = true;
             // 
             // dtGridNSC
             // 
-            this.dtGridNSC.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.dtGridNSC.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGridNSC.Location = new System.Drawing.Point(12, 35);
             this.dtGridNSC.Name = "dtGridNSC";
             this.dtGridNSC.ReadOnly = true;
             this.dtGridNSC.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtGridNSC.Size = new System.Drawing.Size(1297, 179);
+            this.dtGridNSC.Size = new System.Drawing.Size(932, 179);
             this.dtGridNSC.TabIndex = 54;
             this.dtGridNSC.SelectionChanged += new System.EventHandler(this.dtGridNSC_SelectionChanged);
             // 
@@ -5329,7 +5317,7 @@
             this.grpNSC.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpNSC.Location = new System.Drawing.Point(12, 264);
             this.grpNSC.Name = "grpNSC";
-            this.grpNSC.Size = new System.Drawing.Size(1297, 273);
+            this.grpNSC.Size = new System.Drawing.Size(932, 273);
             this.grpNSC.TabIndex = 52;
             this.grpNSC.TabStop = false;
             this.grpNSC.Text = "NSC / KVP";
@@ -5542,11 +5530,10 @@
             // 
             // grpNSCControls
             // 
-            this.grpNSCControls.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.grpNSCControls.Controls.Add(this.btnNSCDelete);
             this.grpNSCControls.Controls.Add(this.btnNSCAdd);
             this.grpNSCControls.Controls.Add(this.btnNSCEdit);
-            this.grpNSCControls.Location = new System.Drawing.Point(1198, 220);
+            this.grpNSCControls.Location = new System.Drawing.Point(833, 220);
             this.grpNSCControls.Name = "grpNSCControls";
             this.grpNSCControls.Size = new System.Drawing.Size(111, 38);
             this.grpNSCControls.TabIndex = 51;
@@ -5593,7 +5580,7 @@
             this.ULIP.Controls.Add(this.grpULIPControls);
             this.ULIP.Location = new System.Drawing.Point(4, 24);
             this.ULIP.Name = "ULIP";
-            this.ULIP.Size = new System.Drawing.Size(1321, 547);
+            this.ULIP.Size = new System.Drawing.Size(1082, 547);
             this.ULIP.TabIndex = 13;
             this.ULIP.Text = "ULIP";
             this.ULIP.UseVisualStyleBackColor = true;
@@ -5642,7 +5629,7 @@
             this.grpULIP.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpULIP.Location = new System.Drawing.Point(10, 245);
             this.grpULIP.Name = "grpULIP";
-            this.grpULIP.Size = new System.Drawing.Size(1301, 293);
+            this.grpULIP.Size = new System.Drawing.Size(901, 293);
             this.grpULIP.TabIndex = 19;
             this.grpULIP.TabStop = false;
             this.grpULIP.Text = "ULIP Info";
@@ -5969,14 +5956,12 @@
             // 
             // dtGridULIP
             // 
-            this.dtGridULIP.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.dtGridULIP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGridULIP.Location = new System.Drawing.Point(10, 36);
             this.dtGridULIP.Name = "dtGridULIP";
             this.dtGridULIP.ReadOnly = true;
             this.dtGridULIP.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtGridULIP.Size = new System.Drawing.Size(1301, 163);
+            this.dtGridULIP.Size = new System.Drawing.Size(901, 163);
             this.dtGridULIP.TabIndex = 17;
             this.dtGridULIP.SelectionChanged += new System.EventHandler(this.dtGridULIP_SelectionChanged);
             // 
@@ -5993,11 +5978,10 @@
             // 
             // grpULIPControls
             // 
-            this.grpULIPControls.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.grpULIPControls.Controls.Add(this.btnULIPDelete);
             this.grpULIPControls.Controls.Add(this.btnULIPAdd);
             this.grpULIPControls.Controls.Add(this.btnULIPEdit);
-            this.grpULIPControls.Location = new System.Drawing.Point(1200, 205);
+            this.grpULIPControls.Location = new System.Drawing.Point(800, 205);
             this.grpULIPControls.Name = "grpULIPControls";
             this.grpULIPControls.Size = new System.Drawing.Size(111, 38);
             this.grpULIPControls.TabIndex = 18;
@@ -6045,15 +6029,13 @@
             this.EPF.Location = new System.Drawing.Point(4, 24);
             this.EPF.Name = "EPF";
             this.EPF.Padding = new System.Windows.Forms.Padding(3);
-            this.EPF.Size = new System.Drawing.Size(1321, 547);
+            this.EPF.Size = new System.Drawing.Size(1082, 547);
             this.EPF.TabIndex = 14;
             this.EPF.Text = "EPF";
             this.EPF.UseVisualStyleBackColor = true;
             // 
             // grpEPF
             // 
-            this.grpEPF.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.grpEPF.Controls.Add(this.txtEPF_ROI);
             this.grpEPF.Controls.Add(this.label191);
             this.grpEPF.Controls.Add(this.txtEPFAmount);
@@ -6072,7 +6054,7 @@
             this.grpEPF.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpEPF.Location = new System.Drawing.Point(12, 235);
             this.grpEPF.Name = "grpEPF";
-            this.grpEPF.Size = new System.Drawing.Size(1297, 304);
+            this.grpEPF.Size = new System.Drawing.Size(951, 304);
             this.grpEPF.TabIndex = 46;
             this.grpEPF.TabStop = false;
             this.grpEPF.Text = "EPF";
@@ -6211,14 +6193,12 @@
             // 
             // dataGridEPF
             // 
-            this.dataGridEPF.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridEPF.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridEPF.Location = new System.Drawing.Point(12, 39);
             this.dataGridEPF.Name = "dataGridEPF";
             this.dataGridEPF.ReadOnly = true;
             this.dataGridEPF.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridEPF.Size = new System.Drawing.Size(1297, 152);
+            this.dataGridEPF.Size = new System.Drawing.Size(951, 152);
             this.dataGridEPF.TabIndex = 44;
             this.dataGridEPF.SelectionChanged += new System.EventHandler(this.dtGridEPF_SelectionChanged);
             // 
@@ -6235,11 +6215,10 @@
             // 
             // grpEPFControls
             // 
-            this.grpEPFControls.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.grpEPFControls.Controls.Add(this.btnEPFDelete);
             this.grpEPFControls.Controls.Add(this.btnAddEPF);
             this.grpEPFControls.Controls.Add(this.btnEditEPF);
-            this.grpEPFControls.Location = new System.Drawing.Point(1198, 197);
+            this.grpEPFControls.Location = new System.Drawing.Point(852, 197);
             this.grpEPFControls.Name = "grpEPFControls";
             this.grpEPFControls.Size = new System.Drawing.Size(111, 38);
             this.grpEPFControls.TabIndex = 45;
@@ -6287,15 +6266,13 @@
             this.Others.Location = new System.Drawing.Point(4, 24);
             this.Others.Name = "Others";
             this.Others.Padding = new System.Windows.Forms.Padding(3);
-            this.Others.Size = new System.Drawing.Size(1321, 547);
+            this.Others.Size = new System.Drawing.Size(1082, 547);
             this.Others.TabIndex = 15;
             this.Others.Text = "Others";
             this.Others.UseVisualStyleBackColor = true;
             // 
             // grpOthersDetails
             // 
-            this.grpOthersDetails.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.grpOthersDetails.Controls.Add(this.cmbOthersTransactionType);
             this.grpOthersDetails.Controls.Add(this.label204);
             this.grpOthersDetails.Controls.Add(this.txtOthersAccountNo);
@@ -6316,7 +6293,7 @@
             this.grpOthersDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpOthersDetails.Location = new System.Drawing.Point(12, 235);
             this.grpOthersDetails.Name = "grpOthersDetails";
-            this.grpOthersDetails.Size = new System.Drawing.Size(1297, 304);
+            this.grpOthersDetails.Size = new System.Drawing.Size(935, 304);
             this.grpOthersDetails.TabIndex = 50;
             this.grpOthersDetails.TabStop = false;
             this.grpOthersDetails.Text = "Others";
@@ -6474,14 +6451,12 @@
             // 
             // dtGridOthers
             // 
-            this.dtGridOthers.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.dtGridOthers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGridOthers.Location = new System.Drawing.Point(12, 39);
             this.dtGridOthers.Name = "dtGridOthers";
             this.dtGridOthers.ReadOnly = true;
             this.dtGridOthers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtGridOthers.Size = new System.Drawing.Size(1297, 152);
+            this.dtGridOthers.Size = new System.Drawing.Size(935, 152);
             this.dtGridOthers.TabIndex = 48;
             this.dtGridOthers.SelectionChanged += new System.EventHandler(this.dtGridOthers_SelectionChanged);
             // 
@@ -6498,11 +6473,10 @@
             // 
             // grpOtherControls
             // 
-            this.grpOtherControls.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.grpOtherControls.Controls.Add(this.btnOthersDelete);
             this.grpOtherControls.Controls.Add(this.btnOthersAdd);
             this.grpOtherControls.Controls.Add(this.btnOthersEdit);
-            this.grpOtherControls.Location = new System.Drawing.Point(1198, 197);
+            this.grpOtherControls.Location = new System.Drawing.Point(836, 197);
             this.grpOtherControls.Name = "grpOtherControls";
             this.grpOtherControls.Size = new System.Drawing.Size(111, 38);
             this.grpOtherControls.TabIndex = 49;
@@ -6541,31 +6515,11 @@
             this.btnOthersEdit.UseVisualStyleBackColor = true;
             this.btnOthersEdit.Click += new System.EventHandler(this.btnOthersEdit_Click);
             // 
-            // chkLICSetReminderForPremium
-            // 
-            this.chkLICSetReminderForPremium.AutoSize = true;
-            this.chkLICSetReminderForPremium.Location = new System.Drawing.Point(554, 319);
-            this.chkLICSetReminderForPremium.Name = "chkLICSetReminderForPremium";
-            this.chkLICSetReminderForPremium.Size = new System.Drawing.Size(156, 19);
-            this.chkLICSetReminderForPremium.TabIndex = 72;
-            this.chkLICSetReminderForPremium.Text = "Set Reminder Premium";
-            this.chkLICSetReminderForPremium.UseVisualStyleBackColor = true;
-            // 
-            // chkGISetReminderForPremium
-            // 
-            this.chkGISetReminderForPremium.AutoSize = true;
-            this.chkGISetReminderForPremium.Location = new System.Drawing.Point(477, 206);
-            this.chkGISetReminderForPremium.Name = "chkGISetReminderForPremium";
-            this.chkGISetReminderForPremium.Size = new System.Drawing.Size(165, 20);
-            this.chkGISetReminderForPremium.TabIndex = 73;
-            this.chkGISetReminderForPremium.Text = "Set Reminder Premium";
-            this.chkGISetReminderForPremium.UseVisualStyleBackColor = true;
-            // 
             // CurrentStatus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1354, 654);
+            this.ClientSize = new System.Drawing.Size(1115, 654);
             this.Controls.Add(this.tabCurrenStatus);
             this.Controls.Add(this.groupBox1);
             this.Name = "CurrentStatus";

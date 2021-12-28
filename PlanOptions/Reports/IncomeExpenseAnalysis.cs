@@ -121,9 +121,9 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             IncomeInfo incomeInfo = new IncomeInfo();
             lstIncome = (List<Income>)incomeInfo.GetAll(this.planner.ID);
             _dtIncome = ListtoDataTable.ToDataTable(lstIncome);
-            DataRow[] drs = _dtIncome.Select("StartYear <='" + DateTime.Now.Year.ToString() + "' and EndYear >='" + DateTime.Now.Year.ToString() + "'");
+            DataRow[] drs = _dtIncome.Select("StartYear <='" + this.planner.StartDate.Year.ToString() + "' and EndYear >='" + this.planner.StartDate.Year.ToString() + "'");
             if (drs.Length > 0)
-            _dtIncome = _dtIncome.Select("StartYear <='" + DateTime.Now.Year.ToString() + "' and EndYear >='" + DateTime.Now.Year.ToString() + "'").CopyToDataTable();
+            _dtIncome = _dtIncome.Select("StartYear <='" + this.planner.StartDate.Year.ToString() + "' and EndYear >='" + this.planner.StartDate.Year.ToString() + "'").CopyToDataTable();
 
 
 
@@ -138,8 +138,8 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                     dr["Source"] = "Withdrawal from Portfolio";
                     dr["IncomeBy"] = this.client.Name;
                     dr["Amount"] = income;
-                    dr["StartYear"] = DateTime.Now.Year;
-                    dr["EndYear"] = DateTime.Now.Year;
+                    dr["StartYear"] = this.planner.StartDate.Year;
+                    dr["EndYear"] = this.planner.StartDate.Year;
                     dr["IncomeTax"] = "0";
                     _dtIncome.Rows.Add(dr);
                 }
@@ -154,7 +154,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             double totalIncomeTaxAmount = 0;
             foreach(DataRow dr in _dtIncome.Rows)
             {
-                if  ( int.Parse(dr["StartYear"].ToString()) <= (DateTime.Now.Year) && int.Parse(dr["EndYear"].ToString()) >= (DateTime.Now.Year))
+                if  ( int.Parse(dr["StartYear"].ToString()) <= (this.planner.StartDate.Year) && int.Parse(dr["EndYear"].ToString()) >= (this.planner.StartDate.Year))
                 {
                     if (dr["Source"].ToString().Equals("Withdrawal from Portfolio"))
                     {
@@ -208,8 +208,8 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                 dr["Item"] = "Ongoing expense";
                 dr["OccuranceType"] = "Yearly";
                 dr["Amount"] = exp;
-                dr["ExpStartYear"] = DateTime.Now.Year;
-                dr["ExpEndYear"] = DateTime.Now.Year;
+                dr["ExpStartYear"] = this.planner.StartDate.Year;
+                dr["ExpEndYear"] = this.planner.StartDate.Year;
                 _dtExpenses.Rows.Add(dr);
             }
 
@@ -229,7 +229,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             }
             foreach (DataRow dr in _dtExpenses.Rows)
             {
-                _dtIncome.Select("StartYear <='" + DateTime.Now.Year.ToString() + "' and EndYear >='" + DateTime.Now.Year.ToString() + "'").CopyToDataTable();
+                _dtIncome.Select("StartYear <='" + this.planner.StartDate.Year.ToString() + "' and EndYear >='" + this.planner.StartDate.Year.ToString() + "'").CopyToDataTable();
 
 
 
@@ -242,7 +242,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                     index++;
                 }
                 else if                     
-                    ((int.Parse(dr["ExpStartYear"].ToString()) <= (DateTime.Now.Year) && int.Parse(dr["ExpEndYear"].ToString()) >= (DateTime.Now.Year)))
+                    ((int.Parse(dr["ExpStartYear"].ToString()) <= (this.planner.StartDate.Year) && int.Parse(dr["ExpEndYear"].ToString()) >= (this.planner.StartDate.Year)))
                 {
                     xrTableExp.Rows[index].Cells[0].Text = dr["Item"].ToString();
                     double exp = (dr["OccuranceType"].ToString().Equals("Monthly") ? double.Parse(dr["Amount"].ToString()) * 12 : double.Parse(dr["Amount"].ToString()));

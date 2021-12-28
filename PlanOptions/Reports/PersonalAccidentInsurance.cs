@@ -59,7 +59,21 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                 //lblTerms.DataBindings.Add("Text", this.DataSource, "TermInsurance.Term");
                 lblSumAssured.DataBindings.Add("Text", this.DataSource, "TermInsurance.SumAssured");
                 lblPremium.DataBindings.Add("Text", this.DataSource, "TermInsurance.Premium");
-                lblDescription.Text = string.Format(description, this.client.Name);
+                string name = "";
+                int count = 0;
+                foreach (PersonalAccidentInsurance personalAccidentInsurance in insuranceRecomendationTransactions)
+                {
+                    if (count == 0)
+                    {
+                        name = personalAccidentInsurance.Name;
+                    }
+                    else
+                    {
+                        name = name + " and " + personalAccidentInsurance.Name;
+                    }
+                    count++;
+                }
+                    lblDescription.Text = string.Format(description, name);
                 //GroupHeader1.GroupFields[0].FieldName = "Name";
                 //GroupHeader1.GroupFields[1].FieldName = "InuRecMasterSumAssured";
             }

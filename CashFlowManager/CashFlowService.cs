@@ -985,6 +985,7 @@ namespace FinancialPlannerClient.CashFlowManager
             _cashFlowCalculation.SpouseLifeExpected = plannerAssumption.SpouseLifeExpectancy;
             _cashFlowCalculation.SpouseRetirementAge = plannerAssumption.SpouseRetirementAge;
             _cashFlowCalculation.IslientRetirmentAgeForPrimaryCalculation = plannerAssumption.IsClientRetirmentAgeIsPrimary;
+            _cashFlowCalculation.PlanStartYear = this._planner.StartDate.Year;
         }
 
         private void fillPersonalData(PersonalInformation personalInfo)

@@ -21,6 +21,7 @@ namespace FinancialPlannerClient.Clients
     public partial class ClientInfo : Form
     {
         private int _plannerId = 0;
+        private Planner planner;
         private Client _client;
         private DataTable _dtFamilymember;
         private DataTable _dtNonFinancialAsset;
@@ -46,15 +47,17 @@ namespace FinancialPlannerClient.Clients
         public ClientInfo(Client client, bool forNewDesing = false)
         {
             InitializeComponent();
+          
             _plannerId = 0;
             _client = client;
             setViewForNewDesing(forNewDesing);
         }
 
-        public ClientInfo(int plannerId, Client client, bool forNewDesing = false)
+        public ClientInfo(Planner planner, Client client, bool forNewDesing = false)
         {
             InitializeComponent();
-            _plannerId = plannerId;
+            this.planner = planner;
+            _plannerId = this.planner.ID;
             _client = client;
             setViewForNewDesing(forNewDesing);
         }
@@ -83,7 +86,33 @@ namespace FinancialPlannerClient.Clients
                 }
                 tabPlannerDetails.SelectTab("FamilyInfo");
                 fillupFamilyMemberInfo();
+                setAccessControlBasedOnPlannerLockStatu();
             }
+        }
+
+        private void setAccessControlBasedOnPlannerLockStatu()
+        {
+            //Family Member
+            grpActionControls.Visible = !this.planner.IsPlanLocked;
+            btnFamilyMemberSave.Visible = !this.planner.IsPlanLocked;
+
+            //Loan
+            grpLoanGroupControl.Visible = !this.planner.IsPlanLocked;
+            btnSaveLoan.Visible = !this.planner.IsPlanLocked;
+
+            //Non-Financial Asset
+            grpNonFinancialAssetControl.Visible = !this.planner.IsPlanLocked;
+            btnNonFinancialSave.Visible = !this.planner.IsPlanLocked;
+
+            //Income
+            grpIncomeControl.Visible = !this.planner.IsPlanLocked;
+            btnSaveIncome.Visible = !this.planner.IsPlanLocked;
+
+            //Expenses
+            grpExpensesConntrol.Visible = !this.planner.IsPlanLocked;
+            btnSaveExp.Visible = !this.planner.IsPlanLocked;
+
+
         }
 
         private void tabPlannerDetails_SelectedIndexChanged(object sender, EventArgs e)

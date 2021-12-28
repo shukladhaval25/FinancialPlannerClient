@@ -110,6 +110,8 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                 double.Parse(dtNetWorth.Compute("Sum(LaibilityAmount)", string.Empty).ToString()) : 0;
             lblTotalAssets.Text = totalAssetsValue.ToString("#,###");
             lblTotalLiabilities.Text = totalLiabilitiesValue.ToString("#,###");
+            lblCellCalculation.Text = lblTotalAssets.Text + " less " + lblTotalLiabilities.Text;
+            xrTableFinalNetWorth.Text = (totalAssetsValue - totalLiabilitiesValue).ToString("#,###");
         }
 
         private void setDataForReport()
@@ -566,6 +568,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             {
                 lblTotalAssets.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblTotalAssets.Text).ToString("N0", PlannerMainReport.Info);
             }
+            //
         }
 
         private void lblTotalLiabilities_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)

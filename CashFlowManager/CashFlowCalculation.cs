@@ -127,7 +127,7 @@ namespace FinancialPlannerClient.CashFlowManager
         {
             get
             {
-                _clientCurrentAge = DateTime.Now.Year - _clientDateOfBirth.Year;
+                _clientCurrentAge = this.PlanStartYear - _clientDateOfBirth.Year;
                 return _clientCurrentAge;
             }           
         }
@@ -136,7 +136,7 @@ namespace FinancialPlannerClient.CashFlowManager
         {
             get
             {
-                _spouseCurrentAge = DateTime.Now.Year - _spouseDateOfBirth.Year;
+                _spouseCurrentAge = this.PlanStartYear - _spouseDateOfBirth.Year;
                 return _spouseCurrentAge;
             }
         }

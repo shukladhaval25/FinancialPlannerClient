@@ -30,6 +30,8 @@ namespace FinancialPlannerClient.PlanOptions
             this.spouseName = spouseName;
             this.spouseAge = spouseAge;
             fillupAssumptionInfo();
+            btnSaveAssumption.Visible  = !this.planner.IsPlanLocked;
+            
         }
 
         private void fillupAssumptionInfo()

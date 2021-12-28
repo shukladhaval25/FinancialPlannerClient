@@ -181,6 +181,12 @@ namespace FinancialPlannerClient.ProspectCustomer
                     prospectCustomer.Event = dr.Field<string>("Event");
                     prospectCustomer.EventDate = DateTime.Parse(dr.Field<string>("EventDate").ToString());
                     prospectCustomer.UpdatedByUserName = Program.CurrentUser.UserName;
+                    prospectCustomer.StopSendingEmail = bool.Parse(dr["StopSendingEmail"].ToString());
+                    prospectCustomer.IntroductionCompleted = bool.Parse(dr["IntroductionCompleted"].ToString());
+                    if (dr["IntroductionCompletedDate"] != DBNull.Value)
+                    {
+                        prospectCustomer.IntroductionCompletedDate =DateTime.Parse(dr["IntroductionCompletedDate"].ToString());
+                    }
                 }
             }
             return prospectCustomer;

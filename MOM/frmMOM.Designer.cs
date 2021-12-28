@@ -572,7 +572,9 @@
             "Annual Review-1st meeting",
             "Other Discussion",
             "Data Gathering Session",
-            "Financial Plan Presentation"});
+            "Financial Plan Presentation",
+            "Introduction Session",
+            "Financial Literacy"});
             this.txtMeetingType.Size = new System.Drawing.Size(255, 20);
             this.txtMeetingType.TabIndex = 10;
             // 

@@ -22,10 +22,17 @@ namespace FinancialPlannerClient.Login
         private SimpleButton btnLogin;
         private SimpleButton btnCancel;
         private GroupControl grpLogin;
-
+        private bool isForApproval = false;
+        private bool isApproved = false;
+        public bool IsAuthenticationPassForApproval { get { return isApproved; } }
         public frmXtraLogin()
         {
             InitializeComponent();
+        }
+        public frmXtraLogin(bool forApprovalProcess)
+        {
+            InitializeComponent();
+            this.isForApproval = forApprovalProcess;
         }
 
         private void InitializeComponent()
@@ -137,6 +144,7 @@ namespace FinancialPlannerClient.Login
             this.Name = "frmXtraLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.TopMost = true;
+            this.Load += new System.EventHandler(this.frmXtraLogin_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grpLogin)).EndInit();
             this.grpLogin.ResumeLayout(false);
             this.grpLogin.PerformLayout();
@@ -164,7 +172,14 @@ namespace FinancialPlannerClient.Login
 
                 if (jsonSerialization.IsValidJson(restResult.ToString()))
                 {
-                    actionOnValidAuthentication(restResult.ToString());
+                    if (isForApproval == false)
+                    {
+                        actionOnValidAuthentication(restResult.ToString());
+                    }
+                    else
+                    {
+                        approveAuthenticationProcess(restResult.ToString());
+                    }
                 }
                 else
                     DevExpress.XtraEditors.XtraMessageBox.Show(restResult.ToString(), "Login fail", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -183,6 +198,14 @@ namespace FinancialPlannerClient.Login
                     Logger.LogDebug(ex);
                 }
             }
+        }
+
+        private void approveAuthenticationProcess(string restResult)
+        {
+            JSONSerialization jsonSerialization = new JSONSerialization();
+            var deserializeUser = jsonSerialization.DeserializeFromString<User>(restResult.ToString());
+            isApproved = true;
+            this.Close();
         }
 
         private void actionOnValidAuthentication(string restResult)
@@ -221,6 +244,14 @@ namespace FinancialPlannerClient.Login
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void frmXtraLogin_Load(object sender, EventArgs e)
+        {
+            this.Text =   (isForApproval) ? "Approval" : "Login";
+            this.btnLogin.Text = (isForApproval) ? "Approval" : "Login";
+            txtUserName.Text = (isForApproval) ? "Admin" :  "";
+            txtUserName.Enabled = !isForApproval;
         }
     }
 }

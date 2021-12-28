@@ -2,10 +2,12 @@
 using FinancialPlanner.Common.DataConversion;
 using FinancialPlanner.Common.Model;
 using FinancialPlannerClient.Clients;
+using FinancialPlannerClient.Login;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
+using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -29,6 +31,7 @@ namespace FinancialPlannerClient.PlanOptions
         private const string USERAPI = "User";
         DataTable _dtUser;
         Planner currentPlanner;
+        private bool showAuthenticationMsg = true;
         public PlannerView(PersonalInformation personalInformation,Planner planner)
         {
             InitializeComponent();
@@ -131,6 +134,9 @@ namespace FinancialPlannerClient.PlanOptions
                 }
                 txtDebtRatio.Text = debtRatio.ToString();
                 rdoFaceType.SelectedIndex = (dr["FaceType"].ToString().Equals("A")) ? 0 : 1;
+                showAuthenticationMsg = false;
+                chkLockPlan.Checked = bool.Parse(dr["IsPlanLocked"].ToString());
+                showAuthenticationMsg = true;
 
             }
             pnlPlannerInfo.Enabled = true;
@@ -198,7 +204,8 @@ namespace FinancialPlannerClient.PlanOptions
                     CurrencySymbol = txtCurrencySymbol.Text,
                     EquityRatio = string.IsNullOrEmpty(txtEquityRatio.Text) ? 0 : float.Parse(txtEquityRatio.Text),
                     DebtRatio = string.IsNullOrEmpty(txtDebtRatio.Text) ? 0 : float.Parse(txtDebtRatio.Text),
-                    FaceType = (rdoFaceType.SelectedIndex == 0) ? "A" : "D"
+                    FaceType = (rdoFaceType.SelectedIndex == 0) ? "A" : "D",
+                    IsPlanLocked = chkLockPlan.Checked
                 };
                 if (int.TryParse(cmbManagedBy.Tag.ToString(), out accountManagedById))
                     planner.AccountManagedBy = accountManagedById;
@@ -236,6 +243,7 @@ namespace FinancialPlannerClient.PlanOptions
                             this.currentPlanner.EquityRatio = planner.EquityRatio;
                             this.currentPlanner.DebtRatio = planner.DebtRatio;
                             this.currentPlanner.FaceType = planner.FaceType;
+                            this.currentPlanner.IsPlanLocked = planner.IsPlanLocked;
 
                         }
                         this.Close();
@@ -385,6 +393,41 @@ namespace FinancialPlannerClient.PlanOptions
             debuggerInfo.Method = methodName;
             debuggerInfo.ExceptionInfo = ex;
             Logger.LogDebug(debuggerInfo);
+        }
+
+        private void chkLockPlan_CheckedChanged(object sender, EventArgs e)
+        {
+            if (showAuthenticationMsg)
+            {
+                if (DevExpress.XtraEditors.XtraMessageBox.Show("Are you sure, you want to change status of current plan. Based on your selection plan activities get lock or unlock? It require administarator approval also.", "Planner status", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    frmXtraLogin login = new frmXtraLogin(true);
+                    login.ShowDialog();
+                    if (!login.IsAuthenticationPassForApproval)
+                    {
+                        showAuthenticationMsg = false;
+                        chkLockPlan.Checked = !chkLockPlan.Checked;
+                        showAuthenticationMsg = true;
+                    }
+                }
+                else
+                {
+                    showAuthenticationMsg = false;
+                    chkLockPlan.Checked = !chkLockPlan.Checked;
+                    showAuthenticationMsg = true;
+                }
+            }
+            chkLockPlan.BackColor = (!chkLockPlan.Checked) ? Color.Transparent : Color.LimeGreen;
+        }
+
+        private void chkLockPlan_CheckStateChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void chkLockPlan_EditValueChanged(object sender, EventArgs e)
+        {
+           
         }
     }
 }

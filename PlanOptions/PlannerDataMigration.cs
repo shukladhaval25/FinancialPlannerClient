@@ -887,6 +887,35 @@ namespace FinancialPlannerClient.PlanOptions
                             LogDebug(currentMethodName.Name, ex);
                         }
                     }
+                    else
+                    {
+                      if ( DevExpress.XtraEditors.XtraMessageBox.Show("Do you want to migrate goal '" + goal.Name + "' which expected to complete in year " + goal.StartYear +"?","Migrate Goal",MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.Yes)
+                        {
+                            goal.Pid = this.currentPlanner.ID;
+                            goal.StartYear = this.currentPlanner.StartDate.Year.ToString();
+                            goal.EndYear = this.currentPlanner.StartDate.Year.ToString();
+                            goal.CreatedBy = Program.CurrentUser.Id;
+                            goal.CreatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+                            goal.UpdatedBy = Program.CurrentUser.Id;
+                            goal.UpdatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+
+                            try
+                            {
+                                if (!goalsInfo.Add(goal))
+                                {
+                                    delegateUpdateAllValues(dataRow, int.Parse(dataRow["Status"].ToString()) + processIncrementalValue, "In Progress", String.Format("Fail to migrate goal '{0}'", goal.Name));
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                delegateUpdateAllValues(dataRow, int.Parse(dataRow["Status"].ToString()) + processIncrementalValue, "In Progress", String.Format("Fail to migrate goal '{0}'", goal.Name));
+                                StackTrace st = new StackTrace();
+                                StackFrame sf = st.GetFrame(0);
+                                MethodBase currentMethodName = sf.GetMethod();
+                                LogDebug(currentMethodName.Name, ex);
+                            }
+                        }
+                    }
                 }
             }
             delegateUpdateAllValues(dataRow,100, string.IsNullOrEmpty(dataRow["Note"].ToString()) ? "Success" : "Fail", dataRow["Note"].ToString());
@@ -939,7 +968,13 @@ namespace FinancialPlannerClient.PlanOptions
                     try
                     {
                         loan.Pid = this.currentPlanner.ID;
-                        loanInfo.Add(loan);
+                        loan.OutstandingAmt = (loan.OutstandingAmt - (loan.Emis * (currentPlanner.StartDate.Year - sourcePlanner.StartDate.Year )));
+                        loan.TermLeftInMonths = loan.TermLeftInMonths - ((currentPlanner.StartDate.Year - sourcePlanner.StartDate.Year) * 12);
+                        loan.CreatedBy = Program.CurrentUser.Id;
+                        loan.CreatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+                        loan.CreatedBy = Program.CurrentUser.Id;
+                        loan.UpdatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+                        loan.UpdatedBy = Program.CurrentUser.Id;
                     }
                     catch (Exception ex)
                     {

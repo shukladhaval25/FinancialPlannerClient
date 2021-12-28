@@ -144,6 +144,11 @@ namespace FinancialPlannerClient.ProspectCustomer
             txtOccupation.Text = _prospectClient.Occupation;
             dtEventDate.Value = _prospectClient.EventDate;
             txtRefBy.Text = _prospectClient.ReferedBy;
+            txtRemark.Text = _prospectClient.Remarks;
+            chkStopSendingEmail.Checked = _prospectClient.StopSendingEmail;
+            chkIntroductionCompleted.Checked = _prospectClient.IntroductionCompleted;
+            if (chkIntroductionCompleted.Checked)
+                dtIntroductionCompletdOn.Value = _prospectClient.IntroductionCompletedDate;
             getConversationDetails();
         }
 
@@ -275,22 +280,27 @@ namespace FinancialPlannerClient.ProspectCustomer
                 ProspectClient prosCustomer = new ProspectClient()
                 {
                     Name = txtName.Text,
-                    Occupation = txtOccupation.Text ,
+                    Occupation = txtOccupation.Text,
                     PhoneNo = txtPhoneNo.Text,
                     Email = txtEmail.Text,
                     Event = txtEvent.Text,
                     EventDate = dtEventDate.Value,
                     ReferedBy = txtRefBy.Text,
-                    IsConvertedToClient  = chkIsConvertedToCustomer.Checked,
-                    StopSendingEmail =  chkStopSendingEmail.Checked,
+                    IsConvertedToClient = chkIsConvertedToCustomer.Checked,
+                    StopSendingEmail = chkStopSendingEmail.Checked,
                     Remarks = txtRemark.Text,
-                    CreatedOn = DateTime.Parse( DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss")),
+                    CreatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss")),
                     CreatedBy = Program.CurrentUser.Id,
-                    UpdatedOn =  DateTime.Parse( DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss")),
+                    UpdatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss")),
                     UpdatedBy = Program.CurrentUser.Id,
                     UpdatedByUserName = Program.CurrentUser.UserName,
-                    MachineName = System.Environment.MachineName
+                    MachineName = System.Environment.MachineName,
+                    IntroductionCompleted = chkIntroductionCompleted.Checked                  
                 };
+
+                if (chkIntroductionCompleted.Checked) {
+                    prosCustomer.IntroductionCompletedDate = dtIntroductionCompletdOn.Value;
+                }
 
                 if (_prospectClient == null)
                 {
@@ -364,6 +374,12 @@ namespace FinancialPlannerClient.ProspectCustomer
                 MessageBox.Show("Please enter name of customer.", "Customer Name", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 e.Cancel = true;
             }
+        }
+
+        private void chkIntroductionCompleted_CheckedChanged(object sender, EventArgs e)
+        {
+            dtIntroductionCompletdOn.Visible = chkIntroductionCompleted.Checked;
+            chkIntroductionCompleted.Text = (chkIntroductionCompleted.Checked) ? "Introduction Completed on " : "Introduction Completed";
         }
     }
 }

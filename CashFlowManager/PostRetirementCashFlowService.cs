@@ -42,7 +42,7 @@ namespace FinancialPlannerClient.CashFlowManager
             Logger.LogInfo("Get expected life end year :" + this.expectedLifeEndYear);
             Logger.LogInfo("Post retirement cash flow service constructor call completed");
 
-            Goals retirementGoal = cashFlowCalculation.LstGoals.First(y => y.Category == "Retirement");
+            Goals retirementGoal = cashFlowCalculation.LstGoals.FirstOrDefault(y => y.Category == "Retirement");
             GoalsValueCalculationInfo goalsValueCalculationInfo = cashFlowService.GoalCalculationMgr.GetGoalValueCalculation(retirementGoal);
             double assetsMappingValue = (goalsValueCalculationInfo != null) ? goalsValueCalculationInfo.FutureValueOfMappedNonFinancialAssets : 0;
             totalCurrentCorpFund  =  cashFlowService.GetCashFlowSurplusAmount() + cashFlowService.GetCurrentStatusAccessFund() + assetsMappingValue;
@@ -77,15 +77,15 @@ namespace FinancialPlannerClient.CashFlowManager
         private int getRetirementYear()
         {
             int year = cashFlowCalculation.IslientRetirmentAgeForPrimaryCalculation ?
-                 DateTime.Now.Year + ((cashFlowCalculation.ClientRetirementAge ) - cashFlowCalculation.ClientCurrentAge) :
-                 DateTime.Now.Year + ((cashFlowCalculation.SpouseRetirementAge ) - cashFlowCalculation.SpouseCurrentAge);
+                 this.planner.StartDate.Year  + ((cashFlowCalculation.ClientRetirementAge ) - cashFlowCalculation.ClientCurrentAge) :
+                 this.planner.StartDate.Year + ((cashFlowCalculation.SpouseRetirementAge ) - cashFlowCalculation.SpouseCurrentAge);
             return year;
         }
         private int getExpectedLifeEndYear()
         {
             int year = (cashFlowCalculation.ClientDateOfBirth < cashFlowCalculation.SpouseDateOfBirth &&  !string.IsNullOrEmpty(cashFlowCalculation.SpouseName)) ?
-                DateTime.Now.Year + (cashFlowCalculation.SpouseLifeExpected - cashFlowCalculation.SpouseCurrentAge) :
-            DateTime.Now.Year + (cashFlowCalculation.ClientLifeExpected - cashFlowCalculation.ClientCurrentAge);
+                  this.planner.StartDate.Year + (cashFlowCalculation.SpouseLifeExpected - cashFlowCalculation.SpouseCurrentAge) :
+             this.planner.StartDate.Year + (cashFlowCalculation.ClientLifeExpected - cashFlowCalculation.ClientCurrentAge);
                 
             return year;
         }

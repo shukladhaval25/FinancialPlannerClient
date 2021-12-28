@@ -49,6 +49,7 @@
             this.tabPlanner = new DevExpress.XtraBars.Navigation.TabPane();
             this.tabNavigationPagePlanner = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             this.pnlPlannerInfo = new DevExpress.XtraEditors.PanelControl();
+            this.chkLockPlan = new DevExpress.XtraEditors.CheckEdit();
             this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
             this.rdoFaceType = new DevExpress.XtraEditors.RadioGroup();
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
@@ -87,6 +88,7 @@
             this.tabNavigationPagePlanner.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlPlannerInfo)).BeginInit();
             this.pnlPlannerInfo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkLockPlan.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rdoFaceType.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbEndMonth.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPlanName.Properties)).BeginInit();
@@ -156,6 +158,7 @@
             // 
             // pnlPlannerInfo
             // 
+            this.pnlPlannerInfo.Controls.Add(this.chkLockPlan);
             this.pnlPlannerInfo.Controls.Add(this.labelControl13);
             this.pnlPlannerInfo.Controls.Add(this.rdoFaceType);
             this.pnlPlannerInfo.Controls.Add(this.labelControl10);
@@ -174,6 +177,23 @@
             this.pnlPlannerInfo.Name = "pnlPlannerInfo";
             this.pnlPlannerInfo.Size = new System.Drawing.Size(546, 171);
             this.pnlPlannerInfo.TabIndex = 10;
+            // 
+            // chkLockPlan
+            // 
+            this.chkLockPlan.Location = new System.Drawing.Point(322, 138);
+            this.chkLockPlan.Name = "chkLockPlan";
+            this.chkLockPlan.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.chkLockPlan.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkLockPlan.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.chkLockPlan.Properties.Appearance.Options.UseBackColor = true;
+            this.chkLockPlan.Properties.Appearance.Options.UseFont = true;
+            this.chkLockPlan.Properties.Appearance.Options.UseForeColor = true;
+            this.chkLockPlan.Properties.Caption = "Lock this plan";
+            this.chkLockPlan.Size = new System.Drawing.Size(178, 27);
+            this.chkLockPlan.TabIndex = 30;
+            this.chkLockPlan.CheckedChanged += new System.EventHandler(this.chkLockPlan_CheckedChanged);
+            this.chkLockPlan.CheckStateChanged += new System.EventHandler(this.chkLockPlan_CheckStateChanged);
+            this.chkLockPlan.EditValueChanged += new System.EventHandler(this.chkLockPlan_EditValueChanged);
             // 
             // labelControl13
             // 
@@ -584,6 +604,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pnlPlannerInfo)).EndInit();
             this.pnlPlannerInfo.ResumeLayout(false);
             this.pnlPlannerInfo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkLockPlan.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rdoFaceType.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbEndMonth.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPlanName.Properties)).EndInit();
@@ -646,6 +667,7 @@
         private DevExpress.XtraEditors.TextEdit txtEquityRatio;
         private DevExpress.XtraEditors.LabelControl labelControl13;
         private DevExpress.XtraEditors.RadioGroup rdoFaceType;
+        private DevExpress.XtraEditors.CheckEdit chkLockPlan;
     }
 }
 

@@ -507,7 +507,7 @@ namespace FinancialPlannerClient.Clients
 
         private void navBarItemOtherInformation_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
-            ClientInfo clientInfo = new ClientInfo(planner.ID, this._client, true);
+            ClientInfo clientInfo = new ClientInfo(planner, this._client, true);
             clientInfo.TopLevel = false;
             clientInfo.Visible = true;
             navigationPageOther.Name = clientInfo.Name;
@@ -523,7 +523,7 @@ namespace FinancialPlannerClient.Clients
 
         private void navBarItemGoals_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
-            GoalsView goalsView = new GoalsView(planner.ID,this.personalInformation.Client);
+            GoalsView goalsView = new GoalsView(planner,this.personalInformation.Client);
             goalsView.TopLevel = false;
             goalsView.Visible = true;
             navigationPageOther.Name = goalsView.Name;
@@ -535,7 +535,7 @@ namespace FinancialPlannerClient.Clients
         private void navBarItemCurrentStatus_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
             FinancialPlannerClient.CurrentStatus.CurrentStatus currentStatus =
-                            new FinancialPlannerClient.CurrentStatus.CurrentStatus(this.personalInformation.Client);
+                            new FinancialPlannerClient.CurrentStatus.CurrentStatus(this.personalInformation.Client,this.planner);
             currentStatus.TopLevel = false;
             currentStatus.Visible = true;
             navigationPageOther.Name = currentStatus.Name;

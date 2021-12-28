@@ -54,7 +54,7 @@ namespace FinancialPlannerClient.Clients
             if (cmbPlan.Tag != null &&  cmbPlan.Tag.ToString() != "0")
             {
 
-                ClientInfo frmClient = new ClientInfo(int.Parse(cmbPlan.Tag.ToString()), _client);
+                ClientInfo frmClient = new ClientInfo(new Planner(), _client);
                 frmClient.TopLevel = false;
                 this.ParentForm.Controls[0].Controls[1].Controls.Add(frmClient);
                 frmClient.Dock = DockStyle.Fill;

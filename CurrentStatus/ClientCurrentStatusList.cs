@@ -80,7 +80,7 @@ namespace FinancialPlannerClient.CurrentStatus
             if (trvList.SelectedNode != null)
             {
                 Client client = convertSelectedRowDataToClient();
-                CurrentStatus frmCurrentStatus = new CurrentStatus(client);
+                CurrentStatus frmCurrentStatus = new CurrentStatus(client, new Planner());
                 frmCurrentStatus.TopLevel = false;
                 splitContainer.Panel2.Controls.Add(frmCurrentStatus);
                 frmCurrentStatus.Dock = DockStyle.Fill;

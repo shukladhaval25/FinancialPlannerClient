@@ -172,11 +172,11 @@ namespace FinancialPlannerClient.Insurance
                         double totalSumAssured = 0;
                         foreach (LifeInsurance lic in lics)
                         {
-                            DataColumn dcLoan = new DataColumn("LIC -" + lic.Applicant, Type.GetType("System.Double"));
+                            DataColumn dcLoan = new DataColumn("LIC - " + lic.Company + " (" + lic.PolicyNo +")", Type.GetType("System.Double"));
                             dtInsurance.Columns.Add(dcLoan);
 
                             DataRow dr = dtInsurance.Rows[rowIndex];
-                            dr["LIC -" + lic.Applicant] = lic.SumAssured;
+                            dr["LIC - " + lic.Company + " (" + lic.PolicyNo + ")"] = lic.SumAssured;
                             totalSumAssured = totalSumAssured + lic.SumAssured;
                         }
                     }
@@ -281,6 +281,7 @@ namespace FinancialPlannerClient.Insurance
                         else
                         {
                             totalExistingCoverage = totalExistingCoverage + Math.Round(double.Parse(dtInsurance.Rows[0][dataColumn.ColumnName].ToString()));
+                            dataRow["Amount"] = Math.Round(double.Parse(dtInsurance.Rows[0][dataColumn.ColumnName].ToString()));
                             dataRow["Category"] = "02";
                         }
                         dtInsuranceCoverage.Rows.Add(dataRow);

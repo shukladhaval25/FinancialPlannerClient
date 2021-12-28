@@ -17,6 +17,7 @@ namespace FinancialPlannerClient.CurrentStatus
     {
         private Client _client;
         int _planeId = 0;
+        private Planner planner;
         DataTable _dtPlan;
         DataTable _dtLifeInsurance;
         DataTable _dtGeneralInsurance;
@@ -41,10 +42,12 @@ namespace FinancialPlannerClient.CurrentStatus
             InitializeComponent();
         }
 
-        public CurrentStatus(Client client)
+        public CurrentStatus(Client client,Planner planner)
         {
             InitializeComponent();
             this._client = client;
+            this.planner = planner;
+            this._planeId = planner.ID;
         }
 
         private void CurrentStatus_Load(object sender, EventArgs e)
@@ -54,8 +57,75 @@ namespace FinancialPlannerClient.CurrentStatus
                 fllupClientAndPlanInfo();
                 _dtPlan = new PlannerInfo.PlannerInfo().GetPlanData(_client.ID);
                 fillPlanData();
-
+                setAccessControlBasedOnPlannerLockStatus();
             }
+        }
+
+        private void setAccessControlBasedOnPlannerLockStatus()
+        {
+            //General Insurance
+            grpActionControls.Visible = !this.planner.IsPlanLocked;
+            btnPersonalDetailSave.Visible = !this.planner.IsPlanLocked;
+
+            //General Insurance
+            grpGenIsuranceControl.Visible = !this.planner.IsPlanLocked;
+            btnGenInsSave.Visible = !this.planner.IsPlanLocked;
+
+            //MF
+            grpMFControls.Visible = !this.planner.IsPlanLocked;
+            btnSaveMF.Visible = !this.planner.IsPlanLocked; 
+
+            //NPS
+            grpNPSControls.Visible = !this.planner.IsPlanLocked;
+            btnNPSSave.Visible = !this.planner.IsPlanLocked;
+
+            //Shares
+            grpSharesControl.Visible = !this.planner.IsPlanLocked;
+            btnSharesSave.Visible = !this.planner.IsPlanLocked;
+
+            //Bonds
+            grpBondsControl.Visible = !this.planner.IsPlanLocked;
+            btnBondsSave.Visible = !this.planner.IsPlanLocked;
+
+            //Saving Ac
+            grpSavingACControls.Visible = !this.planner.IsPlanLocked;
+            btnSaveSA.Visible = !this.planner.IsPlanLocked;
+
+            //FD
+            grpFDControls.Visible = !this.planner.IsPlanLocked;
+            btnFDSave.Visible = !this.planner.IsPlanLocked;
+
+            //RD
+            grpRDControls.Visible = !this.planner.IsPlanLocked;
+            btnRDSave.Visible = !this.planner.IsPlanLocked;
+
+            //PPF
+            grpPPFControls.Visible = !this.planner.IsPlanLocked;
+            btnPPFSave.Visible = !this.planner.IsPlanLocked;
+
+            //Sukanya
+            grpSSControls.Visible = !this.planner.IsPlanLocked;
+            btnSSSave.Visible = !this.planner.IsPlanLocked;
+
+            //SCSS
+            grpSCSSControls.Visible = !this.planner.IsPlanLocked;
+            btnSCSSSave.Visible = !this.planner.IsPlanLocked;
+
+            //NSC
+            grpNSCControls.Visible = !this.planner.IsPlanLocked;
+            btnNSCSave.Visible = !this.planner.IsPlanLocked;
+
+            //ULIP
+            grpULIPControls.Visible = !this.planner.IsPlanLocked;
+            btnULIPSave.Visible = !this.planner.IsPlanLocked;
+
+            //EPF
+            grpEPFControls.Visible = !this.planner.IsPlanLocked;
+            btnULIPSave.Visible = !this.planner.IsPlanLocked;
+
+            //Others
+            grpOtherControls.Visible = !this.planner.IsPlanLocked;
+            btnOthersSave.Visible = !this.planner.IsPlanLocked;
         }
 
         private void fillLifeInsuranceApplicantCombobox()
@@ -2510,7 +2580,7 @@ namespace FinancialPlannerClient.CurrentStatus
         private void cmbPlan_SelectedValueChanged(object sender, EventArgs e)
         {
             var val = _dtPlan.Select("NAME ='" + cmbPlan.Text + "'");
-            _planeId = int.Parse(val[0]["ID"].ToString());
+            //_planeId = int.Parse(val[0]["ID"].ToString());
             fillLifeInsuranceInfo();
         }
 

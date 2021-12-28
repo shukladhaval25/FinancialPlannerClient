@@ -268,6 +268,7 @@
             this.gridViewGoals.Name = "gridViewGoals";
             this.gridViewGoals.OptionsBehavior.Editable = false;
             this.gridViewGoals.SelectionChanged += new DevExpress.Data.SelectionChangedEventHandler(this.gridViewGoals_SelectionChanged);
+            this.gridViewGoals.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridViewGoals_FocusedRowChanged);
             // 
             // grpGoalsDetail
             // 
