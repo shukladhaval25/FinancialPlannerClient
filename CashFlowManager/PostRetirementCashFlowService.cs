@@ -255,7 +255,7 @@ namespace FinancialPlannerClient.CashFlowManager
 
         private void addGoalLoanCalculation(int i, DataRow dr)
         {
-            int currentLoanYear = (i - DateTime.Now.Year);
+            int currentLoanYear = (i - this.planner.StartDate.Year);
             int previousYearRowIndex = i - 1;
             double totalLoans = 0;
             if (cashFlowCalculation.LstGoals != null)
@@ -274,7 +274,7 @@ namespace FinancialPlannerClient.CashFlowManager
 
         private void addLoansCalculation(int i, DataRow dr)
         {
-            int currentLoanYear =  (i - DateTime.Now.Year);
+            int currentLoanYear =  (i - this.planner.StartDate.Year);
          
             int previousYearRowIndex = i - 1;
             double totalLoans = 0;

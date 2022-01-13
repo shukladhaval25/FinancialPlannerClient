@@ -26,7 +26,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         {
             InitializeComponent();
         }
-        public FinancialClientGoal(Planner planner, Client client, int riskProfileID, int optionId)
+        public FinancialClientGoal(Planner planner, Client client, int riskProfileID, int optionId,IList<Goals> goals)
         {
             InitializeComponent();
             this.planner = planner;
@@ -34,7 +34,10 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             this.lblClientName.Text = client.Name;
             this.riskProfileId = riskProfileID;
             this.optionId = optionId;
-
+            if (goals.Count > 0)
+            {
+                this.lstGoal = goals.ToList();
+            }
           
         }
         
@@ -289,8 +292,8 @@ namespace FinancialPlannerClient.PlanOptions.Reports
 
         private void FinancialClientGoal_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            GoalsInfo GoalsInfo = new GoalsInfo();
-            lstGoal = (List<Goals>)GoalsInfo.GetAll(planner.ID);
+            // GoalsInfo GoalsInfo = new GoalsInfo();
+            // lstGoal =  (List<Goals>)GoalsInfo.GetAll(planner.ID);
             lstGoal = lstGoal.OrderBy(x => x.Priority).ToList();
             maxGoalPriority = lstGoal[lstGoal.Count - 1].Priority;
             maxGoalPriority = maxGoalPriority + 1;

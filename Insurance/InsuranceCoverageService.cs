@@ -16,7 +16,7 @@ namespace FinancialPlannerClient.Insurance
     internal class InsuranceCoverageService
     {
         private const int singlePersonRetirmentCorpusPercentage = 70;
-        int currentYear = DateTime.Now.Year;
+        int currentYear ;
         DataTable dtInsurance = new DataTable();
         DataTable dtInsuranceCoverage = new DataTable();
         double totalLoanAmountDue = 0;
@@ -36,6 +36,7 @@ namespace FinancialPlannerClient.Insurance
             plannerAssumption = new PlannerAssumptionInfo().GetAll(planner.ID);
             AssumptionMaster  assumptionMaster = Program.GetAssumptionMaster();
             insuranceReturnRate = double.Parse(assumptionMaster.InsuranceReturnRate.ToString());
+            currentYear = this.planner.StartDate.Year;
         }
 
         public void CalculateInsuranceCoverNeed()

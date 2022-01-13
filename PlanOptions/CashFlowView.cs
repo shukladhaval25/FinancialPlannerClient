@@ -107,7 +107,43 @@ namespace FinancialPlannerClient.PlanOptions
             {
                 e.Appearance.ForeColor = Color.Red;
                 e.Appearance.BackColor = Color.DarkOrange;
-            }         
+            }
+            DataRowView row = (DataRowView) gridSplitContainerViewCashFlow.GetRow(e.RowHandle);
+            surplusAmt = 0;
+            double.TryParse(row["Surplus Amount"].ToString(), out surplusAmt);
+            double totalFundAllocation = 0;
+            bool startCount = false;
+            foreach (DataColumn column in row.Row.Table.Columns)
+            {
+                if (column.Caption.EndsWith("Retirement") ||
+                    column.Caption.Equals("Corpus Fund") || 
+                    column.Caption.Equals("Cumulative Corpus Fund")  || 
+                    column.Caption.Equals("Adjusted Amount"))
+                {
+                    startCount = false;
+                }
+                if (startCount)
+                {
+                    double val = 0;
+                    double.TryParse(row[column.Caption].ToString(), out val);
+                    totalFundAllocation = totalFundAllocation + val;
+                }
+                if (column.Caption.Equals("Surplus Amount"))
+                {
+                    startCount = true;
+                }
+                //if ((surplusAmt - totalFundAllocation) < 100 )
+                //{
+                //    e.Appearance.ForeColor = Color.Red;
+                //    e.Appearance.BackColor = Color.Black;
+                //}
+                //else
+                //{
+                //    e.Appearance.ForeColor = Color.Black;
+                //    e.Appearance.BackColor = Color.White;
+                //}
+            }
+            
         }
     }
 }

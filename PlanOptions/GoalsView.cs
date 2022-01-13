@@ -603,7 +603,7 @@ namespace FinancialPlannerClient.PlanOptions
             if (!string.IsNullOrEmpty(txtGoalLoanPortion.Text))
             {
                 double currentValueOfGoal = double.Parse(txtGoalCurrentValue.Text);
-                double futureValueOfGoal = futureValue(currentValueOfGoal, decimal.Parse(txtInflationRate.Text), int.Parse(txtGoalStartYear.Text) - DateTime.Now.Year);
+                double futureValueOfGoal = futureValue(currentValueOfGoal, decimal.Parse(txtInflationRate.Text), int.Parse(txtGoalStartYear.Text) - this.planner.StartDate.Year);
                 double loanPortion = double.Parse(txtGoalLoanPortion.Text);
                 double futureLoanAmount = (futureValueOfGoal * loanPortion) / 100;
 
@@ -615,6 +615,22 @@ namespace FinancialPlannerClient.PlanOptions
         private void gridViewGoals_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
             btnEdit_Click(sender, e);
+        }
+
+        private void cmbCategory_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (cmbCategory.Tag.Equals("0") && (cmbCategory.Text.Equals("Education") || cmbCategory.Text.Equals("Retirement")))
+            {
+                chkEligbileForInsuranceCoverage.Checked = true;
+            }
+            else if (cmbCategory.Tag.Equals("0")  && !cmbCategory.Text.Equals("Education") && !cmbCategory.Text.Equals("Retirement"))
+            {
+                chkEligbileForInsuranceCoverage.Checked = false ;
+            }
+            if (cmbCategory.Tag.Equals("0") && (cmbCategory.Text.Equals("Vehicale")))
+            {
+                txtInflationRate.Text = "4";
+            }
         }
     }
 

@@ -694,11 +694,11 @@ namespace FinancialPlannerClient.PlanOptions
                     else if (rowIndex == 0)
                     {
                         double.TryParse(dtGoalValue.Rows[rowIndex]["Portfolio Return"].ToString(), out portFolioReturnRate);
-                        if (freshInvestment > 0)
-                        {
+                        //if (freshInvestment > 0)
+                        //{
                             goalActualComplitionValue = goalActualComplitionValue - freshInvestment;
                             goalActualComplitionValue = (goalActualComplitionValue * 100) / (100 + portFolioReturnRate);
-                        }
+                        //}
                         dtGoalValue.Rows[rowIndex]["EstimatedValue"] = goalActualComplitionValue;
                     }
                 }

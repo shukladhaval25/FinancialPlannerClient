@@ -92,27 +92,29 @@ namespace FinancialPlannerClient.Clients
 
         private void setAccessControlBasedOnPlannerLockStatu()
         {
-            //Family Member
-            grpActionControls.Visible = !this.planner.IsPlanLocked;
-            btnFamilyMemberSave.Visible = !this.planner.IsPlanLocked;
+            if (this.planner != null)
+            {
+                //Family Member
+                grpActionControls.Visible = !this.planner.IsPlanLocked;
+                btnFamilyMemberSave.Visible = !this.planner.IsPlanLocked;
 
-            //Loan
-            grpLoanGroupControl.Visible = !this.planner.IsPlanLocked;
-            btnSaveLoan.Visible = !this.planner.IsPlanLocked;
+                //Loan
+                grpLoanGroupControl.Visible = !this.planner.IsPlanLocked;
+                btnSaveLoan.Visible = !this.planner.IsPlanLocked;
 
-            //Non-Financial Asset
-            grpNonFinancialAssetControl.Visible = !this.planner.IsPlanLocked;
-            btnNonFinancialSave.Visible = !this.planner.IsPlanLocked;
+                //Non-Financial Asset
+                grpNonFinancialAssetControl.Visible = !this.planner.IsPlanLocked;
+                btnNonFinancialSave.Visible = !this.planner.IsPlanLocked;
 
-            //Income
-            grpIncomeControl.Visible = !this.planner.IsPlanLocked;
-            btnSaveIncome.Visible = !this.planner.IsPlanLocked;
+                //Income
+                grpIncomeControl.Visible = !this.planner.IsPlanLocked;
+                btnSaveIncome.Visible = !this.planner.IsPlanLocked;
 
-            //Expenses
-            grpExpensesConntrol.Visible = !this.planner.IsPlanLocked;
-            btnSaveExp.Visible = !this.planner.IsPlanLocked;
+                //Expenses
+                grpExpensesConntrol.Visible = !this.planner.IsPlanLocked;
+                btnSaveExp.Visible = !this.planner.IsPlanLocked;
 
-
+            }
         }
 
         private void tabPlannerDetails_SelectedIndexChanged(object sender, EventArgs e)

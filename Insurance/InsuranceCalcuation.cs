@@ -197,7 +197,7 @@ namespace FinancialPlannerClient.Insurance
                 dataRow["Category"] = "Goals";
                 dataRow["Content"] = goal.Name;
                 dataRow["Amount"] = goal.Amount;
-                double futureValueOfGoal = futureValue(goal.Amount, goal.InflationRate, (int.Parse(goal.StartYear) - DateTime.Now.Year));
+                double futureValueOfGoal = futureValue(goal.Amount, goal.InflationRate, (int.Parse(goal.StartYear) - this.planner.StartDate.Year));
                 totalAmountRequireInFuture = totalAmountRequireInFuture + futureValueOfGoal;
                 //addGoalCoverageCalculation(goal, futureValueOfGoal);
                 dtInsuranceCoverage.Rows.Add(dataRow);

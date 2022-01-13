@@ -13,6 +13,8 @@ using System.Diagnostics;
 using System.Reflection;
 using FinancialPlanner.Common;
 using System.Linq;
+using FinancialPlanner.Common.Model.CurrentStatus;
+using FinancialPlannerClient.CurrentStatus;
 
 namespace FinancialPlannerClient.PlanOptions.Reports
 {
@@ -23,6 +25,8 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         DataTable _dtIncome;
         DataTable _dtExpenses;
         DataTable _dtLoan;
+        DataTable _dtLifeInsurance;
+
         List<Income> lstIncome;
         double distributedFaceRetirementAmount = 0;
        
@@ -201,6 +205,11 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             List<Loan> lstNonFinancialAsset = (List<Loan>)loanInfo.GetAll(this.planner.ID);
             _dtLoan = ListtoDataTable.ToDataTable(lstNonFinancialAsset);
 
+            LifeInsuranceInfo lifeInsuranceInfo = new LifeInsuranceInfo();
+            List<LifeInsurance> lifeInsurances = (List<LifeInsurance>)lifeInsuranceInfo.GetAllLifeInsurance(this.planner.ID);
+            _dtLifeInsurance = ListtoDataTable.ToDataTable(lifeInsurances);
+
+
             if (this.planner.FaceType.Equals("D"))
             {
                 double exp = distributedFaceRetirementAmount;
@@ -226,6 +235,16 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                     //index++;
                 }
                
+            }
+
+            foreach(DataRow dr in _dtLifeInsurance.Rows)
+            {
+                double premiumAmt = 0;
+                DataRow dataRowLoan = _dtExpenses.NewRow();
+                dataRowLoan["Item"] = dr["Company"] + " (" + dr["PolicyNo"] + ")" ;
+                double.TryParse(dr["Premium"].ToString(), out premiumAmt);
+                dataRowLoan["Amount"] = premiumAmt;
+                _dtExpenses.Rows.Add(dataRowLoan);
             }
             foreach (DataRow dr in _dtExpenses.Rows)
             {

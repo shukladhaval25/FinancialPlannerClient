@@ -182,7 +182,7 @@ namespace FinancialPlannerClient.PlanOptions
                     this.Pages.AddRange(financialGoalIntro.Pages);
                 }
 
-                FinancialClientGoal financialClientGoal = new FinancialClientGoal(planner, this.client, this.riskprofileId, this.optionId);
+                FinancialClientGoal financialClientGoal = new FinancialClientGoal(planner, this.client, this.riskprofileId, this.optionId,this.goals);
                 financialClientGoal.CreateDocument();
                 if (blnClientFinancialGoals)
                 {

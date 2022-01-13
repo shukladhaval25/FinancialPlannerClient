@@ -314,6 +314,7 @@
             // Personalnfo
             // 
             this.Personalnfo.Caption = "Personal Info";
+            this.Personalnfo.Expanded = true;
             this.Personalnfo.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.ContactInfo),
             new DevExpress.XtraNavBar.NavBarItemLink(this.BankDetails),

@@ -751,7 +751,7 @@ namespace FinancialPlannerClient.CashFlowManager
                 double totalExpenses = addExpenses(dr);
                 double totalLoan = addLoans(dr);
                 double totalLoanEmi = addGoals(dr, totalpostTaxIncome, totalExpenses, totalLoan);
-                dr["Surplus Amount"] = totalpostTaxIncome - (totalExpenses + totalLoan + totalLoanEmi);
+                dr["Surplus Amount"] = totalpostTaxIncome - (totalExpenses + totalLoan );
 
                 Goals goal = new Goals();
                 int retirementGoalCount = _cashFlowCalculation.LstGoals.Count(x => x.Category == "Retirement");
@@ -919,9 +919,9 @@ namespace FinancialPlannerClient.CashFlowManager
                         loanForGoalValue = goal.LoanForGoal.LoanAmount;
                         if (_planner.StartDate.Year >= goal.LoanForGoal.StratYear)
                         {
-                            dr[string.Format("(Loan EMI - {0})", goal.Name)] = goal.LoanForGoal.EMI;
-                            totalLoanEmi = totalLoanEmi + goal.LoanForGoal.EMI;
-                            emi = goal.LoanForGoal.EMI;
+                            dr[string.Format("(Loan EMI - {0})", goal.Name)] = goal.LoanForGoal.EMI * 12;
+                            totalLoanEmi = totalLoanEmi + goal.LoanForGoal.EMI * 12;
+                            surplusCashFund = surplusCashFund - (goal.LoanForGoal.EMI * 12);
                         }
                     }
                     //2 Cash Flow and fund allocation to goal

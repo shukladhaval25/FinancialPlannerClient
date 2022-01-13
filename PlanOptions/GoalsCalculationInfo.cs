@@ -326,14 +326,14 @@ namespace FinancialPlannerClient.PlanOptions
             else
             {
                 portfolioValue = GetProfileValue();
-                if (freshInv > 0)
-                {
+                //if (freshInv > 0)
+                //{
                     portfolioValue = portfolioValue + freshInv + ((portfolioValue * (double)returnRatio) / 100);
-                }
-                else
-                {
-                    portfolioValue = portfolioValue + freshInv;
-                }
+                //}
+                //else
+                //{
+                //    portfolioValue = portfolioValue + freshInv;
+                //}
             }
             return System.Math.Round(portfolioValue);
         }
