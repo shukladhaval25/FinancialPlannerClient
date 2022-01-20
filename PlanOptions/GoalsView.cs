@@ -33,6 +33,12 @@ namespace FinancialPlannerClient.PlanOptions
         private void chkLaonForGoal_CheckedChanged(object sender, EventArgs e)
         {
             grpLoanForGoal.Enabled = chkLaonForGoal.Checked;
+            if (grpLoanForGoal.Enabled)
+            {
+                double currentValueOfGoal = double.Parse(txtGoalCurrentValue.Text);
+                double futureValueOfGoal = futureValue(currentValueOfGoal, decimal.Parse(txtInflationRate.Text), int.Parse(txtGoalStartYear.Text) - this.planner.StartDate.Year);
+                lblFV.Text = futureValueOfGoal.ToString("N0", PlannerMainReport.Info);
+            }
         }
 
         private void rdoGoalType_SelectedIndexChanged(object sender, EventArgs e)
@@ -135,6 +141,7 @@ namespace FinancialPlannerClient.PlanOptions
                 txtInflationRate.Text = goals.InflationRate.ToString("##.00");
                 txtGoalEndYear.Text = goals.EndYear;
                 chkEligbileForInsuranceCoverage.Checked = goals.EligibleForInsuranceCoverage;
+
                 if (goals.Recurrence != null)
                     txtGoalRecurrence.Text = goals.Recurrence.Value.ToString();
                 else
@@ -163,7 +170,12 @@ namespace FinancialPlannerClient.PlanOptions
 
         private void displayLaonForGoalData(Goals goals)
         {
-            
+            if (grpLoanForGoal.Enabled)
+            {
+                double currentValueOfGoal = double.Parse(txtGoalCurrentValue.Text);
+                double futureValueOfGoal = futureValue(currentValueOfGoal, decimal.Parse(txtInflationRate.Text), int.Parse(txtGoalStartYear.Text) - this.planner.StartDate.Year);
+                lblFV.Text = futureValueOfGoal.ToString("N0", PlannerMainReport.Info);
+            }
             txtLoanForGoalAmount.Text = goals.LoanForGoal.LoanAmount.ToString("N0", PlannerMainReport.Info);
             txtLoanForGoalAmount.Tag = goals.LoanForGoal.Id.ToString();
             txtLoanForGoalEMI.Text = goals.LoanForGoal.EMI.ToString("N0", PlannerMainReport.Info);
@@ -386,7 +398,7 @@ namespace FinancialPlannerClient.PlanOptions
             goalLoan.UpdatedBy = Program.CurrentUser.Id;
             goalLoan.UpdatedByUserName = Program.CurrentUser.UserName;
             goalLoan.MachineName = Environment.MachineName;
-            goalLoan.LoanPortion = int.Parse(txtGoalLoanPortion.Text);
+            goalLoan.LoanPortion = decimal.Parse(txtGoalLoanPortion.Text);
             return goalLoan;
         }
 
@@ -409,7 +421,8 @@ namespace FinancialPlannerClient.PlanOptions
 
         private void txtGoalName_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (txtGoalName.Text.Contains("'")) {
+            if (txtGoalName.Text.Contains("'"))
+            {
                 XtraMessageBox.Show("Single quote character not allowd here.");
                 e.Cancel = true;
             }
@@ -494,11 +507,11 @@ namespace FinancialPlannerClient.PlanOptions
                 XtraMessageBox.Show("Please enter require data like Goal current value,Goal start year, Inflation Rate.", "Enter Require Data", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
-            if (string.IsNullOrEmpty(txtGoalLoanPortion.Text))
-            {
-                XtraMessageBox.Show("Please enter loan portion (%) data.", "Enter Require Data", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return;
-            }
+            //if (string.IsNullOrEmpty(txtGoalLoanPortion.Text))
+            //{
+            //    XtraMessageBox.Show("Please enter loan portion (%) data.", "Enter Require Data", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            //    return;
+            //}
             if (string.IsNullOrEmpty(txtLoanForGoalAmount.Text) &&
                string.IsNullOrEmpty(txtLoanForGoalEMI.Text) &&
                string.IsNullOrEmpty(txtLoanForGoalROI.Text) &&
@@ -514,39 +527,85 @@ namespace FinancialPlannerClient.PlanOptions
 
         private void LoanCalcuation(CalculationType calculationType)
         {
-            
-            double currentValueOfLoan = double.Parse(txtGoalCurrentValue.Text);
-          
-
-            switch (calculationType)
+            try
             {
-                case CalculationType.OutstandingAmount:
-                    //txtLoanForGoalAmount.Text = presentValue()
-                    break;
-                case CalculationType.EMI:
-                   
-                    
-                    double principalAmount = double.Parse(txtLoanForGoalAmount.Text);
-                    float interestRate = float.Parse(txtLoanForGoalROI.Text)/1200;
-                    int numberOfYears = int.Parse(txtLoanForGoalYears.Text) * 12;
-                    // E = P * r * Math.Pow(1 + r, n) / (Math.Pow(1 + r, n) - 1);
-                    double emi = principalAmount * interestRate * Math.Pow(1 + interestRate,numberOfYears) / (Math.Pow(1 + interestRate, numberOfYears) -1) ;
-                    txtLoanForGoalEMI.Text =  Math.Round(emi).ToString();
-                    break;
-                case CalculationType.Period:
-                    break;
-                case CalculationType.RateOfInterest:
-                    break;
-                
-            } 
+                double currentValueOfLoan = double.Parse(txtGoalCurrentValue.Text);
+                double principalAmount = 0;
+                double interestRate = 0;
+                double numberOfYears = 0;
+                double emi = 0;
+
+                switch (calculationType)
+                {
+                    case CalculationType.OutstandingAmount:
+                        interestRate = double.Parse(txtLoanForGoalROI.Text) / 1200;
+                        numberOfYears = double.Parse(txtLoanForGoalYears.Text) * 12;
+                        emi = double.Parse(txtLoanForGoalEMI.Text) * -1;
+                        double outstandingAmt = Microsoft.VisualBasic.Financial.PV(interestRate, numberOfYears, emi);
+                        txtLoanForGoalAmount.Text = outstandingAmt.ToString();
+                        double loanPortionRatio = outstandingAmt * 100 / double.Parse(lblFV.Text);
+                        txtGoalLoanPortion.Text = loanPortionRatio.ToString();
+                        break;
+                    case CalculationType.EMI:
+                       // PMT(E21, E23, -E17)
+                        principalAmount = double.Parse(txtLoanForGoalAmount.Text);
+                        principalAmount = double.Parse(txtLoanForGoalAmount.Text);
+                        principalAmount = double.Parse(txtLoanForGoalAmount.Text);
+                        principalAmount = double.Parse(txtLoanForGoalAmount.Text);
+                        interestRate = double.Parse(txtLoanForGoalROI.Text) / 1200;
+                        numberOfYears = double.Parse(txtLoanForGoalYears.Text) * 12;
+                        // E = P * r * Math.Pow(1 + r, n) / (Math.Pow(1 + r, n) - 1);
+                        //emi = principalAmount * interestRate * Math.Pow(1 + interestRate, numberOfYears) / (Math.Pow(1 + interestRate, numberOfYears) - 1);
+                        emi = Microsoft.VisualBasic.Financial.Pmt(interestRate, numberOfYears, principalAmount * -1);
+                        txtLoanForGoalEMI.Text = Math.Round(emi).ToString();
+                        break;
+                    case CalculationType.Period:
+                        //NPER(E31, E29, -E27)
+                        interestRate = double.Parse(txtLoanForGoalROI.Text) / 1200;
+                        emi = double.Parse(txtLoanForGoalEMI.Text);
+                        principalAmount = double.Parse(txtLoanForGoalAmount.Text) * -1;
+                        double period = Microsoft.VisualBasic.Financial.NPer(interestRate, emi, principalAmount);
+                        txtLoanForGoalYears.Text = (period / 12).ToString();
+
+                        break;
+                    case CalculationType.RateOfInterest:
+                        double pAmount = double.Parse(txtLoanForGoalAmount.Text) * -1;
+                        double nPer = double.Parse(txtLoanForGoalYears.Text) * 12;
+                        emi = double.Parse(txtLoanForGoalEMI.Text);
+
+                        double r = Microsoft.VisualBasic.Financial.Rate(nPer, emi, pAmount);
+                        r = r * 1200;
+                        txtLoanForGoalROI.Text = r.ToString();
+
+                        //double totalLoanAmountWithInterest = emi * n;
+                        //var r = ((totalLoanAmountWithInterest - pAmount) / pAmount) * 100;
+
+
+                        //principalAmount = double.Parse(txtLoanForGoalAmount.Text);
+                        ////interestRate = float.Parse(txtLoanForGoalROI.Text) / 1200;
+                        //numberOfYears = int.Parse(txtLoanForGoalYears.Text) * 12;
+                        //// E = P * r * Math.Pow(1 + r, n) / (Math.Pow(1 + r, n) - 1);
+                        //emi = double.Parse(txtLoanForGoalEMI.Text);
+                        //var r = (principalAmount * emi) / Math.Pow(1 + emi, numberOfYears);
+                        //txtLoanForGoalEMI.Text = Math.Round(emi).ToString();
+
+                        break;
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
         private CalculationType getCalculationType()
         {
-            if (string.IsNullOrEmpty(txtLoanForGoalAmount.Text) && 
-                !string.IsNullOrEmpty(txtLoanForGoalEMI.Text) && 
+            if (string.IsNullOrEmpty(txtLoanForGoalAmount.Text) &&
+                !string.IsNullOrEmpty(txtLoanForGoalEMI.Text) &&
                 !string.IsNullOrEmpty(txtLoanForGoalROI.Text) &&
-                !string.IsNullOrEmpty(txtLoanForGoalYears.Text))
+                !string.IsNullOrEmpty(txtLoanForGoalYears.Text) &&
+                cmbLoanCalculationType.Text.Equals("Calculate Outstanding Amount"))
             {
                 return CalculationType.OutstandingAmount;
             }
@@ -554,7 +613,8 @@ namespace FinancialPlannerClient.PlanOptions
             if (!string.IsNullOrEmpty(txtLoanForGoalAmount.Text) &&
                 string.IsNullOrEmpty(txtLoanForGoalEMI.Text) &&
                 !string.IsNullOrEmpty(txtLoanForGoalROI.Text) &&
-                !string.IsNullOrEmpty(txtLoanForGoalYears.Text))
+                !string.IsNullOrEmpty(txtLoanForGoalYears.Text) &&
+                cmbLoanCalculationType.Text.Equals("Calculate EMI"))
             {
                 return CalculationType.EMI;
             }
@@ -570,7 +630,7 @@ namespace FinancialPlannerClient.PlanOptions
             if (!string.IsNullOrEmpty(txtLoanForGoalAmount.Text) &&
              !string.IsNullOrEmpty(txtLoanForGoalEMI.Text) &&
              string.IsNullOrEmpty(txtLoanForGoalROI.Text) &&
-             !string.IsNullOrEmpty(txtLoanForGoalYears.Text))
+             !string.IsNullOrEmpty(txtLoanForGoalYears.Text) && cmbLoanCalculationType.Text.Equals("Calculate Rate Of Interest"))
             {
                 return CalculationType.RateOfInterest;
             }
@@ -622,14 +682,31 @@ namespace FinancialPlannerClient.PlanOptions
             if (cmbCategory.Tag.Equals("0") && (cmbCategory.Text.Equals("Education") || cmbCategory.Text.Equals("Retirement")))
             {
                 chkEligbileForInsuranceCoverage.Checked = true;
+                if (cmbCategory.Text.Equals("Retirement"))
+                {
+                    txtInflationRate.Text = plannerAssumption.PreRetirementInflactionRate.ToString();
+                }
             }
-            else if (cmbCategory.Tag.Equals("0")  && !cmbCategory.Text.Equals("Education") && !cmbCategory.Text.Equals("Retirement"))
+            else if (cmbCategory.Tag.Equals("0") && !cmbCategory.Text.Equals("Education") && !cmbCategory.Text.Equals("Retirement"))
             {
-                chkEligbileForInsuranceCoverage.Checked = false ;
+                chkEligbileForInsuranceCoverage.Checked = false;
+                txtInflationRate.Text = "";
             }
             if (cmbCategory.Tag.Equals("0") && (cmbCategory.Text.Equals("Vehicale")))
             {
                 txtInflationRate.Text = "4";
+            }
+        }
+
+        private void txtLoanForGoalStartYear_EditValueChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtLoanForGoalYears.Text))
+            {
+                int startYear;
+                int loanYears;
+                int.TryParse(txtLoanForGoalStartYear.Text, out startYear);
+                int.TryParse(txtLoanForGoalYears.Text, out loanYears);
+                txtLoanForGoalEndYear.Text = (this.planner.StartDate.Month != 1) ? (startYear + loanYears).ToString() : (startYear + (loanYears -1)).ToString();
             }
         }
     }

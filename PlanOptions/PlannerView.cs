@@ -429,5 +429,25 @@ namespace FinancialPlannerClient.PlanOptions
         {
            
         }
+
+        private void txtEquityRatio_EditValueChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtEquityRatio.Text))
+            {
+                double portion = 0;
+                double.TryParse(txtEquityRatio.Text, out portion);
+                txtDebtRatio.Text = (100 - portion).ToString();
+            }
+        }
+
+        private void txtDebtRatio_EditValueChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtDebtRatio.Text))
+            {
+                double portion = 0;
+                double.TryParse(txtDebtRatio.Text, out portion);
+                txtEquityRatio.Text = (100 - portion).ToString();
+            }
+        }
     }
 }

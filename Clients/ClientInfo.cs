@@ -1372,7 +1372,7 @@ namespace FinancialPlannerClient.Clients
                 nonFinancialAsset.MappedGoalId = int.Parse(cmbMappingGoal.Tag.ToString());
             else
                 nonFinancialAsset.MappedGoalId = 0;
-            nonFinancialAsset.AssetMappingShare = int.Parse(txtGoalMappingShare.Text);
+            nonFinancialAsset.AssetMappingShare = decimal.Parse(txtGoalMappingShare.Text);
             nonFinancialAsset.Description = txtNonFinancialDesc.Text;
             nonFinancialAsset.GrowthPercentage = decimal.Parse(txtNonFinancialGrowthPercentage.Text);
             nonFinancialAsset.CreatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
@@ -1482,14 +1482,14 @@ namespace FinancialPlannerClient.Clients
 
         private void txtGoalMappingShare_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+            //e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
 
         private void txtGoalMappingShare_TextChanged(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(txtGoalMappingShare.Text))
             {
-                if (int.Parse(txtGoalMappingShare.Text) > 100)
+                if (double.Parse(txtGoalMappingShare.Text) > 100)
                 {
                     MessageBox.Show("More then 100% is not allow to map with asset value.");
                     txtGoalMappingShare.Focus();
@@ -2288,7 +2288,7 @@ namespace FinancialPlannerClient.Clients
                 cmbMappingGoal.Tag = "0";
             calculateMappedValueAndOtherValues();
         }
-        private double futureValueOfMappedNonFinanceAsset(int goalId, double pv, decimal growthRate, int mappedRatio)
+        private double futureValueOfMappedNonFinanceAsset(int goalId, double pv, decimal growthRate, double mappedRatio)
         {
             double fv = 0;
 
@@ -2699,7 +2699,7 @@ namespace FinancialPlannerClient.Clients
             {
                 int goalId = int.Parse(cmbMappingGoal.Tag.ToString());
 
-                double fv = futureValueOfMappedNonFinanceAsset(goalId, double.Parse(txtAssetCurrentCost.Text), decimal.Parse(txtNonFinancialGrowthPercentage.Text), int.Parse(txtGoalMappingShare.Text));
+                double fv = futureValueOfMappedNonFinanceAsset(goalId, double.Parse(txtAssetCurrentCost.Text), decimal.Parse(txtNonFinancialGrowthPercentage.Text), double.Parse(txtGoalMappingShare.Text));
                 lblFVMappedGoal.Text = fv.ToString();
                 //lblRamingAmtVal.Text = ((fv * int.Parse(txtGoalMappingShare.Text)) / 100).ToString();
             }

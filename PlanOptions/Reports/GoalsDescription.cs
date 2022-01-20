@@ -60,6 +60,13 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             this.GroupHeader1.GroupFields[0].FieldName = this.goal.Name;
             setImageForGoal(goal);
             goalCalculation(goal);
+            displayGoalChart();
+        }
+
+        private void displayGoalChart()
+        {
+            //throw new NotImplementedException();
+
         }
 
         private void setImageForGoal(Goals goal)
@@ -291,6 +298,24 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             setCurrentStatusFundAllocationValue();
             setFreshInvestmentInGoal();
             setNonFinancialAssetsMappingValue();
+            setGraphChartWithGoalCompletionInformation();
+        }
+
+        private void setGraphChartWithGoalCompletionInformation()
+        {
+            string goalName = (goal.Name.Length > 4) ? goal.Name.Substring(0, goal.Name.Length - 4) : goal.Name;
+            DataRow[] drs =  this._dtGoalProjectionComplition.Select("Category='" + goal.Category + "' and Name like '" + goalName.Trim() + "%'");
+            if (drs.Count() > 0)
+            {
+                double fv = double.Parse(drs[0]["FutureValue"].ToString());
+                double goalCompletionPercentage = double.Parse(drs[0]["ProjectionCompleted"].ToString());
+                double overallCompletion = (goalCompletionPercentage * fv) / 100;
+                double goalAchivedTillDate = double.Parse(drs[0]["GoalAchivedTillDate"].ToString()); 
+                xrChartGoal.Series[0].Points[0].Values = new double[] { fv };
+                xrChartGoal.Series[0].Points[1].Values = new double[] { overallCompletion };
+                xrChartGoal.Series[0].Points[2].Values = new double[] { goalAchivedTillDate };
+            }
+
         }
 
         private void setNonFinancialAssetsMappingValue()
@@ -304,7 +329,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                 {
                     double primaryHolderShare = (nfa.CurrentValue * nfa.PrimaryholderShare) / 100;
                     double secondaryHolderShare = (nfa.CurrentValue * nfa.SecondaryHolderShare) / 100;
-                    double assetsMappingShare = ((primaryHolderShare + secondaryHolderShare) * nfa.AssetMappingShare) / 100;
+                    double assetsMappingShare = ((primaryHolderShare + secondaryHolderShare) * double.Parse(nfa.AssetMappingShare.ToString())) / 100;
 
                     //int timePeriod = getRemainingYearsFromPlanStartYear();
                     //decimal inflationRate = nfa.GrowthPercentage;

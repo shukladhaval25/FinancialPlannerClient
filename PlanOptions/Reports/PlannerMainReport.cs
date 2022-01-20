@@ -200,7 +200,7 @@ namespace FinancialPlannerClient.PlanOptions
                 }
 
 
-                GoalProjectionForComplition goalProjectionForComplition = new GoalProjectionForComplition(planner, this.client, this.riskprofileId, this.optionId, retirementFutureCost);
+                GoalProjectionForComplition goalProjectionForComplition = new GoalProjectionForComplition(planner, this.client, this.riskprofileId, this.optionId, retirementFutureCost,this.goals);
                 goalProjectionForComplition.CreateDocument();
                 if (blnGoalProjectionComplition)
                 {

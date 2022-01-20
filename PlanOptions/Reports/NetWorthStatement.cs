@@ -43,7 +43,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         const string OTHERS_GOLD = "Others";
 
 
-        double totalAssetsValue, totalLiabilitiesValue;
+        double totalAssetsValue, totalLiabilitiesValue,totalFixedAssetsValue,totalRealEstateValue;
         public NetWorthStatement(Client client, Planner planner)
         {
             InitializeComponent();
@@ -99,6 +99,10 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             xrChartNetWorth.Series[0].Points[0].Values = new double[] { totalAssetsValue };
             xrChartNetWorth.Series[0].Points[1].Values = new double[] { totalLiabilitiesValue };
             xrChartNetWorth.Series[0].Points[2].Values = new double[] { totalAssetsValue - totalLiabilitiesValue };
+
+            xrChartRealEstate.Series[0].Points[0].Values = new double[] { totalFixedAssetsValue };
+            xrChartRealEstate.Series[0].Points[1].Values = new double[] { totalRealEstateValue };
+            
         }
 
         private void setTotal()
@@ -112,6 +116,10 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             lblTotalLiabilities.Text = totalLiabilitiesValue.ToString("#,###");
             lblCellCalculation.Text = lblTotalAssets.Text + " less " + lblTotalLiabilities.Text;
             xrTableFinalNetWorth.Text = (totalAssetsValue - totalLiabilitiesValue).ToString("#,###");
+
+            double.TryParse(dtNetWorth.Compute("Sum(Amount)", "group = '" + FINANCIAL_ASSETS + "'").ToString(), out totalFixedAssetsValue);
+
+            double.TryParse(dtNetWorth.Compute("Sum(Amount)", "group = '" + REAL_ESTATE + "'").ToString(), out totalRealEstateValue);
         }
 
         private void setDataForReport()

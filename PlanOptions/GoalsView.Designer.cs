@@ -63,6 +63,8 @@
             this.txtOtherAnnualRetirementExp = new DevExpress.XtraEditors.TextEdit();
             this.chkEligbileForInsuranceCoverage = new DevExpress.XtraEditors.CheckEdit();
             this.grpLoanForGoal = new DevExpress.XtraEditors.GroupControl();
+            this.label10 = new System.Windows.Forms.Label();
+            this.cmbLoanCalculationType = new DevExpress.XtraEditors.ComboBoxEdit();
             this.txtGoalLoanPortion = new DevExpress.XtraEditors.TextEdit();
             this.label1 = new System.Windows.Forms.Label();
             this.btnCalculateLoan = new DevExpress.XtraEditors.SimpleButton();
@@ -116,6 +118,8 @@
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
             this.rdoGoalType = new DevExpress.XtraEditors.RadioGroup();
+            this.grpFV = new DevExpress.XtraEditors.GroupControl();
+            this.lblFV = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.grpGoals)).BeginInit();
             this.grpGoals.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdGoals)).BeginInit();
@@ -129,6 +133,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkEligbileForInsuranceCoverage.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grpLoanForGoal)).BeginInit();
             this.grpLoanForGoal.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbLoanCalculationType.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtGoalLoanPortion.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLoanForGoalEndYear.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLoanForGoalStartYear.Properties)).BeginInit();
@@ -156,6 +161,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rdoGoalType.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grpFV)).BeginInit();
+            this.grpFV.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblContactTitle
@@ -342,7 +349,6 @@
             // 
             // navigationPageRegGoal
             // 
-            this.navigationPageRegGoal.Caption = "navigationPageRegGoal";
             this.navigationPageRegGoal.Controls.Add(this.lblOtherAnnualRetirementExp);
             this.navigationPageRegGoal.Controls.Add(this.txtOtherAnnualRetirementExp);
             this.navigationPageRegGoal.Controls.Add(this.chkEligbileForInsuranceCoverage);
@@ -403,6 +409,8 @@
             // 
             // grpLoanForGoal
             // 
+            this.grpLoanForGoal.Controls.Add(this.grpFV);
+            this.grpLoanForGoal.Controls.Add(this.cmbLoanCalculationType);
             this.grpLoanForGoal.Controls.Add(this.txtGoalLoanPortion);
             this.grpLoanForGoal.Controls.Add(this.label1);
             this.grpLoanForGoal.Controls.Add(this.btnCalculateLoan);
@@ -419,19 +427,46 @@
             this.grpLoanForGoal.Controls.Add(this.label132);
             this.grpLoanForGoal.Controls.Add(this.label130);
             this.grpLoanForGoal.Controls.Add(this.label131);
+            this.grpLoanForGoal.Controls.Add(this.label10);
             this.grpLoanForGoal.Enabled = false;
             this.grpLoanForGoal.Location = new System.Drawing.Point(489, 47);
             this.grpLoanForGoal.Name = "grpLoanForGoal";
-            this.grpLoanForGoal.Size = new System.Drawing.Size(586, 248);
+            this.grpLoanForGoal.Size = new System.Drawing.Size(575, 248);
             this.grpLoanForGoal.TabIndex = 58;
             this.grpLoanForGoal.Text = "Loan Information";
             // 
+            // label10
+            // 
+            this.label10.AutoEllipsis = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(24, 60);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(105, 17);
+            this.label10.TabIndex = 51;
+            this.label10.Text = "Calculation Info:";
+            // 
+            // cmbLoanCalculationType
+            // 
+            this.cmbLoanCalculationType.Location = new System.Drawing.Point(122, 57);
+            this.cmbLoanCalculationType.Name = "cmbLoanCalculationType";
+            this.cmbLoanCalculationType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cmbLoanCalculationType.Properties.Items.AddRange(new object[] {
+            "Calculate EMI",
+            "Calculate Number of Years",
+            "Calculate Outstanding Amount",
+            "Calculate Rate Of Interest"});
+            this.cmbLoanCalculationType.Properties.Sorted = true;
+            this.cmbLoanCalculationType.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.cmbLoanCalculationType.Size = new System.Drawing.Size(171, 20);
+            this.cmbLoanCalculationType.TabIndex = 32;
+            // 
             // txtGoalLoanPortion
             // 
-            this.txtGoalLoanPortion.Location = new System.Drawing.Point(267, 57);
+            this.txtGoalLoanPortion.Location = new System.Drawing.Point(122, 83);
             this.txtGoalLoanPortion.Name = "txtGoalLoanPortion";
             this.txtGoalLoanPortion.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.txtGoalLoanPortion.Properties.MaxLength = 3;
+            this.txtGoalLoanPortion.Properties.MaxLength = 5;
             this.txtGoalLoanPortion.Size = new System.Drawing.Size(43, 20);
             this.txtGoalLoanPortion.TabIndex = 33;
             this.txtGoalLoanPortion.EditValueChanged += new System.EventHandler(this.txtGoalLoanPortion_EditValueChanged);
@@ -440,7 +475,7 @@
             // 
             this.label1.AutoEllipsis = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(156, 58);
+            this.label1.Location = new System.Drawing.Point(24, 85);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(105, 17);
             this.label1.TabIndex = 41;
@@ -450,7 +485,7 @@
             // 
             this.btnCalculateLoan.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCalculateLoan.Image = ((System.Drawing.Image)(resources.GetObject("btnCalculateLoan.Image")));
-            this.btnCalculateLoan.Location = new System.Drawing.Point(245, 174);
+            this.btnCalculateLoan.Location = new System.Drawing.Point(244, 195);
             this.btnCalculateLoan.Name = "btnCalculateLoan";
             this.btnCalculateLoan.Size = new System.Drawing.Size(141, 29);
             toolTipTitleItem18.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image3")));
@@ -468,7 +503,7 @@
             // 
             // txtLoanForGoalEndYear
             // 
-            this.txtLoanForGoalEndYear.Location = new System.Drawing.Point(385, 137);
+            this.txtLoanForGoalEndYear.Location = new System.Drawing.Point(395, 161);
             this.txtLoanForGoalEndYear.Name = "txtLoanForGoalEndYear";
             this.txtLoanForGoalEndYear.Size = new System.Drawing.Size(136, 20);
             this.txtLoanForGoalEndYear.TabIndex = 39;
@@ -476,15 +511,16 @@
             // 
             // txtLoanForGoalStartYear
             // 
-            this.txtLoanForGoalStartYear.Location = new System.Drawing.Point(385, 111);
+            this.txtLoanForGoalStartYear.Location = new System.Drawing.Point(395, 135);
             this.txtLoanForGoalStartYear.Name = "txtLoanForGoalStartYear";
             this.txtLoanForGoalStartYear.Size = new System.Drawing.Size(136, 20);
             this.txtLoanForGoalStartYear.TabIndex = 38;
+            this.txtLoanForGoalStartYear.EditValueChanged += new System.EventHandler(this.txtLoanForGoalStartYear_EditValueChanged);
             this.txtLoanForGoalStartYear.Validating += new System.ComponentModel.CancelEventHandler(this.txtLoanForGoalStartYear_Validating);
             // 
             // txtLoanForGoalYears
             // 
-            this.txtLoanForGoalYears.Location = new System.Drawing.Point(385, 85);
+            this.txtLoanForGoalYears.Location = new System.Drawing.Point(395, 109);
             this.txtLoanForGoalYears.Name = "txtLoanForGoalYears";
             this.txtLoanForGoalYears.Size = new System.Drawing.Size(136, 20);
             this.txtLoanForGoalYears.TabIndex = 37;
@@ -492,7 +528,7 @@
             // 
             // txtLoanForGoalROI
             // 
-            this.txtLoanForGoalROI.Location = new System.Drawing.Point(112, 137);
+            this.txtLoanForGoalROI.Location = new System.Drawing.Point(122, 161);
             this.txtLoanForGoalROI.Name = "txtLoanForGoalROI";
             this.txtLoanForGoalROI.Size = new System.Drawing.Size(136, 20);
             this.txtLoanForGoalROI.TabIndex = 36;
@@ -500,7 +536,7 @@
             // 
             // txtLoanForGoalEMI
             // 
-            this.txtLoanForGoalEMI.Location = new System.Drawing.Point(112, 111);
+            this.txtLoanForGoalEMI.Location = new System.Drawing.Point(122, 135);
             this.txtLoanForGoalEMI.Name = "txtLoanForGoalEMI";
             this.txtLoanForGoalEMI.Size = new System.Drawing.Size(136, 20);
             this.txtLoanForGoalEMI.TabIndex = 35;
@@ -508,7 +544,7 @@
             // 
             // txtLoanForGoalAmount
             // 
-            this.txtLoanForGoalAmount.Location = new System.Drawing.Point(112, 85);
+            this.txtLoanForGoalAmount.Location = new System.Drawing.Point(122, 109);
             this.txtLoanForGoalAmount.Name = "txtLoanForGoalAmount";
             this.txtLoanForGoalAmount.Properties.MaxLength = 12;
             this.txtLoanForGoalAmount.Size = new System.Drawing.Size(136, 20);
@@ -531,7 +567,7 @@
             // 
             this.label133.AutoEllipsis = true;
             this.label133.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label133.Location = new System.Drawing.Point(254, 137);
+            this.label133.Location = new System.Drawing.Point(264, 161);
             this.label133.Name = "label133";
             this.label133.Size = new System.Drawing.Size(132, 17);
             this.label133.TabIndex = 27;
@@ -541,7 +577,7 @@
             // 
             this.label127.AutoEllipsis = true;
             this.label127.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label127.Location = new System.Drawing.Point(14, 88);
+            this.label127.Location = new System.Drawing.Point(24, 112);
             this.label127.Name = "label127";
             this.label127.Size = new System.Drawing.Size(92, 17);
             this.label127.TabIndex = 16;
@@ -551,7 +587,7 @@
             // 
             this.label129.AutoEllipsis = true;
             this.label129.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label129.Location = new System.Drawing.Point(14, 114);
+            this.label129.Location = new System.Drawing.Point(24, 138);
             this.label129.Name = "label129";
             this.label129.Size = new System.Drawing.Size(92, 17);
             this.label129.TabIndex = 19;
@@ -561,7 +597,7 @@
             // 
             this.label132.AutoEllipsis = true;
             this.label132.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label132.Location = new System.Drawing.Point(254, 111);
+            this.label132.Location = new System.Drawing.Point(264, 135);
             this.label132.Name = "label132";
             this.label132.Size = new System.Drawing.Size(132, 17);
             this.label132.TabIndex = 25;
@@ -571,7 +607,7 @@
             // 
             this.label130.AutoEllipsis = true;
             this.label130.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label130.Location = new System.Drawing.Point(14, 140);
+            this.label130.Location = new System.Drawing.Point(24, 164);
             this.label130.Name = "label130";
             this.label130.Size = new System.Drawing.Size(92, 17);
             this.label130.TabIndex = 21;
@@ -581,7 +617,7 @@
             // 
             this.label131.AutoEllipsis = true;
             this.label131.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label131.Location = new System.Drawing.Point(254, 85);
+            this.label131.Location = new System.Drawing.Point(264, 109);
             this.label131.Name = "label131";
             this.label131.Size = new System.Drawing.Size(132, 17);
             this.label131.TabIndex = 23;
@@ -979,6 +1015,25 @@
             this.rdoGoalType.TabIndex = 3;
             this.rdoGoalType.SelectedIndexChanged += new System.EventHandler(this.rdoGoalType_SelectedIndexChanged);
             // 
+            // grpFV
+            // 
+            this.grpFV.Controls.Add(this.lblFV);
+            this.grpFV.Location = new System.Drawing.Point(318, 32);
+            this.grpFV.Name = "grpFV";
+            this.grpFV.Size = new System.Drawing.Size(213, 71);
+            this.grpFV.TabIndex = 52;
+            this.grpFV.Text = "Future Value Of Goal";
+            // 
+            // lblFV
+            // 
+            this.lblFV.AutoSize = true;
+            this.lblFV.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFV.Location = new System.Drawing.Point(83, 38);
+            this.lblFV.Name = "lblFV";
+            this.lblFV.Size = new System.Drawing.Size(0, 13);
+            this.lblFV.TabIndex = 7;
+            this.lblFV.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // GoalsView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1005,6 +1060,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkEligbileForInsuranceCoverage.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grpLoanForGoal)).EndInit();
             this.grpLoanForGoal.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cmbLoanCalculationType.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtGoalLoanPortion.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLoanForGoalEndYear.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLoanForGoalStartYear.Properties)).EndInit();
@@ -1033,6 +1089,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rdoGoalType.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grpFV)).EndInit();
+            this.grpFV.ResumeLayout(false);
+            this.grpFV.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1108,6 +1167,10 @@
         private DevExpress.XtraEditors.SimpleButton btnCalculateLoan;
         private DevExpress.XtraEditors.TextEdit txtGoalLoanPortion;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label10;
+        private DevExpress.XtraEditors.ComboBoxEdit cmbLoanCalculationType;
+        private DevExpress.XtraEditors.GroupControl grpFV;
+        private System.Windows.Forms.Label lblFV;
     }
 }
 

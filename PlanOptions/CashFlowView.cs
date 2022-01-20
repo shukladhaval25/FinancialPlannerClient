@@ -132,16 +132,16 @@ namespace FinancialPlannerClient.PlanOptions
                 {
                     startCount = true;
                 }
-                //if ((surplusAmt - totalFundAllocation) < 100 )
-                //{
-                //    e.Appearance.ForeColor = Color.Red;
-                //    e.Appearance.BackColor = Color.Black;
-                //}
-                //else
-                //{
-                //    e.Appearance.ForeColor = Color.Black;
-                //    e.Appearance.BackColor = Color.White;
-                //}
+                if ((surplusAmt - totalFundAllocation) < -1)
+                {
+                    e.Appearance.ForeColor = Color.Red;
+                    //e.Appearance.BackColor = Color.Black;
+                }
+                else
+                {
+                    e.Appearance.ForeColor = Color.Black;
+                    //e.Appearance.BackColor = Color.White;
+                }
             }
             
         }

@@ -508,7 +508,7 @@ namespace FinancialPlannerClient.PlanOptions
                 {
                     double primaryHolderShare = (nfa.CurrentValue * nfa.PrimaryholderShare) / 100;
                     double secondaryHolderShare = (nfa.CurrentValue * nfa.SecondaryHolderShare) /100;
-                    double assetsMappingShare = ((primaryHolderShare + secondaryHolderShare) * nfa.AssetMappingShare) /100;
+                    double assetsMappingShare = ((primaryHolderShare + secondaryHolderShare) * double.Parse(nfa.AssetMappingShare.ToString())) /100;
 
                     int timePeriod = getRemainingYearsFromPlanStartYear();
                     decimal inflationRate = nfa.GrowthPercentage;

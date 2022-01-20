@@ -138,7 +138,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             }
             else
             {
-                Goals goal = lstGoal.First(x => x.Name == "Retirement");
+                Goals goal = lstGoal.First(x => x.Category.ToLower().Equals("retirement"));
                 if (goal != null)
                 {
                     CurrentStatusToGoal csGoal = new CurrentStatusToGoal();

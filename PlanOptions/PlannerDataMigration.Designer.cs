@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PlannerDataMigration));
+            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
             this.grpDataMigration = new DevExpress.XtraEditors.GroupControl();
+            this.btnDeSelectAll = new DevExpress.XtraEditors.SimpleButton();
+            this.btnSelectAll = new DevExpress.XtraEditors.SimpleButton();
             this.grpMigrationModules = new DevExpress.XtraEditors.GroupControl();
             this.gridModules = new DevExpress.XtraGrid.GridControl();
             this.gridViewModules = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -49,8 +51,6 @@
             this.cmbPlan = new DevExpress.XtraEditors.ComboBoxEdit();
             this.label3 = new System.Windows.Forms.Label();
             this.lblPlanVal = new System.Windows.Forms.Label();
-            this.btnDeSelectAll = new DevExpress.XtraEditors.SimpleButton();
-            this.btnSelectAll = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.grpDataMigration)).BeginInit();
             this.grpDataMigration.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grpMigrationModules)).BeginInit();
@@ -81,6 +81,29 @@
             this.grpDataMigration.Size = new System.Drawing.Size(784, 478);
             this.grpDataMigration.TabIndex = 9;
             this.grpDataMigration.Text = "Data migration process for plan";
+            // 
+            // btnDeSelectAll
+            // 
+            this.btnDeSelectAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnDeSelectAll.Location = new System.Drawing.Point(96, 450);
+            this.btnDeSelectAll.Name = "btnDeSelectAll";
+            this.btnDeSelectAll.Size = new System.Drawing.Size(83, 23);
+            this.btnDeSelectAll.TabIndex = 27;
+            this.btnDeSelectAll.Text = "Deselect All";
+            this.btnDeSelectAll.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Application;
+            this.btnDeSelectAll.Click += new System.EventHandler(this.btnDeSelectAll_Click);
+            // 
+            // btnSelectAll
+            // 
+            this.btnSelectAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnSelectAll.Image = ((System.Drawing.Image)(resources.GetObject("btnSelectAll.Image")));
+            this.btnSelectAll.Location = new System.Drawing.Point(7, 450);
+            this.btnSelectAll.Name = "btnSelectAll";
+            this.btnSelectAll.Size = new System.Drawing.Size(83, 23);
+            this.btnSelectAll.TabIndex = 26;
+            this.btnSelectAll.Text = "Select All";
+            this.btnSelectAll.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Application;
+            this.btnSelectAll.Click += new System.EventHandler(this.btnSelectAll_Click);
             // 
             // grpMigrationModules
             // 
@@ -123,6 +146,8 @@
             this.gridViewModules.GridControl = this.gridModules;
             this.gridViewModules.Name = "gridViewModules";
             this.gridViewModules.OptionsView.ShowGroupPanel = false;
+            this.gridViewModules.BeforePrintRow += new DevExpress.XtraGrid.Views.Base.BeforePrintRowEventHandler(this.gridViewModules_BeforePrintRow);
+            this.gridViewModules.CustomRowFilter += new DevExpress.XtraGrid.Views.Base.RowFilterEventHandler(this.gridViewModules_CustomRowFilter);
             // 
             // gridSelect
             // 
@@ -206,16 +231,16 @@
             this.btnStart.Location = new System.Drawing.Point(366, 450);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(104, 23);
-            toolTipTitleItem1.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
-            toolTipTitleItem1.Appearance.Options.UseImage = true;
-            toolTipTitleItem1.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem1.Image")));
-            toolTipTitleItem1.Text = "Start Process";
-            toolTipItem1.LeftIndent = 6;
-            toolTipItem1.Text = "Process for migration of data from source plan to destination will stat on click." +
+            toolTipTitleItem2.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            toolTipTitleItem2.Appearance.Options.UseImage = true;
+            toolTipTitleItem2.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem2.Image")));
+            toolTipTitleItem2.Text = "Start Process";
+            toolTipItem2.LeftIndent = 6;
+            toolTipItem2.Text = "Process for migration of data from source plan to destination will stat on click." +
     "";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            superToolTip1.Items.Add(toolTipItem1);
-            this.btnStart.SuperTip = superToolTip1;
+            superToolTip2.Items.Add(toolTipTitleItem2);
+            superToolTip2.Items.Add(toolTipItem2);
+            this.btnStart.SuperTip = superToolTip2;
             this.btnStart.TabIndex = 23;
             this.btnStart.Text = "Start Process";
             this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
@@ -252,29 +277,6 @@
             this.lblPlanVal.Size = new System.Drawing.Size(55, 16);
             this.lblPlanVal.TabIndex = 5;
             this.lblPlanVal.Text = "#Plan#";
-            // 
-            // btnDeSelectAll
-            // 
-            this.btnDeSelectAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnDeSelectAll.Location = new System.Drawing.Point(96, 450);
-            this.btnDeSelectAll.Name = "btnDeSelectAll";
-            this.btnDeSelectAll.Size = new System.Drawing.Size(83, 23);
-            this.btnDeSelectAll.TabIndex = 27;
-            this.btnDeSelectAll.Text = "Deselect All";
-            this.btnDeSelectAll.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Application;
-            this.btnDeSelectAll.Click += new System.EventHandler(this.btnDeSelectAll_Click);
-            // 
-            // btnSelectAll
-            // 
-            this.btnSelectAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnSelectAll.Image = ((System.Drawing.Image)(resources.GetObject("btnSelectAll.Image")));
-            this.btnSelectAll.Location = new System.Drawing.Point(7, 450);
-            this.btnSelectAll.Name = "btnSelectAll";
-            this.btnSelectAll.Size = new System.Drawing.Size(83, 23);
-            this.btnSelectAll.TabIndex = 26;
-            this.btnSelectAll.Text = "Select All";
-            this.btnSelectAll.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Application;
-            this.btnSelectAll.Click += new System.EventHandler(this.btnSelectAll_Click);
             // 
             // PlannerDataMigration
             // 

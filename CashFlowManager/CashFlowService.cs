@@ -889,7 +889,8 @@ namespace FinancialPlannerClient.CashFlowManager
                 {
                     if (loan.LoanStartDate.Year <= int.Parse(dr["StartYear"].ToString()))
                     {
-                        double loanAmt = loan.Emis * 12;
+                        int months = (loan.TermLeftInMonths >= 12) ? 12 : loan.TermLeftInMonths;
+                        double loanAmt = loan.Emis * months;
                         dr[loan.TypeOfLoan] = loanAmt;
                         totalLoan = totalLoan + loanAmt;
                     }

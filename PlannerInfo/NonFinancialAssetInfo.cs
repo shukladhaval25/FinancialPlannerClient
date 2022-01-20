@@ -232,7 +232,7 @@ namespace FinancialPlannerClient.PlannerInfo
                     nonFinancialAsset.OtherHolderName = dr.Field<string>("OtherHolderName");
                     nonFinancialAsset.OtherHolderShare = int.Parse(dr.Field<string>("OtherHolderShare"));
                     nonFinancialAsset.MappedGoalId = int.Parse(dr.Field<string>("MappedGoalId"));
-                    nonFinancialAsset.AssetMappingShare = int.Parse(dr.Field<string>("AssetMappingShare"));
+                    nonFinancialAsset.AssetMappingShare = decimal.Parse(dr.Field<string>("AssetMappingShare"));
                     nonFinancialAsset.AssetRealisationYear = dr.Field<string>("AssetRealisationYear");
                     nonFinancialAsset.Description = dr.Field<string>("Description");
                     nonFinancialAsset.GrowthPercentage = decimal.Parse(dr["GrowthPercentage"].ToString());

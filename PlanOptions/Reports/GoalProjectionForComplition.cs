@@ -21,7 +21,10 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         List<Goals> lstGoal;
         int riskProfileId,optionId;
         double retirementEstimatedCorpusFund = 0;
-        public GoalProjectionForComplition(Planner planner, Client client, int riskProfileID,int optionId,double retirementEstimatedCorpus)
+        CashFlowService cashFlowService = new CashFlowService();
+        IList<FinancialPlanner.Common.Model.PlanOptions.CurrentStatusToGoal> currentStatusToGoals;
+        public GoalProjectionForComplition(Planner planner, Client client, int riskProfileID,int optionId,
+            double retirementEstimatedCorpus,IList<Goals> goals)
         {
             InitializeComponent();
             this.client = client;
@@ -31,7 +34,16 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             this.optionId = optionId;
             this.retirementEstimatedCorpusFund = retirementEstimatedCorpus;
             GoalsInfo GoalsInfo = new GoalsInfo();
-            lstGoal = (List<Goals>)GoalsInfo.GetAll(planner.ID);
+            if (goals.Count > 0)
+                lstGoal = goals.ToList();
+
+            cashFlowService.GetCashFlow(this.optionId);
+            cashFlowService.GenerateCashFlow(this.client.ID, this.planner.ID, this.riskProfileId);
+            CashFlow cf = cashFlowService.GetCashFlow(this.optionId);
+
+            CurrentStatusInfo csInfo = new CurrentStatusInfo();
+            currentStatusToGoals = csInfo.GetCurrentStatusToGoal(this.optionId, this.planner.ID);
+
             _dtGoals = ListtoDataTable.ToDataTable(lstGoal);
             _dtGoals.Columns.Add("ProjectionCompleted", typeof(System.Int64));
             _dtGoals.Columns.Add("GoalAchivedTillDate", typeof(System.Double));
@@ -71,7 +83,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             List<string> groupOfGoal = new List<string>();
 
             dtGroupOfGoals = _dtGoals.Clone();
-
+            GoalCalView goalCalView = new GoalCalView(this.planner, this.riskProfileId, this.optionId);
             for (int i = 0; i < _dtGoals.Rows.Count; i++)
             {
                 string goalName = (_dtGoals.Rows[i]["Name"].ToString().Length > 4) ? _dtGoals.Rows[i]["Name"].ToString().Substring(0, _dtGoals.Rows[i]["Name"].ToString().Length - 4).Trim() :
@@ -88,7 +100,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                     double totalCurrentStatusMapValue = 0;
                     double totalOnlyForMappedCurrentStatusValue = 0;
                     int totalGoalReacedPercentage = 0;
-                    GoalCalView goalCalView = new GoalCalView(this.planner, this.riskProfileId, this.optionId);
+                    
 
                     int goalComplitionPercentage = getGoalComlitionPercentage(i, goalCalView);
                     int goalId = int.Parse(_dtGoals.Rows[i]["Id"].ToString());
@@ -104,6 +116,33 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                     {
                         if (!groupOfGoal.Contains(goalName))
                         {
+                            //DataRow[] drs = _dtGoals.Select("Name like '" + goalName + "%' and Category ='" + goalCategory + "' and Recurrence = '" + _dtGoals.Rows[i]["Recurrence"].ToString() + "'");
+                            //foreach (DataRow dataRow in drs)
+                            //{
+                            //    goalComplitionPercentage = getGoalComlitionPercentage(dataRow["Name"].ToString(), goalCalView);
+                            //    currentStatusMapAmount = getCurrentStatusFundForMappedGoal(int.Parse(dataRow["ID"].ToString()));
+                            //    _dtGoals.Rows[i]["MappedFromCurrentStatus"] = currentStatusMapAmount;
+                            //    totalOnlyForMappedCurrentStatusValue = totalOnlyForMappedCurrentStatusValue + currentStatusMapAmount;
+
+                            //    dataRow["ProjectionCompleted"] = goalComplitionPercentage;
+
+                            //    currentStatusMapAmount = currentStatusMapAmount + getNonFinancialAssetMapping(int.Parse(dataRow["ID"].ToString()));
+
+                            //    dataRow["GoalAchivedTillDate"] = currentStatusMapAmount;
+                            //    dataRow["GoalReached"] = ((currentStatusMapAmount * 100) / double.Parse(dataRow["FutureValue"].ToString()));
+
+                            //    amount = amount + double.Parse(dataRow["Amount"].ToString());
+                            //    futureValue = (dataRow["Category"].ToString().Trim().Equals("Retirement")) ? retirementEstimatedCorpusFund :
+                            //           futureValue + double.Parse(_dtGoals.Rows[i]["FutureValue"].ToString());
+                            //    totalCurrentStatusMapValue = totalCurrentStatusMapValue + currentStatusMapAmount;
+                            //    totalGoalReacedPercentage = totalGoalReacedPercentage + int.Parse(dataRow["GoalReached"].ToString());
+                            //    projectionCompletedPercentage = projectionCompletedPercentage + double.Parse(dataRow["ProjectionCompleted"].ToString());
+                            //    endYear = dataRow["StartYear"].ToString();
+                            //    recurrence++;
+                            //}
+
+
+
                             for (int innerLoopIndex = i; innerLoopIndex < this._dtGoals.Rows.Count; innerLoopIndex++)
                             {
                                 if (_dtGoals.Rows[i]["Recurrence"].ToString().Equals(_dtGoals.Rows[innerLoopIndex]["Recurrence"].ToString()) &&
@@ -150,7 +189,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                                         _dtGoals.Rows[i]["MappedFromCurrentStatus"] = currentStatusMapAmount;
                                         totalOnlyForMappedCurrentStatusValue = totalOnlyForMappedCurrentStatusValue + currentStatusMapAmount;
 
-                                        currentStatusMapAmount = currentStatusMapAmount +  getNonFinancialAssetMapping(int.Parse(_dtGoals.Rows[innerLoopIndex]["ID"].ToString()));
+                                        currentStatusMapAmount = currentStatusMapAmount + getNonFinancialAssetMapping(int.Parse(_dtGoals.Rows[innerLoopIndex]["ID"].ToString()));
 
                                         totalCurrentStatusMapValue = totalCurrentStatusMapValue + currentStatusMapAmount;
                                         recurrence++;
@@ -215,7 +254,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                 {
                     double primaryHolderShare = (nfa.CurrentValue * nfa.PrimaryholderShare) / 100;
                     double secondaryHolderShare = (nfa.CurrentValue * nfa.SecondaryHolderShare) / 100;
-                    double assetsMappingShare = ((primaryHolderShare + secondaryHolderShare) * nfa.AssetMappingShare) / 100;
+                    double assetsMappingShare = ((primaryHolderShare + secondaryHolderShare) * double.Parse(nfa.AssetMappingShare.ToString())) / 100;
 
                     //int timePeriod = getRemainingYearsFromPlanStartYear();
                     //decimal inflationRate = nfa.GrowthPercentage;
@@ -252,10 +291,22 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             int goalComplitionPercentage = 0;
             if (goal != null)
             {
-                CashFlowService cashFlowService = new CashFlowService();
-                cashFlowService.GetCashFlow(this.optionId);
-                cashFlowService.GenerateCashFlow(this.client.ID, this.planner.ID, this.riskProfileId );
-                CashFlow cf = cashFlowService.GetCashFlow(this.optionId);
+                
+                goalCalView.setCashFlowService(cashFlowService);
+
+                goalCalView.displayCalculation(goal);
+                goalComplitionPercentage = goalCalView.GetGoalComplitionPercentage(goal);
+            }
+
+            return goalComplitionPercentage;
+        }
+        private int getGoalComlitionPercentage(string goalname, GoalCalView goalCalView)
+        {
+            Goals goal = lstGoal.First(y => y.Name == goalname.Trim());
+
+            int goalComplitionPercentage = 0;
+            if (goal != null)
+            {
 
                 goalCalView.setCashFlowService(cashFlowService);
 
@@ -316,8 +367,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                 GoalStatusView goalStatusView = new GoalStatusView(this.planner,this.riskProfileId,this.optionId);
                 return goalStatusView.GetAccessFundValueForRetirementCorpus();
             }
-            CurrentStatusInfo csInfo = new CurrentStatusInfo();
-            IList<FinancialPlanner.Common.Model.PlanOptions.CurrentStatusToGoal>  currentStatusToGoals =  csInfo.GetCurrentStatusToGoal(this.optionId, this.planner.ID);
+         
            IEnumerable<FinancialPlanner.Common.Model.PlanOptions.CurrentStatusToGoal> currentStatusToGoalLst = currentStatusToGoals.Where(i => i.GoalId == goalId);
             double mappedFund = 0;
             foreach(FinancialPlanner.Common.Model.PlanOptions.CurrentStatusToGoal toGoal in currentStatusToGoalLst)
