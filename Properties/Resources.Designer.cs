@@ -143,6 +143,16 @@ namespace FinancialPlannerClient.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Down_Arrow {
+            get {
+                object obj = ResourceManager.GetObject("Down Arrow", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap EducationGoal {
             get {
                 object obj = ResourceManager.GetObject("EducationGoal", resourceCulture);
@@ -751,6 +761,26 @@ namespace FinancialPlannerClient.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Right_Arrow {
+            get {
+                object obj = ResourceManager.GetObject("Right Arrow", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Right_Arrow1 {
+            get {
+                object obj = ResourceManager.GetObject("Right Arrow1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to * Looking at your current circumstances we have profiled you as {0} investor so we suggest holding {1} of investments in Equity and {2} in Debt.
         ///
         ///* To reduce the risk in equity we have adopted strategic asset allocation and value averaging.
@@ -842,6 +872,16 @@ namespace FinancialPlannerClient.Properties {
         internal static System.Drawing.Bitmap Vehicles {
             get {
                 object obj = ResourceManager.GetObject("Vehicles", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap work_process {
+            get {
+                object obj = ResourceManager.GetObject("work-process", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

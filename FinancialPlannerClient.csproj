@@ -158,6 +158,18 @@
     <Compile Include="CashFlowManager\CashFlowCalculation.cs" />
     <Compile Include="CashFlowManager\CashFlowService.cs" />
     <Compile Include="CashFlowManager\PostRetirementCashFlowService.cs" />
+    <Compile Include="ClientProcess\ClientsWithProcess.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClientProcess\ClientsWithProcess.Designer.cs">
+      <DependentUpon>ClientsWithProcess.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ClientProcess\SingleClientProcess.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClientProcess\SingleClientProcess.Designer.cs">
+      <DependentUpon>SingleClientProcess.cs</DependentUpon>
+    </Compile>
     <Compile Include="Clients\AllClientsList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -255,6 +267,7 @@
     <Compile Include="Clients\MailService\MailManagerDeskBoard.Designer.cs">
       <DependentUpon>MailManagerDeskBoard.cs</DependentUpon>
     </Compile>
+    <Compile Include="Clients\ProcessesInfo.cs" />
     <Compile Include="Controls\MOM.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -915,6 +928,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ClientProcess\ClientWithProcesInfo.cs" />
     <Compile Include="ProspectCustomer\ProspectCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1086,6 +1100,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AuditTrail\AuditTrailView.resx">
       <DependentUpon>AuditTrailView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClientProcess\ClientsWithProcess.resx">
+      <DependentUpon>ClientsWithProcess.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClientProcess\SingleClientProcess.resx">
+      <DependentUpon>SingleClientProcess.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Clients\AllClientsList.resx">
       <DependentUpon>AllClientsList.cs</DependentUpon>
@@ -1795,7 +1815,18 @@
   <ItemGroup>
     <None Include="Resources\Report\RetirementGoal.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\Right Arrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Down Arrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Right Arrow1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\work-process.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

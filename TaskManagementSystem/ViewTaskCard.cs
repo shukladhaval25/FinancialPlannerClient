@@ -321,6 +321,27 @@ namespace FinancialPlannerClient.TaskManagementSystem
                     return;
                 }
                 TaskCard taskCard = getTaskCard();
+                if (taskCard.TaskStatus == TaskStatus.Complete && taskCard.AssignTo != Program.CurrentUser.Id)
+                {
+                    DevExpress.XtraEditors.XtraMessageBox.Show("You can not complete this card because this card is not assign to you.",
+                      "User not match", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                if (taskCard.TaskStatus == TaskStatus.Close && taskCard.Owner != Program.CurrentUser.Id)
+                {
+                    DevExpress.XtraEditors.XtraMessageBox.Show("You can not close this card because you are not a owner of this card.",
+                      "User not match", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                if (taskCard.Owner != Program.CurrentUser.Id && taskCard.AssignTo != Program.CurrentUser.Id)
+                {
+                    DevExpress.XtraEditors.XtraMessageBox.Show("You can not assign this task to anyother person.",
+                      "User not match", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
                 int taskId = new TaskCardService().Update(taskCard);
                 if (taskId > 0)
                 {

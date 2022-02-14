@@ -913,7 +913,7 @@ namespace FinancialPlannerClient.PlanOptions
         {
             ExpensesInfo expensesInfo = new ExpensesInfo();
             IList<Expenses> expenses = expensesInfo.GetAll(this.sourcePlanner.ID);
-            IList<Expenses> destinationExpenses = expensesInfo.GetAll(this.currentPlanner.ID);
+            List<Expenses> destinationExpenses = (List<Expenses>) expensesInfo.GetAll(this.currentPlanner.ID);
 
             DelegateUpdateAllValues delegateUpdateAllValues = new DelegateUpdateAllValues(updateAllProgressValue);
             if (expenses.Count > 0)
@@ -921,7 +921,7 @@ namespace FinancialPlannerClient.PlanOptions
                 double processIncrementalValue = 100 / expenses.Count;
                 foreach (Expenses expense in expenses)
                 {
-                    Expenses expResult = destinationExpenses.First(x => x.Item.Equals(expense.Item) &&
+                    Expenses expResult = destinationExpenses.Find(x => x.Item.Equals(expense.Item) &&
                         x.ItemCategory.Equals(expense.ItemCategory) && x.OccuranceType.Equals(expense.OccuranceType) &&
                         x.InflationRate.Equals(expense.InflationRate) && x.ExpStartYear.Equals(expense.ExpStartYear));
 
@@ -934,6 +934,7 @@ namespace FinancialPlannerClient.PlanOptions
                             try
                             {
                                 expense.Pid = this.currentPlanner.ID;
+                                expense.ExpStartYear = this.currentPlanner.StartDate.Year.ToString();
                                 expense.Amount = futureValue(expense.Amount, decimal.Parse(expense.InflationRate.ToString()), currentPlanner.StartDate.Year - int.Parse(expense.ExpStartYear));
                                 expensesInfo.Add(expense);
                             }
@@ -957,7 +958,7 @@ namespace FinancialPlannerClient.PlanOptions
         {
             IncomeInfo incomeInfo = new IncomeInfo();
             IList<Income> incomes = incomeInfo.GetAll(this.sourcePlanner.ID);
-            IList<Income> destinationIncomes = incomeInfo.GetAll(this.currentPlanner.ID);
+            List<Income> destinationIncomes = (List<Income>) incomeInfo.GetAll(this.currentPlanner.ID);
 
             DelegateUpdateAllValues delegateUpdateAllValues = new DelegateUpdateAllValues(updateAllProgressValue);
             if (incomes.Count > 0)
@@ -965,7 +966,7 @@ namespace FinancialPlannerClient.PlanOptions
                 double processIncrementalValue = 100 / incomes.Count;
                 foreach (Income income in incomes)
                 {
-                    Income incomeResult = destinationIncomes.First(x => x.IncomeBy.Equals(income.IncomeBy) &&
+                    Income incomeResult = destinationIncomes.Find(x => x.IncomeBy.Equals(income.IncomeBy) &&
                         x.Source.Equals(income.Source) && x.IncomeTax.Equals(income.IncomeTax) &&
                         x.ExpectedGrowthType.Equals(income.ExpectedGrowthType) &&
                         x.ExpectGrowthInPercentage.Equals(income.ExpectGrowthInPercentage));
@@ -1018,72 +1019,31 @@ namespace FinancialPlannerClient.PlanOptions
                 double processIncrementalValue = 100 / sourceGoals.Count;
                 foreach (Goals goal in sourceGoals)
                 {
-
-                   Goals goalResult = destinationGoals.Find(x => x.Name.Equals(goal.Name, StringComparison.OrdinalIgnoreCase) && x.StartYear == goal.StartYear && x.Category.Equals(goal.Category, StringComparison.OrdinalIgnoreCase));
-
-                    if (goalResult == null)
+                    try
                     {
-                        bool isGoalEligbleToMigrate = validateGoalIsEligibleToMigrate(goal);
-                        if (isGoalEligbleToMigrate)
+
+
+                        Goals goalResult = destinationGoals.Find(x => x.Name.Equals(goal.Name, StringComparison.OrdinalIgnoreCase) && x.StartYear == goal.StartYear && x.Category.Equals(goal.Category, StringComparison.OrdinalIgnoreCase));
+
+                        if (goalResult == null)
                         {
-                            goal.Pid = this.currentPlanner.ID;
-
-                            // Set Amount based on calculation.
-                            goal.Amount = futureValue(goal.Amount, goal.InflationRate, currentPlanner.StartDate.Year - this.sourcePlanner.StartDate.Year);
-
-                            // Set Other Amount based on calculation.
-                            if (goal.OtherAmount > 0)
-                            {
-                                goal.OtherAmount = futureValue(goal.OtherAmount, goal.InflationRate, (currentPlanner.StartDate.Year - sourcePlanner.StartDate.Year));
-                            }
-                            if (goal.LoanForGoal != null)
-                            {
-                                //double currentValueOfGoal = goal.Amount;
-                                //double futureValueOfGoal = futureValue(currentValueOfGoal,goal.LoanForGoal.ROI, int.Parse(goal.StartYear) - currentPlanner.StartDate.Year);
-                                //double loanPortion = goal.LoanForGoal.LoanPortion;
-                                //double futureLoanAmount = (futureValueOfGoal * loanPortion) / 100;
-
-
-                                //goal.LoanForGoal.LoanAmount = futureLoanAmount;
-                                goal.LoanForGoal.CreatedBy = Program.CurrentUser.Id;
-                                goal.LoanForGoal.CreatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
-                                goal.LoanForGoal.UpdatedBy = Program.CurrentUser.Id;
-                                goal.LoanForGoal.UpdatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
-                            }
-                            delegateUpdateAllValues(dataRow, int.Parse(dataRow["Status"].ToString()) + processIncrementalValue, "In Progress", "");
-                            try
-                            {
-                                if (!goalsInfo.Add(goal))
-                                {
-                                    delegateUpdateAllValues(dataRow, int.Parse(dataRow["Status"].ToString()) + processIncrementalValue, "In " +
-                                        "Progress", String.Format("Fail to migrate goal '{0}'", goal.Name));
-                                }
-                            }
-                            catch (Exception ex)
-                            {
-                                delegateUpdateAllValues(dataRow, int.Parse(dataRow["Status"].ToString()) + processIncrementalValue, "In Progress", String.Format("Fail to migrate goal '{0}'", goal.Name));
-                                StackTrace st = new StackTrace();
-                                StackFrame sf = st.GetFrame(0);
-                                MethodBase currentMethodName = sf.GetMethod();
-                                LogDebug(currentMethodName.Name, ex);
-                            }
-                        }
-                        else
-                        {
-                            if (DevExpress.XtraEditors.XtraMessageBox.Show("Do you want to migrate goal '" + goal.Name + "' which expected to complete in year " + goal.StartYear + "?", "Migrate Goal", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                            bool isGoalEligbleToMigrate = validateGoalIsEligibleToMigrate(goal);
+                            if (isGoalEligbleToMigrate)
                             {
                                 goal.Pid = this.currentPlanner.ID;
-                                goal.StartYear = this.currentPlanner.StartDate.Year.ToString();
-                                goal.EndYear = this.currentPlanner.StartDate.Year.ToString();
-                                goal.CreatedBy = Program.CurrentUser.Id;
-                                goal.CreatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
-                                goal.UpdatedBy = Program.CurrentUser.Id;
-                                goal.UpdatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
 
+                                // Set Amount based on calculation.
+                                goal.Amount = futureValue(goal.Amount, goal.InflationRate, currentPlanner.StartDate.Year - this.sourcePlanner.StartDate.Year);
+
+                                // Set Other Amount based on calculation.
+                                if (goal.OtherAmount > 0)
+                                {
+                                    goal.OtherAmount = futureValue(goal.OtherAmount, goal.InflationRate, (currentPlanner.StartDate.Year - sourcePlanner.StartDate.Year));
+                                }
                                 if (goal.LoanForGoal != null)
                                 {
                                     //double currentValueOfGoal = goal.Amount;
-                                    //double futureValueOfGoal = futureValue(currentValueOfGoal, goal.LoanForGoal.ROI, int.Parse(goal.StartYear) - currentPlanner.StartDate.Year);
+                                    //double futureValueOfGoal = futureValue(currentValueOfGoal,goal.LoanForGoal.ROI, int.Parse(goal.StartYear) - currentPlanner.StartDate.Year);
                                     //double loanPortion = goal.LoanForGoal.LoanPortion;
                                     //double futureLoanAmount = (futureValueOfGoal * loanPortion) / 100;
 
@@ -1094,12 +1054,13 @@ namespace FinancialPlannerClient.PlanOptions
                                     goal.LoanForGoal.UpdatedBy = Program.CurrentUser.Id;
                                     goal.LoanForGoal.UpdatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
                                 }
-
+                                delegateUpdateAllValues(dataRow, int.Parse(dataRow["Status"].ToString()) + processIncrementalValue, "In Progress", "");
                                 try
                                 {
                                     if (!goalsInfo.Add(goal))
                                     {
-                                        delegateUpdateAllValues(dataRow, int.Parse(dataRow["Status"].ToString()) + processIncrementalValue, "In Progress", String.Format("Fail to migrate goal '{0}'", goal.Name));
+                                        delegateUpdateAllValues(dataRow, int.Parse(dataRow["Status"].ToString()) + processIncrementalValue, "In " +
+                                            "Progress", String.Format("Fail to migrate goal '{0}'", goal.Name));
                                     }
                                 }
                                 catch (Exception ex)
@@ -1111,7 +1072,55 @@ namespace FinancialPlannerClient.PlanOptions
                                     LogDebug(currentMethodName.Name, ex);
                                 }
                             }
+                            else
+                            {
+                                if (DevExpress.XtraEditors.XtraMessageBox.Show("Do you want to migrate goal '" + goal.Name + "' which expected to complete in year " + goal.StartYear + "?", "Migrate Goal", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                                {
+                                    goal.Pid = this.currentPlanner.ID;
+                                    goal.StartYear = this.currentPlanner.StartDate.Year.ToString();
+                                    goal.EndYear = this.currentPlanner.StartDate.Year.ToString();
+                                    goal.CreatedBy = Program.CurrentUser.Id;
+                                    goal.CreatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+                                    goal.UpdatedBy = Program.CurrentUser.Id;
+                                    goal.UpdatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+
+                                    if (goal.LoanForGoal != null)
+                                    {
+                                        //double currentValueOfGoal = goal.Amount;
+                                        //double futureValueOfGoal = futureValue(currentValueOfGoal, goal.LoanForGoal.ROI, int.Parse(goal.StartYear) - currentPlanner.StartDate.Year);
+                                        //double loanPortion = goal.LoanForGoal.LoanPortion;
+                                        //double futureLoanAmount = (futureValueOfGoal * loanPortion) / 100;
+
+
+                                        //goal.LoanForGoal.LoanAmount = futureLoanAmount;
+                                        goal.LoanForGoal.CreatedBy = Program.CurrentUser.Id;
+                                        goal.LoanForGoal.CreatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+                                        goal.LoanForGoal.UpdatedBy = Program.CurrentUser.Id;
+                                        goal.LoanForGoal.UpdatedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+                                    }
+
+                                    try
+                                    {
+                                        if (!goalsInfo.Add(goal))
+                                        {
+                                            delegateUpdateAllValues(dataRow, int.Parse(dataRow["Status"].ToString()) + processIncrementalValue, "In Progress", String.Format("Fail to migrate goal '{0}'", goal.Name));
+                                        }
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        delegateUpdateAllValues(dataRow, int.Parse(dataRow["Status"].ToString()) + processIncrementalValue, "In Progress", String.Format("Fail to migrate goal '{0}'", goal.Name));
+                                        StackTrace st = new StackTrace();
+                                        StackFrame sf = st.GetFrame(0);
+                                        MethodBase currentMethodName = sf.GetMethod();
+                                        LogDebug(currentMethodName.Name, ex);
+                                    }
+                                }
+                            }
                         }
+                    }
+                    catch(Exception ex)
+                    {
+                        MessageBox.Show(ex.ToString());
                     }
                 }
             }
@@ -1156,14 +1165,14 @@ namespace FinancialPlannerClient.PlanOptions
             DelegateUpdateAllValues delegateUpdateAllValues = new DelegateUpdateAllValues(updateAllProgressValue);
             LoanInfo loanInfo = new LoanInfo();
             IList<Loan> loans = loanInfo.GetAll(this.sourcePlanner.ID);
-            IList<Loan> destinationLoans = loanInfo.GetAll(this.currentPlanner.ID);
+            List<Loan> destinationLoans = (List<Loan>)loanInfo.GetAll(this.currentPlanner.ID);
 
             if (loans.Count > 0)
             {
                 double processIncrementalValue = 100 / loans.Count;
                 foreach (Loan loan in loans)
                 {
-                    Loan loanResult = destinationLoans.First(x => x.TypeOfLoan == loan.TypeOfLoan && x.Emis == loan.Emis);
+                    Loan loanResult = destinationLoans.Find(x => x.TypeOfLoan == loan.TypeOfLoan && x.Emis == loan.Emis);
                     if (loanResult == null)
                     {
                         delegateUpdateAllValues(dataRow, int.Parse(dataRow["Status"].ToString()) + processIncrementalValue, "In Progress", "");
@@ -1197,7 +1206,7 @@ namespace FinancialPlannerClient.PlanOptions
         {
             NonFinancialAssetInfo nonFinancialAssetInfo = new NonFinancialAssetInfo();
             IList<NonFinancialAsset> nonFinancialAssets = nonFinancialAssetInfo.GetAll(this.sourcePlanner.ID);
-            IList<NonFinancialAsset> destinationNonFinancialAssets = nonFinancialAssetInfo.GetAll(this.currentPlanner.ID);
+            List<NonFinancialAsset> destinationNonFinancialAssets = (List<NonFinancialAsset>)nonFinancialAssetInfo.GetAll(this.currentPlanner.ID);
 
             DelegateUpdateAllValues delegateUpdateAllValues = new DelegateUpdateAllValues(updateAllProgressValue);
             if (nonFinancialAssets.Count > 0)
@@ -1205,7 +1214,7 @@ namespace FinancialPlannerClient.PlanOptions
                 double processIncrementalValue = 100 / nonFinancialAssets.Count;
                 foreach (NonFinancialAsset nonFinancialAsset in nonFinancialAssets)
                 {
-                    NonFinancialAsset nfa  = destinationNonFinancialAssets.First(x => x.Name == nonFinancialAsset.Name && x.CurrentValue == nonFinancialAsset.CurrentValue && x.MappedGoalId == nonFinancialAsset.MappedGoalId);
+                    NonFinancialAsset nfa  = destinationNonFinancialAssets.Find(x => x.Name == nonFinancialAsset.Name && x.CurrentValue == nonFinancialAsset.CurrentValue && x.MappedGoalId == nonFinancialAsset.MappedGoalId);
                     if (nfa == null)
                     {
                         delegateUpdateAllValues(dataRow, int.Parse(dataRow["Status"].ToString()) + processIncrementalValue, "In Progress", "");

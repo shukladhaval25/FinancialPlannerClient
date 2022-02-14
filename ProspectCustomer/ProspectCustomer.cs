@@ -1,6 +1,7 @@
 ﻿using FinancialPlanner.Common;
 using FinancialPlanner.Common.DataConversion;
 using FinancialPlanner.Common.Model;
+using FinancialPlannerClient.Clients;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,9 +23,12 @@ namespace FinancialPlannerClient.ProspectCustomer
         private const string DELETE_CONVERSATION_API = "ProspectClient/DeleteConversation";
         private const string ADD_PROSPECTCLIENT_API = "ProspectClient/Add";
         private const string UPDATE_PROSPECTCLIENT_API ="ProspectClient/Update";
+        private const string USERAPI = "User";
 
         private ProspectClient _prospectClient;
         private DataTable _dtConversation;
+        private DataTable _dtUser;
+        IList<Client> clients;
 
         public ProspectCustomer()
         {
@@ -133,6 +137,11 @@ namespace FinancialPlannerClient.ProspectCustomer
         {
             if (_prospectClient != null)
                 fillProspectClient();
+            loadUserInformation();
+            if (_prospectClient == null)
+            {
+                btnConvertToClient.Visible = false;
+            }
         }
 
         private void fillProspectClient()
@@ -150,6 +159,7 @@ namespace FinancialPlannerClient.ProspectCustomer
             if (chkIntroductionCompleted.Checked)
                 dtIntroductionCompletdOn.Value = _prospectClient.IntroductionCompletedDate;
             getConversationDetails();
+            
         }
 
         private void btnAddConversation_Click(object sender, EventArgs e)
@@ -295,13 +305,23 @@ namespace FinancialPlannerClient.ProspectCustomer
                     UpdatedBy = Program.CurrentUser.Id,
                     UpdatedByUserName = Program.CurrentUser.UserName,
                     MachineName = System.Environment.MachineName,
-                    IntroductionCompleted = chkIntroductionCompleted.Checked                  
+                    IntroductionCompleted = chkIntroductionCompleted.Checked                 
                 };
+
+                if (chkIsConvertedToCustomer.Checked && string.IsNullOrEmpty(cmbClient.Text))
+                {
+                    MessageBox.Show("You have chosen option converted to client then you have to select client from client list and client assign to. Please select client from list client as converted client or select client assign to.", "Select Client or Assign To", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
 
                 if (chkIntroductionCompleted.Checked) {
                     prosCustomer.IntroductionCompletedDate = dtIntroductionCompletdOn.Value;
                 }
-
+                if (chkIsConvertedToCustomer.Checked)
+                {
+                    prosCustomer.ClientId = int.Parse(cmbClient.Tag.ToString());
+                    prosCustomer.ClientAssignTo = int.Parse(cmbClientAssignTo.Tag.ToString());
+                }
                 if (_prospectClient == null)
                 {
                     apiurl = Program.WebServiceUrl + "/" + ADD_PROSPECTCLIENT_API;
@@ -362,7 +382,7 @@ namespace FinancialPlannerClient.ProspectCustomer
         {
             if (!string.IsNullOrEmpty(txtEmail.Text))
             {
-                MessageBox.Show("Please enter valid email address.", "Email Address", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //MessageBox.Show("Please enter valid email address.", "Email Address", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 e.Cancel = !isValidEmail(txtEmail.Text);
             }
         }
@@ -380,6 +400,124 @@ namespace FinancialPlannerClient.ProspectCustomer
         {
             dtIntroductionCompletdOn.Visible = chkIntroductionCompleted.Checked;
             chkIntroductionCompleted.Text = (chkIntroductionCompleted.Checked) ? "Introduction Completed on " : "Introduction Completed";
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtRefBy_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblRefBy_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void grpProspectCustomer_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chkStopSendingEmail_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chkIsConvertedToCustomer_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkIsConvertedToCustomer.Checked)
+                fillupCustomer();
+        }
+        private void loadUserInformation()
+        {
+            FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
+            string apiurl = Program.WebServiceUrl + "/" + USERAPI;
+
+            HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(apiurl);
+            request.Method = "GET";
+            String userResultJson = String.Empty;
+            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+            {
+                Stream dataStream = response.GetResponseStream();
+
+                StreamReader reader = new StreamReader(dataStream);
+                userResultJson = reader.ReadToEnd();
+                reader.Close();
+                dataStream.Close();
+            }
+            var userCollection = jsonSerialization.DeserializeFromString<Result<List<User>>>(userResultJson);
+
+            if (userCollection.Value != null)
+            {
+                _dtUser = ListtoDataTable.ToDataTable(userCollection.Value);
+                fillManagedByList();
+            }
+        }
+
+        private void fillManagedByList()
+        {
+            cmbClientAssignTo.Properties.Items.Clear();
+            for (int i = 0; i <= _dtUser.Rows.Count - 1; i++)
+            {
+                cmbClientAssignTo.Properties.Items.Add(_dtUser.Rows[i]["FirstName"].ToString());
+            }
+        }
+        private void fillupCustomer()
+        {
+            ClientService clientService = new ClientService();
+            clients = clientService.GetAll();
+            Client client = new Client();
+            client.Name = "";
+            clients.Insert(0, client);
+            cmbClient.Properties.Items.Clear();
+            cmbClient.Properties.Items.AddRange(clients.Select(i => i.Name).ToList());
+        }
+        private void cmbClient_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(cmbClient.Text))
+            {
+                cmbClient.Tag = clients.FirstOrDefault(i => i.Name == cmbClient.Text).ID;
+            }
+        }
+
+        private void txtRemark_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dtIntroductionCompletdOn_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbManagedBy_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbClientAssignTo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cmbClientAssignTo.Tag = _dtUser.Select("FirstName ='" + cmbClientAssignTo.Text + "'")[0]["ID"].ToString();
+        }
+
+        private void btnConvertToClient_Click(object sender, EventArgs e)
+        {
+            showClientDetails(new Client());
+            pnlClient.Visible = true;
+        }
+        private void showClientDetails(Client client)
+        {
+            ClientDetails clientDetails = new ClientDetails(client);
+            clientDetails.ShowDialog();
         }
     }
 }

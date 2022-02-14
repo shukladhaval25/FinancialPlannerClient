@@ -30,15 +30,17 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AllTask));
-            DevExpress.Utils.SuperToolTip superToolTip8 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem8 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem8 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
             this.btnClose = new DevExpress.XtraEditors.SimpleButton();
             this.imgTaskGrid = new DevExpress.Utils.ImageCollection(this.components);
             this.grdTasks = new DevExpress.XtraGrid.GridControl();
             this.gridViewTasks = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.btnView = new DevExpress.XtraEditors.SimpleButton();
             this.btnRefresh = new DevExpress.XtraEditors.SimpleButton();
+            this.tileViewColumnClientId = new DevExpress.XtraGrid.Columns.TileViewColumn();
+            this.tileViewColumnName = new DevExpress.XtraGrid.Columns.TileViewColumn();
             ((System.ComponentModel.ISupportInitialize)(this.imgTaskGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdTasks)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewTasks)).BeginInit();
@@ -84,7 +86,7 @@
             this.gridViewTasks.Appearance.OddRow.Options.UseBorderColor = true;
             this.gridViewTasks.GridControl = this.grdTasks;
             this.gridViewTasks.Name = "gridViewTasks";
-            this.gridViewTasks.OptionsFind.AlwaysVisible = true;
+            this.gridViewTasks.OptionsFind.SearchInPreview = true;
             this.gridViewTasks.OptionsView.EnableAppearanceEvenRow = true;
             this.gridViewTasks.OptionsView.EnableAppearanceOddRow = true;
             this.gridViewTasks.OptionsView.ShowGroupedColumns = true;
@@ -102,22 +104,39 @@
             // 
             // btnRefresh
             // 
+            this.btnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.Image")));
             this.btnRefresh.Location = new System.Drawing.Point(174, 479);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(28, 23);
-            toolTipTitleItem8.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
-            toolTipTitleItem8.Appearance.Options.UseImage = true;
-            toolTipTitleItem8.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem8.Image")));
-            toolTipTitleItem8.Text = "Refesh";
-            toolTipItem8.LeftIndent = 6;
-            toolTipItem8.Text = "To refresh task list.";
-            superToolTip8.Items.Add(toolTipTitleItem8);
-            superToolTip8.Items.Add(toolTipItem8);
-            this.btnRefresh.SuperTip = superToolTip8;
+            toolTipTitleItem2.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            toolTipTitleItem2.Appearance.Options.UseImage = true;
+            toolTipTitleItem2.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem2.Image")));
+            toolTipTitleItem2.Text = "Refesh";
+            toolTipItem2.LeftIndent = 6;
+            toolTipItem2.Text = "To refresh task list.";
+            superToolTip2.Items.Add(toolTipTitleItem2);
+            superToolTip2.Items.Add(toolTipItem2);
+            this.btnRefresh.SuperTip = superToolTip2;
             this.btnRefresh.TabIndex = 31;
             this.btnRefresh.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Application;
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
+            // tileViewColumnClientId
+            // 
+            this.tileViewColumnClientId.Caption = "Id";
+            this.tileViewColumnClientId.FieldName = "ID";
+            this.tileViewColumnClientId.Name = "tileViewColumnClientId";
+            this.tileViewColumnClientId.Visible = true;
+            this.tileViewColumnClientId.VisibleIndex = 0;
+            // 
+            // tileViewColumnName
+            // 
+            this.tileViewColumnName.Caption = "Name";
+            this.tileViewColumnName.FieldName = "Name";
+            this.tileViewColumnName.Name = "tileViewColumnName";
+            this.tileViewColumnName.Visible = true;
+            this.tileViewColumnName.VisibleIndex = 1;
             // 
             // AllTask
             // 
@@ -145,5 +164,7 @@
         private DevExpress.XtraGrid.Views.Grid.GridView gridViewTasks;
         private DevExpress.XtraEditors.SimpleButton btnView;
         private DevExpress.XtraEditors.SimpleButton btnRefresh;
+        private DevExpress.XtraGrid.Columns.TileViewColumn tileViewColumnClientId;
+        private DevExpress.XtraGrid.Columns.TileViewColumn tileViewColumnName;
     }
 }

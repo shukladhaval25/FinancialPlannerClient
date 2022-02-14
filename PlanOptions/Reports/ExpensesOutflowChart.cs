@@ -16,10 +16,12 @@ namespace FinancialPlannerClient.PlanOptions.Reports
     public partial class ExpenseOutFlowChart : DevExpress.XtraReports.UI.XtraReport
     {       
         DataTable _dtExpenses;
-        public ExpenseOutFlowChart(DataTable expenseTable)
+        Planner planner;
+        public ExpenseOutFlowChart(DataTable expenseTable, Planner planner)
         {
             InitializeComponent();           
             this._dtExpenses = expenseTable;
+            this.planner = planner;
             getExpenseData();
         }
         private void getExpenseData()
@@ -32,20 +34,24 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             xrChart1.Series[0].Points.Clear();
             xrChart1.Legend.CustomItems.Clear();
             int index = 0;
+            //_dtExpenses = _dtExpenses.Select("ExpStartYear =" + this.planner.StartDate.Year + " OR ExpStartYear = ''").CopyToDataTable();
             foreach (DataRow dr in _dtExpenses.Rows)
             {
-                SeriesPoint seriesPoint = new SeriesPoint(dr["Item"].ToString(), new double[] { double.Parse(dr["Amount"].ToString()) });
-                seriesPoint.Color = (index == 0) ? System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(64))))) :
-                   (index == 1) ? System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(179)))), ((int)(((byte)(226))))) :
-                   (index == 2) ? System.Drawing.Color.Green : (index == 3) ? System.Drawing.Color.Indigo :
-                   (index == 4) ? System.Drawing.Color.LightSkyBlue : (index == 5) ? System.Drawing.Color.Magenta :
-                   (index == 6) ? System.Drawing.Color.MediumSlateBlue : System.Drawing.Color.Red;
-                xrChart1.Series[0].Points.Add(seriesPoint);
-                xrChart1.Legend.CustomItems.Insert(index, new CustomLegendItem(dr["Item"].ToString()));
-                xrChart1.Legend.CustomItems[index].MarkerColor = seriesPoint.Color;
-                xrChart1.Legend.Visibility = DevExpress.Utils.DefaultBoolean.True;
-                
-                index = index + 1;
+                if (dr["ExpStartYear"].ToString() == "" || ((int.Parse(dr["ExpStartYear"].ToString()) <= (this.planner.StartDate.Year) && int.Parse(dr["ExpEndYear"].ToString()) >= (this.planner.StartDate.Year))))
+                {
+                    SeriesPoint seriesPoint = new SeriesPoint(dr["Item"].ToString(), new double[] { double.Parse(dr["Amount"].ToString()) });
+                    seriesPoint.Color = (index == 0) ? System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(64))))) :
+                       (index == 1) ? System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(179)))), ((int)(((byte)(226))))) :
+                       (index == 2) ? System.Drawing.Color.Green : (index == 3) ? System.Drawing.Color.Indigo :
+                       (index == 4) ? System.Drawing.Color.LightSkyBlue : (index == 5) ? System.Drawing.Color.Magenta :
+                       (index == 6) ? System.Drawing.Color.MediumSlateBlue : System.Drawing.Color.Red;
+                    xrChart1.Series[0].Points.Add(seriesPoint);
+                    xrChart1.Legend.CustomItems.Insert(index, new CustomLegendItem(dr["Item"].ToString()));
+                    xrChart1.Legend.CustomItems[index].MarkerColor = seriesPoint.Color;
+                    xrChart1.Legend.Visibility = DevExpress.Utils.DefaultBoolean.True;
+
+                    index = index + 1;
+                }
             }
         }
     }

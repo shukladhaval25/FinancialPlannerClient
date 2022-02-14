@@ -23,6 +23,7 @@ using System.Net;
 using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
+using FinancialPlannerClient.ClientProcess;
 
 namespace FinancialPlannerClient.Clients
 {
@@ -703,6 +704,22 @@ namespace FinancialPlannerClient.Clients
             navigationPageOther.Controls.Clear();
             navigationPageOther.Controls.Add(recomendationView);
             showNavigationPage(recomendationView.Name);
+        }
+
+        private void FamilyInfo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void navBarItemHome_LinkClicked(object sender, NavBarLinkEventArgs e)
+        {
+            SingleClientProcess singleClientProcess = new SingleClientProcess(this.personalInformation,this.planner);
+            singleClientProcess.TopLevel = false;
+            singleClientProcess.Visible = true;
+            navigationPageOther.Name = singleClientProcess.Name;
+            navigationPageOther.Controls.Clear();
+            navigationPageOther.Controls.Add(singleClientProcess);
+            showNavigationPage(singleClientProcess.Name);
         }
     }
 }

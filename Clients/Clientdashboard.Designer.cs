@@ -310,6 +310,7 @@
             this.FamilyInfo.Size = new System.Drawing.Size(168, 455);
             this.FamilyInfo.TabIndex = 0;
             this.FamilyInfo.Text = "navBarControl2";
+            this.FamilyInfo.Click += new System.EventHandler(this.FamilyInfo_Click);
             // 
             // Personalnfo
             // 
@@ -424,7 +425,6 @@
             // navBarGroupPlannerData
             // 
             this.navBarGroupPlannerData.Caption = "Planner Data";
-            this.navBarGroupPlannerData.Expanded = true;
             this.navBarGroupPlannerData.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemAssumptions),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemGoals),
@@ -645,9 +645,10 @@
             // 
             // navBarItemHome
             // 
-            this.navBarItemHome.Caption = "Home";
+            this.navBarItemHome.Caption = "Client Process";
             this.navBarItemHome.Name = "navBarItemHome";
             this.navBarItemHome.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarItemHome.SmallImage")));
+            this.navBarItemHome.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItemHome_LinkClicked);
             // 
             // navBarMailManager
             // 
@@ -655,6 +656,7 @@
             this.navBarMailManager.LargeImage = ((System.Drawing.Image)(resources.GetObject("navBarMailManager.LargeImage")));
             this.navBarMailManager.Name = "navBarMailManager";
             this.navBarMailManager.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarMailManager.SmallImage")));
+            this.navBarMailManager.Visible = false;
             this.navBarMailManager.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarMailManager_LinkClicked);
             // 
             // navBarGroupOtherOptions
@@ -1026,7 +1028,6 @@
             // navigationPageContactInfo
             // 
             this.navigationPageContactInfo.AutoScroll = true;
-            this.navigationPageContactInfo.Caption = "navigationPageContactInfo";
             this.navigationPageContactInfo.Name = "navigationPageContactInfo";
             this.navigationPageContactInfo.Size = new System.Drawing.Size(1004, 599);
             this.navigationPageContactInfo.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.navigationPageClient_ControlRemoved);

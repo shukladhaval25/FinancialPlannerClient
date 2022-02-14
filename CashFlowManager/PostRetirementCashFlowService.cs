@@ -29,23 +29,30 @@ namespace FinancialPlannerClient.CashFlowManager
             CashFlowService cashFlowService)
         {
             Logger.LogInfo("Post retirement cash flow service constructor call");
-            this.planner = planner;         
-            this.cashFlowService = cashFlowService;
-            loadPlannerAssumption();
-            double.TryParse( plannerAssumption.PostRetirementInvestmentReturnRate.ToString(),out invReturnRate);
-            Logger.LogInfo("Get cash flow calculation from cash flow service.");
-            this.cashFlowCalculation = cashFlowService.GetCashFlowCalculation();
-            //generateCashFlowCalculationData();
-            this.retirementPlanningYearStartFrom = getRetirementYear();
-            Logger.LogInfo("Get retirment year :" + this.retirementPlanningYearStartFrom);
-            this.expectedLifeEndYear = getExpectedLifeEndYear();
-            Logger.LogInfo("Get expected life end year :" + this.expectedLifeEndYear);
-            Logger.LogInfo("Post retirement cash flow service constructor call completed");
+            try
+            {
+                this.planner = planner;
+                this.cashFlowService = cashFlowService;
+                loadPlannerAssumption();
+                double.TryParse(plannerAssumption.PostRetirementInvestmentReturnRate.ToString(), out invReturnRate);
+                Logger.LogInfo("Get cash flow calculation from cash flow service.");
+                this.cashFlowCalculation = cashFlowService.GetCashFlowCalculation();
+                //generateCashFlowCalculationData();
+                this.retirementPlanningYearStartFrom = getRetirementYear();
+                Logger.LogInfo("Get retirment year :" + this.retirementPlanningYearStartFrom);
+                this.expectedLifeEndYear = getExpectedLifeEndYear();
+                Logger.LogInfo("Get expected life end year :" + this.expectedLifeEndYear);
+                Logger.LogInfo("Post retirement cash flow service constructor call completed");
 
-            Goals retirementGoal = cashFlowCalculation.LstGoals.FirstOrDefault(y => y.Category == "Retirement");
-            GoalsValueCalculationInfo goalsValueCalculationInfo = cashFlowService.GoalCalculationMgr.GetGoalValueCalculation(retirementGoal);
-            double assetsMappingValue = (goalsValueCalculationInfo != null) ? goalsValueCalculationInfo.FutureValueOfMappedNonFinancialAssets : 0;
-            totalCurrentCorpFund  =  cashFlowService.GetCashFlowSurplusAmount() + cashFlowService.GetCurrentStatusAccessFund() + assetsMappingValue;
+                Goals retirementGoal = cashFlowCalculation.LstGoals.FirstOrDefault(y => y.Category == "Retirement");
+                GoalsValueCalculationInfo goalsValueCalculationInfo = cashFlowService.GoalCalculationMgr.GetGoalValueCalculation(retirementGoal);
+                double assetsMappingValue = (goalsValueCalculationInfo != null) ? goalsValueCalculationInfo.FutureValueOfMappedNonFinancialAssets : 0;
+                totalCurrentCorpFund = cashFlowService.GetCashFlowSurplusAmount() + cashFlowService.GetCurrentStatusAccessFund() + assetsMappingValue;
+            }
+            catch(Exception ex)
+            {
+                Logger.LogInfo(ex.ToString());
+            }
         }
         public CashFlowCalculation GetCashFlowCalculationData()
         {

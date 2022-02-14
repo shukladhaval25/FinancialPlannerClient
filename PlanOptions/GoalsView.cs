@@ -76,8 +76,8 @@ namespace FinancialPlannerClient.PlanOptions
             PlannerAssumptionInfo plannerAssumptionInfo = new PlannerAssumptionInfo();
             PlannerAssumption plannerAssumption = plannerAssumptionInfo.GetAll(this.planId);
             int retirementYear = (client.DOB.Year + plannerAssumption.ClientRetirementAge + 1);
-            int endOfLifeYear = (client.DOB.Year + plannerAssumption.ClientLifeExpectancy) + 1;
-            int spouseLifeYear = (_personalInfo.Spouse.DOB.Year + plannerAssumption.SpouseLifeExpectancy) + 1;
+            int endOfLifeYear = (client.DOB.Year + plannerAssumption.ClientLifeExpectancy) ;
+            int spouseLifeYear = (_personalInfo.Spouse.DOB.Year + plannerAssumption.SpouseLifeExpectancy);
 
             endOfLifeYear = (endOfLifeYear > spouseLifeYear) ? endOfLifeYear : spouseLifeYear;
 

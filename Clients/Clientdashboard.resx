@@ -702,22 +702,19 @@
   </data>
   <data name="navBarItemHome.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        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
+        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
 </value>
   </data>
   <data name="navBarMailManager.LargeImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

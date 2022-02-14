@@ -30,7 +30,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         const string NPS_DEPT = "NPS Debt";
         const string OTHERS_DEBT = "Others Debt";
         const string EPF = "EPF";
-        const string NSC = "NSC";
+        const string NSC = "NSC/KYP";
         const string SCSS = "SCSS";
 
         const string GOLD = "Gold";

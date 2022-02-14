@@ -27,6 +27,8 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         const string SHARES = "Shares";
         const string REAL_ESTATE = "Real Estate";
         const string LIABILITY = "LIABILITY";
+        const string NPS = "NPS";
+        const string ULIP = "ULIP";
 
         const string NPS_EQUITY = "NPS Equity";
         const string ULIP_EQUITY = "ULIP Equity";
@@ -36,7 +38,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         const string NPS_DEPT = "NPS Debt";
         const string OTHERS_DEBT = "Others Debt";
         const string EPF = "EPF";
-        const string NSC = "NSC";
+        const string NSC = "NSC/KYP";
         const string SCSS = "SCSS";
 
         const string GOLD = "Gold";
@@ -128,40 +130,59 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             string groupTitle = string.Empty;
             foreach (DataRow dr in dtNetWorth.Rows)
             {
-                if (groupTitle != dr[0].ToString())
+                if (!dr["Title"].ToString().Equals(NPS_DEPT) && 
+                    !dr["Title"].ToString().Equals(NPS_EQUITY) &&
+                    !dr["Title"].ToString().Equals(ULIPS_DEBT) &&
+                    !dr["Title"].ToString().Equals(ULIP_EQUITY))
                 {
-                    groupTitle = dr[0].ToString();
+                    if (groupTitle != dr[0].ToString())
+                    {
+                        groupTitle = dr[0].ToString();
+                        if (groupTitle != LIABILITY)
+                        {
+                            xrTableNetWorth.Rows[rowIndex].Cells[0].Text = groupTitle;
+                            xrTableNetWorth.Rows[rowIndex].Cells[0].Font = lblIncomeBy0.Font;
+                            xrTableNetWorth.Rows[rowIndex].Cells[0].ForeColor = lblIncomeBy0.ForeColor;
+                        }
+                        else
+                        {
+                            rowIndex = 0;
+                        }
+                        rowIndex++;
+                    }
                     if (groupTitle != LIABILITY)
                     {
-                        xrTableNetWorth.Rows[rowIndex].Cells[0].Text = groupTitle;
-                        xrTableNetWorth.Rows[rowIndex].Cells[0].Font = lblIncomeBy0.Font;
-                        xrTableNetWorth.Rows[rowIndex].Cells[0].ForeColor = lblIncomeBy0.ForeColor;
+
+                        if (dr["Title"].ToString().Equals(OTHERS_EQUITY) || dr["Title"].ToString().Equals(OTHERS_DEBT) ||
+                            dr["Title"].ToString().Equals(OTHERS_GOLD))
+                        {
+                            xrTableNetWorth.Rows[rowIndex].Cells[0].Text = dr["Description"].ToString();
+                        }
+                        else
+                        {
+                            xrTableNetWorth.Rows[rowIndex].Cells[0].Text = dr[1].ToString();
+                        }
+                        xrTableNetWorth.Rows[rowIndex].Cells[1].Text = dr[2].ToString();
+
                     }
                     else
                     {
-                        rowIndex = 0;
+                        xrTableNetWorth.Rows[rowIndex].Cells[2].Text = dr[3].ToString();
+                        xrTableNetWorth.Rows[rowIndex].Cells[3].Text = dr[4].ToString();
                     }
                     rowIndex++;
                 }
-                if (groupTitle != LIABILITY)
-                {
-                    if (dr["Title"].ToString().Equals(OTHERS_EQUITY) || dr["Title"].ToString().Equals(OTHERS_DEBT) ||
-                        dr["Title"].ToString().Equals(OTHERS_GOLD))
-                    {
-                        xrTableNetWorth.Rows[rowIndex].Cells[0].Text = dr["Description"].ToString();
-                    }
-                    else
-                    {
-                        xrTableNetWorth.Rows[rowIndex].Cells[0].Text = dr[1].ToString();
-                    }
-                    xrTableNetWorth.Rows[rowIndex].Cells[1].Text = dr[2].ToString();
-                }
-                else
-                {
-                    xrTableNetWorth.Rows[rowIndex].Cells[2].Text = dr[3].ToString();
-                    xrTableNetWorth.Rows[rowIndex].Cells[3].Text = dr[4].ToString();
-                }
-                rowIndex++;
+            }
+
+            DataRow[] drs = dtNetWorth.Select("Title='NPS'");
+            if (drs.Count() > 0) {
+                dtNetWorth.Rows.Remove(drs[0]);
+            }
+
+            drs = dtNetWorth.Select("Title='ULIP'");
+            if (drs.Count() > 0)
+            {
+                dtNetWorth.Rows.Remove(drs[0]);
             }
         }
 
@@ -778,10 +799,20 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             NPSInfo npsInfo = new NPSInfo();
             double totalNPSEquityValue = 0;
             double totalNPSDebValue = 0;
+            double totalNPS = 0;
             DataTable dtNPS = npsInfo.GetNPSInfo(this.planner.ID);
             if (dtNPS != null && dtNPS.Rows.Count > 0)
             {
                 totalNPSEquityValue = dtNPS.AsEnumerable().Sum(x => (Convert.ToDouble(x["CurrentValue"]) * Convert.ToDouble(x["EquityRatio"])) / 100);
+                totalNPS = dtNPS.AsEnumerable().Sum(x => (Convert.ToDouble(x["CurrentValue"])));
+            }
+            if (totalNPS > 0)
+            {
+                DataRow drNetWorth = dtNetWorth.NewRow();
+                drNetWorth["Group"] = FINANCIAL_ASSETS;
+                drNetWorth["Title"] = NPS;
+                drNetWorth["Amount"] = Math.Round(totalNPS);
+                dtNetWorth.Rows.Add(drNetWorth);
             }
 
             if (totalNPSEquityValue > 0)
@@ -816,12 +847,24 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             double totalUlipEquityValue = 0;
             double totalUlipDebValue = 0;
             DataTable dtUlip = ulipInfo.GetULIPInfo(this.planner.ID);
+            double totalULIP = 0;
             if (dtUlip != null && dtUlip.Rows.Count > 0)
             {
                 totalUlipEquityValue = dtUlip.AsEnumerable().Sum(x => ((Convert.ToDouble(x["NAV"]) * Convert.ToDouble(x["Units"])) * Convert.ToDouble(x["EquityRatio"])) / 100);
+                totalULIP = dtUlip.AsEnumerable().Sum(x => ((Convert.ToDouble(x["NAV"]) * Convert.ToDouble(x["Units"]))));
                 //Convert.ToDouble(x["NAV"]) * Convert.ToDouble(x["Units"]));
                 //double.Parse(dtMF.Compute("sum(NAV * Units)", string.Empty).ToString());
             }
+
+            if (totalULIP > 0)
+            {
+                DataRow drNetWorth = dtNetWorth.NewRow();
+                drNetWorth["Group"] = FINANCIAL_ASSETS;
+                drNetWorth["Title"] = ULIP;
+                drNetWorth["Amount"] = Math.Round(totalULIP);
+                dtNetWorth.Rows.Add(drNetWorth);
+            }
+
 
             if (totalUlipEquityValue > 0)
             {

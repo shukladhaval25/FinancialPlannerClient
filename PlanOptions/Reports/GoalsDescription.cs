@@ -1,4 +1,5 @@
-﻿using DevExpress.XtraReports.UI;
+﻿using DevExpress.XtraCharts;
+using DevExpress.XtraReports.UI;
 using FinancialPlanner.Common;
 using FinancialPlanner.Common.Model;
 using FinancialPlanner.Common.Model.PlanOptions;
@@ -27,6 +28,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         private DataTable _dtGoals;
         private DataTable _dtGoalProjectionComplition;
         double equityRation, debtRatio = 0;
+        double totalEstimatedRetirementCorpusFund;
 
         public GoalsDescription()
         {
@@ -129,7 +131,9 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                 planner.ID, riskProfileId, optionId);
                 if (_dtGoalProfile != null && _dtGoalProfile.Rows.Count > 0)
                 {
-                    if (_dtGoalProfile.Rows[0]["Start Year"].ToString().Equals(this.planner.StartDate.Year.ToString())){
+                    if (!_dtGoalProfile.Rows[0]["Start Year"].ToString().Equals(this.planner.StartDate.Year.ToString()))
+                    {
+                        lblloanTitle.Text = lblloanTitle.Text + " (" + _dtGoalProfile.Rows[0]["Start Year"].ToString() + ")";
                         lblLoanAmt.Text = _dtGoalProfile.Rows[0]["Loan Amount"].ToString();
                     }
                     DataTable _dtGoalValue = _goalCalculationInfo.GetGoalCalculation();
@@ -195,6 +199,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             if (lblLoanAmt.Text == "0" || lblLoanAmt.Text == "NIL" || lblLoanAmt.Text == "")
             {
                 lblLoanAmt.Text = "NIL";
+                lblloanTitle.Text = "B) Loan :";
                 return;
             }
 
@@ -226,7 +231,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             }
         }
 
-        internal void SetReportParameter(Client client, Planner planner, DataTable dtGoals, int riskProfileId, int optionId, List<Goals> goals, DataTable dtGoalProjectionComplition)
+        internal void SetReportParameter(Client client, Planner planner, DataTable dtGoals, int riskProfileId, int optionId, List<Goals> goals, DataTable dtGoalProjectionComplition,double retirementCorpusFund)
         {
             this.lblClientName.Text = client.Name;
             this._dtGoals = dtGoals;
@@ -236,6 +241,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             this.client = client;
             this.goal = goals.Find(i => i.Name == _dtGoals.Rows[0]["Name"].ToString());
             this._dtGoalProjectionComplition = dtGoalProjectionComplition;
+            this.totalEstimatedRetirementCorpusFund = retirementCorpusFund;
             bindFields();
         }
 
@@ -258,13 +264,13 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                 lblRetirementCorpus.Visible = true;
                 lblRetirementCorpusValue.Visible = true;
                 lblRetirementCorpusSum.Visible = true;
-                PostRetirementCashFlowService postRetirementCashFlowService;
-                CashFlowService cashFlowService = new CashFlowService();
-                cashFlowService.GenerateCashFlow(client.ID, planner.ID, riskProfileId);
-                postRetirementCashFlowService = new PostRetirementCashFlowService(planner, cashFlowService);
-                postRetirementCashFlowService.GetPostRetirementCashFlowData();
-                postRetirementCashFlowService.calculateEstimatedRequireCorpusFund();
-                double totalEstimatedRetirementCorpusFund = Math.Round(postRetirementCashFlowService.GetProposeEstimatedCorpusFund(), 2);
+                //PostRetirementCashFlowService postRetirementCashFlowService;
+                //CashFlowService cashFlowService = new CashFlowService();
+                //cashFlowService.GenerateCashFlow(client.ID, planner.ID, riskProfileId);
+                //postRetirementCashFlowService = new PostRetirementCashFlowService(planner, cashFlowService);
+                //postRetirementCashFlowService.GetPostRetirementCashFlowData();
+                //postRetirementCashFlowService.calculateEstimatedRequireCorpusFund();
+                //double totalEstimatedRetirementCorpusFund = Math.Round(postRetirementCashFlowService.GetProposeEstimatedCorpusFund(), 2);
                 lblRetirementCorpusValue.Text = totalEstimatedRetirementCorpusFund.ToString();
                 lblRetirementCorpusSum.Text = totalEstimatedRetirementCorpusFund.ToString();
                 //lblRetirementCorpus.DataBindings.Add("Text", this.DataSource, G)
@@ -303,17 +309,39 @@ namespace FinancialPlannerClient.PlanOptions.Reports
 
         private void setGraphChartWithGoalCompletionInformation()
         {
-            string goalName = (goal.Name.Length > 4) ? goal.Name.Substring(0, goal.Name.Length - 4) : goal.Name;
-            DataRow[] drs =  this._dtGoalProjectionComplition.Select("Category='" + goal.Category + "' and Name like '" + goalName.Trim() + "%'");
+            string lastFourChar =  (goal.Name.Length > 4) ? goal.Name.Substring(goal.Name.Length - 4) : goal.Name;
+            int convertToInt = 0;
+            DataRow[] drs;
+            if (int.TryParse(lastFourChar,out convertToInt))
+            {
+                string goalName = (goal.Name.Length > 4) ? goal.Name.Substring(0, goal.Name.Length - 4) : goal.Name;
+                drs = this._dtGoalProjectionComplition.Select("Category='" + goal.Category + "' and Name like '" + goalName.Trim() + "%'");
+            }
+            else
+            {
+                drs = this._dtGoalProjectionComplition.Select("Category='" + goal.Category + "' and Name like '" + goal.Name.Trim() + "%'");
+            }
+           
             if (drs.Count() > 0)
             {
                 double fv = double.Parse(drs[0]["FutureValue"].ToString());
                 double goalCompletionPercentage = double.Parse(drs[0]["ProjectionCompleted"].ToString());
                 double overallCompletion = (goalCompletionPercentage * fv) / 100;
-                double goalAchivedTillDate = double.Parse(drs[0]["GoalAchivedTillDate"].ToString()); 
+                double goalAchivedTillDate = double.Parse(drs[0]["GoalAchivedTillDate"].ToString());
+                double goalReached = double.Parse(drs[0]["GoalReached"].ToString());
                 xrChartGoal.Series[0].Points[0].Values = new double[] { fv };
                 xrChartGoal.Series[0].Points[1].Values = new double[] { overallCompletion };
                 xrChartGoal.Series[0].Points[2].Values = new double[] { goalAchivedTillDate };
+
+
+                this.xrChartGoal.Legend.CustomItems[0].Text ="(100%)";
+                this.xrChartGoal.Legend.CustomItems[0].MarkerColor = xrChartGoal.Series[0].Points[0].Color;
+
+                this.xrChartGoal.Legend.CustomItems[1].Text = "(" + goalCompletionPercentage.ToString() + "%)";
+                this.xrChartGoal.Legend.CustomItems[1].MarkerColor = xrChartGoal.Series[0].Points[1].Color;
+
+                this.xrChartGoal.Legend.CustomItems[2].Text = "(" + goalReached.ToString() + "%)";
+                this.xrChartGoal.Legend.CustomItems[2].MarkerColor = xrChartGoal.Series[0].Points[2].Color;
             }
 
         }
@@ -408,7 +436,18 @@ namespace FinancialPlannerClient.PlanOptions.Reports
 
         private void setGoalProjectionComplitionNote()
         {
-            string goalName = (goal.Name.Length > 4) ? goal.Name.Substring(0, goal.Name.Length - 4) : goal.Name;
+            //string goalName = (goal.Name.Length > 4) ? goal.Name.Substring(0, goal.Name.Length - 4) : goal.Name;
+            int number;
+            string goalName;
+            if (goal.Name.Length > 4 && int.TryParse(goal.Name.Substring(goal.Name.LastIndexOf(" ") + 1), out number))
+            {
+                goalName = goal.Name.Substring(0, goal.Name.Length - 4);
+            }
+            else
+            {
+                goalName = goal.Name;
+            }
+
             DataRow[] drs = _dtGoalProjectionComplition.Select("Name like '" + goalName.Trim() + "%'");
             if (drs.Length > 0)
             {
@@ -514,6 +553,27 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                     lblNonFinancialAssets.Text = PlannerMainReport.planner.CurrencySymbol + double.Parse(lblNonFinancialAssets.Text).ToString("N0", PlannerMainReport.Info);
                 }
             }
+        }
+
+        private void xrChartGoal_CustomDrawSeriesPoint(object sender, DevExpress.XtraCharts.CustomDrawSeriesPointEventArgs e)
+        {
+            //BarDrawOptions drawOptions = e.SeriesDrawOptions as BarDrawOptions;
+            //if (drawOptions == null)
+            //    return;
+
+            //// Get the fill options for the series point.
+            //drawOptions.FillStyle.FillMode = FillMode.Gradient;
+            //RectangleGradientFillOptions options = drawOptions.FillStyle.Options
+            //    as RectangleGradientFillOptions;
+            //if (options == null)
+            //    return;
+
+            //// Get the value at the current series point.
+            //double val = e.SeriesPoint[0];
+            //if (val > 0)
+            //{
+            //    drawOptions.
+            //}
         }
 
         private void lblDebt_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)

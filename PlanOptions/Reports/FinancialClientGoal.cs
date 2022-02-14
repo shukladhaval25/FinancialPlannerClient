@@ -22,11 +22,12 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         int riskProfileId;
         int optionId;
         Client client;
+        double _totalEstimatedRetirementCorpusFund;
         public FinancialClientGoal()
         {
             InitializeComponent();
         }
-        public FinancialClientGoal(Planner planner, Client client, int riskProfileID, int optionId,IList<Goals> goals)
+        public FinancialClientGoal(Planner planner, Client client, int riskProfileID, int optionId, IList<Goals> goals)
         {
             InitializeComponent();
             this.planner = planner;
@@ -38,9 +39,13 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             {
                 this.lstGoal = goals.ToList();
             }
-          
+
         }
-        
+
+        public double GetTotalEstimatedRetirementCorpusFund()
+        {
+            return _totalEstimatedRetirementCorpusFund;
+        }
 
         private void groupTogetherRecurrenceGoal()
         {
@@ -368,8 +373,9 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                     postRetirementCashFlowService.calculateEstimatedRequireCorpusFund();
                     double totalEstimatedRetirementCorpusFund = Math.Round(postRetirementCashFlowService.GetProposeEstimatedCorpusFund(), 2);
                     this.lblRetirementFutureCost.Text = totalEstimatedRetirementCorpusFund.ToString(); //dtGoalValue.Rows[0]["GoalValue"].ToString();
+                    _totalEstimatedRetirementCorpusFund = totalEstimatedRetirementCorpusFund;
                     this.lblRetirementPresentCost.Text = dtGoalValue.Rows[0]["CurrentValue"].ToString();
-                    lblTotalCorpusNeeded.Text = string.Format(lblTotalCorpusNeeded.Text, (int.Parse(retirementGoal.EndYear) - int.Parse(retirementGoal.StartYear)));
+                    lblTotalCorpusNeeded.Text = string.Format(lblTotalCorpusNeeded.Text, (int.Parse(retirementGoal.EndYear) - int.Parse(retirementGoal.StartYear) + 1));
                     this.lblRetirementEndYear.Text = retirementGoal.EndYear;
                 }
             }

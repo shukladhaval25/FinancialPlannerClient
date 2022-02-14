@@ -83,7 +83,8 @@ namespace FinancialPlannerClient.TaskManagementSystem
                         {
                             ViewTaskCard viewTaskCard = new ViewTaskCard(taskCard);
                             viewTaskCard.Show();
-                            this.Close();
+                            fillupTasks();
+                            //this.Close();
                             //controls[0].Controls.Clear();
                             //viewTaskCard.TopLevel = false;
                             //viewTaskCard.Visible = true;

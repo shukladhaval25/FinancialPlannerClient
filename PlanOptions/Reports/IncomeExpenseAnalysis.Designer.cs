@@ -1232,7 +1232,7 @@
             this.xrLabel3.SizeF = new System.Drawing.SizeF(252.0832F, 26.12497F);
             this.xrLabel3.StylePriority.UseFont = false;
             this.xrLabel3.StylePriority.UseForeColor = false;
-            this.xrLabel3.Text = "Expendirure/Outflow :";
+            this.xrLabel3.Text = "Expenditure /Outflow :";
             // 
             // xrTable2
             // 
@@ -1287,14 +1287,14 @@
             this.xrLabel1.Dpi = 100F;
             this.xrLabel1.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(117)))), ((int)(((byte)(181)))));
-            this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(10.00001F, 7.000007F);
+            this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(10.00001F, 7.000001F);
             this.xrLabel1.Multiline = true;
             this.xrLabel1.Name = "xrLabel1";
             this.xrLabel1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel1.SizeF = new System.Drawing.SizeF(294.7916F, 26.12498F);
+            this.xrLabel1.SizeF = new System.Drawing.SizeF(284.375F, 26.12498F);
             this.xrLabel1.StylePriority.UseFont = false;
             this.xrLabel1.StylePriority.UseForeColor = false;
-            this.xrLabel1.Text = "Income Expendirue Analysis :\r\n";
+            this.xrLabel1.Text = "Income Expenditure  Analysis :\r\n";
             // 
             // subReportIncomeChart
             // 

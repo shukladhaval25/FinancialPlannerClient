@@ -4,6 +4,7 @@ using FinancialPlanner.Common;
 using FinancialPlanner.Common.Model;
 using FinancialPlanner.Common.Model.TaskManagement;
 using FinancialPlanner.Common.Permission;
+using FinancialPlannerClient.ClientProcess;
 using FinancialPlannerClient.Clients.MailService;
 using FinancialPlannerClient.Controls;
 using FinancialPlannerClient.Master;
@@ -81,6 +82,7 @@ namespace FinancialPlannerClient.Home
         private SimpleButton btnPPFMaturity;
         private NavBarItem navBarItemMOM;
         private NavBarItem navBarItemInsuranceCompany;
+        private NavBarItem navBarItemClientProcess;
         private const string AUDITLOGCONTROLLER = "Activities/Add";
 
         public frmHome()
@@ -169,6 +171,7 @@ namespace FinancialPlannerClient.Home
             this.navBarItemProspectCustomer = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItemClient = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItemFinancialPlanner = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarItemClientProcess = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarMenuGroup = new DevExpress.XtraNavBar.NavBarControl();
             this.navBarGroupControlContainerReports = new DevExpress.XtraNavBar.NavBarGroupControlContainer();
             this.btnPPFMaturity = new DevExpress.XtraEditors.SimpleButton();
@@ -524,11 +527,13 @@ namespace FinancialPlannerClient.Home
             // navBarGroupClient
             // 
             this.navBarGroupClient.Caption = "Client";
+            this.navBarGroupClient.Expanded = true;
             this.navBarGroupClient.GroupStyle = DevExpress.XtraNavBar.NavBarGroupStyle.LargeIconsText;
             this.navBarGroupClient.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemProspectCustomer),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemClient),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemFinancialPlanner)});
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemFinancialPlanner),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemClientProcess)});
             this.navBarGroupClient.LargeImage = ((System.Drawing.Image)(resources.GetObject("navBarGroupClient.LargeImage")));
             this.navBarGroupClient.Name = "navBarGroupClient";
             this.navBarGroupClient.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarGroupClient.SmallImage")));
@@ -583,6 +588,13 @@ namespace FinancialPlannerClient.Home
             this.navBarItemFinancialPlanner.SuperTip = superToolTip11;
             this.navBarItemFinancialPlanner.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItemFinancialPlanner_LinkClicked);
             // 
+            // navBarItemClientProcess
+            // 
+            this.navBarItemClientProcess.Caption = "Process Wise Client";
+            this.navBarItemClientProcess.LargeImage = ((System.Drawing.Image)(resources.GetObject("navBarItemClientProcess.LargeImage")));
+            this.navBarItemClientProcess.Name = "navBarItemClientProcess";
+            this.navBarItemClientProcess.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItemClientProcess_LinkClicked);
+            // 
             // navBarMenuGroup
             // 
             this.navBarMenuGroup.ActiveGroup = this.mavBarMasterGroup;
@@ -617,7 +629,8 @@ namespace FinancialPlannerClient.Home
             this.navBarItemBank,
             this.navBarItemMFCategory,
             this.navBarItemMOM,
-            this.navBarItemInsuranceCompany});
+            this.navBarItemInsuranceCompany,
+            this.navBarItemClientProcess});
             this.navBarMenuGroup.Location = new System.Drawing.Point(2, 2);
             this.navBarMenuGroup.Name = "navBarMenuGroup";
             this.navBarMenuGroup.OptionsNavPane.ExpandedWidth = 136;
@@ -1339,6 +1352,16 @@ namespace FinancialPlannerClient.Home
             homeNavigationPage1.Name = other.Name;
             homeNavigationPage1.Controls.Add(other);
             showNavigationPage(other.Name);
+        }
+
+        private void navBarItemClientProcess_LinkClicked(object sender, NavBarLinkEventArgs e)
+        {
+            ClientsWithProcess clientWithProcess = new ClientsWithProcess();
+            clientWithProcess.TopLevel = false;
+            clientWithProcess.Visible = true;
+            homeNavigationPage1.Name = clientWithProcess.Name;
+            homeNavigationPage1.Controls.Add(clientWithProcess);
+            showNavigationPage(clientWithProcess.Name);
         }
     }
 }

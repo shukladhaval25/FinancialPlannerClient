@@ -341,8 +341,10 @@ namespace FinancialPlannerClient.PlanOptions
                                 goalsDescriptions[goalCountIndex] = new GoalsDescription();
                                 DataTable dtGoalProjectComplition = goalProjectionForComplition.GetGoalProjectionTable();
                                 goalsDescriptions[goalCountIndex].SetReportParameter(this.client, planner, _dtGoals,
-                                   this.riskprofileId, this.optionId, this.goals.ToList(), dtGoalProjectComplition);
+                                   this.riskprofileId, this.optionId, this.goals.ToList(), dtGoalProjectComplition,
+                                   financialClientGoal.GetTotalEstimatedRetirementCorpusFund());
                                 goalsDescriptions[goalCountIndex].CreateDocument();
+                              
                                 this.Pages.AddRange(goalsDescriptions[goalCountIndex].Pages);
                                 goalCountIndex++;
                             }

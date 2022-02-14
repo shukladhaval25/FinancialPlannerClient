@@ -28,14 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProspectCustomer));
             this.grpProspectCustomer = new System.Windows.Forms.GroupBox();
-            this.dtIntroductionCompletdOn = new System.Windows.Forms.DateTimePicker();
-            this.chkIntroductionCompleted = new System.Windows.Forms.CheckBox();
-            this.txtRemark = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.chkIsConvertedToCustomer = new System.Windows.Forms.CheckBox();
+            this.pnlClient = new System.Windows.Forms.Panel();
+            this.cmbClientAssignTo = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.label3 = new System.Windows.Forms.Label();
             this.chkStopSendingEmail = new System.Windows.Forms.CheckBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.chkIsConvertedToCustomer = new System.Windows.Forms.CheckBox();
+            this.cmbClient = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dtIntroductionCompletdOn = new System.Windows.Forms.DateTimePicker();
+            this.txtRemark = new System.Windows.Forms.TextBox();
+            this.chkIntroductionCompleted = new System.Windows.Forms.CheckBox();
             this.txtRefBy = new System.Windows.Forms.TextBox();
             this.lblRefBy = new System.Windows.Forms.Label();
             this.dtEventDate = new System.Windows.Forms.DateTimePicker();
@@ -51,7 +57,7 @@
             this.lblPhoneNo = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.imgCollection = new System.Windows.Forms.ImageList();
+            this.imgCollection = new System.Windows.Forms.ImageList(this.components);
             this.btnSave = new System.Windows.Forms.Button();
             this.grpConverstion = new System.Windows.Forms.GroupBox();
             this.grpActionControls = new System.Windows.Forms.GroupBox();
@@ -62,12 +68,16 @@
             this.btnAddConversation = new System.Windows.Forms.Button();
             this.btnShowConversation = new System.Windows.Forms.Button();
             this.btnHideConversation = new System.Windows.Forms.Button();
-            this.toolTipProspeectClient = new System.Windows.Forms.ToolTip();
+            this.toolTipProspeectClient = new System.Windows.Forms.ToolTip(this.components);
+            this.btnConvertToClient = new System.Windows.Forms.Button();
             this.tbProspCustomer = new System.Windows.Forms.TabControl();
             this.tbpageProspectCustomer = new System.Windows.Forms.TabPage();
             this.tpageEmailSendHistory = new System.Windows.Forms.TabPage();
-            this.imageList30x30 = new System.Windows.Forms.ImageList();
+            this.imageList30x30 = new System.Windows.Forms.ImageList(this.components);
             this.grpProspectCustomer.SuspendLayout();
+            this.pnlClient.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbClientAssignTo.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbClient.Properties)).BeginInit();
             this.grpConverstion.SuspendLayout();
             this.grpActionControls.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridConversation)).BeginInit();
@@ -80,12 +90,7 @@
             this.grpProspectCustomer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.grpProspectCustomer.BackColor = System.Drawing.Color.Transparent;
-            this.grpProspectCustomer.Controls.Add(this.dtIntroductionCompletdOn);
-            this.grpProspectCustomer.Controls.Add(this.chkIntroductionCompleted);
-            this.grpProspectCustomer.Controls.Add(this.txtRemark);
-            this.grpProspectCustomer.Controls.Add(this.label1);
-            this.grpProspectCustomer.Controls.Add(this.chkIsConvertedToCustomer);
-            this.grpProspectCustomer.Controls.Add(this.chkStopSendingEmail);
+            this.grpProspectCustomer.Controls.Add(this.pnlClient);
             this.grpProspectCustomer.Controls.Add(this.txtRefBy);
             this.grpProspectCustomer.Controls.Add(this.lblRefBy);
             this.grpProspectCustomer.Controls.Add(this.dtEventDate);
@@ -104,26 +109,128 @@
             this.grpProspectCustomer.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.grpProspectCustomer.Location = new System.Drawing.Point(3, 10);
             this.grpProspectCustomer.Name = "grpProspectCustomer";
-            this.grpProspectCustomer.Size = new System.Drawing.Size(707, 213);
+            this.grpProspectCustomer.Size = new System.Drawing.Size(707, 223);
             this.grpProspectCustomer.TabIndex = 0;
             this.grpProspectCustomer.TabStop = false;
             this.grpProspectCustomer.Text = "Propsect Customer Information";
             this.toolTipProspeectClient.SetToolTip(this.grpProspectCustomer, "Information about propsect customer");
+            this.grpProspectCustomer.Enter += new System.EventHandler(this.grpProspectCustomer_Enter);
+            // 
+            // pnlClient
+            // 
+            this.pnlClient.Controls.Add(this.cmbClientAssignTo);
+            this.pnlClient.Controls.Add(this.label3);
+            this.pnlClient.Controls.Add(this.chkStopSendingEmail);
+            this.pnlClient.Controls.Add(this.label2);
+            this.pnlClient.Controls.Add(this.chkIsConvertedToCustomer);
+            this.pnlClient.Controls.Add(this.cmbClient);
+            this.pnlClient.Controls.Add(this.label1);
+            this.pnlClient.Controls.Add(this.dtIntroductionCompletdOn);
+            this.pnlClient.Controls.Add(this.txtRemark);
+            this.pnlClient.Controls.Add(this.chkIntroductionCompleted);
+            this.pnlClient.Location = new System.Drawing.Point(368, 26);
+            this.pnlClient.Name = "pnlClient";
+            this.pnlClient.Size = new System.Drawing.Size(333, 193);
+            this.pnlClient.TabIndex = 30;
+            this.pnlClient.Visible = false;
+            // 
+            // cmbClientAssignTo
+            // 
+            this.cmbClientAssignTo.Location = new System.Drawing.Point(110, 82);
+            this.cmbClientAssignTo.Name = "cmbClientAssignTo";
+            this.cmbClientAssignTo.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cmbClientAssignTo.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.cmbClientAssignTo.Size = new System.Drawing.Size(171, 20);
+            this.cmbClientAssignTo.TabIndex = 32;
+            this.cmbClientAssignTo.SelectedIndexChanged += new System.EventHandler(this.cmbClientAssignTo_SelectedIndexChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(7, 83);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(97, 15);
+            this.label3.TabIndex = 31;
+            this.label3.Text = "Client Assign To:";
+            // 
+            // chkStopSendingEmail
+            // 
+            this.chkStopSendingEmail.AutoSize = true;
+            this.chkStopSendingEmail.Location = new System.Drawing.Point(10, 8);
+            this.chkStopSendingEmail.Name = "chkStopSendingEmail";
+            this.chkStopSendingEmail.Size = new System.Drawing.Size(188, 19);
+            this.chkStopSendingEmail.TabIndex = 21;
+            this.chkStopSendingEmail.Text = "Stop sending email by system";
+            this.chkStopSendingEmail.UseVisualStyleBackColor = true;
+            this.chkStopSendingEmail.CheckedChanged += new System.EventHandler(this.chkStopSendingEmail_CheckedChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 35);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(199, 15);
+            this.label2.TabIndex = 29;
+            this.label2.Text = "Select name of client from client list";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // chkIsConvertedToCustomer
+            // 
+            this.chkIsConvertedToCustomer.AutoSize = true;
+            this.chkIsConvertedToCustomer.Location = new System.Drawing.Point(201, 8);
+            this.chkIsConvertedToCustomer.Name = "chkIsConvertedToCustomer";
+            this.chkIsConvertedToCustomer.Size = new System.Drawing.Size(126, 19);
+            this.chkIsConvertedToCustomer.TabIndex = 22;
+            this.chkIsConvertedToCustomer.Text = "Converted to client";
+            this.chkIsConvertedToCustomer.UseVisualStyleBackColor = true;
+            this.chkIsConvertedToCustomer.CheckedChanged += new System.EventHandler(this.chkIsConvertedToCustomer_CheckedChanged);
+            // 
+            // cmbClient
+            // 
+            this.cmbClient.Location = new System.Drawing.Point(10, 55);
+            this.cmbClient.Name = "cmbClient";
+            this.cmbClient.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cmbClient.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.cmbClient.Size = new System.Drawing.Size(271, 20);
+            this.cmbClient.TabIndex = 23;
+            this.cmbClient.SelectedIndexChanged += new System.EventHandler(this.cmbClient_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 103);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(54, 15);
+            this.label1.TabIndex = 23;
+            this.label1.Text = "Remark:";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // dtIntroductionCompletdOn
             // 
             this.dtIntroductionCompletdOn.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtIntroductionCompletdOn.Location = new System.Drawing.Point(586, 178);
+            this.dtIntroductionCompletdOn.Location = new System.Drawing.Point(171, 163);
             this.dtIntroductionCompletdOn.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
             this.dtIntroductionCompletdOn.Name = "dtIntroductionCompletdOn";
-            this.dtIntroductionCompletdOn.Size = new System.Drawing.Size(83, 21);
+            this.dtIntroductionCompletdOn.Size = new System.Drawing.Size(109, 21);
             this.dtIntroductionCompletdOn.TabIndex = 27;
             this.dtIntroductionCompletdOn.Visible = false;
+            this.dtIntroductionCompletdOn.ValueChanged += new System.EventHandler(this.dtIntroductionCompletdOn_ValueChanged);
+            // 
+            // txtRemark
+            // 
+            this.txtRemark.Location = new System.Drawing.Point(7, 122);
+            this.txtRemark.Multiline = true;
+            this.txtRemark.Name = "txtRemark";
+            this.txtRemark.Size = new System.Drawing.Size(273, 35);
+            this.txtRemark.TabIndex = 24;
+            this.txtRemark.TextChanged += new System.EventHandler(this.txtRemark_TextChanged);
             // 
             // chkIntroductionCompleted
             // 
             this.chkIntroductionCompleted.AutoSize = true;
-            this.chkIntroductionCompleted.Location = new System.Drawing.Point(418, 178);
+            this.chkIntroductionCompleted.Location = new System.Drawing.Point(7, 163);
             this.chkIntroductionCompleted.Name = "chkIntroductionCompleted";
             this.chkIntroductionCompleted.Size = new System.Drawing.Size(153, 19);
             this.chkIntroductionCompleted.TabIndex = 25;
@@ -131,64 +238,29 @@
             this.chkIntroductionCompleted.UseVisualStyleBackColor = true;
             this.chkIntroductionCompleted.CheckedChanged += new System.EventHandler(this.chkIntroductionCompleted_CheckedChanged);
             // 
-            // txtRemark
-            // 
-            this.txtRemark.Location = new System.Drawing.Point(418, 110);
-            this.txtRemark.Multiline = true;
-            this.txtRemark.Name = "txtRemark";
-            this.txtRemark.Size = new System.Drawing.Size(251, 62);
-            this.txtRemark.TabIndex = 24;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(415, 94);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(54, 15);
-            this.label1.TabIndex = 23;
-            this.label1.Text = "Remark:";
-            // 
-            // chkIsConvertedToCustomer
-            // 
-            this.chkIsConvertedToCustomer.AutoSize = true;
-            this.chkIsConvertedToCustomer.Location = new System.Drawing.Point(481, 78);
-            this.chkIsConvertedToCustomer.Name = "chkIsConvertedToCustomer";
-            this.chkIsConvertedToCustomer.Size = new System.Drawing.Size(126, 19);
-            this.chkIsConvertedToCustomer.TabIndex = 22;
-            this.chkIsConvertedToCustomer.Text = "Converted to client";
-            this.chkIsConvertedToCustomer.UseVisualStyleBackColor = true;
-            // 
-            // chkStopSendingEmail
-            // 
-            this.chkStopSendingEmail.AutoSize = true;
-            this.chkStopSendingEmail.Location = new System.Drawing.Point(481, 55);
-            this.chkStopSendingEmail.Name = "chkStopSendingEmail";
-            this.chkStopSendingEmail.Size = new System.Drawing.Size(188, 19);
-            this.chkStopSendingEmail.TabIndex = 21;
-            this.chkStopSendingEmail.Text = "Stop sending email by system";
-            this.chkStopSendingEmail.UseVisualStyleBackColor = true;
-            // 
             // txtRefBy
             // 
-            this.txtRefBy.Location = new System.Drawing.Point(511, 26);
+            this.txtRefBy.Location = new System.Drawing.Point(120, 193);
             this.txtRefBy.Name = "txtRefBy";
             this.txtRefBy.Size = new System.Drawing.Size(158, 21);
             this.txtRefBy.TabIndex = 20;
+            this.txtRefBy.TextChanged += new System.EventHandler(this.txtRefBy_TextChanged);
             // 
             // lblRefBy
             // 
             this.lblRefBy.AutoSize = true;
-            this.lblRefBy.Location = new System.Drawing.Point(415, 29);
+            this.lblRefBy.Location = new System.Drawing.Point(16, 195);
             this.lblRefBy.Name = "lblRefBy";
             this.lblRefBy.Size = new System.Drawing.Size(90, 15);
             this.lblRefBy.TabIndex = 19;
             this.lblRefBy.Text = "Referenced By:";
+            this.lblRefBy.Click += new System.EventHandler(this.lblRefBy_Click);
             // 
             // dtEventDate
             // 
             this.dtEventDate.Location = new System.Drawing.Point(120, 163);
             this.dtEventDate.Name = "dtEventDate";
-            this.dtEventDate.Size = new System.Drawing.Size(268, 21);
+            this.dtEventDate.Size = new System.Drawing.Size(242, 21);
             this.dtEventDate.TabIndex = 18;
             // 
             // lblEventDate
@@ -204,7 +276,7 @@
             // 
             this.txtEvent.Location = new System.Drawing.Point(120, 137);
             this.txtEvent.Name = "txtEvent";
-            this.txtEvent.Size = new System.Drawing.Size(268, 21);
+            this.txtEvent.Size = new System.Drawing.Size(242, 21);
             this.txtEvent.TabIndex = 16;
             // 
             // lblEvent
@@ -220,7 +292,7 @@
             // 
             this.txtOccupation.Location = new System.Drawing.Point(120, 110);
             this.txtOccupation.Name = "txtOccupation";
-            this.txtOccupation.Size = new System.Drawing.Size(268, 21);
+            this.txtOccupation.Size = new System.Drawing.Size(242, 21);
             this.txtOccupation.TabIndex = 14;
             // 
             // lblOccupation
@@ -236,7 +308,7 @@
             // 
             this.txtEmail.Location = new System.Drawing.Point(120, 84);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(268, 21);
+            this.txtEmail.Size = new System.Drawing.Size(242, 21);
             this.txtEmail.TabIndex = 12;
             this.txtEmail.Validating += new System.ComponentModel.CancelEventHandler(this.txtEmail_Validating);
             // 
@@ -244,14 +316,14 @@
             // 
             this.txtPhoneNo.Location = new System.Drawing.Point(120, 58);
             this.txtPhoneNo.Name = "txtPhoneNo";
-            this.txtPhoneNo.Size = new System.Drawing.Size(268, 21);
+            this.txtPhoneNo.Size = new System.Drawing.Size(242, 21);
             this.txtPhoneNo.TabIndex = 11;
             // 
             // txtName
             // 
             this.txtName.Location = new System.Drawing.Point(120, 32);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(268, 21);
+            this.txtName.Size = new System.Drawing.Size(242, 21);
             this.txtName.TabIndex = 10;
             this.txtName.Validating += new System.ComponentModel.CancelEventHandler(this.txtName_Validating);
             // 
@@ -288,7 +360,7 @@
             this.btnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCancel.ImageKey = "icons8-cancel-16.png";
             this.btnCancel.ImageList = this.imgCollection;
-            this.btnCancel.Location = new System.Drawing.Point(650, 287);
+            this.btnCancel.Location = new System.Drawing.Point(650, 291);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 26);
             this.btnCancel.TabIndex = 4;
@@ -315,7 +387,7 @@
             this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSave.ImageKey = "icons8-save-close-16.png";
             this.btnSave.ImageList = this.imgCollection;
-            this.btnSave.Location = new System.Drawing.Point(569, 287);
+            this.btnSave.Location = new System.Drawing.Point(569, 291);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 26);
             this.btnSave.TabIndex = 3;
@@ -408,7 +480,7 @@
             // 
             this.btnAddConversation.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAddConversation.ImageKey = "icons8-chat-16.png";
-            this.btnAddConversation.Location = new System.Drawing.Point(162, 287);
+            this.btnAddConversation.Location = new System.Drawing.Point(162, 291);
             this.btnAddConversation.Name = "btnAddConversation";
             this.btnAddConversation.Size = new System.Drawing.Size(147, 26);
             this.btnAddConversation.TabIndex = 8;
@@ -421,7 +493,7 @@
             // 
             this.btnShowConversation.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnShowConversation.ImageKey = "icons8-double-down-16.png";
-            this.btnShowConversation.Location = new System.Drawing.Point(11, 287);
+            this.btnShowConversation.Location = new System.Drawing.Point(11, 291);
             this.btnShowConversation.Name = "btnShowConversation";
             this.btnShowConversation.Size = new System.Drawing.Size(147, 26);
             this.btnShowConversation.TabIndex = 5;
@@ -434,7 +506,7 @@
             // 
             this.btnHideConversation.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnHideConversation.ImageKey = "icons8-double-up-16.png";
-            this.btnHideConversation.Location = new System.Drawing.Point(11, 287);
+            this.btnHideConversation.Location = new System.Drawing.Point(11, 291);
             this.btnHideConversation.Name = "btnHideConversation";
             this.btnHideConversation.Size = new System.Drawing.Size(147, 26);
             this.btnHideConversation.TabIndex = 7;
@@ -446,6 +518,20 @@
             // 
             this.toolTipProspeectClient.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             // 
+            // btnConvertToClient
+            // 
+            this.btnConvertToClient.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnConvertToClient.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnConvertToClient.ImageKey = "icons8-chat-16.png";
+            this.btnConvertToClient.Location = new System.Drawing.Point(449, 291);
+            this.btnConvertToClient.Name = "btnConvertToClient";
+            this.btnConvertToClient.Size = new System.Drawing.Size(114, 26);
+            this.btnConvertToClient.TabIndex = 10;
+            this.btnConvertToClient.Text = "Convert To Client";
+            this.toolTipProspeectClient.SetToolTip(this.btnConvertToClient, "Convert prospect customer to client");
+            this.btnConvertToClient.UseVisualStyleBackColor = true;
+            this.btnConvertToClient.Click += new System.EventHandler(this.btnConvertToClient_Click);
+            // 
             // tbProspCustomer
             // 
             this.tbProspCustomer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -456,7 +542,7 @@
             this.tbProspCustomer.Location = new System.Drawing.Point(8, 11);
             this.tbProspCustomer.Name = "tbProspCustomer";
             this.tbProspCustomer.SelectedIndex = 0;
-            this.tbProspCustomer.Size = new System.Drawing.Size(724, 271);
+            this.tbProspCustomer.Size = new System.Drawing.Size(724, 274);
             this.tbProspCustomer.TabIndex = 9;
             // 
             // tbpageProspectCustomer
@@ -466,7 +552,7 @@
             this.tbpageProspectCustomer.Location = new System.Drawing.Point(4, 37);
             this.tbpageProspectCustomer.Name = "tbpageProspectCustomer";
             this.tbpageProspectCustomer.Padding = new System.Windows.Forms.Padding(3);
-            this.tbpageProspectCustomer.Size = new System.Drawing.Size(716, 230);
+            this.tbpageProspectCustomer.Size = new System.Drawing.Size(716, 233);
             this.tbpageProspectCustomer.TabIndex = 0;
             this.tbpageProspectCustomer.Text = "Prospect Customer";
             this.tbpageProspectCustomer.ToolTipText = "Prospect Customer";
@@ -478,7 +564,7 @@
             this.tpageEmailSendHistory.Location = new System.Drawing.Point(4, 37);
             this.tpageEmailSendHistory.Name = "tpageEmailSendHistory";
             this.tpageEmailSendHistory.Padding = new System.Windows.Forms.Padding(3);
-            this.tpageEmailSendHistory.Size = new System.Drawing.Size(716, 230);
+            this.tpageEmailSendHistory.Size = new System.Drawing.Size(716, 233);
             this.tpageEmailSendHistory.TabIndex = 1;
             this.tpageEmailSendHistory.Text = "Email Send History";
             this.tpageEmailSendHistory.ToolTipText = "List of emails send to customer.";
@@ -496,6 +582,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(736, 606);
+            this.Controls.Add(this.btnConvertToClient);
             this.Controls.Add(this.tbProspCustomer);
             this.Controls.Add(this.btnAddConversation);
             this.Controls.Add(this.grpConverstion);
@@ -509,6 +596,10 @@
             this.Load += new System.EventHandler(this.ProspectCustomer_Load);
             this.grpProspectCustomer.ResumeLayout(false);
             this.grpProspectCustomer.PerformLayout();
+            this.pnlClient.ResumeLayout(false);
+            this.pnlClient.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbClientAssignTo.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbClient.Properties)).EndInit();
             this.grpConverstion.ResumeLayout(false);
             this.grpActionControls.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridConversation)).EndInit();
@@ -558,5 +649,11 @@
         private System.Windows.Forms.ImageList imageList30x30;
         private System.Windows.Forms.DateTimePicker dtIntroductionCompletdOn;
         private System.Windows.Forms.CheckBox chkIntroductionCompleted;
+        private DevExpress.XtraEditors.ComboBoxEdit cmbClient;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel pnlClient;
+        private System.Windows.Forms.Label label3;
+        private DevExpress.XtraEditors.ComboBoxEdit cmbClientAssignTo;
+        private System.Windows.Forms.Button btnConvertToClient;
     }
 }

@@ -230,7 +230,8 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                 {
                     DataRow dataRowLoan = _dtExpenses.NewRow();
                     dataRowLoan["Item"] = dr["TypeOfLoan"];
-                    dataRowLoan["Amount"] = double.Parse(dr["Emis"].ToString()) * 12;
+                    int months = (int.Parse(dr["TermLeftInMonths"].ToString()) >= 12) ? 12 : int.Parse(dr["TermLeftInMonths"].ToString());
+                    dataRowLoan["Amount"] = double.Parse(dr["Emis"].ToString()) * months;
                     _dtExpenses.Rows.Add(dataRowLoan);
                     //index++;
                 }
@@ -254,7 +255,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
 
                 if (string.IsNullOrEmpty(dr["ExpEndYear"].ToString()))
                 {
-                    xrTableExp.Rows[index].Cells[0].Text = dr["Item"].ToString();
+                    xrTableExp.Rows[index].Cells[0].Text = dr["Item"].ToString().Trim();
                     double exp = (dr["OccuranceType"].ToString().Equals("Monthly") ? double.Parse(dr["Amount"].ToString()) * 12 : double.Parse(dr["Amount"].ToString()));
                     xrTableExp.Rows[index].Cells[1].Text = exp.ToString();
                     totalExpenses = totalExpenses + exp;
@@ -272,7 +273,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             }
             
             lblExpTotal.Text = totalExpenses.ToString();
-            ExpenseOutFlowChart expenseOutFlowChart = new ExpenseOutFlowChart(_dtExpenses);
+            ExpenseOutFlowChart expenseOutFlowChart = new ExpenseOutFlowChart(_dtExpenses,this.planner);
             expenseOutFlowChart.CreateDocument();
             this.xrSubreportExp.ReportSource = expenseOutFlowChart;
         }

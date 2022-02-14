@@ -136,6 +136,9 @@
   <data name="processing-gif-image-14" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\processing-gif-image-14.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="RetirementGoal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Report\RetirementGoal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Vehicles" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Vehicles.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -166,8 +169,14 @@
   <data name="shutdown-60" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\shutdown-60.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="OthersGoal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Report\OthersGoal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icons8_padlock_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-padlock-16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Apps-Notifications-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Apps-Notifications-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="if_money_bag_45068__30x30" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\if_money_bag_45068 -30x30.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -177,6 +186,9 @@
   </data>
   <data name="marguerite-daisy-beautiful-beauty" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\marguerite-daisy-beautiful-beauty.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EducationGoal1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Report\EducationGoal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8_goal_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-goal-16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -196,14 +208,32 @@
   <data name="Email-60" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Email.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Down Arrow" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Down Arrow.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CarGoalBetween5To10Lakh" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Report\CarGoalBetween5To10Lakh.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icons8_administrative_tools_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-administrative-tools-16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="HomeGoal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Report\HomeGoal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CarGoalupto5Lakh" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Report\CarGoalupto5Lakh.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RiskProfileAssetAllocation" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RiskProfileAssetAllocation.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="icons8_cancel_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-cancel-16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8_week_view_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-week-view-16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CardGoalAbove10Lakh" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Report\CardGoalAbove10Lakh.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="shutdown_301" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\shutdown-302.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -229,6 +259,9 @@
   <data name="icons8_notification_30" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-notification-30.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Right Arrow" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Right Arrow.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="SecurityAccess_30" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SecurityAccess-30.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -247,8 +280,8 @@
   <data name="AuditTrail_30" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\AuditTrail-301.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8_send_30" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-send-30.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="HolidayGoal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Report\HolidayGoal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="if_run_45545" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\if_run_45545.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -256,8 +289,26 @@
   <data name="newcontact_32x321" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\newcontact_32x321.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="icons8_send_30" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-send-30.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FinancialGoals" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Report\FinancialGoals.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="InstrumentForHospitalGoal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Report\InstrumentForHospitalGoal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Marriage" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Marriage.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MarriageGoal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Report\MarriageGoal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FurnitureGoal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Report\FurnitureGoal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="HospitalGoal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Report\HospitalGoal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8_double_down_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-double-down-16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -280,11 +331,17 @@
   <data name="icons8-city-hall-16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-city-hall-16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Right Arrow1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Right Arrow1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="AuditTrail-30" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\AuditTrail-30.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="if_run_455451" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\if_run_455451.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="HomeGoal1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Report\HomeGoal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8_select_users_30" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-select-users-30.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -316,52 +373,7 @@
   <data name="Roles-60" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Roles.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Apps-Notifications-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Apps-Notifications-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="HomeGoal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Report\HomeGoal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="CardGoalAbove10Lakh" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Report\CardGoalAbove10Lakh.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="CarGoalBetween5To10Lakh" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Report\CarGoalBetween5To10Lakh.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="CarGoalupto5Lakh" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Report\CarGoalupto5Lakh.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="EducationGoal1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Report\EducationGoal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="FinancialGoals" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Report\FinancialGoals.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="FurnitureGoal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Report\FurnitureGoal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="HolidayGoal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Report\HolidayGoal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="HomeGoal1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Report\HomeGoal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="HospitalGoal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Report\HospitalGoal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="InstrumentForHospitalGoal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Report\InstrumentForHospitalGoal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="MarriageGoal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Report\MarriageGoal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="OthersGoal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Report\OthersGoal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="RetirementGoal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Report\RetirementGoal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="RiskProfileAssetAllocation" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\RiskProfileAssetAllocation.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  <data name="work-process" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\work-process.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
