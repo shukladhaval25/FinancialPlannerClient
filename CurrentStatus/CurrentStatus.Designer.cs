@@ -1497,9 +1497,9 @@
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(549, 77);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(79, 15);
+            this.label8.Size = new System.Drawing.Size(84, 15);
             this.label8.TabIndex = 12;
-            this.label8.Text = "Policy Name:";
+            this.label8.Text = "Policy Name*:";
             // 
             // txtCompany
             // 
@@ -1916,9 +1916,9 @@
             this.label33.AutoSize = true;
             this.label33.Location = new System.Drawing.Point(20, 27);
             this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(67, 16);
+            this.label33.Size = new System.Drawing.Size(72, 16);
             this.label33.TabIndex = 11;
-            this.label33.Text = "Applicant:";
+            this.label33.Text = "Applicant*:";
             // 
             // btnGenInsCancel
             // 
@@ -2342,9 +2342,9 @@
             this.label57.AutoSize = true;
             this.label57.Location = new System.Drawing.Point(481, 53);
             this.label57.Name = "label57";
-            this.label57.Size = new System.Drawing.Size(91, 16);
+            this.label57.Size = new System.Drawing.Size(96, 16);
             this.label57.TabIndex = 18;
-            this.label57.Text = "Current Value:";
+            this.label57.Text = "Current Value*:";
             // 
             // label58
             // 
@@ -2377,9 +2377,9 @@
             this.label60.AutoSize = true;
             this.label60.Location = new System.Drawing.Point(34, 26);
             this.label60.Name = "label60";
-            this.label60.Size = new System.Drawing.Size(58, 16);
+            this.label60.Size = new System.Drawing.Size(63, 16);
             this.label60.TabIndex = 11;
-            this.label60.Text = "Invester:";
+            this.label60.Text = "Invester*:";
             // 
             // btnCancelMF
             // 

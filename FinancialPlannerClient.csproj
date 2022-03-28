@@ -267,7 +267,6 @@
     <Compile Include="Clients\MailService\MailManagerDeskBoard.Designer.cs">
       <DependentUpon>MailManagerDeskBoard.cs</DependentUpon>
     </Compile>
-    <Compile Include="Clients\ProcessesInfo.cs" />
     <Compile Include="Controls\MOM.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -479,6 +478,7 @@
       <DependentUpon>RecomendationView.cs</DependentUpon>
     </Compile>
     <Compile Include="PlanOptions\ReportPageSettingInfo.cs" />
+    <Compile Include="PlanOptions\ReportParameters.cs" />
     <Compile Include="PlanOptions\ReportParams.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -538,6 +538,12 @@
     </Compile>
     <Compile Include="PlanOptions\Reports\ActionPlan.Designer.cs">
       <DependentUpon>ActionPlan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\ModelPortfolioReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\ModelPortfolioReport.Designer.cs">
+      <DependentUpon>ModelPortfolioReport.cs</DependentUpon>
     </Compile>
     <Compile Include="PlanOptions\Reports\PersonalAccidentInsurance.cs">
       <SubType>Component</SubType>
@@ -986,6 +992,7 @@
     <Compile Include="TaskManagementSystem\AllTask.Designer.cs">
       <DependentUpon>AllTask.cs</DependentUpon>
     </Compile>
+    <Compile Include="TaskManagementSystem\ProcessesInfo.cs" />
     <Compile Include="TaskManagementSystem\TaskCardService.cs" />
     <Compile Include="TaskManagementSystem\TaskCommentView.cs">
       <SubType>Form</SubType>
@@ -1278,6 +1285,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\Reports\ActionPlan.resx">
       <DependentUpon>ActionPlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\Reports\ModelPortfolioReport.resx">
+      <DependentUpon>ModelPortfolioReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\Reports\PersonalAccidentInsurance.resx">
       <DependentUpon>PersonalAccidentInsurance.cs</DependentUpon>

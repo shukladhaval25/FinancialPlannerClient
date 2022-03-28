@@ -531,7 +531,14 @@ namespace FinancialPlannerClient.CashFlowManager
                     }
                     else
                     {
-                        amount = (long)futureValue(income.Amount, income.ExpectGrowthInPercentage, ((year - 1) - int.Parse(income.StartYear)));
+                        if (income.StartYear.Equals(year.ToString()))
+                        {
+                            amount = (long)futureValue(income.Amount, income.ExpectGrowthInPercentage, ((year) - int.Parse(income.StartYear)));
+                        }
+                        else
+                        {
+                            amount = (long)futureValue(income.Amount, income.ExpectGrowthInPercentage, ((year - 1) - int.Parse(income.StartYear)));
+                        }
                     }
                 else
                 {

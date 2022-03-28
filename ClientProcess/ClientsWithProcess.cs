@@ -81,10 +81,10 @@ namespace FinancialPlannerClient.ClientProcess
 
         private void loadPrimaryStepData()
         {
-            ProcessesInfo processesInfo = new ProcessesInfo();
+            TaskManagementSystem.ProcessesInfo processesInfo = new TaskManagementSystem.ProcessesInfo();
             primarySteps = processesInfo.GetPrimarySteps();
             dtProcess = ListtoDataTable.ToDataTable(primarySteps.ToList());
-            //grdProcessStep.DataSource = dtProcess;
+            
 
             processContollers = new FinancialPlannerClient.Controls.ProcessContoller[dtProcess.Rows.Count];
             int positionX = 10;
@@ -168,11 +168,11 @@ namespace FinancialPlannerClient.ClientProcess
                 processTitle = ((FinancialPlannerClient.Controls.ProcessContoller)((DevExpress.XtraEditors.SimpleButton)sender).Parent.Parent).lblTitle.Text;
                 primaryStep = primarySteps.First(i => i.StepNo.ToString().Equals(processNo.ToString()));
             }
-            ProcessesInfo processesInfo = new ProcessesInfo();
+            TaskManagementSystem.ProcessesInfo processesInfo = new TaskManagementSystem.ProcessesInfo();
             linkSubSteps = processesInfo.GetLinkSubSteps(primaryStep.Id);
 
             DataTable dtLinkSubStep = ListtoDataTable.ToDataTable(linkSubSteps.ToList());
-            //grdLinkSubProcessStep.DataSource = dtLinkSubStep;
+            
             if (subStepProcessControllers != null)
             {
                 pnlSubStepProcess.Controls.Clear();
@@ -228,10 +228,13 @@ namespace FinancialPlannerClient.ClientProcess
                 dtData = drs.CopyToDataTable();
             }
             gridClientProcess.DataSource = dtData;
-            grdViewClientProcess.Columns["ClientId"].Visible = false;
-            grdViewClientProcess.Columns["PrimaryStepId"].Visible = false;
-            grdViewClientProcess.Columns["LinkSubStepId"].Visible = false;
-            grdViewClientProcess.Columns["AssignTo"].Visible = false;
+            if (dtData.Columns.Count > 0)
+            {
+                grdViewClientProcess.Columns["ClientId"].Visible = false;
+                grdViewClientProcess.Columns["PrimaryStepId"].Visible = false;
+                grdViewClientProcess.Columns["LinkSubStepId"].Visible = false;
+                grdViewClientProcess.Columns["AssignTo"].Visible = false;
+            }
         }
 
         private void grdViewClientProcess_RowStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowStyleEventArgs e)

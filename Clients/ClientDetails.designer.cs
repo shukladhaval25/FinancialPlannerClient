@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClientDetails));
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
@@ -47,10 +50,8 @@
             DevExpress.Utils.SuperToolTip superToolTip7 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem7 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem7 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
             this.grpClientInfo = new DevExpress.XtraEditors.GroupControl();
+            this.btnClearImage = new DevExpress.XtraEditors.SimpleButton();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.label20 = new System.Windows.Forms.Label();
             this.chkClientActiveStatus = new DevExpress.XtraEditors.CheckEdit();
@@ -137,7 +138,6 @@
             this.txtSpouseName = new DevExpress.XtraEditors.TextEdit();
             this.label17 = new System.Windows.Forms.Label();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.btnClearImage = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.grpClientInfo)).BeginInit();
             this.grpClientInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
@@ -226,6 +226,25 @@
             this.grpClientInfo.TabIndex = 7;
             this.grpClientInfo.Text = "Client Details";
             // 
+            // btnClearImage
+            // 
+            this.btnClearImage.Image = ((System.Drawing.Image)(resources.GetObject("btnClearImage.Image")));
+            this.btnClearImage.Location = new System.Drawing.Point(172, 39);
+            this.btnClearImage.Name = "btnClearImage";
+            this.btnClearImage.Size = new System.Drawing.Size(20, 20);
+            toolTipTitleItem1.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            toolTipTitleItem1.Appearance.Options.UseImage = true;
+            toolTipTitleItem1.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem1.Image")));
+            toolTipTitleItem1.Text = "Clear Image";
+            toolTipItem1.LeftIndent = 6;
+            toolTipItem1.Text = "To clear apply image of client click here.";
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            superToolTip1.Items.Add(toolTipItem1);
+            this.btnClearImage.SuperTip = superToolTip1;
+            this.btnClearImage.TabIndex = 27;
+            this.btnClearImage.Text = "Clear";
+            this.btnClearImage.Click += new System.EventHandler(this.btnClearImage_Click);
+            // 
             // groupControl1
             // 
             this.groupControl1.Controls.Add(this.label20);
@@ -301,7 +320,7 @@
             this.cmbClientType.Properties.Items.AddRange(new object[] {
             "Comprehensive Financial Plan",
             "Goal Plan",
-            "Portfolio Management Service"});
+            "Portfolio Advisory"});
             this.cmbClientType.Size = new System.Drawing.Size(315, 20);
             this.cmbClientType.TabIndex = 17;
             // 
@@ -1117,25 +1136,6 @@
             this.simpleButton1.TabIndex = 22;
             this.simpleButton1.Text = "&Close";
             this.simpleButton1.Click += new System.EventHandler(this.btnCloseClientInfo_Click);
-            // 
-            // btnClearImage
-            // 
-            this.btnClearImage.Image = ((System.Drawing.Image)(resources.GetObject("btnClearImage.Image")));
-            this.btnClearImage.Location = new System.Drawing.Point(172, 39);
-            this.btnClearImage.Name = "btnClearImage";
-            this.btnClearImage.Size = new System.Drawing.Size(20, 20);
-            toolTipTitleItem1.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
-            toolTipTitleItem1.Appearance.Options.UseImage = true;
-            toolTipTitleItem1.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem1.Image")));
-            toolTipTitleItem1.Text = "Clear Image";
-            toolTipItem1.LeftIndent = 6;
-            toolTipItem1.Text = "To clear apply image of client click here.";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            superToolTip1.Items.Add(toolTipItem1);
-            this.btnClearImage.SuperTip = superToolTip1;
-            this.btnClearImage.TabIndex = 27;
-            this.btnClearImage.Text = "Clear";
-            this.btnClearImage.Click += new System.EventHandler(this.btnClearImage_Click);
             // 
             // ClientDetails
             // 

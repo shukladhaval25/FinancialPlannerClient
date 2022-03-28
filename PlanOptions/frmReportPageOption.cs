@@ -42,6 +42,7 @@ namespace FinancialPlannerClient.PlanOptions
         public bool blnActionPlan { get; set; }
         public bool blnRecomendation { get; set; }
         public bool blnOtherRecommendation { get; set; }
+        public bool blnModelPortfolio { get; set; }
         ReportPageSettingInfo reportPageSettingInfo;
         IList<ReportPageSetting> reportPageSettings;
         public bool blnExecutionSheet { get; set; }
@@ -105,7 +106,8 @@ namespace FinancialPlannerClient.PlanOptions
                 "ActionPlan",
                 "Recomendation",
                 "ExecutionSheet",
-                "Other Recommendation"
+                "Other Recommendation",
+                "Model Portfolio"
             };
 
             foreach(string page in pages)
@@ -225,6 +227,9 @@ namespace FinancialPlannerClient.PlanOptions
                     break;
                 case "Other Recommendation":
                     blnOtherRecommendation = isSelected;
+                    break;
+                case "Model Portfolio":
+                    blnModelPortfolio = isSelected;
                     break;
             }
             if (chkRememberSetting.Checked)

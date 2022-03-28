@@ -192,6 +192,7 @@
             this.cmbClient.Name = "cmbClient";
             this.cmbClient.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cmbClient.Properties.Sorted = true;
             this.cmbClient.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.cmbClient.Size = new System.Drawing.Size(271, 20);
             this.cmbClient.TabIndex = 23;

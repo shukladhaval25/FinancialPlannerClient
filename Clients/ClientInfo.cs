@@ -165,7 +165,7 @@ namespace FinancialPlannerClient.Clients
         private void fillupDocumentInfo()
         {
             DocumentInfo docInfo = new DocumentInfo();
-            IList<Document> documents = docInfo.GetAll(_plannerId);
+            IList<Document> documents = docInfo.GetAll(_client.ID, _plannerId);
             if (documents != null)
             {
                 _dtDocument = ListtoDataTable.ToDataTable(documents.ToList());
@@ -1324,7 +1324,7 @@ namespace FinancialPlannerClient.Clients
             NonFinancialAssetInfo nonFinancialAssetInfo = new NonFinancialAssetInfo();
             NonFinancialAsset nonFinancialAsset = getNonFinancialAsset();
             bool isSaved = false;
-
+            bool isIncomeSaved = true;
             if (nonFinancialAsset != null && nonFinancialAsset.Id == 0)
                 isSaved = nonFinancialAssetInfo.Add(nonFinancialAsset);
             else
@@ -1332,9 +1332,40 @@ namespace FinancialPlannerClient.Clients
 
             if (isSaved)
             {
-                MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                fillupNonFinancialAssetInfo();
-                grpNonFinancialAsset.Enabled = false;
+                if (!string.IsNullOrEmpty(txtGoalMappingShare.Text) && double.Parse(txtGoalMappingShare.Text) != 100 && nonFinancialAsset.Id == 0)
+                {
+                  if ( MessageBox.Show("Do you want to transfer partial mapped assets to income?", "Partial Mapped Assets", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        IncomeInfo incomeInfo = new IncomeInfo();
+                        isIncomeSaved =  incomeInfo.Add(
+                            new Income()
+                            {
+                                IncomeBy = this._client.Name,
+                                Source = "Sale of Asset",
+                                Pid = this._plannerId,
+                                Amount = double.Parse(lblRamingAmtVal.Text),
+                                ExpectedGrowthType = "P",
+                                ExpectGrowthInPercentage = 8,
+                                IncomeTax = 10,
+                                StartYear = txtAssetRealisationYear.Text,
+                                EndYear = txtAssetRealisationYear.Text,
+                                CreatedBy = Program.CurrentUser.Id,
+                                CreatedOn = DateTime.Now,
+                                UpdatedBy = Program.CurrentUser.Id,
+                                UpdatedOn = DateTime.Now
+                            });
+                    }
+                }
+                else if (!string.IsNullOrEmpty(txtGoalMappingShare.Text) && double.Parse(txtGoalMappingShare.Text) != 100 && nonFinancialAsset.Id != 0)
+                {
+                    MessageBox.Show("You have update existing non finanical asset. Kindly take care of relative income and update that record accordingly.", "Partial Mapped Assets", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                }
+                if (isIncomeSaved)
+                {
+                    MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    fillupNonFinancialAssetInfo();
+                    grpNonFinancialAsset.Enabled = false;
+                }
             }
             else
                 MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);

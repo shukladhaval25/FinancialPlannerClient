@@ -1,6 +1,7 @@
 ﻿using FinancialPlanner.Common;
 using FinancialPlanner.Common.Model;
 using FinancialPlanner.Common.Model.TaskManagement;
+using FinancialPlanner.Common.Planning;
 using FinancialPlannerClient.Clients;
 using FinancialPlannerClient.Master;
 using FinancialPlannerClient.TaskManagementSystem.Services;
@@ -341,7 +342,7 @@ namespace FinancialPlannerClient.TaskManagementSystem
                       "User not match", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
-
+                //validatePermissionToByPassProcess(taskCard);
                 int taskId = new TaskCardService().Update(taskCard);
                 if (taskId > 0)
                 {
@@ -356,6 +357,28 @@ namespace FinancialPlannerClient.TaskManagementSystem
                 "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void validatePermissionToByPassProcess(TaskCard taskCard)
+        {
+            if (taskCard.TaskStatus == TaskStatus.Blocked && isTaskBelongToProcessWithByPassPermission(taskCard.TaskId))
+            {
+                //Open Login Page
+
+            }
+        }
+
+        private bool isTaskBelongToProcessWithByPassPermission(string taskId)
+        {
+            ProcessesInfo processesInfo = new ProcessesInfo();
+            IList<LinkSubStep> linkSubSteps = processesInfo.GetLinkSubStepsByRefTaskId(taskId);
+            if (linkSubSteps.Count > 0)
+            {
+                return linkSubSteps[0].AllowByPassProcess;
+            }
+            else
+                return false;
+        }
+
         private TaskCard getTaskCard()
         {
             TaskCard taskCard = new TaskCard();

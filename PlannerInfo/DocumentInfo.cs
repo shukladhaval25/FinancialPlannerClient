@@ -15,11 +15,49 @@ namespace FinancialPlannerClient.PlannerInfo
     public class DocumentInfo
     {
         const string GET_ALL_Document_API = "Document/GetAll?plannerId={0}";
+        const string GET_ALL_Document_WithKYC_API = "Document/GetAllKYC?clientId={0}&plannerId={1}";
         const string GET_ALL_BY_ID_API = "Document/GetById?id={0}&plannerId={1}";
         const string ADD_Document_API = "Document/Add";
         const string UPDATE_Document_API = "Document/Update";
         const string DELETE_Document_API = "Document/Delete";
         DataTable _dtDocument;
+
+        internal IList<Document> GetAll(int clientId,int plannerId)
+        {
+            IList<Document> DocumentObj = new List<Document>();
+            try
+            {
+                FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
+                string apiurl = Program.WebServiceUrl + "/" + string.Format(GET_ALL_Document_WithKYC_API,clientId, plannerId);
+
+                RestAPIExecutor restApiExecutor = new RestAPIExecutor();
+
+                var restResult = restApiExecutor.Execute<IList<Document>>(apiurl, null, "GET");
+
+                if (jsonSerialization.IsValidJson(restResult.ToString()))
+                {
+                    DocumentObj = jsonSerialization.DeserializeFromString<IList<Document>>(restResult.ToString());
+                }
+                return DocumentObj;
+            }
+            catch (System.Net.WebException webException)
+            {
+                if (webException.Message.Equals("The remote server returned an error: (401) Unauthorized."))
+                {
+                    MessageBox.Show("You session has been expired. Please Login again.", "Session Expired", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
+                LogDebug(currentMethodName.Name, ex);
+                return null;
+            }
+        }
+
         internal IList<Document> GetAll(int plannerId)
         {
             IList<Document> DocumentObj = new List<Document>();

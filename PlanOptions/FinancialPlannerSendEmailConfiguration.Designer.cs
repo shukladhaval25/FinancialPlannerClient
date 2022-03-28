@@ -32,7 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FinancialPlannerSendEmailConfiguration));
             this.grpParams = new DevExpress.XtraEditors.GroupControl();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
-            this.txtCC = new DevExpress.XtraEditors.TextEdit();
+            this.txtBcc = new DevExpress.XtraEditors.TextEdit();
             this.grpAttachments = new DevExpress.XtraEditors.GroupControl();
             this.picProcessing = new DevExpress.XtraEditors.PictureEdit();
             this.grdAttachment = new DevExpress.XtraGrid.GridControl();
@@ -51,9 +51,11 @@
             this.txtEmaiBody = new DevExpress.XtraEditors.MemoEdit();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
+            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
+            this.txtCC = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.grpParams)).BeginInit();
             this.grpParams.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCC.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtBcc.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grpAttachments)).BeginInit();
             this.grpAttachments.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picProcessing.Properties)).BeginInit();
@@ -65,6 +67,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtToEmail.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmaiBody.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCC.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // grpParams
@@ -72,8 +75,10 @@
             this.grpParams.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.grpParams.Controls.Add(this.labelControl4);
+            this.grpParams.Controls.Add(this.labelControl5);
             this.grpParams.Controls.Add(this.txtCC);
+            this.grpParams.Controls.Add(this.labelControl4);
+            this.grpParams.Controls.Add(this.txtBcc);
             this.grpParams.Controls.Add(this.grpAttachments);
             this.grpParams.Controls.Add(this.labelControl3);
             this.grpParams.Controls.Add(this.txtSubject);
@@ -89,18 +94,19 @@
             // 
             // labelControl4
             // 
-            this.labelControl4.Location = new System.Drawing.Point(439, 45);
+            this.labelControl4.Location = new System.Drawing.Point(16, 71);
             this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(18, 13);
+            this.labelControl4.Size = new System.Drawing.Size(20, 13);
             this.labelControl4.TabIndex = 42;
-            this.labelControl4.Text = "CC:";
+            this.labelControl4.Text = "Bcc:";
             // 
-            // txtCC
+            // txtBcc
             // 
-            this.txtCC.Location = new System.Drawing.Point(463, 42);
-            this.txtCC.Name = "txtCC";
-            this.txtCC.Size = new System.Drawing.Size(317, 20);
-            this.txtCC.TabIndex = 43;
+            this.txtBcc.EditValue = "clientascentsolutions@gmail.com";
+            this.txtBcc.Location = new System.Drawing.Point(109, 68);
+            this.txtBcc.Name = "txtBcc";
+            this.txtBcc.Size = new System.Drawing.Size(324, 20);
+            this.txtBcc.TabIndex = 43;
             // 
             // grpAttachments
             // 
@@ -204,7 +210,7 @@
             // 
             // labelControl3
             // 
-            this.labelControl3.Location = new System.Drawing.Point(16, 107);
+            this.labelControl3.Location = new System.Drawing.Point(15, 122);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(39, 13);
             this.labelControl3.TabIndex = 38;
@@ -212,7 +218,7 @@
             // 
             // txtSubject
             // 
-            this.txtSubject.Location = new System.Drawing.Point(109, 68);
+            this.txtSubject.Location = new System.Drawing.Point(109, 94);
             this.txtSubject.Name = "txtSubject";
             this.txtSubject.Size = new System.Drawing.Size(671, 20);
             this.txtSubject.TabIndex = 37;
@@ -231,7 +237,7 @@
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(16, 73);
+            this.labelControl2.Location = new System.Drawing.Point(15, 94);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(40, 13);
             this.labelControl2.TabIndex = 3;
@@ -257,11 +263,11 @@
             this.txtEmaiBody.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtEmaiBody.Location = new System.Drawing.Point(16, 126);
+            this.txtEmaiBody.Location = new System.Drawing.Point(16, 141);
             this.txtEmaiBody.Name = "txtEmaiBody";
             this.txtEmaiBody.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmaiBody.Properties.Appearance.Options.UseFont = true;
-            this.txtEmaiBody.Size = new System.Drawing.Size(764, 301);
+            this.txtEmaiBody.Size = new System.Drawing.Size(764, 286);
             this.txtEmaiBody.TabIndex = 39;
             // 
             // imageList1
@@ -269,6 +275,22 @@
             this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             this.imageList1.Images.SetKeyName(0, "pdfIcon32x32.png");
+            // 
+            // labelControl5
+            // 
+            this.labelControl5.Location = new System.Drawing.Point(439, 71);
+            this.labelControl5.Name = "labelControl5";
+            this.labelControl5.Size = new System.Drawing.Size(18, 13);
+            this.labelControl5.TabIndex = 44;
+            this.labelControl5.Text = "CC:";
+            // 
+            // txtCC
+            // 
+            this.txtCC.EditValue = "";
+            this.txtCC.Location = new System.Drawing.Point(463, 68);
+            this.txtCC.Name = "txtCC";
+            this.txtCC.Size = new System.Drawing.Size(317, 20);
+            this.txtCC.TabIndex = 45;
             // 
             // FinancialPlannerSendEmailConfiguration
             // 
@@ -283,7 +305,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.grpParams)).EndInit();
             this.grpParams.ResumeLayout(false);
             this.grpParams.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCC.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtBcc.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grpAttachments)).EndInit();
             this.grpAttachments.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picProcessing.Properties)).EndInit();
@@ -295,6 +317,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtToEmail.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmaiBody.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCC.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -320,7 +343,9 @@
         private DevExpress.XtraEditors.MemoEdit txtEmaiBody;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageEdit repositoryItemImageEdit2;
         private DevExpress.XtraEditors.LabelControl labelControl4;
-        private DevExpress.XtraEditors.TextEdit txtCC;
+        private DevExpress.XtraEditors.TextEdit txtBcc;
         private DevExpress.Utils.Behaviors.BehaviorManager behaviorManager1;
+        private DevExpress.XtraEditors.LabelControl labelControl5;
+        private DevExpress.XtraEditors.TextEdit txtCC;
     }
 }

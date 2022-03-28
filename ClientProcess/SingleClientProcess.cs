@@ -3,6 +3,7 @@ using FinancialPlanner.Common.Model;
 using FinancialPlanner.Common.Planning;
 using FinancialPlannerClient.Clients;
 using FinancialPlannerClient.Controls;
+using FinancialPlannerClient.TaskManagementSystem;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -25,7 +26,7 @@ namespace FinancialPlannerClient.ClientProcess
         PersonalInformation personalInformation;
         Planner planner;
         PrimaryStep primaryStep = new PrimaryStep();
-
+        
         public SingleClientProcess(PersonalInformation personalInformation, Planner planner)
         {
             InitializeComponent();
@@ -46,35 +47,8 @@ namespace FinancialPlannerClient.ClientProcess
             IList<CurrentClientProcess> currentClientProcesses = (this.planner == null) ?
                 clientWithProcesInfo.GetClientProcess(this.personalInformation.Client.ID, null) :
                 clientWithProcesInfo.GetClientProcess(this.personalInformation.Client.ID, planner.ID);
-            dtClientProcess = ListtoDataTable.ToDataTable(currentClientProcesses.ToList());
-
-            ////dtProcessInfo = new DataTable();
-            ////dtProcessInfo.Columns.Add("Id");
-            ////dtProcessInfo.Columns.Add("StepNo");
-            ////dtProcessInfo.Columns.Add("ProcessAssignTo");
-            ////dtProcessInfo.Columns.Add("ProcessStartDate");
-            ////dtProcessInfo.Columns.Add("ExpectedCompleteDate");
-            ////dtProcessInfo.Columns.Add("ActualCompleteDate");
-
-            ////DataRow dr = dtProcessInfo.NewRow();
-            ////dr["Id"] = "1";
-            ////dr["StepNo"] = "1";
-            ////dr["ProcessAssignTo"] = "Prakash Luhana";
-            ////dr["ProcessStartDate"] = "05/01/2022";
-            ////dr["ExpectedCompleteDate"] = "15/01/2022";
-            ////dr["ActualCompleteDate"] = "14/01/2022";
-            ////dtProcessInfo.Rows.Add(dr);
-
-            //dr = dtProcessInfo.NewRow();
-            //dr["Id"] = "1";
-            //dr["StepNo"] = "2";
-            //dr["ProcessAssignTo"] = "Prakash Luhana";
-            //dr["ProcessStartDate"] = "05/01/2022";
-            //dr["ExpectedCompleteDate"] = "15/01/2022";
-            //dr["ActualCompleteDate"] = "14/01/2022";
-            //dtProcessInfo.Rows.Add(dr);
-
-            //throw new NotImplementedException();
+            if (currentClientProcesses != null)
+                dtClientProcess = ListtoDataTable.ToDataTable(currentClientProcesses.ToList());
         }
 
         private void loadPrimaryStepData()
@@ -101,17 +75,20 @@ namespace FinancialPlannerClient.ClientProcess
                 processContollers[i].Click += new System.EventHandler(this.processContoller_Click);
                 processContollers[i].btnInformation.Click += new System.EventHandler(this.primaryProcessInfo_Click);
 
-                DataRow[] dataRows = dtClientProcess.Select("ProcessStatus = 'P'");
-                if (dataRows.Count() > 0)
+                if (dtClientProcess.Columns.Contains("ProcesssStatus"))
                 {
-                    int inProcessPrimaryStepNo = int.Parse(dataRows[0]["PrimaryStepNo"].ToString());
-                    if (dtProcess.Rows[i]["StepNo"].ToString().Equals(inProcessPrimaryStepNo.ToString()))
+                    DataRow[] dataRows = dtClientProcess.Select("ProcessStatus = 'P'");
+                    if (dataRows.Count() > 0)
                     {
-                        processContollers[i].IsInProcess = true;
-                    }
-                    else if (int.Parse(dtProcess.Rows[i]["StepNo"].ToString()) < inProcessPrimaryStepNo)
-                    {
-                        processContollers[i].IsProcessCompleted = true;
+                        int inProcessPrimaryStepNo = int.Parse(dataRows[0]["PrimaryStepNo"].ToString());
+                        if (dtProcess.Rows[i]["StepNo"].ToString().Equals(inProcessPrimaryStepNo.ToString()))
+                        {
+                            processContollers[i].IsInProcess = true;
+                        }
+                        else if (int.Parse(dtProcess.Rows[i]["StepNo"].ToString()) < inProcessPrimaryStepNo)
+                        {
+                            processContollers[i].IsProcessCompleted = true;
+                        }
                     }
                 }
                 
@@ -133,19 +110,122 @@ namespace FinancialPlannerClient.ClientProcess
         {
             //throw new NotImplementedException();
             processContoller_Click(sender, e);
-            DataRow[] dataRows = dtClientProcess.Select("PrimaryStepNo =" + primaryStep.StepNo);
-            if (dataRows.Count() > 0)
+            if (dtClientProcess.Columns.Count > 0)
             {
-                DataTable dataTable = dataRows.CopyToDataTable();
-                gridControl1.DataSource = dataTable;
-            }
-            else
-            {
-                gridControl1.DataSource = null;
+                DataRow[] dataRows = dtClientProcess.Select("PrimaryStepNo =" + primaryStep.StepNo);
+                if (dataRows.Count() > 0)
+                {
+                    DataTable dataTable = dataRows.CopyToDataTable();
+                    gridControl1.DataSource = dataTable;
+                }
+                else
+                {
+                    gridControl1.DataSource = null;
+                }
             }
         }
 
         private void processContoller_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                getLinkSubStepProcess(sender);
+
+                DataTable dtLinkSubStep = ListtoDataTable.ToDataTable(linkSubSteps.ToList());
+
+                if (subStepProcessControllers != null)
+                {
+                    pnlSubStepProcess.Controls.Clear();
+                    pnlSubStepProcess.Controls.Add(lblSubProcessStepTitle);
+                }
+                subStepProcessControllers = new FinancialPlannerClient.Controls.ProcessContoller[dtLinkSubStep.Rows.Count];
+                lblSubProcessStepTitle.Text = "Sub Process Step" + " (" + primaryStep.Title + ")";
+                int positionX = 10;
+                int positionY = 50;
+                bool isAllSubProcessCompleted = true;
+                for (int i = 0; i < dtLinkSubStep.Rows.Count; i++)
+                {
+                    subStepProcessControllers[i] = new FinancialPlannerClient.Controls.ProcessContoller();
+                    subStepProcessControllers[i].lblProcessNo.Text = primaryStep.StepNo + "." + dtLinkSubStep.Rows[i]["StepNo"].ToString();
+                    subStepProcessControllers[i].lblProcessNo.Tag = dtLinkSubStep.Rows[i]["StepNo"].ToString();
+                    subStepProcessControllers[i].lblTitle.Text = dtLinkSubStep.Rows[i]["Title"].ToString();
+                    subStepProcessControllers[i].Visible = true;
+                    pnlSubStepProcess.Controls.Add(subStepProcessControllers[i]);
+                    subStepProcessControllers[i].Location = new Point(positionX, positionY);
+                    subStepProcessControllers[i].lblProcessNo.Click += new System.EventHandler(this.subStepProcessContoller_Click);
+                    subStepProcessControllers[i].lblTitle.Click += new System.EventHandler(this.subStepProcessContoller_Click);
+                    subStepProcessControllers[i].Click += new System.EventHandler(this.subStepProcessContoller_Click);
+                    subStepProcessControllers[i].btnInformation.Click += new System.EventHandler(this.processInfo_Click);
+                    subStepProcessControllers[i].btnInformation.Tag = dtLinkSubStep.Rows[i]["StepNo"].ToString();
+
+                    if (dtClientProcess.Columns.Count > 0)
+                    {
+                        DataRow[] dataRows = dtClientProcess.Select("PrimaryStepNo =" + primaryStep.StepNo + " And LinkSubStepNo =" + dtLinkSubStep.Rows[i]["StepNo"].ToString());
+                        if (dataRows.Count() > 0)
+                        {
+                            if (dataRows[0]["ProcessStatus"].ToString().Equals("C"))
+                            {
+                                subStepProcessControllers[i].IsProcessCompleted = true;
+                            }
+                            else
+                            {
+                                DateTime expectedCompleDate = DateTime.Parse(dataRows[0]["ExpectedCompletionDate"].ToString());
+                                if (DateTime.Now.Date > expectedCompleDate && dataRows[0]["ActualCompletionDate"].ToString().Equals(""))
+                                {
+                                    subStepProcessControllers[i].IsProcessOverDue = true;
+                                }
+                                else if (DateTime.Now.Date <= expectedCompleDate && dataRows[0]["ActualCompletionDate"].ToString().Equals(""))
+                                {
+                                    subStepProcessControllers[i].IsInProcess = true;
+                                }
+                                isAllSubProcessCompleted = false;
+                            }
+                        }
+                        else
+                        {
+                            isAllSubProcessCompleted = false;
+                        }
+                    }
+                    if (i != dtLinkSubStep.Rows.Count - 1)
+                    {
+                        subStepProcessControllers[i].IsHaveSubProcess = true;
+                        positionY = positionY + processControllerHeight;
+                    }
+                    else
+                    {
+                        subStepProcessControllers[i].IsHaveSubProcess = false;
+                    }
+                }
+
+                if (dtLinkSubStep.Rows.Count == 0)
+                {
+                    if (dtClientProcess.Columns.Contains("PrimaryStepNo") && dtClientProcess.Columns.Contains("ProcessStatus"))
+                    {
+                        DataRow[] dataRows = dtClientProcess.Select("PrimaryStepNo = " + primaryStep.StepNo + " and ProcessStatus = 'C'");
+                        if (dataRows.Count() == 0)
+                        {
+                            isAllSubProcessCompleted = false;
+                        }
+                    }
+                }
+
+                ProcessContoller processController = processContollers.First(i => i.lblProcessNo.Text == primaryStep.StepNo.ToString());
+                if (isAllSubProcessCompleted && dtClientProcess.Rows.Count > 0)
+                {
+                    processController.IsProcessCompleted = isAllSubProcessCompleted;
+                }
+                //else
+                //{
+                //    processController.IsInProcess = dtLinkSubStep.Rows.Count > 0;
+                //}
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void getLinkSubStepProcess(object sender)
         {
             int processNo = 0;
             string processTitle = "";
@@ -180,103 +260,23 @@ namespace FinancialPlannerClient.ClientProcess
 
             ProcessesInfo processesInfo = new ProcessesInfo();
             linkSubSteps = processesInfo.GetLinkSubSteps(primaryStep.Id);
-
-            DataTable dtLinkSubStep = ListtoDataTable.ToDataTable(linkSubSteps.ToList());
-
-            if (subStepProcessControllers != null)
-            {
-                pnlSubStepProcess.Controls.Clear();
-                pnlSubStepProcess.Controls.Add(lblSubProcessStepTitle);
-            }
-            subStepProcessControllers = new FinancialPlannerClient.Controls.ProcessContoller[dtLinkSubStep.Rows.Count];
-            lblSubProcessStepTitle.Text = "Sub Process Step" + " (" + primaryStep.Title + ")";
-            int positionX = 10;
-            int positionY = 50;
-            bool isAllSubProcessCompleted = true;
-            for (int i = 0; i < dtLinkSubStep.Rows.Count; i++)
-            {
-                subStepProcessControllers[i] = new FinancialPlannerClient.Controls.ProcessContoller();
-                subStepProcessControllers[i].lblProcessNo.Text = primaryStep.StepNo + "." + dtLinkSubStep.Rows[i]["StepNo"].ToString();
-                subStepProcessControllers[i].lblProcessNo.Tag = dtLinkSubStep.Rows[i]["StepNo"].ToString();
-                subStepProcessControllers[i].lblTitle.Text = dtLinkSubStep.Rows[i]["Title"].ToString();
-                subStepProcessControllers[i].Visible = true;
-                pnlSubStepProcess.Controls.Add(subStepProcessControllers[i]);
-                subStepProcessControllers[i].Location = new Point(positionX, positionY);
-                subStepProcessControllers[i].lblProcessNo.Click += new System.EventHandler(this.subStepProcessContoller_Click);
-                subStepProcessControllers[i].lblTitle.Click += new System.EventHandler(this.subStepProcessContoller_Click);
-                subStepProcessControllers[i].Click += new System.EventHandler(this.subStepProcessContoller_Click);
-                subStepProcessControllers[i].btnInformation.Click += new System.EventHandler(this.processInfo_Click);
-                subStepProcessControllers[i].btnInformation.Tag = dtLinkSubStep.Rows[i]["StepNo"].ToString();
-
-                DataRow[] dataRows = dtClientProcess.Select("PrimaryStepNo =" + primaryStep.StepNo + " And LinkSubStepNo =" + dtLinkSubStep.Rows[i]["StepNo"].ToString());
-                if (dataRows.Count() > 0)
-                {
-                    if (dataRows[0]["ProcessStatus"].ToString().Equals("C"))
-                    {
-                        subStepProcessControllers[i].IsProcessCompleted = true;
-                    }
-                    else
-                    {
-                        DateTime expectedCompleDate = DateTime.Parse(dataRows[0]["ExpectedCompletionDate"].ToString());
-                        if (DateTime.Now.Date > expectedCompleDate && dataRows[0]["ActualCompletionDate"].ToString().Equals(""))
-                        {
-                            subStepProcessControllers[i].IsProcessOverDue = true;
-                        }
-                        else if (DateTime.Now.Date <= expectedCompleDate && dataRows[0]["ActualCompletionDate"].ToString().Equals(""))
-                        {
-                            subStepProcessControllers[i].IsInProcess = true;
-                        }
-                        isAllSubProcessCompleted = false;
-                    }
-                }
-                else
-                {
-                    isAllSubProcessCompleted = false;
-                }
-
-                if (i != dtLinkSubStep.Rows.Count - 1)
-                {
-                    subStepProcessControllers[i].IsHaveSubProcess = true;
-                    positionY = positionY + processControllerHeight;
-                }
-                else
-                {
-                    subStepProcessControllers[i].IsHaveSubProcess = false;
-                }
-            }
-
-            if (dtLinkSubStep.Rows.Count == 0)
-            {
-                DataRow[] dataRows = dtClientProcess.Select("PrimaryStepNo = " + primaryStep.StepNo + " and ProcessStatus = 'C'");
-                if (dataRows.Count() == 0)
-                {
-                    isAllSubProcessCompleted = false;
-                }
-            }
-
-            ProcessContoller processController = processContollers.First(i => i.lblProcessNo.Text == primaryStep.StepNo.ToString());
-            if (isAllSubProcessCompleted)
-            {
-                processController.IsProcessCompleted = isAllSubProcessCompleted;
-            }
-            //else
-            //{
-            //    processController.IsInProcess = dtLinkSubStep.Rows.Count > 0;
-            //}
         }
 
         private void processInfo_Click(object sender, EventArgs e)
         {
             string StepNo = ((DevExpress.XtraEditors.SimpleButton)sender).Tag.ToString().Trim();
-            DataRow[] dataRows = dtClientProcess.Select("LinkSubStepNo =" + StepNo + "and PrimaryStepNo ='" + primaryStep.StepNo +"'");
-            if (dataRows.Count() > 0)
+            if (dtClientProcess.Columns.Count > 0)
             {
-                DataTable dataTable = dataRows.CopyToDataTable();
-                gridControl1.DataSource = dataTable;
-            }
-            else
-            {
-                gridControl1.DataSource = null;
+                DataRow[] dataRows = dtClientProcess.Select("LinkSubStepNo =" + StepNo + "and PrimaryStepNo ='" + primaryStep.StepNo + "'");
+                if (dataRows.Count() > 0)
+                {
+                    DataTable dataTable = dataRows.CopyToDataTable();
+                    gridControl1.DataSource = dataTable;
+                }
+                else
+                {
+                    gridControl1.DataSource = null;
+                }
             }
         }
 

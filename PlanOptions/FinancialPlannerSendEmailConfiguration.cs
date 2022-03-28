@@ -50,7 +50,7 @@ namespace FinancialPlannerClient.PlanOptions
                 "Tele.: 0265 2961205" + Environment.NewLine + Environment.NewLine +
                 "http://www.ascentsolutions.in";
             txtEmaiBody.Text = momEmailBodyText;
-            txtCC.Text = "financialsolutionsascent@gmail.com";
+            txtBcc.Text = "clientascentsolutions@gmail.com";
         }
 
 
@@ -77,7 +77,7 @@ namespace FinancialPlannerClient.PlanOptions
                 "Tele.: 0265 2961205" + Environment.NewLine + Environment.NewLine +
                 "http://www.ascentsolutions.in";
             txtEmaiBody.Text = momEmailBodyText;
-            txtCC.Text = "financialsolutionsascent@gmail.com";
+            txtBcc.Text = "clientascentsolutions@gmail.com";
         }
 
         public FinancialPlannerSendEmailConfiguration(MOMReportView reportView, Client client)
@@ -101,7 +101,7 @@ namespace FinancialPlannerClient.PlanOptions
                 "Tele.: 0265 2961205" + Environment.NewLine + Environment.NewLine +
                 "http://www.ascentsolutions.in";
             txtEmaiBody.Text = momEmailBodyText;
-            txtCC.Text = "lohana_prakash@ascentsolutions.in";
+            txtBcc.Text = "lohana_prakash@ascentsolutions.in";
         }
 
         private void FinancialPlannerSendEmailConfiguration_Load(object sender, EventArgs e)
@@ -230,6 +230,10 @@ namespace FinancialPlannerClient.PlanOptions
                 MailMessage mailMessage = new MailMessage();
                 mailMessage.From = new MailAddress(MailServer.FromEmail);
                 mailMessage.To.Add(new MailAddress(txtToEmail.Text));
+                if (!string.IsNullOrEmpty(txtBcc.Text))
+                {
+                    mailMessage.Bcc.Add(new MailAddress(txtBcc.Text));
+                }
                 if (!string.IsNullOrEmpty(txtCC.Text))
                 {
                     mailMessage.CC.Add(new MailAddress(txtCC.Text));

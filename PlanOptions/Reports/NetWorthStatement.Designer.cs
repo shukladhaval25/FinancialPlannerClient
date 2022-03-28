@@ -28,6 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DevExpress.XtraCharts.XYDiagram xyDiagram1 = new DevExpress.XtraCharts.XYDiagram();
+            DevExpress.XtraCharts.CustomLegendItem customLegendItem1 = new DevExpress.XtraCharts.CustomLegendItem();
+            DevExpress.XtraCharts.CustomLegendItem customLegendItem2 = new DevExpress.XtraCharts.CustomLegendItem();
+            DevExpress.XtraCharts.Series series1 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.SeriesPoint seriesPoint1 = new DevExpress.XtraCharts.SeriesPoint("Financial Assets", new object[] {
+            ((object)(100D))});
+            DevExpress.XtraCharts.SeriesPoint seriesPoint2 = new DevExpress.XtraCharts.SeriesPoint("Real Estate", new object[] {
+            ((object)(70D))});
             DevExpress.XtraCharts.XYDiagram xyDiagram2 = new DevExpress.XtraCharts.XYDiagram();
             DevExpress.XtraCharts.CustomLegendItem customLegendItem3 = new DevExpress.XtraCharts.CustomLegendItem();
             DevExpress.XtraCharts.CustomLegendItem customLegendItem4 = new DevExpress.XtraCharts.CustomLegendItem();
@@ -41,14 +49,6 @@
             ((object)(70D))});
             DevExpress.XtraCharts.ChartTitle chartTitle1 = new DevExpress.XtraCharts.ChartTitle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NetWorthStatement));
-            DevExpress.XtraCharts.XYDiagram xyDiagram1 = new DevExpress.XtraCharts.XYDiagram();
-            DevExpress.XtraCharts.CustomLegendItem customLegendItem1 = new DevExpress.XtraCharts.CustomLegendItem();
-            DevExpress.XtraCharts.CustomLegendItem customLegendItem2 = new DevExpress.XtraCharts.CustomLegendItem();
-            DevExpress.XtraCharts.Series series1 = new DevExpress.XtraCharts.Series();
-            DevExpress.XtraCharts.SeriesPoint seriesPoint1 = new DevExpress.XtraCharts.SeriesPoint("Fixed Assets", new object[] {
-            ((object)(100D))});
-            DevExpress.XtraCharts.SeriesPoint seriesPoint2 = new DevExpress.XtraCharts.SeriesPoint("Real Estate", new object[] {
-            ((object)(70D))});
             this.Detail = new DevExpress.XtraReports.UI.DetailBand();
             this.xrTable2 = new DevExpress.XtraReports.UI.XRTable();
             this.xrTableRow7 = new DevExpress.XtraReports.UI.XRTableRow();
@@ -195,6 +195,7 @@
             this.xrLabel10 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrTableFinalNetWorth = new DevExpress.XtraReports.UI.XRLabel();
             this.xrPanel3 = new DevExpress.XtraReports.UI.XRPanel();
+            this.xrChartRealEstate = new DevExpress.XtraReports.UI.XRChart();
             this.xrChartNetWorth = new DevExpress.XtraReports.UI.XRChart();
             this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
             this.xrPanel2 = new DevExpress.XtraReports.UI.XRPanel();
@@ -203,15 +204,14 @@
             this.xrLabel5 = new DevExpress.XtraReports.UI.XRLabel();
             this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
             this.xrPageInfo1 = new DevExpress.XtraReports.UI.XRPageInfo();
-            this.xrChartRealEstate = new DevExpress.XtraReports.UI.XRChart();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTableNetWorth)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xrChartNetWorth)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrChartRealEstate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(series1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xrChartNetWorth)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // Detail
@@ -1862,6 +1862,43 @@
             this.xrPanel3.StylePriority.UseBorders = false;
             this.xrPanel3.StylePriority.UseBorderWidth = false;
             // 
+            // xrChartRealEstate
+            // 
+            this.xrChartRealEstate.BorderColor = System.Drawing.Color.Black;
+            this.xrChartRealEstate.Borders = DevExpress.XtraPrinting.BorderSide.None;
+            xyDiagram1.AxisX.GridLines.Visible = true;
+            xyDiagram1.AxisX.Title.Text = "";
+            xyDiagram1.AxisX.Title.Visibility = DevExpress.Utils.DefaultBoolean.True;
+            xyDiagram1.AxisX.VisibleInPanesSerializable = "-1";
+            xyDiagram1.AxisY.Title.Text = "Amount (Rs.)";
+            xyDiagram1.AxisY.Title.Visibility = DevExpress.Utils.DefaultBoolean.True;
+            xyDiagram1.AxisY.VisibleInPanesSerializable = "-1";
+            xyDiagram1.DefaultPane.EnableAxisXScrolling = DevExpress.Utils.DefaultBoolean.False;
+            xyDiagram1.DefaultPane.EnableAxisXZooming = DevExpress.Utils.DefaultBoolean.False;
+            xyDiagram1.DefaultPane.EnableAxisYScrolling = DevExpress.Utils.DefaultBoolean.False;
+            xyDiagram1.DefaultPane.EnableAxisYZooming = DevExpress.Utils.DefaultBoolean.False;
+            this.xrChartRealEstate.Diagram = xyDiagram1;
+            this.xrChartRealEstate.Dpi = 100F;
+            customLegendItem1.MarkerColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            customLegendItem1.Name = "Financial Assets";
+            customLegendItem2.MarkerColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            customLegendItem2.Name = "Real Estate";
+            this.xrChartRealEstate.Legend.CustomItems.AddRange(new DevExpress.XtraCharts.CustomLegendItem[] {
+            customLegendItem1,
+            customLegendItem2});
+            this.xrChartRealEstate.Legend.Name = "Default Legend";
+            this.xrChartRealEstate.Legend.Visibility = DevExpress.Utils.DefaultBoolean.True;
+            this.xrChartRealEstate.LocationFloat = new DevExpress.Utils.PointFloat(10.00001F, 9.999974F);
+            this.xrChartRealEstate.Name = "xrChartRealEstate";
+            series1.Name = "Series 1";
+            seriesPoint2.ColorSerializable = "#E36C09";
+            series1.Points.AddRange(new DevExpress.XtraCharts.SeriesPoint[] {
+            seriesPoint1,
+            seriesPoint2});
+            this.xrChartRealEstate.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
+        series1};
+            this.xrChartRealEstate.SizeF = new System.Drawing.SizeF(613.5416F, 195.4166F);
+            // 
             // xrChartNetWorth
             // 
             this.xrChartNetWorth.BorderColor = System.Drawing.Color.Black;
@@ -1903,7 +1940,7 @@
             this.xrChartNetWorth.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
         series2};
             this.xrChartNetWorth.SizeF = new System.Drawing.SizeF(613.5419F, 225.4826F);
-            chartTitle1.Text = "Surplus for the period";
+            chartTitle1.Text = "Net Worth for the period";
             this.xrChartNetWorth.Titles.AddRange(new DevExpress.XtraCharts.ChartTitle[] {
             chartTitle1});
             // 
@@ -1996,43 +2033,6 @@
             this.xrPageInfo1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrPageInfo1.SizeF = new System.Drawing.SizeF(55.20831F, 23F);
             // 
-            // xrChartRealEstate
-            // 
-            this.xrChartRealEstate.BorderColor = System.Drawing.Color.Black;
-            this.xrChartRealEstate.Borders = DevExpress.XtraPrinting.BorderSide.None;
-            xyDiagram1.AxisX.GridLines.Visible = true;
-            xyDiagram1.AxisX.Title.Text = "";
-            xyDiagram1.AxisX.Title.Visibility = DevExpress.Utils.DefaultBoolean.True;
-            xyDiagram1.AxisX.VisibleInPanesSerializable = "-1";
-            xyDiagram1.AxisY.Title.Text = "Amount (Rs.)";
-            xyDiagram1.AxisY.Title.Visibility = DevExpress.Utils.DefaultBoolean.True;
-            xyDiagram1.AxisY.VisibleInPanesSerializable = "-1";
-            xyDiagram1.DefaultPane.EnableAxisXScrolling = DevExpress.Utils.DefaultBoolean.False;
-            xyDiagram1.DefaultPane.EnableAxisXZooming = DevExpress.Utils.DefaultBoolean.False;
-            xyDiagram1.DefaultPane.EnableAxisYScrolling = DevExpress.Utils.DefaultBoolean.False;
-            xyDiagram1.DefaultPane.EnableAxisYZooming = DevExpress.Utils.DefaultBoolean.False;
-            this.xrChartRealEstate.Diagram = xyDiagram1;
-            this.xrChartRealEstate.Dpi = 100F;
-            customLegendItem1.MarkerColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            customLegendItem1.Name = "Fixed Assets";
-            customLegendItem2.MarkerColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            customLegendItem2.Name = "Real Estate";
-            this.xrChartRealEstate.Legend.CustomItems.AddRange(new DevExpress.XtraCharts.CustomLegendItem[] {
-            customLegendItem1,
-            customLegendItem2});
-            this.xrChartRealEstate.Legend.Name = "Default Legend";
-            this.xrChartRealEstate.Legend.Visibility = DevExpress.Utils.DefaultBoolean.True;
-            this.xrChartRealEstate.LocationFloat = new DevExpress.Utils.PointFloat(10.00001F, 9.999974F);
-            this.xrChartRealEstate.Name = "xrChartRealEstate";
-            series1.Name = "Series 1";
-            seriesPoint2.ColorSerializable = "#E36C09";
-            series1.Points.AddRange(new DevExpress.XtraCharts.SeriesPoint[] {
-            seriesPoint1,
-            seriesPoint2});
-            this.xrChartRealEstate.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
-        series1};
-            this.xrChartRealEstate.SizeF = new System.Drawing.SizeF(613.5416F, 195.4166F);
-            // 
             // NetWorthStatement
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
@@ -2043,12 +2043,12 @@
             this.Version = "16.2";
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTableNetWorth)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xrChartNetWorth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(series1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrChartRealEstate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xrChartNetWorth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
 
         }

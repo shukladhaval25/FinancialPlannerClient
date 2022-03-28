@@ -2,6 +2,7 @@
 using FinancialPlanner.Common.DataConversion;
 using FinancialPlanner.Common.Model;
 using FinancialPlanner.Common.Model.Masters;
+using FinancialPlannerClient.Master;
 using FinancialPlannerClient.PlannerInfo;
 using System;
 using System.Collections.Generic;
@@ -219,7 +220,6 @@ namespace FinancialPlannerClient.Clients
         {
             Program.ApplyPermission(this.Text, this);
             fillupBankAccountInfo();
-            fillupBankMaster();
         }
 
         private void fillupBankMaster()
@@ -321,6 +321,17 @@ namespace FinancialPlannerClient.Clients
                 cmbAccountType.Items.Add("SA");
                 cmbAccountType.Items.Add("CA");
             }
-        }       
+        }
+
+        private void btnAddBank_Click(object sender, EventArgs e)
+        {
+            BankView bankView = new BankView();
+            bankView.ShowDialog();
+        }
+
+        private void lookupBank_Enter(object sender, EventArgs e)
+        {
+            fillupBankMaster();
+        }
     }
 }

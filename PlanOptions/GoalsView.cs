@@ -96,12 +96,12 @@ namespace FinancialPlannerClient.PlanOptions
             Program.ApplyPermission(this.Tag.ToString(), this);
             rdoGoalType.SelectedIndex = 0;
             navigateToSelectedPage();
-            fillupGoalsInfo();
-            if (planId != 0)
-                fillupAssumptionInfo();
-
             ClientPersonalInfo clientPersonalInfo = new ClientPersonalInfo();
             _personalInfo = clientPersonalInfo.Get(client.ID);
+            if (planId != 0)
+                fillupAssumptionInfo();
+            fillupGoalsInfo();
+            
         }
 
         private void fillupAssumptionInfo()
@@ -679,22 +679,31 @@ namespace FinancialPlannerClient.PlanOptions
 
         private void cmbCategory_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (cmbCategory.Tag.Equals("0") && (cmbCategory.Text.Equals("Education") || cmbCategory.Text.Equals("Retirement")))
+            try
             {
-                chkEligbileForInsuranceCoverage.Checked = true;
-                if (cmbCategory.Text.Equals("Retirement"))
+                if (cmbCategory.Tag == null)
+                    return;
+                if (cmbCategory.Tag.Equals("0") && (cmbCategory.Text.Equals("Education") || cmbCategory.Text.Equals("Retirement")))
                 {
-                    txtInflationRate.Text = plannerAssumption.PreRetirementInflactionRate.ToString();
+                    chkEligbileForInsuranceCoverage.Checked = true;
+                    if (cmbCategory.Text.Equals("Retirement"))
+                    {
+                        txtInflationRate.Text = plannerAssumption.PreRetirementInflactionRate.ToString();
+                    }
+                }
+                else if (cmbCategory.Tag.Equals("0") && !cmbCategory.Text.Equals("Education") && !cmbCategory.Text.Equals("Retirement"))
+                {
+                    chkEligbileForInsuranceCoverage.Checked = false;
+                    txtInflationRate.Text = "";
+                }
+                if (cmbCategory.Tag.Equals("0") && (cmbCategory.Text.Equals("Vehicale")))
+                {
+                    txtInflationRate.Text = "4";
                 }
             }
-            else if (cmbCategory.Tag.Equals("0") && !cmbCategory.Text.Equals("Education") && !cmbCategory.Text.Equals("Retirement"))
+            catch(Exception ex)
             {
-                chkEligbileForInsuranceCoverage.Checked = false;
-                txtInflationRate.Text = "";
-            }
-            if (cmbCategory.Tag.Equals("0") && (cmbCategory.Text.Equals("Vehicale")))
-            {
-                txtInflationRate.Text = "4";
+                MessageBox.Show(ex.ToString());
             }
         }
 

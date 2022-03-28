@@ -33,6 +33,14 @@ namespace FinancialPlannerClient.PlanOptions
             lblSpouseRetAge.Text = string.Format("{0} Years", plannerAssumption.SpouseRetirementAge);
             lblClientLifeExpVal.Text = string.Format("{0} Years", plannerAssumption.ClientLifeExpectancy);
             lblSpouseLifeExpVal.Text = string.Format("{0} Years", plannerAssumption.SpouseLifeExpectancy);
+            if (plannerAssumption.SpouseRetirementAge == 0)
+            {
+                lblSpouseRetAge.Visible = false;
+            }
+            if (plannerAssumption.SpouseLifeExpectancy == 0)
+            {
+                lblSpouseLifeExpVal.Visible = false;
+            }
             if (assumptionConfig.RateOfInflation)
             {
                 lblPreRetInfRate.Text = string.Format("{0} %", plannerAssumption.PreRetirementInflactionRate);

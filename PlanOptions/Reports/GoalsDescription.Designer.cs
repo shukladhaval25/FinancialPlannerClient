@@ -53,7 +53,7 @@
             DevExpress.XtraCharts.Series series2 = new DevExpress.XtraCharts.Series();
             DevExpress.XtraCharts.SeriesPoint seriesPoint3 = new DevExpress.XtraCharts.SeriesPoint("Estimated Goal Value", new object[] {
             ((object)(100D))});
-            DevExpress.XtraCharts.SeriesPoint seriesPoint4 = new DevExpress.XtraCharts.SeriesPoint("Projection Completed", new object[] {
+            DevExpress.XtraCharts.SeriesPoint seriesPoint4 = new DevExpress.XtraCharts.SeriesPoint("Projected Complition", new object[] {
             ((object)(80D))});
             DevExpress.XtraCharts.SeriesPoint seriesPoint5 = new DevExpress.XtraCharts.SeriesPoint("Goal Achived Till Date", new object[] {
             ((object)(10D))});
@@ -1167,7 +1167,7 @@
             customLegendItem5.MarkerColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             customLegendItem5.Name = "Goal Achived Till Date";
             customLegendItem6.MarkerColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            customLegendItem6.Name = "Projection Completed";
+            customLegendItem6.Name = "Projected Complition";
             customLegendItem7.Name = "Estimated Goal Value";
             this.xrChartGoal.Legend.CustomItems.AddRange(new DevExpress.XtraCharts.CustomLegendItem[] {
             customLegendItem5,

@@ -20,9 +20,10 @@ namespace FinancialPlannerClient.PlanOptions
         Client client;
         public static Planner planner;
         PersonalInformation personalInformation;
-        int riskprofileId, optionId;
+        int riskprofileId, optionId,modelPortfolioRiskProfileId;
         IList<Goals> goals;
         string recomendationNote;
+        string modelPorfolioNote;
         public static System.Globalization.CultureInfo Info;
         public bool blnTableOfContent = true;
         public bool blnIntroduction = true;
@@ -53,22 +54,25 @@ namespace FinancialPlannerClient.PlanOptions
         public bool blnRecomendation = true;
         public bool blnExecutionSheet = true;
         public bool blnOtherRecommendation = true;
+        public bool blnModelPortfolio = true;
         ReportParams reportParams;
 
-        public PlannerMainReport(PersonalInformation personalInformation, Planner plannerObj, int riskProfileId, int optionId, string recomendation = "", ReportParams reportParameters = null)
+        public PlannerMainReport(ReportParameters reportParameters)
         {
             InitializeComponent();
             Info = System.Globalization.CultureInfo.GetCultureInfo("en-IN");
-            this.personalInformation = personalInformation;
+            this.personalInformation = reportParameters.PersonalInformation;
             this.client = personalInformation.Client;
-            planner = plannerObj;
-            this.riskprofileId = riskProfileId;
-            this.optionId = optionId;
+            planner = reportParameters.PlannerObj;
+            this.riskprofileId = reportParameters.reportParams.GetRiskProfileId();
+            this.modelPortfolioRiskProfileId = reportParameters.reportParams.GetModelPortfolioRiskProfileId();
+            this.optionId = reportParameters.reportParams.GetOptionId();
             this.lblClientName.Text = this.client.Name;
             this.lblPreparedFor.Text = this.client.Name;
             this.lblPreparedOn.Text = planner.StartDate.ToString("dd-MMM-yyyy");
-            this.recomendationNote = recomendation;
-            this.reportParams = reportParameters;
+            this.recomendationNote = reportParameters.reportParams.txtRecomendation.Text;
+            this.modelPorfolioNote = reportParameters.reportParams.txtModelPortfolioNote.Text;
+            this.reportParams = reportParameters.reportParams;
             setDisplayParamaters();
             fillGoals(planner);
 
@@ -107,6 +111,7 @@ namespace FinancialPlannerClient.PlanOptions
                 blnRecomendation = this.reportParams.frmReportPage.blnRecomendation;
                 blnExecutionSheet = this.reportParams.frmReportPage.blnExecutionSheet;
                 blnOtherRecommendation = this.reportParams.frmReportPage.blnOtherRecommendation;
+                blnModelPortfolio = this.reportParams.frmReportPage.blnModelPortfolio;
             }
         }
 
@@ -403,42 +408,20 @@ namespace FinancialPlannerClient.PlanOptions
                     this.Pages.AddRange(otherRecommendation.Pages);
                 }
 
-
+                if (blnModelPortfolio)
+                {
+                    ModelPortfolioReport modelPortfolioReport = new ModelPortfolioReport(planner, this.client, modelPortfolioRiskProfileId,this.modelPorfolioNote);
+                    modelPortfolioReport.CreateDocument();
+                    this.Pages.AddRange(modelPortfolioReport.Pages);
+                }
                 // Enable this property to maintain continuous page numbering 
                 PrintingSystem.ContinuousPageNumbering = true;
 
-                // Add all pages of the 2nd report to the end of the 1st report.             
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                // Add all pages of the 2nd report to the end of the 1st report.   
 
 
                 //this.Pages.Add(riskTolanceScore.Pages.First);
                 //Some page skip here.
-
-                
-                
-               
-
-                
-
-             
-               
                 
                 //this.Pages.Add(currentStatus.Pages.First);
 

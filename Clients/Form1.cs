@@ -1,6 +1,7 @@
 ﻿using FinancialPlanner.Common.DataConversion;
 using FinancialPlanner.Common.Planning;
 using FinancialPlannerClient.Clients;
+using FinancialPlannerClient.TaskManagementSystem;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

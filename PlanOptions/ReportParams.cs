@@ -1,4 +1,6 @@
-﻿using FinancialPlanner.Common.Model;
+﻿using DevExpress.XtraEditors;
+using FinancialPlanner.Common;
+using FinancialPlanner.Common.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,6 +17,8 @@ namespace FinancialPlannerClient.PlanOptions
     {
         DataTable _dtOption = new DataTable();
         private const string UPDATE_PLAN_API = "Planner/Update";
+        private const string RISKPROFILE_GETALL = "RiskProfileReturn/GetAll";
+        private List<RiskProfiledReturnMaster> _riskProfileMasters = new List<RiskProfiledReturnMaster>();
         internal frmReportPageOption frmReportPage;
         //int planId;
         int optionId;
@@ -45,6 +49,14 @@ namespace FinancialPlannerClient.PlanOptions
             return this.riskProfileId;
         }
 
+        public int GetModelPortfolioRiskProfileId()
+        {
+            if (cmbRiskProfile.Tag == null)
+                return 0;
+            else
+                return int.Parse(cmbRiskProfile.Tag.ToString());
+        }
+
         private void fillOptionData()
         {
             cmbPlanOption.Properties.Items.Clear();
@@ -63,9 +75,33 @@ namespace FinancialPlannerClient.PlanOptions
             }
         }
 
+        private void loadRiskProfileData()
+        {
+            FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
+            string apiurl = Program.WebServiceUrl + "/" + RISKPROFILE_GETALL;
+
+            RestAPIExecutor restApiExecutor = new RestAPIExecutor();
+
+            var restResult = restApiExecutor.Execute<List<RiskProfiledReturnMaster>>(apiurl, null, "GET");
+
+            if (jsonSerialization.IsValidJson(restResult.ToString()))
+            {
+                _riskProfileMasters = jsonSerialization.DeserializeFromString<List<RiskProfiledReturnMaster>>(restResult.ToString());
+                foreach (var riskProfile in _riskProfileMasters)
+                {
+                    cmbRiskProfile.Properties.Items.Add(riskProfile.Name);
+                }
+            }
+            else
+                XtraMessageBox.Show(restResult.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            //cmbRiskProfile.Text = _riskProfileName;
+        }
+
         private void ReportParams_Load(object sender, EventArgs e)
         {
             fillOptionData();
+            loadRiskProfileData();
         }
 
         private void cmbPlanOption_SelectedIndexChanged(object sender, EventArgs e)
@@ -92,6 +128,12 @@ namespace FinancialPlannerClient.PlanOptions
                 frmReportPage.GetAndDisplayReportPageSeting();
                 frmReportPage.btnApply_Click(sender, e);
                 frmReportPage.Close();
+            }
+          
+            if (frmReportPage.blnModelPortfolio && string.IsNullOrEmpty(cmbRiskProfile.Text))
+            {
+                DevExpress.XtraEditors.XtraMessageBox.Show("Please select risk profile for model portfolio.", "Invalid Option", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
             }
            string apiurl = Program.WebServiceUrl + "/" + UPDATE_PLAN_API;
             FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
@@ -139,6 +181,17 @@ namespace FinancialPlannerClient.PlanOptions
         {
             frmReportPage = new frmReportPageOption();
             frmReportPage.ShowDialog();
+        }
+
+        private void cmbRiskProfile_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            RiskProfiledReturnMaster riskProfiledReturnMaster = _riskProfileMasters.First(i => i.Name.Equals(cmbRiskProfile.Text));
+            if (riskProfiledReturnMaster != null)
+                cmbRiskProfile.Tag = riskProfiledReturnMaster.Id;
+            else
+            {
+                cmbRiskProfile.Tag = 0;
+            }
         }
     }
 

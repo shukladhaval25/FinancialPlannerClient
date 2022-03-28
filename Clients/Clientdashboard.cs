@@ -482,25 +482,27 @@ namespace FinancialPlannerClient.Clients
 
         private void navBarItemReport_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
-            ReportParams reportParameters = new ReportParams(this.planner);
-            if (reportParameters.ShowDialog() == DialogResult.OK)
+            ReportParams reportParams = new ReportParams(this.planner);
+            if (reportParams.ShowDialog() == DialogResult.OK)
             {
 
-                //XtraReport report = new XtraReport();
-                //report.LoadLayout("C:\\Application Softwares\\FinancialPlannerClient\\bin\\Debug\\PlannerMainReport.repx");
-                //report.ShowPreview();
+                ReportParameters reportParameters = new ReportParameters();
+
+                reportParameters.PersonalInformation = this.personalInformation;
+                reportParameters.PlannerObj = planner;
+                reportParameters.reportParams = reportParams;
 
 
-                PlannerMainReport plannerMainReport = new PlannerMainReport(this.personalInformation, planner,
-                    reportParameters.GetRiskProfileId(), reportParameters.GetOptionId(),reportParameters.txtRecomendation.Text,reportParameters);
+
+
+                PlannerMainReport plannerMainReport = new PlannerMainReport(reportParameters);
                 
-                //plannerMainReport.LoadLayout("C:\\Application Softwares\\FinancialPlannerClient\\bin\\Debug\\PlannerMainReport.repx");
                 DevExpress.XtraReports.UI.ReportPrintTool printTool = new DevExpress.XtraReports.UI.ReportPrintTool(plannerMainReport);
-                if (reportParameters.Option == ReportOption.Preview)
+                if (reportParams.Option == ReportOption.Preview)
                     printTool.ShowRibbonPreview();
-                else if (reportParameters.Option == ReportOption.SendMail)
+                else if (reportParams.Option == ReportOption.SendMail)
                 {
-                    FinancialPlannerSendEmailConfiguration financialPlannerSendEmailConfiguration = new FinancialPlannerSendEmailConfiguration(plannerMainReport,this._client,reportParameters.cmbPlanOption.Text);
+                    FinancialPlannerSendEmailConfiguration financialPlannerSendEmailConfiguration = new FinancialPlannerSendEmailConfiguration(plannerMainReport,this._client,reportParams.cmbPlanOption.Text);
                     financialPlannerSendEmailConfiguration.Show();
                 }
             }

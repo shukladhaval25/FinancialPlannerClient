@@ -1,5 +1,6 @@
 ﻿using FinancialPlanner.Common;
 using FinancialPlanner.Common.DataConversion;
+using FinancialPlanner.Common.EmailManager;
 using FinancialPlanner.Common.Model;
 using FinancialPlannerClient.Clients;
 using System;
@@ -344,6 +345,17 @@ namespace FinancialPlannerClient.ProspectCustomer
                     var resultObject = jsonSerialization.DeserializeFromString<Result>(json);
                     if (resultObject.IsSuccess)
                     {
+                        if (chkIsConvertedToCustomer.Checked && btnConvertToClient.Visible)
+                        {
+                            try
+                            {
+                                sendEmailToAddRegisterNewClientEmailId(prosCustomer);
+                            }
+                            catch(Exception ex)
+                            {
+                                MessageBox.Show("Unable to send email for add client email Id to system. Error inforamtion " + ex.ToString());
+                            }
+                        }
                         MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.DialogResult = DialogResult.OK;
                         this.Close();
@@ -354,6 +366,62 @@ namespace FinancialPlannerClient.ProspectCustomer
             {
                 MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void sendEmailToAddRegisterNewClientEmailId(ProspectClient prospectClient)
+        {
+            string primaryEmail = "services@ascentsolutions.in";
+            string bcc = "";
+
+            MailMessage mailMessage = new MailMessage();
+            mailMessage.From = new MailAddress(MailServer.FromEmail);
+            mailMessage.To.Add(new MailAddress(primaryEmail));
+            if (!string.IsNullOrEmpty(bcc))
+            {
+                mailMessage.Bcc.Add(new MailAddress(bcc));
+            }
+            mailMessage.Subject = "Add new client email address.";
+            mailMessage.IsBodyHtml = false;
+            mailMessage.Body = "Dear Mohit Tolani, " + Environment.NewLine + Environment.NewLine +
+
+               "Greetings From ASCENT FINANCIAL SOLUTIONS!!!" + Environment.NewLine + Environment.NewLine +
+
+               "We would like to request you that kindly add the following mentioned mail ID of a New Client. From Now Onwards, we will be communicating and interacting with this Mentioned New Client by this mail ID." + Environment.NewLine + Environment.NewLine +
+
+               "Kindly find below the details," + Environment.NewLine + Environment.NewLine +
+
+               "Client Name: " + prospectClient.Name + Environment.NewLine + Environment.NewLine +
+
+               "Registered Mail ID:" + prospectClient.Email + Environment.NewLine + Environment.NewLine +
+
+               "We thank you to allow us our request for the addition of a New Mail ID." + Environment.NewLine + Environment.NewLine +
+
+
+              "Regards," + Environment.NewLine +
+
+               "Financial Planning Team" + Environment.NewLine +
+               "ASCENT FINANCIAL SOLUTIONS PVT. LTD." + Environment.NewLine +
+               "315,316 Notus IT park, Sarabhai Campus," + Environment.NewLine +
+               "Genda Circle, Vadodara, Gujarat 390023" + Environment.NewLine +
+                "PH.: 0265 - 2961205." + Environment.NewLine +
+                "Mob.: 9512538380" + Environment.NewLine +
+               "http://www.ascentsolutions.in";
+
+            string reviewSheetPath = string.Empty;
+            bool isEmailSend = FinancialPlanner.Common.EmailManager.EmailService.SendEmailWithChilkat(mailMessage, reviewSheetPath);
+            //if (isEmailSend)
+            //{
+            //    // MessageBox.Show("Quarterly Review Template report send to client on '" + primaryEmail + "'.", "Email", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    gridViewClient.SetRowCellValue(index, "Status", "Email send successfully");
+            //}
+            //else
+            //{
+            //    gridViewClient.SetRowCellValue(index, "Status", "Unable to send email to:" + primaryEmail);
+            //    //MessageBox.Show("Unable to send email to '" + primaryEmail + "'. Check your email configuration setting.", "Email", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
+
+
+
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
