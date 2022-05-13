@@ -52,6 +52,8 @@ namespace FinancialPlannerClient.ClientProcess
             IList<CurrentClientProcess> currentClientProcesses = clientWithProcesInfo.GetAll();
             dtCurrentClientProcess = ListtoDataTable.ToDataTable(currentClientProcesses.ToList());
             gridClientWithProcess.DataSource = dtCurrentClientProcess;
+            gridViewClientWithProcess.Columns["PrimaryStepId"].Visible = false;
+            gridViewClientWithProcess.Columns["LinkSubStepId"].Visible = false;
             rdoViewOption.SelectedIndex = 0;
         }
 

@@ -2,7 +2,9 @@
 using FinancialPlanner.Common.Model;
 using FinancialPlanner.Common.Model.TaskManagement;
 using FinancialPlanner.Common.Planning;
+using FinancialPlannerClient.ClientProcess;
 using FinancialPlannerClient.Clients;
+using FinancialPlannerClient.Login;
 using FinancialPlannerClient.Master;
 using FinancialPlannerClient.TaskManagementSystem.Services;
 using FinancialPlannerClient.Users;
@@ -342,7 +344,7 @@ namespace FinancialPlannerClient.TaskManagementSystem
                       "User not match", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
-                //validatePermissionToByPassProcess(taskCard);
+                validatePermissionToByPassProcess(ref taskCard);
                 int taskId = new TaskCardService().Update(taskCard);
                 if (taskId > 0)
                 {
@@ -358,22 +360,32 @@ namespace FinancialPlannerClient.TaskManagementSystem
             }
         }
 
-        private void validatePermissionToByPassProcess(TaskCard taskCard)
+        private void validatePermissionToByPassProcess(ref TaskCard taskCard)
         {
-            if (taskCard.TaskStatus == TaskStatus.Blocked && isTaskBelongToProcessWithByPassPermission(taskCard.TaskId))
+            if (taskCard.TaskStatus == TaskStatus.Blocked && isTaskBelongToProcessWithByPassPermission(taskCard.CustomerId, taskCard.TaskId))
             {
                 //Open Login Page
-
+                frmXtraLogin login = new frmXtraLogin(true);
+                login.ShowDialog();
+                if (login.IsAuthenticationPassForApproval)
+                {
+                    taskCard.ProcessApprovedBy = login.ApprovedBy;
+                }
+                else
+                {
+                    throw new Exception("Invalid username or password.");
+                }
             }
         }
 
-        private bool isTaskBelongToProcessWithByPassPermission(string taskId)
+        private bool isTaskBelongToProcessWithByPassPermission(int? customerId, string taskId)
         {
-            ProcessesInfo processesInfo = new ProcessesInfo();
-            IList<LinkSubStep> linkSubSteps = processesInfo.GetLinkSubStepsByRefTaskId(taskId);
-            if (linkSubSteps.Count > 0)
+            ClientWithProcesInfo clientWithProcesInfo  = new ClientWithProcesInfo();
+            IList<CurrentClientProcess> currentClientProcesses = clientWithProcesInfo.GetClientProcess((int)customerId,null);
+            if (currentClientProcesses.Count > 0)
             {
-                return linkSubSteps[0].AllowByPassProcess;
+                CurrentClientProcess clientProcess = currentClientProcesses.FirstOrDefault(i => i.RefTaskId == taskId);
+                return clientProcess.AllowByPassProcess;
             }
             else
                 return false;

@@ -607,3 +607,6 @@ C:\Application Softwares\FinancialPlannerClient\bin\Debug\DevExpress.Diagram.v16
 C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.ClientProcess.ClientsWithProcess.resources
 C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.ClientProcess.SingleClientProcess.resources
 C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.Reports.ModelPortfolioReport.resources
+C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.Controls.CustomReminderPage.resources
+C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.Controls.frmTodayReminder.resources
+C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.Reports.PostRetirementExpChart.resources

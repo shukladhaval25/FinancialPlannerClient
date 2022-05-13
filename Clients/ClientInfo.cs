@@ -12,6 +12,7 @@ using System.Data;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -36,6 +37,9 @@ namespace FinancialPlannerClient.Clients
         private PlannerAssumption plannerAssumption;
         IList<Goals> _goals;
 
+        private readonly string GET_PLAN_BY_CLIENTID_API = "Planner/GetByClientId?id={0}";
+        private List<Planner> _planners = new List<Planner>();
+
         public int PlannerId
         {
             get { return _plannerId; }
@@ -51,6 +55,7 @@ namespace FinancialPlannerClient.Clients
             _plannerId = 0;
             _client = client;
             setViewForNewDesing(forNewDesing);
+            LoadPlanData();
         }
 
         public ClientInfo(Planner planner, Client client, bool forNewDesing = false)
@@ -60,6 +65,7 @@ namespace FinancialPlannerClient.Clients
             _plannerId = this.planner.ID;
             _client = client;
             setViewForNewDesing(forNewDesing);
+            LoadPlanData();
         }
         public void setViewForNewDesing(bool isNewDesing)
         {
@@ -161,6 +167,52 @@ namespace FinancialPlannerClient.Clients
         }
 
         #region "Document Information"
+
+        public void LoadPlanData()
+        {
+            FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
+            string apiurl = Program.WebServiceUrl + "/" + string.Format(GET_PLAN_BY_CLIENTID_API, this._client.ID);
+
+            HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(apiurl);
+            request.Method = "GET";
+            String planerResultJson = String.Empty;
+            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+            {
+                Stream dataStream = response.GetResponseStream();
+
+                StreamReader reader = new StreamReader(dataStream);
+                planerResultJson = reader.ReadToEnd();
+                reader.Close();
+                dataStream.Close();
+            }
+            var plannerCollection = jsonSerialization.DeserializeFromString<Result<List<Planner>>>(planerResultJson);
+
+            if (plannerCollection.IsSuccess && plannerCollection.Value.Count > 0)
+            {
+                //var newList  // ToList optional
+                this._planners = plannerCollection.Value.OrderByDescending(x => x.StartDate).ToList();
+                fillupPlannerCombobox();
+                cmbPlanner.Enabled = true;
+            }
+            else
+            {
+                cmbPlanner.Enabled = false;
+            }
+        }
+
+        private void fillupPlannerCombobox()
+        {
+            cmbPlanner.Properties.Items.Clear();
+            if (this._planners.Count > 0)
+            {
+                foreach (Planner planner in _planners)
+                {
+                    cmbPlanner.Properties.Items.Add(planner.Name);
+                }
+                cmbPlanner.SelectedIndex = 0;
+            }
+
+        }
 
         private void fillupDocumentInfo()
         {
@@ -2753,6 +2805,16 @@ namespace FinancialPlannerClient.Clients
         private void txtNonFinancialGrowthPercentage_Leave(object sender, EventArgs e)
         {
             calculateMappedValueAndOtherValues();
+        }
+
+        private void cmbPlanner_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Planner planner = this._planners.Find(i => i.Name.Equals(cmbPlanner.Text));
+            if (planner != null)
+            {
+                this._plannerId = planner.ID;
+                fillupDocumentInfo();
+            }
         }
     }
 }

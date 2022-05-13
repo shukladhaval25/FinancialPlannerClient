@@ -25,6 +25,8 @@ namespace FinancialPlannerClient.Login
         private bool isForApproval = false;
         private bool isApproved = false;
         public bool IsAuthenticationPassForApproval { get { return isApproved; } }
+        User currentUser = new User();
+        public int ApprovedBy { get { return currentUser.Id; } }
         public frmXtraLogin()
         {
             InitializeComponent();
@@ -204,6 +206,7 @@ namespace FinancialPlannerClient.Login
         {
             JSONSerialization jsonSerialization = new JSONSerialization();
             var deserializeUser = jsonSerialization.DeserializeFromString<User>(restResult.ToString());
+            currentUser = deserializeUser;
             isApproved = true;
             this.Close();
         }

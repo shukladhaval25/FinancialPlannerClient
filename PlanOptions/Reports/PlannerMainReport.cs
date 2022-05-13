@@ -164,10 +164,10 @@ namespace FinancialPlannerClient.PlanOptions
                     scopeOfPlancs.CreateDocument();
                     this.Pages.AddRange(scopeOfPlancs.Pages);
                 }
-
+                
                 if (blnAssumption)
                 {
-                    AssumptionPage assumptionPage = new AssumptionPage(personalInformation, planner.ID);
+                    AssumptionPage assumptionPage = new AssumptionPage(personalInformation, planner );
                     //assumptionPage.LoadLayout("C:\\Application Softwares\\FinancialPlannerClient\\bin\\Debug\\AssumptionPage.repx");
                     assumptionPage.CreateDocument();
                     this.Pages.AddRange(assumptionPage.Pages);
@@ -351,6 +351,14 @@ namespace FinancialPlannerClient.PlanOptions
                                 goalsDescriptions[goalCountIndex].CreateDocument();
                               
                                 this.Pages.AddRange(goalsDescriptions[goalCountIndex].Pages);
+
+                                if (dtGroupByGoals.Rows[index]["Category"].ToString().Equals("Retirement"))
+                                {
+                                    DataTable dtPostRetirement = goalsDescriptions[goalCountIndex].GetPostRetirementTable();
+                                    PostRetirementExpChart postRetirementExpChart = new PostRetirementExpChart(dtPostRetirement, planner);
+                                    postRetirementExpChart.CreateDocument();
+                                    this.Pages.AddRange(postRetirementExpChart.Pages);
+                                }
                                 goalCountIndex++;
                             }
                         }

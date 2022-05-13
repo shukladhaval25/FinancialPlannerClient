@@ -27,9 +27,10 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         private DataTable _dtcashFlow;
         private DataTable _dtGoals;
         private DataTable _dtGoalProjectionComplition;
+        DataTable dtPostRetirementCashFlow;
         double equityRation, debtRatio = 0;
         double totalEstimatedRetirementCorpusFund;
-
+        //PostRetirementExpChart postRetirementExpChart;
         public GoalsDescription()
         {
             InitializeComponent();
@@ -136,8 +137,9 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                         lblloanTitle.Text = lblloanTitle.Text + " (" + _dtGoalProfile.Rows[0]["Start Year"].ToString() + ")";
                         lblLoanAmt.Text = _dtGoalProfile.Rows[0]["Loan Amount"].ToString();
                     }
+                    _goalCalculationInfo.CashFlowService = cashFlowService;
                     DataTable _dtGoalValue = _goalCalculationInfo.GetGoalCalculation();
-                    lblMappedAssets.Text = _dtGoalValue.Rows[_dtGoalValue.Rows.Count - 1]["Assets Mapping"].ToString();
+                    lblMappedAssets.Text = _dtGoalValue.Rows[_dtGoalValue.Rows.Count - 1]["Instrument Mapped"].ToString();
                     DataRow[] drs = _dtGoalValue.Select("Year ='" + this.planner.StartDate.Year + "'");
                     lblCurrentSurplus.Text = drs[0]["Fresh Investment"].ToString();
                 }
@@ -243,6 +245,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports
             this._dtGoalProjectionComplition = dtGoalProjectionComplition;
             this.totalEstimatedRetirementCorpusFund = retirementCorpusFund;
             bindFields();
+            
         }
 
         private void bindFields()
@@ -264,15 +267,22 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                 lblRetirementCorpus.Visible = true;
                 lblRetirementCorpusValue.Visible = true;
                 lblRetirementCorpusSum.Visible = true;
-                //PostRetirementCashFlowService postRetirementCashFlowService;
-                //CashFlowService cashFlowService = new CashFlowService();
-                //cashFlowService.GenerateCashFlow(client.ID, planner.ID, riskProfileId);
-                //postRetirementCashFlowService = new PostRetirementCashFlowService(planner, cashFlowService);
-                //postRetirementCashFlowService.GetPostRetirementCashFlowData();
-                //postRetirementCashFlowService.calculateEstimatedRequireCorpusFund();
+                PostRetirementCashFlowService postRetirementCashFlowService;
+                CashFlowService cashFlowService = new CashFlowService();
+                cashFlowService.GenerateCashFlow(client.ID, planner.ID, riskProfileId);
+                postRetirementCashFlowService = new PostRetirementCashFlowService(planner, cashFlowService);
+                dtPostRetirementCashFlow  =  postRetirementCashFlowService.GetPostRetirementCashFlowData();
+                postRetirementCashFlowService.calculateEstimatedRequireCorpusFund();
                 //double totalEstimatedRetirementCorpusFund = Math.Round(postRetirementCashFlowService.GetProposeEstimatedCorpusFund(), 2);
                 lblRetirementCorpusValue.Text = totalEstimatedRetirementCorpusFund.ToString();
                 lblRetirementCorpusSum.Text = totalEstimatedRetirementCorpusFund.ToString();
+
+                //if (this.goal.Category.Equals("Retirement"))
+                //{
+                //postRetirementExpChart = new PostRetirementExpChart(dtPostRetirementCashFlow, planner);
+                //    postRetirementExpChart.CreateDocument();
+                //    this.Pages.AddRange(postRetirementExpChart.Pages);
+                //}
                 //lblRetirementCorpus.DataBindings.Add("Text", this.DataSource, G)
             }
             else
@@ -579,6 +589,10 @@ namespace FinancialPlannerClient.PlanOptions.Reports
         private void lblDebt_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
             lblDebt.Text = debtRatio + " %";
+        }
+        public DataTable GetPostRetirementTable()
+        {
+            return dtPostRetirementCashFlow;
         }
     }
 }

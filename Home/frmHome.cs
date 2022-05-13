@@ -83,6 +83,7 @@ namespace FinancialPlannerClient.Home
         private NavBarItem navBarItemMOM;
         private NavBarItem navBarItemInsuranceCompany;
         private NavBarItem navBarItemClientProcess;
+        private NavBarItem navBarItemCustomReminder;
         private const string AUDITLOGCONTROLLER = "Activities/Add";
 
         public frmHome()
@@ -187,6 +188,7 @@ namespace FinancialPlannerClient.Home
             this.navBarGroupOthers = new DevExpress.XtraNavBar.NavBarGroup();
             this.navBarItemAuditTrail = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItemMOM = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarItemCustomReminder = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarGroupReports = new DevExpress.XtraNavBar.NavBarGroup();
             this.navigationFrame1 = new DevExpress.XtraBars.Navigation.NavigationFrame();
             this.homeNavigationPage1 = new DevExpress.XtraBars.Navigation.NavigationPage();
@@ -527,7 +529,6 @@ namespace FinancialPlannerClient.Home
             // navBarGroupClient
             // 
             this.navBarGroupClient.Caption = "Client";
-            this.navBarGroupClient.Expanded = true;
             this.navBarGroupClient.GroupStyle = DevExpress.XtraNavBar.NavBarGroupStyle.LargeIconsText;
             this.navBarGroupClient.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemProspectCustomer),
@@ -630,13 +631,15 @@ namespace FinancialPlannerClient.Home
             this.navBarItemMFCategory,
             this.navBarItemMOM,
             this.navBarItemInsuranceCompany,
-            this.navBarItemClientProcess});
+            this.navBarItemClientProcess,
+            this.navBarItemCustomReminder});
             this.navBarMenuGroup.Location = new System.Drawing.Point(2, 2);
             this.navBarMenuGroup.Name = "navBarMenuGroup";
             this.navBarMenuGroup.OptionsNavPane.ExpandedWidth = 136;
             this.navBarMenuGroup.Size = new System.Drawing.Size(136, 546);
             this.navBarMenuGroup.TabIndex = 1;
             this.navBarMenuGroup.Text = "navBarControl1";
+            this.navBarMenuGroup.Click += new System.EventHandler(this.navBarMenuGroup_Click);
             // 
             // navBarGroupControlContainerReports
             // 
@@ -792,9 +795,11 @@ namespace FinancialPlannerClient.Home
             // navBarGroupOthers
             // 
             this.navBarGroupOthers.Caption = "Other Options";
+            this.navBarGroupOthers.Expanded = true;
             this.navBarGroupOthers.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemAuditTrail),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemMOM)});
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemMOM),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemCustomReminder)});
             this.navBarGroupOthers.Name = "navBarGroupOthers";
             this.navBarGroupOthers.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarGroupOthers.SmallImage")));
             // 
@@ -813,11 +818,18 @@ namespace FinancialPlannerClient.Home
             this.navBarItemMOM.Visible = false;
             this.navBarItemMOM.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItemMOM_LinkClicked);
             // 
+            // navBarItemCustomReminder
+            // 
+            this.navBarItemCustomReminder.Caption = "Custom Reminder";
+            this.navBarItemCustomReminder.LargeImage = ((System.Drawing.Image)(resources.GetObject("navBarItemCustomReminder.LargeImage")));
+            this.navBarItemCustomReminder.Name = "navBarItemCustomReminder";
+            this.navBarItemCustomReminder.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarItemCustomReminder.SmallImage")));
+            this.navBarItemCustomReminder.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItemCustomReminder_LinkClicked);
+            // 
             // navBarGroupReports
             // 
             this.navBarGroupReports.Caption = "Reports";
             this.navBarGroupReports.ControlContainer = this.navBarGroupControlContainerReports;
-            this.navBarGroupReports.Expanded = true;
             this.navBarGroupReports.GroupClientHeight = 162;
             this.navBarGroupReports.GroupStyle = DevExpress.XtraNavBar.NavBarGroupStyle.ControlContainer;
             this.navBarGroupReports.Name = "navBarGroupReports";
@@ -1161,8 +1173,17 @@ namespace FinancialPlannerClient.Home
             lblCurrentUser.BackColor = ribbonControl1.BackColor;
             lblCurrentUser.Text = Program.CurrentUser.UserName;
             displayMenuBasedOnRolePermission();
+            displayReminderForTheDay(DateTime.Now.Date);
             timerNotification.Start();
             setMailServerSettingFromConfiguration();
+        }
+
+        private void displayReminderForTheDay(DateTime dateTime)
+        {
+            //throw new NotImplementedException();
+            //frmTodayReminder frmTodayReminder = new frmTodayReminder(dateTime);
+            //frmTodayReminder.Show();
+            //frmTodayReminder.WindowState = FormWindowState.Minimized;
         }
 
         private void setMailServerSettingFromConfiguration()
@@ -1362,6 +1383,21 @@ namespace FinancialPlannerClient.Home
             homeNavigationPage1.Name = clientWithProcess.Name;
             homeNavigationPage1.Controls.Add(clientWithProcess);
             showNavigationPage(clientWithProcess.Name);
+        }
+
+        private void navBarMenuGroup_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        public void navBarItemCustomReminder_LinkClicked(object sender, NavBarLinkEventArgs e)
+        {
+            CustomReminderPage customReminder = new CustomReminderPage();
+            //mon.TopLevel = false;
+            customReminder.Visible = true;
+            homeNavigationPage1.Name = customReminder.Name;
+            homeNavigationPage1.Controls.Add(customReminder);
+            showNavigationPage(customReminder.Name);
         }
     }
 }

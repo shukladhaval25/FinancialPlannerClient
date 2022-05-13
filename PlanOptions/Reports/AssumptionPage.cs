@@ -6,11 +6,12 @@ namespace FinancialPlannerClient.PlanOptions
 {
     public partial class AssumptionPage : DevExpress.XtraReports.UI.XtraReport
     {
-        int plannerId;
-        public AssumptionPage(PersonalInformation personalInformation, int plannerId)
+        Planner planner;
+        
+        public AssumptionPage(PersonalInformation personalInformation, Planner planner)
         {
             InitializeComponent();
-            this.plannerId = plannerId;
+            this.planner = planner;
             this.lblClientName.Text = personalInformation.Client.Name;
             this.lblClientNameForRet.Text = lblClientName.Text;
             this.lblSpouseNameForRet.Text = personalInformation.Spouse.Name;
@@ -25,9 +26,9 @@ namespace FinancialPlannerClient.PlanOptions
         private void Detail_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
             PlannerAssumptionInfo plannerassumptionInfo = new PlannerAssumptionInfo();
-            PlannerAssumption plannerAssumption = plannerassumptionInfo.GetAll(this.plannerId);
+            PlannerAssumption plannerAssumption = plannerassumptionInfo.GetAll(this.planner.ID );
 
-            AssumptionConfig assumptionConfig = plannerassumptionInfo.GetAssumptionConfig(this.plannerId);
+            AssumptionConfig assumptionConfig = plannerassumptionInfo.GetAssumptionConfig(this.planner.ID);
 
             lblClientRetAge.Text = string.Format("{0} Years", plannerAssumption.ClientRetirementAge);
             lblSpouseRetAge.Text = string.Format("{0} Years", plannerAssumption.SpouseRetirementAge);
@@ -69,6 +70,14 @@ namespace FinancialPlannerClient.PlanOptions
             richTextBox.Text = plannerAssumption.Decription.ToString();
             
             ((XRRichText)this.FindControl("lblNote", true)).Rtf = richTextBox.Text ;
+
+            if (this.planner.FaceType.Equals("D"))
+            {
+                lblExpRaise.Visible = false;
+                lblInsurance.Visible = false;
+                lblAnnualRaiseIncome.Text = lblAnnualRaiseIncome.Text.Replace("6", "5");
+
+            }
 
             //lblNote.Rtf = plannerAssumption.Decription;
         }

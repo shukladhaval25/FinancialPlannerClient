@@ -379,7 +379,7 @@
             // 
             this.xrTableCell8.Dpi = 100F;
             this.xrTableCell8.Name = "xrTableCell8";
-            this.xrTableCell8.Text = "Projection % Completed";
+            this.xrTableCell8.Text = "Projected % Completion";
             this.xrTableCell8.Weight = 1.1649302589070398D;
             // 
             // xrTableCell4

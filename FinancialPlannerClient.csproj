@@ -267,12 +267,27 @@
     <Compile Include="Clients\MailService\MailManagerDeskBoard.Designer.cs">
       <DependentUpon>MailManagerDeskBoard.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ClientDOBReminder.cs" />
+    <Compile Include="Controls\CustomReminderPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\CustomReminderPage.Designer.cs">
+      <DependentUpon>CustomReminderPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\frmTodayReminder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\frmTodayReminder.Designer.cs">
+      <DependentUpon>frmTodayReminder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ICustomerReminderInfo.cs" />
     <Compile Include="Controls\MOM.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Controls\MOM.Designer.cs">
       <DependentUpon>MOM.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\PPFReminder.cs" />
     <Compile Include="Controls\ProcessContoller.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -538,6 +553,12 @@
     </Compile>
     <Compile Include="PlanOptions\Reports\ActionPlan.Designer.cs">
       <DependentUpon>ActionPlan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\PostRetirementExpChart.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\PostRetirementExpChart.Designer.cs">
+      <DependentUpon>PostRetirementExpChart.cs</DependentUpon>
     </Compile>
     <Compile Include="PlanOptions\Reports\ModelPortfolioReport.cs">
       <SubType>Component</SubType>
@@ -1162,6 +1183,12 @@
     <EmbeddedResource Include="Clients\MailService\MailManagerDeskBoard.resx">
       <DependentUpon>MailManagerDeskBoard.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\CustomReminderPage.resx">
+      <DependentUpon>CustomReminderPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\frmTodayReminder.resx">
+      <DependentUpon>frmTodayReminder.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\MOM.resx">
       <DependentUpon>MOM.cs</DependentUpon>
     </EmbeddedResource>
@@ -1285,6 +1312,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\Reports\ActionPlan.resx">
       <DependentUpon>ActionPlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\Reports\PostRetirementExpChart.resx">
+      <DependentUpon>PostRetirementExpChart.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\Reports\ModelPortfolioReport.resx">
       <DependentUpon>ModelPortfolioReport.cs</DependentUpon>

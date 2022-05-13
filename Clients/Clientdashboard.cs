@@ -723,5 +723,10 @@ namespace FinancialPlannerClient.Clients
             navigationPageOther.Controls.Add(singleClientProcess);
             showNavigationPage(singleClientProcess.Name);
         }
+
+        private void labelControl1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

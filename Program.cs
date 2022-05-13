@@ -1,6 +1,7 @@
 ﻿using FinancialPlanner.Common;
 using FinancialPlanner.Common.Model;
 using FinancialPlanner.Common.Permission;
+using FinancialPlannerClient.Controls;
 using FinancialPlannerClient.Master;
 using FinancialPlannerClient.TaskManagementSystem;
 using FinancialPlannerClient.TaskManagementSystem.TransactionOptions;
@@ -71,6 +72,11 @@ namespace FinancialPlannerClient
                 container.RegisterType<ITransactionType, MinorToMajorTrans>("Minor To Major");
                 container.RegisterType<ITransactionType, ChangeOfNameTrans>("Change of Name");
                 container.RegisterType<ITransactionType, NominationTrans>("Nomination");
+
+                container.RegisterType<ICustomerReminderInfo, ClientDOBReminder>("ClientDOB");
+                container.RegisterType<ICustomerReminderInfo, PPFReminder>("PPF");
+
+
             }
             catch(Exception ex)
             {

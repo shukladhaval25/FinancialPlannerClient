@@ -21,6 +21,7 @@ namespace FinancialPlannerClient.CurrentStatus
         private readonly string ADD_Bonds_API = "Bonds/Add";
         private readonly string UPDATE_Bonds_API = "Bonds/Update";
         private readonly string DELETE_Bonds_API = "Bonds/Delete";
+        private readonly string BOND_MATURITY = "Bonds/GetMaturity?from={0}&to={1}";
 
         internal DataTable GetBondsInfo(int planeId)
         {
@@ -80,6 +81,43 @@ namespace FinancialPlannerClient.CurrentStatus
                 }
              
                 return BondsObj;
+            }
+            catch (System.Net.WebException webException)
+            {
+                if (webException.Message.Equals("The remote server returned an error: (401) Unauthorized."))
+                {
+                    MessageBox.Show("You session has been expired. Please Login again.", "Session Expired", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
+                LogDebug(currentMethodName.Name, ex);
+                return null;
+            }
+        }
+
+        internal IList<Bonds> GetMaturity(DateTime fromDate, DateTime toDate)
+        {
+            IList<Bonds> bonds = new List<Bonds>();
+            try
+            {
+                FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
+                string apiurl = Program.WebServiceUrl + "/" + string.Format(BOND_MATURITY, fromDate, toDate);
+
+                RestAPIExecutor restApiExecutor = new RestAPIExecutor();
+
+                var restResult = restApiExecutor.Execute<IList<Bonds>>(apiurl, null, "GET");
+
+                if (jsonSerialization.IsValidJson(restResult.ToString()))
+                {
+                    bonds = jsonSerialization.DeserializeFromString<IList<Bonds>>(restResult.ToString());
+                }
+
+                return bonds;
             }
             catch (System.Net.WebException webException)
             {

@@ -27,7 +27,7 @@ namespace FinancialPlannerClient.CurrentStatus
             try
             {
                 FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
-                string apiurl = Program.WebServiceUrl + "/" + string.Format(PPF_MATURITY, from.ToString("yyyy-MM-dd"), to.ToString("yyyy-MM-dd"));
+                string apiurl = Program.WebServiceUrl + "/" + string.Format(PPF_MATURITY, from.ToString("yyyy-MM-dd hh:mm:ss tt"), to.ToString("yyyy-MM-dd hh:mm:ss tt"));
 
                 RestAPIExecutor restApiExecutor = new RestAPIExecutor();
 

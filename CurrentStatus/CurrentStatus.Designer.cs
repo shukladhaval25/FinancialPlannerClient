@@ -1554,9 +1554,9 @@
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(549, 48);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(83, 15);
+            this.label5.Size = new System.Drawing.Size(88, 15);
             this.label5.TabIndex = 6;
-            this.label5.Text = "Date Of Issue:";
+            this.label5.Text = "Date Of Issue*:";
             // 
             // txtAgent
             // 

@@ -20,6 +20,7 @@ namespace FinancialPlannerClient.CurrentStatus
         private readonly string ADD_FixedDeposit_API = "FixedDeposit/Add";
         private readonly string UPDATE_FixedDeposit_API = "FixedDeposit/Update";
         private readonly string DELETE_FixedDeposit_API = "FixedDeposit/Delete";
+        private readonly string FD_MATURITY = "FixedDeposit/GetMaturity?from={0}&to={1}";
 
         internal DataTable GetFixedDepositInfo(int planeId)
         {
@@ -97,6 +98,44 @@ namespace FinancialPlannerClient.CurrentStatus
                 return null;
             }
         }
+
+        internal IList<FixedDeposit> GetFDMaturity(DateTime fromDate,DateTime toDate)
+        {
+            IList<FixedDeposit> FixedDepositObj = new List<FixedDeposit>();
+            try
+            {
+                FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
+                string apiurl = Program.WebServiceUrl + "/" + string.Format(FD_MATURITY, fromDate,toDate);
+
+                RestAPIExecutor restApiExecutor = new RestAPIExecutor();
+
+                var restResult = restApiExecutor.Execute<IList<FixedDeposit>>(apiurl, null, "GET");
+
+                if (jsonSerialization.IsValidJson(restResult.ToString()))
+                {
+                    FixedDepositObj = jsonSerialization.DeserializeFromString<IList<FixedDeposit>>(restResult.ToString());
+                }
+
+                return FixedDepositObj;
+            }
+            catch (System.Net.WebException webException)
+            {
+                if (webException.Message.Equals("The remote server returned an error: (401) Unauthorized."))
+                {
+                    MessageBox.Show("You session has been expired. Please Login again.", "Session Expired", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
+                LogDebug(currentMethodName.Name, ex);
+                return null;
+            }
+        }
+
 
         internal bool Add(FixedDeposit FixedDeposit)
         {

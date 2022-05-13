@@ -2597,10 +2597,20 @@ namespace FinancialPlannerClient.CurrentStatus
             cmbApplicant.Text = dr.Field<string>("Applicant");
             txtBranch.Text = dr.Field<string>("Branch");
             txtAgent.Text = dr.Field<string>("Agent");
-            dtDateOfIssue.Checked = !(System.DBNull.Value == dr["DateOfIssue"]);
-            dtDateOfIssue.Value = DateTime.Parse(dr["DateOfIssue"].ToString());
-            dtMaturityDate.Checked = !(System.DBNull.Value == dr["MaturityDate"]);
-            dtMaturityDate.Value = DateTime.Parse(dr["MaturityDate"].ToString());
+            if (DateTime.Parse(dr["DateOfIssue"].ToString()).ToShortDateString() != DateTime.MinValue.ToShortDateString())
+            {
+                dtDateOfIssue.Checked = !(System.DBNull.Value == dr["DateOfIssue"]);
+                dtDateOfIssue.Value = DateTime.Parse(dr["DateOfIssue"].ToString());
+            }
+            else
+            {
+                dtDateOfIssue.Checked = false;
+            }
+            if (DateTime.Parse(dr["MaturityDate"].ToString()).ToShortDateString() != DateTime.MinValue.ToShortDateString())
+            {
+                dtMaturityDate.Checked = !(System.DBNull.Value == dr["MaturityDate"]);
+                dtMaturityDate.Value = DateTime.Parse(dr["MaturityDate"].ToString());
+            }
             txtCompany.Text = dr.Field<string>("Company");
             txtPolicyName.Text = dr.Field<string>("PolicyName");
             txtPolicyNo.Text = dr.Field<string>("PolicyNo");
@@ -2611,8 +2621,11 @@ namespace FinancialPlannerClient.CurrentStatus
             txtStatus.Text = dr.Field<string>("Status");
             cmbModeOfPayment.Text = dr.Field<string>("ModeOfPayment");
             cmbMoneyBack.Text = dr.Field<string>("Moneyback");
-            dtNextPremiumDate.Checked = !(System.DBNull.Value == dr["NextPremDate"]);
-            dtNextPremiumDate.Value = DateTime.Parse(dr["NextPremDate"].ToString());
+            if (DateTime.Parse(dr["NextPremDate"].ToString()).ToShortDateString() != DateTime.MinValue.ToShortDateString())
+            {
+                dtNextPremiumDate.Checked = !(System.DBNull.Value == dr["NextPremDate"]);
+                dtNextPremiumDate.Value = DateTime.Parse(dr["NextPremDate"].ToString());
+            }
             txtAccidentalDeathBenefit.Text = dr.Field<string>("AccidentalDeathBenefit");
             cmbType.Text = dr.Field<string>("Type");
             txtAppointee.Text = dr.Field<string>("Appointee");
@@ -2622,8 +2635,11 @@ namespace FinancialPlannerClient.CurrentStatus
             if (dtLoanDate.Checked = !(System.DBNull.Value == dr["LoanDate"]))
                 dtLoanDate.Value = DateTime.Parse(dr["LoanDate"].ToString());
             txtBalanceUnit.Text = dr.Field<string>("BalanceUnit");
-            if (dtAsOnDate.Checked = !(System.DBNull.Value == dr["AsOnDate"]))
-                dtAsOnDate.Value = DateTime.Parse(dr["AsOnDate"].ToString());
+            if (DateTime.Parse(dr["AsOnDate"].ToString()).ToShortDateString() != DateTime.MinValue.ToShortDateString())
+            {
+                if (dtAsOnDate.Checked = !(System.DBNull.Value == dr["AsOnDate"]))
+                    dtAsOnDate.Value = DateTime.Parse(dr["AsOnDate"].ToString());
+            }
             txtCurrentValue.Text = dr.Field<string>("CurrentValue");
             txtExpectedMaturityValue.Text = dr.Field<string>("ExpectedMaturityValue");
             txtRider1.Text = dr.Field<string>("Rider1");
@@ -2632,8 +2648,15 @@ namespace FinancialPlannerClient.CurrentStatus
             txtRider2Amt.Text = dr.Field<string>("Rider2Amount");
             txtRemarks.Text = dr.Field<string>("Remarks");
             txtAttachPath.Text = dr.Field<string>("AttachmentPath");
-            if (dtLastPremiumPaymentDate.Checked = !(System.DBNull.Value == dr["LastPremiumDate"]))
-                dtLastPremiumPaymentDate.Value = DateTime.Parse(dr["LastPremiumDate"].ToString());
+            if (DateTime.Parse(dr["LastPremiumDate"].ToString()).ToShortDateString() != DateTime.MinValue.ToShortDateString())
+            {
+                if (dtLastPremiumPaymentDate.Checked = !(System.DBNull.Value == dr["LastPremiumDate"]))
+                    dtLastPremiumPaymentDate.Value = DateTime.Parse(dr["LastPremiumDate"].ToString());
+            }
+            else
+            {
+                dtLastPremiumPaymentDate.Checked = false;
+            }
             chkLICSetReminderForPremium.Checked = bool.Parse(dr["SetReminder"].ToString());
         }
 
