@@ -2,6 +2,8 @@
 using FinancialPlanner.Common.Model;
 using FinancialPlanner.Common.Model.ProcessAction;
 using FinancialPlanner.Common.Model.TaskManagement;
+using FinancialPlannerClient.Clients;
+using FinancialPlannerClient.PlannerInfo;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -102,7 +104,13 @@ namespace FinancialPlannerClient
         {
             openFileDialog1.Multiselect = false;
             openFileDialog1.ShowDialog();
-            textBox1.Text = openFileDialog1.FileName;
+            ImportFromExcel importFromExcel = new ImportFromExcel(openFileDialog1.FileName);
+            
+            ClientPersonalInfo clientPersonalInfo = new ClientPersonalInfo();
+            PersonalInformation personalInfo = importFromExcel.GetClientPersonalInformation();
+            clientPersonalInfo.Update(personalInfo);
+            
+            importFromExcel.CloseFile();
         }
 
         private void simpleButton1_Click(object sender, EventArgs e)

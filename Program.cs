@@ -36,10 +36,11 @@ namespace FinancialPlannerClient
             Application.SetCompatibleTextRenderingDefault(false);
             _webServiceUrl = getWebServiceUrl();
             Application.Run(new Login.frmXtraLogin());
-            //Application.Run(new DXApplication1.NewTask() );
+            //Application.Run(new Testing());
         }
 
         private static void registerInterfaces()
+
         {
             try
             {                

@@ -214,12 +214,12 @@ namespace FinancialPlannerClient.TaskManagementSystem
                     return;
                 }
 
-                if (taskCard.Owner != Program.CurrentUser.Id && taskCard.AssignTo != Program.CurrentUser.Id)
-                {
-                    DevExpress.XtraEditors.XtraMessageBox.Show("You can not assign this task to anyother person.",
-                      "User not match", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
+                //if (taskCard.Owner != Program.CurrentUser.Id && taskCard.AssignTo != Program.CurrentUser.Id)
+                //{
+                //    DevExpress.XtraEditors.XtraMessageBox.Show("You can not assign this task to anyother person.",
+                //      "User not match", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //    return;
+                //}
 
                 int taskId = new TaskCardService().Add(taskCard);
                 if (taskId > 0)

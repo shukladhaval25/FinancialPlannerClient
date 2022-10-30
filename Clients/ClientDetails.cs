@@ -75,6 +75,10 @@ namespace FinancialPlannerClient.Clients
             personalInformation = clientPersonalInfo.Get(_client.ID);
             if (personalInformation != null && personalInformation.Client != null)
             {
+                if (string.IsNullOrEmpty(personalInformation.Client.Name))
+                {
+                    personalInformation.Client.Name = this._client.Name;
+                }
                 this._client = personalInformation.Client;
                 showClientInfo();
             }

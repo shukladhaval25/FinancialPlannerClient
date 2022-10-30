@@ -7,13 +7,11 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FinancialPlannerClient.ProspectCustomer
@@ -322,6 +320,8 @@ namespace FinancialPlannerClient.ProspectCustomer
                 {
                     prosCustomer.ClientId = int.Parse(cmbClient.Tag.ToString());
                     prosCustomer.ClientAssignTo = int.Parse(cmbClientAssignTo.Tag.ToString());
+                    prosCustomer.ResposibilityAssignTo = int.Parse(cmbResponsibilityAssignTo.Tag.ToString());
+                    
                 }
                 if (_prospectClient == null)
                 {
@@ -371,11 +371,13 @@ namespace FinancialPlannerClient.ProspectCustomer
         private void sendEmailToAddRegisterNewClientEmailId(ProspectClient prospectClient)
         {
             string primaryEmail = "services@ascentsolutions.in";
+            string ccEmail = "lohana_prakash@ascentsolutions.in";
             string bcc = "";
 
             MailMessage mailMessage = new MailMessage();
             mailMessage.From = new MailAddress(MailServer.FromEmail);
             mailMessage.To.Add(new MailAddress(primaryEmail));
+            mailMessage.CC.Add(new MailAddress(ccEmail));
             if (!string.IsNullOrEmpty(bcc))
             {
                 mailMessage.Bcc.Add(new MailAddress(bcc));
@@ -409,19 +411,6 @@ namespace FinancialPlannerClient.ProspectCustomer
 
             string reviewSheetPath = string.Empty;
             bool isEmailSend = FinancialPlanner.Common.EmailManager.EmailService.SendEmailWithChilkat(mailMessage, reviewSheetPath);
-            //if (isEmailSend)
-            //{
-            //    // MessageBox.Show("Quarterly Review Template report send to client on '" + primaryEmail + "'.", "Email", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //    gridViewClient.SetRowCellValue(index, "Status", "Email send successfully");
-            //}
-            //else
-            //{
-            //    gridViewClient.SetRowCellValue(index, "Status", "Unable to send email to:" + primaryEmail);
-            //    //MessageBox.Show("Unable to send email to '" + primaryEmail + "'. Check your email configuration setting.", "Email", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
-
-
-
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -534,9 +523,11 @@ namespace FinancialPlannerClient.ProspectCustomer
         private void fillManagedByList()
         {
             cmbClientAssignTo.Properties.Items.Clear();
+            cmbResponsibilityAssignTo.Properties.Items.Clear();
             for (int i = 0; i <= _dtUser.Rows.Count - 1; i++)
             {
                 cmbClientAssignTo.Properties.Items.Add(_dtUser.Rows[i]["FirstName"].ToString());
+                cmbResponsibilityAssignTo.Properties.Items.Add(_dtUser.Rows[i]["FirstName"].ToString());
             }
         }
         private void fillupCustomer()
@@ -579,13 +570,19 @@ namespace FinancialPlannerClient.ProspectCustomer
 
         private void btnConvertToClient_Click(object sender, EventArgs e)
         {
-            showClientDetails(new Client());
+            showClientDetails(new Client() { Name = txtName.Text});
             pnlClient.Visible = true;
         }
         private void showClientDetails(Client client)
         {
             ClientDetails clientDetails = new ClientDetails(client);
             clientDetails.ShowDialog();
+
+        }
+
+        private void cmbResponsibilityAssignTo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cmbResponsibilityAssignTo.Tag = _dtUser.Select("FirstName ='" + cmbResponsibilityAssignTo.Text + "'")[0]["ID"].ToString();
         }
     }
 }

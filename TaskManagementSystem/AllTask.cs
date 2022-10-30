@@ -50,7 +50,7 @@ namespace FinancialPlannerClient.TaskManagementSystem
             gridViewTasks.Columns["Description"].Visible = false;
             gridViewTasks.Columns["ActualCompletedDate"].Visible = false;
             gridViewTasks.Columns["CreatedBy"].Visible = false;
-            gridViewTasks.Columns["CreatedOn"].Visible = false;
+            gridViewTasks.Columns["CreatedOn"].Visible = true;
             gridViewTasks.Columns["UpdatedBy"].Visible = false;
             gridViewTasks.Columns["MachineName"].Visible = false;
             gridViewTasks.Columns["UpdatedByUserName"].Visible = false;

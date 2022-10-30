@@ -77,7 +77,7 @@ namespace FinancialPlannerClient.PlanOptions
                 "Tele.: 0265 2961205" + Environment.NewLine + Environment.NewLine +
                 "http://www.ascentsolutions.in";
             txtEmaiBody.Text = momEmailBodyText;
-            txtBcc.Text = "clientascentsolutions@gmail.com";
+            txtBcc.Text = "clientsascentsolutions@gmail.com";
         }
 
         public FinancialPlannerSendEmailConfiguration(MOMReportView reportView, Client client)

@@ -209,7 +209,8 @@ namespace FinancialPlannerClient.Clients
                 {
                     cmbPlanner.Properties.Items.Add(planner.Name);
                 }
-                cmbPlanner.SelectedIndex = 0;
+                if (_plannerId == 0)
+                    cmbPlanner.SelectedIndex = 0;
             }
 
         }

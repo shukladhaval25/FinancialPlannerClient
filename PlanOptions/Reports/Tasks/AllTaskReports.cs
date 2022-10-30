@@ -45,8 +45,10 @@ namespace FinancialPlannerClient.PlanOptions.Reports.Tasks
                 xrTableCell4.DataBindings.Add("Text", this.DataSource, "TaskStatus");
                 xrTableCell5.DataBindings.Add("Text", this.DataSource, "OwnerName");
                 xrTableCell6.DataBindings.Add("Text", this.DataSource, "AssignToName");
+                lblCreatedDateValue.DataBindings.Add("Text", this.DataSource, "CreatedOn");
                 xrTableCell7.DataBindings.Add("Text", this.DataSource, "DueDate");
                 xrTableCell8.DataBindings.Add("Text", this.DataSource, "ProjectName");
+                xrLabelOtherName.DataBindings.Add("Text", this.DataSource, "OtherName");
             }
         }
 
@@ -89,6 +91,14 @@ namespace FinancialPlannerClient.PlanOptions.Reports.Tasks
             this.lblGroupField.Text = "Task Status:";
             lblGroupFieldValue.DataBindings.Add("Text", this.DataSource, "TaskStatus");
             xrLabelReportTitle.Text = "Status wise report";
+        }
+
+        private void xrTableCell2_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            if (string.IsNullOrEmpty(xrTableCell2.Text) && !string.IsNullOrEmpty(xrLabelOtherName.Text))
+            {
+                xrTableCell2.Text = xrLabelOtherName.Text;
+            }
         }
     }
 }

@@ -728,5 +728,187 @@ namespace FinancialPlannerClient.Clients
         {
 
         }
+
+        private void navBarItemImportFromXls_LinkClicked(object sender, NavBarLinkEventArgs e)
+        {
+            openFileDialog1.Multiselect = false;
+            if (this.planner.ID == 0)
+            {
+                MessageBox.Show("You can not import data from excel. First create plan and then try to import data.", "Unable to Import Data", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                ImportFromExcel importFromExcel = new ImportFromExcel(openFileDialog1.FileName);
+                try
+                {
+                    //Client & Spouse
+                    importClientAndSpouseInformation(importFromExcel);
+
+                    //Contact 
+                    importContacts(importFromExcel);
+
+                    //Employment
+                    importEmployment(importFromExcel);
+
+                    //FamilyMembers
+                    importFamilyMembers(importFromExcel);
+
+                    //Goals
+                    importGoals(importFromExcel);
+
+                    //Loans
+                    importLoans(importFromExcel);
+
+                    //Non-Financial Assets
+                    importNonFinancialAsset(importFromExcel);
+
+                    //Income
+                    importIncomes(importFromExcel);
+
+                    //Expenses
+                    //importExpense(importFromExcel);
+
+                    MessageBox.Show("Client added sucessfully");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Import Fail." + ex.StackTrace);
+                }
+                finally
+                {
+                    importFromExcel.CloseFile();
+                }
+            }
+        }
+
+        private void importExpense(ImportFromExcel importFromExcel)
+        {
+            ExpensesInfo expensesInfo  = new ExpensesInfo();
+            List<Expenses> expenses = importFromExcel.GetExpense();
+            bool isSaved = false;
+
+            foreach (Expenses expense in expenses)
+            {
+                if (expense != null && expense.Id == 0)
+                {
+                    expense.Pid = this.planner.ID;
+                    isSaved = expensesInfo.Add(expense);
+                }
+            }
+        }
+
+        private void importIncomes(ImportFromExcel importFromExcel)
+        {
+            IncomeInfo incomeInfo = new IncomeInfo();
+            List<Income> incomes = importFromExcel.GetIncome();
+            bool isSaved = false;
+
+            foreach (Income income in incomes)
+            {
+                if (income != null && income.Id == 0)
+                {
+                    income.Pid = this.planner.ID;
+                    isSaved = incomeInfo.Add(income);
+                }
+            }
+        }
+
+        private void importNonFinancialAsset(ImportFromExcel importFromExcel)
+        {
+            NonFinancialAssetInfo  nonFinancialAssetInfo  = new NonFinancialAssetInfo();
+            List<NonFinancialAsset> nonFinancialAssets  = importFromExcel.GetNonFinancialAsset(this.planner.ID);
+            bool isSaved = false;
+
+            foreach (NonFinancialAsset nonFinancialAsset in nonFinancialAssets)
+            {
+                if (nonFinancialAsset != null && nonFinancialAsset.Id == 0)
+                {
+                    nonFinancialAsset.Pid = this.planner.ID;
+                    isSaved = nonFinancialAssetInfo.Add(nonFinancialAsset);
+                }
+            }
+        }
+
+        private void importLoans(ImportFromExcel importFromExcel)
+        {
+            LoanInfo  loanInfo = new LoanInfo();
+            List<Loan> loans = importFromExcel.GetLoan();
+            bool isSaved = false;
+
+            foreach (Loan loan in loans)
+            {
+                if (loan != null && loan.Id == 0)
+                {
+                    loan.Pid = this.planner.ID;
+                    isSaved = loanInfo.Add(loan);
+                }
+            }
+        }
+
+        private void importGoals(ImportFromExcel importFromExcel)
+        {
+            GoalsInfo goalsInfo = new GoalsInfo();
+            List<Goals> goals = importFromExcel.GetGoals();
+            bool isSaved = false;
+
+            foreach (Goals goal in goals)
+            {
+                if (goal != null && goal.Id == 0)
+                {
+                    goal.Pid = this.planner.ID;
+                    isSaved = goalsInfo.Add(goal);
+                }
+            }
+        }
+
+        private void importEmployment(ImportFromExcel importFromExcel)
+        {
+            EmploymentInfo employmentInfo = new EmploymentInfo();
+            Employment employment = new Employment();
+            employment = importFromExcel.GetEmployment();
+            employment.ClientEmployment.Cid = this._client.ID;
+            employment.SpouseEmployment.Cid = this.personalInformation.Spouse.ID;
+            if (employmentInfo.Update(employment))
+            {
+
+            }
+        }
+
+        private void importContacts(ImportFromExcel importFromExcel)
+        {
+            ClientContactInfo clientContactInfo = new ClientContactInfo();
+            ClientContact clientContact = importFromExcel.GetClientContact();
+            clientContact.Cid = this._client.ID;
+            clientContactInfo.Update(clientContact);
+        }
+
+        private void importClientAndSpouseInformation(ImportFromExcel importFromExcel)
+        {
+            ClientPersonalInfo clientPersonalInfo = new ClientPersonalInfo();
+            PersonalInformation personalInfo = importFromExcel.GetClientPersonalInformation();
+            personalInfo.Client.ID = this._client.ID;
+            personalInfo.Spouse.ClientId = this._client.ID;
+            personalInfo.Spouse.ID = this.personalInformation.Spouse.ID;
+
+            clientPersonalInfo.Update(personalInfo);
+        }
+
+        private void importFamilyMembers(ImportFromExcel importFromExcel)
+        {
+            //Family Members
+            FamilyMemberInfo familyMemberInfo = new FamilyMemberInfo();
+            List<FamilyMember> familyMembers = importFromExcel.GetFamilyMember();
+            bool isSaved = false;
+
+            foreach (FamilyMember familyMember in familyMembers)
+            {
+                if (familyMember != null && familyMember.Id == 0)
+                {
+                    familyMember.Cid = this._client.ID;
+                    isSaved = familyMemberInfo.Add(familyMember);
+                }
+            }
+        }
     }
 }

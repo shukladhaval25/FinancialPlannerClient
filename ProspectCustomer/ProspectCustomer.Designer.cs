@@ -32,6 +32,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProspectCustomer));
             this.grpProspectCustomer = new System.Windows.Forms.GroupBox();
             this.pnlClient = new System.Windows.Forms.Panel();
+            this.cmbResponsibilityAssignTo = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.label4 = new System.Windows.Forms.Label();
             this.cmbClientAssignTo = new DevExpress.XtraEditors.ComboBoxEdit();
             this.label3 = new System.Windows.Forms.Label();
             this.chkStopSendingEmail = new System.Windows.Forms.CheckBox();
@@ -76,6 +78,7 @@
             this.imageList30x30 = new System.Windows.Forms.ImageList(this.components);
             this.grpProspectCustomer.SuspendLayout();
             this.pnlClient.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbResponsibilityAssignTo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbClientAssignTo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbClient.Properties)).BeginInit();
             this.grpConverstion.SuspendLayout();
@@ -109,7 +112,7 @@
             this.grpProspectCustomer.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.grpProspectCustomer.Location = new System.Drawing.Point(3, 10);
             this.grpProspectCustomer.Name = "grpProspectCustomer";
-            this.grpProspectCustomer.Size = new System.Drawing.Size(707, 223);
+            this.grpProspectCustomer.Size = new System.Drawing.Size(707, 265);
             this.grpProspectCustomer.TabIndex = 0;
             this.grpProspectCustomer.TabStop = false;
             this.grpProspectCustomer.Text = "Propsect Customer Information";
@@ -118,6 +121,8 @@
             // 
             // pnlClient
             // 
+            this.pnlClient.Controls.Add(this.cmbResponsibilityAssignTo);
+            this.pnlClient.Controls.Add(this.label4);
             this.pnlClient.Controls.Add(this.cmbClientAssignTo);
             this.pnlClient.Controls.Add(this.label3);
             this.pnlClient.Controls.Add(this.chkStopSendingEmail);
@@ -130,9 +135,29 @@
             this.pnlClient.Controls.Add(this.chkIntroductionCompleted);
             this.pnlClient.Location = new System.Drawing.Point(368, 26);
             this.pnlClient.Name = "pnlClient";
-            this.pnlClient.Size = new System.Drawing.Size(333, 193);
+            this.pnlClient.Size = new System.Drawing.Size(333, 229);
             this.pnlClient.TabIndex = 30;
             this.pnlClient.Visible = false;
+            // 
+            // cmbResponsibilityAssignTo
+            // 
+            this.cmbResponsibilityAssignTo.Location = new System.Drawing.Point(142, 113);
+            this.cmbResponsibilityAssignTo.Name = "cmbResponsibilityAssignTo";
+            this.cmbResponsibilityAssignTo.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cmbResponsibilityAssignTo.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.cmbResponsibilityAssignTo.Size = new System.Drawing.Size(139, 20);
+            this.cmbResponsibilityAssignTo.TabIndex = 34;
+            this.cmbResponsibilityAssignTo.SelectedIndexChanged += new System.EventHandler(this.cmbResponsibilityAssignTo_SelectedIndexChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(7, 114);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(135, 15);
+            this.label4.TabIndex = 33;
+            this.label4.Text = "Resposibility Assign To:";
             // 
             // cmbClientAssignTo
             // 
@@ -201,7 +226,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 103);
+            this.label1.Location = new System.Drawing.Point(6, 138);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(54, 15);
             this.label1.TabIndex = 23;
@@ -211,7 +236,7 @@
             // dtIntroductionCompletdOn
             // 
             this.dtIntroductionCompletdOn.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtIntroductionCompletdOn.Location = new System.Drawing.Point(171, 163);
+            this.dtIntroductionCompletdOn.Location = new System.Drawing.Point(171, 198);
             this.dtIntroductionCompletdOn.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
             this.dtIntroductionCompletdOn.Name = "dtIntroductionCompletdOn";
             this.dtIntroductionCompletdOn.Size = new System.Drawing.Size(109, 21);
@@ -221,7 +246,7 @@
             // 
             // txtRemark
             // 
-            this.txtRemark.Location = new System.Drawing.Point(7, 122);
+            this.txtRemark.Location = new System.Drawing.Point(7, 157);
             this.txtRemark.Multiline = true;
             this.txtRemark.Name = "txtRemark";
             this.txtRemark.Size = new System.Drawing.Size(273, 35);
@@ -231,7 +256,7 @@
             // chkIntroductionCompleted
             // 
             this.chkIntroductionCompleted.AutoSize = true;
-            this.chkIntroductionCompleted.Location = new System.Drawing.Point(7, 163);
+            this.chkIntroductionCompleted.Location = new System.Drawing.Point(7, 198);
             this.chkIntroductionCompleted.Name = "chkIntroductionCompleted";
             this.chkIntroductionCompleted.Size = new System.Drawing.Size(153, 19);
             this.chkIntroductionCompleted.TabIndex = 25;
@@ -361,7 +386,7 @@
             this.btnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCancel.ImageKey = "icons8-cancel-16.png";
             this.btnCancel.ImageList = this.imgCollection;
-            this.btnCancel.Location = new System.Drawing.Point(650, 291);
+            this.btnCancel.Location = new System.Drawing.Point(650, 329);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 26);
             this.btnCancel.TabIndex = 4;
@@ -388,7 +413,7 @@
             this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSave.ImageKey = "icons8-save-close-16.png";
             this.btnSave.ImageList = this.imgCollection;
-            this.btnSave.Location = new System.Drawing.Point(569, 291);
+            this.btnSave.Location = new System.Drawing.Point(569, 329);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 26);
             this.btnSave.TabIndex = 3;
@@ -405,9 +430,9 @@
             this.grpConverstion.Controls.Add(this.grpActionControls);
             this.grpConverstion.Controls.Add(this.dataGridConversation);
             this.grpConverstion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grpConverstion.Location = new System.Drawing.Point(8, 319);
+            this.grpConverstion.Location = new System.Drawing.Point(8, 356);
             this.grpConverstion.Name = "grpConverstion";
-            this.grpConverstion.Size = new System.Drawing.Size(720, 283);
+            this.grpConverstion.Size = new System.Drawing.Size(720, 249);
             this.grpConverstion.TabIndex = 6;
             this.grpConverstion.TabStop = false;
             this.grpConverstion.Text = "Conversation Details";
@@ -419,7 +444,7 @@
             this.grpActionControls.Controls.Add(this.btnDelete);
             this.grpActionControls.Controls.Add(this.btnAdd);
             this.grpActionControls.Controls.Add(this.btnEditConversation);
-            this.grpActionControls.Location = new System.Drawing.Point(606, 245);
+            this.grpActionControls.Location = new System.Drawing.Point(606, 211);
             this.grpActionControls.Name = "grpActionControls";
             this.grpActionControls.Size = new System.Drawing.Size(111, 38);
             this.grpActionControls.TabIndex = 7;
@@ -469,19 +494,19 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridConversation.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridConversation.Location = new System.Drawing.Point(3, 18);
+            this.dataGridConversation.Location = new System.Drawing.Point(6, 21);
             this.dataGridConversation.MultiSelect = false;
             this.dataGridConversation.Name = "dataGridConversation";
             this.dataGridConversation.ReadOnly = true;
             this.dataGridConversation.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridConversation.Size = new System.Drawing.Size(714, 225);
+            this.dataGridConversation.Size = new System.Drawing.Size(708, 184);
             this.dataGridConversation.TabIndex = 0;
             // 
             // btnAddConversation
             // 
             this.btnAddConversation.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAddConversation.ImageKey = "icons8-chat-16.png";
-            this.btnAddConversation.Location = new System.Drawing.Point(162, 291);
+            this.btnAddConversation.Location = new System.Drawing.Point(162, 329);
             this.btnAddConversation.Name = "btnAddConversation";
             this.btnAddConversation.Size = new System.Drawing.Size(147, 26);
             this.btnAddConversation.TabIndex = 8;
@@ -494,7 +519,7 @@
             // 
             this.btnShowConversation.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnShowConversation.ImageKey = "icons8-double-down-16.png";
-            this.btnShowConversation.Location = new System.Drawing.Point(11, 291);
+            this.btnShowConversation.Location = new System.Drawing.Point(11, 329);
             this.btnShowConversation.Name = "btnShowConversation";
             this.btnShowConversation.Size = new System.Drawing.Size(147, 26);
             this.btnShowConversation.TabIndex = 5;
@@ -507,7 +532,7 @@
             // 
             this.btnHideConversation.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnHideConversation.ImageKey = "icons8-double-up-16.png";
-            this.btnHideConversation.Location = new System.Drawing.Point(11, 291);
+            this.btnHideConversation.Location = new System.Drawing.Point(11, 329);
             this.btnHideConversation.Name = "btnHideConversation";
             this.btnHideConversation.Size = new System.Drawing.Size(147, 26);
             this.btnHideConversation.TabIndex = 7;
@@ -524,7 +549,7 @@
             this.btnConvertToClient.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnConvertToClient.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnConvertToClient.ImageKey = "icons8-chat-16.png";
-            this.btnConvertToClient.Location = new System.Drawing.Point(449, 291);
+            this.btnConvertToClient.Location = new System.Drawing.Point(449, 329);
             this.btnConvertToClient.Name = "btnConvertToClient";
             this.btnConvertToClient.Size = new System.Drawing.Size(114, 26);
             this.btnConvertToClient.TabIndex = 10;
@@ -543,7 +568,7 @@
             this.tbProspCustomer.Location = new System.Drawing.Point(8, 11);
             this.tbProspCustomer.Name = "tbProspCustomer";
             this.tbProspCustomer.SelectedIndex = 0;
-            this.tbProspCustomer.Size = new System.Drawing.Size(724, 274);
+            this.tbProspCustomer.Size = new System.Drawing.Size(724, 312);
             this.tbProspCustomer.TabIndex = 9;
             // 
             // tbpageProspectCustomer
@@ -553,7 +578,7 @@
             this.tbpageProspectCustomer.Location = new System.Drawing.Point(4, 37);
             this.tbpageProspectCustomer.Name = "tbpageProspectCustomer";
             this.tbpageProspectCustomer.Padding = new System.Windows.Forms.Padding(3);
-            this.tbpageProspectCustomer.Size = new System.Drawing.Size(716, 233);
+            this.tbpageProspectCustomer.Size = new System.Drawing.Size(716, 271);
             this.tbpageProspectCustomer.TabIndex = 0;
             this.tbpageProspectCustomer.Text = "Prospect Customer";
             this.tbpageProspectCustomer.ToolTipText = "Prospect Customer";
@@ -565,7 +590,7 @@
             this.tpageEmailSendHistory.Location = new System.Drawing.Point(4, 37);
             this.tpageEmailSendHistory.Name = "tpageEmailSendHistory";
             this.tpageEmailSendHistory.Padding = new System.Windows.Forms.Padding(3);
-            this.tpageEmailSendHistory.Size = new System.Drawing.Size(716, 233);
+            this.tpageEmailSendHistory.Size = new System.Drawing.Size(716, 271);
             this.tpageEmailSendHistory.TabIndex = 1;
             this.tpageEmailSendHistory.Text = "Email Send History";
             this.tpageEmailSendHistory.ToolTipText = "List of emails send to customer.";
@@ -599,6 +624,7 @@
             this.grpProspectCustomer.PerformLayout();
             this.pnlClient.ResumeLayout(false);
             this.pnlClient.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbResponsibilityAssignTo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbClientAssignTo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbClient.Properties)).EndInit();
             this.grpConverstion.ResumeLayout(false);
@@ -656,5 +682,7 @@
         private System.Windows.Forms.Label label3;
         private DevExpress.XtraEditors.ComboBoxEdit cmbClientAssignTo;
         private System.Windows.Forms.Button btnConvertToClient;
+        private DevExpress.XtraEditors.ComboBoxEdit cmbResponsibilityAssignTo;
+        private System.Windows.Forms.Label label4;
     }
 }

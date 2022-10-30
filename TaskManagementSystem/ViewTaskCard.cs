@@ -31,6 +31,11 @@ namespace FinancialPlannerClient.TaskManagementSystem
 
         private readonly string MUTUALFUND = "Mutual Fund";
         const string CUSTOMERSUPPORT = "Customer Support";
+        const string OTHERS = "Others";
+        DataTable dtPoints;
+        IList<LinkSubStep> linkSubSteps;
+        int linkSubStepNo,PrimaryStepNo;
+        bool isMultipleLinkSubStepPointsAvailable = false;
         //public ViewTaskCard()
         //{
         //    InitializeComponent();
@@ -69,6 +74,17 @@ namespace FinancialPlannerClient.TaskManagementSystem
 
         private void ViewTaskCard_Load(object sender, EventArgs e)
         {
+            ProcessesInfo processesInfo = new ProcessesInfo();
+            linkSubSteps = processesInfo.GetLinkSubStepsByRefTaskId(this.taskCard.TaskId);
+            if (linkSubSteps.Count > 0)
+            {
+                if (linkSubSteps[0].Points.Count > 0)
+                {
+                    isMultipleLinkSubStepPointsAvailable = true;
+                }
+                linkSubStepNo = linkSubSteps[0].StepNo;
+            }
+
             fillupProjectCombobox();
             fillupCustomer();
             fillupAssignTo();
@@ -86,7 +102,7 @@ namespace FinancialPlannerClient.TaskManagementSystem
             if (taskHistories != null)
             {
                 DataTable dtHistory = new DataTable();
-                dtHistory  = FinancialPlanner.Common.DataConversion.ListtoDataTable.ToDataTable(taskHistories.ToList());
+                dtHistory = FinancialPlanner.Common.DataConversion.ListtoDataTable.ToDataTable(taskHistories.ToList());
                 gridControlHistory.DataSource = dtHistory;
             }
 
@@ -122,11 +138,18 @@ namespace FinancialPlannerClient.TaskManagementSystem
         {
             lblTaskIDTitle.Text = taskCard.TaskId;
             lblTaskIDTitle.Tag = taskCard.Id;
-            cmbProject.Text = taskCard.ProjectName;           
+            cmbProject.Text = taskCard.ProjectName;
             cmbCardType.Text = taskCard.Type.ToString() == "0" ? "Query" : "Task";
             cmbClient.Tag = taskCard.CustomerId;
             cmbClient.Text = string.IsNullOrEmpty(taskCard.CustomerName) ? getCustomerName((int)(taskCard.CustomerId)) : taskCard.CustomerName;
             cmbTransactionType.Text = taskCard.TransactionType;
+
+            if (cmbProject.Text.Equals("Others") && cmbTransactionType.Text.Equals(""))
+            {
+                vGridTransaction.Rows.Clear();
+                getLinkSubProcessPoint(this.taskCard.TaskId);
+            }
+
             txtTitle.Text = taskCard.Title;
             txtCreatedBy.Text = getUserName(taskCard.CreatedBy);
             txtCreatedOn.Text = taskCard.CreatedOn.ToShortDateString();
@@ -139,6 +162,58 @@ namespace FinancialPlannerClient.TaskManagementSystem
             cmbTaskStatus.Text = taskCard.TaskStatus.ToString();
             txtOtherName.Text = taskCard.OtherName;
             txtDescription.Text = taskCard.Description;
+        }
+
+        private void getLinkSubProcessPoint(string taskId)
+        {
+            //ClientWithProcesInfo clientWithProcesInfo = new ClientWithProcesInfo();
+            //IList<CurrentClientProcess> currentClientProcesses = clientWithProcesInfo.GetClientProcess((int)customerId, null);
+            //if (currentClientProcesses.Count > 0)
+            //{
+            //    CurrentClientProcess clientProcess = currentClientProcesses.FirstOrDefault(i => i.RefTaskId == taskId);
+
+
+
+            if (isMultipleLinkSubStepPointsAvailable)
+            {
+                dtPoints = new DataTable();
+                dtPoints.Columns.Add("Point");
+                dtPoints.Columns.Add("Status");
+
+                List<TaskLinkSubPointsStatus> taskLinkSubPointsStatuses = new List<TaskLinkSubPointsStatus>();
+                if (taskCard.TaskTransactionType != null)
+                {
+                    FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
+                    taskLinkSubPointsStatuses = jsonSerialization.DeserializeFromString<List<TaskLinkSubPointsStatus>>(taskCard.TaskTransactionType.ToString());
+                }
+                for (int index = 0; index < linkSubSteps[0].Points.Count(); index++)
+                {
+                    DataRow dataRow = dtPoints.NewRow();
+                    dataRow["Point"] = linkSubSteps[0].Points[index];
+                    if (taskLinkSubPointsStatuses.Count > 0)
+                    {
+                        TaskLinkSubPointsStatus taskLink = taskLinkSubPointsStatuses.Find(i => i.Point.Equals(dataRow["Point"].ToString()));
+                        if (taskLink != null)
+                        {
+                            dataRow["Status"] = taskLink.Status;
+                        }
+                    }
+                    dtPoints.Rows.Add(dataRow);
+                }
+                grdPoints.DataSource = dtPoints;
+            }
+            grdPoints.Visible = true;
+            grdPoints.Height = vGridTransaction.Height;
+            grdPoints.Width = vGridTransaction.Width;
+            grdPoints.Location = vGridTransaction.Location;
+            grdPoints.BringToFront();
+            vGridTransaction.SendToBack();
+            vGridTransaction.Visible = false;
+            //int stepId = linkSubSteps[0].Id;
+            //return stepId;
+            //}
+            //else
+            //    return false;
         }
 
         private void fillupAssignTo()
@@ -176,6 +251,8 @@ namespace FinancialPlannerClient.TaskManagementSystem
             cmbClient.Properties.Items.Clear();
             cmbClient.Properties.Items.AddRange(clients.Select(i => i.Name).ToList());
         }
+
+        
 
         private void ViewTaskCard_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -258,7 +335,10 @@ namespace FinancialPlannerClient.TaskManagementSystem
             }
             else
             {
-                hideTransactionTypePanel();
+                if (!isMultipleLinkSubStepPointsAvailable)
+                {
+                    hideTransactionTypePanel();
+                }
             }
         }
 
@@ -380,8 +460,8 @@ namespace FinancialPlannerClient.TaskManagementSystem
 
         private bool isTaskBelongToProcessWithByPassPermission(int? customerId, string taskId)
         {
-            ClientWithProcesInfo clientWithProcesInfo  = new ClientWithProcesInfo();
-            IList<CurrentClientProcess> currentClientProcesses = clientWithProcesInfo.GetClientProcess((int)customerId,null);
+            ClientWithProcesInfo clientWithProcesInfo = new ClientWithProcesInfo();
+            IList<CurrentClientProcess> currentClientProcesses = clientWithProcesInfo.GetClientProcess((int)customerId, null);
             if (currentClientProcesses.Count > 0)
             {
                 CurrentClientProcess clientProcess = currentClientProcesses.FirstOrDefault(i => i.RefTaskId == taskId);
@@ -417,18 +497,37 @@ namespace FinancialPlannerClient.TaskManagementSystem
             taskCard.OtherName = txtOtherName.Text;
             if ((cmbProject.Text == MUTUALFUND || cmbProject.Text == CUSTOMERSUPPORT) && !cmbTransactionType.Text.Equals("Others"))
                 taskCard.TaskTransactionType = getTransactionType();
+            if (cmbProject.Text.Equals("Others") && isMultipleLinkSubStepPointsAvailable)
+            {
+                taskCard.TaskTransactionType = getLinkSubTaskPointObject();
+            }
             return taskCard;
         }
         private object getTransactionType()
         {
             return this.transactionType.GetTransactionType();
         }
+
+        private object getLinkSubTaskPointObject()
+        {
+            List<TaskLinkSubPointsStatus> linkSubTaskPointsStatus = new List<TaskLinkSubPointsStatus>();
+            for (int rowCount =0; rowCount < gridViewPoints.RowCount; rowCount++)
+            {
+                TaskLinkSubPointsStatus taskLinkSubPointsStatus = new TaskLinkSubPointsStatus();
+                taskLinkSubPointsStatus.Id = this.taskCard.Id;
+                taskLinkSubPointsStatus.Point = gridViewPoints.GetRowCellValue(rowCount, "Point").ToString();
+                taskLinkSubPointsStatus.Status = gridViewPoints.GetRowCellValue(rowCount, "Status").ToString();
+                linkSubTaskPointsStatus.Add(taskLinkSubPointsStatus);
+            }
+            return linkSubTaskPointsStatus;
+
+        }
         private bool isValidateAllRequireField()
         {
             if (cmbProject.Text == MUTUALFUND)
             {
                 if (!string.IsNullOrEmpty(cmbProject.Text) && !string.IsNullOrEmpty(cmbTransactionType.Text) &&
-                    !string.IsNullOrEmpty(cmbCardType.Text) )
+                    !string.IsNullOrEmpty(cmbCardType.Text))
                 {
                     return true;
                 }
@@ -526,14 +625,13 @@ namespace FinancialPlannerClient.TaskManagementSystem
 
         private void tileViewComment_CustomRowCellEditForEditing(object sender, DevExpress.XtraGrid.Views.Grid.CustomRowCellEditEventArgs e)
         {
-            
+
         }
 
         private void tileViewComment_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
             if (e.Column.Caption == "IsEdited" && e.Value.ToString() == "True")
             {
-                bool visiblImg = true;
             }
         }
 
@@ -541,7 +639,6 @@ namespace FinancialPlannerClient.TaskManagementSystem
         {
             if (e.Column.Caption == "IsEdited" && e.Value.ToString() == "True")
             {
-                bool visiblImg = true;
             }
         }
 

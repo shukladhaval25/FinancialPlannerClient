@@ -467,7 +467,10 @@ namespace FinancialPlannerClient.PlanOptions.Reports
                     double.TryParse(drs[0]["ProjectionCompleted"].ToString(), out projectionCompltion);
                     if (projectionCompltion == 0)
                     {
-                        lblNote.Text = "Note: We are not able to complete this goal due to insufficient resources.";
+                        if (string.IsNullOrEmpty(lblNote.Text))
+                        {
+                            lblNote.Text = "Note: We are not able to complete this goal due to insufficient resources.";
+                        }                        
                     }
                     else if (lblNote.Text.Length == 0)
                     {

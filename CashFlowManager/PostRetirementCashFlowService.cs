@@ -459,10 +459,10 @@ namespace FinancialPlannerClient.CashFlowManager
         private void addIncomeCalculation(int years, DataRow dr, int clientRetYear, int spouseRetYear)
         {
             Logger.LogInfo("addIncomeCalculation for post retirment cash flow service start");
-            long totalIncome = 0;
+            double totalIncome = 0;
             int incomeEndYear = 0;
-            long totalTaxAmt = 0;
-            long totalPostTaxIncome = 0;
+            double totalTaxAmt = 0;
+            double totalPostTaxIncome = 0;
             foreach (Income income in cashFlowCalculation.LstIncomes)
             {
                 incomeEndYear = string.IsNullOrEmpty(income.EndYear) ? DateTime.Now.Year + 100 : int.Parse(income.EndYear);
@@ -481,12 +481,12 @@ namespace FinancialPlannerClient.CashFlowManager
                             totalIncome = totalIncome + amount;
 
                             dr["(" + income.IncomeBy + ") " + income.Source + " - Income Tax"] = income.IncomeTax;
-                            long incomeTaxAmt = ((amount * long.Parse(income.IncomeTax.ToString()) / 100));
+                            double incomeTaxAmt = ((amount * income.IncomeTax) / 100);
                             totalTaxAmt = totalTaxAmt + incomeTaxAmt;
 
-                            long postTaxAmt = (amount - incomeTaxAmt);
+                            double postTaxAmt = (amount - incomeTaxAmt);
                             dr["(" + income.IncomeBy + ") " + income.Source + " - Post Tax"] = postTaxAmt;
-                            totalPostTaxIncome = totalPostTaxIncome + long.Parse(postTaxAmt.ToString());
+                            totalPostTaxIncome = totalPostTaxIncome + postTaxAmt;
                         }
                         catch (Exception ex)
                         {

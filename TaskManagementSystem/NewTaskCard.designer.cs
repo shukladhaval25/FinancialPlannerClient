@@ -78,6 +78,7 @@
             this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
             this.txtOthenThenClient = new DevExpress.XtraEditors.TextEdit();
             this.labelControl14 = new DevExpress.XtraEditors.LabelControl();
+            this.btnSearchClient = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.cmbProject.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbCardType.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbClient.Properties)).BeginInit();
@@ -152,7 +153,7 @@
             this.cmbClient.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cmbClient.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.cmbClient.Size = new System.Drawing.Size(408, 20);
+            this.cmbClient.Size = new System.Drawing.Size(383, 20);
             this.cmbClient.TabIndex = 1;
             this.cmbClient.SelectedIndexChanged += new System.EventHandler(this.cmbClient_SelectedIndexChanged);
             // 
@@ -348,7 +349,7 @@
             // btnAddClient
             // 
             this.btnAddClient.Image = ((System.Drawing.Image)(resources.GetObject("btnAddClient.Image")));
-            this.btnAddClient.Location = new System.Drawing.Point(542, 30);
+            this.btnAddClient.Location = new System.Drawing.Point(514, 31);
             this.btnAddClient.Name = "btnAddClient";
             this.btnAddClient.Size = new System.Drawing.Size(25, 22);
             this.btnAddClient.TabIndex = 2;
@@ -542,11 +543,20 @@
             this.labelControl14.TabIndex = 40;
             this.labelControl14.Text = "Name:";
             // 
+            // btnSearchClient
+            // 
+            this.btnSearchClient.ImageUri.Uri = "Zoom;Size16x16";
+            this.btnSearchClient.Location = new System.Drawing.Point(542, 31);
+            this.btnSearchClient.Name = "btnSearchClient";
+            this.btnSearchClient.Size = new System.Drawing.Size(25, 22);
+            this.btnSearchClient.TabIndex = 41;
+            // 
             // NewTaskCard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(935, 624);
+            this.Controls.Add(this.btnSearchClient);
             this.Controls.Add(this.labelControl14);
             this.Controls.Add(this.txtOthenThenClient);
             this.Controls.Add(this.cmbTaskStatus);
@@ -663,6 +673,7 @@
         private DevExpress.XtraEditors.LabelControl labelControl13;
         private DevExpress.XtraEditors.TextEdit txtOthenThenClient;
         private DevExpress.XtraEditors.LabelControl labelControl14;
+        private DevExpress.XtraEditors.SimpleButton btnSearchClient;
     }
 }
 
