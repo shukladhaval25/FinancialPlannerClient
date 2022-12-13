@@ -48,7 +48,7 @@ namespace FinancialPlannerClient.Clients
                 if (row == 10)
                     clientSpouse.Name = rng.Value;
                 else if (row == 11)
-                    clientSpouse.DOB =(rng.Value == null) ? new DateTime() : ((DateTime)rng.Value);
+                    clientSpouse.DOB = (rng.Value == null) ? new DateTime() : ((DateTime)rng.Value);
                 else if (row == 12)
                     clientSpouse.Gender = (((string)rng.Value).ToUpper().Equals("MALE") || ((string)rng.Value).ToUpper().Equals("M")) ? "Male" : "Female";
                 else if (row == 13)
@@ -127,19 +127,26 @@ namespace FinancialPlannerClient.Clients
                         //string clientName, gender,marritalstatus, panCard, aadharCard, POB, fatherName, montherName;
                         Excel.Range rng = (Excel.Range)excelSheet.Cells[row, 6];
                         if (row == 25)
-                            clientContact.Add1 = rng.Value;
+                            clientContact.Add1 = (rng.Value == null) ? "" : rng.Value;
                         else if (row == 26)
-                            clientContact.Street = rng.Value;
+                            clientContact.Street = (rng.Value == null) ? "" : rng.Value;
                         else if (row == 27)
-                            clientContact.City = rng.Value;
+                            clientContact.City = (rng.Value == null) ? "" : rng.Value;
                         else if (row == 28)
-                            clientContact.State = rng.Value;
+                            clientContact.State = (rng.Value == null) ? "" : rng.Value;
                         else if (row == 29)
                             clientContact.Pin = rng.Value != null ? Convert.ToString(rng.Value) : "";
                         else if (row == 30)
+                        {
                             clientContact.Email = rng.Value;
+                            clientContact.PrimaryEmail = rng.Value;
+                        }
+
                         else if (row == 31)
+                        {
                             clientContact.Mobile = rng.Value != null ? Convert.ToString(rng.Value) : "";
+                            clientContact.PrimaryMobile = clientContact.Mobile;
+                        }
                     }
                     break;
                 }
@@ -270,7 +277,7 @@ namespace FinancialPlannerClient.Clients
                 {
                     Excel.Worksheet excelSheet = eSheet;
                     Excel.Range xlRange = excelSheet.UsedRange;
-                    
+
                     for (int row = 10; row <= 18; row++)
                     {
                         FamilyMember familyMember = new FamilyMember();
@@ -306,7 +313,7 @@ namespace FinancialPlannerClient.Clients
                             }
                             else if (col == 22)
                             {
-                                familyMember.ChildrenClass =  rng.Value != null ? Convert.ToString(rng.Value) : "";
+                                familyMember.ChildrenClass = rng.Value != null ? Convert.ToString(rng.Value) : "";
                             }
                             else if (col == 25)
                             {
@@ -331,7 +338,7 @@ namespace FinancialPlannerClient.Clients
 
         internal List<Goals> GetGoals()
         {
-            
+
             List<Goals> goals = new List<Goals>();
             foreach (Excel.Worksheet eSheet in xlWorkbook.Worksheets)
             {
@@ -384,14 +391,14 @@ namespace FinancialPlannerClient.Clients
                             else if (col == 23)
                             {
                                 if (rng.Value != null)
-                                    goal.Priority =(int)(rng.Value);
+                                    goal.Priority = (int)(rng.Value);
                             }
                             else if (col == 26)
                             {
                                 if (rng.Value != null)
                                     goal.EligibleForInsuranceCoverage = Convert.ToString(rng.Value).Equals("Yes") ? true : false;
                             }
-                            else if (col ==27)
+                            else if (col == 27)
                             {
                                 if (rng.Value != null)
                                     goal.InflationRate = Convert.ToDecimal(rng.Value);
@@ -487,7 +494,7 @@ namespace FinancialPlannerClient.Clients
             return loans;
         }
 
-        internal List<NonFinancialAsset> GetNonFinancialAsset(int plannerId)
+        internal List<NonFinancialAsset> GetNonFinancialAsset(int plannerId,PersonalInformation personalInformation)
         {
             List<NonFinancialAsset> nonFinancialAssets = new List<NonFinancialAsset>();
             foreach (Excel.Worksheet eSheet in xlWorkbook.Worksheets)
@@ -515,32 +522,68 @@ namespace FinancialPlannerClient.Clients
                             }
                             if (col == 2)
                             {
-                                nonFinancialAsset.Name  = rng.Value;
+                                nonFinancialAsset.Name = rng.Value;
                             }
                             else if (col == 6)
                             {
-                                nonFinancialAsset.CurrentValue  = Convert.ToDouble(rng.Value);
+                                nonFinancialAsset.CurrentValue = Convert.ToDouble(rng.Value);
                             }
                             else if (col == 10)
                             {
-                                nonFinancialAsset.PrimaryholderShare = (int)(rng.Value);
+                                if (rng.Value != null)
+                                {
+                                    if (Convert.ToString(rng.Value).ToUpper().Equals(personalInformation.Client.Name.ToUpper()))
+                                    {
+                                        
+                                        Excel.Range primaryShare = (Excel.Range)excelSheet.Cells[row,14];
+                                        nonFinancialAsset.PrimaryholderShare = (int)(primaryShare.Value);
+                                    }
+                                    else 
+                                    {
+                                        nonFinancialAsset.OtherHolderName = rng.Value;
+                                        Excel.Range primaryShare = (Excel.Range)excelSheet.Cells[row,14];
+                                        nonFinancialAsset.OtherHolderShare = (int)(primaryShare.Value);
+                                    }
+                                }
+                               
                             }
-                            else if (col == 14)
+                            else if (col == 16)
                             {
                                 if (rng.Value != null)
-                                    nonFinancialAsset.SecondaryHolderShare = (int)(rng.Value);
+                                {
+                                     if (Convert.ToString(rng.Value).ToUpper().Equals(personalInformation.Spouse.Name.ToUpper()))
+                                    {
+
+                                        Excel.Range secondaryShare = (Excel.Range)excelSheet.Cells[row,20];
+                                        nonFinancialAsset.SecondaryHolderShare = (int)(secondaryShare.Value);
+                                    }
+                                    else
+                                    {
+                                        nonFinancialAsset.OtherHolderName = rng.Value;
+                                        Excel.Range secondaryShare = (Excel.Range)excelSheet.Cells[row,20];
+                                        if (secondaryShare.Value != null)
+                                            nonFinancialAsset.OtherHolderShare = (int) (secondaryShare.Value);
+                                    }
+                                }
+
+
+
+                                   // nonFinancialAsset.SecondaryHolderShare = (int)(rng.Value);
                             }
-                            else if (col == 18)
+                            else if (col == 22)
                             {
                                 if (rng.Value != null)
                                 {
                                     GoalsInfo goalsInfo = new GoalsInfo();
-                                    IList<Goals> goals =  goalsInfo.GetAll(plannerId);
-                                    foreach(Goals goal in goals)
+                                    IList<Goals> goals = goalsInfo.GetAll(plannerId);
+                                    foreach (Goals goal in goals)
                                     {
                                         if (goal.Name == rng.Value)
                                         {
                                             nonFinancialAsset.MappedGoalId = goal.Id;
+                                            Excel.Range shareAllocationToGoal = (Excel.Range)excelSheet.Cells[row,28];
+                                            if (rng.Value != null)
+                                                nonFinancialAsset.AssetMappingShare = Convert.ToDecimal(rng.Value);
                                             break;
                                         }
                                     }
@@ -549,22 +592,28 @@ namespace FinancialPlannerClient.Clients
                                 {
                                     nonFinancialAsset.MappedGoalId = 0;
                                 }
-                                
+
                             }
-                            else if (col == 21)
+                            else if (col == 25)
                             {
                                 nonFinancialAsset.AssetRealisationYear = Convert.ToString(rng.Value);
                             }
-                            else if (col == 22)
+                            else if (col == 26)
                             {
                                 if (rng.Value != null)
                                     nonFinancialAsset.GrowthPercentage = Convert.ToDecimal(rng.Value);
                             }
-                            else if (col == 23)
+                            else if (col == 27)
                             {
                                 if (rng.Value != null)
                                     nonFinancialAsset.EligibleForInsuranceCover = Convert.ToString(rng.Value).Equals("Yes") ? true : false;
                             }
+                            else if (col == 29)
+                            {
+                                if (rng.Value != null)
+                                    nonFinancialAsset.Description = rng.Value;
+                            }
+
                         }
                         nonFinancialAsset.CreatedOn = DateTime.Now;
                         nonFinancialAsset.CreatedBy = Program.CurrentUser.Id;
@@ -595,7 +644,7 @@ namespace FinancialPlannerClient.Clients
                     {
                         Income income = new Income();
                         bool addToList = true;
-                        string incomeByVar="";
+                        string incomeByVar = "";
                         if (row < 17)
                         {
                             Excel.Range rngTemp = (Excel.Range)excelSheet.Cells[10, 5];
@@ -633,7 +682,7 @@ namespace FinancialPlannerClient.Clients
                                 }
                                 else if (col == 15)
                                 {
-                                    income.ExpectGrowthInPercentage  = (rng.Value != null) ? Convert.ToDecimal(rng.Value) : 0;
+                                    income.ExpectGrowthInPercentage = (rng.Value != null) ? Convert.ToDecimal(rng.Value) : 0;
                                     income.ExpectedGrowthType = (rng.Value != null) ? "P" : "A";
                                 }
                                 else if (col == 19)
@@ -679,7 +728,113 @@ namespace FinancialPlannerClient.Clients
 
         internal List<Expenses> GetExpense()
         {
-            throw new NotImplementedException();
+            List<Expenses> expenses = new List<Expenses>();
+            foreach (Excel.Worksheet eSheet in xlWorkbook.Worksheets)
+            {
+                if (eSheet.Name.ToUpper().Equals("8.EXPENSES"))
+                {
+                    Excel.Worksheet excelSheet = eSheet;
+                    Excel.Range xlRange = excelSheet.UsedRange;
+                    int[] excludeRow = new int[] { 13, 14, 24, 25, 34, 35, 40, 41 };
+                    //for (int row = 11; row < 52; row++)
+                    //{
+                    //    Expenses expense = new Expenses();
+                    //    bool addToList = true;
+
+                    //    foreach (int val in excludeRow)
+                    //    {
+                    //        if (val == row)
+                    //        {
+                    //            addToList = false;
+                    //            break;
+                    //        }
+                    //    }
+                    //    if (addToList)
+                    //    {
+                    //        for (int col = 3; col <= 10; col++)
+                    //        {
+                    //            Excel.Range rng = (Excel.Range)excelSheet.Cells[row, col];
+                    //            if (col == 3 && rng.Value == null)
+                    //            {
+                    //                addToList = false;
+                    //                break;
+                    //            }
+                    //            else
+                    //            {
+                    //                addToList = true;
+                    //            }
+
+                    //            if (col == 3)
+                    //            {
+                    //                expense.ItemCategory = rng.Value;
+                    //                expense.Item = rng.Value;
+                    //            }
+                    //            else if (col == 7)
+                    //            {
+                    //                if (rng.Value != null)
+                    //                {
+                    //                    expense.Amount = Convert.ToDouble(rng.Value);
+                    //                    expense.OccuranceType = ExpenseType.Monthly;
+                    //                }
+                    //                else
+                    //                {
+                    //                    addToList = false;
+                    //                    break;
+                    //                }
+                    //            }
+                    //            else if (col == 10)
+                    //            {
+                    //                if (rng.Value != null)
+                    //                {
+                    //                    expense.InflationRate = ((float)rng.Value);
+                    //                }
+                    //            }
+                    //        }
+
+                    //        expense.ItemCategory = "Ongoing Expense";
+                    //        Excel.Range totalExpAmount = (Excel.Range)excelSheet.Cells[53, 7];
+                    //        if (totalExpAmount.Value != null)
+                    //            expense.Amount = Convert.ToDouble(totalExpAmount.Value);
+
+                    //        Excel.Range rngStartYear = (Excel.Range)excelSheet.Cells[53,10];
+                    //        expense.ExpStartYear = Convert.ToString(rngStartYear.Value);
+                    //        Excel.Range rngEndYear = (Excel.Range)excelSheet.Cells[53, 13];
+                    //        expense.ExpEndYear = Convert.ToString(rngEndYear.Value);
+                    //        Excel.Range rngInflationRate = (Excel.Range)excelSheet.Cells[53, 14];
+                    //        expense.InflationRate = (rngInflationRate.Value == null) ? 0 : ((float)rngInflationRate.Value);
+                    //        expense.CreatedOn = DateTime.Now;
+                    //        expense.CreatedBy = Program.CurrentUser.Id;
+                    //        expense.UpdatedOn = DateTime.Now;
+                    //        expense.UpdatedBy = Program.CurrentUser.Id;
+                    //        expense.MachineName = System.Environment.MachineName;
+                    //        expense.UpdatedByUserName = Program.CurrentUser.UserName;
+                    //        if (addToList)
+                    //            expenses.Add(expense);
+                    //    }
+                    //}
+                    //break;
+                    Expenses expense = new Expenses();
+                    expense.ItemCategory = "Ongoing Expense";
+                    Excel.Range totalExpAmount = (Excel.Range)excelSheet.Cells[54, 7];
+                    if (totalExpAmount.Value != null)
+                        expense.Amount = Convert.ToDouble(totalExpAmount.Value);
+
+                    Excel.Range rngStartYear = (Excel.Range)excelSheet.Cells[54, 10];
+                    expense.ExpStartYear = Convert.ToString(rngStartYear.Value);
+                    Excel.Range rngEndYear = (Excel.Range)excelSheet.Cells[54, 13];
+                    expense.ExpEndYear = Convert.ToString(rngEndYear.Value);
+                    Excel.Range rngInflationRate = (Excel.Range)excelSheet.Cells[54, 14];
+                    expense.InflationRate = (rngInflationRate.Value == null) ? 0 : ((float)rngInflationRate.Value);
+                    expense.CreatedOn = DateTime.Now;
+                    expense.CreatedBy = Program.CurrentUser.Id;
+                    expense.UpdatedOn = DateTime.Now;
+                    expense.UpdatedBy = Program.CurrentUser.Id;
+                    expense.MachineName = System.Environment.MachineName;
+                    expense.UpdatedByUserName = Program.CurrentUser.UserName;
+                    expenses.Add(expense);
+                }
+            }
+            return expenses;
         }
     }
 }

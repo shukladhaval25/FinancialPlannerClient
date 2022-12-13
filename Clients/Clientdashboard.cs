@@ -767,7 +767,7 @@ namespace FinancialPlannerClient.Clients
                     importIncomes(importFromExcel);
 
                     //Expenses
-                    //importExpense(importFromExcel);
+                    importExpense(importFromExcel);
 
                     MessageBox.Show("Client added sucessfully");
                 }
@@ -817,7 +817,7 @@ namespace FinancialPlannerClient.Clients
         private void importNonFinancialAsset(ImportFromExcel importFromExcel)
         {
             NonFinancialAssetInfo  nonFinancialAssetInfo  = new NonFinancialAssetInfo();
-            List<NonFinancialAsset> nonFinancialAssets  = importFromExcel.GetNonFinancialAsset(this.planner.ID);
+            List<NonFinancialAsset> nonFinancialAssets  = importFromExcel.GetNonFinancialAsset(this.planner.ID,this.personalInformation);
             bool isSaved = false;
 
             foreach (NonFinancialAsset nonFinancialAsset in nonFinancialAssets)

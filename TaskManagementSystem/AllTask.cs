@@ -1,4 +1,5 @@
-﻿using FinancialPlanner.Common.DataConversion;
+﻿using DevExpress.Utils;
+using FinancialPlanner.Common.DataConversion;
 using FinancialPlanner.Common.Model.TaskManagement;
 using System;
 using System.Collections.Generic;
@@ -25,15 +26,27 @@ namespace FinancialPlannerClient.TaskManagementSystem
             fillupTasks();
         }
 
-        private async void fillupTasks()
+        private  void fillupTasks()
         {
-            IList<TaskCard> tasks = await Task.Run(() => taskCardService.GetTasks(this.taskView));
-            if (tasks != null)
+            WaitDialogForm waitdlg = new WaitDialogForm("Loading Data...");
+            try
             {
-                dtTaskCard = ListtoDataTable.ToDataTable(tasks.ToList());
-                grdTasks.DataSource = dtTaskCard;
-                addAdditionalImageColumnToGrid();
-                setgridViewColumnDisplay();
+                IList<TaskCard> tasks = taskCardService.GetTasks(this.taskView);
+                if (tasks != null)
+                {
+                    dtTaskCard = ListtoDataTable.ToDataTable(tasks.ToList());
+                    grdTasks.DataSource = dtTaskCard;
+                    addAdditionalImageColumnToGrid();
+                    setgridViewColumnDisplay();
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                waitdlg.Close();
             }
         }
 
