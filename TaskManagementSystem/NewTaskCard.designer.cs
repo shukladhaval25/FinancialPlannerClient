@@ -54,7 +54,7 @@
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
             this.dtDueDate = new DevExpress.XtraEditors.DateEdit();
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
-            this.txtDescription = new DevExpress.XtraEditors.MemoEdit();
+            this.txtDescription = new DevExpress.XtraEditors.RichTextEdit();
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             this.txtCompletedPercentage = new DevExpress.XtraEditors.TextEdit();
             this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
@@ -649,7 +649,7 @@
         private DevExpress.XtraEditors.LabelControl labelControl8;
         private DevExpress.XtraEditors.DateEdit dtDueDate;
         private DevExpress.XtraEditors.LabelControl labelControl9;
-        private DevExpress.XtraEditors.MemoEdit txtDescription;
+        private DevExpress.XtraEditors.RichTextEdit txtDescription;
         private DevExpress.XtraEditors.LabelControl labelControl10;
         private DevExpress.XtraEditors.TextEdit txtCompletedPercentage;
         private DevExpress.XtraEditors.LabelControl labelControl11;

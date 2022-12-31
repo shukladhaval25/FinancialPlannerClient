@@ -851,13 +851,18 @@ namespace FinancialPlannerClient.Clients
             GoalsInfo goalsInfo = new GoalsInfo();
             List<Goals> goals = importFromExcel.GetGoals();
             bool isSaved = false;
-
+            if (goals.Count > 0)
+                goals = goals.OrderBy(i => i.Priority).ToList();
             foreach (Goals goal in goals)
             {
                 if (goal != null && goal.Id == 0)
                 {
                     goal.Pid = this.planner.ID;
                     isSaved = goalsInfo.Add(goal);
+                    if (isSaved)
+                    {
+                        //goalsInfo.GetAll();
+                    }
                 }
             }
         }
