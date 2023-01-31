@@ -340,5 +340,16 @@ namespace FinancialPlannerClient.TaskManagementSystem
             NewProject newProject = new NewProject();
             newProject.ShowDialog();
         }
+
+        private void btnSearchClient_Click(object sender, EventArgs e)
+        {
+            ClientSearch clientSearch = new ClientSearch();
+            clientSearch.ShowDialog();
+            if (clientSearch.DialogResult  == DialogResult.OK)
+            {
+                Client client =  clientSearch.GetSelectedClient();
+                cmbClient.Text  = client.Name;
+            }
+        }
     }
 }

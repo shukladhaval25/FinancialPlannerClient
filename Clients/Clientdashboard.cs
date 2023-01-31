@@ -853,15 +853,18 @@ namespace FinancialPlannerClient.Clients
             bool isSaved = false;
             if (goals.Count > 0)
                 goals = goals.OrderBy(i => i.Priority).ToList();
+            int goalpriority = 1;
             foreach (Goals goal in goals)
             {
                 if (goal != null && goal.Id == 0)
                 {
                     goal.Pid = this.planner.ID;
+                    goal.Priority = goalpriority;
                     isSaved = goalsInfo.Add(goal);
                     if (isSaved)
                     {
-                        //goalsInfo.GetAll();
+                        int result =  goalsInfo.GetMaxPriority(this.planner.ID);
+                        goalpriority = result + 1;
                     }
                 }
             }

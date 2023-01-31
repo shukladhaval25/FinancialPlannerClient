@@ -16,6 +16,7 @@ namespace FinancialPlannerClient.MOM
         const string GET_ALL_MOM_API = "MOM/GetAll?clientId={0}";
         const string ADD_MOM_API = "MOM/Add";
         const string UPDATE_MOM_API = "MOM/Update";
+        const string UPDATE_MOM_EMAILSENDDATE_API = "MOM/UpdateEmailSenDate";
         const string DELETE_MOMPOINT_API = "MOMPOints/Delete?Id={0}";
         const string DELETE_MOM_API = "MOM/Delete?MId={0}";
 
@@ -93,6 +94,29 @@ namespace FinancialPlannerClient.MOM
             {
                 FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
                 string apiurl = Program.WebServiceUrl + "/" + UPDATE_MOM_API;
+
+                RestAPIExecutor restApiExecutor = new RestAPIExecutor();
+
+                var restResult = restApiExecutor.Execute<MOMTransaction>(apiurl, momTransaction, "POST");
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
+                LogDebug(currentMethodName.Name, ex);
+                return false;
+            }
+        }
+
+        internal bool UpdateMOMEmailSendDate(MOMTransaction momTransaction)
+        {
+            try
+            {
+                FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
+                string apiurl = Program.WebServiceUrl + "/" + UPDATE_MOM_EMAILSENDDATE_API;
 
                 RestAPIExecutor restApiExecutor = new RestAPIExecutor();
 

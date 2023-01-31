@@ -23,10 +23,12 @@ namespace FinancialPlannerClient.PlanOptions
         MOMReportView mOMReportView;
         FeesInvoiceReportView feesInvoiceReportView;
         internal Client client;
+        int _mId;
         string plannerOption;
         DataTable dtAttachment;
         string filePath;
         readonly string attachmentType;
+
 
         public FinancialPlannerSendEmailConfiguration(FeesInvoiceReportView feesInvoiceReport, Client client)
         {
@@ -80,12 +82,13 @@ namespace FinancialPlannerClient.PlanOptions
             txtBcc.Text = "clientsascentsolutions@gmail.com";
         }
 
-        public FinancialPlannerSendEmailConfiguration(MOMReportView reportView, Client client)
+        public FinancialPlannerSendEmailConfiguration(MOMReportView reportView, Client client, int MId)
         {
             InitializeComponent();
             this.mOMReportView = reportView;
             this.client = client;
             this.attachmentType = "MOM";
+            this._mId = MId;
             txtSubject.Text = "Minutes Of Meeting";
             string momEmailBodyText = "Dear Sir/Mam," + Environment.NewLine + Environment.NewLine + "Greetings from Ascent Financial Solutions." + Environment.NewLine + Environment.NewLine + Environment.NewLine +
                 "Find attach the Minutes Of Meeting held as on" +
@@ -161,7 +164,7 @@ namespace FinancialPlannerClient.PlanOptions
             try
             {
                 string tempPath = Path.GetTempPath();
-                string fileName = string.Format("{0}-{1}-{2}.{3}", this.client.ID, "MOM", DateTime.Now.Year + DateTime.Now.Month + DateTime.Now.Day + DateTime.Now.Hour + DateTime.Now.Minute, "pdf");
+                string fileName = string.Format("{0}-{1}-{2}.{3}", this.client.Name.Replace("."," "), "MOM", DateTime.Now.ToString("dd_MM_yyyy"), "pdf");
 
                 filePath = Path.Combine(tempPath, fileName);
                 await Task.Run(() => this.mOMReportView.ExportToPdf(filePath));
@@ -247,6 +250,11 @@ namespace FinancialPlannerClient.PlanOptions
                 if (isEmailSend)
                 {
                     MessageBox.Show("Email send successfully to '" + txtToEmail.Text + "'.", "Email", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (this.attachmentType.Equals("MOM"))
+                    {
+                        MOMInfo momInfo = new MOMInfo();
+                        momInfo.UpdateMOMEmailSendDate(new MOMTransaction() {MId = this._mId,EmailSendDate = DateTime.Now });
+                    }
                 }
                 else
                 {

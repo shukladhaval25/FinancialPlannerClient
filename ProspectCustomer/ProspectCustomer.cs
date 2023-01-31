@@ -321,6 +321,7 @@ namespace FinancialPlannerClient.ProspectCustomer
                     prosCustomer.ClientId = int.Parse(cmbClient.Tag.ToString());
                     prosCustomer.ClientAssignTo = int.Parse(cmbClientAssignTo.Tag.ToString());
                     prosCustomer.ResposibilityAssignTo = int.Parse(cmbResponsibilityAssignTo.Tag.ToString());
+                    prosCustomer.OperationExecute = int.Parse(cmbOperationExecutive.Tag.ToString());
                     
                 }
                 if (_prospectClient == null)
@@ -524,10 +525,12 @@ namespace FinancialPlannerClient.ProspectCustomer
         {
             cmbClientAssignTo.Properties.Items.Clear();
             cmbResponsibilityAssignTo.Properties.Items.Clear();
+            cmbOperationExecutive.Properties.Items.Clear();
             for (int i = 0; i <= _dtUser.Rows.Count - 1; i++)
             {
                 cmbClientAssignTo.Properties.Items.Add(_dtUser.Rows[i]["FirstName"].ToString());
                 cmbResponsibilityAssignTo.Properties.Items.Add(_dtUser.Rows[i]["FirstName"].ToString());
+                cmbOperationExecutive.Properties.Items.Add(_dtUser.Rows[i]["FirstName"].ToString());
             }
         }
         private void fillupCustomer()
@@ -583,6 +586,11 @@ namespace FinancialPlannerClient.ProspectCustomer
         private void cmbResponsibilityAssignTo_SelectedIndexChanged(object sender, EventArgs e)
         {
             cmbResponsibilityAssignTo.Tag = _dtUser.Select("FirstName ='" + cmbResponsibilityAssignTo.Text + "'")[0]["ID"].ToString();
+        }
+
+        private void cmbOperationExecutive_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cmbOperationExecutive.Tag = _dtUser.Select("FirstName ='" + cmbOperationExecutive.Text + "'")[0]["ID"].ToString();
         }
     }
 }

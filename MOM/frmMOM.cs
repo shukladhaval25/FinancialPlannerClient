@@ -338,7 +338,7 @@ namespace FinancialPlannerClient.MOM
             {
                 momReportView = new MOMReportView(transaction,this.client);
                 DevExpress.XtraReports.UI.ReportPrintTool printTool = new DevExpress.XtraReports.UI.ReportPrintTool(momReportView);
-                FinancialPlannerSendEmailConfiguration financialPlannerSendEmailConfiguration = new FinancialPlannerSendEmailConfiguration(momReportView, this.client);
+                FinancialPlannerSendEmailConfiguration financialPlannerSendEmailConfiguration = new FinancialPlannerSendEmailConfiguration(momReportView, this.client,Mid);
                 financialPlannerSendEmailConfiguration.Show();
             }
            

@@ -24,19 +24,19 @@ namespace FinancialPlannerClient.PlanOptions.Reports.Tasks
 
         private void AllTaskReports_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            IList<TaskCard> taskCards = new TaskCardService().GetAllTasks();
+            IList<TaskCardWithComments> taskCards = new TaskCardService().GetAllTasksWithComment();
             if (taskCards.Count > 0)
             {
                 if (dtFrom != DateTime.MinValue && dtTo != DateTime.MinValue)
                 {
-                    taskCards = ((List<TaskCard>)taskCards).FindAll(i => i.UpdatedOn >= dtFrom && i.UpdatedOn <= dtTo);
+                    taskCards = ((List<TaskCardWithComments>)taskCards).FindAll(i => i.UpdatedOn >= dtFrom && i.UpdatedOn <= dtTo);
                 }
                 if (reportGroupBy == TaskReportGroupBy.PendingTask)
                 {
-                    taskCards = ((List<TaskCard>)taskCards).FindAll(i => i.DueDate < DateTime.Now.Date && i.TaskStatus != TaskStatus.Close && i.TaskStatus != TaskStatus.Complete);
+                    taskCards = ((List<TaskCardWithComments>)taskCards).FindAll(i => i.DueDate < DateTime.Now.Date && i.TaskStatus != TaskStatus.Close && i.TaskStatus != TaskStatus.Complete);
                 }
                 this.DataSource = taskCards;
-                TaskCard taskCard = new TaskCard();
+                //TaskCard taskCard = new TaskCard();
                 SetGroupingBy(reportGroupBy);
                 
                 xrTableCell1.DataBindings.Add("Text", this.DataSource, "Id");
@@ -49,6 +49,10 @@ namespace FinancialPlannerClient.PlanOptions.Reports.Tasks
                 xrTableCell7.DataBindings.Add("Text", this.DataSource, "DueDate");
                 xrTableCell8.DataBindings.Add("Text", this.DataSource, "ProjectName");
                 xrLabelOtherName.DataBindings.Add("Text", this.DataSource, "OtherName");
+
+                xrTableCell19.DataBindings.Add("Text", this.DataSource, "Comment");
+                xrTableCell22.DataBindings.Add("Text", this.DataSource, "CommentedBy");
+                xrTableCell26.DataBindings.Add("Text", this.DataSource, "CommentedOn");
             }
         }
 
@@ -71,6 +75,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports.Tasks
         private void setReportForAssigneeWise()
         {
             this.GroupHeader1.GroupFields[0].FieldName = "AssignToName";
+            this.GroupHeader2.GroupFields[0].FieldName = "Id";
             this.lblGroupField.Text = "Assign To:";
             lblGroupFieldValue.DataBindings.Add("Text", this.DataSource, "AssignToName");
             xrLabelReportTitle.Text = "Assignee wise report";
@@ -79,6 +84,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports.Tasks
         private void setReportForCustomerWise()
         {
             this.GroupHeader1.GroupFields[0].FieldName = "CustomerName";
+            this.GroupHeader2.GroupFields[0].FieldName = "Id";
             this.lblGroupField.Text = "Customer:";
             lblGroupFieldValue.DataBindings.Add("Text", this.DataSource, "CustomerName");
             xrLabelReportTitle.Text = (reportGroupBy == TaskReportGroupBy.ClientWise) ?
@@ -88,6 +94,7 @@ namespace FinancialPlannerClient.PlanOptions.Reports.Tasks
         private void setReportForStatusWise()
         {
             this.GroupHeader1.GroupFields[0].FieldName = "TaskStatus";
+            this.GroupHeader2.GroupFields[0].FieldName = "Id";
             this.lblGroupField.Text = "Task Status:";
             lblGroupFieldValue.DataBindings.Add("Text", this.DataSource, "TaskStatus");
             xrLabelReportTitle.Text = "Status wise report";

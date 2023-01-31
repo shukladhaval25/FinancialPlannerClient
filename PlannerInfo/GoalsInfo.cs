@@ -19,7 +19,36 @@ namespace FinancialPlannerClient.PlannerInfo
         const string ADD_Goals_API = "Goals/Add";
         const string UPDATE_Goals_API = "Goals/Update";
         const string DELETE_Goals_API = "Goals/Delete";
+        const string GET_MAX_PRIORITY = "Goals/GetMaxPriority?plannerId={0}";
         DataTable _dtGoals;
+
+        internal int GetMaxPriority(int plannerId)
+        {
+            int GoalsObj=0;
+            try
+            {
+                FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
+                string apiurl = Program.WebServiceUrl + "/" + string.Format(GET_MAX_PRIORITY, plannerId);
+
+                RestAPIExecutor restApiExecutor = new RestAPIExecutor();
+
+                var restResult = restApiExecutor.Execute<IList<Goals>>(apiurl, null, "GET");
+
+                if (jsonSerialization.IsValidJson(restResult.ToString()))
+                {
+                    GoalsObj = jsonSerialization.DeserializeFromString<int>(restResult.ToString());
+                }
+                return GoalsObj;
+            }
+            catch (Exception ex)
+            {
+                StackTrace st = new StackTrace();
+                StackFrame sf = st.GetFrame(0);
+                MethodBase currentMethodName = sf.GetMethod();
+                LogDebug(currentMethodName.Name, ex);
+                return 0;
+            }
+        }
         internal IList<Goals> GetAll(int plannerId)
         {
             IList<Goals> GoalsObj = new List<Goals>();

@@ -813,6 +813,28 @@ namespace FinancialPlannerClient.Clients
                     //    }
                     //}
                     //break;
+                    Expenses expenseHouseHold = new Expenses();
+                    expenseHouseHold.ItemCategory = "Household Expense";
+                    Excel.Range totalHouseHoldExpAmount = (Excel.Range)excelSheet.Cells[53, 7];
+                    if (totalHouseHoldExpAmount.Value != null)
+                        expenseHouseHold.Amount = Convert.ToDouble(totalHouseHoldExpAmount.Value);
+
+                    Excel.Range rngHouseHoldStartYear = (Excel.Range)excelSheet.Cells[53, 10];
+                    expenseHouseHold.ExpStartYear = Convert.ToString(rngHouseHoldStartYear.Value);
+                    Excel.Range rngHouseHoldEndYear = (Excel.Range)excelSheet.Cells[53, 13];
+                    expenseHouseHold.ExpEndYear = Convert.ToString(rngHouseHoldEndYear.Value);
+                    Excel.Range rngHouseHoldInflationRate = (Excel.Range)excelSheet.Cells[53, 14];
+                    expenseHouseHold.InflationRate = (rngHouseHoldInflationRate.Value == null) ? 0 : ((float)rngHouseHoldInflationRate.Value);
+                    expenseHouseHold.CreatedOn = DateTime.Now;
+                    expenseHouseHold.CreatedBy = Program.CurrentUser.Id;
+                    expenseHouseHold.UpdatedOn = DateTime.Now;
+                    expenseHouseHold.UpdatedBy = Program.CurrentUser.Id;
+                    expenseHouseHold.MachineName = System.Environment.MachineName;
+                    expenseHouseHold.UpdatedByUserName = Program.CurrentUser.UserName;
+                    expenses.Add(expenseHouseHold);
+
+
+
                     Expenses expense = new Expenses();
                     expense.ItemCategory = "Ongoing Expense";
                     Excel.Range totalExpAmount = (Excel.Range)excelSheet.Cells[54, 7];

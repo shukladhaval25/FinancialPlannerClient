@@ -550,6 +550,7 @@
             this.btnSearchClient.Name = "btnSearchClient";
             this.btnSearchClient.Size = new System.Drawing.Size(25, 22);
             this.btnSearchClient.TabIndex = 41;
+            this.btnSearchClient.Click += new System.EventHandler(this.btnSearchClient_Click);
             // 
             // NewTaskCard
             // 

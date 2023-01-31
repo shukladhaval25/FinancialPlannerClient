@@ -585,6 +585,12 @@
     <Compile Include="PlanOptions\Reports\OthersRecommendationPage.Designer.cs">
       <DependentUpon>OthersRecommendationPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="PlanOptions\Reports\Tasks\TaskCommentsReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PlanOptions\Reports\Tasks\TaskCommentsReport.Designer.cs">
+      <DependentUpon>TaskCommentsReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="PlanOptions\Reports\TermInsurancePage.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -1331,6 +1337,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\Reports\OthersRecommendationPage.resx">
       <DependentUpon>OthersRecommendationPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlanOptions\Reports\Tasks\TaskCommentsReport.resx">
+      <DependentUpon>TaskCommentsReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PlanOptions\Reports\TermInsurancePage.resx">
       <DependentUpon>TermInsurancePage.cs</DependentUpon>
