@@ -4,6 +4,7 @@ using FinancialPlanner.Common;
 using FinancialPlanner.Common.Model;
 using FinancialPlanner.Common.Model.TaskManagement;
 using FinancialPlanner.Common.Permission;
+using FinancialPlannerClient.ApprovalProcess;
 using FinancialPlannerClient.ClientProcess;
 using FinancialPlannerClient.Clients;
 using FinancialPlannerClient.Clients.MailService;
@@ -16,6 +17,7 @@ using FinancialPlannerClient.ProspectCustomer;
 using FinancialPlannerClient.TaskManagementSystem;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Diagnostics;
 using System.Net;
 using System.Reflection;
@@ -88,8 +90,11 @@ namespace FinancialPlannerClient.Home
         private NavBarItem navBarItemCustomReminder;
         private NavBarItem navBarItemImportClient;
         private OpenFileDialog openFileDialog1;
+        private Timer timerApproval;
         private const string AUDITLOGCONTROLLER = "Activities/Add";
-
+        private SimpleButton btnApprovalItems;
+        private Timer timerOnOff;
+        DataTable dtApprovalItems = new DataTable();
         public frmHome()
         {
             InitializeComponent();
@@ -177,6 +182,7 @@ namespace FinancialPlannerClient.Home
             this.navBarItemClient = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItemFinancialPlanner = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItemClientProcess = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarItemImportClient = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarMenuGroup = new DevExpress.XtraNavBar.NavBarControl();
             this.navBarGroupControlContainerReports = new DevExpress.XtraNavBar.NavBarGroupControlContainer();
             this.btnPPFMaturity = new DevExpress.XtraEditors.SimpleButton();
@@ -207,8 +213,10 @@ namespace FinancialPlannerClient.Home
             this.ribbonPage4 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.notifyIconTask = new System.Windows.Forms.NotifyIcon(this.components);
             this.timerNotification = new System.Windows.Forms.Timer(this.components);
-            this.navBarItemImportClient = new DevExpress.XtraNavBar.NavBarItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.timerApproval = new System.Windows.Forms.Timer(this.components);
+            this.btnApprovalItems = new DevExpress.XtraEditors.SimpleButton();
+            this.timerOnOff = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -232,6 +240,7 @@ namespace FinancialPlannerClient.Home
             // 
             // panelControl1
             // 
+            this.panelControl1.Controls.Add(this.btnApprovalItems);
             this.panelControl1.Controls.Add(this.lblCurrentUser);
             this.panelControl1.Controls.Add(this.btnLogout);
             this.panelControl1.Controls.Add(this.pictureEdit1);
@@ -604,6 +613,13 @@ namespace FinancialPlannerClient.Home
             this.navBarItemClientProcess.Name = "navBarItemClientProcess";
             this.navBarItemClientProcess.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItemClientProcess_LinkClicked);
             // 
+            // navBarItemImportClient
+            // 
+            this.navBarItemImportClient.Caption = "Import Client";
+            this.navBarItemImportClient.LargeImage = ((System.Drawing.Image)(resources.GetObject("navBarItemImportClient.LargeImage")));
+            this.navBarItemImportClient.Name = "navBarItemImportClient";
+            this.navBarItemImportClient.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItemImportClient_LinkClicked);
+            // 
             // navBarMenuGroup
             // 
             this.navBarMenuGroup.ActiveGroup = this.mavBarMasterGroup;
@@ -871,6 +887,7 @@ namespace FinancialPlannerClient.Home
             // 
             this.navigationMasterPage.Name = "navigationMasterPage";
             this.navigationMasterPage.Size = new System.Drawing.Size(788, 542);
+            this.navigationMasterPage.Paint += new System.Windows.Forms.PaintEventHandler(this.navigationMasterPage_Paint);
             // 
             // panelControl2
             // 
@@ -924,16 +941,34 @@ namespace FinancialPlannerClient.Home
             this.timerNotification.Interval = 60000;
             this.timerNotification.Tick += new System.EventHandler(this.timerNotification_TickAsync);
             // 
-            // navBarItemImportClient
-            // 
-            this.navBarItemImportClient.Caption = "Import Client";
-            this.navBarItemImportClient.LargeImage = ((System.Drawing.Image)(resources.GetObject("navBarItemImportClient.LargeImage")));
-            this.navBarItemImportClient.Name = "navBarItemImportClient";
-            this.navBarItemImportClient.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItemImportClient_LinkClicked);
-            // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // timerApproval
+            // 
+            this.timerApproval.Enabled = true;
+            this.timerApproval.Interval = 60000;
+            this.timerApproval.Tick += new System.EventHandler(this.timerApproval_Tick);
+            // 
+            // btnApprovalItems
+            // 
+            this.btnApprovalItems.Image = ((System.Drawing.Image)(resources.GetObject("btnApprovalItems.Image")));
+            this.btnApprovalItems.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.btnApprovalItems.Location = new System.Drawing.Point(185, 9);
+            this.btnApprovalItems.Name = "btnApprovalItems";
+            this.btnApprovalItems.Size = new System.Drawing.Size(35, 36);
+            this.btnApprovalItems.TabIndex = 5;
+            this.btnApprovalItems.Text = "Approval Items";
+            this.btnApprovalItems.ToolTip = "Approval Items";
+            this.btnApprovalItems.Visible = false;
+            this.btnApprovalItems.Click += new System.EventHandler(this.btnApprovalItems_Click);
+            // 
+            // timerOnOff
+            // 
+            this.timerOnOff.Enabled = true;
+            this.timerOnOff.Interval = 5000;
+            this.timerOnOff.Tick += new System.EventHandler(this.timerOnOff_Tick);
             // 
             // frmHome
             // 
@@ -1192,9 +1227,12 @@ namespace FinancialPlannerClient.Home
         {
             lblCurrentUser.BackColor = ribbonControl1.BackColor;
             lblCurrentUser.Text = Program.CurrentUser.UserName;
+            //getApprovalItems();
             displayMenuBasedOnRolePermission();
             displayReminderForTheDay(DateTime.Now.Date);
             timerNotification.Start();
+            timerApproval.Stop();
+            timerOnOff.Stop();
             setMailServerSettingFromConfiguration();
         }
 
@@ -1310,7 +1348,7 @@ namespace FinancialPlannerClient.Home
         {
             try
             {
-                notifyIconTask.Icon = new System.Drawing.Icon(System.IO.Path.GetFullPath(@"C:\Application Development\Financial Planner Project\Other Documents\Notifications.ico"));
+                //notifyIconTask.Icon = new System.Drawing.Icon(System.IO.Path.GetFullPath(@"C:\Application Development\Financial Planner Project\Other Documents\Notifications.ico"));
 
                 this.notifyIconTask.Text = "Notification";
                 this.notifyIconTask.Visible = true;
@@ -1423,6 +1461,49 @@ namespace FinancialPlannerClient.Home
         private void navBarItemImportClient_LinkClicked(object sender, NavBarLinkEventArgs e)
         {
           
+        }
+
+        private void timerApproval_Tick(object sender, EventArgs e)
+        {
+            getApprovalItems();
+        }
+
+        private void getApprovalItems()
+        {
+            TaskApproval taskApproval = new TaskApproval();
+            dtApprovalItems = taskApproval.GetApprovalItem(Program.CurrentUser.Id);
+            if (dtApprovalItems.Rows.Count > 0)
+            {
+                btnApprovalItems.Visible = true;
+                btnApprovalItems.ToolTip = string.Format("You have {0} item(s) for approval process.", dtApprovalItems.Rows.Count);
+            }
+            else
+            {
+                btnApprovalItems.Visible = false;
+            }
+        }
+
+        private void navigationMasterPage_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void timerOnOff_Tick(object sender, EventArgs e)
+        {
+            if (dtApprovalItems.Rows.Count > 0)
+            {
+                btnApprovalItems.Visible = !btnApprovalItems.Visible;
+            }
+        }
+
+        private void btnApprovalItems_Click(object sender, EventArgs e)
+        {
+            ApprovalView approvalView = new ApprovalView(this.dtApprovalItems);
+            approvalView.TopLevel = false;
+            approvalView.Visible = true;
+            homeNavigationPage1.Name = approvalView.Name;
+            homeNavigationPage1.Controls.Add(approvalView);
+            showNavigationPage(approvalView.Name);
         }
     }
 }

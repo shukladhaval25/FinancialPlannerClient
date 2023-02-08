@@ -104,6 +104,10 @@
             this.layoutViewCard1 = new DevExpress.XtraGrid.Views.Layout.LayoutViewCard();
             this.item1 = new DevExpress.XtraLayout.SimpleSeparator();
             this.tabPageReminder = new DevExpress.XtraBars.Navigation.TabNavigationPage();
+            this.tabPageApproval = new DevExpress.XtraBars.Navigation.TabNavigationPage();
+            this.gridApprovals = new DevExpress.XtraGrid.GridControl();
+            this.gridViewApprovals = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.pnlTaskOtherOptions = new System.Windows.Forms.Panel();
             this.splitContainerTransOperation = new DevExpress.XtraEditors.SplitContainerControl();
             this.vGridTransaction = new DevExpress.XtraVerticalGrid.VGridControl();
@@ -135,6 +139,7 @@
             this.cmbOwner = new DevExpress.XtraEditors.ComboBoxEdit();
             this.txtOtherName = new DevExpress.XtraEditors.TextEdit();
             this.labelControl14 = new DevExpress.XtraEditors.LabelControl();
+            this.lblApproval = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.txtCreatedBy.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCreatedOn.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbAssignTo.Properties)).BeginInit();
@@ -159,6 +164,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutViewField_tileViewColumnNewName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutViewCard1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.item1)).BeginInit();
+            this.tabPageApproval.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridApprovals)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewApprovals)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
             this.pnlTaskOtherOptions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerTransOperation)).BeginInit();
             this.splitContainerTransOperation.SuspendLayout();
@@ -427,15 +436,17 @@
             this.tabPaneComment.Controls.Add(this.tabNavigationCommentsPage);
             this.tabPaneComment.Controls.Add(this.tabNavigationHistoryPage);
             this.tabPaneComment.Controls.Add(this.tabPageReminder);
+            this.tabPaneComment.Controls.Add(this.tabPageApproval);
             this.tabPaneComment.Location = new System.Drawing.Point(0, 0);
             this.tabPaneComment.Name = "tabPaneComment";
             this.tabPaneComment.Pages.AddRange(new DevExpress.XtraBars.Navigation.NavigationPageBase[] {
             this.tabNavigationCommentsPage,
             this.tabNavigationHistoryPage,
-            this.tabPageReminder});
-            this.tabPaneComment.RegularSize = new System.Drawing.Size(616, 332);
+            this.tabPageReminder,
+            this.tabPageApproval});
+            this.tabPaneComment.RegularSize = new System.Drawing.Size(616, 315);
             this.tabPaneComment.SelectedPage = this.tabNavigationCommentsPage;
-            this.tabPaneComment.Size = new System.Drawing.Size(616, 332);
+            this.tabPaneComment.Size = new System.Drawing.Size(616, 315);
             this.tabPaneComment.TabIndex = 30;
             this.tabPaneComment.Tag = "Comments";
             this.tabPaneComment.SelectedPageChanged += new DevExpress.XtraBars.Navigation.SelectedPageChangedEventHandler(this.tabPaneComment_SelectedPageChanged);
@@ -448,7 +459,7 @@
             this.tabNavigationCommentsPage.Controls.Add(this.btnAdd);
             this.tabNavigationCommentsPage.Controls.Add(this.gridComments);
             this.tabNavigationCommentsPage.Name = "tabNavigationCommentsPage";
-            this.tabNavigationCommentsPage.Size = new System.Drawing.Size(598, 287);
+            this.tabNavigationCommentsPage.Size = new System.Drawing.Size(598, 270);
             // 
             // btnEdit
             // 
@@ -494,7 +505,7 @@
             this.gridComments.Location = new System.Drawing.Point(3, 31);
             this.gridComments.MainView = this.tileViewComment;
             this.gridComments.Name = "gridComments";
-            this.gridComments.Size = new System.Drawing.Size(592, 256);
+            this.gridComments.Size = new System.Drawing.Size(592, 239);
             this.gridComments.TabIndex = 0;
             this.gridComments.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.tileViewComment});
@@ -626,7 +637,7 @@
             this.tabNavigationHistoryPage.Caption = "History";
             this.tabNavigationHistoryPage.Controls.Add(this.gridControlHistory);
             this.tabNavigationHistoryPage.Name = "tabNavigationHistoryPage";
-            this.tabNavigationHistoryPage.Size = new System.Drawing.Size(598, 287);
+            this.tabNavigationHistoryPage.Size = new System.Drawing.Size(616, 315);
             // 
             // gridControlHistory
             // 
@@ -634,7 +645,7 @@
             this.gridControlHistory.Location = new System.Drawing.Point(0, 0);
             this.gridControlHistory.MainView = this.layoutViewHistory;
             this.gridControlHistory.Name = "gridControlHistory";
-            this.gridControlHistory.Size = new System.Drawing.Size(598, 287);
+            this.gridControlHistory.Size = new System.Drawing.Size(616, 315);
             this.gridControlHistory.TabIndex = 0;
             this.gridControlHistory.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.layoutViewHistory});
@@ -781,7 +792,40 @@
             // 
             this.tabPageReminder.Caption = "Reminder";
             this.tabPageReminder.Name = "tabPageReminder";
-            this.tabPageReminder.Size = new System.Drawing.Size(616, 332);
+            this.tabPageReminder.Size = new System.Drawing.Size(616, 315);
+            // 
+            // tabPageApproval
+            // 
+            this.tabPageApproval.Caption = "Approvals";
+            this.tabPageApproval.Controls.Add(this.gridApprovals);
+            this.tabPageApproval.Name = "tabPageApproval";
+            this.tabPageApproval.Size = new System.Drawing.Size(598, 270);
+            // 
+            // gridApprovals
+            // 
+            this.gridApprovals.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gridApprovals.Location = new System.Drawing.Point(3, 3);
+            this.gridApprovals.MainView = this.gridViewApprovals;
+            this.gridApprovals.Name = "gridApprovals";
+            this.gridApprovals.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemCheckEdit1});
+            this.gridApprovals.Size = new System.Drawing.Size(592, 240);
+            this.gridApprovals.TabIndex = 1;
+            this.gridApprovals.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridViewApprovals});
+            // 
+            // gridViewApprovals
+            // 
+            this.gridViewApprovals.GridControl = this.gridApprovals;
+            this.gridViewApprovals.Name = "gridViewApprovals";
+            this.gridViewApprovals.OptionsBehavior.Editable = false;
+            this.gridViewApprovals.OptionsView.ShowGroupPanel = false;
+            // 
+            // repositoryItemCheckEdit1
+            // 
+            this.repositoryItemCheckEdit1.AutoHeight = false;
+            this.repositoryItemCheckEdit1.Name = "repositoryItemCheckEdit1";
             // 
             // pnlTaskOtherOptions
             // 
@@ -792,7 +836,7 @@
             this.pnlTaskOtherOptions.Controls.Add(this.tabPaneComment);
             this.pnlTaskOtherOptions.Location = new System.Drawing.Point(559, 253);
             this.pnlTaskOtherOptions.Name = "pnlTaskOtherOptions";
-            this.pnlTaskOtherOptions.Size = new System.Drawing.Size(616, 332);
+            this.pnlTaskOtherOptions.Size = new System.Drawing.Size(616, 315);
             this.pnlTaskOtherOptions.TabIndex = 31;
             // 
             // splitContainerTransOperation
@@ -812,7 +856,7 @@
             this.splitContainerTransOperation.Panel2.Controls.Add(this.labelControl9);
             this.splitContainerTransOperation.Panel2.Controls.Add(this.txtDescription);
             this.splitContainerTransOperation.Panel2.Text = "Description";
-            this.splitContainerTransOperation.Size = new System.Drawing.Size(501, 385);
+            this.splitContainerTransOperation.Size = new System.Drawing.Size(501, 368);
             this.splitContainerTransOperation.SplitterPosition = 86;
             this.splitContainerTransOperation.TabIndex = 32;
             this.splitContainerTransOperation.Text = "splitContainerControl1";
@@ -828,7 +872,7 @@
             this.repositoryItemComboBox1,
             this.repositoryItemTextEdit1,
             this.repositoryItemDateEdit1});
-            this.vGridTransaction.Size = new System.Drawing.Size(495, 261);
+            this.vGridTransaction.Size = new System.Drawing.Size(495, 244);
             this.vGridTransaction.TabIndex = 1;
             // 
             // repositoryItemComboBox1
@@ -874,7 +918,7 @@
             this.grdPoints.Name = "grdPoints";
             this.grdPoints.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemComboBox2});
-            this.grdPoints.Size = new System.Drawing.Size(255, 173);
+            this.grdPoints.Size = new System.Drawing.Size(255, 156);
             this.grdPoints.TabIndex = 34;
             this.grdPoints.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewPoints});
@@ -1122,13 +1166,27 @@
             this.labelControl14.TabIndex = 50;
             this.labelControl14.Text = "Name:";
             // 
+            // lblApproval
+            // 
+            this.lblApproval.Appearance.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.lblApproval.Appearance.ForeColor = System.Drawing.Color.IndianRed;
+            this.lblApproval.Appearance.Options.UseFont = true;
+            this.lblApproval.Appearance.Options.UseForeColor = true;
+            this.lblApproval.Location = new System.Drawing.Point(215, 15);
+            this.lblApproval.Name = "lblApproval";
+            this.lblApproval.Size = new System.Drawing.Size(51, 13);
+            this.lblApproval.TabIndex = 51;
+            this.lblApproval.Text = "Approval";
+            this.lblApproval.Visible = false;
+            // 
             // ViewTaskCard
             // 
             this.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.Appearance.Options.UseBackColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1197, 598);
+            this.ClientSize = new System.Drawing.Size(1197, 581);
+            this.Controls.Add(this.lblApproval);
             this.Controls.Add(this.txtOtherName);
             this.Controls.Add(this.labelControl14);
             this.Controls.Add(this.cmbOwner);
@@ -1198,6 +1256,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutViewField_tileViewColumnNewName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutViewCard1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.item1)).EndInit();
+            this.tabPageApproval.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridApprovals)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewApprovals)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
             this.pnlTaskOtherOptions.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerTransOperation)).EndInit();
             this.splitContainerTransOperation.ResumeLayout(false);
@@ -1308,6 +1370,11 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnPoints;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnStatus;
         private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox2;
+        private DevExpress.XtraBars.Navigation.TabNavigationPage tabPageApproval;
+        private DevExpress.XtraGrid.GridControl gridApprovals;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridViewApprovals;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit1;
+        private DevExpress.XtraEditors.LabelControl lblApproval;
     }
 }
 

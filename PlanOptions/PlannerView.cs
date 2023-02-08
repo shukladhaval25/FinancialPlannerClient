@@ -1,6 +1,8 @@
 ﻿using FinancialPlanner.Common;
 using FinancialPlanner.Common.DataConversion;
 using FinancialPlanner.Common.Model;
+using FinancialPlanner.Common.Model.Approval;
+using FinancialPlannerClient.ApprovalProcess;
 using FinancialPlannerClient.Clients;
 using FinancialPlannerClient.Login;
 using System;
@@ -51,9 +53,40 @@ namespace FinancialPlannerClient.PlanOptions
             {
                 loadUserInformation();
                 loadPlanData();
-                displayPlanData();   
+                displayPlanData();
+                //fillupApprovalInfo();
             }
         }
+
+
+        private void fillupApprovalInfo()
+        {
+            IList<ApprovalDTO> approvals = new PlanLockApproval().GetApprovalsItem(int.Parse(txtPlanName.Tag.ToString()));
+            if (approvals.Count > 0)
+            {
+                ApprovalDTO orderbyApprovals = approvals.OrderBy(i => i.Id).Last();
+                btnSavePlanoption.Enabled = (orderbyApprovals.Status == ApprovalStatus.WaitingForApproval) ? false : true;
+                if (orderbyApprovals.Status == ApprovalStatus.WaitingForApproval)
+                {
+                    this.Text = this.Text + " " + "This task is pending for approval. You can not change any data until authorised person take appropriate action.";
+                }
+                //gridApprovals.DataSource = approvals;
+                //gridViewApprovals.Columns["Id"].Visible = false;
+                //gridViewApprovals.Columns["LinkedId"].Visible = false;
+                //gridViewApprovals.Columns["AuthorisedUsersToApprove"].Visible = false;
+                //gridViewApprovals.Columns["ActionTakenBy"].Visible = false;
+                //gridViewApprovals.Columns["ApprovalType"].Visible = false;
+
+                //gridViewApprovals.Columns["RequestRaisedBy"].Visible = false;
+                //gridViewApprovals.Columns["RequestedBy"].VisibleIndex = 0;
+                //gridViewApprovals.Columns["RequestedOn"].VisibleIndex = 1;
+                //gridViewApprovals.Columns["Status"].VisibleIndex = 2;
+                //gridViewApprovals.Columns["ActionBy"].VisibleIndex = 3;
+                //gridViewApprovals.Columns["ActionTakenOn"].VisibleIndex = 4;
+                //gridViewApprovals.Columns["Description"].VisibleIndex = 5;
+            }
+        }
+
 
         private void loadPlanData()
         {

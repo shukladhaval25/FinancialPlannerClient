@@ -1,7 +1,9 @@
 ﻿using FinancialPlanner.Common;
 using FinancialPlanner.Common.Model;
+using FinancialPlanner.Common.Model.Approval;
 using FinancialPlanner.Common.Model.TaskManagement;
 using FinancialPlanner.Common.Planning;
+using FinancialPlannerClient.ApprovalProcess;
 using FinancialPlannerClient.ClientProcess;
 using FinancialPlannerClient.Clients;
 using FinancialPlannerClient.Login;
@@ -94,6 +96,36 @@ namespace FinancialPlannerClient.TaskManagementSystem
             //dummyTaskComments();
             fillupComments();
             fillupHistory();
+            fillupApprovalInfo();
+        }
+
+        private void fillupApprovalInfo()
+        {
+            IList<ApprovalDTO> approvals = new TaskApproval().GetApprovalsItem(this.taskCard.Id);
+            if (approvals.Count > 0)
+            {
+                ApprovalDTO orderbyApprovals = approvals.OrderBy(i => i.Id).Last();
+                btnSaveTask.Enabled = (orderbyApprovals.Status == ApprovalStatus.WaitingForApproval) ? false : true;
+                if (orderbyApprovals.Status == ApprovalStatus.WaitingForApproval)
+                {
+                    lblApproval.Text = "This task is pending for approval. You can not change any data until authorised person take appropriate action.";
+                    lblApproval.Visible = true;
+                }
+                gridApprovals.DataSource = approvals;
+                gridViewApprovals.Columns["Id"].Visible = false;
+                gridViewApprovals.Columns["LinkedId"].Visible = false;
+                gridViewApprovals.Columns["AuthorisedUsersToApprove"].Visible = false;
+                gridViewApprovals.Columns["ActionTakenBy"].Visible = false;
+                gridViewApprovals.Columns["ApprovalType"].Visible = false;
+
+                gridViewApprovals.Columns["RequestRaisedBy"].Visible = false;
+                gridViewApprovals.Columns["RequestedBy"].VisibleIndex = 0;
+                gridViewApprovals.Columns["RequestedOn"].VisibleIndex =1;
+                gridViewApprovals.Columns["Status"].VisibleIndex = 2;
+                gridViewApprovals.Columns["ActionBy"].VisibleIndex = 3;
+                gridViewApprovals.Columns["ActionTakenOn"].VisibleIndex = 4;
+                gridViewApprovals.Columns["Description"].VisibleIndex = 5;
+            }            
         }
 
         private void fillupHistory()
@@ -444,6 +476,11 @@ namespace FinancialPlannerClient.TaskManagementSystem
         {
             if (taskCard.TaskStatus == TaskStatus.Blocked && isTaskBelongToProcessWithByPassPermission(taskCard.CustomerId, taskCard.TaskId))
             {
+
+                //TaskApproval taskApproval = new TaskApproval();
+                //ApprovalDTO approvalDTO = generateApprovalDTO(taskCard);
+                //taskApproval.Add(approvalDTO);
+
                 //Open Login Page
                 frmXtraLogin login = new frmXtraLogin(true);
                 login.ShowDialog();
@@ -456,6 +493,19 @@ namespace FinancialPlannerClient.TaskManagementSystem
                     throw new Exception("Invalid username or password.");
                 }
             }
+        }
+
+        private ApprovalDTO generateApprovalDTO(TaskCard taskCard)
+        {
+            ApprovalDTO approval = new ApprovalDTO();
+            approval.Id = 2;
+            approval.LinkedId = taskCard.Id;
+            approval.RequestRaisedBy = Program.CurrentUser.Id;
+            approval.RequestedOn = DateTime.Now.Date;
+            approval.AuthorisedUsersToApprove = "2";
+            approval.Status = ApprovalStatus.WaitingForApproval;
+            approval.ApprovalType = ApprovalType.TaskByPass;
+            return approval;
         }
 
         private bool isTaskBelongToProcessWithByPassPermission(int? customerId, string taskId)

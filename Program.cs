@@ -1,6 +1,7 @@
 ﻿using FinancialPlanner.Common;
 using FinancialPlanner.Common.Model;
 using FinancialPlanner.Common.Permission;
+using FinancialPlannerClient.ApprovalProcess;
 using FinancialPlannerClient.Controls;
 using FinancialPlannerClient.Master;
 using FinancialPlannerClient.TaskManagementSystem;
@@ -77,6 +78,7 @@ namespace FinancialPlannerClient
                 container.RegisterType<ICustomerReminderInfo, ClientDOBReminder>("ClientDOB");
                 container.RegisterType<ICustomerReminderInfo, PPFReminder>("PPF");
 
+                container.RegisterType<IApproval, TaskApproval>("TaskApproval");
 
             }
             catch(Exception ex)

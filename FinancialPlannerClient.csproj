@@ -149,6 +149,21 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApprovalProcess\ApprovalView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ApprovalProcess\ApprovalView.Designer.cs">
+      <DependentUpon>ApprovalView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ApprovalProcess\AuthrityToApproval.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ApprovalProcess\AuthrityToApproval.Designer.cs">
+      <DependentUpon>AuthrityToApproval.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ApprovalProcess\IApproval.cs" />
+    <Compile Include="ApprovalProcess\PlanLockApproval.cs" />
+    <Compile Include="ApprovalProcess\TaskApproval.cs" />
     <Compile Include="AuditTrail\AuditTrail.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1136,6 +1151,12 @@
       <DependentUpon>Testing.cs</DependentUpon>
     </Compile>
     <Compile Include="Users\UserInfo.cs" />
+    <EmbeddedResource Include="ApprovalProcess\ApprovalView.resx">
+      <DependentUpon>ApprovalView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ApprovalProcess\AuthrityToApproval.resx">
+      <DependentUpon>AuthrityToApproval.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AuditTrail\AuditTrail.resx">
       <DependentUpon>AuditTrail.cs</DependentUpon>
     </EmbeddedResource>

@@ -164,7 +164,7 @@ namespace FinancialPlannerClient.PlanOptions
             try
             {
                 string tempPath = Path.GetTempPath();
-                string fileName = string.Format("{0}-{1}-{2}.{3}", this.client.Name.Replace("."," "), "MOM", DateTime.Now.ToString("dd_MM_yyyy"), "pdf");
+                string fileName = string.Format("{0}-{1}-{2}.{3}", this.client.Name.Trim().Replace("."," "), "MOM", DateTime.Now.ToString("dd_MM_yyyy"), "pdf");
 
                 filePath = Path.Combine(tempPath, fileName);
                 await Task.Run(() => this.mOMReportView.ExportToPdf(filePath));
