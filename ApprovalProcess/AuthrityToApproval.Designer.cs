@@ -29,26 +29,26 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.Utils.SuperToolTip superToolTip6 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem6 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AuthrityToApproval));
-            DevExpress.Utils.ToolTipItem toolTipItem6 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
             this.grpApproval = new DevExpress.XtraEditors.GroupControl();
+            this.cmbReassignTo = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.lblReassignTo = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.btnOK = new DevExpress.XtraEditors.SimpleButton();
             this.txtPassword = new DevExpress.XtraEditors.TextEdit();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             this.txtDescription = new DevExpress.XtraEditors.MemoEdit();
-            this.lblReassignTo = new DevExpress.XtraEditors.LabelControl();
-            this.cmbReassignTo = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.grpApproval)).BeginInit();
             this.grpApproval.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPassword.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDescription.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbReassignTo.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPassword.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDescription.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
             this.SuspendLayout();
             // 
             // grpApproval
@@ -67,21 +67,52 @@
             this.grpApproval.TabIndex = 15;
             this.grpApproval.Text = "Approval Inforemation";
             // 
+            // cmbReassignTo
+            // 
+            this.cmbReassignTo.Location = new System.Drawing.Point(128, 22);
+            this.cmbReassignTo.Name = "cmbReassignTo";
+            this.cmbReassignTo.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cmbReassignTo.Properties.Items.AddRange(new object[] {
+            "All",
+            "Task Bypass",
+            "Process Lock"});
+            this.cmbReassignTo.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.cmbReassignTo.Size = new System.Drawing.Size(211, 20);
+            this.cmbReassignTo.TabIndex = 0;
+            this.cmbReassignTo.SelectedIndexChanged += new System.EventHandler(this.cmbReassignTo_SelectedIndexChanged);
+            // 
+            // lblReassignTo
+            // 
+            this.lblReassignTo.Location = new System.Drawing.Point(18, 25);
+            this.lblReassignTo.Name = "lblReassignTo";
+            this.lblReassignTo.Size = new System.Drawing.Size(62, 13);
+            this.lblReassignTo.TabIndex = 46;
+            this.lblReassignTo.Text = "Reassign To:";
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Location = new System.Drawing.Point(18, 76);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(57, 13);
+            this.labelControl1.TabIndex = 44;
+            this.labelControl1.Text = "Description:";
+            // 
             // btnCancel
             // 
             this.btnCancel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnCancel.Location = new System.Drawing.Point(190, 170);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(62, 23);
-            toolTipTitleItem6.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
-            toolTipTitleItem6.Appearance.Options.UseImage = true;
-            toolTipTitleItem6.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem6.Image")));
-            toolTipTitleItem6.Text = "Cancel";
-            toolTipItem6.LeftIndent = 6;
-            toolTipItem6.Text = "To close Scheme information without saving any information click here.";
-            superToolTip6.Items.Add(toolTipTitleItem6);
-            superToolTip6.Items.Add(toolTipItem6);
-            this.btnCancel.SuperTip = superToolTip6;
+            toolTipTitleItem1.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            toolTipTitleItem1.Appearance.Options.UseImage = true;
+            toolTipTitleItem1.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem1.Image")));
+            toolTipTitleItem1.Text = "Cancel";
+            toolTipItem1.LeftIndent = 6;
+            toolTipItem1.Text = "To close Scheme information without saving any information click here.";
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            superToolTip1.Items.Add(toolTipItem1);
+            this.btnCancel.SuperTip = superToolTip1;
             this.btnCancel.TabIndex = 43;
             this.btnCancel.Text = "&Cancel";
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -112,14 +143,6 @@
             this.labelControl3.TabIndex = 1;
             this.labelControl3.Text = "Enter your password:";
             // 
-            // labelControl1
-            // 
-            this.labelControl1.Location = new System.Drawing.Point(18, 76);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(57, 13);
-            this.labelControl1.TabIndex = 44;
-            this.labelControl1.Text = "Description:";
-            // 
             // txtDescription
             // 
             this.txtDescription.Location = new System.Drawing.Point(18, 95);
@@ -128,29 +151,6 @@
             this.txtDescription.Properties.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
             this.txtDescription.Size = new System.Drawing.Size(321, 62);
             this.txtDescription.TabIndex = 2;
-            // 
-            // lblReassignTo
-            // 
-            this.lblReassignTo.Location = new System.Drawing.Point(18, 25);
-            this.lblReassignTo.Name = "lblReassignTo";
-            this.lblReassignTo.Size = new System.Drawing.Size(62, 13);
-            this.lblReassignTo.TabIndex = 46;
-            this.lblReassignTo.Text = "Reassign To:";
-            // 
-            // cmbReassignTo
-            // 
-            this.cmbReassignTo.Location = new System.Drawing.Point(128, 22);
-            this.cmbReassignTo.Name = "cmbReassignTo";
-            this.cmbReassignTo.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cmbReassignTo.Properties.Items.AddRange(new object[] {
-            "All",
-            "Task Bypass",
-            "Process Lock"});
-            this.cmbReassignTo.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.cmbReassignTo.Size = new System.Drawing.Size(211, 20);
-            this.cmbReassignTo.TabIndex = 0;
-            this.cmbReassignTo.SelectedIndexChanged += new System.EventHandler(this.cmbReassignTo_SelectedIndexChanged);
             // 
             // AuthrityToApproval
             // 
@@ -167,10 +167,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.grpApproval)).EndInit();
             this.grpApproval.ResumeLayout(false);
             this.grpApproval.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPassword.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDescription.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbReassignTo.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPassword.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDescription.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).EndInit();
             this.ResumeLayout(false);
 
         }

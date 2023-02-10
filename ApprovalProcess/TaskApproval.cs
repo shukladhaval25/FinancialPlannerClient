@@ -1,6 +1,8 @@
 ﻿using FinancialPlanner.Common;
 using FinancialPlanner.Common.DataConversion;
 using FinancialPlanner.Common.Model.Approval;
+using FinancialPlanner.Common.Model.TaskManagement;
+using FinancialPlannerClient.TaskManagementSystem;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -52,7 +54,7 @@ namespace FinancialPlannerClient.ApprovalProcess
             debuggerInfo.ExceptionInfo = ex;
             Logger.LogDebug(debuggerInfo);
         }
-        public bool Approve(ApprovalDTO obj)
+        public bool Approve(ApprovalDTO approvalDTO)
         {
             try
             {
@@ -61,12 +63,24 @@ namespace FinancialPlannerClient.ApprovalProcess
 
                 RestAPIExecutor restApiExecutor = new RestAPIExecutor();
 
-                var restResult = restApiExecutor.Execute<ApprovalDTO>(apiurl, obj, "POST");
+                var restResult = restApiExecutor.Execute<ApprovalDTO>(apiurl, approvalDTO, "POST");
 
-                if (jsonSerialization.IsValidJson(restResult.ToString()))
+                if (restResult.ToString() == "True")
                 {
-                    bool result = jsonSerialization.DeserializeFromString<bool>(restResult.ToString());
-                    return result;
+                    TaskCardService taskCardService = new TaskCardService();
+                    TaskCard taskCard = taskCardService.GetTaskByTaskId(approvalDTO.ItemId.ToString()).FirstOrDefault();
+                    if (taskCard.Id > 0)
+                    {
+                        taskCard.ProcessApprovedBy = Program.CurrentUser.Id;
+                        taskCard.UpdatedBy = Program.CurrentUser.Id;
+                        taskCard.UpdatedOn = DateTime.Now.Date;
+                        int taskId = new TaskCardService().Update(taskCard);
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
                 }
                 return false;
             }

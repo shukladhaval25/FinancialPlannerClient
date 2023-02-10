@@ -68,7 +68,7 @@ namespace FinancialPlannerClient.PlanOptions
                 btnSavePlanoption.Enabled = (orderbyApprovals.Status == ApprovalStatus.WaitingForApproval) ? false : true;
                 if (orderbyApprovals.Status == ApprovalStatus.WaitingForApproval)
                 {
-                    this.Text = this.Text + " " + "This task is pending for approval. You can not change any data until authorised person take appropriate action.";
+                    MessageBox.Show("This task is pending for approval. You can not change any data until authorised person take appropriate action.","Waiting for approval",MessageBoxButtons.OK,MessageBoxIcon.Information);
                 }
                 //gridApprovals.DataSource = approvals;
                 //gridViewApprovals.Columns["Id"].Visible = false;
@@ -85,8 +85,11 @@ namespace FinancialPlannerClient.PlanOptions
                 //gridViewApprovals.Columns["ActionTakenOn"].VisibleIndex = 4;
                 //gridViewApprovals.Columns["Description"].VisibleIndex = 5;
             }
+            else
+            {
+                btnSavePlanoption.Enabled = true;
+            }
         }
-
 
         private void loadPlanData()
         {
@@ -170,7 +173,7 @@ namespace FinancialPlannerClient.PlanOptions
                 showAuthenticationMsg = false;
                 chkLockPlan.Checked = bool.Parse(dr["IsPlanLocked"].ToString());
                 showAuthenticationMsg = true;
-
+                fillupApprovalInfo();
             }
             pnlPlannerInfo.Enabled = true;
             pnlManager.Enabled = true;
@@ -216,6 +219,16 @@ namespace FinancialPlannerClient.PlanOptions
                     DevExpress.XtraEditors.XtraMessageBox.Show("Please select plan manage by value.", "Invalid Value", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
+
+                bool originalValForLockPlan =(_dtPlanner.Select("Name = '" + lstPlanner.Text.ToString() + "'").First().Field<string>("IsPlanLocked") == "False") ? false : true;
+                if (originalValForLockPlan != chkLockPlan.Checked)
+                {
+                    MessageBox.Show("You are trying to change plan lock status. It's require approval. Once it's approve by authorised person it's become effective.");
+                    PlanLockApproval planLockApproval = new PlanLockApproval();
+                    ApprovalDTO approvalDTO = generateApprovalDTO();
+                    planLockApproval.Add(approvalDTO);
+                }
+
                 FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
                 string apiurl = string.Empty;
                 int accountManagedById;
@@ -238,7 +251,7 @@ namespace FinancialPlannerClient.PlanOptions
                     EquityRatio = string.IsNullOrEmpty(txtEquityRatio.Text) ? 0 : float.Parse(txtEquityRatio.Text),
                     DebtRatio = string.IsNullOrEmpty(txtDebtRatio.Text) ? 0 : float.Parse(txtDebtRatio.Text),
                     FaceType = (rdoFaceType.SelectedIndex == 0) ? "A" : "D",
-                    IsPlanLocked = chkLockPlan.Checked
+                    IsPlanLocked = originalValForLockPlan
                 };
                 if (int.TryParse(cmbManagedBy.Tag.ToString(), out accountManagedById))
                     planner.AccountManagedBy = accountManagedById;
@@ -283,10 +296,22 @@ namespace FinancialPlannerClient.PlanOptions
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 MessageBox.Show("Unable to save record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private ApprovalDTO generateApprovalDTO()
+        {
+            ApprovalDTO approval = new ApprovalDTO();
+            approval.LinkedId = int.Parse(txtPlanName.Tag.ToString());
+            approval.RequestRaisedBy = Program.CurrentUser.Id;
+            approval.RequestedOn = DateTime.Now.Date;
+            approval.AuthorisedUsersToApprove = "2";
+            approval.Status = ApprovalStatus.WaitingForApproval;
+            approval.ApprovalType = ApprovalType.PlanLock;
+            return approval;
         }
 
         private void btnClosePlanoptions_Click(object sender, EventArgs e)

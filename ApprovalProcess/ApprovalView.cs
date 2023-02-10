@@ -118,8 +118,7 @@ namespace FinancialPlannerClient.ApprovalProcess
 
                 foreach (int rowIndex in gridViewApprovals.GetSelectedRows())
                 {
-                    int itemId;
-                    int id;
+                    int itemId,id;
                     int.TryParse(gridViewApprovals.GetRowCellValue(rowIndex, "Id").ToString(), out id);
                     int.TryParse(gridViewApprovals.GetRowCellValue(rowIndex, "LinkedId").ToString(), out itemId);
 
@@ -127,18 +126,31 @@ namespace FinancialPlannerClient.ApprovalProcess
 
                     ApprovalDTO approvalDTO = new ApprovalDTO();
                     approvalDTO.Id = id;
+                    approvalDTO.LinkedId = itemId;
                     approvalDTO.ActionTakenBy = Program.CurrentUser.Id;
                     approvalDTO.ActionTakenOn = DateTime.Now.Date;
                     approvalDTO.Description = authrityToApproval.GetDescription();
                     approvalDTO.ApprovalType = (ApprovalType)Enum.Parse(typeof(ApprovalType), gridViewApprovals.GetRowCellValue(rowIndex, "ApprovalType").ToString());
+                    approvalDTO.ItemId = gridViewApprovals.GetRowCellValue(rowIndex, "ItemId").ToString();
                     if (action.Equals("&Approve"))
+                    {
                         approvalObj.Approve(approvalDTO);
+                        dtApprovals.Rows.Remove(dtApprovals.Select("Id = " + id).First());
+                    }
                     else if (action.Equals("&Reject"))
+                    {
                         approvalObj.Reject(approvalDTO);
+                        gridViewApprovals.SetRowCellValue(rowIndex, "Status",ApprovalStatus.Reject);
+                        dtApprovals.Rows.Remove(dtApprovals.Select("Id = " + id).First());
+                    }
                     else if (action.Equals("Reassign"))
                     {
                         approvalDTO.AuthorisedUsersToApprove = authrityToApproval.GetReassignUserId();
                         approvalObj.Reassign(approvalDTO);
+                       if (approvalDTO.AuthorisedUsersToApprove != Program.CurrentUser.Id.ToString())
+                        {
+                            dtApprovals.Rows.Remove(dtApprovals.Select("Id = " + id).First());
+                        }
                     }
                 }
             }
@@ -181,7 +193,7 @@ namespace FinancialPlannerClient.ApprovalProcess
             }
             else if (gridViewApprovals.GetRowCellValue(rowIndex, "ApprovalType").ToString() == "PlanLock")
             {
-                return null;
+                return new PlanLockApproval();
             }
             return null;
         }

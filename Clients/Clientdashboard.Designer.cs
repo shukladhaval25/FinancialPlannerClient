@@ -87,6 +87,8 @@
             this.navBarItemCurrentStatus = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItem3 = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItem4 = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarSeparatorItem1 = new DevExpress.XtraNavBar.NavBarSeparatorItem();
+            this.navBarItemImportFromXls = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarGroupPlanOption = new DevExpress.XtraNavBar.NavBarGroup();
             this.navBarItemRiskProfile = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItemEstimatedPlan = new DevExpress.XtraNavBar.NavBarItem();
@@ -188,8 +190,6 @@
             this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.gridBand1 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.navBarSeparatorItem1 = new DevExpress.XtraNavBar.NavBarSeparatorItem();
-            this.navBarItemImportFromXls = new DevExpress.XtraNavBar.NavBarItem();
             ((System.ComponentModel.ISupportInitialize)(this.panelMenu)).BeginInit();
             this.panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlNavCtrl)).BeginInit();
@@ -481,6 +481,24 @@
             this.navBarItem4.Name = "navBarItem4";
             this.navBarItem4.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarItem4.SmallImage")));
             this.navBarItem4.Visible = false;
+            // 
+            // navBarSeparatorItem1
+            // 
+            this.navBarSeparatorItem1.CanDrag = false;
+            this.navBarSeparatorItem1.Enabled = false;
+            this.navBarSeparatorItem1.Hint = null;
+            this.navBarSeparatorItem1.LargeImageIndex = 0;
+            this.navBarSeparatorItem1.LargeImageSize = new System.Drawing.Size(0, 0);
+            this.navBarSeparatorItem1.Name = "navBarSeparatorItem1";
+            this.navBarSeparatorItem1.SmallImageIndex = 0;
+            this.navBarSeparatorItem1.SmallImageSize = new System.Drawing.Size(0, 0);
+            // 
+            // navBarItemImportFromXls
+            // 
+            this.navBarItemImportFromXls.Caption = "Import From Excel";
+            this.navBarItemImportFromXls.ImageUri.Uri = "BringToFront;Size16x16";
+            this.navBarItemImportFromXls.Name = "navBarItemImportFromXls";
+            this.navBarItemImportFromXls.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItemImportFromXls_LinkClicked);
             // 
             // navBarGroupPlanOption
             // 
@@ -1035,6 +1053,7 @@
             // navigationPageContactInfo
             // 
             this.navigationPageContactInfo.AutoScroll = true;
+            this.navigationPageContactInfo.Caption = "navigationPageContactInfo";
             this.navigationPageContactInfo.Name = "navigationPageContactInfo";
             this.navigationPageContactInfo.Size = new System.Drawing.Size(1004, 599);
             this.navigationPageContactInfo.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.navigationPageClient_ControlRemoved);
@@ -1559,24 +1578,6 @@
             this.gridBand1.Caption = "gridBand1";
             this.gridBand1.Name = "gridBand1";
             this.gridBand1.VisibleIndex = -1;
-            // 
-            // navBarSeparatorItem1
-            // 
-            this.navBarSeparatorItem1.CanDrag = false;
-            this.navBarSeparatorItem1.Enabled = false;
-            this.navBarSeparatorItem1.Hint = null;
-            this.navBarSeparatorItem1.LargeImageIndex = 0;
-            this.navBarSeparatorItem1.LargeImageSize = new System.Drawing.Size(0, 0);
-            this.navBarSeparatorItem1.Name = "navBarSeparatorItem1";
-            this.navBarSeparatorItem1.SmallImageIndex = 0;
-            this.navBarSeparatorItem1.SmallImageSize = new System.Drawing.Size(0, 0);
-            // 
-            // navBarItemImportFromXls
-            // 
-            this.navBarItemImportFromXls.Caption = "Import From Excel";
-            this.navBarItemImportFromXls.ImageUri.Uri = "BringToFront;Size16x16";
-            this.navBarItemImportFromXls.Name = "navBarItemImportFromXls";
-            this.navBarItemImportFromXls.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItemImportFromXls_LinkClicked);
             // 
             // Clientdashboard
             // 
