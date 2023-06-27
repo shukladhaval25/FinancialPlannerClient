@@ -94,6 +94,7 @@
             // navigationPageForTasks
             // 
             this.navigationPageForTasks.AutoScroll = true;
+            this.navigationPageForTasks.Caption = "navigationPageForTasks";
             this.navigationPageForTasks.Name = "navigationPageForTasks";
             this.navigationPageForTasks.Size = new System.Drawing.Size(1126, 629);
             // 
@@ -229,12 +230,12 @@
             // 
             // timerTaskNotification
             // 
-            this.timerTaskNotification.Interval = 60000;
+            this.timerTaskNotification.Interval = 1800000;
             this.timerTaskNotification.Tick += new System.EventHandler(this.timerTaskNotification_Tick);
             // 
             // timerBackgroundChange
             // 
-            this.timerBackgroundChange.Interval = 10000;
+            this.timerBackgroundChange.Interval = 30000;
             this.timerBackgroundChange.Tick += new System.EventHandler(this.timerBackgroundChange_Tick);
             // 
             // TaskMainPage

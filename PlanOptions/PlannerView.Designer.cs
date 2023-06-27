@@ -29,26 +29,28 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PlannerView));
-            DevExpress.Utils.SuperToolTip superToolTip6 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem6 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem6 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip7 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem7 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem7 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip8 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem8 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem8 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip9 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem9 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem9 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip10 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem10 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem10 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem5 = new DevExpress.Utils.ToolTipItem();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.lstPlanner = new DevExpress.XtraEditors.ListBoxControl();
             this.tabPlanner = new DevExpress.XtraBars.Navigation.TabPane();
             this.tabNavigationPagePlanner = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             this.pnlPlannerInfo = new DevExpress.XtraEditors.PanelControl();
+            this.cmbPlannerType = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.labelControl14 = new DevExpress.XtraEditors.LabelControl();
             this.chkLockPlan = new DevExpress.XtraEditors.CheckEdit();
             this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
             this.rdoFaceType = new DevExpress.XtraEditors.RadioGroup();
@@ -88,6 +90,7 @@
             this.tabNavigationPagePlanner.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlPlannerInfo)).BeginInit();
             this.pnlPlannerInfo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbPlannerType.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkLockPlan.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rdoFaceType.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbEndMonth.Properties)).BeginInit();
@@ -125,7 +128,7 @@
             this.lstPlanner.Cursor = System.Windows.Forms.Cursors.Default;
             this.lstPlanner.Location = new System.Drawing.Point(12, 41);
             this.lstPlanner.Name = "lstPlanner";
-            this.lstPlanner.Size = new System.Drawing.Size(187, 225);
+            this.lstPlanner.Size = new System.Drawing.Size(187, 240);
             this.lstPlanner.TabIndex = 1;
             this.lstPlanner.SelectedIndexChanged += new System.EventHandler(this.lstPlanner_SelectedIndexChanged);
             // 
@@ -140,9 +143,9 @@
             this.tabNavigationPagePlanner,
             this.tabNavigationPageManagedBy,
             this.tabInvestmentAllocation});
-            this.tabPlanner.RegularSize = new System.Drawing.Size(570, 225);
+            this.tabPlanner.RegularSize = new System.Drawing.Size(570, 240);
             this.tabPlanner.SelectedPage = this.tabNavigationPagePlanner;
-            this.tabPlanner.Size = new System.Drawing.Size(570, 225);
+            this.tabPlanner.Size = new System.Drawing.Size(570, 240);
             this.tabPlanner.TabIndex = 2;
             this.tabPlanner.Text = "tabPane1";
             // 
@@ -154,10 +157,12 @@
             this.tabNavigationPagePlanner.ItemShowMode = DevExpress.XtraBars.Navigation.ItemShowMode.ImageAndText;
             this.tabNavigationPagePlanner.Name = "tabNavigationPagePlanner";
             this.tabNavigationPagePlanner.Properties.ShowMode = DevExpress.XtraBars.Navigation.ItemShowMode.ImageAndText;
-            this.tabNavigationPagePlanner.Size = new System.Drawing.Size(552, 177);
+            this.tabNavigationPagePlanner.Size = new System.Drawing.Size(552, 192);
             // 
             // pnlPlannerInfo
             // 
+            this.pnlPlannerInfo.Controls.Add(this.cmbPlannerType);
+            this.pnlPlannerInfo.Controls.Add(this.labelControl14);
             this.pnlPlannerInfo.Controls.Add(this.chkLockPlan);
             this.pnlPlannerInfo.Controls.Add(this.labelControl13);
             this.pnlPlannerInfo.Controls.Add(this.rdoFaceType);
@@ -175,12 +180,34 @@
             this.pnlPlannerInfo.Controls.Add(this.txtCurrencySymbol);
             this.pnlPlannerInfo.Location = new System.Drawing.Point(6, 3);
             this.pnlPlannerInfo.Name = "pnlPlannerInfo";
-            this.pnlPlannerInfo.Size = new System.Drawing.Size(546, 171);
+            this.pnlPlannerInfo.Size = new System.Drawing.Size(546, 186);
             this.pnlPlannerInfo.TabIndex = 10;
+            // 
+            // cmbPlannerType
+            // 
+            this.cmbPlannerType.Location = new System.Drawing.Point(122, 159);
+            this.cmbPlannerType.Name = "cmbPlannerType";
+            this.cmbPlannerType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cmbPlannerType.Properties.Items.AddRange(new object[] {
+            "RIA",
+            "MFD"});
+            this.cmbPlannerType.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.cmbPlannerType.Size = new System.Drawing.Size(178, 20);
+            this.cmbPlannerType.TabIndex = 32;
+            // 
+            // labelControl14
+            // 
+            this.labelControl14.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
+            this.labelControl14.Location = new System.Drawing.Point(25, 162);
+            this.labelControl14.Name = "labelControl14";
+            this.labelControl14.Size = new System.Drawing.Size(91, 13);
+            this.labelControl14.TabIndex = 31;
+            this.labelControl14.Text = "Plan Type";
             // 
             // chkLockPlan
             // 
-            this.chkLockPlan.Location = new System.Drawing.Point(322, 138);
+            this.chkLockPlan.Location = new System.Drawing.Point(322, 131);
             this.chkLockPlan.Name = "chkLockPlan";
             this.chkLockPlan.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
             this.chkLockPlan.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -217,7 +244,7 @@
             // labelControl10
             // 
             this.labelControl10.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
-            this.labelControl10.Location = new System.Drawing.Point(25, 141);
+            this.labelControl10.Location = new System.Drawing.Point(26, 136);
             this.labelControl10.Name = "labelControl10";
             this.labelControl10.Size = new System.Drawing.Size(91, 13);
             this.labelControl10.TabIndex = 10;
@@ -233,7 +260,7 @@
             // 
             // cmbEndMonth
             // 
-            this.cmbEndMonth.Location = new System.Drawing.Point(322, 112);
+            this.cmbEndMonth.Location = new System.Drawing.Point(322, 105);
             this.cmbEndMonth.Name = "cmbEndMonth";
             this.cmbEndMonth.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -264,7 +291,7 @@
             // labelControl6
             // 
             this.labelControl6.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
-            this.labelControl6.Location = new System.Drawing.Point(337, 93);
+            this.labelControl6.Location = new System.Drawing.Point(337, 86);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(151, 13);
             this.labelControl6.TabIndex = 8;
@@ -280,7 +307,7 @@
             // 
             // cmbStartMonth
             // 
-            this.cmbStartMonth.Location = new System.Drawing.Point(123, 112);
+            this.cmbStartMonth.Location = new System.Drawing.Point(123, 107);
             this.cmbStartMonth.Name = "cmbStartMonth";
             this.cmbStartMonth.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -317,7 +344,7 @@
             // labelControl5
             // 
             this.labelControl5.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
-            this.labelControl5.Location = new System.Drawing.Point(137, 93);
+            this.labelControl5.Location = new System.Drawing.Point(137, 88);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(151, 13);
             this.labelControl5.TabIndex = 6;
@@ -344,7 +371,7 @@
             // txtCurrencySymbol
             // 
             this.txtCurrencySymbol.EditValue = "";
-            this.txtCurrencySymbol.Location = new System.Drawing.Point(122, 138);
+            this.txtCurrencySymbol.Location = new System.Drawing.Point(123, 133);
             this.txtCurrencySymbol.Name = "txtCurrencySymbol";
             this.txtCurrencySymbol.Properties.MaxLength = 3;
             this.txtCurrencySymbol.Size = new System.Drawing.Size(37, 20);
@@ -481,18 +508,18 @@
             this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDelete.Enabled = false;
             this.btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
-            this.btnDelete.Location = new System.Drawing.Point(96, 272);
+            this.btnDelete.Location = new System.Drawing.Point(92, 287);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(25, 23);
-            toolTipTitleItem6.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
-            toolTipTitleItem6.Appearance.Options.UseImage = true;
-            toolTipTitleItem6.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem6.Image")));
-            toolTipTitleItem6.Text = "Delete plan";
-            toolTipItem6.LeftIndent = 6;
-            toolTipItem6.Text = "To delete selected plan option click here.";
-            superToolTip6.Items.Add(toolTipTitleItem6);
-            superToolTip6.Items.Add(toolTipItem6);
-            this.btnDelete.SuperTip = superToolTip6;
+            toolTipTitleItem1.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            toolTipTitleItem1.Appearance.Options.UseImage = true;
+            toolTipTitleItem1.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem1.Image")));
+            toolTipTitleItem1.Text = "Delete plan";
+            toolTipItem1.LeftIndent = 6;
+            toolTipItem1.Text = "To delete selected plan option click here.";
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            superToolTip1.Items.Add(toolTipItem1);
+            this.btnDelete.SuperTip = superToolTip1;
             this.btnDelete.TabIndex = 10;
             this.btnDelete.ToolTip = "Delete Client";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -501,18 +528,18 @@
             // 
             this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEdit.Image = ((System.Drawing.Image)(resources.GetObject("btnEdit.Image")));
-            this.btnEdit.Location = new System.Drawing.Point(174, 272);
+            this.btnEdit.Location = new System.Drawing.Point(170, 287);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(25, 23);
-            toolTipTitleItem7.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
-            toolTipTitleItem7.Appearance.Options.UseImage = true;
-            toolTipTitleItem7.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem7.Image")));
-            toolTipTitleItem7.Text = "Edit plan";
-            toolTipItem7.LeftIndent = 6;
-            toolTipItem7.Text = "To modify selected plan information click here.";
-            superToolTip7.Items.Add(toolTipTitleItem7);
-            superToolTip7.Items.Add(toolTipItem7);
-            this.btnEdit.SuperTip = superToolTip7;
+            toolTipTitleItem2.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
+            toolTipTitleItem2.Appearance.Options.UseImage = true;
+            toolTipTitleItem2.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem2.Image")));
+            toolTipTitleItem2.Text = "Edit plan";
+            toolTipItem2.LeftIndent = 6;
+            toolTipItem2.Text = "To modify selected plan information click here.";
+            superToolTip2.Items.Add(toolTipTitleItem2);
+            superToolTip2.Items.Add(toolTipItem2);
+            this.btnEdit.SuperTip = superToolTip2;
             this.btnEdit.TabIndex = 9;
             this.btnEdit.ToolTip = "Edit Client";
             this.btnEdit.Visible = false;
@@ -521,18 +548,18 @@
             // 
             this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
-            this.btnAdd.Location = new System.Drawing.Point(65, 272);
+            this.btnAdd.Location = new System.Drawing.Point(61, 287);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(25, 23);
-            toolTipTitleItem8.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
-            toolTipTitleItem8.Appearance.Options.UseImage = true;
-            toolTipTitleItem8.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem8.Image")));
-            toolTipTitleItem8.Text = "New Plan";
-            toolTipItem8.LeftIndent = 6;
-            toolTipItem8.Text = "To add new plan for client click here.";
-            superToolTip8.Items.Add(toolTipTitleItem8);
-            superToolTip8.Items.Add(toolTipItem8);
-            this.btnAdd.SuperTip = superToolTip8;
+            toolTipTitleItem3.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
+            toolTipTitleItem3.Appearance.Options.UseImage = true;
+            toolTipTitleItem3.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem3.Image")));
+            toolTipTitleItem3.Text = "New Plan";
+            toolTipItem3.LeftIndent = 6;
+            toolTipItem3.Text = "To add new plan for client click here.";
+            superToolTip3.Items.Add(toolTipTitleItem3);
+            superToolTip3.Items.Add(toolTipItem3);
+            this.btnAdd.SuperTip = superToolTip3;
             this.btnAdd.TabIndex = 8;
             this.btnAdd.ToolTip = "Add new client";
             this.btnAdd.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Application;
@@ -543,18 +570,18 @@
             // 
             this.btnClosePlanoptions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClosePlanoptions.Image = ((System.Drawing.Image)(resources.GetObject("btnClosePlanoptions.Image")));
-            this.btnClosePlanoptions.Location = new System.Drawing.Point(688, 272);
+            this.btnClosePlanoptions.Location = new System.Drawing.Point(684, 287);
             this.btnClosePlanoptions.Name = "btnClosePlanoptions";
             this.btnClosePlanoptions.Size = new System.Drawing.Size(88, 23);
-            toolTipTitleItem9.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image3")));
-            toolTipTitleItem9.Appearance.Options.UseImage = true;
-            toolTipTitleItem9.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem9.Image")));
-            toolTipTitleItem9.Text = "Cancel";
-            toolTipItem9.LeftIndent = 6;
-            toolTipItem9.Text = "To close client information without saving any information click here.";
-            superToolTip9.Items.Add(toolTipTitleItem9);
-            superToolTip9.Items.Add(toolTipItem9);
-            this.btnClosePlanoptions.SuperTip = superToolTip9;
+            toolTipTitleItem4.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image3")));
+            toolTipTitleItem4.Appearance.Options.UseImage = true;
+            toolTipTitleItem4.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem4.Image")));
+            toolTipTitleItem4.Text = "Cancel";
+            toolTipItem4.LeftIndent = 6;
+            toolTipItem4.Text = "To close client information without saving any information click here.";
+            superToolTip4.Items.Add(toolTipTitleItem4);
+            superToolTip4.Items.Add(toolTipItem4);
+            this.btnClosePlanoptions.SuperTip = superToolTip4;
             this.btnClosePlanoptions.TabIndex = 26;
             this.btnClosePlanoptions.Text = "Close";
             this.btnClosePlanoptions.Click += new System.EventHandler(this.btnClosePlanoptions_Click);
@@ -563,18 +590,18 @@
             // 
             this.btnSavePlanoption.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSavePlanoption.Image = ((System.Drawing.Image)(resources.GetObject("btnSavePlanoption.Image")));
-            this.btnSavePlanoption.Location = new System.Drawing.Point(594, 272);
+            this.btnSavePlanoption.Location = new System.Drawing.Point(590, 287);
             this.btnSavePlanoption.Name = "btnSavePlanoption";
             this.btnSavePlanoption.Size = new System.Drawing.Size(88, 23);
-            toolTipTitleItem10.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image4")));
-            toolTipTitleItem10.Appearance.Options.UseImage = true;
-            toolTipTitleItem10.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem10.Image")));
-            toolTipTitleItem10.Text = "Save";
-            toolTipItem10.LeftIndent = 6;
-            toolTipItem10.Text = "To save client infroamtion click here.";
-            superToolTip10.Items.Add(toolTipTitleItem10);
-            superToolTip10.Items.Add(toolTipItem10);
-            this.btnSavePlanoption.SuperTip = superToolTip10;
+            toolTipTitleItem5.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image4")));
+            toolTipTitleItem5.Appearance.Options.UseImage = true;
+            toolTipTitleItem5.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem5.Image")));
+            toolTipTitleItem5.Text = "Save";
+            toolTipItem5.LeftIndent = 6;
+            toolTipItem5.Text = "To save client infroamtion click here.";
+            superToolTip5.Items.Add(toolTipTitleItem5);
+            superToolTip5.Items.Add(toolTipItem5);
+            this.btnSavePlanoption.SuperTip = superToolTip5;
             this.btnSavePlanoption.TabIndex = 25;
             this.btnSavePlanoption.Text = "Save";
             this.btnSavePlanoption.Click += new System.EventHandler(this.btnSavePlanoption_Click);
@@ -583,7 +610,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(788, 302);
+            this.ClientSize = new System.Drawing.Size(788, 322);
             this.Controls.Add(this.btnClosePlanoptions);
             this.Controls.Add(this.btnSavePlanoption);
             this.Controls.Add(this.btnDelete);
@@ -606,6 +633,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pnlPlannerInfo)).EndInit();
             this.pnlPlannerInfo.ResumeLayout(false);
             this.pnlPlannerInfo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbPlannerType.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkLockPlan.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rdoFaceType.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbEndMonth.Properties)).EndInit();
@@ -670,6 +698,8 @@
         private DevExpress.XtraEditors.LabelControl labelControl13;
         private DevExpress.XtraEditors.RadioGroup rdoFaceType;
         private DevExpress.XtraEditors.CheckEdit chkLockPlan;
+        private DevExpress.XtraEditors.ComboBoxEdit cmbPlannerType;
+        private DevExpress.XtraEditors.LabelControl labelControl14;
     }
 }
 

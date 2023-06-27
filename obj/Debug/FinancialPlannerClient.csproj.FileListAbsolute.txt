@@ -613,3 +613,4 @@ C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient
 C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.PlanOptions.Reports.TaskCommentsReport.resources
 C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.ApprovalProcess.ApprovalView.resources
 C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.ApprovalProcess.AuthrityToApproval.resources
+C:\Application Softwares\FinancialPlannerClient\obj\Debug\FinancialPlannerClient.TaskManagementSystem.taskscheduler.resources

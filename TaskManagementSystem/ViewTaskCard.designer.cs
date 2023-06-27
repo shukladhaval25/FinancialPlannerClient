@@ -637,7 +637,7 @@
             this.tabNavigationHistoryPage.Caption = "History";
             this.tabNavigationHistoryPage.Controls.Add(this.gridControlHistory);
             this.tabNavigationHistoryPage.Name = "tabNavigationHistoryPage";
-            this.tabNavigationHistoryPage.Size = new System.Drawing.Size(616, 315);
+            this.tabNavigationHistoryPage.Size = new System.Drawing.Size(598, 270);
             // 
             // gridControlHistory
             // 
@@ -645,7 +645,7 @@
             this.gridControlHistory.Location = new System.Drawing.Point(0, 0);
             this.gridControlHistory.MainView = this.layoutViewHistory;
             this.gridControlHistory.Name = "gridControlHistory";
-            this.gridControlHistory.Size = new System.Drawing.Size(616, 315);
+            this.gridControlHistory.Size = new System.Drawing.Size(598, 270);
             this.gridControlHistory.TabIndex = 0;
             this.gridControlHistory.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.layoutViewHistory});
@@ -792,7 +792,7 @@
             // 
             this.tabPageReminder.Caption = "Reminder";
             this.tabPageReminder.Name = "tabPageReminder";
-            this.tabPageReminder.Size = new System.Drawing.Size(616, 315);
+            this.tabPageReminder.Size = new System.Drawing.Size(598, 270);
             // 
             // tabPageApproval
             // 

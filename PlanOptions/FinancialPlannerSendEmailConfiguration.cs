@@ -245,8 +245,13 @@ namespace FinancialPlannerClient.PlanOptions
                 mailMessage.IsBodyHtml = false;
                 //mailMessage.Attachments.Add(attachment);
                 mailMessage.Body = txtEmaiBody.Text;
-                
-                bool isEmailSend = EmailService.SendEmailWithChilkat(mailMessage, filePath);
+
+                List<string> attchments = new List<string>();
+                foreach(DataRow dataRow in dtAttachment.Rows)
+                {
+                    attchments.Add(dataRow["FilePath"].ToString());
+                }
+                bool isEmailSend = EmailService.SendEmailWithChilkatMultipleAttachments(mailMessage, attchments.ToArray());
                 if (isEmailSend)
                 {
                     MessageBox.Show("Email send successfully to '" + txtToEmail.Text + "'.", "Email", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -331,6 +336,15 @@ namespace FinancialPlannerClient.PlanOptions
             {
                 System.Diagnostics.Process.Start(filePath);
             }
+        }
+
+        private void btnAddAttachment_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.ShowDialog();
+            DataRow dataRow = dtAttachment.NewRow();
+            dataRow["FileName"] = System.IO.Path.GetFileName(openFileDialog1.FileName);
+            dataRow["FilePath"] = openFileDialog1.FileName;
+            dtAttachment.Rows.Add(dataRow);
         }
         //public static System.Drawing.Icon GetFileIcon(string name, IconSize size,
         //                                      bool linkOverlay)

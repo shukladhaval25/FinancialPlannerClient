@@ -29,7 +29,7 @@ namespace FinancialPlannerClient.TaskManagementSystem
         IList<User> users;
         private ITransactionType transactionType;
         IList<TaskComment> taskComments = new List<TaskComment>();
-        IList<TaskHistory> taskHistories = new List<TaskHistory>();
+        IList<TaskHistory> taskHistories;
 
         private readonly string MUTUALFUND = "Mutual Fund";
         const string CUSTOMERSUPPORT = "Customer Support";
@@ -88,14 +88,14 @@ namespace FinancialPlannerClient.TaskManagementSystem
             }
 
             fillupProjectCombobox();
-            fillupCustomer();
+            //fillupCustomer();
             fillupAssignTo();
 
             fillupTaskView();
 
             //dummyTaskComments();
             fillupComments();
-            fillupHistory();
+            //fillupHistory();
             fillupApprovalInfo();
         }
 
@@ -130,40 +130,16 @@ namespace FinancialPlannerClient.TaskManagementSystem
 
         private void fillupHistory()
         {
-            taskHistories = new TaskHistoryInfo().GetAll(this.taskCard.Id);
-            if (taskHistories != null)
+            if (taskHistories == null)
             {
-                DataTable dtHistory = new DataTable();
-                dtHistory = FinancialPlanner.Common.DataConversion.ListtoDataTable.ToDataTable(taskHistories.ToList());
-                gridControlHistory.DataSource = dtHistory;
-            }
-
-
-            //dtHistory.Columns.Add("UserName",Type.GetType("System.String"));
-            //dtHistory.Columns.Add("UpdatedOn", Type.GetType("System.DateTime"));
-            //dtHistory.Columns.Add("FieldName", Type.GetType("System.String"));
-            //dtHistory.Columns.Add("OldValue", Type.GetType("System.String"));
-            //dtHistory.Columns.Add("NewValue", Type.GetType("System.String"));
-
-            //DateTime dtNow = DateTime.Now;
-
-            //DataRow dr = dtHistory.NewRow();
-            //dr["UserName"] = "Admin";
-            //dr["UpdatedOn"] = dtNow;
-            //dr["FieldName"] = "Description";
-            //dr["OldValue"] = "";
-            //dr["NewValue"] = "New value for description";
-            //dtHistory.Rows.Add(dr);
-
-            //DataRow dr1 = dtHistory.NewRow();
-            //dr1["UserName"] = "Admin1";
-            //dr1["UpdatedOn"] = dtNow;
-            //dr1["FieldName"] = "Status";
-            //dr1["OldValue"] = "Beccklog";
-            //dr1["NewValue"] = "In Progress";
-            //dtHistory.Rows.Add(dr1);
-
-            //gridControlHistory.DataSource = dtHistory;            
+                taskHistories = new TaskHistoryInfo().GetAll(this.taskCard.Id);
+                if (taskHistories != null)
+                {
+                    DataTable dtHistory = new DataTable();
+                    dtHistory = FinancialPlanner.Common.DataConversion.ListtoDataTable.ToDataTable(taskHistories.ToList());
+                    gridControlHistory.DataSource = dtHistory;
+                }
+            }    
         }
 
         private void fillupTaskView()
@@ -278,10 +254,13 @@ namespace FinancialPlannerClient.TaskManagementSystem
 
         private void fillupCustomer()
         {
-            ClientService clientService = new ClientService();
-            clients = clientService.GetAll();
-            cmbClient.Properties.Items.Clear();
-            cmbClient.Properties.Items.AddRange(clients.Select(i => i.Name).ToList());
+            if (clients == null)
+            {
+                ClientService clientService = new ClientService();
+                clients = clientService.GetAll();
+                cmbClient.Properties.Items.Clear();
+                cmbClient.Properties.Items.AddRange(clients.Select(i => i.Name).ToList());
+            }
         }
 
         
@@ -390,12 +369,16 @@ namespace FinancialPlannerClient.TaskManagementSystem
                 }
                 else
                 {
-                    Client client = clients.FirstOrDefault(i => i.Name == cmbClient.Text);
-                    transactionType = Program.container.Resolve<ITransactionType>(cmbTransactionType.Text);
-                    transactionType.setVGridControl(this.vGridTransaction, client);
-                    transactionType.BindDataSource(taskCard.TaskTransactionType);
-                    splitContainerTransOperation.Panel1.Height = 400;
-                    splitContainerTransOperation.PanelVisibility = DevExpress.XtraEditors.SplitPanelVisibility.Both;
+                    fillupCustomer();
+                    if (clients != null)
+                    {
+                        Client client = clients.FirstOrDefault(i => i.Name == cmbClient.Text);
+                        transactionType = Program.container.Resolve<ITransactionType>(cmbTransactionType.Text);
+                        transactionType.setVGridControl(this.vGridTransaction, client);
+                        transactionType.BindDataSource(taskCard.TaskTransactionType);
+                        splitContainerTransOperation.Panel1.Height = 400;
+                        splitContainerTransOperation.PanelVisibility = DevExpress.XtraEditors.SplitPanelVisibility.Both;
+                    }
                 }
             }
             catch (Unity.ResolutionFailedException)
@@ -477,21 +460,21 @@ namespace FinancialPlannerClient.TaskManagementSystem
             if (taskCard.TaskStatus == TaskStatus.Blocked && isTaskBelongToProcessWithByPassPermission(taskCard.CustomerId, taskCard.TaskId))
             {
 
-                //TaskApproval taskApproval = new TaskApproval();
-                //ApprovalDTO approvalDTO = generateApprovalDTO(taskCard);
-                //taskApproval.Add(approvalDTO);
+                TaskApproval taskApproval = new TaskApproval();
+                ApprovalDTO approvalDTO = generateApprovalDTO(taskCard);
+                taskApproval.Add(approvalDTO);
 
                 //Open Login Page
-                frmXtraLogin login = new frmXtraLogin(true);
-                login.ShowDialog();
-                if (login.IsAuthenticationPassForApproval)
-                {
-                    taskCard.ProcessApprovedBy = login.ApprovedBy;
-                }
-                else
-                {
-                    throw new Exception("Invalid username or password.");
-                }
+                //frmXtraLogin login = new frmXtraLogin(true);
+                //login.ShowDialog();
+                //if (login.IsAuthenticationPassForApproval)
+                //{
+                //    taskCard.ProcessApprovedBy = login.ApprovedBy;
+                //}
+                //else
+                //{
+                //    throw new Exception("Invalid username or password.");
+                //}
             }
         }
 
@@ -501,7 +484,7 @@ namespace FinancialPlannerClient.TaskManagementSystem
             approval.Id = 2;
             approval.LinkedId = taskCard.Id;
             approval.RequestRaisedBy = Program.CurrentUser.Id;
-            approval.RequestedOn = DateTime.Now.Date;
+            approval.RequestedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
             approval.AuthorisedUsersToApprove = "2";
             approval.Status = ApprovalStatus.WaitingForApproval;
             approval.ApprovalType = ApprovalType.TaskByPass;
@@ -717,6 +700,10 @@ namespace FinancialPlannerClient.TaskManagementSystem
                 taskReminder.Dock = DockStyle.Fill;
                 tabPageReminder.Controls.Add(taskReminder);
                 taskReminder.Visible = true;
+            }
+            if (e.Page.Caption.Equals("History"))
+            {
+                fillupHistory();
             }
         }
     }

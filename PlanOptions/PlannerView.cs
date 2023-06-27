@@ -54,40 +54,43 @@ namespace FinancialPlannerClient.PlanOptions
                 loadUserInformation();
                 loadPlanData();
                 displayPlanData();
-                //fillupApprovalInfo();
+                fillupApprovalInfo();
             }
         }
 
 
         private void fillupApprovalInfo()
         {
-            IList<ApprovalDTO> approvals = new PlanLockApproval().GetApprovalsItem(int.Parse(txtPlanName.Tag.ToString()));
-            if (approvals.Count > 0)
+            if (txtPlanName.Tag != null)
             {
-                ApprovalDTO orderbyApprovals = approvals.OrderBy(i => i.Id).Last();
-                btnSavePlanoption.Enabled = (orderbyApprovals.Status == ApprovalStatus.WaitingForApproval) ? false : true;
-                if (orderbyApprovals.Status == ApprovalStatus.WaitingForApproval)
+                IList<ApprovalDTO> approvals = new PlanLockApproval().GetApprovalsItem(int.Parse(txtPlanName.Tag.ToString()));
+                if (approvals.Count > 0)
                 {
-                    MessageBox.Show("This task is pending for approval. You can not change any data until authorised person take appropriate action.","Waiting for approval",MessageBoxButtons.OK,MessageBoxIcon.Information);
-                }
-                //gridApprovals.DataSource = approvals;
-                //gridViewApprovals.Columns["Id"].Visible = false;
-                //gridViewApprovals.Columns["LinkedId"].Visible = false;
-                //gridViewApprovals.Columns["AuthorisedUsersToApprove"].Visible = false;
-                //gridViewApprovals.Columns["ActionTakenBy"].Visible = false;
-                //gridViewApprovals.Columns["ApprovalType"].Visible = false;
+                    ApprovalDTO orderbyApprovals = approvals.OrderBy(i => i.Id).Last();
+                    btnSavePlanoption.Enabled = (orderbyApprovals.Status == ApprovalStatus.WaitingForApproval) ? false : true;
+                    if (orderbyApprovals.Status == ApprovalStatus.WaitingForApproval)
+                    {
+                        MessageBox.Show("This task is pending for approval. You can not change any data until authorised person take appropriate action.", "Waiting for approval", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    //gridApprovals.DataSource = approvals;
+                    //gridViewApprovals.Columns["Id"].Visible = false;
+                    //gridViewApprovals.Columns["LinkedId"].Visible = false;
+                    //gridViewApprovals.Columns["AuthorisedUsersToApprove"].Visible = false;
+                    //gridViewApprovals.Columns["ActionTakenBy"].Visible = false;
+                    //gridViewApprovals.Columns["ApprovalType"].Visible = false;
 
-                //gridViewApprovals.Columns["RequestRaisedBy"].Visible = false;
-                //gridViewApprovals.Columns["RequestedBy"].VisibleIndex = 0;
-                //gridViewApprovals.Columns["RequestedOn"].VisibleIndex = 1;
-                //gridViewApprovals.Columns["Status"].VisibleIndex = 2;
-                //gridViewApprovals.Columns["ActionBy"].VisibleIndex = 3;
-                //gridViewApprovals.Columns["ActionTakenOn"].VisibleIndex = 4;
-                //gridViewApprovals.Columns["Description"].VisibleIndex = 5;
-            }
-            else
-            {
-                btnSavePlanoption.Enabled = true;
+                    //gridViewApprovals.Columns["RequestRaisedBy"].Visible = false;
+                    //gridViewApprovals.Columns["RequestedBy"].VisibleIndex = 0;
+                    //gridViewApprovals.Columns["RequestedOn"].VisibleIndex = 1;
+                    //gridViewApprovals.Columns["Status"].VisibleIndex = 2;
+                    //gridViewApprovals.Columns["ActionBy"].VisibleIndex = 3;
+                    //gridViewApprovals.Columns["ActionTakenOn"].VisibleIndex = 4;
+                    //gridViewApprovals.Columns["Description"].VisibleIndex = 5;
+                }
+                else
+                {
+                    btnSavePlanoption.Enabled = true;
+                }
             }
         }
 
@@ -172,6 +175,7 @@ namespace FinancialPlannerClient.PlanOptions
                 rdoFaceType.SelectedIndex = (dr["FaceType"].ToString().Equals("A")) ? 0 : 1;
                 showAuthenticationMsg = false;
                 chkLockPlan.Checked = bool.Parse(dr["IsPlanLocked"].ToString());
+                cmbPlannerType.Text = dr["PlannerOptionType"].ToString();
                 showAuthenticationMsg = true;
                 fillupApprovalInfo();
             }
@@ -220,13 +224,18 @@ namespace FinancialPlannerClient.PlanOptions
                     return;
                 }
 
-                bool originalValForLockPlan =(_dtPlanner.Select("Name = '" + lstPlanner.Text.ToString() + "'").First().Field<string>("IsPlanLocked") == "False") ? false : true;
-                if (originalValForLockPlan != chkLockPlan.Checked)
+
+                bool originalValForLockPlan = false;
+                if (_dtPlanner.Rows.Count > 0)
                 {
-                    MessageBox.Show("You are trying to change plan lock status. It's require approval. Once it's approve by authorised person it's become effective.");
-                    PlanLockApproval planLockApproval = new PlanLockApproval();
-                    ApprovalDTO approvalDTO = generateApprovalDTO();
-                    planLockApproval.Add(approvalDTO);
+                    originalValForLockPlan = (_dtPlanner.Select("Name = '" + lstPlanner.Text.ToString() + "'").FirstOrDefault().Field<string>("IsPlanLocked") == "False") ? false : true;
+                    if (originalValForLockPlan != chkLockPlan.Checked)
+                    {
+                        MessageBox.Show("You are trying to change plan lock status. It's require approval. Once it's approve by authorised person it's become effective.");
+                        PlanLockApproval planLockApproval = new PlanLockApproval();
+                        ApprovalDTO approvalDTO = generateApprovalDTO();
+                        planLockApproval.Add(approvalDTO);
+                    }
                 }
 
                 FinancialPlanner.Common.JSONSerialization jsonSerialization = new FinancialPlanner.Common.JSONSerialization();
@@ -251,7 +260,8 @@ namespace FinancialPlannerClient.PlanOptions
                     EquityRatio = string.IsNullOrEmpty(txtEquityRatio.Text) ? 0 : float.Parse(txtEquityRatio.Text),
                     DebtRatio = string.IsNullOrEmpty(txtDebtRatio.Text) ? 0 : float.Parse(txtDebtRatio.Text),
                     FaceType = (rdoFaceType.SelectedIndex == 0) ? "A" : "D",
-                    IsPlanLocked = originalValForLockPlan
+                    IsPlanLocked = originalValForLockPlan,
+                    PlannerOptionType = (cmbPlannerType.Text == "RIA") ? PlannerOptionType.RIA : PlannerOptionType.MFD
                 };
                 if (int.TryParse(cmbManagedBy.Tag.ToString(), out accountManagedById))
                     planner.AccountManagedBy = accountManagedById;
@@ -280,17 +290,20 @@ namespace FinancialPlannerClient.PlanOptions
                     {
                         MessageBox.Show("Record save successfully.", "Record Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.DialogResult = DialogResult.OK;
-                        if (planner.ID == this.currentPlanner.ID)
+                        if (this.currentPlanner != null)
                         {
-                            this.currentPlanner.PlannerStartMonth = planner.PlannerStartMonth;
-                            this.currentPlanner.Description = planner.Description;
-                            this.currentPlanner.ReviewFrequency = planner.ReviewFrequency;
-                            this.currentPlanner.CurrencySymbol = planner.CurrencySymbol;
-                            this.currentPlanner.EquityRatio = planner.EquityRatio;
-                            this.currentPlanner.DebtRatio = planner.DebtRatio;
-                            this.currentPlanner.FaceType = planner.FaceType;
-                            this.currentPlanner.IsPlanLocked = planner.IsPlanLocked;
+                            if (planner.ID == this.currentPlanner.ID)
+                            {
+                                this.currentPlanner.PlannerStartMonth = planner.PlannerStartMonth;
+                                this.currentPlanner.Description = planner.Description;
+                                this.currentPlanner.ReviewFrequency = planner.ReviewFrequency;
+                                this.currentPlanner.CurrencySymbol = planner.CurrencySymbol;
+                                this.currentPlanner.EquityRatio = planner.EquityRatio;
+                                this.currentPlanner.DebtRatio = planner.DebtRatio;
+                                this.currentPlanner.FaceType = planner.FaceType;
+                                this.currentPlanner.IsPlanLocked = planner.IsPlanLocked;
 
+                            }
                         }
                         this.Close();
                     }
@@ -307,7 +320,7 @@ namespace FinancialPlannerClient.PlanOptions
             ApprovalDTO approval = new ApprovalDTO();
             approval.LinkedId = int.Parse(txtPlanName.Tag.ToString());
             approval.RequestRaisedBy = Program.CurrentUser.Id;
-            approval.RequestedOn = DateTime.Now.Date;
+            approval.RequestedOn = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
             approval.AuthorisedUsersToApprove = "2";
             approval.Status = ApprovalStatus.WaitingForApproval;
             approval.ApprovalType = ApprovalType.PlanLock;
@@ -459,14 +472,14 @@ namespace FinancialPlannerClient.PlanOptions
             {
                 if (DevExpress.XtraEditors.XtraMessageBox.Show("Are you sure, you want to change status of current plan. Based on your selection plan activities get lock or unlock? It require administarator approval also.", "Planner status", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    frmXtraLogin login = new frmXtraLogin(true);
-                    login.ShowDialog();
-                    if (!login.IsAuthenticationPassForApproval)
-                    {
-                        showAuthenticationMsg = false;
-                        chkLockPlan.Checked = !chkLockPlan.Checked;
-                        showAuthenticationMsg = true;
-                    }
+                    //frmXtraLogin login = new frmXtraLogin(true);
+                    //login.ShowDialog();
+                    //if (!login.IsAuthenticationPassForApproval)
+                    //{
+                    //    showAuthenticationMsg = false;
+                    //    chkLockPlan.Checked = !chkLockPlan.Checked;
+                    //    showAuthenticationMsg = true;
+                    //}
                 }
                 else
                 {

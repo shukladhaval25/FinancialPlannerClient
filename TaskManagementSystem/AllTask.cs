@@ -96,7 +96,7 @@ namespace FinancialPlannerClient.TaskManagementSystem
                         {
                             ViewTaskCard viewTaskCard = new ViewTaskCard(taskCard);
                             viewTaskCard.Show();
-                            fillupTasks();
+                            //fillupTasks();
                             //this.Close();
                             //controls[0].Controls.Clear();
                             //viewTaskCard.TopLevel = false;
@@ -144,6 +144,8 @@ namespace FinancialPlannerClient.TaskManagementSystem
             taskCard.ProjectName = dr.Field<string>("ProjectName");
             taskCard.OwnerName = dr.Field<string>("OwnerName");
             taskCard.OtherName = dr.Field<string>("OtherName");
+            taskCard.AssignToName = dr.Field<string>("AssignToName");
+            taskCard.CustomerName = dr.Field<string>("CustomerName");
             //taskCard.AssignToName = getAssignTo(dr.Field<int?>("AssignTo"));
             //taskCard.CustomerName = getCustomerName(taskCard.CustomerId);
             return taskCard;

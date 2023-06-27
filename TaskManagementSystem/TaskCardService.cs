@@ -200,9 +200,11 @@ namespace FinancialPlannerClient.TaskManagementSystem
                 string apiurl = Program.WebServiceUrl + "/" + (GET_ALL_TAKS_INCLUDING_COMPLETED_WITHCOMMENT);
 
                 RestAPIExecutor restApiExecutor = new RestAPIExecutor();
-
+                Logger.LogInfo("GetAll task with comment process start");
                 var restResult = restApiExecutor.Execute<IList<TaskCardWithComments>>(apiurl, null, "GET");
-
+                Logger.LogInfo("GetAll task with comment process completed");
+                if (restResult == null)
+                    Logger.LogInfo("Result null");
                 if (jsonSerialization.IsValidJson(restResult.ToString()))
                 {
                     tasks = jsonSerialization.DeserializeFromString<IList<TaskCardWithComments>>(restResult.ToString());
@@ -218,10 +220,11 @@ namespace FinancialPlannerClient.TaskManagementSystem
                 return null;
             }
             catch (Exception ex)
-            {
+                {
                 StackTrace st = new StackTrace();
                 StackFrame sf = st.GetFrame(0);
                 MethodBase currentMethodName = sf.GetMethod();
+                Logger.LogInfo(ex.StackTrace);
                 LogDebug(currentMethodName.Name, ex);
                 return null;
             }

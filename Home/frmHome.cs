@@ -951,7 +951,7 @@ namespace FinancialPlannerClient.Home
             // timerNotification
             // 
             this.timerNotification.Enabled = true;
-            this.timerNotification.Interval = 60000;
+            this.timerNotification.Interval = 300000;
             this.timerNotification.Tick += new System.EventHandler(this.timerNotification_TickAsync);
             // 
             // openFileDialog1
@@ -961,7 +961,7 @@ namespace FinancialPlannerClient.Home
             // timerApproval
             // 
             this.timerApproval.Enabled = true;
-            this.timerApproval.Interval = 60000;
+            this.timerApproval.Interval = 300000;
             this.timerApproval.Tick += new System.EventHandler(this.timerApproval_Tick);
             // 
             // timerOnOff

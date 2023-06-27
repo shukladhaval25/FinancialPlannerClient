@@ -551,24 +551,30 @@ namespace FinancialPlannerClient.Clients
                             {
                                 if (rng.Value != null)
                                 {
-                                     if (Convert.ToString(rng.Value).ToUpper().Equals(personalInformation.Spouse.Name.ToUpper()))
+                                    if (personalInformation.Spouse == null)
                                     {
-
-                                        Excel.Range secondaryShare = (Excel.Range)excelSheet.Cells[row,20];
-                                        nonFinancialAsset.SecondaryHolderShare = (int)(secondaryShare.Value);
+                                        nonFinancialAsset.OtherHolderName = rng.Value;
+                                        Excel.Range secondaryShare = (Excel.Range)excelSheet.Cells[row, 20];
+                                        if (secondaryShare.Value != null)
+                                            nonFinancialAsset.OtherHolderShare = (int)(secondaryShare.Value);
                                     }
                                     else
                                     {
-                                        nonFinancialAsset.OtherHolderName = rng.Value;
-                                        Excel.Range secondaryShare = (Excel.Range)excelSheet.Cells[row,20];
-                                        if (secondaryShare.Value != null)
-                                            nonFinancialAsset.OtherHolderShare = (int) (secondaryShare.Value);
+                                        if (Convert.ToString(rng.Value).ToUpper().Equals(personalInformation.Spouse.Name.ToUpper()))
+                                        {
+
+                                            Excel.Range secondaryShare = (Excel.Range)excelSheet.Cells[row, 20];
+                                            nonFinancialAsset.SecondaryHolderShare = (int)(secondaryShare.Value);
+                                        }
+                                        else
+                                        {
+                                            nonFinancialAsset.OtherHolderName = rng.Value;
+                                            Excel.Range secondaryShare = (Excel.Range)excelSheet.Cells[row, 20];
+                                            if (secondaryShare.Value != null)
+                                                nonFinancialAsset.OtherHolderShare = (int)(secondaryShare.Value);
+                                        }
                                     }
                                 }
-
-
-
-                                   // nonFinancialAsset.SecondaryHolderShare = (int)(rng.Value);
                             }
                             else if (col == 22)
                             {
@@ -815,9 +821,10 @@ namespace FinancialPlannerClient.Clients
                     //break;
                     Expenses expenseHouseHold = new Expenses();
                     expenseHouseHold.ItemCategory = "Household Expense";
+                    expenseHouseHold.Item = "Household Expense";
                     Excel.Range totalHouseHoldExpAmount = (Excel.Range)excelSheet.Cells[53, 7];
                     if (totalHouseHoldExpAmount.Value != null)
-                        expenseHouseHold.Amount = Convert.ToDouble(totalHouseHoldExpAmount.Value);
+                        expenseHouseHold.Amount = (Convert.ToDouble(totalHouseHoldExpAmount.Value) * 12);
 
                     Excel.Range rngHouseHoldStartYear = (Excel.Range)excelSheet.Cells[53, 10];
                     expenseHouseHold.ExpStartYear = Convert.ToString(rngHouseHoldStartYear.Value);
@@ -833,27 +840,68 @@ namespace FinancialPlannerClient.Clients
                     expenseHouseHold.UpdatedByUserName = Program.CurrentUser.UserName;
                     expenses.Add(expenseHouseHold);
 
-
-
                     Expenses expense = new Expenses();
                     expense.ItemCategory = "Ongoing Expense";
+                    expense.Item = "Ongoing Expense";
                     Excel.Range totalExpAmount = (Excel.Range)excelSheet.Cells[54, 7];
                     if (totalExpAmount.Value != null)
                         expense.Amount = Convert.ToDouble(totalExpAmount.Value);
+                    if (expense.Amount != 0)
+                    {
+                        Excel.Range rngStartYear = (Excel.Range)excelSheet.Cells[54, 10];
+                        expense.ExpStartYear = Convert.ToString(rngStartYear.Value);
+                        Excel.Range rngEndYear = (Excel.Range)excelSheet.Cells[54, 13];
+                        expense.ExpEndYear = Convert.ToString(rngEndYear.Value);
+                        Excel.Range rngInflationRate = (Excel.Range)excelSheet.Cells[54, 14];
+                        expense.InflationRate = (rngInflationRate.Value == null) ? 0 : ((float)rngInflationRate.Value);
+                        expense.CreatedOn = DateTime.Now;
+                        expense.CreatedBy = Program.CurrentUser.Id;
+                        expense.UpdatedOn = DateTime.Now;
+                        expense.UpdatedBy = Program.CurrentUser.Id;
+                        expense.MachineName = System.Environment.MachineName;
+                        expense.UpdatedByUserName = Program.CurrentUser.UserName;
+                        expenses.Add(expense);
+                    }
 
-                    Excel.Range rngStartYear = (Excel.Range)excelSheet.Cells[54, 10];
-                    expense.ExpStartYear = Convert.ToString(rngStartYear.Value);
-                    Excel.Range rngEndYear = (Excel.Range)excelSheet.Cells[54, 13];
-                    expense.ExpEndYear = Convert.ToString(rngEndYear.Value);
-                    Excel.Range rngInflationRate = (Excel.Range)excelSheet.Cells[54, 14];
-                    expense.InflationRate = (rngInflationRate.Value == null) ? 0 : ((float)rngInflationRate.Value);
-                    expense.CreatedOn = DateTime.Now;
-                    expense.CreatedBy = Program.CurrentUser.Id;
-                    expense.UpdatedOn = DateTime.Now;
-                    expense.UpdatedBy = Program.CurrentUser.Id;
-                    expense.MachineName = System.Environment.MachineName;
-                    expense.UpdatedByUserName = Program.CurrentUser.UserName;
-                    expenses.Add(expense);
+                    //Vacation Exp
+                    for (int row = 11; row < 19; row++)
+                    {
+                        Excel.Range itemCategory = (Excel.Range)excelSheet.Cells[row, 12];
+                        Excel.Range expVal = (Excel.Range)excelSheet.Cells[row, 17];
+                        Excel.Range startYear = (Excel.Range)excelSheet.Cells[row, 22];
+                        int startYearValue = 0;
+                        int endYearValue  =0 ;
+                        float inflationRateValue = 0;
+                        if (startYear.Value != null)
+                            startYearValue = Convert.ToInt16(startYear.Value);
+                        
+                        Excel.Range endYear = (Excel.Range)excelSheet.Cells[row, 31];
+                        if (endYear.Value != null)
+                            endYearValue = Convert.ToInt16(endYear.Value);
+
+                        Excel.Range inflationRate = (Excel.Range)excelSheet.Cells[row, 38];
+                        inflationRateValue = (inflationRate.Value == null) ? 0 : ((float)inflationRate.Value);
+
+                        if (expVal.Value  > 0 && startYearValue  > 0 && endYearValue > 0 && inflationRateValue > 0 )
+                        {
+                            Expenses vacationExp = new Expenses();
+                            vacationExp.ItemCategory = itemCategory.Value;
+                            vacationExp.Item = itemCategory.Value;
+                            vacationExp.Amount = Convert.ToDouble(expVal.Value) ;
+
+                            vacationExp.ExpStartYear = startYearValue.ToString();
+
+                            vacationExp.ExpEndYear = endYearValue.ToString();
+                            vacationExp.InflationRate = inflationRateValue;
+                            vacationExp.CreatedOn = DateTime.Now;
+                            vacationExp.CreatedBy = Program.CurrentUser.Id;
+                            vacationExp.UpdatedOn = DateTime.Now;
+                            vacationExp.UpdatedBy = Program.CurrentUser.Id;
+                            vacationExp.MachineName = System.Environment.MachineName;
+                            vacationExp.UpdatedByUserName = Program.CurrentUser.UserName;
+                            expenses.Add(vacationExp);
+                        }
+                    }
                 }
             }
             return expenses;

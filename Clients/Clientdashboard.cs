@@ -817,6 +817,7 @@ namespace FinancialPlannerClient.Clients
         private void importNonFinancialAsset(ImportFromExcel importFromExcel)
         {
             NonFinancialAssetInfo  nonFinancialAssetInfo  = new NonFinancialAssetInfo();
+            
             List<NonFinancialAsset> nonFinancialAssets  = importFromExcel.GetNonFinancialAsset(this.planner.ID,this.personalInformation);
             bool isSaved = false;
 
@@ -898,7 +899,7 @@ namespace FinancialPlannerClient.Clients
             personalInfo.Client.ID = this._client.ID;
             personalInfo.Spouse.ClientId = this._client.ID;
             personalInfo.Spouse.ID = this.personalInformation.Spouse.ID;
-
+            this.personalInformation = personalInfo;
             clientPersonalInfo.Update(personalInfo);
         }
 
